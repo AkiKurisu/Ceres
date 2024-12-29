@@ -6,25 +6,15 @@ namespace Ceres.Editor.Graph.Flow
 {
     internal sealed class FlowGraphDebugButton : Button
     {
-        private const string ButtonText = "Edit Flow";
-        
-        private const string DebugText = "Debug Flow";
+        private const string ButtonText = "Open Flow Graph";
         
         public FlowGraphDebugButton(IFlowGraphContainer container) : base(() => FlowGraphEditorWindow.Show(container))
         {
             style.fontSize = 15;
             style.unityFontStyleAndWeight = FontStyle.Bold;
             style.color = Color.white;
-            if (!Application.isPlaying)
-            {
-                style.backgroundColor = new StyleColor(new Color(137 / 255f, 179 / 255f, 187 / 255f));
-                text = ButtonText;
-            }
-            else
-            {
-                text = DebugText;
-                style.backgroundColor = new StyleColor(new Color(253 / 255f, 163 / 255f, 180 / 255f));
-            }
+            style.backgroundColor = new StyleColor(new Color(137 / 255f, 179 / 255f, 187 / 255f));
+            text = ButtonText;
         }
     }
     
