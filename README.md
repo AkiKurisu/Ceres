@@ -1,7 +1,10 @@
 # Ceres
 Powerful node based visual scripting toolkit for Unity.
 
-![ceres](./Docs/Images/ceres.png)
+![banner](./Docs/Images/ceres_banner.png)
+
+<b>*Still in earlier development and may have frequent API changes, 
+do not use it in any production environment*</b>
 
 ## Dependencies
 
