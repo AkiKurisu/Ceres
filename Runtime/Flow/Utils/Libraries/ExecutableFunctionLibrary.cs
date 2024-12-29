@@ -16,7 +16,7 @@ namespace Ceres.Graph.Flow.Utilities
     {
 
     }
-
+    
     [Preserve]
     public class ExecutableFunctionRegistry
     {
@@ -80,7 +80,7 @@ namespace Ceres.Graph.Flow.Utilities
             if (parameters.Length < 1) return false;
             if (methodInfo.ReturnType == typeof(void)) return false;
                 
-            return parameters.Any(x=> CeresMetadata.IsDefined(x, CeresMetadata.RESOVLE_RETURN));
+            return parameters.Any(x=> CeresMetadata.IsDefined(x, ExecutableFunction.RESOLVE_RETURN));
         }
         
         public static bool IsSelfTarget(MethodInfo methodInfo)
@@ -89,7 +89,9 @@ namespace Ceres.Graph.Flow.Utilities
             var parameters = methodInfo.GetParameters();
             if (parameters.Length < 1) return false;
                 
-            return CeresMetadata.IsDefined(parameters[0], CeresMetadata.SELF_TARGET);
+            var attribute = methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>();
+            if (attribute == null) return false;
+            return attribute.IsSelfTarget;
         }
         
         public static Type GetTargetType(MethodInfo methodInfo)
@@ -111,7 +113,7 @@ namespace Ceres.Graph.Flow.Utilities
             var parameters = methodInfo.GetParameters();
             if (parameters.Length < 1) return null;
             
-            return parameters.First(x => CeresMetadata.IsDefined(x, CeresMetadata.RESOVLE_RETURN));
+            return parameters.First(x => CeresMetadata.IsDefined(x, ExecutableFunction.RESOLVE_RETURN));
         }
 
         public static string GetFunctionName(MethodInfo methodInfo, bool richText = true)

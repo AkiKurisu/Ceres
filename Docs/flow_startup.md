@@ -53,6 +53,35 @@ public class FlowTestActor : CeresActor
 
 ![Custom Event](./Images/flow_custom_event.png)
 
+## Executable Function
+
+You can add `ExecutableFunctionAttribute` to non-static method.
+
+```C#
+public class MyComponent: Component
+{
+    public void DoSomething(int arg1, float arg2)
+    {
+        // DoSomething
+    }
+}
+```
+
+Or implement `ExecutableFunctionLibrary` to add static executable functions.
+
+```C#
+public class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
+{
+    // IsScriptMethod will consider UObject as function target type
+    // IsSelfTarget will let graph pass self reference as first parameter if self is UObject
+    [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetName")]
+    public static string Flow_UObjectGetName(UObject uObject)
+    {
+        return uObject.name;
+    }
+}
+```
+
 ## Generic Node
 
 Following is an implementation example.

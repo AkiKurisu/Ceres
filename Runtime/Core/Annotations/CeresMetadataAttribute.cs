@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Chris.Serialization;
 using UnityEngine.Pool;
 namespace Ceres.Annotations
 {
@@ -25,18 +24,6 @@ namespace Ceres.Annotations
     /// </summary>
     public static class CeresMetadata
     {
-        // ReSharper disable once InconsistentNaming
-        /// <summary>
-        /// Metadata for function parameter that can be graph context object
-        /// </summary>
-        public const string SELF_TARGET = nameof(SELF_TARGET);
-        
-        // ReSharper disable once InconsistentNaming
-        /// <summary>
-        /// Metadata for function parameter to resolve return type, only support <see cref="SerializedType{T}"/>
-        /// </summary>
-        public const string RESOVLE_RETURN = nameof(RESOVLE_RETURN);
-        
         public static string[] GetMetadata(Type type, string tag)
         {
             var dataList = ListPool<string>.Get();
