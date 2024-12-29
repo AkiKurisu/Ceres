@@ -99,7 +99,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 foreach (var property in properties)
                 {
-                    if(property.GetGetMethod().IsPublic)
+                    if(property.GetGetMethod()?.IsPublic ?? false)
                     {
                         builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {property.Name}", _indentationIcon))
                         {
@@ -116,7 +116,7 @@ namespace Ceres.Editor.Graph.Flow
                         });
                     }
 
-                    if (property.GetSetMethod().IsPublic)
+                    if (property.GetSetMethod()?.IsPublic ?? false)
                     {
                         builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {property.Name}", _indentationIcon))
                         {

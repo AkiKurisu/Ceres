@@ -43,13 +43,15 @@ namespace Ceres.Graph.Flow.Utilities
             _libraryFunctionTables = groups.ToDictionary(x => x.Key, x => x.ToArray());
             
             // Build managed functions
-            methodInfos = SubClassSearchUtility.FindSubClassTypes(typeof(UObject))
-                .SelectMany(x => x.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic))
-                .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
-                .Distinct()
-                .ToList();
-            groups = methodInfos.GroupBy(x=>x.DeclaringType).ToArray();
-            _functionTables = groups.ToDictionary(x => x.Key, x => x.ToArray());
+            _functionTables = SubClassSearchUtility.FindSubClassTypes(typeof(UObject))
+                .Where(x=> GetExecutableFunctions(x).Any())
+                .ToDictionary(x => x, x=> GetExecutableFunctions(x).ToArray());
+        }
+
+        private static IEnumerable<MethodInfo> GetExecutableFunctions(Type type)
+        {
+            return type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
+                .Where(methodInfo => methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null);
         }
 
         public static bool IsScriptMethod(MethodInfo methodInfo)
