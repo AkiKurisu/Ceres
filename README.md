@@ -1,6 +1,8 @@
 # Ceres
 Powerful node based visual scripting toolkit for Unity.
 
+![ceres](./Docs/Images/ceres.png)
+
 ## Dependencies
 
 Add following dependencies to `manifest.json`.
