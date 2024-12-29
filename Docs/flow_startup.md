@@ -59,20 +59,20 @@ Following is an implementation example.
 
 ```C#
 [NodeGroup("Utilities")]
-[NodeLabel("Cast to {0}")]
-[NodeMetadata("style = ConstNode")]
+[CeresLabel("Cast to {0}")]
+[CeresMetadata("style = ConstNode")]
 public class FlowNode_CastT<T, TK>: ForwardNode where TK: T
 {
-    [OutputPort(false), NodeLabel("")]
+    [OutputPort(false), CeresLabel("")]
     public NodePort exec;
     
-    [InputPort, HideInGraphEditor, NodeLabel("Source")]
+    [InputPort, HideInGraphEditor, CeresLabel("Source")]
     public CeresPort<T> sourceValue;
     
-    [OutputPort, NodeLabel("Cast Failed")]
+    [OutputPort, CeresLabel("Cast Failed")]
     public NodePort castFailed;
             
-    [OutputPort, NodeLabel("Result")]
+    [OutputPort, CeresLabel("Result")]
     public CeresPort<TK> resultValue;
 
     protected sealed override UniTask Execute(ExecutionContext executionContext)
