@@ -3,7 +3,7 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
 
 ## HighLights
 
-- Generic node support
+- Generic and delegate support
 - Graph and C# Integration
 - Editor debugging
 - Easy implementation
