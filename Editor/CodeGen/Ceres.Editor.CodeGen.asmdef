@@ -1,0 +1,32 @@
+{
+    "name": "Unity.Ceres.Editor.CodeGen",
+    "rootNamespace": "Unity.Ceres.Editor.CodeGen",
+    "references": [
+        "GUID:7dddf801c0fab33408b06985cd6a607e",
+        "GUID:e61a2a07ba2680848ad23eef5b7c024b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Mono.Cecil.dll",
+        "Mono.Cecil.Mdb.dll",
+        "Mono.Cecil.Pdb.dll",
+        "Mono.Cecil.Rocks.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "!CERES_DISABLE_CODEGEN"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.nuget.mono-cecil",
+            "expression": "(0,1.11.4)",
+            "define": "CECIL_CONSTRAINTS_ARE_TYPE_REFERENCES"
+        }
+    ],
+    "noEngineReferences": false
+}
