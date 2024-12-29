@@ -76,7 +76,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         public static bool IsNeedResolveReturnType(MethodInfo methodInfo)
         {
-            if (!methodInfo.IsStatic) return false;
             var parameters = methodInfo.GetParameters();
             if (parameters.Length < 1) return false;
             if (methodInfo.ReturnType == typeof(void)) return false;
@@ -109,7 +108,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         public static ParameterInfo GetResolveReturnTypeParameter(MethodInfo methodInfo)
         {
-            if (!methodInfo.IsStatic) return null;
             var parameters = methodInfo.GetParameters();
             if (parameters.Length < 1) return null;
             
