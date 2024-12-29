@@ -14,7 +14,7 @@ Before start up Flow, I recommend to read [Ceres Concept](./ceres_concept.md) be
 
 Flow thinks of game logic as an execution chain to let the game objects do things in order according to your design.
 
-Flow visualize those execution as nodes so you can connect them to get a visual execution chain.
+Flow visualize those execution as nodes so you can connect them to get a visual graph.
 
 ## Execution Event
 
