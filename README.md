@@ -38,7 +38,7 @@ See [Document](./Docs/flow_startup.md).
 
 AI powered dialogue visual designer for Unity.
 
-See [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue).
+Is migrating to Ceres version, see [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue/tree/ceres_main).
 
 ![ceres_ngd](./Docs/Images/ceres_ngd.png)
 
