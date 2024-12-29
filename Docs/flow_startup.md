@@ -79,6 +79,15 @@ public class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
     {
         return uObject.name;
     }
+
+    [ExecutableFunction(IsSelfTarget = true)]
+    public static UObject Flow_FindObjectOfType(
+        // RESOLVE_RETURN metadata will let graph editor display return type by this parameter result
+        // Only support SerializedType<T>
+        [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<UObject> type)
+    {
+        return UObject.FindObjectOfType(type);
+    }
 }
 ```
 

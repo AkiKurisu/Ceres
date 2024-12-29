@@ -10,7 +10,7 @@ Introducing the core concepts of Ceres.
 
 `CeresPort` enables you to get data from other nodes.
 
-In Flow, we use `CeresPort<T>` to set get generic data from other Node and use `NodePort` to get a `NodeReference` which can convert to `CeresNode` at runtime.
+Ceres use `CeresPort<T>` to set get generic data from other Node and use `NodePort` to get a `NodeReference` which can convert to `CeresNode` at runtime.
 
 ## Graph
 

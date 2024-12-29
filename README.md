@@ -14,6 +14,11 @@ Add following dependencies to `manifest.json`.
 
 ```
 
+## Contents
+
+[Ceres Concept](./Docs/ceres_concept.md)
+> Introducing the core concepts of Ceres.
+
 ## Platform
 
 Unity 2022.3 LTS or later.
@@ -28,9 +33,9 @@ Support Mono, IL2CPP.
 
 Powerful visual scripting solution inspired from Unreal's Blueprint.
   
-Include in this repository. 
+Included in this repository. 
 
-See [Document](./Docs/flow_startup.md).
+See [Startup Flow](./Docs/flow_startup.md).
 
 ![ceres_flow](./Docs/Images/ceres_flow.png)
  
@@ -38,7 +43,7 @@ See [Document](./Docs/flow_startup.md).
 
 AI powered dialogue visual designer for Unity.
 
-Is migrating to Ceres version, see [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue/tree/ceres_main).
+Is migrating to Ceres version, see [Next-Gen-Dialogue/ceres_main](https://github.com/AkiKurisu/Next-Gen-Dialogue/tree/ceres_main).
 
 ![ceres_ngd](./Docs/Images/ceres_ngd.png)
 
