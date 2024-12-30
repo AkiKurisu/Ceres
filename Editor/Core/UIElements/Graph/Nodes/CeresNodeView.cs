@@ -169,6 +169,36 @@ namespace Ceres.Editor.Graph
         }
         
         /// <summary>
+        /// Find port view with display type if existed
+        /// </summary>
+        /// <param name="displayType"></param>
+        /// <param name="portIndex"></param>
+        /// <returns></returns>
+        public CeresPortView FindPortViewWithDisplayType(Type displayType, int portIndex = 0)
+        {
+            return PortViews.FirstOrDefault(x => x.Binding.DisplayType == displayType && x.PortData.arrayIndex == portIndex);
+        }
+
+        /// <summary>
+        /// Find port view that is compatible to connect
+        /// </summary>
+        /// <param name="portView"></param>
+        /// <returns></returns>
+        public CeresPortView FindCompatiblePortView(CeresPortView portView)
+        {
+            return PortViews.FirstOrDefault(x => x.PortElement.CanConnect(portView.PortElement));
+        }
+        
+        /// <summary>
+        /// Get all port views
+        /// </summary>
+        /// <returns></returns>
+        public CeresPortView[] GetAllPortViews()
+        {
+            return PortViews.ToArray();
+        }
+        
+        /// <summary>
         /// Find field resolver with field name if existed
         /// </summary>
         /// <param name="fieldName"></param>

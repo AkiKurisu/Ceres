@@ -97,11 +97,11 @@ namespace Ceres.Graph
             {
                 edgesToCreate = graphView.graphViewChanged(_graphViewChange).edgesToCreate;
             }
-            foreach (Edge edge1 in edgesToCreate)
+            foreach (Edge edgeToCreate in edgesToCreate)
             {
-                graphView.AddElement(edge1);
-                edge.input.Connect(edge1);
-                edge.output.Connect(edge1);
+                graphView.AddElement(edgeToCreate);
+                edgeToCreate.input.Connect(edgeToCreate);
+                edgeToCreate.output.Connect(edgeToCreate);
             }
         }
     }
@@ -155,6 +155,7 @@ namespace Ceres.Graph
 
         public bool CanConnect(CeresPortElement other)
         {
+            if (connected && capacity == Capacity.Single) return false;
             if (other.direction == direction) return false;
             if (other.portType == portType) return true;
             if (direction == Direction.Input)
@@ -222,14 +223,8 @@ namespace Ceres.Graph
             internal set => _displayName = value;
         }
 
-        private Type _displayType;
+        public Type DisplayType { get; internal set; }
 
-        public Type DisplayType
-        {
-            get => _displayType ??= GetPortValueField().FieldType;
-            internal set => _displayType = value;
-        }
-        
         public string Tooltip { get; set; } = string.Empty;
 
         private const string DefaultOutputPortName = "Return Value";
@@ -363,6 +358,7 @@ namespace Ceres.Graph
         {
             PortData = portData;
             Binding = binding;
+            Binding.DisplayType = portData.GetValueType();
             NodeOwner = nodeView;
             bool isInput = binding.GetDirection() == Direction.Input && !binding.IsRemappedFieldPort();
             if(isInput && !binding.IsHideInGraphEditor() && IsPortSupportValueField(portData.GetValueType()))
@@ -442,15 +438,8 @@ namespace Ceres.Graph
                 var node = NodeOwner.GraphView.FindNodeView<CeresNodeView>(connection.nodeId);
                 var port = node?.FindPortView(connection.portId, connection.portIndex);
                 if(port == null) continue;
-
-                var edge = new CeresEdge
-                {
-                    input = port.PortElement,
-                    output = PortElement,
-                };
-                NodeOwner.GraphView.AddElement(edge);
-                PortElement.Connect(edge);
-                port.PortElement.Connect(edge);
+                
+                NodeOwner.GraphView.ConnectPorts(port, this);
             }
         }
 

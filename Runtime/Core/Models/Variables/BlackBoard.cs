@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using Chris.Serialization;
 using UnityEngine;
+using UObject = UnityEngine.Object;
 namespace Ceres
 {
     /// <summary>
-    /// A medium for centralized storage and exchange of behavior tree data
+    /// A medium for centralized storage and exchange of graph data
     /// </summary>
     public class BlackBoard : IVariableSource
     {
         public List<SharedVariable> SharedVariables { get; } = new();
+        
         /// <summary>
         /// Create a BlackBoard 
         /// </summary>
@@ -27,6 +29,7 @@ namespace Ceres
             }
             return blackBoard;
         }
+        
         public SharedVariable<float> SetFloat(string key, float value)
         {
             if (!this.TryGetSharedVariable(key, out SharedVariable<float> variable))
@@ -59,46 +62,51 @@ namespace Ceres
             variable.Value = value;
             return variable;
         }
-        // public SharedVariable<Vector3Int> SetVector3Int(string key, Vector3Int value)
-        // {
-        //     if (!this.TryGetSharedVariable(key, out SharedVariable<Vector3Int> variable))
-        //     {
-        //         variable = new SharedVector3Int() { Name = key };
-        //         SharedVariables.Add(variable);
-        //     }
-        //     variable.Value = value;
-        //     return variable;
-        // }
-        // public SharedVariable<Vector2> SetVector2(string key, Vector2 value)
-        // {
-        //     if (!this.TryGetSharedVariable(key, out SharedVariable<Vector2> variable))
-        //     {
-        //         variable = new SharedVector2() { Name = key };
-        //         SharedVariables.Add(variable);
-        //     }
-        //     variable.Value = value;
-        //     return variable;
-        // }
-        // public SharedVariable<Vector2Int> SetVector2Int(string key, Vector2Int value)
-        // {
-        //     if (!this.TryGetSharedVariable(key, out SharedVariable<Vector2Int> variable))
-        //     {
-        //         variable = new SharedVector2Int() { Name = key };
-        //         SharedVariables.Add(variable);
-        //     }
-        //     variable.Value = value;
-        //     return variable;
-        // }
-        public SharedVariable<bool> SetBool(string key, bool value)
+        
+        public SharedVariable<Vector3Int> SetVector3Int(string key, Vector3Int value)
         {
-            if (!this.TryGetSharedVariable(key, out SharedVariable<bool> variable))
+            if (!this.TryGetSharedVariable(key, out SharedVariable<Vector3Int> variable))
             {
-                variable = new SharedBool() { Name = key };
+                variable = new SharedVector3Int() { Name = key };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;
             return variable;
         }
+        
+        public SharedVariable<Vector2> SetVector2(string key, Vector2 value)
+        {
+            if (!this.TryGetSharedVariable(key, out SharedVariable<Vector2> variable))
+            {
+                variable = new SharedVector2 { Name = key };
+                SharedVariables.Add(variable);
+            }
+            variable.Value = value;
+            return variable;
+        }
+        
+        public SharedVariable<Vector2Int> SetVector2Int(string key, Vector2Int value)
+        {
+            if (!this.TryGetSharedVariable(key, out SharedVariable<Vector2Int> variable))
+            {
+                variable = new SharedVector2Int { Name = key };
+                SharedVariables.Add(variable);
+            }
+            variable.Value = value;
+            return variable;
+        }
+        
+        public SharedVariable<bool> SetBool(string key, bool value)
+        {
+            if (!this.TryGetSharedVariable(key, out SharedVariable<bool> variable))
+            {
+                variable = new SharedBool { Name = key };
+                SharedVariables.Add(variable);
+            }
+            variable.Value = value;
+            return variable;
+        }
+        
         public SharedVariable<string> SetString(string key, string value)
         {
             if (!this.TryGetSharedString(key, out SharedVariable<string> variable))
@@ -109,9 +117,10 @@ namespace Ceres
             variable.Value = value;
             return variable;
         }
-        public SharedVariable<Object> SetObject(string key, Object value)
+        
+        public SharedVariable<UObject> SetUObject(string key, UObject value)
         {
-            if (!this.TryGetSharedObject(key, out SharedVariable<Object> variable))
+            if (!this.TryGetSharedObject(key, out SharedVariable<UObject> variable))
             {
                 variable = new SharedUObject() { Name = key };
                 SharedVariables.Add(variable);
@@ -119,11 +128,12 @@ namespace Ceres
             variable.Value = value;
             return variable;
         }
-        public SharedVariable<Object> SetTObject<T>(string key, T value) where T : Object
+        
+        public SharedVariable<UObject> SetUObject<T>(string key, T value) where T : UObject
         {
-            if (!this.TryGetSharedObject(key, out SharedVariable<Object> variable))
+            if (!this.TryGetSharedObject(key, out SharedVariable<UObject> variable))
             {
-                variable = new SharedUObject() { Name = key, serializedType = SerializedType<Object>.FromType(typeof(T)) };
+                variable = new SharedUObject() { Name = key, serializedType = SerializedType<UObject>.FromType(typeof(T)) };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;

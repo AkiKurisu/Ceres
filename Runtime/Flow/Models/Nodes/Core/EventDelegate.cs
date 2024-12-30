@@ -55,7 +55,7 @@ namespace Ceres.Graph.Flow
     {
         public void Invoke(UObject contextObject, T1 input1)
         {
-            using var evt = ExecuteFlowEvent.Create(GetEventName(), input1);
+            using var evt = ExecuteFlowEvent<T1>.Create(GetEventName(), input1);
             InvokeInternal(contextObject, evt);
         }
 
@@ -70,7 +70,7 @@ namespace Ceres.Graph.Flow
     {
         public void Invoke(UObject contextObject, T1 input1, T2 input2)
         {
-            using var evt = ExecuteFlowEvent.Create(GetEventName(), input1, input2);
+            using var evt = ExecuteFlowEvent<T1, T2>.Create(GetEventName(), input1, input2);
             InvokeInternal(contextObject, evt);
         }
         
@@ -85,7 +85,7 @@ namespace Ceres.Graph.Flow
     {
         public void Invoke(UObject contextObject, T1 input1, T2 input2, T3 input3)
         {
-            using var evt = ExecuteFlowEvent.Create(GetEventName(), input1, input2, input3);
+            using var evt = ExecuteFlowEvent<T1, T2, T3>.Create(GetEventName(), input1, input2, input3);
             InvokeInternal(contextObject, evt);
         }
         
@@ -100,7 +100,7 @@ namespace Ceres.Graph.Flow
     {
         public void Invoke(UObject contextObject, T1 input1, T2 input2, T3 input3, T4 input4)
         {
-            using var evt = ExecuteFlowEvent.Create(GetEventName(), input1, input2, input3, input4);
+            using var evt = ExecuteFlowEvent<T1, T2, T3, T4>.Create(GetEventName(), input1, input2, input3, input4);
             InvokeInternal(contextObject, evt);
         }
         

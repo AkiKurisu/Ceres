@@ -6,6 +6,11 @@ namespace Ceres.Editor.Graph.Flow
     [CustomPropertyDrawer(typeof(FlowGraphData))]
     public class FlowGraphDataPropertyDrawer: PropertyDrawer
     {
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            return 25;
+        }
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);

@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 namespace Ceres
 {
     /// <summary>
-    /// Global variables are variables managed by a variable scope and any behavior tree initialized in this scope
+    /// Global variables are variables managed by a variable scope and any graph initialized in this scope
     /// will map global variable <see cref="SharedVariable.IsGlobal"/> to it
     /// </summary>
     public class GlobalVariables : IVariableSource, IDisposable

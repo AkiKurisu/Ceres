@@ -495,7 +495,7 @@ namespace Ceres.Graph
     }
     
     /// <summary>
-    /// Expandable graph structure to solve class missing cause children loss
+    /// Metadata for <see cref="CeresGraph"/>
     /// </summary>
     [Serializable]
     public class CeresGraphData

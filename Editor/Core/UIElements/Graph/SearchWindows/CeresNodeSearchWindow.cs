@@ -8,7 +8,6 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
 using NodeGroup = Ceres.Annotations.NodeGroup;
-
 namespace Ceres.Editor.Graph
 {
     public struct NodeSearchContext
@@ -21,12 +20,15 @@ namespace Ceres.Editor.Graph
 
         public Type ParameterType;
 
+        public CeresPortView RequestPortView;
+
         public static readonly NodeSearchContext Default = new()
         {
             ShowGroups = Array.Empty<string>(),
             HideGroups = new []{ NodeGroup.Hidden },
             AllowGeneric = false,
-            ParameterType = null
+            ParameterType = null,
+            RequestPortView = null
         };
     }
 
@@ -43,6 +45,7 @@ namespace Ceres.Editor.Graph
         private readonly bool _allowGeneric;
 
         private readonly Type _portValueType;
+        
         public CeresNodeSearchEntryBuilder(Texture entryDefaultIcon, bool allowGeneric = false, Type portValueType = null)
         {
             _defaultIcon = entryDefaultIcon;
@@ -202,12 +205,12 @@ namespace Ceres.Editor.Graph
                 return !template.RequirePort() || hasPort;
             }
 
-            var settingsAttribute = type.GetCustomAttribute<RequirePortAttribute>();
+            var requirePortAttribute = type.GetCustomAttribute<RequirePortAttribute>();
             
             /* Normal node type without require port can only show when not specific port */
-            if (settingsAttribute == null) return !hasPort;
+            if (requirePortAttribute == null) return !hasPort;
             
-            if(settingsAttribute.PortType ==null)
+            if(requirePortAttribute.PortType ==null)
             {
                 return hasPort;
             }
@@ -215,11 +218,11 @@ namespace Ceres.Editor.Graph
             if (!hasPort) return false;
                 
             // Validate port type
-            if (settingsAttribute.AllowSubclass && settingsAttribute.PortType.IsAssignableFrom(context.ParameterType))
+            if (requirePortAttribute.AllowSubclass && requirePortAttribute.PortType.IsAssignableFrom(context.ParameterType))
             {
                 return true;
             }
-            return settingsAttribute.PortType == context.ParameterType;
+            return requirePortAttribute.PortType == context.ParameterType;
         }
 
         /// <summary>
@@ -229,7 +232,36 @@ namespace Ceres.Editor.Graph
         /// <param name="rect"></param>
         protected virtual bool OnSelectEntry(CeresNodeSearchEntryData entryData, Rect rect)
         {
-            GraphView.AddNodeView(CreateNodeView(entryData), rect);
+            var nodeView = CreateNodeView(entryData);
+            GraphView.AddNodeView(nodeView, rect);
+            ConnectRequestPort(nodeView);
+            return true;
+        }
+
+        /// <summary>
+        /// Connect request port from <see cref="Context"/> with new created node view
+        /// </summary>
+        /// <param name="nodeView"></param>
+        /// <returns></returns>
+        protected virtual bool ConnectRequestPort(ICeresNodeView nodeView)
+        {
+            var portView = Context.RequestPortView;
+            if(portView == null) return false;
+            if(nodeView is not CeresNodeView ceresNodeView) return false;
+            var receivePort = ceresNodeView.FindCompatiblePortView(portView);
+            if (receivePort == null)
+            {
+                return false;
+            }
+
+            if(receivePort.PortElement.direction == Direction.Input)
+            {
+                GraphView.ConnectPorts(receivePort, portView);
+            }
+            else
+            {
+                GraphView.ConnectPorts(portView, receivePort);
+            }
             return true;
         }
 

@@ -10,7 +10,7 @@ namespace Ceres.Editor.Graph.Flow
 {
     public interface IExecutableNodeViewFactoryProxy
     {
-        void Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect);
+        ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect);
     }
 
     public class PropertyNodeViewFactoryProxy : IExecutableNodeViewFactoryProxy
@@ -21,7 +21,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public PropertyInfo PropertyInfo;
         
-        public void Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             PropertyNodeView propertyNodeView;
             if (entryData.NodeType == typeof(PropertyNode_GetPropertyTValue<,>) || entryData.NodeType == typeof(PropertyNode_SetPropertyTValue<,>))
@@ -40,12 +40,21 @@ namespace Ceres.Editor.Graph.Flow
                 };
                 propertyNodeView = (PropertyNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
             }
+            else if (entryData.NodeType == typeof(PropertyNode_GetSelfTReference<>))
+            {
+                var parameters = new[]
+                {
+                    searchWindow.GraphView.GetContainerType()
+                };
+                propertyNodeView = (PropertyNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
+            }
             else
             {
                 throw new ArgumentException($"[Ceres] Can not create property node view for {entryData.NodeType}");
             }
             searchWindow.GraphView.AddNodeView(propertyNodeView, rect);
             propertyNodeView!.SetPropertyName(PropertyName);
+            return propertyNodeView;
         }
     }
 
@@ -53,11 +62,12 @@ namespace Ceres.Editor.Graph.Flow
     {
         public string EventName;
 
-        public void Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             var propertyNodeView = (FlowNode_ExecuteEventNodeView)searchWindow.CreateNodeView(entryData);
             searchWindow.GraphView.AddNodeView(propertyNodeView, rect);
             propertyNodeView!.SetEventName(EventName);
+            return propertyNodeView;
         }
     }
 
@@ -65,7 +75,7 @@ namespace Ceres.Editor.Graph.Flow
     {
         public MethodInfo MethodInfo;
 
-        public void Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             ExecutableEventNodeView nodeView;
             if (entryData.NodeType.IsAssignableTo(typeof(ExecutionEventUber)))
@@ -78,6 +88,7 @@ namespace Ceres.Editor.Graph.Flow
             }
             searchWindow.GraphView.AddNodeView(nodeView, rect);
             nodeView!.SetMethodInfo(MethodInfo);
+            return nodeView;
         }
         
         private ExecutableEventNodeView CreateGenericNodeView(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData)
@@ -87,12 +98,25 @@ namespace Ceres.Editor.Graph.Flow
             return (ExecutableEventNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters.ToArray());
         }
     }
+    
+    public class DelegateEventNodeViewFactoryProxy : IExecutableNodeViewFactoryProxy
+    {
+        public Type DelegateType;
+        
+        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        {
+            var parameters = DelegateType.GetGenericArguments();
+            var nodeView = (ExecutableEventNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
+            searchWindow.GraphView.AddNodeView(nodeView, rect);
+            return nodeView;
+        }
+    }
 
     public class ExecuteFunctionNodeViewFactoryProxy : IExecutableNodeViewFactoryProxy
     {
         public MethodInfo MethodInfo;
 
-        public void Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             ExecuteFunctionNodeView nodeView = null;
             if (entryData.NodeType.IsAssignableTo(typeof(FlowNode_ExecuteFunctionUber)))
@@ -107,10 +131,10 @@ namespace Ceres.Editor.Graph.Flow
             {
                 nodeView = CreateReturnNodeView(searchWindow, entryData);
             }
-            if (nodeView == null) return;
             
             searchWindow.GraphView.AddNodeView(nodeView, rect);
             nodeView!.SetMethodInfo(MethodInfo);
+            return nodeView;
         }
         
         private FlowNode_ExecuteFunctionUberNodeView CreateUberNodeView(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData)

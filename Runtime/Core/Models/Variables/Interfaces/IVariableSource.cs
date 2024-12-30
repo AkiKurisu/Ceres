@@ -8,6 +8,7 @@ namespace Ceres
     {
         List<SharedVariable> SharedVariables { get; }
     }
+    
     /// <summary>
     /// Global variables scope
     /// </summary>

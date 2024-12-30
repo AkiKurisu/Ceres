@@ -5,8 +5,6 @@ using System.Reflection;
 using Ceres.Annotations;
 using Chris;
 using Chris.Serialization;
-using UnityEngine.Serialization;
-
 namespace Ceres.Graph
 {
     
@@ -171,6 +169,7 @@ namespace Ceres.Graph
         
         public int portIndex;
     }
+    
     /// <summary>
     /// Metadata for <see cref="CeresPort"/>
     /// </summary>

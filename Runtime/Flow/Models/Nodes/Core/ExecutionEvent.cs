@@ -35,7 +35,6 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
     public abstract class ExecutionEventGeneric : ExecutableEvent
     {
         [OutputPort(false), CeresLabel("")]
@@ -99,11 +98,8 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            var evt = executionContext.GetEventT<ExecuteFlowEvent>();
-            if(evt.Args != null)
-            {
-                output1.Value = (T1)evt.Args[0];
-            }
+            var evt = executionContext.GetEventT<ExecuteFlowEvent<T1>>();
+            output1.Value = evt.Arg1;
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
         }
@@ -124,12 +120,9 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            var evt = executionContext.GetEventT<ExecuteFlowEvent>();
-            if(evt.Args != null)
-            {
-                output1.Value = (T1)evt.Args[0];
-                output2.Value = (T2)evt.Args[1];
-            }
+            var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2>>();
+            output1.Value = evt.Arg1;
+            output2.Value = evt.Arg2;
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
         }
@@ -153,13 +146,10 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            var evt = executionContext.GetEventT<ExecuteFlowEvent>();
-            if(evt.Args != null)
-            {
-                output1.Value = (T1)evt.Args[0];
-                output2.Value = (T2)evt.Args[1];
-                output3.Value = (T3)evt.Args[2];
-            }
+            var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2, T3>>();
+            output1.Value = evt.Arg1;
+            output2.Value = evt.Arg2;
+            output3.Value = evt.Arg3;
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
         }
@@ -186,14 +176,11 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            var evt = executionContext.GetEventT<ExecuteFlowEvent>();
-            if(evt.Args != null)
-            {
-                output1.Value = (T1)evt.Args[0];
-                output2.Value = (T2)evt.Args[1];
-                output3.Value = (T3)evt.Args[2];
-                output4.Value = (T4)evt.Args[3];
-            }
+            var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2, T3, T4>>();
+            output1.Value = evt.Arg1;
+            output2.Value = evt.Arg2;
+            output3.Value = evt.Arg3;
+            output4.Value = evt.Arg4;
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
         }

@@ -269,6 +269,7 @@ namespace Ceres.Editor.Graph
             var settings = NodeSearchContext.Default;
             settings.AllowGeneric = true;
             settings.ParameterType = portView.PortElement.portType; /* Final display type */
+            settings.RequestPortView = portView;
             SearchWindow.Initialize(this, settings);
             USearchWindow.Open(new SearchWindowContext(screenPosition), SearchWindow);
         }
@@ -289,7 +290,6 @@ namespace Ceres.Editor.Graph
 
     public static class CeresGraphViewExtensions
     {
-                
         /// <summary>
         /// Add custom node view to graph with world rect
         /// </summary>
@@ -333,6 +333,24 @@ namespace Ceres.Editor.Graph
         public static Type GetContainerType(this CeresGraphView graphView)
         {
             return graphView.EditorWindow.Container.GetType();
+        }
+
+        /// <summary>
+        /// Connect input port to output port
+        /// </summary>
+        /// <param name="graphView"></param>
+        /// <param name="input"></param>
+        /// <param name="output"></param>
+        public static void ConnectPorts(this CeresGraphView graphView, CeresPortView input, CeresPortView output)
+        {
+            var edge = new CeresEdge
+            {
+                input = input.PortElement,
+                output = output.PortElement,
+            };
+            graphView.AddElement(edge);
+            input.PortElement.Connect(edge);
+            output.PortElement.Connect(edge);
         }
     }
 }

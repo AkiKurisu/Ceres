@@ -7,6 +7,7 @@ namespace Ceres.Editor
     {
         Graph, Node, Port
     }
+    
     public interface IContextualMenuBuilder
     {
         bool CanBuild(Type hostType);
@@ -15,6 +16,7 @@ namespace Ceres.Editor
         
         void BuildContextualMenu(ContextualMenuPopulateEvent evt);
     }
+    
     public class ContextualMenuRegistry
     {
         private readonly Dictionary<Type, IContextualMenuBuilder> _builderMap = new();
@@ -51,6 +53,7 @@ namespace Ceres.Editor
             }
         }
     }
+    
     public class ContextualMenuBuilder : IContextualMenuBuilder
     {
         public ContextualMenuType MenuType { get; }

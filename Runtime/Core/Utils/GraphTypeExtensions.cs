@@ -9,7 +9,6 @@ namespace Ceres
 {
      public static class GraphTypeExtensions
     {
-        
         /// <summary>
         /// Get all <see cref="FieldInfo"/> of visible properties in Graph View and Editor Window
         /// </summary>

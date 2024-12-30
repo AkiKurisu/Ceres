@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Graph.Flow.Utilities;
-using UObject = UnityEngine.Object;
 namespace Ceres.Editor.Graph.Flow
 {
     public class ExecutableNodeSearchWindow : CeresNodeSearchWindow
@@ -26,20 +26,27 @@ namespace Ceres.Editor.Graph.Flow
         {
             var entries = new List<SearchTreeEntry>
             {
-                new SearchTreeGroupEntry(new GUIContent("Create Node"), 0)
+                new SearchTreeGroupEntry(new GUIContent("Create Node"))
             };
 
-            var (groups, nodeTypes) = SearchTypes(new[] { typeof(ExecutableNode) }, Context);
-            var builder = new CeresNodeSearchEntryBuilder(_indentationIcon, Context.AllowGeneric, Context.ParameterType);
+            var searchContext = Context;
+            if (!searchContext.HasFunctionTargetType())
+            {
+                searchContext.ParameterType = null;
+            }
             
-            if (Context.ParameterType == null)
+            var (groups, nodeTypes) = SearchTypes(new[] { typeof(ExecutableNode) }, searchContext);
+            var builder = new CeresNodeSearchEntryBuilder(_indentationIcon, searchContext.AllowGeneric, searchContext.ParameterType);
+            
+            if (searchContext.ParameterType == null)
             {
                 BuildBasicEntries(builder);
                 BuildExecutableFunctionEntries(builder, GraphView.EditorWindow.Container.GetType(), true);
             }
             else
             {
-                BuildExecutableFunctionEntries(builder, Context.ParameterType, false);   
+                BuildExecutableFunctionEntries(builder, searchContext.ParameterType, false);
+                BuildDelegateEntries(builder, searchContext.ParameterType);
             }
             
             foreach (var subGroup in groups)
@@ -65,9 +72,23 @@ namespace Ceres.Editor.Graph.Flow
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance)
                 .Where(x=> x.CanRead && x.CanWrite)
                 .ToArray();
+            
+            builder.AddGroupEntry("Select Properties", 1);
+            builder.AddEntry(new SearchTreeEntry(new GUIContent("Get Self Reference", _indentationIcon))
+            {
+                level = 2,
+                userData = new CeresNodeSearchEntryData
+                {
+                    NodeType = typeof(PropertyNode_GetSelfTReference<>),
+                    Data = new PropertyNodeViewFactoryProxy
+                    {
+                        PropertyName = "Self"
+                    }
+                }
+            });
+            
             if(variables.Any() || properties.Any())
             {
-                builder.AddGroupEntry("Select Properties", 1);
                 foreach (var variable in variables)
                 {
                     builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {variable.Name}", _indentationIcon))
@@ -192,6 +213,31 @@ namespace Ceres.Editor.Graph.Flow
                 }
             }
         }
+        
+        private void BuildDelegateEntries(CeresNodeSearchEntryBuilder builder,  Type parameterType)
+        {
+            /* Build delegate events */
+            if (!parameterType.IsAssignableTo(typeof(EventDelegateBase)))
+            {
+                return;
+            }
+            int parametersLength = parameterType.GetGenericArguments().Length;
+            if (parametersLength == 0 || parametersLength > 4)
+            {
+                /* Only support generic version */
+                return;
+            }
+            builder.AddGroupEntry("Select Events", 1);
+            builder.AddEntry(new SearchTreeEntry(new GUIContent($"New Execution Event", _indentationIcon))
+            {
+                level = 2, 
+                userData = new CeresNodeSearchEntryData
+                {
+                    NodeType = PredictEventNodeType(parameterType.GetGenericArguments().Length),
+                    Data = new DelegateEventNodeViewFactoryProxy { DelegateType = parameterType }
+                }
+            });
+        }
 
         private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool includeStatic)
         {
@@ -247,9 +293,8 @@ namespace Ceres.Editor.Graph.Flow
             };
         }
         
-        private static Type PredictEventNodeType(MethodInfo methodInfo)
+        private static Type PredictEventNodeType(int parametersLength)
         {
-            int parametersLength = methodInfo.GetParameters().Length;
             return parametersLength switch
             {
                 0 => typeof(ExecutionEvent),
@@ -260,15 +305,30 @@ namespace Ceres.Editor.Graph.Flow
                 _ => typeof(ExecutionEventUber)
             };
         }
+        
+        private static Type PredictEventNodeType(MethodInfo methodInfo)
+        {
+            int parametersLength = methodInfo.GetParameters().Length;
+            return PredictEventNodeType(parametersLength);
+        }
 
         protected override bool OnSelectEntry(CeresNodeSearchEntryData entryData, Rect rect)
         {
             if (entryData.Data is IExecutableNodeViewFactoryProxy factoryProxy)
             {
-                factoryProxy.Create(this, entryData, rect);
+                var nodeView = factoryProxy.Create(this, entryData, rect);
+                ConnectRequestPort(nodeView);
                 return true;
             }
             return base.OnSelectEntry(entryData, rect);
+        }
+    }
+
+    public static class ExecutableNodeSearchExtensions
+    {
+        public static bool HasFunctionTargetType(this NodeSearchContext searchContext)
+        {
+            return searchContext.ParameterType != null && searchContext.ParameterType != typeof(NodeReference);
         }
     }
 }
