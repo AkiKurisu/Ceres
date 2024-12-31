@@ -22,8 +22,18 @@ namespace Ceres.Editor.Graph.Flow
             View = nodeView;
             /* Additionally add node name as style class */
             tooltip = NodeInfo.GetInfo(nodeView.NodeType);
-            AddToClassList(NodeInfo.GetClassName(nodeView.NodeType));
+            AddToClassList(GetClassName(nodeView.NodeType));
             styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/Flow/ExecutableNodeElement"));
+        }
+        
+        private static string GetClassName(Type type)
+        {
+            if (type.IsGenericType)
+            {
+                type = type.GetGenericTypeDefinition();
+                return type.Name.Split('`')[0];
+            }
+            return type.Name;
         }
         
         public void AddBreakpointView()

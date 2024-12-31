@@ -73,5 +73,23 @@ namespace Ceres.Annotations
             }
             return type.Name;
         }
+
+        public static string GetTypeName(Type type)
+        {
+            if(type == typeof(UObject))
+            {
+                return "UObject";
+            }
+            if(type == typeof(float))
+            {
+                return "Float";
+            }
+            if (type.IsGenericType)
+            {
+                return type.GetGenericTypeDefinition().Name.Split('`')[0] 
+                       + '<' + string.Join(", ",type.GetGenericArguments().Select(GetTypeName).ToArray()) + '>';
+            }
+            return type.Name;
+        }
     }
 }
