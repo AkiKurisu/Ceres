@@ -160,7 +160,7 @@ namespace Ceres.Graph
 
         public bool CanConnect(CeresPortElement other)
         {
-            if (IsConnectable()) return false;
+            if (!IsConnectable()) return false;
             if (other.direction == direction) return false;
             if (other.portType == portType) return true;
             if (direction == Direction.Input)
