@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Ceres.Annotations;
 using Ceres.Graph.Flow;
 using UnityEditor.Experimental.GraphView;
@@ -63,6 +65,22 @@ namespace Ceres.Editor.Graph.Flow
             }
             base.BuildContextualMenu(evt);
         }
+        
+                
+        private void CollectConnectedEdges(HashSet<GraphElement> edgeSet)
+        {
+            /* Allow edges connected by port in titleContainer can be deleted */
+            edgeSet.UnionWith(titleContainer.Children().OfType<Port>().SelectMany(c => c.connections).Where(d => (d.capabilities & Capabilities.Deletable) != 0));
+            edgeSet.UnionWith(inputContainer.Children().OfType<Port>().SelectMany(c => c.connections).Where(d => (d.capabilities & Capabilities.Deletable) != 0));
+            edgeSet.UnionWith(outputContainer.Children().OfType<Port>().SelectMany(c => c.connections).Where(d => (d.capabilities & Capabilities.Deletable) != 0));
+        }
+
+        public override void CollectElements(
+            HashSet<GraphElement> collectedElementSet,
+            Func<GraphElement, bool> conditionFunc)
+        {
+            CollectConnectedEdges(collectedElementSet);
+        }
     }
     
     /// <summary>
@@ -84,7 +102,7 @@ namespace Ceres.Editor.Graph.Flow
         }
         
         /// <summary>
-        /// Constructor with fill default properties, ports and node visual element+
+        /// Constructor with fill default properties, ports and node visual element
         /// </summary>
         /// <param name="type"></param>
         /// <param name="graphView"></param>
