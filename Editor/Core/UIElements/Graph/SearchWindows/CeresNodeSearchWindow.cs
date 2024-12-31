@@ -247,6 +247,7 @@ namespace Ceres.Editor.Graph
         {
             var portView = Context.RequestPortView;
             if(portView == null) return false;
+            if (!portView.PortElement.IsConnectable()) return false;
             if(nodeView is not CeresNodeView ceresNodeView) return false;
             var receivePort = ceresNodeView.FindCompatiblePortView(portView);
             if (receivePort == null)

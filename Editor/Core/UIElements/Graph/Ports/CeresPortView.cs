@@ -153,9 +153,14 @@ namespace Ceres.Graph
             return view;
         }
 
+        public bool IsConnectable()
+        {
+            return !connected || capacity != Capacity.Single;
+        }
+
         public bool CanConnect(CeresPortElement other)
         {
-            if (connected && capacity == Capacity.Single) return false;
+            if (IsConnectable()) return false;
             if (other.direction == direction) return false;
             if (other.portType == portType) return true;
             if (direction == Direction.Input)
