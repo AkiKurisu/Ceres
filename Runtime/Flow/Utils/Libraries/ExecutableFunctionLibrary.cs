@@ -43,7 +43,7 @@ namespace Ceres.Graph.Flow.Utilities
             _libraryFunctionTables = groups.ToDictionary(x => x.Key, x => x.ToArray());
             
             // Build managed functions
-            _functionTables = SubClassSearchUtility.FindSubClassTypes(typeof(UObject))
+            _functionTables = SubClassSearchUtility.FindSubClassTypes(typeof(object))
                 .Where(x=> GetExecutableFunctions(x).Any())
                 .ToDictionary(x => x, x=> GetExecutableFunctions(x).ToArray());
         }
