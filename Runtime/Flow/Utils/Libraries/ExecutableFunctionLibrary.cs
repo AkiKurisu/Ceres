@@ -149,7 +149,7 @@ namespace Ceres.Graph.Flow.Utilities
     /// Executable functions cache for runtime
     /// </summary>
     /// <typeparam name="TTarget"></typeparam>
-    internal static class ExecuteFunctionTable<TTarget>
+    internal static class ExecutableFunctionTable<TTarget>
     {
         private static readonly Dictionary<string, MethodInfo> Functions = new();
             

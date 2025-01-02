@@ -85,7 +85,7 @@ namespace Ceres.Graph.Flow.Utilities
         
         public override MethodInfo GetExecuteFunction(Type targetType)
         {
-            return ExecuteFunctionTable<TTarget>.GetFunction(isStatic, methodName);
+            return ExecutableFunctionTable<TTarget>.GetFunction(isStatic, methodName);
         }
         
         public void OnBeforeSerialize()
@@ -105,7 +105,7 @@ namespace Ceres.Graph.Flow.Utilities
         
         public override MethodInfo GetExecuteFunction(Type targetType)
         {
-            return ExecuteFunctionTable<TTarget>.GetFunction(isStatic, methodName);
+            return ExecutableFunctionTable<TTarget>.GetFunction(isStatic, methodName);
         }
         
         public void OnBeforeSerialize()
