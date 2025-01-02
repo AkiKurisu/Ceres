@@ -21,7 +21,7 @@ namespace Ceres.Graph.Flow.Utilities
         [HideInGraphEditor] 
         public bool isScriptMethod;
 
-        public MethodInfo GetExecuteFunction(Type targetType)
+        public virtual MethodInfo GetExecuteFunction(Type targetType)
         {
             if (isStatic)
             {
@@ -77,6 +77,46 @@ namespace Ceres.Graph.Flow.Utilities
     public abstract class FlowNode_ExecuteFunctionReturn: FlowNode_ExecuteFunction
     {
 
+    }
+    
+    public abstract class FlowNode_ExecuteFunctionReturnT<TTarget>: FlowNode_ExecuteFunctionReturn, ISerializationCallbackReceiver
+    {
+        protected MethodInfo MethodInfo;
+        
+        public override MethodInfo GetExecuteFunction(Type targetType)
+        {
+            return ExecuteFunctionTable<TTarget>.GetFunction(isStatic, methodName);
+        }
+        
+        public void OnBeforeSerialize()
+        {
+  
+        }
+
+        public void OnAfterDeserialize()
+        {
+            MethodInfo = GetExecuteFunction(typeof(TTarget));
+        }
+    }
+    
+    public abstract class FlowNode_ExecuteFunctionVoidT<TTarget>: FlowNode_ExecuteFunctionReturn, ISerializationCallbackReceiver
+    {
+        protected MethodInfo MethodInfo;
+        
+        public override MethodInfo GetExecuteFunction(Type targetType)
+        {
+            return ExecuteFunctionTable<TTarget>.GetFunction(isStatic, methodName);
+        }
+        
+        public void OnBeforeSerialize()
+        {
+  
+        }
+
+        public void OnAfterDeserialize()
+        {
+            MethodInfo = GetExecuteFunction(typeof(TTarget));
+        }
     }
 
     // Non-optimized function node
@@ -150,107 +190,67 @@ namespace Ceres.Graph.Flow.Utilities
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget> : FlowNode_ExecuteFunctionVoid
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget> : FlowNode_ExecuteFunctionVoidT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
-    
-        private MethodInfo _methodInfo;
     
         private Action _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             _delegate.Invoke();
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TR> : FlowNode_ExecuteFunctionReturn
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TR> : FlowNode_ExecuteFunctionReturnT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
     
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
-    
-        private MethodInfo _methodInfo;
     
         private Func<TR> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             output.Value = _delegate.Invoke();
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1> : FlowNode_ExecuteFunctionVoid
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1> : FlowNode_ExecuteFunctionVoidT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
         
         [InputPort]
         public CeresPort<TP1> input1;
-    
-        private MethodInfo _methodInfo;
     
         private Action<TP1> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             _delegate.Invoke(GetTargetOrDefault(input1, executionContext));
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TR> : FlowNode_ExecuteFunctionReturn
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TR> : FlowNode_ExecuteFunctionReturnT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -260,34 +260,21 @@ namespace Ceres.Graph.Flow.Utilities
     
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
-    
-        private MethodInfo _methodInfo;
     
         private Func<TP1, TR> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             output.Value = _delegate.Invoke(GetTargetOrDefault(input1, executionContext));
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2> : FlowNode_ExecuteFunctionVoid
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2> : FlowNode_ExecuteFunctionVoidT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -297,34 +284,21 @@ namespace Ceres.Graph.Flow.Utilities
         
         [InputPort]
         public CeresPort<TP2> input2;
-    
-        private MethodInfo _methodInfo;
     
         private Action<TP1, TP2> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             _delegate.Invoke(GetTargetOrDefault(input1, executionContext), input2.Value);
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TR> : FlowNode_ExecuteFunctionReturn
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TR> : FlowNode_ExecuteFunctionReturnT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -337,34 +311,21 @@ namespace Ceres.Graph.Flow.Utilities
     
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
-    
-        private MethodInfo _methodInfo;
     
         private Func<TP1, TP2, TR> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             output.Value = _delegate.Invoke(GetTargetOrDefault(input1, executionContext), input2.Value);
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3> : FlowNode_ExecuteFunctionVoid
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3> : FlowNode_ExecuteFunctionVoidT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -378,33 +339,20 @@ namespace Ceres.Graph.Flow.Utilities
         [InputPort]
         public CeresPort<TP3> input3;
     
-        private MethodInfo _methodInfo;
-    
         private Action<TP1, TP2, TP3> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             _delegate.Invoke(GetTargetOrDefault(input1, executionContext), input2.Value, input3.Value);
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TR> : FlowNode_ExecuteFunctionReturn
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TR> : FlowNode_ExecuteFunctionReturnT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -421,33 +369,20 @@ namespace Ceres.Graph.Flow.Utilities
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
     
-        private MethodInfo _methodInfo;
-    
         private Func<TP1, TP2, TP3, TR> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             output.Value = _delegate.Invoke(GetTargetOrDefault(input1, executionContext), input2.Value, input3.Value);
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4> : FlowNode_ExecuteFunctionVoid
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4> : FlowNode_ExecuteFunctionVoidT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -464,33 +399,20 @@ namespace Ceres.Graph.Flow.Utilities
         [InputPort] 
         public CeresPort<TP4> input4;
     
-        private MethodInfo _methodInfo;
-    
         private Action<TP1, TP2, TP3, TP4> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             _delegate.Invoke(GetTargetOrDefault(input1, executionContext), input2.Value, input3.Value, input4.Value);
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     
     [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TR> : FlowNode_ExecuteFunctionReturn
-        , ISerializationCallbackReceiver
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TR> : FlowNode_ExecuteFunctionReturnT<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -510,25 +432,13 @@ namespace Ceres.Graph.Flow.Utilities
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
     
-        private MethodInfo _methodInfo;
-    
         private Func<TP1, TP2, TP3, TP4, TR> _delegate;
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
             object targetObject = target.Value == null ? executionContext.Context : target.Value;
-            ReallocateDelegateIfNeed(ref _delegate, _methodInfo, targetObject);
+            ReallocateDelegateIfNeed(ref _delegate, MethodInfo, targetObject);
             output.Value = _delegate.Invoke(GetTargetOrDefault(input1, executionContext), input2.Value, input3.Value, input4.Value);
-        }
-        
-        public void OnBeforeSerialize()
-        {
-            
-        }
-    
-        public void OnAfterDeserialize()
-        {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
         }
     }
     

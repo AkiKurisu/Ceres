@@ -5,7 +5,6 @@ using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using UnityEngine.Scripting;
-using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
@@ -143,6 +142,34 @@ namespace Ceres.Graph.Flow.Utilities
         public Type[] GetManagedTypes()
         {
             return _functionTables.Keys.ToArray();
+        }
+    }
+        
+    /// <summary>
+    /// Executable functions cache for runtime
+    /// </summary>
+    /// <typeparam name="TTarget"></typeparam>
+    internal static class ExecuteFunctionTable<TTarget>
+    {
+        private static readonly Dictionary<string, MethodInfo> Functions = new();
+            
+        public static MethodInfo GetFunction(bool isStatic, string methodName)
+        {
+            if (Functions.TryGetValue(methodName, out var methodInfo))
+            {
+                return methodInfo;
+            }
+            if (isStatic)
+            {
+                methodInfo = typeof(TTarget).GetMethod(methodName, BindingFlags.Static | BindingFlags.Public);
+            }
+            else
+            {
+                methodInfo = typeof(TTarget).GetMethod(methodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            }
+
+            Functions[methodName] = methodInfo;
+            return methodInfo;
         }
     }
 }
