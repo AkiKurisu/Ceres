@@ -1,4 +1,4 @@
-# Concept
+# Concept of Ceres
 
 Introducing the core concepts of Ceres.
 

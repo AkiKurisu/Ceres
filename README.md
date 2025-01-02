@@ -21,8 +21,11 @@ Add following dependencies to `manifest.json`.
 
 ## Contents
 
-[Ceres Concept](./Docs/ceres_concept.md)
+[Concept of Ceres](./Docs/ceres_concept.md)
 > Introducing the core concepts of Ceres.
+
+[Code Generation in Ceres](./Docs/ceres_codegen.md)
+> Introducing the code generation inside Ceres.
 
 ## Platform
 
@@ -30,7 +33,7 @@ Unity 2022.3 LTS or later.
 
 Support Mono, IL2CPP.
 
->Ceres relies on full generic sharing since Unity 2022 to support generic node in IL2CPP.
+> Ceres relies on full generic sharing since Unity 2022 to support generic node in IL2CPP.
 
 ## Implementation
 
