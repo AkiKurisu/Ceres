@@ -1,5 +1,5 @@
 using Mono.Cecil;
-namespace Unity.Ceres.Editor.CodeGen
+namespace Unity.Ceres.ILPP.CodeGen
 {
     internal class PostProcessorReflectionImporterProvider : IReflectionImporterProvider
     {

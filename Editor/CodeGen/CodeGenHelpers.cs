@@ -12,7 +12,7 @@ using Unity.CompilationPipeline.Common.Diagnostics;
 using Unity.CompilationPipeline.Common.ILPostProcessing;
 using UnityEngine;
 using Object = System.Object;
-namespace Unity.Ceres.Editor.CodeGen
+namespace Unity.Ceres.ILPP.CodeGen
 {
     // Modified from Unity.Netcode
     internal static class CodeGenHelpers

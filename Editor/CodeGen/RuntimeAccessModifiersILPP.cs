@@ -6,7 +6,7 @@ using Mono.Cecil.Cil;
 using Unity.CompilationPipeline.Common.Diagnostics;
 using Unity.CompilationPipeline.Common.ILPostProcessing;
 using ILPPInterface = Unity.CompilationPipeline.Common.ILPostProcessing.ILPostProcessor;
-namespace Unity.Ceres.Editor.CodeGen
+namespace Unity.Ceres.ILPP.CodeGen
 {
     internal sealed class RuntimeAccessModifiersILPP : ILPPInterface
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using Mono.Cecil;
 using Unity.CompilationPipeline.Common.ILPostProcessing;
-namespace Unity.Ceres.Editor.CodeGen
+namespace Unity.Ceres.ILPP.CodeGen
 {
     internal class PostProcessorAssemblyResolver : IAssemblyResolver
     {
