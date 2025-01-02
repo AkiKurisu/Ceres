@@ -80,7 +80,7 @@ public class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
         return uObject.name;
     }
 
-    [ExecutableFunction(IsSelfTarget = true)]
+    [ExecutableFunction]
     public static UObject Flow_FindObjectOfType(
         // RESOLVE_RETURN metadata will let graph editor display return type by this parameter result
         // Only support SerializedType<T>
@@ -159,7 +159,6 @@ public class FlowNode_CastT_Template: GenericNodeTemplate
     }
 }
 ```
-
 
 ## Debug
 

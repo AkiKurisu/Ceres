@@ -32,7 +32,7 @@ namespace Ceres.Graph.Flow.Utilities
             UObject.Destroy(uObject);
         }
         
-        [ExecutableFunction(IsSelfTarget = true)]
+        [ExecutableFunction]
         public static UObject Flow_FindObjectOfType(
             [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<UObject> type)
         {
