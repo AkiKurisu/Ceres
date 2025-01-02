@@ -168,7 +168,7 @@ namespace Ceres.Graph.Flow.Utilities
                 methodInfo = typeof(TTarget).GetMethod(methodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
             }
 
-            Functions[methodName] = methodInfo;
+            Functions.Add(methodName, methodInfo);
             return methodInfo;
         }
     }
