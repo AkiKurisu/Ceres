@@ -144,32 +144,4 @@ namespace Ceres.Graph.Flow.Utilities
             return _functionTables.Keys.ToArray();
         }
     }
-        
-    /// <summary>
-    /// Executable functions cache for runtime
-    /// </summary>
-    /// <typeparam name="TTarget"></typeparam>
-    internal static class ExecutableFunctionTable<TTarget>
-    {
-        private static readonly Dictionary<string, MethodInfo> Functions = new();
-            
-        public static MethodInfo GetFunction(bool isStatic, string methodName)
-        {
-            if (Functions.TryGetValue(methodName, out var methodInfo))
-            {
-                return methodInfo;
-            }
-            if (isStatic)
-            {
-                methodInfo = typeof(TTarget).GetMethod(methodName, BindingFlags.Static | BindingFlags.Public);
-            }
-            else
-            {
-                methodInfo = typeof(TTarget).GetMethod(methodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            }
-
-            Functions.Add(methodName, methodInfo);
-            return methodInfo;
-        }
-    }
 }
