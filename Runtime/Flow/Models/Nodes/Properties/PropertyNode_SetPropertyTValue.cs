@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using Ceres.Annotations;
+using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UObject = UnityEngine.Object;
@@ -27,15 +28,12 @@ namespace Ceres.Graph.Flow.Properties
         
         private MethodInfo _methodInfo;
 
-        private Action<T> _delegate;
+        private ExecutableReflection<TTarget>.ExecutableAction _delegate;
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            if (_delegate == null || (UObject)_delegate.Target != executionContext.Context)
-            {
-                _delegate ??= (Action<T>)_methodInfo.CreateDelegate(typeof(Action<T>), executionContext.Context);
-            }
-            _delegate.Invoke(inputValue.Value);
+            _delegate.ReallocateDelegateIfNeed<T>(_methodInfo);
+            _delegate.Invoke((TTarget)executionContext.Context, inputValue.Value);
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
         }
@@ -47,7 +45,7 @@ namespace Ceres.Graph.Flow.Properties
     
         public void OnAfterDeserialize()
         {
-            _methodInfo = typeof(TTarget).GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance)!.SetMethod;
+            _methodInfo =  ExecutableReflection<TTarget>.GetFunction(ExecutableFunctionType.PropertySetter, propertyName);
         }
     }
 }
