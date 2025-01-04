@@ -1,3 +1,5 @@
+<div align="center">
+
 # Ceres
 Powerful node based visual scripting toolkit for Unity.
 
@@ -5,6 +7,8 @@ Powerful node based visual scripting toolkit for Unity.
 
 <b>*Still in earlier development and may have frequent API changes, 
 do not use it in any production environment*</b>
+
+</div>
 
 ## Dependencies
 
