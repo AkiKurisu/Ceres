@@ -8,8 +8,8 @@ namespace Ceres.Editor.Graph
     public abstract class NodeGroupHandler
     {
         protected CeresGraphView GraphView { get; }
-        
-        public NodeGroupHandler(CeresGraphView graphView)
+
+        protected NodeGroupHandler(CeresGraphView graphView)
         {
             GraphView = graphView;
         }

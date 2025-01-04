@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
+using Ceres.Editor;
 using Ceres.Editor.Graph;
 using Chris;
 using Chris.Serialization;
@@ -121,6 +122,20 @@ namespace Ceres.Graph
                 AddToClassList("type" + type.GetGenericTypeDefinition().Name.Split('`')[0]);
             }
             tooltip = CreatePortTooltip(type);
+            this.AddManipulator(new ContextualMenuManipulator(BuildContextualMenu));
+        }
+
+        protected virtual void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            evt.menu.ClearItems();
+            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Disconnect", a =>
+            {
+                var edge = connections.First();
+                edge.input.Disconnect(edge);
+                edge.output.Disconnect(edge);
+                View.NodeOwner.GraphView.DeleteElements(new []{ edge });
+            }, a => connections.Any() ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Hidden));
+            View.NodeOwner.GraphView.ContextualMenuRegistry.BuildContextualMenu(ContextualMenuType.Port, evt, portType);
         }
 
         public static string CreatePortTooltip(Type valueType)

@@ -59,6 +59,8 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
+            if (evt.target is not Node)
+                return;
             if(_breakPoint == null)
             {
                 evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add Breakpoint", (a) =>
@@ -73,7 +75,9 @@ namespace Ceres.Editor.Graph.Flow
                     View.RemoveBreakpoint();
                 }));
             }
+            evt.menu.AppendSeparator();
             base.BuildContextualMenu(evt);
+            View.GraphView.ContextualMenuRegistry.BuildContextualMenu(ContextualMenuType.Node, evt, View.NodeType);
         }
         
                 

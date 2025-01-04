@@ -246,7 +246,13 @@ namespace Ceres.Editor.Graph
                 Blackboard.AddVariable(Application.isPlaying ? variable : variable.Clone(), false);
             }
         }
-        
+
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            base.BuildContextualMenu(evt);
+            ContextualMenuRegistry.BuildContextualMenu(ContextualMenuType.Graph, evt);
+        }
+
         /// <summary>
         /// Open node search window
         /// </summary>

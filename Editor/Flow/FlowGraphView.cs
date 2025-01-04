@@ -229,6 +229,10 @@ namespace Ceres.Editor.Graph.Flow
                     /* Reset skip frame flag */
                     _breakOnNext = false;
                     await UniTask.WaitUntil(CanSkipFrame);
+                    if (CeresSettings.EnableGraphEditorLog)
+                    {
+                        Debug.Log($"[Ceres] Exit node [{node.GetType().Name}]({node.Guid})");
+                    }
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");
                 Time.timeScale = 1;

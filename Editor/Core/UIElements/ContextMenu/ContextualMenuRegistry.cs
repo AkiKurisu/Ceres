@@ -42,13 +42,11 @@ namespace Ceres.Editor
                 _builderMap.Remove(nodeType);
         }
         
-        public void BuildContextualMenu(ContextualMenuType menuType, ContextualMenuPopulateEvent evt, Type constraintType)
+        public void BuildContextualMenu(ContextualMenuType menuType, ContextualMenuPopulateEvent evt, Type constraintType = null)
         {
             foreach (var builder in _builderMap.Values)
             {
-                if (!builder.CanBuild(constraintType))
-                    continue;
-                if (builder.MenuType == menuType)
+                if (builder.MenuType == menuType && builder.CanBuild(constraintType))
                     builder.BuildContextualMenu(evt);
             }
         }
