@@ -1,5 +1,5 @@
 # Code Generation in Ceres
-Flow use two kinds of code generation to enhance runtime performance and speed up your time.  
+Flow use two kinds of code generation to enhance runtime performance and save your time.  
 
 ## Source Generator
 
