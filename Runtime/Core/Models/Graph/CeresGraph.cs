@@ -145,7 +145,7 @@ namespace Ceres.Graph
             foreach (var node in graph.GetAllNodes())
             {
                 /* Variables will be collected by node using ILPP */
-#if !CERES_DISABLE_CODEGEN
+#if !CERES_DISABLE_ILPP
                 node.InitializeVariables();
                 foreach (var variable in node.SharedVariables)
                 {
@@ -219,7 +219,7 @@ namespace Ceres.Graph
             foreach (var node in graph.GetAllNodes())
             {
                 /* Ports will be collected by node using ILPP */
-#if !CERES_DISABLE_CODEGEN
+#if !CERES_DISABLE_ILPP
                 node.InitializePorts();
                 foreach (var pair in node.Ports)
                 {

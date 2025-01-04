@@ -88,7 +88,7 @@ namespace Ceres.Graph
             // ILPP generates code for all CeresNode subtypes to initialize each type's CeresPort.
         }
         
-#if !CERES_DISABLE_CODEGEN
+#if !CERES_DISABLE_ILPP
         // RuntimeAccessModifiersILPP will make this `protected`
         internal readonly List<SharedVariable> SharedVariables = new();
         
@@ -209,7 +209,7 @@ namespace Ceres.Graph
         /// <returns></returns>
         public string GetTypeName()
         {
-#if CERES_DISABLE_CODEGEN
+#if CERES_DISABLE_ILPP
             return GetType().Name;
 #else
             return __getTypeName();
@@ -414,12 +414,20 @@ namespace Ceres.Graph
 
         public CeresPortData FindPortData(string propertyName)
         {
-            return portData.FirstOrDefault(x => x.propertyName == propertyName);
+            foreach (var data in portData)
+            {
+                if (data.propertyName == propertyName) return data;
+            }
+            return null;
         }
         
         public CeresPortData FindPortData(string propertyName, int index)
         {
-            return portData.FirstOrDefault(x => x.propertyName == propertyName && x.arrayIndex == index);
+            foreach (var data in portData)
+            {
+                if (data.propertyName == propertyName && data.arrayIndex == index) return data;
+            }
+            return null;
         }
 
         internal void AddDependency(string nodeGuid)

@@ -11,9 +11,9 @@ namespace Ceres.Editor
         
         [SerializeField, HideInInspector]
         private bool enableGraphEditorLog;
-
+        
         [SerializeField, HideInInspector]
-        private bool disableCodeGen;
+        private bool disableILPostProcess;
         
         /// <summary>
         /// Whether ceres graph editor can log in console
@@ -30,15 +30,16 @@ namespace Ceres.Editor
     {
         private SerializedObject _serializedObject;
         
-        private const string DisableCodeGenSymbol = "CERES_DISABLE_CODEGEN";
+        private const string DisableILPostProcessSymbol = "CERES_DISABLE_ILPP";
         
         private class Styles
         {
             public static readonly GUIContent EnableGraphEditorLogStyle = new("Enable Graph Editor Log",
                 "Enable to log editor information");
             
-            public static readonly GUIContent DisableCodeGenStyle = new("Disable CodeGen", 
-                "Disable code generation, default Ceres will emit il to speed up graph runtime compile");
+            public static readonly GUIContent DisableILPostProcessStyle = new("Disable ILPP", 
+                "Disable IL Post Process, default Ceres will emit il after syntax analysis step to enhance runtime performance, " +
+                "disable can speed up editor compilation, recommend to enable in final production build");
         }
 
         private CeresSettingsProvider(string path, SettingsScope scope = SettingsScope.User) : base(path, scope) { }
@@ -51,26 +52,40 @@ namespace Ceres.Editor
         public override void OnGUI(string searchContext)
         {
             var titleStyle = new GUIStyle(GUI.skin.label) { fontStyle = FontStyle.Bold };
-            var disableCodeGenProp = _serializedObject.FindProperty("disableCodeGen");
+            var disableILPostProcessProp = _serializedObject.FindProperty("disableILPostProcess");
             GUILayout.Label("Editor Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
-            disableCodeGenProp.boolValue = ScriptingSymbol.ContainsScriptingSymbol(DisableCodeGenSymbol);
+            disableILPostProcessProp.boolValue = ScriptingSymbol.ContainsScriptingSymbol(DisableILPostProcessSymbol);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("enableGraphEditorLog"), Styles.EnableGraphEditorLogStyle);
             GUILayout.EndVertical();
+            _serializedObject.ApplyModifiedPropertiesWithoutUndo();
 
             GUILayout.Label("Runtime Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
-            EditorGUILayout.PropertyField(disableCodeGenProp, Styles.DisableCodeGenStyle);
+            EditorGUILayout.PropertyField(disableILPostProcessProp, Styles.DisableILPostProcessStyle);
             GUILayout.EndVertical();
             if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
             {
-                if (disableCodeGenProp.boolValue)
-                    ScriptingSymbol.AddScriptingSymbol(DisableCodeGenSymbol);
+                if (disableILPostProcessProp.boolValue)
+                {
+                    if (CeresSettings.EnableGraphEditorLog)
+                    {
+                        Debug.Log("[Ceres] Disable ILPP");
+                    }
+                    ScriptingSymbol.AddScriptingSymbol(DisableILPostProcessSymbol);
+                }
                 else
-                    ScriptingSymbol.RemoveScriptingSymbol(DisableCodeGenSymbol);
+                {
+                    if (CeresSettings.EnableGraphEditorLog)
+                    {
+                        Debug.Log("[Ceres] Enable ILPP");
+                    }
+                    ScriptingSymbol.RemoveScriptingSymbol(DisableILPostProcessSymbol);
+                }
                 CeresSettings.SaveSettings();
             }
         }
+        
         [SettingsProvider]
         public static SettingsProvider CreateMyCustomSettingsProvider()
         {
