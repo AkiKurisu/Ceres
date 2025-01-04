@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Ceres.Graph.Flow;
+using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -38,15 +39,42 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override void OnInitialize()
         {
-            StructVisualElements();
-            Key = Container!.Object;
-            if (Key is Component component)
+            DisplayProgressBar("Initialize field factory",0f);
             {
-                Key = component.gameObject;
+                FieldResolverFactory.Get();
             }
-            var icon = Resources.Load<Texture>("Ceres/editor_icon");
-            titleContent = new GUIContent($"Flow ({Key.name})",icon);
-            _graphView.DeserializeGraph(ContainerT);
+            DisplayProgressBar("Initialize node view factory",0.3f);
+            {
+                NodeViewFactory.Get();
+            }
+            DisplayProgressBar("Initialize executable function registry",0.6f);
+            {
+                ExecutableFunctionRegistry.Get();
+            }
+            DisplayProgressBar("Construct graph view",0.9f);
+            {
+                StructVisualElements();
+                Key = Container!.Object;
+                if (Key is Component component)
+                {
+                    Key = component.gameObject;
+                }
+
+                var icon = Resources.Load<Texture>("Ceres/editor_icon");
+                titleContent = new GUIContent($"Flow ({Key.name})", icon);
+                _graphView.DeserializeGraph(ContainerT);
+            }
+            ClearProgressBar();
+        }
+
+        private static void DisplayProgressBar(string stepTitle, float progress)
+        {
+            EditorUtility.DisplayProgressBar(stepTitle, "First initialization requires a few seconds", progress);
+        }
+        
+        private static void ClearProgressBar()
+        {
+            EditorUtility.ClearProgressBar();
         }
         
         private void StructVisualElements()
