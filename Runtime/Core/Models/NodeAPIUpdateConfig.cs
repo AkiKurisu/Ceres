@@ -50,6 +50,7 @@ namespace Ceres
                 return other != null && ToNodeType().Equals(other.ToNodeType());
             }
         }
+        
         [Serializable]
         public class SerializeNodeTypeRedirector
         {
@@ -59,6 +60,7 @@ namespace Ceres
         }
         
         public SerializeNodeTypeRedirector[] redirectors;
+        
         public Type Redirect(CeresNodeData.NodeType nodeType)
         {
             var serializeType = new SerializeNodeType(nodeType);
@@ -66,7 +68,7 @@ namespace Ceres
             return redirector?.targetNodeType.ToType();
         }
 
-        public static NodeAPIUpdateConfig GetConfig()
+        public static NodeAPIUpdateConfig Get()
         {
 #if UNITY_EDITOR
             var guids = UnityEditor.AssetDatabase.FindAssets($"t:{nameof(NodeAPIUpdateConfig)}");

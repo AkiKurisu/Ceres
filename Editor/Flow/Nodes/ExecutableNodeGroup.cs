@@ -10,13 +10,13 @@ namespace Ceres.Editor.Graph.Flow
             AddToClassList(nameof(ExecutableNodeGroup));
         }
         
-        public override void Commit(List<NodeGroup> blockData)
+        public override void Commit(List<NodeGroup> nodeGroups)
         {
             var guids = containedElements
                 .OfType<ExecutableNodeElement>()
                 .Select(x => x.View.Guid)
                 .ToList();
-            blockData.Add(new NodeGroup
+            nodeGroups.Add(new NodeGroup
             {
                 childNodes = guids,
                 title = title,

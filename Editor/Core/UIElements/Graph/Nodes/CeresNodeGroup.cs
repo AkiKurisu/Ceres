@@ -14,7 +14,7 @@ namespace Ceres.Editor.Graph
             AddToClassList(nameof(CeresNodeGroup));
         }
 
-        public abstract void Commit(List<NodeGroup> blockData);
+        public abstract void Commit(List<NodeGroup> nodeGroups);
         
         protected virtual void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {

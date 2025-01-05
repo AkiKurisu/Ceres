@@ -513,6 +513,8 @@ namespace Ceres.Graph
         [SerializeField]
         public NodeGroup[] nodeGroups;
 
+        private NodeAPIUpdateConfig _config;
+        
         /// <summary>
         /// Build graph from data
         /// </summary>
@@ -520,6 +522,7 @@ namespace Ceres.Graph
         /// <exception cref="ArgumentException"></exception>
         public virtual void BuildGraph(CeresGraph graph)
         {
+            _config = NodeAPIUpdateConfig.Get();
             // Restore node metadata
             for (int i = 0; i < nodes.Length; ++i)
             {
@@ -533,10 +536,9 @@ namespace Ceres.Graph
 
         protected void RestoreNode(int index)
         {
-            var config = NodeAPIUpdateConfig.GetConfig();
-            if (config)
+            if (_config)
             {
-                var redirectedType = config.Redirect(nodeData![index].nodeType);
+                var redirectedType = _config.Redirect(nodeData![index].nodeType);
                 if (redirectedType != null)
                 {
                     CeresGraph.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
@@ -752,17 +754,15 @@ namespace Ceres.Graph
             }
             for (int n = 0; n < nodes.Length; ++n)
             {
+                // connect if it can set linked child
+                if (nodes[n] is not ILinkedNode linkedNode) continue;
+                
                 var edge = edges[n];
-                for (int i = 0; i < edge.children.Length; i++)
+                foreach (var childIndex in edge.children)
                 {
-                    int childIndex = edge.children[i];
                     if (childIndex >= 0 && childIndex < nodes.Length)
                     {
-                        // connect if it can set linked child
-                        if( nodes[n] is ILinkedNode linkedNode)
-                        {
-                            linkedNode.AddChild(nodes[childIndex]);
-                        }
+                        linkedNode.AddChild(nodes[childIndex]);
                     }
                 }
             }
