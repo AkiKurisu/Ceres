@@ -91,6 +91,12 @@ namespace Ceres
             return groups.Where(x => notShowGroupNames.All(a => a != x.Key));
         }
 
+        /// <summary>
+        /// Determines whether current type can be assigned to another instance of type in Ceres.Graph.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public static bool IsAssignableTo(this Type type, Type other)
         {
             return other.IsAssignableFrom(type) || other == typeof(object);

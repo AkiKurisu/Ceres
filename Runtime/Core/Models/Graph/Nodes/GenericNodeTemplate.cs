@@ -11,7 +11,7 @@ namespace Ceres.Graph
         /// <summary>
         /// Get arguments to construct generic node type
         /// </summary>
-        /// <param name="portValueType"></param>
+        /// <param name="portValueType">Port value type, null if no port dropped</param>
         /// <param name="selectArgumentType"></param>
         /// <returns></returns>
         Type[] GetGenericArguments(Type portValueType, Type selectArgumentType);
@@ -19,14 +19,14 @@ namespace Ceres.Graph
         /// <summary>
         /// Whether input port value type is allowed for this template
         /// </summary>
-        /// <param name="portValueType"></param>
+        /// <param name="portValueType">Port value type, null if no port dropped</param>
         /// <returns></returns>
         bool CanFilterPort(Type portValueType);
         
         /// <summary>
         /// Get available argument types based on port value type
         /// </summary>
-        /// <param name="portValueType"></param>
+        /// <param name="portValueType">Port value type, null if no port dropped</param>
         /// <returns></returns>
         Type[] GetAvailableArgumentTypes(Type portValueType);
 

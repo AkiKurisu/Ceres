@@ -2,7 +2,6 @@ using System;
 using System.Reflection;
 using Ceres.Annotations;
 using UnityEngine;
-using UnityEngine.Scripting;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Utilities
 {
@@ -111,7 +110,6 @@ namespace Ceres.Graph.Flow.Utilities
     }
 
     // Non-optimized function node
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionT<TTarget> : FlowNode_ExecuteFunctionUber, ISerializationCallbackReceiver
@@ -178,7 +176,6 @@ namespace Ceres.Graph.Flow.Utilities
 
     #region Optimized Function Node
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget> : FlowNode_ExecuteFunctionVoid<TTarget>
@@ -193,7 +190,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
@@ -211,7 +207,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1> : FlowNode_ExecuteFunctionVoid<TTarget>
@@ -229,7 +224,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
@@ -250,7 +244,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2> : FlowNode_ExecuteFunctionVoid<TTarget>
@@ -271,7 +264,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
@@ -295,7 +287,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3> : FlowNode_ExecuteFunctionVoid<TTarget>
@@ -319,7 +310,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
@@ -346,7 +336,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4> : FlowNode_ExecuteFunctionVoid<TTarget>
@@ -373,7 +362,6 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
-    [Preserve]
     [Serializable]
     [NodeGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TR> : FlowNode_ExecuteFunctionReturn<TTarget>

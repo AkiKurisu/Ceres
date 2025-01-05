@@ -9,10 +9,10 @@ namespace Ceres.Graph.Flow.Utilities
     [CeresLabel("Equals")]
     public class FlowNode_EqualsT<T>: FlowNode
     {
-        [InputPort, HideInGraphEditor]
+        [InputPort]
         public CeresPort<T> value1;
         
-        [InputPort, HideInGraphEditor]
+        [InputPort]
         public CeresPort<T> value2;
                 
         [OutputPort, CeresLabel("Result")]

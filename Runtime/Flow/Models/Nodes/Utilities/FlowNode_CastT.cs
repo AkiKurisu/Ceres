@@ -1,10 +1,8 @@
 using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
-using UnityEngine.Scripting;
 namespace Ceres.Graph.Flow.Utilities
 {
-    [Preserve]
     [Serializable]
     [NodeGroup("Utilities")]
     [CeresLabel("Cast to {0}")]

@@ -20,7 +20,7 @@ namespace Ceres.Graph.Flow.Utilities
         [OutputPort]
         public NodePort completed;
 
-        protected sealed override async UniTask Execute(ExecutionContext executionContext)
+        protected override async UniTask Execute(ExecutionContext executionContext)
         {
             if(array.Value != null)
             {

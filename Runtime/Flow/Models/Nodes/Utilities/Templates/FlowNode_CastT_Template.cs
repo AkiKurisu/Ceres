@@ -19,7 +19,7 @@ namespace Ceres.Graph.Flow.Utilities.Templates
             return CeresPort.GetAssignedPortValueTypes()
                             .Concat(ExecutableFunctionRegistry.Get().GetManagedTypes())
                             .Distinct()
-                            .Where(x=>x.IsAssignableTo(portValueType) && x != portValueType)
+                            .Where(x=> x.IsAssignableTo(portValueType) && x != portValueType)
                             .ToArray();
         }
         
