@@ -7,9 +7,6 @@ using Chris;
 using Chris.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using UnityEngine;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
@@ -482,15 +479,19 @@ namespace Ceres.Graph
                     sorted.Add(nodeIndex);
             }
         }
+
+        public static LogType LogLevel { get; set; } = LogType.Warning;
         
-        protected static void LogWarning(string message)
+        public static void LogWarning(string message)
         {
-            Debug.LogWarning($"<color=#fcbe03>[Ceres]</color> {message}");
+            if(LogLevel >= LogType.Warning)
+                Debug.LogWarning($"<color=#fcbe03>[Ceres]</color> {message}");
         }
         
-        protected static void Log(string message)
+        public static void Log(string message)
         {
-            Debug.LogWarning($"<color=#3aff48>[Ceres]</color> {message}");
+            if(LogLevel >= LogType.Log)
+                Debug.Log($"<color=#3aff48>[Ceres]</color> {message}");
         }
     }
     
@@ -538,7 +539,7 @@ namespace Ceres.Graph
                 var redirectedType = config.Redirect(nodeData![index].nodeType);
                 if (redirectedType != null)
                 {
-                    Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
+                    CeresGraph.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
                     nodes[index] = (CeresNode)Deserialize(nodeData[index].serializedData, redirectedType);
                 }
             }
@@ -574,7 +575,7 @@ namespace Ceres.Graph
             }
             catch(Exception e)
             {
-                LogWarning($"Can not make generic node type from {nodeData[index].nodeType}, {e}");
+                CeresGraph.LogWarning($"Can not make generic node type from {nodeData[index].nodeType}, {e}");
                 return false;
             }
         }
@@ -638,12 +639,12 @@ namespace Ceres.Graph
                 if (prop.Name != "instanceID") continue;
                 string propertyName = prop.Name;
                 if (prop.Parent?.Parent != null) propertyName = (prop.Parent?.Parent as JProperty)?.Name;
-                var uObject = EditorUtility.InstanceIDToObject((int)prop.Value);
+                var uObject = UnityEditor.EditorUtility.InstanceIDToObject((int)prop.Value);
                 if (uObject == null) continue;
-                string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(uObject));
+                string guid = UnityEditor.AssetDatabase.AssetPathToGUID(UnityEditor.AssetDatabase.GetAssetPath(uObject));
                 if (string.IsNullOrEmpty(guid))
                 {
-                    LogWarning($"Can't serialize {propertyName} {uObject} in a Scene.");
+                    CeresGraph.LogWarning($"Can't serialize {propertyName} {uObject} in a Scene.");
                     continue;
                 }
                 //Convert to GUID
@@ -670,7 +671,7 @@ namespace Ceres.Graph
                 foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
                 {
                     if (prop.Name != "instanceID") continue;
-                    var uObject = AssetDatabase.LoadAssetAtPath<UObject>(AssetDatabase.GUIDToAssetPath((string)prop.Value));
+                    var uObject = UnityEditor.AssetDatabase.LoadAssetAtPath<UObject>(UnityEditor.AssetDatabase.GUIDToAssetPath((string)prop.Value));
                     if (uObject == null)
                     {
                         prop.Value = 0;
@@ -682,16 +683,6 @@ namespace Ceres.Graph
             }
 #endif
             return JsonUtility.FromJson(serializedData, type);
-        }
-
-        protected static void LogWarning(string message)
-        {
-            Debug.LogWarning($"<color=#fcbe03>[Ceres]</color> {message}");
-        }
-        
-        protected static void Log(string message)
-        {
-            Debug.LogWarning($"<color=#3aff48>[Ceres]</color> {message}");
         }
     }
 
@@ -757,7 +748,7 @@ namespace Ceres.Graph
             if (nodes == null || nodes.Length == 0) return;
             if (nodes.Length != edges.Length)
             {
-                throw new ArgumentException("The length of behaviors and edges must be the same.");
+                throw new ArgumentException("[Ceres] The length of behaviors and edges must be the same.");
             }
             for (int n = 0; n < nodes.Length; ++n)
             {

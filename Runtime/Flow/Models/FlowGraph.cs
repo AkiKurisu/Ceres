@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow
 {
@@ -68,7 +67,7 @@ namespace Ceres.Graph.Flow
             var evt = FindEvent(eventName);
             if (evt == null)
             {
-                Debug.LogWarning($"[Ceres] Can not find ExecutionEvent with name {eventName}");
+                LogWarning($"Can not find ExecutionEvent with name {eventName}");
                 return;
             }
             await ExecuteEventAsync(contextObject, evt, evtBase);
@@ -106,7 +105,7 @@ namespace Ceres.Graph.Flow
                 }
                 else
                 {
-                    Debug.LogWarning("[Ceres] Only ExecutableEvent can have delegate port");
+                    LogWarning("Only ExecutableEvent can have delegate port");
                 }
             }
             base.LinkPort(port, ownerNode, portData);
