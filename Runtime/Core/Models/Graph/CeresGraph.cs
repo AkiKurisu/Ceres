@@ -8,10 +8,14 @@ using Chris.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph
 {
+    /// <summary>
+    /// Interface for owning <see cref="CeresGraph"/> data
+    /// </summary>
     public interface ICeresGraphContainer
     {
         /// <summary>
@@ -766,6 +770,88 @@ namespace Ceres.Graph
                     }
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// Identifier for <see cref="ICeresGraphContainer"/> instance
+    /// </summary>
+    [Serializable]
+    public struct CeresGraphIdentifier: IEquatable<CeresGraphIdentifier>
+    {
+        public UObject boundObject;
+
+        public string containerType;
+
+        internal CeresGraphIdentifier(ICeresGraphContainer container)
+        {
+            boundObject = container.Object;
+            if (boundObject is Component component)
+            {
+                boundObject = component.gameObject;
+            }
+            containerType = SerializedType.ToString(container.GetType());
+        }
+
+        public bool IsValid()
+        {
+            return boundObject && !string.IsNullOrEmpty(containerType);
+        }
+        
+        /// <summary>
+        /// Get <see cref="ICeresGraphContainer"/> from identifier
+        /// </summary>
+        /// <typeparam name="TContainer"></typeparam>
+        /// <returns></returns>
+        public TContainer GetContainer<TContainer>() where TContainer: class, ICeresGraphContainer
+        {
+            try
+            {
+                if (boundObject is GameObject gameObject)
+                {
+                    return gameObject.GetComponent(SerializedType.FromString(containerType)) as TContainer;
+                }
+
+                return boundObject as TContainer;
+            }
+            catch
+            {
+                throw new ArgumentException($"[Ceres] Can not get {typeof(TContainer).Name} from {boundObject}");
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is CeresGraphIdentifier identifier && Equals(identifier);
+        }
+
+        public bool Equals(CeresGraphIdentifier other)
+        {
+            return boundObject == other.boundObject && containerType == other.containerType;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(boundObject, containerType);
+        }
+
+        public override string ToString()
+        {
+            return $"Object {boundObject}| Type {containerType}";
+        }
+    }
+    
+    public static class CeresGraphContainerExtensions
+    {
+        /// <summary>
+        /// Get a <see cref="CeresGraphIdentifier"/> from <see cref="ICeresGraphContainer"/> instance
+        /// </summary>
+        /// <param name="container"></param>
+        /// <returns></returns>
+        public static CeresGraphIdentifier GetIdentifier(this ICeresGraphContainer container)
+        {
+            Assert.IsNotNull(container);
+            return new CeresGraphIdentifier(container);
         }
     }
 }

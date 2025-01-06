@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 using Ceres.Graph;
-using UObject = UnityEngine.Object;
+using UnityEngine;
 namespace Ceres.Editor.Graph
 {
     public abstract class CeresGraphEditorWindow : EditorWindow
@@ -11,7 +10,8 @@ namespace Ceres.Editor.Graph
         /// <summary>
         /// Unique object key per window
         /// </summary>
-        public UObject Key { get; protected set; }
+        [field: SerializeField]
+        public CeresGraphIdentifier Identifier { get; protected set; }
         
         /// <summary>
         /// Actual graph container of this window
@@ -25,7 +25,7 @@ namespace Ceres.Editor.Graph
         protected void Initialize(ICeresGraphContainer container)
         {
             Container = container;
-            Key = Container.Object;
+            Identifier = container.GetIdentifier();
             OnInitialize();
         }
         
@@ -85,15 +85,6 @@ namespace Ceres.Editor.Graph
         {
             
         }
-        
-        /// <summary>
-        /// Get instance id of current <see cref="Key"/>
-        /// </summary>
-        /// <returns></returns>
-        public int GetWindowId()
-        {
-            return !Key ? 0 : Key.GetInstanceID();
-        }
     }
     
     public abstract class CeresGraphEditorWindow<TContainer, TKWindow> : CeresGraphEditorWindow 
@@ -102,45 +93,47 @@ namespace Ceres.Editor.Graph
     {
         public static class EditorWindowRegistry
         {
-            // ReSharper disable once InconsistentNaming
-            private static readonly Dictionary<int, TKWindow> _editorWindows = new();
+            private static readonly Dictionary<CeresGraphIdentifier, TKWindow> EditorWindows = new();
 
             // ReSharper disable once MemberHidesStaticFromOuterClass
             public static TKWindow GetOrCreateEditorWindow(TContainer container)
             {
-                if (_editorWindows.TryGetValue(container.Object.GetInstanceID(), out var window) && window)
+                var identifier = container.GetIdentifier();
+                if (EditorWindows.TryGetValue(identifier, out var window) && window)
                 {
                     return window;
                 }
                 window = CreateInstance<TKWindow>();
                 window.Initialize(container);
-                _editorWindows[container.Object.GetInstanceID()] = window;
+                EditorWindows[identifier] = window;
                 return window;
             }
 
             public static void Register(TContainer container, TKWindow window)
             {
-                _editorWindows[container.Object.GetInstanceID()] = window;
+                var identifier = container.GetIdentifier();
+                EditorWindows[identifier] = window;
             }
             
             public static void Unregister(TContainer container, TKWindow window)
             {
                 if(container == null) return;
+                var identifier = container.GetIdentifier();
                 
-                if (_editorWindows.TryGetValue(container.Object.GetInstanceID(), out var existedWindow) && existedWindow == window)
+                if (EditorWindows.TryGetValue(identifier, out var existedWindow) && existedWindow == window)
                 {
-                    _editorWindows.Remove(container.Object.GetInstanceID());
+                    EditorWindows.Remove(identifier);
                 }
             }
 
             /// <summary>
-            /// Find existed <see cref="CeresGraphEditorWindow"/> by instance id
+            /// Find existed <see cref="CeresGraphEditorWindow"/> by <see cref="CeresGraphIdentifier"/>
             /// </summary>
-            /// <param name="instanceId"></param>
+            /// <param name="identifier"></param>
             /// <returns></returns>
-            public static CeresGraphEditorWindow FindWindow(int instanceId)
+            public static CeresGraphEditorWindow FindWindow(CeresGraphIdentifier identifier)
             {
-                return _editorWindows.GetValueOrDefault(instanceId);
+                return EditorWindows.GetValueOrDefault(identifier);
             }
         }
         
@@ -173,8 +166,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public TContainer GetContainer()
         {
-            if (Key is GameObject gameObject) return gameObject.GetComponent<TContainer>();
-            return Key as TContainer;
+            return Identifier.GetContainer<TContainer>();
         }
     }
 }

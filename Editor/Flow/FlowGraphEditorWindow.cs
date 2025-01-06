@@ -54,14 +54,8 @@ namespace Ceres.Editor.Graph.Flow
             DisplayProgressBar("Construct graph view",0.9f);
             {
                 StructVisualElements();
-                Key = Container!.Object;
-                if (Key is Component component)
-                {
-                    Key = component.gameObject;
-                }
-
                 var icon = Resources.Load<Texture>("Ceres/editor_icon");
-                titleContent = new GUIContent($"Flow ({Key.name})", icon);
+                titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
                 _graphView.DeserializeGraph(ContainerT);
             }
             ClearProgressBar();
@@ -110,7 +104,7 @@ namespace Ceres.Editor.Graph.Flow
             return new IMGUIContainer(
                 () =>
                 {
-                    if (!Key)
+                    if (!Identifier.IsValid())
                     {
                         /* Should only happen when object destroyed */
                         return;
@@ -118,17 +112,17 @@ namespace Ceres.Editor.Graph.Flow
                     GUILayout.BeginHorizontal(EditorStyles.toolbar);
                     GUI.enabled = !Application.isPlaying;
                     var image  = EditorGUIUtility.IconContent("SaveAs@2x").image;
-                    if (GUILayout.Button(new GUIContent(image,$"Save flow and serialize data to {Key.name}"), EditorStyles.toolbarButton))
+                    if (GUILayout.Button(new GUIContent(image,$"Save flow and serialize data to {Identifier.boundObject.name}"), EditorStyles.toolbarButton))
                     {
                         var guiContent = new GUIContent();
                         if (_graphView.SerializeGraph(Container))
                         {
-                            guiContent.text = $"Update flow {Key.name} succeed!";
+                            guiContent.text = $"Update flow {Identifier.boundObject.name} succeed!";
                             ShowNotification(guiContent, 0.5f);
                         }
                         else
                         {
-                            guiContent.text = $"Failed to save flow {Key.name}!";
+                            guiContent.text = $"Failed to save flow {Identifier.boundObject.name}!";
                             ShowNotification(guiContent, 0.5f);
                         }
                     }
@@ -184,7 +178,11 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override void Reload()
         {
-            if (!Key) return;
+            if (!Identifier.IsValid()) return;
+            if (CeresSettings.EnableGraphEditorLog)
+            {
+                Debug.Log($"[Ceres] Reload graph from identifier[{Identifier}]");
+            }
             
             Container = GetContainer();
             StructVisualElements();
