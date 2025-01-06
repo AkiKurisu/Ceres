@@ -78,14 +78,17 @@ namespace Ceres.Editor.Graph.Flow
         
         public sealed override void SetNodeInstance(CeresNode ceresNode)
         {
-            var eventNode =(FlowNode_ExecuteFunction)ceresNode;
+            var functionNode =(FlowNode_ExecuteFunction)ceresNode;
             base.SetNodeInstance(ceresNode);
-            var methodInfo = eventNode.GetExecuteFunction(NodeType.GetGenericArguments()[0]);
+            var methodInfo = functionNode.GetMethodInfo(NodeType.GetGenericArguments()[0]);
             if (methodInfo == null)
             {
-                Debug.LogWarning($"[Ceres] {eventNode.methodName} is not an executable function of {NodeType.GetGenericArguments()[0].Name}");
-                MethodName = eventNode.methodName;
-                SetNodeElementTitle(eventNode.methodName);
+                Debug.LogWarning($"[Ceres] {functionNode.methodName} is not an executable function of {NodeType.GetGenericArguments()[0].Name}");
+                MethodName = functionNode.methodName;
+                IsStatic = functionNode.isStatic;
+                IsScriptMethod = functionNode.isScriptMethod;
+                IsSelfTarget = functionNode.isSelfTarget;
+                SetNodeElementTitle(functionNode.methodName);
                 return;
             }
             SetMethodInfo(methodInfo);
@@ -141,6 +144,10 @@ namespace Ceres.Editor.Graph.Flow
             {
                 FindPortView("target").HidePort();
             }
+            else
+            {
+                FindPortView("target").SetPortTooltip(" [Default is Self]");
+            }
             if (DisplayTarget)
             {
                 FindPortView("inputs", 0).SetPortDisplayName("Target");
@@ -195,6 +202,10 @@ namespace Ceres.Editor.Graph.Flow
             {
                 FindPortView("target").HidePort();
             }
+            else
+            {
+                FindPortView("target").SetPortTooltip(" [Default is Self]");
+            }
             if (DisplayTarget)
             {
                 FindPortView("input1").SetPortDisplayName("Target");
@@ -234,6 +245,10 @@ namespace Ceres.Editor.Graph.Flow
             if(IsStatic)
             {
                 FindPortView("target").HidePort();
+            }
+            else
+            {
+                FindPortView("target").SetPortTooltip(" [Default is Self]");
             }
             if (DisplayTarget)
             {
