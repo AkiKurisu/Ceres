@@ -2,7 +2,6 @@ using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow
 {
     [Serializable]
@@ -17,25 +16,6 @@ namespace Ceres.Graph.Flow
         {
             Graph = executionContext.Graph;
             await Execute(executionContext);
-        }
-        
-        protected TValue GetTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
-        {
-            bool isNull;
-            if( inputPort.Value is UObject uObject)
-            {
-                isNull = !uObject;
-            }
-            else
-            {
-                isNull = inputPort.Value != null;
-            }
-            
-            if (isNull && context.Context is TValue tmpTarget)
-            {
-                return tmpTarget;
-            }
-            return inputPort.Value;
         }
     }
     

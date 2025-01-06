@@ -17,11 +17,10 @@ namespace Ceres.Graph.Flow.Utilities
         [HideInGraphEditor] 
         public bool isSelfTarget;
         
-        // ReSharper disable once NotAccessedField.Global
         [HideInGraphEditor] 
         public bool isScriptMethod;
         
-        public virtual MethodInfo GetExecuteFunction(Type targetType)
+        public virtual MethodInfo GetMethodInfo(Type targetType)
         {
             if (isStatic)
             {
@@ -30,16 +29,41 @@ namespace Ceres.Graph.Flow.Utilities
             return targetType.GetMethod(methodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         }
         
-        protected TValue GetSelfTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
+                
+        protected TValue GetTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
         {
-            bool isNull;
-            if( inputPort.Value is UObject uObject)
+            if (isStatic)
             {
-                isNull = !uObject;
+                return default;
+            }
+            
+            bool isNull;
+            if(CeresPort<TValue>.GetValueType() == typeof(UObject))
+            {
+                isNull = !(inputPort.Value as UObject);
             }
             else
             {
-                isNull = inputPort.Value != null;
+                isNull = inputPort.Value == null;
+            }
+            
+            if (isNull && context.Context is TValue tmpTarget)
+            {
+                return tmpTarget;
+            }
+            return inputPort.Value;
+        }
+        
+        protected TValue GetSelfTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
+        {
+            bool isNull;
+            if(CeresPort<TValue>.GetValueType() == typeof(UObject))
+            {
+                isNull = !(inputPort.Value as UObject);
+            }
+            else
+            {
+                isNull = inputPort.Value == null;
             }
             
             if (isSelfTarget && isNull && context.Context is TValue tmpTarget)
@@ -67,11 +91,14 @@ namespace Ceres.Graph.Flow.Utilities
     
     public abstract class FlowNode_ExecuteFunctionReturn<TTarget>: FlowNode_ExecuteFunctionReturn, ISerializationCallbackReceiver
     {
-        protected MethodInfo MethodInfo;
-        
         protected ExecutableReflection<TTarget>.ExecutableFunc Delegate;
         
-        public override MethodInfo GetExecuteFunction(Type targetType)
+        public override MethodInfo GetMethodInfo(Type targetType)
+        {
+            return GetExecutableFunction().MethodInfo;
+        }
+        
+        public ExecutableReflection<TTarget>.ExecutableFunction GetExecutableFunction()
         {
             return ExecutableReflection<TTarget>.GetFunction(isStatic ? ExecutableFunctionType.StaticMethod : ExecutableFunctionType.InstanceMethod, methodName);
         }
@@ -83,7 +110,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         public void OnAfterDeserialize()
         {
-            MethodInfo = GetExecuteFunction(typeof(TTarget));
+            Delegate = GetExecutableFunction().ExecutableFunc;
         }
     }
     
@@ -93,7 +120,12 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected ExecutableReflection<TTarget>.ExecutableAction Delegate;
         
-        public override MethodInfo GetExecuteFunction(Type targetType)
+        public override MethodInfo GetMethodInfo(Type targetType)
+        {
+            return GetExecutableFunction().MethodInfo;
+        }
+        
+        public ExecutableReflection<TTarget>.ExecutableFunction GetExecutableFunction()
         {
             return ExecutableReflection<TTarget>.GetFunction(isStatic ? ExecutableFunctionType.StaticMethod : ExecutableFunctionType.InstanceMethod, methodName);
         }
@@ -105,7 +137,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         public void OnAfterDeserialize()
         {
-            MethodInfo = GetExecuteFunction(typeof(TTarget));
+            Delegate = GetExecutableFunction().ExecutableAction;
         }
     }
 
@@ -153,7 +185,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         public void OnAfterDeserialize()
         {
-            _methodInfo = GetExecuteFunction(typeof(TTarget));
+            _methodInfo = GetMethodInfo(typeof(TTarget));
             var length = _methodInfo!.GetParameters().Length;
             _parameters = new object[length];
             inputs = new CeresPort<object>[length];
@@ -185,7 +217,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed(MethodInfo);
             Delegate.Invoke(GetTargetOrDefault(target, executionContext));
         }
     }
@@ -202,7 +233,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TR>(MethodInfo);
             output.Value = Delegate.Invoke<TR>(GetTargetOrDefault(target, executionContext));
         }
     }
@@ -219,7 +249,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TP1>(MethodInfo);
             Delegate.Invoke(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext));
         }
     }
@@ -239,7 +268,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TP1, TR>(MethodInfo);
             output.Value = Delegate.Invoke<TP1, TR>(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext));
         }
     }
@@ -259,7 +287,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TP1, TP2>(MethodInfo);
             Delegate.Invoke(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value);
         }
     }
@@ -282,7 +309,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TP1, TP2, TR>(MethodInfo);
             output.Value = Delegate.Invoke<TP1, TP2, TR>(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value);
         }
     }
@@ -305,7 +331,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TP1, TP2, TP3>(MethodInfo);
             Delegate.Invoke(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value);
         }
     }
@@ -331,7 +356,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TP1, TP2, TP3, TR>(MethodInfo);
             output.Value = Delegate.Invoke<TP1, TP2, TP3, TR>(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value);
         }
     }
@@ -357,7 +381,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TP1, TP2, TP3, TP4>(MethodInfo);
             Delegate.Invoke(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value, input4.Value);
         }
     }
@@ -386,7 +409,6 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.ReallocateDelegateIfNeed<TP1, TP2, TP3, TP4, TR>(MethodInfo);
             output.Value = Delegate.Invoke<TP1, TP2, TP3, TP4, TR>(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value, input4.Value);
         }
     }

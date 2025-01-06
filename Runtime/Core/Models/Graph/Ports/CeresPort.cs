@@ -76,9 +76,12 @@ namespace Ceres.Graph
         [NonSerialized]
         private IPort<TValue> _getter;
 
+        private static Type _valueType;
+        
         static CeresPort()
         {
             AssignValueType<TValue>();
+            _valueType = typeof(TValue);
         }
         
         public CeresPort()
@@ -121,6 +124,11 @@ namespace Ceres.Graph
         public override object GetValue()
         {
             return Value;
+        }
+
+        public static Type GetValueType()
+        {
+            return _valueType;
         }
 
         public static readonly CeresPort<TValue> Default = new();

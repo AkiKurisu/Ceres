@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
@@ -25,14 +24,11 @@ namespace Ceres.Graph.Flow.Properties
         
         [OutputPort(false), CeresLabel("")]
         public NodePort exec;
-        
-        private MethodInfo _methodInfo;
 
         private ExecutableReflection<TTarget>.ExecutableAction _delegate;
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            _delegate.ReallocateDelegateIfNeed<T>(_methodInfo);
             _delegate.Invoke((TTarget)executionContext.Context, inputValue.Value);
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
@@ -45,7 +41,7 @@ namespace Ceres.Graph.Flow.Properties
     
         public void OnAfterDeserialize()
         {
-            _methodInfo =  ExecutableReflection<TTarget>.GetFunction(ExecutableFunctionType.PropertySetter, propertyName);
+            _delegate =  ExecutableReflection<TTarget>.GetFunction(ExecutableFunctionType.PropertySetter, propertyName).ExecutableAction;
         }
     }
 }

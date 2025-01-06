@@ -37,22 +37,83 @@ namespace Ceres.Graph.Flow.Utilities
                 throw;
             }
         }
+    }
 
+    public readonly struct ExecutableFunctionInfo: IEquatable<ExecutableFunctionInfo>
+    {
+        public readonly ExecutableFunctionType FunctionType;
+        
+        public readonly string FunctionName;
+
+        public ExecutableFunctionInfo(ExecutableFunctionType functionType, string functionName)
+        {
+            FunctionType = functionType;
+            FunctionName = functionName;
+        }
+
+        public bool Equals(ExecutableFunctionInfo other)
+        {
+            return FunctionType == other.FunctionType && FunctionName == other.FunctionName;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is ExecutableFunctionInfo other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine((int)FunctionType, FunctionName);
+        }
     }
 
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ExecutableReflection<TTarget>: ExecutableReflection
     {
-        private static readonly Dictionary<string, MethodInfo> Functions = new();
-            
-        public static MethodInfo GetFunction(ExecutableFunctionType functionType, string functionName)
+        public class ExecutableFunction
         {
-            if (Functions.TryGetValue(functionName, out var methodInfo))
+            public readonly ExecutableFunctionInfo FunctionInfo;
+
+            public readonly MethodInfo MethodInfo;
+
+            public readonly ExecutableAction ExecutableAction;
+            
+            public readonly ExecutableFunc ExecutableFunc;
+
+            public readonly bool HasReturnValue;
+
+            public ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo)
             {
-                return methodInfo;
+                FunctionInfo = functionInfo;
+                MethodInfo = methodInfo;
+                HasReturnValue = methodInfo.ReturnType != typeof(void);
+                ExecutableAction = new ExecutableAction(MethodInfo);
+                ExecutableFunc = new ExecutableFunc(MethodInfo);
             }
 
-            methodInfo = functionType switch
+            public ExecutableDelegate GetDelegate()
+            {
+                return HasReturnValue ? ExecutableFunc : ExecutableAction;
+            }
+        }
+
+        private static readonly Dictionary<ExecutableFunctionInfo, ExecutableFunction> Functions = new();
+        
+        public static ExecutableFunction GetFunction(ExecutableFunctionType functionType, string functionName)
+        {
+            return GetFunction(new ExecutableFunctionInfo(functionType, functionName));
+        }
+        
+        public static ExecutableFunction GetFunction(ExecutableFunctionInfo functionInfo)
+        {
+            if (Functions.TryGetValue(functionInfo, out var functionStructure))
+            {
+                return functionStructure;
+            }
+
+            var functionType = functionInfo.FunctionType;
+            var functionName = functionInfo.FunctionName;
+            var methodInfo = functionType switch
             {
                 ExecutableFunctionType.StaticMethod => typeof(TTarget).GetMethod(functionName,
                     BindingFlags.Static | BindingFlags.Public),
@@ -64,246 +125,253 @@ namespace Ceres.Graph.Flow.Utilities
                     BindingFlags.Public | BindingFlags.Instance)!.GetMethod,
                 _ => throw new ArgumentException(nameof(functionType))
             };
-            Functions.Add(functionName, methodInfo);
-            return methodInfo;
+            functionStructure = new ExecutableFunction(functionInfo, methodInfo);
+            Functions.Add(functionInfo, functionStructure);
+            return functionStructure;
         }
         
-        public struct ExecutableAction
+        
+        public abstract class ExecutableDelegate
         {
-            private Delegate _delegate;
-            
-            private bool _isStatic;
-            
-            public void ReallocateDelegateIfNeed(MethodInfo methodInfo)
-            {
-                if (methodInfo.IsStatic)
-                {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Action>(ref _delegate, methodInfo);
-                    return;
-                }
+            protected Delegate Delegate;
 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget>>(ref _delegate, methodInfo);
+            protected readonly bool IsStatic;
+
+            protected readonly MethodInfo MethodInfo;
+
+            protected ExecutableDelegate(MethodInfo methodInfo)
+            {
+                MethodInfo = methodInfo;
+                IsStatic = methodInfo.IsStatic;
+            }
+        }
+        
+        public class ExecutableAction: ExecutableDelegate
+        {
+            public ExecutableAction(MethodInfo methodInfo) : base(methodInfo)
+            {
             }
             
-            public void ReallocateDelegateIfNeed<T1>(MethodInfo methodInfo)
+            private void ReallocateDelegateIfNeed()
             {
-                if (methodInfo.IsStatic)
+                if (IsStatic)
                 {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1>>(ref _delegate, methodInfo);
+                    ExecutableReflection.ReallocateDelegateIfNeed<Action>(ref Delegate, MethodInfo);
                     return;
                 }
                 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1>>(ref _delegate, methodInfo);
+                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget>>(ref Delegate, MethodInfo);
             }
             
-            public void ReallocateDelegateIfNeed<T1, T2>(MethodInfo methodInfo)
+            private void ReallocateDelegateIfNeed<T1>()
             {
-                if (methodInfo.IsStatic)
+                if (IsStatic)
                 {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1, T2>>(ref _delegate, methodInfo);
+                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1>>(ref Delegate, MethodInfo);
                     return;
                 }
                 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2>>(ref _delegate, methodInfo);
+                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1>>(ref Delegate, MethodInfo);
             }
             
-            public void ReallocateDelegateIfNeed<T1, T2, T3>(MethodInfo methodInfo)
+            private void ReallocateDelegateIfNeed<T1, T2>()
             {
-                if (methodInfo.IsStatic)
+                if (IsStatic)
                 {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1, T2, T3>>(ref _delegate, methodInfo);
+                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1, T2>>(ref Delegate, MethodInfo);
                     return;
                 }
                 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3>>(ref _delegate, methodInfo);
+                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2>>(ref Delegate, MethodInfo);
             }
             
-            public void ReallocateDelegateIfNeed<T1, T2, T3, T4>(MethodInfo methodInfo)
+            private void ReallocateDelegateIfNeed<T1, T2, T3>()
             {
-                if (methodInfo.IsStatic)
+                if (IsStatic)
                 {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1, T2, T3, T4>>(ref _delegate, methodInfo);
+                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1, T2, T3>>(ref Delegate, MethodInfo);
                     return;
                 }
                 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3, T4>>(ref _delegate, methodInfo);
+                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3>>(ref Delegate, MethodInfo);
+            }
+            
+            private void ReallocateDelegateIfNeed<T1, T2, T3, T4>()
+            {
+                if (IsStatic)
+                {
+                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1, T2, T3, T4>>(ref Delegate, MethodInfo);
+                    return;
+                }
+                
+                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3, T4>>(ref Delegate, MethodInfo);
             }
             
             public void Invoke(TTarget target)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed();
+                if (IsStatic)
                 {
-                    ((Action)_delegate).Invoke();
+                    ((Action)Delegate).Invoke();
                     return;
                 }
-                ((Action<TTarget>)_delegate).Invoke(target);
+                ((Action<TTarget>)Delegate).Invoke(target);
             }
             
             public void Invoke<T1>(TTarget target, T1 arg1)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<T1>();
+                if (IsStatic)
                 {
-                    ((Action<T1>)_delegate).Invoke(arg1);
+                    ((Action<T1>)Delegate).Invoke(arg1);
                     return;
                 }
-                ((Action<TTarget, T1>)_delegate).Invoke(target, arg1);
+                ((Action<TTarget, T1>)Delegate).Invoke(target, arg1);
             }
             
             public void Invoke<T1, T2>(TTarget target, T1 arg1, T2 arg2)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<T1, T2>();
+                if (IsStatic)
                 {
-                    ((Action<T1, T2>)_delegate).Invoke(arg1, arg2);
+                    ((Action<T1, T2>)Delegate).Invoke(arg1, arg2);
                     return;
                 }
-                ((Action<TTarget, T1, T2>)_delegate).Invoke(target, arg1, arg2);
+                ((Action<TTarget, T1, T2>)Delegate).Invoke(target, arg1, arg2);
             }
             
             public void Invoke<T1, T2, T3>(TTarget target, T1 arg1, T2 arg2, T3 arg3)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<T1, T2, T3>();
+                if (IsStatic)
                 {
-                    ((Action<T1, T2, T3>)_delegate).Invoke(arg1, arg2, arg3);
+                    ((Action<T1, T2, T3>)Delegate).Invoke(arg1, arg2, arg3);
                     return;
                 }
-                ((Action<TTarget, T1, T2, T3>)_delegate).Invoke(target, arg1, arg2, arg3);
+                ((Action<TTarget, T1, T2, T3>)Delegate).Invoke(target, arg1, arg2, arg3);
             }
             
             public void Invoke<T1, T2, T3, T4>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<T1, T2, T3, T4>();
+                if (IsStatic)
                 {
-                    ((Action<T1, T2, T3, T4>)_delegate).Invoke(arg1, arg2, arg3, arg4);
+                    ((Action<T1, T2, T3, T4>)Delegate).Invoke(arg1, arg2, arg3, arg4);
                     return;
                 }
-                ((Action<TTarget, T1, T2, T3, T4>)_delegate).Invoke(target, arg1, arg2, arg3, arg4);
+                ((Action<TTarget, T1, T2, T3, T4>)Delegate).Invoke(target, arg1, arg2, arg3, arg4);
             }
         }
         
-        public struct ExecutableFunc
+        public class ExecutableFunc: ExecutableDelegate
         {
-            private Delegate _delegate;
-
-            private bool _isStatic;
-            
-            public void ReallocateDelegateIfNeed<TR>(MethodInfo methodInfo)
+            public ExecutableFunc(MethodInfo methodInfo) : base(methodInfo)
             {
-                if (methodInfo.IsStatic)
-                {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Func<TR>>(ref _delegate, methodInfo);
-                    return;
-                }
-
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, TR>>(ref _delegate, methodInfo);
             }
             
-            public void ReallocateDelegateIfNeed<T1, TR>(MethodInfo methodInfo)
+            private void ReallocateDelegateIfNeed<TR>()
             {
-                if (methodInfo.IsStatic)
+                if (IsStatic)
                 {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, TR>>(ref _delegate, methodInfo);
+                    ExecutableReflection.ReallocateDelegateIfNeed<Func<TR>>(ref Delegate, MethodInfo);
                     return;
                 }
                 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, TR>>(ref _delegate, methodInfo);
+                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, TR>>(ref Delegate, MethodInfo);
             }
             
-            public void ReallocateDelegateIfNeed<T1, T2, TR>(MethodInfo methodInfo)
+            private void ReallocateDelegateIfNeed<T1, TR>()
             {
-                if (methodInfo.IsStatic)
+                if (IsStatic)
                 {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, T2, TR>>(ref _delegate, methodInfo);
+                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, TR>>(ref Delegate, MethodInfo);
                     return;
                 }
                 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, TR>>(ref _delegate, methodInfo);
+                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, TR>>(ref Delegate, MethodInfo);
             }
             
-            public void ReallocateDelegateIfNeed<T1, T2, T3, TR>(MethodInfo methodInfo)
+            private void ReallocateDelegateIfNeed<T1, T2, TR>()
             {
-                if (methodInfo.IsStatic)
+                if (IsStatic)
                 {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, T2, T3, TR>>(ref _delegate, methodInfo);
+                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, T2, TR>>(ref Delegate, MethodInfo);
                     return;
                 }
                 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, TR>>(ref _delegate, methodInfo);
+                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, TR>>(ref Delegate, MethodInfo);
             }
             
-            public void ReallocateDelegateIfNeed<T1, T2, T3, T4, TR>(MethodInfo methodInfo)
+            private void ReallocateDelegateIfNeed<T1, T2, T3, TR>()
             {
-                if (methodInfo.IsStatic)
+                if (IsStatic)
                 {
-                    _isStatic = true;
-                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, T2, T3, T4, TR>>(ref _delegate, methodInfo);
+                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, T2, T3, TR>>(ref Delegate, MethodInfo);
                     return;
                 }
                 
-                _isStatic = false;
-                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, T4, TR>>(ref _delegate, methodInfo);
+                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, TR>>(ref Delegate, MethodInfo);
+            }
+            
+            private void ReallocateDelegateIfNeed<T1, T2, T3, T4, TR>()
+            {
+                if (IsStatic)
+                {
+                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, T2, T3, T4, TR>>(ref Delegate, MethodInfo);
+                    return;
+                }
+                
+                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, T4, TR>>(ref Delegate, MethodInfo);
             }
 
             public TR Invoke<TR>(TTarget target)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<TR>();
+                if (IsStatic)
                 {
-                    return ((Func<TR>)_delegate).Invoke();
+                    return ((Func<TR>)Delegate).Invoke();
                 }
-                return ((Func<TTarget, TR>)_delegate).Invoke(target);
+                return ((Func<TTarget, TR>)Delegate).Invoke(target);
             }
             
             public TR Invoke<T1, TR>(TTarget target, T1 arg1)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<T1, TR>();
+                if (IsStatic)
                 {
-                    return ((Func<T1, TR>)_delegate).Invoke(arg1);
+                    return ((Func<T1, TR>)Delegate).Invoke(arg1);
                 }
-                return ((Func<TTarget, T1, TR>)_delegate).Invoke(target, arg1);
+                return ((Func<TTarget, T1, TR>)Delegate).Invoke(target, arg1);
             }
             
             public TR Invoke<T1, T2, TR>(TTarget target, T1 arg1, T2 arg2)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<T1, T2, TR>();
+                if (IsStatic)
                 {
-                    return ((Func<T1, T2, TR>)_delegate).Invoke(arg1, arg2);
+                    return ((Func<T1, T2, TR>)Delegate).Invoke(arg1, arg2);
                 }
-                return ((Func<TTarget, T1, T2, TR>)_delegate).Invoke(target, arg1, arg2);
+                return ((Func<TTarget, T1, T2, TR>)Delegate).Invoke(target, arg1, arg2);
             }
             
             public TR Invoke<T1, T2, T3, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<T1, T2, T3, TR>();
+                if (IsStatic)
                 {
-                    return ((Func<T1, T2, T3, TR>)_delegate).Invoke(arg1, arg2, arg3);
+                    return ((Func<T1, T2, T3, TR>)Delegate).Invoke(arg1, arg2, arg3);
                 }
-                return ((Func<TTarget, T1, T2, T3, TR>)_delegate).Invoke(target, arg1, arg2, arg3);
+                return ((Func<TTarget, T1, T2, T3, TR>)Delegate).Invoke(target, arg1, arg2, arg3);
             }
             
             public TR Invoke<T1, T2, T3, T4, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
             {
-                if (_isStatic)
+                ReallocateDelegateIfNeed<T1, T2, T3, T4, TR>();
+                if (IsStatic)
                 {
-                    return ((Func<T1, T2, T3, T4, TR>)_delegate).Invoke(arg1, arg2, arg3, arg4);
+                    return ((Func<T1, T2, T3, T4, TR>)Delegate).Invoke(arg1, arg2, arg3, arg4);
                 }
-                return ((Func<TTarget, T1, T2, T3, T4, TR>)_delegate).Invoke(target, arg1, arg2, arg3, arg4);
+                return ((Func<TTarget, T1, T2, T3, T4, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4);
             }
         }
     }
