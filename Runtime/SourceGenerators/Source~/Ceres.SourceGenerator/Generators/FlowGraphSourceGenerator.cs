@@ -46,7 +46,7 @@ namespace {NAMESPACE}
             {
                 if (_graph == null)
                 {
-                    _graph = (FlowGraph)GetGraph();
+                    _graph = GetFlowGraph();
                     _graph.Compile();
                 }
 
@@ -61,6 +61,10 @@ namespace {NAMESPACE}
 
         public FlowGraph GetFlowGraph()
         {
+            if (Application.isPlaying && _graph != null)
+            {
+                return _graph;
+            }
             return new FlowGraph(graphData.CloneT<FlowGraphData>());
         }
 
