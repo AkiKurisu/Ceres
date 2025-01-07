@@ -198,13 +198,13 @@ namespace Ceres.Editor.Graph
             var compatiblePorts = new List<Port>();
             if (startPort is not CeresPortElement startPortView)
             {
-                Debug.LogWarning($"{startPort.GetType()} is not supported in Ceres default graph view");
+                Debug.LogWarning($"[Ceres] {startPort.GetType()} is not supported in Ceres default graph view");
                 return compatiblePorts;
             }
 
             ports.ForEach(port =>
             {
-                if (port is CeresPortElement portElement && portElement.CanConnect(startPortView))
+                if (port is CeresPortElement portElement && portElement.IsCompatible(startPortView))
                 {
                     compatiblePorts.Add(portElement);
                 }
