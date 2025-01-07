@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
+
 namespace Ceres.Graph.Flow
 {
     public enum ExecutableFunctionType
@@ -77,6 +79,11 @@ namespace Ceres.Graph.Flow
         {
             return HashCode.Combine((int)FunctionType, FunctionName);
         }
+
+        public override string ToString()
+        {
+            return $"{nameof(ExecutableFunctionInfo)} [Name {FunctionName} Type {FunctionType}]";
+        }
     }
 
     // ReSharper disable once ClassNeverInstantiated.Global
@@ -137,6 +144,7 @@ namespace Ceres.Graph.Flow
                     BindingFlags.Public | BindingFlags.Instance)!.GetMethod,
                 _ => throw new ArgumentException(nameof(functionType))
             };
+            if (methodInfo == null) throw new ArgumentException($"Can not get function from {functionInfo}");
             functionStructure = new ExecutableFunction(functionInfo, methodInfo);
             Functions.Add(functionInfo, functionStructure);
             return functionStructure;

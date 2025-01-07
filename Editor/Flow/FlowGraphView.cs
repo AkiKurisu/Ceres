@@ -64,9 +64,16 @@ namespace Ceres.Editor.Graph.Flow
             {
                 var nodeView = NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), this) as CeresNodeView;
                 /* Missing node class should be handled before get graph */
-                Assert.IsNotNull(nodeView, $"Can not construct node view for type {nodeInstance.GetType()}");
+                Assert.IsNotNull(nodeView, $"[Ceres] Can not construct node view for type {nodeInstance.GetType()}");
                 AddNodeView(nodeView);
-                nodeView.SetNodeInstance(nodeInstance);
+                try
+                {
+                    nodeView.SetNodeInstance(nodeInstance);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"[Ceres] Failed to restore properties from {nodeInstance}\n{e}");
+                }
             }
             foreach (var nodeView in NodeViews.OfType<ExecutableNodeView>())
             {

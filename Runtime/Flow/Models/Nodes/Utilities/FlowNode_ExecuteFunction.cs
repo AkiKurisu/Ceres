@@ -110,14 +110,19 @@ namespace Ceres.Graph.Flow.Utilities
 
         public void OnAfterDeserialize()
         {
-            Delegate = GetExecutableFunction().ExecutableFunc;
+            try
+            {
+                Delegate = GetExecutableFunction().ExecutableFunc;
+            }
+            catch(ArgumentException)
+            {
+                
+            }
         }
     }
     
     public abstract class FlowNode_ExecuteFunctionVoid<TTarget>: FlowNode_ExecuteFunctionVoid, ISerializationCallbackReceiver
     {
-        protected MethodInfo MethodInfo;
-        
         protected ExecutableReflection<TTarget>.ExecutableAction Delegate;
         
         public override MethodInfo GetMethodInfo(Type targetType)
@@ -137,7 +142,14 @@ namespace Ceres.Graph.Flow.Utilities
 
         public void OnAfterDeserialize()
         {
-            Delegate = GetExecutableFunction().ExecutableAction;
+            try
+            {
+                Delegate = GetExecutableFunction().ExecutableAction;
+            }
+            catch(ArgumentException)
+            {
+                
+            }
         }
     }
 
