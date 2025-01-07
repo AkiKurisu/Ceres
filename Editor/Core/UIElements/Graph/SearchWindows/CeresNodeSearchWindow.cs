@@ -7,6 +7,7 @@ using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Ceres.Utilities;
 using NodeGroup = Ceres.Annotations.NodeGroup;
 namespace Ceres.Editor.Graph
 {

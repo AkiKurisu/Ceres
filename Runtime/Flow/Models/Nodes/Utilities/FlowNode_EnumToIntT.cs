@@ -4,7 +4,7 @@ namespace Ceres.Graph.Flow.Utilities
 {
     [Serializable]
     [NodeGroup("Utilities")]
-    [CeresLabel("Enum to Int")]
+    [CeresLabel("{0} to Int")]
     public class FlowNode_EnumToIntT<TEnum>: FlowNode where TEnum: Enum
     {
         [InputPort, CeresLabel("Enum")]

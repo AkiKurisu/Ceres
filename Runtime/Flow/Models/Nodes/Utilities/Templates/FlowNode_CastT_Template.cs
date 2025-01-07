@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Ceres.Utilities;
 namespace Ceres.Graph.Flow.Utilities.Templates
 {
     public class FlowNode_CastT_Template: GenericNodeTemplate

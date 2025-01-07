@@ -2,18 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-namespace Ceres.Graph.Flow.Utilities
+namespace Ceres.Graph.Flow
 {
     public enum ExecutableFunctionType
     {
+        /// <summary>
+        /// Method from class instance
+        /// </summary>
         InstanceMethod,
+        /// <summary>
+        /// Method from static class
+        /// </summary>
         StaticMethod,
+        /// <summary>
+        /// Set method from instance property
+        /// </summary>
         PropertySetter,
+        /// <summary>
+        /// Get method from instance property
+        /// </summary>
         PropertyGetter
     }
 
     /// <summary>
-    /// Reflection runtime helper for executable functions
+    /// Runtime reflection helper for executable functions
     /// </summary>
     public class ExecutableReflection
     {
@@ -207,6 +219,28 @@ namespace Ceres.Graph.Flow.Utilities
                 ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3, T4>>(ref Delegate, MethodInfo);
             }
             
+            private void ReallocateDelegateIfNeed<T1, T2, T3, T4, T5>()
+            {
+                if (IsStatic)
+                {
+                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1, T2, T3, T4, T5>>(ref Delegate, MethodInfo);
+                    return;
+                }
+                
+                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3, T4, T5>>(ref Delegate, MethodInfo);
+            }
+            
+            private void ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6>()
+            {
+                if (IsStatic)
+                {
+                    ExecutableReflection.ReallocateDelegateIfNeed<Action<T1, T2, T3, T4, T5, T6>>(ref Delegate, MethodInfo);
+                    return;
+                }
+                
+                ExecutableReflection.ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3, T4, T5, T6>>(ref Delegate, MethodInfo);
+            }
+            
             public void Invoke(TTarget target)
             {
                 ReallocateDelegateIfNeed();
@@ -260,6 +294,28 @@ namespace Ceres.Graph.Flow.Utilities
                     return;
                 }
                 ((Action<TTarget, T1, T2, T3, T4>)Delegate).Invoke(target, arg1, arg2, arg3, arg4);
+            }
+            
+            public void Invoke<T1, T2, T3, T4, T5>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+            {
+                ReallocateDelegateIfNeed<T1, T2, T3, T4, T5>();
+                if (IsStatic)
+                {
+                    ((Action<T1, T2, T3, T4, T5>)Delegate).Invoke(arg1, arg2, arg3, arg4, arg5);
+                    return;
+                }
+                ((Action<TTarget, T1, T2, T3, T4, T5>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5);
+            }
+            
+            public void Invoke<T1, T2, T3, T4, T5, T6>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+            {
+                ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6>();
+                if (IsStatic)
+                {
+                    ((Action<T1, T2, T3, T4, T5, T6>)Delegate).Invoke(arg1, arg2, arg3, arg4, arg5, arg6);
+                    return;
+                }
+                ((Action<TTarget, T1, T2, T3, T4, T5, T6>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5, arg6);
             }
         }
         
@@ -323,6 +379,28 @@ namespace Ceres.Graph.Flow.Utilities
                 
                 ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, T4, TR>>(ref Delegate, MethodInfo);
             }
+            
+            private void ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, TR>()
+            {
+                if (IsStatic)
+                {
+                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, T2, T3, T4, T5, TR>>(ref Delegate, MethodInfo);
+                    return;
+                }
+                
+                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, T4, T5, TR>>(ref Delegate, MethodInfo);
+            }
+            
+            private void ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>()
+            {
+                if (IsStatic)
+                {
+                    ExecutableReflection.ReallocateDelegateIfNeed<Func<T1, T2, T3, T4, T5, T6, TR>>(ref Delegate, MethodInfo);
+                    return;
+                }
+                
+                ExecutableReflection.ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, T4, T5, T6, TR>>(ref Delegate, MethodInfo);
+            }
 
             public TR Invoke<TR>(TTarget target)
             {
@@ -372,6 +450,26 @@ namespace Ceres.Graph.Flow.Utilities
                     return ((Func<T1, T2, T3, T4, TR>)Delegate).Invoke(arg1, arg2, arg3, arg4);
                 }
                 return ((Func<TTarget, T1, T2, T3, T4, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4);
+            }
+            
+            public TR Invoke<T1, T2, T3, T4, T5, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+            {
+                ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, TR>();
+                if (IsStatic)
+                {
+                    return ((Func<T1, T2, T3, T4, T5, TR>)Delegate).Invoke(arg1, arg2, arg3, arg4, arg5);
+                }
+                return ((Func<TTarget, T1, T2, T3, T4, T5, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5);
+            }
+            
+            public TR Invoke<T1, T2, T3, T4, T5, T6, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+            {
+                ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>();
+                if (IsStatic)
+                {
+                    return ((Func<T1, T2, T3, T4, T5, T6, TR>)Delegate).Invoke(arg1, arg2, arg3, arg4, arg5, arg6);
+                }
+                return ((Func<TTarget, T1, T2, T3, T4, T5, T6, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5, arg6);
             }
         }
     }

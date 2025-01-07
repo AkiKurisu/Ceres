@@ -5,7 +5,7 @@ using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Graph;
 using Chris;
-namespace Ceres
+namespace Ceres.Utilities
 {
      public static class GraphTypeExtensions
     {

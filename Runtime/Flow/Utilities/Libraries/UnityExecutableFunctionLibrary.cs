@@ -140,5 +140,21 @@ namespace Ceres.Graph.Flow.Utilities
         }
         
         #endregion Behaviour
+
+        #region Random
+        
+        [ExecutableFunction]
+        public static float Flow_RandomRange(float minInclusive, float maxInclusive)
+        {
+            return Random.Range(minInclusive, maxInclusive);
+        }
+        
+        [ExecutableFunction]
+        public static int Flow_RandomRangeInt(int minInclusive, int maxInclusive)
+        {
+            return Random.Range(minInclusive, maxInclusive);
+        }
+
+        #endregion Random
     }
 }

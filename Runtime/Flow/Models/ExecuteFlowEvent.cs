@@ -103,4 +103,65 @@ namespace Ceres.Graph.Flow
             return evt;
         }
     }
+    
+    public sealed class ExecuteFlowEvent<T1, T2, T3, T4, T5> : 
+        EventBase<ExecuteFlowEvent<T1, T2, T3, T4, T5>>, IFlowEvent
+    {
+        public string FunctionName { get; private set; }
+        
+        public T1 Arg1 { get; private set; }
+        
+        public T2 Arg2 { get; private set; }
+        
+        public T3 Arg3 { get; private set; }
+        
+        public T4 Arg4 { get; private set; }
+        
+        public T5 Arg5 { get; private set; }
+
+        public static ExecuteFlowEvent<T1, T2, T3, T4, T5> Create(
+            string functionName, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            var evt = GetPooled();
+            evt.FunctionName = functionName;
+            evt.Arg1 = arg1;
+            evt.Arg2 = arg2;
+            evt.Arg3 = arg3;
+            evt.Arg4 = arg4;
+            evt.Arg5 = arg5;
+            return evt;
+        }
+    }
+    
+    public sealed class ExecuteFlowEvent<T1, T2, T3, T4, T5, T6> : 
+        EventBase<ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>>, IFlowEvent
+    {
+        public string FunctionName { get; private set; }
+        
+        public T1 Arg1 { get; private set; }
+        
+        public T2 Arg2 { get; private set; }
+        
+        public T3 Arg3 { get; private set; }
+        
+        public T4 Arg4 { get; private set; }
+        
+        public T5 Arg5 { get; private set; }
+        
+        public T6 Arg6 { get; private set; }
+
+        public static ExecuteFlowEvent<T1, T2, T3, T4, T5, T6> Create(
+            string functionName, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        {
+            var evt = GetPooled();
+            evt.FunctionName = functionName;
+            evt.Arg1 = arg1;
+            evt.Arg2 = arg2;
+            evt.Arg3 = arg3;
+            evt.Arg4 = arg4;
+            evt.Arg5 = arg5;
+            evt.Arg6 = arg6;
+            return evt;
+        }
+    }
 }

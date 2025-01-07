@@ -185,4 +185,78 @@ namespace Ceres.Graph.Flow
             return UniTask.CompletedTask;
         }
     }
+    
+    [Serializable]
+    [NodeGroup("Hidden")]
+    public class ExecutionEvent<T1, T2, T3, T4, T5> : ExecutionEventGeneric
+    {
+        [OutputPort, HideInGraphEditor, CeresLabel("")]
+        public DelegatePort<EventDelegate<T1, T2, T3, T4, T5>> eventDelegate;
+        
+        [OutputPort] 
+        public CeresPort<T1> output1;
+        
+        [OutputPort] 
+        public CeresPort<T2> output2;
+        
+        [OutputPort] 
+        public CeresPort<T3> output3;
+        
+        [OutputPort] 
+        public CeresPort<T4> output4;
+        
+        [OutputPort] 
+        public CeresPort<T5> output5;
+        
+        protected override UniTask Execute(ExecutionContext executionContext)
+        {
+            var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2, T3, T4, T5>>();
+            output1.Value = evt.Arg1;
+            output2.Value = evt.Arg2;
+            output3.Value = evt.Arg3;
+            output4.Value = evt.Arg4;
+            output5.Value = evt.Arg5;
+            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            return UniTask.CompletedTask;
+        }
+    }
+    
+    [Serializable]
+    [NodeGroup("Hidden")]
+    public class ExecutionEvent<T1, T2, T3, T4, T5, T6> : ExecutionEventGeneric
+    {
+        [OutputPort, HideInGraphEditor, CeresLabel("")]
+        public DelegatePort<EventDelegate<T1, T2, T3, T4, T5, T6>> eventDelegate;
+        
+        [OutputPort] 
+        public CeresPort<T1> output1;
+        
+        [OutputPort] 
+        public CeresPort<T2> output2;
+        
+        [OutputPort] 
+        public CeresPort<T3> output3;
+        
+        [OutputPort] 
+        public CeresPort<T4> output4;
+        
+        [OutputPort] 
+        public CeresPort<T5> output5;
+        
+        [OutputPort] 
+        public CeresPort<T6> output6;
+        
+        protected override UniTask Execute(ExecutionContext executionContext)
+        {
+            var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>>();
+            output1.Value = evt.Arg1;
+            output2.Value = evt.Arg2;
+            output3.Value = evt.Arg3;
+            output4.Value = evt.Arg4;
+            output5.Value = evt.Arg5;
+            output6.Value = evt.Arg6;
+            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            return UniTask.CompletedTask;
+        }
+    }
 }

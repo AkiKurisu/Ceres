@@ -4,19 +4,17 @@ using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
-using UnityEngine.Scripting;
+using Ceres.Utilities;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
     /// Derived from this class to add custom static functions
     /// </summary>
-    [Preserve]
     public abstract class ExecutableFunctionLibrary
     {
 
     }
     
-    [Preserve]
     public class ExecutableFunctionRegistry
     {
         private readonly Dictionary<Type, MethodInfo[]> _libraryFunctionTables;

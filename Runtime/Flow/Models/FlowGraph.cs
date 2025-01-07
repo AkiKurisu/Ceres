@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow
 {
@@ -16,6 +18,8 @@ namespace Ceres.Graph.Flow
 
         private bool _hasCompiled;
 
+        private List<ExecutionContext> _executionList;
+
         public FlowGraph(FlowGraphData flowGraphData) : base(flowGraphData)
         {
             /* Pre-cache dependency path from serialization data */
@@ -29,7 +33,17 @@ namespace Ceres.Graph.Flow
         {
             if(_hasCompiled) return;
             base.Compile();
+            _executionList = ListPool<ExecutionContext>.Get();
             _hasCompiled = true;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            if(_executionList != null)
+            {
+                ListPool<ExecutionContext>.Release(_executionList);
+            }
         }
 
         /// <summary>
@@ -109,6 +123,25 @@ namespace Ceres.Graph.Flow
                 }
             }
             base.LinkPort(port, ownerNode, portData);
+        }
+
+        /// <summary>
+        /// Get current execution context
+        /// </summary>
+        /// <returns></returns>
+        public ExecutionContext GetExecutionContext()
+        {
+            return _executionList.LastOrDefault();
+        }
+        
+        internal void PushContext(ExecutionContext context)
+        {
+            _executionList.Add(context);
+        }
+        
+        internal void PopContext(ExecutionContext context)
+        {
+            _executionList.Remove(context);
         }
     }
 

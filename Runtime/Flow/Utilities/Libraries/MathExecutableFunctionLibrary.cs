@@ -10,6 +10,8 @@ namespace Ceres.Graph.Flow.Utilities
     [Preserve]
     public class MathExecutableFunctionLibrary : ExecutableFunctionLibrary
     {
+        #region Float
+        
         [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("+", FontSize = 30)]
         public static float Flow_FloatAdd(float value1,  float value2)
         {
@@ -58,11 +60,39 @@ namespace Ceres.Graph.Flow.Utilities
             return Mathf.Exp(floatValue);
         }
         
+        [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("<", FontSize = 30)]
+        public static bool Flow_FloatLessThan(float value1,  float value2)
+        {
+            return value1 < value2;
+        }
+        
+        [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("<=", FontSize = 30)]
+        public static bool Flow_FloatLessThanOrEqualTo(float value1,  float value2)
+        {
+            return value1 <= value2;
+        }
+        
+        [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel(">", FontSize = 30)]
+        public static bool Flow_FloatGreaterThan(float value1,  float value2)
+        {
+            return value1 > value2;
+        }
+        
+        [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel(">=", FontSize = 30)]
+        public static bool Flow_FloatGreaterThanOrEqualTo(float value1,  float value2)
+        {
+            return value1 >= value2;
+        }
+        
         [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("To Int")]
         public static int Flow_FloatToInt(float floatValue)
         {
             return (int)floatValue;
         }
+        
+        #endregion Float
+        
+        #region Integer
         
         [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("+", FontSize = 30)]
         public static int Flow_IntAdd(int value1,  int value2)
@@ -93,12 +123,41 @@ namespace Ceres.Graph.Flow.Utilities
         {
             return value1 % value2;
         }
+        
+                
+        [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("<", FontSize = 30)]
+        public static bool Flow_IntLessThan(int value1,  int value2)
+        {
+            return value1 < value2;
+        }
+        
+        [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("<=", FontSize = 30)]
+        public static bool Flow_IntLessThanOrEqualTo(int value1,  int value2)
+        {
+            return value1 <= value2;
+        }
+        
+        [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel(">", FontSize = 30)]
+        public static bool Flow_IntGreaterThan(int value1,  int value2)
+        {
+            return value1 > value2;
+        }
+        
+        [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel(">=", FontSize = 30)]
+        public static bool Flow_IntGreaterThanOrEqualTo(int value1,  int value2)
+        {
+            return value1 >= value2;
+        }
 
         [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("To Float")]
         public static float Flow_IntToFloat(int intValue)
         {
             return intValue;
         }
+        
+        #endregion Integer
+
+        #region Boolean
         
         [ExecutableFunction(IsScriptMethod = true, DisplayTarget = false), CeresLabel("!", FontSize = 30)]
         public static bool Flow_BoolInvert(bool boolValue)
@@ -117,5 +176,7 @@ namespace Ceres.Graph.Flow.Utilities
         {
             return value1 || value2;
         }
+        
+        #endregion Boolean
     }
 }

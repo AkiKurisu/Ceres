@@ -17,7 +17,7 @@ namespace Ceres.Graph.Flow
         /// <summary>
         /// Execution owner graph
         /// </summary>
-        public CeresGraph Graph { get; private set; }
+        public FlowGraph Graph { get; private set; }
         
         /// <summary>
         /// Execution source context object
@@ -41,11 +41,12 @@ namespace Ceres.Graph.Flow
 
         }
         
-        public static ExecutionContext GetPooled(UObject context, CeresGraph graph, EventBase evt = null)
+        public static ExecutionContext GetPooled(UObject context, FlowGraph graph, EventBase evt = null)
         {
             var executionContext = _pool.Get();
             executionContext.Context = context;
             executionContext.Graph = graph;
+            graph.PushContext(executionContext);
             executionContext._isPooled = true;
             executionContext._forwardPath = ListPool<string>.Get();
 #if UNITY_EDITOR
@@ -131,6 +132,7 @@ namespace Ceres.Graph.Flow
         public void Dispose()
         {
             _nextNode = null;
+            Graph.PopContext(this);
             Graph = null;
             
             /* Release list */

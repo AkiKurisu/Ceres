@@ -81,9 +81,24 @@ namespace Ceres.Editor.Graph.Flow
             var functionNode =(FlowNode_ExecuteFunction)ceresNode;
             base.SetNodeInstance(ceresNode);
             var methodInfo = functionNode.GetMethodInfo(NodeType.GetGenericArguments()[0]);
-            if (methodInfo == null)
+            if (methodInfo != null)
+            {
+                /* Validate arguments length is aligned */
+                int parametersLength = methodInfo.GetParameters().Length;
+                bool hasReturn = methodInfo.ReturnType != typeof(void);
+                int argumentsLength = NodeType.GetGenericArguments().Length - (hasReturn ? 2 : 1);
+                if (parametersLength != argumentsLength)
+                {
+                    methodInfo = null;
+                    Debug.LogWarning($"[Ceres] {functionNode.methodName} expect {parametersLength} arguments but get {argumentsLength}");
+                }
+            }
+            else
             {
                 Debug.LogWarning($"[Ceres] {functionNode.methodName} is not an executable function of {NodeType.GetGenericArguments()[0].Name}");
+            }
+            if (methodInfo == null)
+            {
                 MethodName = functionNode.methodName;
                 IsStatic = functionNode.isStatic;
                 IsScriptMethod = functionNode.isScriptMethod;

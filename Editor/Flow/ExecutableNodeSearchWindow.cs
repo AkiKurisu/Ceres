@@ -5,6 +5,7 @@ using System.Reflection;
 using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Ceres.Utilities;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Properties;
@@ -70,7 +71,7 @@ namespace Ceres.Editor.Graph.Flow
             var variables = GraphView.Blackboard.SharedVariables;
             var properties = containerType
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(x=> x.CanRead && x.CanWrite)
+                .Where(x=> x.CanRead || x.CanWrite)
                 .ToArray();
             
             builder.AddGroupEntry("Select Properties", 1);
@@ -278,6 +279,8 @@ namespace Ceres.Editor.Graph.Flow
                     2 => typeof(FlowNode_ExecuteFunctionTVoid<,,>),
                     3 => typeof(FlowNode_ExecuteFunctionTVoid<,,,>),
                     4 => typeof(FlowNode_ExecuteFunctionTVoid<,,,,>),
+                    5 => typeof(FlowNode_ExecuteFunctionTVoid<,,,,,>),
+                    6 => typeof(FlowNode_ExecuteFunctionTVoid<,,,,,,>),
                     _ => typeof(FlowNode_ExecuteFunctionT<>)
                 };
             }
@@ -289,6 +292,8 @@ namespace Ceres.Editor.Graph.Flow
                 2 => typeof(FlowNode_ExecuteFunctionTReturn<,,,>),
                 3 => typeof(FlowNode_ExecuteFunctionTReturn<,,,,>),
                 4 => typeof(FlowNode_ExecuteFunctionTReturn<,,,,,>),
+                5 => typeof(FlowNode_ExecuteFunctionTReturn<,,,,,,>),
+                6 => typeof(FlowNode_ExecuteFunctionTReturn<,,,,,,,>),
                 _ => typeof(FlowNode_ExecuteFunctionT<>)
             };
         }
@@ -302,6 +307,8 @@ namespace Ceres.Editor.Graph.Flow
                 2 => typeof(ExecutionEvent<,>),
                 3 => typeof(ExecutionEvent<,,>),
                 4 => typeof(ExecutionEvent<,,,>),
+                5 => typeof(ExecutionEvent<,,,,>),
+                6 => typeof(ExecutionEvent<,,,,,>),
                 _ => typeof(ExecutionEventUber)
             };
         }

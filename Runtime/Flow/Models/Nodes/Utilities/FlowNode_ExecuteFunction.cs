@@ -249,7 +249,8 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.Invoke(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext));
+            Delegate.Invoke(GetTargetOrDefault(target, executionContext), 
+                    GetSelfTargetOrDefault(input1, executionContext));
         }
     }
     
@@ -268,13 +269,15 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            output.Value = Delegate.Invoke<TP1, TR>(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext));
+            output.Value = Delegate.Invoke<TP1, TR>(GetTargetOrDefault(target, executionContext), 
+                                    GetSelfTargetOrDefault(input1, executionContext));
         }
     }
     
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2> : FlowNode_ExecuteFunctionVoid<TTarget>
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2> : 
+        FlowNode_ExecuteFunctionVoid<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -287,13 +290,15 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.Invoke(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value);
+            Delegate.Invoke(GetTargetOrDefault(target, executionContext), 
+                            GetSelfTargetOrDefault(input1, executionContext), input2.Value);
         }
     }
     
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TR> : 
+        FlowNode_ExecuteFunctionReturn<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -309,13 +314,15 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            output.Value = Delegate.Invoke<TP1, TP2, TR>(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value);
+            output.Value = Delegate.Invoke<TP1, TP2, TR>(GetTargetOrDefault(target, executionContext), 
+                                    GetSelfTargetOrDefault(input1, executionContext), input2.Value);
         }
     }
     
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3> : FlowNode_ExecuteFunctionVoid<TTarget>
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3> : 
+        FlowNode_ExecuteFunctionVoid<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -331,13 +338,15 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.Invoke(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value);
+            Delegate.Invoke(GetTargetOrDefault(target, executionContext), 
+                    GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value);
         }
     }
     
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TR> : 
+        FlowNode_ExecuteFunctionReturn<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -356,13 +365,16 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            output.Value = Delegate.Invoke<TP1, TP2, TP3, TR>(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value);
+            output.Value = Delegate.Invoke<TP1, TP2, TP3, TR>(GetTargetOrDefault(target, executionContext), 
+                                    GetSelfTargetOrDefault(input1, executionContext), 
+                                    input2.Value, input3.Value);
         }
     }
     
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4> : FlowNode_ExecuteFunctionVoid<TTarget>
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4> : 
+        FlowNode_ExecuteFunctionVoid<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -381,13 +393,16 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            Delegate.Invoke(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value, input4.Value);
+            Delegate.Invoke(GetTargetOrDefault(target, executionContext), 
+                    GetSelfTargetOrDefault(input1, executionContext), input2.Value, 
+                    input3.Value, input4.Value);
         }
     }
     
     [Serializable]
     [NodeGroup("Hidden")]
-    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TR> : 
+        FlowNode_ExecuteFunctionReturn<TTarget>
     {
         [InputPort, HideInGraphEditor]
         public CeresPort<TTarget> target;
@@ -409,7 +424,148 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected override void LocalExecute(ExecutionContext executionContext)
         {
-            output.Value = Delegate.Invoke<TP1, TP2, TP3, TP4, TR>(GetTargetOrDefault(target, executionContext), GetSelfTargetOrDefault(input1, executionContext), input2.Value, input3.Value, input4.Value);
+            output.Value = Delegate.Invoke<TP1, TP2, TP3, TP4, TR>(GetTargetOrDefault(target, executionContext), 
+                                    GetSelfTargetOrDefault(input1, executionContext), 
+                                    input2.Value, input3.Value, input4.Value);
+        }
+    }
+    
+    [Serializable]
+    [NodeGroup("Hidden")]
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4, TP5> : 
+        FlowNode_ExecuteFunctionVoid<TTarget>
+    {
+        [InputPort, HideInGraphEditor]
+        public CeresPort<TTarget> target;
+        
+        [InputPort]
+        public CeresPort<TP1> input1;
+        
+        [InputPort]
+        public CeresPort<TP2> input2;
+        
+        [InputPort]
+        public CeresPort<TP3> input3;
+
+        [InputPort] 
+        public CeresPort<TP4> input4;
+        
+        [InputPort] 
+        public CeresPort<TP5> input5;
+        
+        protected override void LocalExecute(ExecutionContext executionContext)
+        {
+            Delegate.Invoke(GetTargetOrDefault(target, executionContext), 
+                    GetSelfTargetOrDefault(input1, executionContext), 
+                    input2.Value, input3.Value, input4.Value, input5.Value);
+        }
+    }
+    
+    [Serializable]
+    [NodeGroup("Hidden")]
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TP5, TR> : 
+        FlowNode_ExecuteFunctionReturn<TTarget>
+    {
+        [InputPort, HideInGraphEditor]
+        public CeresPort<TTarget> target;
+        
+        [InputPort]
+        public CeresPort<TP1> input1;
+        
+        [InputPort]
+        public CeresPort<TP2> input2;
+        
+        [InputPort]
+        public CeresPort<TP3> input3;
+        
+        [InputPort]
+        public CeresPort<TP4> input4;
+        
+        [InputPort]
+        public CeresPort<TP5> input5;
+    
+        [OutputPort, CeresLabel("Return Value")]
+        public CeresPort<TR> output;
+        
+        protected override void LocalExecute(ExecutionContext executionContext)
+        {
+            output.Value = Delegate.Invoke<TP1, TP2, TP3, TP4, TP5, TR>(
+                                    GetTargetOrDefault(target, executionContext), 
+                                    GetSelfTargetOrDefault(input1, executionContext), 
+                                    input2.Value, input3.Value, input4.Value, input5.Value);
+        }
+    }
+    
+    [Serializable]
+    [NodeGroup("Hidden")]
+    public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4, TP5, TP6> : 
+        FlowNode_ExecuteFunctionVoid<TTarget>
+    {
+        [InputPort, HideInGraphEditor]
+        public CeresPort<TTarget> target;
+        
+        [InputPort]
+        public CeresPort<TP1> input1;
+        
+        [InputPort]
+        public CeresPort<TP2> input2;
+        
+        [InputPort]
+        public CeresPort<TP3> input3;
+
+        [InputPort] 
+        public CeresPort<TP4> input4;
+        
+        [InputPort]
+        public CeresPort<TP5> input5;
+        
+        [InputPort]
+        public CeresPort<TP6> input6;
+        
+        protected override void LocalExecute(ExecutionContext executionContext)
+        {
+            Delegate.Invoke(GetTargetOrDefault(target, executionContext), 
+                    GetSelfTargetOrDefault(input1, executionContext), 
+                    input2.Value, input3.Value, input4.Value,
+                    input5.Value, input6.Value);
+        }
+    }
+    
+    [Serializable]
+    [NodeGroup("Hidden")]
+    public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TP5, TP6, TR> : 
+        FlowNode_ExecuteFunctionReturn<TTarget>
+    {
+        [InputPort, HideInGraphEditor]
+        public CeresPort<TTarget> target;
+        
+        [InputPort]
+        public CeresPort<TP1> input1;
+        
+        [InputPort]
+        public CeresPort<TP2> input2;
+        
+        [InputPort]
+        public CeresPort<TP3> input3;
+        
+        [InputPort]
+        public CeresPort<TP4> input4;
+        
+        [InputPort]
+        public CeresPort<TP5> input5;
+        
+        [InputPort]
+        public CeresPort<TP6> input6;
+    
+        [OutputPort, CeresLabel("Return Value")]
+        public CeresPort<TR> output;
+        
+        protected override void LocalExecute(ExecutionContext executionContext)
+        {
+            output.Value = Delegate.Invoke<TP1, TP2, TP3, TP4, TP5, TP6, TR>(
+                                    GetTargetOrDefault(target, executionContext), 
+                                    GetSelfTargetOrDefault(input1, executionContext), 
+                                    input2.Value, input3.Value, input4.Value, input5.Value, input6.Value);
         }
     }
     
