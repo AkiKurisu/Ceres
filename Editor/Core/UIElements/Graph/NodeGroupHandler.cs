@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ceres.Graph;
+using NUnit.Framework;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 namespace Ceres.Editor.Graph
@@ -29,14 +30,20 @@ namespace Ceres.Editor.Graph
             }
         }
         
-        public void RestoreGroups(List<NodeGroup> nodeGroups)
+        public List<Group> RestoreGroups(List<NodeGroup> nodeGroups)
         {
+            var list = new List<Group>();
             foreach (var nodeBlockData in nodeGroups)
             {
-                CreateGroup(new Rect(nodeBlockData.position, new Vector2(100, 100)), nodeBlockData)
-                    .AddElements(GraphView.NodeViews.Where(x => nodeBlockData.childNodes.Contains(x.Guid))
-                    .Select(x => x.NodeElement));
+                var group = CreateGroup(new Rect(nodeBlockData.position, new Vector2(100, 100)), nodeBlockData);
+                group.AddElements(
+                        GraphView.NodeViews.Where(x => nodeBlockData.childNodes.Contains(x.Guid))
+                        .Select(x => x.NodeElement)
+                        );
+                list.Add(group);
             }
+
+            return list;
         }
     }
 

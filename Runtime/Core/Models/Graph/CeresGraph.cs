@@ -627,6 +627,26 @@ namespace Ceres.Graph
                 }
             }
         }
+
+        /// <summary>
+        /// Serialize <see cref="CeresGraphData"/> to json
+        /// </summary>
+        /// <param name="indented"></param>
+        /// <returns></returns>
+        public string ToJson(bool indented = false)
+        {
+            return Serialize(this, indented);
+        }
+
+        /// <summary>
+        /// Deserialize <see cref="CeresGraphData"/> from json
+        /// </summary>
+        /// <param name="serializedData"></param>
+        /// <returns></returns>
+        public static T FromJson<T>(string serializedData) where T: CeresGraphData
+        {
+            return Deserialize(serializedData, typeof(T)) as T;
+        }
         
         /// <summary>
         /// Serialize json smarter in editor

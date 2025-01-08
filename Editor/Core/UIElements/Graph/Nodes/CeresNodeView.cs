@@ -31,7 +31,7 @@ namespace Ceres.Editor.Graph
         /// <summary>
         /// Graph scope node view guid
         /// </summary>
-        public string Guid { get; private set; } = System.Guid.NewGuid().ToString();
+        public string Guid { get; set; } = System.Guid.NewGuid().ToString();
         
         /// <summary>
         /// Node visual element of this view
@@ -335,7 +335,7 @@ namespace Ceres.Editor.Graph
         /// </summary>
         public void ReconnectEdges()
         {
-            PortViews.ForEach(x=>x.Connect());
+            PortViews.ForEach(x=> x.Connect());
         }
     }
 }

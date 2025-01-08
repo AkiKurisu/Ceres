@@ -462,9 +462,10 @@ namespace Ceres.Graph
             {
                 var node = NodeOwner.GraphView.FindNodeView<CeresNodeView>(connection.nodeId);
                 var port = node?.FindPortView(connection.portId, connection.portIndex);
-                if(port == null) continue;
-                
-                NodeOwner.GraphView.ConnectPorts(port, this);
+                if(port != null && port.PortElement.IsConnectable())
+                {
+                    NodeOwner.GraphView.ConnectPorts(port, this);
+                }
             }
         }
 

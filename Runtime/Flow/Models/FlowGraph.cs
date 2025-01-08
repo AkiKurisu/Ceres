@@ -119,7 +119,7 @@ namespace Ceres.Graph.Flow
                 }
                 else
                 {
-                    LogWarning("Only ExecutableEvent can have delegate port");
+                    LogWarning($"Only {nameof(ExecutableEvent)} can have delegate port");
                 }
             }
             base.LinkPort(port, ownerNode, portData);

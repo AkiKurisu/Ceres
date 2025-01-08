@@ -10,6 +10,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Pool;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph.Flow
 {
@@ -32,64 +33,42 @@ namespace Ceres.Editor.Graph.Flow
         public override bool SerializeGraph(ICeresGraphContainer container)
         {
             if (container is not IFlowGraphContainer flowGraphContainer) return false;
-            
-            var serializableNodes = nodes.OfType<ExecutableNodeElement>().ToArray();
-            var nodeInstances = serializableNodes.Select(x => x.View.CompileNode() as CeresNode).ToArray();
-            var nodeGroups = graphElements.OfType<ExecutableNodeGroup>().ToList();
-            var data = new List<NodeGroup>();
-            foreach (var group in nodeGroups)
-            {
-                group.Commit(data);
-            }
-            
-            var flowGraphData = new FlowGraphData
-            {
-                nodes = nodeInstances,
-                nodeData = nodeInstances.Select(x=>x.GetSerializedData()).ToArray(),
-                variables = SharedVariables.ToArray(),
-                nodeGroups = data.ToArray()
-            };
-            flowGraphData.PreSerialization();
+            var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
             flowGraphContainer.SetGraphData(flowGraphData);
             EditorUtility.SetDirty(container.Object);
             AssetDatabase.SaveAssetIfDirty(container.Object);
             return true;
         }
 
+        protected override string OnCopySerializedGraph(IEnumerable<GraphElement> elements)
+        {
+            return JsonUtility.ToJson(new CopyPasteGraph(this, elements).SerializeGraph(true));
+        }
+
+        protected override bool CanPasteSerializedGraph(string serializedData)
+        {
+            try
+            {
+                var flowGraphData = JsonUtility.FromJson<FlowGraphData>(serializedData);
+                return flowGraphData != null;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        protected override void OnPasteSerializedGraph(string operationName, string serializedData)
+        {
+            var flowGraphData = JsonUtility.FromJson<FlowGraphData>(serializedData);
+            var flowGraph = new FlowGraph(flowGraphData);
+            new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph, true);
+        }
+
         public override void DeserializeGraph(ICeresGraphContainer container)
         {
             var graph = (FlowGraph)container.GetGraph();
-            // Restore node views
-            foreach (var nodeInstance in graph.nodes)
-            {
-                var nodeView = NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), this) as CeresNodeView;
-                /* Missing node class should be handled before get graph */
-                Assert.IsNotNull(nodeView, $"[Ceres] Can not construct node view for type {nodeInstance.GetType()}");
-                AddNodeView(nodeView);
-                try
-                {
-                    nodeView.SetNodeInstance(nodeInstance);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError($"[Ceres] Failed to restore properties from {nodeInstance}\n{e}");
-                }
-            }
-            foreach (var nodeView in NodeViews.OfType<ExecutableNodeView>())
-            {
-                // Restore edges
-                nodeView.ReconnectEdges();
-                // Restore breakpoints
-                if (DebugState.breakpoints.Contains(nodeView.Guid))
-                {
-                    nodeView.AddBreakpoint();
-                }
-            }
-            // Restore variables
-            AddSharedVariables(graph.variables, true);
-            
-            // Restore node groups
-            NodeGroupHandler.RestoreGroups(graph.nodeGroups);
+            new CopyPasteGraph(this, graphElements).DeserializeGraph(graph);
         }
 
         /// <summary>
@@ -188,6 +167,133 @@ namespace Ceres.Editor.Graph.Flow
         {
             _tracker?.Dispose();
             _tracker = null;
+        }
+        
+        private class CopyPasteGraph
+        {
+            private readonly FlowGraphView _graphView;
+
+            private readonly GraphElement[] _graphElements;
+            
+            public CopyPasteGraph(FlowGraphView flowGraphView, IEnumerable<GraphElement> elements)
+            {
+                _graphView = flowGraphView;
+                _graphElements = elements.ToArray();
+            }
+            
+            /// <summary>
+            /// Serialize <see cref="FlowGraphView"/> to <see cref="FlowGraphData"/>
+            /// </summary>
+            /// <param name="copyPaste">Whether should exclude some data in copy paste mode</param>
+            /// <returns></returns>
+            public FlowGraphData SerializeGraph(bool copyPaste = false)
+            {
+                var serializableNodes = _graphElements.OfType<ExecutableNodeElement>().ToArray();
+                var nodeGroups = _graphElements.OfType<ExecutableNodeGroup>().ToArray();
+                var idMap = serializableNodes.ToDictionary(x => x, x => x.View.Guid);
+                
+                /* Need assign new guid before serialization */
+                if (copyPaste)
+                {
+                    foreach (var nodeElement in serializableNodes)
+                    {
+                        nodeElement.View.Guid = Guid.NewGuid().ToString();
+                    }
+                }
+                
+                var nodeInstances = serializableNodes.Select(x => (CeresNode)x.View.CompileNode()).ToArray();
+                var data = new List<NodeGroup>();
+                foreach (var group in nodeGroups)
+                {
+                    group.Commit(data);
+                }
+
+                /* Restore node element guid */
+                if (copyPaste)
+                {
+                    foreach (var nodeElement in serializableNodes)
+                    {
+                        nodeElement.View.Guid = idMap[nodeElement];
+                    }
+                }
+            
+                var flowGraphData = new FlowGraphData
+                {
+                    nodes = nodeInstances,
+                    nodeData = nodeInstances.Select(x=> x.GetSerializedData()).ToArray(),
+                    variables = _graphView.SharedVariables.ToArray(),
+                    nodeGroups = data.ToArray()
+                };
+                flowGraphData.PreSerialization();
+                return flowGraphData;
+            }
+            
+            /// <summary>
+            /// Serialize <see cref="FlowGraphView"/> from <see cref="FlowGraphData"/>
+            /// </summary>
+            /// <param name="flowGraph"></param>
+            /// <param name="copyPaste"></param>
+            public void DeserializeGraph(FlowGraph flowGraph, bool copyPaste = false)
+            {
+                using var collection = ListPool<GraphElement>.Get(out var newElements);
+                if (copyPaste)
+                {
+                    foreach (var nodeInstance in flowGraph.nodes)
+                    {
+                        var rect = nodeInstance.GraphPosition;
+                        rect.x += 30;
+                        rect.y += 30;
+                        nodeInstance.GraphPosition = rect;
+                    }
+                    
+                    foreach (var nodeGroup in flowGraph.nodeGroups)
+                    {
+                        var rect = nodeGroup.position;
+                        rect.x += 30;
+                        rect.y += 30;
+                        nodeGroup.position = rect;
+                    }
+                }
+                
+                // Restore node views
+                foreach (var nodeInstance in flowGraph.nodes)
+                {
+                    var nodeView = NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView) as CeresNodeView;
+                    /* Missing node class should be handled before get graph */
+                    Assert.IsNotNull(nodeView, $"[Ceres] Can not construct node view for type {nodeInstance.GetType()}");
+                    _graphView.AddNodeView(nodeView);
+                    newElements.Add(nodeView.NodeElement);
+                    try
+                    {
+                        nodeView.SetNodeInstance(nodeInstance);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError($"[Ceres] Failed to restore properties from {nodeInstance}\n{e}");
+                    }
+                }
+                foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(x=>x.View).ToArray())
+                {
+                    // Restore edges
+                    nodeView.ReconnectEdges();
+                    // Restore breakpoints
+                    if (_graphView.DebugState.breakpoints.Contains(nodeView.Guid))
+                    {
+                        nodeView.AddBreakpoint();
+                    }
+                }
+                // Restore variables
+                _graphView.AddSharedVariables(flowGraph.variables, !copyPaste);
+            
+                // Restore node groups
+                newElements.AddRange(_graphView.NodeGroupHandler.RestoreGroups(flowGraph.nodeGroups));
+
+                if (copyPaste)
+                {
+                    _graphView.ClearSelection();
+                    newElements.ForEach(x=> _graphView.AddToSelection(x));
+                }
+            }
         }
 
         private class FlowGraphDebugTracker: FlowGraphTracker

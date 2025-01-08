@@ -11,5 +11,10 @@ namespace Ceres.Graph
         public Vector2 position;
         
         public string title = "Node Group";
+
+        public bool ContainsNode(CeresNode ceresNode)
+        {
+            return childNodes.Contains(ceresNode.Guid);
+        }
     }
 }

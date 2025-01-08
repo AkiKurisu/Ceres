@@ -39,9 +39,9 @@ namespace Ceres.Editor.Graph
             this.AddManipulator(new FreehandSelector());
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new DragDropManipulator(this, OnDragDropObjectPerform, OnDragDropElementPerform));
-            canPasteSerializedData += data => true;
-            serializeGraphElements += OnSerialize;
-            unserializeAndPaste += OnPaste;
+            canPasteSerializedData = CanPasteSerializedGraph;
+            serializeGraphElements = OnCopySerializedGraph;
+            unserializeAndPaste = OnPasteSerializedGraph;
             nodeCreationRequest = OnNodeCreationRequest;
             RegisterCallback<DetachFromPanelEvent>(OnGraphViewDestroy);
         }
@@ -59,14 +59,19 @@ namespace Ceres.Editor.Graph
         {
         }
         
-        protected virtual string OnSerialize(IEnumerable<GraphElement> elements)
+        protected virtual bool CanPasteSerializedGraph(string serializedData)
+        {
+            return true;
+        }
+        
+        protected virtual string OnCopySerializedGraph(IEnumerable<GraphElement> elements)
         {
             return string.Empty;
         }
 
-        protected virtual void OnPaste(string a, string b)
+        protected virtual void OnPasteSerializedGraph(string operationName, string serializedData)
         {
-
+            
         }
 
         /// <summary>
