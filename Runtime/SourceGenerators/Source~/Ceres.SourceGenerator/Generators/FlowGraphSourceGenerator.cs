@@ -108,6 +108,18 @@ namespace {NAMESPACE}
             using var evt = ExecuteFlowEvent<T1, T2, T3, T4>.Create(eventName, arg1, arg2, arg3, arg4);
             Graph.TryExecuteEvent(this, evt.FunctionName, evt);
         }
+
+        protected void ProcessEvent<T1, T2, T3, T4, T5>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, [CallerMemberName] string eventName = """")
+        {
+            using var evt = ExecuteFlowEvent<T1, T2, T3, T4, T5>.Create(eventName, arg1, arg2, arg3, arg4, arg5);
+            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
+        }
+
+        protected void ProcessEvent<T1, T2, T3, T4, T5, T6>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, [CallerMemberName] string eventName = """")
+        {
+            using var evt = ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>.Create(eventName, arg1, arg2, arg3, arg4, arg5, arg6);
+            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
+        }
     }
 }
 ";
