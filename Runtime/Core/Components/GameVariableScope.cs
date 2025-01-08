@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Ceres.Graph;
 using UnityEngine;
 namespace Ceres
 {
@@ -24,7 +25,7 @@ namespace Ceres
         {
             if (initializationStack.Contains(this))
             {
-                Debug.LogError("[Ceres] Circulating initialization occurs!");
+                CeresGraph.LogError("Circulating initialization occurs!");
                 return;
             }
             initialized = true;

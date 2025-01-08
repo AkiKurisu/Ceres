@@ -269,7 +269,7 @@ namespace Ceres.Editor.Graph.Flow
                     }
                     catch (Exception e)
                     {
-                        Debug.LogError($"[Ceres] Failed to restore properties from {nodeInstance}\n{e}");
+                        CeresGraph.LogError($"Failed to restore properties from {nodeInstance}\n{e}");
                     }
                 }
                 foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(x=>x.View).ToArray())
@@ -337,14 +337,14 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     if (CeresSettings.EnableGraphEditorLog)
                     {
-                        Debug.Log($"[Ceres] Enter node [{node.GetType().Name}]({node.Guid})");
+                        CeresGraph.Log($"Enter node [{node.GetType().Name}]({node.Guid})");
                     }
                     /* Reset skip frame flag */
                     _breakOnNext = false;
                     await UniTask.WaitUntil(CanSkipFrame);
                     if (CeresSettings.EnableGraphEditorLog)
                     {
-                        Debug.Log($"[Ceres] Exit node [{node.GetType().Name}]({node.Guid})");
+                        CeresGraph.Log($"Exit node [{node.GetType().Name}]({node.Guid})");
                     }
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");

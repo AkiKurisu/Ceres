@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
@@ -181,7 +182,7 @@ namespace Ceres.Editor.Graph.Flow
             if (!Identifier.IsValid()) return;
             if (CeresSettings.EnableGraphEditorLog)
             {
-                Debug.Log($"[Ceres] Reload graph from identifier[{Identifier}]");
+                CeresGraph.Log($"Reload graph from identifier[{Identifier}]");
             }
             
             Container = GetContainer();

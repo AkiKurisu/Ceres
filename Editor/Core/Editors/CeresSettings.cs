@@ -1,3 +1,4 @@
+using Ceres.Graph;
 using Chris.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -70,7 +71,7 @@ namespace Ceres.Editor
                 {
                     if (CeresSettings.EnableGraphEditorLog)
                     {
-                        Debug.Log("[Ceres] Disable ILPP");
+                        CeresGraph.Log("Disable ILPP");
                     }
                     ScriptingSymbol.AddScriptingSymbol(DisableILPostProcessSymbol);
                 }
@@ -78,7 +79,7 @@ namespace Ceres.Editor
                 {
                     if (CeresSettings.EnableGraphEditorLog)
                     {
-                        Debug.Log("[Ceres] Enable ILPP");
+                        CeresGraph.Log("Enable ILPP");
                     }
                     ScriptingSymbol.RemoveScriptingSymbol(DisableILPostProcessSymbol);
                 }

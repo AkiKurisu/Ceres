@@ -484,7 +484,7 @@ namespace Ceres.Graph
             }
         }
 
-        public static LogType LogLevel { get; set; } = LogType.Warning;
+        public static LogType LogLevel { get; set; } = LogType.Log;
         
         public static void LogWarning(string message)
         {
@@ -496,6 +496,12 @@ namespace Ceres.Graph
         {
             if(LogLevel >= LogType.Log)
                 Debug.Log($"<color=#3aff48>[Ceres]</color> {message}");
+        }
+
+        public static void LogError(string message)
+        {
+            if(LogLevel >= LogType.Error)
+                Debug.LogError($"<color=#ff2f2f>[Ceres]</color> {message}");
         }
     }
     
@@ -659,7 +665,7 @@ namespace Ceres.Graph
             if (data == null) return null;
             string json = JsonUtility.ToJson(data, indented);
 #if UNITY_EDITOR
-            JObject obj = JObject.Parse(json);
+            var obj = JObject.Parse(json);
             foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
             {
                 if (prop.Name != "instanceID") continue;
@@ -673,7 +679,7 @@ namespace Ceres.Graph
                     CeresGraph.LogWarning($"Can't serialize {propertyName} {uObject} in a Scene.");
                     continue;
                 }
-                //Convert to GUID
+                // Convert instance id to guid
                 prop.Value = guid;
             }
             return obj.ToString(indented ? Formatting.Indented : Formatting.None);
@@ -693,7 +699,7 @@ namespace Ceres.Graph
 #if UNITY_EDITOR
             if (!string.IsNullOrEmpty(serializedData))
             {
-                JObject obj = JObject.Parse(serializedData);
+                var obj = JObject.Parse(serializedData);
                 foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
                 {
                     if (prop.Name != "instanceID") continue;
@@ -703,6 +709,7 @@ namespace Ceres.Graph
                         prop.Value = 0;
                         continue;
                     }
+                    // Convert guid to instance id
                     prop.Value = uObject.GetInstanceID();
                 }
                 return JsonUtility.FromJson(obj.ToString(Formatting.Indented), type);

@@ -47,7 +47,7 @@ namespace Ceres.Graph.Flow
             }
             catch
             {
-                Debug.LogError($"[Ceres] Can not create delegate for {methodInfo}");
+                CeresGraph.LogError($"Can not create delegate for {methodInfo}");
                 throw;
             }
         }

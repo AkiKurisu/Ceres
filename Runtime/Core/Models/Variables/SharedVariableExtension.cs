@@ -1,3 +1,4 @@
+using Ceres.Graph;
 using UnityEngine;
 namespace Ceres
 {
@@ -126,7 +127,7 @@ namespace Ceres
             if (!variable.IsShared && !variable.IsGlobal) return;
             if (!variableSource.TryGetSharedVariable(variable.Name, out var sharedVariable))
             {
-                Debug.LogWarning($"[Ceres] Can not map variable {variable.Name} to {variableSource} !");
+                CeresGraph.LogWarning($"Can not map variable {variable.Name} to {variableSource} !");
                 return;
             }
             variable.Bind(sharedVariable);
