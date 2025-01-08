@@ -184,7 +184,7 @@ namespace Ceres.Editor.Graph.Flow
             /// <summary>
             /// Serialize <see cref="FlowGraphView"/> to <see cref="FlowGraphData"/>
             /// </summary>
-            /// <param name="copyPaste">Whether should exclude some data in copy paste mode</param>
+            /// <param name="copyPaste"></param>
             /// <returns></returns>
             public FlowGraphData SerializeGraph(bool copyPaste = false)
             {
