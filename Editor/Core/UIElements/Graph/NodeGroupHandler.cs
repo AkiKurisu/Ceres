@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ceres.Graph;
-using NUnit.Framework;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 namespace Ceres.Editor.Graph
