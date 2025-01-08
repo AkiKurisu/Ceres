@@ -5,7 +5,6 @@ using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
 using Chris.Serialization;
-using UnityEngine;
 using UnityEngine.Assertions;
 namespace Ceres.Editor.Graph.Flow
 {
@@ -50,11 +49,11 @@ namespace Ceres.Editor.Graph.Flow
             var portView = FindPortViewWithDisplayName(CeresLabel.GetLabel(resolveParameter.Name));
             var returnPortView = FindPortView("output");
             var currentType = (portView.FieldResolver.Value as SerializedTypeBase)?.GetObjectType();
-            returnPortView.SetPortDisplayType(currentType ?? returnPortView.PortData.GetValueType());
+            returnPortView.SetDisplayType(currentType ?? returnPortView.PortData.GetValueType());
             portView.FieldResolver.RegisterValueChangeCallback(x =>
             {
                 var type = ((SerializedTypeBase)x).GetObjectType();
-                returnPortView.SetPortDisplayType(type ?? returnPortView.PortData.GetValueType());
+                returnPortView.SetDisplayType(type ?? returnPortView.PortData.GetValueType());
             });
         }
 
@@ -79,7 +78,6 @@ namespace Ceres.Editor.Graph.Flow
         public sealed override void SetNodeInstance(CeresNode ceresNode)
         {
             var functionNode =(FlowNode_ExecuteFunction)ceresNode;
-            base.SetNodeInstance(ceresNode);
             var methodInfo = functionNode.GetMethodInfo(NodeType.GetGenericArguments()[0]);
             if (methodInfo != null)
             {
@@ -90,13 +88,14 @@ namespace Ceres.Editor.Graph.Flow
                 if (parametersLength != argumentsLength)
                 {
                     methodInfo = null;
-                    Debug.LogWarning($"[Ceres] {functionNode.methodName} expect {parametersLength} arguments but get {argumentsLength}");
+                    CeresGraph.LogWarning($"{functionNode.methodName} expect {parametersLength} arguments but get {argumentsLength}");
                 }
             }
             else
             {
-                Debug.LogWarning($"[Ceres] {functionNode.methodName} is not an executable function of {NodeType.GetGenericArguments()[0].Name}");
+                CeresGraph.LogWarning($"{functionNode.methodName} is not an executable function of {NodeType.GetGenericArguments()[0].Name}");
             }
+            
             if (methodInfo == null)
             {
                 MethodName = functionNode.methodName;
@@ -104,9 +103,12 @@ namespace Ceres.Editor.Graph.Flow
                 IsScriptMethod = functionNode.isScriptMethod;
                 IsSelfTarget = functionNode.isSelfTarget;
                 SetNodeElementTitle(functionNode.methodName);
-                return;
             }
-            SetMethodInfo(methodInfo);
+            else
+            {
+                SetMethodInfo(methodInfo);
+            }
+            base.SetNodeInstance(ceresNode);
         }
         
         public override ExecutableNode CompileNode()
@@ -161,15 +163,15 @@ namespace Ceres.Editor.Graph.Flow
             }
             else
             {
-                FindPortView("target").SetPortTooltip(" [Default is Self]");
+                FindPortView("target").SetTooltip(" [Default is Self]");
             }
             if (DisplayTarget)
             {
-                FindPortView("inputs", 0).SetPortDisplayName("Target");
+                FindPortView("inputs", 0).SetDisplayName("Target");
             }
             if (IsSelfTarget)
             {
-                FindPortView("inputs", 0).SetPortTooltip(" [Default is Self]");
+                FindPortView("inputs", 0).SetTooltip(" [Default is Self]");
             }
             
             var output = methodInfo.ReturnParameter;
@@ -210,7 +212,7 @@ namespace Ceres.Editor.Graph.Flow
             for (int i = 0; i < arguments.Length; i++)
             {
                 var portView = FindPortView($"input{i + 1}");
-                portView?.SetPortDisplayName(parameters[i].Name);
+                portView?.SetDisplayDataFromParameterInfo(parameters[i]);
             }
             
             if(IsStatic)
@@ -219,15 +221,15 @@ namespace Ceres.Editor.Graph.Flow
             }
             else
             {
-                FindPortView("target").SetPortTooltip(" [Default is Self]");
+                FindPortView("target").SetTooltip(" [Default is Self]");
             }
             if (DisplayTarget)
             {
-                FindPortView("input1").SetPortDisplayName("Target");
+                FindPortView("input1").SetDisplayName("Target");
             }
             if (IsSelfTarget)
             {
-                FindPortView("input1").SetPortTooltip(" [Default is Self]");
+                FindPortView("input1").SetTooltip(" [Default is Self]");
             }
         }
     }
@@ -254,7 +256,7 @@ namespace Ceres.Editor.Graph.Flow
             for (int i = 0; i < arguments.Length; i++)
             {
                 var portView = FindPortView($"input{i + 1}");
-                portView?.SetPortDisplayName(parameters[i].Name);
+                portView?.SetDisplayDataFromParameterInfo(parameters[i]);
             }
             
             if(IsStatic)
@@ -263,15 +265,15 @@ namespace Ceres.Editor.Graph.Flow
             }
             else
             {
-                FindPortView("target").SetPortTooltip(" [Default is Self]");
+                FindPortView("target").SetTooltip(" [Default is Self]");
             }
             if (DisplayTarget)
             {
-                FindPortView("input1").SetPortDisplayName("Target");
+                FindPortView("input1").SetDisplayName("Target");
             }
             if (IsSelfTarget)
             {
-                FindPortView("input1").SetPortTooltip(" [Default is Self]");
+                FindPortView("input1").SetTooltip(" [Default is Self]");
             }
         }
     }

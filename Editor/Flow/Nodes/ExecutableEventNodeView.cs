@@ -160,7 +160,7 @@ namespace Ceres.Editor.Graph.Flow
             for (int i = 0; i < parameters.Length; i++)
             {
                 var portView = FindPortView($"output{i + 1}");
-                portView?.SetPortDisplayName(parameters[i].Name);
+                portView?.SetDisplayName(parameters[i].Name);
             }
         }
 

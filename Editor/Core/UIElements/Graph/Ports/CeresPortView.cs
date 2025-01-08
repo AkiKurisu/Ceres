@@ -12,6 +12,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UIElements;
+using UObject = UnityEngine.Object;
 namespace Ceres.Graph
 {
     public class CeresEdge : Edge
@@ -118,6 +119,10 @@ namespace Ceres.Graph
             AddToClassList(nameof(CeresPortElement));
             CeresPort.AssignValueType(type);
             styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/CeresPortElement"));
+            if (type.IsSubclassOf(typeof(UObject)) && type != typeof(Component) && type != typeof(GameObject))
+            {
+                AddToClassList("typeObject");
+            }
             if (type.IsGenericType)
             {
                 AddToClassList("type" + type.GetGenericTypeDefinition().Name.Split('`')[0]);
@@ -196,11 +201,17 @@ namespace Ceres.Graph
             
             if(isVisible)
             {
-                m_ConnectorBox.parent.Add(EditorField);
+                if(!m_ConnectorBox.parent.Contains(EditorField))
+                {
+                    m_ConnectorBox.parent.Add(EditorField);
+                }
             }
             else
             {
-                m_ConnectorBox.parent.Remove(EditorField);
+                if(m_ConnectorBox.parent.Contains(EditorField))
+                {
+                    m_ConnectorBox.parent.Remove(EditorField);
+                }
             }
         }
 
@@ -275,7 +286,7 @@ namespace Ceres.Graph
                 DisplayType = parameterInfo.ParameterType
             };
         }
-
+        
         private string GetDisplayName()
         {
             if (BindingType == PortBindingType.Parameter)
@@ -315,7 +326,7 @@ namespace Ceres.Graph
 
         public bool IsHideInGraphEditor()
         {
-            if (BindingType != PortBindingType.Field) return true;
+            if (BindingType == PortBindingType.Parameter) return true;
             return PortFieldInfo.GetCustomAttribute<HideInGraphEditorAttribute>() != null;
         }
         
@@ -404,6 +415,10 @@ namespace Ceres.Graph
             
             if (ReflectionUtility.IsSerializableNumericTypes(type)) return true;
             if (ReflectionUtility.IsUnityBuiltinTypes(type)) return true;
+            if (type.IsSubclassOf(typeof(UObject)))
+            {
+                return true;
+            }
             
             if(type.IsGenericType)
             {
@@ -486,22 +501,45 @@ namespace Ceres.Graph
             if(portData == null) return;
             PortData = portData;
         }
+        
+        /// <summary>
+        /// Set display name and default value from <see cref="ParameterInfo"/>
+        /// </summary>
+        /// <param name="parameterInfo"></param>
+        public void SetDisplayDataFromParameterInfo(ParameterInfo parameterInfo)
+        {
+            if(Binding.BindingType == CeresPortViewBinding.PortBindingType.Field)
+            {
+                /* Set default value if exist */
+                if (FieldResolver != null && parameterInfo.HasDefaultValue)
+                {
+                    FieldResolver.Value = parameterInfo.DefaultValue;
+                }
+                SetDisplayName(parameterInfo.Name);
+                bool fieldShowInEditor = parameterInfo.GetCustomAttribute<HideInGraphEditorAttribute>() == null;
+                PortElement.SetEditorFieldVisible(fieldShowInEditor);
+            }
+            else
+            {
+                CeresGraph.LogWarning($"Only can remap from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
+            }
+        }
 
-        public void SetPortDisplayName(string displayName)
+        public void SetDisplayName(string displayName)
         {
             Binding.DisplayName = PortElement.portName = CeresLabel.GetLabel(displayName);
         }
         
-        public void SetPortTooltip(string tooltip)
+        public void SetTooltip(string tooltip)
         {
             Binding.Tooltip = PortElement.tooltip = CeresPortElement.CreatePortTooltip(Binding.DisplayType) + tooltip;
         }
         
-        public void SetPortDisplayType(Type displayType)
+        public void SetDisplayType(Type displayType)
         {
             Binding.DisplayType = PortElement.portType = displayType;
             CeresPort.AssignValueType(displayType);
-            SetPortTooltip(Binding.Tooltip);
+            SetTooltip(Binding.Tooltip);
         }
     }
 
