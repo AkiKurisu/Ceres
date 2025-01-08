@@ -33,7 +33,7 @@ namespace Ceres.Graph.Flow.Utilities
                         .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                         .Distinct()
                         .ToList();
-            var groups = methodInfos.GroupBy(GetTargetType)
+            var groups = methodInfos.GroupBy(ExecutableFunction.GetTargetType)
                 .Where(x=>x.Key != null)
                 .ToArray();
             _staticFunctions = methodInfos.Except(groups.SelectMany(x => x)).ToArray();
@@ -49,74 +49,6 @@ namespace Ceres.Graph.Flow.Utilities
         {
             return type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
                 .Where(methodInfo => methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null);
-        }
-
-        public static bool IsScriptMethod(MethodInfo methodInfo)
-        {
-            if (!methodInfo.IsStatic) return false;
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return false;
-                
-            return methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>().IsScriptMethod;
-        }
-        
-        public static bool CanDisplayTarget(MethodInfo methodInfo)
-        {
-            if (!methodInfo.IsStatic) return false;
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return false;
-
-            var attribute = methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>();
-            if (attribute == null) return false;
-            return attribute.IsScriptMethod && attribute.DisplayTarget;
-        }
-        
-        public static bool IsNeedResolveReturnType(MethodInfo methodInfo)
-        {
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return false;
-            if (methodInfo.ReturnType == typeof(void)) return false;
-                
-            return parameters.Any(x=> CeresMetadata.IsDefined(x, ExecutableFunction.RESOLVE_RETURN));
-        }
-        
-        public static bool IsSelfTarget(MethodInfo methodInfo)
-        {
-            if (!methodInfo.IsStatic) return false;
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return false;
-                
-            var attribute = methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>();
-            if (attribute == null) return false;
-            return attribute.IsSelfTarget;
-        }
-        
-        public static Type GetTargetType(MethodInfo methodInfo)
-        {
-            if (!methodInfo.IsStatic) return null;
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return null;
-
-            if (methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>().IsScriptMethod)
-            {
-                return parameters[0].ParameterType;
-            }
-
-            return null;
-        }
-        
-        public static ParameterInfo GetResolveReturnTypeParameter(MethodInfo methodInfo)
-        {
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return null;
-            
-            return parameters.First(x => CeresMetadata.IsDefined(x, ExecutableFunction.RESOLVE_RETURN));
-        }
-
-        public static string GetFunctionName(MethodInfo methodInfo, bool richText = true)
-        {
-            var labelAttribute = methodInfo.GetCustomAttribute<CeresLabelAttribute>();
-            return labelAttribute != null ? labelAttribute.GetLabel(richText) : methodInfo.Name.Replace("Flow_", string.Empty);
         }
 
         public static ExecutableFunctionRegistry Get()

@@ -1,5 +1,4 @@
 using System;
-using Chris.Serialization;
 namespace Ceres.Graph.Flow.Annotations
 {
     /// <summary>
@@ -12,6 +11,14 @@ namespace Ceres.Graph.Flow.Annotations
         /// Function should use first parameter type as its script type
         /// </summary>
         public bool IsScriptMethod { get; set; }
+        
+        /// <summary>
+        /// Function can be executed in dependency execution path, only support static method
+        /// </summary>
+        /// <remarks>Functions executed in dependency mode should not depend on the execution order
+        /// between nodes, and only execute based on the input values. For functions whose input
+        /// parameters contain reference types, it is more appropriate to use forward path.</remarks>
+        public bool ExecuteInDependency { get; set; }
 
         /// <summary>
         /// Function should display first parameter as method declare type target, need set <see cref="IsScriptMethod"/> first
@@ -21,16 +28,6 @@ namespace Ceres.Graph.Flow.Annotations
         /// <summary>
         /// Function first parameter that should pass graph context object as default value
         /// </summary>
-        public bool IsSelfTarget { get; set; } = false;
-    }
-    
-    
-    public static class ExecutableFunction
-    {
-        // ReSharper disable once InconsistentNaming
-        /// <summary>
-        /// Metadata for function parameter to resolve return type, only support <see cref="SerializedType{T}"/>
-        /// </summary>
-        public const string RESOLVE_RETURN = nameof(RESOLVE_RETURN);
+        public bool IsSelfTarget { get; set; }
     }
 }

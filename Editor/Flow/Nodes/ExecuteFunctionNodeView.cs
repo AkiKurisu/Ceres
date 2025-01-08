@@ -18,6 +18,8 @@ namespace Ceres.Editor.Graph.Flow
         
         protected bool IsScriptMethod { get; private set; }
         
+        protected bool ExecuteInDependency { get; private set; }
+        
         protected bool DisplayTarget { get; private set; }
         
         protected bool IsSelfTarget { get; private set; }
@@ -28,12 +30,13 @@ namespace Ceres.Editor.Graph.Flow
             MethodInfo = methodInfo;
             MethodName = methodInfo.Name;
             IsStatic = methodInfo.IsStatic;
-            IsScriptMethod = ExecutableFunctionRegistry.IsScriptMethod(methodInfo);
-            DisplayTarget = ExecutableFunctionRegistry.CanDisplayTarget(methodInfo);
-            IsSelfTarget = ExecutableFunctionRegistry.IsSelfTarget(methodInfo);
-            SetNodeElementTitle(ExecutableFunctionRegistry.GetFunctionName(methodInfo));
+            IsScriptMethod = ExecutableFunction.IsScriptMethod(methodInfo);
+            ExecuteInDependency = ExecutableFunction.ExecuteInDependency(methodInfo);
+            DisplayTarget = ExecutableFunction.CanDisplayTarget(methodInfo);
+            IsSelfTarget = ExecutableFunction.IsSelfTarget(methodInfo);
+            SetNodeElementTitle(ExecutableFunction.GetFunctionName(methodInfo));
             FillMethodParametersPorts(methodInfo);
-            if (ExecutableFunctionRegistry.IsNeedResolveReturnType(methodInfo))
+            if (ExecutableFunction.IsNeedResolveReturnType(methodInfo))
             {
                 ResolveMethodReturnPort(methodInfo);
             }
@@ -41,11 +44,16 @@ namespace Ceres.Editor.Graph.Flow
             {
                 NodeElement.AddToClassList("ConstNode");
             }
+            if (ExecuteInDependency)
+            {
+                FindPortView("input").HidePort();
+                FindPortView("exec").HidePort();
+            }
         }
 
         private void ResolveMethodReturnPort(MethodInfo methodInfo)
         {
-            var resolveParameter = ExecutableFunctionRegistry.GetResolveReturnTypeParameter(methodInfo);
+            var resolveParameter = ExecutableFunction.GetResolveReturnTypeParameter(methodInfo);
             var portView = FindPortViewWithDisplayName(CeresLabel.GetLabel(resolveParameter.Name));
             var returnPortView = FindPortView("output");
             var currentType = (portView.FieldResolver.Value as SerializedTypeBase)?.GetObjectType();
@@ -62,7 +70,7 @@ namespace Ceres.Editor.Graph.Flow
             var targetType = NodeType.GetGenericArguments()[0];
             if (MethodInfo != null)
             {
-                targetType = ExecutableFunctionRegistry.GetTargetType(MethodInfo) ?? NodeType.GetGenericArguments()[0];
+                targetType = ExecutableFunction.GetTargetType(MethodInfo) ?? NodeType.GetGenericArguments()[0];
             }
             if(!IsStatic || DisplayTarget)
             {
@@ -102,6 +110,7 @@ namespace Ceres.Editor.Graph.Flow
                 IsStatic = functionNode.isStatic;
                 IsScriptMethod = functionNode.isScriptMethod;
                 IsSelfTarget = functionNode.isSelfTarget;
+                ExecuteInDependency = functionNode.executeInDependency;
                 SetNodeElementTitle(functionNode.methodName);
             }
             else
@@ -118,6 +127,7 @@ namespace Ceres.Editor.Graph.Flow
             instance.isStatic = IsStatic;
             instance.isScriptMethod = IsScriptMethod;
             instance.isSelfTarget = IsSelfTarget;
+            instance.executeInDependency = ExecuteInDependency;
             return instance;
         }
 
@@ -167,17 +177,17 @@ namespace Ceres.Editor.Graph.Flow
             }
             if (DisplayTarget)
             {
-                FindPortView("inputs", 0).SetDisplayName("Target");
+                FindPortView("inputs").SetDisplayName("Target");
             }
             if (IsSelfTarget)
             {
-                FindPortView("inputs", 0).SetTooltip(" [Default is Self]");
+                FindPortView("inputs").SetTooltip(" [Default is Self]");
             }
             
             var output = methodInfo.ReturnParameter;
             if (output!.ParameterType == typeof(void)) return;
             
-            var outputPortData = new CeresPortData()
+            var outputPortData = new CeresPortData
             {
                 /* Remap to actual property */
                 propertyName = "outputs",

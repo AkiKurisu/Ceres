@@ -135,9 +135,18 @@ namespace Ceres.Graph
         {
             /* Allows polymorphic serialization */
             var data = NodeData.Clone();
-            data.executionPath = GetExecutionPath(GetType());
+            data.executionPath = GetExecutionPath();
             data.Serialize(this);
             return data;
+        }
+
+        /// <summary>
+        /// Get node instance execution path
+        /// </summary>
+        /// <returns></returns>
+        public virtual ExecutionPath GetExecutionPath()
+        {
+            return GetExecutionPath(GetType());
         }
         
         public virtual IEnumerator<CeresNode> GetEnumerator()
@@ -159,12 +168,12 @@ namespace Ceres.Graph
                 return ExecutionPath.Forward;
             }
 
-            var path = paths[0];
-            if (path is "Forward" or "forward")
+            var path = paths[0].ToLower();
+            if (path == "forward")
             {
                 return ExecutionPath.Forward;
             }
-            if (path is "Dependency" or "dependency")
+            if (path == "dependency")
             {
                 return ExecutionPath.Dependency;
             }

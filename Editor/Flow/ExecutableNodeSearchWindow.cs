@@ -252,7 +252,7 @@ namespace Ceres.Editor.Graph.Flow
                 builder.AddGroupEntry("Execute Functions", 1);
                 foreach (var method in methods)
                 {
-                    var functionName = ExecutableFunctionRegistry.GetFunctionName(method, false);
+                    var functionName = ExecutableFunction.GetFunctionName(method, false);
                     builder.AddEntry(new SearchTreeEntry(new GUIContent($"{functionName}", _indentationIcon))
                     {
                         level = 2, 

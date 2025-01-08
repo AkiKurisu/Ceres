@@ -134,13 +134,13 @@ namespace Ceres.Graph
         protected virtual void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             evt.menu.ClearItems();
-            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Disconnect", a =>
+            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Disconnect", _ =>
             {
                 var edge = connections.First();
                 edge.input.Disconnect(edge);
                 edge.output.Disconnect(edge);
                 View.NodeOwner.GraphView.DeleteElements(new []{ edge });
-            }, a => connections.Any() ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Hidden));
+            }, _ => connections.Any() ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Hidden));
             View.NodeOwner.GraphView.ContextualMenuRegistry.BuildContextualMenu(ContextualMenuType.Port, evt, portType);
         }
 
@@ -176,6 +176,8 @@ namespace Ceres.Graph
 
         public bool IsConnectable()
         {
+            /* Can not connect when invisible */
+            if (style.display == DisplayStyle.None) return false;
             return !connected || capacity != Capacity.Single;
         }
 
@@ -578,6 +580,16 @@ namespace Ceres.Graph
         public static void HidePort(this CeresPortView portView)
         {
             portView.PortElement.style.display = DisplayStyle.None;
+        }
+        
+        /// <summary>
+        /// Whether port is visible
+        /// </summary>
+        /// <param name="portView"></param>
+        /// <returns></returns>
+        public static bool IsVisible(this CeresPortView portView)
+        {
+            return portView.PortElement.style.display == DisplayStyle.Flex;
         }
     }
 }

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
-using UnityEngine;
-using UnityEngine.Assertions;
-
+using Ceres.Annotations;
+using Ceres.Graph.Flow.Annotations;
+using Chris.Serialization;
 namespace Ceres.Graph.Flow
 {
     public enum ExecutableFunctionType
@@ -53,6 +54,89 @@ namespace Ceres.Graph.Flow
         }
     }
 
+    public class ExecutableFunction
+    {
+        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Metadata for function parameter to resolve return type, only support <see cref="SerializedType{T}"/>
+        /// </summary>
+        public const string RESOLVE_RETURN = nameof(RESOLVE_RETURN);
+        
+        public static bool IsScriptMethod(MethodInfo methodInfo)
+        {
+            if (!methodInfo.IsStatic) return false;
+            var parameters = methodInfo.GetParameters();
+            if (parameters.Length < 1) return false;
+                
+            return methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>().IsScriptMethod;
+        }
+        
+        public static bool ExecuteInDependency(MethodInfo methodInfo)
+        {
+            if (!methodInfo.IsStatic) return false;
+            return methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>().ExecuteInDependency;
+        }
+        
+        public static bool CanDisplayTarget(MethodInfo methodInfo)
+        {
+            if (!methodInfo.IsStatic) return false;
+            var parameters = methodInfo.GetParameters();
+            if (parameters.Length < 1) return false;
+
+            var attribute = methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>();
+            if (attribute == null) return false;
+            return attribute.IsScriptMethod && attribute.DisplayTarget;
+        }
+        
+        public static bool IsNeedResolveReturnType(MethodInfo methodInfo)
+        {
+            var parameters = methodInfo.GetParameters();
+            if (parameters.Length < 1) return false;
+            if (methodInfo.ReturnType == typeof(void)) return false;
+                
+            return parameters.Any(x=> CeresMetadata.IsDefined(x, ExecutableFunction.RESOLVE_RETURN));
+        }
+        
+        public static bool IsSelfTarget(MethodInfo methodInfo)
+        {
+            if (!methodInfo.IsStatic) return false;
+            var parameters = methodInfo.GetParameters();
+            if (parameters.Length < 1) return false;
+                
+            var attribute = methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>();
+            if (attribute == null) return false;
+            return attribute.IsSelfTarget;
+        }
+        
+        public static Type GetTargetType(MethodInfo methodInfo)
+        {
+            if (!methodInfo.IsStatic) return null;
+            var parameters = methodInfo.GetParameters();
+            if (parameters.Length < 1) return null;
+
+            if (methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>().IsScriptMethod)
+            {
+                return parameters[0].ParameterType;
+            }
+
+            return null;
+        }
+        
+        public static ParameterInfo GetResolveReturnTypeParameter(MethodInfo methodInfo)
+        {
+            var parameters = methodInfo.GetParameters();
+            if (parameters.Length < 1) return null;
+            
+            return parameters.First(x => CeresMetadata.IsDefined(x, ExecutableFunction.RESOLVE_RETURN));
+        }
+
+        public static string GetFunctionName(MethodInfo methodInfo, bool richText = true)
+        {
+            var labelAttribute = methodInfo.GetCustomAttribute<CeresLabelAttribute>();
+            return labelAttribute != null ? labelAttribute.GetLabel(richText) : methodInfo.Name.Replace("Flow_", string.Empty);
+        }
+    }
+
     public readonly struct ExecutableFunctionInfo: IEquatable<ExecutableFunctionInfo>
     {
         public readonly ExecutableFunctionType FunctionType;
@@ -89,7 +173,7 @@ namespace Ceres.Graph.Flow
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ExecutableReflection<TTarget>: ExecutableReflection
     {
-        public class ExecutableFunction
+        public class ExecutableFunction: Flow.ExecutableFunction
         {
             public readonly ExecutableFunctionInfo FunctionInfo;
 

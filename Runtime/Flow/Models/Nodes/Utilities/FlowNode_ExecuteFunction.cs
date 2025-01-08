@@ -15,6 +15,9 @@ namespace Ceres.Graph.Flow.Utilities
         public bool isStatic;
         
         [HideInGraphEditor] 
+        public bool executeInDependency;
+        
+        [HideInGraphEditor] 
         public bool isSelfTarget;
         
         [HideInGraphEditor] 
@@ -71,6 +74,11 @@ namespace Ceres.Graph.Flow.Utilities
                 return tmpTarget;
             }
             return inputPort.Value;
+        }
+
+        public override ExecutionPath GetExecutionPath()
+        {
+            return executeInDependency ? ExecutionPath.Dependency : ExecutionPath.Forward;
         }
     }
     
