@@ -5,8 +5,6 @@ using System.Linq;
 using System.Reflection;
 using Chris;
 using Chris.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Pool;
@@ -517,10 +515,8 @@ namespace Ceres.Graph
         [SerializeReference]
         public CeresNode[] nodes;
         
-        [SerializeField]
         public CeresNodeData[] nodeData;
         
-        [SerializeField]
         public NodeGroup[] nodeGroups;
 
         private NodeAPIUpdateConfig _config;
@@ -552,7 +548,7 @@ namespace Ceres.Graph
                 if (redirectedType != null)
                 {
                     CeresGraph.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
-                    nodes[index] = (CeresNode)Deserialize(nodeData[index].serializedData, redirectedType);
+                    nodes[index] = nodeData[index].Deserialize(redirectedType);
                 }
             }
 
@@ -582,7 +578,7 @@ namespace Ceres.Graph
                 var parameterTypes = nodeData[index].genericParameters.Select(SerializedType.FromString)
                     .ToArray();
                 var genericType = genericTypeDefinition.MakeGenericType(parameterTypes);
-                nodes[index] = (CeresNode)Deserialize(nodeData[index].serializedData, genericType);
+                nodes[index] = nodeData[index].Deserialize(genericType);
                 return true;
             }
             catch(Exception e)
@@ -641,7 +637,7 @@ namespace Ceres.Graph
         /// <returns></returns>
         public string ToJson(bool indented = false)
         {
-            return Serialize(this, indented);
+            return JsonUtility.ToJson(this, indented);
         }
 
         /// <summary>
@@ -651,71 +647,7 @@ namespace Ceres.Graph
         /// <returns></returns>
         public static T FromJson<T>(string serializedData) where T: CeresGraphData
         {
-            return Deserialize(serializedData, typeof(T)) as T;
-        }
-        
-        /// <summary>
-        /// Serialize json smarter in editor
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="indented"></param>
-        /// <returns></returns>
-        public static string Serialize(object data, bool indented = false)
-        {
-            if (data == null) return null;
-            string json = JsonUtility.ToJson(data, indented);
-#if UNITY_EDITOR
-            var obj = JObject.Parse(json);
-            foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
-            {
-                if (prop.Name != "instanceID") continue;
-                string propertyName = prop.Name;
-                if (prop.Parent?.Parent != null) propertyName = (prop.Parent?.Parent as JProperty)?.Name;
-                var uObject = UnityEditor.EditorUtility.InstanceIDToObject((int)prop.Value);
-                if (uObject == null) continue;
-                string guid = UnityEditor.AssetDatabase.AssetPathToGUID(UnityEditor.AssetDatabase.GetAssetPath(uObject));
-                if (string.IsNullOrEmpty(guid))
-                {
-                    CeresGraph.LogWarning($"Can't serialize {propertyName} {uObject} in a Scene.");
-                    continue;
-                }
-                // Convert instance id to guid
-                prop.Value = guid;
-            }
-            return obj.ToString(indented ? Formatting.Indented : Formatting.None);
-#else
-            return json;
-#endif
-        }
-        
-        /// <summary>
-        /// Deserialize <see cref="CeresGraphData"/> from json
-        /// </summary>
-        /// <param name="serializedData"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public static object Deserialize(string serializedData, Type type)
-        {
-#if UNITY_EDITOR
-            if (!string.IsNullOrEmpty(serializedData))
-            {
-                var obj = JObject.Parse(serializedData);
-                foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
-                {
-                    if (prop.Name != "instanceID") continue;
-                    var uObject = UnityEditor.AssetDatabase.LoadAssetAtPath<UObject>(UnityEditor.AssetDatabase.GUIDToAssetPath((string)prop.Value));
-                    if (uObject == null)
-                    {
-                        prop.Value = 0;
-                        continue;
-                    }
-                    // Convert guid to instance id
-                    prop.Value = uObject.GetInstanceID();
-                }
-                return JsonUtility.FromJson(obj.ToString(Formatting.Indented), type);
-            }
-#endif
-            return JsonUtility.FromJson(serializedData, type);
+            return JsonUtility.FromJson<T>(serializedData);
         }
     }
 
