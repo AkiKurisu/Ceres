@@ -92,7 +92,7 @@ namespace Ceres.Utilities
         }
 
         /// <summary>
-        /// Determines whether current type can be assigned to another instance of type in Ceres.Graph.
+        /// Determines whether current type can be assigned to another instance of type
         /// </summary>
         /// <param name="type"></param>
         /// <param name="other"></param>

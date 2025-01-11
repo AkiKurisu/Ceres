@@ -250,7 +250,7 @@ namespace Ceres.Editor.Graph
             if(portView == null) return false;
             if (!portView.PortElement.IsConnectable()) return false;
             if(nodeView is not CeresNodeView ceresNodeView) return false;
-            var receivePort = ceresNodeView.FindCompatiblePortView(portView);
+            var receivePort = ceresNodeView.FindConnectablePortView(portView);
             if (receivePort == null)
             {
                 return false;

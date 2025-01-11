@@ -185,7 +185,7 @@ namespace Ceres.Editor.Graph
         /// </summary>
         /// <param name="portView"></param>
         /// <returns></returns>
-        public CeresPortView FindCompatiblePortView(CeresPortView portView)
+        public CeresPortView FindConnectablePortView(CeresPortView portView)
         {
             return PortViews.FirstOrDefault(x => x.PortElement.CanConnect(portView.PortElement));
         }

@@ -4,7 +4,6 @@ using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Chris.Serialization;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph.Flow
@@ -13,13 +12,15 @@ namespace Ceres.Editor.Graph.Flow
     {
         protected MethodInfo MethodInfo { get; private set; }
         
+        protected bool IsImplementable { get; private set; }
+        
         protected string MethodName { get; private set; }
         
         private StringResolver _eventNameResolver;
 
         private bool _editMode;
-        
-        public ExecutableEventNodeView(Type type, CeresGraphView graphView)
+
+        protected ExecutableEventNodeView(Type type, CeresGraphView graphView)
         {
             Initialize(type, graphView);
             SetupNodeElement(new ExecutableNodeElement(this));
@@ -32,31 +33,35 @@ namespace Ceres.Editor.Graph.Flow
         {
             var eventNode = (ExecutableEvent)ceresNode;
             base.SetNodeInstance(eventNode);
-            /* Update title */
-            UpdateEventTitle();
-
-            
-            if(eventNode.isImplementable)
+            IsImplementable = eventNode.isImplementable;
+            if(IsImplementable)
             {
                 var methodInfo = GetContainerType().GetMethod(eventNode.eventName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 if (methodInfo == null)
                 {
-                    CeresGraph.LogWarning($"{eventNode.eventName} is not a implementable event of {GetContainerType().Name}");
+                    CeresGraph.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
                     return;
                 }
                 SetMethodInfo(methodInfo);
             }
+            UpdateEventTitle();
         }
 
-        protected virtual void UpdateEventTitle()
+        protected void UpdateEventTitle()
         {
-            NodeElement.title = $"Event {_eventNameResolver.BaseField.value}";
+            string label = "Event " + GetEventName();
+            if(IsImplementable)
+            {
+                label += CeresNode.GetTargetSubtitle(GetContainerType().Name);
+            }
+            NodeElement.title = label;
         }
         
         public void SetMethodInfo(MethodInfo methodInfo)
         {
             Assert.IsNotNull(methodInfo);
             MethodInfo = methodInfo;
+            IsImplementable = true;
             MethodName = methodInfo.Name;
             NodeElement.AddToClassList("ImplementableEvent");
             SetEventName(MethodName);
@@ -133,10 +138,7 @@ namespace Ceres.Editor.Graph.Flow
         public override ExecutableNode CompileNode()
         {
             var node = (ExecutableEvent)base.CompileNode();
-            if(MethodInfo != null)
-            {
-                node.isImplementable = true;
-            }
+            node.isImplementable = IsImplementable;
             return node;
         }
 
@@ -173,13 +175,6 @@ namespace Ceres.Editor.Graph.Flow
         public ExecutionEventUberNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
             
-        }
-
-        protected override void UpdateEventTitle()
-        {
-            string label = "Event " + GetEventName();
-            label += CeresNode.GetTargetSubtitle(GetContainerType().Name);
-            NodeElement.title = label;
         }
 
         public override ExecutableNode CompileNode()

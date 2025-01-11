@@ -100,7 +100,7 @@ namespace Ceres.Graph
             {
                 edgesToCreate = graphView.graphViewChanged(_graphViewChange).edgesToCreate;
             }
-            foreach (Edge edgeToCreate in edgesToCreate)
+            foreach (var edgeToCreate in edgesToCreate)
             {
                 graphView.AddElement(edgeToCreate);
                 edgeToCreate.input.Connect(edgeToCreate);
@@ -174,6 +174,10 @@ namespace Ceres.Graph
             return view;
         }
 
+        /// <summary>
+        /// Whether this can connect other ports
+        /// </summary>
+        /// <returns></returns>
         public bool IsConnectable()
         {
             /* Can not connect when invisible */
@@ -181,11 +185,21 @@ namespace Ceres.Graph
             return !connected || capacity != Capacity.Single;
         }
 
+        /// <summary>
+        /// Whether this can connect other port with value compatible validation
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool CanConnect(CeresPortElement other)
         {
             return IsConnectable() && IsCompatible(other);
         }
         
+        /// <summary>
+        /// Whether this port's value is compatible to other port's value
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool IsCompatible(CeresPortElement other)
         {
             if (other.direction == direction) return false;
@@ -523,7 +537,7 @@ namespace Ceres.Graph
             }
             else
             {
-                CeresGraph.LogWarning($"Only can remap from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
+                CeresGraph.LogWarning($"Port can only be remapped from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
             }
         }
 

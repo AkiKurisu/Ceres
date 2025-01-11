@@ -223,9 +223,11 @@ namespace Ceres.Editor.Graph.Flow
                 return;
             }
             int parametersLength = parameterType.GetGenericArguments().Length;
-            if (parametersLength == 0 || parametersLength > 4)
+            const int maxParameters = 6;
+            if (parametersLength > maxParameters)
             {
-                /* Only support generic version */
+                /* Not support uber version */
+                CeresGraph.LogWarning($"Event delegate not support arguments out range of {maxParameters}");
                 return;
             }
             builder.AddGroupEntry("Select Events", 1);
