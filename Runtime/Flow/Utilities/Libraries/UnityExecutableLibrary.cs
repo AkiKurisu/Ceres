@@ -10,7 +10,8 @@ namespace Ceres.Graph.Flow.Utilities
     /// Executable function library for Unity built-in types
     /// </summary>
     [Preserve]
-    public class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
+    [FormerlySerializedType("Ceres.Graph.Flow.Utilities.UnityExecutableFunctionLibrary, Ceres")]
+    public class UnityExecutableLibrary: ExecutableFunctionLibrary
     {
         #region UObject
         
