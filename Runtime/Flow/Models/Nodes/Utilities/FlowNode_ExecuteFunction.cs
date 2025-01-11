@@ -41,9 +41,9 @@ namespace Ceres.Graph.Flow.Utilities
             }
             
             bool isNull;
-            if(CeresPort<TValue>.GetValueType() == typeof(UObject))
+            if(inputPort.Value is UObject value)
             {
-                isNull = !(inputPort.Value as UObject);
+                isNull = !value;
             }
             else
             {
@@ -60,9 +60,9 @@ namespace Ceres.Graph.Flow.Utilities
         protected TValue GetSelfTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
         {
             bool isNull;
-            if(CeresPort<TValue>.GetValueType() == typeof(UObject))
+            if(inputPort.Value is UObject value)
             {
-                isNull = !(inputPort.Value as UObject);
+                isNull = !value;
             }
             else
             {

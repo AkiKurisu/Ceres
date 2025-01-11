@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
-using Ceres.Utilities;
 using Ceres.Editor;
 using Ceres.Editor.Graph;
 using Chris;
 using Chris.Serialization;
+using R3;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -160,7 +160,7 @@ namespace Ceres.Graph
                                             ownerView.Binding.GetCapacity(), valueType) 
             {
                 m_EdgeConnector = new EdgeConnector<CeresEdge>(new CeresEdgeListener(ownerView.NodeOwner.GraphView)),
-                portName = ownerView.Binding.DisplayName,
+                portName = ownerView.Binding.DisplayName.Value,
                 View = ownerView
             };
             view.AddManipulator(view.m_EdgeConnector);
@@ -192,7 +192,7 @@ namespace Ceres.Graph
         /// <returns></returns>
         public bool CanConnect(CeresPortElement other)
         {
-            return IsConnectable() && IsCompatible(other);
+            return IsConnectable() && IsCompatibleTo(other);
         }
         
         /// <summary>
@@ -200,15 +200,15 @@ namespace Ceres.Graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool IsCompatible(CeresPortElement other)
+        public bool IsCompatibleTo(CeresPortElement other)
         {
             if (other.direction == direction) return false;
             if (other.portType == portType) return true;
             if (direction == Direction.Input)
             {
-                return portType.IsAssignableFrom(other.portType);
+                return other.View.Binding.IsCompatibleTo(portType);
             }
-            return portType.IsAssignableTo(other.portType);
+            return View.Binding.IsCompatibleTo(other.portType);
         }
 
         public void SetEditorFieldVisible(bool isVisible)
@@ -259,64 +259,69 @@ namespace Ceres.Graph
         public ParameterInfo ResolvedParameterInfo { get; private set; }
 
         public PortBindingType BindingType { get; private set; }
+        
+        public ReactiveProperty<Type> DisplayType { get; }
 
-        private string _displayName;
+        public ReactiveProperty<string> DisplayName { get; }
 
-        public string DisplayName
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_displayName))
-                {
-                    _displayName = GetDisplayName();
-                }
-                return _displayName;
-            }
-            internal set => _displayName = value;
-        }
-
-        public Type DisplayType { get; internal set; }
-
-        public string Tooltip { get; set; } = string.Empty;
+        public Type CeresPortType { get; private set; }
+        
+        public ReactiveProperty<string> Tooltip { get; } = new(string.Empty);
 
         private const string DefaultOutputPortName = "Return Value";
 
-        public static CeresPortViewBinding BindField(FieldInfo portFieldInfo, 
-                                                     FieldInfo resolvedFieldInfo = null)
+        public CeresPortViewBinding(string defaultDisplayName, Type defaultDisplayType)
         {
-            return new CeresPortViewBinding
+            DisplayName = new ReactiveProperty<string>(defaultDisplayName);
+            DisplayType = new ReactiveProperty<Type>(defaultDisplayType);
+            DisplayType.Subscribe(x =>
+            {
+                CeresPortType = typeof(CeresPort<>).MakeGenericType(x);
+                CeresPort.AssignValueType(x);
+                Tooltip.OnNext(Tooltip.Value);
+            });
+        }
+        
+        public void BindView(CeresPortElement portElement)
+        {
+            DisplayType.Subscribe(x =>
+            {
+                portElement.portType = x;
+            });
+            DisplayName.Subscribe(x => portElement.portName = x);
+            Tooltip.Subscribe(x => portElement.tooltip = CeresPortElement.CreatePortTooltip(DisplayType.Value) + x);
+        }
+
+        public static CeresPortViewBinding BindField(CeresPortData portData, FieldInfo portFieldInfo, FieldInfo resolvedFieldInfo = null)
+        {
+            resolvedFieldInfo ??= portFieldInfo;
+            return new CeresPortViewBinding(CeresLabel.GetLabel(resolvedFieldInfo), portData.GetValueType())
             {
                 PortFieldInfo = portFieldInfo,
-                ResolvedFieldInfo = resolvedFieldInfo ?? portFieldInfo,
+                ResolvedFieldInfo = resolvedFieldInfo,
                 BindingType = PortBindingType.Field
             };
         }
         
-        public static CeresPortViewBinding BindParameter(FieldInfo portFieldInfo, ParameterInfo parameterInfo)
+        public static CeresPortViewBinding BindParameter(CeresPortData portData, FieldInfo portFieldInfo, ParameterInfo parameterInfo)
         {
-            return new CeresPortViewBinding
+            string displayName;
+            /* Case when parameter is return parameter */
+            if(string.IsNullOrEmpty(parameterInfo.Name))
+            {
+                displayName = DefaultOutputPortName;
+            }
+            else
+            {
+               
+                displayName = CeresLabel.GetLabel(parameterInfo.Name); 
+            }
+            return new CeresPortViewBinding(displayName, portData.GetValueType())
             {
                 PortFieldInfo = portFieldInfo,
                 ResolvedParameterInfo = parameterInfo,
-                BindingType = PortBindingType.Parameter,
-                DisplayType = parameterInfo.ParameterType
+                BindingType = PortBindingType.Parameter
             };
-        }
-        
-        private string GetDisplayName()
-        {
-            if (BindingType == PortBindingType.Parameter)
-            {
-                /* Case when parameter is return parameter */
-                if(string.IsNullOrEmpty(ResolvedParameterInfo.Name))
-                {
-                    DisplayName = DefaultOutputPortName;
-                    return DisplayName;
-                }
-                return DisplayName = CeresLabel.GetLabel(ResolvedParameterInfo.Name);
-            }
-            
-            return DisplayName = CeresLabel.GetLabel(ResolvedFieldInfo);
         }
         
         public Direction GetDirection()
@@ -335,6 +340,11 @@ namespace Ceres.Graph
             return outputPort?.AllowMulti ?? true ? Port.Capacity.Multi : Port.Capacity.Single;
         }
 
+        public bool IsCompatibleTo(Type type)
+        {
+            return CeresPort.IsCompatibleTo(DisplayType.Value, type);
+        }
+        
         public bool IsRemappedFieldPort()
         {
             return BindingType == PortBindingType.Field && PortFieldInfo != ResolvedFieldInfo;
@@ -378,7 +388,7 @@ namespace Ceres.Graph
 
         public void SetValue(CeresNode nodeInstance, CeresPort portInstance)
         {
-            if(BindingType!=PortBindingType.Field) return;
+            if(BindingType != PortBindingType.Field) return;
             
             ResolvedFieldInfo.SetValue(nodeInstance, portInstance);
         }
@@ -410,8 +420,9 @@ namespace Ceres.Graph
         {
             PortData = portData;
             Binding = binding;
-            Binding.DisplayType = portData.GetValueType();
             NodeOwner = nodeView;
+            
+            /* Create editor field */
             bool isInput = binding.GetDirection() == Direction.Input && !binding.IsRemappedFieldPort();
             if(isInput && !binding.IsHideInGraphEditor() && IsPortSupportValueField(portData.GetValueType()))
             {
@@ -421,7 +432,10 @@ namespace Ceres.Graph
             {
                 FieldResolver = null;
             }
+            
+            /* Bind visual element */
             PortElement = CeresPortElement.Create(this);
+            Binding.BindView(PortElement);
         }
 
         private static bool IsPortSupportValueField(Type type)
@@ -543,19 +557,17 @@ namespace Ceres.Graph
 
         public void SetDisplayName(string displayName)
         {
-            Binding.DisplayName = PortElement.portName = CeresLabel.GetLabel(displayName);
+            Binding.DisplayName.Value = CeresLabel.GetLabel(displayName);
         }
         
         public void SetTooltip(string tooltip)
         {
-            Binding.Tooltip = PortElement.tooltip = CeresPortElement.CreatePortTooltip(Binding.DisplayType) + tooltip;
+            Binding.Tooltip.Value = tooltip;
         }
         
         public void SetDisplayType(Type displayType)
         {
-            Binding.DisplayType = PortElement.portType = displayType;
-            CeresPort.AssignValueType(displayType);
-            SetTooltip(Binding.Tooltip);
+            Binding.DisplayType.Value = displayType;
         }
     }
 
@@ -564,24 +576,24 @@ namespace Ceres.Graph
         public static CeresPortView CreateInstance(FieldInfo fieldInfo, CeresNodeView nodeView, CeresPortData portData = null)
         {
             Assert.IsNotNull(fieldInfo);
-            return new CeresPortView(CeresPortViewBinding.BindField(fieldInfo), nodeView, 
-                portData ?? CeresPortData.FromFieldInfo(fieldInfo));
+            portData ??= CeresPortData.FromFieldInfo(fieldInfo);
+            return new CeresPortView(CeresPortViewBinding.BindField(portData, fieldInfo), nodeView, portData);
         }
         
         public static CeresPortView CreateInstance(FieldInfo portFieldInfo, FieldInfo valueFieldInfo, CeresNodeView nodeView, CeresPortData portData = null)
         {
             Assert.IsNotNull(portFieldInfo);
             Assert.IsNotNull(valueFieldInfo);
-            return new CeresPortView(CeresPortViewBinding.BindField(portFieldInfo, valueFieldInfo), 
-                nodeView, portData ?? CeresPortData.FromFieldInfo(valueFieldInfo));
+            portData ??= CeresPortData.FromFieldInfo(valueFieldInfo);
+            return new CeresPortView(CeresPortViewBinding.BindField(portData, portFieldInfo, valueFieldInfo), nodeView, portData);
         }
         
         public static CeresPortView CreateInstance(FieldInfo portFieldInfo, ParameterInfo parameterInfo, CeresNodeView nodeView, CeresPortData portData = null)
         {
             Assert.IsNotNull(portFieldInfo);
             Assert.IsNotNull(parameterInfo);
-            return new CeresPortView(CeresPortViewBinding.BindParameter(portFieldInfo, parameterInfo), 
-                nodeView, portData ?? CeresPortData.FromParameterInfo(parameterInfo));
+            portData ??= CeresPortData.FromParameterInfo(parameterInfo);
+            return new CeresPortView(CeresPortViewBinding.BindParameter(portData, portFieldInfo, parameterInfo), nodeView, portData);
         }
     }
 

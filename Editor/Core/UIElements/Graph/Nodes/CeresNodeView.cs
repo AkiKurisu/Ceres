@@ -166,7 +166,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public CeresPortView FindPortViewWithDisplayName(string displayName, int portIndex = 0)
         {
-            return PortViews.FirstOrDefault(x => x.Binding.DisplayName == displayName && x.PortData.arrayIndex == portIndex);
+            return PortViews.FirstOrDefault(x => x.Binding.DisplayName.Value == displayName && x.PortData.arrayIndex == portIndex);
         }
         
         /// <summary>
@@ -177,7 +177,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public CeresPortView FindPortViewWithDisplayType(Type displayType, int portIndex = 0)
         {
-            return PortViews.FirstOrDefault(x => x.Binding.DisplayType == displayType && x.PortData.arrayIndex == portIndex);
+            return PortViews.FirstOrDefault(x => x.Binding.DisplayType.Value == displayType && x.PortData.arrayIndex == portIndex);
         }
 
         /// <summary>
