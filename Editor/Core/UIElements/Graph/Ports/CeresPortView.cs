@@ -265,9 +265,6 @@ namespace Ceres.Graph
         public ReactiveProperty<string> DisplayName { get; }
 
         public Type CeresPortType { get; private set; }
-
-        /* CeresPort<T>.IsCompatibleTo */
-        private Func<Type, bool> _compatibleFunc;
         
         public ReactiveProperty<string> Tooltip { get; } = new(string.Empty);
 
@@ -282,9 +279,6 @@ namespace Ceres.Graph
                 CeresPortType = typeof(CeresPort<>).MakeGenericType(x);
                 CeresPort.AssignValueType(x);
                 Tooltip.OnNext(Tooltip.Value);
-                _compatibleFunc = (Func<Type, bool>)CeresPortType
-                    .GetMethod("IsCompatibleTo", BindingFlags.Public | BindingFlags.Static)!
-                    .CreateDelegate(typeof(Func<Type, bool>));
             });
         }
         
@@ -293,7 +287,6 @@ namespace Ceres.Graph
             DisplayType.Subscribe(x =>
             {
                 portElement.portType = x;
-                CeresPortType = typeof(CeresPort<>).MakeGenericType(x);
             });
             DisplayName.Subscribe(x => portElement.portName = x);
             Tooltip.Subscribe(x => portElement.tooltip = CeresPortElement.CreatePortTooltip(DisplayType.Value) + x);
@@ -321,7 +314,7 @@ namespace Ceres.Graph
             else
             {
                
-                displayName = CeresLabel.GetLabel(parameterInfo.Name);; 
+                displayName = CeresLabel.GetLabel(parameterInfo.Name); 
             }
             return new CeresPortViewBinding(displayName, portData.GetValueType())
             {
@@ -349,7 +342,7 @@ namespace Ceres.Graph
 
         public bool IsCompatibleTo(Type type)
         {
-            return _compatibleFunc(type);
+            return CeresPort.IsCompatibleTo(DisplayType.Value, type);
         }
         
         public bool IsRemappedFieldPort()

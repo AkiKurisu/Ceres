@@ -24,6 +24,13 @@ namespace Ceres.Graph
     /// </summary>
     public abstract class CeresPort: IPort
     {
+        protected class PortCompatibleStructure
+        {
+            public readonly HashSet<Type> CompatibleTypes = new();
+        
+            public readonly Dictionary<Type, Func<IPort, IPort>> AdapterCreateFunc = new();
+        }
+        
         /// <summary>
         /// Link another <see cref="CeresPort"/> in forward path
         /// </summary>
@@ -49,19 +56,48 @@ namespace Ceres.Graph
 
         private static readonly HashSet<Type> PortValueTypeSet = new();
 
+        private static readonly Dictionary<Type, PortCompatibleStructure> CompatibleStructures = new();
+
         public static void AssignValueType<T>()
         {
-            PortValueTypeSet.Add(typeof(T));
+            if(PortValueTypeSet.Add(typeof(T)))
+            {
+                CompatibleStructures.Add(typeof(T), new PortCompatibleStructure());
+            }
         }
         
         public static void AssignValueType(Type type)
         {
-            PortValueTypeSet.Add(type);
+            if(PortValueTypeSet.Add(type))
+            {
+                CompatibleStructures.Add(type, new PortCompatibleStructure());
+            }
         }
 
         public static Type[] GetAssignedPortValueTypes()
         {
             return PortValueTypeSet.ToArray();
+        }
+
+        protected static PortCompatibleStructure GetCompatibleStructure(Type type)
+        {
+            return CompatibleStructures.GetValueOrDefault(type);
+        }
+        
+        /// <summary>
+        /// Whether port value type is compatible to another
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        public static bool IsCompatibleTo(Type from, Type to)
+        {
+            var structure = GetCompatibleStructure(from);
+            if (structure == null)
+            {
+                return from.IsAssignableTo(to);
+            }
+            return structure.CompatibleTypes.Contains(to) || from.IsAssignableTo(to);
         }
 
         public abstract Type GetValueType();
@@ -78,9 +114,9 @@ namespace Ceres.Graph
         static CeresPort()
         {
             /* Implicit conversation */
-            CeresPort<float>.MarkCompatibleTo<int>(f => (int)f);
-            CeresPort<int>.MarkCompatibleTo<float>(i => i);
-            CeresPort<Vector3>.MarkCompatibleTo<Vector2>(vector3 => vector3);
+            CeresPort<float>.MakeCompatibleTo<int>(f => (int)f);
+            CeresPort<int>.MakeCompatibleTo<float>(i => i);
+            CeresPort<Vector3>.MakeCompatibleTo<Vector2>(vector3 => vector3);
         }
     }
     
@@ -111,13 +147,12 @@ namespace Ceres.Graph
         
         public static readonly List<CeresPort<TValue>> DefaultList = new();
 
-        private static HashSet<Type> _compatibleTypes = new();
-        
-        private static Dictionary<Type, Func<IPort, IPort>> _adapterCreateFunc = new();
+        private static readonly PortCompatibleStructure CompatibleStructure;
         
         static CeresPort()
         {
             AssignValueType<TValue>();
+            CompatibleStructure = GetCompatibleStructure(typeof(TValue));
             _valueType = typeof(TValue);
         }
         
@@ -153,26 +188,26 @@ namespace Ceres.Graph
         }
         
         /// <summary>
-        /// Mark <see cref="TValue"/> is compatible to <see cref="T"/> and register an output value convertor method
+        /// Register an output value convert method to make <see cref="TValue"/> is compatible to <see cref="T"/>
         /// </summary>
         /// <param name="valueConvertFunc">Func for converting input <see cref="TValue"/> to <see cref="T"/></param>
         /// <typeparam name="T"></typeparam>
-        public static void MarkCompatibleTo<T>(Func<TValue, T> valueConvertFunc)
+        public static void MakeCompatibleTo<T>(Func<TValue, T> valueConvertFunc)
         {
-            MarkCompatibleTo_Internal<T>(port => new AdapterPort<TValue, T>((CeresPort<TValue>)port, valueConvertFunc));
+            MakeCompatibleTo_Internal<T>(port => new AdapterPort<TValue, T>((CeresPort<TValue>)port, valueConvertFunc));
         }
         
-        private static void MarkCompatibleTo_Internal<T>(Func<IPort, IPort> adapterCreateFunc)
+        private static void MakeCompatibleTo_Internal<T>(Func<IPort, IPort> adapterCreateFunc)
         {
-            if (_compatibleTypes.Add(typeof(T)))
+            if (CompatibleStructure.CompatibleTypes.Add(typeof(T)))
             {
-                _adapterCreateFunc[typeof(T)] = adapterCreateFunc;
+                CompatibleStructure.AdapterCreateFunc[typeof(T)] = adapterCreateFunc;
             }
         }
 
         private static bool IsCompatibleTo_Internal(Type type)
         {
-            return _compatibleTypes.Contains(type);
+            return CompatibleStructure.CompatibleTypes.Contains(type);
         }
         
         public static bool IsCompatibleTo(Type type)
@@ -182,7 +217,7 @@ namespace Ceres.Graph
         
         public IPort CreateAdapterPort(CeresPort ceresPort)
         {
-            return _adapterCreateFunc[ceresPort.GetValueType()](this);
+            return CompatibleStructure.AdapterCreateFunc[ceresPort.GetValueType()](this);
         }
 
         public override void Link(CeresPort targetPort)
