@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
+using Ceres.Utilities;
 using Chris;
 using Chris.Serialization;
+using UnityEngine;
 namespace Ceres.Graph
 {
-    
     public interface IPort
     {
         object GetValue();
@@ -29,15 +30,22 @@ namespace Ceres.Graph
         /// <param name="targetPort"></param>
         public abstract void Link(CeresPort targetPort);
 
+        /// <summary>
+        /// Set port default value
+        /// </summary>
+        /// <param name="value"></param>
         public abstract void SetValue(object value);
 
+        /// <summary>
+        /// Get port value
+        /// </summary>
+        /// <returns></returns>
         public abstract object GetValue();
         
         /// <summary>
         /// Last linked adapted port
         /// </summary>
-        [NonSerialized]
-        protected internal IPort AdaptedGetter;
+        protected IPort AdaptedGetter { get; private set; }
 
         private static readonly HashSet<Type> PortValueTypeSet = new();
 
@@ -54,6 +62,25 @@ namespace Ceres.Graph
         public static Type[] GetAssignedPortValueTypes()
         {
             return PortValueTypeSet.ToArray();
+        }
+
+        public abstract Type GetValueType();
+
+        /// <summary>
+        /// Assign this port's input value source
+        /// </summary>
+        /// <param name="port"></param>
+        public virtual void AssignValueGetter(IPort port)
+        {
+            AdaptedGetter = port;
+        }
+        
+        static CeresPort()
+        {
+            /* Implicit conversation */
+            CeresPort<float>.MarkCompatibleTo<int>(f => (int)f);
+            CeresPort<int>.MarkCompatibleTo<float>(i => i);
+            CeresPort<Vector3>.MarkCompatibleTo<Vector2>(vector3 => vector3);
         }
     }
     
@@ -77,6 +104,16 @@ namespace Ceres.Graph
         private IPort<TValue> _getter;
 
         private static Type _valueType;
+        
+        public static readonly CeresPort<TValue> Default = new();
+            
+        public static readonly CeresPort<TValue>[] DefaultArray = Array.Empty<CeresPort<TValue>>();
+        
+        public static readonly List<CeresPort<TValue>> DefaultList = new();
+
+        private static HashSet<Type> _compatibleTypes = new();
+        
+        private static Dictionary<Type, Func<IPort, IPort>> _adapterCreateFunc = new();
         
         static CeresPort()
         {
@@ -105,15 +142,72 @@ namespace Ceres.Graph
             }
             set => defaultValue = value;
         }
+        
+        /// <summary>
+        /// Get port value type
+        /// </summary>
+        /// <returns></returns>
+        public override Type GetValueType()
+        {
+            return _valueType;
+        }
+        
+        /// <summary>
+        /// Mark <see cref="TValue"/> is compatible to <see cref="T"/> and register an output value convertor method
+        /// </summary>
+        /// <param name="valueConvertFunc">Func for converting input <see cref="TValue"/> to <see cref="T"/></param>
+        /// <typeparam name="T"></typeparam>
+        public static void MarkCompatibleTo<T>(Func<TValue, T> valueConvertFunc)
+        {
+            MarkCompatibleTo_Internal<T>(port => new AdapterPort<TValue, T>((CeresPort<TValue>)port, valueConvertFunc));
+        }
+        
+        private static void MarkCompatibleTo_Internal<T>(Func<IPort, IPort> adapterCreateFunc)
+        {
+            if (_compatibleTypes.Add(typeof(T)))
+            {
+                _adapterCreateFunc[typeof(T)] = adapterCreateFunc;
+            }
+        }
+
+        private static bool IsCompatibleTo_Internal(Type type)
+        {
+            return _compatibleTypes.Contains(type);
+        }
+        
+        public static bool IsCompatibleTo(Type type)
+        {
+            return IsCompatibleTo_Internal(type) || typeof(TValue).IsAssignableTo(type);
+        }
+        
+        public IPort CreateAdapterPort(CeresPort ceresPort)
+        {
+            return _adapterCreateFunc[ceresPort.GetValueType()](this);
+        }
 
         public override void Link(CeresPort targetPort)
         {
             if (targetPort is not CeresPort<TValue> genericPort)
             {
-                targetPort.AdaptedGetter = this;
+                if (IsCompatibleTo_Internal(targetPort.GetValueType()))
+                {
+                    targetPort.AssignValueGetter(CreateAdapterPort(targetPort));
+                    return;
+                }
+                targetPort.AssignValueGetter(this);
                 return;
             }
             genericPort._getter = this;
+        }
+
+        public override void AssignValueGetter(IPort port)
+        {
+            if (port is IPort<TValue> genericPort)
+            {
+                _getter = genericPort;
+                return;
+            }
+            base.AssignValueGetter(port);
         }
 
         public override void SetValue(object value)
@@ -125,17 +219,26 @@ namespace Ceres.Graph
         {
             return Value;
         }
+    }
+    
+    public class AdapterPort<TIn, TOut>: IPort<TOut>
+    {
+        private readonly IPort<TIn> _port;
 
-        public static Type GetValueType()
+        private readonly Func<TIn, TOut> _adapterFunc;
+        
+        public AdapterPort(IPort<TIn> port, Func<TIn, TOut> adapterFunc)
         {
-            return _valueType;
+            _port = port;
+            _adapterFunc = adapterFunc;
         }
 
-        public static readonly CeresPort<TValue> Default = new();
-            
-        public static readonly CeresPort<TValue>[] DefaultArray = Array.Empty<CeresPort<TValue>>();
-        
-        public static readonly List<CeresPort<TValue>> DefaultList = new();
+        public object GetValue()
+        {
+            return Value;
+        }
+
+        public TOut Value => _adapterFunc(_port.Value);
     }
     
     /// <summary>

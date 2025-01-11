@@ -209,7 +209,7 @@ namespace Ceres.Editor.Graph
 
             ports.ForEach(port =>
             {
-                if (port is CeresPortElement portElement && portElement.IsCompatible(startPortView))
+                if (port is CeresPortElement portElement && portElement.IsCompatibleTo(startPortView))
                 {
                     compatiblePorts.Add(portElement);
                 }
