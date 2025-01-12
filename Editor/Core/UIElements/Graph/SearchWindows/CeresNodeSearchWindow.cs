@@ -129,6 +129,7 @@ namespace Ceres.Editor.Graph
             return _entries;
         }
     }
+    
     public class CeresNodeSearchEntryData
     {
         /// <summary>
@@ -146,6 +147,7 @@ namespace Ceres.Editor.Graph
         /// </summary>
         public object Data;
     }
+    
     public abstract class CeresNodeSearchWindow: ScriptableObject, ISearchWindowProvider
     {
         public CeresGraphView GraphView { get; private set; }
@@ -315,6 +317,5 @@ namespace Ceres.Editor.Graph
             var entryData = (CeresNodeSearchEntryData)searchTreeEntry.userData;
             return OnSelectEntry(entryData, newRect);
         }
-
     }
 }

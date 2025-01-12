@@ -9,7 +9,6 @@ using Chris.Serialization;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
-using UObject = UnityEngine.Object;
 namespace Ceres.Graph
 {
     /// <summary>
@@ -193,8 +192,7 @@ namespace Ceres.Graph
         
         public static string GetTargetSubtitle(Type type, bool richText = true)
         {
-            var typeName = type == typeof(UObject) ? "UObject" : type.Name;
-            return GetTargetSubtitle(typeName, richText);
+            return GetTargetSubtitle(CeresLabel.GetTypeName(type), richText);
         }
         
         /// <summary>

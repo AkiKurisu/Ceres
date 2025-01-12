@@ -15,7 +15,7 @@ namespace Ceres.Graph.Flow.Utilities
         [InputPort, HideInGraphEditor, CeresLabel("Source")]
         public CeresPort<TFrom> sourceValue;
         
-        [OutputPort, CeresLabel("Cast Failed")]
+        [OutputPort(false), CeresLabel("Cast Failed")]
         public NodePort castFailed;
                 
         [OutputPort, CeresLabel("Result")]

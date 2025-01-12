@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Chris;
+using Chris.React;
 using Chris.Serialization;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -67,7 +66,7 @@ namespace Ceres.Graph
     
     /* Must set serializable to let managed reference work */
     [Serializable]
-    public class CeresGraph: IDisposable
+    public class CeresGraph: IDisposable, IDisposableUnregister
     {
         private BlackBoard _blackBoard;
 
@@ -98,6 +97,8 @@ namespace Ceres.Graph
         
         [NonSerialized]
         private int[][] _nodeDependencyPath;
+
+        private List<IDisposable> _disposables;
 
         public CeresGraph()
         {
@@ -407,7 +408,13 @@ namespace Ceres.Graph
         {
             return node == null ? null : _nodeDependencyPath[nodes.IndexOf(node)];
         }
-
+        
+        void IDisposableUnregister.Register(IDisposable disposable)
+        {
+            _disposables ??= ListPool<IDisposable>.Get();
+            _disposables.Add(disposable);
+        }
+        
         public virtual void Dispose()
         {
             foreach (var variable in variables)
@@ -425,6 +432,16 @@ namespace Ceres.Graph
             foreach (var node in GetAllNodes())
             {
                 node.Dispose();
+            }
+            nodes.Clear();
+
+            if(_disposables != null)
+            {
+                foreach (var disposable in _disposables)
+                {
+                    disposable?.Dispose();
+                }
+                ListPool<IDisposable>.Release(_disposables);
             }
         }
 

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow
@@ -88,26 +90,32 @@ namespace Ceres.Graph.Flow
             _nextNode = null;
             return nextNode != null;
         }
-        
-        public async UniTask Forward(ExecutableNode node)
+
+        public UniTask Forward(ExecutableNode node)
+        {
+            return Forward(node, GetCancellationToken());
+        }
+
+        public async UniTask Forward(ExecutableNode node, CancellationToken cancellationToken)
         {
             _forwardPath?.Add(node.Guid);
 #if UNITY_EDITOR
             await _tracker.EnterNode(node);
 #endif
-            await node.ExecuteNode(this);
+            await node.ExecuteNode(this).AttachExternalCancellation(cancellationToken);
 #if UNITY_EDITOR
             await _tracker.ExitNode(node);
 #endif
             while (GetNext(out var nextNode))
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 /* Execute dependency nodes */
-                await ExecuteDependencyPath(nextNode.Guid);
-                await Forward(nextNode);
+                await ExecuteDependencyPath(nextNode.Guid, cancellationToken);
+                await Forward(nextNode, cancellationToken);
             }
         }
         
-        private async UniTask ExecuteDependencyPath(string guid)
+        private async UniTask ExecuteDependencyPath(string guid, CancellationToken cancellationToken)
         {
             var path = Graph.GetNodeDependencyPath(guid);
             foreach (var id in path)
@@ -115,7 +123,7 @@ namespace Ceres.Graph.Flow
                 /* Find dependency root in current context */
                 if(HasNodeExecuted(Graph.nodes[id].Guid)) continue;
                 var node = (ExecutableNode)Graph.nodes[id];
-                await Forward(node);
+                await Forward(node, cancellationToken);
             }
         }
 
@@ -127,6 +135,18 @@ namespace Ceres.Graph.Flow
         public bool HasNodeExecuted(string guid)
         {
             return _forwardPath?.Contains(guid) ?? false;
+        }
+
+        /// <summary>
+        /// Get <see cref="CancellationToken"/> for async support
+        /// </summary>
+        /// <returns></returns>
+        public CancellationToken GetCancellationToken()
+        {
+            if (Context is GameObject gameObject) return gameObject.GetCancellationTokenOnDestroy();
+            if (Context is MonoBehaviour monoBehaviour) return monoBehaviour.GetCancellationTokenOnDestroy();
+            if (Context is Component component) return component.GetCancellationTokenOnDestroy();
+            return default;
         }
 
         public void Dispose()

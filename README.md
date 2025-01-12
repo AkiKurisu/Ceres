@@ -1,7 +1,7 @@
 <div align="center">
 
 # Ceres
-Powerful node based visual scripting toolkit for Unity.
+Powerful visual scripting toolkit for Unity.
 
 ![banner](./Docs/Images/ceres_banner.png)
 

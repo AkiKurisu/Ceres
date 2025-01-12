@@ -78,9 +78,14 @@ namespace Ceres.Graph
             label = GetGenericNodeBaseName(label, argumentTypes);
             if (RequirePort())
             {
-                label += CeresNode.GetTargetSubtitle(argumentTypes[0]);
+                label += GetTargetName(argumentTypes);
             }
             return label;
+        }
+
+        protected virtual string GetTargetName(Type[] argumentTypes)
+        {
+            return CeresNode.GetTargetSubtitle(argumentTypes[0]);
         }
         
         protected virtual string GetGenericNodeBaseName(string label, Type[] argumentTypes)
