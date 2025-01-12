@@ -177,18 +177,10 @@ namespace Ceres.Editor.Graph.Flow
             ShowNotification(guiContent, 1f);
         }
         
-        protected override void Reload()
+        protected override void OnReloadGraphView()
         {
-            if (!Identifier.IsValid()) return;
-            if (CeresSettings.EnableGraphEditorLog)
-            {
-                CeresGraph.Log($"Reload graph from identifier[{Identifier}]");
-            }
-            
-            Container = GetContainer();
             StructVisualElements();
             _graphView.DeserializeGraph(ContainerT);
-            Repaint();
         }
     }
 }

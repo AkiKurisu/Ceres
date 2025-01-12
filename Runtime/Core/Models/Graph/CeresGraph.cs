@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+#if CERES_DISABLE_ILPP
+using Chris;
+using System.Collections;
+#endif
 using Chris.React;
 using Chris.Serialization;
 using UnityEngine;
@@ -813,7 +817,7 @@ namespace Ceres.Graph
 
         public override string ToString()
         {
-            return $"Object {boundObject}| Type {containerType}";
+            return $"Object {boundObject} Type {SerializedType.GetTypeName(containerType)}";
         }
     }
     
