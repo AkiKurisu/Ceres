@@ -1,20 +1,14 @@
 # Flow
 Powerful visual scripting solution inspired from Unreal's Blueprint.
 
-## HighLights
-
-- Generic and delegate support
-- Graph and C# Integration
-- Editor debugging
-- Easy implementation
-
 ## Conecpt
 
 Before start up Flow, I recommend to read [Ceres Concept](./ceres_concept.md) before.
 
-Flow thinks of game logic as an execution chain to let the game objects do things in order according to your design.
+Flow thinks of game logic as an execution chain to let the game objects do things in 
+order according to your design.
 
-Flow visualize those execution as nodes so you can connect them to get a visual graph.
+Flow visualize those execution as nodes so you can connect them to get a graph.
 
 ## Execution Event
 
@@ -24,12 +18,20 @@ Each execution starts from an external event and can contain input data.
 
 > You can double click the event node and rename it.
 
+By default, Execution Event without parameters can be created in search window.
+
+Execution event with parameters can be created when you drag any port with type `EventDelegate<>`.
+
+
 ## Implementable Event
 
-You can implement custom event from C#.
+Implementable events can be defined in C# to allow the script to call Flow execution.
+
+Following is an implementation example.
 
 ```C#
-public class FlowTestActor : CeresActor
+/* Actor is from Chris.Gameplay module */
+public class FlowTestActor : Actor
 {
     [ImplementableEvent]
     public void Awake()
@@ -40,13 +42,13 @@ public class FlowTestActor : CeresActor
     [ImplementableEvent]
     public void PrintFloat(float data)
     {
-        ProcessEvent(parameter: data);
+        ProcessEvent<float>(data);
     }
 
     [ImplementableEvent]
     public void ExecuteTest(string data)
     {
-        ProcessEvent(parameter: data);
+        ProcessEvent<string>(data);
     }
 }
 ```
@@ -55,11 +57,14 @@ public class FlowTestActor : CeresActor
 
 ## Executable Function
 
-You can add `ExecutableFunctionAttribute` to non-static method.
+You can add `ExecutableFunctionAttribute` in two ways.
+
+1. For instance method, add `ExecutableFunctionAttribute` directly.
 
 ```C#
 public class MyComponent: Component
 {
+    [ExecutableFunction]
     public void DoSomething(int arg1, float arg2)
     {
         // DoSomething
@@ -67,7 +72,9 @@ public class MyComponent: Component
 }
 ```
 
-Or implement `ExecutableFunctionLibrary` to add static executable functions.
+2. For static method, create a new class and implement `ExecutableFunctionLibrary` to 
+   add static executable functions, then add `ExecutableFunctionAttribute`.
+   
 
 ```C#
 public class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
@@ -80,18 +87,96 @@ public class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
         return uObject.name;
     }
 
+    // RESOLVE_RETURN metadata will let graph editor display return type by this parameter result
+    // Only support SerializedType<T>
     [ExecutableFunction]
     public static UObject Flow_FindObjectOfType(
-        // RESOLVE_RETURN metadata will let graph editor display return type by this parameter result
-        // Only support SerializedType<T>
-        [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<UObject> type)
+        [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] 
+        SerializedType<UObject> type)
     {
         return UObject.FindObjectOfType(type);
     }
 }
 ```
 
+### Conventions and Restrictions
+
+1. For methods defined in the same class and its inheritance hierarchy, 
+   methods with the same name and the same parameter count can only have
+    one marker `ExecutableFunctionAttribute`.
+
+2. For methods with the same name but different number of parameters in 1, 
+   you should use `CeresLabelAttribute` to distinguish their names displayed 
+   in the editor.
+
+3. Generic methods are not supported using `ExecutableFunctionAttribute`, they
+    need to be defined in a generic node which will be explained in 
+    [Generic Node](#generic-node) below.
+
+4. Try to keep the number of input parameters less than or equal to 6, otherwise the 
+   editor will use Uber nodes to support method calls with any parameters. The 
+   default parameter values ​​will not be serialized and the runtime overhead will 
+   be greater.
+
+Wrong example:
+
+```C#
+[ExecutableFunction]
+public static string Flow_GetName(UObject uObject)
+{
+    return uObject.name;
+}
+
+[ExecutableFunction]
+public static string Flow_GetName(Component component)
+{
+    return component.name;
+}
+
+[ExecutableFunction]
+public static void Flow_DoSomething(string arg1, int arg2)
+{
+    
+}
+
+[ExecutableFunction]
+public static string Flow_DoSomething(string arg1)
+{
+    
+}
+```
+
+Correct example:
+
+```C#
+[ExecutableFunction]
+public static string Flow_UObjectGetName(UObject uObject)
+{
+    return uObject.name;
+}
+[ExecutableFunction]
+public static string Flow_ComponentGetName(Component component)
+{
+    return component.name;
+}
+
+[ExecutableFunction, CeresLabel("DoSomething with 2 Arguements")]
+public static void Flow_DoSomething(string arg1, int arg2)
+{
+    
+}
+
+[ExecutableFunction]
+public static string Flow_DoSomething(string arg1)
+{
+    
+}
+```
+
 ## Generic Node
+Generic nodes define type restrictions through template classes, so that argument 
+types can be obtained in the editor and the generic node instance can be constructed 
+at runtime. This helps reduce lines of code.
 
 Following is an implementation example.
 
@@ -104,6 +189,8 @@ public class FlowNode_CastT<T, TK>: ForwardNode where TK: T
     [OutputPort(false), CeresLabel("")]
     public NodePort exec;
     
+    // HideInGraphEditorAttribute is used in input port to restrict
+    // users to edit fields only by connecting edges
     [InputPort, HideInGraphEditor, CeresLabel("Source")]
     public CeresPort<T> sourceValue;
     
@@ -135,6 +222,7 @@ Then define a template named as `{node name}_Template`.
 ```C#
 public class FlowNode_CastT_Template: GenericNodeTemplate
 {
+    // Notify editor FlowNode_CastT need user to drag a port
     public override bool RequirePort()
     {
         return true;
@@ -154,7 +242,7 @@ public class FlowNode_CastT_Template: GenericNodeTemplate
     
     protected override string GetGenericNodeBaseName(string label, Type[] argumentTypes)
     {
-        /* Cast to {value type} */
+        /* Cast to {selectArgumentType} */
         return string.Format(label, argumentTypes[1].Name);
     }
 }
@@ -166,6 +254,8 @@ To enable and disable debug mode, click `debug` button in the upper right corner
 
 Then, you can click `Next Frame` to execute the graph node by node.
 
-Furthermore, you can right click node and `Add Breakpoint`, and click `Next Breakpoint` in toolbar to execute the graph breakpoint by breakpoint.
+### Breakpoint Support
+
+You can right click node and `Add Breakpoint`, and click `Next Breakpoint` in toolbar to execute the graph breakpoint by breakpoint.
 
 ![Debug](./Images/flow_debugger.png)
