@@ -10,6 +10,9 @@ namespace Ceres.Graph.Flow.Utilities
     {
         [HideInGraphEditor]
         public string methodName;
+        
+        [HideInGraphEditor]
+        public int parameterCount = -1;
 
         [HideInGraphEditor] 
         public bool isStatic;
@@ -108,7 +111,7 @@ namespace Ceres.Graph.Flow.Utilities
         
         public ExecutableReflection<TTarget>.ExecutableFunction GetExecutableFunction()
         {
-            return ExecutableReflection<TTarget>.GetFunction(isStatic ? ExecutableFunctionType.StaticMethod : ExecutableFunctionType.InstanceMethod, methodName);
+            return ExecutableReflection<TTarget>.GetFunction(isStatic ? ExecutableFunctionType.StaticMethod : ExecutableFunctionType.InstanceMethod, methodName, parameterCount);
         }
         
         public void OnBeforeSerialize()
@@ -140,7 +143,7 @@ namespace Ceres.Graph.Flow.Utilities
         
         public ExecutableReflection<TTarget>.ExecutableFunction GetExecutableFunction()
         {
-            return ExecutableReflection<TTarget>.GetFunction(isStatic ? ExecutableFunctionType.StaticMethod : ExecutableFunctionType.InstanceMethod, methodName);
+            return ExecutableReflection<TTarget>.GetFunction(isStatic ? ExecutableFunctionType.StaticMethod : ExecutableFunctionType.InstanceMethod, methodName, parameterCount);
         }
         
         public void OnBeforeSerialize()
