@@ -23,6 +23,12 @@ Add following dependencies to `manifest.json`.
 
 ```
 
+## HighLights
+- Generic and delegate support
+- Graph and C# Integration
+- Editor debugging
+- Easy implementation
+
 ## Contents
 
 [Concept of Ceres](./Docs/ceres_concept.md)
@@ -41,7 +47,7 @@ Support Mono, IL2CPP.
 
 ## Implementation
 
-### Flow
+### Ceres.Flow
 
 Powerful visual scripting solution inspired from Unreal's Blueprint.
   

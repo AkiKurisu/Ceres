@@ -178,7 +178,7 @@ namespace Ceres.Editor.Graph
         {
             if (!Identifier.IsValid()) return;
             
-            if (CeresSettings.EnableGraphEditorLog)
+            if (CeresSettings.EnableLog)
             {
                 CeresGraph.Log($"Reload graph from identifier [{Identifier}]");
             }

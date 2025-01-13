@@ -8,10 +8,19 @@ namespace Ceres.Editor
     [FilePath("ProjectSettings/CeresSettings.asset", FilePathAttribute.Location.ProjectFolder)]
     public class CeresSettings : ScriptableSingleton<CeresSettings>
     {
+        public enum GraphEditorDisplayMode
+        {
+            Normal,
+            Debug
+        }
+        
         private static CeresSettings _setting;
         
         [SerializeField, HideInInspector]
         private bool enableGraphEditorLog;
+
+        [SerializeField, HideInInspector] 
+        private GraphEditorDisplayMode graphEditorDisplayMode;
         
         [SerializeField, HideInInspector]
         private bool disableILPostProcess;
@@ -19,7 +28,22 @@ namespace Ceres.Editor
         /// <summary>
         /// Whether ceres graph editor can log in console
         /// </summary>
-        public static bool EnableGraphEditorLog => instance.enableGraphEditorLog;
+        public static bool EnableLog => instance.enableGraphEditorLog;
+        
+        /// <summary>
+        /// Ceres graph editor view display mode
+        /// </summary>
+        public static GraphEditorDisplayMode DisplayMode => instance.graphEditorDisplayMode;
+
+        /// <summary>
+        /// Ceres graph editor will display in debug mode
+        /// </summary>
+        public static bool DisplayDebug => DisplayMode == GraphEditorDisplayMode.Debug;
+        
+        /// <summary>
+        /// Ceres graph editor will display in normal mode
+        /// </summary>
+        public static bool DisplayNormal => DisplayMode == GraphEditorDisplayMode.Normal;
 
         public static void SaveSettings()
         {
@@ -35,12 +59,16 @@ namespace Ceres.Editor
         
         private class Styles
         {
-            public static readonly GUIContent EnableGraphEditorLogStyle = new("Enable Graph Editor Log",
-                "Enable to log editor information");
+            public static readonly GUIContent EnableGraphEditorLogStyle = new("Enable Editor Log",
+                "Enable to log graph editor information");
+            
+            public static readonly GUIContent GraphEditorDisplayModeStyle = new("Display Mode",
+                "Set graph editor display mode");
             
             public static readonly GUIContent DisableILPostProcessStyle = new("Disable ILPP", 
-                "Disable IL Post Process, default Ceres will emit il after syntax analysis step to enhance runtime performance, " +
-                "disable can speed up editor compilation, recommend to enable in final production build");
+                "Disable IL Post Process, default Ceres will emit il after syntax analysis step to enhance " +
+                "runtime performance, disable can speed up editor compilation, recommend to enable in final " +
+                "production build");
         }
 
         private CeresSettingsProvider(string path, SettingsScope scope = SettingsScope.User) : base(path, scope) { }
@@ -58,6 +86,7 @@ namespace Ceres.Editor
             GUILayout.BeginVertical(GUI.skin.box);
             disableILPostProcessProp.boolValue = ScriptingSymbol.ContainsScriptingSymbol(DisableILPostProcessSymbol);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("enableGraphEditorLog"), Styles.EnableGraphEditorLogStyle);
+            EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphEditorDisplayMode"), Styles.GraphEditorDisplayModeStyle);
             GUILayout.EndVertical();
             _serializedObject.ApplyModifiedPropertiesWithoutUndo();
 
@@ -69,7 +98,7 @@ namespace Ceres.Editor
             {
                 if (disableILPostProcessProp.boolValue)
                 {
-                    if (CeresSettings.EnableGraphEditorLog)
+                    if (CeresSettings.EnableLog)
                     {
                         CeresGraph.Log("Disable ILPP");
                     }
@@ -77,7 +106,7 @@ namespace Ceres.Editor
                 }
                 else
                 {
-                    if (CeresSettings.EnableGraphEditorLog)
+                    if (CeresSettings.EnableLog)
                     {
                         CeresGraph.Log("Enable ILPP");
                     }

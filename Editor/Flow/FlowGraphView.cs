@@ -255,6 +255,9 @@ namespace Ceres.Editor.Graph.Flow
                     }
                 }
                 
+                // Restore variables
+                _graphView.AddSharedVariables(flowGraph.variables, !copyPaste);
+                
                 // Restore node views
                 foreach (var nodeInstance in flowGraph.nodes)
                 {
@@ -282,8 +285,6 @@ namespace Ceres.Editor.Graph.Flow
                         nodeView.AddBreakpoint();
                     }
                 }
-                // Restore variables
-                _graphView.AddSharedVariables(flowGraph.variables, !copyPaste);
             
                 // Restore node groups
                 newElements.AddRange(_graphView.NodeGroupHandler.RestoreGroups(flowGraph.nodeGroups));
@@ -335,14 +336,14 @@ namespace Ceres.Editor.Graph.Flow
                 Time.timeScale = 0;
                 if (!CanSkipFrame() && CanPauseOnCurrentNode())
                 {
-                    if (CeresSettings.EnableGraphEditorLog)
+                    if (CeresSettings.EnableLog)
                     {
                         CeresGraph.Log($"Enter node [{node.GetType().Name}]({node.Guid})");
                     }
                     /* Reset skip frame flag */
                     _breakOnNext = false;
                     await UniTask.WaitUntil(CanSkipFrame);
-                    if (CeresSettings.EnableGraphEditorLog)
+                    if (CeresSettings.EnableLog)
                     {
                         CeresGraph.Log($"Exit node [{node.GetType().Name}]({node.Guid})");
                     }

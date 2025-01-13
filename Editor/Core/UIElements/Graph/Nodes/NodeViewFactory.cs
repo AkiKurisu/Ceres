@@ -23,6 +23,8 @@ namespace Ceres.Editor.Graph
             public readonly INodeViewResolver Instance;
 
             public readonly CustomNodeViewAttribute CustomNodeViewAttribute;
+
+            public readonly int Order;
             
             public ResolverStructure(Type type)
             {
@@ -35,12 +37,32 @@ namespace Ceres.Editor.Graph
                 {
                     CustomNodeViewAttribute = type.GetCustomAttribute<CustomNodeViewAttribute>();
                 }
+                Order = type.GetCustomAttribute<OrderedAttribute>(false)?.Order ?? -1;
             }
 
             public bool IsAcceptable(Type inType)
             {
                 if (Instance == null) return false;
                 return Instance.IsAcceptable(inType);
+            }
+            
+            public class Comparer: IComparer<ResolverStructure>
+            {
+                public int Compare(ResolverStructure a, ResolverStructure b)
+                {
+                    bool aCustom = a!.Instance == null;
+                    bool bCustom = b!.Instance == null;
+                    if (aCustom && bCustom)
+                    {
+                        if (a.CustomNodeViewAttribute.NodeType.IsAssignableFrom(b.CustomNodeViewAttribute.NodeType))
+                        {
+                            return 1;
+                        }
+                    }
+                    if (!aCustom && bCustom) return 1;
+                    if (aCustom && !bCustom) return -1;
+                    return a.Order.CompareTo(b.Order);
+                }
             }
         }
         
@@ -62,19 +84,7 @@ namespace Ceres.Editor.Graph
                                         .Where(IsValidType)
                                         .Select(x=> new ResolverStructure(x))
                                         .ToList();
-            _resolvers.Sort((a, b) =>
-            {
-                var aCustom = a.Instance == null;
-                var bCustom = b.Instance == null;
-                var aOrdered = a.Type.GetCustomAttribute<OrderedAttribute>(false);
-                var bOrdered = b.Type.GetCustomAttribute<OrderedAttribute>(false);
-                if (!aCustom && bCustom) return 1;
-                if (aCustom && !bCustom) return -1;
-                if (aOrdered == null && bOrdered == null) return 0;
-                if (aOrdered != null && bOrdered != null) return aOrdered.Order - bOrdered.Order;
-                if (aOrdered != null) return -1;
-                return 1;
-            });
+            _resolvers.Sort(new ResolverStructure.Comparer());
         }
         private static bool IsValidType(Type type)
         {
