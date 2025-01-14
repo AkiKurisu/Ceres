@@ -5,7 +5,7 @@ namespace Ceres.Graph.Flow.Utilities
 {
     [Preserve]
     [Serializable]
-    [NodeGroup("Utilities")]
+    [CeresGroup("Utilities")]
     [CeresLabel("Equals")]
     public class FlowNode_EqualsT<T>: FlowNode
     {

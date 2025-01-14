@@ -10,7 +10,7 @@ namespace Ceres.Graph.Flow.Properties
     }
 
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     [CeresLabel("Get {0}")]
     public sealed class PropertyNode_GetPropertyTValue<TTarget, T>: PropertyNode_PropertyValue,
         ISerializationCallbackReceiver 

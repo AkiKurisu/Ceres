@@ -11,6 +11,7 @@ namespace Ceres.Graph.Flow.Utilities
     /// </summary>
     [Preserve]
     [FormerlySerializedType("Ceres.Graph.Flow.Utilities.UnityExecutableFunctionLibrary, Ceres")]
+    [CeresGroup("Unity")]
     public class UnityExecutableLibrary: ExecutableFunctionLibrary
     {
         #region UObject

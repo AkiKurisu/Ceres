@@ -18,7 +18,7 @@ namespace Ceres.Graph.Flow
     /// Event entry node to start an execution
     /// </summary>
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public class ExecutionEvent : ExecutableEvent
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]
@@ -42,7 +42,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class ExecutionEventUber: ExecutableEvent, ISerializationCallbackReceiver
     {
         [OutputPort(false), CeresLabel("")]
@@ -87,7 +87,7 @@ namespace Ceres.Graph.Flow
     /// Event entry node to start an execution
     /// </summary>
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public class ExecutionEvent<T1> : ExecutionEventGeneric
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]
@@ -106,7 +106,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public class ExecutionEvent<T1, T2> : ExecutionEventGeneric
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]
@@ -129,7 +129,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public class ExecutionEvent<T1, T2, T3> : ExecutionEventGeneric
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]
@@ -156,7 +156,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public class ExecutionEvent<T1, T2, T3, T4> : ExecutionEventGeneric
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]
@@ -187,7 +187,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public class ExecutionEvent<T1, T2, T3, T4, T5> : ExecutionEventGeneric
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]
@@ -222,7 +222,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public class ExecutionEvent<T1, T2, T3, T4, T5, T6> : ExecutionEventGeneric
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]

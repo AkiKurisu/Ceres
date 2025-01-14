@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Ceres.Annotations;
 using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -42,7 +43,7 @@ namespace Ceres.Editor.Graph.Flow
             if (searchContext.ParameterType == null)
             {
                 BuildBasicEntries(builder);
-                BuildExecutableFunctionEntries(builder, GraphView.EditorWindow.Container.GetType(), true);
+                BuildExecutableFunctionEntries(builder, GraphView.GetContainerType(), true);
             }
             else
             {
@@ -252,20 +253,47 @@ namespace Ceres.Editor.Graph.Flow
             if(methods.Any())
             {
                 builder.AddGroupEntry("Execute Functions", 1);
-                foreach (var method in methods)
+                var groupedMethods = methods
+                .Where(x=> x.IsStatic && !ExecutableFunction.IsScriptMethod(x))
+                .GroupBy(methodInfo =>
+                {
+                    var libraryType = methodInfo.DeclaringType;
+                    var groupAttribute = libraryType!.GetCustomAttribute<CeresGroupAttribute>();
+                    return groupAttribute == null ? null : SubClassSearchUtility.SplitGroupName(groupAttribute.Group)[0];
+                })
+                .Where(x => !string.IsNullOrEmpty(x.Key))
+                .ToArray();
+                var rawMethods = methods.Except(groupedMethods.SelectMany(x => x)).ToList();
+                
+                foreach (var methodsInGroup in groupedMethods)
+                {
+                    var groupName = methodsInGroup.Key;
+                    builder.AddEntry(new SearchTreeGroupEntry(new GUIContent($"Select {groupName}"), 2));
+                    foreach (var method in methodsInGroup)
+                    {
+                        var functionName = ExecutableFunction.GetFunctionName(method, false);
+                        AddFunctionEntry(functionName, method, 3);
+                    }
+                }
+                foreach (var method in rawMethods)
                 {
                     var functionName = ExecutableFunction.GetFunctionName(method, false);
-                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"{functionName}", _indentationIcon))
-                    {
-                        level = 2, 
-                        userData = new CeresNodeSearchEntryData
-                        {
-                            NodeType = PredictFunctionNodeType(method),
-                            SubType = targetType,
-                            Data = new ExecuteFunctionNodeViewFactoryProxy { MethodInfo = method }
-                        }
-                    });
+                    AddFunctionEntry(functionName, method, 2);
                 }
+            }
+
+            void AddFunctionEntry(string functionName, MethodInfo method, int level)
+            {
+                builder.AddEntry(new SearchTreeEntry(new GUIContent($"{functionName}", _indentationIcon))
+                {
+                    level = level,
+                    userData = new CeresNodeSearchEntryData
+                    {
+                        NodeType = PredictFunctionNodeType(method),
+                        SubType = targetType,
+                        Data = new ExecuteFunctionNodeViewFactoryProxy { MethodInfo = method }
+                    }
+                });
             }
         }
 

@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow.Utilities
 {
     [Serializable]
-    [NodeGroup("Utilities")]
+    [CeresGroup("Utilities")]
     [CeresLabel("Branch")]
     public class FlowNode_Branch: ForwardNode
     {

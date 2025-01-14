@@ -8,7 +8,7 @@ namespace Ceres.Graph.Flow.Properties
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     [CeresLabel("Get {0}")]
     public sealed class PropertyNode_GetSharedVariableTValue<T, TVariableValue, TOutValue>: PropertyNode_SharedVariableValue 
         where T: SharedVariable<TVariableValue>

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Ceres.Graph.Flow.Utilities
 {
     [Serializable]
-    [NodeGroup("Utilities")]
+    [CeresGroup("Utilities")]
     [CeresLabel("Debug Log")]
     public sealed class FlowNode_DebugLog: FlowNode
     {
@@ -21,7 +21,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Utilities")]
+    [CeresGroup("Utilities")]
     [CeresLabel("Log String")]
     public sealed class FlowNode_DebugLogString: FlowNode
     {

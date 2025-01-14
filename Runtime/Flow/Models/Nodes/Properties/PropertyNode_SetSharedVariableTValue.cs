@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow.Properties
 {
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     [CeresLabel("Set {0}")]
     [CeresMetadata("style = PropertyNode", "path = Forward")]
     public sealed class PropertyNode_SetSharedVariableTValue<T, TVariableValue, TInValue>: PropertyNode_SharedVariableValue 

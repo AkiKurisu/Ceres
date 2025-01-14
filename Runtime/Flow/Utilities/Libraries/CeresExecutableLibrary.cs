@@ -10,6 +10,7 @@ namespace Ceres.Graph.Flow.Utilities
     /// </summary>
     [Preserve]
     [FormerlySerializedType("Ceres.Graph.Flow.Utilities.CeresExecutableFunctionLibrary, Ceres")]
+    [CeresGroup("Ceres")]
     public class CeresExecutableLibrary: ExecutableFunctionLibrary
     {
         [ExecutableFunction, CeresLabel("Set LogLevel")]

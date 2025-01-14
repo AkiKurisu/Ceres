@@ -166,7 +166,7 @@ namespace Ceres.Graph.Flow.Utilities
 
     // Non-optimized function node
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionT<TTarget> : FlowNode_ExecuteFunctionUber, ISerializationCallbackReceiver
     {
         [InputPort, HideInGraphEditor]
@@ -232,7 +232,7 @@ namespace Ceres.Graph.Flow.Utilities
     #region Optimized Function Node
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget> : FlowNode_ExecuteFunctionVoid<TTarget>
     {
         [InputPort, HideInGraphEditor]
@@ -245,7 +245,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
     {
         [InputPort, HideInGraphEditor]
@@ -261,7 +261,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1> : FlowNode_ExecuteFunctionVoid<TTarget>
     {
         [InputPort, HideInGraphEditor]
@@ -278,7 +278,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TR> : FlowNode_ExecuteFunctionReturn<TTarget>
     {
         [InputPort, HideInGraphEditor]
@@ -298,7 +298,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2> : 
         FlowNode_ExecuteFunctionVoid<TTarget>
     {
@@ -319,7 +319,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TR> : 
         FlowNode_ExecuteFunctionReturn<TTarget>
     {
@@ -343,7 +343,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3> : 
         FlowNode_ExecuteFunctionVoid<TTarget>
     {
@@ -367,7 +367,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TR> : 
         FlowNode_ExecuteFunctionReturn<TTarget>
     {
@@ -395,7 +395,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4> : 
         FlowNode_ExecuteFunctionVoid<TTarget>
     {
@@ -423,7 +423,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TR> : 
         FlowNode_ExecuteFunctionReturn<TTarget>
     {
@@ -454,7 +454,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4, TP5> : 
         FlowNode_ExecuteFunctionVoid<TTarget>
     {
@@ -485,7 +485,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TP5, TR> : 
         FlowNode_ExecuteFunctionReturn<TTarget>
     {
@@ -520,7 +520,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTVoid<TTarget, TP1, TP2, TP3, TP4, TP5, TP6> : 
         FlowNode_ExecuteFunctionVoid<TTarget>
     {
@@ -555,7 +555,7 @@ namespace Ceres.Graph.Flow.Utilities
     }
     
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteFunctionTReturn<TTarget, TP1, TP2, TP3, TP4, TP5, TP6, TR> : 
         FlowNode_ExecuteFunctionReturn<TTarget>
     {

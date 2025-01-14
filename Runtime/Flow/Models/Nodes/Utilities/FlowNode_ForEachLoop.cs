@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow.Utilities
 {
     [Serializable]
-    [NodeGroup("Utilities")]
+    [CeresGroup("Utilities")]
     [CeresLabel("For Each Loop")]
     public sealed class FlowNode_ForEachLoop: ForwardNode
     {

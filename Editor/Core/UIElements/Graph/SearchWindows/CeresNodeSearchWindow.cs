@@ -171,7 +171,7 @@ namespace Ceres.Editor.Graph
         
         
         /// <summary>
-        /// Util function for searching types grouped by <see cref="NodeGroupAttribute"/>
+        /// Util function for searching types grouped by <see cref="CeresGroupAttribute"/>
         /// </summary>
         /// <param name="baseTypes"></param>
         /// <param name="nodeSearchContext"></param>

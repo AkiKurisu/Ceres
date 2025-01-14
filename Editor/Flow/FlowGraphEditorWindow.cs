@@ -103,6 +103,12 @@ namespace Ceres.Editor.Graph.Flow
         {
             return _graphView;
         }
+
+        private bool ContainerCanSimulate()
+        {
+            /* Whether explicit container type is assignable to editor container type */
+            return GetContainerType().IsInstanceOfType(ContainerT);
+        }
         
         private VisualElement CreateToolBar()
         {
@@ -131,13 +137,19 @@ namespace Ceres.Editor.Graph.Flow
                             ShowNotification(guiContent, 0.5f);
                         }
                     }
-                    GUI.enabled &= _graphView.CanSimulate();
-                    image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
-                    if (GUILayout.Button(new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"), EditorStyles.toolbarButton))
+                    if(ContainerCanSimulate())
                     {
-                        DoSimulation().Forget();
+                        GUI.enabled &= _graphView.CanSimulate();
+                        image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
+                        if (GUILayout.Button(
+                                new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"),
+                                EditorStyles.toolbarButton))
+                        {
+                            DoSimulation().Forget();
+                        }
+
+                        GUI.enabled = true;
                     }
-                    GUI.enabled = true;
                     GUILayout.FlexibleSpace();
                     GUI.enabled = debugState.enableDebug && _graphView.IsPaused();
                     image = EditorGUIUtility.IconContent("Animation.NextKey").image;
