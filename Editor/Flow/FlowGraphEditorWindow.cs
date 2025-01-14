@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
@@ -86,7 +85,7 @@ namespace Ceres.Editor.Graph.Flow
         private static bool OnOpenAsset(int instanceId, int _)
         {
             var asset = EditorUtility.InstanceIDToObject(instanceId);
-            if (asset is not IFlowGraphContainer flowGraphAsset) return false;
+            if (asset is not FlowGraphAsset flowGraphAsset) return false;
             
             Show(flowGraphAsset);
             return false;
@@ -99,13 +98,18 @@ namespace Ceres.Editor.Graph.Flow
             window.Focus();
             window.Show();
         }
+
+        public FlowGraphView GetGraphView()
+        {
+            return _graphView;
+        }
         
         private VisualElement CreateToolBar()
         {
             return new IMGUIContainer(
                 () =>
                 {
-                    if (!Identifier.IsValid())
+                    if (!Identifier.IsValid() || _graphView == null)
                     {
                         /* Should only happen when object destroyed */
                         return;

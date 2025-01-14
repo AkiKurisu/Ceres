@@ -27,12 +27,6 @@ namespace Ceres.Graph
         UObject Object { get; }
         
         /// <summary>
-        /// Get graph instance
-        /// </summary>
-        /// <returns></returns>
-        CeresGraph GetGraph();
-        
-        /// <summary>
         /// Set graph persistent data
         /// </summary>
         /// <param name="graph"></param>

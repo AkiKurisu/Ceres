@@ -67,7 +67,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void DeserializeGraph(ICeresGraphContainer container)
         {
-            var graph = (FlowGraph)container.GetGraph();
+            var graph = ((IFlowGraphContainer)container).GetFlowGraph();
             new CopyPasteGraph(this, graphElements).DeserializeGraph(graph);
         }
 
@@ -145,7 +145,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public bool IsPaused()
         {
-            return _tracker.IsPaused;
+            return _tracker?.IsPaused ?? false;
         }
 
         public void NextFrame()

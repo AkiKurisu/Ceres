@@ -54,12 +54,7 @@ namespace {NAMESPACE}
             }
         }
 
-        CeresGraph ICeresGraphContainer.GetGraph()
-        {
-            return GetFlowGraph();
-        }
-
-        public FlowGraph GetFlowGraph()
+        public virtual FlowGraph GetFlowGraph()
         {
             if (Application.isPlaying && _graph != null)
             {
@@ -68,7 +63,7 @@ namespace {NAMESPACE}
             return new FlowGraph(graphData.CloneT<FlowGraphData>());
         }
 
-        void ICeresGraphContainer.SetGraphData(CeresGraphData graph)
+        public virtual void SetGraphData(CeresGraphData graph)
         {
             graphData = (FlowGraphData)graph;
         }

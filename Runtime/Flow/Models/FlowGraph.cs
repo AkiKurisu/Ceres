@@ -9,7 +9,7 @@ namespace Ceres.Graph.Flow
 {
     public interface IFlowGraphContainer: ICeresGraphContainer
     {
-        
+        FlowGraph GetFlowGraph();
     }
     
     public class FlowGraph : CeresGraph

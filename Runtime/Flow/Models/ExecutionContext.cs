@@ -4,6 +4,7 @@ using System.Threading;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow
@@ -45,6 +46,8 @@ namespace Ceres.Graph.Flow
         
         public static ExecutionContext GetPooled(UObject context, FlowGraph graph, EventBase evt = null)
         {
+            Assert.IsTrue((bool)context);
+            Assert.IsNotNull(graph);
             var executionContext = _pool.Get();
             executionContext.Context = context;
             executionContext.Graph = graph;
