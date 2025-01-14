@@ -343,7 +343,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public static Type GetContainerType(this CeresGraphView graphView)
         {
-            return graphView.EditorWindow.Container.GetType();
+            return graphView.EditorWindow.GetContainerType();
         }
 
         /// <summary>

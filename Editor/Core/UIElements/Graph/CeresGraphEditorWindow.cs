@@ -17,6 +17,8 @@ namespace Ceres.Editor.Graph
         /// Actual graph container of this window
         /// </summary>
         public ICeresGraphContainer Container { get; protected set; }
+
+        private Type _explicitContainerType;
         
         /// <summary>
         /// Setup EditorWindow
@@ -89,6 +91,21 @@ namespace Ceres.Editor.Graph
         protected virtual void PreReload()
         {
             
+        }
+
+        public Type GetContainerType()
+        {
+            if (_explicitContainerType != null) return _explicitContainerType;
+            return Container.GetType();
+        }
+
+        /// <summary>
+        /// Set graph container type explicitly, useful when your runtime container is different from editor
+        /// </summary>
+        /// <param name="targetType"></param>
+        public void SetContainerType(Type targetType)
+        {
+            _explicitContainerType = targetType;
         }
     }
     
