@@ -24,6 +24,7 @@ Add following dependencies to `manifest.json`.
 ```
 
 ## HighLights
+
 - Generic and delegate support
 - Graph and C# Integration
 - Editor debugging
@@ -42,8 +43,6 @@ Add following dependencies to `manifest.json`.
 Unity 2022.3 LTS or later.
 
 Support Mono, IL2CPP.
-
-> Ceres relies on full generic sharing since Unity 2022 to support generic node in IL2CPP.
 
 ## Implementation
 
