@@ -10,8 +10,9 @@ namespace Ceres.Editor
     public enum VariableChangeType
     {
         Create,
-        ValueChange,
-        NameChange,
+        Value,
+        Name,
+        Type,
         Delete
     }
     
