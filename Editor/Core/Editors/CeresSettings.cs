@@ -15,20 +15,12 @@ namespace Ceres.Editor
         }
         
         private static CeresSettings _setting;
-        
-        [SerializeField, HideInInspector]
-        private bool enableGraphEditorLog;
 
         [SerializeField, HideInInspector] 
         private GraphEditorDisplayMode graphEditorDisplayMode;
         
         [SerializeField, HideInInspector]
         private bool disableILPostProcess;
-        
-        /// <summary>
-        /// Whether ceres graph editor can log in console
-        /// </summary>
-        public static bool EnableLog => instance.enableGraphEditorLog;
         
         /// <summary>
         /// Ceres graph editor view display mode
@@ -59,9 +51,6 @@ namespace Ceres.Editor
         
         private class Styles
         {
-            public static readonly GUIContent EnableGraphEditorLogStyle = new("Enable Editor Log",
-                "Enable to log graph editor information");
-            
             public static readonly GUIContent GraphEditorDisplayModeStyle = new("Display Mode",
                 "Set graph editor display mode");
             
@@ -85,7 +74,6 @@ namespace Ceres.Editor
             GUILayout.Label("Editor Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
             disableILPostProcessProp.boolValue = ScriptingSymbol.ContainsScriptingSymbol(DisableILPostProcessSymbol);
-            EditorGUILayout.PropertyField(_serializedObject.FindProperty("enableGraphEditorLog"), Styles.EnableGraphEditorLogStyle);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphEditorDisplayMode"), Styles.GraphEditorDisplayModeStyle);
             GUILayout.EndVertical();
             _serializedObject.ApplyModifiedPropertiesWithoutUndo();
@@ -98,18 +86,12 @@ namespace Ceres.Editor
             {
                 if (disableILPostProcessProp.boolValue)
                 {
-                    if (CeresSettings.EnableLog)
-                    {
-                        CeresGraph.Log("Disable ILPP");
-                    }
+                    CeresGraph.Log("Disable ILPP");
                     ScriptingSymbol.AddScriptingSymbol(DisableILPostProcessSymbol);
                 }
                 else
                 {
-                    if (CeresSettings.EnableLog)
-                    {
-                        CeresGraph.Log("Enable ILPP");
-                    }
+                    CeresGraph.Log("Enable ILPP");
                     ScriptingSymbol.RemoveScriptingSymbol(DisableILPostProcessSymbol);
                 }
                 CeresSettings.SaveSettings();

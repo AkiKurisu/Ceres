@@ -336,17 +336,11 @@ namespace Ceres.Editor.Graph.Flow
                 Time.timeScale = 0;
                 if (!CanSkipFrame() && CanPauseOnCurrentNode())
                 {
-                    if (CeresSettings.EnableLog)
-                    {
-                        CeresGraph.Log($"Enter node [{node.GetType().Name}]({node.Guid})");
-                    }
+                    CeresGraph.Log($">>> Enter node [{node.GetType().Name}]({node.Guid})");
                     /* Reset skip frame flag */
                     _breakOnNext = false;
                     await UniTask.WaitUntil(CanSkipFrame);
-                    if (CeresSettings.EnableLog)
-                    {
-                        CeresGraph.Log($"Exit node [{node.GetType().Name}]({node.Guid})");
-                    }
+                    CeresGraph.Log($">>> Exit node [{node.GetType().Name}]({node.Guid})");
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");
                 Time.timeScale = 1;
