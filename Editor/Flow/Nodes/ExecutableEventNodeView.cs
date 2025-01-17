@@ -65,7 +65,7 @@ namespace Ceres.Editor.Graph.Flow
             MethodName = methodInfo.Name;
             NodeElement.AddToClassList("ImplementableEvent");
             SetEventName(MethodName);
-            var titleLabel = NodeElement.Q<Label>("title-label", (string)null);
+            var titleLabel = NodeElement.Q<Label>("title-label");
             titleLabel.UnregisterCallback<MouseDownEvent>(OnClick);
             FillMethodParameterPorts(methodInfo);
         }
@@ -84,11 +84,11 @@ namespace Ceres.Editor.Graph.Flow
         {
             _eventNameResolver = FindFieldResolver<StringResolver>(nameof(ExecutionEvent.eventName));
             UpdateEventTitle();
-            _eventNameResolver.RegisterValueChangeCallback(evt =>
+            _eventNameResolver.RegisterValueChangeCallback(_ =>
             {
                 UpdateEventTitle();
             });
-            var titleLabel = NodeElement.Q<Label>("title-label", (string)null);
+            var titleLabel = NodeElement.Q<Label>("title-label");
             titleLabel.RegisterCallback<MouseDownEvent>(OnClick);
             _eventNameResolver.BaseField.style.display = DisplayStyle.None;
         }
@@ -167,8 +167,7 @@ namespace Ceres.Editor.Graph.Flow
         }
 
     }
-
-    [Ordered]
+    
     [CustomNodeView(typeof(ExecutionEventUber), false)]
     public sealed class ExecutionEventUberNodeView : ExecutableEventNodeView
     {

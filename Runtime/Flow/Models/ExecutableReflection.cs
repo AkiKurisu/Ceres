@@ -286,14 +286,16 @@ namespace Ceres.Graph.Flow
 
             var functionType = functionInfo.FunctionType;
             var functionName = functionInfo.FunctionName;
-            var methodInfo = functionType switch
+            MethodInfo methodInfo = functionType switch
             {
                 ExecutableFunctionType.PropertySetter => typeof(TTarget).GetProperty(functionName,
                     BindingFlags.Public | BindingFlags.Instance)!.SetMethod,
                 ExecutableFunctionType.PropertyGetter => typeof(TTarget).GetProperty(functionName,
                     BindingFlags.Public | BindingFlags.Instance)!.GetMethod,
-                _ => throw new ArgumentException(nameof(functionType))
+                ExecutableFunctionType.InstanceMethod or ExecutableFunctionType.StaticMethod => null,
+                _ => null
             };
+
             if (methodInfo == null) throw new ArgumentException($"[Ceres] Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
             functionStructure = new ExecutableFunction(functionInfo, methodInfo);
             _functions.Add(functionStructure);

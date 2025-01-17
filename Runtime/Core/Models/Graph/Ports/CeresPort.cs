@@ -294,15 +294,24 @@ namespace Ceres.Graph
 
         internal WeakReference<CeresNode> Node;
 
+        /// <summary>
+        /// Get <see cref="CeresNode"/> if exist
+        /// </summary>
+        /// <returns></returns>
         public CeresNode Get()
         {
             if (Node == null) return null;
             return Node.TryGetTarget(out var node) ? node : null;
         }
 
+        /// <summary>
+        /// Get <see cref="T"/> node if exist
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public T GetT<T>() where T: CeresNode
         {
-            return (T)Get();
+            return Get() as T;
         }
     }
 

@@ -63,19 +63,20 @@ namespace Ceres.Editor.Graph.Flow
                 return;
             if(_breakPoint == null)
             {
-                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add Breakpoint", (a) =>
+                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add breakpoint", (a) =>
                 {
                     View.AddBreakpoint();
                 }));
             }
             if(_breakPoint != null)
             {
-                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove Breakpoint", (a) =>
+                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove breakpoint", (a) =>
                 {
                     View.RemoveBreakpoint();
                 }));
             }
             evt.menu.AppendSeparator();
+            View.BuildContextualMenu(evt);
             base.BuildContextualMenu(evt);
             View.GraphView.ContextualMenuRegistry.BuildContextualMenu(ContextualMenuType.Node, evt, View.NodeType);
         }
@@ -100,6 +101,7 @@ namespace Ceres.Editor.Graph.Flow
     /// <summary>
     /// Base class for node view of <see cref="ExecutableNode"/>
     /// </summary>
+    [CustomNodeView(typeof(ForwardNode), true)]
     public class ExecutableNodeView: CeresNodeView
     {
         /// <summary>
@@ -161,6 +163,14 @@ namespace Ceres.Editor.Graph.Flow
             }
             tooltip += NodeInfo.GetInfo(NodeType);
             return tooltip;
+        }
+
+        /// <summary>
+        /// Add menu items to the node contextual menu.
+        /// </summary>
+        /// <param name="evt"></param>
+        public virtual void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
         }
     }
 }

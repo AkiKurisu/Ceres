@@ -61,17 +61,6 @@ namespace Ceres.Graph.Flow
             evt?.Acquire();
             return executionContext;
         }
-
-        /// <summary>
-        /// Set execution flow event
-        /// </summary>
-        /// <param name="eventBase"></param>
-        public void SetEvent(EventBase eventBase)
-        {
-            _event?.Dispose();
-            _event = eventBase;
-            _event?.Acquire();
-        }
         
         /// <summary>
         /// Set execution flow next node
@@ -185,7 +174,7 @@ namespace Ceres.Graph.Flow
         
         public T GetEventT<T>() where T: EventBase<T>, new()
         {
-            return (T)_event;
+            return (T)GetEvent();
         }
     }
 }

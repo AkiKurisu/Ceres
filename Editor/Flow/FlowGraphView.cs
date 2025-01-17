@@ -320,30 +320,29 @@ namespace Ceres.Editor.Graph.Flow
             public override async UniTask EnterNode(ExecutableNode node)
             {
                 _currentView = (ExecutableNodeView)_graphView.FindNodeView(node.Guid);
-                if (_currentView != null)
-                {
-                    _currentView.NodeElement.AddToClassList("status_pending");
-                    _currentView.NodeElement.AddToClassList("status_execute");
-                    _graphView.ClearSelection();
-                    _graphView.AddToSelection(_currentView.NodeElement);
-                    _graphView.FrameSelection();
-                }
-                
                 if (_debugState.enableDebug)
                 {
+                    if (_currentView != null)
+                    {
+                        _currentView.NodeElement.AddToClassList("status_pending");
+                        _currentView.NodeElement.AddToClassList("status_execute");
+                        _graphView.ClearSelection();
+                        _graphView.AddToSelection(_currentView.NodeElement);
+                        _graphView.FrameSelection();
+                    }
                     IsPaused = true;
                 }
-                Time.timeScale = 0;
                 if (!CanSkipFrame() && CanPauseOnCurrentNode())
                 {
                     CeresGraph.Log($">>> Enter node [{node.GetType().Name}]({node.Guid})");
                     /* Reset skip frame flag */
                     _breakOnNext = false;
+                    Time.timeScale = 0;
                     await UniTask.WaitUntil(CanSkipFrame);
+                    Time.timeScale = 1;
                     CeresGraph.Log($">>> Exit node [{node.GetType().Name}]({node.Guid})");
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");
-                Time.timeScale = 1;
             }
 
             public override UniTask ExitNode(ExecutableNode node)

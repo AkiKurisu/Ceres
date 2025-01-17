@@ -6,7 +6,7 @@ using System.Reflection;
 using Chris;
 using System.Collections;
 #endif
-using Chris.React;
+using R3.Chris;
 using Chris.Serialization;
 using UnityEngine;
 using UnityEngine.Assertions;
