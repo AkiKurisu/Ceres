@@ -43,10 +43,12 @@ namespace Ceres.Editor.Graph.Flow
             if (searchContext.ParameterType == null)
             {
                 BuildBasicEntries(builder);
+                BuildPropertyEntries(builder, GraphView.GetContainerType(), true);
                 BuildExecutableFunctionEntries(builder, GraphView.GetContainerType(), true);
             }
             else
             {
+                BuildPropertyEntries(builder, searchContext.ParameterType, false);
                 BuildExecutableFunctionEntries(builder, searchContext.ParameterType, false);
                 BuildDelegateEntries(builder, searchContext.ParameterType);
             }
@@ -67,97 +69,6 @@ namespace Ceres.Editor.Graph.Flow
 
         private void BuildBasicEntries(CeresNodeSearchEntryBuilder builder)
         {
-            /* Build properties */
-            var containerType = GraphView.GetContainerType();
-            var variables = GraphView.Blackboard.SharedVariables;
-            var properties = containerType
-                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(x=> x.CanRead || x.CanWrite)
-                .ToArray();
-            
-            builder.AddGroupEntry("Select Properties", 1);
-            builder.AddEntry(new SearchTreeEntry(new GUIContent("Get Self Reference", _indentationIcon))
-            {
-                level = 2,
-                userData = new CeresNodeSearchEntryData
-                {
-                    NodeType = typeof(PropertyNode_GetSelfTReference<>),
-                    Data = new PropertyNodeViewFactoryProxy
-                    {
-                        PropertyName = "Self"
-                    }
-                }
-            });
-            
-            if(variables.Any() || properties.Any())
-            {
-                foreach (var variable in variables)
-                {
-                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {variable.Name}", _indentationIcon))
-                    {
-                        level = 2,
-                        userData = new CeresNodeSearchEntryData
-                        {
-                            NodeType = typeof(PropertyNode_GetSharedVariableTValue<,,>),
-                            Data = new PropertyNodeViewFactoryProxy
-                            {
-                                PropertyName = variable.Name, 
-                                SharedVariable = variable
-                            }
-                        }
-                    });
-                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {variable.Name}", _indentationIcon))
-                    {
-                        level = 2,
-                        userData = new CeresNodeSearchEntryData
-                        {
-                            NodeType = typeof(PropertyNode_SetSharedVariableTValue<,,>),
-                            Data = new PropertyNodeViewFactoryProxy
-                            {
-                                PropertyName = variable.Name, 
-                                SharedVariable = variable
-                            }
-                        }
-                    });
-                }
-                foreach (var property in properties)
-                {
-                    if(property.GetGetMethod()?.IsPublic ?? false)
-                    {
-                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {property.Name}", _indentationIcon))
-                        {
-                            level = 2,
-                            userData = new CeresNodeSearchEntryData
-                            {
-                                NodeType = typeof(PropertyNode_GetPropertyTValue<,>),
-                                Data = new PropertyNodeViewFactoryProxy
-                                {
-                                    PropertyName = property.Name,
-                                    PropertyInfo = property
-                                }
-                            }
-                        });
-                    }
-
-                    if (property.GetSetMethod()?.IsPublic ?? false)
-                    {
-                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {property.Name}", _indentationIcon))
-                        {
-                            level = 2,
-                            userData = new CeresNodeSearchEntryData
-                            {
-                                NodeType = typeof(PropertyNode_SetPropertyTValue<,>),
-                                Data = new PropertyNodeViewFactoryProxy
-                                {
-                                    PropertyName = property.Name,
-                                    PropertyInfo = property
-                                }
-                            }
-                        });
-                    }
-                }
-            }
-                
             var events = GraphView.NodeViews.OfType<ExecutionEventNodeView>()
                 .Where(x=>!x.NodeType.IsGenericType)
                 .ToArray();
@@ -241,6 +152,109 @@ namespace Ceres.Editor.Graph.Flow
                     Data = new DelegateEventNodeViewFactoryProxy { DelegateType = parameterType }
                 }
             });
+        }
+
+        private void BuildPropertyEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool isSelfTarget)
+        { 
+            /* Build properties */
+            var properties = targetType
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(x=> x.CanRead || x.CanWrite)
+                .ToArray();
+            
+            if (isSelfTarget)
+            {
+                builder.AddGroupEntry("Select Properties", 1);
+                builder.AddEntry(new SearchTreeEntry(new GUIContent("Get Self Reference", _indentationIcon))
+                {
+                    level = 2,
+                    userData = new CeresNodeSearchEntryData
+                    {
+                        NodeType = typeof(PropertyNode_GetSelfTReference<>),
+                        Data = new PropertyNodeViewFactoryProxy
+                        {
+                            PropertyName = "Self"
+                        }
+                    }
+                });
+
+                var variables = GraphView.Blackboard.SharedVariables;
+                foreach (var variable in variables)
+                {
+                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {variable.Name}", _indentationIcon))
+                    {
+                        level = 2,
+                        userData = new CeresNodeSearchEntryData
+                        {
+                            NodeType = typeof(PropertyNode_GetSharedVariableTValue<,,>),
+                            Data = new PropertyNodeViewFactoryProxy
+                            {
+                                PropertyName = variable.Name,
+                                SharedVariable = variable
+                            }
+                        }
+                    });
+                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {variable.Name}", _indentationIcon))
+                    {
+                        level = 2,
+                        userData = new CeresNodeSearchEntryData
+                        {
+                            NodeType = typeof(PropertyNode_SetSharedVariableTValue<,,>),
+                            Data = new PropertyNodeViewFactoryProxy
+                            {
+                                PropertyName = variable.Name,
+                                SharedVariable = variable
+                            }
+                        }
+                    });
+                }
+            }
+            else
+            {
+                if (properties.Any())
+                {
+                    builder.AddGroupEntry("Select Properties", 1);
+                }
+            }
+
+            foreach (var property in properties)
+            {
+                if(property.GetGetMethod()?.IsPublic ?? false)
+                {
+                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {property.Name}", _indentationIcon))
+                    {
+                        level = 2,
+                        userData = new CeresNodeSearchEntryData
+                        {
+                            NodeType = typeof(PropertyNode_GetPropertyTValue<,>),
+                            Data = new PropertyNodeViewFactoryProxy
+                            {
+                                PropertyName = property.Name,
+                                PropertyInfo = property,
+                                IsSelfTarget = isSelfTarget
+                            }
+                        }
+                    });
+                }
+
+                if (property.GetSetMethod()?.IsPublic ?? false)
+                {
+                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {property.Name}", _indentationIcon))
+                    {
+                        level = 2,
+                        userData = new CeresNodeSearchEntryData
+                        {
+                            NodeType = typeof(PropertyNode_SetPropertyTValue<,>),
+                            Data = new PropertyNodeViewFactoryProxy
+                            {
+                                PropertyName = property.Name,
+                                PropertyInfo = property,
+                                IsSelfTarget = isSelfTarget
+                            }
+                        }
+                    });
+                }
+            }
         }
 
         private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool includeStatic)

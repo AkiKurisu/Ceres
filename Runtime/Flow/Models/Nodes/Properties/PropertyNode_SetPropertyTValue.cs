@@ -1,9 +1,7 @@
 using System;
 using Ceres.Annotations;
-using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Properties
 {
     [Serializable]
@@ -11,14 +9,16 @@ namespace Ceres.Graph.Flow.Properties
     [CeresLabel("Set {0}")]
     [CeresMetadata("style = PropertyNode", "path = Forward")]
     public sealed class PropertyNode_SetPropertyTValue<TTarget, T>: PropertyNode_PropertyValue,
-        ISerializationCallbackReceiver 
-        where TTarget: UObject
+        ISerializationCallbackReceiver
     {
         /// <summary>
         /// Dependency node port
         /// </summary>
         [InputPort, CeresLabel("")]
         public NodePort input;
+        
+        [InputPort, HideInGraphEditor]
+        public CeresPort<TTarget> target;
         
         [InputPort, CeresLabel("Value")]
         public CeresPort<T> inputValue;
@@ -30,7 +30,7 @@ namespace Ceres.Graph.Flow.Properties
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            _delegate.Invoke((TTarget)executionContext.Context, inputValue.Value);
+            _delegate.Invoke(GetTargetOrDefault(target, executionContext), inputValue.Value);
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
         }

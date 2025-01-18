@@ -609,6 +609,15 @@ namespace Ceres.Graph
         }
         
         /// <summary>
+        /// Show port in node view
+        /// </summary>
+        /// <param name="portView"></param>
+        public static void ShowPort(this CeresPortView portView)
+        {
+            portView.PortElement.style.display = DisplayStyle.Flex;
+        }
+        
+        /// <summary>
         /// Whether port is visible
         /// </summary>
         /// <param name="portView"></param>

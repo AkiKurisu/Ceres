@@ -21,6 +21,8 @@ namespace Ceres.Editor.Graph.Flow
         public SharedVariable SharedVariable;
 
         public PropertyInfo PropertyInfo;
+
+        public bool IsSelfTarget;
         
         public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
@@ -28,7 +30,9 @@ namespace Ceres.Editor.Graph.Flow
             if (entryData.NodeType == typeof(PropertyNode_GetPropertyTValue<,>) || entryData.NodeType == typeof(PropertyNode_SetPropertyTValue<,>))
             {
                 var parameters = new[] { PropertyInfo.DeclaringType, PropertyInfo.PropertyType };
-                propertyNodeView = (PropertyNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
+                var nodeView = (PropertyNode_PropertyValueNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
+                nodeView.SetIsSelfTarget(IsSelfTarget);
+                propertyNodeView = nodeView;
             }
             else if (entryData.NodeType == typeof(PropertyNode_GetSharedVariableTValue<,,>) ||
                      entryData.NodeType == typeof(PropertyNode_SetSharedVariableTValue<,,>))

@@ -7,15 +7,38 @@ namespace Ceres.Graph.Flow.Properties
 {
     public abstract class PropertyNode_PropertyValue : PropertyNode
     {
+        [HideInGraphEditor] 
+        public bool isSelfTarget;
+        
+        protected TValue GetTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
+        {
+            bool isNull;
+            if(inputPort.Value is UObject value)
+            {
+                isNull = !value;
+            }
+            else
+            {
+                isNull = inputPort.Value == null;
+            }
+            
+            if (isNull && context.Context is TValue tmpTarget)
+            {
+                return tmpTarget;
+            }
+            return inputPort.Value;
+        }
     }
 
     [Serializable]
     [CeresGroup("Hidden")]
     [CeresLabel("Get {0}")]
     public sealed class PropertyNode_GetPropertyTValue<TTarget, T>: PropertyNode_PropertyValue,
-        ISerializationCallbackReceiver 
-        where TTarget: UObject
+        ISerializationCallbackReceiver
     {
+        [InputPort, HideInGraphEditor]
+        public CeresPort<TTarget> target;
+        
         [OutputPort, CeresLabel("Value")]
         public CeresPort<T> outputValue;
 
@@ -23,7 +46,7 @@ namespace Ceres.Graph.Flow.Properties
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            outputValue.Value = _delegate.Invoke<T>((TTarget)executionContext.Context);
+            outputValue.Value = _delegate.Invoke<T>(GetTargetOrDefault(target, executionContext));
             return UniTask.CompletedTask;
         }
         
