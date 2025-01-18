@@ -90,7 +90,6 @@ namespace Ceres.Editor.Graph
         {
             if (type.IsAbstract) return false;
             if (type.GetCustomAttribute<CustomNodeViewAttribute>() != null) return true;
-            if (type.GetMethod("IsAcceptable") == null) return false;
             return type.GetInterfaces().Any(t => t == typeof(INodeViewResolver));
         }
         
@@ -102,25 +101,25 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public ICeresNodeView CreateInstance(Type type, CeresGraphView graphView)
         {
-            ICeresNodeView node = null;
+            var customNodeResolvers = _resolvers
+                .Where(resolver => resolver.CustomNodeViewAttribute != null 
+                                   && TryAcceptNodeEditor(resolver.CustomNodeViewAttribute, type))
+                .ToList();
+            customNodeResolvers.Sort(new ResolverStructure.Comparer());
+            var customNodeResolver = customNodeResolvers.FirstOrDefault();
+            if(customNodeResolver != null)
+            {
+                var viewType = customNodeResolver.Type;
+                /* Must have (Type, CeresGraphView) constructor */
+                return (ICeresNodeView)Activator.CreateInstance(viewType, type, graphView);
+            }
+            
             foreach (var resolver in _resolvers)
             {
-                var attribute = resolver.CustomNodeViewAttribute;
-                if (attribute != null)
-                {
-                    if (TryAcceptNodeEditor(attribute, type))
-                    {
-                        /* Must have (Type, CeresGraphView) constructor */
-                        node = (ICeresNodeView)Activator.CreateInstance(resolver.Type, type, graphView);
-                        break;
-                    }
-                    continue;
-                }
                 if (!resolver.IsAcceptable(type)) continue;
-                node = ((INodeViewResolver)Activator.CreateInstance(resolver.Type)).CreateNodeView(type, graphView);
-                break;
+                return ((INodeViewResolver)Activator.CreateInstance(resolver.Type)).CreateNodeView(type, graphView);
             }
-            return node;
+            return null;
         }
         
         /// <summary>
@@ -132,42 +131,39 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public ICeresNodeView CreateInstanceResolved(Type type, CeresGraphView graphView, params Type[] genericArguments)
         {
-            ICeresNodeView node = null;
-            foreach (var resolver in _resolvers)
+            var customNodeResolvers = _resolvers
+                .Where(resolver => resolver.CustomNodeViewAttribute != null 
+                                   && TryAcceptNodeEditor(resolver.CustomNodeViewAttribute, type))
+                .ToList();
+            customNodeResolvers.Sort(new ResolverStructure.Comparer());
+            var customNodeResolver = customNodeResolvers.FirstOrDefault();
+            if(customNodeResolver != null)
             {
-                var attribute = resolver.CustomNodeViewAttribute;
-                if (attribute != null)
+                var viewType = customNodeResolver.Type;
+                if (viewType.IsGenericType)
                 {
-                    if (TryAcceptNodeEditor(attribute, type))
-                    {
-                        var viewType = resolver.Type;
-                        if (viewType.IsGenericType)
-                        {
-                            viewType = viewType.MakeGenericType(genericArguments);
-                            node = (ICeresNodeView)Activator.CreateInstance(viewType, type, graphView);
-                        }
-                        else
-                        {
-                            if (type.IsGenericTypeDefinition)
-                            {
-                                type = type.MakeGenericType(genericArguments);
-                            }
-                            node = (ICeresNodeView)Activator.CreateInstance(viewType, type, graphView);
-                        }
-                        break;
-                    }
-                    continue;
+                    viewType = viewType.MakeGenericType(genericArguments);
+                    return (ICeresNodeView)Activator.CreateInstance(viewType, type, graphView);
                 }
 
                 if (type.IsGenericTypeDefinition)
                 {
                     type = type.MakeGenericType(genericArguments);
                 }
-                if (!resolver.IsAcceptable(type)) continue;
-                node = ((INodeViewResolver)Activator.CreateInstance(resolver.Type)).CreateNodeView(type, graphView);
-                break;
+                /* Must have (Type, CeresGraphView) constructor */
+                return (ICeresNodeView)Activator.CreateInstance(viewType, type, graphView);
             }
-            return node;
+            
+            foreach (var resolver in _resolvers)
+            {
+                if (type.IsGenericTypeDefinition)
+                {
+                    type = type.MakeGenericType(genericArguments);
+                }
+                if (!resolver.IsAcceptable(type)) continue;
+                return ((INodeViewResolver)Activator.CreateInstance(resolver.Type)).CreateNodeView(type, graphView);
+            }
+            return null;
         }
         
         private static bool TryAcceptNodeEditor(CustomNodeViewAttribute attribute, Type nodeType)

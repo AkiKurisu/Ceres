@@ -27,15 +27,14 @@ namespace Ceres.Editor.Graph.Flow
         public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             PropertyNodeView propertyNodeView;
-            if (entryData.NodeType == typeof(PropertyNode_GetPropertyTValue<,>) || entryData.NodeType == typeof(PropertyNode_SetPropertyTValue<,>))
+            if (entryData.NodeType.IsSubclassOf(typeof(PropertyNode_PropertyValue)))
             {
                 var parameters = new[] { PropertyInfo.DeclaringType, PropertyInfo.PropertyType };
                 var nodeView = (PropertyNode_PropertyValueNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
                 nodeView.SetIsSelfTarget(IsSelfTarget);
                 propertyNodeView = nodeView;
             }
-            else if (entryData.NodeType == typeof(PropertyNode_GetSharedVariableTValue<,,>) ||
-                     entryData.NodeType == typeof(PropertyNode_SetSharedVariableTValue<,,>))
+            else if (entryData.NodeType.IsSubclassOf(typeof(PropertyNode_SharedVariableValue)))
             {
                 var parameters = new[]
                 {
