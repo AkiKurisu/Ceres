@@ -83,13 +83,26 @@ namespace Ceres.Graph.Flow
             return nextNode != null;
         }
 
+        /// <summary>
+        /// Execute next node in forward path
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
         public UniTask Forward(ExecutableNode node)
         {
             return Forward(node, GetCancellationToken());
         }
 
+        /// <summary>
+        /// Execute next node in forward path
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="cancellationToken"></param>
         public async UniTask Forward(ExecutableNode node, CancellationToken cancellationToken)
         {
+            /* Execute dependency path */
+            await ExecuteDependencyPath(node.Guid, cancellationToken);
+            /* Execute forward path */
             _forwardPath?.Add(node.Guid);
 #if UNITY_EDITOR
             await _tracker.EnterNode(node);
@@ -101,8 +114,6 @@ namespace Ceres.Graph.Flow
             while (GetNext(out var nextNode))
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                /* Execute dependency nodes */
-                await ExecuteDependencyPath(nextNode.Guid, cancellationToken);
                 await Forward(nextNode, cancellationToken);
             }
         }
