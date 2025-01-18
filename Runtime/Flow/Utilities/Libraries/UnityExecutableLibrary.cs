@@ -30,7 +30,7 @@ namespace Ceres.Graph.Flow.Utilities
         
         [ExecutableFunction]
         public static UObject Flow_FindObjectOfType(
-            [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<UObject> type)
+            [ResolveReturn] SerializedType<UObject> type)
         {
             return UObject.FindObjectOfType(type);
         }
@@ -65,14 +65,14 @@ namespace Ceres.Graph.Flow.Utilities
                 
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetComponent")]
         public static Component Flow_GameObjectGetComponent(GameObject gameObject, 
-            [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<Component> type)
+            [ResolveReturn] SerializedType<Component> type)
         {
             return gameObject.GetComponent(type);
         }
         
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetComponentInChildren")]
         public static Component Flow_GameObjectGetComponentInChildren(GameObject gameObject, 
-            [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<Component> type)
+            [ResolveReturn] SerializedType<Component> type)
         {
             return gameObject.GetComponentInChildren(type);
         }
@@ -83,14 +83,14 @@ namespace Ceres.Graph.Flow.Utilities
         
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetComponent")]
         public static Component Flow_ComponentGetComponent(Component component,
-            [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<Component> type)
+            [ResolveReturn] SerializedType<Component> type)
         {
             return component.GetComponent(type);
         }
         
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetComponentInChildren")]
         public static Component Flow_ComponentGetComponentInChildren(Component component, 
-            [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<Component> type)
+            [ResolveReturn] SerializedType<Component> type)
         {
             return component.GetComponentInChildren(type);
         }
