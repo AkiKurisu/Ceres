@@ -16,12 +16,6 @@ namespace Ceres.Graph.Flow.Utilities
     {
         #region UObject
         
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetName")]
-        public static string Flow_UObjectGetName(UObject uObject)
-        {
-            return uObject.name;
-        }
-        
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("IsValid")]
         public static bool Flow_UObjectIsValid(UObject uObject)
         {
@@ -44,18 +38,6 @@ namespace Ceres.Graph.Flow.Utilities
         #endregion UObject
         
         #region GameObject
-        
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetLayer")]
-        public static int Flow_GameObjectGetLayer(GameObject gameObject)
-        {
-            return gameObject.layer;
-        }
-        
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetTag")]
-        public static string Flow_GameObjectGetTag(GameObject gameObject)
-        {
-            return gameObject.tag;
-        }
         
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("SetActive")]
         public static void Flow_GameObjectSetActive(GameObject gameObject, bool value)
@@ -99,12 +81,6 @@ namespace Ceres.Graph.Flow.Utilities
 
         #region Component
         
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetGameObject")]
-        public static GameObject Flow_ComponentGetGameObject(Component component)
-        {
-            return component.gameObject;
-        }
-        
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetComponent")]
         public static Component Flow_ComponentGetComponent(Component component,
             [CeresMetadata(ExecutableFunction.RESOLVE_RETURN)] SerializedType<Component> type)
@@ -122,18 +98,6 @@ namespace Ceres.Graph.Flow.Utilities
         #endregion Component
         
         #region Behaviour
-        
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("SetEnabled")]
-        public static void Flow_BehaviourSetEnabled(Behaviour behaviour, bool enabled)
-        {
-            behaviour.enabled = enabled;
-        }
-        
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetEnabled")]
-        public static bool Flow_BehaviourGetEnabled(Behaviour behaviour)
-        {
-            return behaviour.enabled;
-        }
         
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetIsActiveAndEnabled")]
         public static bool Flow_BehaviourGetIsActiveAndEnabled(Behaviour behaviour)
