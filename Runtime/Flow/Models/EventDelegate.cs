@@ -40,10 +40,21 @@ namespace Ceres.Graph.Flow
         {
             return _graph.TryGetTarget(out var graph) ? graph.GetExecutionContext().Context : null;
         }
+
+        internal static void StaticInitialize<TDelegate>() where TDelegate: EventDelegateBase
+        {
+            /* Create CDO to invoke static constructor */
+            Activator.CreateInstance<TDelegate>();
+        }
     }
     
     public sealed class EventDelegate: EventDelegateBase
     {
+        static EventDelegate()
+        {
+            CeresPort<EventDelegate>.MakeCompatibleTo<Action>(x=> x);
+        }
+        
         public void Invoke(UObject contextObject)
         {
             InvokeInternal(contextObject, null);
@@ -59,6 +70,11 @@ namespace Ceres.Graph.Flow
     
     public sealed class EventDelegate<T1>: EventDelegateBase
     {
+        static EventDelegate()
+        {
+            CeresPort<EventDelegate<T1>>.MakeCompatibleTo<Action<T1>>(x=> x);
+        }
+        
         public void Invoke(UObject contextObject, T1 input1)
         {
             using var evt = ExecuteFlowEvent<T1>.Create(GetEventName(), input1);
@@ -75,6 +91,11 @@ namespace Ceres.Graph.Flow
     
     public sealed class EventDelegate<T1, T2>: EventDelegateBase
     {
+        static EventDelegate()
+        {
+            CeresPort<EventDelegate<T1, T2>>.MakeCompatibleTo<Action<T1, T2>>(x=> x);
+        }
+        
         public void Invoke(UObject contextObject, T1 input1, T2 input2)
         {
             using var evt = ExecuteFlowEvent<T1, T2>.Create(GetEventName(), input1, input2);
@@ -91,6 +112,11 @@ namespace Ceres.Graph.Flow
     
     public sealed class EventDelegate<T1, T2, T3>: EventDelegateBase
     {
+        static EventDelegate()
+        {
+            CeresPort<EventDelegate<T1, T2, T3>>.MakeCompatibleTo<Action<T1, T2, T3>>(x=> x);
+        }
+        
         public void Invoke(UObject contextObject, T1 input1, T2 input2, T3 input3)
         {
             using var evt = ExecuteFlowEvent<T1, T2, T3>.Create(GetEventName(), input1, input2, input3);
@@ -107,6 +133,11 @@ namespace Ceres.Graph.Flow
     
     public sealed class EventDelegate<T1, T2, T3, T4>: EventDelegateBase
     {
+        static EventDelegate()
+        {
+            CeresPort<EventDelegate<T1, T2, T3, T4>>.MakeCompatibleTo<Action<T1, T2, T3, T4>>(x=> x);
+        }
+        
         public void Invoke(UObject contextObject, T1 input1, T2 input2, T3 input3, T4 input4)
         {
             using var evt = ExecuteFlowEvent<T1, T2, T3, T4>.Create(GetEventName(), input1, input2, input3, input4);
@@ -123,6 +154,11 @@ namespace Ceres.Graph.Flow
     
     public sealed class EventDelegate<T1, T2, T3, T4, T5>: EventDelegateBase
     {
+        static EventDelegate()
+        {
+            CeresPort<EventDelegate<T1, T2, T3, T4, T5>>.MakeCompatibleTo<Action<T1, T2, T3, T4, T5>>(x=> x);
+        }
+        
         public void Invoke(UObject contextObject, T1 input1, T2 input2, T3 input3, T4 input4, T5 input5)
         {
             using var evt = ExecuteFlowEvent<T1, T2, T3, T4, T5>.Create(GetEventName(), input1, input2, input3, input4, input5);
@@ -139,6 +175,11 @@ namespace Ceres.Graph.Flow
     
     public sealed class EventDelegate<T1, T2, T3, T4, T5, T6>: EventDelegateBase
     {
+        static EventDelegate()
+        {
+            CeresPort<EventDelegate<T1, T2, T3, T4, T5, T6>>.MakeCompatibleTo<Action<T1, T2, T3, T4, T5, T6>>(x=> x);
+        }
+        
         public void Invoke(UObject contextObject, T1 input1, T2 input2, T3 input3, T4 input4, T5 input5, T6 input6)
         {
             using var evt = ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>.Create(GetEventName(), input1, input2, input3, input4, input5, input6);
@@ -170,6 +211,11 @@ namespace Ceres.Graph.Flow
     [Serializable]
     public sealed class DelegatePort<TDelegate> : CeresPort<TDelegate>, IDelegatePort where TDelegate: EventDelegateBase, new()
     {
+        static DelegatePort()
+        {
+            EventDelegateBase.StaticInitialize<TDelegate>();
+        }
+        
         public DelegatePort()
         {
      

@@ -201,7 +201,7 @@ namespace Ceres.Graph
         {
             if (CompatibleStructure.CompatibleTypes.Add(typeof(T)))
             {
-                CompatibleStructure.AdapterCreateFunc[typeof(T)] = adapterCreateFunc;
+                CompatibleStructure.AdapterCreateFunc.Add(typeof(T), adapterCreateFunc);
             }
         }
 
