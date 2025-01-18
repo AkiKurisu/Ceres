@@ -15,7 +15,7 @@ using UObject = UnityEngine.Object;
 namespace Ceres.Graph
 {
     /// <summary>
-    /// Interface for owning <see cref="CeresGraph"/> data
+    /// Interface for containing <see cref="CeresGraph"/> data
     /// </summary>
     public interface ICeresGraphContainer
     {

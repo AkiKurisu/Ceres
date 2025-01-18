@@ -175,6 +175,19 @@ namespace Ceres.Editor.Graph
             return EditorWindowRegistry.GetOrCreateEditorWindow(container);
         }
         
+        /// <summary>
+        /// Show the graph editor window for the container instance
+        /// </summary>
+        /// <param name="container"></param>
+        /// <returns></returns>
+        public static TKWindow Show(TContainer container)
+        {
+            var window = GetOrCreateEditorWindow(container);
+            window.Focus();
+            window.Show();
+            return window;
+        }
+        
         protected override void OnDisable()
         {
            EditorWindowRegistry.Unregister(ContainerT, (TKWindow)this);
