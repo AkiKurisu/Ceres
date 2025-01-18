@@ -9,7 +9,6 @@ using Chris.Serialization;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
-using UObject = UnityEngine.Object;
 namespace Ceres.Graph
 {
     /// <summary>
@@ -55,11 +54,11 @@ namespace Ceres.Graph
     public enum ExecutionPath
     {
         /// <summary>
-        /// Execute node in a forward path
+        /// Execute node in a forward path that ensure order
         /// </summary>
         Forward,
         /// <summary>
-        /// Execute node by a dependency graph
+        /// Execute node by a dependency graph that let node executed only when used
         /// </summary>
         Dependency
     }
@@ -193,8 +192,7 @@ namespace Ceres.Graph
         
         public static string GetTargetSubtitle(Type type, bool richText = true)
         {
-            var typeName = type == typeof(UObject) ? "UObject" : type.Name;
-            return GetTargetSubtitle(typeName, richText);
+            return GetTargetSubtitle(CeresLabel.GetTypeName(type), richText);
         }
         
         /// <summary>

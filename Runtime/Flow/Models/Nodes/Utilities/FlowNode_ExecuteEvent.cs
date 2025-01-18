@@ -7,7 +7,7 @@ namespace Ceres.Graph.Flow.Utilities
     /// Execute executable event, only support non-generic event
     /// </summary>
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     public class FlowNode_ExecuteEvent: FlowNode
     {
         [HideInGraphEditor]

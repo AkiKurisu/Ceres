@@ -156,7 +156,7 @@ namespace Ceres.Editor.Graph
             }
             var targetIndex = SharedVariables.FindIndex(x => x.Name == oldPropertyName);
             SharedVariables[targetIndex].Name = newValue;
-            NotifyVariableChanged(SharedVariables[targetIndex], VariableChangeType.NameChange);
+            NotifyVariableChanged(SharedVariables[targetIndex], VariableChangeType.Name);
             ((BlackboardField)element).text = newValue;
         }
 
@@ -216,7 +216,7 @@ namespace Ceres.Editor.Graph
                 {
                     var variableIndex = SharedVariables.FindIndex(x => x.Name == variable.Name);
                     SharedVariables[variableIndex].SetValue(obj);
-                    NotifyVariableChanged(variable, VariableChangeType.ValueChange);
+                    NotifyVariableChanged(variable, VariableChangeType.Value);
                 });
                 if (Application.isPlaying)
                 {
@@ -281,7 +281,7 @@ namespace Ceres.Editor.Graph
                     {
                         var index = SharedVariables.FindIndex(sharedVariable => sharedVariable.Name == variable.Name);
                         SharedVariables[index].IsExposed = x.newValue;
-                        NotifyVariableChanged(variable, VariableChangeType.ValueChange);
+                        NotifyVariableChanged(variable, VariableChangeType.Value);
                     });
                 }
                 propertyView.Add(toggle);
@@ -356,7 +356,7 @@ namespace Ceres.Editor.Graph
         /// <param name="sharedUObject"></param>
         /// <param name="objectField"></param>
         /// <returns></returns>
-        protected static VisualElement CreateTypeSettingsView(SharedUObject sharedUObject, ObjectField objectField)
+        protected VisualElement CreateTypeSettingsView(SharedUObject sharedUObject, ObjectField objectField)
         {
             var placeHolder = new VisualElement();
             objectField.objectType = sharedUObject.serializedType;
@@ -382,6 +382,8 @@ namespace Ceres.Editor.Graph
                          sharedUObject.serializedType = SerializedType<UObject>.FromType(type);
                          button.text = "Object Type: " + type.Name;
                      }
+
+                     NotifyVariableChanged(sharedUObject, VariableChangeType.Type);
                  });
                  SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)), provider);
              };
@@ -444,7 +446,7 @@ namespace Ceres.Editor.Graph
         /// </summary>
         /// <param name="sharedObject"></param>
         /// <returns></returns>
-        protected static VisualElement CreateTypeSettingsView(SharedObject sharedObject)
+        protected VisualElement CreateTypeSettingsView(SharedObject sharedObject)
         {
             var placeHolder = new VisualElement();
             string constraintTypeName;
@@ -494,6 +496,7 @@ namespace Ceres.Editor.Graph
                         button.tooltip = type.FullName;
                         toggle.SetEnabled(true);
                     }
+                    NotifyVariableChanged(sharedObject, VariableChangeType.Type);
                 }, typeof(object), types => types.Where(IsSupportSerializedType));
                 SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)), provider);
             };

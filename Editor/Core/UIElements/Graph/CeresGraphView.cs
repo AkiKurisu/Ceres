@@ -209,7 +209,7 @@ namespace Ceres.Editor.Graph
 
             ports.ForEach(port =>
             {
-                if (port is CeresPortElement portElement && portElement.IsCompatible(startPortView))
+                if (port is CeresPortElement portElement && portElement.IsCompatibleTo(startPortView))
                 {
                     compatiblePorts.Add(portElement);
                 }
@@ -343,7 +343,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public static Type GetContainerType(this CeresGraphView graphView)
         {
-            return graphView.EditorWindow.Container.GetType();
+            return graphView.EditorWindow.GetContainerType();
         }
 
         /// <summary>

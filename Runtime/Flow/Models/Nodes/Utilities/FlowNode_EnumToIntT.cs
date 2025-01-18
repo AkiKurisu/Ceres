@@ -3,7 +3,7 @@ using Ceres.Annotations;
 namespace Ceres.Graph.Flow.Utilities
 {
     [Serializable]
-    [NodeGroup("Utilities")]
+    [CeresGroup("Utilities")]
     [CeresLabel("{0} to Int")]
     public class FlowNode_EnumToIntT<TEnum>: FlowNode where TEnum: Enum
     {

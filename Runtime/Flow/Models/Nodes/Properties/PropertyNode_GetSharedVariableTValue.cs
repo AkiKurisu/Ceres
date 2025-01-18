@@ -3,10 +3,14 @@ using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow.Properties
 {
+    public abstract class PropertyNode_SharedVariableValue : PropertyNode
+    {
+    }
+    
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     [CeresLabel("Get {0}")]
-    public sealed class PropertyNode_GetSharedVariableTValue<T, TVariableValue, TOutValue>: PropertyNode 
+    public sealed class PropertyNode_GetSharedVariableTValue<T, TVariableValue, TOutValue>: PropertyNode_SharedVariableValue 
         where T: SharedVariable<TVariableValue>
         where TOutValue: TVariableValue
     {

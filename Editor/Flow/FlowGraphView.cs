@@ -67,7 +67,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void DeserializeGraph(ICeresGraphContainer container)
         {
-            var graph = (FlowGraph)container.GetGraph();
+            var graph = ((IFlowGraphContainer)container).GetFlowGraph();
             new CopyPasteGraph(this, graphElements).DeserializeGraph(graph);
         }
 
@@ -145,7 +145,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public bool IsPaused()
         {
-            return _tracker.IsPaused;
+            return _tracker?.IsPaused ?? false;
         }
 
         public void NextFrame()
@@ -255,6 +255,9 @@ namespace Ceres.Editor.Graph.Flow
                     }
                 }
                 
+                // Restore variables
+                _graphView.AddSharedVariables(flowGraph.variables, !copyPaste);
+                
                 // Restore node views
                 foreach (var nodeInstance in flowGraph.nodes)
                 {
@@ -282,8 +285,6 @@ namespace Ceres.Editor.Graph.Flow
                         nodeView.AddBreakpoint();
                     }
                 }
-                // Restore variables
-                _graphView.AddSharedVariables(flowGraph.variables, !copyPaste);
             
                 // Restore node groups
                 newElements.AddRange(_graphView.NodeGroupHandler.RestoreGroups(flowGraph.nodeGroups));
@@ -319,36 +320,29 @@ namespace Ceres.Editor.Graph.Flow
             public override async UniTask EnterNode(ExecutableNode node)
             {
                 _currentView = (ExecutableNodeView)_graphView.FindNodeView(node.Guid);
-                if (_currentView != null)
-                {
-                    _currentView.NodeElement.AddToClassList("status_pending");
-                    _currentView.NodeElement.AddToClassList("status_execute");
-                    _graphView.ClearSelection();
-                    _graphView.AddToSelection(_currentView.NodeElement);
-                    _graphView.FrameSelection();
-                }
-                
                 if (_debugState.enableDebug)
                 {
+                    if (_currentView != null)
+                    {
+                        _currentView.NodeElement.AddToClassList("status_pending");
+                        _currentView.NodeElement.AddToClassList("status_execute");
+                        _graphView.ClearSelection();
+                        _graphView.AddToSelection(_currentView.NodeElement);
+                        _graphView.FrameSelection();
+                    }
                     IsPaused = true;
                 }
-                Time.timeScale = 0;
                 if (!CanSkipFrame() && CanPauseOnCurrentNode())
                 {
-                    if (CeresSettings.EnableGraphEditorLog)
-                    {
-                        CeresGraph.Log($"Enter node [{node.GetType().Name}]({node.Guid})");
-                    }
+                    CeresGraph.Log($">>> Enter node [{node.GetType().Name}]({node.Guid})");
                     /* Reset skip frame flag */
                     _breakOnNext = false;
+                    Time.timeScale = 0;
                     await UniTask.WaitUntil(CanSkipFrame);
-                    if (CeresSettings.EnableGraphEditorLog)
-                    {
-                        CeresGraph.Log($"Exit node [{node.GetType().Name}]({node.Guid})");
-                    }
+                    Time.timeScale = 1;
+                    CeresGraph.Log($">>> Exit node [{node.GetType().Name}]({node.Guid})");
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");
-                Time.timeScale = 1;
             }
 
             public override UniTask ExitNode(ExecutableNode node)

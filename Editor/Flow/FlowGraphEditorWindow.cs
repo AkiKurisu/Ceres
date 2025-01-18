@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
@@ -86,7 +85,7 @@ namespace Ceres.Editor.Graph.Flow
         private static bool OnOpenAsset(int instanceId, int _)
         {
             var asset = EditorUtility.InstanceIDToObject(instanceId);
-            if (asset is not IFlowGraphContainer flowGraphAsset) return false;
+            if (asset is not FlowGraphAsset flowGraphAsset) return false;
             
             Show(flowGraphAsset);
             return false;
@@ -99,13 +98,24 @@ namespace Ceres.Editor.Graph.Flow
             window.Focus();
             window.Show();
         }
+
+        public FlowGraphView GetGraphView()
+        {
+            return _graphView;
+        }
+
+        private bool ContainerCanSimulate()
+        {
+            /* Whether explicit container type is assignable to editor container type */
+            return GetContainerType().IsInstanceOfType(ContainerT);
+        }
         
         private VisualElement CreateToolBar()
         {
             return new IMGUIContainer(
                 () =>
                 {
-                    if (!Identifier.IsValid())
+                    if (!Identifier.IsValid() || _graphView == null)
                     {
                         /* Should only happen when object destroyed */
                         return;
@@ -127,13 +137,19 @@ namespace Ceres.Editor.Graph.Flow
                             ShowNotification(guiContent, 0.5f);
                         }
                     }
-                    GUI.enabled &= _graphView.CanSimulate();
-                    image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
-                    if (GUILayout.Button(new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"), EditorStyles.toolbarButton))
+                    if(ContainerCanSimulate())
                     {
-                        DoSimulation().Forget();
+                        GUI.enabled &= _graphView.CanSimulate();
+                        image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
+                        if (GUILayout.Button(
+                                new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"),
+                                EditorStyles.toolbarButton))
+                        {
+                            DoSimulation().Forget();
+                        }
+
+                        GUI.enabled = true;
                     }
-                    GUI.enabled = true;
                     GUILayout.FlexibleSpace();
                     GUI.enabled = debugState.enableDebug && _graphView.IsPaused();
                     image = EditorGUIUtility.IconContent("Animation.NextKey").image;
@@ -177,18 +193,10 @@ namespace Ceres.Editor.Graph.Flow
             ShowNotification(guiContent, 1f);
         }
         
-        protected override void Reload()
+        protected override void OnReloadGraphView()
         {
-            if (!Identifier.IsValid()) return;
-            if (CeresSettings.EnableGraphEditorLog)
-            {
-                CeresGraph.Log($"Reload graph from identifier[{Identifier}]");
-            }
-            
-            Container = GetContainer();
             StructVisualElements();
             _graphView.DeserializeGraph(ContainerT);
-            Repaint();
         }
     }
 }

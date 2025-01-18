@@ -26,6 +26,8 @@ Ceres serialize node, port and graph to an additional data structure:  `CeresNod
 
 Compared with `CeresPort`, `SharedVariable` can be edited out of graph and not contain any connection data since it not need to know where the data comes from.  
 
+![Variables](./Images/variables.png)
+
 ## Execution Path
 
 Node can be executed in two way:

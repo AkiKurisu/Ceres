@@ -5,7 +5,7 @@ using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Properties
 {
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     [CeresLabel("{0}")]
     public class PropertyNode_GetSelfTReference<TTarget>: PropertyNode where TTarget: UObject
     {

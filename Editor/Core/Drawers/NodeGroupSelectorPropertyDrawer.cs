@@ -21,8 +21,8 @@ namespace Ceres.Editor
             {
                 var types = ((NodeGroupSelectorAttribute)attribute).Types ?? DefaultTypes; 
                 var groups = SubClassSearchUtility.FindSubClassTypes(types)
-                .Where(x => x.GetCustomAttribute<NodeGroupAttribute>() != null)
-                .Select(x => SubClassSearchUtility.SplitGroupName(x.GetCustomAttribute<NodeGroupAttribute>().Group)[0])
+                .Where(x => x.GetCustomAttribute<CeresGroupAttribute>() != null)
+                .Select(x => SubClassSearchUtility.SplitGroupName(x.GetCustomAttribute<CeresGroupAttribute>().Group)[0])
                 .Distinct()
                 .ToList();
                 var menu = new GenericMenu();

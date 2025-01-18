@@ -13,14 +13,17 @@ namespace Ceres.Graph.Flow
         /// Method from class instance
         /// </summary>
         InstanceMethod,
+        
         /// <summary>
         /// Method from static class
         /// </summary>
         StaticMethod,
+        
         /// <summary>
         /// Set method from instance property
         /// </summary>
         PropertySetter,
+        
         /// <summary>
         /// Get method from instance property
         /// </summary>
@@ -143,15 +146,18 @@ namespace Ceres.Graph.Flow
         
         public readonly string FunctionName;
 
-        public ExecutableFunctionInfo(ExecutableFunctionType functionType, string functionName)
+        public readonly int ParameterCount;
+
+        public ExecutableFunctionInfo(ExecutableFunctionType functionType, string functionName, int parameterCount = -1)
         {
             FunctionType = functionType;
             FunctionName = functionName;
+            ParameterCount = parameterCount;
         }
 
         public bool Equals(ExecutableFunctionInfo other)
         {
-            return FunctionType == other.FunctionType && FunctionName == other.FunctionName;
+            return FunctionType == other.FunctionType && FunctionName == other.FunctionName && ParameterCount == other.ParameterCount;
         }
 
         public override bool Equals(object obj)
@@ -161,16 +167,20 @@ namespace Ceres.Graph.Flow
 
         public override int GetHashCode()
         {
-            return HashCode.Combine((int)FunctionType, FunctionName);
+            return HashCode.Combine((int)FunctionType, FunctionName, ParameterCount);
         }
 
         public override string ToString()
         {
-            return $"{nameof(ExecutableFunctionInfo)} [Name {FunctionName} Type {FunctionType}]";
+            return $"Name {FunctionName}_{ParameterCount} Type {FunctionType}";
+        }
+
+        public bool AmbiguousEquals(ExecutableFunctionInfo other)
+        {
+            return FunctionType == other.FunctionType && FunctionName == other.FunctionName;
         }
     }
-
-    // ReSharper disable once ClassNeverInstantiated.Global
+    
     public class ExecutableReflection<TTarget>: ExecutableReflection
     {
         public class ExecutableFunction: Flow.ExecutableFunction
@@ -183,54 +193,112 @@ namespace Ceres.Graph.Flow
             
             public readonly ExecutableFunc ExecutableFunc;
 
-            public readonly bool HasReturnValue;
-
             public ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo)
             {
                 FunctionInfo = functionInfo;
                 MethodInfo = methodInfo;
-                HasReturnValue = methodInfo.ReturnType != typeof(void);
                 ExecutableAction = new ExecutableAction(MethodInfo);
                 ExecutableFunc = new ExecutableFunc(MethodInfo);
             }
-
-            public ExecutableDelegate GetDelegate()
-            {
-                return HasReturnValue ? ExecutableFunc : ExecutableAction;
-            }
         }
 
-        private static readonly Dictionary<ExecutableFunctionInfo, ExecutableFunction> Functions = new();
-        
-        public static ExecutableFunction GetFunction(ExecutableFunctionType functionType, string functionName)
+        private readonly List<ExecutableFunction> _functions = new();
+
+        public ExecutableReflection()
         {
-            return GetFunction(new ExecutableFunctionInfo(functionType, functionName));
+            typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public)
+                .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                .ToList()
+                .ForEach(methodInfo =>
+                {
+                    RegisterExecutableFunction(ExecutableFunctionType.StaticMethod, methodInfo);
+                });
+            typeof(TTarget).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                .ToList()
+                .ForEach(methodInfo =>
+                {
+                    RegisterExecutableFunction(ExecutableFunctionType.InstanceMethod, methodInfo);
+                });
+        }
+
+        private static ExecutableReflection<TTarget> _instance;
+
+        private static ExecutableReflection<TTarget> Instance
+        {
+            get
+            {
+                return _instance ??= new ExecutableReflection<TTarget>();
+            }
+        }
+        
+        public static ExecutableFunction GetFunction(ExecutableFunctionType functionType, string functionName, int parameterCount = -1)
+        {
+            return Instance.GetFunction_Internal(new ExecutableFunctionInfo(functionType, functionName, parameterCount));
         }
         
         public static ExecutableFunction GetFunction(ExecutableFunctionInfo functionInfo)
         {
-            if (Functions.TryGetValue(functionInfo, out var functionStructure))
+            return Instance.GetFunction_Internal(functionInfo);
+        }
+
+        private void RegisterExecutableFunction(ExecutableFunctionType functionType, MethodInfo methodInfo)
+        {
+            var functionInfo = new ExecutableFunctionInfo(functionType, methodInfo.Name, methodInfo.GetParameters().Length);
+            var functionStructure = new ExecutableFunction(functionInfo, methodInfo);
+            _functions.Add(functionStructure);
+        }
+
+        private ExecutableFunction FindFunction_Internal(ExecutableFunctionInfo functionInfo)
+        {
+            /* Ambiguous search */
+            if(functionInfo.ParameterCount < 0)
+            {
+                foreach (var function in _functions)
+                {
+                    if (function.FunctionInfo.AmbiguousEquals(functionInfo))
+                    {
+                        return function;
+                    }
+                }
+
+                return null;
+            }
+
+            foreach (var function in _functions)
+            {
+                if (function.FunctionInfo.Equals(functionInfo))
+                {
+                    return function;
+                }
+            }
+
+            return null;
+        }
+        
+        private ExecutableFunction GetFunction_Internal(ExecutableFunctionInfo functionInfo)
+        {
+            var functionStructure = FindFunction_Internal(functionInfo);
+            if (functionStructure != null)
             {
                 return functionStructure;
             }
 
             var functionType = functionInfo.FunctionType;
             var functionName = functionInfo.FunctionName;
-            var methodInfo = functionType switch
+            MethodInfo methodInfo = functionType switch
             {
-                ExecutableFunctionType.StaticMethod => typeof(TTarget).GetMethod(functionName,
-                    BindingFlags.Static | BindingFlags.Public),
-                ExecutableFunctionType.InstanceMethod => typeof(TTarget).GetMethod(functionName,
-                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic),
                 ExecutableFunctionType.PropertySetter => typeof(TTarget).GetProperty(functionName,
                     BindingFlags.Public | BindingFlags.Instance)!.SetMethod,
                 ExecutableFunctionType.PropertyGetter => typeof(TTarget).GetProperty(functionName,
                     BindingFlags.Public | BindingFlags.Instance)!.GetMethod,
-                _ => throw new ArgumentException(nameof(functionType))
+                ExecutableFunctionType.InstanceMethod or ExecutableFunctionType.StaticMethod => null,
+                _ => null
             };
-            if (methodInfo == null) throw new ArgumentException($"Can not get function from {functionInfo}");
+
+            if (methodInfo == null) throw new ArgumentException($"[Ceres] Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
             functionStructure = new ExecutableFunction(functionInfo, methodInfo);
-            Functions.Add(functionInfo, functionStructure);
+            _functions.Add(functionStructure);
             return functionStructure;
         }
         

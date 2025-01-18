@@ -1,9 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+#if CERES_DISABLE_ILPP
 using Chris;
+using System.Collections;
+#endif
+using R3.Chris;
 using Chris.Serialization;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -22,12 +25,6 @@ namespace Ceres.Graph
         /// <remarks>Prefer use GameObject as container key since component is not persistent</remarks>
         /// <value></value>
         UObject Object { get; }
-        
-        /// <summary>
-        /// Get graph instance
-        /// </summary>
-        /// <returns></returns>
-        CeresGraph GetGraph();
         
         /// <summary>
         /// Set graph persistent data
@@ -67,7 +64,7 @@ namespace Ceres.Graph
     
     /* Must set serializable to let managed reference work */
     [Serializable]
-    public class CeresGraph: IDisposable
+    public class CeresGraph: IDisposable, IDisposableUnregister
     {
         private BlackBoard _blackBoard;
 
@@ -98,6 +95,8 @@ namespace Ceres.Graph
         
         [NonSerialized]
         private int[][] _nodeDependencyPath;
+
+        private List<IDisposable> _disposables;
 
         public CeresGraph()
         {
@@ -407,7 +406,13 @@ namespace Ceres.Graph
         {
             return node == null ? null : _nodeDependencyPath[nodes.IndexOf(node)];
         }
-
+        
+        void IDisposableUnregister.Register(IDisposable disposable)
+        {
+            _disposables ??= ListPool<IDisposable>.Get();
+            _disposables.Add(disposable);
+        }
+        
         public virtual void Dispose()
         {
             foreach (var variable in variables)
@@ -425,6 +430,16 @@ namespace Ceres.Graph
             foreach (var node in GetAllNodes())
             {
                 node.Dispose();
+            }
+            nodes.Clear();
+
+            if(_disposables != null)
+            {
+                foreach (var disposable in _disposables)
+                {
+                    disposable?.Dispose();
+                }
+                ListPool<IDisposable>.Release(_disposables);
             }
         }
 
@@ -796,7 +811,7 @@ namespace Ceres.Graph
 
         public override string ToString()
         {
-            return $"Object {boundObject}| Type {containerType}";
+            return $"Object {boundObject} Type {SerializedType.GetTypeName(containerType)}";
         }
     }
     

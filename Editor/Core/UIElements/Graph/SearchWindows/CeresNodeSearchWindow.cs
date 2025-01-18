@@ -129,6 +129,7 @@ namespace Ceres.Editor.Graph
             return _entries;
         }
     }
+    
     public class CeresNodeSearchEntryData
     {
         /// <summary>
@@ -146,6 +147,7 @@ namespace Ceres.Editor.Graph
         /// </summary>
         public object Data;
     }
+    
     public abstract class CeresNodeSearchWindow: ScriptableObject, ISearchWindowProvider
     {
         public CeresGraphView GraphView { get; private set; }
@@ -169,7 +171,7 @@ namespace Ceres.Editor.Graph
         
         
         /// <summary>
-        /// Util function for searching types grouped by <see cref="NodeGroupAttribute"/>
+        /// Util function for searching types grouped by <see cref="CeresGroupAttribute"/>
         /// </summary>
         /// <param name="baseTypes"></param>
         /// <param name="nodeSearchContext"></param>
@@ -250,7 +252,7 @@ namespace Ceres.Editor.Graph
             if(portView == null) return false;
             if (!portView.PortElement.IsConnectable()) return false;
             if(nodeView is not CeresNodeView ceresNodeView) return false;
-            var receivePort = ceresNodeView.FindCompatiblePortView(portView);
+            var receivePort = ceresNodeView.FindConnectablePortView(portView);
             if (receivePort == null)
             {
                 return false;
@@ -315,6 +317,5 @@ namespace Ceres.Editor.Graph
             var entryData = (CeresNodeSearchEntryData)searchTreeEntry.userData;
             return OnSelectEntry(entryData, newRect);
         }
-
     }
 }

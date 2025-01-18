@@ -13,6 +13,8 @@ namespace Ceres.Editor.Graph.Flow
         protected MethodInfo MethodInfo { get; private set; }
         
         protected string MethodName { get; private set; }
+        
+        protected int ParameterCount { get; private set; }
 
         protected bool IsStatic { get; private set; }
         
@@ -34,6 +36,7 @@ namespace Ceres.Editor.Graph.Flow
             ExecuteInDependency = ExecutableFunction.ExecuteInDependency(methodInfo);
             DisplayTarget = ExecutableFunction.CanDisplayTarget(methodInfo);
             IsSelfTarget = ExecutableFunction.IsSelfTarget(methodInfo);
+            ParameterCount = methodInfo.GetParameters().Length;
             SetNodeElementTitle(ExecutableFunction.GetFunctionName(methodInfo));
             FillMethodParametersPorts(methodInfo);
             if (ExecutableFunction.IsNeedResolveReturnType(methodInfo))
@@ -78,7 +81,7 @@ namespace Ceres.Editor.Graph.Flow
             }
             NodeElement.title = functionTitle;
             
-            var tooltipText = NodeInfo.GetInfo(NodeType);
+            var tooltipText = GetDefaultTooltip();
             tooltipText += CeresNode.GetTargetSubtitle(targetType, false);
             NodeElement.tooltip = tooltipText;
         }
@@ -111,6 +114,7 @@ namespace Ceres.Editor.Graph.Flow
                 IsScriptMethod = functionNode.isScriptMethod;
                 IsSelfTarget = functionNode.isSelfTarget;
                 ExecuteInDependency = functionNode.executeInDependency;
+                ParameterCount = functionNode.parameterCount;
                 SetNodeElementTitle(functionNode.methodName);
             }
             else
@@ -128,6 +132,7 @@ namespace Ceres.Editor.Graph.Flow
             instance.isScriptMethod = IsScriptMethod;
             instance.isSelfTarget = IsSelfTarget;
             instance.executeInDependency = ExecuteInDependency;
+            instance.parameterCount = ParameterCount;
             return instance;
         }
 

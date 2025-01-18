@@ -6,13 +6,16 @@ namespace Ceres.Editor
     {
         
     }
+    
     public enum VariableChangeType
     {
         Create,
-        ValueChange,
-        NameChange,
+        Value,
+        Name,
+        Type,
         Delete
     }
+    
     public class VariableChangeEvent : EventBase<VariableChangeEvent>, ICeresEvent
     {
         public SharedVariable Variable { get; private set; }

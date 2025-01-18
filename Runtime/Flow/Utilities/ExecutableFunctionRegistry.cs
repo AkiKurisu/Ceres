@@ -17,9 +17,9 @@ namespace Ceres.Graph.Flow.Utilities
     
     public class ExecutableFunctionRegistry
     {
-        private readonly Dictionary<Type, MethodInfo[]> _libraryFunctionTables;
+        private readonly Dictionary<Type, MethodInfo[]> _retargetFunctionTables;
 
-        private readonly Dictionary<Type, MethodInfo[]> _functionTables;
+        private readonly Dictionary<Type, MethodInfo[]> _instanceFunctionTables;
         
         private readonly MethodInfo[] _staticFunctions;
 
@@ -27,7 +27,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         private ExecutableFunctionRegistry()
         {
-            // Build library functions
+            // Collect static functions
             var methodInfos = SubClassSearchUtility.FindSubClassTypes(typeof(ExecutableFunctionLibrary))
                         .SelectMany(x => x.GetMethods(BindingFlags.Public | BindingFlags.Static))
                         .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
@@ -37,15 +37,16 @@ namespace Ceres.Graph.Flow.Utilities
                 .Where(x=>x.Key != null)
                 .ToArray();
             _staticFunctions = methodInfos.Except(groups.SelectMany(x => x)).ToArray();
-            _libraryFunctionTables = groups.ToDictionary(x => x.Key, x => x.ToArray());
+            _retargetFunctionTables = groups.ToDictionary(x => x.Key, x => x.ToArray());
             
-            // Build managed functions
-            _functionTables = SubClassSearchUtility.FindSubClassTypes(typeof(object))
-                .Where(x=> GetExecutableFunctions(x).Any())
-                .ToDictionary(x => x, x=> GetExecutableFunctions(x).ToArray());
+            // Collect instance functions
+            _instanceFunctionTables = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(a => a.GetTypes())
+                .Where(x=> !x.IsAbstract && GetInstanceExecutableFunctions(x).Any())
+                .ToDictionary(x => x, x=> GetInstanceExecutableFunctions(x).ToArray());
         }
 
-        private static IEnumerable<MethodInfo> GetExecutableFunctions(Type type)
+        private static IEnumerable<MethodInfo> GetInstanceExecutableFunctions(Type type)
         {
             return type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
                 .Where(methodInfo => methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null);
@@ -63,15 +64,15 @@ namespace Ceres.Graph.Flow.Utilities
         
         public MethodInfo[] GetFunctions(Type type)
         {
-            var functions = _functionTables.GetValueOrDefault(type) ?? Enumerable.Empty<MethodInfo>();
-            return  functions.Concat(_libraryFunctionTables.Where(x=> type.IsAssignableTo(x.Key))
+            var functions = _instanceFunctionTables.GetValueOrDefault(type) ?? Enumerable.Empty<MethodInfo>();
+            return functions.Concat(_retargetFunctionTables.Where(x=> type.IsAssignableTo(x.Key))
                             .SelectMany(x=>x.Value))
                             .ToArray();
         }
 
         public Type[] GetManagedTypes()
         {
-            return _functionTables.Keys.ToArray();
+            return _instanceFunctionTables.Keys.ToArray();
         }
     }
 }

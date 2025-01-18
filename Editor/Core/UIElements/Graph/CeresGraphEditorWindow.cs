@@ -5,7 +5,7 @@ using Ceres.Graph;
 using UnityEngine;
 namespace Ceres.Editor.Graph
 {
-    public abstract class CeresGraphEditorWindow : EditorWindow
+    public abstract class CeresGraphEditorWindow : EditorWindow, IHasCustomMenu
     {
         /// <summary>
         /// Unique object key per window
@@ -17,6 +17,8 @@ namespace Ceres.Editor.Graph
         /// Actual graph container of this window
         /// </summary>
         public ICeresGraphContainer Container { get; protected set; }
+
+        private Type _explicitContainerType;
         
         /// <summary>
         /// Setup EditorWindow
@@ -70,6 +72,11 @@ namespace Ceres.Editor.Graph
             }
         }
 
+        public virtual void AddItemsToMenu(GenericMenu menu)
+        {
+            menu.AddItem(new GUIContent(nameof(Reload)), false, Reload);
+        }
+        
         /// <summary>
         /// Reload editor window
         /// </summary>
@@ -84,6 +91,21 @@ namespace Ceres.Editor.Graph
         protected virtual void PreReload()
         {
             
+        }
+
+        public Type GetContainerType()
+        {
+            if (_explicitContainerType != null) return _explicitContainerType;
+            return Container.GetType();
+        }
+
+        /// <summary>
+        /// Set graph container type explicitly, useful when your runtime container is different from editor
+        /// </summary>
+        /// <param name="targetType"></param>
+        public void SetContainerType(Type targetType)
+        {
+            _explicitContainerType = targetType;
         }
     }
     
@@ -167,6 +189,24 @@ namespace Ceres.Editor.Graph
         public TContainer GetContainer()
         {
             return Identifier.GetContainer<TContainer>();
+        }
+        
+        protected override void Reload()
+        {
+            if (!Identifier.IsValid()) return;
+            
+            CeresGraph.Log($"Reload graph from identifier [{Identifier}]");
+            Container = GetContainer();
+            OnReloadGraphView();
+            Repaint();
+        }
+
+        /// <summary>
+        /// Construct graph view after reloading
+        /// </summary>
+        protected virtual void OnReloadGraphView()
+        {
+            
         }
     }
 }

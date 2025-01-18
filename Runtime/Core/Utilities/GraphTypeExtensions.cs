@@ -49,20 +49,20 @@ namespace Ceres.Utilities
                                     .ToList();
         }
         
-        public static IEnumerable<IGrouping<string, Type>> GroupsByNodeGroup(this IEnumerable<Type> types)
+        public static IEnumerable<IGrouping<string, TMemberInfo>> GroupsByNodeGroup<TMemberInfo>(this IEnumerable<TMemberInfo> types) where TMemberInfo: MemberInfo
         {
             return types.GroupBy(t =>
             {
-                var groupAttribute = t.GetCustomAttribute<NodeGroupAttribute>();
+                var groupAttribute = t.GetCustomAttribute<CeresGroupAttribute>();
                 return groupAttribute == null ? null : SubClassSearchUtility.SplitGroupName(groupAttribute.Group)[0];
             }).Where(x => !string.IsNullOrEmpty(x.Key));
         }
         
-        public static IEnumerable<IGrouping<string, Type>> SubGroups(this IGrouping<string, Type> group, int level)
+        public static IEnumerable<IGrouping<string, TMemberInfo>> SubGroups<TMemberInfo>(this IGrouping<string, TMemberInfo> group, int level) where TMemberInfo: MemberInfo
         {
             return group.GroupBy(t =>
             {
-                var groupAttribute = t.GetCustomAttribute<NodeGroupAttribute>();
+                var groupAttribute = t.GetCustomAttribute<CeresGroupAttribute>();
                 var subcategory = SubClassSearchUtility.SplitGroupName(groupAttribute.Group);
                 return subcategory.Length > level ? subcategory[level] : null;
             }).Where(x => !string.IsNullOrEmpty(x.Key));
@@ -73,7 +73,7 @@ namespace Ceres.Utilities
             return groups.SelectMany(x => x).Where(x => x.IsAssignableTo(baseType)).GroupsByNodeGroup();
         }
         
-        public static IEnumerable<IGrouping<string, Type>> SelectGroup(this IEnumerable<IGrouping<string, Type>> groups, string[] showGroupNames)
+        public static IEnumerable<IGrouping<string, TMemberInfo>> SelectGroup<TMemberInfo>(this IEnumerable<IGrouping<string, TMemberInfo>> groups, string[] showGroupNames)
         {
             if (showGroupNames == null || showGroupNames.Length == 0)
             {
@@ -82,7 +82,7 @@ namespace Ceres.Utilities
             return groups.Where(x => showGroupNames.Any(a => a == x.Key));
         }
         
-        public static IEnumerable<IGrouping<string, Type>> ExceptGroup(this IEnumerable<IGrouping<string, Type>> groups, string[] notShowGroupNames)
+        public static IEnumerable<IGrouping<string, TMemberInfo>> ExceptGroup<TMemberInfo>(this IEnumerable<IGrouping<string, TMemberInfo>> groups, string[] notShowGroupNames)
         {
             if (notShowGroupNames == null || notShowGroupNames.Length == 0)
             {
@@ -92,7 +92,7 @@ namespace Ceres.Utilities
         }
 
         /// <summary>
-        /// Determines whether current type can be assigned to another instance of type in Ceres.Graph.
+        /// Determines whether current type can be assigned to another instance of type
         /// </summary>
         /// <param name="type"></param>
         /// <param name="other"></param>

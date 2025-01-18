@@ -38,7 +38,7 @@ namespace {NAMESPACE}
         [SerializeField]
         private FlowGraphData graphData;
         
-        public UObject Object => this;
+        UObject ICeresGraphContainer.Object => this;
 
         protected FlowGraph Graph
         {
@@ -54,12 +54,7 @@ namespace {NAMESPACE}
             }
         }
 
-        public CeresGraph GetGraph()
-        {
-            return GetFlowGraph();
-        }
-
-        public FlowGraph GetFlowGraph()
+        public virtual FlowGraph GetFlowGraph()
         {
             if (Application.isPlaying && _graph != null)
             {
@@ -68,9 +63,15 @@ namespace {NAMESPACE}
             return new FlowGraph(graphData.CloneT<FlowGraphData>());
         }
 
-        public void SetGraphData(CeresGraphData graph)
+        public virtual void SetGraphData(CeresGraphData graph)
         {
             graphData = (FlowGraphData)graph;
+        }
+
+
+        protected void ReleaseGraph()
+        {
+            _graph?.Dispose();
         }
         
         protected void ProcessEvent([CallerMemberName] string eventName = """")

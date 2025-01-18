@@ -78,15 +78,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
-            ExecutableEventNodeView nodeView;
-            if (entryData.NodeType.IsAssignableTo(typeof(ExecutionEventUber)))
-            {
-                nodeView = (ExecutionEventUberNodeView)searchWindow.CreateNodeView(entryData);
-            }
-            else
-            {
-                nodeView = CreateGenericNodeView(searchWindow, entryData);
-            }
+            var nodeView = CreateGenericNodeView(searchWindow, entryData);
             searchWindow.GraphView.AddNodeView(nodeView, rect);
             nodeView!.SetMethodInfo(MethodInfo);
             return nodeView;

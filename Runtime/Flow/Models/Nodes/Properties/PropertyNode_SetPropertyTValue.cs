@@ -7,10 +7,11 @@ using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Properties
 {
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     [CeresLabel("Set {0}")]
     [CeresMetadata("style = PropertyNode", "path = Forward")]
-    public sealed class PropertyNode_SetPropertyTValue<TTarget, T>: PropertyNode, ISerializationCallbackReceiver 
+    public sealed class PropertyNode_SetPropertyTValue<TTarget, T>: PropertyNode_PropertyValue,
+        ISerializationCallbackReceiver 
         where TTarget: UObject
     {
         /// <summary>

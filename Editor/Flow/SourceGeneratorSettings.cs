@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-namespace Ceres.Graph.Flow.CodeGen
+namespace Ceres.Editor.Graph.Flow
 {
     internal static class SourceGeneratorSettings
     {

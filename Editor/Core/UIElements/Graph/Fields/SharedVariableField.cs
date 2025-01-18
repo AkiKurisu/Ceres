@@ -57,7 +57,7 @@ namespace Ceres.Editor.Graph
         
         private void OnVariableChange(VariableChangeEvent evt)
         {
-            if (evt.ChangeType != VariableChangeType.NameChange) return;
+            if (evt.ChangeType != VariableChangeType.Name) return;
             if (evt.Variable != _bindExposedProperty) return;
             _nameDropdown.value = value.Name = evt.Variable.Name;
         }

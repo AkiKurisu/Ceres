@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow.Utilities
 {
     [Serializable]
-    [NodeGroup("Utilities")]
+    [CeresGroup("Utilities")]
     [CeresLabel("Cast to {0}")]
     [CeresMetadata("style = ConstNode")]
     public class FlowNode_CastT<TFrom, TTo>: ForwardNode where TTo: TFrom
@@ -15,7 +15,7 @@ namespace Ceres.Graph.Flow.Utilities
         [InputPort, HideInGraphEditor, CeresLabel("Source")]
         public CeresPort<TFrom> sourceValue;
         
-        [OutputPort, CeresLabel("Cast Failed")]
+        [OutputPort(false), CeresLabel("Cast Failed")]
         public NodePort castFailed;
                 
         [OutputPort, CeresLabel("Result")]

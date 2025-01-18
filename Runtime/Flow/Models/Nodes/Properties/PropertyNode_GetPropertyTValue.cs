@@ -1,15 +1,20 @@
 using System;
 using Ceres.Annotations;
-using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Properties
 {
+    public abstract class PropertyNode_PropertyValue : PropertyNode
+    {
+    }
+
     [Serializable]
-    [NodeGroup("Hidden")]
+    [CeresGroup("Hidden")]
     [CeresLabel("Get {0}")]
-    public sealed class PropertyNode_GetPropertyTValue<TTarget, T>: PropertyNode, ISerializationCallbackReceiver where TTarget: UObject
+    public sealed class PropertyNode_GetPropertyTValue<TTarget, T>: PropertyNode_PropertyValue,
+        ISerializationCallbackReceiver 
+        where TTarget: UObject
     {
         [OutputPort, CeresLabel("Value")]
         public CeresPort<T> outputValue;

@@ -6,14 +6,20 @@ namespace Ceres.Graph.Flow
     {
         
     }
-    
+
+    public abstract class ExecuteFlowEventBase<TEvent> : EventBase<TEvent>, IFlowEvent 
+        where TEvent: ExecuteFlowEventBase<TEvent>, new()
+    {
+        public string FunctionName { get; protected set; }
+    }
+
     /// <summary>
     /// Event bridge between Flow Graph and GameObjects
     /// </summary>
-    public sealed class ExecuteFlowEvent : EventBase<ExecuteFlowEvent>, IFlowEvent
+    public sealed class ExecuteFlowEvent : ExecuteFlowEventBase<ExecuteFlowEvent>
     {
-        public string FunctionName { get; private set; }
         public object[] Args { get; private set; }
+        
 
         public static readonly object[] DefaultArgs = Array.Empty<object>();
 
@@ -26,10 +32,8 @@ namespace Ceres.Graph.Flow
         }
     }
     
-    public sealed class ExecuteFlowEvent<T1> : EventBase<ExecuteFlowEvent<T1>>, IFlowEvent
+    public sealed class ExecuteFlowEvent<T1> : ExecuteFlowEventBase<ExecuteFlowEvent<T1>>
     {
-        public string FunctionName { get; private set; }
-        
         public T1 Arg1 { get; private set; }
 
         public static ExecuteFlowEvent<T1> Create(string functionName, T1 arg1)
@@ -41,10 +45,8 @@ namespace Ceres.Graph.Flow
         }
     }
     
-    public sealed class ExecuteFlowEvent<T1, T2> : EventBase<ExecuteFlowEvent<T1, T2>>, IFlowEvent
+    public sealed class ExecuteFlowEvent<T1, T2> : ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2>>
     {
-        public string FunctionName { get; private set; }
-        
         public T1 Arg1 { get; private set; }
         
         public T2 Arg2 { get; private set; }
@@ -59,10 +61,8 @@ namespace Ceres.Graph.Flow
         }
     }
     
-    public sealed class ExecuteFlowEvent<T1, T2, T3> : EventBase<ExecuteFlowEvent<T1, T2, T3>>, IFlowEvent
+    public sealed class ExecuteFlowEvent<T1, T2, T3> : ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2, T3>>, IFlowEvent
     {
-        public string FunctionName { get; private set; }
-        
         public T1 Arg1 { get; private set; }
         
         public T2 Arg2 { get; private set; }
@@ -80,10 +80,8 @@ namespace Ceres.Graph.Flow
         }
     }
     
-    public sealed class ExecuteFlowEvent<T1, T2, T3, T4> : EventBase<ExecuteFlowEvent<T1, T2, T3, T4>>, IFlowEvent
+    public sealed class ExecuteFlowEvent<T1, T2, T3, T4> : ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2, T3, T4>>
     {
-        public string FunctionName { get; private set; }
-        
         public T1 Arg1 { get; private set; }
         
         public T2 Arg2 { get; private set; }
@@ -105,10 +103,8 @@ namespace Ceres.Graph.Flow
     }
     
     public sealed class ExecuteFlowEvent<T1, T2, T3, T4, T5> : 
-        EventBase<ExecuteFlowEvent<T1, T2, T3, T4, T5>>, IFlowEvent
+        ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2, T3, T4, T5>>
     {
-        public string FunctionName { get; private set; }
-        
         public T1 Arg1 { get; private set; }
         
         public T2 Arg2 { get; private set; }
@@ -134,10 +130,8 @@ namespace Ceres.Graph.Flow
     }
     
     public sealed class ExecuteFlowEvent<T1, T2, T3, T4, T5, T6> : 
-        EventBase<ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>>, IFlowEvent
+        ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>>
     {
-        public string FunctionName { get; private set; }
-        
         public T1 Arg1 { get; private set; }
         
         public T2 Arg2 { get; private set; }

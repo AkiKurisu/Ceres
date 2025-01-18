@@ -1,7 +1,7 @@
 <div align="center">
 
 # Ceres
-Powerful node based visual scripting toolkit for Unity.
+Powerful visual scripting toolkit for Unity.
 
 ![banner](./Docs/Images/ceres_banner.png)
 
@@ -23,6 +23,13 @@ Add following dependencies to `manifest.json`.
 
 ```
 
+## HighLights
+
+- Generic and delegate support
+- Graph and C# Integration
+- Editor debugging
+- Easy implementation
+
 ## Contents
 
 [Concept of Ceres](./Docs/ceres_concept.md)
@@ -37,11 +44,9 @@ Unity 2022.3 LTS or later.
 
 Support Mono, IL2CPP.
 
-> Ceres relies on full generic sharing since Unity 2022 to support generic node in IL2CPP.
-
 ## Implementation
 
-### Flow
+### Ceres.Flow
 
 Powerful visual scripting solution inspired from Unreal's Blueprint.
   
