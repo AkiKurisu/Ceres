@@ -9,6 +9,10 @@ namespace Ceres.Graph.Flow
 {
     public interface IFlowGraphContainer: ICeresGraphContainer
     {
+        /// <summary>
+        /// Get <see cref="FlowGraph"/> instance from this container
+        /// </summary>
+        /// <returns></returns>
         FlowGraph GetFlowGraph();
     }
     
