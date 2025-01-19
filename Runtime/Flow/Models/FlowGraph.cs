@@ -103,7 +103,7 @@ namespace Ceres.Graph.Flow
             CollectDependencyPath(this);
         }
 
-        internal ExecutableEvent FindEvent(string eventName)
+        private ExecutableEvent FindEvent(string eventName)
         {
             foreach (var evt in Events)
             {
@@ -149,6 +149,9 @@ namespace Ceres.Graph.Flow
         }
     }
 
+    /// <summary>
+    /// Metadata for <see cref="FlowGraph"/>
+    /// </summary>
     [Serializable]
     public class FlowGraphData: CeresGraphData
     {

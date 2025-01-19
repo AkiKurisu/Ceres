@@ -127,13 +127,10 @@ namespace Ceres.Editor.Graph.Flow
             }
         }
         
-        private void BuildDelegateEntries(CeresNodeSearchEntryBuilder builder,  Type parameterType)
+        private void BuildDelegateEntries(CeresNodeSearchEntryBuilder builder, Type parameterType)
         {
             /* Build delegate events */
-            if (!parameterType.IsAssignableTo(typeof(EventDelegateBase)))
-            {
-                return;
-            }
+            if (!IsDelegatePort(parameterType)) return;
             int parametersLength = parameterType.GetGenericArguments().Length;
             const int maxParameters = 6;
             if (parametersLength > maxParameters)
@@ -152,6 +149,27 @@ namespace Ceres.Editor.Graph.Flow
                     Data = new DelegateEventNodeViewFactoryProxy { DelegateType = parameterType }
                 }
             });
+        }
+
+        private static readonly Type[] DelegateTypes = {
+            typeof(Action),
+            typeof(Action<>),
+            typeof(Action<,>),
+            typeof(Action<,,>),
+            typeof(Action<,,,>),
+            typeof(Action<,,,,>),
+            typeof(Action<,,,,,>)
+        };
+        
+        private static bool IsDelegatePort(Type parameterType)
+        {
+            if (parameterType.IsAssignableTo(typeof(EventDelegateBase)))
+            {
+                return true;
+            }
+
+            if (parameterType.IsGenericType) parameterType = parameterType.GetGenericTypeDefinition();
+            return DelegateTypes.Contains(parameterType);
         }
 
         private void BuildPropertyEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool isSelfTarget)
