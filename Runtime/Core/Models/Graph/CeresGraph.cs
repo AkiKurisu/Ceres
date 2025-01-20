@@ -497,6 +497,9 @@ namespace Ceres.Graph
             }
         }
 
+        /// <summary>
+        /// The <see cref="LogType"/> in CeresGraph
+        /// </summary>
         public static LogType LogLevel { get; set; } = LogType.Log;
         
         public static void LogWarning(string message)

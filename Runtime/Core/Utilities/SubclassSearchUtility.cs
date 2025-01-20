@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using Ceres.Annotations;
+
 namespace Ceres.Utilities
 {
     public static class SubClassSearchUtility
@@ -35,6 +38,12 @@ namespace Ceres.Utilities
         {
             var array = group.Split(Span, StringSplitOptions.RemoveEmptyEntries);
             return array.Length > 0 ? array : new[] { group };
+        }
+        
+        public static string GetFirstGroupNameOrDefault(MemberInfo memberInfo)
+        {
+            var groupAttribute = memberInfo.GetCustomAttribute<CeresGroupAttribute>();
+            return groupAttribute == null ? null : SplitGroupName(groupAttribute.Group)[0];
         }
     }
 }
