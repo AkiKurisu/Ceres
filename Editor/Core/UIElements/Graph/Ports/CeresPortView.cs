@@ -127,6 +127,10 @@ namespace Ceres.Graph
             {
                 AddToClassList("type" + type.GetGenericTypeDefinition().Name.Split('`')[0]);
             }
+            if (type.IsEnum)
+            {
+                AddToClassList("typeInt");
+            }
             tooltip = CreatePortTooltip(type);
             this.AddManipulator(new ContextualMenuManipulator(BuildContextualMenu));
         }
