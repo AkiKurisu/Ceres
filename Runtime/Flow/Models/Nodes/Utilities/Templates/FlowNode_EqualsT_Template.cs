@@ -1,4 +1,5 @@
 using System;
+using Ceres.Annotations;
 namespace Ceres.Graph.Flow.Utilities.Templates
 {
     public class FlowNode_EqualsT_Template: GenericNodeTemplate
@@ -20,7 +21,7 @@ namespace Ceres.Graph.Flow.Utilities.Templates
         
         public override string GetGenericNodeEntryName(string label, Type selectArgumentType)
         {
-            return $"{label}<{selectArgumentType.Name}>";
+            return $"{label} {CeresLabel.GetTypeName(selectArgumentType)}";
         }
     }
 }

@@ -51,11 +51,7 @@ namespace Ceres.Utilities
         
         public static IEnumerable<IGrouping<string, TMemberInfo>> GroupsByNodeGroup<TMemberInfo>(this IEnumerable<TMemberInfo> types) where TMemberInfo: MemberInfo
         {
-            return types.GroupBy(t =>
-            {
-                var groupAttribute = t.GetCustomAttribute<CeresGroupAttribute>();
-                return groupAttribute == null ? null : SubClassSearchUtility.SplitGroupName(groupAttribute.Group)[0];
-            }).Where(x => !string.IsNullOrEmpty(x.Key));
+            return types.GroupBy(SubClassSearchUtility.GetFirstGroupNameOrDefault).Where(x => !string.IsNullOrEmpty(x.Key));
         }
         
         public static IEnumerable<IGrouping<string, TMemberInfo>> SubGroups<TMemberInfo>(this IGrouping<string, TMemberInfo> group, int level) where TMemberInfo: MemberInfo

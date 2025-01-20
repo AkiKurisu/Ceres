@@ -76,7 +76,10 @@ namespace Ceres.Editor
             disableILPostProcessProp.boolValue = ScriptingSymbol.ContainsScriptingSymbol(DisableILPostProcessSymbol);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphEditorDisplayMode"), Styles.GraphEditorDisplayModeStyle);
             GUILayout.EndVertical();
-            _serializedObject.ApplyModifiedPropertiesWithoutUndo();
+            if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
+            {
+                CeresSettings.SaveSettings();
+            }
 
             GUILayout.Label("Runtime Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);

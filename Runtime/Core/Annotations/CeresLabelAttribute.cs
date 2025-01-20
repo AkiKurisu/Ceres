@@ -71,7 +71,7 @@ namespace Ceres.Annotations
                 return type.GetGenericTypeDefinition().Name.Split('`')[0] 
                        + '<' + string.Join(", ",type.GetGenericArguments().Select(x => GetLabel(x, richText)).ToArray()) + '>';
             }
-            return type.Name;
+            return GetLabel(type.Name);
         }
 
         public static string GetTypeName(Type type)
@@ -89,7 +89,7 @@ namespace Ceres.Annotations
                 return type.GetGenericTypeDefinition().Name.Split('`')[0] 
                        + '<' + string.Join(", ",type.GetGenericArguments().Select(GetTypeName).ToArray()) + '>';
             }
-            return type.Name;
+            return GetLabel(type.Name);
         }
     }
 }

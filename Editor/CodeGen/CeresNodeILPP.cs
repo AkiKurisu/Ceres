@@ -121,7 +121,7 @@ namespace Unity.Ceres.ILPP.CodeGen
                     }
                     catch (Exception e)
                     {
-                        m_Diagnostics.AddError((e.ToString() + e.StackTrace).Replace("\n", "|").Replace("\r", "|"));
+                        m_Diagnostics.AddError((e + e.StackTrace).Replace("\n", "|").Replace("\r", "|"));
                     }
                 }
                 else

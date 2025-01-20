@@ -6,6 +6,7 @@ using Ceres.Annotations;
 using Ceres.Utilities;
 using Chris;
 using Chris.Serialization;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 namespace Ceres.Graph
 {
@@ -100,6 +101,17 @@ namespace Ceres.Graph
             return structure.CompatibleTypes.Contains(to) || from.IsAssignableTo(to);
         }
 
+        public static Type[] GetCompatibleTypes(Type from)
+        {
+            var structure = GetCompatibleStructure(from);
+            if (structure == null)
+            {
+                return Type.EmptyTypes;
+            }
+
+            return structure.CompatibleTypes.ToArray();
+        }
+
         public abstract Type GetValueType();
 
         /// <summary>
@@ -154,6 +166,9 @@ namespace Ceres.Graph
             AssignValueType<TValue>();
             CompatibleStructure = GetCompatibleStructure(typeof(TValue));
             _valueType = typeof(TValue);
+            if (!_valueType.IsEnum) return;
+            MakeCompatibleTo<int>(enumValue => enumValue.GetHashCode());
+            CeresPort<int>.MakeCompatibleTo<TValue>(intValue => UnsafeUtility.As<int, TValue>(ref intValue));
         }
         
         public CeresPort()

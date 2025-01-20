@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Ceres.Annotations;
 using Ceres.Utilities;
 namespace Ceres.Graph.Flow.Utilities.Templates
 {
@@ -27,7 +28,7 @@ namespace Ceres.Graph.Flow.Utilities.Templates
         protected override string GetGenericNodeBaseName(string label, Type[] argumentTypes)
         {
             /* Cast to {value type} */
-            return string.Format(label, argumentTypes[1].Name);
+            return string.Format(label, CeresLabel.GetTypeName(argumentTypes[1]));
         }
     }
 }

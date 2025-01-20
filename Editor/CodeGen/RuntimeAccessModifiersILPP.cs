@@ -32,7 +32,7 @@ namespace Unity.Ceres.ILPP.CodeGen
             var assemblyDefinition = CodeGenHelpers.AssemblyDefinitionFor(compiledAssembly, out var unused);
             if (assemblyDefinition == null)
             {
-                m_Diagnostics.AddError($"Cannot read Netcode Runtime assembly definition: {compiledAssembly.Name}");
+                m_Diagnostics.AddError($"Cannot read Ceres assembly definition: {compiledAssembly.Name}");
                 return null;
             }
 
@@ -57,7 +57,7 @@ namespace Unity.Ceres.ILPP.CodeGen
             }
             else
             {
-                m_Diagnostics.AddError($"Cannot get main module from Netcode Runtime assembly definition: {compiledAssembly.Name}");
+                m_Diagnostics.AddError($"Cannot get main module from Ceres assembly definition: {compiledAssembly.Name}");
             }
 
             // write

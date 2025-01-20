@@ -361,7 +361,7 @@ namespace Ceres.Editor.Graph
             var placeHolder = new VisualElement();
             objectField.objectType = sharedUObject.serializedType;
             var constraintTypeName = "Object Type: " + objectField.objectType.Name;
-            var button = new Button()
+            var button = new Button
             {
                 text = constraintTypeName
             };
@@ -472,7 +472,7 @@ namespace Ceres.Editor.Graph
             toggle.SetEnabled(objectType is not null);
             placeHolder.Add(toggle);
             
-            var button = new Button()
+            var button = new Button
             {
                 text = constraintTypeName,
                 tooltip = objectType?.FullName ?? string.Empty

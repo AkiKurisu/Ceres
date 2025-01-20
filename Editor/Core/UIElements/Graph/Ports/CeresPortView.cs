@@ -127,6 +127,10 @@ namespace Ceres.Graph
             {
                 AddToClassList("type" + type.GetGenericTypeDefinition().Name.Split('`')[0]);
             }
+            if (type.IsEnum)
+            {
+                AddToClassList("typeInt");
+            }
             tooltip = CreatePortTooltip(type);
             this.AddManipulator(new ContextualMenuManipulator(BuildContextualMenu));
         }
@@ -606,6 +610,15 @@ namespace Ceres.Graph
         public static void HidePort(this CeresPortView portView)
         {
             portView.PortElement.style.display = DisplayStyle.None;
+        }
+        
+        /// <summary>
+        /// Show port in node view
+        /// </summary>
+        /// <param name="portView"></param>
+        public static void ShowPort(this CeresPortView portView)
+        {
+            portView.PortElement.style.display = DisplayStyle.Flex;
         }
         
         /// <summary>

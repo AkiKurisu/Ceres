@@ -39,26 +39,32 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override void OnInitialize()
         {
-            DisplayProgressBar("Initialize field factory",0f);
+            try
             {
-                FieldResolverFactory.Get();
+                DisplayProgressBar("Initialize field factory", 0f);
+                {
+                    FieldResolverFactory.Get();
+                }
+                DisplayProgressBar("Initialize node view factory", 0.3f);
+                {
+                    NodeViewFactory.Get();
+                }
+                DisplayProgressBar("Initialize executable function registry", 0.6f);
+                {
+                    ExecutableFunctionRegistry.Get();
+                }
+                DisplayProgressBar("Construct graph view", 0.9f);
+                {
+                    StructVisualElements();
+                    var icon = Resources.Load<Texture>("Ceres/editor_icon");
+                    titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
+                    _graphView.DeserializeGraph(ContainerT);
+                }
             }
-            DisplayProgressBar("Initialize node view factory",0.3f);
+            finally
             {
-                NodeViewFactory.Get();
+                ClearProgressBar();
             }
-            DisplayProgressBar("Initialize executable function registry",0.6f);
-            {
-                ExecutableFunctionRegistry.Get();
-            }
-            DisplayProgressBar("Construct graph view",0.9f);
-            {
-                StructVisualElements();
-                var icon = Resources.Load<Texture>("Ceres/editor_icon");
-                titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
-                _graphView.DeserializeGraph(ContainerT);
-            }
-            ClearProgressBar();
         }
 
         private static void DisplayProgressBar(string stepTitle, float progress)
@@ -87,17 +93,11 @@ namespace Ceres.Editor.Graph.Flow
             var asset = EditorUtility.InstanceIDToObject(instanceId);
             if (asset is not FlowGraphAsset flowGraphAsset) return false;
             
-            Show(flowGraphAsset);
+            var window = Show(flowGraphAsset);
+            window.SetContainerType(flowGraphAsset.GetContainerType());
             return false;
         }
 #pragma warning restore IDE0051
-
-        public static void Show(IFlowGraphContainer container)
-        {
-            var window = GetOrCreateEditorWindow(container);
-            window.Focus();
-            window.Show();
-        }
 
         public FlowGraphView GetGraphView()
         {

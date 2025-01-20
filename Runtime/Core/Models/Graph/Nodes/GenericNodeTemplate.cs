@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ceres.Annotations;
 using Ceres.Utilities;
 namespace Ceres.Graph
 {
@@ -70,7 +71,7 @@ namespace Ceres.Graph
         
         public virtual string GetGenericNodeEntryName(string label, Type selectArgumentType)
         {
-            return string.Format(label, selectArgumentType.Name);
+            return string.Format(label, CeresLabel.GetTypeName(selectArgumentType));
         }
 
         public virtual string GetGenericNodeName(string label, Type[] argumentTypes)
@@ -91,7 +92,7 @@ namespace Ceres.Graph
         protected virtual string GetGenericNodeBaseName(string label, Type[] argumentTypes)
         {
             // ReSharper disable once CoVariantArrayConversion
-            return string.Format(label, argumentTypes.Where(x=>x != null).Select(x => x.Name).ToArray());
+            return string.Format(label, argumentTypes.Where(x=>x != null).Select(CeresLabel.GetTypeName).ToArray());
         }
 
         public virtual bool RequirePort()

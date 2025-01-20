@@ -15,7 +15,7 @@ using UObject = UnityEngine.Object;
 namespace Ceres.Graph
 {
     /// <summary>
-    /// Interface for owning <see cref="CeresGraph"/> data
+    /// Interface for containing <see cref="CeresGraph"/> data
     /// </summary>
     public interface ICeresGraphContainer
     {
@@ -497,6 +497,9 @@ namespace Ceres.Graph
             }
         }
 
+        /// <summary>
+        /// The <see cref="LogType"/> in CeresGraph
+        /// </summary>
         public static LogType LogLevel { get; set; } = LogType.Log;
         
         public static void LogWarning(string message)

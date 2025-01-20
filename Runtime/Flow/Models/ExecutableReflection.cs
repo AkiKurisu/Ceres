@@ -59,12 +59,6 @@ namespace Ceres.Graph.Flow
 
     public class ExecutableFunction
     {
-        // ReSharper disable once InconsistentNaming
-        /// <summary>
-        /// Metadata for function parameter to resolve return type, only support <see cref="SerializedType{T}"/>
-        /// </summary>
-        public const string RESOLVE_RETURN = nameof(RESOLVE_RETURN);
-        
         public static bool IsScriptMethod(MethodInfo methodInfo)
         {
             if (!methodInfo.IsStatic) return false;
@@ -97,7 +91,7 @@ namespace Ceres.Graph.Flow
             if (parameters.Length < 1) return false;
             if (methodInfo.ReturnType == typeof(void)) return false;
                 
-            return parameters.Any(x=> CeresMetadata.IsDefined(x, ExecutableFunction.RESOLVE_RETURN));
+            return parameters.Any(x=> x.GetCustomAttribute<ResolveReturnAttribute>() != null);
         }
         
         public static bool IsSelfTarget(MethodInfo methodInfo)
@@ -130,7 +124,7 @@ namespace Ceres.Graph.Flow
             var parameters = methodInfo.GetParameters();
             if (parameters.Length < 1) return null;
             
-            return parameters.First(x => CeresMetadata.IsDefined(x, ExecutableFunction.RESOLVE_RETURN));
+            return parameters.First(x => x.GetCustomAttribute<ResolveReturnAttribute>() != null);
         }
 
         public static string GetFunctionName(MethodInfo methodInfo, bool richText = true)

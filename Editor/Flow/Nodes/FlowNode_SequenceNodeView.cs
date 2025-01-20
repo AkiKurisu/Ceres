@@ -13,7 +13,7 @@ namespace Ceres.Editor.Graph.Flow
     [CustomNodeView(typeof(FlowNode_Sequence))]
     public sealed class FlowNode_SequenceNodeView: ExecutableNodeView
     {
-        private int _portIndex;
+        private int _portIndex = 2;
 
         private readonly FieldInfo _outputField;
 
@@ -22,11 +22,14 @@ namespace Ceres.Editor.Graph.Flow
         public FlowNode_SequenceNodeView(Type type, CeresGraphView graphView): base(type, graphView)
         {
             _outputField = NodeType.GetField("outputs", BindingFlags.Instance | BindingFlags.Public);
+            AddPort(0);
+            AddPort(1);
         }
 
         public override void SetNodeInstance(CeresNode ceresNode)
         {
-            _portIndex = Math.Max(1, ((FlowNode_Sequence)ceresNode).outputCount);
+            RemoveUnconnectedPorts();
+            _portIndex = ((FlowNode_Sequence)ceresNode).outputCount;
             for (int i = 0; i < _portIndex; i++)
             {
                 AddPort(i);

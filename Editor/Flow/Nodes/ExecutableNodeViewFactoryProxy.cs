@@ -11,7 +11,7 @@ namespace Ceres.Editor.Graph.Flow
 {
     public interface IExecutableNodeViewFactoryProxy
     {
-        ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect);
+        ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect);
     }
 
     public class PropertyNodeViewFactoryProxy : IExecutableNodeViewFactoryProxy
@@ -21,17 +21,20 @@ namespace Ceres.Editor.Graph.Flow
         public SharedVariable SharedVariable;
 
         public PropertyInfo PropertyInfo;
+
+        public bool IsSelfTarget;
         
-        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             PropertyNodeView propertyNodeView;
-            if (entryData.NodeType == typeof(PropertyNode_GetPropertyTValue<,>) || entryData.NodeType == typeof(PropertyNode_SetPropertyTValue<,>))
+            if (entryData.NodeType.IsSubclassOf(typeof(PropertyNode_PropertyValue)))
             {
                 var parameters = new[] { PropertyInfo.DeclaringType, PropertyInfo.PropertyType };
-                propertyNodeView = (PropertyNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
+                var nodeView = (PropertyNode_PropertyValueNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
+                nodeView.SetIsSelfTarget(IsSelfTarget);
+                propertyNodeView = nodeView;
             }
-            else if (entryData.NodeType == typeof(PropertyNode_GetSharedVariableTValue<,,>) ||
-                     entryData.NodeType == typeof(PropertyNode_SetSharedVariableTValue<,,>))
+            else if (entryData.NodeType.IsSubclassOf(typeof(PropertyNode_SharedVariableValue)))
             {
                 var parameters = new[]
                 {
@@ -63,7 +66,7 @@ namespace Ceres.Editor.Graph.Flow
     {
         public string EventName;
 
-        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             var propertyNodeView = (FlowNode_ExecuteEventNodeView)searchWindow.CreateNodeView(entryData);
             searchWindow.GraphView.AddNodeView(propertyNodeView, rect);
@@ -76,7 +79,7 @@ namespace Ceres.Editor.Graph.Flow
     {
         public MethodInfo MethodInfo;
 
-        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             var nodeView = CreateGenericNodeView(searchWindow, entryData);
             searchWindow.GraphView.AddNodeView(nodeView, rect);
@@ -96,7 +99,7 @@ namespace Ceres.Editor.Graph.Flow
     {
         public Type DelegateType;
         
-        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             var parameters = DelegateType.GetGenericArguments();
             var nodeView = (ExecutableEventNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
@@ -109,7 +112,7 @@ namespace Ceres.Editor.Graph.Flow
     {
         public MethodInfo MethodInfo;
 
-        public ICeresNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             ExecuteFunctionNodeView nodeView = null;
             if (entryData.NodeType.IsAssignableTo(typeof(FlowNode_ExecuteFunctionUber)))

@@ -83,4 +83,42 @@ namespace Ceres.Editor.Graph.Flow
             GraphView.FrameSelection();
         }
     }
+    
+    [CustomNodeView(typeof(PropertyNode_PropertyValue), true)]
+    public class PropertyNode_PropertyValueNodeView : PropertyNodeView
+    {
+        protected bool IsSelfTarget { get; private set; }
+        
+        public PropertyNode_PropertyValueNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
+        {
+            FindPortView("target").SetTooltip(" [Default is Self]");
+        }
+
+        public void SetIsSelfTarget(bool isSelfTarget)
+        {
+            IsSelfTarget = isSelfTarget;
+            if (isSelfTarget)
+            {
+                FindPortView("target").HidePort();
+            }
+            else
+            {
+                FindPortView("target").ShowPort();
+            }
+        }
+        
+        public override void SetNodeInstance(CeresNode ceresNode)
+        {
+            var propertyNode =(PropertyNode_PropertyValue)ceresNode;
+            base.SetNodeInstance(ceresNode);
+            SetIsSelfTarget(propertyNode.isSelfTarget);
+        }
+        
+        public override ExecutableNode CompileNode()
+        {
+            var instance = (PropertyNode_PropertyValue)base.CompileNode();
+            instance.isSelfTarget = IsSelfTarget;
+            return instance;
+        }
+    }
 }

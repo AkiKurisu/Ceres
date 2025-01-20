@@ -14,8 +14,7 @@ namespace Ceres.Graph.Flow
     /// </summary>
     public class ExecutionContext: IDisposable
     {
-        // ReSharper disable once InconsistentNaming
-        private static readonly ObjectPool<ExecutionContext> _pool = new(() => new ExecutionContext());
+        private static readonly ObjectPool<ExecutionContext> Pool = new(() => new ExecutionContext());
         
         /// <summary>
         /// Execution owner graph
@@ -33,11 +32,13 @@ namespace Ceres.Graph.Flow
 
         private ExecutableNode _nextNode;
 
-#if UNITY_EDITOR
+#if !CERES_DISABLE_TRACKER
         private FlowGraphTracker _tracker;
 #endif
 
         private EventBase _event;
+
+        private CancellationToken? _cancellationToken;
         
         private ExecutionContext()
         {
@@ -48,13 +49,13 @@ namespace Ceres.Graph.Flow
         {
             Assert.IsTrue((bool)context);
             Assert.IsNotNull(graph);
-            var executionContext = _pool.Get();
+            var executionContext = Pool.Get();
             executionContext.Context = context;
             executionContext.Graph = graph;
             graph.PushContext(executionContext);
             executionContext._isPooled = true;
             executionContext._forwardPath = ListPool<string>.Get();
-#if UNITY_EDITOR
+#if !CERES_DISABLE_TRACKER
             executionContext._tracker = FlowGraphTracker.GetActiveTracker();
 #endif
             executionContext._event = evt;
@@ -83,26 +84,38 @@ namespace Ceres.Graph.Flow
             return nextNode != null;
         }
 
+        /// <summary>
+        /// Execute node in forward path
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
         public UniTask Forward(ExecutableNode node)
         {
-            return Forward(node, GetCancellationToken());
+            _cancellationToken ??= GetCancellationToken();
+            return Forward(node, _cancellationToken.Value);
         }
 
+        /// <summary>
+        /// Execute node in forward path
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="cancellationToken"></param>
         public async UniTask Forward(ExecutableNode node, CancellationToken cancellationToken)
         {
+            /* Execute dependency path */
+            await ExecuteDependencyPath(node.Guid, cancellationToken);
+            /* Execute forward path */
             _forwardPath?.Add(node.Guid);
-#if UNITY_EDITOR
+#if !CERES_DISABLE_TRACKER
             await _tracker.EnterNode(node);
 #endif
             await node.ExecuteNode(this).AttachExternalCancellation(cancellationToken);
-#if UNITY_EDITOR
+#if !CERES_DISABLE_TRACKER
             await _tracker.ExitNode(node);
 #endif
             while (GetNext(out var nextNode))
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                /* Execute dependency nodes */
-                await ExecuteDependencyPath(nextNode.Guid, cancellationToken);
                 await Forward(nextNode, cancellationToken);
             }
         }
@@ -146,6 +159,7 @@ namespace Ceres.Graph.Flow
             _nextNode = null;
             Graph.PopContext(this);
             Graph = null;
+            _cancellationToken = null;
             
             /* Release list */
             if(_forwardPath != null)
@@ -164,7 +178,7 @@ namespace Ceres.Graph.Flow
             if (!_isPooled) return;
             
             _isPooled = false;
-            _pool.Release(this);
+            Pool.Release(this);
         }
 
         public EventBase GetEvent()
