@@ -19,7 +19,7 @@ namespace Ceres.Graph.Flow.Utilities
             CeresGraph.LogLevel = logType;
         }
         
-        [ExecutableFunction, CeresLabel("Get LogLevel")]
+        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Get LogLevel")]
         public static LogType Flow_CeresGraphGetLogLevel()
         {
             return CeresGraph.LogLevel;
