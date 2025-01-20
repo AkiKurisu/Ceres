@@ -28,9 +28,9 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void SetNodeInstance(CeresNode ceresNode)
         {
-            int oldIndex = _portIndex;
-            _portIndex = Math.Max(_portIndex, ((FlowNode_Sequence)ceresNode).outputCount);
-            for (int i = oldIndex; i < _portIndex; i++)
+            RemoveUnconnectedPorts();
+            _portIndex = ((FlowNode_Sequence)ceresNode).outputCount;
+            for (int i = 0; i < _portIndex; i++)
             {
                 AddPort(i);
             }
