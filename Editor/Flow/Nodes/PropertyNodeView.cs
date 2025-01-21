@@ -20,7 +20,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void SetNodeInstance(CeresNode ceresNode)
         {
-            var propertyNode =(PropertyNode)ceresNode;
+            var propertyNode =(IPropertyNode)ceresNode;
             base.SetNodeInstance(ceresNode);
             SetPropertyName(propertyNode.GetPropertyName());
         }
@@ -34,8 +34,8 @@ namespace Ceres.Editor.Graph.Flow
 
         public override ExecutableNode CompileNode()
         {
-            var instance = (PropertyNode)base.CompileNode();
-            instance.SetPropertyName(PropertyName);
+            var instance = base.CompileNode();
+            ((IPropertyNode)instance).SetPropertyName(PropertyName);
             return instance;
         }
     }

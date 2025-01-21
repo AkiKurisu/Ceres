@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Ceres.Graph.Flow
 {
     /// <summary>
-    /// Interface for nodes contains named property
+    /// Interface for node contains named property
     /// </summary>
     public interface IPropertyNode
     {
