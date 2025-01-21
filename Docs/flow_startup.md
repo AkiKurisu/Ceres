@@ -7,6 +7,9 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
     - [Executable Function](#executable-function)
       - [Conventions and Restrictions](#conventions-and-restrictions)
     - [Generic Node](#generic-node)
+  - [Advanced](#advanced)
+    - [Port Implict Conversation](#port-implict-conversation)
+    - [Node has Port Array](#node-has-port-array)
   - [Debug](#debug)
     - [Breakpoint Support](#breakpoint-support)
 
@@ -33,7 +36,7 @@ Execution event with parameters can be created when you drag any port with type 
 
 ![Drag delegate port](./Images/drag_delegate_port.png)
 
-Also support port with type `Action<>` by implicit conversation.
+Also support port with type `Action<>` by [implicit conversation](#port-implict-conversation).
 
 ![Drag action port](./Images/drag_delegate_port_action.png)
 
@@ -269,6 +272,119 @@ We will introduce how to use the graph editor to implement a simple game logic.
 
 Here is the game logic we will implement. -->
 
+## Advanced
+
+### Port Implict Conversation
+
+For reference type objects, such as `MonoBehaviour`, `Component`, 
+ports can be converted based on the inheritance hierarchy automatically.
+
+For example, output port `MonoBehaviour` can be connected to input port `Component`.
+
+However, for value type objects, such as `int`, `float`, `struct`, etc and 
+other types that require implicit conversion. 
+You need to register them manually.
+
+Here is an example that convert custom `struct` to `double`:
+
+```C#
+public class GameplaySetup
+{
+    [RuntimeInitializeOnLoadMethod]
+#if UNITY_EDITOR
+    [UnityEditor.InitializeOnLoadMethod]
+#endif
+    private static unsafe void InitializeOnLoad()
+    {/
+        CeresPort<SchedulerHandle>.MakeCompatibleTo<double>(handle =>
+        {
+            double value = default;
+            UnsafeUtility.CopyStructureToPtr(ref handle, &value);
+            return value;
+        });
+        CeresPort<double>.MakeCompatibleTo<SchedulerHandle>(d =>
+        {
+            SchedulerHandle handle = default;
+            UnsafeUtility.CopyStructureToPtr(ref d, &handle);
+            return handle;
+        });
+    }
+}
+```
+
+### Node has Port Array
+
+For nodes that need a resizeable port array for example `FlowNode_Sequence`, 
+you can implement `IPortArrayNode` to define the port array, however, only 
+one port array is supported for each node type.
+
+```C#
+public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IPortArrayNode
+{
+    // DefaultLength metadata is used to define the default port array length
+    [OutputPort(false), CeresLabel("Then"), CeresMetadata("DefaultLength = 2")]
+    public NodePort[] outputs;
+
+    [HideInGraphEditor]
+    public int outputCount;
+    
+    protected sealed override async UniTask Execute(ExecutionContext executionContext)
+    {
+        foreach (var output in outputs)
+        {
+            var next = output.GetT<ExecutableNode>();
+            if(next == null) continue;
+            await executionContext.Forward(output.GetT<ExecutableNode>());
+        }
+    }
+
+
+    public void OnBeforeSerialize()
+    {
+        
+    }
+
+    public void OnAfterDeserialize()
+    {
+        outputs = new NodePort[outputCount];
+        for (int i = 0; i < outputCount; i++)
+        {
+            outputs[i] = new NodePort();
+        }
+    }
+
+    public int GetPortArraySize()
+    {
+        return outputCount;
+    }
+
+    public string GetPortArrayFieldName()
+    {
+        return nameof(outputs);
+    }
+
+    public void SetPortArraySize(int newSize)
+    {
+        outputCount = newSize;
+    }
+}
+
+```
+
+And create a custom node view for it.
+
+```C#
+/// <summary>
+/// Node view for <see cref="FlowNode_Sequence"/>
+/// </summary>
+[CustomNodeView(typeof(FlowNode_Sequence))]
+public sealed class FlowNode_SequenceNodeView: ExecutablePortArrayNodeView
+{
+    public FlowNode_SequenceNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
+    {
+    }
+}
+```
 
 ## Debug
 

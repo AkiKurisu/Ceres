@@ -5,7 +5,7 @@ Powerful visual scripting toolkit for Unity.
 
 ![banner](./Docs/Images/ceres_banner.png)
 
-<b>*Still in earlier development and may have frequent API changes, 
+<b>*Version 0.1 is still in earlier development and may have frequent API changes, 
 do not use it in any production environment*</b>
 
 </div>
@@ -26,9 +26,10 @@ Add following dependencies to `manifest.json`.
 ## HighLights
 
 - Generic and delegate support
-- Graph and C# Integration
+- Graph and C# integration
 - Editor debugging
 - Easy implementation
+- Optimized runtime performance
 
 ## Contents
 
@@ -37,6 +38,9 @@ Add following dependencies to `manifest.json`.
 
 [Code Generation in Ceres](./Docs/ceres_codegen.md)
 > Introducing the code generation inside Ceres.
+
+[Startup Flow](./Docs/flow_startup.md)
+> Introducing the visual scripting solution Flow inside Ceres.
 
 ## Platform
 
