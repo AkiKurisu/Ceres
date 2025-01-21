@@ -33,7 +33,7 @@ using UObject = UnityEngine.Object;
 namespace {NAMESPACE}
 {
     [CompilerGenerated]
-    public partial class {CLASSNAME}
+    public partial class {CLASSNAME}: IFlowGraphContainer
     {
 """;
 
@@ -292,7 +292,6 @@ namespace {NAMESPACE}
                 {
                     continue;
                 }
-
                 bool generateImplementation = true;
                 bool generateBridges = true;
                 var namedArgs = generateAttribute.NamedArguments;
@@ -391,11 +390,6 @@ namespace {NAMESPACE}
                 return;
 
             if (!classNode.Modifiers.Any(m => m.IsKind(SyntaxKind.PartialKeyword)))
-            {
-                return;
-            }
-
-            if (!classNode.BaseList.Types.Any(x => x.ToString() == "IFlowGraphContainer"))
             {
                 return;
             }

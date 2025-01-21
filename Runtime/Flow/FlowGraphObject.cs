@@ -6,7 +6,7 @@ namespace Ceres.Graph.Flow
     /// Base class for <see cref="MonoBehaviour"/> contains Flow Graph.
     /// </summary>
     [GenerateFlow]
-    public partial class FlowGraphObject : MonoBehaviour, IFlowGraphContainer
+    public partial class FlowGraphObject : MonoBehaviour
     {
         
     }
