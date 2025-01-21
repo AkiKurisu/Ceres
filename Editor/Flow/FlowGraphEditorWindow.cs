@@ -91,10 +91,10 @@ namespace Ceres.Editor.Graph.Flow
         private static bool OnOpenAsset(int instanceId, int _)
         {
             var asset = EditorUtility.InstanceIDToObject(instanceId);
-            if (asset is not FlowGraphAsset flowGraphAsset) return false;
+            if (asset is not FlowGraphScriptableObjectBase objectBase) return false;
             
-            var window = Show(flowGraphAsset);
-            window.SetContainerType(flowGraphAsset.GetContainerType());
+            var window = Show(objectBase);
+            window.SetContainerType(objectBase.GetContainerType());
             return false;
         }
 #pragma warning restore IDE0051
