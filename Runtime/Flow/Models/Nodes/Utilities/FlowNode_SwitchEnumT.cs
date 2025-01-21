@@ -36,7 +36,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         public void OnAfterDeserialize()
         {
-            outputs = new NodePort[Enum.GetValues(typeof(TEnum)).Length + 1];
+            outputs = new NodePort[GetPortArraySize()];
             for (int i = 0; i < outputs.Length; i++)
             {
                 outputs[i] = new NodePort();
