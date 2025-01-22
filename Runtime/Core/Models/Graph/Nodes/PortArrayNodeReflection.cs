@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
 using UnityEngine.Scripting;
-namespace Ceres.Graph.Flow
+namespace Ceres.Graph
 {
     /// <summary>
     /// Interface for node has port array
@@ -42,7 +42,7 @@ namespace Ceres.Graph.Flow
         }
     }
     
-    public class PortArrayNodeReflection<TNode>: PortArrayNodeReflection where TNode: ExecutableNode, IReadOnlyPortArrayNode, new()
+    public class PortArrayNodeReflection<TNode>: PortArrayNodeReflection where TNode: CeresNode, IReadOnlyPortArrayNode, new()
     {
         private static PortArrayNodeReflection<TNode> _instance;
 

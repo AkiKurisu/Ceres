@@ -33,7 +33,7 @@ using UObject = UnityEngine.Object;
 namespace {NAMESPACE}
 {
     [CompilerGenerated]
-    public partial class {CLASSNAME}: IFlowGraphContainer
+    public partial class {CLASSNAME}: {INTERFACE}
     {
 """;
 
@@ -46,9 +46,9 @@ namespace {NAMESPACE}
         [SerializeField]
         private FlowGraphData graphData;
         
-        UObject ICeresGraphContainer.Object => this;
+        public UObject Object => this;
 
-        protected FlowGraph Graph
+        public FlowGraph Graph
         {
             get
             {
@@ -91,134 +91,10 @@ namespace {NAMESPACE}
     }
 }
 """;
-        private static readonly string BridgeMethodsTemplate =
-"""
 
+        private static readonly string NonRuntimeInterface = "IFlowGraphContainer";
 
-        /// <summary>
-        /// Invoke flow graph event
-        /// </summary>
-        /// <param name="eventName"></param>
-        protected void ProcessEvent([CallerMemberName] string eventName = "")
-        {
-            using var evt = ExecuteFlowEvent.Create(eventName, ExecuteFlowEvent.DefaultArgs);
-            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
-        }
-        
-        /// <summary>
-        /// Invoke flow graph event with parameters
-        /// </summary>
-        /// <param name="eventName"></param>
-        /// <param name="parameters"></param>
-        protected void ProcessEvent([CallerMemberName] string eventName = "", params object[] parameters)
-        {
-            using var evt = ExecuteFlowEvent.Create(eventName, parameters);
-            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
-        }
-        
-        /// <summary>
-        /// Invoke flow graph event with parameters
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="eventName"></param>
-        /// <typeparam name="T1"></typeparam>
-        protected void ProcessEvent<T1>(T1 arg1, [CallerMemberName] string eventName = "")
-        {
-            using var evt = ExecuteFlowEvent<T1>.Create(eventName, arg1);
-            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
-        }
-        
-        /// <summary>
-        /// Invoke flow graph event with parameters
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        /// <param name="eventName"></param>
-        /// <typeparam name="T1"></typeparam>
-        /// <typeparam name="T2"></typeparam>
-        protected void ProcessEvent<T1, T2>(T1 arg1, T2 arg2, [CallerMemberName] string eventName = "")
-        {
-            using var evt = ExecuteFlowEvent<T1, T2>.Create(eventName, arg1, arg2);
-            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
-        }
-        
-        /// <summary>
-        /// Invoke flow graph event with parameters
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        /// <param name="arg3"></param>
-        /// <param name="eventName"></param>
-        /// <typeparam name="T1"></typeparam>
-        /// <typeparam name="T2"></typeparam>
-        /// <typeparam name="T3"></typeparam>
-        protected void ProcessEvent<T1, T2, T3>(T1 arg1, T2 arg2, T3 arg3, [CallerMemberName] string eventName = "")
-        {
-            using var evt = ExecuteFlowEvent<T1, T2, T3>.Create(eventName, arg1, arg2, arg3);
-            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
-        }
-        
-        /// <summary>
-        /// Invoke flow graph event with parameters
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        /// <param name="arg3"></param>
-        /// <param name="arg4"></param>
-        /// <param name="eventName"></param>
-        /// <typeparam name="T1"></typeparam>
-        /// <typeparam name="T2"></typeparam>
-        /// <typeparam name="T3"></typeparam>
-        /// <typeparam name="T4"></typeparam>
-        protected void ProcessEvent<T1, T2, T3, T4>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, [CallerMemberName] string eventName = "")
-        {
-            using var evt = ExecuteFlowEvent<T1, T2, T3, T4>.Create(eventName, arg1, arg2, arg3, arg4);
-            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
-        }
-
-        /// <summary>
-        /// Invoke flow graph event with parameters
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        /// <param name="arg3"></param>
-        /// <param name="arg4"></param>
-        /// <param name="arg5"></param>
-        /// <param name="eventName"></param>
-        /// <typeparam name="T1"></typeparam>
-        /// <typeparam name="T2"></typeparam>
-        /// <typeparam name="T3"></typeparam>
-        /// <typeparam name="T4"></typeparam>
-        /// <typeparam name="T5"></typeparam>
-        protected void ProcessEvent<T1, T2, T3, T4, T5>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, [CallerMemberName] string eventName = "")
-        {
-            using var evt = ExecuteFlowEvent<T1, T2, T3, T4, T5>.Create(eventName, arg1, arg2, arg3, arg4, arg5);
-            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
-        }
-
-        /// <summary>
-        /// Invoke flow graph event with parameters
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        /// <param name="arg3"></param>
-        /// <param name="arg4"></param>
-        /// <param name="arg5"></param>
-        /// <param name="arg6"></param>
-        /// <param name="eventName"></param>
-        /// <typeparam name="T1"></typeparam>
-        /// <typeparam name="T2"></typeparam>
-        /// <typeparam name="T3"></typeparam>
-        /// <typeparam name="T4"></typeparam>
-        /// <typeparam name="T5"></typeparam>
-        /// <typeparam name="T6"></typeparam>
-        protected void ProcessEvent<T1, T2, T3, T4, T5, T6>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, [CallerMemberName] string eventName = "")
-        {
-            using var evt = ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>.Create(eventName, arg1, arg2, arg3, arg4, arg5, arg6);
-            Graph.TryExecuteEvent(this, evt.FunctionName, evt);
-        }
-""";
-
+        private static readonly string RuntimeInterface = "IFlowGraphContainer, IFlowGraphRuntime";
 
         public void Initialize(GeneratorInitializationContext context)
         {
@@ -363,14 +239,22 @@ namespace {NAMESPACE}
         private static string GenerateCode(GenerateFlowContext generateContext)
         {
             var sb = new StringBuilder();
-            sb.Append(StartTemplate.Replace("{NAMESPACE}", generateContext.Namespace).Replace("{CLASSNAME}", generateContext.ClassName));
+            var namedCode = StartTemplate.Replace("{NAMESPACE}", generateContext.Namespace).Replace("{CLASSNAME}", generateContext.ClassName);
             if (generateContext.GenerateImplementation)
             {
+                if (generateContext.GenerateBridges)
+                {
+                    sb.Append(namedCode.Replace("{INTERFACE}", RuntimeInterface));
+                }
+                else
+                {
+                    sb.Append(namedCode.Replace("{INTERFACE}", NonRuntimeInterface));
+                }
                 sb.Append(ImplementationTemplate);
             }
-            if (generateContext.GenerateBridges)
+            else
             {
-                sb.Append(BridgeMethodsTemplate);
+                sb.Append(namedCode.Replace("{INTERFACE}", NonRuntimeInterface));
             }
             sb.Append(EndTemplate);
             return sb.ToString();

@@ -10,8 +10,11 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
   - [Advanced](#advanced)
     - [Port Implict Conversation](#port-implict-conversation)
     - [Node has Port Array](#node-has-port-array)
+    - [Code Generation](#code-generation)
+      - [ILPP](#ilpp)
   - [Debug](#debug)
     - [Breakpoint Support](#breakpoint-support)
+
 
 ## Conecpt
 
@@ -371,7 +374,7 @@ public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IP
 
 ```
 
-And create a custom node view for it.
+Then create a custom node view for it.
 
 ```C#
 /// <summary>
@@ -383,6 +386,40 @@ public sealed class FlowNode_SequenceNodeView: ExecutablePortArrayNodeView
     public FlowNode_SequenceNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
     {
     }
+}
+```
+
+### Code Generation
+
+#### ILPP
+
+`ImplementableEvent` let user implement custom event and invoke them in code.
+
+By default, ILPP will inject bridge method call before your implementation.
+
+As following diff result using `dnspy`:
+
+```C#
+[ImplementableEvent, ExecutableFunction]
+public void ExecuteTest(string data)
+{
+    Debug.Log("Implement ExecuteTest");
+}
+```
+
+![](./Images/flow_ilpp_bridge.png)
+
+If ILPP is disabled or you want to customize the timing for calling bridge methods, you need to add bridge method yourself as shown below.
+
+```C#
+[ImplementableEvent]
+public void Test()
+{
+    var stopWatch = new Stopwatch();
+    stopWatch.Start();
+    this.ProcessEvent();
+    stopWatch.Stop(); 
+    Debug.Log($"{nameof(Test)} used: {stopWatch.ElapsedMilliseconds}ms");
 }
 ```
 

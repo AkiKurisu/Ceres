@@ -11,7 +11,10 @@ namespace Ceres.Editor.Graph.Flow
 
         private readonly List<CeresPortView> _outputPortViews = new();
 
-        protected readonly PortArrayNodeReflection NodeReflection;
+        /// <summary>
+        /// Reflection data for <see cref="IPortArrayNode"/>
+        /// </summary>
+        protected PortArrayNodeReflection NodeReflection { get; }
         
         protected ExecutablePortArrayNodeView(Type type, CeresGraphView graphView): base(type, graphView)
         {
