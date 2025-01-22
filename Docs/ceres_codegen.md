@@ -11,16 +11,20 @@ abstract classes.
 
 For this reason, in Flow we use `IFlowGraphContainer` to let Unity Object has visual scripting ability.
 
-To reduce duplication of code, Ceres.SourceGenerator will analyze any partial class inherit `IFlowGraphContainer` and annotated with `GenerateFlowAttribute`. 
+To reduce duplication of code, Ceres.SourceGenerator will analyze any partial class annotated with `GenerateFlowAttribute`. 
 And their implementation will be done by generator.
 
-In addition, Ceres.SourceGenerator will add bridge functions to facilitate communication between Graph and C#.
+For more details, see [Code Generation in Flow](./flow_startup.md#code-generation).
 
 ## ILPP
 
 By default, Ceres graph use `System.Reflection` to initialize all ports and shared variables which will cause obvious overhead.
 
 ILPP make those ports and variables to be collected by owner node it self to enhance runtime performance.
+
+In Flow we use ILPP to emit IL for methods annotated with `ImplementableEventAttribute` that let you execute graph event in C#.
+
+For more details, see [Code Generation in Flow](./flow_startup.md#code-generation).
 
 ## Build Source Generator
 
