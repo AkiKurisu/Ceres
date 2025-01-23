@@ -7,7 +7,7 @@ namespace Ceres.Graph.Flow
     /// <summary>
     /// Base class for <see cref="ScriptableObject"/> contains Flow Graph.
     /// </summary>
-    [GenerateFlow(GenerateBridges = false, GenerateImplementation = true)]
+    [GenerateFlow(GenerateRuntime = false, GenerateImplementation = true)]
     public abstract partial class FlowGraphScriptableObjectBase: ScriptableObject
     {
         /// <summary>

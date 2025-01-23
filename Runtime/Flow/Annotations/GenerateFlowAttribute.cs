@@ -14,8 +14,8 @@ namespace Ceres.Graph.Flow.Annotations
         public bool GenerateImplementation { get; set; } = true;
         
         /// <summary>
-        /// Whether add bridge methods for <see cref="ImplementableEventAttribute"/>
+        /// Whether generate runtime implementation for <see cref="IFlowGraphRuntime"/>
         /// </summary>
-        public bool GenerateBridges { get; set; } = true;
+        public bool GenerateRuntime { get; set; } = true;
     }
 }
