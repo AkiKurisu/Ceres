@@ -2,7 +2,7 @@ using Ceres.Annotations;
 using UnityEngine;
 namespace Ceres.Graph
 {
-    [CeresGroup(Annotations.NodeGroup.Hidden)]
+    [CeresGroup(Annotations.CeresGroup.Hidden)]
     [CeresLabel(NodeLabel)]
     [NodeInfo(NodeInfo)]
     internal sealed class InvalidNode : CeresNode

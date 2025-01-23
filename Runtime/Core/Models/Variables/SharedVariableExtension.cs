@@ -1,4 +1,3 @@
-using Ceres.Graph;
 using UnityEngine;
 namespace Ceres
 {
@@ -63,9 +62,10 @@ namespace Ceres
             sharedVariable = null;
             return false;
         }
+        
         public static bool TryGetSharedVariable<T>(this IVariableSource variableScope, string variableName, out SharedVariable<T> sharedTVariable) where T : unmanaged
         {
-            if (variableScope.TryGetSharedVariable(variableName, out SharedVariable sharedVariable))
+            if (variableScope.TryGetSharedVariable(variableName, out var sharedVariable))
             {
                 sharedTVariable = sharedVariable as SharedVariable<T>;
                 return sharedTVariable != null;
@@ -73,9 +73,10 @@ namespace Ceres
             sharedTVariable = null;
             return false;
         }
+        
         public static bool TryGetSharedString(this IVariableSource variableScope, string variableName, out SharedVariable<string> sharedTVariable)
         {
-            if (variableScope.TryGetSharedVariable(variableName, out SharedVariable sharedVariable))
+            if (variableScope.TryGetSharedVariable(variableName, out var sharedVariable))
             {
                 sharedTVariable = sharedVariable as SharedVariable<string>;
                 return sharedTVariable != null;
@@ -83,7 +84,8 @@ namespace Ceres
             sharedTVariable = null;
             return false;
         }
-        public static bool TryGetSharedObject(this IVariableSource variableScope, string variableName, out SharedVariable<Object> sharedObject)
+        
+        public static bool TryGetSharedUObject(this IVariableSource variableScope, string variableName, out SharedVariable<Object> sharedObject)
         {
             if (variableScope.TryGetSharedVariable(variableName, out SharedVariable sharedVariable))
             {
@@ -93,16 +95,29 @@ namespace Ceres
             sharedObject = null;
             return false;
         }
-        public static bool TryGetSharedObject<T>(this IVariableSource variableScope, string variableName, out SharedVariable<T> sharedTObject) where T : Object
+        
+        public static bool TryGetSharedUObject<T>(this IVariableSource variableScope, string variableName, out SharedVariable<T> sharedTObject) where T : Object
         {
-            if (variableScope.TryGetSharedVariable(variableName, out SharedVariable sharedVariable))
+            if (variableScope.TryGetSharedVariable(variableName, out var sharedVariable))
             {
-                sharedTObject = sharedVariable as SharedVariable<T>;
+                sharedTObject = sharedVariable as SharedUObject<T>;
                 return sharedTObject != null;
             }
             sharedTObject = null;
             return false;
         }
+        
+        public static bool TryGetSharedObject(this IVariableSource variableScope, string variableName, out SharedVariable<object> sharedObject)
+        {
+            if (variableScope.TryGetSharedVariable(variableName, out var sharedVariable))
+            {
+                sharedObject = sharedVariable as SharedObject;
+                return sharedObject != null;
+            }
+            sharedObject = null;
+            return false;
+        }
+        
         /// <summary>
         /// Map variable to global variables
         /// </summary>
@@ -116,6 +131,7 @@ namespace Ceres
                 variable.MapTo(globalVariables);
             }
         }
+        
         /// <summary>
         /// Map variable to target variable source
         /// </summary>
@@ -127,7 +143,7 @@ namespace Ceres
             if (!variable.IsShared && !variable.IsGlobal) return;
             if (!variableSource.TryGetSharedVariable(variable.Name, out var sharedVariable))
             {
-                CeresGraph.LogWarning($"Can not map variable {variable.Name} to {variableSource} !");
+                CeresAPI.LogWarning($"Can not map variable {variable.Name} to {variableSource} !");
                 return;
             }
             variable.Bind(sharedVariable);

@@ -93,8 +93,7 @@ namespace Ceres.Editor.Graph.Flow
 
             /* Build custom events */
             var eventNodes = GraphView.NodeViews.OfType<ExecutableEventNodeView>().ToList();
-            var container = ((FlowGraphEditorWindow)GraphView.EditorWindow).ContainerT;
-            var methods = container.GetType()
+            var methods = GraphView.GetContainerType()
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
                 .Where(x=> x.GetCustomAttribute<ImplementableEventAttribute>() != null 
                        && eventNodes.All(evt => evt.GetEventName() != x.Name))
@@ -135,7 +134,7 @@ namespace Ceres.Editor.Graph.Flow
             if (parametersLength > maxParameters)
             {
                 /* Not support uber version */
-                CeresGraph.LogWarning($"Event delegate not support arguments out range of {maxParameters}");
+                CeresAPI.LogWarning($"Event delegate not support arguments out range of {maxParameters}");
                 return;
             }
             builder.AddGroupEntry("Select Events", 1);

@@ -39,7 +39,7 @@ namespace Ceres.Editor.Graph.Flow
                 var methodInfo = GetContainerType().GetMethod(eventNode.eventName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 if (methodInfo == null)
                 {
-                    CeresGraph.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
+                    CeresAPI.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
                     return;
                 }
                 SetMethodInfo(methodInfo);

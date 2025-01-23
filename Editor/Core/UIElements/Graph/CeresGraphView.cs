@@ -203,7 +203,7 @@ namespace Ceres.Editor.Graph
             var compatiblePorts = new List<Port>();
             if (startPort is not CeresPortElement startPortView)
             {
-                CeresGraph.LogWarning($"{startPort.GetType()} is not supported in Ceres default graph view");
+                CeresAPI.LogWarning($"{startPort.GetType()} is not supported in Ceres default graph view");
                 return compatiblePorts;
             }
 

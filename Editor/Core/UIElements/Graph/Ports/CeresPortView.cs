@@ -5,6 +5,7 @@ using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Editor;
 using Ceres.Editor.Graph;
+using Ceres.Graph.Flow;
 using Chris;
 using Chris.Serialization;
 using R3;
@@ -148,12 +149,17 @@ namespace Ceres.Graph
             View.NodeOwner.GraphView.ContextualMenuRegistry.BuildContextualMenu(ContextualMenuType.Port, evt, portType);
         }
 
-        public static string CreatePortTooltip(Type valueType)
+        public string CreatePortTooltip(Type valueType)
         {
-            if(valueType == typeof(NodeReference))
+            if (valueType == typeof(NodeReference))
             {
-                return string.Empty;
+                return "Exec";
             }
+            if (valueType.IsSubclassOf(typeof(EventDelegateBase)) && direction == Direction.Output)
+            {
+                return $"Output Delegate\n{CeresLabel.GetLabel(valueType)}";
+            }
+            
             return CeresLabel.GetLabel(valueType);
         }
 
@@ -293,7 +299,7 @@ namespace Ceres.Graph
                 portElement.portType = x;
             });
             DisplayName.Subscribe(x => portElement.portName = x);
-            Tooltip.Subscribe(x => portElement.tooltip = CeresPortElement.CreatePortTooltip(DisplayType.Value) + x);
+            Tooltip.Subscribe(x => portElement.tooltip = portElement.CreatePortTooltip(DisplayType.Value) + x);
         }
 
         public static CeresPortViewBinding BindField(CeresPortData portData, FieldInfo portFieldInfo, FieldInfo resolvedFieldInfo = null)
@@ -555,7 +561,7 @@ namespace Ceres.Graph
             }
             else
             {
-                CeresGraph.LogWarning($"Port can only be remapped from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
+                CeresAPI.LogWarning($"Port can only be remapped from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
             }
         }
 

@@ -1,22 +1,36 @@
 using System;
 using Ceres.Graph.Flow.Annotations;
+using Chris.Serialization;
 using UnityEngine;
 namespace Ceres.Graph.Flow
 {
     /// <summary>
     /// Base class for <see cref="ScriptableObject"/> contains Flow Graph.
     /// </summary>
-    [GenerateFlow]
-    [CreateAssetMenu(fileName = "FlowGraphAsset", menuName = "Ceres/Flow Graph Asset")]
-    public partial class FlowGraphAsset: ScriptableObject, IFlowGraphContainer
+    [GenerateFlow(GenerateRuntime = false, GenerateImplementation = true)]
+    public abstract partial class FlowGraphScriptableObjectBase: ScriptableObject
     {
         /// <summary>
-        /// The specific type instance this asset act as at runtime
+        /// Get the specific <see cref="IFlowGraphRuntime"/> type instance
         /// </summary>
         /// <returns></returns>
-        public virtual Type GetContainerType()
+        public abstract Type GetRuntimeType();
+    }
+    
+    /// <summary>
+    /// Asset contains Flow Graph that can be shared between multi container instance.
+    /// </summary>
+    [CreateAssetMenu(fileName = "FlowGraphAsset", menuName = "Ceres/Flow Graph Asset")]
+    public class FlowGraphAsset: FlowGraphScriptableObjectBase
+    {
+        /// <summary>
+        /// Specific <see cref="IFlowGraphRuntime"/> type this asset act as at runtime
+        /// </summary>
+        public SerializedType<IFlowGraphRuntime> runtimeType = FlowGraphInstanceObject.SerializedType;
+        
+        public override Type GetRuntimeType()
         {
-            return typeof(FlowGraphAsset);
+            return runtimeType.GetObjectType() ?? typeof(FlowGraphInstanceObject);
         }
     }
 }

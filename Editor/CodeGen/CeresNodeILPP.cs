@@ -200,18 +200,6 @@ namespace Unity.Ceres.ILPP.CodeGen
             m_SharedVariable_TypeRef = moduleDefinition.ImportReference(sharedVariableTypeDef);
             m_CeresPort_TypeRef = moduleDefinition.ImportReference(ceresPortTypeDef);
             
-            // Find all extension methods for FastBufferReader and FastBufferWriter to enable user-implemented methods to be called
-            var assemblies = new List<AssemblyDefinition> { m_MainModule.Assembly };
-            foreach (var reference in m_MainModule.AssemblyReferences)
-            {
-                var assembly = m_AssemblyResolver.Resolve(reference);
-                if (assembly != null)
-                {
-                    assemblies.Add(assembly);
-                }
-            }
-
-            
             // Standard types are really hard to reliably find using the Mono Cecil way, they resolve differently in Mono vs .NET Core
             // Importing with typeof() is less dangerous for standard framework types though, so we can just do it
             var exceptionType = typeof(Exception);

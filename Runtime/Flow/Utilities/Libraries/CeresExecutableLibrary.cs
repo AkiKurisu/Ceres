@@ -14,15 +14,15 @@ namespace Ceres.Graph.Flow.Utilities
     public class CeresExecutableLibrary: ExecutableFunctionLibrary
     {
         [ExecutableFunction, CeresLabel("Set LogLevel")]
-        public static void Flow_CeresGraphSetLogLevel(LogType logType)
+        public static void Flow_SetLogLevel(LogType logType)
         {
-            CeresGraph.LogLevel = logType;
+            CeresAPI.LogLevel = logType;
         }
         
         [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Get LogLevel")]
-        public static LogType Flow_CeresGraphGetLogLevel()
+        public static LogType Flow_GetLogLevel()
         {
-            return CeresGraph.LogLevel;
+            return CeresAPI.LogLevel;
         }
     }
 }

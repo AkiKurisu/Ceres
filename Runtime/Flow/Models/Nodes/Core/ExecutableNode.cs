@@ -4,6 +4,16 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 namespace Ceres.Graph.Flow
 {
+    /// <summary>
+    /// Interface for node contains named property
+    /// </summary>
+    public interface IPropertyNode
+    {
+        void SetPropertyName(string propertyName);
+
+        string GetPropertyName();
+    }
+    
     [Serializable]
     [CeresMetadata("style = ExecutableNode")]
     public abstract class ExecutableNode : CeresNode
@@ -33,13 +43,6 @@ namespace Ceres.Graph.Flow
         public NodePort input;
     }
 
-    public interface IPropertyNode
-    {
-        void SetPropertyName(string propertyName);
-
-        string GetPropertyName();
-    }
-    
     /// <summary>
     /// Base class for executable nodes that contained graph property without execution
     /// </summary>
@@ -89,7 +92,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [CeresGroup(Ceres.Annotations.NodeGroup.Hidden)]
+    [CeresGroup(CeresGroup.Hidden)]
     [CeresLabel(InvalidNode.NodeLabel)]
     [NodeInfo(InvalidNode.NodeInfo)]
     public class InvalidExecutableNode : FlowNode

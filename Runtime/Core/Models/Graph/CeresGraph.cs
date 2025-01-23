@@ -269,7 +269,7 @@ namespace Ceres.Graph
             var portData = ownerNode.NodeData.FindPortData(fieldName);
             if(portData == null)
             {
-                LogWarning($"Can not find port data for {fieldName}");
+                CeresAPI.LogWarning($"Can not find port data for {fieldName}");
                 return;
             }
             LinkPort(port, ownerNode, portData);
@@ -280,7 +280,7 @@ namespace Ceres.Graph
             var portData = ownerNode.NodeData.FindPortData(fieldName, arrayIndex);
             if(portData == null)
             {
-                LogWarning($"Can not find port data for port {fieldName}_{arrayIndex} from {ownerNode.GetType().Name}");
+                CeresAPI.LogWarning($"Can not find port data for port {fieldName}_{arrayIndex} from {ownerNode.GetType().Name}");
                 return;
             }
             LinkPort(port, ownerNode, portData);
@@ -294,7 +294,7 @@ namespace Ceres.Graph
                 var targetNode = FindNode(portData.connections[0].nodeId);
                 if(targetNode == null)
                 {
-                    LogWarning($"Can not find connected node [{portData.connections[0].nodeId}] from port {portData.propertyName}");
+                    CeresAPI.LogWarning($"Can not find connected node [{portData.connections[0].nodeId}] from port {portData.propertyName}");
                     return;
                 }
                 /* Set WeakPtr to easier get target node in graph lifetime scope */
@@ -308,7 +308,7 @@ namespace Ceres.Graph
                 var targetNode = FindNode(connection.nodeId);
                 if(targetNode == null)
                 {
-                    LogWarning($"Can not find connected node [{connection.nodeId}] from port {portData.propertyName}");
+                    CeresAPI.LogWarning($"Can not find connected node [{connection.nodeId}] from port {portData.propertyName}");
                     continue;
                 }
 
@@ -317,7 +317,7 @@ namespace Ceres.Graph
                 var targetPort = targetPortData?.GetPort(targetNode);
                 if(targetPort == null)
                 {
-                    LogWarning($"Can not find port {connection.portId}_{connection.portIndex} from node {targetNode.GetType().Name}");
+                    CeresAPI.LogWarning($"Can not find port {connection.portId}_{connection.portIndex} from node {targetNode.GetType().Name}");
                     continue;
                 }
                 port.Link(targetPort);
@@ -496,29 +496,6 @@ namespace Ceres.Graph
                     sorted.Add(nodeIndex);
             }
         }
-
-        /// <summary>
-        /// The <see cref="LogType"/> in CeresGraph
-        /// </summary>
-        public static LogType LogLevel { get; set; } = LogType.Log;
-        
-        public static void LogWarning(string message)
-        {
-            if(LogLevel >= LogType.Warning)
-                Debug.LogWarning($"<color=#fcbe03>[Ceres]</color> {message}");
-        }
-        
-        public static void Log(string message)
-        {
-            if(LogLevel >= LogType.Log)
-                Debug.Log($"<color=#3aff48>[Ceres]</color> {message}");
-        }
-
-        public static void LogError(string message)
-        {
-            if(LogLevel >= LogType.Error)
-                Debug.LogError($"<color=#ff2f2f>[Ceres]</color> {message}");
-        }
     }
     
     /// <summary>
@@ -565,7 +542,7 @@ namespace Ceres.Graph
                 var redirectedType = _config.Redirect(nodeData![index].nodeType);
                 if (redirectedType != null)
                 {
-                    CeresGraph.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
+                    CeresAPI.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
                     nodes[index] = nodeData[index].Deserialize(redirectedType);
                 }
             }
@@ -601,7 +578,7 @@ namespace Ceres.Graph
             }
             catch(Exception e)
             {
-                CeresGraph.LogWarning($"Can not make generic node type from {nodeData[index].nodeType}, {e}");
+                CeresAPI.LogWarning($"Can not make generic node type from {nodeData[index].nodeType}, {e}");
                 return false;
             }
         }

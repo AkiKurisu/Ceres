@@ -7,9 +7,9 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Sequence")]
-    public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver
+    public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IPortArrayNode
     {
-        [OutputPort(false), CeresLabel("Then")]
+        [OutputPort(false), CeresLabel("Then"), CeresMetadata("DefaultLength = 2")]
         public NodePort[] outputs;
 
         [HideInGraphEditor]
@@ -38,6 +38,21 @@ namespace Ceres.Graph.Flow.Utilities
             {
                 outputs[i] = new NodePort();
             }
+        }
+
+        public int GetPortArrayLength()
+        {
+            return outputCount;
+        }
+
+        public string GetPortArrayFieldName()
+        {
+            return nameof(outputs);
+        }
+
+        public void SetPortArrayLength(int newLength)
+        {
+            outputCount = newLength;
         }
     }
 }

@@ -41,6 +41,11 @@ namespace Ceres.Editor.Graph.Flow
         {
             try
             {
+                /* Redirect container type */
+                if (Container is FlowGraphScriptableObjectBase scriptableObjectBase)
+                {
+                    SetContainerType(scriptableObjectBase.GetRuntimeType());
+                }
                 DisplayProgressBar("Initialize field factory", 0f);
                 {
                     FieldResolverFactory.Get();
@@ -91,10 +96,9 @@ namespace Ceres.Editor.Graph.Flow
         private static bool OnOpenAsset(int instanceId, int _)
         {
             var asset = EditorUtility.InstanceIDToObject(instanceId);
-            if (asset is not FlowGraphAsset flowGraphAsset) return false;
+            if (asset is not FlowGraphScriptableObjectBase objectBase) return false;
             
-            var window = Show(flowGraphAsset);
-            window.SetContainerType(flowGraphAsset.GetContainerType());
+            Show(objectBase);
             return false;
         }
 #pragma warning restore IDE0051
