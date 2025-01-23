@@ -61,20 +61,20 @@ public class FlowTest : FlowGraphObject
     [ImplementableEvent]
     public void Awake()
     {
-        /* ProcessEvent is a bridge method added by Ceres.SourceGenerator */
-        ProcessEvent();
+        /* ProcessEvent is a bridge method*/
+        this.ProcessEvent();
     }
 
     [ImplementableEvent]
     public void PrintFloat(float data)
     {
-        ProcessEvent<float>(data);
+        this.ProcessEvent<float>(data);
     }
 
     [ImplementableEvent]
     public void ExecuteTest(string data)
     {
-        ProcessEvent<string>(data);
+        this.ProcessEvent<string>(data);
     }
 }
 ```
@@ -315,7 +315,7 @@ Then create a new `FlowGraphAsset` and set the `RuntimeType`. Open flow graph an
 
 ![FlowGraphAsset](./Images/flow_graph_instance_object_sample.png)
 
-Create a new `GameObject` in scene and add `TestInstanceObject` component to the `GameObject`. Drag the `FlowGraphAsset` to the `GameObject` and you will see the `Awake` event is invoked after entering play mode.
+Create a new `GameObject` in scene and add `TestInstanceObject` component to the `GameObject`. Drag the `FlowGraphAsset` to the `TestInstanceObject` and you will see the `Awake` event is invoked after entering play mode.
 
 #### FlowGraphScriptableObject
 
