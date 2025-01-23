@@ -135,7 +135,7 @@ namespace Ceres.Editor.Graph.Flow
             if (parametersLength > maxParameters)
             {
                 /* Not support uber version */
-                CeresGraph.LogWarning($"Event delegate not support arguments out range of {maxParameters}");
+                CeresAPI.LogWarning($"Event delegate not support arguments out range of {maxParameters}");
                 return;
             }
             builder.AddGroupEntry("Select Events", 1);

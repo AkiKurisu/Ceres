@@ -99,12 +99,12 @@ namespace Ceres.Editor.Graph.Flow
                 if (parametersLength != argumentsLength)
                 {
                     methodInfo = null;
-                    CeresGraph.LogWarning($"{functionNode.methodName} expect {parametersLength} arguments but get {argumentsLength}");
+                    CeresAPI.LogWarning($"{functionNode.methodName} expect {parametersLength} arguments but get {argumentsLength}");
                 }
             }
             else
             {
-                CeresGraph.LogWarning($"{functionNode.methodName} is not an executable function of {NodeType.GetGenericArguments()[0].Name}");
+                CeresAPI.LogWarning($"{functionNode.methodName} is not an executable function of {NodeType.GetGenericArguments()[0].Name}");
             }
             
             if (methodInfo == null)

@@ -561,7 +561,7 @@ namespace Ceres.Graph
             }
             else
             {
-                CeresGraph.LogWarning($"Port can only be remapped from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
+                CeresAPI.LogWarning($"Port can only be remapped from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
             }
         }
 
