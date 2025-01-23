@@ -40,7 +40,7 @@ namespace Ceres.Graph.Flow.Utilities
             }
         }
 
-        public int GetPortArraySize()
+        public int GetPortArrayLength()
         {
             return outputCount;
         }
@@ -50,9 +50,9 @@ namespace Ceres.Graph.Flow.Utilities
             return nameof(outputs);
         }
 
-        public void SetPortArraySize(int newSize)
+        public void SetPortArrayLength(int newLength)
         {
-            outputCount = newSize;
+            outputCount = newLength;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Ceres.Editor.Graph.Flow
         protected ExecutablePortArrayNodeView(Type type, CeresGraphView graphView): base(type, graphView)
         {
             NodeReflection = PortArrayNodeReflection.Get(type);
-            _portIndex = NodeReflection.DefaultArraySize;
+            _portIndex = NodeReflection.DefaultArrayLength;
             for (int i = 0; i < _portIndex; i++)
             {
                 AddPort(i);
@@ -29,7 +29,7 @@ namespace Ceres.Editor.Graph.Flow
         public override void SetNodeInstance(CeresNode ceresNode)
         {
             RemoveUnconnectedPorts();
-            _portIndex = ((IReadOnlyPortArrayNode)ceresNode).GetPortArraySize();
+            _portIndex = ((IReadOnlyPortArrayNode)ceresNode).GetPortArrayLength();
             for (int i = 0; i < _portIndex; i++)
             {
                 AddPort(i);
@@ -41,7 +41,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             var node = base.CompileNode();
             if(node is IPortArrayNode portArrayNode)
-                portArrayNode.SetPortArraySize(_portIndex);
+                portArrayNode.SetPortArrayLength(_portIndex);
             return node;
         }
 

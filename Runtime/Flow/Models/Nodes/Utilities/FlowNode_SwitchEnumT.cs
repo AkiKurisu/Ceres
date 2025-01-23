@@ -36,14 +36,14 @@ namespace Ceres.Graph.Flow.Utilities
 
         public void OnAfterDeserialize()
         {
-            outputs = new NodePort[GetPortArraySize()];
+            outputs = new NodePort[GetPortArrayLength()];
             for (int i = 0; i < outputs.Length; i++)
             {
                 outputs[i] = new NodePort();
             }
         }
 
-        public int GetPortArraySize()
+        public int GetPortArrayLength()
         {
             return Enum.GetValues(typeof(TEnum)).Length;
         }

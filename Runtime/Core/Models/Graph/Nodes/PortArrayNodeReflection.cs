@@ -10,7 +10,7 @@ namespace Ceres.Graph
     /// </summary>
     public interface IReadOnlyPortArrayNode
     {
-        int GetPortArraySize();
+        int GetPortArrayLength();
 
         string GetPortArrayFieldName();
     }
@@ -20,7 +20,7 @@ namespace Ceres.Graph
     /// </summary>
     public interface IPortArrayNode: IReadOnlyPortArrayNode
     {
-        void SetPortArraySize(int newSize);
+        void SetPortArrayLength(int newLength);
     }
 
     public abstract class PortArrayNodeReflection
@@ -31,7 +31,7 @@ namespace Ceres.Graph
 
         public IReadOnlyPortArrayNode DefaultNode { get; protected set; }
 
-        public int DefaultArraySize { get; protected set; }
+        public int DefaultArrayLength { get; protected set; }
 
         public static PortArrayNodeReflection Get(Type nodeType)
         {
@@ -51,7 +51,7 @@ namespace Ceres.Graph
             DefaultNode = new TNode();
             PortArrayField = typeof(TNode).GetField(DefaultNode.GetPortArrayFieldName(), BindingFlags.Instance | BindingFlags.Public);
             PortArrayLabel = CeresLabel.GetLabel(PortArrayField);
-            DefaultArraySize = Math.Max(GetDefaultPortArrayLength(), DefaultNode.GetPortArraySize());
+            DefaultArrayLength = Math.Max(GetMetadataPortArrayLength(), DefaultNode.GetPortArrayLength());
         }
 
         [Preserve]
@@ -60,7 +60,7 @@ namespace Ceres.Graph
             return _instance ??= new PortArrayNodeReflection<TNode>();
         }
         
-        private int GetDefaultPortArrayLength()
+        private int GetMetadataPortArrayLength()
         {
             var str = CeresMetadata.GetMetadata(PortArrayField, "DefaultLength").FirstOrDefault();
             if (string.IsNullOrEmpty(str) || !int.TryParse(str, out var length))
