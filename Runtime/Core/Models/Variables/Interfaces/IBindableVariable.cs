@@ -7,6 +7,7 @@ namespace Ceres
     public interface IBindableVariable<T>
     {
         T Value { get; set; }
+        
         /// <summary>
         /// Bind to other bindable variable with type <see cref="T"/> constraint
         /// </summary>

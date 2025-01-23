@@ -8,7 +8,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Ceres.Utilities;
-using NodeGroup = Ceres.Annotations.NodeGroup;
+
 namespace Ceres.Editor.Graph
 {
     public struct NodeSearchContext
@@ -26,7 +26,7 @@ namespace Ceres.Editor.Graph
         public static readonly NodeSearchContext Default = new()
         {
             ShowGroups = Array.Empty<string>(),
-            HideGroups = new []{ NodeGroup.Hidden },
+            HideGroups = new []{ CeresGroup.Hidden },
             AllowGeneric = false,
             ParameterType = null,
             RequestPortView = null

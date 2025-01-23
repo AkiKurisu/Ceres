@@ -92,7 +92,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    [CeresGroup(Ceres.Annotations.NodeGroup.Hidden)]
+    [CeresGroup(CeresGroup.Hidden)]
     [CeresLabel(InvalidNode.NodeLabel)]
     [NodeInfo(InvalidNode.NodeInfo)]
     public class InvalidExecutableNode : FlowNode

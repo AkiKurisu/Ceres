@@ -14,7 +14,7 @@ namespace Ceres.Annotations
         }
     }
 
-    public static class NodeGroup
+    public static class CeresGroup
     {
         public const string Hidden = "Hidden";
     }

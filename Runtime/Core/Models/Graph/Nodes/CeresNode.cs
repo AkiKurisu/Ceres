@@ -507,7 +507,7 @@ namespace Ceres.Graph
                     prop.Value = linkedUObject == null ? 0 : linkedUObject.GetInstanceID();
                     if(linkedUObject && LogUObjectRelink)
                     {
-                        CeresGraph.Log($"Relink UObject {instanceId} to {uObject.linkedObject.name} {prop.Value}");
+                        CeresAPI.Log($"Relink UObject {instanceId} to {uObject.linkedObject.name} {prop.Value}");
                     }
                 }
             }

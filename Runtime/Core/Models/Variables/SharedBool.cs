@@ -8,13 +8,15 @@ namespace Ceres
         {
             this.value = value;
         }
+        
         public SharedBool()
         {
 
         }
+        
         protected override SharedVariable<bool> CloneT()
         {
-            return new SharedBool() { Value = value };
+            return new SharedBool { Value = value };
         }
     }
 }

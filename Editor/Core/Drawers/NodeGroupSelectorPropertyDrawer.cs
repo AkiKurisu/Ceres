@@ -5,7 +5,6 @@ using Ceres.Annotations;
 using Ceres.Graph;
 using UnityEditor;
 using UnityEngine;
-using NodeGroup = Ceres.Annotations.NodeGroup;
 using Ceres.Utilities;
 namespace Ceres.Editor
 {
@@ -28,7 +27,7 @@ namespace Ceres.Editor
                 var menu = new GenericMenu();
                 foreach (var group in groups)
                 {
-                    if(group == NodeGroup.Hidden) continue;
+                    if(group == CeresGroup.Hidden) continue;
                     menu.AddItem(new GUIContent(group), false, () => property.stringValue = group);
                 }
                 menu.ShowAsContext();

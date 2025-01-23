@@ -109,7 +109,7 @@ namespace Ceres
         
         public SharedVariable<string> SetString(string key, string value)
         {
-            if (!this.TryGetSharedString(key, out SharedVariable<string> variable))
+            if (!this.TryGetSharedString(key, out var variable))
             {
                 variable = new SharedString() { Name = key };
                 SharedVariables.Add(variable);
@@ -120,7 +120,7 @@ namespace Ceres
         
         public SharedVariable<UObject> SetUObject(string key, UObject value)
         {
-            if (!this.TryGetSharedObject(key, out SharedVariable<UObject> variable))
+            if (!this.TryGetSharedUObject(key, out var variable))
             {
                 variable = new SharedUObject() { Name = key };
                 SharedVariables.Add(variable);
@@ -131,9 +131,20 @@ namespace Ceres
         
         public SharedVariable<UObject> SetUObject<T>(string key, T value) where T : UObject
         {
-            if (!this.TryGetSharedObject(key, out SharedVariable<UObject> variable))
+            if (!this.TryGetSharedUObject(key, out var variable))
             {
                 variable = new SharedUObject() { Name = key, serializedType = SerializedType<UObject>.FromType(typeof(T)) };
+                SharedVariables.Add(variable);
+            }
+            variable.Value = value;
+            return variable;
+        }
+        
+        public SharedVariable<object> SetObject(string key, object value)
+        {
+            if (!this.TryGetSharedObject(key, out var variable))
+            {
+                variable = new SharedObject { Name = key, serializedObject = SerializedObjectBase.FromObject(value)};
                 SharedVariables.Add(variable);
             }
             variable.Value = value;

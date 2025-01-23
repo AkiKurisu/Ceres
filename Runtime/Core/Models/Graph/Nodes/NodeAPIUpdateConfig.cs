@@ -1,10 +1,9 @@
 using System;
 using System.Linq;
-using Ceres.Graph;
 using Chris;
 using Chris.Serialization;
 using UnityEngine;
-namespace Ceres
+namespace Ceres.Graph
 {
     [CreateAssetMenu(fileName = "NodeAPIUpdateConfig", menuName = "Ceres/Node API Update Config")]
     public class NodeAPIUpdateConfig : ScriptableObject
