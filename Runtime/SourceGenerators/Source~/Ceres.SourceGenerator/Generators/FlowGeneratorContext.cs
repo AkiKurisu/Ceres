@@ -44,6 +44,11 @@ namespace {NAMESPACE}
         {
             graphData = (FlowGraphData)graph;
         }
+
+        protected FlowGraphData GetGraphData()
+        {
+            return graphData;
+        }
     }
 }
 """;
@@ -94,6 +99,20 @@ namespace {NAMESPACE}
         {
             graphData = (FlowGraphData)graph;
         }
+
+        protected FlowGraphData GetGraphData()
+        {
+            return graphData;
+        }
+
+        /// <summary>
+        /// Get runtime graph instance, return null if not created
+        /// </summary>
+        /// <returns></returns>
+        protected FlowGraph GetRuntimeFlowGraphInstance()
+        {
+            return _graph;
+        }
     }
 }
 """;
@@ -125,6 +144,15 @@ namespace {NAMESPACE}
         protected void ReleaseGraph()
         {
             _graph?.Dispose();
+        }
+
+        /// <summary>
+        /// Get runtime graph instance, return null if not created
+        /// </summary>
+        /// <returns></returns>
+        protected FlowGraph GetRuntimeFlowGraphInstance()
+        {
+            return _graph;
         }
     }
 }

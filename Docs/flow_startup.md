@@ -7,6 +7,11 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
     - [Executable Function](#executable-function)
       - [Conventions and Restrictions](#conventions-and-restrictions)
     - [Generic Node](#generic-node)
+    - [Runtime Architecture](#runtime-architecture)
+      - [FlowGraphObject](#flowgraphobject)
+      - [FlowGraphAsset](#flowgraphasset)
+      - [FlowGraphInstanceObject](#flowgraphinstanceobject)
+      - [FlowGraphScriptableObject](#flowgraphscriptableobject)
   - [Advanced](#advanced)
     - [Port Implict Conversation](#port-implict-conversation)
     - [Node has Port Array](#node-has-port-array)
@@ -14,6 +19,7 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
       - [ILPP](#ilpp)
   - [Debug](#debug)
     - [Breakpoint Support](#breakpoint-support)
+
 
 
 ## Conecpt
@@ -269,11 +275,54 @@ public class FlowNode_CastT_Template: GenericNodeTemplate
 }
 ```
 
-<!-- ## Tutorial
 
-We will introduce how to use the graph editor to implement a simple game logic.
+### Runtime Architecture
 
-Here is the game logic we will implement. -->
+#### FlowGraphObject
+
+In Unity, we use MonoBehaviour to add functionality to GameObjects in the scene. In Flow, you can use `FlowGraphObject` and its inherited components to implement your game logic, such as character controllers, interactions, etc.
+
+#### FlowGraphAsset
+
+`FlowGraphAsset` is a ScriptableObject used to reuse FlowGraph. You can set the `IFlowGraphRuntime` type it plays at runtime. 
+
+![FlowGraphAsset](./Images/flow_graph_asset.png)
+
+In Editor Mode, the graph editor will consider the owner of the Flow Graph to be the type you set, which is the `Actor` type as shown in the figure. Create `Property/Self Reference` node, you will see the port type is `Actor`.
+
+![Personate as Actor](./Images/flow_graph_asset_personate.png)
+
+#### FlowGraphInstanceObject
+
+`FlowGraphInstanceObject` is a MonoBehaviour used to creating flow graph from `FlowGraphAsset` at runtime.
+
+Here is an example, create a new class named `TestInstanceObject`:
+
+```C#
+using Ceres.Graph.Flow;
+using Ceres.Graph.Flow.Annotations;
+public class TestInstanceObject: FlowGraphInstanceObject
+{
+    [ImplementableEvent]
+    public void Awake()
+    {
+        this.ProcessEvent();
+    }
+}
+```
+
+Then create a new `FlowGraphAsset` and set the `RuntimeType`. Open flow graph and implement `Awake` event.
+
+![FlowGraphAsset](./Images/flow_graph_instance_object_sample.png)
+
+Create a new `GameObject` in scene and add `TestInstanceObject` component to the `GameObject`. Drag the `FlowGraphAsset` to the `GameObject` and you will see the `Awake` event is invoked after entering play mode.
+
+#### FlowGraphScriptableObject
+
+Beside the use of data sharing, `ScriptableObject` can also be used as a logic container. You can use `FlowGraphScriptableObject` to implement logic from `ScriptableObject` directly which is useful to create skill, state machine, buff, dialogue, etc.
+
+Compared with `FlowGraphAsset`, `FlowGraphScriptableObject` owns an instance of `FlowGraph` at runtime.
+
 
 ## Advanced
 
@@ -356,7 +405,7 @@ public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IP
         }
     }
 
-    public int GetPortArraySize()
+    public int GetPortArrayLength()
     {
         return outputCount;
     }
@@ -366,9 +415,9 @@ public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IP
         return nameof(outputs);
     }
 
-    public void SetPortArraySize(int newSize)
+    public void SetPortArrayLength(int newLength)
     {
-        outputCount = newSize;
+        outputCount = newLength;
     }
 }
 

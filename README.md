@@ -5,7 +5,7 @@ Powerful visual scripting toolkit for Unity.
 
 ![banner](./Docs/Images/ceres_banner.png)
 
-<b>*Version 0.1 is still in earlier development and may have frequent API changes, 
+<b>*Still in earlier development and may have frequent API changes, 
 do not use it in any production environment*</b>
 
 </div>

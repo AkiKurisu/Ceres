@@ -13,7 +13,7 @@ namespace Ceres.Editor.Graph.Flow
         public override VisualElement CreateInspectorGUI()
         {
             var myInspector = new VisualElement();
-            myInspector.Add(new PropertyField(serializedObject.FindProperty(nameof(FlowGraphAsset.containerType))));
+            myInspector.Add(new PropertyField(serializedObject.FindProperty(nameof(FlowGraphAsset.runtimeType))));
             myInspector.Add(new FlowGraphDebugButton(Asset));
             return myInspector;
         }

@@ -11,10 +11,10 @@ namespace Ceres.Graph.Flow
     public abstract partial class FlowGraphScriptableObjectBase: ScriptableObject
     {
         /// <summary>
-        /// Get the specific container type instance at runtime
+        /// Get the specific <see cref="IFlowGraphRuntime"/> type instance
         /// </summary>
         /// <returns></returns>
-        public abstract Type GetContainerType();
+        public abstract Type GetRuntimeType();
     }
     
     /// <summary>
@@ -24,13 +24,13 @@ namespace Ceres.Graph.Flow
     public class FlowGraphAsset: FlowGraphScriptableObjectBase
     {
         /// <summary>
-        /// Specific container type this asset act as at runtime
+        /// Specific <see cref="IFlowGraphRuntime"/> type this asset act as at runtime
         /// </summary>
-        public SerializedType<IFlowGraphContainer> containerType;
+        public SerializedType<IFlowGraphRuntime> runtimeType = FlowGraphInstanceObject.SerializedType;
         
-        public override Type GetContainerType()
+        public override Type GetRuntimeType()
         {
-            return containerType.GetObjectType() ?? typeof(FlowGraphObject);
+            return runtimeType.GetObjectType() ?? typeof(FlowGraphInstanceObject);
         }
     }
 }
