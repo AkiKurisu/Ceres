@@ -18,7 +18,7 @@ namespace Ceres.Graph.Flow.Utilities
         [InputPort, CeresLabel("Source")]
         public CeresPort<TEnum> sourceValue;
 
-        [OutputPort(false), CeresLabel("")]
+        [OutputPort(false)]
         public NodePort[] outputs;
         
         protected sealed override UniTask Execute(ExecutionContext executionContext)
@@ -45,7 +45,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         public int GetPortArraySize()
         {
-            return Enum.GetValues(typeof(TEnum)).Length + 1;
+            return Enum.GetValues(typeof(TEnum)).Length;
         }
 
         public string GetPortArrayFieldName()

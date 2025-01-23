@@ -1,7 +1,6 @@
 ﻿using System;
 using Ceres.Graph.Flow.Utilities;
 using Chris;
-using Chris.Collections;
 namespace Ceres.Editor.Graph.Flow
 {
     /// <summary>
@@ -28,7 +27,6 @@ namespace Ceres.Editor.Graph.Flow
             {
                 var enumType = ReflectionUtility.GetGenericArgumentType(NodeType);
                 _names = Enum.GetNames(enumType);
-                ArrayUtils.Add(ref _names, "Default");
             }
             
             return _names;
