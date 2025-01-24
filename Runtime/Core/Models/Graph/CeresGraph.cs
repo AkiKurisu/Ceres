@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 #if CERES_DISABLE_ILPP
+using Ceres.Utilities;
+using System.Reflection;
 using Chris;
 using System.Collections;
 #endif
@@ -81,9 +82,13 @@ namespace Ceres.Graph
         
         private readonly HashSet<SharedVariable> _internalVariables = new();
         
+        private readonly HashSet<CeresPort> _internalPorts = new();
+        
+#if CERES_DISABLE_ILPP
         private static readonly Dictionary<Type, List<FieldInfo>> VariableFieldInfoLookup = new();
         
         private static readonly Dictionary<Type, List<FieldInfo>> PortFieldInfoLookup = new();
+#endif
         
         [SerializeReference]
         public List<SharedVariable> variables;
@@ -142,8 +147,8 @@ namespace Ceres.Graph
             var internalVariables = graph._internalVariables;
             foreach (var node in graph.GetAllNodes())
             {
-                /* Variables will be collected by node using ILPP */
 #if !CERES_DISABLE_ILPP
+                /* Variables will be collected by node using ILPP */
                 node.InitializeVariables();
                 foreach (var variable in node.SharedVariables)
                 {
@@ -156,7 +161,7 @@ namespace Ceres.Graph
                 {
                     fields = nodeType
                             .GetAllFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                            .Where(x => x.FieldType.IsSubclassOf(typeof(SharedVariable)) || IsIListVariable(x.FieldType))
+                            .Where(x => x.FieldType.IsSubclassOf(typeof(SharedVariable)) || x.FieldType.IsIListVariable())
                             .ToList();
                     VariableFieldInfoLookup.Add(nodeType, fields);
                 }
@@ -187,47 +192,29 @@ namespace Ceres.Graph
             }
         }
         
-        private static bool IsIListVariable(Type fieldType)
-        {
-            if (fieldType.IsGenericType && fieldType.GetGenericTypeDefinition() == typeof(List<>))
-            {
-                var genericArgument = fieldType.GetGenericArguments()[0];
-                if (typeof(SharedVariable).IsAssignableFrom(genericArgument))
-                {
-                    return true;
-                }
-            }
-            else if (fieldType.IsArray)
-            {
-                var elementType = fieldType.GetElementType();
-                if (typeof(SharedVariable).IsAssignableFrom(elementType))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        
         /// <summary>
         /// Traverse the graph and init all ports automatically
         /// </summary>
         /// <param name="graph"></param>
         protected static void InitPorts_Imp(CeresGraph graph)
         {
+            var internalPorts = graph._internalPorts;
             foreach (var node in graph.GetAllNodes())
             {
-                /* Ports will be collected by node using ILPP */
 #if !CERES_DISABLE_ILPP
+                /* Ports will be collected by node using ILPP */
                 node.InitializePorts();
                 foreach (var pair in node.Ports)
                 {
                     graph.LinkPort(pair.Value, pair.Key, node);
+                    internalPorts.Add(pair.Value);
                 }
                 foreach (var pair in node.PortLists)
                 {
                     for(int i = 0; i < pair.Value.Count; i++)
                     {
                         graph.LinkPort((CeresPort)pair.Value[i], pair.Key, i, node);
+                        internalPorts.Add((CeresPort)pair.Value[i]);
                     }
                 }
 #else
@@ -236,7 +223,7 @@ namespace Ceres.Graph
                 {
                     fields = nodeType
                             .GetAllFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                            .Where(x => x.FieldType.IsSubclassOf(typeof(CeresPort)) || IsIListPort(x.FieldType))
+                            .Where(x => x.FieldType.IsSubclassOf(typeof(CeresPort)) || x.FieldType.IsIListPort())
                             .ToList();
                     PortFieldInfoLookup.Add(nodeType, fields);
                 }
@@ -324,27 +311,6 @@ namespace Ceres.Graph
                 targetNode.NodeData.AddDependency(ownerNode.Guid);
             }
         }
-
-        private static bool IsIListPort(Type fieldType)
-        {
-            if (fieldType.IsGenericType && fieldType.GetGenericTypeDefinition() == typeof(List<>))
-            {
-                var genericArgument = fieldType.GetGenericArguments()[0];
-                if (typeof(CeresPort).IsAssignableFrom(genericArgument))
-                {
-                    return true;
-                }
-            }
-            else if (fieldType.IsArray)
-            {
-                var elementType = fieldType.GetElementType();
-                if (typeof(CeresPort).IsAssignableFrom(elementType))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
         
         protected static void CollectDependencyPath(CeresGraph graph)
         {
@@ -417,23 +383,28 @@ namespace Ceres.Graph
         {
             foreach (var variable in variables)
             {
-                variable.Unbind();
+                variable.Dispose();
             }
+            variables.Clear();
             foreach (var variable in _internalVariables)
             {
-                variable.Unbind();
+                variable.Dispose();
             }
+            _internalVariables.Clear();
+            foreach (var port in _internalPorts)
+            {
+                port.Dispose();
+            }
+            _internalPorts.Clear();
 
             _nodeDependencyPath = null;
-            variables.Clear();
-            _internalVariables.Clear();
             foreach (var node in GetAllNodes())
             {
                 node.Dispose();
             }
             nodes.Clear();
 
-            if(_disposables != null)
+            if (_disposables != null)
             {
                 foreach (var disposable in _disposables)
                 {
@@ -482,7 +453,7 @@ namespace Ceres.Graph
                     foreach (var dependency in dependencies)
                     {
                         var dependencyNode = graph.FindNode(dependency);
-                        if(dependencyNode == null || dependencyNode.NodeData.executionPath == ExecutionPath.Forward)
+                        if (dependencyNode == null || dependencyNode.NodeData.executionPath == ExecutionPath.Forward)
                         {
                             continue;
                         }

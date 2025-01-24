@@ -6,21 +6,27 @@ namespace Ceres
     {
         [SerializeReference]
         private List<SharedVariable> sharedVariables = new();
+        
         public List<SharedVariable> SharedVariables => sharedVariables;
+        
         [SerializeField]
         private GameVariableScope parentScope;
+        
         public GlobalVariables GlobalVariables { get; private set; }
-        private bool initialized = false;
+        
+        private bool _initialized;
+        
         private void Awake()
         {
-            if (!initialized)
+            if (!_initialized)
             {
                 Initialize();
             }
         }
+        
         public void Initialize()
         {
-            initialized = true;
+            _initialized = true;
             if (parentScope && parentScope.IsCurrentScope())
             {
                 GlobalVariables = new GlobalVariables(sharedVariables, parentScope);
@@ -30,6 +36,7 @@ namespace Ceres
                 GlobalVariables = new GlobalVariables(sharedVariables);
             }
         }
+        
         private void OnDestroy()
         {
             GlobalVariables.Dispose();

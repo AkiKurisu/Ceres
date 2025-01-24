@@ -14,6 +14,9 @@ namespace Ceres.Graph.Flow.Utilities
 
     }
     
+    /// <summary>
+    /// Helper class for query executable functions
+    /// </summary>
     public class ExecutableFunctionRegistry
     {
         private readonly Dictionary<Type, MethodInfo[]> _retargetFunctionTables;

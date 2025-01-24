@@ -1,8 +1,10 @@
+using System;
 using Ceres.Annotations;
 using UnityEngine;
 namespace Ceres.Graph
 {
-    [CeresGroup(Annotations.CeresGroup.Hidden)]
+    [Serializable]
+    [CeresGroup(CeresGroup.Hidden)]
     [CeresLabel(NodeLabel)]
     [NodeInfo(NodeInfo)]
     internal sealed class InvalidNode : CeresNode

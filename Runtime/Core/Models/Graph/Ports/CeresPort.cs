@@ -23,7 +23,7 @@ namespace Ceres.Graph
     /// <summary>
     /// Base class for ceres graph port
     /// </summary>
-    public abstract class CeresPort: IPort
+    public abstract class CeresPort: IPort, IDisposable
     {
         protected class PortCompatibleStructure
         {
@@ -129,6 +129,11 @@ namespace Ceres.Graph
             CeresPort<float>.MakeCompatibleTo<int>(f => (int)f);
             CeresPort<int>.MakeCompatibleTo<float>(i => i);
             CeresPort<Vector3>.MakeCompatibleTo<Vector2>(vector3 => vector3);
+        }
+
+        public virtual void Dispose()
+        {
+            AdaptedGetter = null;
         }
     }
     
@@ -268,6 +273,13 @@ namespace Ceres.Graph
         public override object GetValue()
         {
             return Value;
+        }
+        
+        public override void Dispose()
+        {
+            _getter = null;
+            defaultValue = default;
+            base.Dispose();
         }
     }
     

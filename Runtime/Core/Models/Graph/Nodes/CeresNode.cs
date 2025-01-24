@@ -388,8 +388,6 @@ namespace Ceres.Graph
         [SerializeField]
         private UObjectLink[] uobjectLinks = Array.Empty<UObjectLink>();
         
-        public static bool LogUObjectRelink { get; set; }
-        
         public void AddPortData(CeresPortData data)
         {
             ArrayUtils.Add(ref portData, data); 
@@ -456,7 +454,7 @@ namespace Ceres.Graph
         public virtual void Serialize(CeresNode node)
         {
             var type = node.GetType();
-            if(type.IsGenericType)
+            if (type.IsGenericType)
             {
                 nodeType = new NodeType(type.GetGenericTypeDefinition());
                 genericParameters = type.GetGenericArguments().Select(SerializedType.ToString).ToArray();
@@ -468,7 +466,7 @@ namespace Ceres.Graph
             serializedData = JsonUtility.ToJson(node);
 #if UNITY_EDITOR
             uobjectLinks = Array.Empty<UObjectLink>();
-            if(!Application.isPlaying)
+            if (!Application.isPlaying)
             {
                 var obj = JObject.Parse(serializedData);
                 /* Persistent instanceID */
@@ -477,7 +475,7 @@ namespace Ceres.Graph
                     if (prop.Name != "instanceID") continue;
                     var instanceId = (int)prop.Value;
                     var uObject = UnityEditor.EditorUtility.InstanceIDToObject(instanceId);
-                    if(uObject)
+                    if (uObject)
                     {
                         ArrayUtils.Add(ref uobjectLinks, new UObjectLink(uObject));
                     }
@@ -505,7 +503,7 @@ namespace Ceres.Graph
                 {
                     var linkedUObject = uObject.linkedObject;
                     prop.Value = linkedUObject == null ? 0 : linkedUObject.GetInstanceID();
-                    if(linkedUObject && LogUObjectRelink)
+                    if (linkedUObject && CeresAPI.LogUObjectRelink)
                     {
                         CeresAPI.Log($"Relink UObject {instanceId} to {uObject.linkedObject.name} {prop.Value}");
                     }

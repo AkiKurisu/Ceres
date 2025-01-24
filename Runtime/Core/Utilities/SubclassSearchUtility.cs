@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
-
 namespace Ceres.Utilities
 {
     public static class SubClassSearchUtility

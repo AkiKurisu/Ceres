@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-using Object = UnityEngine.Object;
+using UObject = UnityEngine.Object;
 namespace Ceres
 {
     /// <summary>
@@ -11,46 +10,53 @@ namespace Ceres
     public class GlobalVariables : IVariableSource, IDisposable
     {
         public List<SharedVariable> SharedVariables { get; }
-        private static GlobalVariables instance;
-        public static GlobalVariables Instance => instance ?? FindOrCreateDefault();
-        private readonly IVariableScope parentScope;
+        
+        private static GlobalVariables _instance;
+        
+        public static GlobalVariables Instance => _instance ?? FindOrCreateDefault();
+        
+        private readonly IVariableScope _parentScope;
+        
         public GlobalVariables(List<SharedVariable> sharedVariables)
         {
-            instance = this;
+            _instance = this;
             SharedVariables = new List<SharedVariable>(sharedVariables);
         }
+        
         public GlobalVariables(List<SharedVariable> sharedVariables, IVariableScope parentScope)
         {
-            instance = this;
-            this.parentScope = parentScope;
+            _instance = this;
+            _parentScope = parentScope;
             SharedVariables = new List<SharedVariable>(sharedVariables);
             if (parentScope != null)
             {
                 sharedVariables.AddRange(parentScope.GlobalVariables.SharedVariables);
             }
         }
+        
         private static GlobalVariables FindOrCreateDefault()
         {
-            var scope = Object.FindObjectOfType<SceneVariableScope>();
+            var scope = UObject.FindObjectOfType<SceneVariableScope>();
             if (scope != null)
             {
                 scope.Initialize();
                 return scope.GlobalVariables;
             }
-            instance = new(new());
-            return instance;
+            _instance = new GlobalVariables(new List<SharedVariable>());
+            return _instance;
         }
+        
         public void Dispose()
         {
-            if (instance != this)
+            if (_instance != this)
             {
-                Debug.LogWarning("Only scope current used should be disposed!");
+                CeresAPI.LogWarning("Global variables can only be disposed in top level scope");
                 return;
             }
-            instance = null;
-            if (parentScope != null)
+            _instance = null;
+            if (_parentScope != null)
             {
-                instance = parentScope.GlobalVariables;
+                _instance = _parentScope.GlobalVariables;
             }
         }
     }
