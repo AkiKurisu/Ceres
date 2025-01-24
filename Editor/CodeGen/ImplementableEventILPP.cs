@@ -24,6 +24,11 @@ namespace Unity.Ceres.ILPP.CodeGen
         private MethodReference[] _bridgeMethodRefs;
         
         private MethodReference _bridgeMethodUberRef;
+                
+        private readonly OpCode[] _ldargs = { OpCodes.Ldarg_0, OpCodes.Ldarg_1, OpCodes.Ldarg_2, OpCodes.Ldarg_3 };
+        
+        private readonly OpCode[] _ldc4S = { OpCodes.Ldc_I4_0, OpCodes.Ldc_I4_1, OpCodes.Ldc_I4_2,
+            OpCodes.Ldc_I4_3,OpCodes.Ldc_I4_4, OpCodes.Ldc_I4_5, OpCodes.Ldc_I4_6, OpCodes.Ldc_I4_7 };
         
         public override ILPostProcessor GetInstance()
         {
@@ -74,11 +79,8 @@ namespace Unity.Ceres.ILPP.CodeGen
                         {
                             continue;
                         }
-
-                        if (typeDefinition.HasInterface("Ceres.Graph.Flow.IFlowGraphRuntime"))
-                        {
-                            ProcessImplementableEvent(typeDefinition);
-                        }
+                        
+                        ProcessImplementableEvent(typeDefinition);
                     }
                     _mainModule.RemoveRecursiveReferences();
                 }
@@ -133,19 +135,26 @@ namespace Unity.Ceres.ILPP.CodeGen
             return true;
         }
         
-        private readonly OpCode[] _ldargs = { OpCodes.Ldarg_0, OpCodes.Ldarg_1, OpCodes.Ldarg_2, OpCodes.Ldarg_3 };
-        
-        private readonly OpCode[] _ldc4S = { OpCodes.Ldc_I4_0, OpCodes.Ldc_I4_1, OpCodes.Ldc_I4_2,
-            OpCodes.Ldc_I4_3,OpCodes.Ldc_I4_4, OpCodes.Ldc_I4_5, OpCodes.Ldc_I4_6, OpCodes.Ldc_I4_7 };
-        
         private void ProcessImplementableEvent(TypeDefinition typeDefinition)
         {
-            foreach (var methodDefinition in typeDefinition.Methods)
+            var implementableMethods = typeDefinition.Methods.Where(definition =>
             {
-                if (methodDefinition.CustomAttributes.All(x => x.AttributeType.Resolve().Name != nameof(ImplementableEventAttribute)))
-                {
-                    continue;
-                }
+                return definition.CustomAttributes.Any(x =>
+                    x.AttributeType.Resolve().Name == nameof(ImplementableEventAttribute));
+            }).ToArray();
+            
+            if (!implementableMethods.Any())
+            {
+               return; 
+            }
+            if (!typeDefinition.HasInterface("Ceres.Graph.Flow.IFlowGraphRuntime"))
+            {
+                _diagnostics.AddWarning($"ImplementableEvent can only be executed when {typeDefinition.Name} implement IFlowGraphRuntime, ILPP will be ignored");
+                return;
+            }
+            
+            foreach (var methodDefinition in implementableMethods)
+            {
                 if (RecursiveSearchBridgeMethodCall(methodDefinition))
                 {
                     // _diagnostics.AddWarning($"ProcessEvent has been called in ImplementableEvent method {typeDefinition.Name}.{methodDefinition.Name}, ILPP will be ignored");
@@ -164,7 +173,7 @@ namespace Unity.Ceres.ILPP.CodeGen
                             methodDefinition.Parameters.Select(x => x.ParameterType).ToArray());
                     }
 
-                    /* Include self ref */
+                    /* Include self ptr as arg */
                     for (var i = 0; i < parametersCount + 1; ++i)
                     {
                         if (i < _ldargs.Length)
@@ -183,7 +192,7 @@ namespace Unity.Ceres.ILPP.CodeGen
                 else
                 {
                     /* Inject uber bridge method call */
-                    /* Include self ref */
+                    /* Push self ptr */
                     instructions.Add(Instruction.Create(_ldargs[0]));
                     /* Push array length */
                     if (parametersCount < _ldc4S.Length)

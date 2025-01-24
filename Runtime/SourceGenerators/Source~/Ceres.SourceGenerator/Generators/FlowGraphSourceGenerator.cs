@@ -11,7 +11,6 @@ namespace Ceres.SourceGenerator
     [Generator]
     public class FlowGraphSourceGenerator : ISourceGenerator
     {
-
         public void Initialize(GeneratorInitializationContext context)
         {
             context.RegisterForSyntaxNotifications(() => new CeresSyntaxReceiver());

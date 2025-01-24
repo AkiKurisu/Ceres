@@ -45,6 +45,10 @@ namespace {NAMESPACE}
             graphData = (FlowGraphData)graph;
         }
 
+        /// <summary>
+        /// Get persistent <see cref="FlowGraphData"/>
+        /// </summary>
+        /// <returns></returns>
         protected FlowGraphData GetGraphData()
         {
             return graphData;
@@ -100,6 +104,10 @@ namespace {NAMESPACE}
             graphData = (FlowGraphData)graph;
         }
 
+        /// <summary>
+        /// Get persistent <see cref="FlowGraphData"/>
+        /// </summary>
+        /// <returns></returns>
         protected FlowGraphData GetGraphData()
         {
             return graphData;
