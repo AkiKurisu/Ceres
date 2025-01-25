@@ -7,7 +7,6 @@ using Ceres.Utilities;
 using Chris;
 using Chris.Serialization;
 using Unity.Collections.LowLevel.Unsafe;
-using UnityEngine;
 namespace Ceres.Graph
 {
     public interface IPort
@@ -121,14 +120,6 @@ namespace Ceres.Graph
         public virtual void AssignValueGetter(IPort port)
         {
             AdaptedGetter = port;
-        }
-        
-        static CeresPort()
-        {
-            /* Implicit conversation */
-            CeresPort<float>.MakeCompatibleTo<int>(f => (int)f);
-            CeresPort<int>.MakeCompatibleTo<float>(i => i);
-            CeresPort<Vector3>.MakeCompatibleTo<Vector2>(vector3 => vector3);
         }
 
         public virtual void Dispose()

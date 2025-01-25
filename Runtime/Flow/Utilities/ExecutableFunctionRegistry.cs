@@ -9,9 +9,34 @@ namespace Ceres.Graph.Flow.Utilities
     /// <summary>
     /// Derived from this class to add custom static functions
     /// </summary>
+    /// <remarks>Must add partial modifier</remarks> 
     public abstract class ExecutableFunctionLibrary
     {
+        /// <summary>
+        /// Collect all static executable functions in this library
+        /// </summary>
+        protected virtual void CollectExecutableFunctions()
+        {
+            
+        }
 
+        protected ExecutableFunctionLibrary()
+        {
+            CollectExecutableFunctions();
+        }
+        
+        /// <summary>
+        /// Register static executable function to reflection system
+        /// </summary>
+        /// <param name="functionName"></param>
+        /// <param name="parameterCount"></param>
+        /// <param name="functionPtr"></param>
+        /// <typeparam name="TLibrary"></typeparam>
+        protected static unsafe void RegisterExecutableFunctions<TLibrary>(string functionName, int parameterCount, void* functionPtr) 
+            where TLibrary: ExecutableFunctionLibrary
+        {
+            ExecutableReflection<TLibrary>.RegisterStaticExecutableFunction(functionName, parameterCount, functionPtr);
+        }
     }
     
     /// <summary>

@@ -1,6 +1,5 @@
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
-using Chris.Serialization;
 using UnityEngine.Scripting;
 using UnityEngine;
 namespace Ceres.Graph.Flow.Utilities
@@ -9,8 +8,7 @@ namespace Ceres.Graph.Flow.Utilities
     /// Executable function library for basic math operations
     /// </summary>
     [Preserve]
-    [FormerlySerializedType("Ceres.Graph.Flow.Utilities.MathExecutableFunctionLibrary, Ceres")]
-    public class MathExecutableLibrary : ExecutableFunctionLibrary
+    public partial class MathExecutableLibrary : ExecutableFunctionLibrary
     {
         #region Float
         
