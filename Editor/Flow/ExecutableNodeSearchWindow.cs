@@ -309,7 +309,6 @@ namespace Ceres.Editor.Graph.Flow
             {
                 builder.AddGroupEntry("Execute Functions", 1);
                 var groupedMethods = methods
-                .Where(x=> x.IsScriptMethod)
                 .GroupBy(methodInfo =>
                 {
                     var libraryType = methodInfo.TargetType;
