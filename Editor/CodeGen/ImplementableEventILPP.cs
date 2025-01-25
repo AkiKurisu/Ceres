@@ -64,6 +64,12 @@ namespace Unity.Ceres.ILPP.CodeGen
             
             // modules
             (_, _ceresModule) = CodeGenHelpers.FindBaseModules(assemblyDefinition, _assemblyResolver);
+            
+            if (_ceresModule == null)
+            {
+                _diagnostics.AddError($"Cannot find Ceres module: {CodeGenHelpers.CeresModuleName}");
+                return null;
+            }
 
             // process
             var mainModule = assemblyDefinition.MainModule;
