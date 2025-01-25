@@ -32,7 +32,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="parameterCount"></param>
         /// <param name="functionPtr"></param>
         /// <typeparam name="TLibrary"></typeparam>
-        protected static unsafe void RegisterExecutableFunctions<TLibrary>(string functionName, int parameterCount, void* functionPtr) 
+        protected static unsafe void RegisterExecutableFunction<TLibrary>(string functionName, int parameterCount, void* functionPtr) 
             where TLibrary: ExecutableFunctionLibrary
         {
             ExecutableReflection<TLibrary>.RegisterStaticExecutableFunction(functionName, parameterCount, functionPtr);

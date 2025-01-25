@@ -54,7 +54,7 @@ namespace {NAMESPACE}
                 sb.Append(
 $"""
                 
-            RegisterExecutableFunctions<{ClassName}>(nameof({function.MethodName}), {function.Parameters.Count}, (delegate* <{delegateStructure}>)&{function.MethodName});
+            RegisterExecutableFunction<{ClassName}>(nameof({function.MethodName}), {function.Parameters.Count}, (delegate* <{delegateStructure}>)&{function.MethodName});
 """);
             }
             sb.Append(EndTemplate);
