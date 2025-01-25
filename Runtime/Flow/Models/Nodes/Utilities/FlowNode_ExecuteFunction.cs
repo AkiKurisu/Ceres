@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using Ceres.Annotations;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Utilities
 {
@@ -124,6 +125,7 @@ namespace Ceres.Graph.Flow.Utilities
             try
             {
                 Delegate = GetExecutableFunction().ExecutableFunc;
+                Assert.IsTrue(Delegate.IsStatic == isStatic);
             }
             catch(ArgumentException)
             {
@@ -156,6 +158,7 @@ namespace Ceres.Graph.Flow.Utilities
             try
             {
                 Delegate = GetExecutableFunction().ExecutableAction;
+                Assert.IsTrue(Delegate.IsStatic == isStatic);
             }
             catch(ArgumentException)
             {

@@ -5,7 +5,6 @@ using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Utilities;
-using UnityEngine;
 using UnityEngine.Assertions;
 namespace Ceres.Graph.Flow
 {
@@ -203,20 +202,21 @@ namespace Ceres.Graph.Flow
         private ExecutableReflection()
         {
             _instance = this;
-#if UNITY_EDITOR
-            typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public)
-                .Where(x => x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
-                .ToList()
-                .ForEach(methodInfo =>
-                {
-                    RegisterExecutableFunction(ExecutableFunctionType.StaticMethod, methodInfo);
-                });
-#endif
             if (typeof(TTarget).IsSubclassOf(typeof(ExecutableFunctionLibrary)))
             {
+#if UNITY_EDITOR
+                typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public)
+                    .Where(x => x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                    .ToList()
+                    .ForEach(methodInfo =>
+                    {
+                        RegisterExecutableFunction(ExecutableFunctionType.StaticMethod, methodInfo);
+                    });
+#endif
                 Activator.CreateInstance(typeof(TTarget));
                 return;
             }
+
             typeof(TTarget).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                 .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                 .ToList()
@@ -258,13 +258,16 @@ namespace Ceres.Graph.Flow
             var functionInfo = new ExecutableFunctionInfo(ExecutableFunctionType.StaticMethod, functionName, parameterCount);
 #if UNITY_EDITOR
             var function = Instance.FindFunction_Internal(functionInfo);
-            Instance._functions.Remove(function);
-            var overrideStructure = new ExecutableFunction(functionInfo, function.MethodInfo, functionPtr);
-            Instance._functions.Add(overrideStructure);
-#else
+            if (function != null)
+            {
+                Instance._functions.Remove(function);
+                var overrideStructure = new ExecutableFunction(functionInfo, function.MethodInfo, functionPtr);
+                Instance._functions.Add(overrideStructure);
+                return;
+            }
+#endif
             var functionStructure = new ExecutableFunction(functionInfo, functionPtr);
             Instance._functions.Add(functionStructure);
-#endif
         }
 
         private ExecutableFunction FindFunction_Internal(ExecutableFunctionInfo functionInfo)
@@ -327,7 +330,7 @@ namespace Ceres.Graph.Flow
 
             protected readonly void* FunctionPtr;
 
-            protected readonly bool IsStatic;
+            public readonly bool IsStatic;
 
             protected readonly MethodInfo MethodInfo;
 
@@ -419,6 +422,7 @@ namespace Ceres.Graph.Flow
                     ((delegate* <void>)FunctionPtr)();
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget>)Delegate).Invoke(target);
             }
             
@@ -430,6 +434,7 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, void>)FunctionPtr)(arg1);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1>)Delegate).Invoke(target, arg1);
             }
             
@@ -441,6 +446,7 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, void>)FunctionPtr)(arg1, arg2);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2>)Delegate).Invoke(target, arg1, arg2);
             }
             
@@ -452,6 +458,7 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, T3, void>)FunctionPtr)(arg1, arg2, arg3);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2, T3>)Delegate).Invoke(target, arg1, arg2, arg3);
             }
             
@@ -463,6 +470,7 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, T3, T4, void>)FunctionPtr)(arg1, arg2, arg3, arg4);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2, T3, T4>)Delegate).Invoke(target, arg1, arg2, arg3, arg4);
             }
             
@@ -474,6 +482,7 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, T3, T4, T5, void>)FunctionPtr)(arg1, arg2, arg3, arg4, arg5);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2, T3, T4, T5>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5);
             }
             
@@ -485,6 +494,7 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, T3, T4, T5, T6, void>)FunctionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2, T3, T4, T5, T6>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5, arg6);
             }
         }
@@ -541,6 +551,7 @@ namespace Ceres.Graph.Flow
                 {
                     return ((delegate* <TR>)FunctionPtr)();
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, TR>)Delegate).Invoke(target);
             }
             
@@ -551,6 +562,7 @@ namespace Ceres.Graph.Flow
                 {
                     return ((delegate* <T1, TR>)FunctionPtr)(arg1);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, TR>)Delegate).Invoke(target, arg1);
             }
             
@@ -561,6 +573,7 @@ namespace Ceres.Graph.Flow
                 {
                     return ((delegate* <T1, T2, TR>)FunctionPtr)(arg1, arg2);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, TR>)Delegate).Invoke(target, arg1, arg2);
             }
             
@@ -571,6 +584,7 @@ namespace Ceres.Graph.Flow
                 {
                     return ((delegate* <T1, T2, T3, TR>)FunctionPtr)(arg1, arg2, arg3);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, T3, TR>)Delegate).Invoke(target, arg1, arg2, arg3);
             }
             
@@ -581,6 +595,7 @@ namespace Ceres.Graph.Flow
                 {
                     return ((delegate* <T1, T2, T3, T4, TR>)FunctionPtr)(arg1, arg2, arg3, arg4);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, T3, T4, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4);
             }
             
@@ -591,6 +606,7 @@ namespace Ceres.Graph.Flow
                 {
                     return ((delegate* <T1, T2, T3, T4, T5, TR>)FunctionPtr)(arg1, arg2, arg3, arg4, arg5);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, T3, T4, T5, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5);
             }
             
@@ -601,6 +617,7 @@ namespace Ceres.Graph.Flow
                 {
                     return ((delegate* <T1, T2, T3, T4, T5, T6, TR>)FunctionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, T3, T4, T5, T6, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5, arg6);
             }
         }
