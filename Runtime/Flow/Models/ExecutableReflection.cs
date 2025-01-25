@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
+using Ceres.Graph.Flow.Utilities;
+using UnityEngine.Assertions;
 namespace Ceres.Graph.Flow
 {
     public enum ExecutableFunctionType
@@ -157,7 +159,7 @@ namespace Ceres.Graph.Flow
     
     public class ExecutableReflection<TTarget>: ExecutableReflection
     {
-        public class ExecutableFunction: Flow.ExecutableFunction
+        public unsafe class ExecutableFunction: Flow.ExecutableFunction
         {
             public readonly ExecutableFunctionInfo FunctionInfo;
 
@@ -167,6 +169,8 @@ namespace Ceres.Graph.Flow
             
             public readonly ExecutableFunc ExecutableFunc;
 
+            public readonly void* FunctionPtr;
+
             internal ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo)
             {
                 FunctionInfo = functionInfo;
@@ -174,19 +178,45 @@ namespace Ceres.Graph.Flow
                 ExecutableAction = new ExecutableAction(MethodInfo);
                 ExecutableFunc = new ExecutableFunc(MethodInfo);
             }
+            
+            internal ExecutableFunction(ExecutableFunctionInfo functionInfo, void* functionPtr)
+            {
+                FunctionInfo = functionInfo;
+                FunctionPtr = functionPtr;
+                ExecutableAction = new ExecutableAction(FunctionPtr);
+                ExecutableFunc = new ExecutableFunc(FunctionPtr);
+            }
+            
+            internal ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo, void* functionPtr)
+            {
+                FunctionInfo = functionInfo;
+                MethodInfo = methodInfo;
+                FunctionPtr = functionPtr;
+                ExecutableAction = new ExecutableAction(FunctionPtr);
+                ExecutableFunc = new ExecutableFunc(FunctionPtr);
+            }
         }
 
         private readonly List<ExecutableFunction> _functions = new();
 
-        public ExecutableReflection()
+        private ExecutableReflection()
         {
-            typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public)
-                .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
-                .ToList()
-                .ForEach(methodInfo =>
-                {
-                    RegisterExecutableFunction(ExecutableFunctionType.StaticMethod, methodInfo);
-                });
+            _instance = this;
+            if (typeof(TTarget).IsSubclassOf(typeof(ExecutableFunctionLibrary)))
+            {
+#if UNITY_EDITOR
+                typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public)
+                    .Where(x => x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                    .ToList()
+                    .ForEach(methodInfo =>
+                    {
+                        RegisterExecutableFunction(ExecutableFunctionType.StaticMethod, methodInfo);
+                    });
+#endif
+                Activator.CreateInstance(typeof(TTarget));
+                return;
+            }
+
             typeof(TTarget).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                 .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                 .ToList()
@@ -221,6 +251,23 @@ namespace Ceres.Graph.Flow
             var functionInfo = new ExecutableFunctionInfo(functionType, methodInfo.Name, methodInfo.GetParameters().Length);
             var functionStructure = new ExecutableFunction(functionInfo, methodInfo);
             _functions.Add(functionStructure);
+        }
+        
+        internal static unsafe void RegisterStaticExecutableFunction(string functionName, int parameterCount, void* functionPtr)
+        {
+            var functionInfo = new ExecutableFunctionInfo(ExecutableFunctionType.StaticMethod, functionName, parameterCount);
+#if UNITY_EDITOR
+            var function = Instance.FindFunction_Internal(functionInfo);
+            if (function != null)
+            {
+                Instance._functions.Remove(function);
+                var overrideStructure = new ExecutableFunction(functionInfo, function.MethodInfo, functionPtr);
+                Instance._functions.Add(overrideStructure);
+                return;
+            }
+#endif
+            var functionStructure = new ExecutableFunction(functionInfo, functionPtr);
+            Instance._functions.Add(functionStructure);
         }
 
         private ExecutableFunction FindFunction_Internal(ExecutableFunctionInfo functionInfo)
@@ -260,7 +307,7 @@ namespace Ceres.Graph.Flow
 
             var functionType = functionInfo.FunctionType;
             var functionName = functionInfo.FunctionName;
-            MethodInfo methodInfo = functionType switch
+            var methodInfo = functionType switch
             {
                 ExecutableFunctionType.PropertySetter => typeof(TTarget).GetProperty(functionName,
                     BindingFlags.Public | BindingFlags.Instance)!.SetMethod,
@@ -277,29 +324,34 @@ namespace Ceres.Graph.Flow
         }
         
         
-        public abstract class ExecutableDelegate
+        public abstract unsafe class ExecutableDelegate
         {
             protected Delegate Delegate;
 
-            protected IntPtr FunctionPtr;
+            protected readonly void* FunctionPtr;
 
-            protected readonly bool IsStatic;
+            public readonly bool IsStatic;
 
             protected readonly MethodInfo MethodInfo;
 
             protected ExecutableDelegate(MethodInfo methodInfo)
             {
+#if !UNITY_EDITOR
+                Assert.IsFalse(methodInfo.IsStatic);
+#endif
                 MethodInfo = methodInfo;
-                IsStatic = methodInfo.IsStatic;
-                if (IsStatic)
-                {
-                    FunctionPtr = methodInfo.MethodHandle.GetFunctionPointer();
-                }
+                IsStatic = false;
+            }
+            
+            protected ExecutableDelegate(void* functionPtr)
+            {
+                IsStatic = true;
+                FunctionPtr = functionPtr;
             }
             
             protected static void ReallocateDelegateIfNeed<TDelegate>(ref Delegate outDelegate, MethodInfo methodInfo) where TDelegate: Delegate
             {
-                if (methodInfo.IsStatic)
+                if (methodInfo == null || methodInfo.IsStatic)
                 {
                     return;
                 }
@@ -317,9 +369,13 @@ namespace Ceres.Graph.Flow
             }
         }
         
-        public class ExecutableAction: ExecutableDelegate
+        public unsafe class ExecutableAction: ExecutableDelegate
         {
             internal ExecutableAction(MethodInfo methodInfo) : base(methodInfo)
+            {
+            }
+            
+            internal ExecutableAction(void* functionPtr) : base(functionPtr)
             {
             }
             
@@ -358,7 +414,7 @@ namespace Ceres.Graph.Flow
                 ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3, T4, T5, T6>>(ref Delegate, MethodInfo);
             }
             
-            public unsafe void Invoke(TTarget target)
+            public void Invoke(TTarget target)
             {
                 ReallocateDelegateIfNeed();
                 if (IsStatic)
@@ -366,10 +422,11 @@ namespace Ceres.Graph.Flow
                     ((delegate* <void>)FunctionPtr)();
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget>)Delegate).Invoke(target);
             }
             
-            public unsafe void Invoke<T1>(TTarget target, T1 arg1)
+            public void Invoke<T1>(TTarget target, T1 arg1)
             {
                 ReallocateDelegateIfNeed<T1>();
                 if (IsStatic)
@@ -377,10 +434,11 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, void>)FunctionPtr)(arg1);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1>)Delegate).Invoke(target, arg1);
             }
             
-            public unsafe void Invoke<T1, T2>(TTarget target, T1 arg1, T2 arg2)
+            public void Invoke<T1, T2>(TTarget target, T1 arg1, T2 arg2)
             {
                 ReallocateDelegateIfNeed<T1, T2>();
                 if (IsStatic)
@@ -388,10 +446,11 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, void>)FunctionPtr)(arg1, arg2);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2>)Delegate).Invoke(target, arg1, arg2);
             }
             
-            public unsafe void Invoke<T1, T2, T3>(TTarget target, T1 arg1, T2 arg2, T3 arg3)
+            public void Invoke<T1, T2, T3>(TTarget target, T1 arg1, T2 arg2, T3 arg3)
             {
                 ReallocateDelegateIfNeed<T1, T2, T3>();
                 if (IsStatic)
@@ -399,10 +458,11 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, T3, void>)FunctionPtr)(arg1, arg2, arg3);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2, T3>)Delegate).Invoke(target, arg1, arg2, arg3);
             }
             
-            public unsafe void Invoke<T1, T2, T3, T4>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+            public void Invoke<T1, T2, T3, T4>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
             {
                 ReallocateDelegateIfNeed<T1, T2, T3, T4>();
                 if (IsStatic)
@@ -410,10 +470,11 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, T3, T4, void>)FunctionPtr)(arg1, arg2, arg3, arg4);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2, T3, T4>)Delegate).Invoke(target, arg1, arg2, arg3, arg4);
             }
             
-            public unsafe void Invoke<T1, T2, T3, T4, T5>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+            public void Invoke<T1, T2, T3, T4, T5>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
             {
                 ReallocateDelegateIfNeed<T1, T2, T3, T4, T5>();
                 if (IsStatic)
@@ -421,10 +482,11 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, T3, T4, T5, void>)FunctionPtr)(arg1, arg2, arg3, arg4, arg5);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2, T3, T4, T5>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5);
             }
             
-            public unsafe void Invoke<T1, T2, T3, T4, T5, T6>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+            public void Invoke<T1, T2, T3, T4, T5, T6>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
             {
                 ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6>();
                 if (IsStatic)
@@ -432,13 +494,18 @@ namespace Ceres.Graph.Flow
                     ((delegate* <T1, T2, T3, T4, T5, T6, void>)FunctionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
                     return;
                 }
+                Assert.IsNotNull(Delegate);
                 ((Action<TTarget, T1, T2, T3, T4, T5, T6>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5, arg6);
             }
         }
         
-        public class ExecutableFunc: ExecutableDelegate
+        public unsafe class ExecutableFunc: ExecutableDelegate
         {
             internal ExecutableFunc(MethodInfo methodInfo) : base(methodInfo)
+            {
+            }
+            
+            internal ExecutableFunc(void* functionPtr) : base(functionPtr)
             {
             }
             
@@ -477,73 +544,80 @@ namespace Ceres.Graph.Flow
                 ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, T4, T5, T6, TR>>(ref Delegate, MethodInfo);
             }
 
-            public unsafe TR Invoke<TR>(TTarget target)
+            public TR Invoke<TR>(TTarget target)
             {
                 ReallocateDelegateIfNeed<TR>();
                 if (IsStatic)
                 {
                     return ((delegate* <TR>)FunctionPtr)();
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, TR>)Delegate).Invoke(target);
             }
             
-            public unsafe TR Invoke<T1, TR>(TTarget target, T1 arg1)
+            public TR Invoke<T1, TR>(TTarget target, T1 arg1)
             {
                 ReallocateDelegateIfNeed<T1, TR>();
                 if (IsStatic)
                 {
                     return ((delegate* <T1, TR>)FunctionPtr)(arg1);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, TR>)Delegate).Invoke(target, arg1);
             }
             
-            public unsafe TR Invoke<T1, T2, TR>(TTarget target, T1 arg1, T2 arg2)
+            public TR Invoke<T1, T2, TR>(TTarget target, T1 arg1, T2 arg2)
             {
                 ReallocateDelegateIfNeed<T1, T2, TR>();
                 if (IsStatic)
                 {
                     return ((delegate* <T1, T2, TR>)FunctionPtr)(arg1, arg2);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, TR>)Delegate).Invoke(target, arg1, arg2);
             }
             
-            public unsafe TR Invoke<T1, T2, T3, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3)
+            public TR Invoke<T1, T2, T3, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3)
             {
                 ReallocateDelegateIfNeed<T1, T2, T3, TR>();
                 if (IsStatic)
                 {
                     return ((delegate* <T1, T2, T3, TR>)FunctionPtr)(arg1, arg2, arg3);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, T3, TR>)Delegate).Invoke(target, arg1, arg2, arg3);
             }
             
-            public unsafe TR Invoke<T1, T2, T3, T4, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+            public TR Invoke<T1, T2, T3, T4, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
             {
                 ReallocateDelegateIfNeed<T1, T2, T3, T4, TR>();
                 if (IsStatic)
                 {
                     return ((delegate* <T1, T2, T3, T4, TR>)FunctionPtr)(arg1, arg2, arg3, arg4);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, T3, T4, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4);
             }
             
-            public unsafe TR Invoke<T1, T2, T3, T4, T5, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+            public TR Invoke<T1, T2, T3, T4, T5, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
             {
                 ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, TR>();
                 if (IsStatic)
                 {
                     return ((delegate* <T1, T2, T3, T4, T5, TR>)FunctionPtr)(arg1, arg2, arg3, arg4, arg5);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, T3, T4, T5, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5);
             }
             
-            public unsafe TR Invoke<T1, T2, T3, T4, T5, T6, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+            public TR Invoke<T1, T2, T3, T4, T5, T6, TR>(TTarget target, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
             {
                 ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>();
                 if (IsStatic)
                 {
                     return ((delegate* <T1, T2, T3, T4, T5, T6, TR>)FunctionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
                 }
+                Assert.IsNotNull(Delegate);
                 return ((Func<TTarget, T1, T2, T3, T4, T5, T6, TR>)Delegate).Invoke(target, arg1, arg2, arg3, arg4, arg5, arg6);
             }
         }

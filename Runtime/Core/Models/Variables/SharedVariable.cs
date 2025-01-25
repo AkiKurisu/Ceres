@@ -7,7 +7,7 @@ namespace Ceres
     /// Variable can be shared between behaviors in behavior tree
     /// </summary>
     [Serializable]
-    public abstract class SharedVariable : ICloneable
+    public abstract class SharedVariable : ICloneable, IDisposable
     {
         /// <summary>
         /// Whether variable is shared
@@ -67,7 +67,7 @@ namespace Ceres
         /// <summary>
         /// Unbind self
         /// </summary>
-        public abstract void Unbind();
+        public abstract void Dispose();
         
         /// <summary>
         /// Clone shared variable by deep copy, an option here is to override for preventing using reflection
@@ -159,7 +159,7 @@ namespace Ceres
             }
         }
         
-        public override void Unbind()
+        public override void Dispose()
         {
             Getter = null;
             Setter = null;

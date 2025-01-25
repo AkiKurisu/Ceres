@@ -108,5 +108,47 @@ namespace Ceres.Utilities
             if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>)) return true;
             return type.IsArray;
         }
+        
+        public static bool IsIListPort(this Type fieldType)
+        {
+            if (fieldType.IsGenericType && fieldType.GetGenericTypeDefinition() == typeof(List<>))
+            {
+                var genericArgument = fieldType.GetGenericArguments()[0];
+                if (typeof(CeresPort).IsAssignableFrom(genericArgument))
+                {
+                    return true;
+                }
+            }
+            else if (fieldType.IsArray)
+            {
+                var elementType = fieldType.GetElementType();
+                if (typeof(CeresPort).IsAssignableFrom(elementType))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+                
+        public static bool IsIListVariable(this Type fieldType)
+        {
+            if (fieldType.IsGenericType && fieldType.GetGenericTypeDefinition() == typeof(List<>))
+            {
+                var genericArgument = fieldType.GetGenericArguments()[0];
+                if (typeof(SharedVariable).IsAssignableFrom(genericArgument))
+                {
+                    return true;
+                }
+            }
+            else if (fieldType.IsArray)
+            {
+                var elementType = fieldType.GetElementType();
+                if (typeof(SharedVariable).IsAssignableFrom(elementType))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

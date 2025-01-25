@@ -1,6 +1,5 @@
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
-using Chris.Serialization;
 using UnityEngine;
 using UnityEngine.Scripting;
 namespace Ceres.Graph.Flow.Utilities
@@ -9,9 +8,8 @@ namespace Ceres.Graph.Flow.Utilities
     /// Executable function library for ceres
     /// </summary>
     [Preserve]
-    [FormerlySerializedType("Ceres.Graph.Flow.Utilities.CeresExecutableFunctionLibrary, Ceres")]
     [CeresGroup("Ceres")]
-    public class CeresExecutableLibrary: ExecutableFunctionLibrary
+    public partial class CeresExecutableLibrary: ExecutableFunctionLibrary
     {
         [ExecutableFunction, CeresLabel("Set LogLevel")]
         public static void Flow_SetLogLevel(LogType logType)

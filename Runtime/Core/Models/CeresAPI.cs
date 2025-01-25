@@ -11,6 +11,11 @@ namespace Ceres
         /// </summary>
         public static LogType LogLevel { get; set; } = LogType.Log;
         
+        /// <summary>
+        /// Whether to log <see cref="UnityEngine.Object"/> relink details
+        /// </summary>
+        public static bool LogUObjectRelink { get; set; }
+        
         public static void LogWarning(string message)
         {
             if(LogLevel >= LogType.Warning)

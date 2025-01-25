@@ -98,12 +98,14 @@ public class MyComponent: Component
 }
 ```
 
-2. For static method, create a new class and implement `ExecutableFunctionLibrary` to 
-   add static executable functions, then add `ExecutableFunctionAttribute`.
+2. For static method, create a new <b>partial</b> class and implement `ExecutableFunctionLibrary` to 
+   add static executable functions, then add `ExecutableFunctionAttribute`. 
+   
+   >You must add `partial` modifier to let source generator work. Source generator will register static function pointer to the flow reflection system instead of using MethodInfo to enhance runtime performance.
    
 
 ```C#
-public class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
+public partial class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
 {
     // IsScriptMethod will consider UObject as function target type
     // IsSelfTarget will let graph pass self reference as first parameter if self is UObject
@@ -469,6 +471,49 @@ public void Test()
     this.ProcessEvent();
     stopWatch.Stop(); 
     Debug.Log($"{nameof(Test)} used: {stopWatch.ElapsedMilliseconds}ms");
+}
+```
+
+#### Source Generator
+
+In [executable function part](#executable-function), it is mentioned that source generator will register static methods to improve runtime performance.
+
+The following shows what SourceGenerator does.
+
+Source code:
+
+```C#
+/// <summary>
+/// Executable function library for ceres
+/// </summary>
+[CeresGroup("Ceres")]
+public partial class CeresExecutableLibrary: ExecutableFunctionLibrary
+{
+    [ExecutableFunction, CeresLabel("Set LogLevel")]
+    public static void Flow_SetLogLevel(LogType logType)
+    {
+        CeresAPI.LogLevel = logType;
+    }
+    
+    [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Get LogLevel")]
+    public static LogType Flow_GetLogLevel()
+    {
+        return CeresAPI.LogLevel;
+    }
+}
+```
+
+Generated code:
+
+```C#
+[CompilerGenerated]
+public partial class CeresExecutableLibrary
+{
+    protected override unsafe void CollectExecutableFunctions()
+    {                
+        RegisterExecutableFunctions<CeresExecutableLibrary>(nameof(Flow_SetLogLevel), 1, (delegate* <LogType, void>)&Flow_SetLogLevel);                
+        RegisterExecutableFunctions<CeresExecutableLibrary>(nameof(Flow_GetLogLevel), 0, (delegate* <LogType>)&Flow_GetLogLevel);
+    }
 }
 ```
 
