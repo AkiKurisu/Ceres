@@ -346,5 +346,15 @@ namespace Ceres.Graph.Flow
             using var evt = ExecuteFlowEvent.Create(eventName, parameters);
             runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
         }
+
+        /// <summary>
+        /// Get runtime <see cref="FlowGraph"/> instance
+        /// </summary>
+        /// <param name="runtime"></param>
+        /// <returns></returns>
+        public static FlowGraph GetRuntimeFlowGraph(this IFlowGraphRuntime runtime)
+        {
+            return runtime.Graph;
+        }
     }
 }

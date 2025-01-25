@@ -50,6 +50,7 @@ namespace Ceres.Graph.Flow
             Assert.IsTrue((bool)context);
             Assert.IsNotNull(graph);
             var executionContext = Pool.Get();
+            executionContext._cancellationToken = null;
             executionContext.Context = context;
             executionContext.Graph = graph;
             graph.PushContext(executionContext);
@@ -77,13 +78,19 @@ namespace Ceres.Graph.Flow
         /// </summary>
         /// <param name="nextNode"></param>
         /// <returns></returns>
-        public bool GetNext(out ExecutableNode nextNode)
+        private bool Next(out ExecutableNode nextNode)
         {
             nextNode = _nextNode;
             _nextNode = null;
             return nextNode != null;
         }
 
+        private bool IsExecutedInOnDestroy()
+        {
+           const string onDestroyEventName = "OnDestroy";
+           return Context && GetEvent() is ExecuteFlowEvent { FunctionName: onDestroyEventName };
+        }
+        
         /// <summary>
         /// Execute node in forward path
         /// </summary>
@@ -92,16 +99,18 @@ namespace Ceres.Graph.Flow
         public UniTask Forward(ExecutableNode node)
         {
             _cancellationToken ??= GetCancellationToken();
-            return Forward(node, _cancellationToken.Value);
+            /* Special case, we expect flow can still be executed in OnDestroy. */
+            /* So we start execute forward path without cancellation. */
+            if (_cancellationToken.Value.IsCancellationRequested && IsExecutedInOnDestroy())
+            {
+                _cancellationToken = new CancellationToken();
+            }
+            return Forward_Internal(node, _cancellationToken.Value);
         }
-
-        /// <summary>
-        /// Execute node in forward path
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="cancellationToken"></param>
-        public async UniTask Forward(ExecutableNode node, CancellationToken cancellationToken)
+        
+        private async UniTask Forward_Internal(ExecutableNode node, CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
             /* Execute dependency path */
             await ExecuteDependencyPath(node.Guid, cancellationToken);
             /* Execute forward path */
@@ -109,14 +118,14 @@ namespace Ceres.Graph.Flow
 #if !CERES_DISABLE_TRACKER
             await _tracker.EnterNode(node);
 #endif
-            await node.ExecuteNode(this).AttachExternalCancellation(cancellationToken);
+            await node.ExecuteNode(this);
 #if !CERES_DISABLE_TRACKER
             await _tracker.ExitNode(node);
 #endif
-            while (GetNext(out var nextNode))
+            while (Next(out var nextNode))
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Forward(nextNode, cancellationToken);
+                await Forward_Internal(nextNode, cancellationToken);
             }
         }
         
@@ -128,7 +137,7 @@ namespace Ceres.Graph.Flow
                 /* Find dependency root in current context */
                 if(HasNodeExecuted(Graph.nodes[id].Guid)) continue;
                 var node = (ExecutableNode)Graph.nodes[id];
-                await Forward(node, cancellationToken);
+                await Forward_Internal(node, cancellationToken);
             }
         }
 
@@ -137,7 +146,7 @@ namespace Ceres.Graph.Flow
         /// </summary>
         /// <param name="guid"></param>
         /// <returns></returns>
-        public bool HasNodeExecuted(string guid)
+        private bool HasNodeExecuted(string guid)
         {
             return _forwardPath?.Contains(guid) ?? false;
         }
@@ -146,12 +155,15 @@ namespace Ceres.Graph.Flow
         /// Get <see cref="CancellationToken"/> for async support
         /// </summary>
         /// <returns></returns>
-        public CancellationToken GetCancellationToken()
+        private CancellationToken GetCancellationToken()
         {
-            if (Context is GameObject gameObject) return gameObject.GetCancellationTokenOnDestroy();
-            if (Context is MonoBehaviour monoBehaviour) return monoBehaviour.GetCancellationTokenOnDestroy();
-            if (Context is Component component) return component.GetCancellationTokenOnDestroy();
-            return default;
+            return Context switch
+            {
+                GameObject gameObject => gameObject.GetCancellationTokenOnDestroy(),
+                MonoBehaviour monoBehaviour => monoBehaviour.GetCancellationTokenOnDestroy(),
+                Component component => component.GetCancellationTokenOnDestroy(),
+                _ => default
+            };
         }
 
         public void Dispose()
@@ -170,7 +182,7 @@ namespace Ceres.Graph.Flow
 
             if (_event != null)
             {
-                _event.Dispose();;
+                _event.Dispose();
                 _event = null;
             }
             
@@ -181,11 +193,19 @@ namespace Ceres.Graph.Flow
             Pool.Release(this);
         }
 
+        /// <summary>
+        /// Get source <see cref="EventBase"/> this execution fired from
+        /// </summary>
+        /// <returns></returns>
         public EventBase GetEvent()
         {
             return _event;
         }
         
+        /// <summary>
+        /// Get source <see cref="EventBase"/> this execution fired from with specific type check
+        /// </summary>
+        /// <returns></returns>
         public T GetEventT<T>() where T: EventBase<T>, new()
         {
             return (T)GetEvent();
