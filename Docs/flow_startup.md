@@ -17,8 +17,10 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
     - [Node has Port Array](#node-has-port-array)
     - [Code Generation](#code-generation)
       - [ILPP](#ilpp)
+      - [Source Generator](#source-generator)
   - [Debug](#debug)
     - [Breakpoint Support](#breakpoint-support)
+
 
 
 
