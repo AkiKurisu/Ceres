@@ -12,6 +12,18 @@ namespace Ceres.SourceGenerator
     [Generator]
     public class ExecutableLibrarySourceGenerator : ISourceGenerator
     {
+        public const string DiagnosticId = "Ceres001";
+
+        public static readonly DiagnosticDescriptor DiagnosticDescriptor = new(
+               id: DiagnosticId,
+               title: "Missing partial modifier on executable function library",
+               messageFormat: "The class {0} is missing 'partial' modifier, which is required for source generator.",
+               category: "CodeGeneration",
+               defaultSeverity: DiagnosticSeverity.Error,
+               isEnabledByDefault: true,
+               description: "ExecutableFunctionLibrary must add partial modifier."
+            );
+
         public void Initialize(GeneratorInitializationContext context)
         {
             context.RegisterForSyntaxNotifications(() => new ExecutableLibrarySyntaxReceiver());
@@ -59,10 +71,14 @@ namespace Ceres.SourceGenerator
             {
                 var className = classDeclaration.Identifier.Text;
                 Debug.LogInfo($"Analyze {className}");
+                if (!classDeclaration.Modifiers.Any(m => m.IsKind(SyntaxKind.PartialKeyword)))
+                {
+                    context.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptor, classDeclaration.GetLocation(), className));
+                    continue;
+                }
 
                 var semanticModel = context.Compilation.GetSemanticModel(classDeclaration.SyntaxTree);
                 var classSymbol = semanticModel.GetDeclaredSymbol(classDeclaration);
-
                 if (classSymbol == null)
                 {
                     continue;
@@ -153,11 +169,6 @@ namespace Ceres.SourceGenerator
 
             if (classNode.BaseList == null || classNode.BaseList.Types.Count == 0)
                 return;
-
-            if (!classNode.Modifiers.Any(m => m.IsKind(SyntaxKind.PartialKeyword)))
-            {
-                return;
-            }
 
             // Check inherit from ExecutableFunctionLibrary
             if (!classNode.BaseList.Types.Any(baseType =>

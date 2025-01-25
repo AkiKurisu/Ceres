@@ -1,13 +1,11 @@
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Chris.Schedulers;
-using UnityEngine.Scripting;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
     /// Executable function library for Chris.Schedulers
     /// </summary>
-    [Preserve]
     [CeresGroup("Scheduler")]
     public partial class SchedulerExecutableLibrary: ExecutableFunctionLibrary
     {

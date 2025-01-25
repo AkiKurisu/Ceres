@@ -3,7 +3,6 @@ using Ceres.Graph.Flow.Annotations;
 using Chris.Events;
 using Chris.Resource;
 using UnityEngine;
-using UnityEngine.Scripting;
 using UObject = UnityEngine.Object;
 using R3;
 namespace Ceres.Graph.Flow.Utilities
@@ -11,7 +10,6 @@ namespace Ceres.Graph.Flow.Utilities
     /// <summary>
     /// Executable function library for Chris.Resource
     /// </summary>
-    [Preserve]
     [CeresGroup("Resource")]
     public partial class ResourceExecutableLibrary: ExecutableFunctionLibrary
     {

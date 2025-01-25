@@ -1,13 +1,11 @@
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
-using UnityEngine.Scripting;
 using UnityEngine;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
     /// Executable function library for basic math operations
     /// </summary>
-    [Preserve]
     public partial class MathExecutableLibrary : ExecutableFunctionLibrary
     {
         #region Float

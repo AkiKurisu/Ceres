@@ -14,6 +14,7 @@ namespace Ceres.SourceGenerator.Generators
 {USINGNAMESPACE}
 namespace {NAMESPACE}
 {
+    [UnityEngine.Scripting.Preserve]
     [System.Runtime.CompilerServices.CompilerGenerated]
     public partial class {CLASSNAME}
     {

@@ -2,14 +2,12 @@ using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Chris.Serialization;
 using UnityEngine;
-using UnityEngine.Scripting;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
     /// Executable function library for Unity built-in types
     /// </summary>
-    [Preserve]
     [CeresGroup("Unity")]
     public partial class UnityExecutableLibrary: ExecutableFunctionLibrary
     {
