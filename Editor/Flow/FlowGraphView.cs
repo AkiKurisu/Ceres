@@ -78,7 +78,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             var eventName = (((ExecutableNodeElement)selection[0]).View as ExecutableEventNodeView)!.GetEventName();
             var nodeInstances = nodes.OfType<ExecutableNodeElement>()
-                                                .Select(x => x.View.CompileNode() as CeresNode)
+                                                .Select(x => (CeresNode)x.View.CompileNode())
                                                 .ToArray();
             var flowGraphData = new FlowGraphData
             {
@@ -216,16 +216,20 @@ namespace Ceres.Editor.Graph.Flow
                         nodeElement.View.Guid = idMap[nodeElement];
                     }
                 }
-            
-                var flowGraphData = new FlowGraphData
+
+                /* Copy and paste may log warning for missing connect nodes which is expected. */
+                using (CeresAPI.LogScope(copyPaste ? LogType.Error : LogType.Log))
                 {
-                    nodes = nodeInstances,
-                    nodeData = nodeInstances.Select(x=> x.GetSerializedData()).ToArray(),
-                    variables = _graphView.SharedVariables.ToArray(),
-                    nodeGroups = data.ToArray()
-                };
-                flowGraphData.PreSerialization();
-                return flowGraphData;
+                    var flowGraphData = new FlowGraphData
+                    {
+                        nodes = nodeInstances,
+                        nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
+                        variables = _graphView.SharedVariables.ToArray(),
+                        nodeGroups = data.ToArray()
+                    };
+                    flowGraphData.PreSerialization();
+                    return flowGraphData;
+                }
             }
             
             /// <summary>
