@@ -2,9 +2,10 @@ using System;
 namespace Ceres.Annotations
 {
     /// <summary>
-    /// Class are categorized in the editor dropdown menu, and can be sub-categorized with the '/' symbol
+    /// Class or methods are categorized in the editor dropdown menu.
+    /// Can be sub-categorized with the '/' symbol.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = false)]
     public sealed class CeresGroupAttribute : Attribute
     {
         public string Group { get; }

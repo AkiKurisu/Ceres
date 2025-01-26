@@ -76,6 +76,22 @@ namespace Ceres.Graph.Flow.Utilities
         
         #endregion GameObject
 
+        #region Transform
+        
+        [ExecutableFunction(IsScriptMethod = true), CeresLabel("GetChild")]
+        public static Transform Flow_TransformGetChild(Transform transform, int index)
+        {
+            return transform.GetChild(index);
+        }
+        
+        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Find")]
+        public static Transform Flow_TransformFind(Transform transform, string name)
+        {
+            return transform.Find(name);
+        }
+
+        #endregion Transform
+
         #region Component
         
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetComponent")]
@@ -106,13 +122,13 @@ namespace Ceres.Graph.Flow.Utilities
 
         #region Random
         
-        [ExecutableFunction]
+        [ExecutableFunction, CeresGroup("Unity/Random")]
         public static float Flow_RandomRange(float minInclusive, float maxInclusive)
         {
             return Random.Range(minInclusive, maxInclusive);
         }
         
-        [ExecutableFunction]
+        [ExecutableFunction, CeresGroup("Unity/Random")]
         public static int Flow_RandomRangeInt(int minInclusive, int maxInclusive)
         {
             return Random.Range(minInclusive, maxInclusive);

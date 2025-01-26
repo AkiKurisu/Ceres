@@ -20,38 +20,38 @@ namespace Ceres.Editor.Graph
         {
             public readonly Type Type;
             
-            public readonly INodeViewResolver Instance;
-
             public readonly CustomNodeViewAttribute CustomNodeViewAttribute;
 
-            public readonly int Order;
+            private readonly INodeViewResolver _instance;
+            
+            private readonly int _order;
             
             public ResolverStructure(Type type)
             {
                 Type = type;
                 if (type.GetInterfaces().Any(t => t == typeof(INodeViewResolver)))
                 {
-                    Instance = (INodeViewResolver)Activator.CreateInstance(type);
+                    _instance = (INodeViewResolver)Activator.CreateInstance(type);
                 }
                 else
                 {
                     CustomNodeViewAttribute = type.GetCustomAttribute<CustomNodeViewAttribute>();
                 }
-                Order = type.GetCustomAttribute<OrderedAttribute>(false)?.Order ?? -1;
+                _order = type.GetCustomAttribute<OrderedAttribute>(false)?.Order ?? -1;
             }
 
             public bool IsAcceptable(Type inType)
             {
-                if (Instance == null) return false;
-                return Instance.IsAcceptable(inType);
+                if (_instance == null) return false;
+                return _instance.IsAcceptable(inType);
             }
             
             public class Comparer: IComparer<ResolverStructure>
             {
                 public int Compare(ResolverStructure a, ResolverStructure b)
                 {
-                    bool aCustom = a!.Instance == null;
-                    bool bCustom = b!.Instance == null;
+                    bool aCustom = a!._instance == null;
+                    bool bCustom = b!._instance == null;
                     if (aCustom && bCustom)
                     {
                         if (a.CustomNodeViewAttribute.NodeType.IsAssignableFrom(b.CustomNodeViewAttribute.NodeType))
@@ -61,7 +61,7 @@ namespace Ceres.Editor.Graph
                     }
                     if (!aCustom && bCustom) return 1;
                     if (aCustom && !bCustom) return -1;
-                    return a.Order.CompareTo(b.Order);
+                    return a._order.CompareTo(b._order);
                 }
             }
         }
