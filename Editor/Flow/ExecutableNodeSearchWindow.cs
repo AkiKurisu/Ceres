@@ -23,6 +23,11 @@ namespace Ceres.Editor.Graph.Flow
             _indentationIcon.Apply();
         }
 
+        private void OnDestroy()
+        {
+            DestroyImmediate(_indentationIcon);
+        }
+
         public override List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
         {
             var entries = new List<SearchTreeEntry>
@@ -107,21 +112,20 @@ namespace Ceres.Editor.Graph.Flow
                     NodeType = typeof(ExecutionEvent)
                 }
             });
-            if(methods.Any())
+            if (!methods.Any()) return;
+            
+            builder.AddGroupEntry("Implement Custom Events", 2);
+            foreach (var method in methods)
             {
-                builder.AddGroupEntry("Implement Custom Events", 2);
-                foreach (var method in methods)
+                builder.AddEntry(new SearchTreeEntry(new GUIContent($"Implement {method.Name}", _indentationIcon))
                 {
-                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Implement {method.Name}", _indentationIcon))
+                    level = 3, 
+                    userData = new CeresNodeSearchEntryData
                     {
-                        level = 3, 
-                        userData = new CeresNodeSearchEntryData
-                        {
-                            NodeType = PredictEventNodeType(method),
-                            Data = new ExecutableEventNodeViewFactoryProxy { MethodInfo = method }
-                        }
-                    });
-                }
+                        NodeType = PredictEventNodeType(method),
+                        Data = new ExecutableEventNodeViewFactoryProxy { MethodInfo = method }
+                    }
+                });
             }
         }
         
@@ -134,7 +138,7 @@ namespace Ceres.Editor.Graph.Flow
             if (parametersLength > maxParameters)
             {
                 /* Not support uber version */
-                CeresAPI.LogWarning($"Event delegate not support arguments out range of {maxParameters}");
+                CeresAPI.LogWarning($"Event delegate does not support arguments out range of {maxParameters}");
                 return;
             }
             builder.AddGroupEntry("Select Events", 1);
@@ -149,7 +153,7 @@ namespace Ceres.Editor.Graph.Flow
             });
         }
 
-        private static readonly Type[] DelegateTypes = {
+        private static readonly Type[] SupportedDelegateTypes = {
             typeof(Action),
             typeof(Action<>),
             typeof(Action<,>),
@@ -166,8 +170,9 @@ namespace Ceres.Editor.Graph.Flow
                 return true;
             }
 
+            /* Get inner delegate type */
             if (parameterType.IsGenericType) parameterType = parameterType.GetGenericTypeDefinition();
-            return DelegateTypes.Contains(parameterType);
+            return SupportedDelegateTypes.Contains(parameterType);
         }
 
         private void BuildPropertyEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool isSelfTarget)
@@ -279,62 +284,71 @@ namespace Ceres.Editor.Graph.Flow
 
             public readonly MethodInfo MethodInfo;
             
-            public bool IsScriptMethod { get; }
-
             public FunctionCandidate(Type targetType, MethodInfo methodInfo)
             {
                 TargetType = methodInfo.IsStatic ? methodInfo.DeclaringType : targetType;
                 MethodInfo = methodInfo;
-                IsScriptMethod = methodInfo.IsStatic && ExecutableFunction.IsScriptMethod(methodInfo);
+            }
+
+            public string GetGroupNameOrDefault()
+            {
+               return SubClassSearchUtility.GetFirstGroupNameOrDefault(MethodInfo) ??
+                    SubClassSearchUtility.GetFirstGroupNameOrDefault(TargetType);
             }
         }
 
-        private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool includeStatic)
+        
+        private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool includeStaticAndNonPublic)
         {
+            var graphContainerType = GraphView.GetContainerType();
             var types = CeresPort.GetCompatibleTypes(targetType).Concat(new[] { targetType });
 
-            var methods = types
+            var methodCandidates = types
                 .SelectMany(type => ExecutableFunctionRegistry.Get().GetFunctions(type)
                     .Select(x=> new FunctionCandidate(targetType, x)))
+                .Where(x=>
+                {
+                    if (x.MethodInfo.IsPublic || includeStaticAndNonPublic) return true;
+                    /* Visibility is aligned with method access modifier */
+                    if (x.MethodInfo.IsPrivate && graphContainerType == targetType) return true;
+                    return x.MethodInfo.IsFamily && graphContainerType.IsAssignableTo(targetType);
+                })
                 .ToArray();
             
-            if (includeStatic)
+            if (includeStaticAndNonPublic)
             {
                 var staticFunctions = ExecutableFunctionRegistry.Get().GetStaticFunctions()
                                                                 .Select(x => new FunctionCandidate(targetType, x));
-                methods = methods.Concat(staticFunctions).ToArray();
+                methodCandidates = methodCandidates.Concat(staticFunctions).ToArray();
             }
             
-            if(methods.Any())
+            if(methodCandidates.Any())
             {
                 builder.AddGroupEntry("Execute Functions", 1);
-                var groupedMethods = methods
-                .GroupBy(methodInfo =>
-                {
-                    var libraryType = methodInfo.TargetType;
-                    return SubClassSearchUtility.GetFirstGroupNameOrDefault(libraryType);
-                })
-                .Where(x => !string.IsNullOrEmpty(x.Key))
-                .ToArray();
+                var groupedMethodCandidates = methodCandidates
+                    .GroupBy(candidate => candidate.GetGroupNameOrDefault())
+                    .Where(grouping => !string.IsNullOrEmpty(grouping.Key))
+                    .ToArray();
                 
-                var rawMethods = methods.Except(groupedMethods
-                        .SelectMany(x => x))
+                var rawMethodCandidates = methodCandidates.Except(groupedMethodCandidates
+                        .SelectMany(grouping => grouping))
                     .ToList();
                 
-                foreach (var methodsInGroup in groupedMethods)
+                foreach (var candidateGrouping in groupedMethodCandidates)
                 {
-                    var groupName = methodsInGroup.Key;
+                    var groupName = candidateGrouping.Key;
                     builder.AddEntry(new SearchTreeGroupEntry(new GUIContent($"Select {groupName}"), 2));
-                    foreach (var method in methodsInGroup)
+                    foreach (var method in candidateGrouping)
                     {
                         AddFunctionEntry(method, 3);
                     }
                 }
-                foreach (var method in rawMethods)
+                foreach (var method in rawMethodCandidates)
                 {
                     AddFunctionEntry(method, 2);
                 }
             }
+            return;
 
             void AddFunctionEntry(FunctionCandidate candidate, int level)
             {
