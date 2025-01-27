@@ -39,37 +39,9 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override void OnInitialize()
         {
-            try
-            {
-                /* Redirect container type */
-                if (Container is FlowGraphScriptableObjectBase scriptableObjectBase)
-                {
-                    SetContainerType(scriptableObjectBase.GetRuntimeType());
-                }
-                DisplayProgressBar("Initialize field factory", 0f);
-                {
-                    FieldResolverFactory.Get();
-                }
-                DisplayProgressBar("Initialize node view factory", 0.3f);
-                {
-                    NodeViewFactory.Get();
-                }
-                DisplayProgressBar("Initialize executable function registry", 0.6f);
-                {
-                    ExecutableFunctionRegistry.Get();
-                }
-                DisplayProgressBar("Construct graph view", 0.9f);
-                {
-                    StructVisualElements();
-                    var icon = Resources.Load<Texture>("Ceres/editor_icon");
-                    titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
-                    _graphView.DeserializeGraph(ContainerT);
-                }
-            }
-            finally
-            {
-                ClearProgressBar();
-            }
+            var icon = Resources.Load<Texture>("Ceres/editor_icon");
+            titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
+            InitializeFlowGraphView();
         }
 
         private static void DisplayProgressBar(string stepTitle, float progress)
@@ -199,8 +171,40 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override void OnReloadGraphView()
         {
-            StructVisualElements();
-            _graphView.DeserializeGraph(ContainerT);
+            InitializeFlowGraphView();
+        }
+
+        private void InitializeFlowGraphView()
+        {
+            try
+            {
+                /* Redirect container type */
+                if (Container is FlowGraphScriptableObjectBase scriptableObjectBase)
+                {
+                    SetContainerType(scriptableObjectBase.GetRuntimeType());
+                }
+                DisplayProgressBar("Initialize field factory", 0f);
+                {
+                    FieldResolverFactory.Get();
+                }
+                DisplayProgressBar("Initialize node view factory", 0.3f);
+                {
+                    NodeViewFactory.Get();
+                }
+                DisplayProgressBar("Initialize executable function registry", 0.6f);
+                {
+                    ExecutableFunctionRegistry.Get();
+                }
+                DisplayProgressBar("Construct graph view", 0.9f);
+                {
+                    StructVisualElements();
+                    _graphView.DeserializeGraph(ContainerT);
+                }
+            }
+            finally
+            {
+                ClearProgressBar();
+            }
         }
     }
 }
