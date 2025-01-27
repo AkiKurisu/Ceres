@@ -85,6 +85,24 @@ namespace Ceres.Editor.Graph.Flow
             /* Whether explicit container type is assignable to editor container type */
             return GetContainerType().IsInstanceOfType(ContainerT);
         }
+
+        /// <summary>
+        /// Save current editing flow graph
+        /// </summary>
+        public void SaveGraph()
+        {
+            var guiContent = new GUIContent();
+            if (_graphView.SerializeGraph(Container))
+            {
+                guiContent.text = $"Update flow {Identifier.boundObject.name} succeed!";
+                ShowNotification(guiContent, 0.5f);
+            }
+            else
+            {
+                guiContent.text = $"Failed to save flow {Identifier.boundObject.name}!";
+                ShowNotification(guiContent, 0.5f);
+            }
+        }
         
         private VisualElement CreateToolBar()
         {
@@ -101,19 +119,9 @@ namespace Ceres.Editor.Graph.Flow
                     var image  = EditorGUIUtility.IconContent("SaveAs@2x").image;
                     if (GUILayout.Button(new GUIContent(image,$"Save flow and serialize data to {Identifier.boundObject.name}"), EditorStyles.toolbarButton))
                     {
-                        var guiContent = new GUIContent();
-                        if (_graphView.SerializeGraph(Container))
-                        {
-                            guiContent.text = $"Update flow {Identifier.boundObject.name} succeed!";
-                            ShowNotification(guiContent, 0.5f);
-                        }
-                        else
-                        {
-                            guiContent.text = $"Failed to save flow {Identifier.boundObject.name}!";
-                            ShowNotification(guiContent, 0.5f);
-                        }
+                        SaveGraph();
                     }
-                    if(ContainerCanSimulate())
+                    if (ContainerCanSimulate())
                     {
                         GUI.enabled &= _graphView.CanSimulate();
                         image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;

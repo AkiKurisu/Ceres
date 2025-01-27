@@ -19,15 +19,19 @@ namespace Ceres.Editor.Graph.Flow
         private FlowGraphDebugTracker _tracker;
         
         public FlowGraphDebugState DebugState { get; }
+
+        private FlowGraphEditorWindow FlowGraphEditorWindow { get; }
         
         public FlowGraphView(FlowGraphEditorWindow editorWindow) : base(editorWindow)
         {
+            FlowGraphEditorWindow = editorWindow;
             DebugState = editorWindow.debugState;
             AddStyleSheet("Ceres/Flow/GraphView");
             AddSearchWindow<ExecutableNodeSearchWindow>();
             AddNodeGroupHandler(new ExecutableNodeGroupHandler(this));
             AddBlackboard(new FlowBlackboard(this));
             FlowGraphTracker.SetActiveTracker(_tracker = new FlowGraphDebugTracker(this));
+            RegisterCallback<KeyDownEvent>(HandleKeyBoardCommands);
         }
 
         public override bool SerializeGraph(ICeresGraphContainer container)
@@ -69,6 +73,17 @@ namespace Ceres.Editor.Graph.Flow
         {
             var graph = ((IFlowGraphContainer)container).GetFlowGraph();
             new CopyPasteGraph(this, graphElements).DeserializeGraph(graph);
+        }
+
+        private void HandleKeyBoardCommands(KeyDownEvent evt)
+        {
+            if (!evt.ctrlKey || evt.keyCode != KeyCode.S)
+            {
+                return;
+            }
+
+            if (!FlowGraphEditorWindow) return;
+            FlowGraphEditorWindow.SaveGraph();
         }
 
         /// <summary>
