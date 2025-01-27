@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph
 {
     [Ordered]
-    public class SerializedObjectFieldResolver : FieldResolver<SerializedObjectField , SerializedObjectBase>
+    public class SerializedObjectFieldResolver : FieldResolver<SerializedObjectField, SerializedObjectBase>
     {
         public SerializedObjectFieldResolver(FieldInfo fieldInfo) : base(fieldInfo)
         {
@@ -59,7 +59,7 @@ namespace Ceres.Editor.Graph
             }
         }
 
-        private void Restore()
+        private void RefreshWrapper()
         {
             var elementType = _value.GetBoxType();
             if (elementType == null)
@@ -70,16 +70,14 @@ namespace Ceres.Editor.Graph
             var wrapper = SerializedObjectWrapperManager.CreateWrapper(elementType, ref handle);
             _value.objectHandle = handle.Handle;
             if (!wrapper) return;
-            if (!string.IsNullOrEmpty(value.jsonData))
+            if (string.IsNullOrEmpty(value.jsonData)) return;
+            try
             {
-                try
-                {
-                    wrapper.Value = JsonUtility.FromJson(_value.jsonData, elementType);
-                }
-                catch
-                {
-                    // ignored
-                }
+                wrapper.Value = JsonUtility.FromJson(_value.jsonData, elementType);
+            }
+            catch
+            {
+                // ignored
             }
         }
 
@@ -90,11 +88,13 @@ namespace Ceres.Editor.Graph
             get => _value;
             set
             {
+                var oldValue = _value;
                 _value = value;
-                if (_value != null)
-                {
-                    Restore();
-                }
+                if (_value == null) return;
+                RefreshWrapper();
+                using var evt = ChangeEvent<SerializedObjectBase>.GetPooled(oldValue, value);
+                evt.target = this;
+                SendEvent(evt);
             }
         }
     }
