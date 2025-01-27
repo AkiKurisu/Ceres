@@ -106,7 +106,7 @@ namespace Ceres.Editor.Graph
         {
             AddGroupEntry($"Select {group.Key}", level);
             bool hasEntry = false;
-            var subGroups = group.SubGroups(subCount).ToArray();
+            var subGroups = group.SubGroup(subCount).ToArray();
             var left = group.Except(subGroups.SelectMany(x => x));
             foreach (var subGroup in subGroups)
             {
@@ -181,7 +181,7 @@ namespace Ceres.Editor.Graph
             var subClasses = SubClassSearchUtility.FindSubClassTypes(baseTypes)
                                                         .Where(x=> CanShowType(x, nodeSearchContext))
                                                         .ToArray();
-            var list = subClasses.GroupsByNodeGroup().ToList(); ;
+            var list = subClasses.GroupByFirstGroup().ToList(); ;
             var nodeTypes = subClasses.Except(list.SelectMany(x => x)).ToList();
             var groups = list.SelectGroup(nodeSearchContext.ShowGroups).ExceptGroup(nodeSearchContext.HideGroups).ToList();
             return (groups, nodeTypes);

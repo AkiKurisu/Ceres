@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Ceres.Annotations;
 using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -14,6 +15,29 @@ namespace Ceres.Editor.Graph.Flow
 {
     public class ExecutableNodeSearchWindow : CeresNodeSearchWindow
     {
+        private readonly struct FunctionCandidate: IGrouped
+        {
+            public readonly Type TargetType;
+
+            public readonly MethodInfo MethodInfo;
+            
+            public FunctionCandidate(Type targetType, MethodInfo methodInfo)
+            {
+                TargetType = methodInfo.IsStatic ? methodInfo.DeclaringType : targetType;
+                MethodInfo = methodInfo;
+                var atr = MethodInfo.GetCustomAttribute<CeresGroupAttribute>();
+                atr ??= TargetType!.GetCustomAttribute<CeresGroupAttribute>();
+                Group = atr?.Group;
+            }
+
+            public string GetGroupNameOrDefault()
+            {
+                return SubClassSearchUtility.GetFirstGroupNameOrDefault(Group);
+            }
+
+            public string Group { get; }
+        }
+        
         private Texture2D _indentationIcon;
         
         protected override void OnInitialize()
@@ -278,26 +302,6 @@ namespace Ceres.Editor.Graph.Flow
             }
         }
         
-        private readonly struct FunctionCandidate
-        {
-            public readonly Type TargetType;
-
-            public readonly MethodInfo MethodInfo;
-            
-            public FunctionCandidate(Type targetType, MethodInfo methodInfo)
-            {
-                TargetType = methodInfo.IsStatic ? methodInfo.DeclaringType : targetType;
-                MethodInfo = methodInfo;
-            }
-
-            public string GetGroupNameOrDefault()
-            {
-               return SubClassSearchUtility.GetFirstGroupNameOrDefault(MethodInfo) ??
-                    SubClassSearchUtility.GetFirstGroupNameOrDefault(TargetType);
-            }
-        }
-
-        
         private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool includeStaticAndNonPublic)
         {
             var graphContainerType = GraphView.GetContainerType();
@@ -336,12 +340,7 @@ namespace Ceres.Editor.Graph.Flow
                 
                 foreach (var candidateGrouping in groupedMethodCandidates)
                 {
-                    var groupName = candidateGrouping.Key;
-                    builder.AddEntry(new SearchTreeGroupEntry(new GUIContent($"Select {groupName}"), 2));
-                    foreach (var method in candidateGrouping)
-                    {
-                        AddFunctionEntry(method, 3);
-                    }
+                    AddAllFunctionEntries(candidateGrouping, 2);
                 }
                 foreach (var method in rawMethodCandidates)
                 {
@@ -350,6 +349,22 @@ namespace Ceres.Editor.Graph.Flow
             }
             return;
 
+            void AddAllFunctionEntries(IGrouping<string, FunctionCandidate> group, int level, int subCount = 1)
+            {
+                var groupName = group.Key;
+                builder.AddEntry(new SearchTreeGroupEntry(new GUIContent($"Select {groupName}"), level));
+                var subGroups = group.SubGroup(subCount).ToArray();
+                var left = group.Except(subGroups.SelectMany(x => x));
+                foreach (var subGroup in subGroups)
+                {
+                    AddAllFunctionEntries(subGroup,level + 1, subCount + 1);
+                }
+                foreach (var functionCandidate in left)
+                {
+                    AddFunctionEntry(functionCandidate, level + 1);
+                }
+            }
+            
             void AddFunctionEntry(FunctionCandidate candidate, int level)
             {
                 var functionName = ExecutableFunction.GetFunctionName(candidate.MethodInfo, false);

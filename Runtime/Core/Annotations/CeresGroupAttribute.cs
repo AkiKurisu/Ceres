@@ -9,6 +9,7 @@ namespace Ceres.Annotations
     public sealed class CeresGroupAttribute : Attribute
     {
         public string Group { get; }
+        
         public CeresGroupAttribute(string group)
         {
             Group = group;

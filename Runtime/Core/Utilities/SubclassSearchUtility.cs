@@ -42,7 +42,12 @@ namespace Ceres.Utilities
         public static string GetFirstGroupNameOrDefault(MemberInfo memberInfo)
         {
             var groupAttribute = memberInfo.GetCustomAttribute<CeresGroupAttribute>();
-            return groupAttribute == null ? null : SplitGroupName(groupAttribute.Group)[0];
+            return groupAttribute == null ? null : GetFirstGroupNameOrDefault(groupAttribute.Group);
+        }
+        
+        public static string GetFirstGroupNameOrDefault(string group)
+        {
+            return string.IsNullOrEmpty(group) ? null : SplitGroupName(group)[0];
         }
     }
 }
