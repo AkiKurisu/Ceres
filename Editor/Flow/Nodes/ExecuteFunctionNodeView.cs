@@ -5,6 +5,7 @@ using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
 using Chris.Serialization;
+using UnityEngine;
 using UnityEngine.Assertions;
 namespace Ceres.Editor.Graph.Flow
 {
@@ -26,6 +27,10 @@ namespace Ceres.Editor.Graph.Flow
         
         protected bool IsSelfTarget { get; private set; }
         
+        protected bool IsNeedResolveReturnType { get; private set; }
+        
+        protected ParameterInfo ResolveReturnTypeParameter { get; private set; }
+        
         public void SetMethodInfo(MethodInfo methodInfo)
         {
             Assert.IsNotNull(methodInfo);
@@ -36,12 +41,15 @@ namespace Ceres.Editor.Graph.Flow
             ExecuteInDependency = ExecutableFunction.ExecuteInDependency(methodInfo);
             DisplayTarget = ExecutableFunction.CanDisplayTarget(methodInfo);
             IsSelfTarget = ExecutableFunction.IsSelfTarget(methodInfo);
+            IsNeedResolveReturnType = ExecutableFunction.IsNeedResolveReturnType(methodInfo);
             ParameterCount = methodInfo.GetParameters().Length;
             SetNodeElementTitle(ExecutableFunction.GetFunctionName(methodInfo));
             FillMethodParametersPorts(methodInfo);
-            if (ExecutableFunction.IsNeedResolveReturnType(methodInfo))
+            if (IsNeedResolveReturnType)
             {
+                ResolveReturnTypeParameter = ExecutableFunction.GetResolveReturnTypeParameter(methodInfo);
                 ResolveMethodReturnPort(methodInfo);
+                TryResolveMethodReturnType();
             }
             if (IsStatic)
             {
@@ -56,16 +64,22 @@ namespace Ceres.Editor.Graph.Flow
 
         private void ResolveMethodReturnPort(MethodInfo methodInfo)
         {
-            var resolveParameter = ExecutableFunction.GetResolveReturnTypeParameter(methodInfo);
-            var portView = FindPortViewWithDisplayName(CeresLabel.GetLabel(resolveParameter.Name));
+            var portView = FindPortViewWithDisplayName(CeresLabel.GetLabel(ResolveReturnTypeParameter.Name));
             var returnPortView = FindPortView("output");
-            var currentType = (portView.FieldResolver.Value as SerializedTypeBase)?.GetObjectType();
-            returnPortView.SetDisplayType(currentType ?? returnPortView.PortData.GetValueType());
             portView.FieldResolver.RegisterValueChangeCallback(x =>
             {
                 var type = ((SerializedTypeBase)x).GetObjectType();
                 returnPortView.SetDisplayType(type ?? returnPortView.PortData.GetValueType());
             });
+        }
+
+        private void TryResolveMethodReturnType()
+        {
+            if (!IsNeedResolveReturnType) return;
+            var portView = FindPortViewWithDisplayName(CeresLabel.GetLabel(ResolveReturnTypeParameter.Name));
+            var returnPortView = FindPortView("output");
+            var currentType = (portView.FieldResolver.Value as SerializedTypeBase)?.GetObjectType();
+            returnPortView.SetDisplayType(currentType ?? returnPortView.PortData.GetValueType());
         }
 
         private void SetNodeElementTitle(string functionTitle)
@@ -122,6 +136,7 @@ namespace Ceres.Editor.Graph.Flow
                 SetMethodInfo(methodInfo);
             }
             base.SetNodeInstance(ceresNode);
+            TryResolveMethodReturnType();
         }
         
         public override ExecutableNode CompileNode()
