@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Ceres.Annotations;
 using Chris;
 using Chris.Serialization;
 using UnityEditor;
@@ -63,8 +64,6 @@ namespace Ceres.Editor.Graph
         private readonly HashSet<ObserveProxyVariable> _observeProxies = new();
         
         private bool _isDestroyed;
-        
-        private const string NullObjectType = "Object Type: <Null>";
 
         public const string SharedVariableSection = "Shared Variables";
         
@@ -87,7 +86,7 @@ namespace Ceres.Editor.Graph
             
         }
 
-        public BlackboardSection GetOrAddSection(string sectionName)
+        protected BlackboardSection GetOrAddSection(string sectionName)
         {
             var section = ScrollView.Query<BlackboardSection>()
                                     .ToList()
@@ -314,6 +313,7 @@ namespace Ceres.Editor.Graph
             sa.AddManipulator(new ContextualMenuManipulator((evt) => BuildBlackboardMenu(evt, sa)));
             return sa;
         }
+        
         public void RemoveVariable(SharedVariable variable, bool fireEvents)
         {
             if(_isDestroyed) return;
@@ -356,15 +356,16 @@ namespace Ceres.Editor.Graph
         /// <param name="sharedUObject"></param>
         /// <param name="objectField"></param>
         /// <returns></returns>
-        protected VisualElement CreateTypeSettingsView(SharedUObject sharedUObject, ObjectField objectField)
+        private VisualElement CreateTypeSettingsView(SharedUObject sharedUObject, ObjectField objectField)
         {
             var placeHolder = new VisualElement();
-            objectField.objectType = sharedUObject.serializedType;
-            var constraintTypeName = "Object Type: " + objectField.objectType.Name;
+            objectField.objectType = sharedUObject.GetValueType();
             var button = new Button
             {
-                text = constraintTypeName
+                text = "Assign UObject Type"
             };
+            var typeContainer = new TypeContainer(objectField.objectType);
+            placeHolder.Add(typeContainer);
             button.clicked += () =>
              {
                  var provider = ScriptableObject.CreateInstance<ObjectTypeSearchWindow>();
@@ -373,16 +374,19 @@ namespace Ceres.Editor.Graph
                      if (type == null)
                      {
                          sharedUObject.serializedType = SerializedType<UObject>.Default;
-                         button.text = NullObjectType;
+                         typeContainer.SetType(typeof(UObject));
                          objectField.objectType = typeof(UObject);
                      }
                      else
                      {
                          objectField.objectType = type;
+                         /* Refresh object field */
+                         var current = objectField.value;
+                         objectField.value = null;
+                         objectField.value = current; 
                          sharedUObject.serializedType = SerializedType<UObject>.FromType(type);
-                         button.text = "Object Type: " + type.Name;
+                         typeContainer.SetType(type);
                      }
-
                      NotifyVariableChanged(sharedUObject, VariableChangeType.Type);
                  });
                  SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)), provider);
@@ -392,7 +396,7 @@ namespace Ceres.Editor.Graph
             return placeHolder;
         }
 
-        protected static bool IsSupportSerializedType(Type type)
+        private static bool IsSupportSerializedType(Type type)
         {
             // Ensure SerializedObjectBase can serialize element
             if (type.IsGenericType) return false;
@@ -446,19 +450,17 @@ namespace Ceres.Editor.Graph
         /// </summary>
         /// <param name="sharedObject"></param>
         /// <returns></returns>
-        protected VisualElement CreateTypeSettingsView(SharedObject sharedObject)
+        private VisualElement CreateTypeSettingsView(SharedObject sharedObject)
         {
             var placeHolder = new VisualElement();
-            string constraintTypeName;
-            Type objectType = null;
+            Type objectType;
             try
             {
                 objectType =  SerializedType.FromString(sharedObject.serializedObject.serializedTypeString);
-                constraintTypeName = "Object Type: " + objectType.Name;
             }
             catch
             {
-                constraintTypeName = NullObjectType;
+                objectType = null;
             }
             
             var toggle = new Toggle("Is Array")
@@ -472,10 +474,12 @@ namespace Ceres.Editor.Graph
             toggle.SetEnabled(objectType is not null);
             placeHolder.Add(toggle);
             
+            var typeContainer = new TypeContainer(objectType ?? typeof(object));
+            placeHolder.Add(typeContainer);
+            
             var button = new Button
             {
-                text = constraintTypeName,
-                tooltip = objectType?.FullName ?? string.Empty
+                text = "Assign Object Type"
             };
             button.clicked += () =>
             {
@@ -485,15 +489,13 @@ namespace Ceres.Editor.Graph
                     if (type == null)
                     {
                         sharedObject.serializedObject.serializedTypeString = string.Empty;
-                        button.text = NullObjectType;
-                        button.tooltip = string.Empty;
+                        typeContainer.SetType(typeof(object));
                         toggle.SetEnabled(false);
                     }
                     else
                     {
                         sharedObject.serializedObject.serializedTypeString = SerializedType.ToString(type);
-                        button.text = "Object Type: " + type.Name;
-                        button.tooltip = type.FullName;
+                        typeContainer.SetType(type);
                         toggle.SetEnabled(true);
                     }
                     NotifyVariableChanged(sharedObject, VariableChangeType.Type);
@@ -502,6 +504,39 @@ namespace Ceres.Editor.Graph
             };
             placeHolder.Add(button);
             return placeHolder;
+        }
+    }
+
+    internal class TypeContainer: VisualElement
+    {
+        private readonly Label _typeLabel;
+
+        public TypeContainer(Type objectType)
+        {
+            name = nameof(TypeContainer);
+            Add(new Label
+            {
+                name = "typeLabel",
+                text = "Type"
+            });
+            Add(_typeLabel = new Label
+            {
+                name = "typeName",
+                style =
+                {
+                    unityTextAlign = TextAnchor.MiddleRight
+                }
+            });
+            if (objectType != null)
+            {
+                SetType(objectType);
+            }
+        }
+
+        public void SetType(Type inType)
+        {
+            _typeLabel.text = inType == null ? string.Empty : CeresLabel.GetTypeName(inType);
+            tooltip = inType?.FullName ?? string.Empty;
         }
     }
 }
