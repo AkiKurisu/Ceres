@@ -5,7 +5,6 @@ using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
 using Chris.Serialization;
-using UnityEngine;
 using UnityEngine.Assertions;
 namespace Ceres.Editor.Graph.Flow
 {
@@ -48,7 +47,7 @@ namespace Ceres.Editor.Graph.Flow
             if (IsNeedResolveReturnType)
             {
                 ResolveReturnTypeParameter = ExecutableFunction.GetResolveReturnTypeParameter(methodInfo);
-                ResolveMethodReturnPort(methodInfo);
+                RegisterMethodReturnPortValueChange();
                 TryResolveMethodReturnType();
             }
             if (IsStatic)
@@ -62,7 +61,7 @@ namespace Ceres.Editor.Graph.Flow
             }
         }
 
-        private void ResolveMethodReturnPort(MethodInfo methodInfo)
+        private void RegisterMethodReturnPortValueChange()
         {
             var portView = FindPortViewWithDisplayName(CeresLabel.GetLabel(ResolveReturnTypeParameter.Name));
             var returnPortView = FindPortView("output");
