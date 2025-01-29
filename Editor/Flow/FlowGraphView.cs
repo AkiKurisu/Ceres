@@ -357,8 +357,8 @@ namespace Ceres.Editor.Graph.Flow
                     /* Reset skip frame flag */
                     _breakOnNext = false;
                     Time.timeScale = 0;
+                    EditorApplication.isPaused = true;
                     await UniTask.WaitUntil(CanSkipFrame);
-                    Time.timeScale = 1;
                     CeresAPI.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");
@@ -395,12 +395,14 @@ namespace Ceres.Editor.Graph.Flow
             {
                 _breakOnNext = true;
                 IsPaused = false;
+                EditorApplication.isPaused = false;
             }
 
             public void NextBreakpoint()
             {
                 _breakOnNext = false;
                 IsPaused = false;
+                EditorApplication.isPaused = false;
             }
 
             public override void Dispose()
