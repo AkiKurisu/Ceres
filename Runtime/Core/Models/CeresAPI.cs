@@ -60,5 +60,11 @@ namespace Ceres
             if(LogLevel >= LogType.Error)
                 Debug.LogError($"<color=#ff2f2f>[Ceres]</color> {message}");
         }
+        
+        public static void Assert(bool condition, string message)
+        {
+            if (LogLevel >= LogType.Assert)
+                Debug.Assert(condition, $"<color=#ff2f2f>[Ceres]</color> {message}");
+        }
     }
 }

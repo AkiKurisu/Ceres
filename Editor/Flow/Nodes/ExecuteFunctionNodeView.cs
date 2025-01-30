@@ -4,6 +4,7 @@ using Ceres.Annotations;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
+using Ceres.Utilities;
 using Chris.Serialization;
 using UnityEngine.Assertions;
 namespace Ceres.Editor.Graph.Flow
@@ -24,7 +25,11 @@ namespace Ceres.Editor.Graph.Flow
         
         protected bool DisplayTarget { get; private set; }
         
-        protected bool IsSelfTarget { get; private set; }
+        protected bool StaticIsSelfTarget { get; private set; }
+        
+        protected bool InstanceIsSelfTarget { get; private set; }
+        
+        protected Type ScriptTargetType { get; private set; }
         
         protected bool IsNeedResolveReturnType { get; private set; }
         
@@ -36,24 +41,35 @@ namespace Ceres.Editor.Graph.Flow
             MethodInfo = methodInfo;
             MethodName = methodInfo.Name;
             IsStatic = methodInfo.IsStatic;
-            IsScriptMethod = ExecutableFunction.IsScriptMethod(methodInfo);
-            ExecuteInDependency = ExecutableFunction.ExecuteInDependency(methodInfo);
-            DisplayTarget = ExecutableFunction.CanDisplayTarget(methodInfo);
-            IsSelfTarget = ExecutableFunction.IsSelfTarget(methodInfo);
-            IsNeedResolveReturnType = ExecutableFunction.IsNeedResolveReturnType(methodInfo);
+            var attribute = ExecutableReflection.GetFunction(methodInfo).Attribute;
+            IsScriptMethod = attribute.IsScriptMethod;
+            ExecuteInDependency = attribute.ExecuteInDependency;
+            DisplayTarget = attribute.DisplayTarget;
+            StaticIsSelfTarget = attribute.IsSelfTarget && IsStatic;
+            InstanceIsSelfTarget = GraphView.GetContainerType().IsAssignableTo(methodInfo.DeclaringType) && !IsStatic;
+            ScriptTargetType = attribute.ScriptTargetType;
+            IsNeedResolveReturnType = attribute.IsNeedResolveReturnType;
             ParameterCount = methodInfo.GetParameters().Length;
             SetNodeElementTitle(ExecutableFunction.GetFunctionName(methodInfo));
             FillMethodParametersPorts(methodInfo);
+            
             if (IsNeedResolveReturnType)
             {
-                ResolveReturnTypeParameter = ExecutableFunction.GetResolveReturnTypeParameter(methodInfo);
+                ResolveReturnTypeParameter = attribute.ResolveReturnTypeParameter;
                 RegisterMethodReturnPortValueChange();
                 TryResolveMethodReturnType();
             }
+            
             if (IsStatic)
             {
                 NodeElement.AddToClassList("ConstNode");
+                FindPortView("target").HidePort();
             }
+            else if (InstanceIsSelfTarget)
+            {
+                InitializeTargetPortView("target");
+            }
+            
             if (ExecuteInDependency)
             {
                 FindPortView("input").HidePort();
@@ -72,6 +88,28 @@ namespace Ceres.Editor.Graph.Flow
             });
         }
 
+        protected void InitializeTargetPortView(string propertyName)
+        {
+            var portView = FindPortView(propertyName);
+            portView.SetDisplayName("Self");
+            portView.SetTooltip(" [Default is Self]");
+            portView.FieldResolver?.RegisterValueChangeCallback(_ =>
+            {
+                RefreshTargetPortDisplayName();
+            });
+            portView.PortElement.RegisterCallback<PortConnectionChangeEvent>(_ =>
+            {
+                RefreshTargetPortDisplayName();
+            });
+            return;
+
+            void RefreshTargetPortDisplayName()
+            {
+                var hasConnectionOrValue = portView.FieldResolver?.Value != null || portView.PortElement.connected;
+                portView.SetDisplayName(hasConnectionOrValue ? "Target" : "Self");
+            }
+        }
+
         private void TryResolveMethodReturnType()
         {
             if (!IsNeedResolveReturnType) return;
@@ -86,7 +124,7 @@ namespace Ceres.Editor.Graph.Flow
             var targetType = NodeType.GetGenericArguments()[0];
             if (MethodInfo != null)
             {
-                targetType = ExecutableFunction.GetTargetType(MethodInfo) ?? NodeType.GetGenericArguments()[0];
+                targetType = ScriptTargetType ?? NodeType.GetGenericArguments()[0];
             }
             if(!IsStatic || DisplayTarget)
             {
@@ -125,7 +163,8 @@ namespace Ceres.Editor.Graph.Flow
                 MethodName = functionNode.methodName;
                 IsStatic = functionNode.isStatic;
                 IsScriptMethod = functionNode.isScriptMethod;
-                IsSelfTarget = functionNode.isSelfTarget;
+                StaticIsSelfTarget = functionNode.isSelfTarget && IsStatic;
+                InstanceIsSelfTarget = functionNode.isSelfTarget && !IsStatic;
                 ExecuteInDependency = functionNode.executeInDependency;
                 ParameterCount = functionNode.parameterCount;
                 SetNodeElementTitle(functionNode.methodName);
@@ -144,7 +183,7 @@ namespace Ceres.Editor.Graph.Flow
             instance.methodName = MethodName;
             instance.isStatic = IsStatic;
             instance.isScriptMethod = IsScriptMethod;
-            instance.isSelfTarget = IsSelfTarget;
+            instance.isSelfTarget = StaticIsSelfTarget || InstanceIsSelfTarget;
             instance.executeInDependency = ExecuteInDependency;
             instance.parameterCount = ParameterCount;
             return instance;
@@ -186,21 +225,13 @@ namespace Ceres.Editor.Graph.Flow
                 AddPortView(PortViewFactory.CreateInstance(inputField, parameters[i], this, portData));
             }
             
-            if(IsStatic)
-            {
-                FindPortView("target").HidePort();
-            }
-            else
-            {
-                FindPortView("target").SetTooltip(" [Default is Self]");
-            }
             if (DisplayTarget)
             {
                 FindPortView("inputs").SetDisplayName("Target");
             }
-            if (IsSelfTarget)
+            if (StaticIsSelfTarget)
             {
-                FindPortView("inputs").SetTooltip(" [Default is Self]");
+                InitializeTargetPortView("inputs");
             }
             
             var output = methodInfo.ReturnParameter;
@@ -244,21 +275,13 @@ namespace Ceres.Editor.Graph.Flow
                 portView?.SetDisplayDataFromParameterInfo(parameters[i]);
             }
             
-            if(IsStatic)
-            {
-                FindPortView("target").HidePort();
-            }
-            else
-            {
-                FindPortView("target").SetTooltip(" [Default is Self]");
-            }
             if (DisplayTarget)
             {
                 FindPortView("input1").SetDisplayName("Target");
             }
-            if (IsSelfTarget)
+            if (StaticIsSelfTarget)
             {
-                FindPortView("input1").SetTooltip(" [Default is Self]");
+                InitializeTargetPortView("input1");
             }
         }
     }
@@ -288,21 +311,13 @@ namespace Ceres.Editor.Graph.Flow
                 portView?.SetDisplayDataFromParameterInfo(parameters[i]);
             }
             
-            if(IsStatic)
-            {
-                FindPortView("target").HidePort();
-            }
-            else
-            {
-                FindPortView("target").SetTooltip(" [Default is Self]");
-            }
             if (DisplayTarget)
             {
                 FindPortView("input1").SetDisplayName("Target");
             }
-            if (IsSelfTarget)
+            if (StaticIsSelfTarget)
             {
-                FindPortView("input1").SetTooltip(" [Default is Self]");
+                InitializeTargetPortView("input1");
             }
         }
     }
