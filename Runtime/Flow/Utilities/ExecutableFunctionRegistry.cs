@@ -60,7 +60,7 @@ namespace Ceres.Graph.Flow.Utilities
                         .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                         .Distinct()
                         .ToList();
-            var groups = methodInfos.GroupBy(ExecutableFunction.GetTargetType)
+            var groups = methodInfos.GroupBy(x => ExecutableReflection.GetFunction(x).Attribute.ScriptTargetType)
                 .Where(x=>x.Key != null)
                 .ToArray();
             _staticFunctions = methodInfos.Except(groups.SelectMany(x => x)).ToArray();

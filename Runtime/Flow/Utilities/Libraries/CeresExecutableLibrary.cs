@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
-    /// Executable function library for ceres
+    /// Executable function library for CeresAPI
     /// </summary>
     [CeresGroup("Ceres")]
     public partial class CeresExecutableLibrary: ExecutableFunctionLibrary

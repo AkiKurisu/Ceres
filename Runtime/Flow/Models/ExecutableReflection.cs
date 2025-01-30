@@ -5,6 +5,7 @@ using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Utilities;
+using UnityEngine;
 using UnityEngine.Assertions;
 namespace Ceres.Graph.Flow
 {
@@ -36,79 +37,94 @@ namespace Ceres.Graph.Flow
     /// </summary>
     public abstract class ExecutableReflection
     {
+        private static readonly Dictionary<Type, ExecutableReflection> TypeMap = new();
+        
+        /// <summary>
+        /// Get <see cref="ExecutableFunction"/> from <see cref="MethodInfo"/>
+        /// </summary>
+        /// <param name="methodInfo"></param>
+        /// <returns></returns>
+        public static ExecutableFunction GetFunction(MethodInfo methodInfo)
+        {
+            var declareType = methodInfo.DeclaringType;
+            if (!TypeMap.TryGetValue(declareType!, out var instance))
+            {
+                var instanceType = typeof(ExecutableReflection<>).MakeGenericType(declareType);
+                instance = (ExecutableReflection)Activator.CreateInstance(instanceType, true);
+            }
+            var function = instance.GetFunction_Imp(methodInfo);
+            CeresAPI.Assert(function != null,$"Can not get executable function {methodInfo} from {declareType} which is not expected");
+            return function;
+        }
+        
+        protected abstract ExecutableFunction GetFunction_Imp(MethodInfo methodInfo);
 
+        protected static void RegisterReflection<T>(ExecutableReflection instance)
+        {
+            TypeMap.Add(typeof(T), instance);
+        }
     }
 
-    public class ExecutableFunction
+    public abstract class ExecutableFunction
     {
-        public static bool IsScriptMethod(MethodInfo methodInfo)
+        public class ExecutableAttribute
         {
-            if (!methodInfo.IsStatic) return false;
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return false;
-                
-            return methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>().IsScriptMethod;
-        }
+            public bool IsScriptMethod { get; }
         
-        public static bool ExecuteInDependency(MethodInfo methodInfo)
-        {
-            if (!methodInfo.IsStatic) return false;
-            return methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>().ExecuteInDependency;
-        }
+            public bool ExecuteInDependency { get; }
         
-        public static bool CanDisplayTarget(MethodInfo methodInfo)
-        {
-            if (!methodInfo.IsStatic) return false;
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return false;
-
-            var attribute = methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>();
-            if (attribute == null) return false;
-            return attribute.IsScriptMethod && attribute.DisplayTarget;
-        }
+            public bool DisplayTarget { get; }
         
-        public static bool IsNeedResolveReturnType(MethodInfo methodInfo)
-        {
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return false;
-            if (methodInfo.ReturnType == typeof(void)) return false;
-                
-            return parameters.Any(x=> x.GetCustomAttribute<ResolveReturnAttribute>() != null);
-        }
+            public bool IsSelfTarget { get; }
         
-        public static bool IsSelfTarget(MethodInfo methodInfo)
-        {
-            if (!methodInfo.IsStatic) return false;
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return false;
-                
-            var attribute = methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>();
-            if (attribute == null) return false;
-            return attribute.IsSelfTarget;
-        }
+            public bool IsNeedResolveReturnType { get; }
         
-        public static Type GetTargetType(MethodInfo methodInfo)
-        {
-            if (!methodInfo.IsStatic) return null;
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return null;
-
-            if (methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>().IsScriptMethod)
-            {
-                return parameters[0].ParameterType;
-            }
-
-            return null;
-        }
-        
-        public static ParameterInfo GetResolveReturnTypeParameter(MethodInfo methodInfo)
-        {
-            var parameters = methodInfo.GetParameters();
-            if (parameters.Length < 1) return null;
+            public ParameterInfo ResolveReturnTypeParameter { get; }
             
-            return parameters.First(x => x.GetCustomAttribute<ResolveReturnAttribute>() != null);
+            public Type ScriptTargetType { get; }
+
+            public ExecutableAttribute(MethodInfo methodInfo)
+            {
+                if (!methodInfo.IsStatic) return;
+                
+                var parameters = methodInfo.GetParameters();
+                var attribute = methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>();
+                if (parameters.Length >= 1)
+                {
+                    if (methodInfo.ReturnType != typeof(void))
+                    {
+                        ResolveReturnTypeParameter = parameters.FirstOrDefault(x => x.GetCustomAttribute<ResolveReturnAttribute>() != null);
+                        IsNeedResolveReturnType = ResolveReturnTypeParameter != null;
+                    }
+
+                    IsScriptMethod = attribute.IsScriptMethod;
+                    DisplayTarget = attribute.IsScriptMethod && attribute.DisplayTarget;
+                    IsSelfTarget = attribute.IsSelfTarget;
+                    if (attribute.IsScriptMethod)
+                    {
+                        ScriptTargetType = parameters[0].ParameterType;
+                    }
+                }
+
+                ExecuteInDependency = attribute.ExecuteInDependency;
+            }
         }
 
+        private ExecutableAttribute _attribute;
+
+        
+        public readonly MethodInfo MethodInfo;
+
+        /// <summary>
+        /// Metadata for editor lookup, should not access it at runtime
+        /// </summary>
+        internal ExecutableAttribute Attribute => _attribute ??= new ExecutableAttribute(MethodInfo);
+
+        protected ExecutableFunction(MethodInfo methodInfo)
+        {
+            MethodInfo = methodInfo;
+        }
+        
         public static string GetFunctionName(MethodInfo methodInfo, bool richText = true)
         {
             var labelAttribute = methodInfo.GetCustomAttribute<CeresLabelAttribute>();
@@ -129,6 +145,13 @@ namespace Ceres.Graph.Flow
             FunctionType = functionType;
             FunctionName = functionName;
             ParameterCount = parameterCount;
+        }
+
+        internal ExecutableFunctionInfo(MethodInfo methodInfo)
+        {
+            FunctionType = methodInfo.IsStatic ? ExecutableFunctionType.StaticMethod : ExecutableFunctionType.InstanceMethod;
+            FunctionName = methodInfo.Name;
+            ParameterCount = methodInfo.GetParameters().Length;
         }
 
         public bool Equals(ExecutableFunctionInfo other)
@@ -163,37 +186,29 @@ namespace Ceres.Graph.Flow
         {
             public readonly ExecutableFunctionInfo FunctionInfo;
 
-            public readonly MethodInfo MethodInfo;
-
             public readonly ExecutableAction ExecutableAction;
             
             public readonly ExecutableFunc ExecutableFunc;
 
-            public readonly void* FunctionPtr;
-
-            internal ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo)
+            internal ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo): base(methodInfo)
             {
                 FunctionInfo = functionInfo;
-                MethodInfo = methodInfo;
                 ExecutableAction = new ExecutableAction(MethodInfo);
                 ExecutableFunc = new ExecutableFunc(MethodInfo);
             }
             
-            internal ExecutableFunction(ExecutableFunctionInfo functionInfo, void* functionPtr)
+            internal ExecutableFunction(ExecutableFunctionInfo functionInfo, void* functionPtr): base(null)
             {
                 FunctionInfo = functionInfo;
-                FunctionPtr = functionPtr;
-                ExecutableAction = new ExecutableAction(FunctionPtr);
-                ExecutableFunc = new ExecutableFunc(FunctionPtr);
+                ExecutableAction = new ExecutableAction(functionPtr);
+                ExecutableFunc = new ExecutableFunc(functionPtr);
             }
             
-            internal ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo, void* functionPtr)
+            internal ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo, void* functionPtr): base(methodInfo)
             {
                 FunctionInfo = functionInfo;
-                MethodInfo = methodInfo;
-                FunctionPtr = functionPtr;
-                ExecutableAction = new ExecutableAction(FunctionPtr);
-                ExecutableFunc = new ExecutableFunc(FunctionPtr);
+                ExecutableAction = new ExecutableAction(functionPtr);
+                ExecutableFunc = new ExecutableFunc(functionPtr);
             }
         }
 
@@ -202,6 +217,7 @@ namespace Ceres.Graph.Flow
         private ExecutableReflection()
         {
             _instance = this;
+            RegisterReflection<TTarget>(_instance);
             if (typeof(TTarget).IsSubclassOf(typeof(ExecutableFunctionLibrary)))
             {
 #if UNITY_EDITOR
@@ -218,7 +234,7 @@ namespace Ceres.Graph.Flow
             }
 
             typeof(TTarget).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                 .ToList()
                 .ForEach(methodInfo =>
                 {
@@ -235,15 +251,15 @@ namespace Ceres.Graph.Flow
                 return _instance ??= new ExecutableReflection<TTarget>();
             }
         }
+
+        protected override Flow.ExecutableFunction GetFunction_Imp(MethodInfo methodInfo)
+        {
+            return GetFunction_Internal(new ExecutableFunctionInfo(methodInfo));
+        }
         
         public static ExecutableFunction GetFunction(ExecutableFunctionType functionType, string functionName, int parameterCount = -1)
         {
-            return GetFunction(new ExecutableFunctionInfo(functionType, functionName, parameterCount));
-        }
-        
-        public static ExecutableFunction GetFunction(ExecutableFunctionInfo functionInfo)
-        {
-            return Instance.GetFunction_Internal(functionInfo);
+            return Instance.GetFunction_Internal(new ExecutableFunctionInfo(functionType, functionName, parameterCount));
         }
 
         private void RegisterExecutableFunction(ExecutableFunctionType functionType, MethodInfo methodInfo)

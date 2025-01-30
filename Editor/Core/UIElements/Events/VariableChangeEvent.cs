@@ -1,5 +1,5 @@
 using UnityEngine.UIElements;
-namespace Ceres.Editor
+namespace Ceres.Editor.Graph
 {
     // Used in UIElements events debugger category
     public interface ICeresEvent

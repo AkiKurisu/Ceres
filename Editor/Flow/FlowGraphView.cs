@@ -19,15 +19,19 @@ namespace Ceres.Editor.Graph.Flow
         private FlowGraphDebugTracker _tracker;
         
         public FlowGraphDebugState DebugState { get; }
+
+        private FlowGraphEditorWindow FlowGraphEditorWindow { get; }
         
         public FlowGraphView(FlowGraphEditorWindow editorWindow) : base(editorWindow)
         {
+            FlowGraphEditorWindow = editorWindow;
             DebugState = editorWindow.debugState;
             AddStyleSheet("Ceres/Flow/GraphView");
             AddSearchWindow<ExecutableNodeSearchWindow>();
             AddNodeGroupHandler(new ExecutableNodeGroupHandler(this));
             AddBlackboard(new FlowBlackboard(this));
             FlowGraphTracker.SetActiveTracker(_tracker = new FlowGraphDebugTracker(this));
+            RegisterCallback<KeyDownEvent>(HandleKeyBoardCommands);
         }
 
         public override bool SerializeGraph(ICeresGraphContainer container)
@@ -71,6 +75,17 @@ namespace Ceres.Editor.Graph.Flow
             new CopyPasteGraph(this, graphElements).DeserializeGraph(graph);
         }
 
+        private void HandleKeyBoardCommands(KeyDownEvent evt)
+        {
+            if (!evt.ctrlKey || evt.keyCode != KeyCode.S)
+            {
+                return;
+            }
+
+            if (!FlowGraphEditorWindow) return;
+            FlowGraphEditorWindow.SaveGraph();
+        }
+
         /// <summary>
         /// Execute simulate event in editor if existed
         /// </summary>
@@ -78,7 +93,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             var eventName = (((ExecutableNodeElement)selection[0]).View as ExecutableEventNodeView)!.GetEventName();
             var nodeInstances = nodes.OfType<ExecutableNodeElement>()
-                                                .Select(x => x.View.CompileNode() as CeresNode)
+                                                .Select(x => (CeresNode)x.View.CompileNode())
                                                 .ToArray();
             var flowGraphData = new FlowGraphData
             {
@@ -216,16 +231,20 @@ namespace Ceres.Editor.Graph.Flow
                         nodeElement.View.Guid = idMap[nodeElement];
                     }
                 }
-            
-                var flowGraphData = new FlowGraphData
+
+                /* Copy and paste may log warning for missing connect nodes which is expected. */
+                using (CeresAPI.LogScope(copyPaste ? LogType.Error : LogType.Log))
                 {
-                    nodes = nodeInstances,
-                    nodeData = nodeInstances.Select(x=> x.GetSerializedData()).ToArray(),
-                    variables = _graphView.SharedVariables.ToArray(),
-                    nodeGroups = data.ToArray()
-                };
-                flowGraphData.PreSerialization();
-                return flowGraphData;
+                    var flowGraphData = new FlowGraphData
+                    {
+                        nodes = nodeInstances,
+                        nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
+                        variables = _graphView.SharedVariables.ToArray(),
+                        nodeGroups = data.ToArray()
+                    };
+                    flowGraphData.PreSerialization();
+                    return flowGraphData;
+                }
             }
             
             /// <summary>
@@ -334,13 +353,13 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 if (!CanSkipFrame() && CanPauseOnCurrentNode())
                 {
-                    CeresAPI.Log($">>> Enter node [{node.GetTypeName()}]({node.Guid})");
+                    CeresAPI.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
                     /* Reset skip frame flag */
                     _breakOnNext = false;
                     Time.timeScale = 0;
+                    EditorApplication.isPaused = true;
                     await UniTask.WaitUntil(CanSkipFrame);
-                    Time.timeScale = 1;
-                    CeresAPI.Log($">>> Exit node [{node.GetTypeName()}]({node.Guid})");
+                    CeresAPI.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");
             }
@@ -376,12 +395,14 @@ namespace Ceres.Editor.Graph.Flow
             {
                 _breakOnNext = true;
                 IsPaused = false;
+                EditorApplication.isPaused = false;
             }
 
             public void NextBreakpoint()
             {
                 _breakOnNext = false;
                 IsPaused = false;
+                EditorApplication.isPaused = false;
             }
 
             public override void Dispose()

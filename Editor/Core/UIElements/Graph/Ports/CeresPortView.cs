@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
-using Ceres.Editor;
-using Ceres.Editor.Graph;
+using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Chris;
 using Chris.Serialization;
@@ -14,7 +13,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 using UObject = UnityEngine.Object;
-namespace Ceres.Graph
+namespace Ceres.Editor.Graph
 {
     public class CeresEdge : Edge
     {
@@ -245,12 +244,18 @@ namespace Ceres.Graph
         {
             base.Connect(edge);
             SetEditorFieldVisible(!connections.Any() || direction == Direction.Output);
+            using var evt = PortConnectionChangeEvent.GetPooled(View, (CeresEdge)edge, PortConnectionChangeType.Connect);
+            evt.target = this;
+            SendEvent(evt);
         }
 
         public override void Disconnect(Edge edge)
         {
             base.Disconnect(edge);
             SetEditorFieldVisible(!connections.Any() || direction == Direction.Output);
+            using var evt = PortConnectionChangeEvent.GetPooled(View, (CeresEdge)edge, PortConnectionChangeType.Disconnect);
+            evt.target = this;
+            SendEvent(evt);
         }
     }
 

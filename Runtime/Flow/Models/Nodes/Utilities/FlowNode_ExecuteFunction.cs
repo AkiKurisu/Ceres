@@ -43,6 +43,11 @@ namespace Ceres.Graph.Flow.Utilities
             {
                 return default;
             }
+
+            if (!isSelfTarget)
+            {
+                return inputPort.Value;
+            }
             
             bool isNull;
             if(inputPort.Value is UObject value)
@@ -63,6 +68,16 @@ namespace Ceres.Graph.Flow.Utilities
         
         protected TValue GetSelfTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
         {
+            if (!isStatic)
+            {
+                return inputPort.Value;
+            }
+
+            if (!isSelfTarget)
+            {
+                return inputPort.Value;
+            }
+            
             bool isNull;
             if(inputPort.Value is UObject value)
             {
@@ -73,7 +88,7 @@ namespace Ceres.Graph.Flow.Utilities
                 isNull = inputPort.Value == null;
             }
             
-            if (isSelfTarget && isNull && context.Context is TValue tmpTarget)
+            if (isNull && context.Context is TValue tmpTarget)
             {
                 return tmpTarget;
             }

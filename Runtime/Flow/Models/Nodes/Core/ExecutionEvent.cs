@@ -2,6 +2,7 @@ using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Assertions;
 namespace Ceres.Graph.Flow
 {
     [Serializable]
@@ -56,6 +57,7 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
+            Assert.IsTrue(executionContext.GetEvent() != null);
             var evt = executionContext.GetEventT<ExecuteFlowEvent>();
             if(evt.Args != null)
             {
@@ -98,6 +100,7 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
+            Assert.IsTrue(executionContext.GetEvent() != null);
             var evt = executionContext.GetEventT<ExecuteFlowEvent<T1>>();
             output1.Value = evt.Arg1;
             executionContext.SetNext(exec.GetT<ExecutableNode>());
@@ -120,6 +123,7 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
+            Assert.IsTrue(executionContext.GetEvent() != null);
             var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2>>();
             output1.Value = evt.Arg1;
             output2.Value = evt.Arg2;
@@ -146,6 +150,7 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
+            Assert.IsTrue(executionContext.GetEvent() != null);
             var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2, T3>>();
             output1.Value = evt.Arg1;
             output2.Value = evt.Arg2;
@@ -176,6 +181,7 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
+            Assert.IsTrue(executionContext.GetEvent() != null);
             var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2, T3, T4>>();
             output1.Value = evt.Arg1;
             output2.Value = evt.Arg2;
@@ -210,6 +216,7 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
+            Assert.IsTrue(executionContext.GetEvent() != null);
             var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2, T3, T4, T5>>();
             output1.Value = evt.Arg1;
             output2.Value = evt.Arg2;
@@ -248,6 +255,7 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
+            Assert.IsTrue(executionContext.GetEvent() != null);
             var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>>();
             output1.Value = evt.Arg1;
             output2.Value = evt.Arg2;

@@ -8,8 +8,8 @@ using UnityEngine;
 using Ceres.Utilities;
 namespace Ceres.Editor
 {
-    [CustomPropertyDrawer(typeof(NodeGroupSelectorAttribute))]
-    public class NodeGroupSelectorPropertyDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(CeresGroupSelectorAttribute))]
+    public class CeresGroupSelectorPropertyDrawer : PropertyDrawer
     {
         private static readonly Type[] DefaultTypes = { typeof(CeresNode) };
         
@@ -18,7 +18,7 @@ namespace Ceres.Editor
             EditorGUI.BeginProperty(position, label, property);
             if (EditorGUI.DropdownButton(position, new GUIContent(property.stringValue, property.tooltip), FocusType.Passive))
             {
-                var types = ((NodeGroupSelectorAttribute)attribute).Types ?? DefaultTypes; 
+                var types = ((CeresGroupSelectorAttribute)attribute).Types ?? DefaultTypes; 
                 var groups = SubClassSearchUtility.FindSubClassTypes(types)
                 .Where(x => x.GetCustomAttribute<CeresGroupAttribute>() != null)
                 .Select(x => SubClassSearchUtility.SplitGroupName(x.GetCustomAttribute<CeresGroupAttribute>().Group)[0])

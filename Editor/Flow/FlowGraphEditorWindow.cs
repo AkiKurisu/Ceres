@@ -39,37 +39,9 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override void OnInitialize()
         {
-            try
-            {
-                /* Redirect container type */
-                if (Container is FlowGraphScriptableObjectBase scriptableObjectBase)
-                {
-                    SetContainerType(scriptableObjectBase.GetRuntimeType());
-                }
-                DisplayProgressBar("Initialize field factory", 0f);
-                {
-                    FieldResolverFactory.Get();
-                }
-                DisplayProgressBar("Initialize node view factory", 0.3f);
-                {
-                    NodeViewFactory.Get();
-                }
-                DisplayProgressBar("Initialize executable function registry", 0.6f);
-                {
-                    ExecutableFunctionRegistry.Get();
-                }
-                DisplayProgressBar("Construct graph view", 0.9f);
-                {
-                    StructVisualElements();
-                    var icon = Resources.Load<Texture>("Ceres/editor_icon");
-                    titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
-                    _graphView.DeserializeGraph(ContainerT);
-                }
-            }
-            finally
-            {
-                ClearProgressBar();
-            }
+            var icon = Resources.Load<Texture>("Ceres/editor_icon");
+            titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
+            InitializeFlowGraphView();
         }
 
         private static void DisplayProgressBar(string stepTitle, float progress)
@@ -113,6 +85,24 @@ namespace Ceres.Editor.Graph.Flow
             /* Whether explicit container type is assignable to editor container type */
             return GetContainerType().IsInstanceOfType(ContainerT);
         }
+
+        /// <summary>
+        /// Save current editing flow graph
+        /// </summary>
+        public void SaveGraph()
+        {
+            var guiContent = new GUIContent();
+            if (_graphView.SerializeGraph(Container))
+            {
+                guiContent.text = $"Update flow {Identifier.boundObject.name} succeed!";
+                ShowNotification(guiContent, 0.5f);
+            }
+            else
+            {
+                guiContent.text = $"Failed to save flow {Identifier.boundObject.name}!";
+                ShowNotification(guiContent, 0.5f);
+            }
+        }
         
         private VisualElement CreateToolBar()
         {
@@ -129,19 +119,9 @@ namespace Ceres.Editor.Graph.Flow
                     var image  = EditorGUIUtility.IconContent("SaveAs@2x").image;
                     if (GUILayout.Button(new GUIContent(image,$"Save flow and serialize data to {Identifier.boundObject.name}"), EditorStyles.toolbarButton))
                     {
-                        var guiContent = new GUIContent();
-                        if (_graphView.SerializeGraph(Container))
-                        {
-                            guiContent.text = $"Update flow {Identifier.boundObject.name} succeed!";
-                            ShowNotification(guiContent, 0.5f);
-                        }
-                        else
-                        {
-                            guiContent.text = $"Failed to save flow {Identifier.boundObject.name}!";
-                            ShowNotification(guiContent, 0.5f);
-                        }
+                        SaveGraph();
                     }
-                    if(ContainerCanSimulate())
+                    if (ContainerCanSimulate())
                     {
                         GUI.enabled &= _graphView.CanSimulate();
                         image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
@@ -199,8 +179,40 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override void OnReloadGraphView()
         {
-            StructVisualElements();
-            _graphView.DeserializeGraph(ContainerT);
+            InitializeFlowGraphView();
+        }
+
+        private void InitializeFlowGraphView()
+        {
+            try
+            {
+                /* Redirect container type */
+                if (Container is FlowGraphScriptableObjectBase scriptableObjectBase)
+                {
+                    SetContainerType(scriptableObjectBase.GetRuntimeType());
+                }
+                DisplayProgressBar("Initialize field factory", 0f);
+                {
+                    FieldResolverFactory.Get();
+                }
+                DisplayProgressBar("Initialize node view factory", 0.3f);
+                {
+                    NodeViewFactory.Get();
+                }
+                DisplayProgressBar("Initialize executable function registry", 0.6f);
+                {
+                    ExecutableFunctionRegistry.Get();
+                }
+                DisplayProgressBar("Construct graph view", 0.9f);
+                {
+                    StructVisualElements();
+                    _graphView.DeserializeGraph(ContainerT);
+                }
+            }
+            finally
+            {
+                ClearProgressBar();
+            }
         }
     }
 }

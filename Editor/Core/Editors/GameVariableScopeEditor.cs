@@ -8,6 +8,7 @@ using Ceres.Editor.Graph;
 namespace Ceres.Editor
 {
     internal class VirtualGraphView : GraphView { }
+    
     internal class VariableSourceProxy : IVariableSource
     {
         public List<SharedVariable> SharedVariables { get; } = new();
@@ -28,16 +29,22 @@ namespace Ceres.Editor
             AssetDatabase.SaveAssets();
         }
     }
+    
     [CustomEditor(typeof(GameVariableScope))]
     public class GameVariableScopeEditor : UnityEditor.Editor
     {
-        private bool isDirty;
+        private bool _isDirty;
         
         public override VisualElement CreateInspectorGUI()
         {
-            var source = target as GameVariableScope;
-            var myInspector = new VisualElement();
-            myInspector.style.flexDirection = FlexDirection.Column;
+            var source = (GameVariableScope)target;
+            var myInspector = new VisualElement
+            {
+                style =
+                {
+                    flexDirection = FlexDirection.Column
+                }
+            };
             var proxy = new VariableSourceProxy(source, source);
             //Need attached to a virtual graphView to send event
             //It's an interesting hack so that you can use blackBoard outside graphView
@@ -60,12 +67,13 @@ namespace Ceres.Editor
 
             if (Application.isPlaying) return myInspector;
 
-            myInspector.RegisterCallback<DetachFromPanelEvent>(_ => { if (isDirty) proxy.Update(); });
-            blackBoard.RegisterCallback<VariableChangeEvent>(_ => isDirty = true);
+            myInspector.RegisterCallback<DetachFromPanelEvent>(_ => { if (_isDirty) proxy.Update(); });
+            blackBoard.RegisterCallback<VariableChangeEvent>(_ => _isDirty = true);
             myInspector.Add(new PropertyField(serializedObject.FindProperty("parentScope"), "Parent Scope"));
             return myInspector;
         }
     }
+    
     [CustomEditor(typeof(SceneVariableScope))]
     public class SceneVariableScopeEditor : UnityEditor.Editor
     {
@@ -73,12 +81,17 @@ namespace Ceres.Editor
         
         public override VisualElement CreateInspectorGUI()
         {
-            var source = target as SceneVariableScope;
-            var myInspector = new VisualElement();
-            myInspector.style.flexDirection = FlexDirection.Column;
+            var source = (SceneVariableScope)target;
+            var myInspector = new VisualElement
+            {
+                style =
+                {
+                    flexDirection = FlexDirection.Column
+                }
+            };
             var proxy = new VariableSourceProxy(source, source);
-            //Need attached to a virtual graphView to send event
-            //It's an interesting hack so that you can use blackBoard outside of graphView
+            // Need attached to a virtual graphView to send event
+            // It's an interesting hack so that you can use blackBoard outside graphView
             var blackBoard = new CeresBlackboard(proxy, new VirtualGraphView()) { AlwaysExposed = true };
             foreach (var variable in source.SharedVariables)
             {
