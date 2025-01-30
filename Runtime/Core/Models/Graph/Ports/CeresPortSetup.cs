@@ -1,8 +1,7 @@
-﻿using Ceres.Graph;
-using Chris.Schedulers;
+﻿using Chris.Schedulers;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-namespace Chris.Gameplay.Flow.Utilities
+namespace Ceres.Graph
 {
     internal static class CeresPortSetup
     {
