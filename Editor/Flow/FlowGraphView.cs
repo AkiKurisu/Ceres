@@ -312,6 +312,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     _graphView.ClearSelection();
                     newElements.ForEach(x=> _graphView.AddToSelection(x));
+                    _graphView.schedule.Execute(() => _graphView.FrameSelection()).ExecuteLater(10);
                 }
             }
         }
