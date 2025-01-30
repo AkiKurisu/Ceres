@@ -97,8 +97,9 @@ namespace Ceres
             return Clone();
         }
     }
+    
     [Serializable]
-    public abstract class SharedVariable<T> : SharedVariable, IBindableVariable<T>
+    public abstract class SharedVariable<T> : SharedVariable, IVariable<T>
     {
         public T Value
         {
@@ -141,15 +142,15 @@ namespace Ceres
         
         protected Action<T> Setter;
         
-        public void Bind(IBindableVariable<T> other)
+        public void Bind(IVariable<T> other)
         {
             Getter = () => other.Value;
-            Setter = (evt) => other.Value = evt;
+            Setter = newValue => other.Value = newValue;
         }
         
         public override void Bind(SharedVariable other)
         {
-            if (other is IBindableVariable<T> variable)
+            if (other is IVariable<T> variable)
             {
                 Bind(variable);
             }
@@ -207,6 +208,7 @@ namespace Ceres
             return typeof(T);
         }
     }
+    
     public class SetterWrapper<T> : IDisposable
     {
         private readonly Action<SetterWrapper<T>> _unregister;
@@ -239,7 +241,7 @@ namespace Ceres
         public abstract void Dispose();
     }
     
-    public class ObserveProxyVariable<T> : ObserveProxyVariable, IBindableVariable<T>
+    public class ObserveProxyVariable<T> : ObserveProxyVariable, IVariable<T>
     {
         public T Value
         {
@@ -252,8 +254,8 @@ namespace Ceres
         private Action<T> _setter;
         
         private readonly SetterWrapper<T> _setterWrapper;
-        
-        public void Bind(IBindableVariable<T> other)
+
+        private void Bind(IVariable<T> other)
         {
             _getter = () => other.Value;
             _setter = evt => other.Value = evt;

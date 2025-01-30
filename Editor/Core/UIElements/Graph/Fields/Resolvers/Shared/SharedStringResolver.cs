@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph
 {
-    public class SharedStringResolver : SharedVariableResolver<SharedString, string, TextField>
+    public sealed class SharedStringResolver : SharedVariableResolver<SharedString, string, TextField>
     {
         public SharedStringResolver(FieldInfo fieldInfo) : base(fieldInfo)
         {
@@ -15,7 +15,7 @@ namespace Ceres.Editor.Graph
             return new SharedStringField(fieldInfo.Name, fieldInfo.FieldType, fieldInfo);
         }
         
-        public class SharedStringField : Field
+        public sealed class SharedStringField : Field
         {
             private readonly bool _multiline;
             public SharedStringField(string label, Type objectType, FieldInfo fieldInfo) : base(label, objectType, fieldInfo)

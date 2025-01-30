@@ -116,6 +116,7 @@ namespace Ceres.Editor.Graph
         {
             menu.AddItem(new GUIContent("Int"), false, () => AddVariable(new SharedInt(), true));
             menu.AddItem(new GUIContent("Float"), false, () => AddVariable(new SharedFloat(), true));
+            menu.AddItem(new GUIContent("Double"), false, () => AddVariable(new SharedDouble(), true));
             menu.AddItem(new GUIContent("Bool"), false, () => AddVariable(new SharedBool(), true));
             menu.AddItem(new GUIContent("Vector2Int"), false, () => AddVariable(new SharedVector2Int(), true));
             menu.AddItem(new GUIContent("Vector2"), false, () => AddVariable(new SharedVector2(), true));

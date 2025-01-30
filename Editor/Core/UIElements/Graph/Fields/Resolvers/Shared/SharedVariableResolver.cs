@@ -1,11 +1,10 @@
 using System.Reflection;
 using System;
 using UnityEngine.UIElements;
-using UnityEditor.UIElements;
 using UnityEngine;
 namespace Ceres.Editor.Graph
 {
-    public class SharedVariableResolver<TVariable, TValue, TField> :
+    public abstract class SharedVariableResolver<TVariable, TValue, TField> :
         FieldResolver<SharedVariableResolver<TVariable, TValue, TField>.Field, TVariable> 
         where TVariable : SharedVariable<TValue>, new()
         where TField: BaseField<TValue>, new()
@@ -20,16 +19,17 @@ namespace Ceres.Editor.Graph
 
             protected override BaseField<TValue> CreateValueField() => new TField();
         }
-        
-        public SharedVariableResolver(FieldInfo fieldInfo) : base(fieldInfo)
+
+        protected SharedVariableResolver(FieldInfo fieldInfo) : base(fieldInfo)
         {
         }
+        
         protected override Field CreateEditorField(FieldInfo fieldInfo)
         {
             return new Field(fieldInfo.Name, fieldInfo.FieldType, fieldInfo);
         }
+        
         public override bool IsAcceptable(Type fieldValueType, FieldInfo _) => fieldValueType == typeof(TVariable);
-
     }
     
     public class SharedBoolResolver : SharedVariableResolver<SharedBool, bool, Toggle>
@@ -49,6 +49,13 @@ namespace Ceres.Editor.Graph
     public class SharedFloatResolver : SharedVariableResolver<SharedFloat, float, FloatField>
     {
         public SharedFloatResolver(FieldInfo fieldInfo) : base(fieldInfo)
+        {
+        }
+    }
+    
+    public class SharedDoubleResolver : SharedVariableResolver<SharedDouble, double, DoubleField>
+    {
+        public SharedDoubleResolver(FieldInfo fieldInfo) : base(fieldInfo)
         {
         }
     }

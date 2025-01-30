@@ -5,20 +5,20 @@ namespace Ceres.Editor.Graph
 {
     public class ListField<T> : BaseField<List<T>>
     {
-        protected readonly ListView ListView;
+        private readonly ListView _listView;
         
         protected readonly Func<VisualElement> ElementCreator;
-        
-        protected readonly Func<object> ValueCreator;
-        
-        protected const int DefaultListItemHeight = 20;
+
+        private readonly Func<object> _valueCreator;
+
+        private const int DefaultListItemHeight = 20;
 
         private ListField(string label, Func<VisualElement> elementCreator, Func<object> valueCreator, VisualElement listContainer) : base(label, listContainer)
         {
             value ??= new List<T>();
             ElementCreator = elementCreator;
-            ValueCreator = valueCreator;
-            listContainer.Add(ListView = CreateListView());
+            _valueCreator = valueCreator;
+            listContainer.Add(_listView = CreateListView());
         }
         
         public ListField(string label, Func<VisualElement> elementCreator, Func<object> valueCreator) : this(label, elementCreator, valueCreator, new VisualElement())
@@ -58,8 +58,8 @@ namespace Ceres.Editor.Graph
         
         protected virtual void OnRequestAddListItem()
         {
-            value.Add((T)ValueCreator.Invoke());
-            ListView.RefreshItems();
+            value.Add((T)_valueCreator.Invoke());
+            _listView.RefreshItems();
         }
         
         public sealed override List<T> value
@@ -74,8 +74,8 @@ namespace Ceres.Editor.Graph
         
         private void UpdateValue()
         {
-            if (ListView == null) return;
-            ListView.itemsSource = value; ListView.RefreshItems();
+            if (_listView == null) return;
+            _listView.itemsSource = value; _listView.RefreshItems();
         }
     }
 }

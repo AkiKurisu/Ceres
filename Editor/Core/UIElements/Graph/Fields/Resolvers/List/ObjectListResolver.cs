@@ -7,6 +7,7 @@ namespace Ceres.Editor.Graph
         {
 
         }
+        
         protected override ListField<T> CreateEditorField(FieldInfo fieldInfo)
         {
             return new ObjectListField<T>(fieldInfo.Name, () => ChildResolver.CreateField(), () => null);

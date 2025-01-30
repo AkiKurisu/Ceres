@@ -2,9 +2,10 @@ using System.Reflection;
 using UnityEditor.UIElements;
 using System;
 using UnityEngine.UIElements;
+using UObject = UnityEngine.Object;
 namespace Ceres.Editor.Graph
 {
-    public class SharedObjectResolver : FieldResolver<SharedObjectField, SharedUObject>
+    public sealed class SharedObjectResolver : FieldResolver<SharedObjectField, SharedUObject>
     {
         public SharedObjectResolver(FieldInfo fieldInfo) : base(fieldInfo)
         {
@@ -20,13 +21,14 @@ namespace Ceres.Editor.Graph
             return fieldValueType == typeof(SharedUObject);
         }
     }
-    public class SharedObjectField : SharedVariableField<SharedUObject, UnityEngine.Object>
+    
+    public sealed class SharedObjectField : SharedVariableField<SharedUObject, UObject>
     {
         public SharedObjectField(string label, Type objectType, FieldInfo fieldInfo) : base(label, objectType, fieldInfo)
         {
         }
         
-        protected override BaseField<UnityEngine.Object> CreateValueField()
+        protected override BaseField<UObject> CreateValueField()
         {
             return new ObjectField
             {
@@ -34,7 +36,7 @@ namespace Ceres.Editor.Graph
             };
         }
 
-        protected sealed override void OnRepaint()
+        protected override void OnRepaint()
         {
             ((ObjectField)ValueField).objectType = value.GetValueType();
         }
