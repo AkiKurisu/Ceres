@@ -80,9 +80,7 @@ namespace Ceres.Editor.Graph
         /// <param name="blackboard"></param>
         public void AddBlackboard(CeresBlackboard blackboard)
         {
-            Blackboard = blackboard;
-            Blackboard.SetPosition(new Rect(20, 70, 250, 400));
-            Add(blackboard);
+            AddBlackboard(blackboard, new Rect(20, 70, 250, 400));
         }
         
         /// <summary>

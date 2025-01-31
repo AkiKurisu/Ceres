@@ -33,10 +33,10 @@ namespace Ceres
     }
     
     [Serializable]
-    public class SharedUObject<TObject> : SharedVariable<TObject>, IBindableVariable<UObject> where TObject : UObject
+    public class SharedUObject<TObject> : SharedVariable<TObject>, IVariable<UObject> where TObject : UObject
     {
         // Special case of binding SharedTObject<T> to SharedObject
-        UObject IBindableVariable<UObject>.Value
+        UObject IVariable<UObject>.Value
         {
             get => Value;
 
@@ -61,7 +61,7 @@ namespace Ceres
         public override void Bind(SharedVariable other)
         {
             //Special case of binding SharedObject to SharedTObject<T>
-            if (other is IBindableVariable<UObject> sharedObject)
+            if (other is IVariable<UObject> sharedObject)
             {
                 Bind(sharedObject);
             }
@@ -71,7 +71,7 @@ namespace Ceres
             }
         }
         
-        public void Bind(IBindableVariable<UObject> other)
+        public void Bind(IVariable<UObject> other)
         {
             Getter = () => (TObject)other.Value;
             Setter = newValue => other.Value = newValue;

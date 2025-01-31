@@ -22,10 +22,10 @@ namespace Ceres.Editor.Graph
         private SharedVariable _bindExposedProperty;
         
         private readonly Type _bindType;
-        
-        public BaseField<TKValue> ValueField { get; private set; }
-        
-        public SharedVariableField(string label, Type objectType, FieldInfo fieldInfo) : base(label, null)
+
+        protected BaseField<TKValue> ValueField { get; private set; }
+
+        protected SharedVariableField(string label, Type objectType, FieldInfo fieldInfo) : base(label, null)
         {
             _forceShared = fieldInfo.GetCustomAttribute<ForceSharedAttribute>() != null;
             AddToClassList("SharedVariableField");

@@ -54,8 +54,17 @@ namespace Ceres.Graph.Flow.Utilities
 
         private ExecutableFunctionRegistry()
         {
+            var referencedAssemblies = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(x =>
+                {
+                    if (x.GetReferencedAssemblies().Any(name => name.Name != nameof(Ceres)) && x.GetName().Name != nameof(Ceres))
+                        return false;
+                    return x.GetName().Name.Contains(".Editor");
+                })
+                .ToArray();
+            
             // Collect static functions
-            var methodInfos = SubClassSearchUtility.FindSubClassTypes(typeof(ExecutableFunctionLibrary))
+            var methodInfos = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(ExecutableFunctionLibrary))
                         .SelectMany(x => x.GetMethods(BindingFlags.Public | BindingFlags.Static))
                         .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                         .Distinct()
@@ -67,7 +76,7 @@ namespace Ceres.Graph.Flow.Utilities
             _retargetFunctionTables = groups.ToDictionary(x => x.Key, x => x.ToArray());
             
             // Collect instance functions
-            _instanceFunctionTables = AppDomain.CurrentDomain.GetAssemblies()
+            _instanceFunctionTables = referencedAssemblies
                 .SelectMany(a => a.GetTypes())
                 .Where(x=> !x.IsAbstract && GetInstanceExecutableFunctions(x).Any())
                 .ToDictionary(x => x, x=> GetInstanceExecutableFunctions(x).ToArray());

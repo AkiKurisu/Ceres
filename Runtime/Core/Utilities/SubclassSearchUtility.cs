@@ -11,20 +11,16 @@ namespace Ceres.Utilities
         
         public static List<Type> FindSubClassTypes(Type searchType)
         {
-            return AppDomain.CurrentDomain.GetAssemblies()
-                            .SelectMany(a => a.GetTypes())
-                            .Where(t => t.IsAssignableTo(searchType) && !t.IsAbstract)
-                            .ToList();
+            return FindSubClassTypes(AppDomain.CurrentDomain.GetAssemblies(), searchType);
         }
         
-        public static List<Type> FindStructTypes()
+        public static List<Type> FindSubClassTypes(IEnumerable<Assembly> assemblies, Type searchType)
         {
-            return AppDomain.CurrentDomain.GetAssemblies()
-                            .SelectMany(a => a.GetTypes())
-                            .Where(t => t.IsValueType && !t.IsEnum && !t.IsPrimitive)
-                            .ToList();
+            return assemblies.SelectMany(a => a.GetTypes())
+                                .Where(t => t.IsAssignableTo(searchType) && !t.IsAbstract)
+                                .ToList();
         }
-        
+
         public static List<Type> FindSubClassTypes(Type[] searchTypes)
         {
             return AppDomain.CurrentDomain.GetAssemblies()

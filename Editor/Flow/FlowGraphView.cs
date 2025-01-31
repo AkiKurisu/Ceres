@@ -9,7 +9,6 @@ using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph.Flow
@@ -282,9 +281,9 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     var nodeView = NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView) as CeresNodeView;
                     /* Missing node class should be handled before get graph */
-                    Assert.IsNotNull(nodeView, $"[Ceres] Can not construct node view for type {nodeInstance.GetType()}");
+                    CeresAPI.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
                     _graphView.AddNodeView(nodeView);
-                    newElements.Add(nodeView.NodeElement);
+                    newElements.Add(nodeView!.NodeElement);
                     try
                     {
                         nodeView.SetNodeInstance(nodeInstance);
@@ -294,7 +293,7 @@ namespace Ceres.Editor.Graph.Flow
                         CeresAPI.LogError($"Failed to restore properties from {nodeInstance}\n{e}");
                     }
                 }
-                foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(x=>x.View).ToArray())
+                foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(x=> x.View).ToArray())
                 {
                     // Restore edges
                     nodeView.ReconnectEdges();
@@ -312,6 +311,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     _graphView.ClearSelection();
                     newElements.ForEach(x=> _graphView.AddToSelection(x));
+                    _graphView.schedule.Execute(() => _graphView.FrameSelection()).ExecuteLater(10);
                 }
             }
         }

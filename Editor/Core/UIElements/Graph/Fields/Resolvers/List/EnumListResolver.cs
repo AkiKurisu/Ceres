@@ -18,8 +18,7 @@ namespace Ceres.Editor.Graph
         public override bool IsAcceptable(Type fieldValueType, FieldInfo _)
         {
             if (fieldValueType.IsGenericType && fieldValueType.GetGenericTypeDefinition() == typeof(List<>) && fieldValueType.GenericTypeArguments[0].IsEnum) return true;
-            if (fieldValueType.IsArray && fieldValueType.GetElementType()!.IsEnum) return true;
-            return false;
+            return fieldValueType.IsArray && fieldValueType.GetElementType()!.IsEnum;
         }
     }
 }

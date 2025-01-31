@@ -9,6 +9,7 @@ namespace Ceres.Editor.Graph
     {
         protected readonly IFieldResolver ChildResolver;
         
+        // ReSharper disable once MemberCanBeProtected.Global
         public ListResolver(FieldInfo fieldInfo, IFieldResolver resolver) : base(fieldInfo)
         {
             ChildResolver = resolver;

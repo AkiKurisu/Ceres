@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
@@ -34,22 +35,46 @@ namespace Ceres.Editor.Graph.Flow
             var eventNode = (ExecutableEvent)ceresNode;
             base.SetNodeInstance(eventNode);
             IsImplementable = eventNode.isImplementable;
-            if(IsImplementable)
+            if (IsImplementable)
             {
                 var methodInfo = GetContainerType().GetMethod(eventNode.eventName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-                if (methodInfo == null)
+                if (methodInfo != null)
                 {
-                    CeresAPI.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
+                    SetMethodInfo(methodInfo);
+                    UpdateEventTitle();
                     return;
                 }
-                SetMethodInfo(methodInfo);
+                /* Change to normal execution event and validate event name */
+                CeresAPI.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
+                IsImplementable = false;
             }
+            ValidateEventName();
             UpdateEventTitle();
         }
 
-        protected void UpdateEventTitle()
+        private void ValidateEventName()
         {
-            string label = "Event " + GetEventName();
+            var existEventNodes = GraphView.NodeViews
+                .OfType<ExecutableEventNodeView>()
+                .Except(new [] { this })
+                .ToArray();
+            var eventName = GetEventName();
+            var newEventName = eventName;
+            int i = 0;
+            while (existEventNodes.Any(node => node.GetEventName() == newEventName))
+            {
+                newEventName = $"{eventName} {++i}";
+            }
+
+            if (newEventName != eventName)
+            {
+                _eventNameResolver.Value = newEventName;
+            }
+        }
+        
+        private void UpdateEventTitle()
+        {
+            var label = "Event " + GetEventName();
             if(IsImplementable)
             {
                 label += CeresNode.GetTargetSubtitle(GetContainerType().Name);
@@ -78,6 +103,7 @@ namespace Ceres.Editor.Graph.Flow
         public void SetEventName(string eventName)
         {
             _eventNameResolver.Value = eventName;
+            ValidateEventName();
         }
         
         private void FillNodeTitle()

@@ -6,9 +6,10 @@ using Ceres.Utilities;
 using Ceres.Annotations;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
+using UObject = UnityEngine.Object;
 namespace Ceres.Editor.Graph
 {
-    public class SharedTObjectResolver<T> : FieldResolver<SharedTObjectField<T>, SharedUObject<T>> where T : UnityEngine.Object
+    public sealed class SharedTObjectResolver<T> : FieldResolver<SharedTObjectField<T>, SharedUObject<T>> where T : UObject
     {
         public SharedTObjectResolver(FieldInfo fieldInfo) : base(fieldInfo)
         {
@@ -25,7 +26,8 @@ namespace Ceres.Editor.Graph
             return fieldValueType.IsSharedTObject() && fieldValueType.GenericTypeArguments.Length == 1 && fieldValueType.GenericTypeArguments[0] == typeof(T);
         }
     }
-    public class SharedTObjectField<T> : BaseField<SharedUObject<T>>, IBindableField where T : UnityEngine.Object
+    
+    public class SharedTObjectField<T> : BaseField<SharedUObject<T>>, IBindableField where T : UObject
     {
         private readonly bool _forceShared;
         
@@ -38,6 +40,7 @@ namespace Ceres.Editor.Graph
         private DropdownField _nameDropdown;
         
         private SharedVariable _bindExposedProperty;
+        
         public SharedTObjectField(string label, FieldInfo fieldInfo) : base(label, null)
         {
             _forceShared = fieldInfo.GetCustomAttribute<ForceSharedAttribute>() != null;
@@ -59,6 +62,7 @@ namespace Ceres.Editor.Graph
             }
             _foldout.Add(_toggle);
         }
+        
         public void BindGraph(CeresGraphView graph)
         {
             _graphView = graph;
@@ -70,6 +74,7 @@ namespace Ceres.Editor.Graph
             });
             OnToggle(_toggle.value);
         }
+        
         private static List<string> GetList(CeresGraphView graphView)
         {
             return graphView.SharedVariables
@@ -78,6 +83,7 @@ namespace Ceres.Editor.Graph
             .Select(v => v.Name)
             .ToList();
         }
+        
         private void BindProperty()
         {
             if (_graphView == null) return;
@@ -86,6 +92,7 @@ namespace Ceres.Editor.Graph
                                      && sharedObject.GetValueType().IsAssignableTo(typeof(T)) 
                                      && x.Name.Equals(value.Name));
         }
+        
         private void OnToggle(bool isShared)
         {
             if (isShared)
@@ -101,26 +108,30 @@ namespace Ceres.Editor.Graph
                 AddValueField();
             }
         }
+        
         private void AddNameDropDown()
         {
             var list = GetList(_graphView);
-            value.Name = value.Name ?? string.Empty;
+            value.Name ??= string.Empty;
             int index = list.IndexOf(value.Name);
             _nameDropdown = new DropdownField($"Shared {typeof(T).Name}", list, index);
             _nameDropdown.RegisterCallback<MouseEnterEvent>((evt) => { _nameDropdown.choices = GetList(_graphView); });
             _nameDropdown.RegisterValueChangedCallback(evt => { value.Name = evt.newValue; BindProperty(); NotifyValueChange(); });
             _foldout.Insert(0, _nameDropdown);
         }
+        
         private void RemoveNameDropDown()
         {
             if (_nameDropdown != null) _foldout.Remove(_nameDropdown);
             _nameDropdown = null;
         }
+        
         private void RemoveValueField()
         {
             if (ValueField != null) _foldout.Remove(ValueField);
             ValueField = null;
         }
+        
         private void AddValueField()
         {
             ValueField = new ObjectField()
@@ -131,6 +142,7 @@ namespace Ceres.Editor.Graph
             if (value != null) ValueField.value = value.Value;
             _foldout.Insert(0, ValueField);
         }
+        
         public sealed override SharedUObject<T> value
         {
             get => base.value; set
@@ -147,7 +159,9 @@ namespace Ceres.Editor.Graph
                 Repaint();
             }
         }
+        
         private ObjectField ValueField { get; set; }
+        
         public void Repaint()
         {
             _toggle.value = value.IsShared;
@@ -156,9 +170,10 @@ namespace Ceres.Editor.Graph
             OnToggle(value.IsShared);
             NotifyValueChange();
         }
-        protected void NotifyValueChange()
+
+        private void NotifyValueChange()
         {
-            using ChangeEvent<SharedUObject<T>> changeEvent = ChangeEvent<SharedUObject<T>>.GetPooled(value, value);
+            using var changeEvent = ChangeEvent<SharedUObject<T>>.GetPooled(value, value);
             changeEvent.target = this;
             SendEvent(changeEvent);
         }

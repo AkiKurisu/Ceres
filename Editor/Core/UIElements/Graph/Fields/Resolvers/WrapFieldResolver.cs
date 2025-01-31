@@ -39,8 +39,8 @@ namespace Ceres.Editor.Graph
         private SoftObjectHandle _wrapperHandle;
 
         private readonly FieldInfo _fieldInfo;
-        
-        protected WrapField(string label, FieldInfo fieldInfo, IMGUIContainer container) : base(label, container)
+
+        private WrapField(string label, FieldInfo fieldInfo, IMGUIContainer container) : base(label, container)
         {
             _fieldInfo = fieldInfo;
             container.onGUIHandler = OnGUI;
@@ -68,7 +68,7 @@ namespace Ceres.Editor.Graph
 
         private void OnGUI()
         {
-            var instance = GetInstance();
+            GetInstance();
             _serializedObject.Update();
             EditorGUILayout.PropertyField(_serializedProperty, GUIContent.none);
             _serializedObject.ApplyModifiedProperties();
