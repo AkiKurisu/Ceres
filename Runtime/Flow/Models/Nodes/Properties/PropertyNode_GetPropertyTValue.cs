@@ -5,6 +5,7 @@ using UnityEngine;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Properties
 {
+    [Serializable]
     public abstract class PropertyNode_PropertyValue : PropertyNode
     {
         [HideInGraphEditor] 
@@ -12,6 +13,11 @@ namespace Ceres.Graph.Flow.Properties
         
         protected TValue GetTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
         {
+            if (!isSelfTarget)
+            {
+                return inputPort.Value;
+            }
+            
             bool isNull;
             if(inputPort.Value is UObject value)
             {
