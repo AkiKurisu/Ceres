@@ -9,7 +9,6 @@ using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph.Flow
@@ -282,7 +281,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     var nodeView = NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView) as CeresNodeView;
                     /* Missing node class should be handled before get graph */
-                    Assert.IsNotNull(nodeView, $"[Ceres] Can not construct node view for type {nodeInstance.GetType()}");
+                    CeresAPI.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
                     _graphView.AddNodeView(nodeView);
                     newElements.Add(nodeView.NodeElement);
                     try
