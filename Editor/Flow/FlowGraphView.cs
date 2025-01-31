@@ -283,7 +283,7 @@ namespace Ceres.Editor.Graph.Flow
                     /* Missing node class should be handled before get graph */
                     CeresAPI.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
                     _graphView.AddNodeView(nodeView);
-                    newElements.Add(nodeView.NodeElement);
+                    newElements.Add(nodeView!.NodeElement);
                     try
                     {
                         nodeView.SetNodeInstance(nodeInstance);
@@ -293,7 +293,7 @@ namespace Ceres.Editor.Graph.Flow
                         CeresAPI.LogError($"Failed to restore properties from {nodeInstance}\n{e}");
                     }
                 }
-                foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(x=>x.View).ToArray())
+                foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(x=> x.View).ToArray())
                 {
                     // Restore edges
                     nodeView.ReconnectEdges();

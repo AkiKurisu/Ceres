@@ -21,7 +21,6 @@ namespace Ceres.Graph
                 if (!overrideType.Enabled) return nodeType;
                 var tokens = overrideType.Value.Split(' ');
                 return new CeresNodeData.NodeType(tokens[0], tokens[1], tokens[2]).ToType();
-
             }
             
             public string GetFullTypeName()
