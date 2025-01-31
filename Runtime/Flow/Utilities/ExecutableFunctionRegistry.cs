@@ -57,9 +57,13 @@ namespace Ceres.Graph.Flow.Utilities
             var referencedAssemblies = AppDomain.CurrentDomain.GetAssemblies()
                 .Where(x =>
                 {
-                    if (x.GetReferencedAssemblies().Any(name => name.Name != nameof(Ceres)) && x.GetName().Name != nameof(Ceres))
+                    if (x.GetName().Name.Contains(".Editor"))
+                    {
                         return false;
-                    return x.GetName().Name.Contains(".Editor");
+                    }
+
+                    return x.GetReferencedAssemblies().Any(name => name.Name == nameof(Ceres)) 
+                           || x.GetName().Name == nameof(Ceres);
                 })
                 .ToArray();
             
