@@ -22,7 +22,7 @@ namespace Ceres.Graph.Flow.Utilities
             return new[] { selectArgumentType };
         }
 
-        public override Type[] GetAvailableArgumentTypes(Type portValueType)
+        public override Type[] GetAvailableArguments(Type portValueType)
         {
             return new[] { ReflectionUtility.GetGenericArgumentType(portValueType)};
         }

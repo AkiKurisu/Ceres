@@ -74,7 +74,7 @@ namespace Ceres.Editor.Graph
                 var template = GenericNodeTemplateRegistry.GetTemplate(type);
                 if (template != null && template.CanFilterPort(_portValueType))
                 {
-                    var argumentTypes = template.GetAvailableArgumentTypes(_portValueType);
+                    var argumentTypes = template.GetAvailableArguments(_portValueType);
                     foreach (var argumentType in argumentTypes)
                     {
                         hasEntry = true;

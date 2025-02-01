@@ -16,7 +16,7 @@ namespace Ceres.Graph.Flow.Utilities.Templates
             return new[] { selectArgumentType };
         }
 
-        public override Type[] GetAvailableArgumentTypes(Type portValueType)
+        public override Type[] GetAvailableArguments(Type portValueType)
         {
             /* Default instantiate as GameObject */
             portValueType ??= typeof(GameObject);

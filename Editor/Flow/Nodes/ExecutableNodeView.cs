@@ -101,7 +101,7 @@ namespace Ceres.Editor.Graph.Flow
     /// <summary>
     /// Base class for node view of <see cref="ExecutableNode"/>
     /// </summary>
-    [CustomNodeView(typeof(ForwardNode), true)]
+    [CustomNodeView(typeof(ExecutableNode), true)]
     public class ExecutableNodeView: CeresNodeView
     {
         /// <summary>
