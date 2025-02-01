@@ -26,7 +26,7 @@ namespace Ceres.Graph.Flow
         /// <summary>
         /// Specific <see cref="IFlowGraphRuntime"/> type this asset act as at runtime
         /// </summary>
-        public SerializedType<IFlowGraphRuntime> runtimeType = FlowGraphInstanceObject.SerializedType;
+        public SerializedType<IFlowGraphRuntime> runtimeType;
         
         public override Type GetRuntimeType()
         {

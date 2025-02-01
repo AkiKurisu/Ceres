@@ -2,11 +2,12 @@
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
+using UEditor = UnityEditor.Editor;
 namespace Ceres.Editor.Graph.Flow
 {
     
     [CustomEditor(typeof(FlowGraphAsset), true)]
-    public class FlowGraphAssetEditor : UnityEditor.Editor
+    public class FlowGraphAssetEditor : UEditor
     {
         private FlowGraphAsset Asset => (FlowGraphAsset)target;
         
