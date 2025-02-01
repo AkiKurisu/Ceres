@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Chris.Serialization;
 using UnityEngine;
 using UObject = UnityEngine.Object;
-namespace Ceres
+namespace Ceres.Graph
 {
     /// <summary>
     /// A medium for centralized storage and exchange of graph data

@@ -239,6 +239,7 @@ namespace Ceres.Editor.Graph.Flow
                         nodes = nodeInstances,
                         nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
                         variables = _graphView.SharedVariables.ToArray(),
+                        variableData = _graphView.SharedVariables.Select(x => x.GetSerializedData()).ToArray(),
                         nodeGroups = data.ToArray()
                     };
                     flowGraphData.PreSerialization();

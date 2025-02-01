@@ -6,7 +6,6 @@ using System.Reflection;
 using Ceres.Annotations;
 using Chris.Collections;
 using Chris.Serialization;
-using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 namespace Ceres.Graph
@@ -296,51 +295,6 @@ namespace Ceres.Graph
     public class CeresNodeData
     {
         /// <summary>
-        /// Serialized node type in managed reference format
-        /// </summary>
-        [Serializable]
-        public struct NodeType: IEquatable<NodeType>
-        {
-            // ReSharper disable once InconsistentNaming
-            public string _class;
-
-            // ReSharper disable once InconsistentNaming
-            public string _ns;
-            
-            // ReSharper disable once InconsistentNaming
-            public string _asm;
-            
-            public NodeType(string inClass, string inNamespace, string inAssembly)
-            {
-                _class = inClass;
-                _ns = inNamespace;
-                _asm = inAssembly;
-            }
-            
-            public NodeType(Type type)
-            {
-                _class = type.Name;
-                _ns = type.Namespace;
-                _asm = type.Assembly.GetName().Name;
-            }
-            
-            public readonly Type ToType()
-            {
-                return Type.GetType(Assembly.CreateQualifiedName(_asm, $"{_ns}.{_class}"));
-            }
-
-            public bool Equals(NodeType other)
-            {
-                return _class == other._class && _ns == other._ns && _asm == other._asm;
-            }
-
-            public readonly override string ToString()
-            {
-                return $"class: {_class} ns: {_ns} asm: {_asm}";
-            }
-        }
-        
-        /// <summary>
         /// Node graph editor position
         /// </summary>
         public Rect graphPosition = new(400, 300, 100, 100);
@@ -358,7 +312,7 @@ namespace Ceres.Graph
         /// <summary>
         /// Node type
         /// </summary>
-        public NodeType nodeType;
+        public ManagedReferenceType nodeType;
 
         /// <summary>
         /// Generic type parameters
@@ -456,32 +410,19 @@ namespace Ceres.Graph
             var type = node.GetType();
             if (type.IsGenericType)
             {
-                nodeType = new NodeType(type.GetGenericTypeDefinition());
+                nodeType = new ManagedReferenceType(type.GetGenericTypeDefinition());
                 genericParameters = type.GetGenericArguments().Select(SerializedType.ToString).ToArray();
             }
             else
             {
-                nodeType = new NodeType(type);
+                nodeType = new ManagedReferenceType(type);
             }
             serializedData = JsonUtility.ToJson(node);
-#if UNITY_EDITOR
             uobjectLinks = Array.Empty<UObjectLink>();
             if (!Application.isPlaying)
             {
-                var obj = JObject.Parse(serializedData);
-                /* Persistent instanceID */
-                foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
-                {
-                    if (prop.Name != "instanceID") continue;
-                    var instanceId = (int)prop.Value;
-                    var uObject = UnityEditor.EditorUtility.InstanceIDToObject(instanceId);
-                    if (uObject)
-                    {
-                        ArrayUtils.Add(ref uobjectLinks, new UObjectLink(uObject));
-                    }
-                }
+                UObjectLink.Parse(ref uobjectLinks, serializedData);
             }
-#endif
             /* Override to customize serialization like ISerializationCallbackReceiver */
         }
         
@@ -492,24 +433,8 @@ namespace Ceres.Graph
         /// <returns></returns>
         public CeresNode Deserialize(Type outNodeType)
         {
-            var obj = JObject.Parse(serializedData);
-            /* Resolve instanceID */
-            foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
-            {
-                if (prop.Name != "instanceID") continue;
-                var instanceId = (int)prop.Value;
-                var uObject = uobjectLinks.FirstOrDefault(x=> x.instanceId == instanceId);
-                if (uObject != null)
-                {
-                    var linkedUObject = uObject.linkedObject;
-                    prop.Value = linkedUObject == null ? 0 : linkedUObject.GetInstanceID();
-                    if (linkedUObject && CeresAPI.LogUObjectRelink)
-                    {
-                        CeresAPI.Log($"Relink UObject {instanceId} to {uObject.linkedObject.name} {prop.Value}");
-                    }
-                }
-            }
-            return JsonUtility.FromJson(obj.ToString(), outNodeType) as CeresNode;
+            var resolvedData = UObjectLink.Resolve(uobjectLinks, serializedData);
+            return JsonUtility.FromJson(resolvedData, outNodeType) as CeresNode;
         }
     }
 }

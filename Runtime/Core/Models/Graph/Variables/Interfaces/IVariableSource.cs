@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace Ceres
+namespace Ceres.Graph
 {
     /// <summary>
     /// Shared variables owner

@@ -243,7 +243,9 @@ namespace Ceres.Editor.Graph
         public virtual void AddSharedVariables(List<SharedVariable> variables, bool duplicateWhenConflict)
         {
             if(Blackboard == null) return;
-            foreach (var variable in variables.Where(variable => duplicateWhenConflict || SharedVariables.All(x => x.Name != variable.Name)))
+            foreach (var variable in variables.Where(variable => variable != null &&
+                                                                 (duplicateWhenConflict 
+                                                                  || SharedVariables.All(x => x.Name != variable.Name))))
             {
                 // In play mode, use original variable to observe value change
                 Blackboard.AddVariable(Application.isPlaying ? variable : variable.Clone(), false);

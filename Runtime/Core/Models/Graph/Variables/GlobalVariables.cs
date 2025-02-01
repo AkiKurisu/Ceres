@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UObject = UnityEngine.Object;
-namespace Ceres
+namespace Ceres.Graph
 {
     /// <summary>
     /// Global variables are variables managed by a variable scope and any graph initialized in this scope

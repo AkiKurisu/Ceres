@@ -90,11 +90,14 @@ namespace Ceres.Graph
         private static readonly Dictionary<Type, List<FieldInfo>> PortFieldInfoLookup = new();
 #endif
         
+        // ==================== Managed Reference =================== //
+        /* Using SerializeReference to instantiate graph easily */
         [SerializeReference]
         public List<SharedVariable> variables;
 
         [SerializeReference] 
         public List<CeresNode> nodes;
+        // ==================== Managed Reference =================== //
         
         public List<NodeGroup> nodeGroups;
         
@@ -475,17 +478,22 @@ namespace Ceres.Graph
     [Serializable]
     public class CeresGraphData
     {
+        // ==================== Managed Reference =================== //
+        /* Keep using SerializeReference for faster deserialization */
         [SerializeReference]
         public SharedVariable[] variables;
         
         [SerializeReference]
         public CeresNode[] nodes;
+        // ==================== Managed Reference =================== //
+
+        public SharedVariableData[] variableData;
         
         public CeresNodeData[] nodeData;
         
         public NodeGroup[] nodeGroups;
 
-        private NodeAPIUpdateConfig _config;
+        private APIUpdateConfig _config;
         
         /// <summary>
         /// Build graph from data
@@ -494,23 +502,33 @@ namespace Ceres.Graph
         /// <exception cref="ArgumentException"></exception>
         public virtual void BuildGraph(CeresGraph graph)
         {
-            _config = NodeAPIUpdateConfig.Get();
-            // Restore node metadata
+            _config = APIUpdateConfig.Get();
+            
+            // Restore nodes
+            nodes ??= new CeresNode[nodeData.Length];
             for (int i = 0; i < nodes.Length; ++i)
             {
                 RestoreNode(i);
             }
+            
+            // Restore variables
+            variables ??= new SharedVariable[variables.Length];
+            for (int i = 0; i < variables.Length; ++i)
+            {
+                RestoreVariable(i);
+            }
+
             // Apply instances
-            graph.variables = variables?.ToList() ?? new List<SharedVariable>();
+            graph.variables = variables.ToList();
+            graph.nodes = nodes.ToList();
             graph.nodeGroups = nodeGroups?.ToList() ?? new List<NodeGroup>();
-            graph.nodes = nodes?.ToList() ?? new List<CeresNode>();
         }
 
         protected void RestoreNode(int index)
         {
             if (_config)
             {
-                var redirectedType = _config.Redirect(nodeData![index].nodeType);
+                var redirectedType = RedirectNodeType(nodeData![index].nodeType);
                 if (redirectedType != null)
                 {
                     CeresAPI.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
@@ -528,7 +546,41 @@ namespace Ceres.Graph
                 /* Use fallback serialization */
                 nodes[index] ??= GetFallbackNode(nodeData[index], index);
             }
+            // Restore metadata
             nodes[index].NodeData = nodeData[index];
+        }
+
+        protected void RestoreVariable(int index)
+        {
+            if (!_config) return;
+            
+            var redirectedType = RedirectVariableType(variableData![index].variableType);
+            if (redirectedType == null) return;
+            
+            CeresAPI.Log($"Redirect variable type {variableData![index].variableType} to {redirectedType}");
+            variables[index] = variableData[index].Deserialize(redirectedType);
+        }
+
+        /// <summary>
+        /// Redirect node type from <see cref="ManagedReferenceType"/>, default using redirectors from <see cref="APIUpdateConfig"/>
+        /// </summary>
+        /// <param name="nodeType"></param>
+        /// <returns></returns>
+        protected virtual Type RedirectNodeType(ManagedReferenceType nodeType)
+        {
+            Assert.IsTrue((bool)_config);
+            return _config.RedirectNode(nodeType);
+        }
+        
+        /// <summary>
+        /// Redirect variable type from <see cref="ManagedReferenceType"/>, default using redirectors from <see cref="APIUpdateConfig"/>
+        /// </summary>
+        /// <param name="nodeType"></param>
+        /// <returns></returns>
+        protected virtual Type RedirectVariableType(ManagedReferenceType nodeType)
+        {
+            Assert.IsTrue((bool)_config);
+            return _config.RedirectVariable(nodeType);
         }
 
         private bool IsNodeGeneric(int index)
@@ -653,10 +705,11 @@ namespace Ceres.Graph
         /// <param name="graph"></param>
         protected void ReadFromLinkedNodes(CeresGraph graph)
         {
-            variables = graph.variables.ToArray();
             nodes = graph.nodes.ToArray();
+            nodeData = nodes.Select(x => x.GetSerializedData()).ToArray();
+            variables = graph.variables.ToArray();
+            variableData = variables.Select(x => x.GetSerializedData()).ToArray();
             edges = new Edge[nodes.Length];
-            nodeData = new CeresNodeData[nodes.Length];
             for (int i = 0; i < nodes.Length; ++i)
             {
                 var edge = edges[i] = new Edge();
@@ -668,7 +721,6 @@ namespace Ceres.Graph
                 }
                 // clear duplicated reference
                 linkedInterface.ClearChildren();
-                nodeData[i] = nodes[i].GetSerializedData();
             }
             nodeGroups = graph.nodeGroups.ToArray();
         }

@@ -1,4 +1,4 @@
-namespace Ceres
+namespace Ceres.Graph
 {
     /// <summary>
     /// Interface for variables

@@ -1,6 +1,9 @@
 using System;
-namespace Ceres
+using Chris.Serialization;
+
+namespace Ceres.Graph
 {
+    [FormerlySerializedType("Ceres.SharedFloat, Ceres")]
     [Serializable]
     public class SharedFloat : SharedVariable<float>
     {
@@ -8,10 +11,12 @@ namespace Ceres
         {
             this.value = value;
         }
+        
         public SharedFloat()
         {
 
         }
+        
         protected override SharedVariable<float> CloneT()
         {
             return new SharedFloat() { Value = value };

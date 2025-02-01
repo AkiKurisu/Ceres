@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Ceres
+namespace Ceres.Graph
 {
     public static class SharedVariableExtension
     {
