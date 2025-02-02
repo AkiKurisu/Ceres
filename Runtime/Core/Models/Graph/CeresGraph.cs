@@ -538,10 +538,13 @@ namespace Ceres.Graph
 
             if(nodes[index] == null)
             {
-                // Try make generic node
                 if (IsNodeGeneric(index))
                 {
-                    MakeGenericNode(index);
+                    CreateGenericNodeInstance(index);
+                }
+                else
+                {
+                    CreateNodeInstance(index);
                 }
                 /* Use fallback serialization */
                 nodes[index] ??= GetFallbackNode(nodeData[index], index);
@@ -588,10 +591,11 @@ namespace Ceres.Graph
             return nodeData[index].genericParameters != null && nodeData[index].genericParameters.Length > 0;
         }
 
-        private bool MakeGenericNode(int index)
+        private bool CreateGenericNodeInstance(int index)
         {
             try
             {
+                /* Try to make generic node type */
                 var genericTypeDefinition = nodeData[index].nodeType.ToType();
                 var parameterTypes = nodeData[index].genericParameters.Select(SerializedType.FromString)
                     .ToArray();
@@ -601,7 +605,22 @@ namespace Ceres.Graph
             }
             catch(Exception e)
             {
-                CeresAPI.LogWarning($"Can not make generic node type from {nodeData[index].nodeType}, {e}");
+                CeresAPI.LogWarning($"Can not create generic node instance from {nodeData[index].nodeType}, {e}");
+                return false;
+            }
+        }
+        
+        private bool CreateNodeInstance(int index)
+        {
+            try
+            {
+                var nodeType = nodeData[index].nodeType.ToType();
+                nodes[index] = nodeData[index].Deserialize(nodeType);
+                return true;
+            }
+            catch(Exception e)
+            {
+                CeresAPI.LogWarning($"Can not create node instance from {nodeData[index].nodeType}, {e}");
                 return false;
             }
         }
@@ -639,7 +658,7 @@ namespace Ceres.Graph
         public virtual void PreSerialization()
         {
             // Remove all generic node instances since [SerializeReference] can not solve them
-            for(var i = 0; i < nodes.Length; i++)
+            for (var i = 0; i < nodes.Length; i++)
             {
                 if (nodes[i].GetType().IsGenericType)
                 {

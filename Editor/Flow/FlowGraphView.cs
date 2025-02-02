@@ -254,6 +254,10 @@ namespace Ceres.Editor.Graph.Flow
                         nodeGroups = data.ToArray()
                     };
                     flowGraphData.PreSerialization();
+                    if (CeresSettings.SmallerBuilds)
+                    {
+                        flowGraphData.OptimizeForSmallerBuild();
+                    }
                     return flowGraphData;
                 }
             }
