@@ -8,6 +8,14 @@ using Ceres.Graph.Flow.Utilities;
 using UnityEngine.Assertions;
 namespace Ceres.Graph.Flow
 {
+    public class InvalidExecutableFunctionException : Exception
+    {
+        public InvalidExecutableFunctionException(string message) : base(message)
+        {
+            
+        }
+    }
+    
     public enum ExecutableFunctionType
     {
         /// <summary>
@@ -332,7 +340,7 @@ namespace Ceres.Graph.Flow
                 _ => null
             };
 
-            if (methodInfo == null) throw new ArgumentException($"[Ceres] Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
+            if (methodInfo == null) throw new InvalidExecutableFunctionException($"[Ceres] Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
             functionStructure = new ExecutableFunction(functionInfo, methodInfo);
             _functions.Add(functionStructure);
             return functionStructure;

@@ -23,10 +23,28 @@ namespace Ceres.Graph.Flow.Utilities
             return string.Join(separator, values);
         }
         
-        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String")]
-        public static string Flow_StringFormat(string separator, object[] values)
+        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with One Argument")]
+        public static string Flow_StringFormatOneArgument(string separator, object argument)
         {
-            return string.Format(separator, values);
+            return string.Format(separator, argument);
+        }
+        
+        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with Two Arguments")]
+        public static string Flow_StringFormatTwoArguments(string separator, object argument0, object argument1)
+        {
+            return string.Format(separator, argument0, argument1);
+        }
+        
+        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with Three Arguments")]
+        public static string Flow_StringFormatThreeArguments(string separator, object argument0, object argument1, object argument2)
+        {
+            return string.Format(separator, argument0, argument1, argument2);
+        }
+        
+        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String")]
+        public static string Flow_StringFormat(string separator, object[] arguments)
+        {
+            return string.Format(separator, arguments);
         }
         
         [ExecutableFunction(IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("Replace String")]

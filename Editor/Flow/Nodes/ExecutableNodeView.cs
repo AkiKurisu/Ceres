@@ -8,6 +8,13 @@ using UnityEngine;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph.Flow
 {
+    [Flags]
+    public enum ExecutableNodeFlags
+    {
+        None = 0,
+        Invalid = 1
+    }
+    
     /// <summary>
     /// Base class for node visual element of <see cref="ExecutableNodeView"/>
     /// </summary>
@@ -104,6 +111,8 @@ namespace Ceres.Editor.Graph.Flow
     [CustomNodeView(typeof(ExecutableNode), true)]
     public class ExecutableNodeView: CeresNodeView
     {
+        public ExecutableNodeFlags Flags { get; protected set; }
+        
         /// <summary>
         /// Get node visual element, see <see cref="ExecutableNodeElement"/>
         /// </summary>

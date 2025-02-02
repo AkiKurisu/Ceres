@@ -140,7 +140,16 @@ namespace Ceres.Editor.Graph.Flow
         public sealed override void SetNodeInstance(CeresNode ceresNode)
         {
             var functionNode =(FlowNode_ExecuteFunction)ceresNode;
-            var methodInfo = functionNode.GetMethodInfo(NodeType.GetGenericArguments()[0]);
+            MethodInfo methodInfo;
+            try
+            {
+                methodInfo = functionNode.GetMethodInfo(NodeType.GetGenericArguments()[0]);
+            }
+            catch (InvalidExecutableFunctionException)
+            {
+                methodInfo = null;
+            }
+            
             if (methodInfo != null)
             {
                 /* Validate arguments length is aligned */
@@ -167,7 +176,9 @@ namespace Ceres.Editor.Graph.Flow
                 InstanceIsSelfTarget = functionNode.isSelfTarget && !IsStatic;
                 ExecuteInDependency = functionNode.executeInDependency;
                 ParameterCount = functionNode.parameterCount;
-                SetNodeElementTitle(functionNode.methodName);
+                SetNodeElementTitle(functionNode.methodName + " <color=#FFE000>[Invalid Function]</size></color>");
+                NodeElement.tooltip = $"The presence of this node indicates that the executable function {functionNode.methodName} bound to this node is invalid now.";
+                Flags |= ExecutableNodeFlags.Invalid;
             }
             else
             {

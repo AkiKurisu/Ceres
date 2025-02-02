@@ -103,4 +103,23 @@ namespace Ceres.Graph.Flow
         [Multiline]
         public string serializedData;
     }
+    
+    [Serializable]
+    [CeresGroup(CeresGroup.Hidden)]
+    [CeresLabel(NodeLabel)]
+    [NodeInfo(NodeInfo)]
+    public class IllegalExecutableNode : FlowNode
+    {
+        [Multiline]
+        public string nodeType;
+        
+        [Multiline]
+        public string serializedData;
+        
+        public const string NodeInfo =
+            "The presence of this node indicates that there are illegal properties that cause the node to fail to load correctly.";
+        
+        public const string NodeLabel =
+            "<color=#FFE000><b>Illegal Propeties!</b></color>";
+    }
 }
