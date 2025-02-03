@@ -15,7 +15,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             var myInspector = new VisualElement();
             myInspector.Add(new PropertyField(serializedObject.FindProperty(nameof(FlowGraphAsset.runtimeType))));
-            myInspector.Add(new FlowGraphDebugButton(Asset));
+            myInspector.Add(new OpenFlowGraphButton(Asset));
             return myInspector;
         }
     }

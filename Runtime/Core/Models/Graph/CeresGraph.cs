@@ -725,7 +725,6 @@ namespace Ceres.Graph
         protected void ReadFromLinkedNodes(CeresGraph graph)
         {
             nodes = graph.nodes.ToArray();
-            nodeData = nodes.Select(x => x.GetSerializedData()).ToArray();
             variables = graph.variables.ToArray();
             variableData = variables.Select(x => x.GetSerializedData()).ToArray();
             edges = new Edge[nodes.Length];
@@ -741,6 +740,8 @@ namespace Ceres.Graph
                 // clear duplicated reference
                 linkedInterface.ClearChildren();
             }
+            /* Must serialize node data after clear references */
+            nodeData = nodes.Select(x => x.GetSerializedData()).ToArray();
             nodeGroups = graph.nodeGroups.ToArray();
         }
         
