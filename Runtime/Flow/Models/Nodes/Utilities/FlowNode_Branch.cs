@@ -11,10 +11,10 @@ namespace Ceres.Graph.Flow.Utilities
         [InputPort]
         public CeresPort<bool> condition;
         
-        [OutputPort, CeresLabel("True")]
+        [OutputPort(false), CeresLabel("True")]
         public NodePort trueOutput;
         
-        [OutputPort, CeresLabel("False")]
+        [OutputPort(false), CeresLabel("False")]
         public NodePort falseOutput;
 
         protected sealed override UniTask Execute(ExecutionContext executionContext)

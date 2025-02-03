@@ -1,11 +1,12 @@
 using System;
 using Chris.Serialization;
 using UnityEngine;
-namespace Ceres
+namespace Ceres.Graph
 {
     /// <summary>
     /// Shared variable for any object
     /// </summary>
+    [FormerlySerializedType("Ceres.SharedObject, Ceres")]
     [Serializable]
     public class SharedObject : SharedVariable<object>, ISerializationCallbackReceiver
     {

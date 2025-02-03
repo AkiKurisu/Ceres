@@ -1,7 +1,8 @@
 using UnityEngine;
 using System;
 using Chris;
-namespace Ceres
+
+namespace Ceres.Graph
 {
     /// <summary>
     /// Variable can be shared between behaviors in behavior tree
@@ -96,6 +97,62 @@ namespace Ceres
         {
             return Clone();
         }
+        
+        public virtual SharedVariableData GetSerializedData()
+        {
+            /* Allows polymorphic serialization */
+            var data = new SharedVariableData();
+            data.Serialize(this);
+            return data;
+        }
+    }
+
+    /// <summary>
+    /// Metadata for <see cref="SharedVariable"/>
+    /// </summary>
+    [Serializable]
+    public class SharedVariableData
+    {
+        /// <summary>
+        /// Variable type
+        /// </summary>
+        public ManagedReferenceType variableType;
+        
+        /// <summary>
+        /// Json serialized data of variable properties
+        /// </summary>
+        public string serializedData;
+        
+        [SerializeField]
+        private UObjectLink[] uobjectLinks = Array.Empty<UObjectLink>();
+        
+        /// <summary>
+        /// Serialize variable data
+        /// </summary>
+        /// <param name="variable"></param>
+        public void Serialize(SharedVariable variable)
+        {
+            var type = variable.GetType();
+            CeresAPI.Assert(!type.IsGenericType, "Can not serialize generic variable which is not reliable");
+            variableType = new ManagedReferenceType(type);
+            serializedData = JsonUtility.ToJson(variable);
+            uobjectLinks = Array.Empty<UObjectLink>();
+            if (!Application.isPlaying)
+            {
+                UObjectLink.Parse(ref uobjectLinks, serializedData);
+            }
+        }
+        
+        /// <summary>
+        /// Deserialize a <see cref="SharedVariable"/> instance from this data
+        /// </summary>
+        /// <param name="outVariableType"></param>
+        /// <returns></returns>
+        public SharedVariable Deserialize(Type outVariableType)
+        {
+            var resolvedData = UObjectLink.Resolve(uobjectLinks, serializedData);
+            return JsonUtility.FromJson(resolvedData, outVariableType) as SharedVariable;
+        }
     }
     
     [Serializable]
@@ -176,8 +233,8 @@ namespace Ceres
         
         public ObserveProxyVariable<T> ObserveT()
         {
-            Setter ??= (evt) => { value = evt; };
-            var wrapper = new SetterWrapper<T>((w) => { Setter -= w.Invoke; });
+            Setter ??= newValue => value = newValue;
+            var wrapper = new SetterWrapper<T>(w => Setter -= w.Invoke);
             var proxy = new ObserveProxyVariable<T>(this, in wrapper);
             Setter += wrapper.Invoke;
             return proxy;
@@ -209,7 +266,7 @@ namespace Ceres
         }
     }
     
-    public class SetterWrapper<T> : IDisposable
+    internal class SetterWrapper<T> : IDisposable
     {
         private readonly Action<SetterWrapper<T>> _unregister;
         
@@ -258,10 +315,10 @@ namespace Ceres
         private void Bind(IVariable<T> other)
         {
             _getter = () => other.Value;
-            _setter = evt => other.Value = evt;
+            _setter = newValue => other.Value = newValue;
         }
         
-        public ObserveProxyVariable(SharedVariable<T> variable, in SetterWrapper<T> setterWrapper)
+        internal ObserveProxyVariable(SharedVariable<T> variable, in SetterWrapper<T> setterWrapper)
         {
             _setterWrapper = setterWrapper;
             setterWrapper.Setter = Notify;

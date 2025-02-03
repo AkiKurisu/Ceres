@@ -14,7 +14,7 @@ namespace Ceres.Graph.Flow.Utilities.Templates
             return new[] { portValueType };
         }
 
-        public override Type[] GetAvailableArgumentTypes(Type portValueType)
+        public override Type[] GetAvailableArguments(Type portValueType)
         {
             return new[]{ portValueType };
         }

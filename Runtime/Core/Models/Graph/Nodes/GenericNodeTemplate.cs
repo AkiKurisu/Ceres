@@ -30,7 +30,7 @@ namespace Ceres.Graph
         /// </summary>
         /// <param name="portValueType">Port value type, null if no port dropped</param>
         /// <returns></returns>
-        Type[] GetAvailableArgumentTypes(Type portValueType);
+        Type[] GetAvailableArguments(Type portValueType);
 
         /// <summary>
         /// Make generic node view editor name
@@ -67,7 +67,7 @@ namespace Ceres.Graph
             return !RequirePort() || portValueType != null;
         }
 
-        public abstract Type[] GetAvailableArgumentTypes(Type portValueType);
+        public abstract Type[] GetAvailableArguments(Type portValueType);
         
         public virtual string GetGenericNodeEntryName(string label, Type selectArgumentType)
         {

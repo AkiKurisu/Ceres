@@ -36,6 +36,17 @@ namespace Ceres.Editor.Graph.Flow
         public override bool SerializeGraph(ICeresGraphContainer container)
         {
             if (container is not IFlowGraphContainer flowGraphContainer) return false;
+            /* Compile validation */
+            var invalidNodeViews = NodeViews.OfType<ExecutableNodeView>()
+                .Where(view => view.Flags.HasFlag(ExecutableNodeFlags.Invalid))
+                .ToList();
+            if (invalidNodeViews.Any())
+            {
+                ClearSelection();
+                invalidNodeViews.ForEach(view => AddToSelection(view.NodeElement));
+                schedule.Execute(() => FrameSelection()).ExecuteLater(10);
+                return false;
+            }
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
             flowGraphContainer.SetGraphData(flowGraphData);
             EditorUtility.SetDirty(container.Object);
@@ -239,9 +250,14 @@ namespace Ceres.Editor.Graph.Flow
                         nodes = nodeInstances,
                         nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
                         variables = _graphView.SharedVariables.ToArray(),
+                        variableData = _graphView.SharedVariables.Select(x => x.GetSerializedData()).ToArray(),
                         nodeGroups = data.ToArray()
                     };
                     flowGraphData.PreSerialization();
+                    if (CeresSettings.SmallerBuilds)
+                    {
+                        flowGraphData.OptimizeForSmallerBuild();
+                    }
                     return flowGraphData;
                 }
             }
@@ -279,18 +295,27 @@ namespace Ceres.Editor.Graph.Flow
                 // Restore node views
                 foreach (var nodeInstance in flowGraph.nodes)
                 {
-                    var nodeView = NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView) as CeresNodeView;
-                    /* Missing node class should be handled before get graph */
+                    var nodeView = (CeresNodeView)NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView);
+                    /* Missing node class should be handled before deserializing graph */
                     CeresAPI.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
-                    _graphView.AddNodeView(nodeView);
-                    newElements.Add(nodeView!.NodeElement);
                     try
                     {
-                        nodeView.SetNodeInstance(nodeInstance);
+                        nodeView!.SetNodeInstance(nodeInstance);
+                        _graphView.AddNodeView(nodeView);
+                        newElements.Add(nodeView!.NodeElement);
                     }
                     catch (Exception e)
                     {
-                        CeresAPI.LogError($"Failed to restore properties from {nodeInstance}\n{e}");
+                        CeresAPI.LogError($"Failed to construct node view for type {nodeInstance} with exception thrown:\n{e}");
+                        /* Replace with illegal property node */
+                        nodeView = (CeresNodeView)NodeViewFactory.Get().CreateInstance(typeof(IllegalExecutableNode), _graphView);
+                        nodeView!.SetNodeInstance(new IllegalExecutableNode
+                        {
+                            nodeType = nodeInstance.NodeData.nodeType.ToString(),
+                            serializedData = nodeInstance.NodeData.serializedData
+                        });
+                        _graphView.AddNodeView(nodeView);
+                        newElements.Add(nodeView!.NodeElement);
                     }
                 }
                 foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(x=> x.View).ToArray())

@@ -14,7 +14,5 @@ namespace Ceres.Graph.Flow
         {
             return graphAsset.GetFlowGraph();
         }
-
-        internal static readonly SerializedType<IFlowGraphRuntime> SerializedType = SerializedType<IFlowGraphRuntime>.FromType(typeof(FlowGraphInstanceObject));
     }
 }

@@ -11,13 +11,13 @@ namespace Ceres.Graph.Flow.Utilities
         [InputPort, HideInGraphEditor]
         public CeresPort<Array> array;
         
-        [OutputPort]
+        [OutputPort(false)]
         public NodePort loopBody;
         
         [OutputPort]
         public CeresPort<object> arrayElement;
         
-        [OutputPort]
+        [OutputPort(false)]
         public NodePort completed;
 
         protected override async UniTask Execute(ExecutionContext executionContext)

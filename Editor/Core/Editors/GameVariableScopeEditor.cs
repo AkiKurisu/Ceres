@@ -5,6 +5,8 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using System.Collections.Generic;
 using Ceres.Editor.Graph;
+using Ceres.Graph;
+
 namespace Ceres.Editor
 {
     internal class VirtualGraphView : GraphView { }

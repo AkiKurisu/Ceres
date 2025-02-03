@@ -16,7 +16,7 @@ namespace Ceres.Graph.Flow.Utilities.Templates
             return new[] { portValueType, selectArgumentType };
         }
 
-        public override Type[] GetAvailableArgumentTypes(Type portValueType)
+        public override Type[] GetAvailableArguments(Type portValueType)
         {
             return CeresPort.GetAssignedPortValueTypes()
                             .Concat(ExecutableFunctionRegistry.Get().GetManagedTypes())

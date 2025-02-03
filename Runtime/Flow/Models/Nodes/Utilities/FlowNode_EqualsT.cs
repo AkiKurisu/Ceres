@@ -1,9 +1,8 @@
 using System;
 using Ceres.Annotations;
-using UnityEngine.Scripting;
+
 namespace Ceres.Graph.Flow.Utilities
 {
-    [Preserve]
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Equals")]

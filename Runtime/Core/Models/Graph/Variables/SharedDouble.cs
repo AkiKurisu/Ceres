@@ -1,6 +1,9 @@
 ﻿using System;
-namespace Ceres
+using Chris.Serialization;
+
+namespace Ceres.Graph
 {
+    [FormerlySerializedType("Ceres.SharedDouble, Ceres")]
     [Serializable]
     public class SharedDouble : SharedVariable<double>
     {

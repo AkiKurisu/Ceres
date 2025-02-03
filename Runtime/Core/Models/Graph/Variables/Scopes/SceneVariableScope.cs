@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-namespace Ceres
+namespace Ceres.Graph
 {
+    /// <summary>
+    /// Component contains <see cref="SharedVariable"/> in scene lifetime scope
+    /// </summary>
     public class SceneVariableScope : MonoBehaviour, IVariableScope, IVariableSource
     {
         [SerializeReference]
@@ -24,7 +27,7 @@ namespace Ceres
             }
         }
         
-        public void Initialize()
+        internal void Initialize()
         {
             _initialized = true;
             if (parentScope && parentScope.IsCurrentScope())

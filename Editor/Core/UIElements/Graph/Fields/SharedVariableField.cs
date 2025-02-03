@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
+using Ceres.Graph;
 using Chris.Serialization;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph

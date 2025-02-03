@@ -1,8 +1,9 @@
 using System;
 using Chris.Serialization;
 using UObject = UnityEngine.Object;
-namespace Ceres
+namespace Ceres.Graph
 {
+    [FormerlySerializedType("Ceres.SharedUObject, Ceres")]
     [Serializable]
     public class SharedUObject : SharedVariable<UObject>
     {

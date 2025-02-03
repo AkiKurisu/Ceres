@@ -9,7 +9,7 @@ namespace Ceres.Editor.Graph.Flow
     {
         private int _portIndex;
 
-        private readonly List<CeresPortView> _outputPortViews = new();
+        private readonly List<CeresPortView> _dynamicPortViews = new();
 
         /// <summary>
         /// Reflection data for <see cref="IPortArrayNode"/>
@@ -39,10 +39,17 @@ namespace Ceres.Editor.Graph.Flow
 
         public override ExecutableNode CompileNode()
         {
-            var node = base.CompileNode();
-            if(node is IPortArrayNode portArrayNode)
+            var nodeInstance = (ExecutableNode)Activator.CreateInstance(NodeType);
+            if(nodeInstance is IPortArrayNode portArrayNode)
+            {
+                /* Allocate before commit */
                 portArrayNode.SetPortArrayLength(_portIndex);
-            return node;
+            }
+            FieldResolvers.ForEach(r => r.Commit(nodeInstance));
+            PortViews.ForEach(p => p.Commit(nodeInstance));
+            nodeInstance.GraphPosition = NodeElement.GetPosition();
+            nodeInstance.Guid = Guid;
+            return nodeInstance;
         }
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
@@ -63,28 +70,28 @@ namespace Ceres.Editor.Graph.Flow
             portData.arrayIndex = index;
             var newPortView = PortViewFactory.CreateInstance(NodeReflection.PortArrayField, this, portData);
             AddPortView(newPortView);
-            _outputPortViews.Add(newPortView);
+            _dynamicPortViews.Add(newPortView);
             newPortView.SetDisplayName(GetPortArrayElementDisplayName(index));
         }
 
         private void RemoveUnconnectedPorts()
         {
-            for (int i = _outputPortViews.Count - 1; i >= 0; i--)
+            for (int i = _dynamicPortViews.Count - 1; i >= 0; i--)
             {
-                var portView = _outputPortViews[i];
+                var portView = _dynamicPortViews[i];
                 if (portView.PortElement.connected)
                 {
                     continue;
                 }
                 _portIndex--;
-                _outputPortViews.RemoveAt(i);
+                _dynamicPortViews.RemoveAt(i);
                 RemovePortView(portView);
             }
             /* Reorder */
             for (int i = 0; i < _portIndex; i++)
             {
-                _outputPortViews[i].PortData.arrayIndex = i;
-                _outputPortViews[i].SetDisplayName(GetPortArrayElementDisplayName(i));
+                _dynamicPortViews[i].PortData.arrayIndex = i;
+                _dynamicPortViews[i].SetDisplayName(GetPortArrayElementDisplayName(i));
             }
         }
 

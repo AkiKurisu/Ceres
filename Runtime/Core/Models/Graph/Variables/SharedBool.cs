@@ -1,6 +1,9 @@
 using System;
-namespace Ceres
+using Chris.Serialization;
+
+namespace Ceres.Graph
 {
+    [FormerlySerializedType("Ceres.SharedBool, Ceres")]
     [Serializable]
     public class SharedBool : SharedVariable<bool>
     {

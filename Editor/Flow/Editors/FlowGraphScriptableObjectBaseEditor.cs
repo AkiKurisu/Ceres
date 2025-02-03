@@ -5,11 +5,14 @@ using UnityEngine.UIElements;
 using UEditor = UnityEditor.Editor;
 namespace Ceres.Editor.Graph.Flow
 {
-    public class FlowGraphDebugButton : Button
+    /// <summary>
+    /// This is a clickable button that will open flow graph editor after being clicked
+    /// </summary>
+    public class OpenFlowGraphButton : Button
     {
         private const string ButtonText = "Open Flow Graph";
         
-        public FlowGraphDebugButton(IFlowGraphContainer container) : base(() => FlowGraphEditorWindow.Show(container))
+        public OpenFlowGraphButton(IFlowGraphContainer container) : base(() => FlowGraphEditorWindow.Show(container))
         {
             style.fontSize = 15;
             style.unityFontStyleAndWeight = FontStyle.Bold;
@@ -38,7 +41,7 @@ namespace Ceres.Editor.Graph.Flow
         public override VisualElement CreateInspectorGUI()
         {
             var myInspector = new VisualElement();
-            myInspector.Add(new FlowGraphDebugButton(Asset));
+            myInspector.Add(new OpenFlowGraphButton(Asset));
             return myInspector;
         }
     }

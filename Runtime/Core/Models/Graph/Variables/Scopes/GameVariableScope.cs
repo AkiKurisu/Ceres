@@ -1,8 +1,10 @@
 using System.Collections.Generic;
-using Ceres.Graph;
 using UnityEngine;
-namespace Ceres
+namespace Ceres.Graph
 {
+    /// <summary>
+    /// Component contains <see cref="SharedVariable"/> in game lifetime scope
+    /// </summary>
     [CreateAssetMenu(fileName = "GameVariableScope", menuName = "Ceres/GameVariableScope")]
     public class GameVariableScope : ScriptableObject, IVariableScope, IVariableSource
     {
@@ -27,8 +29,8 @@ namespace Ceres
                 Initialize();
             }
         }
-        
-        public void Initialize()
+
+        private void Initialize()
         {
             if (InitializationStack.Contains(this))
             {

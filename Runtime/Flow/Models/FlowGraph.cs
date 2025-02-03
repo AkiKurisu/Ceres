@@ -212,6 +212,14 @@ namespace Ceres.Graph.Flow
                 path = x
             }).ToArray();
         }
+
+        public void OptimizeForSmallerBuild()
+        {
+            for (var i = 0; i < nodes.Length; i++)
+            {
+                nodes[i] = null;
+            }
+        }
     }
 
     public static class FlowGraphRuntimeExtensions
