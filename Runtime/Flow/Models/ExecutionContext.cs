@@ -40,7 +40,7 @@ namespace Ceres.Graph.Flow
 
         private CancellationToken? _cancellationToken;
         
-        private ExecutionContext()
+        protected ExecutionContext()
         {
 
         }
