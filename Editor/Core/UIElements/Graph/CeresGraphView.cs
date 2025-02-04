@@ -120,8 +120,9 @@ namespace Ceres.Editor.Graph
 
         private void OnGroupKeyDown(KeyDownEvent evt)
         {
+            if (evt.ctrlKey) return;
             if (evt.keyCode != KeyCode.C) return;
-            if (evt.ctrlKey)
+            if (evt.altKey)
             {
                 NodeGroupHandler.DoUnGroup();
             }
