@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
+
 namespace Ceres
 {
     /// <summary>
@@ -43,24 +47,32 @@ namespace Ceres
             return new LogLevelAutoScope(logLevel);
         }
         
+        [DebuggerHidden]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LogWarning(string message)
         {
             if(LogLevel >= LogType.Warning)
                 Debug.LogWarning($"<color=#fcbe03>[Ceres]</color> {message}");
         }
         
+        [DebuggerHidden]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Log(string message)
         {
             if(LogLevel >= LogType.Log)
                 Debug.Log($"<color=#3aff48>[Ceres]</color> {message}");
         }
 
+        [DebuggerHidden]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LogError(string message)
         {
             if(LogLevel >= LogType.Error)
                 Debug.LogError($"<color=#ff2f2f>[Ceres]</color> {message}");
         }
         
+        [DebuggerHidden]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Assert(bool condition, string message)
         {
             if (LogLevel >= LogType.Assert)

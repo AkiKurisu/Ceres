@@ -52,14 +52,14 @@ namespace Ceres.Editor.Graph
                 Event.current.mousePosition
             );
             
-            if (edge.output != null)
+            if (edge.output?.edgeConnector.edgeDragHelper.draggedPort != null)
             {
                 GraphView.OpenSearch(
                     screenPosition,
                     ((CeresPortElement)edge.output.edgeConnector.edgeDragHelper.draggedPort).View
                 );
             }
-            else if (edge.input != null)
+            else if (edge.input?.edgeConnector.edgeDragHelper.draggedPort != null)
             {
                 GraphView.OpenSearch(
                     screenPosition,

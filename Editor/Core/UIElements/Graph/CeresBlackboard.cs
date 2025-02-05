@@ -439,12 +439,13 @@ namespace Ceres.Editor.Graph
                 return true;
             }
 
-            if (Attribute.IsDefined(type, typeof(SerializableAttribute), false))
+            if (Attribute.IsDefined(type, typeof(SerializableAttribute), true))
             {
                 return true;
             }
-                        
-            return false;
+              
+            /* Non-serializable type only visible when assigned where only in the case user want to use it */
+            return CeresPort.GetAssignedPortValueTypes().Contains(type);
         }
 
         /// <summary>

@@ -58,6 +58,7 @@ namespace Ceres.Editor.Graph.Flow
 
         private void OnVariableChange(VariableChangeEvent evt)
         {
+            if (NodeElement.panel == null) return;
             if(evt.Variable != _boundVariable) return;
             if(evt.ChangeType == VariableChangeType.Name)
             {

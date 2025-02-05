@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using Ceres.Graph;
 
-namespace Ceres.Flow.Models.Nodes.Utilities.Templates
+namespace Ceres.Graph.Flow.Utilities.Templates
 {
     public class FlowNode_MakeArrayT_Template: GenericNodeTemplate
     {
