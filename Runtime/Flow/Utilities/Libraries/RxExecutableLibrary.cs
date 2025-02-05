@@ -36,5 +36,11 @@ namespace Ceres.Graph.Flow.Utilities
         {
             disposable.AddTo(gameObject);
         }
+        
+        [ExecutableFunction, CeresLabel("Create Disposable from Event")]
+        public static IDisposable Flow_DisposableCreate(EventDelegate onDispose)
+        {
+            return Disposable.Create(onDispose);
+        }
     }
 }
