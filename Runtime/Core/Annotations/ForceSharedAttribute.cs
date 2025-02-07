@@ -1,4 +1,6 @@
 using System;
+using Ceres.Graph;
+
 namespace Ceres.Annotations
 {
     /// <summary>

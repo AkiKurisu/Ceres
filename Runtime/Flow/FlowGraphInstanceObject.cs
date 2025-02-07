@@ -1,5 +1,4 @@
-﻿using Chris.Serialization;
-using UnityEngine;
+﻿using UnityEngine;
 namespace Ceres.Graph.Flow
 {
     /// <summary>
@@ -10,7 +9,7 @@ namespace Ceres.Graph.Flow
         [SerializeField]
         private FlowGraphAsset graphAsset;
         
-        protected override FlowGraph CreateRuntimeFlowGraphInstance()
+        protected sealed override FlowGraph CreateRuntimeFlowGraphInstance()
         {
             return graphAsset.GetFlowGraph();
         }

@@ -81,8 +81,16 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void DeserializeGraph(ICeresGraphContainer container)
         {
-            var graph = ((IFlowGraphContainer)container).GetFlowGraph();
-            new CopyPasteGraph(this, graphElements).DeserializeGraph(graph);
+            FlowGraph flowGraph;
+            if (container is IFlowGraphRuntime runtimeContainer)
+            {
+                flowGraph = runtimeContainer.GetRuntimeFlowGraph();
+            }
+            else
+            {
+                flowGraph = ((IFlowGraphContainer)container).GetFlowGraph();
+            }
+            new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph);
         }
 
         private void HandleKeyBoardCommands(KeyDownEvent evt)
@@ -343,7 +351,7 @@ namespace Ceres.Editor.Graph.Flow
 
         private class FlowGraphDebugTracker: FlowGraphTracker
         {
-            private readonly FlowGraphView _graphView;
+            private FlowGraphView _graphView;
 
             public bool IsPaused { get; private set; }
 
@@ -433,6 +441,8 @@ namespace Ceres.Editor.Graph.Flow
             public override void Dispose()
             {
                 _isDestroyed = true;
+                _graphView = null;
+                _currentView = null;
                 base.Dispose();
             }
         }

@@ -14,14 +14,5 @@ namespace Ceres.Graph.Flow
         {
             return GetType();
         }
-
-        public override FlowGraph GetFlowGraph()
-        {
-            if (Application.isPlaying && _graph != null)
-            {
-                return _graph;
-            }
-            return base.GetFlowGraph();
-        }
     }
 }
