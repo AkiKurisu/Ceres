@@ -21,10 +21,10 @@ jobs:
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: site~
 
       - name: Deploy
         uses: actions/deploy-pages@v2.0.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: site~
