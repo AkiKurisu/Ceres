@@ -15,14 +15,14 @@ jobs:
         # with:
         #   submodules: true
 
-      # Download the generated documentation
+      # Download pre-generated documentation
       - name: Download site artifact
         uses: actions/download-artifact@v1
         with:
           name: site~
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: actions/deploy-pages@v2.0.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
