@@ -8,7 +8,6 @@ on:
 jobs:
   # Deploy the generated documentation to the gh-pages branch
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
