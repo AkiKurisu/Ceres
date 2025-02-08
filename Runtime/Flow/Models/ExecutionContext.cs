@@ -172,6 +172,9 @@ namespace Ceres.Graph.Flow
             Graph.PopContext(this);
             Graph = null;
             _cancellationToken = null;
+#if !CERES_DISABLE_TRACKER
+            _tracker = null;
+#endif
             
             /* Release list */
             if(_forwardPath != null)

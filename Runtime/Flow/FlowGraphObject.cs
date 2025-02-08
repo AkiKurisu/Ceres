@@ -46,7 +46,7 @@ namespace Ceres.Graph.Flow
     [GenerateFlow(GenerateRuntime = false, GenerateImplementation = true)]
     public partial class FlowGraphObject : FlowGraphObjectBase
     {
-        protected override FlowGraph CreateRuntimeFlowGraphInstance()
+        protected sealed override FlowGraph CreateRuntimeFlowGraphInstance()
         {
             return GetFlowGraph();
         }

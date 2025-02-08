@@ -8,8 +8,11 @@ namespace Ceres.Graph.Flow
         {
             private readonly FlowGraphTracker _flowGraphTracker;
 
+            private readonly FlowGraphTracker _cachedTracker;
+                
             internal TrackerAutoScope(FlowGraphTracker tracker)
             {
+                _cachedTracker = GetActiveTracker();
                 _flowGraphTracker = tracker;
                 SetActiveTracker(tracker);
             }
@@ -17,12 +20,18 @@ namespace Ceres.Graph.Flow
             public void Dispose()
             {
                 _flowGraphTracker.Dispose();
+                if (!_cachedTracker._isDisposed)
+                {
+                    SetActiveTracker(_cachedTracker);
+                }
             }
         }
         
         private static readonly FlowGraphTracker DefaultTracker = new();
 
         private static FlowGraphTracker _activeTracer;
+
+        private bool _isDisposed;
 
         protected FlowGraphTracker()
         {
@@ -64,6 +73,7 @@ namespace Ceres.Graph.Flow
             {
                 _activeTracer = null;
             }
+            _isDisposed = true;
         }
     }
 
