@@ -29,7 +29,7 @@ namespace Ceres.Editor.Graph.Flow
             AddSearchWindow<ExecutableNodeSearchWindow>();
             AddNodeGroupHandler(new ExecutableNodeGroupHandler(this));
             AddBlackboard(new FlowBlackboard(this));
-            FlowGraphTracker.SetActiveTracker(_tracker = new FlowGraphDebugTracker(this));
+            FlowGraphTracker.SetDefaultTracker(_tracker = new FlowGraphDebugTracker(this));
             RegisterCallback<KeyDownEvent>(HandleKeyBoardCommands);
         }
 
@@ -443,6 +443,7 @@ namespace Ceres.Editor.Graph.Flow
                 _isDestroyed = true;
                 _graphView = null;
                 _currentView = null;
+                SetDefaultTracker(null);
                 base.Dispose();
             }
         }

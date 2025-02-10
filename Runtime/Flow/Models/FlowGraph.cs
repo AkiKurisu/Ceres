@@ -4,8 +4,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Graph.Flow
 {
     /// <summary>
@@ -40,11 +42,53 @@ namespace Ceres.Graph.Flow
     
     public class FlowGraph : CeresGraph
     {
+        private sealed class FlowGraphEventHandler: CallbackEventHandler, IDisposable
+        {
+            public override IEventCoordinator Coordinator => EventSystem.Instance;
+
+            private FlowGraph _flowGraph;
+
+            private UObject _contextObject;
+
+            public FlowGraphEventHandler(FlowGraph flowGraph, UObject contextObject)
+            {
+                _flowGraph = flowGraph;
+                _contextObject = contextObject;
+            }
+            
+            public override void SendEvent(EventBase e, DispatchMode dispatchMode = DispatchMode.Default)
+            {
+                e.Target = this;
+                Coordinator.EventDispatcher.Dispatch(e, Coordinator, dispatchMode);
+            }
+
+            protected override void ExecuteDefaultAction(EventBase evt)
+            {
+                base.ExecuteDefaultAction(evt);
+                if (!_contextObject) return;
+                /* Get event name if it has generated executable event */
+                var eventName = GeneratedExecutableEvent.GetEventName(evt.EventTypeId);
+                if (string.IsNullOrEmpty(eventName)) return;
+                _flowGraph.TryExecuteEvent(_contextObject, eventName, evt);
+            }
+
+            public void Dispose()
+            {
+                _flowGraph = null;
+                _contextObject = null;
+            }
+        }
+        
+        /// <summary>
+        /// All <see cref="ExecutableEvent"/> inside this graph
+        /// </summary>
         public ExecutableEvent[] Events { get; internal set; }
 
         private bool _hasCompiled;
 
         private List<ExecutionContext> _executionList;
+
+        private FlowGraphEventHandler _eventHandler;
 
         public FlowGraph(FlowGraphData flowGraphData) : base(flowGraphData)
         {
@@ -63,13 +107,26 @@ namespace Ceres.Graph.Flow
             _hasCompiled = true;
         }
 
+        /// <summary>
+        /// Get or create a <see cref="CallbackEventHandler"/> bound to an <see cref="UObject"/>
+        /// </summary>
+        /// <param name="contextObject"></param>
+        public CallbackEventHandler GetOrCreateEventHandler(UObject contextObject)
+        {
+            _eventHandler ??= new FlowGraphEventHandler(this, contextObject);
+            return _eventHandler;
+        }
+
         public override void Dispose()
         {
-            base.Dispose();
             if(_executionList != null)
             {
                 ListPool<ExecutionContext>.Release(_executionList);
+                _executionList = null;
             }
+            _eventHandler?.Dispose();
+            _eventHandler = null;
+            base.Dispose();
         }
 
         /// <summary>
@@ -349,6 +406,8 @@ namespace Ceres.Graph.Flow
         /// <param name="runtime"></param>
         /// <param name="parameters"></param>
         /// <param name="eventName"></param>
+        /// <remarks>Note that this method causes boxing and unboxing, which results in allocation.
+        /// Consider using an overload method with fewer parameters.</remarks>
         public static void ProcessEventUber(this IFlowGraphRuntime runtime, object[] parameters, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent.Create(eventName, parameters);
@@ -360,6 +419,8 @@ namespace Ceres.Graph.Flow
         /// </summary>
         /// <param name="runtime"></param>
         /// <returns></returns>
+        /// <remarks>Convenient for inheritors to implicitly obtain the runtime graph instance
+        /// when <see cref="IFlowGraphRuntime.Graph"/> is explicitly implemented.</remarks>
         public static FlowGraph GetRuntimeFlowGraph(this IFlowGraphRuntime runtime)
         {
             return runtime.Graph;
