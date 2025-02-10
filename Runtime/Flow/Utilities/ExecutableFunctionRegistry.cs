@@ -54,18 +54,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         private ExecutableFunctionRegistry()
         {
-            var referencedAssemblies = AppDomain.CurrentDomain.GetAssemblies()
-                .Where(x =>
-                {
-                    if (x.GetName().Name.Contains(".Editor"))
-                    {
-                        return false;
-                    }
-
-                    return x.GetReferencedAssemblies().Any(name => name.Name == nameof(Ceres)) 
-                           || x.GetName().Name == nameof(Ceres);
-                })
-                .ToArray();
+            var referencedAssemblies = SubClassSearchUtility.GetRuntimeReferencedAssemblies();
             
             // Collect static functions
             var methodInfos = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(ExecutableFunctionLibrary))

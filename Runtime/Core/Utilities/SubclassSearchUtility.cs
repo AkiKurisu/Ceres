@@ -8,6 +8,25 @@ namespace Ceres.Utilities
     public static class SubClassSearchUtility
     {
         private const char Span = '/';
+
+        private static Assembly[] _referencedAssemblies;
+
+        public static Assembly[] GetRuntimeReferencedAssemblies()
+        {
+            _referencedAssemblies ??= AppDomain.CurrentDomain.GetAssemblies()
+                .Where(x =>
+                {
+                    if (x.GetName().Name.Contains(".Editor"))
+                    {
+                        return false;
+                    }
+
+                    return x.GetReferencedAssemblies().Any(name => name.Name == nameof(Ceres)) 
+                           || x.GetName().Name == nameof(Ceres);
+                })
+                .ToArray();
+            return _referencedAssemblies;
+        }
         
         public static List<Type> FindSubClassTypes(Type searchType)
         {

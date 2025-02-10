@@ -30,6 +30,11 @@ namespace Ceres.Editor.Graph.Flow
             FillDefaultNodePorts();
         }
 
+        protected virtual bool CanRename()
+        {
+            return true;
+        }
+
         public override void SetNodeInstance(CeresNode ceresNode)
         {
             var eventNode = (ExecutableEvent)ceresNode;
@@ -54,6 +59,8 @@ namespace Ceres.Editor.Graph.Flow
 
         private void ValidateEventName()
         {
+            if (!CanRename()) return;
+            
             var existEventNodes = GraphView.NodeViews
                 .OfType<ExecutableEventNodeView>()
                 .Except(new [] { this })
@@ -95,7 +102,7 @@ namespace Ceres.Editor.Graph.Flow
             FillMethodParameterPorts(methodInfo);
         }
 
-        public string GetEventName()
+        public virtual string GetEventName()
         {
             return _eventNameResolver.BaseField.value;
         }
@@ -110,12 +117,12 @@ namespace Ceres.Editor.Graph.Flow
         {
             _eventNameResolver = FindFieldResolver<StringResolver>(nameof(ExecutionEvent.eventName));
             UpdateEventTitle();
-            _eventNameResolver.RegisterValueChangeCallback(_ =>
+            if (CanRename())
             {
-                UpdateEventTitle();
-            });
-            var titleLabel = NodeElement.Q<Label>("title-label");
-            titleLabel.RegisterCallback<MouseDownEvent>(OnClick);
+                _eventNameResolver.RegisterValueChangeCallback(_ => { UpdateEventTitle(); });
+                var titleLabel = NodeElement.Q<Label>("title-label");
+                titleLabel.RegisterCallback<MouseDownEvent>(OnClick);
+            }
             _eventNameResolver.BaseField.style.display = DisplayStyle.None;
         }
 
@@ -168,7 +175,10 @@ namespace Ceres.Editor.Graph.Flow
             return node;
         }
 
-        protected abstract void FillMethodParameterPorts(MethodInfo methodInfo);
+        protected virtual void FillMethodParameterPorts(MethodInfo methodInfo)
+        {
+            
+        }
     }
     
     [CustomNodeView(typeof(ExecutableEvent), true)]
@@ -191,7 +201,24 @@ namespace Ceres.Editor.Graph.Flow
                 portView?.SetDisplayName(parameters[i].Name);
             }
         }
+    }
+    
+    [CustomNodeView(typeof(GeneratedExecutableEvent), true)]
+    public class GeneratedExecutableEventNodeView: ExecutableEventNodeView
+    {
+        public GeneratedExecutableEventNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
+        {
+        }
 
+        public override string GetEventName()
+        {
+            return base.GetEventName()[(nameof(GeneratedExecutableEvent).Length + 1)..];
+        }
+        
+        protected override bool CanRename()
+        {
+            return false;
+        }
     }
     
     [CustomNodeView(typeof(ExecutionEventUber), false)]
@@ -205,7 +232,7 @@ namespace Ceres.Editor.Graph.Flow
         public override ExecutableNode CompileNode()
         {
             var node = (ExecutionEventUber)base.CompileNode();
-            if(MethodInfo != null)
+            if (MethodInfo != null)
             {
                 /* Skip compile if method not exist */
                 node.argumentCount = MethodInfo.GetParameters().Length;
