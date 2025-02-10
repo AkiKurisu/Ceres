@@ -1,22 +1,40 @@
 using System.Diagnostics;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
+using Chris.Events;
+using Chris.Schedulers;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 namespace Ceres.Tests
 {
     public class TestFlowGraphObject : FlowGraphObject
     {
+        private CallbackEventHandler _callbackEventHandler;
+        
         [ImplementableEvent]
         public void Start()
         {
+            /* Test ILPP work */
+#if CERES_DISABLE_ILPP
             this.ProcessEvent();
+#endif
+            /* Create event handler */
+            _callbackEventHandler = this.GetRuntimeFlowGraph().GetOrCreateEventHandler(this);
+            Scheduler.Delay(1f, TestSendEvent);
+        }
+
+        private void TestSendEvent()
+        {
+            using var evt = TestGlobalEvent.GetPooled(100);
+            Debug.Log($"Script side call {nameof(TestSendEvent)}", this);
+            _callbackEventHandler.SendEvent(evt);
         }
         
         [ImplementableEvent]
         public void OnDestroy()
         {
             Debug.Log("Script side received OnDestroy", this);
+            /* Manually call flow event */
             using var evt = ExecuteFlowEvent.Create(nameof(OnDestroy), ExecuteFlowEvent.DefaultArgs);
             if (this.GetRuntimeFlowGraph().TryExecuteEvent(Object, evt.FunctionName, evt))
             {
@@ -52,6 +70,7 @@ namespace Ceres.Tests
         [ImplementableEvent]
         private void Flow_OnCall(GameObject inGameObject)
         {
+            /* Test tracker scope */
             using (new FlowGraphDependencyTracker(this.GetRuntimeFlowGraph()).Auto())
             {
                 this.ProcessEvent(inGameObject);

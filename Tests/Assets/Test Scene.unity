@@ -170,24 +170,28 @@ MonoBehaviour:
   graphData:
     variables: []
     nodes:
-    - rid: 3700341120743243790
-    - rid: 3700341120743243791
-    - rid: 3700341120743243792
+    - rid: 1770628475572453397
+    - rid: 1770628475572453398
+    - rid: 1770628475572453399
     - rid: -2
-    - rid: 3700341120743243793
-    - rid: -2
-    - rid: -2
+    - rid: 1770628475572453400
     - rid: -2
     - rid: -2
     - rid: -2
-    - rid: 3700341120743243794
+    - rid: -2
+    - rid: -2
+    - rid: 1770628475572453401
     - rid: -2
     - rid: -2
     - rid: -2
-    - rid: 3700341120743243795
-    - rid: 3700341120743243796
-    - rid: 3700341120743243797
+    - rid: 1770628475572453402
+    - rid: 1770628475572453403
+    - rid: 1770628475572453404
     - rid: -2
+    - rid: 1770628475572453405
+    - rid: -2
+    - rid: 1770628475572453406
+    variableData: []
     nodeData:
     - graphPosition:
         serializedVersion: 2
@@ -838,6 +842,115 @@ MonoBehaviour:
         arrayIndex: 0
         connections: []
       uobjectLinks: []
+    - graphPosition:
+        serializedVersion: 2
+        x: 878
+        y: 1477
+        width: 127
+        height: 121
+      description: 
+      guid: 35a43c7c-1404-4bca-b27e-0f72b428f793
+      nodeType:
+        _class: FlowNode_DebugLogString
+        _ns: Ceres.Graph.Flow.Utilities
+        _asm: Ceres
+      genericParameters: []
+      serializedData: '{"input":{"defaultValue":{"guid":""}},"exec":{"defaultValue":{"guid":""}},"logType":3,"inString":{"defaultValue":""}}'
+      executionPath: 0
+      portData:
+      - type: Ceres.Graph.NodeReference, Ceres##0
+        propertyName: input
+        arrayIndex: 0
+        connections: []
+      - type: Ceres.Graph.NodeReference, Ceres##0
+        propertyName: exec
+        arrayIndex: 0
+        connections: []
+      - type: System.String, mscorlib##0
+        propertyName: inString
+        arrayIndex: 0
+        connections: []
+      uobjectLinks: []
+    - graphPosition:
+        serializedVersion: 2
+        x: 454
+        y: 1588
+        width: 406
+        height: 101
+      description: 
+      guid: e49ea6cc-532e-4db8-a5ee-24f1a8fe8147
+      nodeType:
+        _class: FlowNode_ExecuteFunctionTReturn`4
+        _ns: Ceres.Graph.Flow.Utilities
+        _asm: Ceres
+      genericParameters:
+      - Ceres.Graph.Flow.Utilities.TextExecutableLibrary, Ceres##0
+      - System.String, mscorlib##0
+      - System.Object, mscorlib##0
+      - System.String, mscorlib##0
+      serializedData: '{"input":{"defaultValue":{"guid":""}},"exec":{"defaultValue":{"guid":""}},"methodName":"Flow_StringFormatOneArgument","parameterCount":2,"isStatic":true,"executeInDependency":true,"isSelfTarget":false,"isScriptMethod":false,"target":{},"input1":{"defaultValue":"Receive
+        TestGlobalEvent with data {0}"},"input2":{},"output":{"defaultValue":""}}'
+      executionPath: 1
+      portData:
+      - type: Ceres.Graph.NodeReference, Ceres##0
+        propertyName: input
+        arrayIndex: 0
+        connections: []
+      - type: Ceres.Graph.NodeReference, Ceres##0
+        propertyName: exec
+        arrayIndex: 0
+        connections: []
+      - type: Ceres.Graph.Flow.Utilities.TextExecutableLibrary, Ceres##0
+        propertyName: target
+        arrayIndex: 0
+        connections: []
+      - type: System.String, mscorlib##0
+        propertyName: input1
+        arrayIndex: 0
+        connections: []
+      - type: System.Object, mscorlib##0
+        propertyName: input2
+        arrayIndex: 0
+        connections: []
+      - type: System.String, mscorlib##0
+        propertyName: output
+        arrayIndex: 0
+        connections:
+        - nodeId: 35a43c7c-1404-4bca-b27e-0f72b428f793
+          portId: inString
+          portIndex: 0
+      uobjectLinks: []
+    - graphPosition:
+        serializedVersion: 2
+        x: 217
+        y: 1477
+        width: 208
+        height: 101
+      description: 
+      guid: 40908a9f-4455-444f-9a7e-43da41ba4222
+      nodeType:
+        _class: ExecutableEvent_TestGlobalEvent
+        _ns: Ceres.Tests
+        _asm: Ceres.Tests
+      genericParameters: []
+      serializedData: '{"eventName":"GeneratedExecutableEvent_TestGlobalEvent","isImplementable":false,"exec":{"defaultValue":{"guid":""}},"data":{"defaultValue":0}}'
+      executionPath: 0
+      portData:
+      - type: Ceres.Graph.NodeReference, Ceres##0
+        propertyName: exec
+        arrayIndex: 0
+        connections:
+        - nodeId: 35a43c7c-1404-4bca-b27e-0f72b428f793
+          portId: input
+          portIndex: 0
+      - type: System.Int32, mscorlib##0
+        propertyName: data
+        arrayIndex: 0
+        connections:
+        - nodeId: e49ea6cc-532e-4db8-a5ee-24f1a8fe8147
+          portId: input2
+          portIndex: 0
+      uobjectLinks: []
     nodeGroups: []
     nodeDependencyPath:
     - path: 
@@ -858,12 +971,15 @@ MonoBehaviour:
     - path: 
     - path: 
     - path: 
+    - path: 13000000
+    - path: 
+    - path: 
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 3700341120743243790
+    - rid: 1770628475572453397
       type: {class: FlowNode_DebugLogString, ns: Ceres.Graph.Flow.Utilities, asm: Ceres}
       data:
         input:
@@ -875,7 +991,7 @@ MonoBehaviour:
         logType: 3
         inString:
           defaultValue: Test Object Start
-    - rid: 3700341120743243791
+    - rid: 1770628475572453398
       type: {class: ExecutionEvent, ns: Ceres.Graph.Flow, asm: Ceres}
       data:
         eventName: Start
@@ -883,7 +999,7 @@ MonoBehaviour:
         exec:
           defaultValue:
             guid: 
-    - rid: 3700341120743243792
+    - rid: 1770628475572453399
       type: {class: ExecutionEvent, ns: Ceres.Graph.Flow, asm: Ceres}
       data:
         eventName: OnTimerEnd
@@ -891,7 +1007,7 @@ MonoBehaviour:
         exec:
           defaultValue:
             guid: 
-    - rid: 3700341120743243793
+    - rid: 1770628475572453400
       type: {class: FlowNode_Sequence, ns: Ceres.Graph.Flow.Utilities, asm: Ceres}
       data:
         input:
@@ -899,7 +1015,7 @@ MonoBehaviour:
             guid: 
         outputs: []
         outputCount: 3
-    - rid: 3700341120743243794
+    - rid: 1770628475572453401
       type: {class: FlowNode_DebugLogString, ns: Ceres.Graph.Flow.Utilities, asm: Ceres}
       data:
         input:
@@ -911,7 +1027,7 @@ MonoBehaviour:
         logType: 3
         inString:
           defaultValue: 
-    - rid: 3700341120743243795
+    - rid: 1770628475572453402
       type: {class: FlowNode_DebugLogString, ns: Ceres.Graph.Flow.Utilities, asm: Ceres}
       data:
         input:
@@ -923,7 +1039,7 @@ MonoBehaviour:
         logType: 3
         inString:
           defaultValue: Try Destroy Test Object
-    - rid: 3700341120743243796
+    - rid: 1770628475572453403
       type: {class: ExecutionEvent, ns: Ceres.Graph.Flow, asm: Ceres}
       data:
         eventName: OnDestroy
@@ -931,7 +1047,7 @@ MonoBehaviour:
         exec:
           defaultValue:
             guid: 
-    - rid: 3700341120743243797
+    - rid: 1770628475572453404
       type: {class: FlowNode_DebugLogString, ns: Ceres.Graph.Flow.Utilities, asm: Ceres}
       data:
         input:
@@ -943,6 +1059,28 @@ MonoBehaviour:
         logType: 3
         inString:
           defaultValue: Test Object Destroyed
+    - rid: 1770628475572453405
+      type: {class: FlowNode_DebugLogString, ns: Ceres.Graph.Flow.Utilities, asm: Ceres}
+      data:
+        input:
+          defaultValue:
+            guid: 
+        exec:
+          defaultValue:
+            guid: 
+        logType: 3
+        inString:
+          defaultValue: 
+    - rid: 1770628475572453406
+      type: {class: ExecutableEvent_TestGlobalEvent, ns: Ceres.Tests, asm: Ceres.Tests}
+      data:
+        eventName: GeneratedExecutableEvent_TestGlobalEvent
+        isImplementable: 0
+        exec:
+          defaultValue:
+            guid: 
+        data:
+          defaultValue: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
