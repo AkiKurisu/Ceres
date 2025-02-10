@@ -1,6 +1,6 @@
 using System;
 using UnityEngine.UIElements;
-namespace Ceres.Editor
+namespace Ceres.Editor.Graph
 {
     public class CeresDropdownMenuAction : DropdownMenuAction
     {
@@ -16,7 +16,7 @@ namespace Ceres.Editor
         public CeresDropdownMenuAction(
             string actionName,
             Action<DropdownMenuAction> actionCallback
-        ) : this(actionName, actionCallback, (e) => Status.Normal, null)
+        ) : this(actionName, actionCallback, (e) => Status.Normal)
         {
         }
     }

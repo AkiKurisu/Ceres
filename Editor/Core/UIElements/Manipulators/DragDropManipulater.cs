@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Object = UnityEngine.Object;
-namespace Ceres.Editor
+namespace Ceres.Editor.Graph
 {
     public class DragDropManipulator : PointerManipulator
     {
