@@ -327,6 +327,10 @@ Compared with `FlowGraphAsset`, `FlowGraphScriptableObject` owns an instance of 
 
 # Advanced
 
+The following is an explanation of the advanced usages in Flow. 
+You can use the following features to improve your workflow while 
+maintaining high performance.
+
 ## Port Implict Conversation
 
 For reference type objects, such as `MonoBehaviour`, `Component`, 
@@ -518,13 +522,16 @@ public class FlowNode_CastT_Template: GenericNodeTemplate
 
 # Code Generation
 
+The following are some details about the code generation technology used in Flow, 
+which may help you understand the principles.
+
 ## ILPP
 
 `ImplementableEvent` let user implement custom event and invoke them in code.
 
 By default, ILPP will inject bridge method call before your implementation.
 
-As following diff result using `dnspy`:
+Below is the code decompiled using `dnspy`.
 
 ```C#
 [ImplementableEvent, ExecutableFunction]
