@@ -123,6 +123,49 @@
 </h3>
 
 
+  <a id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_GetEventHandler_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_GetEventHandler_Ceres_Graph_Flow_IFlowGraphRuntime_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Graph.Flow.IFlowGraphRuntime)">GetEventHandler(IFlowGraphRuntime)</h4>
+  <div class="markdown level1 summary"><p>Get the <see cref="!:CallbackEventHandler"></see> bound to runtime <a class="xref" href="Ceres.Graph.Flow.FlowGraph.html">FlowGraph</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CallbackEventHandler GetEventHandler(this IFlowGraphRuntime runtime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.Flow.IFlowGraphRuntime.html">IFlowGraphRuntime</a></td>
+        <td><span class="parametername">runtime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CallbackEventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph*"></a>
   <h4 id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_Ceres_Graph_Flow_IFlowGraphRuntime_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Graph.Flow.IFlowGraphRuntime)">GetRuntimeFlowGraph(IFlowGraphRuntime)</h4>
   <div class="markdown level1 summary"><p>Get runtime <a class="xref" href="Ceres.Graph.Flow.FlowGraph.html">FlowGraph</a> instance</p>
@@ -164,6 +207,10 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_Ceres_Graph_Flow_IFlowGraphRuntime__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Convenient for inheritors to implicitly obtain the runtime graph instance
+when <a class="xref" href="Ceres.Graph.Flow.IFlowGraphRuntime.html#Ceres_Graph_Flow_IFlowGraphRuntime_Graph">Graph</a> is explicitly implemented.</p>
+</div>
 
 
   <a id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_ProcessEvent_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*"></a>
@@ -684,6 +731,43 @@
       <tr>
         <td><span class="xref">string</span></td>
         <td><span class="parametername">eventName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_ProcessEventUber_Ceres_Graph_Flow_IFlowGraphRuntime_System_Object___System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that this method causes boxing and unboxing, which results in allocation.
+Consider using an overload method with fewer parameters.</p>
+</div>
+
+
+  <a id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_SendEvent_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_SendEvent_Ceres_Graph_Flow_IFlowGraphRuntime_EventBase_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Graph.Flow.IFlowGraphRuntime,EventBase)">SendEvent(IFlowGraphRuntime, EventBase)</h4>
+  <div class="markdown level1 summary"><p>Send event to runtime <a class="xref" href="Ceres.Graph.Flow.FlowGraph.html">FlowGraph</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SendEvent(this IFlowGraphRuntime runtime, EventBase @event)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.Flow.IFlowGraphRuntime.html">IFlowGraphRuntime</a></td>
+        <td><span class="parametername">runtime</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">EventBase</span></td>
+        <td><span class="parametername">event</span></td>
         <td></td>
       </tr>
     </tbody>

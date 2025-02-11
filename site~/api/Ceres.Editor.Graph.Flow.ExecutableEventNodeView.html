@@ -92,6 +92,7 @@
     <div class="level3"><span class="xref">ExecutableEventNodeView</span></div>
       <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutionEventNodeView.html">ExecutionEventNodeView</a></div>
       <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutionEventUberNodeView.html">ExecutionEventUberNodeView</a></div>
+      <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.GeneratedExecutableEventNodeView.html">GeneratedExecutableEventNodeView</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -373,6 +374,31 @@
   <div><a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_AddPortView_Ceres_Editor_Graph_CeresPortView_">CeresNodeView.AddPortView(CeresPortView)</a></div>
 
 
+  <a id="Ceres_Editor_Graph_Flow_ExecutableEventNodeView_CanRename_" data-uid="Ceres.Editor.Graph.Flow.ExecutableEventNodeView.CanRename*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutableEventNodeView_CanRename" data-uid="Ceres.Editor.Graph.Flow.ExecutableEventNodeView.CanRename">CanRename()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool CanRename()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Editor_Graph_Flow_ExecutableEventNodeView_CompileNode_" data-uid="Ceres.Editor.Graph.Flow.ExecutableEventNodeView.CompileNode*"></a>
   <h4 id="Ceres_Editor_Graph_Flow_ExecutableEventNodeView_CompileNode" data-uid="Ceres.Editor.Graph.Flow.ExecutableEventNodeView.CompileNode">CompileNode()</h4>
   <div class="markdown level1 summary"></div>
@@ -406,7 +432,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract void FillMethodParameterPorts(MethodInfo methodInfo)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void FillMethodParameterPorts(MethodInfo methodInfo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -533,6 +559,16 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_SetNodeInstance_Ceres_Graph_CeresNode_">CeresNodeView.SetNodeInstance(CeresNode)</a></div>
+
+
+  <a id="Ceres_Editor_Graph_Flow_ExecutableEventNodeView_UpdateEventTitle_" data-uid="Ceres.Editor.Graph.Flow.ExecutableEventNodeView.UpdateEventTitle*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutableEventNodeView_UpdateEventTitle" data-uid="Ceres.Editor.Graph.Flow.ExecutableEventNodeView.UpdateEventTitle">UpdateEventTitle()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void UpdateEventTitle()</code></pre>
+  </div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Ceres.Editor.Graph.ICeresNodeView.html">ICeresNodeView</a>
