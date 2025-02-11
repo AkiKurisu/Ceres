@@ -39,12 +39,22 @@ namespace Ceres.Editor.Graph.Flow
         }
         
         private Texture2D _indentationIcon;
+
+        private MethodInfo[] _containerImplementableEventMethodInfos;
+
+        private Type[] _generatedExecutableEventTypes;
         
         protected override void OnInitialize()
         {
             _indentationIcon = new Texture2D(1, 1);
             _indentationIcon.SetPixel(0, 0, new Color(0, 0, 0, 0));
             _indentationIcon.Apply();
+            _containerImplementableEventMethodInfos = GraphView.GetContainerType()
+                .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
+                .Where(x=> x.GetCustomAttribute<ImplementableEventAttribute>() != null)
+                .ToArray();
+            var referencedAssemblies = SubClassSearchUtility.GetRuntimeReferencedAssemblies();
+            _generatedExecutableEventTypes = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(GeneratedExecutableEvent)).ToArray();
         }
 
         private void OnDestroy()
@@ -122,10 +132,8 @@ namespace Ceres.Editor.Graph.Flow
 
             /* Build custom events */
             var eventNodes = GraphView.NodeViews.OfType<ExecutableEventNodeView>().ToList();
-            var methods = GraphView.GetContainerType()
-                .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
-                .Where(x=> x.GetCustomAttribute<ImplementableEventAttribute>() != null 
-                       && eventNodes.All(evt => evt.GetEventName() != x.Name))
+            var methods = _containerImplementableEventMethodInfos
+                .Where(x=> eventNodes.All(evt => evt.GetEventName() != x.Name))
                 .ToArray();
             builder.AddGroupEntry("Select Events", 1);
             builder.AddEntry(new SearchTreeEntry(new GUIContent($"New Execution Event", _indentationIcon))
@@ -136,18 +144,37 @@ namespace Ceres.Editor.Graph.Flow
                     NodeType = typeof(ExecutionEvent)
                 }
             });
-            if (!methods.Any()) return;
             
-            builder.AddGroupEntry("Implement Custom Events", 2);
-            foreach (var method in methods)
+            if (methods.Any())
             {
-                builder.AddEntry(new SearchTreeEntry(new GUIContent($"Implement {method.Name}", _indentationIcon))
+                builder.AddGroupEntry("Implement Custom Events", 2);
+                foreach (var method in methods)
+                {
+                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Implement {method.Name}", _indentationIcon))
+                    {
+                        level = 3,
+                        userData = new CeresNodeSearchEntryData
+                        {
+                            NodeType = PredictEventNodeType(method),
+                            Data = new ExecutableEventNodeViewFactoryProxy { MethodInfo = method }
+                        }
+                    });
+                }
+            }
+
+            var validGeneratedEventTypes = _generatedExecutableEventTypes
+                .Where(x => eventNodes.All(evt => evt.GetEventName() != GeneratedExecutableEvent.GetEventBaseName(x)))
+                .ToArray();
+            if (!validGeneratedEventTypes.Any()) return;
+            builder.AddGroupEntry("Implement Executable Events", 2);
+            foreach (var eventType in validGeneratedEventTypes)
+            {
+                builder.AddEntry(new SearchTreeEntry(new GUIContent($"Implement {GeneratedExecutableEvent.GetEventBaseName(eventType)}", _indentationIcon))
                 {
                     level = 3, 
                     userData = new CeresNodeSearchEntryData
                     {
-                        NodeType = PredictEventNodeType(method),
-                        Data = new ExecutableEventNodeViewFactoryProxy { MethodInfo = method }
+                        NodeType = eventType
                     }
                 });
             }

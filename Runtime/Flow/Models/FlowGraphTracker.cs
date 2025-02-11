@@ -27,7 +27,23 @@ namespace Ceres.Graph.Flow
             }
         }
         
-        private static readonly FlowGraphTracker DefaultTracker = new();
+        private static readonly FlowGraphTracker Empty = new();
+
+        private static FlowGraphTracker _defaultTracker = Empty;
+
+        private static FlowGraphTracker Default
+        {
+            get
+            {
+                if (_defaultTracker == null || _defaultTracker._isDisposed)
+                {
+                    _defaultTracker = null;
+                    return Empty;
+                }
+                return _defaultTracker;
+            }
+            set => _defaultTracker = value;
+        }
 
         private static FlowGraphTracker _activeTracer;
 
@@ -49,9 +65,18 @@ namespace Ceres.Graph.Flow
         
         public static FlowGraphTracker GetActiveTracker()
         {
-            return _activeTracer ?? DefaultTracker;
+            return _activeTracer ?? Default;
         }
 
+        internal static void SetDefaultTracker(FlowGraphTracker tracker)
+        {
+            Default = tracker;
+        }
+
+        /// <summary>
+        /// Set current active <see cref="FlowGraphTracker"/>
+        /// </summary>
+        /// <param name="tracker"></param>
         public static void SetActiveTracker(FlowGraphTracker tracker)
         {
             _activeTracer = tracker;

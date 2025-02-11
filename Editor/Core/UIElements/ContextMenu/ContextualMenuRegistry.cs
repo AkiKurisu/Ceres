@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
-namespace Ceres.Editor
+namespace Ceres.Editor.Graph
 {
     public enum ContextualMenuType
     {

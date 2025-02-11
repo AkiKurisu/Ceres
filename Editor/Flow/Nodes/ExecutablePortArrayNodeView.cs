@@ -54,14 +54,22 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
-            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add new port", (a) =>
+            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add new port", _ =>
             {
                 AddPort(_portIndex++);
             }));
-            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove unconnected ports", (a) =>
+            if (_portIndex > 0)
+            {
+                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove last port", _ =>
+                {
+                    RemovePort(_portIndex - 1);
+                }));
+            }
+            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove unconnected ports", _ =>
             {
                 RemoveUnconnectedPorts();
             }));
+            evt.menu.AppendSeparator();
         }
 
         private void AddPort(int index)
@@ -72,6 +80,17 @@ namespace Ceres.Editor.Graph.Flow
             AddPortView(newPortView);
             _dynamicPortViews.Add(newPortView);
             newPortView.SetDisplayName(GetPortArrayElementDisplayName(index));
+        }
+
+        private void RemovePort(int index)
+        {
+            var portView = _dynamicPortViews[index];
+            _portIndex--;
+            _dynamicPortViews.RemoveAt(index);
+            RemovePortView(portView);
+            
+            /* Reorder */
+            ReorderDynamicPorts();
         }
 
         private void RemoveUnconnectedPorts()
@@ -88,6 +107,11 @@ namespace Ceres.Editor.Graph.Flow
                 RemovePortView(portView);
             }
             /* Reorder */
+            ReorderDynamicPorts();
+        }
+
+        private void ReorderDynamicPorts()
+        {
             for (int i = 0; i < _portIndex; i++)
             {
                 _dynamicPortViews[i].PortData.arrayIndex = i;
