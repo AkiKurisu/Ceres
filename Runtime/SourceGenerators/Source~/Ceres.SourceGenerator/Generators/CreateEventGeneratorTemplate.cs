@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 namespace Ceres.SourceGenerator;
 
-internal class CreateExecutableEventGeneratorTemplate
+internal class CreateEventGeneratorTemplate
 {
     private const string StartTemplate =
         """

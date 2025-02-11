@@ -10,7 +10,7 @@ namespace Ceres.Graph.Flow
     /// Base class for <see cref="ExecutableEvent"/> generated from <see cref="EventBase{T}"/> by Ceres.SourceGenerator
     /// </summary>
     [Serializable]
-    [CeresMetadata("style = ImplementableEvent")]
+    [CeresMetadata("style = CustomEvent")]
     public abstract class GeneratedExecutableEvent: ExecutableEvent
     {
         private static readonly Dictionary<long, string> Id2EventNameMap = new();
@@ -51,7 +51,7 @@ namespace Ceres.Graph.Flow
         where TEventBase: EventBase<TEventBase>, new()
     {
         // ReSharper disable once MemberCanBePrivate.Global
-        protected static readonly string EventName = $"{nameof(GeneratedExecutableEvent)}_{typeof(TEventBase).Name}";
+        protected static readonly string EventName = $"{nameof(ExecutableEvent)}_{typeof(TEventBase).Name}";
         
         static GeneratedExecutableEvent()
         {

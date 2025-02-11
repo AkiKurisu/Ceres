@@ -79,7 +79,7 @@ namespace Ceres.Editor.Graph.Flow
             }
         }
         
-        private void UpdateEventTitle()
+        protected virtual void UpdateEventTitle()
         {
             var label = "Event " + GetEventName();
             if(IsImplementable)
@@ -102,7 +102,7 @@ namespace Ceres.Editor.Graph.Flow
             FillMethodParameterPorts(methodInfo);
         }
 
-        public virtual string GetEventName()
+        public string GetEventName()
         {
             return _eventNameResolver.BaseField.value;
         }
@@ -210,9 +210,11 @@ namespace Ceres.Editor.Graph.Flow
         {
         }
 
-        public override string GetEventName()
+        protected override void UpdateEventTitle()
         {
-            return base.GetEventName()[(nameof(GeneratedExecutableEvent).Length + 1)..];
+            var label = "Event " + GetEventName()[(nameof(ExecutableEvent).Length + 1)..];
+            label += $"\n<color=#414141><size=10>Custom Event</size></color>";
+            NodeElement.title = label;
         }
         
         protected override bool CanRename()

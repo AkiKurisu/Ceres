@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ceres.SourceGenerator;
 
-internal class GeneratedExecutableEventGeneratorTemplate
+internal class CustomEventGeneratorTemplate
 {
     private const string StartTemplate =
         """

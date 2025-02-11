@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
 
@@ -111,7 +110,7 @@ namespace Ceres.Graph.Flow
         /// Get or create a <see cref="CallbackEventHandler"/> bound to an <see cref="UObject"/>
         /// </summary>
         /// <param name="contextObject"></param>
-        public CallbackEventHandler GetOrCreateEventHandler(UObject contextObject)
+        internal CallbackEventHandler GetOrCreateEventHandler(UObject contextObject)
         {
             _eventHandler ??= new FlowGraphEventHandler(this, contextObject);
             return _eventHandler;
@@ -424,6 +423,25 @@ namespace Ceres.Graph.Flow
         public static FlowGraph GetRuntimeFlowGraph(this IFlowGraphRuntime runtime)
         {
             return runtime.Graph;
+        }
+        
+        /// <summary>
+        /// Get the <see cref="CallbackEventHandler"/> bound to runtime <see cref="FlowGraph"/> instance
+        /// </summary>
+        /// <param name="runtime"></param>
+        public static CallbackEventHandler GetEventHandler(this IFlowGraphRuntime runtime)
+        {   
+            return runtime.GetRuntimeFlowGraph().GetOrCreateEventHandler(runtime.Object);
+        }
+
+        /// <summary>
+        /// Send event to runtime <see cref="FlowGraph"/> instance
+        /// </summary>
+        /// <param name="runtime"></param>
+        /// <param name="event"></param>
+        public static void SendEvent(this IFlowGraphRuntime runtime, EventBase @event)
+        {
+            runtime.GetEventHandler().SendEvent(@event);
         }
     }
 }

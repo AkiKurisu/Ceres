@@ -36,36 +36,36 @@ internal static class Helpers
         Error = 3,
     }
 
-    static public string ProjectPath
+    public static string ProjectPath
     {
         get => s_ProjectPath.Value;
         private set => s_ProjectPath.Value = value;
     }
-    static public string OutputFolder
+    public static string OutputFolder
     {
         get => s_OutputFolder.Value;
         private set => s_OutputFolder.Value = value;
     }
 
-    static public bool IsUnity2021_OrNewer
+    public static bool IsUnity2021_OrNewer
     {
         get => s_IsUnity2021_OrNewer.Value;
         private set => s_IsUnity2021_OrNewer.Value = value;
     }
 
-    static public bool SupportTemplateFromAdditionalFiles
+    public static bool SupportTemplateFromAdditionalFiles
     {
         get => s_SupportTemplatesFromAdditionalFiles.Value;
         private set => s_SupportTemplatesFromAdditionalFiles.Value = value;
     }
 
-    static public bool WriteLogToDisk
+    public static bool WriteLogToDisk
     {
         get => s_WriteLogToDisk.Value;
         private set => s_WriteLogToDisk.Value = value;
     }
 
-    static public bool CanWriteFiles
+    public static bool CanWriteFiles
     {
         get => s_CanWriteFiles.Value;
         private set => s_CanWriteFiles.Value = value;

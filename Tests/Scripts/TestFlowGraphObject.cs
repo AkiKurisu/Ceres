@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
-using Chris.Events;
 using Chris.Schedulers;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -9,7 +8,6 @@ namespace Ceres.Tests
 {
     public class TestFlowGraphObject : FlowGraphObject
     {
-        private CallbackEventHandler _callbackEventHandler;
         
         [ImplementableEvent]
         public void Start()
@@ -18,8 +16,6 @@ namespace Ceres.Tests
 #if CERES_DISABLE_ILPP
             this.ProcessEvent();
 #endif
-            /* Create event handler */
-            _callbackEventHandler = this.GetRuntimeFlowGraph().GetOrCreateEventHandler(this);
             Scheduler.Delay(1f, TestSendEvent);
         }
 
@@ -27,7 +23,7 @@ namespace Ceres.Tests
         {
             using var evt = TestGlobalEvent.GetPooled(100);
             Debug.Log($"Script side call {nameof(TestSendEvent)}", this);
-            _callbackEventHandler.SendEvent(evt);
+            this.SendEvent(evt);
         }
         
         [ImplementableEvent]

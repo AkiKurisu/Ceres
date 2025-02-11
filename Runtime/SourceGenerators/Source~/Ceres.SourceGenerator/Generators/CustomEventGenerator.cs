@@ -6,7 +6,7 @@ using System.Linq;
 namespace Ceres.SourceGenerator;
 
 [Generator]
-public class ExecutableEventGenerator : CeresSourceGenerator, ISourceGenerator
+public class CustomEventGenerator : CeresSourceGenerator, ISourceGenerator
 {
     public void Initialize(GeneratorInitializationContext context)
     {
@@ -46,7 +46,7 @@ public class ExecutableEventGenerator : CeresSourceGenerator, ISourceGenerator
             var generateAttribute = classSymbol
                 .GetAttributes()
                 .FirstOrDefault(x => 
-                    x.AttributeClass?.ToDisplayString() == "Ceres.Graph.Flow.Annotations.GenerateExecutableEventAttribute");
+                    x.AttributeClass?.ToDisplayString() == "Ceres.Graph.Flow.Annotations.ExecutableEventAttribute");
             if (generateAttribute == null)
             {
                 continue;
@@ -58,10 +58,10 @@ public class ExecutableEventGenerator : CeresSourceGenerator, ISourceGenerator
             }
             var namespaceName = namespaceNode.Name.ToString();
 
-            /* Generate utility node for creating pooled event */
+            /* Generate utility node for creating pooled custom event */
             if (receiver.Method.TryGetValue(classDeclaration, out var createFunctionInfo))
             {
-                CreateExecutableEventGeneratorTemplate generatorTemplate = new()
+                CreateEventGeneratorTemplate generatorTemplate = new()
                 {
                     Namespace = namespaceName,
                     ClassName = className,
@@ -78,10 +78,10 @@ public class ExecutableEventGenerator : CeresSourceGenerator, ISourceGenerator
                 });
             }
 
-            /* Generate executable event */
+            /* Generate executable event for custom event */
             if (receiver.PublicGetters.TryGetValue(classDeclaration, out var publicGetters))
             {
-                GeneratedExecutableEventGeneratorTemplate generatorTemplate = new()
+                CustomEventGeneratorTemplate generatorTemplate = new()
                 {
                     Namespace = namespaceName,
                     ClassName = className,
@@ -124,7 +124,7 @@ public class ExecutableEventSyntaxReceiver : ISyntaxReceiver
         var hasEventAttribute = classNode
             .AttributeLists
             .SelectMany(a => a.Attributes)
-            .Any(attr => attr.Name.ToString().Contains("GenerateExecutableEvent"));
+            .Any(attr => attr.Name.ToString().Contains("ExecutableEvent"));
         
         if (!hasEventAttribute)
         {
@@ -150,7 +150,7 @@ public class ExecutableEventSyntaxReceiver : ISyntaxReceiver
                 hasEventAttribute = methodNode
                     .AttributeLists
                     .SelectMany(a => a.Attributes)
-                    .Any(attr => attr.Name.ToString().Contains("GenerateExecutableEvent"));
+                    .Any(attr => attr.Name.ToString().Contains("ExecutableEvent"));
 
                 if (!hasEventAttribute)
                 {
