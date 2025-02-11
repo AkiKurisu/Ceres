@@ -17,7 +17,7 @@ Add following dependencies to `manifest.json`.
 ```json
   "dependencies": {
     "com.kurisu.chris": "https://github.com/AkiKurisu/Chris.git",
-    "com.cysharp.unitask":"2.5.3",
+    "com.cysharp.unitask":"https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.unity.nuget.newtonsoft-json": "3.2.1"
   }
 
@@ -73,7 +73,6 @@ See [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue).
 ![ceres_ngd](./Docs/Images/ceres_ngd.png)
 
 ## Reference
-
 
 [Chris](https://github.com/AkiKurisu/Chris) 
 
