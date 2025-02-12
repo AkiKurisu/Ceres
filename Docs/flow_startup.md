@@ -9,7 +9,7 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
   - [Execution Event](#execution-event)
   - [Implementable Event](#implementable-event)
   - [Custom Event](#custom-event)
-    - [Tech Details](#tech-details)
+    - [Technique Details](#technique-details)
 - [Executable Function](#executable-function)
   - [Instance Function](#instance-function)
   - [Static Function](#static-function)
@@ -29,6 +29,7 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
 - [Debug](#debug)
   - [Use Breakpoint](#use-breakpoint)
   - [Use FlowGraphTracker](#use-flowgraphtracker)
+
 
 # Conecpt
 
