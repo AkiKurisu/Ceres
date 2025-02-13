@@ -5,6 +5,7 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
   - [Events](#events)
   - [Functions](#functions)
   - [Container](#container)
+- [Quick Start](#quick-start)
 - [Executable Event](#executable-event)
   - [Execution Event](#execution-event)
   - [Implementable Event](#implementable-event)
@@ -55,7 +56,56 @@ Functions are components that implement game functions. They complete specified 
 
 ## Container
 
-We already have events and functions, so how do I apply logic to my GameObject? For any FlowGraph instance, there needs to be a specified Container at runtime. It can be your custom `MonoBehaviour` (need to implement interface) or inherit from a series of parent classes provided by Ceres. You can find more details in [Runtime Architecture](#runtime-architecture).
+We already have events and functions, so how do I apply logic to my GameObject? 
+
+For any FlowGraph instance, there needs to be a specified Container at runtime. 
+
+It can be your custom `MonoBehaviour` (need to implement interface) or inherit from a series of parent classes provided by Ceres. 
+
+You can find more details in [Runtime Architecture](#runtime-architecture).
+
+# Quick Start
+
+Here is an example of using Flow to output a "Hello World" message.
+
+1. Ceate a new C# script `MyFlowObject.cs` and make it inherit from `FlowGraphObject`.
+
+2. Add a `Start` method to the newly created class so that Unity can call this method when the game starts.
+
+3. Add `ImplementableEventAttribute` to `Start` method so that we can implement its logic in Flow Graph.
+
+```C#
+using Ceres.Graph.Flow;
+using Ceres.Graph.Flow.Annotations;
+public class MyFlowObject: FlowGraphObject
+{
+    [ImplementableEvent]
+    private void Start()
+    {
+
+    }
+}
+```
+
+4. Now create a new GameObject in the scene and attach `MyFlowObject` component to it.
+
+5. Click `Open Flow Graph` in the Inspector panel to open the Flow Graph Editor.
+
+    ![Open Flow Graph](./Images/flow_quick_start_1.png)
+
+6. Right click graph and click `Create Node/Select Events/Implement Start`.
+
+    ![Create Node](./Images/flow_quick_start_2.png)
+
+7. Then click `Create Node` and search `Log String`, connect the white port (exec) to the `Start` node's output (exec). 
+
+8. Fill in "Hello World!" in the `In String` field of the `Log String` node.
+    
+    ![Log String](./Images/flow_quick_start_3.png)
+
+9. Click save button in the left upper corner.
+
+10. Play the game and you will see "Hello World!" in the console.
 
 # Executable Event
 
@@ -91,20 +141,19 @@ public class FlowTest : FlowGraphObject /* Inherit from MonoBehaviour */
     [ImplementableEvent]
     public void Awake()
     {
-        /* ProcessEvent is a bridge method*/
-        this.ProcessEvent();
+
     }
 
     [ImplementableEvent]
     public void PrintFloat(float data)
     {
-        this.ProcessEvent<float>(data);
+
     }
 
     [ImplementableEvent]
     public void ExecuteTest(string data)
     {
-        this.ProcessEvent<string>(data);
+
     }
 }
 ```
@@ -280,9 +329,13 @@ public static string Flow_DoSomething(string arg1)
 
 # Runtime Architecture
 
+Following is the runtime architecture of Flow. Flow provides a variety of different Container types, 
+which are highly compatible with Unity's native `MonoBehaviour` and `ScriptableObject` architecture, allowing you to choose your favorite workflow.
+
 ## FlowGraphObject
 
-In Unity, we use MonoBehaviour to add functionality to GameObjects in the scene. In Flow, you can use `FlowGraphObject` and its inherited components to implement your game logic, such as character controllers, interactions, etc.
+In Unity, we use MonoBehaviour to add functionality to GameObjects in the scene. 
+In Flow, you can use `FlowGraphObject` and its inherited components to implement your game logic, such as character controllers, interactions, etc.
 
 ## FlowGraphAsset
 
@@ -308,7 +361,7 @@ public class TestInstanceObject: FlowGraphInstanceObject
     [ImplementableEvent]
     public void Awake()
     {
-        this.ProcessEvent();
+
     }
 }
 ```
@@ -339,8 +392,7 @@ ports can be converted based on the inheritance hierarchy automatically.
 
 For example, output port `MonoBehaviour` can be connected to input port `Component`.
 
-However, for value type objects, such as `int`, `float`, `struct`, etc and 
-other types that require implicit conversion. 
+However, for value type objects, such as `int`, `float`, `struct`, etc and other types that require implicit conversion. 
 You need to register them manually.
 
 Here is an example that convert custom `struct` to `double`:
@@ -443,7 +495,6 @@ public sealed class FlowNode_SequenceNodeView: ExecutablePortArrayNodeView
     }
 }
 ```
-
 
 ## Generic Node
 Generic nodes define type restrictions through template classes, so that argument 
