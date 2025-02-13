@@ -8,7 +8,6 @@ namespace Ceres.Tests
 {
     public class TestFlowGraphObject : FlowGraphObject
     {
-        
         [ImplementableEvent]
         public void Start()
         {
@@ -16,13 +15,14 @@ namespace Ceres.Tests
 #if CERES_DISABLE_ILPP
             this.ProcessEvent();
 #endif
-            Scheduler.Delay(1f, TestSendEvent);
+            Scheduler.Delay(1f, TestSendCustomEvent);
         }
 
-        private void TestSendEvent()
+        private void TestSendCustomEvent()
         {
+            /* Test custom event work */
             using var evt = TestGlobalEvent.GetPooled(100);
-            Debug.Log($"Script side call {nameof(TestSendEvent)}", this);
+            Debug.Log($"Script side call {nameof(TestSendCustomEvent)}", this);
             this.SendEvent(evt);
         }
         
