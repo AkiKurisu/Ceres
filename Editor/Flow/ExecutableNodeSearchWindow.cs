@@ -130,11 +130,8 @@ namespace Ceres.Editor.Graph.Flow
                 }
             }
 
-            /* Build custom events */
+            /* Build default execution event */
             var eventNodes = GraphView.NodeViews.OfType<ExecutableEventNodeView>().ToList();
-            var methods = _containerImplementableEventMethodInfos
-                .Where(x=> eventNodes.All(evt => evt.GetEventName() != x.Name))
-                .ToArray();
             builder.AddGroupEntry("Select Events", 1);
             builder.AddEntry(new SearchTreeEntry(new GUIContent($"New Execution Event", _indentationIcon))
             {
@@ -145,14 +142,18 @@ namespace Ceres.Editor.Graph.Flow
                 }
             });
             
+                        
+            /* Build implementable events */
+            var methods = _containerImplementableEventMethodInfos
+                .Where(x=> eventNodes.All(evt => evt.GetEventName() != x.Name))
+                .ToArray();            
             if (methods.Any())
             {
-                builder.AddGroupEntry("Implement Custom Events", 2);
                 foreach (var method in methods)
                 {
                     builder.AddEntry(new SearchTreeEntry(new GUIContent($"Implement {method.Name}", _indentationIcon))
                     {
-                        level = 3,
+                        level = 2,
                         userData = new CeresNodeSearchEntryData
                         {
                             NodeType = PredictEventNodeType(method),
@@ -162,16 +163,18 @@ namespace Ceres.Editor.Graph.Flow
                 }
             }
 
+            /* Build custom events */
             var validGeneratedEventTypes = _generatedExecutableEventTypes
                 .Where(x => eventNodes.All(evt => evt.GetEventName() != GeneratedExecutableEvent.GetEventBaseName(x)))
                 .ToArray();
             if (!validGeneratedEventTypes.Any()) return;
-            builder.AddGroupEntry("Implement Executable Events", 2);
+            builder.AddGroupEntry("Implement Custom Events", 2);
             foreach (var eventType in validGeneratedEventTypes)
             {
-                builder.AddEntry(new SearchTreeEntry(new GUIContent($"Implement {GeneratedExecutableEvent.GetEventBaseName(eventType)}", _indentationIcon))
+                builder.AddEntry(new SearchTreeEntry(new GUIContent(
+                    $"Implement {GeneratedExecutableEvent.GetEventBaseName(eventType)}", _indentationIcon))
                 {
-                    level = 3, 
+                    level = 3,
                     userData = new CeresNodeSearchEntryData
                     {
                         NodeType = eventType
