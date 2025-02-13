@@ -82,3 +82,11 @@ also providing contextual event used in Flow.
 [UniTask](https://github.com/Cysharp/UniTask) 
 
 >Support Ceres to execute node in async.
+
+## Articles
+
+[如何设计一个Unity可视化脚本框架（一）](https://zhuanlan.zhihu.com/p/20500696157)
+
+[如何设计一个Unity可视化脚本框架（二）](https://zhuanlan.zhihu.com/p/20711259559)
+
+[如何设计一个Unity可视化脚本框架（三）](https://zhuanlan.zhihu.com/p/23323693948)
