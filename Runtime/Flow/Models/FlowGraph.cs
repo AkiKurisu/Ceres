@@ -163,7 +163,7 @@ namespace Ceres.Graph.Flow
             var evt = FindEvent(eventName);
             if (evt == null)
             {
-                CeresAPI.LogWarning($"Can not find ExecutionEvent with name {eventName}");
+                CeresLogger.LogWarning($"Can not find ExecutionEvent with name {eventName}");
                 return;
             }
             await ExecuteEventAsync(contextObject, evt, evtBase);
@@ -201,7 +201,7 @@ namespace Ceres.Graph.Flow
                 }
                 else
                 {
-                    CeresAPI.LogWarning($"Only {nameof(ExecutableEvent)} can have delegate port");
+                    CeresLogger.LogWarning($"Only {nameof(ExecutableEvent)} can have delegate port");
                 }
             }
             base.LinkPort(port, ownerNode, portData);

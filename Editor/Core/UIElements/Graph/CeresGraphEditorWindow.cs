@@ -208,7 +208,7 @@ namespace Ceres.Editor.Graph
         {
             if (!Identifier.IsValid()) return;
             
-            CeresAPI.Log($"Reload graph from identifier [{Identifier}]");
+            CeresLogger.Log($"Reload graph from identifier [{Identifier}]");
             Container = GetContainer();
             OnReloadGraphView();
             Repaint();

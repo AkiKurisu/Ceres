@@ -108,12 +108,12 @@ namespace Ceres.Editor
             {
                 if (disableILPostProcessProp.boolValue && !ScriptingSymbol.ContainsScriptingSymbol(DisableILPostProcessSymbol))
                 {
-                    CeresAPI.Log("Disable ILPP");
+                    CeresLogger.Log("Disable ILPP");
                     ScriptingSymbol.AddScriptingSymbol(DisableILPostProcessSymbol);
                 }
                 else if (ScriptingSymbol.ContainsScriptingSymbol(DisableILPostProcessSymbol))
                 {
-                    CeresAPI.Log("Enable ILPP");
+                    CeresLogger.Log("Enable ILPP");
                     ScriptingSymbol.RemoveScriptingSymbol(DisableILPostProcessSymbol);
                 }
                 CeresSettings.SaveSettings();

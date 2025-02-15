@@ -50,7 +50,7 @@ namespace Ceres.Graph
         {
             if (_instance != this)
             {
-                CeresAPI.LogWarning("Global variables can only be disposed in top level scope");
+                CeresLogger.LogWarning("Global variables can only be disposed in top level scope");
                 return;
             }
             _instance = null;

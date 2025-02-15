@@ -113,7 +113,10 @@ namespace Ceres.Graph
         
         public CeresGraph(CeresGraphData graphData)
         {
-            graphData.BuildGraph(this);
+            using (APIUpdateConfig.AutoScope())
+            {
+                graphData.BuildGraph(this);
+            }
         }
 
         /// <summary>
@@ -259,7 +262,7 @@ namespace Ceres.Graph
             var portData = ownerNode.NodeData.FindPortData(fieldName);
             if(portData == null)
             {
-                CeresAPI.LogWarning($"Can not find port data for {fieldName}");
+                CeresLogger.LogWarning($"Can not find port data for {fieldName}");
                 return;
             }
             LinkPort(port, ownerNode, portData);
@@ -270,7 +273,7 @@ namespace Ceres.Graph
             var portData = ownerNode.NodeData.FindPortData(fieldName, arrayIndex);
             if(portData == null)
             {
-                CeresAPI.LogWarning($"Can not find port data for port {fieldName}_{arrayIndex} from {ownerNode.GetType().Name}");
+                CeresLogger.LogWarning($"Can not find port data for port {fieldName}_{arrayIndex} from {ownerNode.GetType().Name}");
                 return;
             }
             LinkPort(port, ownerNode, portData);
@@ -284,7 +287,7 @@ namespace Ceres.Graph
                 var targetNode = FindNode(portData.connections[0].nodeId);
                 if(targetNode == null)
                 {
-                    CeresAPI.LogWarning($"Can not find connected node [{portData.connections[0].nodeId}] from port {portData.propertyName}");
+                    CeresLogger.LogWarning($"Can not find connected node [{portData.connections[0].nodeId}] from port {portData.propertyName}");
                     return;
                 }
                 /* Set WeakPtr to easier get target node in graph lifetime scope */
@@ -298,7 +301,7 @@ namespace Ceres.Graph
                 var targetNode = FindNode(connection.nodeId);
                 if(targetNode == null)
                 {
-                    CeresAPI.LogWarning($"Can not find connected node [{connection.nodeId}] from port {portData.propertyName}");
+                    CeresLogger.LogWarning($"Can not find connected node [{connection.nodeId}] from port {portData.propertyName}");
                     continue;
                 }
 
@@ -307,7 +310,7 @@ namespace Ceres.Graph
                 var targetPort = targetPortData?.GetPort(targetNode);
                 if(targetPort == null)
                 {
-                    CeresAPI.LogWarning($"Can not find port {connection.portId}_{connection.portIndex} from node {targetNode.GetType().Name}");
+                    CeresLogger.LogWarning($"Can not find port {connection.portId}_{connection.portIndex} from node {targetNode.GetType().Name}");
                     continue;
                 }
                 port.Link(targetPort);
@@ -492,8 +495,6 @@ namespace Ceres.Graph
         public CeresNodeData[] nodeData;
         
         public NodeGroup[] nodeGroups;
-
-        private APIUpdateConfig _config;
         
         /// <summary>
         /// Build graph from data
@@ -502,15 +503,13 @@ namespace Ceres.Graph
         /// <exception cref="ArgumentException"></exception>
         public virtual void BuildGraph(CeresGraph graph)
         {
-            _config = APIUpdateConfig.Get();
-            
             // Restore nodes
             nodes ??= new CeresNode[nodeData.Length];
             for (int i = 0; i < nodes.Length; ++i)
             {
                 RestoreNode(i);
             }
-            
+
             // Restore variables
             variables ??= new SharedVariable[variables.Length];
             for (int i = 0; i < variables.Length; ++i)
@@ -526,12 +525,12 @@ namespace Ceres.Graph
 
         protected void RestoreNode(int index)
         {
-            if (_config)
+            if (APIUpdateConfig.Current)
             {
                 var redirectedType = RedirectNodeType(nodeData![index].nodeType);
                 if (redirectedType != null)
                 {
-                    CeresAPI.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
+                    CeresLogger.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
                     nodes[index] = nodeData[index].Deserialize(redirectedType);
                 }
             }
@@ -555,12 +554,12 @@ namespace Ceres.Graph
 
         protected void RestoreVariable(int index)
         {
-            if (!_config) return;
+            if (!APIUpdateConfig.Current) return;
             
             var redirectedType = RedirectVariableType(variableData![index].variableType);
             if (redirectedType == null) return;
             
-            CeresAPI.Log($"Redirect variable type {variableData![index].variableType} to {redirectedType}");
+            CeresLogger.Log($"Redirect variable type {variableData![index].variableType} to {redirectedType}");
             variables[index] = variableData[index].Deserialize(redirectedType);
         }
 
@@ -571,8 +570,8 @@ namespace Ceres.Graph
         /// <returns></returns>
         protected virtual Type RedirectNodeType(ManagedReferenceType nodeType)
         {
-            Assert.IsTrue((bool)_config);
-            return _config.RedirectNode(nodeType);
+            Assert.IsTrue((bool)APIUpdateConfig.Current);
+            return APIUpdateConfig.Current.RedirectNode(nodeType);
         }
         
         /// <summary>
@@ -582,8 +581,37 @@ namespace Ceres.Graph
         /// <returns></returns>
         protected virtual Type RedirectVariableType(ManagedReferenceType nodeType)
         {
-            Assert.IsTrue((bool)_config);
-            return _config.RedirectVariable(nodeType);
+            Assert.IsTrue((bool)APIUpdateConfig.Current);
+            return APIUpdateConfig.Current.RedirectVariable(nodeType);
+        }
+        
+        /// <summary>
+        /// Redirect serialized type from <see cref="SerializedType"/>, default using redirectors from <see cref="APIUpdateConfig"/>
+        /// </summary>
+        /// <param name="serializedType"></param>
+        /// <returns></returns>
+        protected virtual Type RedirectSerializedType(string serializedType)
+        {
+            Assert.IsTrue((bool)APIUpdateConfig.Current);
+            return APIUpdateConfig.Current.RedirectSerializedType(serializedType);
+        }
+
+        /// <summary>
+        /// Resolve type from <see cref="SerializedType"/>
+        /// </summary>
+        /// <param name="serializedType"></param>
+        /// <returns></returns>
+        protected Type ResolveSerializedType(string serializedType)
+        {
+            if (APIUpdateConfig.Current)
+            {
+                var redirectedType = RedirectSerializedType(serializedType);
+                if (redirectedType != null)
+                {
+                    return redirectedType;
+                }
+            }
+            return SerializedType.FromString(serializedType);
         }
 
         private bool IsNodeGeneric(int index)
@@ -597,15 +625,14 @@ namespace Ceres.Graph
             {
                 /* Try to make generic node type */
                 var genericTypeDefinition = nodeData[index].nodeType.ToType();
-                var parameterTypes = nodeData[index].genericParameters.Select(SerializedType.FromString)
-                    .ToArray();
+                var parameterTypes = nodeData[index].genericParameters.Select(ResolveSerializedType).ToArray();
                 var genericType = genericTypeDefinition.MakeGenericType(parameterTypes);
                 nodes[index] = nodeData[index].Deserialize(genericType);
                 return true;
             }
             catch(Exception e)
             {
-                CeresAPI.LogWarning($"Can not create generic node instance from {nodeData[index].nodeType}, {e}");
+                CeresLogger.LogWarning($"Can not create generic node instance from {nodeData[index].nodeType}, {e}");
                 return false;
             }
         }
@@ -620,7 +647,7 @@ namespace Ceres.Graph
             }
             catch(Exception e)
             {
-                CeresAPI.LogWarning($"Can not create node instance from {nodeData[index].nodeType}, {e}");
+                CeresLogger.LogWarning($"Can not create node instance from {nodeData[index].nodeType}, {e}");
                 return false;
             }
         }

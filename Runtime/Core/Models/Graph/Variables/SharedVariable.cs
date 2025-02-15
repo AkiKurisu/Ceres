@@ -133,7 +133,7 @@ namespace Ceres.Graph
         public void Serialize(SharedVariable variable)
         {
             var type = variable.GetType();
-            CeresAPI.Assert(!type.IsGenericType, "Can not serialize generic variable which is not reliable");
+            CeresLogger.Assert(!type.IsGenericType, "Can not serialize generic variable which is not reliable");
             variableType = new ManagedReferenceType(type);
             serializedData = JsonUtility.ToJson(variable);
             uobjectLinks = Array.Empty<UObjectLink>();

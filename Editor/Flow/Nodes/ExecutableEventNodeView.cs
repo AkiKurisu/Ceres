@@ -50,7 +50,7 @@ namespace Ceres.Editor.Graph.Flow
                     return;
                 }
                 /* Change to normal execution event and validate event name */
-                CeresAPI.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
+                CeresLogger.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
                 IsImplementable = false;
             }
             ValidateEventName();

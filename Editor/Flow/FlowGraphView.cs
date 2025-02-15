@@ -251,7 +251,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
 
                 /* Copy and paste may log warning for missing connect nodes which is expected. */
-                using (CeresAPI.LogScope(copyPaste ? LogType.Error : LogType.Log))
+                using (CeresLogger.LogScope(copyPaste ? LogType.Error : LogType.Log))
                 {
                     var flowGraphData = new FlowGraphData
                     {
@@ -305,7 +305,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     var nodeView = (CeresNodeView)NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView);
                     /* Missing node class should be handled before deserializing graph */
-                    CeresAPI.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
+                    CeresLogger.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
                     try
                     {
                         nodeView!.SetNodeInstance(nodeInstance);
@@ -314,7 +314,7 @@ namespace Ceres.Editor.Graph.Flow
                     }
                     catch (Exception e)
                     {
-                        CeresAPI.LogError($"Failed to construct node view for type {nodeInstance} with exception thrown:\n{e}");
+                        CeresLogger.LogError($"Failed to construct node view for type {nodeInstance} with exception thrown:\n{e}");
                         /* Replace with illegal property node */
                         nodeView = (CeresNodeView)NodeViewFactory.Get().CreateInstance(typeof(IllegalExecutableNode), _graphView);
                         nodeView!.SetNodeInstance(new IllegalExecutableNode
@@ -386,13 +386,13 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 if (!CanSkipFrame() && CanPauseOnCurrentNode())
                 {
-                    CeresAPI.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
+                    CeresLogger.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
                     /* Reset skip frame flag */
                     _breakOnNext = false;
                     Time.timeScale = 0;
                     EditorApplication.isPaused = true;
                     await UniTask.WaitUntil(CanSkipFrame);
-                    CeresAPI.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
+                    CeresLogger.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");
             }

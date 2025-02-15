@@ -116,7 +116,7 @@ namespace Ceres.Graph.Flow
         
         public override UniTask EnterNode(ExecutableNode node)
         {
-            CeresAPI.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
+            CeresLogger.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
             var dependencies = node.NodeData.GetDependencies();
             if (dependencies == null) return UniTask.CompletedTask;
             foreach (var dependency in dependencies)
@@ -124,17 +124,17 @@ namespace Ceres.Graph.Flow
                 var dependencyNode = _flowGraph.FindNode(dependency);
                 if (dependencyNode == null)
                 {
-                    CeresAPI.LogWarning($"Missing dependency node {dependency}");
+                    CeresLogger.LogWarning($"Missing dependency node {dependency}");
                     continue;
                 }
-                CeresAPI.Log($"Find dependency node [{dependencyNode.GetTypeName()}]({dependencyNode.Guid})");
+                CeresLogger.Log($"Find dependency node [{dependencyNode.GetTypeName()}]({dependencyNode.Guid})");
             }
             return UniTask.CompletedTask;
         }
         
         public override UniTask ExitNode(ExecutableNode node)
         {
-            CeresAPI.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
+            CeresLogger.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
             return UniTask.CompletedTask;
         }
     }

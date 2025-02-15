@@ -10,7 +10,15 @@ namespace Ceres.Graph
     public class APIUpdateConfig : ScriptableObject
     {
         [Serializable]
-        private class SerializedNodeType: IEquatable<SerializedNodeType>
+        internal class Redirector<T>
+        {
+            public T source;
+            
+            public T target;
+        }
+        
+        [Serializable]
+        internal class SerializedNodeType: IEquatable<SerializedNodeType>
         {
             public SerializedType<CeresNode> nodeType;
             
@@ -47,14 +55,6 @@ namespace Ceres.Graph
             {
                 return other != null && ToNodeType().Equals(other.ToNodeType());
             }
-        }
-        
-        [Serializable]
-        private class SerializedNodeTypeRedirector
-        {
-            public SerializedNodeType sourceNodeType;
-            
-            public SerializedNodeType targetNodeType;
         }
         
         [Serializable]
@@ -97,35 +97,106 @@ namespace Ceres.Graph
             }
         }
         
-        [Serializable]
-        private class SerializedVariableTypeRedirector
-        {
-            public SerializedVariableType sourceVariableType;
-            
-            public SerializedVariableType targetVariableType;
-        }
+        [Header("Node")]
+        [SerializeField]
+        internal Redirector<SerializedNodeType>[] nodeRedirectors;
+        
+        [Header("Variable")]
+        [SerializeField]
+        private Redirector<SerializedVariableType>[] variableRedirectors;
+        
+        [Header("Global")]
+        [SerializeField]
+        private Redirector<string>[] assemblyRedirectors;
         
         [SerializeField]
-        private SerializedNodeTypeRedirector[] nodeRedirectors;
+        private Redirector<string>[] namespaceRedirectors;
         
-        [SerializeField]
-        private SerializedVariableTypeRedirector[] variableRedirectors;
+        [Header("Settings")]
+        [SerializeField, Tooltip("Enable auto redirect serialized type which will observe all possible serialized type " +
+                                 "deserialization in editor. Note that this does not fix type missing, you still need to " +
+                                 "fix them manually.")]
+        private bool enableAutoRedirectSerializedType;
         
-        public Type RedirectNode(ManagedReferenceType nodeType)
+        public Type RedirectNode(in ManagedReferenceType nodeType)
         {
             var serializeType = new SerializedNodeType(nodeType);
-            var redirector = nodeRedirectors.FirstOrDefault(x => x.sourceNodeType.Equals(serializeType));
-            return redirector?.targetNodeType.ToType();
+            var redirector = nodeRedirectors.FirstOrDefault(x => x.source.Equals(serializeType));
+            return redirector?.target.ToType() ?? RedirectManagedReference(nodeType);
         }
         
-        public Type RedirectVariable(ManagedReferenceType variableType)
+        public Type RedirectVariable(in ManagedReferenceType variableType)
         {
             var serializeType = new SerializedVariableType(variableType);
-            var redirector = variableRedirectors.FirstOrDefault(x => x.sourceVariableType.Equals(serializeType));
-            return redirector?.targetVariableType.ToType();
+            var redirector = variableRedirectors.FirstOrDefault(x => x.source.Equals(serializeType));
+            return redirector?.target.ToType() ?? RedirectManagedReference(variableType);
         }
 
-        public static APIUpdateConfig Get()
+        public Type RedirectManagedReference(ManagedReferenceType managedReferenceType)
+        {
+            ManagedReferenceType redirectedReferenceType = managedReferenceType;
+            var assemblyRedirector = assemblyRedirectors.FirstOrDefault(r => managedReferenceType._asm.StartsWith(r.source));
+            if (assemblyRedirector != null)
+            {
+                redirectedReferenceType._asm = redirectedReferenceType._asm.Replace(assemblyRedirector.source, assemblyRedirector.target);
+            }
+            
+            var namespaceRedirector = namespaceRedirectors.FirstOrDefault(r => managedReferenceType._ns.StartsWith(r.source));
+            if (namespaceRedirector != null)
+            {
+                redirectedReferenceType._ns = redirectedReferenceType._ns.Replace(namespaceRedirector.source, namespaceRedirector.target);
+            }
+
+            if (redirectedReferenceType.Equals(managedReferenceType))
+            {
+                return null;
+            }
+
+            return redirectedReferenceType.ToType();
+        }
+
+        public Type RedirectSerializedType(string serializedType)
+        {
+            string redirectedSerializedType = serializedType;
+            var assemblyRedirector = assemblyRedirectors.FirstOrDefault(r => serializedType.Contains(r.source));
+            if (assemblyRedirector != null)
+            {
+                redirectedSerializedType = redirectedSerializedType.Replace(assemblyRedirector.source, assemblyRedirector.target);
+            }
+            
+            var namespaceRedirector = namespaceRedirectors.FirstOrDefault(r => serializedType.Contains(r.source));
+            if (namespaceRedirector != null)
+            {
+                redirectedSerializedType = redirectedSerializedType.Replace(namespaceRedirector.source, namespaceRedirector.target);
+            }
+
+            if (redirectedSerializedType.Equals(serializedType))
+            {
+                return null;
+            }
+
+            CeresLogger.Log($"Redirect serialized type {serializedType} to {redirectedSerializedType}");
+            return SerializedType.FromString(redirectedSerializedType);
+        }
+
+        public static ConfigAutoScope AutoScope()
+        {
+            return new ConfigAutoScope(GetConfig_Internal());
+        }
+
+        private static APIUpdateConfig _activeConfig;
+        
+        /// <summary>
+        /// Internal config survive until the next config is activated
+        /// </summary>
+        private static APIUpdateConfig _internalActiveConfig;
+
+        /// <summary>
+        /// Current active config, can be null if no valid config
+        /// </summary>
+        public static APIUpdateConfig Current => _activeConfig;
+        
+        private static APIUpdateConfig GetConfig_Internal()
         {
 #if UNITY_EDITOR
             var guids = UnityEditor.AssetDatabase.FindAssets($"t:{nameof(APIUpdateConfig)}");
@@ -137,6 +208,28 @@ namespace Ceres.Graph
 #else
             return null;
 #endif
+        }
+        
+        public readonly struct ConfigAutoScope: IDisposable
+        {
+            public ConfigAutoScope(APIUpdateConfig updateConfig)
+            {
+                _activeConfig = updateConfig;
+                if (_internalActiveConfig)
+                {
+                    SerializedTypeRedirector.RedirectSerializedType -= _internalActiveConfig.RedirectSerializedType;
+                }
+                _internalActiveConfig = updateConfig;
+                if (_internalActiveConfig&& _internalActiveConfig.enableAutoRedirectSerializedType)
+                {
+                    SerializedTypeRedirector.RedirectSerializedType += _internalActiveConfig.RedirectSerializedType;
+                }
+            }
+
+            public void Dispose()
+            {
+                _activeConfig = null;
+            }
         }
     }
 }

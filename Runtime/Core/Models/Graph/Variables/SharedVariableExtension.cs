@@ -143,7 +143,7 @@ namespace Ceres.Graph
             if (!variable.IsShared && !variable.IsGlobal) return;
             if (!variableSource.TryGetSharedVariable(variable.Name, out var sharedVariable))
             {
-                CeresAPI.LogWarning($"Can not map variable {variable.Name} to {variableSource} !");
+                CeresLogger.LogWarning($"Can not map variable {variable.Name} to {variableSource} !");
                 return;
             }
             variable.Bind(sharedVariable);
