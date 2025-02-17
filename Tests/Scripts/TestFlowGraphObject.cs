@@ -2,12 +2,15 @@ using System.Diagnostics;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
 using Chris.Schedulers;
+using R3;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 namespace Ceres.Tests
 {
     public class TestFlowGraphObject : FlowGraphObject
     {
+        public bool overrideCustomEventImplementation;
+        
         [ImplementableEvent]
         public void Start()
         {
@@ -15,27 +18,41 @@ namespace Ceres.Tests
 #if CERES_DISABLE_ILPP
             this.ProcessEvent();
 #endif
+            /* Test custom event work */
             Scheduler.Delay(1f, TestSendCustomEvent);
+            
+            /* Test override custom event implementation work */
+            if (overrideCustomEventImplementation)
+            {
+                this.OverrideEventImplementation<TestGlobalEvent>(ReceiveCustomEvent).AddTo(this);
+            }
         }
 
         private void TestSendCustomEvent()
         {
-            /* Test custom event work */
             using var evt = TestGlobalEvent.GetPooled(100);
-            Debug.Log($"Script side call {nameof(TestSendCustomEvent)}", this);
+            Debug.Log($"Script send {nameof(TestSendCustomEvent)}", this);
             this.SendEvent(evt);
+        }
+        
+        private void ReceiveCustomEvent(TestGlobalEvent evt)
+        {
+            Debug.Log($"Script receive event {nameof(TestSendCustomEvent)}", this);
+            /* Prevent executing flow event */
+            evt.PreventDefault();
         }
         
         [ImplementableEvent]
         public void OnDestroy()
         {
-            Debug.Log("Script side received OnDestroy", this);
+#if CERES_DISABLE_ILPP
             /* Manually call flow event */
             using var evt = ExecuteFlowEvent.Create(nameof(OnDestroy), ExecuteFlowEvent.DefaultArgs);
             if (this.GetRuntimeFlowGraph().TryExecuteEvent(Object, evt.FunctionName, evt))
             {
-                Debug.Log("Call graph side event OnDestroy succeed", this);
+                Debug.Log("Execute graph event OnDestroy succeed without ILPP", this);
             }
+#endif
             ReleaseGraph();
         }
 
@@ -69,6 +86,7 @@ namespace Ceres.Tests
             /* Test tracker scope */
             using (new FlowGraphDependencyTracker(this.GetRuntimeFlowGraph()).Auto())
             {
+                /* ILPP will recognize this instruction and skip injecting IL */
                 this.ProcessEvent(inGameObject);
             }
         }
