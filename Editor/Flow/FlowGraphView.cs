@@ -82,7 +82,7 @@ namespace Ceres.Editor.Graph.Flow
         public override void DeserializeGraph(ICeresGraphContainer container)
         {
             FlowGraph flowGraph;
-            if (container is IFlowGraphRuntime runtimeContainer)
+            if (Application.isPlaying && container is IFlowGraphRuntime runtimeContainer)
             {
                 flowGraph = runtimeContainer.GetRuntimeFlowGraph();
             }
@@ -115,9 +115,9 @@ namespace Ceres.Editor.Graph.Flow
                                                 .ToArray();
             var flowGraphData = new FlowGraphData
             {
-                nodes = nodeInstances,
+                Nodes = nodeInstances,
                 nodeData = nodeInstances.Select(x=>x.GetSerializedData()).ToArray(),
-                variables = SharedVariables.ToArray()
+                Variables = SharedVariables.ToArray()
             };
             flowGraphData.PreSerialization();
             using var graph = new FlowGraph(flowGraphData.CloneT<FlowGraphData>());
@@ -255,17 +255,13 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     var flowGraphData = new FlowGraphData
                     {
-                        nodes = nodeInstances,
+                        Nodes = nodeInstances,
                         nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
-                        variables = _graphView.SharedVariables.ToArray(),
+                        Variables = _graphView.SharedVariables.ToArray(),
                         variableData = _graphView.SharedVariables.Select(x => x.GetSerializedData()).ToArray(),
                         nodeGroups = data.ToArray()
                     };
                     flowGraphData.PreSerialization();
-                    if (CeresSettings.SmallerBuilds)
-                    {
-                        flowGraphData.OptimizeForSmallerBuild();
-                    }
                     return flowGraphData;
                 }
             }

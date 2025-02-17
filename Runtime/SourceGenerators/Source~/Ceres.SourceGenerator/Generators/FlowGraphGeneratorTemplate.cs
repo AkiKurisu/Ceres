@@ -36,7 +36,7 @@ internal class FlowGraphGeneratorTemplate
         
                 public virtual FlowGraph GetFlowGraph()
                 {
-                    return new FlowGraph(graphData.CloneT<FlowGraphData>());
+                    return new FlowUberGraph(graphData.CloneT<FlowGraphData>());
                 }
         
                 public virtual void SetGraphData(CeresGraphData graph)
@@ -91,7 +91,7 @@ internal class FlowGraphGeneratorTemplate
         
                 public virtual FlowGraph GetFlowGraph()
                 {
-                    return new FlowGraph(graphData.CloneT<FlowGraphData>());
+                    return new FlowUberGraph(graphData.CloneT<FlowGraphData>());
                 }
         
                 public virtual void SetGraphData(CeresGraphData graph)

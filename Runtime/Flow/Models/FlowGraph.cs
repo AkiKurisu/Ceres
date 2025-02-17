@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Chris;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
+using R3.Chris;
+using UnityEngine;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
 
@@ -89,10 +92,10 @@ namespace Ceres.Graph.Flow
 
         private FlowGraphEventHandler _eventHandler;
 
-        public FlowGraph(FlowGraphData flowGraphData) : base(flowGraphData)
+        internal FlowGraph(FlowGraphSerializedData flowGraphData) : base(flowGraphData)
         {
             /* Pre-cache dependency path from serialization data */
-            if(flowGraphData.nodeDependencyPath != null)
+            if (flowGraphData.nodeDependencyPath != null)
             {
                 SetDependencyPath(flowGraphData.nodeDependencyPath.Select(x => x.path).ToArray());
             }
@@ -226,26 +229,27 @@ namespace Ceres.Graph.Flow
             _executionList.Remove(context);
         }
     }
-
+    
     /// <summary>
-    /// Metadata for <see cref="FlowGraph"/>
+    /// Serialized data for <see cref="FlowGraph"/>
     /// </summary>
     [Serializable]
-    public class FlowGraphData: CeresGraphData
+    public class FlowGraphSerializedData : CeresGraphData
     {
         [Serializable]
-        public struct DependencyCache
+        internal struct DependencyCache
         {
             public int[] path;
         }
-        
-        public DependencyCache[] nodeDependencyPath;
+
+        [SerializeField] 
+        internal DependencyCache[] nodeDependencyPath;
         
         public override void BuildGraph(CeresGraph graph)
         {
             if(graph is not FlowGraph flowGraph) return;
             base.BuildGraph(flowGraph);
-            flowGraph!.Events = nodes.OfType<ExecutableEvent>().ToArray();
+            flowGraph!.Events = Nodes.OfType<ExecutableEvent>().ToArray();
         }
 
         protected override CeresNode GetFallbackNode(CeresNodeData fallbackNodeData, int index)
@@ -256,24 +260,46 @@ namespace Ceres.Graph.Flow
                 serializedData = fallbackNodeData.serializedData
             };
         }
-
+        
         public override void PreSerialization()
         {
             base.PreSerialization();
             /* Pre-cache dependency path before serialization */
-            var graph = new FlowGraph(CloneT<FlowGraphData>());
+            var graph = new FlowGraph(CloneT<FlowGraphSerializedData>());
             graph.AOT();
-            nodeDependencyPath = graph.GetDependencyPaths().Select(x=> new DependencyCache
+            nodeDependencyPath = graph.GetDependencyPaths().Select(array=> new DependencyCache
             {
-                path = x
+                path = array
             }).ToArray();
         }
+    }
 
-        public void OptimizeForSmallerBuild()
+    /// <summary>
+    /// SubGraph slot for <see cref="FlowGraphData"/>
+    /// </summary>
+    [Serializable]
+    public class FlowSubGraphSlot : CeresSubGraphSlot<FlowGraphSerializedData>
+    {
+        
+    }
+    
+    /// <summary>
+    /// Metadata for <see cref="FlowGraph"/>
+    /// </summary>
+    [Serializable]
+    public class FlowGraphData: FlowGraphSerializedData
+    {
+        public FlowSubGraphSlot[] subGraphSlots;
+
+        public override void PreSerialization()
         {
-            for (var i = 0; i < nodes.Length; i++)
+            base.PreSerialization();
+            if (subGraphSlots == null) return;
+            
+            /* Pr-serialize sub-graphs */
+            foreach (var subGraphSlot in subGraphSlots)
             {
-                nodes[i] = null;
+                subGraphSlot.graphData.PreSerialization();
             }
         }
     }
@@ -442,6 +468,20 @@ namespace Ceres.Graph.Flow
         public static void SendEvent(this IFlowGraphRuntime runtime, EventBase @event)
         {
             runtime.GetEventHandler().SendEvent(@event);
+        }
+
+        /// <summary>
+        /// Override graph implementation of <see cref="EventBase{TEventType}"/>>
+        /// </summary>
+        /// <param name="runtime"></param>
+        /// <param name="implementation"></param>
+        /// <typeparam name="TEventType"></typeparam>
+        /// <returns></returns>
+        [StackTraceFrame]
+        public static IDisposable OverrideEventImplementation<TEventType>(this IFlowGraphRuntime runtime, EventCallback<TEventType> implementation)
+            where TEventType : EventBase<TEventType>, new()
+        {
+            return runtime.GetEventHandler().AsObservable<TEventType>().SubscribeSafe(implementation);
         }
     }
 }

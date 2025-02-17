@@ -481,14 +481,9 @@ namespace Ceres.Graph
     [Serializable]
     public class CeresGraphData
     {
-        // ==================== Managed Reference =================== //
-        /* Keep using SerializeReference for faster deserialization */
-        [SerializeReference]
-        public SharedVariable[] variables;
+        public SharedVariable[] Variables;
         
-        [SerializeReference]
-        public CeresNode[] nodes;
-        // ==================== Managed Reference =================== //
+        public CeresNode[] Nodes;
 
         public SharedVariableData[] variableData;
         
@@ -504,22 +499,22 @@ namespace Ceres.Graph
         public virtual void BuildGraph(CeresGraph graph)
         {
             // Restore nodes
-            nodes ??= new CeresNode[nodeData.Length];
-            for (int i = 0; i < nodes.Length; ++i)
+            Nodes ??= new CeresNode[nodeData.Length];
+            for (int i = 0; i < Nodes.Length; ++i)
             {
                 RestoreNode(i);
             }
 
             // Restore variables
-            variables ??= new SharedVariable[variables.Length];
-            for (int i = 0; i < variables.Length; ++i)
+            Variables ??= new SharedVariable[variableData.Length];
+            for (int i = 0; i < Variables.Length; ++i)
             {
                 RestoreVariable(i);
             }
 
             // Apply instances
-            graph.variables = variables.ToList();
-            graph.nodes = nodes.ToList();
+            graph.variables = Variables.ToList();
+            graph.nodes = Nodes.ToList();
             graph.nodeGroups = nodeGroups?.ToList() ?? new List<NodeGroup>();
         }
 
@@ -531,11 +526,11 @@ namespace Ceres.Graph
                 if (redirectedType != null)
                 {
                     CeresLogger.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
-                    nodes[index] = nodeData[index].Deserialize(redirectedType);
+                    Nodes[index] = nodeData[index].Deserialize(redirectedType);
                 }
             }
 
-            if(nodes[index] == null)
+            if (Nodes[index] == null)
             {
                 if (IsNodeGeneric(index))
                 {
@@ -546,21 +541,25 @@ namespace Ceres.Graph
                     CreateNodeInstance(index);
                 }
                 /* Use fallback serialization */
-                nodes[index] ??= GetFallbackNode(nodeData[index], index);
+                Nodes[index] ??= GetFallbackNode(nodeData[index], index);
             }
             // Restore metadata
-            nodes[index].NodeData = nodeData[index];
+            Nodes[index].NodeData = nodeData[index];
         }
 
         protected void RestoreVariable(int index)
         {
-            if (!APIUpdateConfig.Current) return;
+            if (APIUpdateConfig.Current)
+            {
+                var redirectedType = RedirectVariableType(variableData![index].variableType);
+                if (redirectedType == null) return;
+
+                CeresLogger.Log($"Redirect variable type {variableData![index].variableType} to {redirectedType}");
+                Variables[index] = variableData[index].Deserialize(redirectedType);
+            }
             
-            var redirectedType = RedirectVariableType(variableData![index].variableType);
-            if (redirectedType == null) return;
-            
-            CeresLogger.Log($"Redirect variable type {variableData![index].variableType} to {redirectedType}");
-            variables[index] = variableData[index].Deserialize(redirectedType);
+            /* Not support generic instance variable */
+            Variables[index] ??= variableData[index].Deserialize(variableData![index].variableType.ToType());
         }
 
         /// <summary>
@@ -627,7 +626,7 @@ namespace Ceres.Graph
                 var genericTypeDefinition = nodeData[index].nodeType.ToType();
                 var parameterTypes = nodeData[index].genericParameters.Select(ResolveSerializedType).ToArray();
                 var genericType = genericTypeDefinition.MakeGenericType(parameterTypes);
-                nodes[index] = nodeData[index].Deserialize(genericType);
+                Nodes[index] = nodeData[index].Deserialize(genericType);
                 return true;
             }
             catch(Exception e)
@@ -642,7 +641,7 @@ namespace Ceres.Graph
             try
             {
                 var nodeType = nodeData[index].nodeType.ToType();
-                nodes[index] = nodeData[index].Deserialize(nodeType);
+                Nodes[index] = nodeData[index].Deserialize(nodeType);
                 return true;
             }
             catch(Exception e)
@@ -685,11 +684,11 @@ namespace Ceres.Graph
         public virtual void PreSerialization()
         {
             // Remove all generic node instances since [SerializeReference] can not solve them
-            for (var i = 0; i < nodes.Length; i++)
+            for (var i = 0; i < Nodes.Length; i++)
             {
-                if (nodes[i].GetType().IsGenericType)
+                if (Nodes[i].GetType().IsGenericType)
                 {
-                    nodes[i] = null;
+                    Nodes[i] = null;
                 }
             }
         }
@@ -751,46 +750,46 @@ namespace Ceres.Graph
         /// <param name="graph"></param>
         protected void ReadFromLinkedNodes(CeresGraph graph)
         {
-            nodes = graph.nodes.ToArray();
-            variables = graph.variables.ToArray();
-            variableData = variables.Select(x => x.GetSerializedData()).ToArray();
-            edges = new Edge[nodes.Length];
-            for (int i = 0; i < nodes.Length; ++i)
+            Nodes = graph.nodes.ToArray();
+            Variables = graph.variables.ToArray();
+            variableData = Variables.Select(x => x.GetSerializedData()).ToArray();
+            edges = new Edge[Nodes.Length];
+            for (int i = 0; i < Nodes.Length; ++i)
             {
                 var edge = edges[i] = new Edge();
-                var linkedInterface = (ILinkedNode)nodes[i];
+                var linkedInterface = (ILinkedNode)Nodes[i];
                 edge.children = new int[linkedInterface.GetChildrenCount()];
                 for (int n = 0; n < edge.children.Length; ++n)
                 {
-                    edge.children[n] = Array.IndexOf(nodes, linkedInterface.GetChildAt(n));
+                    edge.children[n] = Array.IndexOf(Nodes, linkedInterface.GetChildAt(n));
                 }
                 // clear duplicated reference
                 linkedInterface.ClearChildren();
             }
             /* Must serialize node data after clear references */
-            nodeData = nodes.Select(x => x.GetSerializedData()).ToArray();
+            nodeData = Nodes.Select(x => x.GetSerializedData()).ToArray();
             nodeGroups = graph.nodeGroups.ToArray();
         }
         
          protected void LinkNodes()
         {
             if (edges == null || edges.Length == 0) return;
-            if (nodes == null || nodes.Length == 0) return;
-            if (nodes.Length != edges.Length)
+            if (Nodes == null || Nodes.Length == 0) return;
+            if (Nodes.Length != edges.Length)
             {
                 throw new ArgumentException("[Ceres] The length of behaviors and edges must be the same.");
             }
-            for (int n = 0; n < nodes.Length; ++n)
+            for (int n = 0; n < Nodes.Length; ++n)
             {
                 // connect if it can set linked child
-                if (nodes[n] is not ILinkedNode linkedNode) continue;
+                if (Nodes[n] is not ILinkedNode linkedNode) continue;
                 
                 var edge = edges[n];
                 foreach (var childIndex in edge.children)
                 {
-                    if (childIndex >= 0 && childIndex < nodes.Length)
+                    if (childIndex >= 0 && childIndex < Nodes.Length)
                     {
-                        linkedNode.AddChild(nodes[childIndex]);
+                        linkedNode.AddChild(Nodes[childIndex]);
                     }
                 }
             }

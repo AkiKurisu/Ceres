@@ -13,12 +13,6 @@ namespace Ceres.Editor
             Debug
         }
         
-        public enum GraphSerializeMode
-        {
-            FasterRuntime,
-            SmallerBuilds
-        }
-        
         private static CeresSettings _setting;
 
         [SerializeField, HideInInspector] 
@@ -26,9 +20,6 @@ namespace Ceres.Editor
         
         [SerializeField, HideInInspector]
         private bool disableILPostProcess;
-        
-        [SerializeField, HideInInspector]
-        private GraphSerializeMode graphSerializeMode;
         
         /// <summary>
         /// Ceres graph editor view display mode
@@ -39,16 +30,6 @@ namespace Ceres.Editor
         /// Ceres graph editor will display in debug mode
         /// </summary>
         public static bool DisplayDebug => DisplayMode == GraphEditorDisplayMode.Debug;
-        
-        /// <summary>
-        /// Ceres graph serialization mode
-        /// </summary>
-        public static GraphSerializeMode SerializeMode => instance.graphSerializeMode;
-
-        /// <summary>
-        /// Ceres graph will produce a smaller build in serialization
-        /// </summary>
-        public static bool SmallerBuilds => SerializeMode == GraphSerializeMode.SmallerBuilds;
 
         public static void SaveSettings()
         {
@@ -71,11 +52,6 @@ namespace Ceres.Editor
                 "Disable IL Post Process, default Ceres will emit il after syntax analysis step to enhance " +
                 "runtime performance, disable can speed up editor compilation, recommend to enable in final " +
                 "production build");
-            
-            public static readonly GUIContent GraphSerializeModeStyle = new("Serialize Mode", 
-                "Set graph serialize mode. " +
-                "\nFaster runtime: Deserialization is optimized for runtime performance. This is the default." +
-                "\nSmaller builds: Produce a smaller build but may have an impact on deserialization performance");
         }
 
         private CeresSettingsProvider(string path, SettingsScope scope = SettingsScope.User) : base(path, scope) { }
@@ -102,7 +78,6 @@ namespace Ceres.Editor
             GUILayout.Label("Runtime Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.PropertyField(disableILPostProcessProp, Styles.DisableILPostProcessStyle);
-            EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphSerializeMode"), Styles.GraphSerializeModeStyle);
             GUILayout.EndVertical();
             if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
             {
@@ -121,7 +96,7 @@ namespace Ceres.Editor
         }
         
         [SettingsProvider]
-        public static SettingsProvider CreateMyCustomSettingsProvider()
+        public static SettingsProvider CreateCeresSettingsProvider()
         {
             var provider = new CeresSettingsProvider("Project/Ceres Settings", SettingsScope.Project)
             {

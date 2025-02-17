@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Ceres.Annotations;
 using Chris.Collections;
 using Chris.Serialization;
@@ -168,15 +167,12 @@ namespace Ceres.Graph
             }
 
             var path = paths[0].ToLower();
-            if (path == "forward")
+            return path switch
             {
-                return ExecutionPath.Forward;
-            }
-            if (path == "dependency")
-            {
-                return ExecutionPath.Dependency;
-            }
-            return ExecutionPath.Forward;
+                "forward" => ExecutionPath.Forward,
+                "dependency" => ExecutionPath.Dependency,
+                _ => ExecutionPath.Forward
+            };
         }
         
         public static string GetTargetSubtitle(string name, bool richText = true)
@@ -405,6 +401,7 @@ namespace Ceres.Graph
         /// Serialize node data
         /// </summary>
         /// <param name="node"></param>
+        /// <remarks>Override to customize serialization</remarks>
         public virtual void Serialize(CeresNode node)
         {
             var type = node.GetType();
@@ -423,7 +420,6 @@ namespace Ceres.Graph
             {
                 UObjectLink.Parse(ref uobjectLinks, serializedData);
             }
-            /* Override to customize serialization like ISerializationCallbackReceiver */
         }
         
         /// <summary>
