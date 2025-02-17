@@ -18,15 +18,15 @@ namespace Ceres.Graph
         }
         
         [Serializable]
-        internal class SerializedNodeType: IEquatable<SerializedNodeType>
+        internal class SerializedManagedReferenceType<T>: IEquatable<SerializedManagedReferenceType<T>>
         {
-            public SerializedType<CeresNode> nodeType;
+            public SerializedType<T> serializedType;
             
             public Optional<string> overrideType;
             
             public Type ToType()
             {
-                if (!overrideType.Enabled) return nodeType;
+                if (!overrideType.Enabled) return serializedType;
                 var tokens = overrideType.Value.Split(' ');
                 return new ManagedReferenceType(tokens[0], tokens[1], tokens[2]).ToType();
             }
@@ -37,73 +37,33 @@ namespace Ceres.Graph
                 return $"{type.Assembly.GetName().Name} {type.FullName}";
             }
             
-            public SerializedNodeType() { }
+            public SerializedManagedReferenceType() { }
             
-            public SerializedNodeType(ManagedReferenceType inNodeType)
+            public SerializedManagedReferenceType(ManagedReferenceType inNodeType)
             {
                 overrideType = new Optional<string>($"{inNodeType._class} {inNodeType._ns} {inNodeType._asm}");
             }
 
-            public ManagedReferenceType ToNodeType()
+            public ManagedReferenceType ToManagedReferenceTypeType()
             {
-                if (!overrideType.Enabled) return new ManagedReferenceType(nodeType);
+                if (!overrideType.Enabled) return new ManagedReferenceType(serializedType);
                 var tokens = overrideType.Value.Split(' ');
                 return new ManagedReferenceType(tokens[0], tokens[1], tokens[2]);
             }
             
-            public bool Equals(SerializedNodeType other)
+            public bool Equals(SerializedManagedReferenceType<T> other)
             {
-                return other != null && ToNodeType().Equals(other.ToNodeType());
-            }
-        }
-        
-        [Serializable]
-        private class SerializedVariableType: IEquatable<SerializedVariableType>
-        {
-            public SerializedType<CeresNode> nodeType;
-            
-            public Optional<string> overrideType;
-            
-            public Type ToType()
-            {
-                if (!overrideType.Enabled) return nodeType;
-                var tokens = overrideType.Value.Split(' ');
-                return new ManagedReferenceType(tokens[0], tokens[1], tokens[2]).ToType();
-            }
-            
-            public string GetFullTypeName()
-            {
-                var type = ToType();
-                return $"{type.Assembly.GetName().Name} {type.FullName}";
-            }
-            
-            public SerializedVariableType() { }
-            
-            public SerializedVariableType(ManagedReferenceType inNodeType)
-            {
-                overrideType = new Optional<string>($"{inNodeType._class} {inNodeType._ns} {inNodeType._asm}");
-            }
-
-            public ManagedReferenceType ToNodeType()
-            {
-                if (!overrideType.Enabled) return new ManagedReferenceType(nodeType);
-                var tokens = overrideType.Value.Split(' ');
-                return new ManagedReferenceType(tokens[0], tokens[1], tokens[2]);
-            }
-            
-            public bool Equals(SerializedVariableType other)
-            {
-                return other != null && ToNodeType().Equals(other.ToNodeType());
+                return other != null && ToManagedReferenceTypeType().Equals(other.ToManagedReferenceTypeType());
             }
         }
         
         [Header("Node")]
         [SerializeField]
-        internal Redirector<SerializedNodeType>[] nodeRedirectors;
+        internal Redirector<SerializedManagedReferenceType<CeresNode>>[] nodeRedirectors;
         
         [Header("Variable")]
         [SerializeField]
-        private Redirector<SerializedVariableType>[] variableRedirectors;
+        private Redirector<SerializedManagedReferenceType<SharedVariable>>[] variableRedirectors;
         
         [Header("Global")]
         [SerializeField]
@@ -120,14 +80,14 @@ namespace Ceres.Graph
         
         public Type RedirectNode(in ManagedReferenceType nodeType)
         {
-            var serializeType = new SerializedNodeType(nodeType);
+            var serializeType = new SerializedManagedReferenceType<CeresNode>(nodeType);
             var redirector = nodeRedirectors.FirstOrDefault(x => x.source.Equals(serializeType));
             return redirector?.target.ToType() ?? RedirectManagedReference(nodeType);
         }
         
         public Type RedirectVariable(in ManagedReferenceType variableType)
         {
-            var serializeType = new SerializedVariableType(variableType);
+            var serializeType = new SerializedManagedReferenceType<SharedVariable>(variableType);
             var redirector = variableRedirectors.FirstOrDefault(x => x.source.Equals(serializeType));
             return redirector?.target.ToType() ?? RedirectManagedReference(variableType);
         }
