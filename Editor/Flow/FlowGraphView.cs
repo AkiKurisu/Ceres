@@ -66,9 +66,13 @@ namespace Ceres.Editor.Graph.Flow
                 /* Subgraph need be serialized with outer */
                 editableData.SetSubGraphData(_editingSubGraphSlotName, flowGraphData);
             }
-            else if (editableData?.subGraphData != null)
+            else
             {
-                flowGraphData.subGraphData = editableData.subGraphData;
+                /* Move SubGraph data to new UberGraph data */
+                if (editableData?.subGraphData != null)
+                {
+                    flowGraphData.subGraphData = editableData.subGraphData;
+                }
                 editableData = flowGraphData;
             }
             flowGraphContainer.SetGraphData(editableData);
