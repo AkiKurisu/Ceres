@@ -23,9 +23,11 @@ namespace Ceres.Editor.Graph
 
         public HashSet<ICeresNodeView> NodeViews { get; } = new();
         
-        public CeresNodeSearchWindow SearchWindow { get; private set; }
+        protected CeresNodeSearchWindow SearchWindow { get; private set; }
 
         private static readonly Dictionary<string, StyleSheet> StyleSheetsCache = new();
+
+        private bool _dirtyFlag;
 
         protected CeresGraphView(CeresGraphEditorWindow editorWindow)
         {
@@ -43,6 +45,7 @@ namespace Ceres.Editor.Graph
             serializeGraphElements = OnCopySerializedGraph;
             unserializeAndPaste = OnPasteSerializedGraph;
             nodeCreationRequest = OnNodeCreationRequest;
+            graphViewChanged = OnGraphViewChanged;
             RegisterCallback<DetachFromPanelEvent>(OnGraphViewDestroy);
         }
 
@@ -72,6 +75,16 @@ namespace Ceres.Editor.Graph
         protected virtual void OnPasteSerializedGraph(string operationName, string serializedData)
         {
             
+        }
+
+        protected virtual GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
+        {
+            if (graphViewChange.movedElements.Any() || graphViewChange.elementsToRemove.Any() ||
+                graphViewChange.edgesToCreate.Any())
+            {
+                SetDirty();
+            }
+            return graphViewChange;
         }
 
         /// <summary>
@@ -165,6 +178,7 @@ namespace Ceres.Editor.Graph
         {
             NodeViews.Add(nodeView);
             AddElement(nodeView.NodeElement);
+            SetDirty();
             
             /* Sync node view lifetime scope with NodeElement */
             nodeView.NodeElement.RegisterCallback<DetachFromPanelEvent>(_ =>
@@ -265,6 +279,31 @@ namespace Ceres.Editor.Graph
             settings.RequestPortView = portView;
             SearchWindow.Initialize(this, settings);
             USearchWindow.Open(new SearchWindowContext(screenPosition), SearchWindow);
+        }
+
+        /// <summary>
+        /// Marks graph view as dirty
+        /// </summary>
+        public void SetDirty()
+        {
+            _dirtyFlag = true;
+        }
+        
+        /// <summary>
+        /// Clear graph view's dirty flag.
+        /// </summary>
+        public void ClearDirty()
+        {
+            _dirtyFlag = false;
+        }
+        
+        /// <summary>
+        /// Whether graph view is dirty
+        /// </summary>
+        /// <returns></returns>
+        public bool IsDirty()
+        {
+            return _dirtyFlag;
         }
 
         private void OnGraphViewDestroy(DetachFromPanelEvent evt)

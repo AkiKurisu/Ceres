@@ -119,6 +119,7 @@ namespace Ceres.Editor.Graph.Flow
             EditingGraph = flowGraph;
             _isEditingSubGraph = false;
             _editingSubGraphSlotName = string.Empty;
+            ClearDirty();
         }
         
         public void DeserializeSubGraph(ICeresGraphContainer container, string slotName)
@@ -138,6 +139,7 @@ namespace Ceres.Editor.Graph.Flow
             EditingGraph = flowGraph;
             _isEditingSubGraph = true;
             _editingSubGraphSlotName = slotName;
+            ClearDirty();
         }
 
         private void HandleKeyBoardCommands(KeyDownEvent evt)

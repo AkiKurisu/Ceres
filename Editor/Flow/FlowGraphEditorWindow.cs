@@ -51,6 +51,19 @@ namespace Ceres.Editor.Graph.Flow
             InitializeFlowGraphView();
         }
 
+        private void OnGUI()
+        {
+            if (_graphView == null) return;
+            if (_graphView.IsDirty())
+            {
+                titleContent.text = $"Flow ({Identifier.boundObject.name})*";
+            }
+            else
+            {
+                titleContent.text = $"Flow ({Identifier.boundObject.name})";
+            }
+        }
+
         private static void DisplayProgressBar(string stepTitle, float progress)
         {
             EditorUtility.DisplayProgressBar(stepTitle, "First initialization requires a few seconds", progress);
@@ -101,7 +114,8 @@ namespace Ceres.Editor.Graph.Flow
             var guiContent = new GUIContent();
             if (_graphView.SerializeGraph(Container))
             {
-                guiContent.text = $"Update flow {Identifier.boundObject.name} succeed!";
+                _graphView.ClearDirty();
+                guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
                 ShowNotification(guiContent, 0.5f);
                 EditorUtility.SetDirty(Container.Object);
                 AssetDatabase.SaveAssetIfDirty(Container.Object);
@@ -192,7 +206,7 @@ namespace Ceres.Editor.Graph.Flow
                     if(debugState.enableDebug)
                     {
                         image = EditorGUIUtility.IconContent("DebuggerAttached@2x").image;
-                        if (GUILayout.Button(new GUIContent(image, $"Disable Debug"), EditorStyles.toolbarButton))
+                        if (GUILayout.Button(new GUIContent(image, $"Disable Debug Mode"), EditorStyles.toolbarButton))
                         {
                             _graphView.SetDebugEnabled(false);
                         }
@@ -200,7 +214,7 @@ namespace Ceres.Editor.Graph.Flow
                     else
                     {
                         image = EditorGUIUtility.IconContent("DebuggerDisabled@2x").image;
-                        if (GUILayout.Button(new GUIContent(image, $"Enable Debug"), EditorStyles.toolbarButton))
+                        if (GUILayout.Button(new GUIContent(image, $"Enable Debug Mode"), EditorStyles.toolbarButton))
                         {
                             _graphView.SetDebugEnabled(true);
                         }
