@@ -106,6 +106,8 @@ namespace Ceres.Graph
 
         private List<IDisposable> _disposables;
 
+        public CeresSubGraphSlot[] SubGraphSlots;
+
         public CeresGraph()
         {
             
@@ -379,6 +381,31 @@ namespace Ceres.Graph
             return node == null ? null : _nodeDependencyPath[nodes.IndexOf(node)];
         }
         
+        /// <summary>
+        /// Is graph on top level which means it can have subGraphs
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsUberGraph()
+        {
+            return false;
+        }
+        
+        /// <summary>
+        /// Find subGraph with specific type by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <typeparam name="TGraph"></typeparam>
+        /// <returns>Null if not exist</returns>
+        public TGraph FindSubGraph<TGraph>(string name) where TGraph: CeresGraph
+        {
+            foreach (var subGraphSlot in SubGraphSlots)
+            {
+                if (subGraphSlot.Name == name && subGraphSlot.Graph is TGraph graph) return graph;
+            }
+
+            return null;
+        }
+        
         void IDisposableUnregister.Register(IDisposable disposable)
         {
             _disposables ??= ListPool<IDisposable>.Get();
@@ -481,10 +508,6 @@ namespace Ceres.Graph
     [Serializable]
     public class CeresGraphData
     {
-        public SharedVariable[] Variables;
-        
-        public CeresNode[] Nodes;
-
         public SharedVariableData[] variableData;
         
         public CeresNodeData[] nodeData;
@@ -499,26 +522,26 @@ namespace Ceres.Graph
         public virtual void BuildGraph(CeresGraph graph)
         {
             // Restore nodes
-            Nodes ??= new CeresNode[nodeData.Length];
-            for (int i = 0; i < Nodes.Length; ++i)
+            var nodes = new CeresNode[nodeData?.Length ?? 0];
+            for (int i = 0; i < nodes.Length; ++i)
             {
-                RestoreNode(i);
+                RestoreNode(i, nodes);
             }
 
             // Restore variables
-            Variables ??= new SharedVariable[variableData.Length];
-            for (int i = 0; i < Variables.Length; ++i)
+            var variables = new SharedVariable[variableData?.Length ?? 0];
+            for (int i = 0; i < variables.Length; ++i)
             {
-                RestoreVariable(i);
+                RestoreVariable(i, variables);
             }
 
             // Apply instances
-            graph.variables = Variables.ToList();
-            graph.nodes = Nodes.ToList();
+            graph.variables = variables.ToList();
+            graph.nodes = nodes.ToList();
             graph.nodeGroups = nodeGroups?.ToList() ?? new List<NodeGroup>();
         }
 
-        protected void RestoreNode(int index)
+        protected void RestoreNode(int index, CeresNode[] nodes)
         {
             if (APIUpdateConfig.Current)
             {
@@ -526,28 +549,28 @@ namespace Ceres.Graph
                 if (redirectedType != null)
                 {
                     CeresLogger.Log($"Redirect node type {nodeData![index].nodeType} to {redirectedType}");
-                    Nodes[index] = nodeData[index].Deserialize(redirectedType);
+                    nodes[index] = nodeData[index].Deserialize(redirectedType);
                 }
             }
 
-            if (Nodes[index] == null)
+            if (nodes[index] == null)
             {
                 if (IsNodeGeneric(index))
                 {
-                    CreateGenericNodeInstance(index);
+                    CreateGenericNodeInstance(index, nodes);
                 }
                 else
                 {
-                    CreateNodeInstance(index);
+                    CreateNodeInstance(index, nodes);
                 }
                 /* Use fallback serialization */
-                Nodes[index] ??= GetFallbackNode(nodeData[index], index);
+                nodes[index] ??= GetFallbackNode(nodeData[index], index);
             }
             // Restore metadata
-            Nodes[index].NodeData = nodeData[index];
+            nodes[index].NodeData = nodeData[index];
         }
 
-        protected void RestoreVariable(int index)
+        protected void RestoreVariable(int index, SharedVariable[] variables)
         {
             if (APIUpdateConfig.Current)
             {
@@ -555,11 +578,11 @@ namespace Ceres.Graph
                 if (redirectedType == null) return;
 
                 CeresLogger.Log($"Redirect variable type {variableData![index].variableType} to {redirectedType}");
-                Variables[index] = variableData[index].Deserialize(redirectedType);
+                variables[index] = variableData[index].Deserialize(redirectedType);
             }
             
             /* Not support generic instance variable */
-            Variables[index] ??= variableData[index].Deserialize(variableData![index].variableType.ToType());
+            variables[index] ??= variableData[index].Deserialize(variableData![index].variableType.ToType());
         }
 
         /// <summary>
@@ -618,7 +641,7 @@ namespace Ceres.Graph
             return nodeData[index].genericParameters != null && nodeData[index].genericParameters.Length > 0;
         }
 
-        private bool CreateGenericNodeInstance(int index)
+        private bool CreateGenericNodeInstance(int index, CeresNode[] nodes)
         {
             try
             {
@@ -626,7 +649,7 @@ namespace Ceres.Graph
                 var genericTypeDefinition = nodeData[index].nodeType.ToType();
                 var parameterTypes = nodeData[index].genericParameters.Select(ResolveSerializedType).ToArray();
                 var genericType = genericTypeDefinition.MakeGenericType(parameterTypes);
-                Nodes[index] = nodeData[index].Deserialize(genericType);
+                nodes[index] = nodeData[index].Deserialize(genericType);
                 return true;
             }
             catch(Exception e)
@@ -636,12 +659,12 @@ namespace Ceres.Graph
             }
         }
         
-        private bool CreateNodeInstance(int index)
+        private bool CreateNodeInstance(int index, CeresNode[] nodes)
         {
             try
             {
                 var nodeType = nodeData[index].nodeType.ToType();
-                Nodes[index] = nodeData[index].Deserialize(nodeType);
+                nodes[index] = nodeData[index].Deserialize(nodeType);
                 return true;
             }
             catch(Exception e)
@@ -683,14 +706,7 @@ namespace Ceres.Graph
         /// </summary>
         public virtual void PreSerialization()
         {
-            // Remove all generic node instances since [SerializeReference] can not solve them
-            for (var i = 0; i < Nodes.Length; i++)
-            {
-                if (Nodes[i].GetType().IsGenericType)
-                {
-                    Nodes[i] = null;
-                }
-            }
+
         }
 
         /// <summary>
@@ -741,7 +757,24 @@ namespace Ceres.Graph
         public override void BuildGraph(CeresGraph graph)
         {
             base.BuildGraph(graph);
-            LinkNodes();
+            if (graph.nodes.Count != edges.Length)
+            {
+                throw new ArgumentException("[Ceres] The length of nodes and edges must be the same.");
+            }
+            for (int i = 0; i < graph.nodes.Count; ++i)
+            {
+                // connect if it can set linked child
+                if (graph.nodes[i] is not ILinkedNode linkedNode) continue;
+                
+                var edge = edges[i];
+                foreach (var childIndex in edge.children)
+                {
+                    if (childIndex >= 0 && childIndex < graph.nodes.Count)
+                    {
+                        linkedNode.AddChild(graph.nodes[childIndex]);
+                    }
+                }
+            }
         }
         
         /// <summary>
@@ -750,49 +783,25 @@ namespace Ceres.Graph
         /// <param name="graph"></param>
         protected void ReadFromLinkedNodes(CeresGraph graph)
         {
-            Nodes = graph.nodes.ToArray();
-            Variables = graph.variables.ToArray();
-            variableData = Variables.Select(x => x.GetSerializedData()).ToArray();
-            edges = new Edge[Nodes.Length];
-            for (int i = 0; i < Nodes.Length; ++i)
+            var nodes = graph.nodes.ToArray();
+            var variables = graph.variables.ToArray();
+            variableData = variables.Select(x => x.GetSerializedData()).ToArray();
+            edges = new Edge[nodes.Length];
+            for (int i = 0; i < nodes.Length; ++i)
             {
                 var edge = edges[i] = new Edge();
-                var linkedInterface = (ILinkedNode)Nodes[i];
+                var linkedInterface = (ILinkedNode)nodes[i];
                 edge.children = new int[linkedInterface.GetChildrenCount()];
                 for (int n = 0; n < edge.children.Length; ++n)
                 {
-                    edge.children[n] = Array.IndexOf(Nodes, linkedInterface.GetChildAt(n));
+                    edge.children[n] = Array.IndexOf(nodes, linkedInterface.GetChildAt(n));
                 }
                 // clear duplicated reference
                 linkedInterface.ClearChildren();
             }
             /* Must serialize node data after clear references */
-            nodeData = Nodes.Select(x => x.GetSerializedData()).ToArray();
+            nodeData = nodes.Select(x => x.GetSerializedData()).ToArray();
             nodeGroups = graph.nodeGroups.ToArray();
-        }
-        
-         protected void LinkNodes()
-        {
-            if (edges == null || edges.Length == 0) return;
-            if (Nodes == null || Nodes.Length == 0) return;
-            if (Nodes.Length != edges.Length)
-            {
-                throw new ArgumentException("[Ceres] The length of behaviors and edges must be the same.");
-            }
-            for (int n = 0; n < Nodes.Length; ++n)
-            {
-                // connect if it can set linked child
-                if (Nodes[n] is not ILinkedNode linkedNode) continue;
-                
-                var edge = edges[n];
-                foreach (var childIndex in edge.children)
-                {
-                    if (childIndex >= 0 && childIndex < Nodes.Length)
-                    {
-                        linkedNode.AddChild(Nodes[childIndex]);
-                    }
-                }
-            }
         }
     }
 

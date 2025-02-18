@@ -3,33 +3,43 @@
 namespace Ceres.Graph
 {
     /// <summary>
-    /// SubGraph data container for <see cref="CeresGraphData"/>
+    /// SubGraph container for <see cref="CeresGraph"/>
     /// </summary>
-    [Serializable]
-    public abstract class CeresSubGraphSlot
+    public class CeresSubGraphSlot
     {
         /// <summary>
-        /// Slot guid that is persistent in uber graph scope
+        /// Slot name
         /// </summary>
-        public string guid;
+        public string Name;
 
         /// <summary>
-        /// SubGraph displayed name
+        /// SubGraph instance
         /// </summary>
-        public string name;
-        
-        public abstract CeresGraphData GetGraphData();
+        /// <returns></returns>
+        public CeresGraph Graph;
     }
     
     /// <summary>
-    /// SubGraph data container for <see cref="TGraphData"/>
+    /// SubGraph metadata
     /// </summary>
     [Serializable]
-    public abstract class CeresSubGraphSlot<TGraphData>: CeresSubGraphSlot where TGraphData: CeresGraphData
+    public abstract class CeresSubGraphData
+    {
+        public string slotName;
+        
+        public abstract CeresGraphData GetSubGraphData();
+    }
+    
+    /// <summary>
+    /// SubGraph metadata of <see cref="TGraphData"/>>
+    /// </summary>
+    /// <typeparam name="TGraphData"></typeparam>
+    [Serializable]
+    public abstract class CeresSubGraphData<TGraphData>: CeresSubGraphData where TGraphData: CeresGraphData
     {
         public TGraphData graphData;
         
-        public override CeresGraphData GetGraphData()
+        public override CeresGraphData GetSubGraphData()
         {
             return graphData;
         }

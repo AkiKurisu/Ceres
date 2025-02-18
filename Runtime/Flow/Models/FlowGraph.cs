@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Chris;
+using Chris.Collections;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
 using R3.Chris;
@@ -22,6 +23,12 @@ namespace Ceres.Graph.Flow
         /// </summary>
         /// <returns></returns>
         FlowGraph GetFlowGraph();
+
+        /// <summary>
+        /// Get persistent <see cref="FlowGraphData"/> from this container
+        /// </summary>
+        /// <returns></returns>
+        FlowGraphData GetFlowGraphData();
     }
     
     /// <summary>
@@ -249,7 +256,7 @@ namespace Ceres.Graph.Flow
         {
             if(graph is not FlowGraph flowGraph) return;
             base.BuildGraph(flowGraph);
-            flowGraph!.Events = Nodes.OfType<ExecutableEvent>().ToArray();
+            flowGraph!.Events = flowGraph.nodes.OfType<ExecutableEvent>().ToArray();
         }
 
         protected override CeresNode GetFallbackNode(CeresNodeData fallbackNodeData, int index)
@@ -278,7 +285,7 @@ namespace Ceres.Graph.Flow
     /// SubGraph slot for <see cref="FlowGraphData"/>
     /// </summary>
     [Serializable]
-    public class FlowSubGraphSlot : CeresSubGraphSlot<FlowGraphSerializedData>
+    public class FlowSubGraphData : CeresSubGraphData<FlowGraphSerializedData>
     {
         
     }
@@ -289,17 +296,50 @@ namespace Ceres.Graph.Flow
     [Serializable]
     public class FlowGraphData: FlowGraphSerializedData
     {
-        public FlowSubGraphSlot[] subGraphSlots;
+        public FlowSubGraphData[] subGraphData;
 
+        public override void BuildGraph(CeresGraph graph)
+        {
+            if(graph is not FlowGraph flowGraph) return;
+            base.BuildGraph(flowGraph);
+            /* Build subGraphs */
+            flowGraph.SubGraphSlots = new CeresSubGraphSlot[subGraphData?.Length ?? 0];
+            for (int i = 0; i < flowGraph.SubGraphSlots.Length; i++)
+            {
+                flowGraph.SubGraphSlots[i] = new CeresSubGraphSlot
+                {
+                    Name = subGraphData![i].slotName,
+                    Graph = new FlowSubGraph(subGraphData![i].graphData)
+                };
+            }
+        }
+        
         public override void PreSerialization()
         {
             base.PreSerialization();
-            if (subGraphSlots == null) return;
+            if (subGraphData == null) return;
             
-            /* Pr-serialize sub-graphs */
-            foreach (var subGraphSlot in subGraphSlots)
+            /* Pr-serialize subGraphs */
+            foreach (var data in subGraphData)
             {
-                subGraphSlot.graphData.PreSerialization();
+                data.graphData.PreSerialization();
+            }
+        }
+
+        public void SetSubGraphData(string name, FlowGraphSerializedData data)
+        {
+            subGraphData ??= Array.Empty<FlowSubGraphData>();
+            if (subGraphData.All(x => x.slotName != name))
+            {
+                ArrayUtils.Add(ref subGraphData, new FlowSubGraphData
+                {
+                    slotName = name,
+                    graphData = data
+                });
+            }
+            else
+            {
+                subGraphData.First(x => x.slotName == name).graphData = data;
             }
         }
     }

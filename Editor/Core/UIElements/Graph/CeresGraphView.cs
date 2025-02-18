@@ -218,25 +218,6 @@ namespace Ceres.Editor.Graph
         }
 
         /// <summary>
-        /// Serialize graph to container
-        /// </summary>
-        /// <param name="container"></param>
-        /// <returns></returns>
-        public virtual bool SerializeGraph(ICeresGraphContainer container)
-        {
-            return true;
-        }
-        
-        /// <summary>
-        /// Deserialize graph from container
-        /// </summary>
-        /// <param name="container"></param>
-        public virtual void DeserializeGraph(ICeresGraphContainer container)
-        {
-            
-        }
-
-        /// <summary>
         /// Add shared variables to graph's blackboard
         /// </summary>
         /// <param name="variables"></param>

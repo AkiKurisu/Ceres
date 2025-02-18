@@ -8,5 +8,10 @@
         public FlowUberGraph(FlowGraphData flowGraphData) : base(flowGraphData)
         {
         }
+
+        public sealed override bool IsUberGraph()
+        {
+            return true;
+        }
     }
 }

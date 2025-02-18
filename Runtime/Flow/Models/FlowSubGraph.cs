@@ -3,10 +3,15 @@
     /// <summary>
     /// A special type of <see cref="FlowGraph"/>
     /// </summary>
-    internal class FlowSubGraph: FlowGraph
+    public class FlowSubGraph: FlowGraph
     {
         public FlowSubGraph(FlowGraphSerializedData flowGraphData) : base(flowGraphData)
         {
+        }
+        
+        public sealed override bool IsUberGraph()
+        {
+            return false;
         }
     }
 }

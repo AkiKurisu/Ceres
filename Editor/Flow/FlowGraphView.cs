@@ -15,15 +15,24 @@ namespace Ceres.Editor.Graph.Flow
 {
     public class FlowGraphView : CeresGraphView, IDisposable
     {
-        private FlowGraphDebugTracker _tracker;
-        
+        /// <summary>
+        /// Editor debug state
+        /// </summary>
         public FlowGraphDebugState DebugState { get; }
 
-        private FlowGraphEditorWindow FlowGraphEditorWindow { get; }
+        internal FlowGraph EditingGraph { get; private set; }
+
+        private FlowGraphDebugTracker _tracker;
+
+        private readonly FlowGraphEditorWindow _flowGraphEditorWindow;
+        
+        private bool _isEditingSubGraph;
+
+        private string _editingSubGraphSlotName;
         
         public FlowGraphView(FlowGraphEditorWindow editorWindow) : base(editorWindow)
         {
-            FlowGraphEditorWindow = editorWindow;
+            _flowGraphEditorWindow = editorWindow;
             DebugState = editorWindow.debugState;
             AddStyleSheet("Ceres/Flow/GraphView");
             AddSearchWindow<ExecutableNodeSearchWindow>();
@@ -33,9 +42,10 @@ namespace Ceres.Editor.Graph.Flow
             RegisterCallback<KeyDownEvent>(HandleKeyBoardCommands);
         }
 
-        public override bool SerializeGraph(ICeresGraphContainer container)
+        public bool SerializeGraph(ICeresGraphContainer container)
         {
             if (container is not IFlowGraphContainer flowGraphContainer) return false;
+            
             /* Compile validation */
             var invalidNodeViews = NodeViews.OfType<ExecutableNodeView>()
                 .Where(view => view.Flags.HasFlag(ExecutableNodeFlags.Invalid))
@@ -47,10 +57,21 @@ namespace Ceres.Editor.Graph.Flow
                 schedule.Execute(() => FrameSelection()).ExecuteLater(10);
                 return false;
             }
+            
+            var editableData = flowGraphContainer.GetFlowGraphData();
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
-            flowGraphContainer.SetGraphData(flowGraphData);
-            EditorUtility.SetDirty(container.Object);
-            AssetDatabase.SaveAssetIfDirty(container.Object);
+            if (_isEditingSubGraph)
+            {
+                editableData ??= new FlowGraphData();
+                /* Subgraph need be serialized with outer */
+                editableData.SetSubGraphData(_editingSubGraphSlotName, flowGraphData);
+            }
+            else if (editableData?.subGraphData != null)
+            {
+                flowGraphData.subGraphData = editableData.subGraphData;
+                editableData = flowGraphData;
+            }
+            flowGraphContainer.SetGraphData(editableData);
             return true;
         }
 
@@ -79,7 +100,7 @@ namespace Ceres.Editor.Graph.Flow
             new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph, true);
         }
 
-        public override void DeserializeGraph(ICeresGraphContainer container)
+        public void DeserializeGraph(ICeresGraphContainer container)
         {
             FlowGraph flowGraph;
             if (Application.isPlaying && container is IFlowGraphRuntime runtimeContainer)
@@ -91,6 +112,28 @@ namespace Ceres.Editor.Graph.Flow
                 flowGraph = ((IFlowGraphContainer)container).GetFlowGraph();
             }
             new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph);
+            EditingGraph = flowGraph;
+            _isEditingSubGraph = false;
+            _editingSubGraphSlotName = string.Empty;
+        }
+        
+        public void DeserializeSubGraph(ICeresGraphContainer container, string slotName)
+        {
+            FlowGraph flowGraph;
+            if (Application.isPlaying && container is IFlowGraphRuntime runtimeContainer)
+            {
+                flowGraph = runtimeContainer.GetRuntimeFlowGraph();
+            }
+            else
+            {
+                flowGraph = ((IFlowGraphContainer)container).GetFlowGraph();
+            }
+
+            var subGraph = flowGraph.FindSubGraph<FlowGraph>(slotName);
+            new CopyPasteGraph(this, graphElements).DeserializeGraph(subGraph);
+            EditingGraph = flowGraph;
+            _isEditingSubGraph = true;
+            _editingSubGraphSlotName = slotName;
         }
 
         private void HandleKeyBoardCommands(KeyDownEvent evt)
@@ -100,8 +143,8 @@ namespace Ceres.Editor.Graph.Flow
                 return;
             }
 
-            if (!FlowGraphEditorWindow) return;
-            FlowGraphEditorWindow.SaveGraph();
+            if (!_flowGraphEditorWindow) return;
+            _flowGraphEditorWindow.SaveGraph();
         }
 
         /// <summary>
@@ -109,18 +152,10 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         public async UniTask SimulateExecution()
         {
-            var eventName = (((ExecutableNodeElement)selection[0]).View as ExecutableEventNodeView)!.GetEventName();
-            var nodeInstances = nodes.OfType<ExecutableNodeElement>()
-                                                .Select(x => (CeresNode)x.View.CompileNode())
-                                                .ToArray();
-            var flowGraphData = new FlowGraphData
-            {
-                Nodes = nodeInstances,
-                nodeData = nodeInstances.Select(x=>x.GetSerializedData()).ToArray(),
-                Variables = SharedVariables.ToArray()
-            };
+            var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
+            var eventName = ((ExecutableEventNodeView)((ExecutableNodeElement)selection[0]).View).GetEventName();
             flowGraphData.PreSerialization();
-            using var graph = new FlowGraph(flowGraphData.CloneT<FlowGraphData>());
+            using var graph = new FlowGraph(flowGraphData);
             graph.Compile();
             await graph.ExecuteEventAsyncInternal(EditorWindow.Container.Object, eventName);
         }
@@ -255,9 +290,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     var flowGraphData = new FlowGraphData
                     {
-                        Nodes = nodeInstances,
                         nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
-                        Variables = _graphView.SharedVariables.ToArray(),
                         variableData = _graphView.SharedVariables.Select(x => x.GetSerializedData()).ToArray(),
                         nodeGroups = data.ToArray()
                     };
