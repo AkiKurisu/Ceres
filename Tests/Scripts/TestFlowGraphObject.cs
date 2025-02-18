@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
 using Chris.Schedulers;
@@ -89,6 +90,24 @@ namespace Ceres.Tests
                 /* ILPP will recognize this instruction and skip injecting IL */
                 this.ProcessEvent(inGameObject);
             }
+        }
+
+        public override FlowGraph GetFlowGraph()
+        {
+            var graph = base.GetFlowGraph();
+            /* Test subGraph initialization */
+            if (graph.SubGraphSlots == null || graph.SubGraphSlots.Length == 0)
+            {
+                graph.SubGraphSlots = new CeresSubGraphSlot[]
+                {
+                    new()
+                    {
+                        Name = "Test SubGraph",
+                        Graph = new FlowSubGraph(new FlowGraphSerializedData())
+                    }
+                };
+            }
+            return graph;
         }
     }
 }
