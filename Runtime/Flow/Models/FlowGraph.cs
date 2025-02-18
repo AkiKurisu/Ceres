@@ -99,7 +99,7 @@ namespace Ceres.Graph.Flow
 
         private FlowGraphEventHandler _eventHandler;
 
-        internal FlowGraph(FlowGraphSerializedData flowGraphData) : base(flowGraphData)
+        public FlowGraph(FlowGraphSerializedData flowGraphData) : base(flowGraphData)
         {
             /* Pre-cache dependency path from serialization data */
             if (flowGraphData.nodeDependencyPath != null)
@@ -309,7 +309,7 @@ namespace Ceres.Graph.Flow
                 flowGraph.SubGraphSlots[i] = new CeresSubGraphSlot
                 {
                     Name = subGraphData![i].slotName,
-                    Graph = new FlowSubGraph(subGraphData![i].graphData)
+                    Graph = new FlowGraph(subGraphData![i].graphData)
                 };
             }
         }

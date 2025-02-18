@@ -103,7 +103,7 @@ namespace Ceres.Tests
                     new()
                     {
                         Name = "Test SubGraph",
-                        Graph = new FlowSubGraph(new FlowGraphSerializedData())
+                        Graph = new FlowGraph(new FlowGraphSerializedData())
                     }
                 };
             }
