@@ -49,6 +49,7 @@ namespace Ceres.Graph.Flow
         FlowGraph Graph { get; }
     }
     
+    [Serializable]
     public class FlowGraph : CeresGraph
     {
         private sealed class FlowGraphEventHandler: CallbackEventHandler, IDisposable
@@ -339,7 +340,7 @@ namespace Ceres.Graph.Flow
             }
             else
             {
-                subGraphData.First(x => x.slotName == name).graphData = data;
+                subGraphData.First(graphData => graphData.slotName == name).graphData = data;
             }
         }
     }

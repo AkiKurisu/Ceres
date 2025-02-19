@@ -20,8 +20,6 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         public FlowGraphDebugState DebugState { get; }
 
-        internal FlowGraph EditingGraph { get; private set; }
-
         private FlowGraphDebugTracker _tracker;
 
         private readonly FlowGraphEditorWindow _flowGraphEditorWindow;
@@ -42,10 +40,13 @@ namespace Ceres.Editor.Graph.Flow
             RegisterCallback<KeyDownEvent>(HandleKeyBoardCommands);
         }
 
-        public bool SerializeGraph(ICeresGraphContainer container)
+        /// <summary>
+        /// Serialize flow graph to editor data container
+        /// </summary>
+        /// <param name="editorObject">Serialization target</param>
+        /// <returns>Whether serialization is succeeded</returns>
+        public bool SerializeGraph(FlowGraphEditorObject editorObject)
         {
-            if (container is not IFlowGraphContainer flowGraphContainer) return false;
-            
             /* Compile validation */
             var invalidNodeViews = NodeViews.OfType<ExecutableNodeView>()
                 .Where(view => view.Flags.HasFlag(ExecutableNodeFlags.Invalid))
@@ -58,12 +59,15 @@ namespace Ceres.Editor.Graph.Flow
                 return false;
             }
             
-            var editableData = flowGraphContainer.GetFlowGraphData();
+            var editableData = editorObject.GraphData;
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
             if (_isEditingSubGraph)
             {
                 editableData ??= new FlowGraphData();
-                /* Subgraph need be serialized with outer */
+                /*
+                 * Subgraph need be serialized with outer.
+                 * Notice there is object-slicing since serialized data structure is typeof(FlowGraphSerializedData).
+                 */
                 editableData.SetSubGraphData(_editingSubGraphSlotName, flowGraphData);
             }
             else
@@ -75,7 +79,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 editableData = flowGraphData;
             }
-            flowGraphContainer.SetGraphData(editableData);
+            editorObject.GraphData = editableData;
             return true;
         }
 
@@ -104,39 +108,18 @@ namespace Ceres.Editor.Graph.Flow
             new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph, true);
         }
 
-        public void DeserializeGraph(ICeresGraphContainer container)
+        public void DeserializeGraph(FlowGraphEditorObject editorObject)
         {
-            FlowGraph flowGraph;
-            if (Application.isPlaying && container is IFlowGraphRuntime runtimeContainer)
-            {
-                flowGraph = runtimeContainer.GetRuntimeFlowGraph();
-            }
-            else
-            {
-                flowGraph = ((IFlowGraphContainer)container).GetFlowGraph();
-            }
-            new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph);
-            EditingGraph = flowGraph;
+            new CopyPasteGraph(this, graphElements).DeserializeGraph(editorObject.GraphInstance);
             _isEditingSubGraph = false;
             _editingSubGraphSlotName = string.Empty;
             ClearDirty();
         }
         
-        public void DeserializeSubGraph(ICeresGraphContainer container, string slotName)
+        public void DeserializeSubGraph(FlowGraphEditorObject editorObject, string slotName)
         {
-            FlowGraph flowGraph;
-            if (Application.isPlaying && container is IFlowGraphRuntime runtimeContainer)
-            {
-                flowGraph = runtimeContainer.GetRuntimeFlowGraph();
-            }
-            else
-            {
-                flowGraph = ((IFlowGraphContainer)container).GetFlowGraph();
-            }
-
-            var subGraph = flowGraph.FindSubGraph<FlowGraph>(slotName);
+            var subGraph = editorObject.GraphInstance.FindSubGraph<FlowGraph>(slotName);
             new CopyPasteGraph(this, graphElements).DeserializeGraph(subGraph);
-            EditingGraph = flowGraph;
             _isEditingSubGraph = true;
             _editingSubGraphSlotName = slotName;
             ClearDirty();
@@ -150,7 +133,7 @@ namespace Ceres.Editor.Graph.Flow
             }
 
             if (!_flowGraphEditorWindow) return;
-            _flowGraphEditorWindow.SaveGraph();
+            _flowGraphEditorWindow.SaveGraphData();
         }
 
         /// <summary>

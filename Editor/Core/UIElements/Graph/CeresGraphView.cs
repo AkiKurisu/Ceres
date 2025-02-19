@@ -79,8 +79,15 @@ namespace Ceres.Editor.Graph
 
         protected virtual GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
         {
-            if (graphViewChange.movedElements.Any() || graphViewChange.elementsToRemove.Any() ||
-                graphViewChange.edgesToCreate.Any())
+            if (graphViewChange.movedElements != null && graphViewChange.movedElements.Any())
+            {
+                SetDirty();
+            }
+            if (graphViewChange.elementsToRemove != null && graphViewChange.elementsToRemove.Any())
+            {
+                SetDirty();
+            }
+            if (graphViewChange.edgesToCreate != null && graphViewChange.edgesToCreate.Any())
             {
                 SetDirty();
             }

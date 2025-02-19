@@ -206,7 +206,7 @@ namespace Ceres.Editor.Graph
         
         protected override void Reload()
         {
-            if (!Identifier.IsValid()) return;
+            if (!Identifier.IsValid() || !this) return;
             
             CeresLogger.Log($"Reload graph from identifier [{Identifier}]");
             Container = GetContainer();
