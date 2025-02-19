@@ -481,21 +481,6 @@ public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IP
 
 ```
 
-Then create a custom node view for it.
-
-```C#
-/// <summary>
-/// Node view for <see cref="FlowNode_Sequence"/>
-/// </summary>
-[CustomNodeView(typeof(FlowNode_Sequence))]
-public sealed class FlowNode_SequenceNodeView: ExecutablePortArrayNodeView
-{
-    public FlowNode_SequenceNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
-    {
-    }
-}
-```
-
 ## Generic Node
 Generic nodes define type restrictions through template classes, so that argument 
 types can be obtained in the editor and the generic node instance can be constructed 
