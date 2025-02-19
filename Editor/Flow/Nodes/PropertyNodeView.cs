@@ -3,6 +3,8 @@ using Ceres.Annotations;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Properties;
+using Ceres.Utilities;
+
 namespace Ceres.Editor.Graph.Flow
 {
     [CustomNodeView(typeof(PropertyNode), true)]
@@ -92,7 +94,13 @@ namespace Ceres.Editor.Graph.Flow
         
         public PropertyNode_PropertyValueNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
-            FindPortView("target").SetTooltip(" [Default is Self]");
+            var targetView = FindPortView("target");
+            /* Validate self target in editor first */
+            if (!GraphView.GetContainerType().IsAssignableTo(targetView.Binding.DisplayType.Value))
+            {
+                return;
+            }
+            targetView.SetTooltip(" [Default is Self]");
         }
 
         public void SetIsSelfTarget(bool isSelfTarget)

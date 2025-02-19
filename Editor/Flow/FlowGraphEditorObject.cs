@@ -3,7 +3,7 @@ using Ceres.Graph;
 using Ceres.Graph.Flow;
 using UnityEngine;
 
-namespace Ceres.Editor
+namespace Ceres.Editor.Graph.Flow
 {
     /// <summary>
     /// Editor flow graph data container

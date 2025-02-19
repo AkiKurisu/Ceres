@@ -8,13 +8,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph.Flow
 {
-    [Flags]
-    public enum ExecutableNodeFlags
-    {
-        None = 0,
-        Invalid = 1
-    }
-    
     /// <summary>
     /// Base class for node visual element of <see cref="ExecutableNodeView"/>
     /// </summary>
@@ -105,13 +98,22 @@ namespace Ceres.Editor.Graph.Flow
         }
     }
     
+    [Flags]
+    public enum ExecutableNodeViewFlags
+    {
+        /// <summary>
+        /// Node view is no longer valid that need clean up
+        /// </summary>
+        Invalid = 1
+    }
+    
     /// <summary>
     /// Base class for node view of <see cref="ExecutableNode"/>
     /// </summary>
     [CustomNodeView(typeof(ExecutableNode), true)]
     public class ExecutableNodeView: CeresNodeView
     {
-        public ExecutableNodeFlags Flags { get; protected set; }
+        public ExecutableNodeViewFlags Flags { get; protected set; }
         
         /// <summary>
         /// Get node visual element, see <see cref="ExecutableNodeElement"/>

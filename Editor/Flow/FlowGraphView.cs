@@ -49,7 +49,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             /* Compile validation */
             var invalidNodeViews = NodeViews.OfType<ExecutableNodeView>()
-                .Where(view => view.Flags.HasFlag(ExecutableNodeFlags.Invalid))
+                .Where(view => view.Flags.HasFlag(ExecutableNodeViewFlags.Invalid))
                 .ToList();
             if (invalidNodeViews.Any())
             {

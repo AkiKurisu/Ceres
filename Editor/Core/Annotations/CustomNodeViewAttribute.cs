@@ -7,7 +7,7 @@ namespace Ceres.Editor
     public sealed class CustomNodeViewAttribute : Attribute
     {
         /// <summary>
-        /// View bound node type
+        /// View bound node type, leave null to treat node view as hidden in factory
         /// </summary>
         public Type NodeType { get; }
         

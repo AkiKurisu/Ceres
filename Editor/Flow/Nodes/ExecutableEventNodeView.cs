@@ -252,7 +252,7 @@ namespace Ceres.Editor.Graph.Flow
             var parameters = methodInfo.GetParameters();
             for(int i = 0; i < parameters.Length; ++i)
             { 
-                var portData = new CeresPortData()
+                var portData = new CeresPortData
                 {
                     /* Remap to actual property */
                     propertyName = "outputs",

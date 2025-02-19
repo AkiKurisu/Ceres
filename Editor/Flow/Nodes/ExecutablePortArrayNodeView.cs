@@ -5,7 +5,22 @@ using Ceres.Graph.Flow;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph.Flow
 {
-    public abstract class ExecutablePortArrayNodeView: ExecutableNodeView
+    public class ExecutablePortArrayNodeViewResolver: INodeViewResolver
+    {
+        public ICeresNodeView CreateNodeView(Type type, CeresGraphView graphView)
+        {
+            return new ExecutablePortArrayNodeView(type, graphView);
+        }
+
+        public bool IsAcceptable(Type nodeType)
+        {
+            return nodeType.IsSubclassOf(typeof(ExecutableNode)) &&
+                   typeof(IReadOnlyPortArrayNode).IsAssignableFrom(nodeType);
+        }
+    }
+    
+    [CustomNodeView(null)]
+    public class ExecutablePortArrayNodeView: ExecutableNodeView
     {
         private int _portIndex;
 
@@ -16,7 +31,7 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         protected PortArrayNodeReflection NodeReflection { get; }
         
-        protected ExecutablePortArrayNodeView(Type type, CeresGraphView graphView): base(type, graphView)
+        public ExecutablePortArrayNodeView(Type type, CeresGraphView graphView): base(type, graphView)
         {
             NodeReflection = PortArrayNodeReflection.Get(type);
             _portIndex = NodeReflection.DefaultArrayLength;

@@ -67,7 +67,7 @@ namespace Ceres.Editor.Graph.Flow
             }
             else if (InstanceIsSelfTarget)
             {
-                InitializeTargetPortView("target");
+                InitializeSelfTargetPortView("target");
             }
             
             if (ExecuteInDependency)
@@ -88,9 +88,23 @@ namespace Ceres.Editor.Graph.Flow
             });
         }
 
-        protected void InitializeTargetPortView(string propertyName)
+        /// <summary>
+        /// Notify port view to treat compiled port can be unconnected which will pass self reference at runtime
+        /// </summary>
+        /// <param name="propertyName">Port view bound property name</param>
+        protected void InitializeSelfTargetPortView(string propertyName)
         {
             var portView = FindPortView(propertyName);
+            Assert.IsNotNull(portView);
+            /* Validate self target in editor first */
+            if (!GraphView.GetContainerType().IsAssignableTo(portView.Binding.DisplayType.Value))
+            {
+                /* Target should be connected in order to prevent null reference exception */
+                portView.Flags |= CeresPortViewFlags.ValidateConnection;
+                return;
+            }
+            
+            portView.Flags &= ~CeresPortViewFlags.ValidateConnection;
             portView.SetDisplayName("Self");
             portView.SetTooltip(" [Default is Self]");
             portView.FieldResolver?.RegisterValueChangeCallback(_ =>
@@ -178,7 +192,7 @@ namespace Ceres.Editor.Graph.Flow
                 ParameterCount = functionNode.parameterCount;
                 SetNodeElementTitle(functionNode.methodName + " <color=#FFE000>[Invalid Function]</size></color>");
                 NodeElement.tooltip = $"The presence of this node indicates that the executable function {functionNode.methodName} bound to this node is invalid now.";
-                Flags |= ExecutableNodeFlags.Invalid;
+                Flags |= ExecutableNodeViewFlags.Invalid;
             }
             else
             {
@@ -238,11 +252,13 @@ namespace Ceres.Editor.Graph.Flow
             
             if (DisplayTarget)
             {
-                FindPortView("inputs").SetDisplayName("Target");
+                var targetView = FindPortView("inputs");
+                targetView.SetDisplayName("Target");
+                targetView.Flags |= CeresPortViewFlags.ValidateConnection;
             }
             if (StaticIsSelfTarget)
             {
-                InitializeTargetPortView("inputs");
+                InitializeSelfTargetPortView("inputs");
             }
             
             var output = methodInfo.ReturnParameter;
@@ -288,11 +304,13 @@ namespace Ceres.Editor.Graph.Flow
             
             if (DisplayTarget)
             {
-                FindPortView("input1").SetDisplayName("Target");
+                var targetView = FindPortView("input1");
+                targetView.SetDisplayName("Target");
+                targetView.Flags |= CeresPortViewFlags.ValidateConnection;
             }
             if (StaticIsSelfTarget)
             {
-                InitializeTargetPortView("input1");
+                InitializeSelfTargetPortView("input1");
             }
         }
     }
@@ -324,11 +342,13 @@ namespace Ceres.Editor.Graph.Flow
             
             if (DisplayTarget)
             {
-                FindPortView("input1").SetDisplayName("Target");
+                var targetView = FindPortView("input1");
+                targetView.SetDisplayName("Target");
+                targetView.Flags |= CeresPortViewFlags.ValidateConnection;
             }
             if (StaticIsSelfTarget)
             {
-                InitializeTargetPortView("input1");
+                InitializeSelfTargetPortView("input1");
             }
         }
     }

@@ -42,7 +42,8 @@ namespace Ceres.Graph
         }
     }
     
-    public class PortArrayNodeReflection<TNode>: PortArrayNodeReflection where TNode: CeresNode, IReadOnlyPortArrayNode, new()
+    public class PortArrayNodeReflection<TNode>: PortArrayNodeReflection 
+        where TNode: CeresNode, IReadOnlyPortArrayNode, new()
     {
         private static PortArrayNodeReflection<TNode> _instance;
 
