@@ -237,7 +237,7 @@ namespace Ceres.Editor.Graph
                 }
                 catch(Exception e)
                 {
-                    CeresAPI.LogWarning($"Can not draw property {NodeType.Name}.{p.Name}, {e}");
+                    CeresLogger.LogWarning($"Can not draw property {NodeType.Name}.{p.Name}, {e}");
                 }
             });
             NodeElement.mainContainer.Add(fieldContainer);
@@ -281,7 +281,7 @@ namespace Ceres.Editor.Graph
                 }
                 catch (Exception e)
                 {
-                    CeresAPI.LogWarning($"Can not draw port {NodeType.Name}.{p.Name}, {e}");
+                    CeresLogger.LogWarning($"Can not draw port {NodeType.Name}.{p.Name}, {e}");
                 }
             });
         }

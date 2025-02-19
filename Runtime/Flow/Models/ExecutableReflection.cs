@@ -60,7 +60,7 @@ namespace Ceres.Graph.Flow
                 instance = (ExecutableReflection)Activator.CreateInstance(instanceType, true);
             }
             var function = instance.GetFunction_Imp(methodInfo);
-            CeresAPI.Assert(function != null,$"Can not get executable function {methodInfo} from {declareType} which is not expected");
+            CeresLogger.Assert(function != null,$"Can not get executable function {methodInfo} from {declareType} which is not expected");
             return function;
         }
         
@@ -386,7 +386,7 @@ namespace Ceres.Graph.Flow
                 }
                 catch
                 {
-                    CeresAPI.LogError($"Can not create delegate for {methodInfo}");
+                    CeresLogger.LogError($"Can not create delegate for {methodInfo}");
                     throw;
                 }
             }

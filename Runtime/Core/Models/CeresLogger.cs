@@ -7,9 +7,9 @@ using Debug = UnityEngine.Debug;
 namespace Ceres
 {
     /// <summary>
-    /// Main api of Ceres
+    /// Logger of Ceres
     /// </summary>
-    public static class CeresAPI
+    public static class CeresLogger
     {
         public readonly struct LogLevelAutoScope: IDisposable
         {

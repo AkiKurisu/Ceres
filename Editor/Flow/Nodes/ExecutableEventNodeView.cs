@@ -50,7 +50,7 @@ namespace Ceres.Editor.Graph.Flow
                     return;
                 }
                 /* Change to normal execution event and validate event name */
-                CeresAPI.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
+                CeresLogger.LogWarning($"{eventNode.eventName} is not an implementable event of {GetContainerType().Name}");
                 IsImplementable = false;
             }
             ValidateEventName();
@@ -252,7 +252,7 @@ namespace Ceres.Editor.Graph.Flow
             var parameters = methodInfo.GetParameters();
             for(int i = 0; i < parameters.Length; ++i)
             { 
-                var portData = new CeresPortData()
+                var portData = new CeresPortData
                 {
                     /* Remap to actual property */
                     propertyName = "outputs",

@@ -36,9 +36,9 @@ namespace Ceres
                 {
                     var linkedUObject = uObject.linkedObject;
                     prop.Value = linkedUObject == null ? 0 : linkedUObject.GetInstanceID();
-                    if (linkedUObject && CeresAPI.LogUObjectRelink)
+                    if (linkedUObject && CeresLogger.LogUObjectRelink)
                     {
-                        CeresAPI.Log($"Relink UObject {id} to {uObject.linkedObject.name} {prop.Value}");
+                        CeresLogger.Log($"Relink UObject {id} to {uObject.linkedObject.name} {prop.Value}");
                     }
                 }
             }

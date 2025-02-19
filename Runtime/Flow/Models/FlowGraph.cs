@@ -2,8 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Chris;
+using Chris.Collections;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
+using R3.Chris;
+using UnityEngine;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
 
@@ -19,6 +23,12 @@ namespace Ceres.Graph.Flow
         /// </summary>
         /// <returns></returns>
         FlowGraph GetFlowGraph();
+
+        /// <summary>
+        /// Get persistent <see cref="FlowGraphData"/> from this container
+        /// </summary>
+        /// <returns></returns>
+        FlowGraphData GetFlowGraphData();
     }
     
     /// <summary>
@@ -39,6 +49,7 @@ namespace Ceres.Graph.Flow
         FlowGraph Graph { get; }
     }
     
+    [Serializable]
     public class FlowGraph : CeresGraph
     {
         private sealed class FlowGraphEventHandler: CallbackEventHandler, IDisposable
@@ -89,10 +100,10 @@ namespace Ceres.Graph.Flow
 
         private FlowGraphEventHandler _eventHandler;
 
-        public FlowGraph(FlowGraphData flowGraphData) : base(flowGraphData)
+        public FlowGraph(FlowGraphSerializedData flowGraphData) : base(flowGraphData)
         {
             /* Pre-cache dependency path from serialization data */
-            if(flowGraphData.nodeDependencyPath != null)
+            if (flowGraphData.nodeDependencyPath != null)
             {
                 SetDependencyPath(flowGraphData.nodeDependencyPath.Select(x => x.path).ToArray());
             }
@@ -163,7 +174,7 @@ namespace Ceres.Graph.Flow
             var evt = FindEvent(eventName);
             if (evt == null)
             {
-                CeresAPI.LogWarning($"Can not find ExecutionEvent with name {eventName}");
+                CeresLogger.LogWarning($"Can not find ExecutionEvent with name {eventName}");
                 return;
             }
             await ExecuteEventAsync(contextObject, evt, evtBase);
@@ -201,7 +212,7 @@ namespace Ceres.Graph.Flow
                 }
                 else
                 {
-                    CeresAPI.LogWarning($"Only {nameof(ExecutableEvent)} can have delegate port");
+                    CeresLogger.LogWarning($"Only {nameof(ExecutableEvent)} can have delegate port");
                 }
             }
             base.LinkPort(port, ownerNode, portData);
@@ -226,26 +237,27 @@ namespace Ceres.Graph.Flow
             _executionList.Remove(context);
         }
     }
-
+    
     /// <summary>
-    /// Metadata for <see cref="FlowGraph"/>
+    /// Serialized data for <see cref="FlowGraph"/>
     /// </summary>
     [Serializable]
-    public class FlowGraphData: CeresGraphData
+    public class FlowGraphSerializedData : CeresGraphData
     {
         [Serializable]
-        public struct DependencyCache
+        internal struct DependencyCache
         {
             public int[] path;
         }
-        
-        public DependencyCache[] nodeDependencyPath;
+
+        [SerializeField] 
+        internal DependencyCache[] nodeDependencyPath;
         
         public override void BuildGraph(CeresGraph graph)
         {
             if(graph is not FlowGraph flowGraph) return;
             base.BuildGraph(flowGraph);
-            flowGraph!.Events = nodes.OfType<ExecutableEvent>().ToArray();
+            flowGraph!.Events = flowGraph.nodes.OfType<ExecutableEvent>().ToArray();
         }
 
         protected override CeresNode GetFallbackNode(CeresNodeData fallbackNodeData, int index)
@@ -256,24 +268,79 @@ namespace Ceres.Graph.Flow
                 serializedData = fallbackNodeData.serializedData
             };
         }
-
+        
         public override void PreSerialization()
         {
             base.PreSerialization();
             /* Pre-cache dependency path before serialization */
-            var graph = new FlowGraph(CloneT<FlowGraphData>());
+            var graph = new FlowGraph(CloneT<FlowGraphSerializedData>());
             graph.AOT();
-            nodeDependencyPath = graph.GetDependencyPaths().Select(x=> new DependencyCache
+            nodeDependencyPath = graph.GetDependencyPaths().Select(array=> new DependencyCache
             {
-                path = x
+                path = array
             }).ToArray();
         }
+    }
 
-        public void OptimizeForSmallerBuild()
+    /// <summary>
+    /// SubGraph slot for <see cref="FlowGraphData"/>
+    /// </summary>
+    [Serializable]
+    public class FlowSubGraphData : CeresSubGraphData<FlowGraphSerializedData>
+    {
+        
+    }
+    
+    /// <summary>
+    /// Metadata for <see cref="FlowGraph"/>
+    /// </summary>
+    [Serializable]
+    public class FlowGraphData: FlowGraphSerializedData
+    {
+        public FlowSubGraphData[] subGraphData;
+
+        public override void BuildGraph(CeresGraph graph)
         {
-            for (var i = 0; i < nodes.Length; i++)
+            if(graph is not FlowGraph flowGraph) return;
+            base.BuildGraph(flowGraph);
+            /* Build subGraphs */
+            flowGraph.SubGraphSlots = new CeresSubGraphSlot[subGraphData?.Length ?? 0];
+            for (int i = 0; i < flowGraph.SubGraphSlots.Length; i++)
             {
-                nodes[i] = null;
+                flowGraph.SubGraphSlots[i] = new CeresSubGraphSlot
+                {
+                    Name = subGraphData![i].slotName,
+                    Graph = new FlowGraph(subGraphData![i].graphData)
+                };
+            }
+        }
+        
+        public override void PreSerialization()
+        {
+            base.PreSerialization();
+            if (subGraphData == null) return;
+            
+            /* Pr-serialize subGraphs */
+            foreach (var data in subGraphData)
+            {
+                data.graphData.PreSerialization();
+            }
+        }
+
+        public void SetSubGraphData(string name, FlowGraphSerializedData data)
+        {
+            subGraphData ??= Array.Empty<FlowSubGraphData>();
+            if (subGraphData.All(x => x.slotName != name))
+            {
+                ArrayUtils.Add(ref subGraphData, new FlowSubGraphData
+                {
+                    slotName = name,
+                    graphData = data
+                });
+            }
+            else
+            {
+                subGraphData.First(graphData => graphData.slotName == name).graphData = data;
             }
         }
     }
@@ -442,6 +509,20 @@ namespace Ceres.Graph.Flow
         public static void SendEvent(this IFlowGraphRuntime runtime, EventBase @event)
         {
             runtime.GetEventHandler().SendEvent(@event);
+        }
+
+        /// <summary>
+        /// Override graph implementation of <see cref="EventBase{TEventType}"/>>
+        /// </summary>
+        /// <param name="runtime"></param>
+        /// <param name="implementation"></param>
+        /// <typeparam name="TEventType"></typeparam>
+        /// <returns></returns>
+        [StackTraceFrame]
+        public static IDisposable OverrideEventImplementation<TEventType>(this IFlowGraphRuntime runtime, EventCallback<TEventType> implementation)
+            where TEventType : EventBase<TEventType>, new()
+        {
+            return runtime.GetEventHandler().AsObservable<TEventType>().SubscribeSafe(implementation);
         }
     }
 }

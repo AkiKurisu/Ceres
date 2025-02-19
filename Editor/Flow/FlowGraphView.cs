@@ -15,15 +15,22 @@ namespace Ceres.Editor.Graph.Flow
 {
     public class FlowGraphView : CeresGraphView, IDisposable
     {
-        private FlowGraphDebugTracker _tracker;
-        
+        /// <summary>
+        /// Editor debug state
+        /// </summary>
         public FlowGraphDebugState DebugState { get; }
 
-        private FlowGraphEditorWindow FlowGraphEditorWindow { get; }
+        private FlowGraphDebugTracker _tracker;
+
+        private readonly FlowGraphEditorWindow _flowGraphEditorWindow;
+        
+        private bool _isEditingSubGraph;
+
+        private string _editingSubGraphSlotName;
         
         public FlowGraphView(FlowGraphEditorWindow editorWindow) : base(editorWindow)
         {
-            FlowGraphEditorWindow = editorWindow;
+            _flowGraphEditorWindow = editorWindow;
             DebugState = editorWindow.debugState;
             AddStyleSheet("Ceres/Flow/GraphView");
             AddSearchWindow<ExecutableNodeSearchWindow>();
@@ -33,12 +40,16 @@ namespace Ceres.Editor.Graph.Flow
             RegisterCallback<KeyDownEvent>(HandleKeyBoardCommands);
         }
 
-        public override bool SerializeGraph(ICeresGraphContainer container)
+        /// <summary>
+        /// Serialize flow graph to editor data container
+        /// </summary>
+        /// <param name="editorObject">Serialization target</param>
+        /// <returns>Whether serialization is succeeded</returns>
+        public bool SerializeGraph(FlowGraphEditorObject editorObject)
         {
-            if (container is not IFlowGraphContainer flowGraphContainer) return false;
             /* Compile validation */
             var invalidNodeViews = NodeViews.OfType<ExecutableNodeView>()
-                .Where(view => view.Flags.HasFlag(ExecutableNodeFlags.Invalid))
+                .Where(view => view.Flags.HasFlag(ExecutableNodeViewFlags.Invalid))
                 .ToList();
             if (invalidNodeViews.Any())
             {
@@ -47,10 +58,28 @@ namespace Ceres.Editor.Graph.Flow
                 schedule.Execute(() => FrameSelection()).ExecuteLater(10);
                 return false;
             }
+            
+            var editableData = editorObject.GraphData;
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
-            flowGraphContainer.SetGraphData(flowGraphData);
-            EditorUtility.SetDirty(container.Object);
-            AssetDatabase.SaveAssetIfDirty(container.Object);
+            if (_isEditingSubGraph)
+            {
+                editableData ??= new FlowGraphData();
+                /*
+                 * Subgraph need be serialized with outer.
+                 * Notice there is object-slicing since serialized data structure is typeof(FlowGraphSerializedData).
+                 */
+                editableData.SetSubGraphData(_editingSubGraphSlotName, flowGraphData);
+            }
+            else
+            {
+                /* Move SubGraph data to new UberGraph data */
+                if (editableData?.subGraphData != null)
+                {
+                    flowGraphData.subGraphData = editableData.subGraphData;
+                }
+                editableData = flowGraphData;
+            }
+            editorObject.GraphData = editableData;
             return true;
         }
 
@@ -79,18 +108,21 @@ namespace Ceres.Editor.Graph.Flow
             new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph, true);
         }
 
-        public override void DeserializeGraph(ICeresGraphContainer container)
+        public void DeserializeGraph(FlowGraphEditorObject editorObject)
         {
-            FlowGraph flowGraph;
-            if (container is IFlowGraphRuntime runtimeContainer)
-            {
-                flowGraph = runtimeContainer.GetRuntimeFlowGraph();
-            }
-            else
-            {
-                flowGraph = ((IFlowGraphContainer)container).GetFlowGraph();
-            }
-            new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph);
+            new CopyPasteGraph(this, graphElements).DeserializeGraph(editorObject.GraphInstance);
+            _isEditingSubGraph = false;
+            _editingSubGraphSlotName = string.Empty;
+            ClearDirty();
+        }
+        
+        public void DeserializeSubGraph(FlowGraphEditorObject editorObject, string slotName)
+        {
+            var subGraph = editorObject.GraphInstance.FindSubGraph<FlowGraph>(slotName);
+            new CopyPasteGraph(this, graphElements).DeserializeGraph(subGraph);
+            _isEditingSubGraph = true;
+            _editingSubGraphSlotName = slotName;
+            ClearDirty();
         }
 
         private void HandleKeyBoardCommands(KeyDownEvent evt)
@@ -100,8 +132,8 @@ namespace Ceres.Editor.Graph.Flow
                 return;
             }
 
-            if (!FlowGraphEditorWindow) return;
-            FlowGraphEditorWindow.SaveGraph();
+            if (!_flowGraphEditorWindow) return;
+            _flowGraphEditorWindow.SaveGraphData();
         }
 
         /// <summary>
@@ -109,18 +141,10 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         public async UniTask SimulateExecution()
         {
-            var eventName = (((ExecutableNodeElement)selection[0]).View as ExecutableEventNodeView)!.GetEventName();
-            var nodeInstances = nodes.OfType<ExecutableNodeElement>()
-                                                .Select(x => (CeresNode)x.View.CompileNode())
-                                                .ToArray();
-            var flowGraphData = new FlowGraphData
-            {
-                nodes = nodeInstances,
-                nodeData = nodeInstances.Select(x=>x.GetSerializedData()).ToArray(),
-                variables = SharedVariables.ToArray()
-            };
+            var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
+            var eventName = ((ExecutableEventNodeView)((ExecutableNodeElement)selection[0]).View).GetEventName();
             flowGraphData.PreSerialization();
-            using var graph = new FlowGraph(flowGraphData.CloneT<FlowGraphData>());
+            using var graph = new FlowGraph(flowGraphData);
             graph.Compile();
             await graph.ExecuteEventAsyncInternal(EditorWindow.Container.Object, eventName);
         }
@@ -251,21 +275,15 @@ namespace Ceres.Editor.Graph.Flow
                 }
 
                 /* Copy and paste may log warning for missing connect nodes which is expected. */
-                using (CeresAPI.LogScope(copyPaste ? LogType.Error : LogType.Log))
+                using (CeresLogger.LogScope(copyPaste ? LogType.Error : LogType.Log))
                 {
                     var flowGraphData = new FlowGraphData
                     {
-                        nodes = nodeInstances,
                         nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
-                        variables = _graphView.SharedVariables.ToArray(),
                         variableData = _graphView.SharedVariables.Select(x => x.GetSerializedData()).ToArray(),
                         nodeGroups = data.ToArray()
                     };
                     flowGraphData.PreSerialization();
-                    if (CeresSettings.SmallerBuilds)
-                    {
-                        flowGraphData.OptimizeForSmallerBuild();
-                    }
                     return flowGraphData;
                 }
             }
@@ -305,7 +323,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     var nodeView = (CeresNodeView)NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView);
                     /* Missing node class should be handled before deserializing graph */
-                    CeresAPI.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
+                    CeresLogger.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
                     try
                     {
                         nodeView!.SetNodeInstance(nodeInstance);
@@ -314,7 +332,7 @@ namespace Ceres.Editor.Graph.Flow
                     }
                     catch (Exception e)
                     {
-                        CeresAPI.LogError($"Failed to construct node view for type {nodeInstance} with exception thrown:\n{e}");
+                        CeresLogger.LogError($"Failed to construct node view for type {nodeInstance} with exception thrown:\n{e}");
                         /* Replace with illegal property node */
                         nodeView = (CeresNodeView)NodeViewFactory.Get().CreateInstance(typeof(IllegalExecutableNode), _graphView);
                         nodeView!.SetNodeInstance(new IllegalExecutableNode
@@ -386,13 +404,13 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 if (!CanSkipFrame() && CanPauseOnCurrentNode())
                 {
-                    CeresAPI.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
+                    CeresLogger.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
                     /* Reset skip frame flag */
                     _breakOnNext = false;
                     Time.timeScale = 0;
                     EditorApplication.isPaused = true;
                     await UniTask.WaitUntil(CanSkipFrame);
-                    CeresAPI.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
+                    CeresLogger.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
                 }
                 _currentView?.NodeElement.RemoveFromClassList("status_execute");
             }

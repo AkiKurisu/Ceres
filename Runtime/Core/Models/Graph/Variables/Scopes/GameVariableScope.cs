@@ -34,7 +34,7 @@ namespace Ceres.Graph
         {
             if (InitializationStack.Contains(this))
             {
-                CeresAPI.LogError("Circulating initialization occurs!");
+                CeresLogger.LogError("Circulating initialization occurs!");
                 return;
             }
             _initialized = true;

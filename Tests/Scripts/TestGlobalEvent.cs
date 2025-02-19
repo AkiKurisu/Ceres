@@ -15,5 +15,12 @@ namespace Ceres.Tests
             evt.Data = data;
             return evt;
         }
+
+        protected override void Init()
+        {
+            base.Init();
+            /* Mark cancellable so that C# script can override default behavior */
+            Propagation |= EventPropagation.Cancellable;
+        }
     }
 }

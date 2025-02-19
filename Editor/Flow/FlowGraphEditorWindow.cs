@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UIElements;
+
 namespace Ceres.Editor.Graph.Flow
 {
     /// <summary>
@@ -33,15 +34,61 @@ namespace Ceres.Editor.Graph.Flow
     
     public class FlowGraphEditorWindow: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>
     {
-        private FlowGraphView _graphView;
-
         public FlowGraphDebugState debugState = new();
-        
+
+        [field: SerializeField]
+        public int GraphIndex { get; private set; }
+
+        [field: SerializeField]
+        public FlowGraphEditorObject EditorObject { get; private set; }
+
+        private readonly Dictionary<int, FlowGraphView> _graphViews = new();
+
+        private FlowGraphView CurrentGraphView => _graphViews.GetValueOrDefault(GraphIndex);
+
         protected override void OnInitialize()
         {
             var icon = Resources.Load<Texture>("Ceres/editor_icon");
             titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
+            EditorObject = FlowGraphEditorObject.CreateTemporary(ContainerT);
             InitializeFlowGraphView();
+        }
+
+        protected override void OnDisable()
+        {
+           if (EditorObject) EditorObject.DestroyTemporary();
+           base.OnDisable();
+        }
+
+        private bool IsDirty()
+        {
+            foreach (var graphView in _graphViews.Values)
+            {
+                if (graphView.IsDirty()) return true;
+            }
+
+            return false;
+        }
+        
+        private void ClearDirty()
+        {
+            foreach (var graphView in _graphViews.Values)
+            {
+                graphView.ClearDirty();
+            }
+        }
+
+        private void OnGUI()
+        {
+            if (CurrentGraphView == null) return;
+            if (IsDirty())
+            {
+                titleContent.text = $"Flow ({Identifier.boundObject.name})*";
+            }
+            else
+            {
+                titleContent.text = $"Flow ({Identifier.boundObject.name})";
+            }
         }
 
         private static void DisplayProgressBar(string stepTitle, float progress)
@@ -54,13 +101,11 @@ namespace Ceres.Editor.Graph.Flow
             EditorUtility.ClearProgressBar();
         }
         
-        private void StructVisualElements()
+        private void StructVisualElements(int index)
         {
             rootVisualElement.Clear();
-            _graphView?.Dispose();
-            _graphView = new FlowGraphView(this);
             rootVisualElement.Add(CreateToolBar());
-            rootVisualElement.Add(_graphView);
+            rootVisualElement.Add(GetOrCreateGraphView(index));
         }
         
 #pragma warning disable IDE0051
@@ -75,9 +120,34 @@ namespace Ceres.Editor.Graph.Flow
         }
 #pragma warning restore IDE0051
 
+        /// <summary>
+        /// Get current editing graph view
+        /// </summary>
+        /// <returns></returns>
         public FlowGraphView GetGraphView()
         {
-            return _graphView;
+            return CurrentGraphView;
+        }
+        
+        /// <summary>
+        /// Get or create graph view by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public FlowGraphView GetOrCreateGraphView(int id)
+        {
+            if (_graphViews.TryGetValue(id, out var view) && view != null) return view;
+            
+            _graphViews.Add(id, view = new FlowGraphView(this));
+            if (id == 0)
+            {
+                CurrentGraphView.DeserializeGraph(EditorObject);
+            }
+            else
+            {
+                CurrentGraphView.DeserializeSubGraph(EditorObject, EditorObject.GraphNames[id]);
+            }
+            return view;
         }
 
         private bool ContainerCanSimulate()
@@ -89,19 +159,46 @@ namespace Ceres.Editor.Graph.Flow
         /// <summary>
         /// Save current editing flow graph
         /// </summary>
-        public void SaveGraph()
+        public void SaveGraphData()
         {
             var guiContent = new GUIContent();
-            if (_graphView.SerializeGraph(Container))
+            if (TrySerializeGraph(out var failReason))
             {
-                guiContent.text = $"Update flow {Identifier.boundObject.name} succeed!";
+                ClearDirty();
+                /* Commit graph data */
+                ContainerT.SetGraphData(EditorObject.GraphData);
+                /* Refresh editor object */
+                EditorObject.DestroyTemporary();
+                EditorObject = FlowGraphEditorObject.CreateTemporary(ContainerT);
+                /* Refresh outer asset */
+                EditorUtility.SetDirty(Container.Object);
+                AssetDatabase.SaveAssetIfDirty(Container.Object);
+                guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
                 ShowNotification(guiContent, 0.5f);
             }
             else
             {
                 guiContent.text = $"Failed to save flow {Identifier.boundObject.name}!";
+                if (!string.IsNullOrEmpty(failReason))
+                {
+                    CeresLogger.LogError($"Failed to save flow {Identifier.boundObject.name}, {failReason}");
+                }
                 ShowNotification(guiContent, 0.5f);
             }
+        }
+
+        private bool TrySerializeGraph(out string failReason)
+        {
+            failReason = string.Empty;
+            foreach (var view in _graphViews.Values)
+            {
+                if (!view.SerializeGraph(EditorObject))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
         
         private VisualElement CreateToolBar()
@@ -109,21 +206,26 @@ namespace Ceres.Editor.Graph.Flow
             return new IMGUIContainer(
                 () =>
                 {
-                    if (!Identifier.IsValid() || _graphView == null)
+                    if (!Identifier.IsValid() || CurrentGraphView == null)
                     {
                         /* Should only happen when object destroyed */
                         return;
                     }
+                    
                     GUILayout.BeginHorizontal(EditorStyles.toolbar);
+                    // ========================= Left ToolBar ============================= //
+                    /* Draw save button */
                     GUI.enabled = !Application.isPlaying;
                     var image  = EditorGUIUtility.IconContent("SaveAs@2x").image;
                     if (GUILayout.Button(new GUIContent(image,$"Save flow and serialize data to {Identifier.boundObject.name}"), EditorStyles.toolbarButton))
                     {
-                        SaveGraph();
+                        SaveGraphData();
                     }
+                    
+                    /* Draw simulation button */
                     if (ContainerCanSimulate())
                     {
-                        GUI.enabled &= _graphView.CanSimulate();
+                        GUI.enabled &= CurrentGraphView.CanSimulate();
                         image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
                         if (GUILayout.Button(
                                 new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"),
@@ -134,35 +236,57 @@ namespace Ceres.Editor.Graph.Flow
 
                         GUI.enabled = true;
                     }
+
+                    /* Draw subGraph popup */
+                    if (EditorObject.GraphInstance.IsUberGraph())
+                    {
+                        var newIndex = EditorGUILayout.Popup(GraphIndex, 
+                            EditorObject.GraphNameContents,
+                            EditorStyles.toolbarPopup,
+                            GUILayout.MinWidth(100));
+                        if (newIndex != GraphIndex)
+                        {
+                            StructVisualElements(GraphIndex = newIndex);
+                        }
+                    }
+                        
+                    // ========================= Left ToolBar ============================= //
+                    
                     GUILayout.FlexibleSpace();
-                    GUI.enabled = debugState.enableDebug && _graphView.IsPaused();
+                    
+                    // ========================= Right ToolBar ============================= //
+                    GUI.enabled = debugState.enableDebug && CurrentGraphView.IsPaused();
                     image = EditorGUIUtility.IconContent("Animation.NextKey").image;
                     if (GUILayout.Button(new GUIContent(image, $"Next Breakpoint"), EditorStyles.toolbarButton))
                     {
-                        _graphView.NextBreakpoint();
+                        CurrentGraphView.NextBreakpoint();
                     }
+                    
                     image = EditorGUIUtility.IconContent("Animation.Play").image;
                     if (GUILayout.Button(new GUIContent(image, $"Next Frame"), EditorStyles.toolbarButton))
                     {
-                        _graphView.NextFrame();
+                        CurrentGraphView.NextFrame();
                     }
+                    
                     GUI.enabled = true;
                     if(debugState.enableDebug)
                     {
                         image = EditorGUIUtility.IconContent("DebuggerAttached@2x").image;
-                        if (GUILayout.Button(new GUIContent(image, $"Disable Debug"), EditorStyles.toolbarButton))
+                        if (GUILayout.Button(new GUIContent(image, $"Disable Debug Mode"), EditorStyles.toolbarButton))
                         {
-                            _graphView.SetDebugEnabled(false);
+                            CurrentGraphView.SetDebugEnabled(false);
                         }
                     }
                     else
                     {
                         image = EditorGUIUtility.IconContent("DebuggerDisabled@2x").image;
-                        if (GUILayout.Button(new GUIContent(image, $"Enable Debug"), EditorStyles.toolbarButton))
+                        if (GUILayout.Button(new GUIContent(image, $"Enable Debug Mode"), EditorStyles.toolbarButton))
                         {
-                            _graphView.SetDebugEnabled(true);
+                            CurrentGraphView.SetDebugEnabled(true);
                         }
                     }
+                    // ========================= Right ToolBar ============================= //
+                    
                     GUILayout.EndHorizontal();
                 }
             );
@@ -172,13 +296,16 @@ namespace Ceres.Editor.Graph.Flow
         {
             var guiContent = new GUIContent("Simulation Start");
             ShowNotification(guiContent, 1f);
-            await _graphView.SimulateExecution();
+            await CurrentGraphView.SimulateExecution();
             guiContent = new GUIContent("Simulation End");
             ShowNotification(guiContent, 1f);
         }
         
         protected override void OnReloadGraphView()
         {
+            /* Create new editor container since it is not saved during play mode change  */
+            if (EditorObject) EditorObject.DestroyTemporary();
+            EditorObject = FlowGraphEditorObject.CreateTemporary(ContainerT);
             InitializeFlowGraphView();
         }
 
@@ -205,8 +332,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 DisplayProgressBar("Construct graph view", 0.9f);
                 {
-                    StructVisualElements();
-                    _graphView.DeserializeGraph(ContainerT);
+                    StructVisualElements(GraphIndex);
                 }
             }
             finally

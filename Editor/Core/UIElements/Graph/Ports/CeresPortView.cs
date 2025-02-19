@@ -425,6 +425,16 @@ namespace Ceres.Editor.Graph
         }
     }
     
+        
+    [Flags]
+    public enum CeresPortViewFlags
+    {
+        /// <summary>
+        /// Whether port's connection should be validated
+        /// </summary>
+        ValidateConnection = 1
+    }
+    
     /// <summary>
     /// Port view for <see cref="CeresNodeView"/>
     /// </summary>
@@ -439,6 +449,8 @@ namespace Ceres.Editor.Graph
         public CeresNodeView NodeOwner { get; }
         
         public IFieldResolver FieldResolver { get; }
+        
+        public CeresPortViewFlags Flags { get; internal set; }
 
         public CeresPortView(CeresPortViewBinding binding, CeresNodeView nodeView, CeresPortData portData)
         {
@@ -604,7 +616,7 @@ namespace Ceres.Editor.Graph
             }
             else
             {
-                CeresAPI.LogWarning($"Port can only be remapped from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
+                CeresLogger.LogWarning($"Port can only be remapped from {nameof(ParameterInfo)} in {CeresPortViewBinding.PortBindingType.Field} binding");
             }
         }
 

@@ -3,6 +3,8 @@ using Ceres.Annotations;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Properties;
+using Ceres.Utilities;
+
 namespace Ceres.Editor.Graph.Flow
 {
     [CustomNodeView(typeof(PropertyNode), true)]
@@ -66,13 +68,13 @@ namespace Ceres.Editor.Graph.Flow
             }
             else if(evt.ChangeType == VariableChangeType.Type)
             {
-                CeresAPI.LogWarning($"The variable type of {evt.Variable.Name} has changed, which will cause an error in the referenced PropertyNode during runtime. Please recreate the corresponding node.");
+                CeresLogger.LogWarning($"The variable type of {evt.Variable.Name} has changed, which may cause an error in the referenced PropertyNode during runtime. Please recreate the corresponding node.");
                 GraphView.ClearSelection();
                 GraphView.schedule.Execute(FrameNode).ExecuteLater(200);
             }
             else if(evt.ChangeType == VariableChangeType.Delete)
             {
-                CeresAPI.LogWarning($"The variable {evt.Variable.Name} was deleted, which will cause an error in the referenced PropertyNode during runtime. Please remove the corresponding node.");
+                CeresLogger.LogWarning($"The variable {evt.Variable.Name} was deleted, which may cause an error in the referenced PropertyNode during runtime. Please remove the corresponding node.");
                 GraphView.ClearSelection();
                 GraphView.schedule.Execute(FrameNode).ExecuteLater(200);
             }
@@ -92,7 +94,13 @@ namespace Ceres.Editor.Graph.Flow
         
         public PropertyNode_PropertyValueNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
-            FindPortView("target").SetTooltip(" [Default is Self]");
+            var targetView = FindPortView("target");
+            /* Validate self target in editor first */
+            if (!GraphView.GetContainerType().IsAssignableTo(targetView.Binding.DisplayType.Value))
+            {
+                return;
+            }
+            targetView.SetTooltip(" [Default is Self]");
         }
 
         public void SetIsSelfTarget(bool isSelfTarget)
