@@ -8,8 +8,8 @@ using Chris;
 using System.Collections;
 #endif
 using R3.Chris;
+using Chris.Collections;
 using Chris.Serialization;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Pool;
@@ -422,7 +422,7 @@ namespace Ceres.Graph
                 if (subGraphSlot.Name == name && subGraphSlot.Graph is TGraph) return false;
             }
             
-            ArrayUtility.Add(ref SubGraphSlots, new CeresSubGraphSlot
+            ArrayUtils.Add(ref SubGraphSlots, new CeresSubGraphSlot
             {
                 Name = name,
                 Graph = graph
