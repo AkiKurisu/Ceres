@@ -1,0 +1,46 @@
+.NodeSettingsElement {
+    position: absolute;
+    min-width: 110px;
+    max-width: 400px;
+    -unity-slice-top: 40;
+    -unity-slice-left: 80;
+    -unity-slice-right: 25;
+    -unity-slice-bottom: 25;
+    padding: 15px 4px 4px;
+    background-image: resource("Ceres/Settings_Flyout_9slice");
+}
+
+.NodeSettingsElement > #mainContainer {
+    padding: 4px;
+}
+
+.NodeSettingsElement Label#header {
+    padding-bottom: 4px;
+    -unity-font-style: bold;
+}
+
+.NodeSettingsElement .unity-text-element {
+    font-size: 10px;
+}
+
+.NodeSettingsElement > #mainContainer > #contentContainer {
+    padding: 4px 8px;
+}
+
+#settings-button {
+    border-width: 0;
+    width: 28px;
+    height: 28px;
+    background-color: rgba(63, 63, 63, 0);
+    border-radius: 0;
+}
+
+#settings-button > #icon {
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource("Ceres/SettingsIcon");
+    flex-grow: 1;
+}
+
+#settings-button:hover {
+    background-color: rgba(127, 127, 127 0.2);
+}

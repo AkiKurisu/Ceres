@@ -5,6 +5,8 @@ using System.Reflection;
 using Ceres.Annotations;
 using Ceres.Graph;
 using Chris;
+using UObject = UnityEngine.Object;
+
 namespace Ceres.Utilities
 {
      public static class GraphTypeExtensions
@@ -111,6 +113,59 @@ namespace Ceres.Utilities
                 }
             }
             return false;
+        }
+        
+        /// <summary>
+        /// Whether type instance can be serialized in Ceres graph editor
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static bool IsCeresSerializable(this Type type)
+        {
+            if (type.IsGenericType) return false;
+                        
+            if(typeof(List<>).IsAssignableFrom(type) || type.IsArray)
+            {
+                return false;
+            }
+
+            if (type.Name == "<>c")
+            {
+                return false;
+            }
+                        
+            if (typeof(Attribute).IsAssignableFrom(type))
+            {
+                return false;
+            }
+                        
+            if (type.Assembly.GetName().Name.Contains("Editor"))
+            {
+                return false;
+            }
+            
+            if (typeof(UObject).IsAssignableFrom(type) || type == typeof(UObject))
+            {
+                return true;
+            }
+
+            if (ReflectionUtility.IsSerializableNumericTypes(type))
+            {
+                return true;
+            }
+                        
+            if (ReflectionUtility.IsUnityBuiltinTypes(type))
+            {
+                return true;
+            }
+
+            if (Attribute.IsDefined(type, typeof(SerializableAttribute), true))
+            {
+                return true;
+            }
+              
+            /* Non-serializable type only visible when assigned where only in the case user want to use it */
+            return CeresPort.GetAssignedPortValueTypes().Contains(type);
         }
     }
 

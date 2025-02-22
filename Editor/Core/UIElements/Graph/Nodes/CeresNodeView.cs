@@ -337,4 +337,15 @@ namespace Ceres.Editor.Graph
             PortViews.ForEach(x=> x.Connect());
         }
     }
+
+    public static class CeresNodeViewExtensions
+    {
+        public static TSettingsView CreateSettingsView<TSettingsView>(this ICeresNodeView nodeView) 
+            where TSettingsView: NodeSettingsView, new()
+        {
+            var view = new TSettingsView();
+            view.Attach(nodeView);
+            return view;
+        }
+    }
 }

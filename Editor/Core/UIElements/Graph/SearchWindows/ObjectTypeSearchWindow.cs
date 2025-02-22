@@ -35,13 +35,13 @@ namespace Ceres.Editor.Graph
         {
             var entries = new List<SearchTreeEntry>
             {
-                new SearchTreeGroupEntry(new GUIContent("Select Object Type"), 0),
+                new SearchTreeGroupEntry(new GUIContent("Select Object Type")),
                 new(new GUIContent("<Null>", _indentationIcon)) { level = 1, userData = null }
             };
 
             IEnumerable<Type> nodeTypes;
             
-            if(_customTypeFilters == null)
+            if (_customTypeFilters == null)
             {
                 nodeTypes = SubClassSearchUtility.FindSubClassTypes(_baseType).Where(x=> !x.IsGenericType);
             }

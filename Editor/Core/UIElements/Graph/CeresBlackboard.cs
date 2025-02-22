@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Ceres.Annotations;
 using Ceres.Graph;
 using Chris;
 using Chris.Serialization;
@@ -12,6 +10,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Editor.Graph
 {
     /// <summary>
@@ -112,8 +111,8 @@ namespace Ceres.Editor.Graph
         {
             CreateBuiltInSharedVariableMenu(menu);
         }
-        
-        protected void CreateBuiltInSharedVariableMenu(GenericMenu menu)
+
+        private void CreateBuiltInSharedVariableMenu(GenericMenu menu)
         {
             menu.AddItem(new GUIContent("Int"), false, () => AddVariable(new SharedInt(), true));
             menu.AddItem(new GUIContent("Float"), false, () => AddVariable(new SharedFloat(), true));
@@ -398,56 +397,6 @@ namespace Ceres.Editor.Graph
             return placeHolder;
         }
 
-        private static bool IsSupportSerializedType(Type type)
-        {
-            // Ensure SerializedObjectBase can serialize element
-            if (type.IsGenericType) return false;
-                        
-            if(typeof(List<>).IsAssignableFrom(type) || type.IsArray)
-            {
-                return false;
-            }
-
-            // Can not serialize UObject reference directly
-            if (typeof(UObject).IsAssignableFrom(type) || type == typeof(UObject))
-            {
-                return false;
-            }
-
-            if (type.Name == "<>c")
-            {
-                return false;
-            }
-                        
-            if (typeof(Attribute).IsAssignableFrom(type))
-            {
-                return false;
-            }
-                        
-            if (type.Assembly.GetName().Name.Contains("Editor"))
-            {
-                return false;
-            }
-
-            if (ReflectionUtility.IsSerializableNumericTypes(type))
-            {
-                return true;
-            }
-                        
-            if (ReflectionUtility.IsUnityBuiltinTypes(type))
-            {
-                return true;
-            }
-
-            if (Attribute.IsDefined(type, typeof(SerializableAttribute), true))
-            {
-                return true;
-            }
-              
-            /* Non-serializable type only visible when assigned where only in the case user want to use it */
-            return CeresPort.GetAssignedPortValueTypes().Contains(type);
-        }
-
         /// <summary>
         /// Create type settings for <see cref="SharedObject"/>
         /// </summary>
@@ -455,91 +404,11 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         private VisualElement CreateTypeSettingsView(SharedObject sharedObject)
         {
-            var placeHolder = new VisualElement();
-            Type objectType;
-            try
+            var selector = new SerializedObjectSettings(sharedObject.serializedObject)
             {
-                objectType =  SerializedType.FromString(sharedObject.serializedObject.serializedTypeString);
-            }
-            catch
-            {
-                objectType = null;
-            }
-            
-            var toggle = new Toggle("Is Array")
-            {
-                value = sharedObject.serializedObject.isArray
+                OnTypeChange = _ => NotifyVariableChanged(sharedObject, VariableChangeType.Type)
             };
-            toggle.RegisterValueChangedCallback(evt =>
-            {
-                sharedObject.serializedObject.isArray = evt.newValue;
-            });
-            toggle.SetEnabled(objectType is not null);
-            placeHolder.Add(toggle);
-            
-            var typeContainer = new TypeContainer(objectType ?? typeof(object));
-            placeHolder.Add(typeContainer);
-            
-            var button = new Button
-            {
-                text = "Assign Object Type"
-            };
-            button.clicked += () =>
-            {
-                var provider = ScriptableObject.CreateInstance<ObjectTypeSearchWindow>();
-                provider.Initialize(type =>
-                {
-                    if (type == null)
-                    {
-                        sharedObject.serializedObject.serializedTypeString = string.Empty;
-                        typeContainer.SetType(typeof(object));
-                        toggle.SetEnabled(false);
-                    }
-                    else
-                    {
-                        sharedObject.serializedObject.serializedTypeString = SerializedType.ToString(type);
-                        typeContainer.SetType(type);
-                        toggle.SetEnabled(true);
-                    }
-                    NotifyVariableChanged(sharedObject, VariableChangeType.Type);
-                }, typeof(object), types => types.Where(IsSupportSerializedType));
-                SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)), provider);
-            };
-            placeHolder.Add(button);
-            return placeHolder;
-        }
-    }
-
-    internal class TypeContainer: VisualElement
-    {
-        private readonly Label _typeLabel;
-
-        public TypeContainer(Type objectType)
-        {
-            name = nameof(TypeContainer);
-            Add(new Label
-            {
-                name = "typeLabel",
-                text = "Type"
-            });
-            Add(_typeLabel = new Label
-            {
-                name = "typeName",
-                style =
-                {
-                    unityTextAlign = TextAnchor.MiddleRight
-                }
-            });
-            if (objectType != null)
-            {
-                SetType(objectType);
-            }
-        }
-
-        public void SetType(Type inType)
-        {
-            _typeLabel.text = inType == null ? string.Empty : CeresLabel.GetTypeName(inType);
-            tooltip = inType?.FullName ?? string.Empty;
+            return selector;
         }
     }
 }

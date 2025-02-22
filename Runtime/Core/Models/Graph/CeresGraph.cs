@@ -9,10 +9,12 @@ using System.Collections;
 #endif
 using R3.Chris;
 using Chris.Serialization;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Graph
 {
     /// <summary>
@@ -404,6 +406,28 @@ namespace Ceres.Graph
             }
 
             return null;
+        }
+        
+        /// <summary>
+        /// Try to add a subGraph with specific type and name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="graph"></param>
+        /// <typeparam name="TGraph"></typeparam>
+        /// <returns></returns>
+        public bool AddSubGraph<TGraph>(string name, TGraph graph) where TGraph: CeresGraph
+        {
+            foreach (var subGraphSlot in SubGraphSlots)
+            {
+                if (subGraphSlot.Name == name && subGraphSlot.Graph is TGraph) return false;
+            }
+            
+            ArrayUtility.Add(ref SubGraphSlots, new CeresSubGraphSlot
+            {
+                Name = name,
+                Graph = graph
+            });
+            return true;
         }
         
         void IDisposableUnregister.Register(IDisposable disposable)

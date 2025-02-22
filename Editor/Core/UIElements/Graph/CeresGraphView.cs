@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UObject = UnityEngine.Object;
 using USearchWindow = UnityEditor.Experimental.GraphView.SearchWindow;
+
 namespace Ceres.Editor.Graph
 {
     public abstract class CeresGraphView: GraphView, IVariableSource
@@ -26,6 +27,8 @@ namespace Ceres.Editor.Graph
         protected CeresNodeSearchWindow SearchWindow { get; private set; }
 
         private static readonly Dictionary<string, StyleSheet> StyleSheetsCache = new();
+        
+        private static readonly Dictionary<string, VisualTreeAsset> VisualTreeAssetsCache = new();
 
         private bool _dirtyFlag;
 
@@ -175,6 +178,22 @@ namespace Ceres.Editor.Graph
             }
 
             return styleSheet;
+        }
+        
+        /// <summary>
+        /// Get or load custom <see cref="VisualTreeAsset"/>
+        /// </summary>
+        /// <param name="resourcePath"></param>
+        /// <returns></returns>
+        public static VisualTreeAsset GetOrLoadVisualTreeAsset(string resourcePath)
+        {
+            if (!VisualTreeAssetsCache.TryGetValue(resourcePath, out var visualTreeAsset))
+            {
+                visualTreeAsset = Resources.Load<VisualTreeAsset>(resourcePath);
+                VisualTreeAssetsCache.Add(resourcePath, visualTreeAsset);
+            }
+
+            return visualTreeAsset;
         }
         
         /// <summary>
