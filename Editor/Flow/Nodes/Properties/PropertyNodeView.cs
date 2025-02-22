@@ -5,7 +5,7 @@ using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Utilities;
 
-namespace Ceres.Editor.Graph.Flow
+namespace Ceres.Editor.Graph.Flow.Properties
 {
     [CustomNodeView(typeof(PropertyNode), true)]
     public class PropertyNodeView: ExecutableNodeView

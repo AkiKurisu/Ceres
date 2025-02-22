@@ -6,6 +6,7 @@ using Chris;
 using Chris.Collections;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
+using R3;
 using R3.Chris;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -77,7 +78,7 @@ namespace Ceres.Graph.Flow
                 base.ExecuteDefaultAction(evt);
                 if (!_contextObject) return;
                 /* Get event name if it has generated executable event */
-                var eventName = GeneratedExecutableEvent.GetEventName(evt.EventTypeId);
+                var eventName = CustomExecutableEvent.GetEventName(evt.EventTypeId);
                 if (string.IsNullOrEmpty(eventName)) return;
                 _flowGraph.TryExecuteEvent(_contextObject, eventName, evt);
             }
@@ -522,6 +523,8 @@ namespace Ceres.Graph.Flow
         public static IDisposable OverrideEventImplementation<TEventType>(this IFlowGraphRuntime runtime, EventCallback<TEventType> implementation)
             where TEventType : EventBase<TEventType>, new()
         {
+            /* Check custom event registered */
+            if (!CustomExecutableEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
             return runtime.GetEventHandler().AsObservable<TEventType>().SubscribeSafe(implementation);
         }
     }

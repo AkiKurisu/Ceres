@@ -2,7 +2,8 @@ using System;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
-namespace Ceres.Editor.Graph.Flow
+
+namespace Ceres.Editor.Graph.Flow.Utilities
 {
     /// <summary>
     /// Node view for <see cref="FlowNode_ExecuteEvent"/>

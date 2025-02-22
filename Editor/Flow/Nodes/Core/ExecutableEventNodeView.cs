@@ -203,10 +203,10 @@ namespace Ceres.Editor.Graph.Flow
         }
     }
     
-    [CustomNodeView(typeof(GeneratedExecutableEvent), true)]
-    public class GeneratedExecutableEventNodeView: ExecutableEventNodeView
+    [CustomNodeView(typeof(CustomExecutableEvent), true)]
+    public class CustomExecutableEventNodeView: ExecutableEventNodeView
     {
-        public GeneratedExecutableEventNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
+        public CustomExecutableEventNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
         }
 

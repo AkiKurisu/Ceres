@@ -11,7 +11,7 @@ namespace Ceres.Graph.Flow
     /// </summary>
     [Serializable]
     [CeresMetadata("style = CustomEvent")]
-    public abstract class GeneratedExecutableEvent: ExecutableEvent
+    public abstract class CustomExecutableEvent: ExecutableEvent
     {
         private static readonly Dictionary<long, string> Id2EventNameMap = new();
         
@@ -30,10 +30,14 @@ namespace Ceres.Graph.Flow
             
         }
         
-        
         protected static void RegisterEventId<TEventBase>(string eventName) where TEventBase: EventBase<TEventBase>, new()
         {
             Id2EventNameMap[EventBase<TEventBase>.TypeId()] = eventName;
+        }
+
+        internal static bool HasEvent(long eventId)
+        {
+            return Id2EventNameMap.ContainsKey(eventId);
         }
         
         internal static string GetEventName(long eventId)
@@ -41,19 +45,19 @@ namespace Ceres.Graph.Flow
             return Id2EventNameMap.GetValueOrDefault(eventId);
         }
 
-        internal static string GetEventBaseName(Type type)
+        internal static string GetEventName(Type type)
         {
             return type.Name[(nameof(ExecutableEvent).Length + 1)..];
         }
     }
 
-    public abstract class GeneratedExecutableEvent<TEventBase> : GeneratedExecutableEvent
+    public abstract class CustomExecutableEvent<TEventBase> : CustomExecutableEvent
         where TEventBase: EventBase<TEventBase>, new()
     {
         // ReSharper disable once MemberCanBePrivate.Global
         protected static readonly string EventName = $"{nameof(ExecutableEvent)}_{typeof(TEventBase).Name}";
         
-        static GeneratedExecutableEvent()
+        static CustomExecutableEvent()
         {
             /* Register event name with event id for lookup purpose */
             RegisterEventId<TEventBase>(EventName);

@@ -192,7 +192,7 @@ namespace Ceres.Editor.Graph.Flow
             failReason = string.Empty;
             foreach (var view in _graphViews.Values)
             {
-                if (!view.SerializeGraph(EditorObject))
+                if (!view.SerializeGraph(EditorObject, out failReason))
                 {
                     return false;
                 }

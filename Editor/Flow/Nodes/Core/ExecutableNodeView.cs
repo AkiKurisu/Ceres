@@ -104,7 +104,11 @@ namespace Ceres.Editor.Graph.Flow
         /// <summary>
         /// Node view is no longer valid that need clean up
         /// </summary>
-        Invalid = 1
+        Invalid = 1,
+        /// <summary>
+        /// Node view can not be deleted
+        /// </summary>
+        NotDeletable = 2
     }
     
     /// <summary>

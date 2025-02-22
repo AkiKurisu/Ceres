@@ -1,13 +1,15 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Ceres.Graph;
 using UnityEngine;
+using Chris;
 using Ceres.Utilities;
-using Ceres.Graph.Flow;
+using Ceres.Graph;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Graph.Flow.Utilities;
-using Chris;
+using Ceres.Editor.Graph.Flow.Properties;
+using Ceres.Editor.Graph.Flow.Utilities;
+
 namespace Ceres.Editor.Graph.Flow
 {
     public interface IExecutableNodeViewFactoryProxy

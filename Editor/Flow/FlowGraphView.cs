@@ -4,6 +4,7 @@ using System.Linq;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Properties;
+using Ceres.Editor.Graph.Flow.Properties;
 using Chris;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
@@ -20,9 +21,12 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         public FlowGraphDebugState DebugState { get; }
 
-        private FlowGraphDebugTracker _tracker;
+        /// <summary>
+        /// Bound editor window
+        /// </summary>
+        public FlowGraphEditorWindow FlowGraphEditorWindow { get; }
 
-        private readonly FlowGraphEditorWindow _flowGraphEditorWindow;
+        private FlowGraphDebugTracker _tracker;
         
         private bool _isEditingSubGraph;
 
@@ -30,7 +34,7 @@ namespace Ceres.Editor.Graph.Flow
         
         public FlowGraphView(FlowGraphEditorWindow editorWindow) : base(editorWindow)
         {
-            _flowGraphEditorWindow = editorWindow;
+            FlowGraphEditorWindow = editorWindow;
             DebugState = editorWindow.debugState;
             AddStyleSheet("Ceres/Flow/GraphView");
             AddSearchWindow<ExecutableNodeSearchWindow>();
@@ -44,8 +48,9 @@ namespace Ceres.Editor.Graph.Flow
         /// Serialize flow graph to editor data container
         /// </summary>
         /// <param name="editorObject">Serialization target</param>
+        /// <param name="failReason"></param>
         /// <returns>Whether serialization is succeeded</returns>
-        public bool SerializeGraph(FlowGraphEditorObject editorObject)
+        public bool SerializeGraph(FlowGraphEditorObject editorObject, out string failReason)
         {
             /* Compile validation */
             var invalidNodeViews = NodeViews.OfType<ExecutableNodeView>()
@@ -53,12 +58,14 @@ namespace Ceres.Editor.Graph.Flow
                 .ToList();
             if (invalidNodeViews.Any())
             {
+                failReason = "some nodes failed to compile";
                 ClearSelection();
                 invalidNodeViews.ForEach(view => AddToSelection(view.NodeElement));
                 schedule.Execute(() => FrameSelection()).ExecuteLater(10);
                 return false;
             }
             
+            failReason = string.Empty;
             var editableData = editorObject.GraphData;
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
             if (_isEditingSubGraph)
@@ -132,8 +139,8 @@ namespace Ceres.Editor.Graph.Flow
                 return;
             }
 
-            if (!_flowGraphEditorWindow) return;
-            _flowGraphEditorWindow.SaveGraphData();
+            if (!FlowGraphEditorWindow) return;
+            FlowGraphEditorWindow.SaveGraphData();
         }
 
         /// <summary>

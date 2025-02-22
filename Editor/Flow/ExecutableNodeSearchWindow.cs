@@ -54,7 +54,7 @@ namespace Ceres.Editor.Graph.Flow
                 .Where(x=> x.GetCustomAttribute<ImplementableEventAttribute>() != null)
                 .ToArray();
             var referencedAssemblies = SubClassSearchUtility.GetRuntimeReferencedAssemblies();
-            _generatedExecutableEventTypes = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(GeneratedExecutableEvent)).ToArray();
+            _generatedExecutableEventTypes = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(CustomExecutableEvent)).ToArray();
         }
 
         private void OnDestroy()
@@ -165,14 +165,14 @@ namespace Ceres.Editor.Graph.Flow
 
             /* Build custom events */
             var validGeneratedEventTypes = _generatedExecutableEventTypes
-                .Where(x => eventNodes.All(evt => evt.GetEventName() != GeneratedExecutableEvent.GetEventBaseName(x)))
+                .Where(x => eventNodes.All(evt => evt.GetEventName() != CustomExecutableEvent.GetEventName(x)))
                 .ToArray();
             if (!validGeneratedEventTypes.Any()) return;
             builder.AddGroupEntry("Implement Custom Events", 2);
             foreach (var eventType in validGeneratedEventTypes)
             {
                 builder.AddEntry(new SearchTreeEntry(new GUIContent(
-                    $"Implement {GeneratedExecutableEvent.GetEventBaseName(eventType)}", _indentationIcon))
+                    $"Implement {CustomExecutableEvent.GetEventName(eventType)}", _indentationIcon))
                 {
                     level = 3,
                     userData = new CeresNodeSearchEntryData
