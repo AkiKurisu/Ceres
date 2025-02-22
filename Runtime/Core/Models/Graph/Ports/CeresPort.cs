@@ -221,14 +221,24 @@ namespace Ceres.Graph
             return CompatibleStructure.CompatibleTypes.Contains(type);
         }
         
+        /// <summary>
+        /// Is this port value type compatible to specific type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static bool IsCompatibleTo(Type type)
         {
             return IsCompatibleTo_Internal(type) || typeof(TValue).IsAssignableTo(type);
         }
         
-        public IPort CreateAdapterPort(CeresPort ceresPort)
+        private IPort CreateAdapterPort(CeresPort ceresPort)
         {
             return CompatibleStructure.AdapterCreateFunc[ceresPort.GetValueType()](this);
+        }
+
+        private IPort CreateBridgePort(CeresPort<CeresPort> bridgePort)
+        {
+            return new BridgePort<TValue>(bridgePort);
         }
 
         public override void Link(CeresPort targetPort)
@@ -238,6 +248,12 @@ namespace Ceres.Graph
                 if (IsCompatibleTo_Internal(targetPort.GetValueType()))
                 {
                     targetPort.AssignValueGetter(CreateAdapterPort(targetPort));
+                    return;
+                }
+
+                if (targetPort is CeresPort<CeresPort> bridgePort)
+                {
+                    targetPort.AssignValueGetter(CreateBridgePort(bridgePort));
                     return;
                 }
                 targetPort.AssignValueGetter(this);
@@ -292,6 +308,23 @@ namespace Ceres.Graph
         }
 
         public TOut Value => _adapterFunc(_port.Value);
+    }
+    
+    public class BridgePort<TOut>: IPort<TOut>
+    {
+        private readonly CeresPort<CeresPort> _port;
+        
+        public BridgePort(CeresPort<CeresPort> port)
+        {
+            _port = port;
+        }
+
+        public object GetValue()
+        {
+            return Value;
+        }
+
+        public TOut Value => ((CeresPort<TOut>)_port.Value).Value;
     }
     
     /// <summary>
