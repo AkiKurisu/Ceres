@@ -58,8 +58,8 @@ namespace Ceres.Graph.Flow.Utilities
             
             // Collect static functions
             var methodInfos = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(ExecutableFunctionLibrary))
-                        .SelectMany(x => x.GetMethods(BindingFlags.Public | BindingFlags.Static))
-                        .Where(x=>x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                        .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Static))
+                        .Where(methodInfo=> methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                         .Distinct()
                         .ToList();
             var groups = methodInfos.GroupBy(x => ExecutableReflection.GetFunction(x).Attribute.ScriptTargetType)
