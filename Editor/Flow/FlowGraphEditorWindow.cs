@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
 using Cysharp.Threading.Tasks;
@@ -339,6 +340,26 @@ namespace Ceres.Editor.Graph.Flow
             {
                 ClearProgressBar();
             }
+        }
+
+        /// <summary>
+        /// Create a new subGraph to present custom function
+        /// </summary>
+        public void AddNewFunctionSubGraph()
+        {
+            var json = Resources.Load<TextAsset>("Ceres/Flow/TemplateSubGraphData").text;
+            var templateSubGraph = new FlowGraph(JsonUtility.FromJson<FlowGraphSerializedData>(json));
+            var uniqueName = "New Function";
+            var id = 1;
+            while (EditorObject.GraphNames.Contains(uniqueName))
+            {
+                uniqueName = $"New Function {id++}";
+            }
+            EditorObject.GraphInstance.AddSubGraph(uniqueName, templateSubGraph);
+            EditorObject.Update();
+            
+            /* Display new subGraph view */
+            StructVisualElements(GraphIndex = Array.IndexOf(EditorObject.GraphNames, uniqueName));
         }
     }
 }

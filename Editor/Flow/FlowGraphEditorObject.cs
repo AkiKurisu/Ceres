@@ -15,6 +15,8 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         [field: SerializeField]
         public FlowGraphData GraphData { get; set; }
+        
+        private IFlowGraphContainer _container;
 
         private FlowGraph _instance;
 
@@ -24,13 +26,13 @@ namespace Ceres.Editor.Graph.Flow
             {
                 if (_instance == null)
                 {
-                    if (Application.isPlaying && Container is IFlowGraphRuntime runtimeContainer)
+                    if (Application.isPlaying && _container is IFlowGraphRuntime runtimeContainer)
                     {
                         _instance = runtimeContainer.GetRuntimeFlowGraph();
                     }
                     else
                     {
-                        _instance = Container.GetFlowGraph();
+                        _instance = _container.GetFlowGraph();
                     }
                     Update();
                 }
@@ -43,22 +45,20 @@ namespace Ceres.Editor.Graph.Flow
 
         public string[] GraphNames { get; private set; }
 
-        public IFlowGraphContainer Container { get; private set; }
-
         public static FlowGraphEditorObject CreateTemporary(IFlowGraphContainer container)
         {
             var editorObject = CreateInstance<FlowGraphEditorObject>();
-            editorObject.Container = container;
+            editorObject._container = container;
             editorObject.hideFlags = HideFlags.HideAndDontSave;
             editorObject.GraphData = container.GetFlowGraphData();
             return editorObject;
         }
 
-        private void Update()
+        public void Update()
         {
             var contents =  GraphInstance.SubGraphSlots.Select(x => x.Name).ToList();
             /* Slot 0 use uber graph name */
-            contents.Insert(0, $"{Container.GetIdentifier().boundObject.name} (Main)");
+            contents.Insert(0, $"{_container.GetIdentifier().boundObject.name} (Main)");
             GraphNames = contents.ToArray();
             GraphNameContents = contents.Select(x => new GUIContent(x)).ToArray();
         }
@@ -66,23 +66,6 @@ namespace Ceres.Editor.Graph.Flow
         public void DestroyTemporary()
         {
             DestroyImmediate(this);
-        }
-
-        /// <summary>
-        /// Create a new subGraph to present custom function
-        /// </summary>
-        public void AddNewFunctionSubGraph()
-        {
-            var json = Resources.Load<TextAsset>("Ceres/Flow/TemplateSubGraphData").text;
-            var templateSubGraph = new FlowGraph(JsonUtility.FromJson<FlowGraphSerializedData>(json));
-            var uniqueName = "New Function";
-            int id = 1;
-            while (GraphNames.Contains(uniqueName))
-            {
-                uniqueName = $"New Function {id++}";
-            }
-            GraphInstance.AddSubGraph(uniqueName, templateSubGraph);
-            Update();
         }
     }
 }

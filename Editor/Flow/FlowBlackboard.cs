@@ -31,7 +31,7 @@ namespace Ceres.Editor.Graph.Flow
 
         private void AddNewFunction()
         {
-            _flowGraphView.FlowGraphEditorWindow.EditorObject.AddNewFunctionSubGraph();
+            _flowGraphView.FlowGraphEditorWindow.AddNewFunctionSubGraph();
         }
     }
 }
