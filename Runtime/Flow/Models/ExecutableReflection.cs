@@ -351,23 +351,26 @@ namespace Ceres.Graph.Flow
         
     internal unsafe class ExecutableAction<TTarget>
     {
+#if !(ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE)
         private Delegate _delegate;
+
+        private readonly MethodInfo _methodInfo;
+#endif
 
         private readonly void* _functionPtr;
 
         public readonly bool IsStatic;
-
-        private readonly MethodInfo _methodInfo;
         
         internal ExecutableAction(MethodInfo methodInfo)
         {
 #if !UNITY_EDITOR
             Assert.IsFalse(methodInfo.IsStatic);
 #endif
-            _methodInfo = methodInfo;
 #if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
             // RuntimeMethod* in IL2CPP
             _functionPtr = (void*)methodInfo.MethodHandle.Value;
+#else
+            _methodInfo = methodInfo;
 #endif
             IsStatic = false;
         }
@@ -378,6 +381,7 @@ namespace Ceres.Graph.Flow
             _functionPtr = functionPtr;
         }
 
+#if !(ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE)
         private static void ReallocateDelegateIfNeed<TDelegate>(ref Delegate outDelegate, MethodInfo methodInfo) where TDelegate: Delegate
         {
             if (methodInfo == null || methodInfo.IsStatic)
@@ -431,6 +435,7 @@ namespace Ceres.Graph.Flow
         {
             ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3, T4, T5, T6>>(ref _delegate, _methodInfo);
         }
+#endif
         
         public void Invoke(TTarget target)
         {
@@ -547,23 +552,26 @@ namespace Ceres.Graph.Flow
     
     internal unsafe class ExecutableFunc<TTarget>
     {
+#if !(ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE)
         private Delegate _delegate;
+
+        private readonly MethodInfo _methodInfo;
+#endif
 
         private readonly void* _functionPtr;
 
         public readonly bool IsStatic;
-
-        private readonly MethodInfo _methodInfo;
         
         internal ExecutableFunc(MethodInfo methodInfo)
         {
 #if !UNITY_EDITOR
             Assert.IsFalse(methodInfo.IsStatic);
 #endif
-            _methodInfo = methodInfo;
 #if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
             // RuntimeMethod* in IL2CPP
             _functionPtr = (void*)methodInfo.MethodHandle.Value;
+#else
+            _methodInfo = methodInfo;
 #endif
             IsStatic = false;
         }
@@ -574,6 +582,7 @@ namespace Ceres.Graph.Flow
             _functionPtr = functionPtr;
         }
 
+#if !(ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE)
         private static void ReallocateDelegateIfNeed<TDelegate>(ref Delegate outDelegate, MethodInfo methodInfo) where TDelegate: Delegate
         {
             if (methodInfo == null || methodInfo.IsStatic)
@@ -627,7 +636,8 @@ namespace Ceres.Graph.Flow
         {
             ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, T4, T5, T6, TR>>(ref _delegate, _methodInfo);
         }
-
+#endif
+        
         public TR Invoke<TR>(TTarget target)
         {
             if (IsStatic)
