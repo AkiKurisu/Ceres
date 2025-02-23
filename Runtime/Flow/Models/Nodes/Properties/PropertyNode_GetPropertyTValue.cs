@@ -48,7 +48,7 @@ namespace Ceres.Graph.Flow.Properties
         [OutputPort, CeresLabel("Value")]
         public CeresPort<T> outputValue;
 
-        private ExecutableReflection<TTarget>.ExecutableFunc _delegate;
+        private ExecutableFunc<TTarget> _delegate;
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
