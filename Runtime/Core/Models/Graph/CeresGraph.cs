@@ -124,7 +124,7 @@ namespace Ceres.Graph
         }
 
         /// <summary>
-        /// Compile graph at runtime before execution
+        /// Compile graph just in time
         /// </summary>
         public virtual void Compile()
         {
@@ -409,24 +409,19 @@ namespace Ceres.Graph
         }
         
         /// <summary>
-        /// Try to add a subGraph with specific type and name
+        /// Try to add a subGraph slot with specific type validation
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="graph"></param>
+        /// <param name="slot"></param>
         /// <typeparam name="TGraph"></typeparam>
         /// <returns></returns>
-        public bool AddSubGraph<TGraph>(string name, TGraph graph) where TGraph: CeresGraph
+        protected bool AddSubGraphSlot<TGraph>(CeresSubGraphSlot slot) where TGraph: CeresGraph
         {
             foreach (var subGraphSlot in SubGraphSlots)
             {
-                if (subGraphSlot.Name == name && subGraphSlot.Graph is TGraph) return false;
+                if (subGraphSlot.Guid == slot.Guid && subGraphSlot.Graph is TGraph) return false;
             }
             
-            ArrayUtils.Add(ref SubGraphSlots, new CeresSubGraphSlot
-            {
-                Name = name,
-                Graph = graph
-            });
+            ArrayUtils.Add(ref SubGraphSlots, slot);
             return true;
         }
         

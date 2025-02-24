@@ -30,12 +30,15 @@ namespace Ceres.Editor.Graph.Flow
         
         private bool _isEditingSubGraph;
 
-        private string _editingSubGraphSlotName;
+        /// <summary>
+        /// Bound graph verified name
+        /// </summary>
+        public string GraphName { get; internal set; }
         
         public FlowGraphView(FlowGraphEditorWindow editorWindow) : base(editorWindow)
         {
             FlowGraphEditorWindow = editorWindow;
-            DebugState = editorWindow.debugState;
+            DebugState = editorWindow.DebugState;
             AddStyleSheet("Ceres/Flow/GraphView");
             AddSearchWindow<ExecutableNodeSearchWindow>();
             AddNodeGroupHandler(new ExecutableNodeGroupHandler(this));
@@ -71,11 +74,14 @@ namespace Ceres.Editor.Graph.Flow
             if (_isEditingSubGraph)
             {
                 editableData ??= new FlowGraphData();
+                var slot = (FlowSubGraphSlot)FlowGraphEditorWindow.EditorObject.GraphInstance.SubGraphSlots
+                            .FirstOrDefault(x => x.Name == GraphName);
+                CeresLogger.Assert(slot != null, $"Can not find subGraph named {GraphName}");
                 /*
                  * Subgraph need be serialized with outer.
                  * Notice there is object-slicing since serialized data structure is typeof(FlowGraphSerializedData).
                  */
-                editableData.SetSubGraphData(_editingSubGraphSlotName, flowGraphData);
+                editableData.SetSubGraphData(slot, flowGraphData);
             }
             else
             {
@@ -119,7 +125,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             new CopyPasteGraph(this, graphElements).DeserializeGraph(editorObject.GraphInstance);
             _isEditingSubGraph = false;
-            _editingSubGraphSlotName = string.Empty;
+            GraphName = string.Empty;
             ClearDirty();
         }
         
@@ -128,7 +134,7 @@ namespace Ceres.Editor.Graph.Flow
             var subGraph = editorObject.GraphInstance.FindSubGraph<FlowGraph>(slotName);
             new CopyPasteGraph(this, graphElements).DeserializeGraph(subGraph);
             _isEditingSubGraph = true;
-            _editingSubGraphSlotName = slotName;
+            GraphName = slotName;
             ClearDirty();
         }
 

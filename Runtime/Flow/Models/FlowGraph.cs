@@ -110,6 +110,7 @@ namespace Ceres.Graph.Flow
             }
         }
         
+        /// <inheritdoc />
         public override void Compile()
         {
             if(_hasCompiled) return;
@@ -237,6 +238,32 @@ namespace Ceres.Graph.Flow
         {
             _executionList.Remove(context);
         }
+        
+        internal bool AddFlowSubGraph(string name, string guid, FlowGraphUsage usage, FlowGraph graph)
+        {
+           return AddSubGraphSlot<FlowGraph>(new FlowSubGraphSlot
+            {
+                Name = name,
+                Usage = usage,
+                Guid = guid,
+                Graph = graph
+            });
+        }
+    }
+
+    /// <summary>
+    /// Flow graph usage type
+    /// </summary>
+    public enum FlowGraphUsage
+    {
+        /// <summary>
+        /// Event graph
+        /// </summary>
+        Event,
+        /// <summary>
+        /// Function graph, should always be subGraph
+        /// </summary>
+        Function
     }
     
     /// <summary>
@@ -289,9 +316,14 @@ namespace Ceres.Graph.Flow
     [Serializable]
     public class FlowSubGraphData : CeresSubGraphData<FlowGraphSerializedData>
     {
-        
+        public FlowGraphUsage usage;
     }
-    
+
+    public class FlowSubGraphSlot: CeresSubGraphSlot
+    {
+        public FlowGraphUsage Usage;
+    }
+
     /// <summary>
     /// Metadata for <see cref="FlowGraph"/>
     /// </summary>
@@ -308,10 +340,12 @@ namespace Ceres.Graph.Flow
             flowGraph.SubGraphSlots = new CeresSubGraphSlot[subGraphData?.Length ?? 0];
             for (int i = 0; i < flowGraph.SubGraphSlots.Length; i++)
             {
-                flowGraph.SubGraphSlots[i] = new CeresSubGraphSlot
+                flowGraph.SubGraphSlots[i] = new FlowSubGraphSlot
                 {
-                    Name = subGraphData![i].slotName,
-                    Graph = new FlowGraph(subGraphData![i].graphData)
+                    Name = subGraphData![i].name,
+                    Guid = subGraphData![i].guid,
+                    Graph = new FlowGraph(subGraphData![i].graphData),
+                    Usage = subGraphData![i].usage
                 };
             }
         }
@@ -328,20 +362,25 @@ namespace Ceres.Graph.Flow
             }
         }
 
-        public void SetSubGraphData(string name, FlowGraphSerializedData data)
+        public void SetSubGraphData(FlowSubGraphSlot slot, FlowGraphSerializedData data)
         {
             subGraphData ??= Array.Empty<FlowSubGraphData>();
-            if (subGraphData.All(x => x.slotName != name))
+            if (subGraphData.All(x => x.guid != slot.Guid))
             {
                 ArrayUtils.Add(ref subGraphData, new FlowSubGraphData
                 {
-                    slotName = name,
-                    graphData = data
+                    name = slot.Name,
+                    guid = slot.Guid,
+                    graphData = data,
+                    usage = slot.Usage
                 });
             }
             else
             {
-                subGraphData.First(graphData => graphData.slotName == name).graphData = data;
+                var flowSubGraphData = subGraphData.First(graphData => graphData.guid == slot.Guid);
+                flowSubGraphData.graphData = data;
+                flowSubGraphData.usage = slot.Usage;
+                flowSubGraphData.name = slot.Name;
             }
         }
     }

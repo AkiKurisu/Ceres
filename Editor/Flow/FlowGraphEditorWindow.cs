@@ -35,11 +35,21 @@ namespace Ceres.Editor.Graph.Flow
     
     public class FlowGraphEditorWindow: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>
     {
-        public FlowGraphDebugState debugState = new();
+        /// <summary>
+        /// Editor debug state
+        /// </summary>
+        [field: SerializeField]
+        public FlowGraphDebugState DebugState { get; private set; }= new();
 
+        /// <summary>
+        /// Editing graph view index
+        /// </summary>
         [field: SerializeField]
         public int GraphIndex { get; private set; }
 
+        /// <summary>
+        /// Editor view model
+        /// </summary>
         [field: SerializeField]
         public FlowGraphEditorObject EditorObject { get; private set; }
 
@@ -256,7 +266,7 @@ namespace Ceres.Editor.Graph.Flow
                     GUILayout.FlexibleSpace();
                     
                     // ========================= Right ToolBar ============================= //
-                    GUI.enabled = debugState.enableDebug && CurrentGraphView.IsPaused();
+                    GUI.enabled = DebugState.enableDebug && CurrentGraphView.IsPaused();
                     image = EditorGUIUtility.IconContent("Animation.NextKey").image;
                     if (GUILayout.Button(new GUIContent(image, $"Next Breakpoint"), EditorStyles.toolbarButton))
                     {
@@ -270,7 +280,7 @@ namespace Ceres.Editor.Graph.Flow
                     }
                     
                     GUI.enabled = true;
-                    if(debugState.enableDebug)
+                    if (DebugState.enableDebug)
                     {
                         image = EditorGUIUtility.IconContent("DebuggerAttached@2x").image;
                         if (GUILayout.Button(new GUIContent(image, $"Disable Debug Mode"), EditorStyles.toolbarButton))
@@ -345,21 +355,60 @@ namespace Ceres.Editor.Graph.Flow
         /// <summary>
         /// Create a new subGraph to present custom function
         /// </summary>
-        public void AddNewFunctionSubGraph()
+        public void CreateFunctionSubGraph()
         {
             var json = Resources.Load<TextAsset>("Ceres/Flow/TemplateSubGraphData").text;
             var templateSubGraph = new FlowGraph(JsonUtility.FromJson<FlowGraphSerializedData>(json));
-            var uniqueName = "New Function";
+            var functionName = "New Function";
             var id = 1;
-            while (EditorObject.GraphNames.Contains(uniqueName))
+            while (EditorObject.GraphNames.Contains(functionName))
             {
-                uniqueName = $"New Function {id++}";
+                functionName = $"New Function {id++}";
             }
-            EditorObject.GraphInstance.AddSubGraph(uniqueName, templateSubGraph);
+
+            var function = new CustomFunction(functionName);
+            if (!EditorObject.GraphInstance.AddFlowSubGraph(functionName, function.Value, FlowGraphUsage.Function, templateSubGraph))
+            {
+                /* Can not create function subGraph when function name has been registered as a subGraph name */
+                CeresLogger.LogError($"A subGraph named {functionName} already exists!");
+                return;
+            }
+            CurrentGraphView.Blackboard.AddVariable(function, true);
             EditorObject.Update();
             
             /* Display new subGraph view */
-            StructVisualElements(GraphIndex = Array.IndexOf(EditorObject.GraphNames, uniqueName));
+            OpenSubgraphView(functionName);
+        }
+
+        /// <summary>
+        /// Open subGraph view by name
+        /// </summary>
+        /// <param name="subGraphName"></param>
+        public void OpenSubgraphView(string subGraphName)
+        {
+            var index = Array.IndexOf(EditorObject.GraphNames, subGraphName);
+            if (index == -1) return;
+            StructVisualElements(GraphIndex = index);
+        }
+
+        /// <summary>
+        /// Rename subGraph and update view
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <param name="newName"></param>
+        public void RenameSubgraph(string guid, string newName)
+        {
+            var slot = EditorObject.GraphInstance.SubGraphSlots.First(subGraphSlot => subGraphSlot.Guid == guid);
+            /* Rename */
+            slot.Name = newName;
+            /* Update graph view binding name */
+            var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
+            if (slotIndex != -1 && _graphViews.TryGetValue(slotIndex + 1 /* graph index */, out var view))
+            {
+                view.GraphName = newName;
+            }
+            /* Update view model */
+            EditorObject.Update();
         }
     }
 }

@@ -72,7 +72,7 @@ namespace Ceres.Editor.Graph.Flow.Properties
                 GraphView.ClearSelection();
                 GraphView.schedule.Execute(FrameNode).ExecuteLater(200);
             }
-            else if(evt.ChangeType == VariableChangeType.Delete)
+            else if(evt.ChangeType == VariableChangeType.Remove)
             {
                 CeresLogger.LogWarning($"The variable {evt.Variable.Name} was deleted, which may cause an error in the referenced PropertyNode during runtime. Please remove the corresponding node.");
                 GraphView.ClearSelection();

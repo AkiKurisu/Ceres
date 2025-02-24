@@ -2,7 +2,8 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
+using UDebug = UnityEngine.Debug;
+using UAssert = UnityEngine.Assertions.Assert;
 
 namespace Ceres
 {
@@ -52,7 +53,7 @@ namespace Ceres
         public static void LogWarning(string message)
         {
             if(LogLevel >= LogType.Warning)
-                Debug.LogWarning($"<color=#fcbe03>[Ceres]</color> {message}");
+                UDebug.LogWarning($"<color=#fcbe03>[Ceres]</color> {message}");
         }
         
         [DebuggerHidden]
@@ -60,7 +61,7 @@ namespace Ceres
         public static void Log(string message)
         {
             if(LogLevel >= LogType.Log)
-                Debug.Log($"<color=#3aff48>[Ceres]</color> {message}");
+                UDebug.Log($"<color=#3aff48>[Ceres]</color> {message}");
         }
 
         [DebuggerHidden]
@@ -68,7 +69,7 @@ namespace Ceres
         public static void LogError(string message)
         {
             if(LogLevel >= LogType.Error)
-                Debug.LogError($"<color=#ff2f2f>[Ceres]</color> {message}");
+                UDebug.LogError($"<color=#ff2f2f>[Ceres]</color> {message}");
         }
         
         [DebuggerHidden]
@@ -76,7 +77,7 @@ namespace Ceres
         public static void Assert(bool condition, string message)
         {
             if (LogLevel >= LogType.Assert)
-                Debug.Assert(condition, $"<color=#ff2f2f>[Ceres]</color> {message}");
+                UAssert.IsTrue(condition, $"<color=#ff2f2f>[Ceres]</color> {message}");
         }
     }
 }

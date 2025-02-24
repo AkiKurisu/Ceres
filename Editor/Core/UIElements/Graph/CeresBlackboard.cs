@@ -234,7 +234,7 @@ namespace Ceres.Editor.Graph
             }
             var row = CreateVariableBlackboardRow(variable, field, valueField);
             AddVariableRow(variable, row);
-            if (fireEvents) NotifyVariableChanged(variable, VariableChangeType.Create);
+            if (fireEvents) NotifyVariableChanged(variable, VariableChangeType.Add);
         }
 
         protected virtual void AddVariableRow(SharedVariable variable, BlackboardRow blackboardRow)
@@ -327,7 +327,7 @@ namespace Ceres.Editor.Graph
             {
                 row.RemoveFromHierarchy();
                 SharedVariables.Remove(variable);
-                if (fireEvents) NotifyVariableChanged(variable, VariableChangeType.Delete);
+                if (fireEvents) NotifyVariableChanged(variable, VariableChangeType.Remove);
             }
         }
 
