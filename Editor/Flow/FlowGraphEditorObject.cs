@@ -16,31 +16,51 @@ namespace Ceres.Editor.Graph.Flow
         [field: SerializeField]
         public FlowGraphData GraphData { get; set; }
         
-        public FlowGraph GraphInstance { get; private set; }
+        private IFlowGraphContainer _container;
+
+        private FlowGraph _instance;
+
+        public FlowGraph GraphInstance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    if (Application.isPlaying && _container is IFlowGraphRuntime runtimeContainer)
+                    {
+                        _instance = runtimeContainer.GetRuntimeFlowGraph();
+                    }
+                    else
+                    {
+                        _instance = _container.GetFlowGraph();
+                    }
+                    Update();
+                }
+
+                return _instance;
+            }
+        }
         
         public GUIContent[] GraphNameContents  { get; private set; }
 
         public string[] GraphNames { get; private set; }
-        
+
         public static FlowGraphEditorObject CreateTemporary(IFlowGraphContainer container)
         {
             var editorObject = CreateInstance<FlowGraphEditorObject>();
+            editorObject._container = container;
             editorObject.hideFlags = HideFlags.HideAndDontSave;
             editorObject.GraphData = container.GetFlowGraphData();
-            if (Application.isPlaying && container is IFlowGraphRuntime runtimeContainer)
-            {
-                editorObject.GraphInstance = runtimeContainer.GetRuntimeFlowGraph();
-            }
-            else
-            {
-                editorObject.GraphInstance = container.GetFlowGraph();
-            }
-            var contents =  editorObject.GraphInstance.SubGraphSlots.Select(x => x.Name).ToList();
-            /* Slot 0 use uber graph name */
-            contents.Insert(0, $"{container.GetIdentifier().boundObject.name} (Main)");
-            editorObject.GraphNames = contents.ToArray();
-            editorObject.GraphNameContents = contents.Select(x => new GUIContent(x)).ToArray();
             return editorObject;
+        }
+
+        public void Update()
+        {
+            var contents =  GraphInstance.SubGraphSlots.Select(x => x.Name).ToList();
+            /* Slot 0 use uber graph name */
+            contents.Insert(0, $"{_container.GetIdentifier().boundObject.name} (Main)");
+            GraphNames = contents.ToArray();
+            GraphNameContents = contents.Select(x => new GUIContent(x)).ToArray();
         }
         
         public void DestroyTemporary()

@@ -1,7 +1,8 @@
 ﻿using System;
 using Ceres.Graph.Flow.Utilities;
 using Chris;
-namespace Ceres.Editor.Graph.Flow
+
+namespace Ceres.Editor.Graph.Flow.Utilities
 {
     /// <summary>
     /// Node view for <see cref="FlowNode_SwitchEnum"/>

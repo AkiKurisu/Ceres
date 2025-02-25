@@ -26,7 +26,7 @@ namespace Ceres.Graph.Flow.Properties
         [OutputPort(false), CeresLabel("")]
         public NodePort exec;
 
-        private ExecutableReflection<TTarget>.ExecutableAction _delegate;
+        private ExecutableAction<TTarget> _delegate;
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {

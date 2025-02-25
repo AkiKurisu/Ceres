@@ -18,7 +18,7 @@ internal class CustomEventGeneratorTemplate
             [System.Runtime.CompilerServices.CompilerGenerated]
             [System.Serializable]
             [Ceres.Annotations.CeresGroup("Hidden")]
-            public class ExecutableEvent_{CLASSNAME}: Ceres.Graph.Flow.GeneratedExecutableEvent<{CLASSNAME}>
+            public class ExecutableEvent_{CLASSNAME}: Ceres.Graph.Flow.CustomExecutionEvent<{CLASSNAME}>
             {
                 public ExecutableEvent_{CLASSNAME}()
                 {

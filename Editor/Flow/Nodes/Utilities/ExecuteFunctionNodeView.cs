@@ -7,7 +7,8 @@ using Ceres.Graph.Flow.Utilities;
 using Ceres.Utilities;
 using Chris.Serialization;
 using UnityEngine.Assertions;
-namespace Ceres.Editor.Graph.Flow
+
+namespace Ceres.Editor.Graph.Flow.Utilities
 {
     public abstract class ExecuteFunctionNodeView : ExecutableNodeView
     {

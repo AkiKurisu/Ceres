@@ -8,9 +8,14 @@ namespace Ceres.Graph
     public class CeresSubGraphSlot
     {
         /// <summary>
-        /// Slot name
+        /// SubGraph name
         /// </summary>
         public string Name;
+
+        /// <summary>
+        /// SubGraph persistent id
+        /// </summary>
+        public string Guid;
 
         /// <summary>
         /// SubGraph instance
@@ -25,7 +30,9 @@ namespace Ceres.Graph
     [Serializable]
     public abstract class CeresSubGraphData
     {
-        public string slotName;
+        public string name;
+        
+        public string guid;
         
         public abstract CeresGraphData GetSubGraphData();
     }

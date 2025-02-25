@@ -1,13 +1,15 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Ceres.Graph;
 using UnityEngine;
+using Chris;
 using Ceres.Utilities;
-using Ceres.Graph.Flow;
+using Ceres.Graph;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Graph.Flow.Utilities;
-using Chris;
+using Ceres.Editor.Graph.Flow.Properties;
+using Ceres.Editor.Graph.Flow.Utilities;
+
 namespace Ceres.Editor.Graph.Flow
 {
     public interface IExecutableNodeViewFactoryProxy
@@ -88,11 +90,11 @@ namespace Ceres.Editor.Graph.Flow
             return nodeView;
         }
         
-        private ExecutableEventNodeView CreateGenericNodeView(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData)
+        private ExecutionEventBaseNodeView CreateGenericNodeView(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData)
         {
             /* Fill parameter types */
             var parameters = MethodInfo.GetParameters().Select(x => x.ParameterType).ToList();
-            return (ExecutableEventNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters.ToArray());
+            return (ExecutionEventBaseNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters.ToArray());
         }
     }
     
@@ -103,7 +105,7 @@ namespace Ceres.Editor.Graph.Flow
         public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             var parameters = DelegateType.GetGenericArguments();
-            var nodeView = (ExecutableEventNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
+            var nodeView = (ExecutionEventBaseNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
             searchWindow.GraphView.AddNodeView(nodeView, rect);
             return nodeView;
         }

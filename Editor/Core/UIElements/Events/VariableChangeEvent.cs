@@ -10,11 +10,26 @@ namespace Ceres.Editor.Graph
     
     public enum VariableChangeType
     {
-        Create,
+        /// <summary>
+        /// Call on variable is added
+        /// </summary>
+        Add,
+        /// <summary>
+        /// Call on variable value change
+        /// </summary>
         Value,
+        /// <summary>
+        /// Call on variable name change
+        /// </summary>
         Name,
+        /// <summary>
+        /// Call on variable type change if has dynamic type
+        /// </summary>
         Type,
-        Delete
+        /// <summary>
+        /// Call on variable is removed
+        /// </summary>
+        Remove
     }
     
     public class VariableChangeEvent : EventBase<VariableChangeEvent>, ICeresEvent

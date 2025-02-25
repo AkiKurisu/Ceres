@@ -54,7 +54,7 @@ namespace Ceres.Editor.Graph.Flow
                 .Where(x=> x.GetCustomAttribute<ImplementableEventAttribute>() != null)
                 .ToArray();
             var referencedAssemblies = SubClassSearchUtility.GetRuntimeReferencedAssemblies();
-            _generatedExecutableEventTypes = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(GeneratedExecutableEvent)).ToArray();
+            _generatedExecutableEventTypes = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(CustomExecutionEvent)).ToArray();
         }
 
         private void OnDestroy()
@@ -131,7 +131,7 @@ namespace Ceres.Editor.Graph.Flow
             }
 
             /* Build default execution event */
-            var eventNodes = GraphView.NodeViews.OfType<ExecutableEventNodeView>().ToList();
+            var eventNodes = GraphView.NodeViews.OfType<ExecutionEventBaseNodeView>().ToList();
             builder.AddGroupEntry("Select Events", 1);
             builder.AddEntry(new SearchTreeEntry(new GUIContent($"New Execution Event", _indentationIcon))
             {
@@ -156,7 +156,7 @@ namespace Ceres.Editor.Graph.Flow
                         level = 2,
                         userData = new CeresNodeSearchEntryData
                         {
-                            NodeType = PredictEventNodeType(method),
+                            NodeType = ExecutableNodeReflectionHelper.PredictEventNodeType(method),
                             Data = new ExecutableEventNodeViewFactoryProxy { MethodInfo = method }
                         }
                     });
@@ -165,14 +165,14 @@ namespace Ceres.Editor.Graph.Flow
 
             /* Build custom events */
             var validGeneratedEventTypes = _generatedExecutableEventTypes
-                .Where(x => eventNodes.All(evt => evt.GetEventName() != GeneratedExecutableEvent.GetEventBaseName(x)))
+                .Where(x => eventNodes.All(evt => evt.GetEventName() != CustomExecutionEvent.GetEventName(x)))
                 .ToArray();
             if (!validGeneratedEventTypes.Any()) return;
             builder.AddGroupEntry("Implement Custom Events", 2);
             foreach (var eventType in validGeneratedEventTypes)
             {
                 builder.AddEntry(new SearchTreeEntry(new GUIContent(
-                    $"Implement {GeneratedExecutableEvent.GetEventBaseName(eventType)}", _indentationIcon))
+                    $"Implement {CustomExecutionEvent.GetEventName(eventType)}", _indentationIcon))
                 {
                     level = 3,
                     userData = new CeresNodeSearchEntryData
@@ -201,7 +201,7 @@ namespace Ceres.Editor.Graph.Flow
                 level = 2, 
                 userData = new CeresNodeSearchEntryData
                 {
-                    NodeType = PredictEventNodeType(parameterType.GetGenericArguments().Length),
+                    NodeType = ExecutableNodeReflectionHelper.PredictEventNodeType(parameterType.GetGenericArguments().Length),
                     Data = new DelegateEventNodeViewFactoryProxy { DelegateType = parameterType }
                 }
             });
@@ -403,64 +403,12 @@ namespace Ceres.Editor.Graph.Flow
                     level = level,
                     userData = new CeresNodeSearchEntryData
                     {
-                        NodeType = PredictFunctionNodeType(candidate.MethodInfo),
+                        NodeType = ExecutableNodeReflectionHelper.PredictFunctionNodeType(candidate.MethodInfo),
                         SubType = candidate.TargetType,
                         Data = new ExecuteFunctionNodeViewFactoryProxy { MethodInfo = candidate.MethodInfo }
                     }
                 });
             }
-        }
-
-        private static Type PredictFunctionNodeType(MethodInfo methodInfo)
-        {
-            int parametersLength = methodInfo.GetParameters().Length;
-            if (methodInfo.ReturnType == typeof(void))
-            {
-                return parametersLength switch
-                {
-                    0 => typeof(FlowNode_ExecuteFunctionTVoid<>),
-                    1 => typeof(FlowNode_ExecuteFunctionTVoid<,>),
-                    2 => typeof(FlowNode_ExecuteFunctionTVoid<,,>),
-                    3 => typeof(FlowNode_ExecuteFunctionTVoid<,,,>),
-                    4 => typeof(FlowNode_ExecuteFunctionTVoid<,,,,>),
-                    5 => typeof(FlowNode_ExecuteFunctionTVoid<,,,,,>),
-                    6 => typeof(FlowNode_ExecuteFunctionTVoid<,,,,,,>),
-                    _ => typeof(FlowNode_ExecuteFunctionT<>)
-                };
-            }
-
-            return parametersLength switch
-            {
-                0 => typeof(FlowNode_ExecuteFunctionTReturn<,>),
-                1 => typeof(FlowNode_ExecuteFunctionTReturn<,,>),
-                2 => typeof(FlowNode_ExecuteFunctionTReturn<,,,>),
-                3 => typeof(FlowNode_ExecuteFunctionTReturn<,,,,>),
-                4 => typeof(FlowNode_ExecuteFunctionTReturn<,,,,,>),
-                5 => typeof(FlowNode_ExecuteFunctionTReturn<,,,,,,>),
-                6 => typeof(FlowNode_ExecuteFunctionTReturn<,,,,,,,>),
-                _ => typeof(FlowNode_ExecuteFunctionT<>)
-            };
-        }
-        
-        private static Type PredictEventNodeType(int parametersLength)
-        {
-            return parametersLength switch
-            {
-                0 => typeof(ExecutionEvent),
-                1 => typeof(ExecutionEvent<>),
-                2 => typeof(ExecutionEvent<,>),
-                3 => typeof(ExecutionEvent<,,>),
-                4 => typeof(ExecutionEvent<,,,>),
-                5 => typeof(ExecutionEvent<,,,,>),
-                6 => typeof(ExecutionEvent<,,,,,>),
-                _ => typeof(ExecutionEventUber)
-            };
-        }
-        
-        private static Type PredictEventNodeType(MethodInfo methodInfo)
-        {
-            int parametersLength = methodInfo.GetParameters().Length;
-            return PredictEventNodeType(parametersLength);
         }
 
         protected override bool OnSelectEntry(CeresNodeSearchEntryData entryData, Rect rect)

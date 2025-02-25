@@ -4,6 +4,8 @@ using System.Linq;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Properties;
+using Ceres.Editor.Graph.Flow.Properties;
+using Ceres.Editor.Graph.Flow.CustomFunctions;
 using Chris;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
@@ -11,6 +13,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
+
 namespace Ceres.Editor.Graph.Flow
 {
     public class FlowGraphView : CeresGraphView, IDisposable
@@ -20,18 +23,24 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         public FlowGraphDebugState DebugState { get; }
 
-        private FlowGraphDebugTracker _tracker;
+        /// <summary>
+        /// Bound editor window
+        /// </summary>
+        public FlowGraphEditorWindow FlowGraphEditorWindow { get; }
 
-        private readonly FlowGraphEditorWindow _flowGraphEditorWindow;
+        private FlowGraphDebugTracker _tracker;
         
         private bool _isEditingSubGraph;
 
-        private string _editingSubGraphSlotName;
+        /// <summary>
+        /// Bound graph verified name
+        /// </summary>
+        public string GraphName { get; internal set; }
         
         public FlowGraphView(FlowGraphEditorWindow editorWindow) : base(editorWindow)
         {
-            _flowGraphEditorWindow = editorWindow;
-            DebugState = editorWindow.debugState;
+            FlowGraphEditorWindow = editorWindow;
+            DebugState = editorWindow.DebugState;
             AddStyleSheet("Ceres/Flow/GraphView");
             AddSearchWindow<ExecutableNodeSearchWindow>();
             AddNodeGroupHandler(new ExecutableNodeGroupHandler(this));
@@ -44,8 +53,9 @@ namespace Ceres.Editor.Graph.Flow
         /// Serialize flow graph to editor data container
         /// </summary>
         /// <param name="editorObject">Serialization target</param>
+        /// <param name="failReason"></param>
         /// <returns>Whether serialization is succeeded</returns>
-        public bool SerializeGraph(FlowGraphEditorObject editorObject)
+        public bool SerializeGraph(FlowGraphEditorObject editorObject, out string failReason)
         {
             /* Compile validation */
             var invalidNodeViews = NodeViews.OfType<ExecutableNodeView>()
@@ -53,22 +63,27 @@ namespace Ceres.Editor.Graph.Flow
                 .ToList();
             if (invalidNodeViews.Any())
             {
+                failReason = "some nodes failed to compile";
                 ClearSelection();
                 invalidNodeViews.ForEach(view => AddToSelection(view.NodeElement));
                 schedule.Execute(() => FrameSelection()).ExecuteLater(10);
                 return false;
             }
             
+            failReason = string.Empty;
             var editableData = editorObject.GraphData;
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
             if (_isEditingSubGraph)
             {
                 editableData ??= new FlowGraphData();
+                var slot = (FlowSubGraphSlot)FlowGraphEditorWindow.EditorObject.GraphInstance.SubGraphSlots
+                            .FirstOrDefault(x => x.Name == GraphName);
+                CeresLogger.Assert(slot != null, $"Can not find subGraph named {GraphName}");
                 /*
                  * Subgraph need be serialized with outer.
                  * Notice there is object-slicing since serialized data structure is typeof(FlowGraphSerializedData).
                  */
-                editableData.SetSubGraphData(_editingSubGraphSlotName, flowGraphData);
+                editableData.SetSubGraphData(slot, flowGraphData);
             }
             else
             {
@@ -112,7 +127,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             new CopyPasteGraph(this, graphElements).DeserializeGraph(editorObject.GraphInstance);
             _isEditingSubGraph = false;
-            _editingSubGraphSlotName = string.Empty;
+            GraphName = string.Empty;
             ClearDirty();
         }
         
@@ -121,7 +136,7 @@ namespace Ceres.Editor.Graph.Flow
             var subGraph = editorObject.GraphInstance.FindSubGraph<FlowGraph>(slotName);
             new CopyPasteGraph(this, graphElements).DeserializeGraph(subGraph);
             _isEditingSubGraph = true;
-            _editingSubGraphSlotName = slotName;
+            GraphName = slotName;
             ClearDirty();
         }
 
@@ -132,8 +147,8 @@ namespace Ceres.Editor.Graph.Flow
                 return;
             }
 
-            if (!_flowGraphEditorWindow) return;
-            _flowGraphEditorWindow.SaveGraphData();
+            if (!FlowGraphEditorWindow) return;
+            FlowGraphEditorWindow.SaveGraphData();
         }
 
         /// <summary>
@@ -142,7 +157,7 @@ namespace Ceres.Editor.Graph.Flow
         public async UniTask SimulateExecution()
         {
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
-            var eventName = ((ExecutableEventNodeView)((ExecutableNodeElement)selection[0]).View).GetEventName();
+            var eventName = ((ExecutionEventBaseNodeView)((ExecutableNodeElement)selection[0]).View).GetEventName();
             flowGraphData.PreSerialization();
             using var graph = new FlowGraph(flowGraphData);
             graph.Compile();
@@ -170,10 +185,37 @@ namespace Ceres.Editor.Graph.Flow
             {
                 if (selectable is not BlackboardField blackboardField) continue;
                 
+                
                 var variableName = blackboardField.text;
                 var variable = Blackboard.GetSharedVariable(variableName);
                 if(variable == null) continue;
                 Rect newRect = new(contentViewContainer.WorldToLocal(mousePosition), new Vector2(100, 100));
+
+                if (variable is CustomFunction customFunction)
+                {
+                    var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionType(customFunction);
+                    if (returnType == null)
+                    {
+                        return;
+                    }
+                    // Create execute custom function node
+                    var nodeType = ExecutableNodeReflectionHelper.PredictCustomFunctionNodeType(returnType, inputTypes);
+                    if (returnType == typeof(void))
+                    {
+                        var view = (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(nodeType, this, inputTypes);
+                        this.AddNodeView(view, newRect);
+                        view.SetFunctionName(customFunction.Name);
+                    }
+                    else
+                    {
+                        var view = (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(nodeType, this, inputTypes.Append(returnType).ToArray());
+                        this.AddNodeView(view, newRect);
+                        view.SetFunctionName(customFunction.Name);
+                    }
+                    return;
+                }
+                
+
                 var menu = new GenericMenu();
                 menu.AddItem(new GUIContent($"Get {variableName}"), false, () =>
                 {

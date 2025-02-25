@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Chris.Events;
 namespace Ceres.Graph.Flow
 {
@@ -14,12 +15,14 @@ namespace Ceres.Graph.Flow
     }
 
     /// <summary>
-    /// Event bridge between Flow Graph and GameObjects
+    /// Event for executing Flow Graph
     /// </summary>
     public sealed class ExecuteFlowEvent : ExecuteFlowEventBase<ExecuteFlowEvent>
     {
+        /// <summary>
+        /// Input args
+        /// </summary>
         public object[] Args { get; private set; }
-        
 
         public static readonly object[] DefaultArgs = Array.Empty<object>();
 
@@ -32,6 +35,9 @@ namespace Ceres.Graph.Flow
         }
     }
     
+    /// <summary>
+    /// Event with one param for executing Flow Graph
+    /// </summary>
     public sealed class ExecuteFlowEvent<T1> : ExecuteFlowEventBase<ExecuteFlowEvent<T1>>
     {
         public T1 Arg1 { get; private set; }
@@ -45,6 +51,9 @@ namespace Ceres.Graph.Flow
         }
     }
     
+    /// <summary>
+    /// Event with two params for executing Flow Graph
+    /// </summary>
     public sealed class ExecuteFlowEvent<T1, T2> : ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2>>
     {
         public T1 Arg1 { get; private set; }
@@ -61,6 +70,9 @@ namespace Ceres.Graph.Flow
         }
     }
     
+    /// <summary>
+    /// Event with three params for executing Flow Graph
+    /// </summary>
     public sealed class ExecuteFlowEvent<T1, T2, T3> : ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2, T3>>, IFlowEvent
     {
         public T1 Arg1 { get; private set; }
@@ -80,6 +92,9 @@ namespace Ceres.Graph.Flow
         }
     }
     
+    /// <summary>
+    /// Event with four params for executing Flow Graph
+    /// </summary>
     public sealed class ExecuteFlowEvent<T1, T2, T3, T4> : ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2, T3, T4>>
     {
         public T1 Arg1 { get; private set; }
@@ -102,6 +117,9 @@ namespace Ceres.Graph.Flow
         }
     }
     
+    /// <summary>
+    /// Event with five params for executing Flow Graph
+    /// </summary>
     public sealed class ExecuteFlowEvent<T1, T2, T3, T4, T5> : 
         ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2, T3, T4, T5>>
     {
@@ -129,6 +147,9 @@ namespace Ceres.Graph.Flow
         }
     }
     
+    /// <summary>
+    /// Event with six params for executing Flow Graph
+    /// </summary>
     public sealed class ExecuteFlowEvent<T1, T2, T3, T4, T5, T6> : 
         ExecuteFlowEventBase<ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>>
     {
@@ -155,6 +176,31 @@ namespace Ceres.Graph.Flow
             evt.Arg4 = arg4;
             evt.Arg5 = arg5;
             evt.Arg6 = arg6;
+            return evt;
+        }
+    }
+    
+    /// <summary>
+    /// Event for executing Flow SubGraph
+    /// </summary>
+    internal sealed class ExecuteSubFlowEvent : ExecuteFlowEventBase<ExecuteSubFlowEvent>
+    {
+        /// <summary>
+        /// Input args
+        /// </summary>
+        public List<CeresPort> Args { get; } = new();
+        
+        /// <summary>
+        /// Return arg
+        /// </summary>
+        public CeresPort Return { get; set; }
+        
+        public static ExecuteSubFlowEvent Create(string functionName)
+        {
+            var evt = GetPooled();
+            evt.FunctionName = functionName;
+            evt.Args.Clear();
+            evt.Return = null;
             return evt;
         }
     }

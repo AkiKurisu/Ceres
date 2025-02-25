@@ -45,6 +45,8 @@ namespace Ceres.Annotations
         
         public static string GetLabel(string name)
         {
+            if (string.IsNullOrEmpty(name)) return string.Empty;
+            
             var sb = new StringBuilder();
             sb.Append(name);
             sb[0] = TextInfo.ToUpper(sb[0]);

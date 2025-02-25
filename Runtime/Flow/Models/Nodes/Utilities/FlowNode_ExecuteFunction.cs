@@ -118,7 +118,7 @@ namespace Ceres.Graph.Flow.Utilities
     
     public abstract class FlowNode_ExecuteFunctionReturn<TTarget>: FlowNode_ExecuteFunctionReturn, ISerializationCallbackReceiver
     {
-        protected ExecutableReflection<TTarget>.ExecutableFunc Delegate;
+        private protected ExecutableFunc<TTarget> Delegate;
         
         public override MethodInfo GetMethodInfo(Type targetType)
         {
@@ -151,7 +151,7 @@ namespace Ceres.Graph.Flow.Utilities
     
     public abstract class FlowNode_ExecuteFunctionVoid<TTarget>: FlowNode_ExecuteFunctionVoid, ISerializationCallbackReceiver
     {
-        protected ExecutableReflection<TTarget>.ExecutableAction Delegate;
+        private protected ExecutableAction<TTarget> Delegate;
         
         public override MethodInfo GetMethodInfo(Type targetType)
         {

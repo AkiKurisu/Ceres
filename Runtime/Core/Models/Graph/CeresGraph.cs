@@ -8,11 +8,13 @@ using Chris;
 using System.Collections;
 #endif
 using R3.Chris;
+using Chris.Collections;
 using Chris.Serialization;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Graph
 {
     /// <summary>
@@ -122,7 +124,7 @@ namespace Ceres.Graph
         }
 
         /// <summary>
-        /// Compile graph at runtime before execution
+        /// Compile graph just in time
         /// </summary>
         public virtual void Compile()
         {
@@ -273,7 +275,7 @@ namespace Ceres.Graph
         private void LinkPort(CeresPort port, string fieldName, int arrayIndex, CeresNode ownerNode)
         {
             var portData = ownerNode.NodeData.FindPortData(fieldName, arrayIndex);
-            if(portData == null)
+            if (portData == null)
             {
                 CeresLogger.LogWarning($"Can not find port data for port {fieldName}_{arrayIndex} from {ownerNode.GetType().Name}");
                 return;
@@ -329,6 +331,11 @@ namespace Ceres.Graph
             }
         }
 
+        /// <summary>
+        /// Find node by guid
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns>Null if not exist</returns>
         public CeresNode FindNode(string guid)
         {
             foreach (var node in nodes)
@@ -341,8 +348,45 @@ namespace Ceres.Graph
 
             return null;
         }
-        
-        
+
+        /// <summary>
+        /// Find node with specific type by guid
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <typeparam name="TNode"></typeparam>
+        /// <returns>Null if not exist</returns>
+        public TNode FindNode<TNode>(string guid) where TNode: CeresNode
+        {
+            foreach (var node in nodes)
+            {
+                if (node is TNode tNode && node.Guid == guid)
+                {
+                    return tNode;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Get first node with specific type
+        /// </summary>
+        /// <typeparam name="TNode"></typeparam>
+        /// <returns>Null if not exist</returns>
+        public TNode GetFirstNodeOfType<TNode>() where TNode : CeresNode
+        {
+            foreach (var node in nodes)
+            {
+                if (node is TNode tNode)
+                {
+                    return tNode;
+                }
+            }
+
+            return null;
+        }
+
+
         /// <summary>
         /// Set graph node pre-cached dependency path
         /// </summary>
@@ -404,6 +448,23 @@ namespace Ceres.Graph
             }
 
             return null;
+        }
+        
+        /// <summary>
+        /// Try to add a subGraph slot with specific type validation
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <typeparam name="TGraph"></typeparam>
+        /// <returns></returns>
+        protected bool AddSubGraphSlot<TGraph>(CeresSubGraphSlot slot) where TGraph: CeresGraph
+        {
+            foreach (var subGraphSlot in SubGraphSlots)
+            {
+                if (subGraphSlot.Guid == slot.Guid && subGraphSlot.Graph is TGraph) return false;
+            }
+            
+            ArrayUtils.Add(ref SubGraphSlots, slot);
+            return true;
         }
         
         void IDisposableUnregister.Register(IDisposable disposable)

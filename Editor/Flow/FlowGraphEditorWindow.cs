@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ceres.Graph.Flow;
+using Ceres.Graph.Flow.CustomFunctions;
 using Ceres.Graph.Flow.Utilities;
+using Chris.Collections;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -34,11 +37,21 @@ namespace Ceres.Editor.Graph.Flow
     
     public class FlowGraphEditorWindow: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>
     {
-        public FlowGraphDebugState debugState = new();
+        /// <summary>
+        /// Editor debug state
+        /// </summary>
+        [field: SerializeField]
+        public FlowGraphDebugState DebugState { get; private set; }= new();
 
+        /// <summary>
+        /// Editing graph view index
+        /// </summary>
         [field: SerializeField]
         public int GraphIndex { get; private set; }
 
+        /// <summary>
+        /// Editor view model
+        /// </summary>
         [field: SerializeField]
         public FlowGraphEditorObject EditorObject { get; private set; }
 
@@ -145,6 +158,9 @@ namespace Ceres.Editor.Graph.Flow
             }
             else
             {
+                /* Ensure graph instance created */
+                var slots = EditorObject.GraphInstance.SubGraphSlots;
+                CeresLogger.Assert(id < slots.Length + 1, "Subgraph index out of range");
                 CurrentGraphView.DeserializeSubGraph(EditorObject, EditorObject.GraphNames[id]);
             }
             return view;
@@ -192,7 +208,7 @@ namespace Ceres.Editor.Graph.Flow
             failReason = string.Empty;
             foreach (var view in _graphViews.Values)
             {
-                if (!view.SerializeGraph(EditorObject))
+                if (!view.SerializeGraph(EditorObject, out failReason))
                 {
                     return false;
                 }
@@ -255,7 +271,7 @@ namespace Ceres.Editor.Graph.Flow
                     GUILayout.FlexibleSpace();
                     
                     // ========================= Right ToolBar ============================= //
-                    GUI.enabled = debugState.enableDebug && CurrentGraphView.IsPaused();
+                    GUI.enabled = DebugState.enableDebug && CurrentGraphView.IsPaused();
                     image = EditorGUIUtility.IconContent("Animation.NextKey").image;
                     if (GUILayout.Button(new GUIContent(image, $"Next Breakpoint"), EditorStyles.toolbarButton))
                     {
@@ -269,7 +285,7 @@ namespace Ceres.Editor.Graph.Flow
                     }
                     
                     GUI.enabled = true;
-                    if(debugState.enableDebug)
+                    if (DebugState.enableDebug)
                     {
                         image = EditorGUIUtility.IconContent("DebuggerAttached@2x").image;
                         if (GUILayout.Button(new GUIContent(image, $"Disable Debug Mode"), EditorStyles.toolbarButton))
@@ -306,6 +322,7 @@ namespace Ceres.Editor.Graph.Flow
             /* Create new editor container since it is not saved during play mode change  */
             if (EditorObject) EditorObject.DestroyTemporary();
             EditorObject = FlowGraphEditorObject.CreateTemporary(ContainerT);
+            _graphViews.Clear();
             InitializeFlowGraphView();
         }
 
@@ -338,6 +355,109 @@ namespace Ceres.Editor.Graph.Flow
             finally
             {
                 ClearProgressBar();
+            }
+        }
+
+        /// <summary>
+        /// Create a new subGraph to present custom function
+        /// </summary>
+        public void CreateFunctionSubGraph()
+        {
+            var json = Resources.Load<TextAsset>("Ceres/Flow/TemplateSubGraphData").text;
+            var templateSubGraph = new FlowGraph(JsonUtility.FromJson<FlowGraphSerializedData>(json));
+            var functionName = "New Function";
+            var id = 1;
+            while (EditorObject.GraphNames.Contains(functionName))
+            {
+                functionName = $"New Function {id++}";
+            }
+
+            var function = new CustomFunction(functionName);
+            if (!EditorObject.GraphInstance.AddFlowSubGraph(functionName, function.Value, FlowGraphUsage.Function, templateSubGraph))
+            {
+                /* Can not create function subGraph when function name has been registered as a subGraph name */
+                CeresLogger.LogError($"A subGraph named {functionName} already exists!");
+                return;
+            }
+            CurrentGraphView.Blackboard.AddVariable(function, true);
+            EditorObject.Update();
+            
+            /* Display new subGraph view */
+            OpenSubgraphView(functionName);
+        }
+
+        /// <summary>
+        /// Resolve custom function parameters
+        /// </summary>
+        /// <param name="customFunction"></param>
+        /// <returns></returns>
+        public (Type, Type[]) ResolveFunctionType(CustomFunction customFunction)
+        {
+            var slot = EditorObject.GraphInstance.SubGraphSlots.FirstOrDefault(subGraphSlot => subGraphSlot.Guid == customFunction.Value);
+            if (slot == null) return (null, null);
+            var input = slot.Graph.GetFirstNodeOfType<CustomFunctionInput>();
+            var output = slot.Graph.GetFirstNodeOfType<CustomFunctionOutput>();
+            CeresLogger.Assert(input != null && output != null, "Can not find function input and output node");
+            var inputTypes = input!.parameters.Select(p => p.GetParameterType()).ToArray();
+            var returnType = output!.parameter.hasReturn ? output.parameter.GetParameterType() : typeof(void);
+            return (returnType, inputTypes);
+        }
+
+        /// <summary>
+        /// Open subGraph view by name
+        /// </summary>
+        /// <param name="subGraphName"></param>
+        public void OpenSubgraphView(string subGraphName)
+        {
+            var index = Array.IndexOf(EditorObject.GraphNames, subGraphName);
+            if (index == -1) return;
+            StructVisualElements(GraphIndex = index);
+        }
+
+        /// <summary>
+        /// Rename subGraph and update view
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <param name="newName"></param>
+        public void RenameSubgraph(string guid, string newName)
+        {
+            var slot = EditorObject.GraphInstance.SubGraphSlots.First(subGraphSlot => subGraphSlot.Guid == guid);
+            /* Rename graph */
+            slot.Name = newName;
+            
+            /* Update graph view binding name */
+            var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
+            if (slotIndex != -1 && _graphViews.TryGetValue(slotIndex + 1 /* graph index */, out var view))
+            {
+                view.GraphName = newName;
+            }
+            
+            /* Update view model */
+            EditorObject.Update();
+        }
+
+        /// <summary>
+        /// Remove subGraph and update view
+        /// </summary>
+        /// <param name="guid"></param>
+        public void RemoveSubgraph(string guid)
+        {
+            var slot = EditorObject.GraphInstance.SubGraphSlots.First(subGraphSlot => subGraphSlot.Guid == guid);
+            var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
+            if (slotIndex == -1) return;
+            
+            /* Remove subGraph */
+            ArrayUtils.Remove(ref EditorObject.GraphInstance.SubGraphSlots, slot);
+            int graphIndex = slotIndex + 1;
+            _graphViews.Remove(graphIndex);
+            
+            /* Update view model */
+            EditorObject.Update();
+
+            /* Open uber graph if editing subGraph to remove */
+            if (GraphIndex == graphIndex)
+            {
+                StructVisualElements(GraphIndex = 0);
             }
         }
     }

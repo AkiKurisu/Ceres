@@ -6,6 +6,7 @@ using Chris;
 using Chris.Collections;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
+using R3;
 using R3.Chris;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -77,7 +78,7 @@ namespace Ceres.Graph.Flow
                 base.ExecuteDefaultAction(evt);
                 if (!_contextObject) return;
                 /* Get event name if it has generated executable event */
-                var eventName = GeneratedExecutableEvent.GetEventName(evt.EventTypeId);
+                var eventName = CustomExecutionEvent.GetEventName(evt.EventTypeId);
                 if (string.IsNullOrEmpty(eventName)) return;
                 _flowGraph.TryExecuteEvent(_contextObject, eventName, evt);
             }
@@ -109,6 +110,7 @@ namespace Ceres.Graph.Flow
             }
         }
         
+        /// <inheritdoc />
         public override void Compile()
         {
             if(_hasCompiled) return;
@@ -196,7 +198,7 @@ namespace Ceres.Graph.Flow
         {
             foreach (var evt in Events)
             {
-                if (evt.eventName == eventName) return evt;
+                if (evt.GetEventName() == eventName) return evt;
             }
 
             return null;
@@ -206,13 +208,13 @@ namespace Ceres.Graph.Flow
         {
             if (port is IDelegatePort delegatePort && portData.connections.Length > 0)
             {
-                if(ownerNode is ExecutableEvent eventNode)
+                if(ownerNode is ExecutionEventBase eventNode)
                 {
                     delegatePort.CreateDelegate(this, eventNode.eventName);
                 }
                 else
                 {
-                    CeresLogger.LogWarning($"Only {nameof(ExecutableEvent)} can have delegate port");
+                    CeresLogger.LogWarning($"Only {nameof(ExecutionEventBase)} can have delegate port");
                 }
             }
             base.LinkPort(port, ownerNode, portData);
@@ -236,6 +238,32 @@ namespace Ceres.Graph.Flow
         {
             _executionList.Remove(context);
         }
+        
+        internal bool AddFlowSubGraph(string name, string guid, FlowGraphUsage usage, FlowGraph graph)
+        {
+           return AddSubGraphSlot<FlowGraph>(new FlowSubGraphSlot
+            {
+                Name = name,
+                Usage = usage,
+                Guid = guid,
+                Graph = graph
+            });
+        }
+    }
+
+    /// <summary>
+    /// Flow graph usage type
+    /// </summary>
+    public enum FlowGraphUsage
+    {
+        /// <summary>
+        /// Event graph
+        /// </summary>
+        Event,
+        /// <summary>
+        /// Function graph, should always be subGraph
+        /// </summary>
+        Function
     }
     
     /// <summary>
@@ -288,9 +316,14 @@ namespace Ceres.Graph.Flow
     [Serializable]
     public class FlowSubGraphData : CeresSubGraphData<FlowGraphSerializedData>
     {
-        
+        public FlowGraphUsage usage;
     }
-    
+
+    public class FlowSubGraphSlot: CeresSubGraphSlot
+    {
+        public FlowGraphUsage Usage;
+    }
+
     /// <summary>
     /// Metadata for <see cref="FlowGraph"/>
     /// </summary>
@@ -307,10 +340,12 @@ namespace Ceres.Graph.Flow
             flowGraph.SubGraphSlots = new CeresSubGraphSlot[subGraphData?.Length ?? 0];
             for (int i = 0; i < flowGraph.SubGraphSlots.Length; i++)
             {
-                flowGraph.SubGraphSlots[i] = new CeresSubGraphSlot
+                flowGraph.SubGraphSlots[i] = new FlowSubGraphSlot
                 {
-                    Name = subGraphData![i].slotName,
-                    Graph = new FlowGraph(subGraphData![i].graphData)
+                    Name = subGraphData![i].name,
+                    Guid = subGraphData![i].guid,
+                    Graph = new FlowGraph(subGraphData![i].graphData),
+                    Usage = subGraphData![i].usage
                 };
             }
         }
@@ -327,20 +362,25 @@ namespace Ceres.Graph.Flow
             }
         }
 
-        public void SetSubGraphData(string name, FlowGraphSerializedData data)
+        public void SetSubGraphData(FlowSubGraphSlot slot, FlowGraphSerializedData data)
         {
             subGraphData ??= Array.Empty<FlowSubGraphData>();
-            if (subGraphData.All(x => x.slotName != name))
+            if (subGraphData.All(x => x.guid != slot.Guid))
             {
                 ArrayUtils.Add(ref subGraphData, new FlowSubGraphData
                 {
-                    slotName = name,
-                    graphData = data
+                    name = slot.Name,
+                    guid = slot.Guid,
+                    graphData = data,
+                    usage = slot.Usage
                 });
             }
             else
             {
-                subGraphData.First(graphData => graphData.slotName == name).graphData = data;
+                var flowSubGraphData = subGraphData.First(graphData => graphData.guid == slot.Guid);
+                flowSubGraphData.graphData = data;
+                flowSubGraphData.usage = slot.Usage;
+                flowSubGraphData.name = slot.Name;
             }
         }
     }
@@ -522,6 +562,8 @@ namespace Ceres.Graph.Flow
         public static IDisposable OverrideEventImplementation<TEventType>(this IFlowGraphRuntime runtime, EventCallback<TEventType> implementation)
             where TEventType : EventBase<TEventType>, new()
         {
+            /* Check custom event registered */
+            if (!CustomExecutionEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
             return runtime.GetEventHandler().AsObservable<TEventType>().SubscribeSafe(implementation);
         }
     }
