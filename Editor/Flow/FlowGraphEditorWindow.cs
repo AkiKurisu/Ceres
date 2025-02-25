@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Ceres.Graph.Flow;
+using Ceres.Graph.Flow.CustomFunctions;
 using Ceres.Graph.Flow.Utilities;
+using Chris.Collections;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -156,6 +158,9 @@ namespace Ceres.Editor.Graph.Flow
             }
             else
             {
+                /* Ensure graph instance created */
+                var slots = EditorObject.GraphInstance.SubGraphSlots;
+                CeresLogger.Assert(id < slots.Length + 1, "Subgraph index out of range");
                 CurrentGraphView.DeserializeSubGraph(EditorObject, EditorObject.GraphNames[id]);
             }
             return view;
@@ -317,6 +322,7 @@ namespace Ceres.Editor.Graph.Flow
             /* Create new editor container since it is not saved during play mode change  */
             if (EditorObject) EditorObject.DestroyTemporary();
             EditorObject = FlowGraphEditorObject.CreateTemporary(ContainerT);
+            _graphViews.Clear();
             InitializeFlowGraphView();
         }
 
@@ -381,6 +387,23 @@ namespace Ceres.Editor.Graph.Flow
         }
 
         /// <summary>
+        /// Resolve custom function parameters
+        /// </summary>
+        /// <param name="customFunction"></param>
+        /// <returns></returns>
+        public (Type, Type[]) ResolveFunctionType(CustomFunction customFunction)
+        {
+            var slot = EditorObject.GraphInstance.SubGraphSlots.FirstOrDefault(subGraphSlot => subGraphSlot.Guid == customFunction.Value);
+            if (slot == null) return (null, null);
+            var input = slot.Graph.GetFirstNodeOfType<CustomFunctionInput>();
+            var output = slot.Graph.GetFirstNodeOfType<CustomFunctionOutput>();
+            CeresLogger.Assert(input != null && output != null, "Can not find function input and output node");
+            var inputTypes = input!.parameters.Select(p => p.GetParameterType()).ToArray();
+            var returnType = output!.parameter.hasReturn ? output.parameter.GetParameterType() : typeof(void);
+            return (returnType, inputTypes);
+        }
+
+        /// <summary>
         /// Open subGraph view by name
         /// </summary>
         /// <param name="subGraphName"></param>
@@ -399,16 +422,43 @@ namespace Ceres.Editor.Graph.Flow
         public void RenameSubgraph(string guid, string newName)
         {
             var slot = EditorObject.GraphInstance.SubGraphSlots.First(subGraphSlot => subGraphSlot.Guid == guid);
-            /* Rename */
+            /* Rename graph */
             slot.Name = newName;
+            
             /* Update graph view binding name */
             var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
             if (slotIndex != -1 && _graphViews.TryGetValue(slotIndex + 1 /* graph index */, out var view))
             {
                 view.GraphName = newName;
             }
+            
             /* Update view model */
             EditorObject.Update();
+        }
+
+        /// <summary>
+        /// Remove subGraph and update view
+        /// </summary>
+        /// <param name="guid"></param>
+        public void RemoveSubgraph(string guid)
+        {
+            var slot = EditorObject.GraphInstance.SubGraphSlots.First(subGraphSlot => subGraphSlot.Guid == guid);
+            var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
+            if (slotIndex == -1) return;
+            
+            /* Remove subGraph */
+            ArrayUtils.Remove(ref EditorObject.GraphInstance.SubGraphSlots, slot);
+            int graphIndex = slotIndex + 1;
+            _graphViews.Remove(graphIndex);
+            
+            /* Update view model */
+            EditorObject.Update();
+
+            /* Open uber graph if editing subGraph to remove */
+            if (GraphIndex == graphIndex)
+            {
+                StructVisualElements(GraphIndex = 0);
+            }
         }
     }
 }

@@ -4,114 +4,11 @@ using System.Linq;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.CustomFunctions;
-using Ceres.Utilities;
-using Chris.Serialization;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Ceres.Editor.Graph.Flow.CustomFunctions
 {
-    public class CustomFunctionInputParameterView: VisualElement
-    {
-        private readonly TextField _nameText;
-        
-        public CustomFunctionInputParameterView()
-        {
-            Add(_nameText = new TextField());
-            _nameText.RegisterValueChangedCallback(evt =>
-            {
-                if (Parameter == null) return;
-                Parameter.parameterName = evt.newValue;
-                NotifyValueChange();
-            });
-            _arrayToggle = new Toggle("Is Array");
-            _arrayToggle.RegisterValueChangedCallback(evt =>
-            {
-                if (Parameter == null) return;
-                Parameter.isArray = evt.newValue;
-                NotifyValueChange();
-            });
-            Add(_arrayToggle);
-            
-            _typeContainer = new TypeContainer(typeof(object));
-            Add(_typeContainer);
-            
-            var button = new Button
-            {
-                text = "Assign Type"
-            };
-            button.clicked += () =>
-            {
-                var provider = ScriptableObject.CreateInstance<ObjectTypeSearchWindow>();
-                provider.Initialize(type =>
-                {
-                    if (type == null)
-                    {
-                        Parameter.serializedTypeString = string.Empty;
-                        _typeContainer.SetType(typeof(object));
-                    }
-                    else
-                    {
-                        Parameter.serializedTypeString = SerializedType.ToString(type);
-                        _typeContainer.SetType(type);
-                    }
-
-                    NotifyValueChange();
-                }, typeof(object), types => types.Where(x=> x.IsCeresSerializable()));
-                SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)), provider);
-            };
-            Add(button);
-        }
-
-        private CustomFunctionInputParameter _parameter;
-
-        private readonly Toggle _arrayToggle;
-
-        private readonly TypeContainer _typeContainer;
-
-        public CustomFunctionInputParameter Parameter
-        {
-            get => _parameter;
-            set
-            {
-                if (_parameter == value) return;
-                _parameter = value;
-                UpdateView();
-            }
-        }
-
-        private void UpdateView()
-        {
-            Type objectType;
-            try
-            {
-                objectType =  SerializedType.FromString(Parameter.serializedTypeString);
-            }
-            catch
-            {
-                objectType = null;
-            }
-
-            _typeContainer.SetType(objectType ?? typeof(object));
-            _arrayToggle.value = Parameter.isArray;
-            _nameText.value = Parameter.parameterName;
-        }
-
-        public void BindParameter(int index, CustomFunctionInputParameter inputParameter)
-        {
-            _nameText.label = $"Parameter {index}";
-            Parameter = inputParameter;
-        }
-
-        private void NotifyValueChange()
-        {
-            using var changeEvent = ChangeEvent<CustomFunctionInputParameter>.GetPooled(Parameter, Parameter);
-            changeEvent.target = this;
-            SendEvent(changeEvent);
-        }
-    }
-    
     public class CustomFunctionInputSettingsView: NodeSettingsView
     {
         public List<CustomFunctionInputParameter> Parameters { get; } = new();
@@ -124,8 +21,9 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         {
             _listView = CreateListView();
             SettingsElement.AddToClassList(nameof(CustomFunctionInputSettingsView));
-            SettingsElement.styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/Flow/CustomFunctionInputSettingsView"));
+            SettingsElement.styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/Flow/CustomFunctionSettingsView"));
             SettingsElement.Add(_listView);
+            SettingsElement.Label.text = "Input Settings";
             RefreshListViewItems();
         }
         
@@ -171,7 +69,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         private VisualElement OnMakeListItem()
         {
             var view = new CustomFunctionInputParameterView();
-            view.RegisterCallback<ChangeEvent<CustomFunctionInputParameter>>(_ =>
+            view.RegisterCallback<ChangeEvent<CustomFunctionParameter>>(_ =>
             {
                 OnListElementChange?.Invoke();
             });

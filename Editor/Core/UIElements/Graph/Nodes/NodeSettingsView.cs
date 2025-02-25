@@ -45,7 +45,7 @@ namespace Ceres.Editor.Graph
     {
         public ICeresNodeView NodeView { get; private set; }
         
-        public NodeSettingsElement SettingsElement { get; private set; }
+        public NodeSettingsElement SettingsElement { get; }
 
         private Button _settingButton;
         
@@ -56,7 +56,10 @@ namespace Ceres.Editor.Graph
             CreateSettingButton();
             SettingsElement = new NodeSettingsElement
             {
-                visible = false
+                style =
+                {
+                    display = DisplayStyle.None
+                }
             };
             OnGeometryChanged(null);
         }
@@ -65,9 +68,7 @@ namespace Ceres.Editor.Graph
         {
             NodeView = nodeView;
             nodeView.NodeElement.titleContainer.Add(_settingButton);
-            NodeView.NodeElement.Add(SettingsElement);
             NodeView.NodeElement.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
-            NodeView.NodeElement.RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
             OnGeometryChanged(null);
             OnAttach();
         }
@@ -93,19 +94,18 @@ namespace Ceres.Editor.Graph
 
         private void OpenSettings()
         {
-            if (SettingsElement == null) return;
             _settingButton.AddToClassList("clicked");
-            SettingsElement.visible = true;
             NodeView.NodeElement.parent.Add(SettingsElement);
-            OnGeometryChanged(null);
+            SettingsElement.style.display = DisplayStyle.Flex;
+            SettingsElement.Focus();
             _settingsExpanded = true;
+            OnGeometryChanged(null);
         }
 
         private void CloseSettings()
         {
-            if (SettingsElement == null) return;
             _settingButton.RemoveFromClassList("clicked");
-            SettingsElement.visible = false;
+            SettingsElement.style.display = DisplayStyle.None;
             _settingsExpanded = false;
         }
         
@@ -116,13 +116,6 @@ namespace Ceres.Editor.Graph
             var settingsButtonLayout = _settingButton.ChangeCoordinatesTo(SettingsElement.parent, _settingButton.layout);
             SettingsElement.style.top = settingsButtonLayout.yMax - (isAttached ? 70f : 20f);
             SettingsElement.style.left = settingsButtonLayout.xMin - NodeView.NodeElement.layout.width + (isAttached ? 10f : 20f);
-        }
-        
-        private void OnDetachFromPanel(DetachFromPanelEvent evt)
-        {
-            SettingsElement?.parent?.Remove(SettingsElement);
-            SettingsElement = null;
-            NodeView = null;
         }
 
         public void DisableSettings()

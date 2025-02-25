@@ -1,3 +1,4 @@
+using System;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using UnityEditor;
@@ -19,9 +20,21 @@ namespace Ceres.Editor.Graph.Flow
 
         private void OnVariableChange(VariableChangeEvent evt)
         {
-            if(evt.ChangeType == VariableChangeType.Name && evt.Variable is CustomFunction customFunction)
+            if (evt.Variable is not CustomFunction customFunction) return;
+            switch (evt.ChangeType)
             {
-                _flowGraphView.FlowGraphEditorWindow.RenameSubgraph(customFunction.Value/* Guid */, customFunction.Name);
+                case VariableChangeType.Name:
+                    _flowGraphView.FlowGraphEditorWindow.RenameSubgraph(customFunction.Value /* Guid */,
+                        customFunction.Name);
+                    break;
+                case VariableChangeType.Remove:
+                    _flowGraphView.FlowGraphEditorWindow.RemoveSubgraph(customFunction.Value);
+                    break;
+                case VariableChangeType.Add:
+                case VariableChangeType.Value:
+                case VariableChangeType.Type:
+                default:
+                    break;
             }
         }
 
@@ -58,12 +71,13 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override BlackboardRow CreateVariableBlackboardRow(SharedVariable variable, BlackboardField blackboardField, VisualElement valueField)
         {
-            var propertyView = base.CreateVariableBlackboardRow(variable, blackboardField, valueField);
-            if (variable is not CustomFunction) return propertyView;
+            var blackboardRow = base.CreateVariableBlackboardRow(variable, blackboardField, valueField);
+            if (variable is not CustomFunction) return blackboardRow;
             
-            propertyView.Q<Button>("expandButton").RemoveFromHierarchy();
-            propertyView.AddToClassList("customFunction-blackboard");
-            return propertyView;
+            blackboardRow.Q<Button>("expandButton").RemoveFromHierarchy();
+            blackboardRow.AddToClassList("customFunction-blackboard");
+            ((CeresBlackboardVariableRow)blackboardRow).CanDelete = false;
+            return blackboardRow;
         }
 
         protected override void AddVariableRow(SharedVariable variable, BlackboardRow blackboardRow)
@@ -81,6 +95,11 @@ namespace Ceres.Editor.Graph.Flow
             evt.menu.MenuItems().Clear();
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Delete", _ =>
             {
+                if (variableRow.Variable is CustomFunction function)
+                {
+                    DisplayDeleteFunctionDialog(function);
+                    return;
+                }
                 RemoveVariable(variableRow.Variable, true);
             }));
             if (variableRow.Variable is CustomFunction customFunction)
@@ -95,6 +114,14 @@ namespace Ceres.Editor.Graph.Flow
             {
                 AddVariable(variableRow.Variable.Clone(), true);
             }));
+        }
+
+        private void DisplayDeleteFunctionDialog(CustomFunction function)
+        {
+            if (!EditorUtility.DisplayDialog("Delete selected function?", 
+                    $"Do you want to delete function {function.Name}", "Delete", "Cancel")) return;
+            FindRow(function).CanDelete = true;
+            RemoveVariable(function, true);
         }
 
         private void OpenFunctionSubgraphView(CustomFunction function)

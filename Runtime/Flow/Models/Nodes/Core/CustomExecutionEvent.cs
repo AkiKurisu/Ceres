@@ -7,11 +7,11 @@ using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow
 {
     /// <summary>
-    /// Base class for <see cref="ExecutableEvent"/> generated from <see cref="EventBase{T}"/> by Ceres.SourceGenerator
+    /// Base class for <see cref="ExecutionEventBase"/> generated from <see cref="EventBase{T}"/> by Ceres.SourceGenerator
     /// </summary>
     [Serializable]
     [CeresMetadata("style = CustomEvent")]
-    public abstract class CustomExecutableEvent: ExecutableEvent
+    public abstract class CustomExecutionEvent: ExecutionEventBase
     {
         private static readonly Dictionary<long, string> Id2EventNameMap = new();
         
@@ -51,13 +51,13 @@ namespace Ceres.Graph.Flow
         }
     }
 
-    public abstract class CustomExecutableEvent<TEventBase> : CustomExecutableEvent
+    public abstract class CustomExecutionEvent<TEventBase> : CustomExecutionEvent
         where TEventBase: EventBase<TEventBase>, new()
     {
         // ReSharper disable once MemberCanBePrivate.Global
         protected static readonly string EventName = $"{nameof(ExecutableEvent)}_{typeof(TEventBase).Name}";
         
-        static CustomExecutableEvent()
+        static CustomExecutionEvent()
         {
             /* Register event name with event id for lookup purpose */
             RegisterEventId<TEventBase>(EventName);

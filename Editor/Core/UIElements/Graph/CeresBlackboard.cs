@@ -42,13 +42,28 @@ namespace Ceres.Editor.Graph
         protected override void OnCustomStyleResolved(ICustomStyle styles)
         {
             base.OnCustomStyleResolved(styles);
-            if (styles.TryGetValue(PortColorProperty, out var color))
+            if (!styles.TryGetValue(PortColorProperty, out var color)) return;
+            
+            var border = this.Q<Pill>().Children().First().Children().First();
+            border.style.borderTopColor = border.style.borderBottomColor =
+                border.style.borderRightColor = border.style.borderLeftColor = color;
+            /* Once we get color remove port sheet */
+            styleSheets.Remove(_portSheet);
+        }
+
+        public bool CanDelete
+        {
+            get => (BlackboardField.capabilities & Capabilities.Deletable) != 0;
+            set
             {
-                var border = this.Q<Pill>().Children().First().Children().First();
-                border.style.borderTopColor = border.style.borderBottomColor =
-                    border.style.borderRightColor = border.style.borderLeftColor = color;
-                /* Once we get color remove port sheet */
-                styleSheets.Remove(_portSheet);
+                if (value)
+                {
+                    BlackboardField.capabilities |= Capabilities.Deletable;
+                }
+                else
+                {
+                    BlackboardField.capabilities &= ~Capabilities.Deletable;
+                }
             }
         }
     }
@@ -311,16 +326,14 @@ namespace Ceres.Editor.Graph
                 }
             }
             var sa = new CeresBlackboardVariableRow(variable, blackboardField, propertyView);
-            sa.AddManipulator(new ContextualMenuManipulator((evt) => BuildBlackboardMenu(evt, sa)));
+            sa.AddManipulator(new ContextualMenuManipulator(contextualMenuPopulateEvent => BuildBlackboardMenu(contextualMenuPopulateEvent, sa)));
             return sa;
         }
         
         public void RemoveVariable(SharedVariable variable, bool fireEvents)
         {
             if(_isDestroyed) return;
-            var row = ScrollView.Query<CeresBlackboardVariableRow>()
-                                .ToList()
-                                .FirstOrDefault(x=>x.Variable == variable);
+            var row = FindRow(variable);
             
             /* Delete when blackboard field view can be deleted */
             if (row != null && (row.BlackboardField.capabilities & Capabilities.Deletable) != 0)
@@ -329,6 +342,13 @@ namespace Ceres.Editor.Graph
                 SharedVariables.Remove(variable);
                 if (fireEvents) NotifyVariableChanged(variable, VariableChangeType.Remove);
             }
+        }
+
+        protected CeresBlackboardVariableRow FindRow(SharedVariable variable)
+        {
+            return ScrollView.Query<CeresBlackboardVariableRow>()
+                .ToList()
+                .FirstOrDefault(x=>x.Variable == variable);
         }
 
         private void NotifyVariableChanged(SharedVariable sharedVariable, VariableChangeType changeType)

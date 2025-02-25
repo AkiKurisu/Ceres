@@ -7,6 +7,8 @@ using Ceres.Utilities;
 using Chris;
 using Chris.Serialization;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine;
+
 namespace Ceres.Graph
 {
     public interface IPort
@@ -121,6 +123,8 @@ namespace Ceres.Graph
         {
             AdaptedGetter = port;
         }
+        
+        protected internal abstract IPort CreateProxyPort(CeresPort<CeresPort> ceresPort);
 
         public virtual void Dispose()
         {
@@ -145,7 +149,7 @@ namespace Ceres.Graph
         /// Last linked port
         /// </summary>
         [NonSerialized]
-        private IPort<TValue> _getter;
+        internal IPort<TValue> Getter;
 
         private static Type _valueType;
         
@@ -182,7 +186,7 @@ namespace Ceres.Graph
             get
             {
                 /* Get value in backward */
-                if (_getter != null) return _getter.Value;
+                if (Getter != null) return Getter.Value;
                 if (AdaptedGetter != null) return (TValue)AdaptedGetter.GetValue();
                 return defaultValue;
             }
@@ -236,13 +240,30 @@ namespace Ceres.Graph
             return CompatibleStructure.AdapterCreateFunc[ceresPort.GetValueType()](this);
         }
 
-        private IPort CreateBridgePort(CeresPort<CeresPort> bridgePort)
+        protected internal override IPort CreateProxyPort(CeresPort<CeresPort> ceresPort)
         {
-            return new BridgePort<TValue>(bridgePort);
+            return new ProxyPort<TValue>(ceresPort);
+        }
+        
+        private IPort<CeresPort> CreateBridgePort(CeresPort ceresPort)
+        {
+            return new BridgePort(ceresPort);
         }
 
         public override void Link(CeresPort targetPort)
         {
+            if (this is CeresPort<CeresPort> proxyPort)
+            {
+                /* Forward value inside proxy */
+                targetPort.AssignValueGetter(targetPort.CreateProxyPort(proxyPort));
+                return;
+            }
+            if (targetPort is CeresPort<CeresPort> bridgePort)
+            {
+                /* Provide connected port itself */
+                bridgePort.AssignValueGetter(CreateBridgePort(this));
+                return;
+            }
             if (targetPort is not CeresPort<TValue> genericPort)
             {
                 if (IsCompatibleTo_Internal(targetPort.GetValueType()))
@@ -250,23 +271,18 @@ namespace Ceres.Graph
                     targetPort.AssignValueGetter(CreateAdapterPort(targetPort));
                     return;
                 }
-
-                if (targetPort is CeresPort<CeresPort> bridgePort)
-                {
-                    targetPort.AssignValueGetter(CreateBridgePort(bridgePort));
-                    return;
-                }
+                
                 targetPort.AssignValueGetter(this);
                 return;
             }
-            genericPort._getter = this;
+            genericPort.Getter = this;
         }
 
         public override void AssignValueGetter(IPort port)
         {
             if (port is IPort<TValue> genericPort)
             {
-                _getter = genericPort;
+                Getter = genericPort;
                 return;
             }
             base.AssignValueGetter(port);
@@ -284,7 +300,7 @@ namespace Ceres.Graph
         
         public override void Dispose()
         {
-            _getter = null;
+            Getter = null;
             defaultValue = default;
             base.Dispose();
         }
@@ -310,11 +326,11 @@ namespace Ceres.Graph
         public TOut Value => _adapterFunc(_port.Value);
     }
     
-    public class BridgePort<TOut>: IPort<TOut>
+    internal class ProxyPort<TOut>: IPort<TOut>
     {
         private readonly CeresPort<CeresPort> _port;
         
-        public BridgePort(CeresPort<CeresPort> port)
+        public ProxyPort(CeresPort<CeresPort> port)
         {
             _port = port;
         }
@@ -325,6 +341,21 @@ namespace Ceres.Graph
         }
 
         public TOut Value => ((CeresPort<TOut>)_port.Value).Value;
+    }
+    
+    internal class BridgePort: IPort<CeresPort>
+    {
+        public BridgePort(CeresPort port)
+        {
+            Value = port;
+        }
+
+        public object GetValue()
+        {
+            return Value;
+        }
+
+        public CeresPort Value { get; }
     }
     
     /// <summary>

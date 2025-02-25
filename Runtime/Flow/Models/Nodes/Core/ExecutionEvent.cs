@@ -9,10 +9,22 @@ namespace Ceres.Graph.Flow
     [CeresMetadata("style = ExecutableEvent")]
     public abstract class ExecutableEvent : ExecutableNode
     {
+        public abstract string GetEventName();
+    }
+    
+
+    [Serializable]
+    public abstract class ExecutionEventBase : ExecutableEvent
+    {
         public string eventName = "New Event";
 
         [HideInGraphEditor]
         public bool isImplementable;
+
+        public sealed override string GetEventName()
+        {
+            return eventName;
+        }
     }
     
     /// <summary>
@@ -20,7 +32,7 @@ namespace Ceres.Graph.Flow
     /// </summary>
     [Serializable]
     [CeresGroup("Hidden")]
-    public class ExecutionEvent : ExecutableEvent
+    public class ExecutionEvent : ExecutionEventBase
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]
         public DelegatePort<EventDelegate> eventDelegate;
@@ -36,7 +48,7 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    public abstract class ExecutionEventGeneric : ExecutableEvent
+    public abstract class ExecutionEventGeneric : ExecutionEventBase
     {
         [OutputPort(false), CeresLabel("")]
         public NodePort exec;
@@ -44,7 +56,7 @@ namespace Ceres.Graph.Flow
     
     [Serializable]
     [CeresGroup("Hidden")]
-    public sealed class ExecutionEventUber: ExecutableEvent, ISerializationCallbackReceiver
+    public sealed class ExecutionEventUber: ExecutionEventBase, ISerializationCallbackReceiver
     {
         [OutputPort(false), CeresLabel("")]
         public NodePort exec;

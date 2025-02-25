@@ -9,7 +9,7 @@ using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 namespace Ceres.Editor.Graph.Flow
 {
-    public abstract class ExecutableEventNodeView: ExecutableNodeView
+    public abstract class ExecutionEventBaseNodeView: ExecutableNodeView
     {
         protected MethodInfo MethodInfo { get; private set; }
         
@@ -21,7 +21,7 @@ namespace Ceres.Editor.Graph.Flow
 
         private bool _editMode;
 
-        protected ExecutableEventNodeView(Type type, CeresGraphView graphView)
+        protected ExecutionEventBaseNodeView(Type type, CeresGraphView graphView)
         {
             Initialize(type, graphView);
             SetupNodeElement(new ExecutableNodeElement(this));
@@ -37,7 +37,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void SetNodeInstance(CeresNode ceresNode)
         {
-            var eventNode = (ExecutableEvent)ceresNode;
+            var eventNode = (ExecutionEventBase)ceresNode;
             base.SetNodeInstance(eventNode);
             IsImplementable = eventNode.isImplementable;
             if (IsImplementable)
@@ -62,7 +62,7 @@ namespace Ceres.Editor.Graph.Flow
             if (!CanRename()) return;
             
             var existEventNodes = GraphView.NodeViews
-                .OfType<ExecutableEventNodeView>()
+                .OfType<ExecutionEventBaseNodeView>()
                 .Except(new [] { this })
                 .ToArray();
             var eventName = GetEventName();
@@ -170,7 +170,7 @@ namespace Ceres.Editor.Graph.Flow
         
         public override ExecutableNode CompileNode()
         {
-            var node = (ExecutableEvent)base.CompileNode();
+            var node = (ExecutionEventBase)base.CompileNode();
             node.isImplementable = IsImplementable;
             return node;
         }
@@ -181,8 +181,8 @@ namespace Ceres.Editor.Graph.Flow
         }
     }
     
-    [CustomNodeView(typeof(ExecutableEvent), true)]
-    public class ExecutionEventNodeView: ExecutableEventNodeView
+    [CustomNodeView(typeof(ExecutionEventBase), true)]
+    public class ExecutionEventNodeView: ExecutionEventBaseNodeView
     {
         public ExecutionEventNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
@@ -203,16 +203,16 @@ namespace Ceres.Editor.Graph.Flow
         }
     }
     
-    [CustomNodeView(typeof(CustomExecutableEvent), true)]
-    public class CustomExecutableEventNodeView: ExecutableEventNodeView
+    [CustomNodeView(typeof(CustomExecutionEvent), true)]
+    public class CustomExecutionEventNodeView: ExecutionEventBaseNodeView
     {
-        public CustomExecutableEventNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
+        public CustomExecutionEventNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
         }
 
         protected override void UpdateEventTitle()
         {
-            var label = "Event " + GetEventName()[(nameof(ExecutableEvent).Length + 1)..];
+            var label = "Event " + GetEventName()[(nameof(ExecutionEventBase).Length + 1)..];
             label += $"\n<color=#414141><size=10>Custom Event</size></color>";
             NodeElement.title = label;
         }
@@ -224,7 +224,7 @@ namespace Ceres.Editor.Graph.Flow
     }
     
     [CustomNodeView(typeof(ExecutionEventUber), false)]
-    public sealed class ExecutionEventUberNodeView : ExecutableEventNodeView
+    public sealed class ExecutionEventUberNodeView : ExecutionEventBaseNodeView
     {
         public ExecutionEventUberNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
@@ -250,7 +250,7 @@ namespace Ceres.Editor.Graph.Flow
             }
             var outputField = NodeType.GetField("outputs", BindingFlags.Instance | BindingFlags.Public);
             var parameters = methodInfo.GetParameters();
-            for(int i = 0; i < parameters.Length; ++i)
+            for (int i = 0; i < parameters.Length; ++i)
             { 
                 var portData = new CeresPortData
                 {

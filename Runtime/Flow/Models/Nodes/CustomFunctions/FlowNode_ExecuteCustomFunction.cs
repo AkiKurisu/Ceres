@@ -4,10 +4,12 @@ using Cysharp.Threading.Tasks;
 
 namespace Ceres.Graph.Flow.CustomFunctions
 {
+    // ReSharper disable once InconsistentNaming
     /// <summary>
     /// Node for executing custom function implemented in flow graph
     /// </summary>
     [Serializable]
+    [CeresMetadata("style = CustomFunctionNode")]
     public abstract class FlowNode_ExecuteCustomFunction: FlowNode
     {
         [HideInGraphEditor]
@@ -18,27 +20,36 @@ namespace Ceres.Graph.Flow.CustomFunctions
             var subGraph = executionContext.Graph.FindSubGraph<FlowGraph>(functionName);
             if (subGraph == null) return;
             using var evt = ExecuteSubFlowEvent.Create(functionName);
-            CollectExecutionPorts(evt);
-            await subGraph.ExecuteEventAsyncInternal(executionContext.Context, functionName, evt);
+            PreExecuteCustomFunction(evt);
+            await subGraph.ExecuteEventAsyncInternal(executionContext.Context, nameof(CustomFunctionInput), evt);
+            PostExecuteCustomFunction(evt);
             executionContext.SetNext(exec.GetT<ExecutableNode>());
         }
 
-        private protected virtual void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected virtual void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
+        {
+            
+        }
+        
+        private protected virtual void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     public abstract class FlowNode_ExecuteCustomFunctionVoid: FlowNode_ExecuteCustomFunction
     {
 
     }
     
+    // ReSharper disable once InconsistentNaming
     public abstract class FlowNode_ExecuteCustomFunctionReturn: FlowNode_ExecuteCustomFunction
     {
 
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTVoid : FlowNode_ExecuteCustomFunctionVoid
@@ -46,6 +57,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
 
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTReturn<TR> : FlowNode_ExecuteCustomFunctionReturn
@@ -53,12 +65,14 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
 
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
-            evt.Return = output;
+            var returnPort = (CeresPort<TR>)evt.Return;
+            output.Value = returnPort.Value;
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTVoid<TP1> : FlowNode_ExecuteCustomFunctionVoid
@@ -66,12 +80,13 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [InputPort]
         public CeresPort<TP1> input1;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTReturn<TP1, TR> : FlowNode_ExecuteCustomFunctionReturn
@@ -82,13 +97,19 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
-            evt.Return = output;
+        }
+        
+        private protected override void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
+        {
+            var returnPort = (CeresPort<TR>)evt.Return;
+            output.Value = returnPort.Value;
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTVoid<TP1, TP2> : 
@@ -100,13 +121,14 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [InputPort]
         public CeresPort<TP2> input2;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTReturn<TP1, TP2, TR> : 
@@ -121,14 +143,20 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
-            evt.Return = output;
+        }
+        
+        private protected override void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
+        {
+            var returnPort = (CeresPort<TR>)evt.Return;
+            output.Value = returnPort.Value;
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTVoid<TP1, TP2, TP3> : 
@@ -143,7 +171,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [InputPort]
         public CeresPort<TP3> input3;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
@@ -151,6 +179,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTReturn<TP1, TP2, TP3, TR> : 
@@ -168,15 +197,21 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
             evt.Args.Add(input3);
-            evt.Return = output;
+        }
+        
+        private protected override void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
+        {
+            var returnPort = (CeresPort<TR>)evt.Return;
+            output.Value = returnPort.Value;
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTVoid<TP1, TP2, TP3, TP4> : 
@@ -194,7 +229,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [InputPort] 
         public CeresPort<TP4> input4;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
@@ -203,6 +238,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTReturn<TP1, TP2, TP3, TP4, TR> : 
@@ -223,16 +259,22 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
             evt.Args.Add(input3);
             evt.Args.Add(input4);
-            evt.Return = output;
+        }
+        
+        private protected override void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
+        {
+            var returnPort = (CeresPort<TR>)evt.Return;
+            output.Value = returnPort.Value;
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTVoid<TP1, TP2, TP3, TP4, TP5> : 
@@ -253,7 +295,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [InputPort] 
         public CeresPort<TP5> input5;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
@@ -263,6 +305,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTReturn<TP1, TP2, TP3, TP4, TP5, TR> : 
@@ -287,17 +330,23 @@ namespace Ceres.Graph.Flow.CustomFunctions
         public CeresPort<TR> output;
         
                 
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
             evt.Args.Add(input3);
             evt.Args.Add(input4);
             evt.Args.Add(input5);
-            evt.Return = output;
+        }
+        
+        private protected override void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
+        {
+            var returnPort = (CeresPort<TR>)evt.Return;
+            output.Value = returnPort.Value;
         }
     }
     
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTVoid<TP1, TP2, TP3, TP4, TP5, TP6> : 
@@ -321,7 +370,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [InputPort]
         public CeresPort<TP6> input6;
         
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
@@ -332,6 +381,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         }
     }
 
+    // ReSharper disable once InconsistentNaming
     [Serializable]
     [CeresGroup("Hidden")]
     public sealed class FlowNode_ExecuteCustomFunctionTReturn<TP1, TP2, TP3, TP4, TP5, TP6, TR> :
@@ -358,7 +408,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         [OutputPort, CeresLabel("Return Value")]
         public CeresPort<TR> output;
 
-        private protected override void CollectExecutionPorts(ExecuteSubFlowEvent evt)
+        private protected override void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             evt.Args.Add(input1);
             evt.Args.Add(input2);
@@ -366,7 +416,12 @@ namespace Ceres.Graph.Flow.CustomFunctions
             evt.Args.Add(input4);
             evt.Args.Add(input5);
             evt.Args.Add(input6);
-            evt.Return = output;
+        }
+        
+        private protected override void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
+        {
+            var returnPort = (CeresPort<TR>)evt.Return;
+            output.Value = returnPort.Value;
         }
     }
 }

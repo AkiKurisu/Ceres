@@ -16,5 +16,15 @@ namespace Ceres.Graph.Flow
         {
             return true;
         }
+        
+        public override void Compile()
+        {
+            base.Compile();
+            /* Compile subGraphs */
+            foreach (var subGraphSlot in SubGraphSlots)
+            {
+                subGraphSlot.Graph.Compile();
+            }
+        }
     }
 }

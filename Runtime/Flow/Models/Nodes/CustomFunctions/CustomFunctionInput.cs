@@ -8,10 +8,8 @@ using UnityEngine.Assertions;
 namespace Ceres.Graph.Flow.CustomFunctions
 {
     [Serializable]
-    public class CustomFunctionInputParameter
+    public class CustomFunctionParameter
     {
-        public string parameterName;
-        
         public string serializedTypeString;
 
         public bool isArray;
@@ -28,16 +26,23 @@ namespace Ceres.Graph.Flow.CustomFunctions
             return type;
         }
     }
-    
+
+    [Serializable]
+    public class CustomFunctionInputParameter: CustomFunctionParameter
+    {
+        public string parameterName;
+    }
+
     [Serializable]
     [CeresGroup("Hidden")]
+    [CeresLabel("Function Input")]
     [CeresMetadata("style = CustomFunctionInput")]
-    public class CustomFunctionInput: ExecutableNode, ISerializationCallbackReceiver, IReadOnlyPortArrayNode
+    public class CustomFunctionInput: ExecutableEvent, ISerializationCallbackReceiver, IReadOnlyPortArrayNode
     {
         [OutputPort(false), CeresLabel("")]
         public NodePort exec;
         
-        /* Bridge port, connected port will map to the internal port at runtime */
+        /* Proxy port, ports connected it will map to internal port */
         [OutputPort]
         public CeresPort<CeresPort>[] outputs = Array.Empty<CeresPort<CeresPort>>();
         
@@ -48,7 +53,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
         {
             Assert.IsNotNull(executionContext.GetEvent());
             var evt = executionContext.GetEventT<ExecuteSubFlowEvent>();
-            if(evt.Args != null)
+            if (evt.Args != null)
             {
                 for (var i = 0; i < evt.Args.Count; ++i)
                 {
@@ -57,6 +62,11 @@ namespace Ceres.Graph.Flow.CustomFunctions
             }
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
+        }
+
+        public override string GetEventName()
+        {
+            return nameof(CustomFunctionInput);
         }
 
         public void OnBeforeSerialize()
@@ -80,7 +90,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
 
         public string GetPortArrayFieldName()
         {
-            return nameof(parameters);
+            return nameof(outputs);
         }
     }
 }

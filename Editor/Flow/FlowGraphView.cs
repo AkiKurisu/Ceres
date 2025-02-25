@@ -5,6 +5,7 @@ using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Editor.Graph.Flow.Properties;
+using Ceres.Editor.Graph.Flow.CustomFunctions;
 using Chris;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
@@ -12,6 +13,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
+
 namespace Ceres.Editor.Graph.Flow
 {
     public class FlowGraphView : CeresGraphView, IDisposable
@@ -155,7 +157,7 @@ namespace Ceres.Editor.Graph.Flow
         public async UniTask SimulateExecution()
         {
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
-            var eventName = ((ExecutableEventNodeView)((ExecutableNodeElement)selection[0]).View).GetEventName();
+            var eventName = ((ExecutionEventBaseNodeView)((ExecutableNodeElement)selection[0]).View).GetEventName();
             flowGraphData.PreSerialization();
             using var graph = new FlowGraph(flowGraphData);
             graph.Compile();
@@ -183,10 +185,37 @@ namespace Ceres.Editor.Graph.Flow
             {
                 if (selectable is not BlackboardField blackboardField) continue;
                 
+                
                 var variableName = blackboardField.text;
                 var variable = Blackboard.GetSharedVariable(variableName);
                 if(variable == null) continue;
                 Rect newRect = new(contentViewContainer.WorldToLocal(mousePosition), new Vector2(100, 100));
+
+                if (variable is CustomFunction customFunction)
+                {
+                    var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionType(customFunction);
+                    if (returnType == null)
+                    {
+                        return;
+                    }
+                    // Create execute custom function node
+                    var nodeType = ExecutableNodeReflectionHelper.PredictCustomFunctionNodeType(returnType, inputTypes);
+                    if (returnType == typeof(void))
+                    {
+                        var view = (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(nodeType, this, inputTypes);
+                        this.AddNodeView(view, newRect);
+                        view.SetFunctionName(customFunction.Name);
+                    }
+                    else
+                    {
+                        var view = (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(nodeType, this, inputTypes.Append(returnType).ToArray());
+                        this.AddNodeView(view, newRect);
+                        view.SetFunctionName(customFunction.Name);
+                    }
+                    return;
+                }
+                
+
                 var menu = new GenericMenu();
                 menu.AddItem(new GUIContent($"Get {variableName}"), false, () =>
                 {

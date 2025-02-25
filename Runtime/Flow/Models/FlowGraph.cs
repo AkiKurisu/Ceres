@@ -78,7 +78,7 @@ namespace Ceres.Graph.Flow
                 base.ExecuteDefaultAction(evt);
                 if (!_contextObject) return;
                 /* Get event name if it has generated executable event */
-                var eventName = CustomExecutableEvent.GetEventName(evt.EventTypeId);
+                var eventName = CustomExecutionEvent.GetEventName(evt.EventTypeId);
                 if (string.IsNullOrEmpty(eventName)) return;
                 _flowGraph.TryExecuteEvent(_contextObject, eventName, evt);
             }
@@ -198,7 +198,7 @@ namespace Ceres.Graph.Flow
         {
             foreach (var evt in Events)
             {
-                if (evt.eventName == eventName) return evt;
+                if (evt.GetEventName() == eventName) return evt;
             }
 
             return null;
@@ -208,13 +208,13 @@ namespace Ceres.Graph.Flow
         {
             if (port is IDelegatePort delegatePort && portData.connections.Length > 0)
             {
-                if(ownerNode is ExecutableEvent eventNode)
+                if(ownerNode is ExecutionEventBase eventNode)
                 {
                     delegatePort.CreateDelegate(this, eventNode.eventName);
                 }
                 else
                 {
-                    CeresLogger.LogWarning($"Only {nameof(ExecutableEvent)} can have delegate port");
+                    CeresLogger.LogWarning($"Only {nameof(ExecutionEventBase)} can have delegate port");
                 }
             }
             base.LinkPort(port, ownerNode, portData);
@@ -563,7 +563,7 @@ namespace Ceres.Graph.Flow
             where TEventType : EventBase<TEventType>, new()
         {
             /* Check custom event registered */
-            if (!CustomExecutableEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
+            if (!CustomExecutionEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
             return runtime.GetEventHandler().AsObservable<TEventType>().SubscribeSafe(implementation);
         }
     }

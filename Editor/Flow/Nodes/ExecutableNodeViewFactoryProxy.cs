@@ -90,11 +90,11 @@ namespace Ceres.Editor.Graph.Flow
             return nodeView;
         }
         
-        private ExecutableEventNodeView CreateGenericNodeView(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData)
+        private ExecutionEventBaseNodeView CreateGenericNodeView(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData)
         {
             /* Fill parameter types */
             var parameters = MethodInfo.GetParameters().Select(x => x.ParameterType).ToList();
-            return (ExecutableEventNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters.ToArray());
+            return (ExecutionEventBaseNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters.ToArray());
         }
     }
     
@@ -105,7 +105,7 @@ namespace Ceres.Editor.Graph.Flow
         public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
             var parameters = DelegateType.GetGenericArguments();
-            var nodeView = (ExecutableEventNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
+            var nodeView = (ExecutionEventBaseNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
             searchWindow.GraphView.AddNodeView(nodeView, rect);
             return nodeView;
         }

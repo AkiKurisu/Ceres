@@ -275,7 +275,7 @@ namespace Ceres.Graph
         private void LinkPort(CeresPort port, string fieldName, int arrayIndex, CeresNode ownerNode)
         {
             var portData = ownerNode.NodeData.FindPortData(fieldName, arrayIndex);
-            if(portData == null)
+            if (portData == null)
             {
                 CeresLogger.LogWarning($"Can not find port data for port {fieldName}_{arrayIndex} from {ownerNode.GetType().Name}");
                 return;
@@ -331,6 +331,11 @@ namespace Ceres.Graph
             }
         }
 
+        /// <summary>
+        /// Find node by guid
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns>Null if not exist</returns>
         public CeresNode FindNode(string guid)
         {
             foreach (var node in nodes)
@@ -343,8 +348,45 @@ namespace Ceres.Graph
 
             return null;
         }
-        
-        
+
+        /// <summary>
+        /// Find node with specific type by guid
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <typeparam name="TNode"></typeparam>
+        /// <returns>Null if not exist</returns>
+        public TNode FindNode<TNode>(string guid) where TNode: CeresNode
+        {
+            foreach (var node in nodes)
+            {
+                if (node is TNode tNode && node.Guid == guid)
+                {
+                    return tNode;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Get first node with specific type
+        /// </summary>
+        /// <typeparam name="TNode"></typeparam>
+        /// <returns>Null if not exist</returns>
+        public TNode GetFirstNodeOfType<TNode>() where TNode : CeresNode
+        {
+            foreach (var node in nodes)
+            {
+                if (node is TNode tNode)
+                {
+                    return tNode;
+                }
+            }
+
+            return null;
+        }
+
+
         /// <summary>
         /// Set graph node pre-cached dependency path
         /// </summary>
