@@ -818,16 +818,13 @@ namespace Ceres.Graph
         public override void BuildGraph(CeresGraph graph)
         {
             base.BuildGraph(graph);
-            if (graph.nodes.Count != edges.Length)
-            {
-                throw new ArgumentException("[Ceres] The length of nodes and edges must be the same.");
-            }
+            CeresLogger.Assert(graph.nodes.Count == (edges?.Length ?? 0), "The length of nodes and edges must be the same.");
             for (int i = 0; i < graph.nodes.Count; ++i)
             {
                 // connect if it can set linked child
                 if (graph.nodes[i] is not ILinkedNode linkedNode) continue;
                 
-                var edge = edges[i];
+                var edge = edges![i];
                 foreach (var childIndex in edge.children)
                 {
                     if (childIndex >= 0 && childIndex < graph.nodes.Count)
