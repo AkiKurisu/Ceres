@@ -1,6 +1,7 @@
 # Flow
 Powerful visual scripting solution inspired from Unreal's Blueprint.
 
+- [Flow](#flow)
 - [Conecpt](#conecpt)
   - [Events](#events)
   - [Functions](#functions)
@@ -24,8 +25,9 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
   - [Port Implict Conversation](#port-implict-conversation)
   - [Node has Port Array](#node-has-port-array)
   - [Generic Node](#generic-node)
+  - [Custom Function](#custom-function)
 - [Code Generation](#code-generation)
-  - [ILPP](#ilpp)
+  - [IL Post Process](#il-post-process)
   - [Source Generator](#source-generator)
 - [Debug](#debug)
   - [Use Breakpoint](#use-breakpoint)
@@ -482,6 +484,7 @@ public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IP
 ```
 
 ## Generic Node
+
 Generic nodes define type restrictions through template classes, so that argument 
 types can be obtained in the editor and the generic node instance can be constructed 
 at runtime. This helps reduce lines of code.
@@ -557,16 +560,32 @@ public class FlowNode_CastT_Template: GenericNodeTemplate
 }
 ```
 
+## Custom Function
+
+You can define function subGraph inside your flow graph to reuse logic.
+
+You can create a custom function by following these steps:
+
+1. Click blackboard `+` button and select `Function` in menu which will let you open subGraph view.
+2. Configure the function input and output parameters.
+
+    ![Configure Input](./Images/flow_custom_function_config.png)
+
+3. Save your function subGraph.
+4. Enter uber graph and drag the function from blackboard to graph.
+
+    ![Drag Function](./Images/flow_custom_function_drag.png)
+
+5. You can modify the name of custom function just like modifing a variable.
+
 # Code Generation
 
 The following are some details about the code generation technology used in Flow, 
 which may help you understand the principles.
 
-## ILPP
+## IL Post Process
 
-`ImplementableEvent` let user implement custom event and invoke them in code.
-
-By default, ILPP will inject bridge method call before your implementation.
+IL Post Process (ILPP) will inject IL to execute event into user's [ImplementableEvent](#implementable-event) method body.
 
 Below is the code decompiled using `dnspy`.
 
