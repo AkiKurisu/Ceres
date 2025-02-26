@@ -3,7 +3,7 @@
 # Ceres
 Powerful visual scripting toolkit for Unity.
 
-![banner](./Docs/Images/ceres_banner.png)
+![banner](./Docs/Images~/ceres_banner.png)
 
 <b>*Still in earlier development and may have frequent API changes, 
 do not use it in any production environment*</b>
@@ -63,7 +63,7 @@ Included in this repository.
 
 See [Startup Flow](./Docs/flow_startup.md).
 
-![ceres_flow](./Docs/Images/ceres_flow.png)
+![ceres_flow](./Docs/Images~/ceres_flow.png)
  
 ### Next Gen Dialogue
 
@@ -71,7 +71,7 @@ AI powered dialogue visual designer for Unity.
 
 See [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue).
 
-![ceres_ngd](./Docs/Images/ceres_ngd.png)
+![ceres_ngd](./Docs/Images~/ceres_ngd.png)
 
 ## Reference
 
