@@ -150,6 +150,7 @@ namespace Ceres.Graph
         /// <returns></returns>
         public SharedVariable Deserialize(Type outVariableType)
         {
+            if (outVariableType == null) return null;
             var resolvedData = UObjectLink.Resolve(uobjectLinks, serializedData);
             return JsonUtility.FromJson(resolvedData, outVariableType) as SharedVariable;
         }

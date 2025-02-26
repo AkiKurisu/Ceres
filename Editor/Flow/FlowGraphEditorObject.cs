@@ -34,6 +34,17 @@ namespace Ceres.Editor.Graph.Flow
                     {
                         _instance = _container.GetFlowGraph();
                     }
+                    
+                    /* Append custom function variables */
+                    _instance.variables.AddRange(
+                        _instance.SubGraphSlots
+                                    .OfType<FlowSubGraphSlot>()
+                                    .Where(x=> x.Usage == FlowGraphUsage.Function)
+                                    .Select(x=> new CustomFunction(x.Name)
+                                    {
+                                        Value = x.Guid
+                                    })
+                        );
                     Update();
                 }
 

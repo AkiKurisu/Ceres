@@ -1,6 +1,7 @@
 ﻿using System;
+using Ceres.Graph;
 
-namespace Ceres.Graph.Flow
+namespace Ceres.Editor.Graph.Flow
 {
     /// <summary>
     /// Variable represents custom function in flow subGraph
