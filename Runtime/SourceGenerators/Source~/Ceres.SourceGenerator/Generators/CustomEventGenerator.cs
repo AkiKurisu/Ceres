@@ -21,7 +21,7 @@ public class CustomEventGenerator : CeresSourceGenerator, ISourceGenerator
             return;
 
         Helpers.SetupContext(context);
-        Debug.LogInfo($"Execute assembly {context.Compilation.Assembly.Name}");
+        Debug.LogInfo($"[CustomEventGenerator] Execute assembly {context.Compilation.Assembly.Name}");
 
         //If the attach_debugger key is present (but without value) the returned string is the empty string (not null)
         var debugAssembly = context.GetOptionsString(GlobalOptions.AttachDebugger);
@@ -35,12 +35,13 @@ public class CustomEventGenerator : CeresSourceGenerator, ISourceGenerator
         foreach (var classDeclaration in receiver.Candidates)
         {
             var className = classDeclaration.Identifier.Text;
-            Debug.LogInfo($"Analyze {className}");
+            Debug.LogInfo($"[CustomEventGenerator] Analyze {className}");
                 
             var semanticModel = context.Compilation.GetSemanticModel(classDeclaration.SyntaxTree);
             var classSymbol = semanticModel.GetDeclaredSymbol(classDeclaration);
             if (classSymbol == null)
             {
+                Debug.LogInfo($"[CustomEventGenerator] Can not get declared class from {className}");
                 continue;
             }
             var generateAttribute = classSymbol
@@ -49,11 +50,13 @@ public class CustomEventGenerator : CeresSourceGenerator, ISourceGenerator
                     x.AttributeClass?.ToDisplayString() == "Ceres.Graph.Flow.Annotations.ExecutableEventAttribute");
             if (generateAttribute == null)
             {
+                Debug.LogInfo($"[CustomEventGenerator] Can not find ExecutableEventAttribute from {className}");
                 continue;
             }
 
             if (classDeclaration.Parent is not NamespaceDeclarationSyntax namespaceNode)
             {
+                Debug.LogInfo($"[CustomEventGenerator] Namespace was not declared in {className}");
                 continue;
             }
             var namespaceName = namespaceNode.Name.ToString();
@@ -183,7 +186,10 @@ public class ExecutableEventSyntaxReceiver : ISyntaxReceiver
         }
             
         Candidates.Add(classNode);
-        Method[classNode] = methodInfo;
+        if (methodInfo != null)
+        {
+            Method.Add(classNode, methodInfo);
+        }
 
         var namespaces = new HashSet<string>();
         var root = classNode.SyntaxTree.GetRoot();
