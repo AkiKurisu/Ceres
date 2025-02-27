@@ -47,7 +47,7 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             ExecuteInDependency = attribute.ExecuteInDependency;
             DisplayTarget = attribute.DisplayTarget;
             StaticIsSelfTarget = attribute.IsSelfTarget && IsStatic;
-            InstanceIsSelfTarget = GraphView.GetContainerType().IsAssignableTo(methodInfo.DeclaringType) && !IsStatic;
+            InstanceIsSelfTarget = !IsStatic && GraphView.GetContainerType().IsAssignableTo(methodInfo.DeclaringType);
             ScriptTargetType = attribute.ScriptTargetType;
             IsNeedResolveReturnType = attribute.IsNeedResolveReturnType;
             ParameterCount = methodInfo.GetParameters().Length;
@@ -69,6 +69,10 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             else if (InstanceIsSelfTarget)
             {
                 InitializeSelfTargetPortView("target");
+            }
+            else
+            {
+                FindPortView("target").Flags |= CeresPortViewFlags.ValidateConnection;
             }
             
             if (ExecuteInDependency)
@@ -193,7 +197,6 @@ namespace Ceres.Editor.Graph.Flow.Utilities
                 ParameterCount = functionNode.parameterCount;
                 SetNodeElementTitle(functionNode.methodName + " <color=#FFE000>[Invalid Function]</size></color>");
                 NodeElement.tooltip = $"The presence of this node indicates that the executable function {functionNode.methodName} bound to this node is invalid now.";
-                Flags |= ExecutableNodeViewFlags.Invalid;
             }
             else
             {
@@ -213,6 +216,15 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             instance.executeInDependency = ExecuteInDependency;
             instance.parameterCount = ParameterCount;
             return instance;
+        }
+
+        public override void Validate(FlowGraphValidator validator)
+        {
+            base.Validate(validator);
+            if (MethodInfo == null)
+            {
+                validator.MarkAsInvalid(this, $"{MethodName} is not an executable function of {NodeType.GetGenericArguments()[0].Name}");
+            }
         }
 
         protected abstract void FillMethodParametersPorts(MethodInfo methodInfo);

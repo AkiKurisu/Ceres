@@ -429,6 +429,7 @@ namespace Ceres.Editor.Graph
     [Flags]
     public enum CeresPortViewFlags
     {
+        None = 0,
         /// <summary>
         /// Whether port's connection should be validated
         /// </summary>

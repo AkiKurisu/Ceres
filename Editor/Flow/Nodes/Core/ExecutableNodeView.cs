@@ -101,14 +101,11 @@ namespace Ceres.Editor.Graph.Flow
     [Flags]
     public enum ExecutableNodeViewFlags
     {
+        None = 0,
         /// <summary>
         /// Node view is no longer valid that need clean up
         /// </summary>
-        Invalid = 1,
-        /// <summary>
-        /// Node view can not be deleted
-        /// </summary>
-        NotDeletable = 2
+        Invalid = 1
     }
     
     /// <summary>
@@ -117,7 +114,7 @@ namespace Ceres.Editor.Graph.Flow
     [CustomNodeView(typeof(ExecutableNode), true)]
     public class ExecutableNodeView: CeresNodeView
     {
-        public ExecutableNodeViewFlags Flags { get; protected set; }
+        public ExecutableNodeViewFlags Flags { get; internal set; }
         
         /// <summary>
         /// Get node visual element, see <see cref="ExecutableNodeElement"/>
@@ -149,8 +146,8 @@ namespace Ceres.Editor.Graph.Flow
         public virtual ExecutableNode CompileNode()
         {
             var nodeInstance = (ExecutableNode)Activator.CreateInstance(NodeType);
-            FieldResolvers.ForEach(r => r.Commit(nodeInstance));
-            PortViews.ForEach(p => p.Commit(nodeInstance));
+            FieldResolvers.ForEach(fieldResolver => fieldResolver.Commit(nodeInstance));
+            PortViews.ForEach(portView => portView.Commit(nodeInstance));
             nodeInstance.GraphPosition = NodeElement.GetPosition();
             nodeInstance.Guid = Guid;
             return nodeInstance;
@@ -159,13 +156,13 @@ namespace Ceres.Editor.Graph.Flow
         public void AddBreakpoint()
         {
             ((FlowGraphView)GraphView).DebugState.AddBreakpoint(Guid);
-            ((ExecutableNodeElement)NodeElement).AddBreakpointView();
+            ExecutableNodeElement.AddBreakpointView();
         }
         
         public void RemoveBreakpoint()
         {
             ((FlowGraphView)GraphView).DebugState.RemoveBreakpoint(Guid);
-            ((ExecutableNodeElement)NodeElement).RemoveBreakpointView();
+            ExecutableNodeElement.RemoveBreakpointView();
         }
 
         public string GetDefaultTooltip()
@@ -186,6 +183,21 @@ namespace Ceres.Editor.Graph.Flow
         /// <param name="evt"></param>
         public virtual void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
+        }
+
+        /// <summary>
+        /// Validate before compiling
+        /// </summary>
+        /// <param name="validator"></param>
+        public virtual void Validate(FlowGraphValidator validator)
+        {
+            foreach (var portView in PortViews)
+            {
+                if (portView.Flags.HasFlag(CeresPortViewFlags.ValidateConnection) && !portView.PortElement.connections.Any())
+                {
+                    validator.MarkAsInvalid(this, $"{portView.Binding.DisplayName.Value} must be connected");
+                }
+            }
         }
     }
 }

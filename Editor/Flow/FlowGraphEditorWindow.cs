@@ -178,7 +178,7 @@ namespace Ceres.Editor.Graph.Flow
         public void SaveGraphData()
         {
             var guiContent = new GUIContent();
-            if (TrySerializeGraph(out var failReason))
+            if (TrySerializeGraph())
             {
                 ClearDirty();
                 /* Commit graph data */
@@ -195,20 +195,15 @@ namespace Ceres.Editor.Graph.Flow
             else
             {
                 guiContent.text = $"Failed to save flow {Identifier.boundObject.name}!";
-                if (!string.IsNullOrEmpty(failReason))
-                {
-                    CeresLogger.LogError($"Failed to save flow {Identifier.boundObject.name}, {failReason}");
-                }
                 ShowNotification(guiContent, 0.5f);
             }
         }
 
-        private bool TrySerializeGraph(out string failReason)
+        private bool TrySerializeGraph()
         {
-            failReason = string.Empty;
             foreach (var view in _graphViews.Values)
             {
-                if (!view.SerializeGraph(EditorObject, out failReason))
+                if (!view.SerializeGraph(EditorObject))
                 {
                     return false;
                 }

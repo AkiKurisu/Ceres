@@ -53,24 +53,25 @@ namespace Ceres.Editor.Graph.Flow
         /// Serialize flow graph to editor data container
         /// </summary>
         /// <param name="editorObject">Serialization target</param>
-        /// <param name="failReason"></param>
         /// <returns>Whether serialization is succeeded</returns>
-        public bool SerializeGraph(FlowGraphEditorObject editorObject, out string failReason)
+        public bool SerializeGraph(FlowGraphEditorObject editorObject)
         {
             /* Compile validation */
-            var invalidNodeViews = NodeViews.OfType<ExecutableNodeView>()
-                .Where(view => view.Flags.HasFlag(ExecutableNodeViewFlags.Invalid))
-                .ToList();
+            using var validator = new FlowGraphValidator();
+            foreach (var nodeView in NodeViews.OfType<ExecutableNodeView>())
+            {
+                nodeView.Validate(validator);
+            }
+
+            var invalidNodeViews = validator.GetInvalidNodeViews();
             if (invalidNodeViews.Any())
             {
-                failReason = "some nodes failed to compile";
                 ClearSelection();
-                invalidNodeViews.ForEach(view => AddToSelection(view.NodeElement));
+                Array.ForEach(invalidNodeViews, view => AddToSelection(view.NodeElement));
                 schedule.Execute(() => FrameSelection()).ExecuteLater(10);
                 return false;
             }
             
-            failReason = string.Empty;
             var editableData = editorObject.GraphData;
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
             if (_isEditingSubGraph)
