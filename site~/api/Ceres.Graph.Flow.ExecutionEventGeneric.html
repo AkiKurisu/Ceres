@@ -90,13 +90,14 @@
     <div class="level1"><a class="xref" href="Ceres.Graph.CeresNode.html">CeresNode</a></div>
     <div class="level2"><a class="xref" href="Ceres.Graph.Flow.ExecutableNode.html">ExecutableNode</a></div>
     <div class="level3"><a class="xref" href="Ceres.Graph.Flow.ExecutableEvent.html">ExecutableEvent</a></div>
-    <div class="level4"><span class="xref">ExecutionEventGeneric</span></div>
-      <div class="level5"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-1.html">ExecutionEvent&lt;T1&gt;</a></div>
-      <div class="level5"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-2.html">ExecutionEvent&lt;T1, T2&gt;</a></div>
-      <div class="level5"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-3.html">ExecutionEvent&lt;T1, T2, T3&gt;</a></div>
-      <div class="level5"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-4.html">ExecutionEvent&lt;T1, T2, T3, T4&gt;</a></div>
-      <div class="level5"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-5.html">ExecutionEvent&lt;T1, T2, T3, T4, T5&gt;</a></div>
-      <div class="level5"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-6.html">ExecutionEvent&lt;T1, T2, T3, T4, T5, T6&gt;</a></div>
+    <div class="level4"><a class="xref" href="Ceres.Graph.Flow.ExecutionEventBase.html">ExecutionEventBase</a></div>
+    <div class="level5"><span class="xref">ExecutionEventGeneric</span></div>
+      <div class="level6"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-1.html">ExecutionEvent&lt;T1&gt;</a></div>
+      <div class="level6"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-2.html">ExecutionEvent&lt;T1, T2&gt;</a></div>
+      <div class="level6"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-3.html">ExecutionEvent&lt;T1, T2, T3&gt;</a></div>
+      <div class="level6"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-4.html">ExecutionEvent&lt;T1, T2, T3, T4&gt;</a></div>
+      <div class="level6"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-5.html">ExecutionEvent&lt;T1, T2, T3, T4, T5&gt;</a></div>
+      <div class="level6"><a class="xref" href="Ceres.Graph.Flow.ExecutionEvent-6.html">ExecutionEvent&lt;T1, T2, T3, T4, T5, T6&gt;</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -107,10 +108,13 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Ceres.Graph.Flow.ExecutableEvent.html#Ceres_Graph_Flow_ExecutableEvent_eventName">ExecutableEvent.eventName</a>
+      <a class="xref" href="Ceres.Graph.Flow.ExecutionEventBase.html#Ceres_Graph_Flow_ExecutionEventBase_eventName">ExecutionEventBase.eventName</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.Flow.ExecutableEvent.html#Ceres_Graph_Flow_ExecutableEvent_isImplementable">ExecutableEvent.isImplementable</a>
+      <a class="xref" href="Ceres.Graph.Flow.ExecutionEventBase.html#Ceres_Graph_Flow_ExecutionEventBase_isImplementable">ExecutionEventBase.isImplementable</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Graph.Flow.ExecutionEventBase.html#Ceres_Graph_Flow_ExecutionEventBase_GetEventName">ExecutionEventBase.GetEventName()</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.Flow.ExecutableNode.html#Ceres_Graph_Flow_ExecutableNode_Graph">ExecutableNode.Graph</a>
@@ -184,7 +188,7 @@
   <h5 id="Ceres_Graph_Flow_ExecutionEventGeneric_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public abstract class ExecutionEventGeneric : ExecutableEvent, IEnumerable&lt;CeresNode&gt;, IEnumerable, IDisposable</code></pre>
+public abstract class ExecutionEventGeneric : ExecutionEventBase, IEnumerable&lt;CeresNode&gt;, IEnumerable, IDisposable</code></pre>
   </div>
   <h3 id="fields">Fields
 </h3>

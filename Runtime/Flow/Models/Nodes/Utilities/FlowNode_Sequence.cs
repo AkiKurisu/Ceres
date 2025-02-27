@@ -4,6 +4,10 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 namespace Ceres.Graph.Flow.Utilities
 {
+    /// <summary>
+    /// Execute a series of output nodes sequentially, forwarding the execution flow to each 
+    /// output port in the defined sequence.
+    /// </summary>
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Sequence")]
@@ -24,7 +28,6 @@ namespace Ceres.Graph.Flow.Utilities
                 await executionContext.Forward(output.GetT<ExecutableNode>());
             }
         }
-
 
         public void OnBeforeSerialize()
         {

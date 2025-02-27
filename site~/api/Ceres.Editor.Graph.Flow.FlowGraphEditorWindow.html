@@ -131,9 +131,6 @@
       <a class="xref" href="Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_OnEnable">CeresGraphEditorWindow.OnEnable()</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_OnDisable">CeresGraphEditorWindow.OnDisable()</a>
-    </div>
-    <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_AddItemsToMenu_GenericMenu_">CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)</a>
     </div>
     <div>
@@ -155,18 +152,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class FlowGraphEditorWindow : CeresGraphEditorWindow&lt;IFlowGraphContainer, FlowGraphEditorWindow&gt;, IHasCustomMenu</code></pre>
   </div>
-  <h3 id="fields">Fields
+  <h3 id="properties">Properties
 </h3>
 
 
-  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_debugState" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.debugState">debugState</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_DebugState_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.DebugState*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_DebugState" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.DebugState">DebugState</h4>
+  <div class="markdown level1 summary"><p>Editor debug state</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FlowGraphDebugState debugState</code></pre>
+    <pre><code class="lang-csharp hljs">public FlowGraphDebugState DebugState { get; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -181,13 +180,77 @@
       </tr>
     </tbody>
   </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_EditorObject_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.EditorObject*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_EditorObject" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.EditorObject">EditorObject</h4>
+  <div class="markdown level1 summary"><p>Editor view model</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FlowGraphEditorObject EditorObject { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.FlowGraphEditorObject.html">FlowGraphEditorObject</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_GraphIndex_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.GraphIndex*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_GraphIndex" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.GraphIndex">GraphIndex</h4>
+  <div class="markdown level1 summary"><p>Editing graph view index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GraphIndex { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
 </h3>
 
 
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_CreateFunctionSubGraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_CreateFunctionSubGraph" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph">CreateFunctionSubGraph()</h4>
+  <div class="markdown level1 summary"><p>Create a new subGraph to present custom function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateFunctionSubGraph()</code></pre>
+  </div>
+
+
   <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_GetGraphView_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.GetGraphView*"></a>
   <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_GetGraphView" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.GetGraphView">GetGraphView()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get current editing graph view</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -208,6 +271,61 @@
       </tr>
     </tbody>
   </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_GetOrCreateGraphView_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.GetOrCreateGraphView*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_GetOrCreateGraphView_System_Int32_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.GetOrCreateGraphView(System.Int32)">GetOrCreateGraphView(int)</h4>
+  <div class="markdown level1 summary"><p>Get or create graph view by id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FlowGraphView GetOrCreateGraphView(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.FlowGraphView.html">FlowGraphView</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_OnDisable_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.OnDisable*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_OnDisable" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.OnDisable">OnDisable()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnDisable()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Ceres.Editor.Graph.CeresGraphEditorWindow&lt;IFlowGraphContainer, Ceres.Editor.Graph.Flow.FlowGraphEditorWindow&gt;.OnDisable()</span></div>
 
 
   <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_OnInitialize_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.OnInitialize*"></a>
@@ -234,14 +352,146 @@
   <div><span class="xref">Ceres.Editor.Graph.CeresGraphEditorWindow&lt;IFlowGraphContainer, Ceres.Editor.Graph.Flow.FlowGraphEditorWindow&gt;.OnReloadGraphView()</span></div>
 
 
-  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_SaveGraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.SaveGraph*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_SaveGraph" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.SaveGraph">SaveGraph()</h4>
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_OpenSubgraphView_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.OpenSubgraphView*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_OpenSubgraphView_System_String_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.OpenSubgraphView(System.String)">OpenSubgraphView(string)</h4>
+  <div class="markdown level1 summary"><p>Open subGraph view by name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OpenSubgraphView(string subGraphName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">subGraphName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_RemoveSubgraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.RemoveSubgraph*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_RemoveSubgraph_System_String_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.RemoveSubgraph(System.String)">RemoveSubgraph(string)</h4>
+  <div class="markdown level1 summary"><p>Remove subGraph and update view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveSubgraph(string guid)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_RenameSubgraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.RenameSubgraph*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_RenameSubgraph_System_String_System_String_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.RenameSubgraph(System.String,System.String)">RenameSubgraph(string, string)</h4>
+  <div class="markdown level1 summary"><p>Rename subGraph and update view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RenameSubgraph(string guid, string newName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">newName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionType_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionType*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionType_Ceres_Editor_Graph_Flow_CustomFunction_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionType(Ceres.Editor.Graph.Flow.CustomFunction)">ResolveFunctionType(CustomFunction)</h4>
+  <div class="markdown level1 summary"><p>Resolve custom function parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public (Type, Type[]) ResolveFunctionType(CustomFunction customFunction)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunction.html">CustomFunction</a></td>
+        <td><span class="parametername">customFunction</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(<span class="xref">System.Type</span>, <span class="xref">System.Type</span>[])</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_SaveGraphData_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.SaveGraphData*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_SaveGraphData" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.SaveGraphData">SaveGraphData()</h4>
   <div class="markdown level1 summary"><p>Save current editing flow graph</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SaveGraph()</code></pre>
+    <pre><code class="lang-csharp hljs">public void SaveGraphData()</code></pre>
   </div>
   <h3 id="implements">Implements</h3>
   <div>

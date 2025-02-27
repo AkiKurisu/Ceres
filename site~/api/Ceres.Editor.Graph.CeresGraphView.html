@@ -264,7 +264,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CeresNodeSearchWindow SearchWindow { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected CeresNodeSearchWindow SearchWindow { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -583,32 +583,15 @@
   </table>
 
 
-  <a id="Ceres_Editor_Graph_CeresGraphView_DeserializeGraph_" data-uid="Ceres.Editor.Graph.CeresGraphView.DeserializeGraph*"></a>
-  <h4 id="Ceres_Editor_Graph_CeresGraphView_DeserializeGraph_Ceres_Graph_ICeresGraphContainer_" data-uid="Ceres.Editor.Graph.CeresGraphView.DeserializeGraph(Ceres.Graph.ICeresGraphContainer)">DeserializeGraph(ICeresGraphContainer)</h4>
-  <div class="markdown level1 summary"><p>Deserialize graph from container</p>
+  <a id="Ceres_Editor_Graph_CeresGraphView_ClearDirty_" data-uid="Ceres.Editor.Graph.CeresGraphView.ClearDirty*"></a>
+  <h4 id="Ceres_Editor_Graph_CeresGraphView_ClearDirty" data-uid="Ceres.Editor.Graph.CeresGraphView.ClearDirty">ClearDirty()</h4>
+  <div class="markdown level1 summary"><p>Clear graph view's dirty flag.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void DeserializeGraph(ICeresGraphContainer container)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ClearDirty()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Graph.ICeresGraphContainer.html">ICeresGraphContainer</a></td>
-        <td><span class="parametername">container</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 
 
   <a id="Ceres_Editor_Graph_CeresGraphView_FindNodeView_" data-uid="Ceres.Editor.Graph.CeresGraphView.FindNodeView*"></a>
@@ -802,6 +785,75 @@
   </table>
 
 
+  <a id="Ceres_Editor_Graph_CeresGraphView_GetOrLoadVisualTreeAsset_" data-uid="Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset*"></a>
+  <h4 id="Ceres_Editor_Graph_CeresGraphView_GetOrLoadVisualTreeAsset_System_String_" data-uid="Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)">GetOrLoadVisualTreeAsset(string)</h4>
+  <div class="markdown level1 summary"><p>Get or load custom <see cref="!:VisualTreeAsset"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static VisualTreeAsset GetOrLoadVisualTreeAsset(string resourcePath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">resourcePath</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VisualTreeAsset</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_CeresGraphView_IsDirty_" data-uid="Ceres.Editor.Graph.CeresGraphView.IsDirty*"></a>
+  <h4 id="Ceres_Editor_Graph_CeresGraphView_IsDirty" data-uid="Ceres.Editor.Graph.CeresGraphView.IsDirty">IsDirty()</h4>
+  <div class="markdown level1 summary"><p>Whether graph view is dirty</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsDirty()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Editor_Graph_CeresGraphView_OnCopySerializedGraph_" data-uid="Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph*"></a>
   <h4 id="Ceres_Editor_Graph_CeresGraphView_OnCopySerializedGraph_System_Collections_Generic_IEnumerable_GraphElement__" data-uid="Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{GraphElement})">OnCopySerializedGraph(IEnumerable&lt;GraphElement&gt;)</h4>
   <div class="markdown level1 summary"></div>
@@ -918,6 +970,48 @@
       <tr>
         <td><span class="xref">Vector3</span></td>
         <td><span class="parametername">mousePosition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_CeresGraphView_OnGraphViewChanged_" data-uid="Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged*"></a>
+  <h4 id="Ceres_Editor_Graph_CeresGraphView_OnGraphViewChanged_GraphViewChange_" data-uid="Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(GraphViewChange)">OnGraphViewChanged(GraphViewChange)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GraphViewChange</span></td>
+        <td><span class="parametername">graphViewChange</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GraphViewChange</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1044,47 +1138,15 @@
   </table>
 
 
-  <a id="Ceres_Editor_Graph_CeresGraphView_SerializeGraph_" data-uid="Ceres.Editor.Graph.CeresGraphView.SerializeGraph*"></a>
-  <h4 id="Ceres_Editor_Graph_CeresGraphView_SerializeGraph_Ceres_Graph_ICeresGraphContainer_" data-uid="Ceres.Editor.Graph.CeresGraphView.SerializeGraph(Ceres.Graph.ICeresGraphContainer)">SerializeGraph(ICeresGraphContainer)</h4>
-  <div class="markdown level1 summary"><p>Serialize graph to container</p>
+  <a id="Ceres_Editor_Graph_CeresGraphView_SetDirty_" data-uid="Ceres.Editor.Graph.CeresGraphView.SetDirty*"></a>
+  <h4 id="Ceres_Editor_Graph_CeresGraphView_SetDirty" data-uid="Ceres.Editor.Graph.CeresGraphView.SetDirty">SetDirty()</h4>
+  <div class="markdown level1 summary"><p>Marks graph view as dirty</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool SerializeGraph(ICeresGraphContainer container)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetDirty()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Graph.ICeresGraphContainer.html">ICeresGraphContainer</a></td>
-        <td><span class="parametername">container</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">bool</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Ceres.Graph.IVariableSource.html">IVariableSource</a>

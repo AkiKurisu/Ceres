@@ -6,6 +6,9 @@ using UnityEngine.Assertions;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Utilities
 {
+    /// <summary>
+    /// Execute function in flow
+    /// </summary>
     [Serializable]
     public abstract class FlowNode_ExecuteFunction: FlowNode
     {

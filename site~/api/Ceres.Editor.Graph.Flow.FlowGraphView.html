@@ -125,6 +125,9 @@
       <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_OnDragDropObjectPerform_UObject_Vector3_">CeresGraphView.OnDragDropObjectPerform(UObject, Vector3)</a>
     </div>
     <div>
+      <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_OnGraphViewChanged_GraphViewChange_">CeresGraphView.OnGraphViewChanged(GraphViewChange)</a>
+    </div>
+    <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_AddBlackboard_Ceres_Editor_Graph_CeresBlackboard_">CeresGraphView.AddBlackboard(CeresBlackboard)</a>
     </div>
     <div>
@@ -141,6 +144,9 @@
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_GetOrLoadStyleSheet_System_String_">CeresGraphView.GetOrLoadStyleSheet(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_GetOrLoadVisualTreeAsset_System_String_">CeresGraphView.GetOrLoadVisualTreeAsset(string)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_AddNodeView_Ceres_Editor_Graph_ICeresNodeView_">CeresGraphView.AddNodeView(ICeresNodeView)</a>
@@ -165,6 +171,15 @@
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_OpenSearch_Vector2_Ceres_Editor_Graph_CeresPortView_">CeresGraphView.OpenSearch(Vector2, CeresPortView)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_SetDirty">CeresGraphView.SetDirty()</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_ClearDirty">CeresGraphView.ClearDirty()</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_IsDirty">CeresGraphView.IsDirty()</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a>.<a class="xref" href="Ceres.Editor.Graph.html">Graph</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.html">Flow</a></h6>
@@ -208,7 +223,8 @@
 
   <a id="Ceres_Editor_Graph_Flow_FlowGraphView_DebugState_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.DebugState*"></a>
   <h4 id="Ceres_Editor_Graph_Flow_FlowGraphView_DebugState" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.DebugState">DebugState</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Editor debug state</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -225,6 +241,58 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Ceres.Editor.Graph.Flow.FlowGraphDebugState.html">FlowGraphDebugState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphView_FlowGraphEditorWindow_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.FlowGraphEditorWindow*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphView_FlowGraphEditorWindow" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.FlowGraphEditorWindow">FlowGraphEditorWindow</h4>
+  <div class="markdown level1 summary"><p>Bound editor window</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FlowGraphEditorWindow FlowGraphEditorWindow { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.html">FlowGraphEditorWindow</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphView_GraphName_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.GraphName*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphView_GraphName" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.GraphName">GraphName</h4>
+  <div class="markdown level1 summary"><p>Bound graph verified name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GraphName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -303,12 +371,12 @@
 
 
   <a id="Ceres_Editor_Graph_Flow_FlowGraphView_DeserializeGraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.DeserializeGraph*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphView_DeserializeGraph_Ceres_Graph_ICeresGraphContainer_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.DeserializeGraph(Ceres.Graph.ICeresGraphContainer)">DeserializeGraph(ICeresGraphContainer)</h4>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphView_DeserializeGraph_Ceres_Editor_Graph_Flow_FlowGraphEditorObject_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.DeserializeGraph(Ceres.Editor.Graph.Flow.FlowGraphEditorObject)">DeserializeGraph(FlowGraphEditorObject)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void DeserializeGraph(ICeresGraphContainer container)</code></pre>
+    <pre><code class="lang-csharp hljs">public void DeserializeGraph(FlowGraphEditorObject editorObject)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -321,14 +389,44 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Graph.ICeresGraphContainer.html">ICeresGraphContainer</a></td>
-        <td><span class="parametername">container</span></td>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.FlowGraphEditorObject.html">FlowGraphEditorObject</a></td>
+        <td><span class="parametername">editorObject</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_DeserializeGraph_Ceres_Graph_ICeresGraphContainer_">CeresGraphView.DeserializeGraph(ICeresGraphContainer)</a></div>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphView_DeserializeSubGraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.DeserializeSubGraph*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphView_DeserializeSubGraph_Ceres_Editor_Graph_Flow_FlowGraphEditorObject_System_String_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.DeserializeSubGraph(Ceres.Editor.Graph.Flow.FlowGraphEditorObject,System.String)">DeserializeSubGraph(FlowGraphEditorObject, string)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeserializeSubGraph(FlowGraphEditorObject editorObject, string slotName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.FlowGraphEditorObject.html">FlowGraphEditorObject</a></td>
+        <td><span class="parametername">editorObject</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">slotName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <a id="Ceres_Editor_Graph_Flow_FlowGraphView_Dispose_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.Dispose*"></a>
@@ -516,12 +614,13 @@
 
 
   <a id="Ceres_Editor_Graph_Flow_FlowGraphView_SerializeGraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.SerializeGraph*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphView_SerializeGraph_Ceres_Graph_ICeresGraphContainer_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.SerializeGraph(Ceres.Graph.ICeresGraphContainer)">SerializeGraph(ICeresGraphContainer)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphView_SerializeGraph_Ceres_Editor_Graph_Flow_FlowGraphEditorObject_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.SerializeGraph(Ceres.Editor.Graph.Flow.FlowGraphEditorObject)">SerializeGraph(FlowGraphEditorObject)</h4>
+  <div class="markdown level1 summary"><p>Serialize flow graph to editor data container</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool SerializeGraph(ICeresGraphContainer container)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool SerializeGraph(FlowGraphEditorObject editorObject)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -534,9 +633,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Graph.ICeresGraphContainer.html">ICeresGraphContainer</a></td>
-        <td><span class="parametername">container</span></td>
-        <td></td>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.FlowGraphEditorObject.html">FlowGraphEditorObject</a></td>
+        <td><span class="parametername">editorObject</span></td>
+        <td><p>Serialization target</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -551,12 +651,11 @@
     <tbody>
       <tr>
         <td><span class="xref">bool</span></td>
-        <td></td>
+        <td><p>Whether serialization is succeeded</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_SerializeGraph_Ceres_Graph_ICeresGraphContainer_">CeresGraphView.SerializeGraph(ICeresGraphContainer)</a></div>
 
 
   <a id="Ceres_Editor_Graph_Flow_FlowGraphView_SetDebugEnabled_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphView.SetDebugEnabled*"></a>

@@ -6,7 +6,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
 {
     // ReSharper disable once InconsistentNaming
     /// <summary>
-    /// Node for executing custom function implemented in flow graph
+    /// Execute custom function implemented in flow graph
     /// </summary>
     [Serializable]
     [CeresMetadata("style = CustomFunctionNode")]

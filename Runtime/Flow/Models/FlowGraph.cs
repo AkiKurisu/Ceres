@@ -53,7 +53,7 @@ namespace Ceres.Graph.Flow
     [Serializable]
     public class FlowGraph : CeresGraph
     {
-        private sealed class FlowGraphEventHandler: CallbackEventHandler, IDisposable
+        internal sealed class EventHandler: CallbackEventHandler, IDisposable
         {
             public override IEventCoordinator Coordinator => EventSystem.Instance;
 
@@ -61,7 +61,7 @@ namespace Ceres.Graph.Flow
 
             private UObject _contextObject;
 
-            public FlowGraphEventHandler(FlowGraph flowGraph, UObject contextObject)
+            public EventHandler(FlowGraph flowGraph, UObject contextObject)
             {
                 _flowGraph = flowGraph;
                 _contextObject = contextObject;
@@ -76,11 +76,16 @@ namespace Ceres.Graph.Flow
             protected override void ExecuteDefaultAction(EventBase evt)
             {
                 base.ExecuteDefaultAction(evt);
+                ExecuteCustomEvent(evt);
+            }
+
+            internal void ExecuteCustomEvent(EventBase eventBase)
+            {
                 if (!_contextObject) return;
                 /* Get event name if it has generated executable event */
-                var eventName = CustomExecutionEvent.GetEventName(evt.EventTypeId);
+                var eventName = CustomExecutionEvent.GetEventName(eventBase.EventTypeId);
                 if (string.IsNullOrEmpty(eventName)) return;
-                _flowGraph.TryExecuteEvent(_contextObject, eventName, evt);
+                _flowGraph.TryExecuteEvent(_contextObject, eventName, eventBase);
             }
 
             public void Dispose()
@@ -99,7 +104,7 @@ namespace Ceres.Graph.Flow
 
         private List<ExecutionContext> _executionList;
 
-        private FlowGraphEventHandler _eventHandler;
+        private EventHandler _eventHandler;
 
         public FlowGraph(FlowGraphSerializedData flowGraphData) : base(flowGraphData)
         {
@@ -125,7 +130,7 @@ namespace Ceres.Graph.Flow
         /// <param name="contextObject"></param>
         internal CallbackEventHandler GetOrCreateEventHandler(UObject contextObject)
         {
-            _eventHandler ??= new FlowGraphEventHandler(this, contextObject);
+            _eventHandler ??= new EventHandler(this, contextObject);
             return _eventHandler;
         }
 
@@ -565,6 +570,23 @@ namespace Ceres.Graph.Flow
             /* Check custom event registered */
             if (!CustomExecutionEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
             return runtime.GetEventHandler().AsObservable<TEventType>().SubscribeSafe(implementation);
+        }
+
+        /// <summary>
+        /// Subscribe an execution of <see cref="EventBase{TEventType}"/>> as callback
+        /// </summary>
+        /// <param name="eventHandler"></param>
+        /// <param name="runtime"></param>
+        /// <typeparam name="TEventType"></typeparam>
+        /// <returns></returns>
+        [StackTraceFrame]
+        public static IDisposable SubscribeExecution<TEventType>(this CallbackEventHandler eventHandler, IFlowGraphRuntime runtime)
+            where TEventType : EventBase<TEventType>, new()
+        {
+            /* Check custom event registered */
+            if (!CustomExecutionEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
+            return eventHandler.AsObservable<TEventType>()
+                .SubscribeSafe(((FlowGraph.EventHandler)runtime.GetEventHandler()).ExecuteCustomEvent);
         }
     }
 }

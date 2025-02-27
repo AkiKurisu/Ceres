@@ -3,6 +3,9 @@ using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow.Utilities
 {
+    /// <summary>
+    /// Branch will route the execution flow depending on the value of the condition input.
+    /// </summary>
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Branch")]

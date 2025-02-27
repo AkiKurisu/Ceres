@@ -213,6 +213,69 @@ when <a class="xref" href="Ceres.Graph.Flow.IFlowGraphRuntime.html#Ceres_Graph_F
 </div>
 
 
+  <a id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_OverrideEventImplementation_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_OverrideEventImplementation__1_Ceres_Graph_Flow_IFlowGraphRuntime_EventCallback___0__" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Graph.Flow.IFlowGraphRuntime,EventCallback{``0})">OverrideEventImplementation&lt;TEventType&gt;(IFlowGraphRuntime, EventCallback&lt;TEventType&gt;)</h4>
+  <div class="markdown level1 summary"><p>Override graph implementation of <see cref="!:EventBase&lt;TEventType>"></see>&gt;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IDisposable OverrideEventImplementation&lt;TEventType&gt;(this IFlowGraphRuntime runtime, EventCallback&lt;TEventType&gt; implementation) where TEventType : EventBase&lt;TEventType&gt;, new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.Flow.IFlowGraphRuntime.html">IFlowGraphRuntime</a></td>
+        <td><span class="parametername">runtime</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">EventCallback&lt;&gt;</span>&lt;TEventType&gt;</td>
+        <td><span class="parametername">implementation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IDisposable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEventType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_ProcessEvent_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*"></a>
   <h4 id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_ProcessEvent_Ceres_Graph_Flow_IFlowGraphRuntime_System_String_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Graph.Flow.IFlowGraphRuntime,System.String)">ProcessEvent(IFlowGraphRuntime, string)</h4>
   <div class="markdown level1 summary"><p>Invoke flow graph event</p>
@@ -768,6 +831,69 @@ Consider using an overload method with fewer parameters.</p>
       <tr>
         <td><span class="xref">EventBase</span></td>
         <td><span class="parametername">event</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_SubscribeExecution_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphRuntimeExtensions_SubscribeExecution__1_CallbackEventHandler_Ceres_Graph_Flow_IFlowGraphRuntime_" data-uid="Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution``1(CallbackEventHandler,Ceres.Graph.Flow.IFlowGraphRuntime)">SubscribeExecution&lt;TEventType&gt;(CallbackEventHandler, IFlowGraphRuntime)</h4>
+  <div class="markdown level1 summary"><p>Subscribe an execution of <see cref="!:EventBase&lt;TEventType>"></see>&gt; as callback</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IDisposable SubscribeExecution&lt;TEventType&gt;(this CallbackEventHandler eventHandler, IFlowGraphRuntime runtime) where TEventType : EventBase&lt;TEventType&gt;, new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CallbackEventHandler</span></td>
+        <td><span class="parametername">eventHandler</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.Flow.IFlowGraphRuntime.html">IFlowGraphRuntime</a></td>
+        <td><span class="parametername">runtime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IDisposable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEventType</span></td>
         <td></td>
       </tr>
     </tbody>

@@ -9,6 +9,10 @@ namespace Ceres.Graph.Flow.Utilities
     {
     }
     
+    /// <summary>
+    /// Make an array of type <see cref="T"/>
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [Serializable]
     [CeresGroup("Utilities/Array")]
     [CeresLabel("Make {0} Array")]

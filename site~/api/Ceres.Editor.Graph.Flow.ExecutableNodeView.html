@@ -90,11 +90,14 @@
     <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html">CeresNodeView</a></div>
     <div class="level2"><span class="xref">ExecutableNodeView</span></div>
-      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableEventNodeView.html">ExecutableEventNodeView</a></div>
+      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.CustomFunctionInputNodeView.html">CustomFunctionInputNodeView</a></div>
+      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.CustomFunctionOutputNodeView.html">CustomFunctionOutputNodeView</a></div>
+      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.html">ExecuteCustomFunctionNodeView</a></div>
       <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html">ExecutablePortArrayNodeView</a></div>
-      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecuteFunctionNodeView.html">ExecuteFunctionNodeView</a></div>
-      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.FlowNode_ExecuteEventNodeView.html">FlowNode_ExecuteEventNodeView</a></div>
-      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.PropertyNodeView.html">PropertyNodeView</a></div>
+      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutionEventBaseNodeView.html">ExecutionEventBaseNodeView</a></div>
+      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.Properties.PropertyNodeView.html">PropertyNodeView</a></div>
+      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.Utilities.ExecuteFunctionNodeView.html">ExecuteFunctionNodeView</a></div>
+      <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.Utilities.FlowNode_ExecuteEventNodeView.html">FlowNode_ExecuteEventNodeView</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -303,7 +306,7 @@ public class ExecutableNodeView : CeresNodeView, ICeresNodeView</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ExecutableNodeFlags Flags { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ExecutableNodeViewFlags Flags { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -315,7 +318,7 @@ public class ExecutableNodeView : CeresNodeView, ICeresNodeView</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeFlags.html">ExecutableNodeFlags</a></td>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeViewFlags.html">ExecutableNodeViewFlags</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -420,6 +423,34 @@ public class ExecutableNodeView : CeresNodeView, ICeresNodeView</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void RemoveBreakpoint()</code></pre>
   </div>
+
+
+  <a id="Ceres_Editor_Graph_Flow_ExecutableNodeView_Validate_" data-uid="Ceres.Editor.Graph.Flow.ExecutableNodeView.Validate*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutableNodeView_Validate_Ceres_Editor_FlowGraphValidator_" data-uid="Ceres.Editor.Graph.Flow.ExecutableNodeView.Validate(Ceres.Editor.FlowGraphValidator)">Validate(FlowGraphValidator)</h4>
+  <div class="markdown level1 summary"><p>Validate before compiling</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Validate(FlowGraphValidator validator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Editor.FlowGraphValidator.html">FlowGraphValidator</a></td>
+        <td><span class="parametername">validator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Ceres.Editor.Graph.ICeresNodeView.html">ICeresNodeView</a>

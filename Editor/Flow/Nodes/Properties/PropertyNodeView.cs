@@ -94,25 +94,27 @@ namespace Ceres.Editor.Graph.Flow.Properties
         
         public PropertyNode_PropertyValueNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
-            var targetView = FindPortView("target");
-            /* Validate self target in editor first */
-            if (!GraphView.GetContainerType().IsAssignableTo(targetView.Binding.DisplayType.Value))
-            {
-                return;
-            }
-            targetView.SetTooltip(" [Default is Self]");
+
         }
 
         public void SetIsSelfTarget(bool isSelfTarget)
         {
+            var targetView = FindPortView("target");
+            /* Validate self target in editor first */
+            if (isSelfTarget && !GraphView.GetContainerType().IsAssignableTo(targetView.Binding.DisplayType.Value))
+            {
+                isSelfTarget = false;
+            }
             IsSelfTarget = isSelfTarget;
             if (isSelfTarget)
             {
-                FindPortView("target").HidePort();
+                targetView.Flags &= ~CeresPortViewFlags.ValidateConnection;
+                targetView.HidePort();
             }
             else
             {
-                FindPortView("target").ShowPort();
+                targetView.Flags |= CeresPortViewFlags.ValidateConnection;
+                targetView.ShowPort();
             }
         }
         

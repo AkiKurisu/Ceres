@@ -8,7 +8,7 @@ namespace Ceres.Graph.Flow.Utilities
     [CeresLabel("For Each Loop")]
     public sealed class FlowNode_ForEachLoop: ForwardNode
     {
-        [InputPort, HideInGraphEditor]
+        [InputPort(true), HideInGraphEditor]
         public CeresPort<Array> array;
         
         [OutputPort(false)]

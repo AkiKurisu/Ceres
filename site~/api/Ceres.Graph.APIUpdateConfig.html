@@ -95,19 +95,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class APIUpdateConfig : ScriptableObject</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h3 id="properties">Properties
 </h3>
 
 
-  <a id="Ceres_Graph_APIUpdateConfig_Get_" data-uid="Ceres.Graph.APIUpdateConfig.Get*"></a>
-  <h4 id="Ceres_Graph_APIUpdateConfig_Get" data-uid="Ceres.Graph.APIUpdateConfig.Get">Get()</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Ceres_Graph_APIUpdateConfig_Current_" data-uid="Ceres.Graph.APIUpdateConfig.Current*"></a>
+  <h4 id="Ceres_Graph_APIUpdateConfig_Current" data-uid="Ceres.Graph.APIUpdateConfig.Current">Current</h4>
+  <div class="markdown level1 summary"><p>Current active config, can be null if no valid config</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static APIUpdateConfig Get()</code></pre>
+    <pre><code class="lang-csharp hljs">public static APIUpdateConfig Current { get; }</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -122,15 +123,84 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+</h3>
 
 
-  <a id="Ceres_Graph_APIUpdateConfig_RedirectNode_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectNode*"></a>
-  <h4 id="Ceres_Graph_APIUpdateConfig_RedirectNode_Ceres_ManagedReferenceType_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectNode(Ceres.ManagedReferenceType)">RedirectNode(ManagedReferenceType)</h4>
+  <a id="Ceres_Graph_APIUpdateConfig_AutoScope_" data-uid="Ceres.Graph.APIUpdateConfig.AutoScope*"></a>
+  <h4 id="Ceres_Graph_APIUpdateConfig_AutoScope" data-uid="Ceres.Graph.APIUpdateConfig.AutoScope">AutoScope()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Type RedirectNode(ManagedReferenceType nodeType)</code></pre>
+    <pre><code class="lang-csharp hljs">public static APIUpdateConfig.ConfigAutoScope AutoScope()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.APIUpdateConfig.html">APIUpdateConfig</a>.<a class="xref" href="Ceres.Graph.APIUpdateConfig.ConfigAutoScope.html">ConfigAutoScope</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_APIUpdateConfig_RedirectManagedReference_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectManagedReference*"></a>
+  <h4 id="Ceres_Graph_APIUpdateConfig_RedirectManagedReference_Ceres_ManagedReferenceType_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectManagedReference(Ceres.ManagedReferenceType)">RedirectManagedReference(ManagedReferenceType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type RedirectManagedReference(ManagedReferenceType managedReferenceType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.ManagedReferenceType.html">ManagedReferenceType</a></td>
+        <td><span class="parametername">managedReferenceType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_APIUpdateConfig_RedirectNode_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectNode*"></a>
+  <h4 id="Ceres_Graph_APIUpdateConfig_RedirectNode_Ceres_ManagedReferenceType__" data-uid="Ceres.Graph.APIUpdateConfig.RedirectNode(Ceres.ManagedReferenceType@)">RedirectNode(in ManagedReferenceType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type RedirectNode(in ManagedReferenceType nodeType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -166,13 +236,55 @@
   </table>
 
 
-  <a id="Ceres_Graph_APIUpdateConfig_RedirectVariable_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectVariable*"></a>
-  <h4 id="Ceres_Graph_APIUpdateConfig_RedirectVariable_Ceres_ManagedReferenceType_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectVariable(Ceres.ManagedReferenceType)">RedirectVariable(ManagedReferenceType)</h4>
+  <a id="Ceres_Graph_APIUpdateConfig_RedirectSerializedType_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectSerializedType*"></a>
+  <h4 id="Ceres_Graph_APIUpdateConfig_RedirectSerializedType_System_String_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectSerializedType(System.String)">RedirectSerializedType(string)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Type RedirectVariable(ManagedReferenceType variableType)</code></pre>
+    <pre><code class="lang-csharp hljs">public Type RedirectSerializedType(string serializedType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">serializedType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_APIUpdateConfig_RedirectVariable_" data-uid="Ceres.Graph.APIUpdateConfig.RedirectVariable*"></a>
+  <h4 id="Ceres_Graph_APIUpdateConfig_RedirectVariable_Ceres_ManagedReferenceType__" data-uid="Ceres.Graph.APIUpdateConfig.RedirectVariable(Ceres.ManagedReferenceType@)">RedirectVariable(in ManagedReferenceType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type RedirectVariable(in ManagedReferenceType variableType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

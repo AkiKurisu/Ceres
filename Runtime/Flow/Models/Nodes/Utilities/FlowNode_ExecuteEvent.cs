@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
-    /// Execute executable event, only support non-generic event
+    /// Execute an <see cref="ExecutionEvent"/>
     /// </summary>
     [Serializable]
     [CeresGroup("Hidden")]
