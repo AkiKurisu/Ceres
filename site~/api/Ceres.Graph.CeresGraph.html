@@ -217,6 +217,30 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
   </table>
 
 
+  <h4 id="Ceres_Graph_CeresGraph_SubGraphSlots" data-uid="Ceres.Graph.CeresGraph.SubGraphSlots">SubGraphSlots</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CeresSubGraphSlot[] SubGraphSlots</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.CeresSubGraphSlot.html">CeresSubGraphSlot</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <h4 id="Ceres_Graph_CeresGraph_variables" data-uid="Ceres.Graph.CeresGraph.variables">variables</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -271,6 +295,64 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
 </h3>
 
 
+  <a id="Ceres_Graph_CeresGraph_AddSubGraphSlot_" data-uid="Ceres.Graph.CeresGraph.AddSubGraphSlot*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_AddSubGraphSlot__1_Ceres_Graph_CeresSubGraphSlot_" data-uid="Ceres.Graph.CeresGraph.AddSubGraphSlot``1(Ceres.Graph.CeresSubGraphSlot)">AddSubGraphSlot&lt;TGraph&gt;(CeresSubGraphSlot)</h4>
+  <div class="markdown level1 summary"><p>Try to add a subGraph slot with specific type validation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool AddSubGraphSlot&lt;TGraph&gt;(CeresSubGraphSlot slot) where TGraph : CeresGraph</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.CeresSubGraphSlot.html">CeresSubGraphSlot</a></td>
+        <td><span class="parametername">slot</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TGraph</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Graph_CeresGraph_CollectDependencyPath_" data-uid="Ceres.Graph.CeresGraph.CollectDependencyPath*"></a>
   <h4 id="Ceres_Graph_CeresGraph_CollectDependencyPath_Ceres_Graph_CeresGraph_" data-uid="Ceres.Graph.CeresGraph.CollectDependencyPath(Ceres.Graph.CeresGraph)">CollectDependencyPath(CeresGraph)</h4>
   <div class="markdown level1 summary"></div>
@@ -300,7 +382,7 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
 
   <a id="Ceres_Graph_CeresGraph_Compile_" data-uid="Ceres.Graph.CeresGraph.Compile*"></a>
   <h4 id="Ceres_Graph_CeresGraph_Compile" data-uid="Ceres.Graph.CeresGraph.Compile">Compile()</h4>
-  <div class="markdown level1 summary"><p>Compile graph at runtime before execution</p>
+  <div class="markdown level1 summary"><p>Compile graph just in time</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -321,7 +403,8 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
 
   <a id="Ceres_Graph_CeresGraph_FindNode_" data-uid="Ceres.Graph.CeresGraph.FindNode*"></a>
   <h4 id="Ceres_Graph_CeresGraph_FindNode_System_String_" data-uid="Ceres.Graph.CeresGraph.FindNode(System.String)">FindNode(string)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Find node by guid</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -355,6 +438,125 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Ceres.Graph.CeresNode.html">CeresNode</a></td>
+        <td><p>Null if not exist</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_CeresGraph_FindNode_" data-uid="Ceres.Graph.CeresGraph.FindNode*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_FindNode__1_System_String_" data-uid="Ceres.Graph.CeresGraph.FindNode``1(System.String)">FindNode&lt;TNode&gt;(string)</h4>
+  <div class="markdown level1 summary"><p>Find node with specific type by guid</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TNode FindNode&lt;TNode&gt;(string guid) where TNode : CeresNode</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TNode</span></td>
+        <td><p>Null if not exist</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TNode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_CeresGraph_FindSubGraph_" data-uid="Ceres.Graph.CeresGraph.FindSubGraph*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_FindSubGraph__1_System_String_" data-uid="Ceres.Graph.CeresGraph.FindSubGraph``1(System.String)">FindSubGraph&lt;TGraph&gt;(string)</h4>
+  <div class="markdown level1 summary"><p>Find subGraph with specific type by name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TGraph FindSubGraph&lt;TGraph&gt;(string name) where TGraph : CeresGraph</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TGraph</span></td>
+        <td><p>Null if not exist</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TGraph</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -407,6 +609,48 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">int</span>[][]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_CeresGraph_GetFirstNodeOfType_" data-uid="Ceres.Graph.CeresGraph.GetFirstNodeOfType*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_GetFirstNodeOfType__1" data-uid="Ceres.Graph.CeresGraph.GetFirstNodeOfType``1">GetFirstNodeOfType&lt;TNode&gt;()</h4>
+  <div class="markdown level1 summary"><p>Get first node with specific type</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TNode GetFirstNodeOfType&lt;TNode&gt;() where TNode : CeresNode</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TNode</span></td>
+        <td><p>Null if not exist</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TNode</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -549,6 +793,32 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
       <tr>
         <td><a class="xref" href="Ceres.Graph.CeresGraph.html">CeresGraph</a></td>
         <td><span class="parametername">graph</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_CeresGraph_IsUberGraph_" data-uid="Ceres.Graph.CeresGraph.IsUberGraph*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_IsUberGraph" data-uid="Ceres.Graph.CeresGraph.IsUberGraph">IsUberGraph()</h4>
+  <div class="markdown level1 summary"><p>Is graph on top level which means it can have subGraphs</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsUberGraph()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
         <td></td>
       </tr>
     </tbody>

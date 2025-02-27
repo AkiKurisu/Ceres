@@ -89,15 +89,13 @@
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><a class="xref" href="Ceres.Graph.CeresGraphData.html">CeresGraphData</a></div>
-    <div class="level2"><span class="xref">FlowGraphData</span></div>
+    <div class="level2"><a class="xref" href="Ceres.Graph.Flow.FlowGraphSerializedData.html">FlowGraphSerializedData</a></div>
+    <div class="level3"><span class="xref">FlowGraphData</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_variables">CeresGraphData.variables</a>
-    </div>
-    <div>
-      <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_nodes">CeresGraphData.nodes</a>
+      <a class="xref" href="Ceres.Graph.Flow.FlowGraphSerializedData.html#Ceres_Graph_Flow_FlowGraphSerializedData_GetFallbackNode_Ceres_Graph_CeresNodeData_System_Int32_">FlowGraphSerializedData.GetFallbackNode(CeresNodeData, int)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_variableData">CeresGraphData.variableData</a>
@@ -109,16 +107,22 @@
       <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_nodeGroups">CeresGraphData.nodeGroups</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreNode_System_Int32_">CeresGraphData.RestoreNode(int)</a>
+      <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreNode_System_Int32_Ceres_Graph_CeresNode___">CeresGraphData.RestoreNode(int, CeresNode[])</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreVariable_System_Int32_">CeresGraphData.RestoreVariable(int)</a>
+      <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreVariable_System_Int32_Ceres_Graph_SharedVariable___">CeresGraphData.RestoreVariable(int, SharedVariable[])</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectNodeType_Ceres_ManagedReferenceType_">CeresGraphData.RedirectNodeType(ManagedReferenceType)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectVariableType_Ceres_ManagedReferenceType_">CeresGraphData.RedirectVariableType(ManagedReferenceType)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectSerializedType_System_String_">CeresGraphData.RedirectSerializedType(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_ResolveSerializedType_System_String_">CeresGraphData.ResolveSerializedType(string)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_Clone">CeresGraphData.Clone()</a>
@@ -159,18 +163,18 @@
   <h5 id="Ceres_Graph_Flow_FlowGraphData_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public class FlowGraphData : CeresGraphData</code></pre>
+public class FlowGraphData : FlowGraphSerializedData</code></pre>
   </div>
   <h3 id="fields">Fields
 </h3>
 
 
-  <h4 id="Ceres_Graph_Flow_FlowGraphData_nodeDependencyPath" data-uid="Ceres.Graph.Flow.FlowGraphData.nodeDependencyPath">nodeDependencyPath</h4>
+  <h4 id="Ceres_Graph_Flow_FlowGraphData_subGraphData" data-uid="Ceres.Graph.Flow.FlowGraphData.subGraphData">subGraphData</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FlowGraphData.DependencyCache[] nodeDependencyPath</code></pre>
+    <pre><code class="lang-csharp hljs">public FlowSubGraphData[] subGraphData</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -182,7 +186,7 @@ public class FlowGraphData : CeresGraphData</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Graph.Flow.FlowGraphData.DependencyCache.html">DependencyCache</a>[]</td>
+        <td><a class="xref" href="Ceres.Graph.Flow.FlowSubGraphData.html">FlowSubGraphData</a>[]</td>
         <td></td>
       </tr>
     </tbody>
@@ -217,16 +221,28 @@ public class FlowGraphData : CeresGraphData</code></pre>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_BuildGraph_Ceres_Graph_CeresGraph_">CeresGraphData.BuildGraph(CeresGraph)</a></div>
+  <div><a class="xref" href="Ceres.Graph.Flow.FlowGraphSerializedData.html#Ceres_Graph_Flow_FlowGraphSerializedData_BuildGraph_Ceres_Graph_CeresGraph_">FlowGraphSerializedData.BuildGraph(CeresGraph)</a></div>
 
 
-  <a id="Ceres_Graph_Flow_FlowGraphData_GetFallbackNode_" data-uid="Ceres.Graph.Flow.FlowGraphData.GetFallbackNode*"></a>
-  <h4 id="Ceres_Graph_Flow_FlowGraphData_GetFallbackNode_Ceres_Graph_CeresNodeData_System_Int32_" data-uid="Ceres.Graph.Flow.FlowGraphData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)">GetFallbackNode(CeresNodeData, int)</h4>
+  <a id="Ceres_Graph_Flow_FlowGraphData_PreSerialization_" data-uid="Ceres.Graph.Flow.FlowGraphData.PreSerialization*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphData_PreSerialization" data-uid="Ceres.Graph.Flow.FlowGraphData.PreSerialization">PreSerialization()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override CeresNode GetFallbackNode(CeresNodeData fallbackNodeData, int index)</code></pre>
+    <pre><code class="lang-csharp hljs">public override void PreSerialization()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Ceres.Graph.Flow.FlowGraphSerializedData.html#Ceres_Graph_Flow_FlowGraphSerializedData_PreSerialization">FlowGraphSerializedData.PreSerialization()</a></div>
+
+
+  <a id="Ceres_Graph_Flow_FlowGraphData_SetSubGraphData_" data-uid="Ceres.Graph.Flow.FlowGraphData.SetSubGraphData*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphData_SetSubGraphData_Ceres_Graph_Flow_FlowSubGraphSlot_Ceres_Graph_Flow_FlowGraphSerializedData_" data-uid="Ceres.Graph.Flow.FlowGraphData.SetSubGraphData(Ceres.Graph.Flow.FlowSubGraphSlot,Ceres.Graph.Flow.FlowGraphSerializedData)">SetSubGraphData(FlowSubGraphSlot, FlowGraphSerializedData)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSubGraphData(FlowSubGraphSlot slot, FlowGraphSerializedData data)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -239,56 +255,17 @@ public class FlowGraphData : CeresGraphData</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Graph.CeresNodeData.html">CeresNodeData</a></td>
-        <td><span class="parametername">fallbackNodeData</span></td>
+        <td><a class="xref" href="Ceres.Graph.Flow.FlowSubGraphSlot.html">FlowSubGraphSlot</a></td>
+        <td><span class="parametername">slot</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">index</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Graph.CeresNode.html">CeresNode</a></td>
+        <td><a class="xref" href="Ceres.Graph.Flow.FlowGraphSerializedData.html">FlowGraphSerializedData</a></td>
+        <td><span class="parametername">data</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_GetFallbackNode_Ceres_Graph_CeresNodeData_System_Int32_">CeresGraphData.GetFallbackNode(CeresNodeData, int)</a></div>
-
-
-  <a id="Ceres_Graph_Flow_FlowGraphData_OptimizeForSmallerBuild_" data-uid="Ceres.Graph.Flow.FlowGraphData.OptimizeForSmallerBuild*"></a>
-  <h4 id="Ceres_Graph_Flow_FlowGraphData_OptimizeForSmallerBuild" data-uid="Ceres.Graph.Flow.FlowGraphData.OptimizeForSmallerBuild">OptimizeForSmallerBuild()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void OptimizeForSmallerBuild()</code></pre>
-  </div>
-
-
-  <a id="Ceres_Graph_Flow_FlowGraphData_PreSerialization_" data-uid="Ceres.Graph.Flow.FlowGraphData.PreSerialization*"></a>
-  <h4 id="Ceres_Graph_Flow_FlowGraphData_PreSerialization" data-uid="Ceres.Graph.Flow.FlowGraphData.PreSerialization">PreSerialization()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void PreSerialization()</code></pre>
-  </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_PreSerialization">CeresGraphData.PreSerialization()</a></div>
 </article>
           </div>
 

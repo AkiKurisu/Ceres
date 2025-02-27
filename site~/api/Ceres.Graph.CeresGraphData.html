@@ -89,7 +89,7 @@
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><span class="xref">CeresGraphData</span></div>
-      <div class="level2"><a class="xref" href="Ceres.Graph.Flow.FlowGraphData.html">FlowGraphData</a></div>
+      <div class="level2"><a class="xref" href="Ceres.Graph.Flow.FlowGraphSerializedData.html">FlowGraphSerializedData</a></div>
       <div class="level2"><a class="xref" href="Ceres.Graph.LinkedGraphData.html">LinkedGraphData</a></div>
   </div>
   <div class="inheritedMembers">
@@ -175,30 +175,6 @@ public class CeresGraphData</code></pre>
   </table>
 
 
-  <h4 id="Ceres_Graph_CeresGraphData_nodes" data-uid="Ceres.Graph.CeresGraphData.nodes">nodes</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CeresNode[] nodes</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Graph.CeresNode.html">CeresNode</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
   <h4 id="Ceres_Graph_CeresGraphData_variableData" data-uid="Ceres.Graph.CeresGraphData.variableData">variableData</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -217,30 +193,6 @@ public class CeresGraphData</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Ceres.Graph.SharedVariableData.html">SharedVariableData</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <h4 id="Ceres_Graph_CeresGraphData_variables" data-uid="Ceres.Graph.CeresGraphData.variables">variables</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SharedVariable[] variables</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Graph.SharedVariable.html">SharedVariable</a>[]</td>
         <td></td>
       </tr>
     </tbody>
@@ -517,6 +469,49 @@ public class CeresGraphData</code></pre>
   </table>
 
 
+  <a id="Ceres_Graph_CeresGraphData_RedirectSerializedType_" data-uid="Ceres.Graph.CeresGraphData.RedirectSerializedType*"></a>
+  <h4 id="Ceres_Graph_CeresGraphData_RedirectSerializedType_System_String_" data-uid="Ceres.Graph.CeresGraphData.RedirectSerializedType(System.String)">RedirectSerializedType(string)</h4>
+  <div class="markdown level1 summary"><p>Redirect serialized type from <see cref="!:SerializedType"></see>, default using redirectors from <a class="xref" href="Ceres.Graph.APIUpdateConfig.html">APIUpdateConfig</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Type RedirectSerializedType(string serializedType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">serializedType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Graph_CeresGraphData_RedirectVariableType_" data-uid="Ceres.Graph.CeresGraphData.RedirectVariableType*"></a>
   <h4 id="Ceres_Graph_CeresGraphData_RedirectVariableType_Ceres_ManagedReferenceType_" data-uid="Ceres.Graph.CeresGraphData.RedirectVariableType(Ceres.ManagedReferenceType)">RedirectVariableType(ManagedReferenceType)</h4>
   <div class="markdown level1 summary"><p>Redirect variable type from <a class="xref" href="Ceres.ManagedReferenceType.html">ManagedReferenceType</a>, default using redirectors from <a class="xref" href="Ceres.Graph.APIUpdateConfig.html">APIUpdateConfig</a></p>
@@ -560,13 +555,56 @@ public class CeresGraphData</code></pre>
   </table>
 
 
+  <a id="Ceres_Graph_CeresGraphData_ResolveSerializedType_" data-uid="Ceres.Graph.CeresGraphData.ResolveSerializedType*"></a>
+  <h4 id="Ceres_Graph_CeresGraphData_ResolveSerializedType_System_String_" data-uid="Ceres.Graph.CeresGraphData.ResolveSerializedType(System.String)">ResolveSerializedType(string)</h4>
+  <div class="markdown level1 summary"><p>Resolve type from <see cref="!:SerializedType"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Type ResolveSerializedType(string serializedType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">serializedType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Graph_CeresGraphData_RestoreNode_" data-uid="Ceres.Graph.CeresGraphData.RestoreNode*"></a>
-  <h4 id="Ceres_Graph_CeresGraphData_RestoreNode_System_Int32_" data-uid="Ceres.Graph.CeresGraphData.RestoreNode(System.Int32)">RestoreNode(int)</h4>
+  <h4 id="Ceres_Graph_CeresGraphData_RestoreNode_System_Int32_Ceres_Graph_CeresNode___" data-uid="Ceres.Graph.CeresGraphData.RestoreNode(System.Int32,Ceres.Graph.CeresNode[])">RestoreNode(int, CeresNode[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void RestoreNode(int index)</code></pre>
+    <pre><code class="lang-csharp hljs">protected void RestoreNode(int index, CeresNode[] nodes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -583,17 +621,22 @@ public class CeresGraphData</code></pre>
         <td><span class="parametername">index</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.CeresNode.html">CeresNode</a>[]</td>
+        <td><span class="parametername">nodes</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
 
 
   <a id="Ceres_Graph_CeresGraphData_RestoreVariable_" data-uid="Ceres.Graph.CeresGraphData.RestoreVariable*"></a>
-  <h4 id="Ceres_Graph_CeresGraphData_RestoreVariable_System_Int32_" data-uid="Ceres.Graph.CeresGraphData.RestoreVariable(System.Int32)">RestoreVariable(int)</h4>
+  <h4 id="Ceres_Graph_CeresGraphData_RestoreVariable_System_Int32_Ceres_Graph_SharedVariable___" data-uid="Ceres.Graph.CeresGraphData.RestoreVariable(System.Int32,Ceres.Graph.SharedVariable[])">RestoreVariable(int, SharedVariable[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void RestoreVariable(int index)</code></pre>
+    <pre><code class="lang-csharp hljs">protected void RestoreVariable(int index, SharedVariable[] variables)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -608,6 +651,11 @@ public class CeresGraphData</code></pre>
       <tr>
         <td><span class="xref">int</span></td>
         <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.SharedVariable.html">SharedVariable</a>[]</td>
+        <td><span class="parametername">variables</span></td>
         <td></td>
       </tr>
     </tbody>

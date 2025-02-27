@@ -109,31 +109,16 @@
       <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_GetOrAddSection_System_String_">CeresBlackboard.GetOrAddSection(string)</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_CreateBlackboardMenu_GenericMenu_">CeresBlackboard.CreateBlackboardMenu(GenericMenu)</a>
-    </div>
-    <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_CreateBuiltInSharedVariableMenu_GenericMenu_">CeresBlackboard.CreateBuiltInSharedVariableMenu(GenericMenu)</a>
-    </div>
-    <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_EditVariable_System_String_">CeresBlackboard.EditVariable(string)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_AddVariable_Ceres_Graph_SharedVariable_System_Boolean_">CeresBlackboard.AddVariable(SharedVariable, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_AddVariableRow_Ceres_Graph_SharedVariable_BlackboardRow_">CeresBlackboard.AddVariableRow(SharedVariable, BlackboardRow)</a>
-    </div>
-    <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_CanVariableExposed_Ceres_Graph_SharedVariable_">CeresBlackboard.CanVariableExposed(SharedVariable)</a>
-    </div>
-    <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_CreateVariableBlackboardRow_Ceres_Graph_SharedVariable_BlackboardField_VisualElement_">CeresBlackboard.CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)</a>
-    </div>
-    <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_RemoveVariable_Ceres_Graph_SharedVariable_System_Boolean_">CeresBlackboard.RemoveVariable(SharedVariable, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_BuildBlackboardMenu_ContextualMenuPopulateEvent_Ceres_Editor_Graph_CeresBlackboardVariableRow_">CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)</a>
+      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_FindRow_Ceres_Graph_SharedVariable_">CeresBlackboard.FindRow(SharedVariable)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a>.<a class="xref" href="Ceres.Editor.Graph.html">Graph</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.html">Flow</a></h6>
@@ -147,12 +132,12 @@
 
 
   <a id="Ceres_Editor_Graph_Flow_FlowBlackboard__ctor_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_FlowBlackboard__ctor_Ceres_Editor_Graph_CeresGraphView_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor(Ceres.Editor.Graph.CeresGraphView)">FlowBlackboard(CeresGraphView)</h4>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowBlackboard__ctor_Ceres_Editor_Graph_Flow_FlowGraphView_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor(Ceres.Editor.Graph.Flow.FlowGraphView)">FlowBlackboard(FlowGraphView)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FlowBlackboard(CeresGraphView graphView)</code></pre>
+    <pre><code class="lang-csharp hljs">public FlowBlackboard(FlowGraphView graphView)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -165,21 +150,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Editor.Graph.CeresGraphView.html">CeresGraphView</a></td>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.FlowGraphView.html">FlowGraphView</a></td>
         <td><span class="parametername">graphView</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+</h3>
 
 
-  <a id="Ceres_Editor_Graph_Flow_FlowBlackboard__ctor_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_FlowBlackboard__ctor_Ceres_Graph_IVariableSource_GraphView_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor(Ceres.Graph.IVariableSource,GraphView)">FlowBlackboard(IVariableSource, GraphView)</h4>
+  <a id="Ceres_Editor_Graph_Flow_FlowBlackboard_AddVariableRow_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowBlackboard_AddVariableRow_Ceres_Graph_SharedVariable_BlackboardRow_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow(Ceres.Graph.SharedVariable,BlackboardRow)">AddVariableRow(SharedVariable, BlackboardRow)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FlowBlackboard(IVariableSource source, GraphView graphView)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override void AddVariableRow(SharedVariable variable, BlackboardRow blackboardRow)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -192,17 +179,180 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Graph.IVariableSource.html">IVariableSource</a></td>
-        <td><span class="parametername">source</span></td>
+        <td><a class="xref" href="Ceres.Graph.SharedVariable.html">SharedVariable</a></td>
+        <td><span class="parametername">variable</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">GraphView</span></td>
-        <td><span class="parametername">graphView</span></td>
+        <td><span class="xref">BlackboardRow</span></td>
+        <td><span class="parametername">blackboardRow</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_AddVariableRow_Ceres_Graph_SharedVariable_BlackboardRow_">CeresBlackboard.AddVariableRow(SharedVariable, BlackboardRow)</a></div>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowBlackboard_BuildBlackboardMenu_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowBlackboard_BuildBlackboardMenu_ContextualMenuPopulateEvent_Ceres_Editor_Graph_CeresBlackboardVariableRow_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)">BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void BuildBlackboardMenu(ContextualMenuPopulateEvent evt, CeresBlackboardVariableRow variableRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ContextualMenuPopulateEvent</span></td>
+        <td><span class="parametername">evt</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Ceres.Editor.Graph.CeresBlackboardVariableRow.html">CeresBlackboardVariableRow</a></td>
+        <td><span class="parametername">variableRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_BuildBlackboardMenu_ContextualMenuPopulateEvent_Ceres_Editor_Graph_CeresBlackboardVariableRow_">CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)</a></div>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowBlackboard_CanVariableExposed_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowBlackboard_CanVariableExposed_Ceres_Graph_SharedVariable_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed(Ceres.Graph.SharedVariable)">CanVariableExposed(SharedVariable)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool CanVariableExposed(SharedVariable variable)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.SharedVariable.html">SharedVariable</a></td>
+        <td><span class="parametername">variable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_CanVariableExposed_Ceres_Graph_SharedVariable_">CeresBlackboard.CanVariableExposed(SharedVariable)</a></div>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowBlackboard_CreateBlackboardMenu_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowBlackboard_CreateBlackboardMenu_GenericMenu_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu(GenericMenu)">CreateBlackboardMenu(GenericMenu)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void CreateBlackboardMenu(GenericMenu menu)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GenericMenu</span></td>
+        <td><span class="parametername">menu</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_CreateBlackboardMenu_GenericMenu_">CeresBlackboard.CreateBlackboardMenu(GenericMenu)</a></div>
+
+
+  <a id="Ceres_Editor_Graph_Flow_FlowBlackboard_CreateVariableBlackboardRow_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowBlackboard_CreateVariableBlackboardRow_Ceres_Graph_SharedVariable_BlackboardField_VisualElement_" data-uid="Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow(Ceres.Graph.SharedVariable,BlackboardField,VisualElement)">CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override BlackboardRow CreateVariableBlackboardRow(SharedVariable variable, BlackboardField blackboardField, VisualElement valueField)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.SharedVariable.html">SharedVariable</a></td>
+        <td><span class="parametername">variable</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">BlackboardField</span></td>
+        <td><span class="parametername">blackboardField</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">VisualElement</span></td>
+        <td><span class="parametername">valueField</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">BlackboardRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_CreateVariableBlackboardRow_Ceres_Graph_SharedVariable_BlackboardField_VisualElement_">CeresBlackboard.CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Ceres.Graph.IVariableSource.html">IVariableSource</a>
