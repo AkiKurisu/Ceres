@@ -212,7 +212,7 @@ namespace Ceres.Editor.Graph.Flow
 
         protected override void UpdateEventTitle()
         {
-            var label = "Event " + GetEventName()[(nameof(ExecutionEventBase).Length + 1)..];
+            var label = "Event " + GetEventName()[(nameof(ExecutableEvent).Length + 1)..];
             label += $"\n<color=#414141><size=10>Custom Event</size></color>";
             NodeElement.title = label;
         }
