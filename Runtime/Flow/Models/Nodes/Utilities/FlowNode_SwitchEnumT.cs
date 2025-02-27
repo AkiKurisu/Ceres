@@ -8,6 +8,11 @@ namespace Ceres.Graph.Flow.Utilities
     {
     }
 
+    /// <summary>
+    /// Route execution to one of several output ports based on the value of an enum type,
+    /// offering a dynamic branching mechanism in execution flow.
+    /// </summary>
+    /// <typeparam name="TEnum"></typeparam>
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Switch on {0}")]

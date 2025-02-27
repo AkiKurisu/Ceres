@@ -3,6 +3,11 @@ using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 namespace Ceres.Graph.Flow.Utilities
 {
+    /// <summary>
+    /// Casting a value from type <see cref="TFrom"/> to type <see cref="TTo"/>.
+    /// </summary>
+    /// <typeparam name="TFrom"></typeparam>
+    /// <typeparam name="TTo"></typeparam>
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Cast to {0}")]
