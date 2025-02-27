@@ -3,6 +3,9 @@ using Ceres.Annotations;
 using UnityEngine;
 namespace Ceres.Graph.Flow.Utilities
 {
+    /// <summary>
+    /// Logs message to the Unity Console
+    /// </summary>
     [Serializable]
     [CeresGroup("Utilities/Debug")]
     [CeresLabel("Debug Log")]
@@ -20,6 +23,9 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
+    /// <summary>
+    /// Logs string message to the Unity Console.
+    /// </summary>
     [Serializable]
     [CeresGroup("Utilities/Debug")]
     [CeresLabel("Log String")]

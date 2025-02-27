@@ -64,14 +64,14 @@ namespace Ceres.Editor.Graph.Flow
                 return;
             if(_breakPoint == null)
             {
-                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add breakpoint", (a) =>
+                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add breakpoint", _ =>
                 {
                     View.AddBreakpoint();
                 }));
             }
             if(_breakPoint != null)
             {
-                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove breakpoint", (a) =>
+                evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove breakpoint", _ =>
                 {
                     View.RemoveBreakpoint();
                 }));
@@ -184,6 +184,12 @@ namespace Ceres.Editor.Graph.Flow
         /// <param name="evt"></param>
         public virtual void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
+            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Open documentation", _ =>
+            {
+                var nodeName = $"{NodeType.Namespace}.{NodeType.Name}".Replace('^','-');
+                Application.OpenURL($"https://akikurisu.github.io/Ceres/api/{nodeName}.html");
+            }));
+            evt.menu.AppendSeparator();
         }
 
         /// <summary>

@@ -4,6 +4,10 @@ using Chris.Events;
 
 namespace Ceres.Graph.Flow.Utilities
 {
+    /// <summary>
+    /// Subscribe to <see cref="CallbackEventHandler"/> with an execution of <see cref="TEventType"/>
+    /// </summary>
+    /// <typeparam name="TEventType"></typeparam>
     [Serializable]
     [CeresGroup("Utilities/Rx")]
     [CeresLabel("Subscribe {0}")]
@@ -26,6 +30,10 @@ namespace Ceres.Graph.Flow.Utilities
         }
     }
     
+    /// <summary>
+    /// Subscribe to <see cref="EventSystem"/> with an execution of <see cref="TEventType"/>
+    /// </summary>
+    /// <typeparam name="TEventType"></typeparam>
     [Serializable]
     [CeresGroup("Utilities/Rx")]
     [CeresLabel("Global Subscribe {0}")]

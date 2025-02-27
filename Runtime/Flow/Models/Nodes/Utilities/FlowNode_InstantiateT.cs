@@ -4,6 +4,10 @@ using UnityEngine;
 using UObject = UnityEngine.Object;
 namespace Ceres.Graph.Flow.Utilities
 {
+    /// <summary>
+    /// Clones the object original and returns the clone.
+    /// </summary>
+    /// <typeparam name="TObject"></typeparam>
     [Serializable]
     [CeresGroup("Utilities/Unity")]
     [CeresLabel("Instantiate {0}")]

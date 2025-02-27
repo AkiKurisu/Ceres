@@ -70,6 +70,7 @@ namespace Ceres.Editor.Graph.Flow
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
+            base.BuildContextualMenu(evt);
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add new port", _ =>
             {
                 AddPort(_portLength);
