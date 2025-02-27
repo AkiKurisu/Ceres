@@ -9,7 +9,7 @@ namespace Ceres.Graph.Flow.Utilities
     [CeresLabel("Subscribe")]
     public class FlowNode_ObservableSubscribeT<T>: FlowNode
     {
-        [InputPort, HideInGraphEditor]
+        [InputPort(true), HideInGraphEditor]
         public CeresPort<Observable<T>> subject;
                 
         [InputPort]

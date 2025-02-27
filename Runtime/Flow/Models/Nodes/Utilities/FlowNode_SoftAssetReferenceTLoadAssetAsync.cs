@@ -10,7 +10,7 @@ namespace Ceres.Graph.Flow.Utilities
     [CeresLabel("Load {0} Async")]
     public sealed class FlowNode_SoftAssetReferenceTLoadAssetAsync<TObject>: FlowNode where TObject: UObject
     {
-        [InputPort, HideInGraphEditor]
+        [InputPort(true), HideInGraphEditor]
         public CeresPort<SoftAssetReference<TObject>> reference;
                 
         [InputPort]
@@ -28,7 +28,7 @@ namespace Ceres.Graph.Flow.Utilities
     [RequirePort(typeof(SoftAssetReference))]
     public sealed class FlowNode_SoftAssetReferenceLoadAssetAsync: FlowNode
     {
-        [InputPort, HideInGraphEditor]
+        [InputPort(true), HideInGraphEditor]
         public CeresPort<SoftAssetReference> reference;
                 
         [InputPort]
