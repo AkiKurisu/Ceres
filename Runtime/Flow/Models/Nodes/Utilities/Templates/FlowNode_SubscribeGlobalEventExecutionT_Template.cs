@@ -10,6 +10,8 @@ namespace Ceres.Graph.Flow.Utilities.Templates
 {
     public class FlowNode_SubscribeGlobalEventExecutionT_Template: GenericNodeTemplate
     {
+        private Type[] _typesCache;
+        
         public override bool RequirePort()
         {
             return false;
@@ -22,8 +24,9 @@ namespace Ceres.Graph.Flow.Utilities.Templates
 
         public override Type[] GetAvailableArguments(Type portValueType)
         {
-            return SubClassSearchUtility.FindSubClassTypes(typeof(EventBase))
+            _typesCache ??= SubClassSearchUtility.FindSubClassTypes(typeof(EventBase))
                 .Where(x => x.GetCustomAttribute<ExecutableEventAttribute>() != null).ToArray();
+            return _typesCache;
         }
     }
 }
