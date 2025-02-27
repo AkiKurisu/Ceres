@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Ceres.Annotations;
 using Ceres.Graph.Flow;
+using Ceres.Utilities;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -191,9 +192,12 @@ namespace Ceres.Editor.Graph.Flow
         /// <param name="validator"></param>
         public virtual void Validate(FlowGraphValidator validator)
         {
+            /* Skip if no connections at all */
+            if (PortViews.All(x => !x.PortElement.connected)) return;
+            
             foreach (var portView in PortViews)
             {
-                if (portView.Flags.HasFlag(CeresPortViewFlags.ValidateConnection) && !portView.PortElement.connections.Any())
+                if (portView.Flags.HasFlag(CeresPortViewFlags.ValidateConnection) && !portView.PortElement.connected)
                 {
                     validator.MarkAsInvalid(this, $"{portView.Binding.DisplayName.Value} must be connected");
                 }

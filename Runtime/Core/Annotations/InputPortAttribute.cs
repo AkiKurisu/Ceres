@@ -7,7 +7,15 @@ namespace Ceres.Annotations
     [AttributeUsage(AttributeTargets.Field)]
     public sealed class InputPortAttribute : Attribute
     {
-
+        /// <summary>
+        /// Whether the port should always be connected
+        /// </summary>
+        public bool AlwaysConnected { get; }
+        
+        public InputPortAttribute(bool alwaysConnected = false)
+        {
+            AlwaysConnected = alwaysConnected;
+        }
     }
     
     /// <summary>

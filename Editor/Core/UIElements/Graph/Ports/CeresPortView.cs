@@ -355,7 +355,14 @@ namespace Ceres.Editor.Graph
             var inputPort = PortFieldInfo.GetCustomAttribute<InputPortAttribute>();
             return inputPort == null ? Direction.Output : Direction.Input;
         }
-        
+
+        public bool AlwaysConnected()
+        {
+            var inputPort = PortFieldInfo.GetCustomAttribute<InputPortAttribute>();
+            if (inputPort == null) return false;
+            return inputPort.AlwaysConnected;
+        }
+
         public Port.Capacity GetCapacity()
         {
             if (GetDirection() == Direction.Input)
@@ -473,6 +480,11 @@ namespace Ceres.Editor.Graph
             /* Bind visual element */
             PortElement = CeresPortElement.Create(this);
             Binding.BindView(PortElement);
+
+            if (binding.AlwaysConnected())
+            {
+                Flags |= CeresPortViewFlags.ValidateConnection;
+            }
         }
 
         private static bool IsPortSupportValueField(Type type)
