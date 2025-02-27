@@ -187,7 +187,7 @@ namespace Ceres.Editor.Graph.Flow
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Open documentation", _ =>
             {
                 var nodeType = NodeType.IsGenericType ? NodeType.GetGenericTypeDefinition() : NodeType;
-                var nodeName = $"{nodeType.Namespace}.{nodeType.Name}".Replace('^','-');
+                var nodeName = $"{nodeType.Namespace}.{nodeType.Name}".Replace('`','-');
                 Application.OpenURL($"https://akikurisu.github.io/Ceres/api/{nodeName}.html");
             }));
             evt.menu.AppendSeparator();
