@@ -61,7 +61,8 @@ namespace Ceres.Editor.Graph.Flow
             var editorObject = CreateInstance<FlowGraphEditorObject>();
             editorObject._container = container;
             editorObject.hideFlags = HideFlags.HideAndDontSave;
-            editorObject.GraphData = container.GetFlowGraphData();
+            /* Use clone instead of modifying persistent data */
+            editorObject.GraphData = container.GetFlowGraphData().CloneT<FlowGraphData>();
             return editorObject;
         }
 
