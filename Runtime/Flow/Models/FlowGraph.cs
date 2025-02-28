@@ -23,6 +23,7 @@ namespace Ceres.Graph.Flow
         /// Get a <see cref="FlowGraph"/> instance from this container
         /// </summary>
         /// <returns></returns>
+        /// <remarks>Instance is isolated from persistent data</remarks>
         FlowGraph GetFlowGraph();
 
         /// <summary>
@@ -236,12 +237,12 @@ namespace Ceres.Graph.Flow
         
         internal void PushContext(ExecutionContext context)
         {
-            _executionList.Add(context);
+            _executionList?.Add(context);
         }
         
         internal void PopContext(ExecutionContext context)
         {
-            _executionList.Remove(context);
+            _executionList?.Remove(context);
         }
         
         internal bool AddFlowSubGraph(string name, string guid, FlowGraphUsage usage, FlowGraph graph)
@@ -399,10 +400,28 @@ namespace Ceres.Graph.Flow
         
         public bool RenameSubGraphData(string guid, string newName)
         {
-            var data = subGraphData?.FirstOrDefault(x => x.guid == guid);
+            var data = subGraphData?.FirstOrDefault(graphData => graphData.guid == guid);
             if (data == null) return false;
             data.name = newName;
             return true;
+        }
+
+        /// <summary>
+        /// Create a <see cref="FlowUberGraph"/> instance from this data
+        /// </summary>
+        /// <returns></returns>
+        public FlowUberGraph CreateFlowGraphInstance()
+        {
+#if UNITY_EDITOR
+            if (Application.isPlaying)
+            {
+                return new FlowUberGraph(this);
+            }
+            /* Keep persistent data safe in editor */
+            return new FlowUberGraph(CloneT<FlowGraphData>());
+#else
+            return new FlowUberGraph(this);
+#endif
         }
     }
 

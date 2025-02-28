@@ -16,6 +16,11 @@ namespace UnityEditor.UIElements
         {
             return LoadResource(pathName, typeof(TObject)) as TObject;
         }
+
+        public static void ClearConsole()
+        {
+            LogEntries.Clear();
+        }
     }
 }
 #endif

@@ -19,9 +19,25 @@ namespace Ceres.Editor.Graph
     
     public class FieldResolverFactory
     {
-        public class ResolverStructure
+        public readonly struct InlineIMGUIAutoScope: IDisposable
         {
-            public Type Type;
+            private readonly bool _isInline;
+
+            public InlineIMGUIAutoScope(bool isInline)
+            {
+                _isInline = InlineIMGUI;
+                InlineIMGUI = isInline;
+            }
+
+            public void Dispose()
+            {
+                InlineIMGUI = _isInline;
+            }
+        }
+        
+        private class ResolverStructure
+        {
+            public readonly Type Type;
             
             public IFieldResolver Instance;
 
@@ -31,11 +47,14 @@ namespace Ceres.Editor.Graph
                 Instance = instance;
             }
         }
+        
         private static FieldResolverFactory _instance;
         
         private readonly List<ResolverStructure> _resolvers;
         
         private static readonly object[] Parameters = { null };
+
+        public static bool InlineIMGUI { get; private set; }
         
         public static FieldResolverFactory Get()
         {
@@ -145,6 +164,11 @@ namespace Ceres.Editor.Graph
                     return (IFieldResolver)Activator.CreateInstance(resolver.Type, fatherFieldInfo);
             }
             return null;
+        }
+        
+        public static InlineIMGUIAutoScope InlineIMGUIAuto(bool isInline)
+        {
+            return new InlineIMGUIAutoScope(isInline);
         }
     }
 }

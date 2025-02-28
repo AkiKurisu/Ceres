@@ -16,7 +16,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Array")]
     [CeresLabel("Make {0} Array")]
-    [CeresMetadata("style = ConstNode", "path = Dependency")]
+    [CeresMetadata("style = ConstNode", "path = Dependency", "ResolverOnly")]
     public class FlowNode_MakeArrayT<T>: FlowNode_MakeArray, ISerializationCallbackReceiver, IPortArrayNode
     {
         [InputPort, CeresMetadata("DefaultLength = 1")]

@@ -8,6 +8,7 @@ using R3;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+
 namespace Ceres.Editor.Graph
 {
     [Ordered]
@@ -40,8 +41,11 @@ namespace Ceres.Editor.Graph
 
         private readonly FieldInfo _fieldInfo;
 
+        private readonly bool _inline;
+
         private WrapField(string label, FieldInfo fieldInfo, IMGUIContainer container) : base(label, container)
         {
+            _inline = FieldResolverFactory.InlineIMGUI;
             _fieldInfo = fieldInfo;
             container.onGUIHandler = OnGUI;
             RegisterCallback<DetachFromPanelEvent>(_ =>
@@ -60,8 +64,11 @@ namespace Ceres.Editor.Graph
             if (_instance) return _instance;
             _instance = (SerializedObjectWrapper<T>)SerializedObjectWrapperManager.CreateFieldWrapper(_fieldInfo, ref _wrapperHandle);
             _instance.Value = value;
-            _serializedObject = new SerializedObject(_instance);
-            _serializedProperty = _serializedObject.FindProperty("m_Value");
+            if (!_inline)
+            {
+                _serializedObject = new SerializedObject(_instance);
+                _serializedProperty = _serializedObject.FindProperty("m_Value");
+            }
             _instance.ValueChange.Subscribe(OnValueChange);
             return _instance;
         }
@@ -69,6 +76,12 @@ namespace Ceres.Editor.Graph
         private void OnGUI()
         {
             GetInstance();
+            if (_inline)
+            {
+                SerializedObjectWrapperDrawer.DrawGUILayout(_instance);
+                return;
+            }
+            // Let IMGUI custom property drawer work
             _serializedObject.Update();
             EditorGUILayout.PropertyField(_serializedProperty, GUIContent.none);
             _serializedObject.ApplyModifiedProperties();

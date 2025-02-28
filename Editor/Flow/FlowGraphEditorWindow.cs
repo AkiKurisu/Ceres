@@ -189,11 +189,12 @@ namespace Ceres.Editor.Graph.Flow
                 /* Refresh outer asset */
                 EditorUtility.SetDirty(Container.Object);
                 AssetDatabase.SaveAssetIfDirty(Container.Object);
-                guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
-                ShowNotification(guiContent, 0.5f);
                 /* Reload graph view */
                 _graphViews.Clear();
                 StructVisualElements(GraphIndex);
+                EditorInternalUtil.ClearConsole();
+                guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
+                ShowNotification(guiContent, 0.5f);
             }
             else
             {

@@ -305,10 +305,10 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 
                 var nodeInstances = serializableNodes.Select(x => (CeresNode)x.View.CompileNode()).ToArray();
-                var data = new List<NodeGroup>();
+                var nodeGroupData = new List<NodeGroup>();
                 foreach (var group in nodeGroups)
                 {
-                    group.Commit(data);
+                    group.Commit(nodeGroupData);
                 }
 
                 /* Restore node element guid */
@@ -329,7 +329,7 @@ namespace Ceres.Editor.Graph.Flow
                         variableData = _graphView.SharedVariables.Where(x => x is not CustomFunction)
                                                                 .Select(x => x.GetSerializedData())
                                                                 .ToArray(),
-                        nodeGroups = data.ToArray()
+                        nodeGroups = nodeGroupData.ToArray()
                     };
                     flowGraphData.PreSerialization();
                     return flowGraphData;

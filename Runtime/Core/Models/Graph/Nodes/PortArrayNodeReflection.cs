@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Ceres.Annotations;
+using Ceres.Utilities;
 using UnityEngine.Scripting;
 namespace Ceres.Graph
 {
@@ -30,6 +31,8 @@ namespace Ceres.Graph
         public string PortArrayLabel { get; protected set; }
 
         public IReadOnlyPortArrayNode DefaultNode { get; protected set; }
+        
+        public bool IsResizeable { get; protected set; }
 
         public int DefaultArrayLength { get; protected set; }
 
@@ -53,6 +56,7 @@ namespace Ceres.Graph
             PortArrayField = typeof(TNode).GetField(DefaultNode.GetPortArrayFieldName(), BindingFlags.Instance | BindingFlags.Public);
             PortArrayLabel = CeresLabel.GetLabel(PortArrayField);
             DefaultArrayLength = Math.Max(GetMetadataPortArrayLength(), DefaultNode.GetPortArrayLength());
+            IsResizeable = typeof(TNode).IsAssignableTo(typeof(IPortArrayNode));
         }
 
         [Preserve]

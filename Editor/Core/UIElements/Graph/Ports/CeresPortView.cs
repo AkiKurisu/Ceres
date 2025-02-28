@@ -222,11 +222,11 @@ namespace Ceres.Editor.Graph
             return View.Binding.IsCompatibleTo(other.portType);
         }
 
-        public void SetEditorFieldVisible(bool isVisible)
+        public void SetEditorFieldVisibility(bool isVisible)
         {
-            if(EditorField == null) return;
+            if (EditorField == null) return;
             
-            if(isVisible)
+            if (isVisible)
             {
                 if(!m_ConnectorBox.parent.Contains(EditorField))
                 {
@@ -242,10 +242,17 @@ namespace Ceres.Editor.Graph
             }
         }
 
+        public bool GetEditorFieldVisibility()
+        {
+            if (EditorField == null) return false;
+
+            return m_ConnectorBox.parent.Contains(EditorField);
+        }
+
         public override void Connect(Edge edge)
         {
             base.Connect(edge);
-            SetEditorFieldVisible(!connections.Any() || direction == Direction.Output);
+            SetEditorFieldVisibility(!connections.Any() || direction == Direction.Output);
             using var evt = PortConnectionChangeEvent.GetPooled(View, (CeresEdge)edge, PortConnectionChangeType.Connect);
             evt.target = this;
             SendEvent(evt);
@@ -254,7 +261,7 @@ namespace Ceres.Editor.Graph
         public override void Disconnect(Edge edge)
         {
             base.Disconnect(edge);
-            SetEditorFieldVisible(!connections.Any() || direction == Direction.Output);
+            SetEditorFieldVisibility(!connections.Any() || direction == Direction.Output);
             using var evt = PortConnectionChangeEvent.GetPooled(View, (CeresEdge)edge, PortConnectionChangeType.Disconnect);
             evt.target = this;
             SendEvent(evt);
@@ -625,7 +632,7 @@ namespace Ceres.Editor.Graph
                 }
                 SetDisplayName(parameterInfo.Name);
                 var fieldShowInEditor = parameterInfo.GetCustomAttribute<HideInGraphEditorAttribute>() == null;
-                PortElement.SetEditorFieldVisible(fieldShowInEditor);
+                PortElement.SetEditorFieldVisibility(fieldShowInEditor);
             }
             else
             {

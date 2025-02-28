@@ -4,33 +4,47 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 namespace Ceres.Graph.Flow.Utilities
 {
-    public abstract class FlowNode_SwitchEnum : ForwardNode
-    {
-    }
-
-    /// <summary>
-    /// Route execution to one of several output ports based on the value of an enum type,
-    /// offering a dynamic branching mechanism in execution flow.
-    /// </summary>
-    /// <typeparam name="TEnum"></typeparam>
     [Serializable]
     [CeresGroup("Utilities")]
-    [CeresLabel("Switch on {0}")]
-    public class FlowNode_SwitchEnumT<TEnum>: FlowNode_SwitchEnum, 
+    [CeresLabel("Switch on String")]
+    public class FlowNode_SwitchString: ForwardNode, 
         ISerializationCallbackReceiver, IReadOnlyPortArrayNode
-        where TEnum: Enum
     {
+        [Serializable]
+        public struct Settings
+        {
+            public string[] conditions;
+            
+            public bool hasDefault;
+        }
+        
         [InputPort, CeresLabel("Selection")]
-        public CeresPort<TEnum> sourceValue;
+        public CeresPort<string> sourceValue;
 
         [OutputPort(false)]
         public NodePort[] outputs;
         
+        [OutputPort(false), CeresLabel("Default")]
+        public NodePort defaultOutput;
+
+        [HideInGraphEditor] 
+        public Settings settings;
+        
         protected sealed override UniTask Execute(ExecutionContext executionContext)
         {
-            var index = sourceValue.Value.GetHashCode();
-            index = Math.Min(index, outputs.Length - 1);
-            executionContext.SetNext(outputs[index].GetT<ExecutableNode>());
+            for (int i = 0; i < settings.conditions.Length; i++)
+            {
+                if (settings.conditions[i] == sourceValue.Value)
+                {
+                    executionContext.SetNext(outputs[i].GetT<ExecutableNode>());
+                    return UniTask.CompletedTask;
+                }
+            }
+
+            if (settings.hasDefault)
+            {
+                executionContext.SetNext(defaultOutput.GetT<ExecutableNode>());
+            }
             return UniTask.CompletedTask;
         }
 
@@ -50,7 +64,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         public int GetPortArrayLength()
         {
-            return Enum.GetValues(typeof(TEnum)).Length;
+            return settings.conditions?.Length ?? 0;
         }
 
         public string GetPortArrayFieldName()

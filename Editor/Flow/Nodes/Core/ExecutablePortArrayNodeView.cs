@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
-using Ceres.Graph.Flow.CustomFunctions;
 using UnityEngine.UIElements;
+
 namespace Ceres.Editor.Graph.Flow
 {
     public class ExecutablePortArrayNodeViewResolver: INodeViewResolver
@@ -15,8 +15,6 @@ namespace Ceres.Editor.Graph.Flow
 
         public bool IsAcceptable(Type nodeType)
         {
-            // Special case
-            if (nodeType == typeof(CustomFunctionInput)) return false;
             return nodeType.IsSubclassOf(typeof(ExecutableNode)) &&
                    typeof(IReadOnlyPortArrayNode).IsAssignableFrom(nodeType);
         }
@@ -25,7 +23,7 @@ namespace Ceres.Editor.Graph.Flow
     [CustomNodeView(null)]
     public class ExecutablePortArrayNodeView: ExecutableNodeView
     {
-        private int _portLength;
+        protected int PortLength { get; private set; }
 
         private readonly List<CeresPortView> _dynamicPortViews = new();
 
@@ -59,7 +57,7 @@ namespace Ceres.Editor.Graph.Flow
             if(nodeInstance is IPortArrayNode portArrayNode)
             {
                 /* Allocate before commit */
-                portArrayNode.SetPortArrayLength(_portLength);
+                portArrayNode.SetPortArrayLength(PortLength);
             }
             FieldResolvers.ForEach(r => r.Commit(nodeInstance));
             PortViews.ForEach(p => p.Commit(nodeInstance));
@@ -71,15 +69,17 @@ namespace Ceres.Editor.Graph.Flow
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             base.BuildContextualMenu(evt);
+            if (!NodeReflection.IsResizeable) return;
+            
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add new port", _ =>
             {
-                AddPort(_portLength);
+                AddPort(PortLength);
             }));
-            if (_portLength > 0)
+            if (PortLength > 0)
             {
                 evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove last port", _ =>
                 {
-                    RemovePort(_portLength - 1);
+                    RemovePort(PortLength - 1);
                 }));
             }
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Remove unconnected ports", _ =>
@@ -89,21 +89,21 @@ namespace Ceres.Editor.Graph.Flow
             evt.menu.AppendSeparator();
         }
 
-        private void AddPort(int index)
+        protected void AddPort(int index)
         {
             var portData = CeresPortData.FromFieldInfo(NodeReflection.PortArrayField);
             portData.arrayIndex = index;
-            _portLength++;
+            PortLength++;
             var newPortView = PortViewFactory.CreateInstance(NodeReflection.PortArrayField, this, portData);
             AddPortView(newPortView);
             _dynamicPortViews.Add(newPortView);
             newPortView.SetDisplayName(GetPortArrayElementDisplayName(index));
         }
 
-        private void RemovePort(int index)
+        protected void RemovePort(int index)
         {
             var portView = _dynamicPortViews[index];
-            _portLength--;
+            PortLength--;
             _dynamicPortViews.RemoveAt(index);
             RemovePortView(portView);
             
@@ -111,7 +111,7 @@ namespace Ceres.Editor.Graph.Flow
             ReorderDynamicPorts();
         }
 
-        private void RemoveUnconnectedPorts()
+        protected void RemoveUnconnectedPorts()
         {
             for (int i = _dynamicPortViews.Count - 1; i >= 0; i--)
             {
@@ -120,7 +120,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     continue;
                 }
-                _portLength--;
+                PortLength--;
                 _dynamicPortViews.RemoveAt(i);
                 RemovePortView(portView);
             }
@@ -128,9 +128,9 @@ namespace Ceres.Editor.Graph.Flow
             ReorderDynamicPorts();
         }
 
-        private void ReorderDynamicPorts()
+        protected void ReorderDynamicPorts()
         {
-            for (int i = 0; i < _portLength; i++)
+            for (int i = 0; i < PortLength; i++)
             {
                 _dynamicPortViews[i].PortData.arrayIndex = i;
                 _dynamicPortViews[i].SetDisplayName(GetPortArrayElementDisplayName(i));

@@ -11,6 +11,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Sequence")]
+    [CeresMetadata("style = ForwardNode", "ResolverOnly")]
     public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IPortArrayNode
     {
         [OutputPort(false), CeresLabel("Then"), CeresMetadata("DefaultLength = 2")]

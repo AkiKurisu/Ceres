@@ -218,7 +218,11 @@ namespace Ceres.Editor.Graph.Flow
             {
                 if (portView.Flags.HasFlag(CeresPortViewFlags.ValidateConnection) && !portView.PortElement.connected)
                 {
-                    validator.MarkAsInvalid(this, $"{portView.Binding.DisplayName.Value} must be connected");
+                    /* Validate value set in editor field */
+                    if (!portView.PortElement.GetEditorFieldVisibility() || portView.FieldResolver.Value is null)
+                    {
+                        validator.MarkAsInvalid(this, $"{portView.Binding.DisplayName.Value} must be connected");
+                    }
                 }
             }
         }
