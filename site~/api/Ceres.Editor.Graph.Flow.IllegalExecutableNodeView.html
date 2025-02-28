@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class ExecuteCustomFunctionNodeView
+      <title>Class IllegalExecutableNodeView
  | Ceres Documentation </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class ExecuteCustomFunctionNodeView
+      <meta name="title" content="Class IllegalExecutableNodeView
  | Ceres Documentation ">
     
       <link rel="shortcut icon" href="../favicon.ico">
@@ -77,10 +77,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView">
+            <article class="content wrap" id="_content" data-uid="Ceres.Editor.Graph.Flow.IllegalExecutableNodeView">
 
 
-  <h1 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView" class="text-break">Class ExecuteCustomFunctionNodeView
+  <h1 id="Ceres_Editor_Graph_Flow_IllegalExecutableNodeView" data-uid="Ceres.Editor.Graph.Flow.IllegalExecutableNodeView" class="text-break">Class IllegalExecutableNodeView
 </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
@@ -89,9 +89,7 @@
     <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html">CeresNodeView</a></div>
     <div class="level2"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html">ExecutableNodeView</a></div>
-    <div class="level3"><span class="xref">ExecuteCustomFunctionNodeView</span></div>
-      <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.FlowNode_ExecuteCustomFunctionReturnNodeView.html">FlowNode_ExecuteCustomFunctionReturnNodeView</a></div>
-      <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.FlowNode_ExecuteCustomFunctionVoidNodeView.html">FlowNode_ExecuteCustomFunctionVoidNodeView</a></div>
+    <div class="level3"><span class="xref">IllegalExecutableNodeView</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -109,6 +107,9 @@
       <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_FlowGraphEditorWindow">ExecutableNodeView.FlowGraphEditorWindow</a>
     </div>
     <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_CompileNode">ExecutableNodeView.CompileNode()</a>
+    </div>
+    <div>
       <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_AddBreakpoint">ExecutableNodeView.AddBreakpoint()</a>
     </div>
     <div>
@@ -119,6 +120,9 @@
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_BuildContextualMenu_ContextualMenuPopulateEvent_">ExecutableNodeView.BuildContextualMenu(ContextualMenuPopulateEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_Validate_Ceres_Editor_FlowGraphValidator_">ExecutableNodeView.Validate(FlowGraphValidator)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_Guid">CeresNodeView.Guid</a>
@@ -205,6 +209,9 @@
       <a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_RemovePortView_Ceres_Editor_Graph_CeresPortView_">CeresNodeView.RemovePortView(CeresPortView)</a>
     </div>
     <div>
+      <a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_SetNodeInstance_Ceres_Graph_CeresNode_">CeresNodeView.SetNodeInstance(CeresNode)</a>
+    </div>
+    <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_ReconnectEdges">CeresNodeView.ReconnectEdges()</a>
     </div>
     <div>
@@ -229,23 +236,24 @@
       <span class="xref">object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a>.<a class="xref" href="Ceres.Editor.Graph.html">Graph</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.html">Flow</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.html">CustomFunctions</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a>.<a class="xref" href="Ceres.Editor.Graph.html">Graph</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.html">Flow</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_syntax">Syntax</h5>
+  <h5 id="Ceres_Editor_Graph_Flow_IllegalExecutableNodeView_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ExecuteCustomFunctionNodeView : ExecutableNodeView, ICeresNodeView</code></pre>
+    <pre><code class="lang-csharp hljs">[CustomNodeView(typeof(IllegalExecutableNode))]
+public class IllegalExecutableNodeView : ExecutableNodeView, ICeresNodeView</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
 
 
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView__ctor_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.#ctor*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView__ctor_System_Type_Ceres_Editor_Graph_CeresGraphView_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.#ctor(System.Type,Ceres.Editor.Graph.CeresGraphView)">ExecuteCustomFunctionNodeView(Type, CeresGraphView)</h4>
+  <a id="Ceres_Editor_Graph_Flow_IllegalExecutableNodeView__ctor_" data-uid="Ceres.Editor.Graph.Flow.IllegalExecutableNodeView.#ctor*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_IllegalExecutableNodeView__ctor_System_Type_Ceres_Editor_Graph_CeresGraphView_" data-uid="Ceres.Editor.Graph.Flow.IllegalExecutableNodeView.#ctor(System.Type,Ceres.Editor.Graph.CeresGraphView)">IllegalExecutableNodeView(Type, CeresGraphView)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ExecuteCustomFunctionNodeView(Type type, CeresGraphView graphView)</code></pre>
+    <pre><code class="lang-csharp hljs">public IllegalExecutableNodeView(Type type, CeresGraphView graphView)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -269,172 +277,6 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-</h3>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_CustomFunction_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.CustomFunction*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_CustomFunction" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.CustomFunction">CustomFunction</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected CustomFunction CustomFunction { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunction.html">CustomFunction</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_FunctionName_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.FunctionName*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_FunctionName" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.FunctionName">FunctionName</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected string FunctionName { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_CompileNode_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.CompileNode*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_CompileNode" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.CompileNode">CompileNode()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ExecutableNode CompileNode()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ExecutableNode</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_CompileNode">ExecutableNodeView.CompileNode()</a></div>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_SetFunctionName_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.SetFunctionName*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_SetFunctionName_System_String_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.SetFunctionName(System.String)">SetFunctionName(string)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetFunctionName(string functionName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td><span class="parametername">functionName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_SetNodeInstance_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.SetNodeInstance*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_SetNodeInstance_Ceres_Graph_CeresNode_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.SetNodeInstance(Ceres.Graph.CeresNode)">SetNodeInstance(CeresNode)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override sealed void SetNodeInstance(CeresNode ceresNode)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Graph.CeresNode.html">CeresNode</a></td>
-        <td><span class="parametername">ceresNode</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_SetNodeInstance_Ceres_Graph_CeresNode_">CeresNodeView.SetNodeInstance(CeresNode)</a></div>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_Validate_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.Validate*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_Validate_Ceres_Editor_FlowGraphValidator_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.Validate(Ceres.Editor.FlowGraphValidator)">Validate(FlowGraphValidator)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Validate(FlowGraphValidator validator)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Editor.FlowGraphValidator.html">FlowGraphValidator</a></td>
-        <td><span class="parametername">validator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_Validate_Ceres_Editor_FlowGraphValidator_">ExecutableNodeView.Validate(FlowGraphValidator)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Ceres.Editor.Graph.ICeresNodeView.html">ICeresNodeView</a>

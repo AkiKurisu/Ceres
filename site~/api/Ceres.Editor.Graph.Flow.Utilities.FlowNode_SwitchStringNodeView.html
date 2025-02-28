@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class ExecuteCustomFunctionNodeView
+      <title>Class FlowNode_SwitchStringNodeView
  | Ceres Documentation </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class ExecuteCustomFunctionNodeView
+      <meta name="title" content="Class FlowNode_SwitchStringNodeView
  | Ceres Documentation ">
     
       <link rel="shortcut icon" href="../favicon.ico">
@@ -77,21 +77,21 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView">
+            <article class="content wrap" id="_content" data-uid="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView">
 
 
-  <h1 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView" class="text-break">Class ExecuteCustomFunctionNodeView
+  <h1 id="Ceres_Editor_Graph_Flow_Utilities_FlowNode_SwitchStringNodeView" data-uid="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView" class="text-break">Class FlowNode_SwitchStringNodeView
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Node view for <see cref="!:FlowNode_SwitchString"></see></p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html">CeresNodeView</a></div>
     <div class="level2"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html">ExecutableNodeView</a></div>
-    <div class="level3"><span class="xref">ExecuteCustomFunctionNodeView</span></div>
-      <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.FlowNode_ExecuteCustomFunctionReturnNodeView.html">FlowNode_ExecuteCustomFunctionReturnNodeView</a></div>
-      <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.FlowNode_ExecuteCustomFunctionVoidNodeView.html">FlowNode_ExecuteCustomFunctionVoidNodeView</a></div>
+    <div class="level3"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html">ExecutablePortArrayNodeView</a></div>
+    <div class="level4"><span class="xref">FlowNode_SwitchStringNodeView</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -99,6 +99,30 @@
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_PortLength">ExecutablePortArrayNodeView.PortLength</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_NodeReflection">ExecutablePortArrayNodeView.NodeReflection</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_CompileNode">ExecutablePortArrayNodeView.CompileNode()</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_BuildContextualMenu_ContextualMenuPopulateEvent_">ExecutablePortArrayNodeView.BuildContextualMenu(ContextualMenuPopulateEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_AddPort_System_Int32_">ExecutablePortArrayNodeView.AddPort(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_RemovePort_System_Int32_">ExecutablePortArrayNodeView.RemovePort(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_RemoveUnconnectedPorts">ExecutablePortArrayNodeView.RemoveUnconnectedPorts()</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_ReorderDynamicPorts">ExecutablePortArrayNodeView.ReorderDynamicPorts()</a>
+    </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_Flags">ExecutableNodeView.Flags</a>
     </div>
@@ -118,7 +142,7 @@
       <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_GetDefaultTooltip">ExecutableNodeView.GetDefaultTooltip()</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_BuildContextualMenu_ContextualMenuPopulateEvent_">ExecutableNodeView.BuildContextualMenu(ContextualMenuPopulateEvent)</a>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_Validate_Ceres_Editor_FlowGraphValidator_">ExecutableNodeView.Validate(FlowGraphValidator)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_Guid">CeresNodeView.Guid</a>
@@ -229,23 +253,24 @@
       <span class="xref">object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a>.<a class="xref" href="Ceres.Editor.Graph.html">Graph</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.html">Flow</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunctions.html">CustomFunctions</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a>.<a class="xref" href="Ceres.Editor.Graph.html">Graph</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.html">Flow</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.Utilities.html">Utilities</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_syntax">Syntax</h5>
+  <h5 id="Ceres_Editor_Graph_Flow_Utilities_FlowNode_SwitchStringNodeView_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ExecuteCustomFunctionNodeView : ExecutableNodeView, ICeresNodeView</code></pre>
+    <pre><code class="lang-csharp hljs">[CustomNodeView(typeof(FlowNode_SwitchString))]
+public class FlowNode_SwitchStringNodeView : ExecutablePortArrayNodeView, ICeresNodeView</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
 
 
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView__ctor_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.#ctor*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView__ctor_System_Type_Ceres_Editor_Graph_CeresGraphView_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.#ctor(System.Type,Ceres.Editor.Graph.CeresGraphView)">ExecuteCustomFunctionNodeView(Type, CeresGraphView)</h4>
+  <a id="Ceres_Editor_Graph_Flow_Utilities_FlowNode_SwitchStringNodeView__ctor_" data-uid="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView.#ctor*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_Utilities_FlowNode_SwitchStringNodeView__ctor_System_Type_Ceres_Editor_Graph_CeresGraphView_" data-uid="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView.#ctor(System.Type,Ceres.Editor.Graph.CeresGraphView)">FlowNode_SwitchStringNodeView(Type, CeresGraphView)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ExecuteCustomFunctionNodeView(Type type, CeresGraphView graphView)</code></pre>
+    <pre><code class="lang-csharp hljs">public FlowNode_SwitchStringNodeView(Type type, CeresGraphView graphView)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -269,96 +294,17 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-</h3>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_CustomFunction_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.CustomFunction*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_CustomFunction" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.CustomFunction">CustomFunction</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected CustomFunction CustomFunction { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunction.html">CustomFunction</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_FunctionName_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.FunctionName*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_FunctionName" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.FunctionName">FunctionName</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected string FunctionName { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
 </h3>
 
 
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_CompileNode_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.CompileNode*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_CompileNode" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.CompileNode">CompileNode()</h4>
+  <a id="Ceres_Editor_Graph_Flow_Utilities_FlowNode_SwitchStringNodeView_GetPortArrayElementDisplayName_" data-uid="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView.GetPortArrayElementDisplayName*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_Utilities_FlowNode_SwitchStringNodeView_GetPortArrayElementDisplayName_System_Int32_" data-uid="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView.GetPortArrayElementDisplayName(System.Int32)">GetPortArrayElementDisplayName(int)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ExecutableNode CompileNode()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ExecutableNode</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_CompileNode">ExecutableNodeView.CompileNode()</a></div>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_SetFunctionName_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.SetFunctionName*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_SetFunctionName_System_String_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.SetFunctionName(System.String)">SetFunctionName(string)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetFunctionName(string functionName)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override string GetPortArrayElementDisplayName(int index)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -371,21 +317,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
-        <td><span class="parametername">functionName</span></td>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">index</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_GetPortArrayElementDisplayName_System_Int32_">ExecutablePortArrayNodeView.GetPortArrayElementDisplayName(int)</a></div>
 
 
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_SetNodeInstance_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.SetNodeInstance*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_SetNodeInstance_Ceres_Graph_CeresNode_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.SetNodeInstance(Ceres.Graph.CeresNode)">SetNodeInstance(CeresNode)</h4>
+  <a id="Ceres_Editor_Graph_Flow_Utilities_FlowNode_SwitchStringNodeView_SetNodeInstance_" data-uid="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView.SetNodeInstance*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_Utilities_FlowNode_SwitchStringNodeView_SetNodeInstance_Ceres_Graph_CeresNode_" data-uid="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView.SetNodeInstance(Ceres.Graph.CeresNode)">SetNodeInstance(CeresNode)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override sealed void SetNodeInstance(CeresNode ceresNode)</code></pre>
+    <pre><code class="lang-csharp hljs">public override void SetNodeInstance(CeresNode ceresNode)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -405,36 +368,7 @@
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Editor.Graph.CeresNodeView.html#Ceres_Editor_Graph_CeresNodeView_SetNodeInstance_Ceres_Graph_CeresNode_">CeresNodeView.SetNodeInstance(CeresNode)</a></div>
-
-
-  <a id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_Validate_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.Validate*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_CustomFunctions_ExecuteCustomFunctionNodeView_Validate_Ceres_Editor_FlowGraphValidator_" data-uid="Ceres.Editor.Graph.Flow.CustomFunctions.ExecuteCustomFunctionNodeView.Validate(Ceres.Editor.FlowGraphValidator)">Validate(FlowGraphValidator)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Validate(FlowGraphValidator validator)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Ceres.Editor.FlowGraphValidator.html">FlowGraphValidator</a></td>
-        <td><span class="parametername">validator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_Validate_Ceres_Editor_FlowGraphValidator_">ExecutableNodeView.Validate(FlowGraphValidator)</a></div>
+  <div><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.html#Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_SetNodeInstance_Ceres_Graph_CeresNode_">ExecutablePortArrayNodeView.SetNodeInstance(CeresNode)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Ceres.Editor.Graph.ICeresNodeView.html">ICeresNodeView</a>

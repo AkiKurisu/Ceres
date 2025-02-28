@@ -224,6 +224,32 @@ public class FlowGraphData : FlowGraphSerializedData</code></pre>
   <div><a class="xref" href="Ceres.Graph.Flow.FlowGraphSerializedData.html#Ceres_Graph_Flow_FlowGraphSerializedData_BuildGraph_Ceres_Graph_CeresGraph_">FlowGraphSerializedData.BuildGraph(CeresGraph)</a></div>
 
 
+  <a id="Ceres_Graph_Flow_FlowGraphData_CreateFlowGraphInstance_" data-uid="Ceres.Graph.Flow.FlowGraphData.CreateFlowGraphInstance*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphData_CreateFlowGraphInstance" data-uid="Ceres.Graph.Flow.FlowGraphData.CreateFlowGraphInstance">CreateFlowGraphInstance()</h4>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="Ceres.Graph.Flow.FlowUberGraph.html">FlowUberGraph</a> instance from this data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FlowUberGraph CreateFlowGraphInstance()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.Flow.FlowUberGraph.html">FlowUberGraph</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Graph_Flow_FlowGraphData_PreSerialization_" data-uid="Ceres.Graph.Flow.FlowGraphData.PreSerialization*"></a>
   <h4 id="Ceres_Graph_Flow_FlowGraphData_PreSerialization" data-uid="Ceres.Graph.Flow.FlowGraphData.PreSerialization">PreSerialization()</h4>
   <div class="markdown level1 summary"></div>
@@ -234,6 +260,95 @@ public class FlowGraphData : FlowGraphSerializedData</code></pre>
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Ceres.Graph.Flow.FlowGraphSerializedData.html#Ceres_Graph_Flow_FlowGraphSerializedData_PreSerialization">FlowGraphSerializedData.PreSerialization()</a></div>
+
+
+  <a id="Ceres_Graph_Flow_FlowGraphData_RemoveSubGraphData_" data-uid="Ceres.Graph.Flow.FlowGraphData.RemoveSubGraphData*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphData_RemoveSubGraphData_System_String_" data-uid="Ceres.Graph.Flow.FlowGraphData.RemoveSubGraphData(System.String)">RemoveSubGraphData(string)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RemoveSubGraphData(string guid)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_Flow_FlowGraphData_RenameSubGraphData_" data-uid="Ceres.Graph.Flow.FlowGraphData.RenameSubGraphData*"></a>
+  <h4 id="Ceres_Graph_Flow_FlowGraphData_RenameSubGraphData_System_String_System_String_" data-uid="Ceres.Graph.Flow.FlowGraphData.RenameSubGraphData(System.String,System.String)">RenameSubGraphData(string, string)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RenameSubGraphData(string guid, string newName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">newName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <a id="Ceres_Graph_Flow_FlowGraphData_SetSubGraphData_" data-uid="Ceres.Graph.Flow.FlowGraphData.SetSubGraphData*"></a>

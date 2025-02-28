@@ -91,6 +91,7 @@
     <div class="level2"><a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html">ExecutableNodeView</a></div>
     <div class="level3"><span class="xref">ExecutablePortArrayNodeView</span></div>
       <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchEnumNodeView.html">FlowNode_SwitchEnumNodeView</a></div>
+      <div class="level4"><a class="xref" href="Ceres.Editor.Graph.Flow.Utilities.FlowNode_SwitchStringNodeView.html">FlowNode_SwitchStringNodeView</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -103,6 +104,9 @@
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_ExecutableNodeElement">ExecutableNodeView.ExecutableNodeElement</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_FlowGraphEditorWindow">ExecutableNodeView.FlowGraphEditorWindow</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.Flow.ExecutableNodeView.html#Ceres_Editor_Graph_Flow_ExecutableNodeView_AddBreakpoint">ExecutableNodeView.AddBreakpoint()</a>
@@ -294,8 +298,60 @@ public class ExecutablePortArrayNodeView : ExecutableNodeView, ICeresNodeView</c
       </tr>
     </tbody>
   </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_PortLength_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.PortLength*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_PortLength" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.PortLength">PortLength</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int PortLength { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
 </h3>
+
+
+  <a id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_AddPort_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.AddPort*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_AddPort_System_Int32_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.AddPort(System.Int32)">AddPort(int)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void AddPort(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <a id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_BuildContextualMenu_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.BuildContextualMenu*"></a>
@@ -394,6 +450,53 @@ public class ExecutablePortArrayNodeView : ExecutableNodeView, ICeresNodeView</c
       </tr>
     </tbody>
   </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_RemovePort_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.RemovePort*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_RemovePort_System_Int32_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.RemovePort(System.Int32)">RemovePort(int)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RemovePort(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_RemoveUnconnectedPorts_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.RemoveUnconnectedPorts*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_RemoveUnconnectedPorts" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.RemoveUnconnectedPorts">RemoveUnconnectedPorts()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RemoveUnconnectedPorts()</code></pre>
+  </div>
+
+
+  <a id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_ReorderDynamicPorts_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.ReorderDynamicPorts*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_ReorderDynamicPorts" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.ReorderDynamicPorts">ReorderDynamicPorts()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void ReorderDynamicPorts()</code></pre>
+  </div>
 
 
   <a id="Ceres_Editor_Graph_Flow_ExecutablePortArrayNodeView_SetNodeInstance_" data-uid="Ceres.Editor.Graph.Flow.ExecutablePortArrayNodeView.SetNodeInstance*"></a>
