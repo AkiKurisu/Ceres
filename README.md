@@ -47,7 +47,6 @@ Add following dependencies to `manifest.json`.
 Unity 2022.3 LTS or later.
 
 Support Mono, IL2CPP.
-> To use Ceres in IL2CPP scripting backend, `Project Settings/Player/Optimization/Managed Stripping Level` must be `Minimal`.
 
 ## API Reference
 
