@@ -388,6 +388,22 @@ namespace Ceres.Graph.Flow
                 flowSubGraphData.name = slot.Name;
             }
         }
+
+        public bool RemoveSubGraphData(string guid)
+        {
+            var data = subGraphData?.FirstOrDefault(x => x.guid == guid);
+            if (data == null) return false;
+            ArrayUtils.Remove(ref subGraphData, data);
+            return true;
+        }
+        
+        public bool RenameSubGraphData(string guid, string newName)
+        {
+            var data = subGraphData?.FirstOrDefault(x => x.guid == guid);
+            if (data == null) return false;
+            data.name = newName;
+            return true;
+        }
     }
 
     public static class FlowGraphRuntimeExtensions

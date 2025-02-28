@@ -160,7 +160,7 @@ namespace Ceres.Editor.Graph
         
         protected void NotifyValueChange()
         {
-            using ChangeEvent<TVariable> changeEvent = ChangeEvent<TVariable>.GetPooled(value, value);
+            using var changeEvent = ChangeEvent<TVariable>.GetPooled(value, value);
             changeEvent.target = this;
             SendEvent(changeEvent);
         }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Ceres.Annotations;
 using Ceres.Editor.Graph.Flow;
 
@@ -21,11 +20,6 @@ namespace Ceres.Editor
             {
                 CeresLogger.LogError($"Validate node {CeresLabel.GetTypeName(nodeView.NodeType)} failed with reason: {reason}");
             }
-        }
-
-        public ExecutableNodeView[] GetInvalidNodeViews()
-        {
-            return _invalidNodeViews.ToArray();
         }
 
         public void Dispose()

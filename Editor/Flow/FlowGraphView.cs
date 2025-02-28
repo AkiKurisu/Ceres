@@ -58,12 +58,15 @@ namespace Ceres.Editor.Graph.Flow
         {
             /* Compile validation */
             using var validator = new FlowGraphValidator();
-            foreach (var nodeView in NodeViews.OfType<ExecutableNodeView>())
+            var nodeViews = NodeViews.OfType<ExecutableNodeView>().ToArray();
+            foreach (var nodeView in nodeViews)
             {
+                /* Skip if no connections at all */
+                if (nodeView.IsIsolated()) continue;
                 nodeView.Validate(validator);
             }
 
-            var invalidNodeViews = validator.GetInvalidNodeViews();
+            var invalidNodeViews = nodeViews.Where(x => x.IsInvalid()).ToArray();
             if (invalidNodeViews.Any())
             {
                 ClearSelection();
@@ -366,7 +369,7 @@ namespace Ceres.Editor.Graph.Flow
                 // Restore node views
                 foreach (var nodeInstance in flowGraph.nodes)
                 {
-                    var nodeView = (CeresNodeView)NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView);
+                    var nodeView = (ExecutableNodeView)NodeViewFactory.Get().CreateInstance(nodeInstance.GetType(), _graphView);
                     /* Missing node class should be handled before deserializing graph */
                     CeresLogger.Assert(nodeView != null, $"Can not construct node view for type {nodeInstance.GetType()}");
                     try
@@ -379,7 +382,7 @@ namespace Ceres.Editor.Graph.Flow
                     {
                         CeresLogger.LogError($"Failed to construct node view for type {nodeInstance} with exception thrown:\n{e}");
                         /* Replace with illegal property node */
-                        nodeView = (CeresNodeView)NodeViewFactory.Get().CreateInstance(typeof(IllegalExecutableNode), _graphView);
+                        nodeView = new IllegalExecutableNodeView(typeof(IllegalExecutableNode), _graphView);
                         nodeView!.SetNodeInstance(new IllegalExecutableNode
                         {
                             nodeType = nodeInstance.NodeData.nodeType.ToString(),

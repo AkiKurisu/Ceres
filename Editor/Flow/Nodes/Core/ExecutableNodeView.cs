@@ -121,6 +121,11 @@ namespace Ceres.Editor.Graph.Flow
         /// Get node visual element, see <see cref="ExecutableNodeElement"/>
         /// </summary>
         protected ExecutableNodeElement ExecutableNodeElement => (ExecutableNodeElement)NodeElement;
+        
+        /// <summary>
+        /// Get container <see cref="FlowGraphEditorWindow"/>
+        /// </summary>
+        protected FlowGraphEditorWindow FlowGraphEditorWindow => (FlowGraphEditorWindow)GraphView.EditorWindow;
 
         /// <summary>
         /// Default constructor without initialization
@@ -193,15 +198,22 @@ namespace Ceres.Editor.Graph.Flow
             evt.menu.AppendSeparator();
         }
 
+        internal bool IsIsolated()
+        {
+            return PortViews.All(x => !x.PortElement.connected);
+        }
+
+        internal bool IsInvalid()
+        {
+            return Flags.HasFlag(ExecutableNodeViewFlags.Invalid);
+        }
+
         /// <summary>
         /// Validate before compiling
         /// </summary>
         /// <param name="validator"></param>
         public virtual void Validate(FlowGraphValidator validator)
         {
-            /* Skip if no connections at all */
-            if (PortViews.All(x => !x.PortElement.connected)) return;
-            
             foreach (var portView in PortViews)
             {
                 if (portView.Flags.HasFlag(CeresPortViewFlags.ValidateConnection) && !portView.PortElement.connected)
@@ -209,6 +221,26 @@ namespace Ceres.Editor.Graph.Flow
                     validator.MarkAsInvalid(this, $"{portView.Binding.DisplayName.Value} must be connected");
                 }
             }
+        }
+    }
+    
+    [CustomNodeView(typeof(InvalidExecutableNode))]
+    public class InvalidExecutableNodeView : ExecutableNodeView
+    {
+        public InvalidExecutableNodeView(Type type, CeresGraphView graphView): base(type, graphView)
+        {
+            /* Notify validator this node can not be compiled */
+            Flags |= ExecutableNodeViewFlags.Invalid;
+        }
+    }
+
+    [CustomNodeView(typeof(IllegalExecutableNode))]
+    public class IllegalExecutableNodeView : ExecutableNodeView
+    {
+        public IllegalExecutableNodeView(Type type, CeresGraphView graphView): base(type, graphView)
+        {
+            /* Notify validator this node can not be compiled */
+            Flags |= ExecutableNodeViewFlags.Invalid;
         }
     }
 }

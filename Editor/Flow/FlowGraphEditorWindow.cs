@@ -191,6 +191,9 @@ namespace Ceres.Editor.Graph.Flow
                 AssetDatabase.SaveAssetIfDirty(Container.Object);
                 guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
                 ShowNotification(guiContent, 0.5f);
+                /* Reload graph view */
+                _graphViews.Clear();
+                StructVisualElements(GraphIndex);
             }
             else
             {
@@ -382,7 +385,7 @@ namespace Ceres.Editor.Graph.Flow
         }
 
         /// <summary>
-        /// Resolve custom function parameters
+        /// Resolve custom function parameter types
         /// </summary>
         /// <param name="customFunction"></param>
         /// <returns></returns>
@@ -396,6 +399,18 @@ namespace Ceres.Editor.Graph.Flow
             var inputTypes = input!.parameters.Select(p => p.GetParameterType()).ToArray();
             var returnType = output!.parameter.hasReturn ? output.parameter.GetParameterType() : typeof(void);
             return (returnType, inputTypes);
+        }
+        
+        /// <summary>
+        /// Resolve custom function input parameters
+        /// </summary>
+        /// <param name="customFunction"></param>
+        /// <returns></returns>
+        public CustomFunctionInputParameter[] ResolveFunctionInputParameters(CustomFunction customFunction)
+        {
+            var slot = EditorObject.GraphInstance.SubGraphSlots.FirstOrDefault(subGraphSlot => subGraphSlot.Guid == customFunction.Value);
+            var input = slot?.Graph.GetFirstNodeOfType<CustomFunctionInput>();
+            return input?.parameters;
         }
 
         /// <summary>
@@ -417,8 +432,11 @@ namespace Ceres.Editor.Graph.Flow
         public void RenameSubgraph(string guid, string newName)
         {
             var slot = EditorObject.GraphInstance.SubGraphSlots.First(subGraphSlot => subGraphSlot.Guid == guid);
-            /* Rename graph */
+            /* Rename graph instance */
             slot.Name = newName;
+            
+            /* Rename subGraph data if exist */
+            EditorObject.GraphData.RenameSubGraphData(guid, newName);
             
             /* Update graph view binding name */
             var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
@@ -441,10 +459,13 @@ namespace Ceres.Editor.Graph.Flow
             var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
             if (slotIndex == -1) return;
             
-            /* Remove subGraph */
+            /* Remove subGraph instance */
             ArrayUtils.Remove(ref EditorObject.GraphInstance.SubGraphSlots, slot);
             int graphIndex = slotIndex + 1;
             _graphViews.Remove(graphIndex);
+            
+            /* Remove subGraph data if exist */
+            EditorObject.GraphData.RemoveSubGraphData(guid);
             
             /* Update view model */
             EditorObject.Update();
