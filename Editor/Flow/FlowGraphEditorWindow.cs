@@ -390,7 +390,7 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         /// <param name="customFunction"></param>
         /// <returns></returns>
-        public (Type, Type[]) ResolveFunctionType(CustomFunction customFunction)
+        public (Type, Type[]) ResolveFunctionTypes(CustomFunction customFunction)
         {
             var slot = EditorObject.GraphInstance.SubGraphSlots.FirstOrDefault(subGraphSlot => subGraphSlot.Guid == customFunction.Value);
             if (slot == null) return (null, null);

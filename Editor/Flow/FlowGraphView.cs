@@ -197,7 +197,7 @@ namespace Ceres.Editor.Graph.Flow
 
                 if (variable is CustomFunction customFunction)
                 {
-                    var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionType(customFunction);
+                    var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionTypes(customFunction);
                     if (returnType == null)
                     {
                         return;

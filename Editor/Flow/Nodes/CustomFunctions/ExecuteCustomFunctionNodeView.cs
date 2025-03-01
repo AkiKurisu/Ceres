@@ -1,17 +1,20 @@
 ﻿using System;
+using System.Linq;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.CustomFunctions;
+using UnityEngine.UIElements;
 
 namespace Ceres.Editor.Graph.Flow.CustomFunctions
 {
-    public abstract class ExecuteCustomFunctionNodeView : ExecutableNodeView
+    [CustomNodeView(typeof(FlowNode_ExecuteCustomFunction), true)]
+    public sealed class ExecuteCustomFunctionNodeView : ExecutableNodeView
     {
-        protected CustomFunction CustomFunction { get; private set; }
-        
-        protected string FunctionName { get; private set; }
-        
-        protected ExecuteCustomFunctionNodeView(Type type, CeresGraphView graphView)
+        private CustomFunction CustomFunction { get; set; }
+
+        private string FunctionName { get; set; }
+
+        public ExecuteCustomFunctionNodeView(Type type, CeresGraphView graphView)
         {
             Initialize(type, graphView);
             SetupNodeElement(new ExecutableNodeElement(this));
@@ -19,7 +22,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
             FillDefaultNodePorts();
         }
         
-        public sealed override void SetNodeInstance(CeresNode ceresNode)
+        public override void SetNodeInstance(CeresNode ceresNode)
         {
             var functionNode =(FlowNode_ExecuteCustomFunction)ceresNode;
             SetFunctionName(functionNode.functionName);
@@ -45,6 +48,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
 
         private void OnVariableChange(VariableChangeEvent evt)
         {
+            if (NodeElement.panel == null) return;
             if (evt.Variable != CustomFunction) return;
             if (evt.ChangeType == VariableChangeType.Name)
             {
@@ -66,12 +70,44 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
             GraphView.FrameSelection();
         }
 
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            base.BuildContextualMenu(evt);
+            if (CustomFunction == null) return;
+            
+            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Rename function", _ =>
+            {
+                GraphView.Blackboard.EditVariable(FunctionName);
+            }));
+            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Edit function", _ =>
+            {
+                FlowGraphEditorWindow.OpenSubgraphView(FunctionName);
+            }));
+        }
+
         public override void Validate(FlowGraphValidator validator)
         {
             base.Validate(validator);
             if (CustomFunction == null)
             {
-                validator.MarkAsInvalid(this, $"Can not find custom function {FunctionName}");
+                validator.MarkAsInvalid(this, $"Can not find function {FunctionName}");
+                return;
+            }
+            
+            var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionTypes(CustomFunction);
+            var definitionType = ExecutableNodeReflectionHelper.PredictCustomFunctionNodeType(returnType, inputTypes);
+            Type targetNodeType;
+            if (returnType == typeof(void))
+            {
+                targetNodeType = definitionType.MakeGenericType(inputTypes);
+            }
+            else
+            {
+                targetNodeType = definitionType.MakeGenericType(inputTypes.Append(returnType).ToArray());
+            }
+            if (targetNodeType != NodeType)
+            {
+                validator.MarkAsInvalid(this, $"Parameters of function {FunctionName} do not match");
             }
         }
 
@@ -80,22 +116,6 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
             var instance = (FlowNode_ExecuteCustomFunction)base.CompileNode();
             instance.functionName = CustomFunction.Name;
             return instance;
-        }
-    }
-    
-    [CustomNodeView(typeof(FlowNode_ExecuteCustomFunctionVoid), true)]
-    public sealed class FlowNode_ExecuteCustomFunctionVoidNodeView: ExecuteCustomFunctionNodeView
-    {
-        public FlowNode_ExecuteCustomFunctionVoidNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
-        {
-        }
-    }
-    
-    [CustomNodeView(typeof(FlowNode_ExecuteCustomFunctionReturn), true)]
-    public sealed class FlowNode_ExecuteCustomFunctionReturnNodeView: ExecuteCustomFunctionNodeView
-    {
-        public FlowNode_ExecuteCustomFunctionReturnNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
-        {
         }
     }
 }
