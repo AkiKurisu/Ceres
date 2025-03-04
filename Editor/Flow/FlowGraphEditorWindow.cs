@@ -82,14 +82,6 @@ namespace Ceres.Editor.Graph.Flow
 
             return false;
         }
-        
-        private void ClearDirty()
-        {
-            foreach (var graphView in _graphViews.Values)
-            {
-                graphView.ClearDirty();
-            }
-        }
 
         private void OnGUI()
         {
@@ -117,7 +109,7 @@ namespace Ceres.Editor.Graph.Flow
         private void StructVisualElements(int index)
         {
             rootVisualElement.Clear();
-            rootVisualElement.Add(CreateToolBar());
+            rootVisualElement.Add(new IMGUIContainer(OnToolBarGUI));
             rootVisualElement.Add(GetOrCreateGraphView(index));
         }
         
@@ -180,7 +172,6 @@ namespace Ceres.Editor.Graph.Flow
             var guiContent = new GUIContent();
             if (TrySerializeGraph())
             {
-                ClearDirty();
                 /* Commit graph data */
                 ContainerT.SetGraphData(EditorObject.GraphData);
                 /* Refresh editor object */
@@ -190,8 +181,11 @@ namespace Ceres.Editor.Graph.Flow
                 EditorUtility.SetDirty(Container.Object);
                 AssetDatabase.SaveAssetIfDirty(Container.Object);
                 /* Reload graph view */
+                var currentViewPosition = CurrentGraphView.viewTransform.position;
                 _graphViews.Clear();
                 StructVisualElements(GraphIndex);
+                CurrentGraphView.viewTransform.position = currentViewPosition;
+                /* Notify user */
                 EditorInternalUtil.ClearConsole();
                 guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
                 ShowNotification(guiContent, 0.5f);
@@ -216,95 +210,85 @@ namespace Ceres.Editor.Graph.Flow
             return true;
         }
         
-        private VisualElement CreateToolBar()
+        private void OnToolBarGUI()
         {
-            return new IMGUIContainer(
-                () =>
+            if (!Identifier.IsValid() || CurrentGraphView == null)
+            {
+                /* Should only happen when object destroyed */
+                return;
+            }
+
+            GUILayout.BeginHorizontal(EditorStyles.toolbar);
+            // ========================= Left ToolBar ============================= //
+            /* Draw save button */
+            GUI.enabled = !Application.isPlaying;
+            var image = EditorGUIUtility.IconContent("SaveAs@2x").image;
+            if (GUILayout.Button(new GUIContent(image, $"Save flow and serialize data to {Identifier.boundObject.name}"), EditorStyles.toolbarButton))
+            {
+                SaveGraphData();
+            }
+
+            /* Draw simulation button */
+            if (ContainerCanSimulate())
+            {
+                GUI.enabled &= CurrentGraphView.CanSimulate();
+                image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
+                if (GUILayout.Button(new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"), EditorStyles.toolbarButton))
                 {
-                    if (!Identifier.IsValid() || CurrentGraphView == null)
-                    {
-                        /* Should only happen when object destroyed */
-                        return;
-                    }
-                    
-                    GUILayout.BeginHorizontal(EditorStyles.toolbar);
-                    // ========================= Left ToolBar ============================= //
-                    /* Draw save button */
-                    GUI.enabled = !Application.isPlaying;
-                    var image  = EditorGUIUtility.IconContent("SaveAs@2x").image;
-                    if (GUILayout.Button(new GUIContent(image,$"Save flow and serialize data to {Identifier.boundObject.name}"), EditorStyles.toolbarButton))
-                    {
-                        SaveGraphData();
-                    }
-                    
-                    /* Draw simulation button */
-                    if (ContainerCanSimulate())
-                    {
-                        GUI.enabled &= CurrentGraphView.CanSimulate();
-                        image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
-                        if (GUILayout.Button(
-                                new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"),
-                                EditorStyles.toolbarButton))
-                        {
-                            DoSimulation().Forget();
-                        }
-
-                        GUI.enabled = true;
-                    }
-
-                    /* Draw subGraph popup */
-                    if (EditorObject.GraphInstance.IsUberGraph())
-                    {
-                        var newIndex = EditorGUILayout.Popup(GraphIndex, 
-                            EditorObject.GraphNameContents,
-                            EditorStyles.toolbarPopup,
-                            GUILayout.MinWidth(100));
-                        if (newIndex != GraphIndex)
-                        {
-                            StructVisualElements(GraphIndex = newIndex);
-                        }
-                    }
-                        
-                    // ========================= Left ToolBar ============================= //
-                    
-                    GUILayout.FlexibleSpace();
-                    
-                    // ========================= Right ToolBar ============================= //
-                    GUI.enabled = DebugState.enableDebug && CurrentGraphView.IsPaused();
-                    image = EditorGUIUtility.IconContent("Animation.NextKey").image;
-                    if (GUILayout.Button(new GUIContent(image, $"Next Breakpoint"), EditorStyles.toolbarButton))
-                    {
-                        CurrentGraphView.NextBreakpoint();
-                    }
-                    
-                    image = EditorGUIUtility.IconContent("Animation.Play").image;
-                    if (GUILayout.Button(new GUIContent(image, $"Next Frame"), EditorStyles.toolbarButton))
-                    {
-                        CurrentGraphView.NextFrame();
-                    }
-                    
-                    GUI.enabled = true;
-                    if (DebugState.enableDebug)
-                    {
-                        image = EditorGUIUtility.IconContent("DebuggerAttached@2x").image;
-                        if (GUILayout.Button(new GUIContent(image, $"Disable Debug Mode"), EditorStyles.toolbarButton))
-                        {
-                            CurrentGraphView.SetDebugEnabled(false);
-                        }
-                    }
-                    else
-                    {
-                        image = EditorGUIUtility.IconContent("DebuggerDisabled@2x").image;
-                        if (GUILayout.Button(new GUIContent(image, $"Enable Debug Mode"), EditorStyles.toolbarButton))
-                        {
-                            CurrentGraphView.SetDebugEnabled(true);
-                        }
-                    }
-                    // ========================= Right ToolBar ============================= //
-                    
-                    GUILayout.EndHorizontal();
+                    DoSimulation().Forget();
                 }
-            );
+
+                GUI.enabled = true;
+            }
+
+            /* Draw subGraph popup */
+            if (EditorObject.GraphInstance.IsUberGraph())
+            {
+                var newIndex = EditorGUILayout.Popup(GraphIndex, EditorObject.GraphNameContents, EditorStyles.toolbarPopup, GUILayout.MinWidth(100));
+                if (newIndex != GraphIndex)
+                {
+                    StructVisualElements(GraphIndex = newIndex);
+                }
+            }
+
+            // ========================= Left ToolBar ============================= //
+
+            GUILayout.FlexibleSpace();
+
+            // ========================= Right ToolBar ============================= //
+            GUI.enabled = DebugState.enableDebug && CurrentGraphView.IsPaused();
+            image = EditorGUIUtility.IconContent("Animation.NextKey").image;
+            if (GUILayout.Button(new GUIContent(image, $"Next Breakpoint"), EditorStyles.toolbarButton))
+            {
+                CurrentGraphView.NextBreakpoint();
+            }
+
+            image = EditorGUIUtility.IconContent("Animation.Play").image;
+            if (GUILayout.Button(new GUIContent(image, $"Next Frame"), EditorStyles.toolbarButton))
+            {
+                CurrentGraphView.NextFrame();
+            }
+
+            GUI.enabled = true;
+            if (DebugState.enableDebug)
+            {
+                image = EditorGUIUtility.IconContent("DebuggerAttached@2x").image;
+                if (GUILayout.Button(new GUIContent(image, $"Disable Debug Mode"), EditorStyles.toolbarButton))
+                {
+                    CurrentGraphView.SetDebugEnabled(false);
+                }
+            }
+            else
+            {
+                image = EditorGUIUtility.IconContent("DebuggerDisabled@2x").image;
+                if (GUILayout.Button(new GUIContent(image, $"Enable Debug Mode"), EditorStyles.toolbarButton))
+                {
+                    CurrentGraphView.SetDebugEnabled(true);
+                }
+            }
+            // ========================= Right ToolBar ============================= //
+
+            GUILayout.EndHorizontal();
         }
 
         private async UniTask DoSimulation()
