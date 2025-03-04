@@ -18,7 +18,7 @@ namespace Ceres.Graph.Flow
     }
     
     /// <summary>
-    /// Asset contains Flow Graph that can be shared between multi container instance.
+    /// Asset contains <see cref="FlowGraphData"/> that can be shared between multi <see cref="IFlowGraphRuntime"/> instances.
     /// </summary>
     [CreateAssetMenu(fileName = "FlowGraphAsset", menuName = "Ceres/Flow Graph Asset")]
     public class FlowGraphAsset: FlowGraphScriptableObjectBase
