@@ -26,7 +26,7 @@ Ceres serialize node, port and graph to an additional data structure:  `CeresNod
 
 Compared with `CeresPort`, `SharedVariable` can be edited out of graph and not contain any connection data since it not need to know where the data comes from.  
 
-![Variables](./Images~/variables.png)
+![Variables](./Images/variables.png)
 
 ## Execution Path
 
@@ -36,6 +36,6 @@ Node can be executed in two way:
 
 <b>Dependency</b>: Graph should execute node's dependencies before execute node.
 
-![ceres_concept_execution_path](./Images~/ceres_concept_execution_path.png)
+![ceres_concept_execution_path](./Images/ceres_concept_execution_path.png)
 
 As shown in the figure, to execute `Log String`, we need first get the variable `message`. However, since `Get message` has no outer connect it, it has not been executed before. So the graph need consider `Get message` as dependency and execute it before executing `Log String`.
