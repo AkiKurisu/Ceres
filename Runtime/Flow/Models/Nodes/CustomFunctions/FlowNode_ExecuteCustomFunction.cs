@@ -10,19 +10,40 @@ namespace Ceres.Graph.Flow.CustomFunctions
     /// </summary>
     [Serializable]
     [CeresMetadata("style = CustomFunctionNode")]
-    public abstract class FlowNode_ExecuteCustomFunction: FlowNode
+    public abstract class FlowNode_ExecuteCustomFunction: FlowNode, IRuntimeCompiledNode
     {
         [HideInGraphEditor]
         public string functionName;
+
+        [HideInGraphEditor] 
+        public FlowGraphFunctionAsset functionAsset;
+
+        private WeakReference<FlowGraph> _functionGraphReference;
         
         protected sealed override async UniTask Execute(ExecutionContext executionContext)
         {
-            var subGraph = executionContext.Graph.FindSubGraph<FlowGraph>(functionName);
-            if (subGraph == null) return;
-            using var evt = ExecuteSubFlowEvent.Create(functionName);
-            PreExecuteCustomFunction(evt);
-            await subGraph.ExecuteEventAsyncInternal(executionContext.Context, nameof(CustomFunctionInput), evt);
-            PostExecuteCustomFunction(evt);
+            FlowGraph functionGraph;
+            if (functionAsset && _functionGraphReference != null)
+            {
+                _functionGraphReference.TryGetTarget(out functionGraph);
+            }
+            else
+            {
+                functionGraph = executionContext.Graph.FindSubGraph<FlowGraph>(functionName);
+            }
+
+            if (functionGraph == null)
+            {
+                CeresLogger.LogWarning($"Function {functionName} not exist in subGraphs which is not expected");
+            }
+            else
+            {
+                using var evt = ExecuteSubFlowEvent.Create(functionName);
+                PreExecuteCustomFunction(evt);
+                await functionGraph.ExecuteEventAsyncInternal(executionContext.Context, nameof(CustomFunctionInput),
+                    evt);
+                PostExecuteCustomFunction(evt);
+            }
             executionContext.SetNext(exec.GetT<ExecutableNode>());
         }
 
@@ -34,6 +55,17 @@ namespace Ceres.Graph.Flow.CustomFunctions
         private protected virtual void PostExecuteCustomFunction(ExecuteSubFlowEvent evt)
         {
             
+        }
+
+        public void Compile(CeresGraphCompiler compiler)
+        {
+            if (!functionAsset) return;
+
+            if (compiler.Context is not FlowGraphCompilationContext context)
+            {
+                return;
+            }
+            _functionGraphReference = new WeakReference<FlowGraph>(context.AddOrCreateFunctionSubGraph(compiler, functionAsset));
         }
     }
     

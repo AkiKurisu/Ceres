@@ -119,25 +119,25 @@ namespace Ceres.Graph
         }
         
         /// <summary>
-        /// Map variable to global variables
+        /// Link variable to global variables
         /// </summary>
         /// <param name="variableSource"></param>
-        public static void MapGlobal(this IVariableSource variableSource)
+        public static void LinkToGlobal(this IVariableSource variableSource)
         {
             var globalVariables = GlobalVariables.Instance;
             foreach (var variable in variableSource.SharedVariables)
             {
                 if (!variable.IsGlobal) continue;
-                variable.MapTo(globalVariables);
+                variable.LinkToSource(globalVariables);
             }
         }
         
         /// <summary>
-        /// Map variable to target variable source
+        /// Link variable to target variable source
         /// </summary>
         /// <param name="variable"></param>
         /// <param name="variableSource"></param>
-        public static void MapTo(this SharedVariable variable, IVariableSource variableSource)
+        public static void LinkToSource(this SharedVariable variable, IVariableSource variableSource)
         {
             if (variable == null) return;
             if (!variable.IsShared && !variable.IsGlobal) return;

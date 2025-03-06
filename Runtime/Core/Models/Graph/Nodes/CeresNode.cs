@@ -45,6 +45,14 @@ namespace Ceres.Graph
         /// </summary>
         void ClearChildren();
     }
+
+    /// <summary>
+    /// Interface for node need runtime compilation
+    /// </summary>
+    public interface IRuntimeCompiledNode
+    {
+        void Compile(CeresGraphCompiler compiler);
+    }
     
     /// <summary>
     /// Define how to execute node

@@ -10,7 +10,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
     [CustomNodeView(typeof(FlowNode_ExecuteCustomFunction), true)]
     public sealed class ExecuteCustomFunctionNodeView : ExecutableNodeView
     {
-        private CustomFunction CustomFunction { get; set; }
+        private LocalFunction LocalFunction { get; set; }
 
         private string FunctionName { get; set; }
 
@@ -33,9 +33,9 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         {
             NodeElement.title = functionName;
             FunctionName = functionName;
-            if (GraphView.TryGetSharedVariable(functionName, out var variable) && variable is CustomFunction customFunction)
+            if (GraphView.TryGetSharedVariable(functionName, out var variable) && variable is LocalFunction customFunction)
             {
-                CustomFunction = customFunction;
+                LocalFunction = customFunction;
                 var inputParameters = FlowGraphEditorWindow.ResolveFunctionInputParameters(customFunction);
                 for (int i = 0; i < inputParameters.Length; i++)
                 {
@@ -49,7 +49,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         private void OnVariableChange(VariableChangeEvent evt)
         {
             if (NodeElement.panel == null) return;
-            if (evt.Variable != CustomFunction) return;
+            if (evt.Variable != LocalFunction) return;
             if (evt.ChangeType == VariableChangeType.Name)
             {
                 FunctionName = NodeElement.title = evt.Variable.Name;
@@ -60,7 +60,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
                 GraphView.ClearSelection();
                 GraphView.schedule.Execute(FrameNode).ExecuteLater(200);
                 /* Free reference */
-                CustomFunction = null;
+                LocalFunction = null;
             }
         }
         
@@ -73,7 +73,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             base.BuildContextualMenu(evt);
-            if (CustomFunction == null) return;
+            if (LocalFunction == null) return;
             
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Rename function", _ =>
             {
@@ -88,13 +88,13 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         public override void Validate(FlowGraphValidator validator)
         {
             base.Validate(validator);
-            if (CustomFunction == null)
+            if (LocalFunction == null)
             {
                 validator.MarkAsInvalid(this, $"Can not find function {FunctionName}");
                 return;
             }
             
-            var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionTypes(CustomFunction);
+            var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionTypes(LocalFunction);
             var definitionType = ExecutableNodeReflectionHelper.PredictCustomFunctionNodeType(returnType, inputTypes);
             Type targetNodeType;
             if (returnType == typeof(void))
@@ -114,7 +114,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         public override ExecutableNode CompileNode()
         {
             var instance = (FlowNode_ExecuteCustomFunction)base.CompileNode();
-            instance.functionName = CustomFunction.Name;
+            instance.functionName = LocalFunction.Name;
             return instance;
         }
     }

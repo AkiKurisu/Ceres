@@ -78,7 +78,9 @@ internal class FlowGraphGeneratorTemplate
                         if (_graph == null)
                         {
                             _graph = GetFlowGraph();
-                            _graph.Compile();
+                            using var context = FlowGraphCompilationContext.GetPooled();
+                            using var compiler = CeresGraphCompiler.GetPooled(_graph, context);
+                            _graph.Compile(compiler);
                         }
         
                         return _graph;
@@ -134,7 +136,9 @@ internal class FlowGraphGeneratorTemplate
                         if (_graph == null)
                         {
                             _graph = GetFlowGraph();
-                            _graph.Compile();
+                            using var context = FlowGraphCompilationContext.GetPooled();
+                            using var compiler = CeresGraphCompiler.GetPooled(_graph, context);
+                            _graph.Compile(compiler);
                         }
         
                         return _graph;

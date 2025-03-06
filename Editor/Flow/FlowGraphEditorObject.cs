@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
@@ -36,15 +37,18 @@ namespace Ceres.Editor.Graph.Flow
                     }
                     
                     /* Append custom function variables */
-                    _instance.variables.AddRange(
-                        _instance.SubGraphSlots
-                                    .OfType<FlowSubGraphSlot>()
-                                    .Where(x=> x.Usage == FlowGraphUsage.Function)
-                                    .Select(x=> new CustomFunction(x.Name)
-                                    {
-                                        Value = x.Guid
-                                    })
+                    if (_instance.SubGraphSlots != null)
+                    {
+                        _instance.variables.AddRange(
+                            _instance.SubGraphSlots
+                                .OfType<FlowSubGraphSlot>()
+                                .Where(x => x.Usage == FlowGraphUsage.Function)
+                                .Select(x => new LocalFunction(x.Name)
+                                {
+                                    Value = x.Guid
+                                })
                         );
+                    }
                     Update();
                 }
 
@@ -68,9 +72,12 @@ namespace Ceres.Editor.Graph.Flow
 
         public void Update()
         {
-            var contents =  GraphInstance.SubGraphSlots.Select(x => x.Name).ToList();
             /* Slot 0 use uber graph name */
-            contents.Insert(0, $"{_container.GetIdentifier().boundObject.name} (Main)");
+            var contents = new List<string>{ $"{_container.GetIdentifier().boundObject.name} (Main)" };
+            if (GraphInstance.SubGraphSlots != null)
+            {
+                contents.AddRange(GraphInstance.SubGraphSlots.Select(x => x.Name));   
+            }
             GraphNames = contents.ToArray();
             GraphNameContents = contents.Select(x => new GUIContent(x)).ToArray();
         }

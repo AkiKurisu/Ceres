@@ -21,7 +21,9 @@ namespace Ceres.Graph.Flow
                 if (_graph == null)
                 {
                     _graph = CreateRuntimeFlowGraphInstance();
-                    _graph.Compile();
+                    using var context = FlowGraphCompilationContext.GetPooled();
+                    using var compiler = CeresGraphCompiler.GetPooled(_graph, context);
+                    _graph.Compile(compiler);
                 }
 
                 return _graph;

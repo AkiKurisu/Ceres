@@ -123,20 +123,31 @@ namespace Ceres.Graph
             }
         }
 
+        protected void SetCompilerTarget(CeresGraphCompiler compiler)
+        {
+            compiler.Target = this;
+        }
+
         /// <summary>
         /// Compile graph just in time
         /// </summary>
-        public virtual void Compile()
+        /// <param name="compiler">Runtime compiler</param>
+        public virtual void Compile(CeresGraphCompiler compiler)
         {
-            InitVariables_Imp(this);
+            SetCompilerTarget(compiler);
+            
+            /* Init variables to map blackboard */
+            InitVariables(this);
             
             /* Init ports while injecting dependency */
-            InitPorts_Imp(this);
+            InitPorts(this);
                         
             /* Calculate dependency path if not cache */
             CollectDependencyPath(this);
             
-            BlackBoard.MapGlobal();
+            CompileNodes(compiler);
+            
+            BlackBoard.LinkToGlobal();
         }
 
         /// <summary>
@@ -152,7 +163,7 @@ namespace Ceres.Graph
         /// Traverse the graph and init all shared variables automatically
         /// </summary>
         /// <param name="graph"></param>
-        protected static void InitVariables_Imp(CeresGraph graph)
+        protected static void InitVariables(CeresGraph graph)
         {
             var internalVariables = graph._internalVariables;
             foreach (var node in graph.GetAllNodes())
@@ -163,7 +174,7 @@ namespace Ceres.Graph
                 foreach (var variable in node.SharedVariables)
                 {
                     internalVariables.Add(variable);
-                    variable.MapTo(graph.BlackBoard);
+                    variable.LinkToSource(graph.BlackBoard);
                 }
 #else
                 var nodeType = node.GetType();
@@ -185,7 +196,7 @@ namespace Ceres.Graph
                     }
                     if (value is SharedVariable sharedVariable)
                     {
-                        sharedVariable.MapTo(graph.BlackBoard);
+                        sharedVariable.LinkToSource(graph.BlackBoard);
                         internalVariables.Add(sharedVariable);
                     }
                     else if (value is IList sharedVariableList)
@@ -194,7 +205,7 @@ namespace Ceres.Graph
                         {
                             var sv = variable as SharedVariable;
                             internalVariables.Add(sv);
-                            sv.MapTo(graph.BlackBoard);
+                            sv.LinkToSource(graph.BlackBoard);
                         }
                     }
                 }
@@ -206,7 +217,7 @@ namespace Ceres.Graph
         /// Traverse the graph and init all ports automatically
         /// </summary>
         /// <param name="graph"></param>
-        protected static void InitPorts_Imp(CeresGraph graph)
+        protected static void InitPorts(CeresGraph graph)
         {
             var internalPorts = graph._internalPorts;
             foreach (var node in graph.GetAllNodes())
@@ -319,6 +330,17 @@ namespace Ceres.Graph
                 }
                 port.Link(targetPort);
                 targetNode.NodeData.AddDependency(ownerNode.Guid);
+            }
+        }
+
+        protected static void CompileNodes(CeresGraphCompiler compiler)
+        {
+            foreach (var node in compiler.Target.nodes)
+            {
+                if (node is IRuntimeCompiledNode compiledNode)
+                {
+                    compiledNode.Compile(compiler);
+                }
             }
         }
         
@@ -456,7 +478,7 @@ namespace Ceres.Graph
         /// <param name="slot"></param>
         /// <typeparam name="TGraph"></typeparam>
         /// <returns></returns>
-        protected bool AddSubGraphSlot<TGraph>(CeresSubGraphSlot slot) where TGraph: CeresGraph
+        public bool AddSubGraphSlot<TGraph>(CeresSubGraphSlot slot) where TGraph: CeresGraph
         {
             foreach (var subGraphSlot in SubGraphSlots)
             {

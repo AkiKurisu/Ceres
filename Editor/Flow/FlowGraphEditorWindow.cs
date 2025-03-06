@@ -346,7 +346,7 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         public void CreateFunctionSubGraph()
         {
-            var json = Resources.Load<TextAsset>("Ceres/Flow/TemplateSubGraphData").text;
+            var json = Resources.Load<TextAsset>("Ceres/Flow/FunctionSubGraphData").text;
             var templateSubGraph = new FlowGraph(JsonUtility.FromJson<FlowGraphSerializedData>(json));
             var functionName = "New Function";
             var id = 1;
@@ -355,7 +355,7 @@ namespace Ceres.Editor.Graph.Flow
                 functionName = $"New Function {id++}";
             }
 
-            var function = new CustomFunction(functionName);
+            var function = new LocalFunction(functionName);
             if (!EditorObject.GraphInstance.AddFlowSubGraph(functionName, function.Value, FlowGraphUsage.Function, templateSubGraph))
             {
                 /* Can not create function subGraph when function name has been registered as a subGraph name */
@@ -369,14 +369,20 @@ namespace Ceres.Editor.Graph.Flow
             OpenSubgraphView(functionName);
         }
 
+        public bool CanCreateFunctionSubGraph()
+        {
+            // Can only create function in uber graph
+            return GraphIndex == 0 && EditorObject.GraphInstance.IsUberGraph();
+        }
+
         /// <summary>
         /// Resolve custom function parameter types
         /// </summary>
-        /// <param name="customFunction"></param>
+        /// <param name="localFunction"></param>
         /// <returns></returns>
-        public (Type, Type[]) ResolveFunctionTypes(CustomFunction customFunction)
+        public (Type, Type[]) ResolveFunctionTypes(LocalFunction localFunction)
         {
-            var slot = EditorObject.GraphInstance.SubGraphSlots.FirstOrDefault(subGraphSlot => subGraphSlot.Guid == customFunction.Value);
+            var slot = EditorObject.GraphInstance.SubGraphSlots.FirstOrDefault(subGraphSlot => subGraphSlot.Guid == localFunction.Value);
             if (slot == null) return (null, null);
             var input = slot.Graph.GetFirstNodeOfType<CustomFunctionInput>();
             var output = slot.Graph.GetFirstNodeOfType<CustomFunctionOutput>();
@@ -389,11 +395,11 @@ namespace Ceres.Editor.Graph.Flow
         /// <summary>
         /// Resolve custom function input parameters
         /// </summary>
-        /// <param name="customFunction"></param>
+        /// <param name="localFunction"></param>
         /// <returns></returns>
-        public CustomFunctionInputParameter[] ResolveFunctionInputParameters(CustomFunction customFunction)
+        public CustomFunctionInputParameter[] ResolveFunctionInputParameters(LocalFunction localFunction)
         {
-            var slot = EditorObject.GraphInstance.SubGraphSlots.FirstOrDefault(subGraphSlot => subGraphSlot.Guid == customFunction.Value);
+            var slot = EditorObject.GraphInstance.SubGraphSlots.FirstOrDefault(subGraphSlot => subGraphSlot.Guid == localFunction.Value);
             var input = slot?.Graph.GetFirstNodeOfType<CustomFunctionInput>();
             return input?.parameters;
         }
