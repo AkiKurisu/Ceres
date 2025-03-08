@@ -1,7 +1,6 @@
 # Flow
 Powerful visual scripting solution inspired from Unreal's Blueprint.
 
-- [Flow](#flow)
 - [Conecpt](#conecpt)
   - [Events](#events)
   - [Functions](#functions)
@@ -26,12 +25,16 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
   - [Node has Port Array](#node-has-port-array)
   - [Generic Node](#generic-node)
   - [Custom Function](#custom-function)
+    - [Local Function](#local-function)
+    - [Flow Graph Function](#flow-graph-function)
 - [Code Generation](#code-generation)
   - [IL Post Process](#il-post-process)
   - [Source Generator](#source-generator)
 - [Debug](#debug)
   - [Use Breakpoint](#use-breakpoint)
-  - [Use FlowGraphTracker](#use-flowgraphtracker)
+  - [Use Graph Tracker](#use-graph-tracker)
+
+
 
 
 # Conecpt
@@ -562,21 +565,39 @@ public class FlowNode_CastT_Template: GenericNodeTemplate
 
 ## Custom Function
 
-You can define function subGraph inside your flow graph to reuse logic.
+### Local Function
 
-You can create a custom function by following these steps:
+You can define local function inside your flow graph to reuse logic.
+
+You can create a local function by following these steps:
 
 1. Click blackboard `+` button and select `Function` in menu which will let you open subGraph view.
 2. Configure the function input and output parameters.
 
-    ![Configure Input](./Images/flow_custom_function_config.png)
+    ![Configure Input](./Images/flow_local_function_config.png)
 
-3. Save your function subGraph.
+3. Save the local function subGraph.
 4. Enter uber graph and drag the function from blackboard to graph.
 
-    ![Drag Function](./Images/flow_custom_function_drag.png)
+    ![Drag Function](./Images/flow_local_function_drag.png)
 
-5. You can modify the name of custom function just like modifing a variable.
+5. You can modify the name of local function just like modifing a variable.
+
+### Flow Graph Function
+
+You can define a shared function across multiple graph containers using `FlowGraphFunctionAsset`.
+
+You can create a flow graph function by following these steps:
+
+1. Right click project browser and select `Create/Ceres/Flow Graph Function` to create a new `FlowGraphFunctionAsset`.
+2. Configure the function input and output parameters.
+3. Save the flow graph.
+4. Rename `FlowGraphFunctionAsset` asset name which will also be the function name.
+5. Set your flow graph function [runtime type](#runtime-architecture) in inspector.
+    ![Set Flow Graph Function Runtime Type](./Images/flow_flow_graph_function_asset_inspector.png)
+6. Open another flow graph.
+7. Select your flow graph function by its asset name in search window.
+    ![Use Flow Graph Function](./Images/flow_flow_graph_function.png)
 
 # Code Generation
 
@@ -599,7 +620,7 @@ public void ExecuteTest(string data)
 
 ![](./Images/flow_ilpp_bridge.png)
 
-If ILPP is disabled or you want to customize the timing for calling bridge methods, you need to add bridge method yourself as shown below.
+If you want to customize the timing for calling bridge methods, you can add bridge method explicitly as shown below.
 
 ```C#
 [ImplementableEvent]
@@ -668,7 +689,7 @@ You can right click node and `Add Breakpoint`, and click `Next Breakpoint` in to
 
 ![Debug](./Images/flow_debugger.png)
 
-## Use FlowGraphTracker
+## Use Graph Tracker
 
 `FlowGraphTracker` is a class that can be used to track the execution of the graph.
 

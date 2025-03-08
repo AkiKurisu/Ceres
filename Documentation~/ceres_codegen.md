@@ -18,9 +18,7 @@ For more details, see [Code Generation in Flow](./flow_startup.md#code-generatio
 
 ## ILPP
 
-By default, Ceres graph use `System.Reflection` to initialize all ports and shared variables which will cause obvious overhead.
-
-ILPP make those ports and variables to be collected by owner node it self to enhance runtime performance.
+Ceres graph use ILPP to emit IL for initialization logic of `CeresNode` to enhance runtime performance.
 
 In Flow we use ILPP to emit IL for methods annotated with `ImplementableEventAttribute` that let you execute graph event in C#.
 

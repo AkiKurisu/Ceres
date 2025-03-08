@@ -48,9 +48,9 @@ Unity 2022.3 LTS or later.
 
 Support Mono, IL2CPP.
 
-## API Reference
+## Documentation
 
-https://akikurisu.github.io/Ceres/api/Ceres.html
+[API Reference](https://akikurisu.github.io/Ceres/api/Ceres.html)
 
 ## Implementation
 
