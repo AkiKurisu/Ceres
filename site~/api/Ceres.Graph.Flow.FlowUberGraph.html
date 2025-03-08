@@ -133,13 +133,16 @@
       <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_SubGraphSlots">CeresGraph.SubGraphSlots</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_GetAllNodes">CeresGraph.GetAllNodes()</a>
+      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_SetCompilerTarget_Ceres_Graph_CeresGraphCompiler_">CeresGraph.SetCompilerTarget(CeresGraphCompiler)</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_InitVariables_Imp_Ceres_Graph_CeresGraph_">CeresGraph.InitVariables_Imp(CeresGraph)</a>
+      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_InitVariables_Ceres_Graph_CeresGraph_">CeresGraph.InitVariables(CeresGraph)</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_InitPorts_Imp_Ceres_Graph_CeresGraph_">CeresGraph.InitPorts_Imp(CeresGraph)</a>
+      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_InitPorts_Ceres_Graph_CeresGraph_">CeresGraph.InitPorts(CeresGraph)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_CompileNodes_Ceres_Graph_CeresGraphCompiler_">CeresGraph.CompileNodes(CeresGraphCompiler)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_CollectDependencyPath_Ceres_Graph_CeresGraph_">CeresGraph.CollectDependencyPath(CeresGraph)</a>
@@ -201,7 +204,7 @@
   <h5 id="Ceres_Graph_Flow_FlowUberGraph_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public class FlowUberGraph : FlowGraph, IDisposable, IDisposableUnregister</code></pre>
+public sealed class FlowUberGraph : FlowGraph, IDisposable, IDisposableUnregister</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
@@ -237,24 +240,44 @@ public class FlowUberGraph : FlowGraph, IDisposable, IDisposableUnregister</code
 
 
   <a id="Ceres_Graph_Flow_FlowUberGraph_Compile_" data-uid="Ceres.Graph.Flow.FlowUberGraph.Compile*"></a>
-  <h4 id="Ceres_Graph_Flow_FlowUberGraph_Compile" data-uid="Ceres.Graph.Flow.FlowUberGraph.Compile">Compile()</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Ceres_Graph_Flow_FlowUberGraph_Compile_Ceres_Graph_CeresGraphCompiler_" data-uid="Ceres.Graph.Flow.FlowUberGraph.Compile(Ceres.Graph.CeresGraphCompiler)">Compile(CeresGraphCompiler)</h4>
+  <div class="markdown level1 summary"><p>Compile graph just in time</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Compile()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void Compile(CeresGraphCompiler compiler)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.CeresGraphCompiler.html">CeresGraphCompiler</a></td>
+        <td><span class="parametername">compiler</span></td>
+        <td><p>Runtime compiler</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Graph.Flow.FlowGraph.html#Ceres_Graph_Flow_FlowGraph_Compile">FlowGraph.Compile()</a></div>
+  <div><a class="xref" href="Ceres.Graph.Flow.FlowGraph.html#Ceres_Graph_Flow_FlowGraph_Compile_Ceres_Graph_CeresGraphCompiler_">FlowGraph.Compile(CeresGraphCompiler)</a></div>
 
 
   <a id="Ceres_Graph_Flow_FlowUberGraph_IsUberGraph_" data-uid="Ceres.Graph.Flow.FlowUberGraph.IsUberGraph*"></a>
   <h4 id="Ceres_Graph_Flow_FlowUberGraph_IsUberGraph" data-uid="Ceres.Graph.Flow.FlowUberGraph.IsUberGraph">IsUberGraph()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Is graph on top level which means it can have subGraphs</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override sealed bool IsUberGraph()</code></pre>
+    <pre><code class="lang-csharp hljs">public override bool IsUberGraph()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">

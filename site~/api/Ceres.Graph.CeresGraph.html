@@ -302,7 +302,7 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected bool AddSubGraphSlot&lt;TGraph&gt;(CeresSubGraphSlot slot) where TGraph : CeresGraph</code></pre>
+    <pre><code class="lang-csharp hljs">public bool AddSubGraphSlot&lt;TGraph&gt;(CeresSubGraphSlot slot) where TGraph : CeresGraph</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -381,14 +381,59 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
 
 
   <a id="Ceres_Graph_CeresGraph_Compile_" data-uid="Ceres.Graph.CeresGraph.Compile*"></a>
-  <h4 id="Ceres_Graph_CeresGraph_Compile" data-uid="Ceres.Graph.CeresGraph.Compile">Compile()</h4>
+  <h4 id="Ceres_Graph_CeresGraph_Compile_Ceres_Graph_CeresGraphCompiler_" data-uid="Ceres.Graph.CeresGraph.Compile(Ceres.Graph.CeresGraphCompiler)">Compile(CeresGraphCompiler)</h4>
   <div class="markdown level1 summary"><p>Compile graph just in time</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Compile()</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void Compile(CeresGraphCompiler compiler)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.CeresGraphCompiler.html">CeresGraphCompiler</a></td>
+        <td><span class="parametername">compiler</span></td>
+        <td><p>Runtime compiler</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_CeresGraph_CompileNodes_" data-uid="Ceres.Graph.CeresGraph.CompileNodes*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_CompileNodes_Ceres_Graph_CeresGraphCompiler_" data-uid="Ceres.Graph.CeresGraph.CompileNodes(Ceres.Graph.CeresGraphCompiler)">CompileNodes(CeresGraphCompiler)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static void CompileNodes(CeresGraphCompiler compiler)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.CeresGraphCompiler.html">CeresGraphCompiler</a></td>
+        <td><span class="parametername">compiler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <a id="Ceres_Graph_CeresGraph_Dispose_" data-uid="Ceres.Graph.CeresGraph.Dispose*"></a>
@@ -563,32 +608,6 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
   </table>
 
 
-  <a id="Ceres_Graph_CeresGraph_GetAllNodes_" data-uid="Ceres.Graph.CeresGraph.GetAllNodes*"></a>
-  <h4 id="Ceres_Graph_CeresGraph_GetAllNodes" data-uid="Ceres.Graph.CeresGraph.GetAllNodes">GetAllNodes()</h4>
-  <div class="markdown level1 summary"><p>Get all nodes owned by this graph</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual List&lt;CeresNode&gt; GetAllNodes()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.List&lt;T&gt;</span>&lt;<a class="xref" href="Ceres.Graph.CeresNode.html">CeresNode</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
   <a id="Ceres_Graph_CeresGraph_GetDependencyPaths_" data-uid="Ceres.Graph.CeresGraph.GetDependencyPaths*"></a>
   <h4 id="Ceres_Graph_CeresGraph_GetDependencyPaths" data-uid="Ceres.Graph.CeresGraph.GetDependencyPaths">GetDependencyPaths()</h4>
   <div class="markdown level1 summary"><p>Get graph node current dependency path if existed</p>
@@ -743,14 +762,14 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
   </table>
 
 
-  <a id="Ceres_Graph_CeresGraph_InitPorts_Imp_" data-uid="Ceres.Graph.CeresGraph.InitPorts_Imp*"></a>
-  <h4 id="Ceres_Graph_CeresGraph_InitPorts_Imp_Ceres_Graph_CeresGraph_" data-uid="Ceres.Graph.CeresGraph.InitPorts_Imp(Ceres.Graph.CeresGraph)">InitPorts_Imp(CeresGraph)</h4>
+  <a id="Ceres_Graph_CeresGraph_InitPorts_" data-uid="Ceres.Graph.CeresGraph.InitPorts*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_InitPorts_Ceres_Graph_CeresGraph_" data-uid="Ceres.Graph.CeresGraph.InitPorts(Ceres.Graph.CeresGraph)">InitPorts(CeresGraph)</h4>
   <div class="markdown level1 summary"><p>Traverse the graph and init all ports automatically</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected static void InitPorts_Imp(CeresGraph graph)</code></pre>
+    <pre><code class="lang-csharp hljs">protected static void InitPorts(CeresGraph graph)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -771,14 +790,14 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
   </table>
 
 
-  <a id="Ceres_Graph_CeresGraph_InitVariables_Imp_" data-uid="Ceres.Graph.CeresGraph.InitVariables_Imp*"></a>
-  <h4 id="Ceres_Graph_CeresGraph_InitVariables_Imp_Ceres_Graph_CeresGraph_" data-uid="Ceres.Graph.CeresGraph.InitVariables_Imp(Ceres.Graph.CeresGraph)">InitVariables_Imp(CeresGraph)</h4>
+  <a id="Ceres_Graph_CeresGraph_InitVariables_" data-uid="Ceres.Graph.CeresGraph.InitVariables*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_InitVariables_Ceres_Graph_CeresGraph_" data-uid="Ceres.Graph.CeresGraph.InitVariables(Ceres.Graph.CeresGraph)">InitVariables(CeresGraph)</h4>
   <div class="markdown level1 summary"><p>Traverse the graph and init all shared variables automatically</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected static void InitVariables_Imp(CeresGraph graph)</code></pre>
+    <pre><code class="lang-csharp hljs">protected static void InitVariables(CeresGraph graph)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -856,6 +875,33 @@ public class CeresGraph : IDisposable, IDisposableUnregister</code></pre>
       <tr>
         <td><a class="xref" href="Ceres.Graph.CeresPortData.html">CeresPortData</a></td>
         <td><span class="parametername">portData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Ceres_Graph_CeresGraph_SetCompilerTarget_" data-uid="Ceres.Graph.CeresGraph.SetCompilerTarget*"></a>
+  <h4 id="Ceres_Graph_CeresGraph_SetCompilerTarget_Ceres_Graph_CeresGraphCompiler_" data-uid="Ceres.Graph.CeresGraph.SetCompilerTarget(Ceres.Graph.CeresGraphCompiler)">SetCompilerTarget(CeresGraphCompiler)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetCompilerTarget(CeresGraphCompiler compiler)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.CeresGraphCompiler.html">CeresGraphCompiler</a></td>
+        <td><span class="parametername">compiler</span></td>
         <td></td>
       </tr>
     </tbody>

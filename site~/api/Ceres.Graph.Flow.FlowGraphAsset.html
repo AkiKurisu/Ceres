@@ -82,7 +82,7 @@
 
   <h1 id="Ceres_Graph_Flow_FlowGraphAsset" data-uid="Ceres.Graph.Flow.FlowGraphAsset" class="text-break">Class FlowGraphAsset
 </h1>
-  <div class="markdown level0 summary"><p>Asset contains Flow Graph that can be shared between multi container instance.</p>
+  <div class="markdown level0 summary"><p>Asset contains <a class="xref" href="Ceres.Graph.Flow.FlowGraphData.html">FlowGraphData</a> that can be shared between multi <a class="xref" href="Ceres.Graph.Flow.IFlowGraphRuntime.html">IFlowGraphRuntime</a> instances.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -90,12 +90,17 @@
     <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><a class="xref" href="Ceres.Graph.Flow.FlowGraphScriptableObjectBase.html">FlowGraphScriptableObjectBase</a></div>
     <div class="level2"><span class="xref">FlowGraphAsset</span></div>
+      <div class="level3"><a class="xref" href="Ceres.Graph.Flow.FlowGraphFunctionAsset.html">FlowGraphFunctionAsset</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType.html">IRedirectFlowGraphRuntimeType</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Graph.html">Graph</a>.<a class="xref" href="Ceres.Graph.Flow.html">Flow</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Ceres_Graph_Flow_FlowGraphAsset_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FlowGraphAsset : FlowGraphScriptableObjectBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class FlowGraphAsset : FlowGraphScriptableObjectBase, IRedirectFlowGraphRuntimeType</code></pre>
   </div>
   <h3 id="fields">Fields
 </h3>
@@ -134,7 +139,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Type GetRuntimeType()</code></pre>
+    <pre><code class="lang-csharp hljs">public Type GetRuntimeType()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -151,8 +156,10 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Graph.Flow.FlowGraphScriptableObjectBase.html#Ceres_Graph_Flow_FlowGraphScriptableObjectBase_GetRuntimeType">FlowGraphScriptableObjectBase.GetRuntimeType()</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType.html">IRedirectFlowGraphRuntimeType</a>
+  </div>
 </article>
           </div>
 

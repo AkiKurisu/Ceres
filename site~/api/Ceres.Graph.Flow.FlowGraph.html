@@ -114,13 +114,16 @@
       <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_SubGraphSlots">CeresGraph.SubGraphSlots</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_GetAllNodes">CeresGraph.GetAllNodes()</a>
+      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_SetCompilerTarget_Ceres_Graph_CeresGraphCompiler_">CeresGraph.SetCompilerTarget(CeresGraphCompiler)</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_InitVariables_Imp_Ceres_Graph_CeresGraph_">CeresGraph.InitVariables_Imp(CeresGraph)</a>
+      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_InitVariables_Ceres_Graph_CeresGraph_">CeresGraph.InitVariables(CeresGraph)</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_InitPorts_Imp_Ceres_Graph_CeresGraph_">CeresGraph.InitPorts_Imp(CeresGraph)</a>
+      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_InitPorts_Ceres_Graph_CeresGraph_">CeresGraph.InitPorts(CeresGraph)</a>
+    </div>
+    <div>
+      <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_CompileNodes_Ceres_Graph_CeresGraphCompiler_">CeresGraph.CompileNodes(CeresGraphCompiler)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_CollectDependencyPath_Ceres_Graph_CeresGraph_">CeresGraph.CollectDependencyPath(CeresGraph)</a>
@@ -249,16 +252,34 @@ public class FlowGraph : CeresGraph, IDisposable, IDisposableUnregister</code></
 
 
   <a id="Ceres_Graph_Flow_FlowGraph_Compile_" data-uid="Ceres.Graph.Flow.FlowGraph.Compile*"></a>
-  <h4 id="Ceres_Graph_Flow_FlowGraph_Compile" data-uid="Ceres.Graph.Flow.FlowGraph.Compile">Compile()</h4>
+  <h4 id="Ceres_Graph_Flow_FlowGraph_Compile_Ceres_Graph_CeresGraphCompiler_" data-uid="Ceres.Graph.Flow.FlowGraph.Compile(Ceres.Graph.CeresGraphCompiler)">Compile(CeresGraphCompiler)</h4>
   <div class="markdown level1 summary"><p>Compile graph just in time</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Compile()</code></pre>
+    <pre><code class="lang-csharp hljs">public override void Compile(CeresGraphCompiler compiler)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.CeresGraphCompiler.html">CeresGraphCompiler</a></td>
+        <td><span class="parametername">compiler</span></td>
+        <td><p>Runtime compiler</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_Compile">CeresGraph.Compile()</a></div>
+  <div><a class="xref" href="Ceres.Graph.CeresGraph.html#Ceres_Graph_CeresGraph_Compile_Ceres_Graph_CeresGraphCompiler_">CeresGraph.Compile(CeresGraphCompiler)</a></div>
 
 
   <a id="Ceres_Graph_Flow_FlowGraph_Dispose_" data-uid="Ceres.Graph.Flow.FlowGraph.Dispose*"></a>
