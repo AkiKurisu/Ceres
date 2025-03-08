@@ -7,6 +7,7 @@ using Chris.Collections;
 using Chris.Serialization;
 using UnityEngine;
 using UnityEngine.Pool;
+
 namespace Ceres.Graph
 {
     /// <summary>
@@ -94,7 +95,6 @@ namespace Ceres.Graph
             // ILPP generates code for all CeresNode subtypes to initialize each type's CeresPort.
         }
         
-#if !CERES_DISABLE_ILPP
         // RuntimeAccessModifiersILPP will make this `protected`
         internal readonly List<SharedVariable> SharedVariables = new();
         
@@ -103,7 +103,6 @@ namespace Ceres.Graph
         
         // RuntimeAccessModifiersILPP will make this `protected`
         internal readonly Dictionary<string, IList> PortLists = new();
-#endif
         
         public CeresNodeData NodeData { get; protected internal set; }= new();
 
@@ -182,15 +181,20 @@ namespace Ceres.Graph
                 _ => ExecutionPath.Forward
             };
         }
-        
-        public static string GetTargetSubtitle(string name, bool richText = true)
+
+        public static string MakeSubtitle(string subtitle, bool richText = true)
         {
             if(richText)
             {
-                return $"\n<color=#414141><size=10>Target is {name}</size></color>";
+                return $"\n<color=#414141><size=10>{subtitle}</size></color>";
             }
 
-            return $"\nTarget is {name}";
+            return $"\n{subtitle}";
+        }
+
+        public static string GetTargetSubtitle(string name, bool richText = true)
+        {
+            return MakeSubtitle($"Target is {name}", richText);
         }
         
         public static string GetTargetSubtitle(Type type, bool richText = true)
@@ -220,11 +224,7 @@ namespace Ceres.Graph
         /// <returns></returns>
         public string GetTypeName()
         {
-#if CERES_DISABLE_ILPP
-            return GetType().Name;
-#else
             return __getTypeName();
-#endif
         }
         
         protected struct Enumerator : IEnumerator<CeresNode>
@@ -409,8 +409,7 @@ namespace Ceres.Graph
         /// Serialize node data
         /// </summary>
         /// <param name="node"></param>
-        /// <remarks>Override to customize serialization</remarks>
-        public virtual void Serialize(CeresNode node)
+        public void Serialize(CeresNode node)
         {
             var type = node.GetType();
             if (type.IsGenericType)

@@ -1,12 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-#if CERES_DISABLE_ILPP
-using Ceres.Utilities;
-using System.Reflection;
-using Chris;
-using System.Collections;
-#endif
 using R3.Chris;
 using Chris.Collections;
 using Chris.Serialization;
@@ -32,8 +26,8 @@ namespace Ceres.Graph
         /// <summary>
         /// Set graph persistent data
         /// </summary>
-        /// <param name="graph"></param>
-        void SetGraphData(CeresGraphData graph);
+        /// <param name="graphData"></param>
+        void SetGraphData(CeresGraphData graphData);
     }
     
     /// <summary>
@@ -85,12 +79,6 @@ namespace Ceres.Graph
         private readonly HashSet<SharedVariable> _internalVariables = new();
         
         private readonly HashSet<CeresPort> _internalPorts = new();
-        
-#if CERES_DISABLE_ILPP
-        private static readonly Dictionary<Type, List<FieldInfo>> VariableFieldInfoLookup = new();
-        
-        private static readonly Dictionary<Type, List<FieldInfo>> PortFieldInfoLookup = new();
-#endif
         
         // ==================== Managed Reference =================== //
         /* Using SerializeReference to instantiate graph easily */
@@ -149,15 +137,6 @@ namespace Ceres.Graph
             
             BlackBoard.LinkToGlobal();
         }
-
-        /// <summary>
-        /// Get all nodes owned by this graph
-        /// </summary>
-        /// <returns></returns>
-        public virtual List<CeresNode> GetAllNodes()
-        {
-            return nodes ?? new List<CeresNode>();
-        }
         
         /// <summary>
         /// Traverse the graph and init all shared variables automatically
@@ -166,9 +145,8 @@ namespace Ceres.Graph
         protected static void InitVariables(CeresGraph graph)
         {
             var internalVariables = graph._internalVariables;
-            foreach (var node in graph.GetAllNodes())
+            foreach (var node in graph.nodes)
             {
-#if !CERES_DISABLE_ILPP
                 /* Variables will be collected by node using ILPP */
                 node.InitializeVariables();
                 foreach (var variable in node.SharedVariables)
@@ -176,40 +154,6 @@ namespace Ceres.Graph
                     internalVariables.Add(variable);
                     variable.LinkToSource(graph.BlackBoard);
                 }
-#else
-                var nodeType = node.GetType();
-                if (!VariableFieldInfoLookup.TryGetValue(nodeType, out var fields))
-                {
-                    fields = nodeType
-                            .GetAllFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                            .Where(x => x.FieldType.IsSubclassOf(typeof(SharedVariable)) || x.FieldType.IsIListVariable())
-                            .ToList();
-                    VariableFieldInfoLookup.Add(nodeType, fields);
-                }
-                foreach (var fieldInfo in fields)
-                {
-                    var value = fieldInfo.GetValue(node);
-                    if (value == null)
-                    {
-                        value = Activator.CreateInstance(fieldInfo.FieldType);
-                        fieldInfo.SetValue(node, value);
-                    }
-                    if (value is SharedVariable sharedVariable)
-                    {
-                        sharedVariable.LinkToSource(graph.BlackBoard);
-                        internalVariables.Add(sharedVariable);
-                    }
-                    else if (value is IList sharedVariableList)
-                    {
-                        foreach (var variable in sharedVariableList)
-                        {
-                            var sv = variable as SharedVariable;
-                            internalVariables.Add(sv);
-                            sv.LinkToSource(graph.BlackBoard);
-                        }
-                    }
-                }
-#endif
             }
         }
         
@@ -220,9 +164,8 @@ namespace Ceres.Graph
         protected static void InitPorts(CeresGraph graph)
         {
             var internalPorts = graph._internalPorts;
-            foreach (var node in graph.GetAllNodes())
+            foreach (var node in graph.nodes)
             {
-#if !CERES_DISABLE_ILPP
                 /* Ports will be collected by node using ILPP */
                 node.InitializePorts();
                 foreach (var pair in node.Ports)
@@ -230,45 +173,15 @@ namespace Ceres.Graph
                     graph.LinkPort(pair.Value, pair.Key, node);
                     internalPorts.Add(pair.Value);
                 }
+
                 foreach (var pair in node.PortLists)
                 {
-                    for(int i = 0; i < pair.Value.Count; i++)
+                    for (int i = 0; i < pair.Value.Count; i++)
                     {
                         graph.LinkPort((CeresPort)pair.Value[i], pair.Key, i, node);
                         internalPorts.Add((CeresPort)pair.Value[i]);
                     }
                 }
-#else
-                var nodeType = node.GetType();
-                if (!PortFieldInfoLookup.TryGetValue(nodeType, out var fields))
-                {
-                    fields = nodeType
-                            .GetAllFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                            .Where(x => x.FieldType.IsSubclassOf(typeof(CeresPort)) || x.FieldType.IsIListPort())
-                            .ToList();
-                    PortFieldInfoLookup.Add(nodeType, fields);
-                }
-                foreach (var fieldInfo in fields)
-                {
-                    var value = fieldInfo.GetValue(node);
-                    if (value == null)
-                    {
-                        value = Activator.CreateInstance(fieldInfo.FieldType);
-                        fieldInfo.SetValue(node, value);
-                    }
-                    if (value is CeresPort ceresPort)
-                    {
-                        graph.LinkPort(ceresPort, fieldInfo.Name, node);
-                    }
-                    else if (value is IList list)
-                    {
-                        for(int i = 0; i < list.Count; i++)
-                        {
-                            graph.LinkPort((CeresPort)list[i], fieldInfo.Name, i, node);
-                        }
-                    }
-                }
-#endif
             }
         }
 
@@ -349,7 +262,7 @@ namespace Ceres.Graph
             var path = graph.GetDependencyPaths();
             if(path == null || path.Length == 0)
             {
-                graph.SetDependencyPath(TopologicalSort(graph, graph.GetAllNodes()));
+                graph.SetDependencyPath(TopologicalSort(graph, graph.nodes));
             }
         }
 
@@ -514,7 +427,7 @@ namespace Ceres.Graph
             _internalPorts.Clear();
 
             _nodeDependencyPath = null;
-            foreach (var node in GetAllNodes())
+            foreach (var node in nodes)
             {
                 node.Dispose();
             }
