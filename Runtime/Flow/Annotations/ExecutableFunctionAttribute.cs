@@ -24,7 +24,12 @@ namespace Ceres.Graph.Flow.Annotations
         /// Function should display first parameter as method declare type target, need set <see cref="IsScriptMethod"/> first
         /// </summary>
         public bool DisplayTarget { get; set; } = true;
-        
+
+        /// <summary>
+        /// Function entry name displayed in search window
+        /// </summary>
+        public string SearchName { get; set; }
+
         /// <summary>
         /// Function first parameter that should pass graph context object as default value
         /// </summary>

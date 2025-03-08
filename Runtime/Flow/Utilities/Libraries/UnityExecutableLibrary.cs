@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Chris.Serialization;
@@ -14,13 +15,13 @@ namespace Ceres.Graph.Flow.Utilities
         #region UObject
         
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("IsValid")]
-        public static bool Flow_UObjectIsValid(UObject uObject)
+        public static bool Flow_UObjectIsValid([NotNull] UObject uObject)
         {
             return uObject;
         }
         
         [ExecutableFunction]
-        public static void Flow_Destroy(UObject uObject)
+        public static void Flow_Destroy([NotNull] UObject uObject)
         {
             UObject.Destroy(uObject);
         }

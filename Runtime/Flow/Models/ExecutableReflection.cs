@@ -83,6 +83,8 @@ namespace Ceres.Graph.Flow
             public bool ExecuteInDependency { get; }
         
             public bool DisplayTarget { get; }
+            
+            public string SearchName { get; }
         
             public bool IsSelfTarget { get; }
         
@@ -115,6 +117,7 @@ namespace Ceres.Graph.Flow
                     }
                 }
 
+                SearchName = attribute.SearchName;
                 ExecuteInDependency = attribute.ExecuteInDependency;
             }
         }

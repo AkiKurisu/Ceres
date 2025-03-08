@@ -1,4 +1,3 @@
-using System;
 using Ceres.Graph.Flow.Annotations;
 using UnityEngine;
 namespace Ceres.Graph.Flow
@@ -10,9 +9,6 @@ namespace Ceres.Graph.Flow
     [CreateAssetMenu(fileName = "FlowGraphScriptableObject", menuName = "Ceres/Flow Graph ScriptableObject")]
     public partial class FlowGraphScriptableObject : FlowGraphScriptableObjectBase
     {
-        public override Type GetRuntimeType()
-        {
-            return GetType();
-        }
+
     }
 }

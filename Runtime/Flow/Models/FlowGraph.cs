@@ -117,10 +117,10 @@ namespace Ceres.Graph.Flow
         }
         
         /// <inheritdoc />
-        public override void Compile()
+        public override void Compile(CeresGraphCompiler compiler)
         {
             if(_hasCompiled) return;
-            base.Compile();
+            base.Compile(compiler);
             _executionList = ListPool<ExecutionContext>.Get();
             _hasCompiled = true;
         }
@@ -196,7 +196,7 @@ namespace Ceres.Graph.Flow
 
         internal void AOT()
         {
-            InitPorts_Imp(this);
+            InitPorts(this);
             CollectDependencyPath(this);
         }
 

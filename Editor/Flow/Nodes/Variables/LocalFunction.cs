@@ -4,19 +4,19 @@ using Ceres.Graph;
 namespace Ceres.Editor.Graph.Flow
 {
     /// <summary>
-    /// Variable represents custom function in flow subGraph
+    /// Variable represents local custom function in flow subGraph
     /// </summary>
     /// <remarks>Value is function guid</remarks>
     [Serializable]
-    public class CustomFunction : SharedVariable<string>
+    public class LocalFunction : SharedVariable<string>
     {
-        public CustomFunction()
+        public LocalFunction()
         {
             IsShared = true;
             IsExposed = false;
         }
         
-        public CustomFunction(string functionName): this()
+        public LocalFunction(string functionName): this()
         {
             Name = functionName;
             Value = Guid.NewGuid().ToString();
@@ -24,7 +24,7 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override SharedVariable<string> CloneT()
         {
-            return new CustomFunction { Value = value };
+            return new LocalFunction { Value = value };
         }
     }
 }

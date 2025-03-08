@@ -236,6 +236,31 @@
 </h3>
 
 
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_CanCreateFunctionSubGraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_CanCreateFunctionSubGraph" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph">CanCreateFunctionSubGraph()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CanCreateFunctionSubGraph()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_CreateFunctionSubGraph_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph*"></a>
   <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_CreateFunctionSubGraph" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph">CreateFunctionSubGraph()</h4>
   <div class="markdown level1 summary"><p>Create a new subGraph to present custom function</p>
@@ -442,13 +467,13 @@
 
 
   <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionInputParameters_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionInputParameters_Ceres_Editor_Graph_Flow_CustomFunction_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters(Ceres.Editor.Graph.Flow.CustomFunction)">ResolveFunctionInputParameters(CustomFunction)</h4>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionInputParameters_Ceres_Editor_Graph_Flow_LocalFunction_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters(Ceres.Editor.Graph.Flow.LocalFunction)">ResolveFunctionInputParameters(LocalFunction)</h4>
   <div class="markdown level1 summary"><p>Resolve custom function input parameters</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CustomFunctionInputParameter[] ResolveFunctionInputParameters(CustomFunction customFunction)</code></pre>
+    <pre><code class="lang-csharp hljs">public CustomFunctionInputParameter[] ResolveFunctionInputParameters(LocalFunction localFunction)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -461,8 +486,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunction.html">CustomFunction</a></td>
-        <td><span class="parametername">customFunction</span></td>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.LocalFunction.html">LocalFunction</a></td>
+        <td><span class="parametername">localFunction</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -484,14 +509,14 @@
   </table>
 
 
-  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionType_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionType*"></a>
-  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionType_Ceres_Editor_Graph_Flow_CustomFunction_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionType(Ceres.Editor.Graph.Flow.CustomFunction)">ResolveFunctionType(CustomFunction)</h4>
+  <a id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionTypes_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionTypes*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_FlowGraphEditorWindow_ResolveFunctionTypes_Ceres_Editor_Graph_Flow_LocalFunction_" data-uid="Ceres.Editor.Graph.Flow.FlowGraphEditorWindow.ResolveFunctionTypes(Ceres.Editor.Graph.Flow.LocalFunction)">ResolveFunctionTypes(LocalFunction)</h4>
   <div class="markdown level1 summary"><p>Resolve custom function parameter types</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public (Type, Type[]) ResolveFunctionType(CustomFunction customFunction)</code></pre>
+    <pre><code class="lang-csharp hljs">public (Type, Type[]) ResolveFunctionTypes(LocalFunction localFunction)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -504,8 +529,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Editor.Graph.Flow.CustomFunction.html">CustomFunction</a></td>
-        <td><span class="parametername">customFunction</span></td>
+        <td><a class="xref" href="Ceres.Editor.Graph.Flow.LocalFunction.html">LocalFunction</a></td>
+        <td><span class="parametername">localFunction</span></td>
         <td></td>
       </tr>
     </tbody>

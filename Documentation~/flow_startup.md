@@ -1,7 +1,6 @@
 # Flow
 Powerful visual scripting solution inspired from Unreal's Blueprint.
 
-- [Flow](#flow)
 - [Conecpt](#conecpt)
   - [Events](#events)
   - [Functions](#functions)
@@ -26,12 +25,16 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
   - [Node has Port Array](#node-has-port-array)
   - [Generic Node](#generic-node)
   - [Custom Function](#custom-function)
+    - [Local Function](#local-function)
+    - [Flow Graph Function](#flow-graph-function)
 - [Code Generation](#code-generation)
   - [IL Post Process](#il-post-process)
   - [Source Generator](#source-generator)
 - [Debug](#debug)
   - [Use Breakpoint](#use-breakpoint)
-  - [Use FlowGraphTracker](#use-flowgraphtracker)
+  - [Use Graph Tracker](#use-graph-tracker)
+
+
 
 
 # Conecpt
@@ -48,7 +51,7 @@ The following are the core parts of Flow:
 
 Each execution chain starts from an event which can contain input data.
 
-![Events](./Images~/flow_events.png)
+![Events](./Images/flow_events.png)
 
 You can define events in Flow Graph or C# scripts.
 
@@ -93,17 +96,17 @@ public class MyFlowObject: FlowGraphObject
 
 5. Click `Open Flow Graph` in the Inspector panel to open the Flow Graph Editor.
 
-    ![Open Flow Graph](./Images~/flow_quick_start_1.png)
+    ![Open Flow Graph](./Images/flow_quick_start_1.png)
 
 6. Right click graph and click `Create Node/Select Events/Implement Start`.
 
-    ![Create Node](./Images~/flow_quick_start_2.png)
+    ![Create Node](./Images/flow_quick_start_2.png)
 
 7. Then click `Create Node` and search `Log String`, connect the white port (exec) to the `Start` node's output (exec). 
 
 8. Fill in "Hello World!" in the `In String` field of the `Log String` node.
     
-    ![Log String](./Images~/flow_quick_start_3.png)
+    ![Log String](./Images/flow_quick_start_3.png)
 
 9. Click save button in the left upper corner.
 
@@ -117,7 +120,7 @@ Following are the different types of Events in Flow.
 
 `ExecutionEvent` is a common event that can be used to trigger the execution of a FlowGraph instance.
 
-![Execution Event](./Images~/flow_execution_event.png)
+![Execution Event](./Images/flow_execution_event.png)
 
 > You can double click the event node and rename it.
 
@@ -125,11 +128,11 @@ By default, `ExecutionEvent` without parameters can be created in search window.
 
 `ExecutionEvent` with parameters can be created when you drag any port with type `EventDelegate<>`.
 
-![Drag delegate port](./Images~/drag_delegate_port.png)
+![Drag delegate port](./Images/drag_delegate_port.png)
 
 Also support port with type `Action<>` by [implicit conversation](#port-implict-conversation).
 
-![Drag action port](./Images~/drag_delegate_port_action.png)
+![Drag action port](./Images/drag_delegate_port_action.png)
 
 ## Implementable Event
 
@@ -160,7 +163,7 @@ public class FlowTest : FlowGraphObject /* Inherit from MonoBehaviour */
 }
 ```
 
-![Implementable Event](./Images~/flow_implementable_event.png)
+![Implementable Event](./Images/flow_implementable_event.png)
 
 ## Custom Event
 
@@ -195,7 +198,7 @@ public class DamageBox: MonoBehaviour
 }
 ```
 
-![Custom Event](./Images~/flow_custom_event.png)
+![Custom Event](./Images/flow_custom_event.png)
 
 In this case, we create a collision event and send an Event to the Flow Graph when the DamageBox is hit. 
 By using `CustomEvent`, we can ignore whether the `Container` has a corresponding implementation and only focus on the event itself.
@@ -343,11 +346,11 @@ In Flow, you can use `FlowGraphObject` and its inherited components to implement
 
 `FlowGraphAsset` is a ScriptableObject used to reuse FlowGraph. You can set the `IFlowGraphRuntime` type it plays at runtime. 
 
-![FlowGraphAsset](./Images~/flow_graph_asset.png)
+![FlowGraphAsset](./Images/flow_graph_asset.png)
 
 In Editor Mode, the graph editor will consider the owner of the Flow Graph to be the type you set, which is the `Actor` type as shown in the figure. Create `Property/Self Reference` node, you will see the port type is `Actor`.
 
-![Personate as Actor](./Images~/flow_graph_asset_personate.png)
+![Personate as Actor](./Images/flow_graph_asset_personate.png)
 
 ## FlowGraphInstanceObject
 
@@ -370,7 +373,7 @@ public class TestInstanceObject: FlowGraphInstanceObject
 
 Then create a new `FlowGraphAsset` and set the `RuntimeType`. Open flow graph and implement `Awake` event.
 
-![FlowGraphAsset](./Images~/flow_graph_instance_object_sample.png)
+![FlowGraphAsset](./Images/flow_graph_instance_object_sample.png)
 
 Create a new `GameObject` in scene and add `TestInstanceObject` component to the `GameObject`. Drag the `FlowGraphAsset` to the `TestInstanceObject` and you will see the `Awake` event is invoked after entering play mode.
 
@@ -562,21 +565,39 @@ public class FlowNode_CastT_Template: GenericNodeTemplate
 
 ## Custom Function
 
-You can define function subGraph inside your flow graph to reuse logic.
+### Local Function
 
-You can create a custom function by following these steps:
+You can define local function inside your flow graph to reuse logic.
+
+You can create a local function by following these steps:
 
 1. Click blackboard `+` button and select `Function` in menu which will let you open subGraph view.
 2. Configure the function input and output parameters.
 
-    ![Configure Input](./Images~/flow_custom_function_config.png)
+    ![Configure Input](./Images/flow_local_function_config.png)
 
-3. Save your function subGraph.
+3. Save the local function subGraph.
 4. Enter uber graph and drag the function from blackboard to graph.
 
-    ![Drag Function](./Images~/flow_custom_function_drag.png)
+    ![Drag Function](./Images/flow_local_function_drag.png)
 
-5. You can modify the name of custom function just like modifing a variable.
+5. You can modify the name of local function just like modifing a variable.
+
+### Flow Graph Function
+
+You can define a shared function across multiple graph containers using `FlowGraphFunctionAsset`.
+
+You can create a flow graph function by following these steps:
+
+1. Right click project browser and select `Create/Ceres/Flow Graph Function` to create a new `FlowGraphFunctionAsset`.
+2. Configure the function input and output parameters.
+3. Save the flow graph.
+4. Rename `FlowGraphFunctionAsset` asset name which will also be the function name.
+5. Set your flow graph function [runtime type](#runtime-architecture) in inspector.
+    ![Set Flow Graph Function Runtime Type](./Images/flow_flow_graph_function_asset_inspector.png)
+6. Open another flow graph.
+7. Select your flow graph function by its asset name in search window.
+    ![Use Flow Graph Function](./Images/flow_flow_graph_function.png)
 
 # Code Generation
 
@@ -597,9 +618,9 @@ public void ExecuteTest(string data)
 }
 ```
 
-![](./Images~/flow_ilpp_bridge.png)
+![](./Images/flow_ilpp_bridge.png)
 
-If ILPP is disabled or you want to customize the timing for calling bridge methods, you need to add bridge method yourself as shown below.
+If you want to customize the timing for calling bridge methods, you can add bridge method explicitly as shown below.
 
 ```C#
 [ImplementableEvent]
@@ -666,9 +687,9 @@ Then, you can click `Next Frame` to execute the graph node by node.
 
 You can right click node and `Add Breakpoint`, and click `Next Breakpoint` in toolbar to execute the graph breakpoint by breakpoint.
 
-![Debug](./Images~/flow_debugger.png)
+![Debug](./Images/flow_debugger.png)
 
-## Use FlowGraphTracker
+## Use Graph Tracker
 
 `FlowGraphTracker` is a class that can be used to track the execution of the graph.
 

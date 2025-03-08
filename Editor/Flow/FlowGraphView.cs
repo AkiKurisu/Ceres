@@ -164,7 +164,9 @@ namespace Ceres.Editor.Graph.Flow
             var eventName = ((ExecutionEventBaseNodeView)((ExecutableNodeElement)selection[0]).View).GetEventName();
             flowGraphData.PreSerialization();
             using var graph = new FlowGraph(flowGraphData);
-            graph.Compile();
+            using var context = FlowGraphCompilationContext.GetPooled();
+            using var compiler = CeresGraphCompiler.GetPooled(graph, context);
+            graph.Compile(compiler);
             await graph.ExecuteEventAsyncInternal(EditorWindow.Container.Object, eventName);
         }
 
@@ -195,7 +197,7 @@ namespace Ceres.Editor.Graph.Flow
                 if(variable == null) continue;
                 Rect newRect = new(contentViewContainer.WorldToLocal(mousePosition), new Vector2(100, 100));
 
-                if (variable is CustomFunction customFunction)
+                if (variable is LocalFunction customFunction)
                 {
                     var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionTypes(customFunction);
                     if (returnType == null)
@@ -208,13 +210,13 @@ namespace Ceres.Editor.Graph.Flow
                     {
                         var view = (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(nodeType, this, inputTypes);
                         this.AddNodeView(view, newRect);
-                        view.SetFunctionName(customFunction.Name);
+                        view.SetLocalFunction(customFunction.Name);
                     }
                     else
                     {
                         var view = (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(nodeType, this, inputTypes.Append(returnType).ToArray());
                         this.AddNodeView(view, newRect);
-                        view.SetFunctionName(customFunction.Name);
+                        view.SetLocalFunction(customFunction.Name);
                     }
                     return;
                 }
@@ -326,7 +328,7 @@ namespace Ceres.Editor.Graph.Flow
                     var flowGraphData = new FlowGraphData
                     {
                         nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
-                        variableData = _graphView.SharedVariables.Where(x => x is not CustomFunction)
+                        variableData = _graphView.SharedVariables.Where(x => x is not LocalFunction)
                                                                 .Select(x => x.GetSerializedData())
                                                                 .ToArray(),
                         nodeGroups = nodeGroupData.ToArray()
