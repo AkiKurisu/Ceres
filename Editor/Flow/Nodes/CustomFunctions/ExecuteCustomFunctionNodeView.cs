@@ -10,6 +10,10 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
     [CustomNodeView(typeof(FlowNode_ExecuteCustomFunction), true)]
     public sealed class ExecuteCustomFunctionNodeView : ExecutableNodeView
     {
+        private bool UseLocalFunction { get; set; }
+        
+        private FlowGraphFunction FlowGraphFunction { get; set; }
+
         private LocalFunction LocalFunction { get; set; }
 
         private string FunctionName { get; set; }
@@ -25,15 +29,23 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         public override void SetNodeInstance(CeresNode ceresNode)
         {
             var functionNode =(FlowNode_ExecuteCustomFunction)ceresNode;
-            SetFunctionName(functionNode.functionName);
+            if (functionNode.functionAsset)
+            {
+                SetFlowGraphFunction(FlowGraphFunctionRegistry.Get().FindFlowGraphFunctionFromAsset(functionNode.functionAsset));
+            }
+            else
+            {
+                SetLocalFunction(functionNode.functionName);
+            }
             base.SetNodeInstance(ceresNode);
         }
 
-        public void SetFunctionName(string functionName)
+        public void SetLocalFunction(string localFunctionName)
         {
-            NodeElement.title = functionName;
-            FunctionName = functionName;
-            if (GraphView.TryGetSharedVariable(functionName, out var variable) && variable is LocalFunction customFunction)
+            UseLocalFunction = true;
+            FunctionName = localFunctionName;
+            NodeElement.title = localFunctionName + CeresNode.MakeSubtitle("Local Function");
+            if (GraphView.TryGetSharedVariable(localFunctionName, out var variable) && variable is LocalFunction customFunction)
             {
                 LocalFunction = customFunction;
                 var inputParameters = FlowGraphEditorWindow.ResolveFunctionInputParameters(customFunction);
@@ -43,7 +55,45 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
                     portView.SetDisplayName(inputParameters[i].parameterName);
                 }
                 GraphView.Blackboard.RegisterCallback<VariableChangeEvent>(OnVariableChange);
+                NodeElement.RegisterCallback<MouseDownEvent>(OnClickLocalFunction);
             }
+        }
+
+        private void OnClickLocalFunction(MouseDownEvent evt)
+        {
+            if (!UseLocalFunction || LocalFunction == null) return;
+            if (evt.target != NodeElement || evt.clickCount < 2) return;
+            
+            FlowGraphEditorWindow.OpenSubgraphView(FunctionName);
+        }
+        
+        private void OnClickFlowGraphFunction(MouseDownEvent evt)
+        {
+            if (UseLocalFunction || FlowGraphFunction == null || !FlowGraphFunction.Asset) return;
+            if (evt.target != NodeElement || evt.clickCount < 2) return;
+            
+            FlowGraphEditorWindow.Show(FlowGraphFunction.Asset);
+        }
+
+        public void SetFlowGraphFunction(FlowGraphFunction flowGraphFunction)
+        {
+            UseLocalFunction = false;
+            FlowGraphFunction = flowGraphFunction;
+            if (flowGraphFunction.ContainerType == null)
+            {
+                NodeElement.title = flowGraphFunction.Asset.name;
+            }
+            else
+            {
+                NodeElement.title = flowGraphFunction.Asset.name + CeresNode.GetTargetSubtitle(flowGraphFunction.ContainerType);
+            }
+            FunctionName = flowGraphFunction.Asset.name;
+            for (int i = 0; i < flowGraphFunction.InputParameterNames.Length; i++)
+            {
+                var portView = FindPortView($"input{i + 1}");
+                portView.SetDisplayName(flowGraphFunction.InputParameterNames[i]);
+            }
+            NodeElement.RegisterCallback<MouseDownEvent>(OnClickFlowGraphFunction);
         }
 
         private void OnVariableChange(VariableChangeEvent evt)
@@ -52,11 +102,12 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
             if (evt.Variable != LocalFunction) return;
             if (evt.ChangeType == VariableChangeType.Name)
             {
-                FunctionName = NodeElement.title = evt.Variable.Name;
+                FunctionName = evt.Variable.Name;
+                NodeElement.title = FunctionName + CeresNode.MakeSubtitle("Local Function");
             }
             else if(evt.ChangeType == VariableChangeType.Remove)
             {
-                CeresLogger.LogWarning($"The function {evt.Variable.Name} was deleted, which may cause an error in the referenced ExecuteCustomFunctionNode during runtime. Please remove the corresponding node.");
+                CeresLogger.LogWarning($"Local function {evt.Variable.Name} was deleted, which may cause an error in the referenced ExecuteCustomFunctionNode during runtime. Please remove the corresponding node.");
                 GraphView.ClearSelection();
                 GraphView.schedule.Execute(FrameNode).ExecuteLater(200);
                 /* Free reference */
@@ -73,28 +124,47 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             base.BuildContextualMenu(evt);
-            if (LocalFunction == null) return;
+            if (!UseLocalFunction || LocalFunction == null) return;
             
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Rename function", _ =>
             {
                 GraphView.Blackboard.EditVariable(FunctionName);
-            }));
-            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Edit function", _ =>
-            {
-                FlowGraphEditorWindow.OpenSubgraphView(FunctionName);
             }));
         }
 
         public override void Validate(FlowGraphValidator validator)
         {
             base.Validate(validator);
-            if (LocalFunction == null)
+            if (UseLocalFunction)
             {
-                validator.MarkAsInvalid(this, $"Can not find function {FunctionName}");
-                return;
+                if (LocalFunction == null)
+                {
+                    validator.MarkAsInvalid(this, $"Can not find local function named {FunctionName}");
+                    return;
+                }
             }
-            
-            var (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionTypes(LocalFunction);
+            else
+            {
+                if (!FlowGraphFunction.Asset)
+                {
+                    validator.MarkAsInvalid(this, $"Flow graph function named {FunctionName} is missing");
+                    return;
+                }
+            }
+
+            Type returnType;
+            Type[] inputTypes;
+            if (UseLocalFunction)
+            {
+                (returnType, inputTypes) = FlowGraphEditorWindow.ResolveFunctionTypes(LocalFunction);
+            }
+            else
+            {
+                /* Function structure may be changed since we can edit multi graph at same time */
+                var currentFunction = FlowGraphFunctionRegistry.Get()
+                    .FindFlowGraphFunctionFromAsset(FlowGraphFunction.Asset);
+                (returnType, inputTypes) = (currentFunction.ReturnType, currentFunction.InputTypes);
+            }
             var definitionType = ExecutableNodeReflectionHelper.PredictCustomFunctionNodeType(returnType, inputTypes);
             Type targetNodeType;
             if (returnType == typeof(void))
@@ -114,7 +184,14 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         public override ExecutableNode CompileNode()
         {
             var instance = (FlowNode_ExecuteCustomFunction)base.CompileNode();
-            instance.functionName = LocalFunction.Name;
+            if (UseLocalFunction)
+            {
+                instance.functionName = LocalFunction.Name;
+            }
+            else
+            {
+                instance.functionAsset = FlowGraphFunction.Asset;
+            }
             return instance;
         }
     }

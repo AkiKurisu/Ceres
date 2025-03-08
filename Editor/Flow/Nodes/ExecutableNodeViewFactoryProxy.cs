@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Ceres.Editor.Graph.Flow.CustomFunctions;
 using UnityEngine;
 using Chris;
 using Ceres.Utilities;
@@ -9,6 +10,7 @@ using Ceres.Graph.Flow.Properties;
 using Ceres.Graph.Flow.Utilities;
 using Ceres.Editor.Graph.Flow.Properties;
 using Ceres.Editor.Graph.Flow.Utilities;
+using Ceres.Graph.Flow.CustomFunctions;
 
 namespace Ceres.Editor.Graph.Flow
 {
@@ -164,6 +166,42 @@ namespace Ceres.Editor.Graph.Flow
         private Type GetTargetType(CeresNodeSearchEntryData entryData)
         {
             return MethodInfo.IsStatic ? MethodInfo.DeclaringType : entryData.SubType;
+        }
+    }
+
+    public class ExecuteFlowGraphFunctionNodeViewFactoryProxy : IExecutableNodeViewFactoryProxy
+    {
+        public FlowGraphFunction Function;
+        
+        public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
+        {
+           ExecuteCustomFunctionNodeView nodeView = null;
+            if (entryData.NodeType.IsAssignableTo(typeof(FlowNode_ExecuteCustomFunctionVoid)))
+            {
+                nodeView = CreateVoidNodeView(searchWindow, entryData);
+            }
+            else if (entryData.NodeType.IsAssignableTo(typeof(FlowNode_ExecuteCustomFunctionReturn)))
+            {
+                nodeView = CreateReturnNodeView(searchWindow, entryData);
+            }
+            
+            searchWindow.GraphView.AddNodeView(nodeView, rect);
+            nodeView!.SetFlowGraphFunction(Function);
+            return nodeView;
+        }
+        
+        private ExecuteCustomFunctionNodeView CreateVoidNodeView(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData)
+        {
+            return (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, Function.InputTypes);
+        }
+        
+        private ExecuteCustomFunctionNodeView CreateReturnNodeView(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData)
+        {
+            /* Fill parameter types */
+            var parameters = Function.InputTypes.ToList();
+            /* Fill return type */
+            parameters.Add(Function.ReturnType);
+            return (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters.ToArray());
         }
     }
 }

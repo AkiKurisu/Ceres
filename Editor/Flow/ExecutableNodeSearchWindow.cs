@@ -83,6 +83,7 @@ namespace Ceres.Editor.Graph.Flow
                 BuildBasicEntries(builder);
                 BuildPropertyEntries(builder, GraphView.GetContainerType(), true);
                 BuildExecutableFunctionEntries(builder, GraphView.GetContainerType(), true);
+                BuildFlowGraphFunctionEntries(builder);
             }
             else
             {
@@ -332,7 +333,8 @@ namespace Ceres.Editor.Graph.Flow
             }
         }
         
-        private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool includeStaticAndNonPublic)
+        private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, 
+            Type targetType, bool includeStaticAndNonPublic)
         {
             var graphContainerType = GraphView.GetContainerType();
             var types = CeresPort.GetCompatibleTypes(targetType).Concat(new[] { targetType });
@@ -356,7 +358,7 @@ namespace Ceres.Editor.Graph.Flow
                 methodCandidates = methodCandidates.Concat(staticFunctions).ToArray();
             }
             
-            if(methodCandidates.Any())
+            if (methodCandidates.Any())
             {
                 builder.AddGroupEntry("Execute Functions", 1);
                 var groupedMethodCandidates = methodCandidates
@@ -397,8 +399,17 @@ namespace Ceres.Editor.Graph.Flow
             
             void AddFunctionEntry(FunctionCandidate candidate, int level)
             {
-                var functionName = ExecutableFunction.GetFunctionName(candidate.MethodInfo, false);
-                builder.AddEntry(new SearchTreeEntry(new GUIContent($"{functionName}", _indentationIcon))
+                var function =  ExecutableReflection.GetFunction(candidate.MethodInfo);
+                string entryName;
+                if (string.IsNullOrEmpty(function.Attribute.SearchName))
+                {
+                    entryName = ExecutableFunction.GetFunctionName(candidate.MethodInfo, false);
+                }
+                else
+                {
+                    entryName = function.Attribute.SearchName;
+                }
+                builder.AddEntry(new SearchTreeEntry(new GUIContent(entryName, _indentationIcon))
                 {
                     level = level,
                     userData = new CeresNodeSearchEntryData
@@ -406,6 +417,33 @@ namespace Ceres.Editor.Graph.Flow
                         NodeType = ExecutableNodeReflectionHelper.PredictFunctionNodeType(candidate.MethodInfo),
                         SubType = candidate.TargetType,
                         Data = new ExecuteFunctionNodeViewFactoryProxy { MethodInfo = candidate.MethodInfo }
+                    }
+                });
+            }
+        }
+
+        private void BuildFlowGraphFunctionEntries(CeresNodeSearchEntryBuilder builder)
+        {
+            var flowGraphFunctions = FlowGraphFunctionRegistry.Get().GetFlowGraphFunctions(GraphView.GetContainerType());
+            if (!flowGraphFunctions.Any()) return;
+            
+            builder.AddGroupEntry("Execute Functions", 1);
+            foreach (var flowGraphFunction in flowGraphFunctions)
+            {
+                AddFlowGraphFunctionEntry(flowGraphFunction,2);
+            }
+            return;
+            
+            void AddFlowGraphFunctionEntry(FlowGraphFunction flowGraphFunction, int level)
+            {
+                var functionName = flowGraphFunction.Asset.name;
+                builder.AddEntry(new SearchTreeEntry(new GUIContent(functionName, _indentationIcon))
+                {
+                    level = level,
+                    userData = new CeresNodeSearchEntryData
+                    {
+                        NodeType = ExecutableNodeReflectionHelper.PredictCustomFunctionNodeType(flowGraphFunction.ReturnType, flowGraphFunction.InputTypes),
+                        Data = new ExecuteFlowGraphFunctionNodeViewFactoryProxy { Function = flowGraphFunction }
                     }
                 });
             }

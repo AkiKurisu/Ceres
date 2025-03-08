@@ -210,13 +210,13 @@ namespace Ceres.Editor.Graph.Flow
                     {
                         var view = (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(nodeType, this, inputTypes);
                         this.AddNodeView(view, newRect);
-                        view.SetFunctionName(customFunction.Name);
+                        view.SetLocalFunction(customFunction.Name);
                     }
                     else
                     {
                         var view = (ExecuteCustomFunctionNodeView)NodeViewFactory.Get().CreateInstanceResolved(nodeType, this, inputTypes.Append(returnType).ToArray());
                         this.AddNodeView(view, newRect);
-                        view.SetFunctionName(customFunction.Name);
+                        view.SetLocalFunction(customFunction.Name);
                     }
                     return;
                 }

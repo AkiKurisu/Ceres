@@ -313,10 +313,10 @@ namespace Ceres.Editor.Graph.Flow
         {
             try
             {
-                /* Redirect container type */
-                if (Container is FlowGraphScriptableObjectBase scriptableObjectBase)
+                if (Container is IRedirectFlowGraphRuntimeType redirector)
                 {
-                    SetContainerType(scriptableObjectBase.GetRuntimeType());
+                    /* Redirect container type */
+                    SetContainerType(redirector.GetRuntimeType());
                 }
                 DisplayProgressBar("Initialize field factory", 0f);
                 {
@@ -326,9 +326,13 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     NodeViewFactory.Get();
                 }
-                DisplayProgressBar("Initialize executable function registry", 0.6f);
+                DisplayProgressBar("Initialize executable function registry", 0.5f);
                 {
                     ExecutableFunctionRegistry.Get();
+                }
+                DisplayProgressBar("Initialize flow graph function registry", 0.7f);
+                {
+                    FlowGraphFunctionRegistry.Get();
                 }
                 DisplayProgressBar("Construct graph view", 0.9f);
                 {

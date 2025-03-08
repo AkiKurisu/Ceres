@@ -62,6 +62,11 @@ namespace Ceres.Editor.Graph
 
         public bool AddGroupEntry(string content, int level)
         {
+            if (_entries.OfType<SearchTreeGroupEntry>()
+                .Any(x => x.content.text == content && x.level == level))
+            {
+                return false;
+            }
             return AddEntry(new SearchTreeGroupEntry(new GUIContent(content), level));
         }
         
@@ -81,7 +86,7 @@ namespace Ceres.Editor.Graph
                         AddEntry(new SearchTreeEntry(new GUIContent(template.GetGenericNodeEntryName(label, argumentType), _defaultIcon))
                         {
                             level = level, 
-                            userData = new CeresNodeSearchEntryData()
+                            userData = new CeresNodeSearchEntryData
                             {
                                 NodeType = type,
                                 SubType = argumentType
@@ -94,7 +99,7 @@ namespace Ceres.Editor.Graph
             AddEntry(new SearchTreeEntry(new GUIContent(label, _defaultIcon))
             {
                 level = level, 
-                userData = new CeresNodeSearchEntryData()
+                userData = new CeresNodeSearchEntryData
                 {
                     NodeType = type
                 }
