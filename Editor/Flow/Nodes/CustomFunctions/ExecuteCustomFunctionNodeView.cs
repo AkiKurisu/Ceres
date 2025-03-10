@@ -70,7 +70,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
         private void OnClickFlowGraphFunction(MouseDownEvent evt)
         {
             if (UseLocalFunction || FlowGraphFunction == null || !FlowGraphFunction.Asset) return;
-            if (evt.target != NodeElement || evt.clickCount < 2) return;
+            if (evt.clickCount < 2) return;
             
             FlowGraphEditorWindow.Show(FlowGraphFunction.Asset);
         }
