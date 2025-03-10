@@ -131,6 +131,12 @@ namespace Ceres.Graph.Flow
         /// Metadata for editor lookup, should not access it at runtime
         /// </summary>
         internal ExecutableAttribute Attribute => _attribute ??= new ExecutableAttribute(MethodInfo);
+        
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+        internal string FilePath;
+
+        internal int LineNumber;
+#endif
 
         protected ExecutableFunction(MethodInfo methodInfo)
         {
@@ -281,7 +287,7 @@ namespace Ceres.Graph.Flow
             _functions.Add(functionStructure);
         }
         
-        internal static unsafe void RegisterStaticExecutableFunction(string functionName, int parameterCount, void* functionPtr)
+        internal static unsafe void RegisterStaticExecutableFunctionPtr(string functionName, int parameterCount, void* functionPtr)
         {
             var functionInfo = new ExecutableFunctionInfo(ExecutableFunctionType.StaticMethod, functionName, parameterCount);
 #if UNITY_EDITOR
@@ -350,6 +356,16 @@ namespace Ceres.Graph.Flow
             _functions.Add(functionStructure);
             return functionStructure;
         }
+
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+        internal static void RegisterStaticExecutableFunctionFileInfo(string functionName, int parameterCount, string filePath, int lineNumber)
+        {
+            var functionInfo = new ExecutableFunctionInfo(ExecutableFunctionType.StaticMethod, functionName, parameterCount);
+            var functionStructure = Instance.FindFunction_Internal(functionInfo);
+            functionStructure.FilePath = filePath;
+            functionStructure.LineNumber = lineNumber + 3 /* Instruction start */;
+        }
+#endif
     }
         
     internal unsafe class ExecutableAction<TTarget>

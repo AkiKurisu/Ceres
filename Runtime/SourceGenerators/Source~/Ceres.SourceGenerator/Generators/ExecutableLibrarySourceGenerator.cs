@@ -130,6 +130,7 @@ public class ExecutableLibrarySyntaxReceiver : ISyntaxReceiver
             {
                 var methodInfo = new GeneratorFunctionInfo
                 {
+                    Syntax = methodNode,
                     MethodName = methodNode.Identifier.Text
                 };
 

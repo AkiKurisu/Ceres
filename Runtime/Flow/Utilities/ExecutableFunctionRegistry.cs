@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Utilities;
+using UnityEngine;
+
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
@@ -26,16 +29,35 @@ namespace Ceres.Graph.Flow.Utilities
         }
         
         /// <summary>
-        /// Register static executable function to reflection system
+        /// Register static executable function pointer to the reflection system
         /// </summary>
         /// <param name="functionName"></param>
         /// <param name="parameterCount"></param>
         /// <param name="functionPtr"></param>
         /// <typeparam name="TLibrary"></typeparam>
-        protected static unsafe void RegisterExecutableFunction<TLibrary>(string functionName, int parameterCount, void* functionPtr) 
+        protected static unsafe void RegisterExecutableFunctionPtr<TLibrary>(string functionName, int parameterCount, void* functionPtr) 
             where TLibrary: ExecutableFunctionLibrary
         {
-            ExecutableReflection<TLibrary>.RegisterStaticExecutableFunction(functionName, parameterCount, functionPtr);
+            ExecutableReflection<TLibrary>.RegisterStaticExecutableFunctionPtr(functionName, parameterCount, functionPtr);
+        }
+        
+        /// <summary>
+        /// Register static executable function file info to the reflection system, only works in editor and development build
+        /// </summary>
+        /// <param name="functionName"></param>
+        /// <param name="parameterCount"></param>
+        /// <param name="filePath"></param>
+        /// <param name="lineNumber"></param>
+        /// <typeparam name="TLibrary"></typeparam>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected static void RegisterExecutableFunctionFileInfo<TLibrary>(string functionName, int parameterCount, string filePath, int lineNumber) 
+            where TLibrary: ExecutableFunctionLibrary
+        {
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+            /* In editor, we use mono cecil instead */
+            if (Application.isEditor) return;
+            ExecutableReflection<TLibrary>.RegisterStaticExecutableFunctionFileInfo(functionName, parameterCount, filePath, lineNumber);
+#endif
         }
     }
     

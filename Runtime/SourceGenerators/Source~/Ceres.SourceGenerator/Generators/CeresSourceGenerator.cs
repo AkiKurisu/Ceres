@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ public class GeneratorParameterInfo
 
 public class GeneratorFunctionInfo
 {
+    public MethodDeclarationSyntax Syntax;
+
     public string MethodName;
 
     public readonly List<GeneratorParameterInfo> Parameters = [];

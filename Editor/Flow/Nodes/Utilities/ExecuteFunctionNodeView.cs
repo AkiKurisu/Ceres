@@ -6,7 +6,10 @@ using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Utilities;
 using Ceres.Utilities;
 using Chris.Serialization;
+using Unity.CodeEditor;
+using UnityEditor;
 using UnityEngine.Assertions;
+using UnityEngine.UIElements;
 
 namespace Ceres.Editor.Graph.Flow.Utilities
 {
@@ -80,6 +83,20 @@ namespace Ceres.Editor.Graph.Flow.Utilities
                 FindPortView("input").HidePort();
                 FindPortView("exec").HidePort();
             }
+            
+            NodeElement.RegisterCallback<MouseDownEvent>(OnClickExecuteFunction);
+        }
+
+        private void OnClickExecuteFunction(MouseDownEvent evt)
+        {
+            if (MethodInfo == null) return;
+            if (evt.clickCount < 2) return;
+            
+            var (filePath, lineNumber) = ExecutableReflectionEditorUtils.GetExecutableFunctionFileInfo(MethodInfo);
+            if (string.IsNullOrEmpty(filePath)) return;
+
+            CodeEditor.Editor.CurrentCodeEditor.OpenProject(filePath, lineNumber);
+            evt.StopImmediatePropagation();
         }
 
         private void RegisterMethodReturnPortValueChange()
@@ -228,6 +245,20 @@ namespace Ceres.Editor.Graph.Flow.Utilities
         }
 
         protected abstract void FillMethodParametersPorts(MethodInfo methodInfo);
+        
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            base.BuildContextualMenu(evt);
+            if (MethodInfo == null) return;
+            var (filePath, lineNumber) = ExecutableReflectionEditorUtils.GetExecutableFunctionFileInfo(MethodInfo);
+            if (string.IsNullOrEmpty(filePath)) return;
+            
+            evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Open in IDE", _ =>
+            {
+                CodeEditor.Editor.CurrentCodeEditor.OpenProject(filePath, lineNumber);
+            }));
+            evt.menu.AppendSeparator();
+        }
     }
 
     [CustomNodeView(typeof(FlowNode_ExecuteFunctionUber), true)]
