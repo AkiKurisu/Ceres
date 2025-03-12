@@ -7,7 +7,6 @@ using Ceres.Graph.Flow.Utilities;
 using Ceres.Utilities;
 using Chris.Serialization;
 using Unity.CodeEditor;
-using UnityEditor;
 using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 
@@ -168,9 +167,17 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             }
             NodeElement.title = functionTitle;
             
-            var tooltipText = GetDefaultTooltip();
+            var tooltipText = GetFunctionNodeTooltip();
             tooltipText += CeresNode.GetTargetSubtitle(targetType, false);
             NodeElement.tooltip = tooltipText;
+        }
+
+        private string GetFunctionNodeTooltip()
+        {
+            if (MethodInfo == null) return GetDefaultTooltip();
+            
+            var tooltip = ExecutableReflectionEditorUtils.GetExecutableFunctionXmlDocumentation(MethodInfo);
+            return string.IsNullOrEmpty(tooltip) ? GetDefaultTooltip() : tooltip;
         }
         
         public sealed override void SetNodeInstance(CeresNode ceresNode)

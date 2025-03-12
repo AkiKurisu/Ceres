@@ -1,14 +1,13 @@
-﻿using System;
+﻿// Ported from UnityEditor
+using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
-using UnityEngine;
 
 namespace Ceres.Editor.Utilities
 {
-    // Code from UnityEditor
     internal static class MonoCecilHelper
     {
         private static SequencePoint GetMethodFirstSequencePoint(MethodDefinition methodDefinition)
@@ -39,7 +38,7 @@ namespace Ceres.Editor.Utilities
                             method.Body.Instructions.Count > 0)
                         {
                             methodDefinition = method;
-                            goto label_16;
+                            goto getSequencePoint;
                         }
                     }
                 }
@@ -48,15 +47,8 @@ namespace Ceres.Editor.Utilities
                 return null;
             }
 
-            label_16:
-            foreach (var instruction in methodDefinition.Body.Instructions)
-            {
-                var sequencePoint = methodDefinition.DebugInformation.GetSequencePoint(instruction);
-                if (sequencePoint is { IsHidden: false })
-                    return sequencePoint;
-            }
-
-            return null;
+            getSequencePoint:
+            return methodDefinition.DebugInformation.SequencePoints.FirstOrDefault(x => !x.IsHidden);
         }
 
         private static AssemblyDefinition ReadAssembly(string assemblyPath)
