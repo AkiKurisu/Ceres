@@ -23,7 +23,7 @@ public class CustomEventGenerator : CeresSourceGenerator, ISourceGenerator
         Helpers.SetupContext(context);
         Debug.LogInfo($"[CustomEventGenerator] Execute assembly {context.Compilation.Assembly.Name}");
 
-        //If the attach_debugger key is present (but without value) the returned string is the empty string (not null)
+        // If the attach_debugger key is present (but without value) the returned string is the empty string (not null)
         var debugAssembly = context.GetOptionsString(GlobalOptions.AttachDebugger);
         if (debugAssembly != null)
         {

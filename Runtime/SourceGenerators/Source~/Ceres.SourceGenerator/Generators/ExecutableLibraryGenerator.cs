@@ -6,7 +6,7 @@ using System.Linq;
 namespace Ceres.SourceGenerator;
 
 [Generator]
-public class ExecutableLibrarySourceGenerator : CeresSourceGenerator, ISourceGenerator
+public class ExecutableLibraryGenerator : CeresSourceGenerator, ISourceGenerator
 {
     private const string DiagnosticId = "Ceres001";
 
@@ -33,9 +33,9 @@ public class ExecutableLibrarySourceGenerator : CeresSourceGenerator, ISourceGen
             return;
 
         Helpers.SetupContext(context);
-        Debug.LogInfo($"Execute assembly {context.Compilation.Assembly.Name}");
+        Debug.LogInfo($"[ExecutableLibraryGenerator] Execute assembly {context.Compilation.Assembly.Name}");
 
-        //If the attach_debugger key is present (but without value) the returned string is the empty string (not null)
+        // If the attach_debugger key is present (but without value) the returned string is the empty string (not null)
         var debugAssembly = context.GetOptionsString(GlobalOptions.AttachDebugger);
         if (debugAssembly != null)
         {
@@ -47,7 +47,7 @@ public class ExecutableLibrarySourceGenerator : CeresSourceGenerator, ISourceGen
         foreach (var classDeclaration in receiver.Candidates)
         {
             var className = classDeclaration.Identifier.Text;
-            Debug.LogInfo($"Analyze {className}");
+            Debug.LogInfo($"[ExecutableLibraryGenerator] Analyze {className}");
             if (!classDeclaration.Modifiers.Any(m => m.IsKind(SyntaxKind.PartialKeyword)))
             {
                 context.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptor, classDeclaration.GetLocation(), className));
@@ -75,6 +75,8 @@ public class ExecutableLibrarySourceGenerator : CeresSourceGenerator, ISourceGen
                 Namespaces = receiver.Namespaces[classDeclaration]
             };
             var generatedCode = generatorTemplate.GenerateCode();
+
+            Debug.LogInfo($"[ExecutableLibraryGenerator] Generate {className}.gen.cs");
             generatedFiles.Add(new GeneratedFile
             {
                 ClassName = className,

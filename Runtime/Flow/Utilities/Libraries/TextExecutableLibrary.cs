@@ -23,18 +23,39 @@ namespace Ceres.Graph.Flow.Utilities
             return string.Join(separator, values);
         }
         
+        /// <summary>
+        /// Format string with one argument {0}.
+        /// </summary>
+        /// <param name="separator"></param>
+        /// <param name="argument"></param>
+        /// <returns></returns>
         [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with One Argument")]
         public static string Flow_StringFormatOneArgument(string separator, object argument)
         {
             return string.Format(separator, argument);
         }
         
+        /// <summary>
+        /// Format string with two arguments {0}, {1}.
+        /// </summary>
+        /// <param name="separator"></param>
+        /// <param name="argument0"></param>
+        /// <param name="argument1"></param>
+        /// <returns></returns>
         [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with Two Arguments")]
         public static string Flow_StringFormatTwoArguments(string separator, object argument0, object argument1)
         {
             return string.Format(separator, argument0, argument1);
         }
         
+        /// <summary>
+        /// Format string with three arguments {0}, {1}, {2}.
+        /// </summary>
+        /// <param name="separator"></param>
+        /// <param name="argument0"></param>
+        /// <param name="argument1"></param>
+        /// <param name="argument2"></param>
+        /// <returns></returns>
         [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with Three Arguments")]
         public static string Flow_StringFormatThreeArguments(string separator, object argument0, object argument1, object argument2)
         {

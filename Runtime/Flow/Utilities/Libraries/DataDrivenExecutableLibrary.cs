@@ -24,6 +24,13 @@ namespace Ceres.Graph.Flow.Utilities
             return dataTableManager.GetDataTable(name);
         }
         
+        /// <summary>
+        /// Get data row from table by RowId
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <param name="rowId"></param>
+        /// <param name="rowType"></param>
+        /// <returns></returns>
         [ExecutableFunction(IsScriptMethod = true), CeresLabel("Get Row")]
         public static IDataTableRow Flow_DataTableGetRow(DataTable dataTable, string rowId,
             [ResolveReturn] SerializedType<IDataTableRow> rowType)
@@ -31,6 +38,13 @@ namespace Ceres.Graph.Flow.Utilities
             return dataTable.GetRow(rowId);
         }
         
+        /// <summary>
+        /// Get data row from table by index
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <param name="index"></param>
+        /// <param name="rowType"></param>
+        /// <returns></returns>
         [ExecutableFunction(IsScriptMethod = true), CeresLabel("Get Row by Index")]
         public static IDataTableRow Flow_DataTableGetRowByIndex(DataTable dataTable, int index,
             [ResolveReturn] SerializedType<IDataTableRow> rowType)
@@ -38,6 +52,11 @@ namespace Ceres.Graph.Flow.Utilities
             return dataTable.GetRow(index);
         }
         
+        /// <summary>
+        /// Get all data rows from table.
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
         [ExecutableFunction(IsScriptMethod = true), CeresLabel("Get All Rows")]
         public static IDataTableRow[] Flow_DataTableGetAllRows(DataTable dataTable)
         {

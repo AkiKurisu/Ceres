@@ -7,7 +7,6 @@ using Ceres.Utilities;
 using Chris;
 using Chris.Serialization;
 using Unity.Collections.LowLevel.Unsafe;
-using UnityEngine;
 
 namespace Ceres.Graph
 {

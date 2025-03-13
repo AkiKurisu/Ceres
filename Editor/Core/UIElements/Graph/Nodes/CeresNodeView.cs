@@ -8,6 +8,7 @@ using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using NodeElement = UnityEditor.Experimental.GraphView.Node;
+
 namespace Ceres.Editor.Graph
 {
     /// <summary>
@@ -98,6 +99,7 @@ namespace Ceres.Editor.Graph
             {
                 NodeElement.AddToClassList(style);
             }
+            SetTooltip(GetDefaultTooltip());
             OnSetupNodeElement();
         }
 
@@ -335,6 +337,30 @@ namespace Ceres.Editor.Graph
         public void ReconnectEdges()
         {
             PortViews.ForEach(x=> x.Connect());
+        }
+
+        /// <summary>
+        /// Set node tooltip
+        /// </summary>
+        /// <param name="tooltip"></param>
+        public void SetTooltip(string tooltip)
+        {
+            string result = string.Empty;
+            if (CeresSettings.DisplayDebug)
+            {
+                result += NodeInfo.GetInfo(GetType());
+                result += '\n';
+            }
+            NodeElement.tooltip = result + tooltip;
+        }
+        
+        /// <summary>
+        /// Get node default tooltip
+        /// </summary>
+        /// <returns></returns>
+        public virtual string GetDefaultTooltip()
+        {
+            return string.Empty;
         }
     }
 

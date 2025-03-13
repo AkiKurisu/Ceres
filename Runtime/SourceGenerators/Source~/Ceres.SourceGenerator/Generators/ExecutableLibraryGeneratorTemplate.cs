@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 namespace Ceres.SourceGenerator;
 
 internal class ExecutableLibraryGeneratorTemplate
@@ -15,7 +16,6 @@ internal class ExecutableLibraryGeneratorTemplate
         {USING_NAMESPACES}
         namespace {NAMESPACE}
         {
-            [UnityEngine.Scripting.Preserve]
             [System.Runtime.CompilerServices.CompilerGenerated]
             public partial class {CLASSNAME}
             {

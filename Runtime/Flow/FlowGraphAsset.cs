@@ -36,6 +36,7 @@ namespace Ceres.Graph.Flow
         /// </summary>
         public SerializedType<IFlowGraphRuntime> runtimeType;
         
+        [ExecutableFunction]
         public Type GetRuntimeType()
         {
             return runtimeType.GetObjectType() ?? typeof(FlowGraphInstanceObject);

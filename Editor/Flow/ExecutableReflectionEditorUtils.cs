@@ -13,10 +13,24 @@ namespace Ceres.Editor.Graph.Flow
             if (string.IsNullOrEmpty(function!.FilePath))
             {
                 var declareType = methodInfo.DeclaringType;
-                (function.FilePath, function.LineNumber) = MonoCecilHelper.TryGetCecilFileOpenInfo(declareType, methodInfo);
+                (function.FilePath, function.LineNumber) =
+                    MonoCecilHelper.TryGetCecilFileOpenInfo(declareType, methodInfo);
+            }
+            
+            return (function.FilePath, function.LineNumber);
+        }
+
+        public static string GetExecutableFunctionXmlDocumentation(MethodInfo methodInfo)
+        {
+            var function = ExecutableReflection.GetFunction(methodInfo);
+            CeresLogger.Assert(function != null, $"Method {methodInfo} is not an executable function");
+            if (function!.Documentation == null)
+            {
+                var (filePath, lineNumber) = GetExecutableFunctionFileInfo(methodInfo);
+                function.Documentation = new ExecutableFunction.ExecutableDocumentation(filePath, lineNumber);
             }
 
-            return (function.FilePath, function.LineNumber);
+            return function.Documentation.Summary;
         }
     }
 }

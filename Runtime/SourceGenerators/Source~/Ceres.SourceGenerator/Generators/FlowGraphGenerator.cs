@@ -7,7 +7,7 @@ using System.Linq;
 namespace Ceres.SourceGenerator;
 
 [Generator]
-public class FlowGraphSourceGenerator : CeresSourceGenerator, ISourceGenerator
+public class FlowGraphGenerator : CeresSourceGenerator, ISourceGenerator
 {
     public void Initialize(GeneratorInitializationContext context)
     {
@@ -22,9 +22,9 @@ public class FlowGraphSourceGenerator : CeresSourceGenerator, ISourceGenerator
             return;
 
         Helpers.SetupContext(context);
-        Debug.LogInfo($"Execute assembly {context.Compilation.Assembly.Name}");
+        Debug.LogInfo($"[FlowGraphGenerator] Execute assembly {context.Compilation.Assembly.Name}");
 
-        //If the attach_debugger key is present (but without value) the returned string is the empty string (not null)
+        // If the attach_debugger key is present (but without value) the returned string is the empty string (not null)
         var debugAssembly = context.GetOptionsString(GlobalOptions.AttachDebugger);
         if (debugAssembly != null)
         {
@@ -36,7 +36,7 @@ public class FlowGraphSourceGenerator : CeresSourceGenerator, ISourceGenerator
         foreach (var classDeclaration in receiver.Candidates)
         {
             var className = classDeclaration.Identifier.Text;
-            Debug.LogInfo($"Analyze {className}");
+            Debug.LogInfo($"[FlowGraphGenerator] Analyze {className}");
 
             var semanticModel = context.Compilation.GetSemanticModel(classDeclaration.SyntaxTree);
             var classSymbol = semanticModel.GetDeclaredSymbol(classDeclaration);

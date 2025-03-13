@@ -2,8 +2,11 @@
 // CERES_IL2CPP_OPTIMIZE requires on modification on Unity.IL2CPP.dll to support calli on instance method
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Utilities;
@@ -76,6 +79,119 @@ namespace Ceres.Graph.Flow
 
     public abstract class ExecutableFunction
     {
+        public class ExecutableDocumentation
+        {
+            public string Summary { get; }
+
+            public (string Name, string Summary)[] Parameters { get; }
+
+            public string ReturnValue { get; }
+
+            public override string ToString()
+            {
+                if (string.IsNullOrEmpty(Summary)) return string.Empty;
+                var sb = new StringBuilder();
+                sb.AppendLine(Summary);
+                foreach (var parameter in Parameters)
+                {
+                    if (!string.IsNullOrEmpty(parameter.Summary))
+                    {
+                        sb.AppendLine($"{parameter.Name}: {parameter.Summary}");
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(ReturnValue))
+                {
+                    sb.AppendLine($"Return value: {ReturnValue}");
+                }
+                return sb.ToString();
+            }
+
+            internal ExecutableDocumentation(string sourceCodePath, int methodEntryLine)
+            {
+                if (string.IsNullOrEmpty(sourceCodePath))
+                {
+                    return;
+                }
+                string[] lines = File.ReadAllLines(sourceCodePath);
+                int startLine = -1;
+            
+                for (int i = methodEntryLine - 1; i >= 0; i--)
+                {
+                    if (string.IsNullOrWhiteSpace(lines[i]))
+                    {
+                        return;
+                    }
+                    if (lines[i].Trim().StartsWith("/// <summary>"))
+                    {
+                        startLine = i;
+                        break;
+                    }
+                }
+            
+                if (startLine == -1) return;
+                
+                string summary = "";
+                bool isSummary = false;
+                var parameters = new List<(string, string)>();
+            
+                for (int i = startLine; i < methodEntryLine; i++)
+                {
+                    string line = lines[i].Trim();
+                    if (line.StartsWith("///"))
+                    {
+                        line = Regex.Replace(line, "^/// ?", "");
+                    
+                        if (line.StartsWith("<summary>"))
+                        {
+                            isSummary = true;
+                            summary += Regex.Replace(line, "<summary>", "").Trim() + " ";
+                        }
+                        else if (line.StartsWith("</summary>"))
+                        {
+                            isSummary = false;
+                        }
+                        else if (isSummary)
+                        {
+                            summary += line + " ";
+                        }
+                        else if (line.StartsWith("<param name=\""))
+                        {
+                            var match = Regex.Match(line, "<param name=\"(.*?)\">(.*?)");
+                            if (match.Success)
+                            {
+                                parameters.Add((match.Groups[1].Value, CleanXml(match.Groups[2].Value)));
+                            }
+                        }
+                        else if (line.StartsWith("<returns>"))
+                        {
+                            var returnValue = Regex.Replace(line, "<.*?>", "").Trim();
+                            if (!string.IsNullOrEmpty(returnValue))
+                            {
+                                ReturnValue = CleanXml(returnValue);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                Parameters = parameters.ToArray();
+                if (!string.IsNullOrWhiteSpace(summary))
+                {
+                    Summary = CleanXml(summary.Trim());
+                }
+            }
+
+            private static string CleanXml(string input)
+            {
+                string pattern = @"<[^>]+""([^""]+)""[^>]*>";
+                return Regex.Replace(input, pattern, match => match.Groups[1].Value);
+            }
+        }
+        
         public class ExecutableAttribute
         {
             public bool IsScriptMethod { get; }
@@ -121,21 +237,23 @@ namespace Ceres.Graph.Flow
                 ExecuteInDependency = attribute.ExecuteInDependency;
             }
         }
-
-        private ExecutableAttribute _attribute;
-
         
         public readonly MethodInfo MethodInfo;
+        
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
 
+        private ExecutableAttribute _attribute;
+        
         /// <summary>
-        /// Metadata for editor lookup, should not access it at runtime
+        /// Attribute metadata for editor lookup, should not access it at runtime
         /// </summary>
         internal ExecutableAttribute Attribute => _attribute ??= new ExecutableAttribute(MethodInfo);
         
-#if DEVELOPMENT_BUILD || UNITY_EDITOR
         internal string FilePath;
 
         internal int LineNumber;
+
+        internal ExecutableDocumentation Documentation;
 #endif
 
         protected ExecutableFunction(MethodInfo methodInfo)
@@ -364,6 +482,11 @@ namespace Ceres.Graph.Flow
             var functionStructure = Instance.FindFunction_Internal(functionInfo);
             functionStructure.FilePath = filePath;
             functionStructure.LineNumber = lineNumber + 3 /* Instruction start */;
+        }
+        
+        internal static void RegisterExecutableFunctionDocumentation(string functionName, int parameterCount, string documentation)
+        {
+            CeresLogger.Log(documentation);
         }
 #endif
     }
