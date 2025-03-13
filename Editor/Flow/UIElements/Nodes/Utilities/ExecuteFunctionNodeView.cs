@@ -169,7 +169,7 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             
             var tooltipText = GetFunctionNodeTooltip();
             tooltipText += CeresNode.GetTargetSubtitle(targetType, false);
-            NodeElement.tooltip = tooltipText;
+            SetTooltip(tooltipText);
         }
 
         private string GetFunctionNodeTooltip()

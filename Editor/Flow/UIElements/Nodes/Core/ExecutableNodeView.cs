@@ -22,7 +22,6 @@ namespace Ceres.Editor.Graph.Flow
         {
             View = nodeView;
             /* Additionally add node name as style class */
-            tooltip = nodeView.GetDefaultTooltip();
             AddToClassList(GetClassName(nodeView.NodeType));
             styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/Flow/ExecutableNodeElement"));
         }
@@ -171,18 +170,6 @@ namespace Ceres.Editor.Graph.Flow
             ExecutableNodeElement.RemoveBreakpointView();
         }
 
-        public string GetDefaultTooltip()
-        {
-            string tooltip = string.Empty;
-            if (CeresSettings.DisplayDebug)
-            {
-                tooltip += NodeInfo.GetInfo(GetType());
-                tooltip += '\n';
-            }
-            tooltip += NodeInfo.GetInfo(NodeType);
-            return tooltip;
-        }
-
         /// <summary>
         /// Add menu items to the node contextual menu.
         /// </summary>
@@ -225,6 +212,11 @@ namespace Ceres.Editor.Graph.Flow
                     }
                 }
             }
+        }
+
+        public sealed override string GetDefaultTooltip()
+        {
+            return NodeInfo.GetInfo(NodeType);
         }
     }
     

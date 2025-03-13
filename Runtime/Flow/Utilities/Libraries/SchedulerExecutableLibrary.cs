@@ -11,6 +11,16 @@ namespace Ceres.Graph.Flow.Utilities
     {
         #region Scheduler
 
+        /// <summary>
+        /// Delay some time and invoke callBack.
+        /// </summary>
+        /// <param name="delaySeconds"></param>
+        /// <param name="onComplete"></param>
+        /// <param name="onUpdate"></param>
+        /// <param name="tickFrame"></param>
+        /// <param name="isLooped"></param>
+        /// <param name="ignoreTimeScale"></param>
+        /// <returns></returns>
         [ExecutableFunction, CeresLabel("Schedule Timer by Event")]
         public static SchedulerHandle Flow_SchedulerDelay(
             float delaySeconds, EventDelegate onComplete, EventDelegate<float> onUpdate, 
@@ -21,6 +31,15 @@ namespace Ceres.Graph.Flow.Utilities
             return handle;
         }
         
+        /// <summary>
+        /// Wait some frames and invoke callBack.
+        /// </summary>
+        /// <param name="frame"></param>
+        /// <param name="onComplete"></param>
+        /// <param name="onUpdate"></param>
+        /// <param name="tickFrame"></param>
+        /// <param name="isLooped"></param>
+        /// <returns></returns>
         [ExecutableFunction, CeresLabel("Schedule FrameCounter by Event")]
         public static SchedulerHandle Flow_SchedulerWaitFrame(
             int frame, EventDelegate onComplete, EventDelegate<int> onUpdate,
@@ -30,6 +49,10 @@ namespace Ceres.Graph.Flow.Utilities
             return handle;
         }
         
+        /// <summary>
+        /// Cancel a scheduled task if is valid.
+        /// </summary>
+        /// <param name="handle"></param>
         [ExecutableFunction, CeresLabel("Cancel Scheduler")]
         public static void Flow_SchedulerCancel(SchedulerHandle handle)
         {
