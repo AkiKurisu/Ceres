@@ -64,7 +64,7 @@ namespace Ceres.Graph.Flow.Utilities
     /// <summary>
     /// Helper class for query executable functions
     /// </summary>
-    public class ExecutableFunctionRegistry
+    internal class ExecutableFunctionRegistry
     {
         private readonly Dictionary<Type, MethodInfo[]> _retargetFunctionTables;
 
@@ -74,6 +74,7 @@ namespace Ceres.Graph.Flow.Utilities
 
         private static ExecutableFunctionRegistry _instance;
 
+#if UNITY_EDITOR
         private ExecutableFunctionRegistry()
         {
             var referencedAssemblies = SubClassSearchUtility.GetRuntimeReferencedAssemblies();
@@ -85,7 +86,7 @@ namespace Ceres.Graph.Flow.Utilities
                         .Distinct()
                         .ToList();
             var groups = methodInfos.GroupBy(x => ExecutableReflection.GetFunction(x).Attribute.ScriptTargetType)
-                .Where(x=>x.Key != null)
+                .Where(x => x.Key != null)
                 .ToArray();
             _staticFunctions = methodInfos.Except(groups.SelectMany(x => x)).ToArray();
             _retargetFunctionTables = groups.ToDictionary(x => x.Key, x => x.ToArray());
@@ -96,6 +97,7 @@ namespace Ceres.Graph.Flow.Utilities
                 .Where(x=> !x.IsAbstract && GetInstanceExecutableFunctions(x).Any())
                 .ToDictionary(x => x, x=> GetInstanceExecutableFunctions(x).ToArray());
         }
+#endif
 
         private static IEnumerable<MethodInfo> GetInstanceExecutableFunctions(Type type)
         {
