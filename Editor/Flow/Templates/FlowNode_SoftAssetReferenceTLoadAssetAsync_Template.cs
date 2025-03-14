@@ -1,9 +1,10 @@
 using System;
+using Ceres.Graph;
 using Chris;
 using Chris.Resource;
-namespace Ceres.Graph.Flow.Utilities.Templates
+namespace Ceres.Editor.Graph.Flow
 {
-    public class FlowNode_SoftAssetReferenceTLoadAssetAsync_Template: GenericNodeTemplate
+    internal class FlowNode_SoftAssetReferenceTLoadAssetAsync_Template: GenericNodeTemplate
     {
         public override bool RequirePort()
         {

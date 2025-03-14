@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Ceres.Graph;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Utilities;
 using Chris.Events;
 
-namespace Ceres.Graph.Flow.Utilities.Templates
+namespace Ceres.Editor.Graph.Flow
 {
-    public class FlowNode_SubscribeEventExecutionT_Template: GenericNodeTemplate
+    internal class FlowNode_SubscribeEventExecutionT_Template: GenericNodeTemplate
     {
         private Type[] _typesCache;
         
@@ -29,7 +30,7 @@ namespace Ceres.Graph.Flow.Utilities.Templates
         }
     }
     
-    public class FlowNode_SubscribeGlobalEventExecutionT_Template: FlowNode_SubscribeEventExecutionT_Template
+    internal class FlowNode_SubscribeGlobalEventExecutionT_Template: FlowNode_SubscribeEventExecutionT_Template
     {
         private Type[] _typesCache;
         

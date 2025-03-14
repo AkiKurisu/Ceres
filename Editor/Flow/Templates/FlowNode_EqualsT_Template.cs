@@ -1,8 +1,10 @@
 using System;
 using Ceres.Annotations;
-namespace Ceres.Graph.Flow.Utilities.Templates
+using Ceres.Graph;
+
+namespace Ceres.Editor.Graph.Flow
 {
-    public class FlowNode_EqualsT_Template: GenericNodeTemplate
+    internal class FlowNode_EqualsT_Template: GenericNodeTemplate
     {
         public override bool RequirePort()
         {

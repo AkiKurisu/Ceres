@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
-namespace Ceres.Graph.Flow.Utilities.Templates
+using Ceres.Graph;
+
+namespace Ceres.Editor.Graph.Flow
 {
-    public class FlowNode_SwitchEnumT_Template: GenericNodeTemplate
+    internal class FlowNode_SwitchEnumT_Template: GenericNodeTemplate
     {
         public override bool CanFilterPort(Type portValueType)
         {

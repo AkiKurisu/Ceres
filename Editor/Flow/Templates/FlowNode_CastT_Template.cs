@@ -1,10 +1,12 @@
 using System;
 using System.Linq;
 using Ceres.Annotations;
+using Ceres.Graph;
 using Ceres.Utilities;
-namespace Ceres.Graph.Flow.Utilities.Templates
+
+namespace Ceres.Editor.Graph.Flow
 {
-    public class FlowNode_CastT_Template: GenericNodeTemplate
+    internal class FlowNode_CastT_Template: GenericNodeTemplate
     {
         public override bool RequirePort()
         {

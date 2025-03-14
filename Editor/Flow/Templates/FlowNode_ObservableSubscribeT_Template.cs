@@ -1,10 +1,11 @@
 ﻿using System;
+using Ceres.Graph;
 using Chris;
 using R3;
 
-namespace Ceres.Graph.Flow.Utilities.Templates
+namespace Ceres.Editor.Graph.Flow
 {
-    public class FlowNode_ObservableSubscribeT_Template: GenericNodeTemplate
+    internal class FlowNode_ObservableSubscribeT_Template: GenericNodeTemplate
     {
         public override bool RequirePort()
         {

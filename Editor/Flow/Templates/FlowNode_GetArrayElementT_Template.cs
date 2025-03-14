@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ceres.Graph;
 using Ceres.Utilities;
 using UnityEngine.Assertions;
 
-namespace Ceres.Graph.Flow.Utilities.Templates
+namespace Ceres.Editor.Graph.Flow
 {
-    public class FlowNode_GetArrayElementT_Template: GenericNodeTemplate
+    internal class FlowNode_GetArrayElementT_Template: GenericNodeTemplate
     {
         public override bool CanFilterPort(Type portValueType)
         {
