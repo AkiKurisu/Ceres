@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class ContextualMenuRegistry
+      <title>Class ExecutableReflectionEditorUtils
  | Ceres Documentation </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class ContextualMenuRegistry
+      <meta name="title" content="Class ExecutableReflectionEditorUtils
  | Ceres Documentation ">
     
       <link rel="shortcut icon" href="../favicon.ico">
@@ -77,17 +77,17 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Ceres.Editor.ContextualMenuRegistry">
+            <article class="content wrap" id="_content" data-uid="Ceres.Editor.Graph.Flow.ExecutableReflectionEditorUtils">
 
 
-  <h1 id="Ceres_Editor_ContextualMenuRegistry" data-uid="Ceres.Editor.ContextualMenuRegistry" class="text-break">Class ContextualMenuRegistry
+  <h1 id="Ceres_Editor_Graph_Flow_ExecutableReflectionEditorUtils" data-uid="Ceres.Editor.Graph.Flow.ExecutableReflectionEditorUtils" class="text-break">Class ExecutableReflectionEditorUtils
 </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">object</span></div>
-    <div class="level1"><span class="xref">ContextualMenuRegistry</span></div>
+    <div class="level1"><span class="xref">ExecutableReflectionEditorUtils</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -113,23 +113,23 @@
       <span class="xref">object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a>.<a class="xref" href="Ceres.Editor.Graph.html">Graph</a>.<a class="xref" href="Ceres.Editor.Graph.Flow.html">Flow</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Ceres_Editor_ContextualMenuRegistry_syntax">Syntax</h5>
+  <h5 id="Ceres_Editor_Graph_Flow_ExecutableReflectionEditorUtils_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ContextualMenuRegistry</code></pre>
+    <pre><code class="lang-csharp hljs">public static class ExecutableReflectionEditorUtils</code></pre>
   </div>
   <h3 id="methods">Methods
 </h3>
 
 
-  <a id="Ceres_Editor_ContextualMenuRegistry_BuildContextualMenu_" data-uid="Ceres.Editor.ContextualMenuRegistry.BuildContextualMenu*"></a>
-  <h4 id="Ceres_Editor_ContextualMenuRegistry_BuildContextualMenu_Ceres_Editor_ContextualMenuType_ContextualMenuPopulateEvent_System_Type_" data-uid="Ceres.Editor.ContextualMenuRegistry.BuildContextualMenu(Ceres.Editor.ContextualMenuType,ContextualMenuPopulateEvent,System.Type)">BuildContextualMenu(ContextualMenuType, ContextualMenuPopulateEvent, Type)</h4>
+  <a id="Ceres_Editor_Graph_Flow_ExecutableReflectionEditorUtils_GetExecutableFunctionFileInfo_" data-uid="Ceres.Editor.Graph.Flow.ExecutableReflectionEditorUtils.GetExecutableFunctionFileInfo*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutableReflectionEditorUtils_GetExecutableFunctionFileInfo_MethodInfo_" data-uid="Ceres.Editor.Graph.Flow.ExecutableReflectionEditorUtils.GetExecutableFunctionFileInfo(MethodInfo)">GetExecutableFunctionFileInfo(MethodInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void BuildContextualMenu(ContextualMenuType menuType, ContextualMenuPopulateEvent evt, Type constraintType = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static (string filePath, int lineNumber) GetExecutableFunctionFileInfo(MethodInfo methodInfo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -142,31 +142,36 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Editor.ContextualMenuType.html">ContextualMenuType</a></td>
-        <td><span class="parametername">menuType</span></td>
+        <td><span class="xref">MethodInfo</span></td>
+        <td><span class="parametername">methodInfo</span></td>
         <td></td>
       </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">ContextualMenuPopulateEvent</span></td>
-        <td><span class="parametername">evt</span></td>
-        <td></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
-        <td><span class="xref">System.Type</span></td>
-        <td><span class="parametername">constraintType</span></td>
+        <td>(<span class="xref">string</span> <span class="xref">filePath</span>, <span class="xref">int</span> <span class="xref">lineNumber</span>)</td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="Ceres_Editor_ContextualMenuRegistry_Register_" data-uid="Ceres.Editor.ContextualMenuRegistry.Register*"></a>
-  <h4 id="Ceres_Editor_ContextualMenuRegistry_Register_System_Type_Ceres_Editor_IContextualMenuBuilder_" data-uid="Ceres.Editor.ContextualMenuRegistry.Register(System.Type,Ceres.Editor.IContextualMenuBuilder)">Register(Type, IContextualMenuBuilder)</h4>
+  <a id="Ceres_Editor_Graph_Flow_ExecutableReflectionEditorUtils_GetExecutableFunctionXmlDocumentation_" data-uid="Ceres.Editor.Graph.Flow.ExecutableReflectionEditorUtils.GetExecutableFunctionXmlDocumentation*"></a>
+  <h4 id="Ceres_Editor_Graph_Flow_ExecutableReflectionEditorUtils_GetExecutableFunctionXmlDocumentation_MethodInfo_" data-uid="Ceres.Editor.Graph.Flow.ExecutableReflectionEditorUtils.GetExecutableFunctionXmlDocumentation(MethodInfo)">GetExecutableFunctionXmlDocumentation(MethodInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Register(Type type, IContextualMenuBuilder builder)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string GetExecutableFunctionXmlDocumentation(MethodInfo methodInfo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -179,107 +184,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Type</span></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Ceres.Editor.IContextualMenuBuilder.html">IContextualMenuBuilder</a></td>
-        <td><span class="parametername">builder</span></td>
+        <td><span class="xref">MethodInfo</span></td>
+        <td><span class="parametername">methodInfo</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-
-
-  <a id="Ceres_Editor_ContextualMenuRegistry_Register_" data-uid="Ceres.Editor.ContextualMenuRegistry.Register*"></a>
-  <h4 id="Ceres_Editor_ContextualMenuRegistry_Register__1_Ceres_Editor_IContextualMenuBuilder_" data-uid="Ceres.Editor.ContextualMenuRegistry.Register``1(Ceres.Editor.IContextualMenuBuilder)">Register&lt;T&gt;(IContextualMenuBuilder)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Register&lt;T&gt;(IContextualMenuBuilder builder)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Editor.IContextualMenuBuilder.html">IContextualMenuBuilder</a></td>
-        <td><span class="parametername">builder</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Ceres_Editor_ContextualMenuRegistry_UnRegister_" data-uid="Ceres.Editor.ContextualMenuRegistry.UnRegister*"></a>
-  <h4 id="Ceres_Editor_ContextualMenuRegistry_UnRegister_System_Type_" data-uid="Ceres.Editor.ContextualMenuRegistry.UnRegister(System.Type)">UnRegister(Type)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UnRegister(Type nodeType)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Type</span></td>
-        <td><span class="parametername">nodeType</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Ceres_Editor_ContextualMenuRegistry_UnRegister_" data-uid="Ceres.Editor.ContextualMenuRegistry.UnRegister*"></a>
-  <h4 id="Ceres_Editor_ContextualMenuRegistry_UnRegister__1" data-uid="Ceres.Editor.ContextualMenuRegistry.UnRegister``1">UnRegister&lt;T&gt;()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UnRegister&lt;T&gt;()</code></pre>
-  </div>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
+        <td><span class="xref">string</span></td>
         <td></td>
       </tr>
     </tbody>

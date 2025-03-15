@@ -164,14 +164,75 @@
 </div>
 
 
-  <a id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunction_" data-uid="Ceres.Graph.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunction*"></a>
-  <h4 id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunction__1_System_String_System_Int32_System_Void__" data-uid="Ceres.Graph.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunction``1(System.String,System.Int32,System.Void*)">RegisterExecutableFunction&lt;TLibrary&gt;(string, int, void*)</h4>
-  <div class="markdown level1 summary"><p>Register static executable function to reflection system</p>
+  <a id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo_" data-uid="Ceres.Graph.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo*"></a>
+  <h4 id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo__1_System_String_System_Int32_System_String_System_Int32_" data-uid="Ceres.Graph.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)">RegisterExecutableFunctionFileInfo&lt;TLibrary&gt;(string, int, string, int)</h4>
+  <div class="markdown level1 summary"><p>Register static executable function file info to the reflection system, only works in editor and development build</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected static void RegisterExecutableFunction&lt;TLibrary&gt;(string functionName, int parameterCount, void* functionPtr) where TLibrary : ExecutableFunctionLibrary</code></pre>
+    <pre><code class="lang-csharp hljs">protected static void RegisterExecutableFunctionFileInfo&lt;TLibrary&gt;(string functionName, int parameterCount, string filePath, int lineNumber) where TLibrary : ExecutableFunctionLibrary</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">functionName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">parameterCount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">filePath</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">lineNumber</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TLibrary</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo__1_System_String_System_Int32_System_String_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Must add partial modifier</p>
+</div>
+
+
+  <a id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr_" data-uid="Ceres.Graph.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr*"></a>
+  <h4 id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr__1_System_String_System_Int32_System_Void__" data-uid="Ceres.Graph.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)">RegisterExecutableFunctionPtr&lt;TLibrary&gt;(string, int, void*)</h4>
+  <div class="markdown level1 summary"><p>Register static executable function pointer to the reflection system</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static void RegisterExecutableFunctionPtr&lt;TLibrary&gt;(string functionName, int parameterCount, void* functionPtr) where TLibrary : ExecutableFunctionLibrary</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -215,7 +276,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunction__1_System_String_System_Int32_System_Void___remarks">Remarks</h5>
+  <h5 id="Ceres_Graph_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr__1_System_String_System_Int32_System_Void___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Must add partial modifier</p>
 </div>
 </article>
