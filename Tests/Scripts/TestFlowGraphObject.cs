@@ -15,10 +15,6 @@ namespace Ceres.Tests
         [ImplementableEvent]
         public void Start()
         {
-            /* Test ILPP work */
-#if CERES_DISABLE_ILPP
-            this.ProcessEvent();
-#endif
             /* Test custom event work */
             Scheduler.Delay(1f, TestSendCustomEvent);
             
@@ -46,14 +42,6 @@ namespace Ceres.Tests
         [ImplementableEvent]
         public void OnDestroy()
         {
-#if CERES_DISABLE_ILPP
-            /* Manually call flow event */
-            using var evt = ExecuteFlowEvent.Create(nameof(OnDestroy), ExecuteFlowEvent.DefaultArgs);
-            if (this.GetRuntimeFlowGraph().TryExecuteEvent(Object, evt.FunctionName, evt))
-            {
-                Debug.Log("Execute graph event OnDestroy succeed without ILPP", this);
-            }
-#endif
             ReleaseGraph();
         }
 

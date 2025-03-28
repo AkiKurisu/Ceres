@@ -9,9 +9,13 @@ using Mono.Cecil.Rocks;
 using Unity.CompilationPipeline.Common.Diagnostics;
 using Unity.CompilationPipeline.Common.ILPostProcessing;
 using ILPPInterface = Unity.CompilationPipeline.Common.ILPostProcessing.ILPostProcessor;
+
 namespace Unity.Ceres.ILPP.CodeGen
 {
-    public sealed class ImplementableEventILPP: ILPPInterface
+    /// <summary>
+    /// ILPP for Ceres.Flow executable functions and implementable events
+    /// </summary>
+    public sealed class ExecutableReflectionILPP: ILPPInterface
     {
         private readonly List<DiagnosticMessage> _diagnostics = new();
         
@@ -87,6 +91,7 @@ namespace Unity.Ceres.ILPP.CodeGen
                         }
                         
                         ProcessImplementableEvent(typeDefinition);
+                        ProcessExecutableFunction(typeDefinition);
                     }
                     _mainModule.RemoveRecursiveReferences();
                 }
@@ -251,7 +256,58 @@ namespace Unity.Ceres.ILPP.CodeGen
                 }
             }
         }
+
+        private void ProcessExecutableFunction(TypeDefinition typeDefinition)
+        {
+            var executableFunctions = typeDefinition.Methods.Where(definition =>
+            {
+                // Only need weave instance function
+                if (definition.IsStatic) return false;
+                return definition.CustomAttributes.Any(x =>
+                    x.AttributeType.Resolve().Name == nameof(ExecutableFunctionAttribute));
+            }).ToArray();
+            
+            if (!executableFunctions.Any())
+            {
+                return; 
+            }
+
+            foreach (var executableFunction in executableFunctions)
+            {
+                MakeExecutableFunctionInvoker(typeDefinition, executableFunction);
+            }
+        }
         
+        private void MakeExecutableFunctionInvoker(TypeDefinition type, MethodDefinition methodToCall)
+        {
+            var parameters = methodToCall.Parameters.Select(definition => definition.ParameterType).ToList();
+            parameters.Insert(0, type);
+            int parametersCount = parameters.Count;
+            var returnType = methodToCall.ReturnType ?? _mainModule.TypeSystem.Void;
+            var invokerFunction = type.AddMethod("Invoke_" + methodToCall.Name, 
+                MethodAttributes.Private | MethodAttributes.Static, 
+                returnType,
+                parameters);
+
+            ILProcessor processor = invokerFunction.Body.GetILProcessor();
+            OpCode callOp = methodToCall.IsVirtual ? OpCodes.Callvirt : OpCodes.Call;
+
+
+            /* Include self ptr as arg */
+            for (var i = 0; i < parametersCount; ++i)
+            {
+                if (i < _ldargs.Length)
+                {
+                    processor.Append(Instruction.Create(_ldargs[i]));
+                }
+                else
+                {
+                    processor.Append(processor.Create(OpCodes.Ldarg_S, (byte)i));
+                }
+            }
+            processor.Emit(callOp, methodToCall);
+            processor.Emit(OpCodes.Ret);
+        }
         
         private static MethodReference MakeGenericInstance(MethodReference self, TypeReference[] arguments)
         {
