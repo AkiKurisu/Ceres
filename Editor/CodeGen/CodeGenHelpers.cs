@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Ceres.Graph;
-using Chris;
+using Ceres.Utilities;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
@@ -12,6 +12,7 @@ using Unity.CompilationPipeline.Common.Diagnostics;
 using Unity.CompilationPipeline.Common.ILPostProcessing;
 using UnityEngine;
 using Object = System.Object;
+
 namespace Unity.Ceres.ILPP.CodeGen
 {
     // Modified from Unity.Netcode
@@ -54,6 +55,20 @@ namespace Unity.Ceres.ILPP.CodeGen
                     return XXHash.Hash32(sigPtr, sigLen);
                 }
             }
+        }
+        
+                        
+        public static MethodDefinition AddMethod(this TypeDefinition type, string name,
+            MethodAttributes attributes, TypeReference returnType, List<TypeReference> parameterTypes)
+        {
+            var method = new MethodDefinition(name, attributes, returnType);
+        
+            foreach (var parameterType in parameterTypes)
+            {
+                method.Parameters.Add(new ParameterDefinition(parameterType));
+            }
+            type.Methods.Add(method);
+            return method;
         }
 
         public static bool IsSubclassOf(this TypeDefinition typeDefinition, string classTypeFullName)

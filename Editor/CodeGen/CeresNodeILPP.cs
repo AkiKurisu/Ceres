@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Ceres;
 using Ceres.Graph;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
@@ -12,6 +11,7 @@ using Unity.CompilationPipeline.Common.Diagnostics;
 using Unity.CompilationPipeline.Common.ILPostProcessing;
 using ILPPInterface = Unity.CompilationPipeline.Common.ILPostProcessing.ILPostProcessor;
 using MethodAttributes = Mono.Cecil.MethodAttributes;
+
 namespace Unity.Ceres.ILPP.CodeGen
 {
     internal sealed class CeresNodeILPP : ILPPInterface

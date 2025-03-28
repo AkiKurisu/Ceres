@@ -571,10 +571,11 @@ namespace Ceres.Graph
             if (APIUpdateConfig.Current)
             {
                 var redirectedType = RedirectVariableType(variableData![index].variableType);
-                if (redirectedType == null) return;
-
-                CeresLogger.Log($"Redirect variable type {variableData![index].variableType} to {redirectedType}");
-                variables[index] = variableData[index].Deserialize(redirectedType);
+                if (redirectedType != null)
+                {
+                    CeresLogger.Log($"Redirect variable type {variableData![index].variableType} to {redirectedType}");
+                    variables[index] = variableData[index].Deserialize(redirectedType);
+                }
             }
             
             /* Not support generic instance variable */

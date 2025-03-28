@@ -1,5 +1,3 @@
-// #define CERES_IL2CPP_OPTIMIZE
-// CERES_IL2CPP_OPTIMIZE requires on modification on Unity.IL2CPP.dll to support calli on instance method
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,11 +9,12 @@ using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Utilities;
 using UnityEngine.Assertions;
+
 namespace Ceres.Graph.Flow
 {
     public class InvalidExecutableFunctionException : Exception
     {
-        public InvalidExecutableFunctionException(string message) : base(message)
+        public InvalidExecutableFunctionException(string message) : base($"[Ceres] {message}")
         {
             
         }
@@ -333,26 +332,32 @@ namespace Ceres.Graph.Flow
                 ExecutableFunc = new ExecutableFunc<TTarget>(MethodInfo);
             }
             
-            internal unsafe ExecutableFunction(ExecutableFunctionInfo functionInfo, void* functionPtr): base(null)
+            internal unsafe ExecutableFunction(ExecutableFunctionInfo functionInfo, void* functionPtr, bool isStatic): base(null)
             {
                 FunctionInfo = functionInfo;
-                ExecutableAction = new ExecutableAction<TTarget>(functionPtr);
-                ExecutableFunc = new ExecutableFunc<TTarget>(functionPtr);
+                ExecutableAction = new ExecutableAction<TTarget>(functionPtr, isStatic);
+                ExecutableFunc = new ExecutableFunc<TTarget>(functionPtr, isStatic);
             }
             
             internal unsafe ExecutableFunction(ExecutableFunctionInfo functionInfo, MethodInfo methodInfo, void* functionPtr): base(methodInfo)
             {
                 FunctionInfo = functionInfo;
-                ExecutableAction = new ExecutableAction<TTarget>(functionPtr);
-                ExecutableFunc = new ExecutableFunc<TTarget>(functionPtr);
+                ExecutableAction = new ExecutableAction<TTarget>(functionPtr, true);
+                ExecutableFunc = new ExecutableFunc<TTarget>(functionPtr, true);
             }
         }
 
         private readonly List<ExecutableFunction> _functions = new();
 
+#if ENABLE_IL2CPP
+        // ReSharper disable once InconsistentNaming
+        private readonly IntPtr _il2cppClass;
+#endif
+
         private ExecutableReflection()
         {
             _instance = this;
+            var targetType = typeof(TTarget);
             RegisterReflection<TTarget>(_instance);
             if (typeof(TTarget).IsSubclassOf(typeof(ExecutableFunctionLibrary)))
             {
@@ -365,10 +370,16 @@ namespace Ceres.Graph.Flow
                         RegisterExecutableFunction(ExecutableFunctionType.StaticMethod, methodInfo);
                     });
 #endif
-                Activator.CreateInstance(typeof(TTarget));
+                Activator.CreateInstance(targetType);
                 return;
             }
 
+#if ENABLE_IL2CPP
+            string assemblyName = targetType.Module.Name;
+            string @namespace = targetType.Namespace ?? "";
+            string className = targetType.Name;
+            _il2cppClass = IL2CPP.GetIl2CppClass(assemblyName, @namespace, className);
+ #else
             typeof(TTarget).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                 .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                 .ToList()
@@ -376,6 +387,7 @@ namespace Ceres.Graph.Flow
                 {
                     RegisterExecutableFunction(ExecutableFunctionType.InstanceMethod, methodInfo);
                 });
+#endif
         }
 
         private static ExecutableReflection<TTarget> _instance;
@@ -418,7 +430,7 @@ namespace Ceres.Graph.Flow
                 return;
             }
 #endif
-            var functionStructure = new ExecutableFunction(functionInfo, functionPtr);
+            var functionStructure = new ExecutableFunction(functionInfo, functionPtr, true);
             Instance._functions.Add(functionStructure);
         }
 
@@ -459,6 +471,26 @@ namespace Ceres.Graph.Flow
 
             var functionType = functionInfo.FunctionType;
             var functionName = functionInfo.FunctionName;
+            
+#if ENABLE_IL2CPP
+            unsafe
+            {
+                if (functionType == ExecutableFunctionType.InstanceMethod)
+                {
+                    // Find invoker
+                    int invokeParameterCount = functionInfo.ParameterCount >=0 ? functionInfo.ParameterCount + 1 : -1;
+                    var ptr = IL2CPP.GetIl2CppMethod(_il2cppClass, $"Invoke_{functionName}", invokeParameterCount);
+                    if (ptr == IntPtr.Zero)
+                    {
+                        throw new InvalidExecutableFunctionException($"Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
+                    }
+                    functionStructure = new ExecutableFunction(functionInfo, (void *)ptr, false);
+                    _functions.Add(functionStructure);
+                    return functionStructure;
+                }
+            }
+#endif
+            
             var methodInfo = functionType switch
             {
                 ExecutableFunctionType.PropertySetter => typeof(TTarget).GetProperty(functionName,
@@ -469,7 +501,10 @@ namespace Ceres.Graph.Flow
                 _ => null
             };
 
-            if (methodInfo == null) throw new InvalidExecutableFunctionException($"[Ceres] Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
+            if (methodInfo == null)
+            {
+                throw new InvalidExecutableFunctionException($"Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
+            }
             functionStructure = new ExecutableFunction(functionInfo, methodInfo);
             _functions.Add(functionStructure);
             return functionStructure;
@@ -483,17 +518,12 @@ namespace Ceres.Graph.Flow
             functionStructure.FilePath = filePath;
             functionStructure.LineNumber = lineNumber + 3 /* Instruction start */;
         }
-        
-        internal static void RegisterExecutableFunctionDocumentation(string functionName, int parameterCount, string documentation)
-        {
-            CeresLogger.Log(documentation);
-        }
 #endif
     }
         
     internal unsafe class ExecutableAction<TTarget>
     {
-#if !(ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE)
+#if !(ENABLE_IL2CPP)
         private Delegate _delegate;
 
         private readonly MethodInfo _methodInfo;
@@ -508,7 +538,7 @@ namespace Ceres.Graph.Flow
 #if !UNITY_EDITOR
             Assert.IsFalse(methodInfo.IsStatic);
 #endif
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
+#if ENABLE_IL2CPP
             // RuntimeMethod* in IL2CPP
             _functionPtr = (void*)methodInfo.MethodHandle.Value;
 #else
@@ -517,13 +547,13 @@ namespace Ceres.Graph.Flow
             IsStatic = false;
         }
         
-        internal ExecutableAction(void* functionPtr)
+        internal ExecutableAction(void* functionPtr, bool isStatic)
         {
-            IsStatic = true;
+            IsStatic = isStatic;
             _functionPtr = functionPtr;
         }
 
-#if !(ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE)
+#if !(ENABLE_IL2CPP)
         private static void ReallocateDelegateIfNeed<TDelegate>(ref Delegate outDelegate, MethodInfo methodInfo) where TDelegate: Delegate
         {
             if (methodInfo == null || methodInfo.IsStatic)
@@ -586,8 +616,8 @@ namespace Ceres.Graph.Flow
                 ((delegate* <void>)_functionPtr)();
                 return;
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            FuncIL2CPP.Void(target, _functionPtr);
+#if ENABLE_IL2CPP
+            ((delegate* <TTarget, void>)_functionPtr)(target);
 #else
             ReallocateDelegateIfNeed();
             Assert.IsNotNull(_delegate);
@@ -602,8 +632,8 @@ namespace Ceres.Graph.Flow
                 ((delegate* <T1, void>)_functionPtr)(arg1);
                 return;
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            FuncIL2CPP.Void(target, arg1, _functionPtr);
+#if ENABLE_IL2CPP
+            ((delegate* <TTarget, T1, void>)_functionPtr)(target, arg1);
 #else
             ReallocateDelegateIfNeed<T1>();
             Assert.IsNotNull(_delegate);
@@ -618,8 +648,8 @@ namespace Ceres.Graph.Flow
                 ((delegate* <T1, T2, void>)_functionPtr)(arg1, arg2);
                 return;
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            FuncIL2CPP.Void(target, arg1, arg2, _functionPtr);
+#if ENABLE_IL2CPP
+            ((delegate* <TTarget, T1, T2, void>)_functionPtr)(target, arg1, arg2);
 #else
             ReallocateDelegateIfNeed<T1, T2>();
             Assert.IsNotNull(_delegate);
@@ -634,8 +664,8 @@ namespace Ceres.Graph.Flow
                 ((delegate* <T1, T2, T3, void>)_functionPtr)(arg1, arg2, arg3);
                 return;
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            FuncIL2CPP.Void(target, arg1, arg2, arg3, _functionPtr);
+#if ENABLE_IL2CPP
+            ((delegate* <TTarget, T1, T2, T3, void>)_functionPtr)(target, arg1, arg2, arg3);
 #else
             ReallocateDelegateIfNeed<T1, T2, T3>();
             Assert.IsNotNull(_delegate);
@@ -650,8 +680,8 @@ namespace Ceres.Graph.Flow
                 ((delegate* <T1, T2, T3, T4, void>)_functionPtr)(arg1, arg2, arg3, arg4);
                 return;
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            FuncIL2CPP.Void(target, arg1, arg2, arg3, arg4, _functionPtr);
+#if ENABLE_IL2CPP
+            ((delegate* <TTarget, T1, T2, T3, T4, void>)_functionPtr)(target, arg1, arg2, arg3, arg4);
 #else
             ReallocateDelegateIfNeed<T1, T2, T3, T4>();
             Assert.IsNotNull(_delegate);
@@ -666,8 +696,8 @@ namespace Ceres.Graph.Flow
                 ((delegate* <T1, T2, T3, T4, T5, void>)_functionPtr)(arg1, arg2, arg3, arg4, arg5);
                 return;
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            FuncIL2CPP.Void(target, arg1, arg2, arg3, arg4, arg5, _functionPtr);
+#if ENABLE_IL2CPP
+            ((delegate* <TTarget, T1, T2, T3, T4, T5, void>)_functionPtr)(target, arg1, arg2, arg3, arg4, arg5);
 #else
             ReallocateDelegateIfNeed<T1, T2, T3, T4, T5>();
             Assert.IsNotNull(_delegate);
@@ -682,8 +712,8 @@ namespace Ceres.Graph.Flow
                 ((delegate* <T1, T2, T3, T4, T5, T6, void>)_functionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
                 return;
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            FuncIL2CPP.Void(target, arg1, arg2, arg3, arg4, arg5, arg6, _functionPtr);
+#if ENABLE_IL2CPP
+            ((delegate* <TTarget, T1, T2, T3, T4, T5, T6, void>)_functionPtr)(target, arg1, arg2, arg3, arg4, arg5, arg6);
 #else
             ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6>();
             Assert.IsNotNull(_delegate);
@@ -694,7 +724,7 @@ namespace Ceres.Graph.Flow
     
     internal unsafe class ExecutableFunc<TTarget>
     {
-#if !(ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE)
+#if !(ENABLE_IL2CPP)
         private Delegate _delegate;
 
         private readonly MethodInfo _methodInfo;
@@ -709,7 +739,7 @@ namespace Ceres.Graph.Flow
 #if !UNITY_EDITOR
             Assert.IsFalse(methodInfo.IsStatic);
 #endif
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
+#if ENABLE_IL2CPP
             // RuntimeMethod* in IL2CPP
             _functionPtr = (void*)methodInfo.MethodHandle.Value;
 #else
@@ -718,13 +748,13 @@ namespace Ceres.Graph.Flow
             IsStatic = false;
         }
         
-        internal ExecutableFunc(void* functionPtr)
+        internal ExecutableFunc(void* functionPtr, bool isStatic)
         {
-            IsStatic = true;
+            IsStatic = isStatic;
             _functionPtr = functionPtr;
         }
 
-#if !(ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE)
+#if !(ENABLE_IL2CPP)
         private static void ReallocateDelegateIfNeed<TDelegate>(ref Delegate outDelegate, MethodInfo methodInfo) where TDelegate: Delegate
         {
             if (methodInfo == null || methodInfo.IsStatic)
@@ -786,8 +816,8 @@ namespace Ceres.Graph.Flow
             {
                 return ((delegate* <TR>)_functionPtr)();
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            return FuncIL2CPP.Generic<TR, TTarget>(target, _functionPtr);
+#if ENABLE_IL2CPP
+            return ((delegate* <TTarget, TR>)_functionPtr)(target);
 #else
             ReallocateDelegateIfNeed<TR>();
             Assert.IsNotNull(_delegate);
@@ -801,8 +831,8 @@ namespace Ceres.Graph.Flow
             {
                 return ((delegate* <T1, TR>)_functionPtr)(arg1);
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            return FuncIL2CPP.Generic<TR, TTarget, T1>(target, arg1, _functionPtr);
+#if ENABLE_IL2CPP
+            return ((delegate* <TTarget, T1, TR>)_functionPtr)(target, arg1);
 #else
             ReallocateDelegateIfNeed<T1, TR>();
             Assert.IsNotNull(_delegate);
@@ -816,8 +846,8 @@ namespace Ceres.Graph.Flow
             {
                 return ((delegate* <T1, T2, TR>)_functionPtr)(arg1, arg2);
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            return FuncIL2CPP.Generic<TR, TTarget, T1, T2>(target, arg1, arg2, _functionPtr);
+#if ENABLE_IL2CPP
+            return ((delegate* <TTarget, T1, T2, TR>)_functionPtr)(target, arg1, arg2);
 #else
             ReallocateDelegateIfNeed<T1, T2, TR>();
             Assert.IsNotNull(_delegate);
@@ -831,8 +861,8 @@ namespace Ceres.Graph.Flow
             {
                 return ((delegate* <T1, T2, T3, TR>)_functionPtr)(arg1, arg2, arg3);
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            return FuncIL2CPP.Generic<TR, TTarget, T1, T2, T3>(target, arg1, arg2, arg3, _functionPtr);
+#if ENABLE_IL2CPP
+            return ((delegate* <TTarget, T1, T2, T3, TR>)_functionPtr)(target, arg1, arg2, arg3);
 #else
             ReallocateDelegateIfNeed<T1, T2, T3, TR>();
             Assert.IsNotNull(_delegate);
@@ -846,8 +876,8 @@ namespace Ceres.Graph.Flow
             {
                 return ((delegate* <T1, T2, T3, T4, TR>)_functionPtr)(arg1, arg2, arg3, arg4);
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            return FuncIL2CPP.Generic<TR, TTarget, T1, T2, T3, T4>(target, arg1, arg2, arg3, arg4, _functionPtr);
+#if ENABLE_IL2CPP
+            return ((delegate* <TTarget, T1, T2, T3, T4, TR>)_functionPtr)(target, arg1, arg2, arg3, arg4);
 #else
             ReallocateDelegateIfNeed<T1, T2, T3, T4, TR>();
             Assert.IsNotNull(_delegate);
@@ -861,8 +891,8 @@ namespace Ceres.Graph.Flow
             {
                 return ((delegate* <T1, T2, T3, T4, T5, TR>)_functionPtr)(arg1, arg2, arg3, arg4, arg5);
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            return FuncIL2CPP.Generic<TR, TTarget, T1, T2, T3, T4, T5>(target, arg1, arg2, arg3, arg4, arg5, _functionPtr);
+#if ENABLE_IL2CPP
+            return ((delegate* <TTarget, T1, T2, T3, T4, T5, TR>)_functionPtr)(target, arg1, arg2, arg3, arg4, arg5);
 #else
             ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, TR>();
             Assert.IsNotNull(_delegate);
@@ -876,8 +906,8 @@ namespace Ceres.Graph.Flow
             {
                 return ((delegate* <T1, T2, T3, T4, T5, T6, TR>)_functionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
             }
-#if ENABLE_IL2CPP && CERES_IL2CPP_OPTIMIZE
-            return FuncIL2CPP.Generic<TR, TTarget, T1, T2, T3, T4, T5, T6>(target, arg1, arg2, arg3, arg4, arg5, arg6, _functionPtr);
+#if ENABLE_IL2CPP
+            return ((delegate* <TTarget, T1, T2, T3, T4, T5, T6, TR>)_functionPtr)(target, arg1, arg2, arg3, arg4, arg5, arg6);
 #else
             ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>();
             Assert.IsNotNull(_delegate);
