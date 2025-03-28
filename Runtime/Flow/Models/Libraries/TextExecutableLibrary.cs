@@ -1,7 +1,7 @@
 using System.Globalization;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
-using Chris;
+using Ceres.Utilities;
 
 namespace Ceres.Graph.Flow.Utilities
 {
