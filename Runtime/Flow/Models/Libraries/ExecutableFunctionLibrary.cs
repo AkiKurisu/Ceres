@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Ceres.Graph.Flow.Utilities
@@ -32,7 +33,7 @@ namespace Ceres.Graph.Flow.Utilities
         protected static unsafe void RegisterExecutableFunctionPtr<TLibrary>(string functionName, int parameterCount, void* functionPtr) 
             where TLibrary: ExecutableFunctionLibrary
         {
-            ExecutableReflection<TLibrary>.RegisterStaticExecutableFunctionPtr(functionName, parameterCount, functionPtr);
+            ExecutableReflection<TLibrary>.RegisterStaticExecutableFunctionPtr(functionName, parameterCount, (IntPtr)functionPtr);
         }
         
         /// <summary>
