@@ -1,7 +1,7 @@
 ﻿// Reference: https://github.com/BepInEx/Il2CppInterop
+#if ENABLE_IL2CPP
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace Ceres
@@ -15,7 +15,7 @@ namespace Ceres
             var domain = il2cpp_domain_get();
             if (domain == IntPtr.Zero)
             {
-                CeresLogger.LogError("IL2CPP can only be used in build");
+                CeresLogger.LogError("No domain existed in il2cpp");
                 return;
             }
 
@@ -27,17 +27,6 @@ namespace Ceres
                 var name = Marshal.PtrToStringAnsi(il2cpp_image_get_name(image));
                 Images[name!] = image;
             }
-        }
-
-        internal static IntPtr GetIl2CppImage(string name)
-        {
-            if (Images.TryGetValue(name, out var image)) return image;
-            return IntPtr.Zero;
-        }
-
-        internal static IntPtr[] GetIl2CppImages()
-        {
-            return Images.Values.ToArray();
         }
 
         public static IntPtr GetIl2CppClass(string assemblyName, string @namespace, string className)
@@ -52,75 +41,25 @@ namespace Ceres
             return clazz;
         }
         
-        public static IntPtr GetIl2CppField(IntPtr clazz, string fieldName)
-        {
-            if (clazz == IntPtr.Zero) return IntPtr.Zero;
-
-            var field = il2cpp_class_get_field_from_name(clazz, fieldName);
-            if (field == IntPtr.Zero)
-            {
-                string className = Marshal.PtrToStringUTF8(il2cpp_class_get_name(clazz));
-                CeresLogger.LogError($"Field {fieldName} was not found on class {className}");
-            }
-            return field;
-        }
-
-        public static IntPtr GetIl2CppMethodByToken(IntPtr clazz, int token)
-        {
-            var iter = IntPtr.Zero;
-            IntPtr method;
-            while ((method = il2cpp_class_get_methods(clazz, ref iter)) != IntPtr.Zero)
-            {
-                if (il2cpp_method_get_token(method) == token)
-                    return method;
-            }
-
-            var className = Marshal.PtrToStringAnsi(il2cpp_class_get_name(clazz));
-            CeresLogger.LogError($"Unable to find method {className}::{token}");
-
-            return IntPtr.Zero;
-        }
-        
         public static IntPtr GetIl2CppMethod(IntPtr clazz, string methodName, int argumentCount = -1)
         {
-            var iter = IntPtr.Zero;
-            IntPtr method;
-            while ((method = il2cpp_class_get_methods(clazz, ref iter)) != IntPtr.Zero)
+            IntPtr @class = clazz;
+            while (@class != IntPtr.Zero)
             {
-                if (Marshal.PtrToStringAnsi(il2cpp_method_get_name(method)) != methodName)
-                    continue;
+                IntPtr method = il2cpp_class_get_method_from_name(@class, methodName, argumentCount);
+                if (method != IntPtr.Zero)
+                {
+                    return method;
+                }
 
-                if (argumentCount >=0 && il2cpp_method_get_param_count(method) != argumentCount)
-                    continue;
-                return method;
+                @class = il2cpp_class_get_parent(@class);
             }
 
             var className = Marshal.PtrToStringAnsi(il2cpp_class_get_name(clazz));
-
-            CeresLogger.LogError($"Unable to find method {className}::{methodName}");
+            CeresLogger.LogError($"Unable to find il2cpp method {className}::{methodName}");
             return IntPtr.Zero;
         }
 
-        public static string Il2CppStringToManaged(IntPtr il2CppString)
-        {
-            if (il2CppString == IntPtr.Zero) return null;
-
-            var length = il2cpp_string_length(il2CppString);
-            var chars = il2cpp_string_chars(il2CppString);
-
-            return new string(chars, 0, length);
-        }
-
-        public static IntPtr ManagedStringToIl2Cpp(string str)
-        {
-            if (str == null) return IntPtr.Zero;
-
-            fixed (char* chars = str)
-            {
-                return il2cpp_string_new_utf16(chars, str.Length);
-            }
-        }
-        
         // IL2CPP Functions
         [DllImport("GameAssembly", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void il2cpp_init(IntPtr domain_name);
@@ -264,6 +203,14 @@ namespace Ceres
         [DllImport("GameAssembly", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern IntPtr il2cpp_class_get_methods(IntPtr klass, ref IntPtr iter);
 
+        /// <summary>
+        /// Get method from declared class
+        /// </summary>
+        /// <param name="klass"></param>
+        /// <param name="name"></param>
+        /// <param name="argsCount"></param>
+        /// <returns></returns>
+        /// <remarks>Use <see cref="GetIl2CppMethod"/> to get method from implementation class</remarks>
         [DllImport("GameAssembly", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern IntPtr il2cpp_class_get_method_from_name(IntPtr klass,
             [MarshalAs(UnmanagedType.LPStr)] string name, int argsCount);
@@ -759,3 +706,4 @@ namespace Ceres
         public static extern void il2cpp_custom_attrs_free(IntPtr ainfo);
     }
 }
+#endif
