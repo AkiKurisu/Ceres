@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Ceres.Graph.Flow;
@@ -28,6 +29,8 @@ namespace Unity.Ceres.ILPP.CodeGen
         private MethodReference[] _bridgeMethodRefs;
         
         private MethodReference _bridgeMethodUberRef;
+
+        private MethodReference _executableFunctionAttributeRef;
                 
         private readonly OpCode[] _ldargs = { OpCodes.Ldarg_0, OpCodes.Ldarg_1, OpCodes.Ldarg_2, OpCodes.Ldarg_3 };
         
@@ -143,6 +146,8 @@ namespace Unity.Ceres.ILPP.CodeGen
             _bridgeMethodRefs = bridgeMethods.Select(moduleDefinition.ImportReference).ToArray();
             _bridgeMethodUberRef = moduleDefinition.ImportReference(typeof(FlowGraphRuntimeExtensions)
                 .GetMethod(nameof(FlowGraphRuntimeExtensions.ProcessEventUber)));
+            _executableFunctionAttributeRef = moduleDefinition.ImportReference(typeof(ExecutableFunctionAttribute)
+                .GetConstructor(Type.EmptyTypes));
             return true;
         }
         
@@ -284,12 +289,13 @@ namespace Unity.Ceres.ILPP.CodeGen
             parameters.Insert(0, type);
             int parametersCount = parameters.Count;
             var returnType = methodToCall.ReturnType ?? _mainModule.TypeSystem.Void;
-            var invokerFunction = type.AddMethod("Invoke_" + methodToCall.Name, 
-                MethodAttributes.Private | MethodAttributes.Static, 
+            var invokerFunctionDefinition = type.AddMethod("Invoke_" + methodToCall.Name, 
+                MethodAttributes.Public | MethodAttributes.Static, 
                 returnType,
                 parameters);
+            invokerFunctionDefinition.CustomAttributes.Add(new CustomAttribute(_executableFunctionAttributeRef));
 
-            ILProcessor processor = invokerFunction.Body.GetILProcessor();
+            ILProcessor processor = invokerFunctionDefinition.Body.GetILProcessor();
             OpCode callOp = methodToCall.IsVirtual ? OpCodes.Callvirt : OpCodes.Call;
 
 

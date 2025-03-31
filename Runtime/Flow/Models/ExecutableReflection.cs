@@ -373,12 +373,17 @@ namespace Ceres.Graph.Flow
                 Activator.CreateInstance(targetType);
                 return;
             }
-
-#if ENABLE_IL2CPP
+            
+#if ENABLE_IL2CPP && UNITY_STANDALONE_WIN
             string assemblyName = targetType.Module.Name;
-            string @namespace = targetType.Namespace ?? "";
+            string @namespace = targetType.Namespace ?? string.Empty;
             string className = targetType.Name;
             _il2cppClass = IL2CPP.GetIl2CppClass(assemblyName, @namespace, className);
+#elif ENABLE_IL2CPP
+            typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
+                .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                .ToList()
+                .ForEach(RegisterExecutableFunctionInvoker);
  #else
             typeof(TTarget).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                 .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
@@ -410,6 +415,18 @@ namespace Ceres.Graph.Flow
             return Instance.GetFunction_Internal(new ExecutableFunctionInfo(functionType, functionName, parameterCount));
         }
 
+#if ENABLE_IL2CPP && !UNITY_STANDALONE_WIN
+        private void RegisterExecutableFunctionInvoker(MethodInfo methodInfo)
+        {
+            var functionInfo = new ExecutableFunctionInfo(ExecutableFunctionType.InstanceMethod,
+                methodInfo.Name[7..], // Strip "Invoke_"
+                methodInfo.GetParameters().Length - 1); // Skip self parameter
+            var functionPtr = methodInfo.MethodHandle.Value;
+            var functionStructure = new ExecutableFunction(functionInfo, functionPtr, false);
+            _functions.Add(functionStructure);
+        }
+#endif
+        
         private void RegisterExecutableFunction(ExecutableFunctionType functionType, MethodInfo methodInfo)
         {
             var functionInfo = new ExecutableFunctionInfo(functionType, methodInfo.Name, methodInfo.GetParameters().Length);
@@ -472,7 +489,7 @@ namespace Ceres.Graph.Flow
             var functionType = functionInfo.FunctionType;
             var functionName = functionInfo.FunctionName;
             
-#if ENABLE_IL2CPP
+#if ENABLE_IL2CPP && UNITY_STANDALONE_WIN
             unsafe
             {
                 if (functionType == ExecutableFunctionType.InstanceMethod)
@@ -536,6 +553,7 @@ namespace Ceres.Graph.Flow
 #if !UNITY_EDITOR
             Assert.IsFalse(methodInfo.IsStatic);
 #endif
+            _functionPtr = IntPtr.Zero;
             _methodInfo = methodInfo;
             IsStatic = false;
         }
@@ -749,6 +767,7 @@ namespace Ceres.Graph.Flow
 #if !UNITY_EDITOR
             Assert.IsFalse(methodInfo.IsStatic);
 #endif
+            _functionPtr = IntPtr.Zero;
             _methodInfo = methodInfo;
             IsStatic = false;
         }
