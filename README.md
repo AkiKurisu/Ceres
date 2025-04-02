@@ -3,7 +3,7 @@
 # Ceres
 Powerful visual scripting toolkit for Unity.
 
-![banner](./Documentation~/Images/ceres_banner.png)
+![banner](./Documentation~/resources/Images/ceres_banner.png)
 
 <b>*Still in earlier development and may have frequent API changes, 
 do not use it in any production environment*</b>
@@ -31,17 +31,6 @@ Add following dependencies to `manifest.json`.
 - Easy implementation
 - Optimized runtime performance
 
-## Contents
-
-[Concept of Ceres](./Documentation~/ceres_concept.md)
-> Introducing the core concepts of Ceres.
-
-[Code Generation in Ceres](./Documentation~/ceres_codegen.md)
-> Introducing the code generation inside Ceres.
-
-[Startup Flow](./Documentation~/flow_startup.md)
-> Introducing the visual scripting solution Flow inside Ceres.
-
 ## Platform
 
 Unity 2022.3 LTS or later.
@@ -49,6 +38,8 @@ Unity 2022.3 LTS or later.
 Support Mono, IL2CPP.
 
 ## Documentation
+
+[Tutorial](https://akikurisu.github.io/Ceres/docs/ceres_concept.html)
 
 [API Reference](https://akikurisu.github.io/Ceres/api/Ceres.html)
 
@@ -60,9 +51,9 @@ Powerful visual scripting solution inspired from Unreal's Blueprint.
   
 Included in this repository. 
 
-See [Startup Flow](./Documentation~/flow_startup.md).
+See [Startup Flow](https://akikurisu.github.io/Ceres/docs/flow_startup.html)
 
-![ceres_flow](./Documentation~/Images/ceres_flow.png)
+![ceres_flow](./Documentation~/resources/Images/ceres_flow.png)
  
 ### Next Gen Dialogue
 
@@ -70,7 +61,7 @@ AI powered dialogue visual designer for Unity.
 
 See [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue).
 
-![ceres_ngd](./Documentation~/Images/ceres_ngd.png)
+![ceres_ngd](./Documentation~/resources/Images/ceres_ngd.png)
 
 ## Reference
 

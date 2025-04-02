@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Quick Start | Ceres Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Quick Start | Ceres Documentation ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="quick-start">Quick Start</h1>
+
+<p>Here is an example of using Flow to output a &quot;Hello World&quot; message.</p>
+<ol>
+<li><p>Ceate a new C# script <code>MyFlowObject.cs</code> and make it inherit from <code>FlowGraphObject</code>.</p>
+</li>
+<li><p>Add a <code>Start</code> method to the newly created class so that Unity can call this method when the game starts.</p>
+</li>
+<li><p>Add <code>ImplementableEventAttribute</code> to <code>Start</code> method so that we can implement its logic in Flow Graph.</p>
+</li>
+</ol>
+<pre><code class="lang-C#">using Ceres.Graph.Flow;
+using Ceres.Graph.Flow.Annotations;
+public class MyFlowObject: FlowGraphObject
+{
+    [ImplementableEvent]
+    private void Start()
+    {
+
+    }
+}
+</code></pre>
+<ol start="4">
+<li><p>Now create a new GameObject in the scene and attach <code>MyFlowObject</code> component to it.</p>
+</li>
+<li><p>Click <code>Open Flow Graph</code> in the Inspector panel to open the Flow Graph Editor.</p>
+<p><img src="../resources/Images/flow_quick_start_1.png" alt="Open Flow Graph"></p>
+</li>
+<li><p>Right click graph and click <code>Create Node/Select Events/Implement Start</code>.</p>
+<p><img src="../resources/Images/flow_quick_start_2.png" alt="Create Node"></p>
+</li>
+<li><p>Then click <code>Create Node</code> and search <code>Log String</code>, connect the white port (exec) to the <code>Start</code> node's output (exec).</p>
+</li>
+<li><p>Fill in &quot;Hello World!&quot; in the <code>In String</code> field of the <code>Log String</code> node.</p>
+<p><img src="../resources/Images/flow_quick_start_3.png" alt="Log String"></p>
+</li>
+<li><p>Click save button in the left upper corner.</p>
+</li>
+<li><p>Play the game and you will see &quot;Hello World!&quot; in the console.</p>
+</li>
+</ol>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Copyright © 2025 <b>AkiKurisu</b><br>Generated with <b>DocFX</b>
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
