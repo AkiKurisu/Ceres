@@ -1,4 +1,4 @@
-﻿using Chris;
+﻿using Chris.Modules;
 using Chris.Schedulers;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
