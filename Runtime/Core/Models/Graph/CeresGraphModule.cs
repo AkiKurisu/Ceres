@@ -1,15 +1,13 @@
-﻿using Chris.Schedulers;
+﻿using Chris.Modules;
+using Chris.Schedulers;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+
 namespace Ceres.Graph
 {
-    internal static class CeresPortSetup
+    internal class CeresGraphModule: RuntimeModule
     {
-        [RuntimeInitializeOnLoadMethod]
-#if UNITY_EDITOR
-        [UnityEditor.InitializeOnLoadMethod]
-#endif
-        private static void InitializeOnLoad()
+        public override void Initialize(ModuleConfig config)
         {
             /* Implicit conversation */
             // ======================== Value type =========================== //

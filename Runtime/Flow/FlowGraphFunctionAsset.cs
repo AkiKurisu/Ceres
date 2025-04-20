@@ -74,5 +74,10 @@ namespace Ceres.Graph.Flow
             OnFunctionUpdate?.Invoke(this);
 #endif
         }
+        
+        public override Type GetRuntimeType()
+        {
+            return runtimeType.GetObjectType();
+        }
     }
 }

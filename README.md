@@ -45,7 +45,7 @@ Support Mono, IL2CPP.
 
 ## Implementation
 
-### Ceres.Flow
+### Flow
 
 Powerful visual scripting solution inspired from Unreal's Blueprint.
   
@@ -53,7 +53,15 @@ Included in this repository.
 
 See [Startup Flow](https://akikurisu.github.io/Ceres/docs/flow_startup.html)
 
-![ceres_flow](./Documentation~/resources/Images/ceres_flow.png)
+![Flow](./Documentation~/resources/Images/ceres_flow.png)
+
+### Flow Hotupdate
+
+Implement a Data-Driven and Per-Actor hotupdate solution.
+
+See [Chris.Gameplay](https://github.com/AkiKurisu/Chris.Gameplay) for more details.
+
+![Hotupdate](./Documentation~/resources/Images/flow_hotupdate.png)
  
 ### Next Gen Dialogue
 
@@ -61,18 +69,18 @@ AI powered dialogue visual designer for Unity.
 
 See [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue).
 
-![ceres_ngd](./Documentation~/resources/Images/ceres_ngd.png)
+![Next-Gen-Dialogue](./Documentation~/resources/Images/ceres_ngd.png)
 
 ## Reference
 
 [Chris](https://github.com/AkiKurisu/Chris) 
 
->Support Ceres to serialize any object and edit them in editor, 
+> Support Ceres to serialize any object and edit them in editor, 
 also providing contextual event used in Flow.
 
 [UniTask](https://github.com/Cysharp/UniTask) 
 
->Support Ceres to execute node in async.
+> Support Ceres to execute node in async.
 
 ## Articles
 
