@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -68,7 +69,7 @@ namespace Ceres.Editor.Graph
         }
     }
     
-    public class CeresBlackboard : Blackboard, IVariableSource
+    public class CeresBlackboard : Blackboard, IVariableSource, IDisposable
     {
         public bool AlwaysExposed { get; set; }
 
@@ -78,11 +79,11 @@ namespace Ceres.Editor.Graph
 
         private readonly HashSet<ObserveProxyVariable> _observeProxies = new();
         
-        private bool _isDestroyed;
+        private bool _isDetached;
 
-        public const string SharedVariableSection = "Shared Variables";
+        private const string SharedVariableSection = "Shared Variables";
         
-        public CeresBlackboard(IVariableSource source ,GraphView graphView) : base(graphView)
+        public CeresBlackboard(IVariableSource source, GraphView graphView) : base(graphView)
         {
             SharedVariables = source.SharedVariables;
             var header = this.Q("header");
@@ -92,10 +93,11 @@ namespace Ceres.Editor.Graph
             Add(ScrollView = new ScrollView());
             
             RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
-            RegisterCallback<DetachFromPanelEvent>(OnDispose);
+            RegisterCallback<AttachToPanelEvent>(OnAttach);
+            RegisterCallback<DetachFromPanelEvent>(OnDetach);
             if (!Application.isPlaying) InitRequestDelegate();
         }
-        
+
         protected CeresBlackboard(CeresGraphView graphView) : this(graphView, graphView)
         {
             
@@ -112,14 +114,24 @@ namespace Ceres.Editor.Graph
             }
             return section;
         }
-        
-        private void OnDispose(DetachFromPanelEvent _)
+
+        public void Dispose()
         {
-            _isDestroyed = true;
             foreach (var proxy in _observeProxies)
             {
                 proxy.Dispose();
             }
+            _observeProxies.Clear();
+        }
+        
+        private void OnAttach(AttachToPanelEvent evt)
+        {
+            _isDetached = false;
+        }
+        
+        private void OnDetach(DetachFromPanelEvent _)
+        {
+            _isDetached = true;
         }
 
         protected virtual void CreateBlackboardMenu(GenericMenu menu)
@@ -332,7 +344,7 @@ namespace Ceres.Editor.Graph
         
         public void RemoveVariable(SharedVariable variable, bool fireEvents)
         {
-            if(_isDestroyed) return;
+            if(_isDetached) return;
             var row = FindRow(variable);
             
             /* Delete when blackboard field view can be deleted */
@@ -342,13 +354,20 @@ namespace Ceres.Editor.Graph
                 SharedVariables.Remove(variable);
                 if (fireEvents) NotifyVariableChanged(variable, VariableChangeType.Remove);
             }
+            else
+            {
+                if (CeresSettings.DisplayDebug)
+                {
+                    CeresLogger.LogWarning($"Can not remove variable {variable.Name}.");
+                }
+            }
         }
 
         protected CeresBlackboardVariableRow FindRow(SharedVariable variable)
         {
             return ScrollView.Query<CeresBlackboardVariableRow>()
                 .ToList()
-                .FirstOrDefault(x=>x.Variable == variable);
+                .FirstOrDefault(row=> row.Variable == variable);
         }
 
         private void NotifyVariableChanged(SharedVariable sharedVariable, VariableChangeType changeType)
