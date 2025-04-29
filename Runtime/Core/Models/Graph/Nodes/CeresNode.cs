@@ -7,6 +7,7 @@ using Chris.Collections;
 using Chris.Serialization;
 using UnityEngine;
 using UnityEngine.Pool;
+using UObject = UnityEngine.Object;
 
 namespace Ceres.Graph
 {
@@ -438,6 +439,11 @@ namespace Ceres.Graph
         {
             var resolvedData = UObjectLink.Resolve(uobjectLinks, serializedData);
             return JsonUtility.FromJson(resolvedData, outNodeType) as CeresNode;
+        }
+
+        public UObject[] GetReferencedObjects()
+        {
+            return uobjectLinks.Select(link => link.linkedObject).ToArray();
         }
     }
 }

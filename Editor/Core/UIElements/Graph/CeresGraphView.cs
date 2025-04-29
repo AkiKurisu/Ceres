@@ -334,6 +334,8 @@ namespace Ceres.Editor.Graph
 
         private void OnGraphViewDestroy(DetachFromPanelEvent evt)
         {
+            Blackboard?.Dispose();
+            Blackboard = null;
             OnDestroy();
         }
 
