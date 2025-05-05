@@ -13,7 +13,7 @@ namespace Ceres.Graph.Flow.Utilities
     [CeresGroup("Utilities/Array")]
     [CeresLabel("Get")]
     [CeresMetadata("style = ConstNode", "path = Dependency")]
-    public class FlowNode_GetArrayElementT<T>: ExecutableNode
+    public sealed class FlowNode_GetArrayElementT<T>: ExecutableNode
     {
         [InputPort(true), CeresLabel(""), HideInGraphEditor]
         public CeresPort<IReadOnlyList<T>> array;

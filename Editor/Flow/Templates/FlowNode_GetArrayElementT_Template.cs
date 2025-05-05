@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 namespace Ceres.Editor.Graph.Flow
 {
-    internal class FlowNode_GetArrayElementT_Template: GenericNodeTemplate
+    internal class IReadOnlyListNodeTemplate : GenericNodeTemplate
     {
         public override bool CanFilterPort(Type portValueType)
         {
@@ -41,5 +41,9 @@ namespace Ceres.Editor.Graph.Flow
             Assert.IsNotNull(elementType);
             return new[] { elementType }; 
         }
+    }
+
+    internal sealed class FlowNode_GetArrayElementT_Template : IReadOnlyListNodeTemplate
+    {
     }
 }
