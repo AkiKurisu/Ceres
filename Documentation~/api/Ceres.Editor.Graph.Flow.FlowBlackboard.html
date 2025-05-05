@@ -93,6 +93,7 @@
   <div class="implements">
     <h5>Implements</h5>
     <div><span class="xref">IVariableSource</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -103,10 +104,10 @@
       <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_SharedVariables">CeresBlackboard.SharedVariables</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_SharedVariableSection">CeresBlackboard.SharedVariableSection</a>
+      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_GetOrAddSection_System_String_">CeresBlackboard.GetOrAddSection(string)</a>
     </div>
     <div>
-      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_GetOrAddSection_System_String_">CeresBlackboard.GetOrAddSection(string)</a>
+      <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_Dispose">CeresBlackboard.Dispose()</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Editor.Graph.CeresBlackboard.html#Ceres_Editor_Graph_CeresBlackboard_EditVariable_System_String_">CeresBlackboard.EditVariable(string)</a>
@@ -125,7 +126,7 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Ceres_Editor_Graph_Flow_FlowBlackboard_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FlowBlackboard : CeresBlackboard, IVariableSource</code></pre>
+    <pre><code class="lang-csharp hljs">public class FlowBlackboard : CeresBlackboard, IVariableSource, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
@@ -356,6 +357,9 @@
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">IVariableSource</span>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
   </div>
 </article>
           </div>
