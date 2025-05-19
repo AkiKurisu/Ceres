@@ -40,7 +40,17 @@ namespace Ceres.Graph.Flow
         /// <summary>
         /// Get method from instance property
         /// </summary>
-        PropertyGetter
+        PropertyGetter,
+        
+        /// <summary>
+        /// Set method from static property
+        /// </summary>
+        StaticPropertySetter,
+        
+        /// <summary>
+        /// Get method from static property
+        /// </summary>
+        StaticPropertyGetter
     }
 
     /// <summary>
@@ -513,6 +523,10 @@ namespace Ceres.Graph.Flow
                     BindingFlags.Public | BindingFlags.Instance)!.SetMethod,
                 ExecutableFunctionType.PropertyGetter => typeof(TTarget).GetProperty(functionName,
                     BindingFlags.Public | BindingFlags.Instance)!.GetMethod,
+                ExecutableFunctionType.StaticPropertySetter => typeof(TTarget).GetProperty(functionName,
+                    BindingFlags.Public | BindingFlags.Static)!.SetMethod,
+                ExecutableFunctionType.StaticPropertyGetter => typeof(TTarget).GetProperty(functionName,
+                    BindingFlags.Public | BindingFlags.Static)!.GetMethod,
                 ExecutableFunctionType.InstanceMethod or ExecutableFunctionType.StaticMethod => null,
                 _ => null
             };
