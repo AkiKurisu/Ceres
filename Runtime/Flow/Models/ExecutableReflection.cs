@@ -535,7 +535,17 @@ namespace Ceres.Graph.Flow
             {
                 throw new InvalidExecutableFunctionException($"Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
             }
-            functionStructure = new ExecutableFunction(functionInfo, methodInfo);
+            
+            if (methodInfo.IsStatic && (functionType == ExecutableFunctionType.StaticPropertyGetter || 
+                                        functionType == ExecutableFunctionType.StaticPropertySetter))
+            {
+                var functionPtr = methodInfo.MethodHandle.Value;
+                functionStructure = new ExecutableFunction(functionInfo, functionPtr, true);
+            }
+            else
+            {
+                functionStructure = new ExecutableFunction(functionInfo, methodInfo);
+            }
             _functions.Add(functionStructure);
             return functionStructure;
         }
