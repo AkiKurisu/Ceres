@@ -491,8 +491,9 @@ namespace Ceres.Graph.Flow
         /// </summary>
         private bool IsStaticPropertyMethod(MethodInfo methodInfo, ExecutableFunctionType functionType)
         {
-            return methodInfo.IsStatic && (functionType == ExecutableFunctionType.StaticPropertyGetter || 
-                                          functionType == ExecutableFunctionType.StaticPropertySetter);
+            Assert.IsTrue(methodInfo.IsStatic, "Method must be static for static property accessors");
+            return functionType == ExecutableFunctionType.StaticPropertyGetter || 
+                   functionType == ExecutableFunctionType.StaticPropertySetter;
         }
 
         private ExecutableFunction GetFunction_Internal(ExecutableFunctionInfo functionInfo)
