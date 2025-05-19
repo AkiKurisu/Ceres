@@ -487,6 +487,15 @@ namespace Ceres.Graph.Flow
             return null;
         }
 
+        /// <summary>
+        /// </summary>
+        private bool IsStaticPropertyMethod(MethodInfo methodInfo, ExecutableFunctionType functionType)
+        {
+            Assert.IsTrue(methodInfo.IsStatic, "Method must be static for static property accessors");
+            return functionType == ExecutableFunctionType.StaticPropertyGetter || 
+                   functionType == ExecutableFunctionType.StaticPropertySetter;
+        }
+
         private ExecutableFunction GetFunction_Internal(ExecutableFunctionInfo functionInfo)
         {
             var functionStructure = FindFunction_Internal(functionInfo);
@@ -535,7 +544,20 @@ namespace Ceres.Graph.Flow
             {
                 throw new InvalidExecutableFunctionException($"Can not find executable function from {nameof(ExecutableFunctionInfo)} [{functionInfo}]");
             }
-            functionStructure = new ExecutableFunction(functionInfo, methodInfo);
+            
+            if (IsStaticPropertyMethod(methodInfo, functionType))
+            {
+                var functionPtr = methodInfo.MethodHandle.Value;
+#if UNITY_EDITOR
+                functionStructure = new ExecutableFunction(functionInfo, methodInfo, functionPtr);
+#else
+                functionStructure = new ExecutableFunction(functionInfo, functionPtr, true);
+#endif
+            }
+            else
+            {
+                functionStructure = new ExecutableFunction(functionInfo, methodInfo);
+            }
             _functions.Add(functionStructure);
             return functionStructure;
         }
