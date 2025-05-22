@@ -238,6 +238,12 @@ namespace Ceres.Editor.Graph.Flow
                 .Where(x=> x.CanRead || x.CanWrite)
                 .ToArray();
             
+            /* Build static properties */
+            var staticProperties = targetType
+                .GetProperties(BindingFlags.Public | BindingFlags.Static)
+                .Where(x=> x.CanRead || x.CanWrite)
+                .ToArray();
+            
             if (isSelfTarget)
             {
                 builder.AddGroupEntry("Select Properties", 1);
@@ -287,7 +293,7 @@ namespace Ceres.Editor.Graph.Flow
             }
             else
             {
-                if (properties.Any())
+                if (properties.Any() || staticProperties.Any())
                 {
                     builder.AddGroupEntry("Select Properties", 1);
                 }
@@ -329,6 +335,51 @@ namespace Ceres.Editor.Graph.Flow
                             }
                         }
                     });
+                }
+            }
+            
+            /* Add Static Properties */
+            if (staticProperties.Any())
+            {
+                builder.AddGroupEntry("Static Properties", 2);
+                
+                foreach (var property in staticProperties)
+                {
+                    if(property.GetGetMethod()?.IsPublic ?? false)
+                    {
+                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get Static {property.Name}", _indentationIcon))
+                        {
+                            level = 3,
+                            userData = new CeresNodeSearchEntryData
+                            {
+                                NodeType = typeof(PropertyNode_GetStaticPropertyTValue<>),
+                                Data = new PropertyNodeViewFactoryProxy
+                                {
+                                    PropertyName = property.Name,
+                                    PropertyInfo = property,
+                                    IsSelfTarget = false
+                                }
+                            }
+                        });
+                    }
+
+                    if (property.GetSetMethod()?.IsPublic ?? false)
+                    {
+                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set Static {property.Name}", _indentationIcon))
+                        {
+                            level = 3,
+                            userData = new CeresNodeSearchEntryData
+                            {
+                                NodeType = typeof(PropertyNode_SetStaticPropertyTValue<>),
+                                Data = new PropertyNodeViewFactoryProxy
+                                {
+                                    PropertyName = property.Name,
+                                    PropertyInfo = property,
+                                    IsSelfTarget = false
+                                }
+                            }
+                        });
+                    }
                 }
             }
         }
