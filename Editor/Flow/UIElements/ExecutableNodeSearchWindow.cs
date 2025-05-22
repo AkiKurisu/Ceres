@@ -339,47 +339,42 @@ namespace Ceres.Editor.Graph.Flow
             }
             
             /* Add Static Properties */
-            if (staticProperties.Any())
+            foreach (var property in staticProperties)
             {
-                builder.AddGroupEntry("Static Properties", 2);
-                
-                foreach (var property in staticProperties)
+                if(property.GetGetMethod()?.IsPublic ?? false)
                 {
-                    if(property.GetGetMethod()?.IsPublic ?? false)
+                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get Static {property.Name}", _indentationIcon))
                     {
-                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get Static {property.Name}", _indentationIcon))
+                        level = 2,
+                        userData = new CeresNodeSearchEntryData
                         {
-                            level = 3,
-                            userData = new CeresNodeSearchEntryData
+                            NodeType = typeof(PropertyNode_GetPropertyTValue<,>),
+                            Data = new PropertyNodeViewFactoryProxy
                             {
-                                NodeType = typeof(PropertyNode_GetStaticPropertyTValue<>),
-                                Data = new PropertyNodeViewFactoryProxy
-                                {
-                                    PropertyName = property.Name,
-                                    PropertyInfo = property,
-                                    IsSelfTarget = false
-                                }
+                                PropertyName = property.Name,
+                                PropertyInfo = property,
+                                IsSelfTarget = false
                             }
-                        });
-                    }
+                        }
+                    });
+                }
 
-                    if (property.GetSetMethod()?.IsPublic ?? false)
+                if (property.GetSetMethod()?.IsPublic ?? false)
+                {
+                    builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set Static {property.Name}", _indentationIcon))
                     {
-                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set Static {property.Name}", _indentationIcon))
+                        level = 2,
+                        userData = new CeresNodeSearchEntryData
                         {
-                            level = 3,
-                            userData = new CeresNodeSearchEntryData
+                            NodeType = typeof(PropertyNode_SetPropertyTValue<,>),
+                            Data = new PropertyNodeViewFactoryProxy
                             {
-                                NodeType = typeof(PropertyNode_SetStaticPropertyTValue<>),
-                                Data = new PropertyNodeViewFactoryProxy
-                                {
-                                    PropertyName = property.Name,
-                                    PropertyInfo = property,
-                                    IsSelfTarget = false
-                                }
+                                PropertyName = property.Name,
+                                PropertyInfo = property,
+                                IsSelfTarget = false
                             }
-                        });
-                    }
+                        }
+                    });
                 }
             }
         }

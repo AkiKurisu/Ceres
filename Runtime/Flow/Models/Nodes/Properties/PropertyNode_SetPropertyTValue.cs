@@ -42,7 +42,10 @@ namespace Ceres.Graph.Flow.Properties
     
         public void OnAfterDeserialize()
         {
-            _delegate =  ExecutableReflection<TTarget>.GetFunction(ExecutableFunctionType.PropertySetter, propertyName).ExecutableAction;
+            var functionType = typeof(TTarget) == typeof(object) ? 
+                ExecutableFunctionType.StaticPropertySetter : 
+                ExecutableFunctionType.PropertySetter;
+            _delegate = ExecutableReflection<TTarget>.GetFunction(functionType, propertyName).ExecutableAction;
         }
     }
 }
