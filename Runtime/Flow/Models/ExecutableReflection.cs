@@ -26,31 +26,30 @@ namespace Ceres.Graph.Flow
         /// Method from class instance
         /// </summary>
         InstanceMethod,
-
+        
         /// <summary>
         /// Method from static class
         /// </summary>
         StaticMethod,
-
+        
         /// <summary>
         /// Set method from instance property
         /// </summary>
         PropertySetter,
-
         /// <summary>
         /// Get method from instance property
         /// </summary>
         PropertyGetter,
         
         /// <summary>
-        /// Set method from static property
-        /// </summary>
-        StaticPropertySetter,
-        
-        /// <summary>
         /// Get method from static property
         /// </summary>
-        StaticPropertyGetter
+        StaticPropertyGetter,
+        
+        /// <summary>
+        /// Set method from static property
+        /// </summary>
+        StaticPropertySetter
     }
 
     /// <summary>
