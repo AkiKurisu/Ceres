@@ -230,6 +230,15 @@ namespace Ceres.Editor.Graph.Flow
             if (parameterType.IsGenericType) parameterType = parameterType.GetGenericTypeDefinition();
             return SupportedDelegateTypes.Contains(parameterType);
         }
+        
+        /// <summary>
+        /// Always shown types in node search tree, currently hardcode.
+        /// </summary>
+        private static readonly Type[] AlwaysShownTypes = {
+            typeof(Application)
+        };
+
+        private static PropertyInfo[] AlwaysShownPropertyInfos;
 
         private void BuildPropertyEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool isSelfTarget)
         { 
@@ -336,6 +345,66 @@ namespace Ceres.Editor.Graph.Flow
                     });
                 }
             }
+            
+            if (isSelfTarget)
+            {
+                BuildAlwaysShownPropertyInfos();
+                if (AlwaysShownPropertyInfos.Any())
+                {
+                    builder.AddGroupEntry("Select Static Properties", 1);
+                }
+                foreach (var property in AlwaysShownPropertyInfos)
+                {
+                    var getMethod = property.GetGetMethod();
+                    if(getMethod?.IsPublic ?? false)
+                    {
+                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {property.DeclaringType!.Name}.{property.Name}", _indentationIcon))
+                        {
+                            level = 2,
+                            userData = new CeresNodeSearchEntryData
+                            {
+                                NodeType = typeof(PropertyNode_GetPropertyTValue<,>),
+                                Data = new PropertyNodeViewFactoryProxy
+                                {
+                                    PropertyName = property.Name,
+                                    PropertyInfo = property,
+                                    IsSelfTarget = false,
+                                    IsStatic = true
+                                }
+                            }
+                        });
+                    }
+
+                    var setMethod = property.GetSetMethod();
+                    if (setMethod?.IsPublic ?? false)
+                    {
+                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {property.DeclaringType!.Name}.{property.Name}", _indentationIcon))
+                        {
+                            level = 2,
+                            userData = new CeresNodeSearchEntryData
+                            {
+                                NodeType = typeof(PropertyNode_SetPropertyTValue<,>),
+                                Data = new PropertyNodeViewFactoryProxy
+                                {
+                                    PropertyName = property.Name,
+                                    PropertyInfo = property,
+                                    IsSelfTarget = false,
+                                    IsStatic = true
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+        private static void BuildAlwaysShownPropertyInfos()
+        {
+            if (AlwaysShownPropertyInfos != null) return;
+            AlwaysShownPropertyInfos = AlwaysShownTypes
+                .SelectMany(x => x.GetProperties(BindingFlags.Public | BindingFlags.Static)
+                                        .Where(propertyInfo=> propertyInfo.CanRead || propertyInfo.CanWrite))
+                .ToArray();
         }
         
         private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, 
