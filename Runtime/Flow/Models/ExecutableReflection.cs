@@ -169,7 +169,7 @@ namespace Ceres.Graph.Flow
                             var match = Regex.Match(line, "<param name=\"(.*?)\">(.*?)");
                             if (match.Success)
                             {
-                                parameters.Add((match.Groups[1].Value, CleanXml(match.Groups[2].Value)));
+                                parameters.Add((match.Groups[1].Value, CleanXmlCrefLabel(match.Groups[2].Value)));
                             }
                         }
                         else if (line.StartsWith("<returns>"))
@@ -177,7 +177,7 @@ namespace Ceres.Graph.Flow
                             var returnValue = Regex.Replace(line, "<.*?>", "").Trim();
                             if (!string.IsNullOrEmpty(returnValue))
                             {
-                                ReturnValue = CleanXml(returnValue);
+                                ReturnValue = CleanXmlCrefLabel(returnValue);
                             }
                         }
                     }
@@ -190,13 +190,13 @@ namespace Ceres.Graph.Flow
                 Parameters = parameters.ToArray();
                 if (!string.IsNullOrWhiteSpace(summary))
                 {
-                    Summary = CleanXml(summary.Trim());
+                    Summary = CleanXmlCrefLabel(summary.Trim());
                 }
             }
 
-            private static string CleanXml(string input)
+            private static string CleanXmlCrefLabel(string input)
             {
-                string pattern = @"<[^>]+""([^""]+)""[^>]*>";
+                const string pattern = @"<see\s+cref=""([^""]+)""\s*/>";
                 return Regex.Replace(input, pattern, match => match.Groups[1].Value);
             }
         }
