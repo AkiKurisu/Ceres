@@ -2,15 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Ceres.Annotations;
-using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Ceres.Annotations;
+using Ceres.Graph;
 using Ceres.Utilities;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Graph.Flow.Utilities;
+using UnityEngine.Rendering;
+
 namespace Ceres.Editor.Graph.Flow
 {
     public class ExecutableNodeSearchWindow : CeresNodeSearchWindow
@@ -229,12 +231,30 @@ namespace Ceres.Editor.Graph.Flow
             if (parameterType.IsGenericType) parameterType = parameterType.GetGenericTypeDefinition();
             return SupportedDelegateTypes.Contains(parameterType);
         }
+        
+        /// <summary>
+        /// Always shown types in node search tree, currently hardcode.
+        /// </summary>
+        private static readonly Type[] AlwaysShownTypes = {
+            typeof(Application),
+            typeof(Input),
+            typeof(Screen),
+            typeof(Time),
+            typeof(QualitySettings),
+            typeof(GraphicsSettings),
+            typeof(RenderSettings),
+            typeof(SystemInfo),
+            typeof(Physics),
+            typeof(Cursor)
+        };
+
+        private static (Type type, PropertyInfo[] propertyInfos)[] _alwaysShownPropertyInfos;
 
         private void BuildPropertyEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool isSelfTarget)
         { 
             /* Build properties */
             var properties = targetType
-                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
                 .Where(x=> x.CanRead || x.CanWrite)
                 .ToArray();
             
@@ -295,7 +315,8 @@ namespace Ceres.Editor.Graph.Flow
 
             foreach (var property in properties)
             {
-                if(property.GetGetMethod()?.IsPublic ?? false)
+                var getMethod = property.GetGetMethod();
+                if(getMethod?.IsPublic ?? false)
                 {
                     builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {property.Name}", _indentationIcon))
                     {
@@ -307,13 +328,15 @@ namespace Ceres.Editor.Graph.Flow
                             {
                                 PropertyName = property.Name,
                                 PropertyInfo = property,
-                                IsSelfTarget = isSelfTarget
+                                IsSelfTarget = isSelfTarget,
+                                IsStatic = getMethod.IsStatic
                             }
                         }
                     });
                 }
 
-                if (property.GetSetMethod()?.IsPublic ?? false)
+                var setMethod = property.GetSetMethod();
+                if (setMethod?.IsPublic ?? false)
                 {
                     builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {property.Name}", _indentationIcon))
                     {
@@ -325,12 +348,83 @@ namespace Ceres.Editor.Graph.Flow
                             {
                                 PropertyName = property.Name,
                                 PropertyInfo = property,
-                                IsSelfTarget = isSelfTarget
+                                IsSelfTarget = isSelfTarget,
+                                IsStatic = setMethod.IsStatic
                             }
                         }
                     });
                 }
             }
+            
+            if (isSelfTarget)
+            {
+                BuildAlwaysShownPropertyInfos();
+                if (_alwaysShownPropertyInfos.Any())
+                {
+                    builder.AddGroupEntry("Select Static Properties", 1);
+                }
+                foreach (var group in _alwaysShownPropertyInfos)
+                {
+                    var type = group.type;
+                    builder.AddGroupEntry($"Select {type.Name}", 2);
+                    foreach (var property in group.propertyInfos)
+                    {
+                        var getMethod = property.GetGetMethod();
+                        if (getMethod?.IsPublic ?? false)
+                        {
+                            builder.AddEntry(
+                                new SearchTreeEntry(new GUIContent(
+                                    $"Get {property.Name}", _indentationIcon))
+                                {
+                                    level = 3,
+                                    userData = new CeresNodeSearchEntryData
+                                    {
+                                        NodeType = typeof(PropertyNode_GetPropertyTValue<,>),
+                                        Data = new PropertyNodeViewFactoryProxy
+                                        {
+                                            PropertyName = property.Name,
+                                            PropertyInfo = property,
+                                            IsSelfTarget = false,
+                                            IsStatic = true
+                                        }
+                                    }
+                                });
+                        }
+
+                        var setMethod = property.GetSetMethod();
+                        if (setMethod?.IsPublic ?? false)
+                        {
+                            builder.AddEntry(
+                                new SearchTreeEntry(new GUIContent(
+                                    $"Set {property.Name}", _indentationIcon))
+                                {
+                                    level = 3,
+                                    userData = new CeresNodeSearchEntryData
+                                    {
+                                        NodeType = typeof(PropertyNode_SetPropertyTValue<,>),
+                                        Data = new PropertyNodeViewFactoryProxy
+                                        {
+                                            PropertyName = property.Name,
+                                            PropertyInfo = property,
+                                            IsSelfTarget = false,
+                                            IsStatic = true
+                                        }
+                                    }
+                                });
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void BuildAlwaysShownPropertyInfos()
+        {
+            if (_alwaysShownPropertyInfos != null) return;
+            _alwaysShownPropertyInfos = AlwaysShownTypes
+                .Select(x => (x, x.GetProperties(BindingFlags.Public | BindingFlags.Static)
+                    .Where(propertyInfo => propertyInfo.CanRead || propertyInfo.CanWrite)
+                    .ToArray()))
+                .ToArray();
         }
         
         private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, 

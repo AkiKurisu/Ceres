@@ -1,10 +1,11 @@
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using UnityEngine;
+
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
-    /// Executable function library for CeresAPI
+    /// Executable function library for Ceres API
     /// </summary>
     [CeresGroup("Ceres")]
     public partial class CeresExecutableLibrary: ExecutableFunctionLibrary

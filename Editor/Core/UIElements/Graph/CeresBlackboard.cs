@@ -354,13 +354,6 @@ namespace Ceres.Editor.Graph
                 SharedVariables.Remove(variable);
                 if (fireEvents) NotifyVariableChanged(variable, VariableChangeType.Remove);
             }
-            else
-            {
-                if (CeresSettings.DisplayDebug)
-                {
-                    CeresLogger.LogWarning($"Can not remove variable {variable.Name}.");
-                }
-            }
         }
 
         protected CeresBlackboardVariableRow FindRow(SharedVariable variable)

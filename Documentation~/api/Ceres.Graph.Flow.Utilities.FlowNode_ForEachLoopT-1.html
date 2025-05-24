@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class PropertyNode_PropertyValue
+      <title>Class FlowNode_ForEachLoopT&lt;T&gt;
  | Ceres Documentation </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class PropertyNode_PropertyValue
+      <meta name="title" content="Class FlowNode_ForEachLoopT&lt;T&gt;
  | Ceres Documentation ">
     
       <link rel="shortcut icon" href="../favicon.ico">
@@ -77,44 +77,34 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue">
+            <article class="content wrap" id="_content" data-uid="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopT`1">
 
 
-  <h1 id="Ceres_Graph_Flow_Properties_PropertyNode_PropertyValue" data-uid="Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue" class="text-break">Class PropertyNode_PropertyValue
+  <h1 id="Ceres_Graph_Flow_Utilities_FlowNode_ForEachLoopT_1" data-uid="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopT`1" class="text-break">Class FlowNode_ForEachLoopT&lt;T&gt;
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Iterate over the output of given array.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><a class="xref" href="Ceres.Graph.CeresNode.html">CeresNode</a></div>
     <div class="level2"><a class="xref" href="Ceres.Graph.Flow.ExecutableNode.html">ExecutableNode</a></div>
-    <div class="level3"><a class="xref" href="Ceres.Graph.Flow.PropertyNode.html">PropertyNode</a></div>
-    <div class="level4"><span class="xref">PropertyNode_PropertyValue</span></div>
-      <div class="level5"><a class="xref" href="Ceres.Graph.Flow.Properties.PropertyNode_GetPropertyTValue-2.html">PropertyNode_GetPropertyTValue&lt;TTarget, T&gt;</a></div>
-      <div class="level5"><a class="xref" href="Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue-2.html">PropertyNode_SetPropertyTValue&lt;TTarget, T&gt;</a></div>
+    <div class="level3"><a class="xref" href="Ceres.Graph.Flow.ForwardNode.html">ForwardNode</a></div>
+    <div class="level4"><a class="xref" href="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopGeneric.html">FlowNode_ForEachLoopGeneric</a></div>
+    <div class="level5"><span class="xref">FlowNode_ForEachLoopT&lt;T&gt;</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
     <div><span class="xref">System.IDisposable</span></div>
-    <div><a class="xref" href="Ceres.Graph.Flow.IPropertyNode.html">IPropertyNode</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Ceres.Graph.Flow.PropertyNode.html#Ceres_Graph_Flow_PropertyNode_propertyName">PropertyNode.propertyName</a>
-    </div>
-    <div>
-      <a class="xref" href="Ceres.Graph.Flow.PropertyNode.html#Ceres_Graph_Flow_PropertyNode_SetPropertyName_System_String_">PropertyNode.SetPropertyName(string)</a>
-    </div>
-    <div>
-      <a class="xref" href="Ceres.Graph.Flow.PropertyNode.html#Ceres_Graph_Flow_PropertyNode_GetPropertyName">PropertyNode.GetPropertyName()</a>
+      <a class="xref" href="Ceres.Graph.Flow.ForwardNode.html#Ceres_Graph_Flow_ForwardNode_input">ForwardNode.input</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.Flow.ExecutableNode.html#Ceres_Graph_Flow_ExecutableNode_Graph">ExecutableNode.Graph</a>
-    </div>
-    <div>
-      <a class="xref" href="Ceres.Graph.Flow.ExecutableNode.html#Ceres_Graph_Flow_ExecutableNode_Execute_Ceres_Graph_Flow_ExecutionContext_">ExecutableNode.Execute(ExecutionContext)</a>
     </div>
     <div>
       <a class="xref" href="Ceres.Graph.Flow.ExecutableNode.html#Ceres_Graph_Flow_ExecutableNode_ExecuteNode_Ceres_Graph_Flow_ExecutionContext_">ExecutableNode.ExecuteNode(ExecutionContext)</a>
@@ -156,23 +146,38 @@
       <a class="xref" href="Ceres.Graph.CeresNode.html#Ceres_Graph_CeresNode_GetTypeName">CeresNode.GetTypeName()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Graph.html">Graph</a>.<a class="xref" href="Ceres.Graph.Flow.html">Flow</a>.<a class="xref" href="Ceres.Graph.Flow.Properties.html">Properties</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Graph.html">Graph</a>.<a class="xref" href="Ceres.Graph.Flow.html">Flow</a>.<a class="xref" href="Ceres.Graph.Flow.Utilities.html">Utilities</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Ceres_Graph_Flow_Properties_PropertyNode_PropertyValue_syntax">Syntax</h5>
+  <h5 id="Ceres_Graph_Flow_Utilities_FlowNode_ForEachLoopT_1_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public abstract class PropertyNode_PropertyValue : PropertyNode, IDisposable, IPropertyNode</code></pre>
+public sealed class FlowNode_ForEachLoopT&lt;T&gt; : FlowNode_ForEachLoopGeneric, IDisposable</code></pre>
   </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="fields">Fields
 </h3>
 
 
-  <h4 id="Ceres_Graph_Flow_Properties_PropertyNode_PropertyValue_isSelfTarget" data-uid="Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isSelfTarget">isSelfTarget</h4>
+  <h4 id="Ceres_Graph_Flow_Utilities_FlowNode_ForEachLoopT_1_array" data-uid="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopT`1.array">array</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool isSelfTarget</code></pre>
+    <pre><code class="lang-csharp hljs">public CeresPort&lt;IReadOnlyList&lt;T&gt;&gt; array</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -184,19 +189,19 @@ public abstract class PropertyNode_PropertyValue : PropertyNode, IDisposable, IP
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="Ceres.Graph.CeresPort-1.html">CeresPort</a>&lt;<span class="xref">IReadOnlyList&lt;&gt;</span>&lt;T&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <h4 id="Ceres_Graph_Flow_Properties_PropertyNode_PropertyValue_isStatic" data-uid="Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isStatic">isStatic</h4>
+  <h4 id="Ceres_Graph_Flow_Utilities_FlowNode_ForEachLoopT_1_arrayElement" data-uid="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopT`1.arrayElement">arrayElement</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool isStatic</code></pre>
+    <pre><code class="lang-csharp hljs">public CeresPort&lt;T&gt; arrayElement</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -208,7 +213,55 @@ public abstract class PropertyNode_PropertyValue : PropertyNode, IDisposable, IP
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="Ceres.Graph.CeresPort-1.html">CeresPort</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="Ceres_Graph_Flow_Utilities_FlowNode_ForEachLoopT_1_completed" data-uid="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopT`1.completed">completed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NodePort completed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.NodePort.html">NodePort</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="Ceres_Graph_Flow_Utilities_FlowNode_ForEachLoopT_1_loopBody" data-uid="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopT`1.loopBody">loopBody</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NodePort loopBody</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ceres.Graph.NodePort.html">NodePort</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -217,13 +270,13 @@ public abstract class PropertyNode_PropertyValue : PropertyNode, IDisposable, IP
 </h3>
 
 
-  <a id="Ceres_Graph_Flow_Properties_PropertyNode_PropertyValue_GetTargetOrDefault_" data-uid="Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault*"></a>
-  <h4 id="Ceres_Graph_Flow_Properties_PropertyNode_PropertyValue_GetTargetOrDefault__1_Ceres_Graph_CeresPort___0__Ceres_Graph_Flow_ExecutionContext_" data-uid="Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)">GetTargetOrDefault&lt;TValue&gt;(CeresPort&lt;TValue&gt;, ExecutionContext)</h4>
+  <a id="Ceres_Graph_Flow_Utilities_FlowNode_ForEachLoopT_1_Execute_" data-uid="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopT`1.Execute*"></a>
+  <h4 id="Ceres_Graph_Flow_Utilities_FlowNode_ForEachLoopT_1_Execute_Ceres_Graph_Flow_ExecutionContext_" data-uid="Ceres.Graph.Flow.Utilities.FlowNode_ForEachLoopT`1.Execute(Ceres.Graph.Flow.ExecutionContext)">Execute(ExecutionContext)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TValue GetTargetOrDefault&lt;TValue&gt;(CeresPort&lt;TValue&gt; inputPort, ExecutionContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override UniTask Execute(ExecutionContext executionContext)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,13 +289,8 @@ public abstract class PropertyNode_PropertyValue : PropertyNode, IDisposable, IP
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Ceres.Graph.CeresPort-1.html">CeresPort</a>&lt;TValue&gt;</td>
-        <td><span class="parametername">inputPort</span></td>
-        <td></td>
-      </tr>
-      <tr>
         <td><a class="xref" href="Ceres.Graph.Flow.ExecutionContext.html">ExecutionContext</a></td>
-        <td><span class="parametername">context</span></td>
+        <td><span class="parametername">executionContext</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -257,32 +305,16 @@ public abstract class PropertyNode_PropertyValue : PropertyNode, IDisposable, IP
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TValue</span></td>
+        <td><span class="xref">UniTask</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Ceres.Graph.Flow.ExecutableNode.html#Ceres_Graph_Flow_ExecutableNode_Execute_Ceres_Graph_Flow_ExecutionContext_">ExecutableNode.Execute(ExecutionContext)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">System.IDisposable</span>
-  </div>
-  <div>
-      <a class="xref" href="Ceres.Graph.Flow.IPropertyNode.html">IPropertyNode</a>
   </div>
 </article>
           </div>

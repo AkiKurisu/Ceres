@@ -38,7 +38,6 @@ namespace Ceres.Editor.Graph
     /// </summary>
     public class CeresNodeSearchEntryBuilder
     {
-        
         private readonly List<SearchTreeEntry> _entries = new();
         
         private readonly Texture _defaultIcon;

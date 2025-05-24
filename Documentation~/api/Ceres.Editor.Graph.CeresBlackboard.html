@@ -93,12 +93,13 @@
   <div class="implements">
     <h5>Implements</h5>
     <div><span class="xref">IVariableSource</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Ceres.html">Ceres</a>.<a class="xref" href="Ceres.Editor.html">Editor</a>.<a class="xref" href="Ceres.Editor.Graph.html">Graph</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Ceres_Editor_Graph_CeresBlackboard_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CeresBlackboard : Blackboard, IVariableSource</code></pre>
+    <pre><code class="lang-csharp hljs">public class CeresBlackboard : Blackboard, IVariableSource, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
@@ -157,32 +158,6 @@
       <tr>
         <td><span class="xref">GraphView</span></td>
         <td><span class="parametername">graphView</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-</h3>
-
-
-  <h4 id="Ceres_Editor_Graph_CeresBlackboard_SharedVariableSection" data-uid="Ceres.Editor.Graph.CeresBlackboard.SharedVariableSection">SharedVariableSection</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string SharedVariableSection = &quot;Shared Variables&quot;</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">string</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -462,6 +437,16 @@
   </table>
 
 
+  <a id="Ceres_Editor_Graph_CeresBlackboard_Dispose_" data-uid="Ceres.Editor.Graph.CeresBlackboard.Dispose*"></a>
+  <h4 id="Ceres_Editor_Graph_CeresBlackboard_Dispose" data-uid="Ceres.Editor.Graph.CeresBlackboard.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
   <a id="Ceres_Editor_Graph_CeresBlackboard_EditVariable_" data-uid="Ceres.Editor.Graph.CeresBlackboard.EditVariable*"></a>
   <h4 id="Ceres_Editor_Graph_CeresBlackboard_EditVariable_System_String_" data-uid="Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)">EditVariable(string)</h4>
   <div class="markdown level1 summary"></div>
@@ -606,6 +591,9 @@
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">IVariableSource</span>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
   </div>
 </article>
           </div>

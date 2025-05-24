@@ -2,6 +2,7 @@ using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+
 namespace Ceres.Graph.Flow.Properties
 {
     [Serializable]
@@ -34,6 +35,18 @@ namespace Ceres.Graph.Flow.Properties
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;
         }
+
+#if UNITY_INCLUDE_TESTS
+        /// <summary>
+        /// Do test for single node execution
+        /// </summary>
+        /// <param name="executionContext"></param>
+        internal void ExecuteTest(ExecutionContext executionContext)
+        {
+            OnAfterDeserialize();
+            _delegate.Invoke(GetTargetOrDefault(target, executionContext), inputValue.Value);
+        }
+#endif
         
         public void OnBeforeSerialize()
         {
@@ -42,7 +55,8 @@ namespace Ceres.Graph.Flow.Properties
     
         public void OnAfterDeserialize()
         {
-            _delegate =  ExecutableReflection<TTarget>.GetFunction(ExecutableFunctionType.PropertySetter, propertyName).ExecutableAction;
+            var functionType = isStatic ? ExecutableFunctionType.StaticPropertySetter : ExecutableFunctionType.PropertySetter;
+            _delegate =  ExecutableReflection<TTarget>.GetFunction(functionType, propertyName).ExecutableAction;
         }
     }
 }
