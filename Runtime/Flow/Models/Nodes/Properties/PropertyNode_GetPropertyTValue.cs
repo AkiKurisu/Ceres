@@ -2,40 +2,9 @@ using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UObject = UnityEngine.Object;
+
 namespace Ceres.Graph.Flow.Properties
 {
-    [Serializable]
-    public abstract class PropertyNode_PropertyValue : PropertyNode
-    {
-        [HideInGraphEditor] 
-        public bool isSelfTarget;
-        
-        protected TValue GetTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
-        {
-            if (!isSelfTarget)
-            {
-                return inputPort.Value;
-            }
-            
-            bool isNull;
-            if(inputPort.Value is UObject value)
-            {
-                isNull = !value;
-            }
-            else
-            {
-                isNull = inputPort.Value == null;
-            }
-            
-            if (isNull && context.Context is TValue tmpTarget)
-            {
-                return tmpTarget;
-            }
-            return inputPort.Value;
-        }
-    }
-
     [Serializable]
     [CeresGroup("Hidden")]
     [CeresLabel("Get {0}")]
@@ -56,6 +25,18 @@ namespace Ceres.Graph.Flow.Properties
             return UniTask.CompletedTask;
         }
         
+#if UNITY_INCLUDE_TESTS
+        /// <summary>
+        /// Do test for single node execution
+        /// </summary>
+        /// <param name="executionContext"></param>
+        internal void ExecuteTest(ExecutionContext executionContext)
+        {
+            OnAfterDeserialize();
+            outputValue.Value = _delegate.Invoke<T>(GetTargetOrDefault(target, executionContext));
+        }
+#endif
+        
         public void OnBeforeSerialize()
         {
             
@@ -63,7 +44,8 @@ namespace Ceres.Graph.Flow.Properties
     
         public void OnAfterDeserialize()
         {
-            _delegate =  ExecutableReflection<TTarget>.GetFunction(ExecutableFunctionType.PropertyGetter, propertyName).ExecutableFunc;
+            var functionType = isStatic ? ExecutableFunctionType.StaticPropertyGetter : ExecutableFunctionType.PropertyGetter;
+            _delegate =  ExecutableReflection<TTarget>.GetFunction(functionType, propertyName).ExecutableFunc;
         }
     }
 }

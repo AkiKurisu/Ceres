@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Ceres.Annotations;
-using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Ceres.Annotations;
+using Ceres.Graph;
 using Ceres.Utilities;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Graph.Flow.Utilities;
+
 namespace Ceres.Editor.Graph.Flow
 {
     public class ExecutableNodeSearchWindow : CeresNodeSearchWindow
@@ -234,7 +235,7 @@ namespace Ceres.Editor.Graph.Flow
         { 
             /* Build properties */
             var properties = targetType
-                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
                 .Where(x=> x.CanRead || x.CanWrite)
                 .ToArray();
             
@@ -295,7 +296,8 @@ namespace Ceres.Editor.Graph.Flow
 
             foreach (var property in properties)
             {
-                if(property.GetGetMethod()?.IsPublic ?? false)
+                var getMethod = property.GetGetMethod();
+                if(getMethod?.IsPublic ?? false)
                 {
                     builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {property.Name}", _indentationIcon))
                     {
@@ -307,13 +309,15 @@ namespace Ceres.Editor.Graph.Flow
                             {
                                 PropertyName = property.Name,
                                 PropertyInfo = property,
-                                IsSelfTarget = isSelfTarget
+                                IsSelfTarget = isSelfTarget,
+                                IsStatic = getMethod.IsStatic
                             }
                         }
                     });
                 }
 
-                if (property.GetSetMethod()?.IsPublic ?? false)
+                var setMethod = property.GetSetMethod();
+                if (setMethod?.IsPublic ?? false)
                 {
                     builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {property.Name}", _indentationIcon))
                     {
@@ -325,7 +329,8 @@ namespace Ceres.Editor.Graph.Flow
                             {
                                 PropertyName = property.Name,
                                 PropertyInfo = property,
-                                IsSelfTarget = isSelfTarget
+                                IsSelfTarget = isSelfTarget,
+                                IsStatic = setMethod.IsStatic
                             }
                         }
                     });

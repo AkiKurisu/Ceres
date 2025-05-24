@@ -2,8 +2,6 @@ using System;
 using Ceres.Annotations;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
-using Ceres.Graph.Flow.Properties;
-using Ceres.Utilities;
 
 namespace Ceres.Editor.Graph.Flow.Properties
 {
@@ -38,97 +36,6 @@ namespace Ceres.Editor.Graph.Flow.Properties
         {
             var instance = base.CompileNode();
             ((IPropertyNode)instance).SetPropertyName(PropertyName);
-            return instance;
-        }
-    }
-
-    [CustomNodeView(typeof(PropertyNode_SharedVariableValue), true)]
-    public class PropertyNode_SharedVariableValueNodeView : PropertyNodeView
-    {
-        public PropertyNode_SharedVariableValueNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
-        {
-            GraphView.Blackboard.RegisterCallback<VariableChangeEvent>(OnVariableChange);
-        }
-        
-        private SharedVariable _boundVariable;
-        
-        public override void SetPropertyName(string propertyName)
-        {
-            base.SetPropertyName(propertyName);
-            _boundVariable =  GraphView.Blackboard.GetSharedVariable(propertyName);
-        }
-
-        private void OnVariableChange(VariableChangeEvent evt)
-        {
-            if (NodeElement.panel == null) return;
-            if (evt.Variable != _boundVariable) return;
-            if (evt.ChangeType == VariableChangeType.Name)
-            {
-                SetPropertyName(evt.Variable.Name);
-            }
-            else if(evt.ChangeType == VariableChangeType.Type)
-            {
-                CeresLogger.LogWarning($"The variable type of {evt.Variable.Name} has changed, which may cause an error in the referenced PropertyNode during runtime. Please recreate the corresponding node.");
-                GraphView.ClearSelection();
-                GraphView.schedule.Execute(FrameNode).ExecuteLater(200);
-            }
-            else if(evt.ChangeType == VariableChangeType.Remove)
-            {
-                CeresLogger.LogWarning($"The variable {evt.Variable.Name} was deleted, which may cause an error in the referenced PropertyNode during runtime. Please remove the corresponding node.");
-                GraphView.ClearSelection();
-                GraphView.schedule.Execute(FrameNode).ExecuteLater(200);
-            }
-        }
-
-        private void FrameNode()
-        {
-            GraphView.AddToSelection(NodeElement);
-            GraphView.FrameSelection();
-        }
-    }
-    
-    [CustomNodeView(typeof(PropertyNode_PropertyValue), true)]
-    public class PropertyNode_PropertyValueNodeView : PropertyNodeView
-    {
-        protected bool IsSelfTarget { get; private set; }
-        
-        public PropertyNode_PropertyValueNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
-        {
-
-        }
-
-        public void SetIsSelfTarget(bool isSelfTarget)
-        {
-            var targetView = FindPortView("target");
-            /* Validate self target in editor first */
-            if (isSelfTarget && !GraphView.GetContainerType().IsAssignableTo(targetView.Binding.DisplayType.Value))
-            {
-                isSelfTarget = false;
-            }
-            IsSelfTarget = isSelfTarget;
-            if (isSelfTarget)
-            {
-                targetView.Flags &= ~CeresPortViewFlags.ValidateConnection;
-                targetView.HidePort();
-            }
-            else
-            {
-                targetView.Flags |= CeresPortViewFlags.ValidateConnection;
-                targetView.ShowPort();
-            }
-        }
-        
-        public override void SetNodeInstance(CeresNode ceresNode)
-        {
-            var propertyNode =(PropertyNode_PropertyValue)ceresNode;
-            base.SetNodeInstance(ceresNode);
-            SetIsSelfTarget(propertyNode.isSelfTarget);
-        }
-        
-        public override ExecutableNode CompileNode()
-        {
-            var instance = (PropertyNode_PropertyValue)base.CompileNode();
-            instance.isSelfTarget = IsSelfTarget;
             return instance;
         }
     }

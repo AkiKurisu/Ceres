@@ -28,6 +28,8 @@ namespace Ceres.Editor.Graph.Flow
         public PropertyInfo PropertyInfo;
 
         public bool IsSelfTarget;
+
+        public bool IsStatic;
         
         public ExecutableNodeView Create(ExecutableNodeSearchWindow searchWindow, CeresNodeSearchEntryData entryData, Rect rect)
         {
@@ -36,7 +38,7 @@ namespace Ceres.Editor.Graph.Flow
             {
                 var parameters = new[] { PropertyInfo.DeclaringType, PropertyInfo.PropertyType };
                 var nodeView = (PropertyNode_PropertyValueNodeView)NodeViewFactory.Get().CreateInstanceResolved(entryData.NodeType, searchWindow.GraphView, parameters);
-                nodeView.SetIsSelfTarget(IsSelfTarget);
+                nodeView.SetPropertyFlags(IsSelfTarget, IsStatic);
                 propertyNodeView = nodeView;
             }
             else if (entryData.NodeType.IsSubclassOf(typeof(PropertyNode_SharedVariableValue)))

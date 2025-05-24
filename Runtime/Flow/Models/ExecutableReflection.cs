@@ -360,7 +360,7 @@ namespace Ceres.Graph.Flow
         private readonly List<ExecutableFunction> _functions = new();
 
 #if ENABLE_IL2CPP
-                private readonly IntPtr _il2cppClass;
+        private readonly IntPtr _il2cppClass;
 #endif
 
         private ExecutableReflection()
@@ -544,12 +544,8 @@ namespace Ceres.Graph.Flow
             if (IsStaticPropertyMethod(functionType))
             {
                 Assert.IsTrue(methodInfo.IsStatic);
-                var functionPtr = methodInfo.MethodHandle.Value;
-#if UNITY_EDITOR
-                functionStructure = new ExecutableFunction(functionInfo, methodInfo, functionPtr);
-#else
-                functionStructure = new ExecutableFunction(functionInfo, functionPtr, true);
-#endif
+                // TODO: Weave a wrapper for static property setter and getter to use function ptr
+                functionStructure = new ExecutableFunction(functionInfo, methodInfo);
             }
             else
             {
@@ -582,12 +578,9 @@ namespace Ceres.Graph.Flow
 
         internal ExecutableAction(MethodInfo methodInfo)
         {
-#if !UNITY_EDITOR
-            Assert.IsFalse(methodInfo.IsStatic);
-#endif
             _functionPtr = IntPtr.Zero;
             _methodInfo = methodInfo;
-            IsStatic = false;
+            IsStatic = methodInfo.IsStatic;
         }
 
         internal ExecutableAction(IntPtr functionPtr, bool isStatic)
@@ -598,7 +591,7 @@ namespace Ceres.Graph.Flow
 
         private static void ReallocateDelegateIfNeed<TDelegate>(ref Delegate outDelegate, MethodInfo methodInfo) where TDelegate : Delegate
         {
-            if (methodInfo == null || methodInfo.IsStatic)
+            if (methodInfo == null)
             {
                 return;
             }
@@ -649,12 +642,54 @@ namespace Ceres.Graph.Flow
         {
             ReallocateDelegateIfNeed<Action<TTarget, T1, T2, T3, T4, T5, T6>>(ref _delegate, _methodInfo);
         }
+        
+        private void ReallocateStaticDelegateIfNeed()
+        {
+            ReallocateDelegateIfNeed<Action>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1>()
+        {
+            ReallocateDelegateIfNeed<Action<T1>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2>()
+        {
+            ReallocateDelegateIfNeed<Action<T1, T2>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, T3>()
+        {
+            ReallocateDelegateIfNeed<Action<T1, T2, T3>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, T3, T4>()
+        {
+            ReallocateDelegateIfNeed<Action<T1, T2, T3, T4>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5>()
+        {
+            ReallocateDelegateIfNeed<Action<T1, T2, T3, T4, T5>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, T6>()
+        {
+            ReallocateDelegateIfNeed<Action<T1, T2, T3, T4, T5, T6>>(ref _delegate, _methodInfo);
+        }
 
         public void Invoke(TTarget target)
         {
             if (IsStatic)
             {
-                ((delegate*<void>)_functionPtr)();
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    ((delegate*<void>)_functionPtr)();
+                    return;
+                }
+                ReallocateStaticDelegateIfNeed();
+                Assert.IsNotNull(_delegate);
+                ((Action)_delegate).Invoke();
                 return;
             }
 #if ENABLE_IL2CPP
@@ -673,7 +708,14 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                ((delegate*<T1, void>)_functionPtr)(arg1);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    ((delegate*<T1, void>)_functionPtr)(arg1);
+                    return;
+                }
+                ReallocateStaticDelegateIfNeed<T1>();
+                Assert.IsNotNull(_delegate);
+                ((Action<T1>)_delegate).Invoke(arg1);
                 return;
             }
 #if ENABLE_IL2CPP
@@ -692,7 +734,14 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                ((delegate*<T1, T2, void>)_functionPtr)(arg1, arg2);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    ((delegate*<T1, T2, void>)_functionPtr)(arg1, arg2);
+                    return;
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2>();
+                Assert.IsNotNull(_delegate);
+                ((Action<T1, T2>)_delegate).Invoke(arg1, arg2);
                 return;
             }
 #if ENABLE_IL2CPP
@@ -711,7 +760,14 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                ((delegate*<T1, T2, T3, void>)_functionPtr)(arg1, arg2, arg3);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    ((delegate*<T1, T2, T3, void>)_functionPtr)(arg1, arg2, arg3);
+                    return;
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, T3>();
+                Assert.IsNotNull(_delegate);
+                ((Action<T1, T2, T3>)_delegate).Invoke(arg1, arg2, arg3);
                 return;
             }
 #if ENABLE_IL2CPP
@@ -730,7 +786,14 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                ((delegate*<T1, T2, T3, T4, void>)_functionPtr)(arg1, arg2, arg3, arg4);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    ((delegate*<T1, T2, T3, T4, void>)_functionPtr)(arg1, arg2, arg3, arg4);
+                    return;
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, T3, T4>();
+                Assert.IsNotNull(_delegate);
+                ((Action<T1, T2, T3, T4>)_delegate).Invoke(arg1, arg2, arg3, arg4);
                 return;
             }
 #if ENABLE_IL2CPP
@@ -749,7 +812,14 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                ((delegate*<T1, T2, T3, T4, T5, void>)_functionPtr)(arg1, arg2, arg3, arg4, arg5);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    ((delegate*<T1, T2, T3, T4, T5, void>)_functionPtr)(arg1, arg2, arg3, arg4, arg5);
+                    return;
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5>();
+                Assert.IsNotNull(_delegate);
+                ((Action<T1, T2, T3, T4, T5>)_delegate).Invoke(arg1, arg2, arg3, arg4, arg5);
                 return;
             }
 #if ENABLE_IL2CPP
@@ -768,7 +838,14 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                ((delegate*<T1, T2, T3, T4, T5, T6, void>)_functionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    ((delegate*<T1, T2, T3, T4, T5, T6, void>)_functionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
+                    return;
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, T6>();
+                Assert.IsNotNull(_delegate);
+                ((Action<T1, T2, T3, T4, T5, T6>)_delegate).Invoke(arg1, arg2, arg3, arg4, arg5, arg6);
                 return;
             }
 #if ENABLE_IL2CPP
@@ -796,12 +873,9 @@ namespace Ceres.Graph.Flow
 
         internal ExecutableFunc(MethodInfo methodInfo)
         {
-#if !UNITY_EDITOR
-            Assert.IsFalse(methodInfo.IsStatic);
-#endif
             _functionPtr = IntPtr.Zero;
             _methodInfo = methodInfo;
-            IsStatic = false;
+            IsStatic = methodInfo.IsStatic;
         }
 
         internal ExecutableFunc(IntPtr functionPtr, bool isStatic)
@@ -812,7 +886,7 @@ namespace Ceres.Graph.Flow
 
         private static void ReallocateDelegateIfNeed<TDelegate>(ref Delegate outDelegate, MethodInfo methodInfo) where TDelegate : Delegate
         {
-            if (methodInfo == null || methodInfo.IsStatic)
+            if (methodInfo == null)
             {
                 return;
             }
@@ -863,12 +937,53 @@ namespace Ceres.Graph.Flow
         {
             ReallocateDelegateIfNeed<Func<TTarget, T1, T2, T3, T4, T5, T6, TR>>(ref _delegate, _methodInfo);
         }
+        
+        private void ReallocateStaticDelegateIfNeed<TR>()
+        {
+            ReallocateDelegateIfNeed<Func<TR>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, TR>()
+        {
+            ReallocateDelegateIfNeed<Func<T1, TR>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, TR>()
+        {
+            ReallocateDelegateIfNeed<Func<T1, T2, TR>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, T3, TR>()
+        {
+            ReallocateDelegateIfNeed<Func<T1, T2, T3, TR>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, TR>()
+        {
+            ReallocateDelegateIfNeed<Func<T1, T2, T3, T4, TR>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, TR>()
+        {
+            ReallocateDelegateIfNeed<Func<T1, T2, T3, T4, T5, TR>>(ref _delegate, _methodInfo);
+        }
+
+        private void ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>()
+        {
+            ReallocateDelegateIfNeed<Func<T1, T2, T3, T4, T5, T6, TR>>(ref _delegate, _methodInfo);
+        }
 
         public TR Invoke<TR>(TTarget target)
         {
             if (IsStatic)
             {
-                return ((delegate*<TR>)_functionPtr)();
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    return ((delegate*<TR>)_functionPtr)();
+                }
+                ReallocateStaticDelegateIfNeed<TR>();
+                Assert.IsNotNull(_delegate);
+                return ((Func<TR>)_delegate).Invoke();
             }
 #if ENABLE_IL2CPP
             if (_functionPtr != IntPtr.Zero)
@@ -885,7 +1000,13 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                return ((delegate*<T1, TR>)_functionPtr)(arg1);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    return ((delegate*<T1, TR>)_functionPtr)(arg1);
+                }
+                ReallocateStaticDelegateIfNeed<T1, TR>();
+                Assert.IsNotNull(_delegate);
+                return ((Func<T1, TR>)_delegate).Invoke(arg1);
             }
 #if ENABLE_IL2CPP
             if (_functionPtr != IntPtr.Zero)
@@ -902,7 +1023,13 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                return ((delegate*<T1, T2, TR>)_functionPtr)(arg1, arg2);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    return ((delegate*<T1, T2, TR>)_functionPtr)(arg1, arg2);
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, TR>();
+                Assert.IsNotNull(_delegate);
+                return ((Func<T1, T2, TR>)_delegate).Invoke(arg1, arg2);
             }
 #if ENABLE_IL2CPP
             if (_functionPtr != IntPtr.Zero)
@@ -919,7 +1046,13 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                return ((delegate*<T1, T2, T3, TR>)_functionPtr)(arg1, arg2, arg3);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    return ((delegate*<T1, T2, T3, TR>)_functionPtr)(arg1, arg2, arg3);
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, T3, TR>();
+                Assert.IsNotNull(_delegate);
+                return ((Func<T1, T2, T3, TR>)_delegate).Invoke(arg1, arg2, arg3);
             }
 #if ENABLE_IL2CPP
             if (_functionPtr != IntPtr.Zero)
@@ -936,7 +1069,13 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                return ((delegate*<T1, T2, T3, T4, TR>)_functionPtr)(arg1, arg2, arg3, arg4);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    return ((delegate*<T1, T2, T3, T4, TR>)_functionPtr)(arg1, arg2, arg3, arg4);
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, TR>();
+                Assert.IsNotNull(_delegate);
+                return ((Func<T1, T2, T3, T4, TR>)_delegate).Invoke(arg1, arg2, arg3, arg4);
             }
 #if ENABLE_IL2CPP
             if (_functionPtr != IntPtr.Zero)
@@ -953,7 +1092,13 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                return ((delegate*<T1, T2, T3, T4, T5, TR>)_functionPtr)(arg1, arg2, arg3, arg4, arg5);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    return ((delegate*<T1, T2, T3, T4, T5, TR>)_functionPtr)(arg1, arg2, arg3, arg4, arg5);
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, TR>();
+                Assert.IsNotNull(_delegate);
+                return ((Func<T1, T2, T3, T4, T5, TR>)_delegate).Invoke(arg1, arg2, arg3, arg4, arg5);
             }
 #if ENABLE_IL2CPP
             if (_functionPtr != IntPtr.Zero)
@@ -970,7 +1115,13 @@ namespace Ceres.Graph.Flow
         {
             if (IsStatic)
             {
-                return ((delegate*<T1, T2, T3, T4, T5, T6, TR>)_functionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
+                if (_functionPtr != IntPtr.Zero)
+                {
+                    return ((delegate*<T1, T2, T3, T4, T5, T6, TR>)_functionPtr)(arg1, arg2, arg3, arg4, arg5, arg6);
+                }
+                ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>();
+                Assert.IsNotNull(_delegate);
+                return ((Func<T1, T2, T3, T4, T5, T6, TR>)_delegate).Invoke(arg1, arg2, arg3, arg4, arg5, arg6);
             }
 #if ENABLE_IL2CPP
             if (_functionPtr != IntPtr.Zero)
