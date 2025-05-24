@@ -11,6 +11,7 @@ using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Graph.Flow.Utilities;
+using UnityEngine.Rendering;
 
 namespace Ceres.Editor.Graph.Flow
 {
@@ -235,10 +236,19 @@ namespace Ceres.Editor.Graph.Flow
         /// Always shown types in node search tree, currently hardcode.
         /// </summary>
         private static readonly Type[] AlwaysShownTypes = {
-            typeof(Application)
+            typeof(Application),
+            typeof(Input),
+            typeof(Screen),
+            typeof(Time),
+            typeof(QualitySettings),
+            typeof(GraphicsSettings),
+            typeof(RenderSettings),
+            typeof(SystemInfo),
+            typeof(Physics),
+            typeof(Cursor)
         };
 
-        private static PropertyInfo[] AlwaysShownPropertyInfos;
+        private static (Type type, PropertyInfo[] propertyInfos)[] _alwaysShownPropertyInfos;
 
         private void BuildPropertyEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool isSelfTarget)
         { 
@@ -349,50 +359,59 @@ namespace Ceres.Editor.Graph.Flow
             if (isSelfTarget)
             {
                 BuildAlwaysShownPropertyInfos();
-                if (AlwaysShownPropertyInfos.Any())
+                if (_alwaysShownPropertyInfos.Any())
                 {
                     builder.AddGroupEntry("Select Static Properties", 1);
                 }
-                foreach (var property in AlwaysShownPropertyInfos)
+                foreach (var group in _alwaysShownPropertyInfos)
                 {
-                    var getMethod = property.GetGetMethod();
-                    if(getMethod?.IsPublic ?? false)
+                    var type = group.type;
+                    builder.AddGroupEntry($"Select {type.Name}", 2);
+                    foreach (var property in group.propertyInfos)
                     {
-                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Get {property.DeclaringType!.Name}.{property.Name}", _indentationIcon))
+                        var getMethod = property.GetGetMethod();
+                        if (getMethod?.IsPublic ?? false)
                         {
-                            level = 2,
-                            userData = new CeresNodeSearchEntryData
-                            {
-                                NodeType = typeof(PropertyNode_GetPropertyTValue<,>),
-                                Data = new PropertyNodeViewFactoryProxy
+                            builder.AddEntry(
+                                new SearchTreeEntry(new GUIContent(
+                                    $"Get {property.Name}", _indentationIcon))
                                 {
-                                    PropertyName = property.Name,
-                                    PropertyInfo = property,
-                                    IsSelfTarget = false,
-                                    IsStatic = true
-                                }
-                            }
-                        });
-                    }
+                                    level = 3,
+                                    userData = new CeresNodeSearchEntryData
+                                    {
+                                        NodeType = typeof(PropertyNode_GetPropertyTValue<,>),
+                                        Data = new PropertyNodeViewFactoryProxy
+                                        {
+                                            PropertyName = property.Name,
+                                            PropertyInfo = property,
+                                            IsSelfTarget = false,
+                                            IsStatic = true
+                                        }
+                                    }
+                                });
+                        }
 
-                    var setMethod = property.GetSetMethod();
-                    if (setMethod?.IsPublic ?? false)
-                    {
-                        builder.AddEntry(new SearchTreeEntry(new GUIContent($"Set {property.DeclaringType!.Name}.{property.Name}", _indentationIcon))
+                        var setMethod = property.GetSetMethod();
+                        if (setMethod?.IsPublic ?? false)
                         {
-                            level = 2,
-                            userData = new CeresNodeSearchEntryData
-                            {
-                                NodeType = typeof(PropertyNode_SetPropertyTValue<,>),
-                                Data = new PropertyNodeViewFactoryProxy
+                            builder.AddEntry(
+                                new SearchTreeEntry(new GUIContent(
+                                    $"Set {property.Name}", _indentationIcon))
                                 {
-                                    PropertyName = property.Name,
-                                    PropertyInfo = property,
-                                    IsSelfTarget = false,
-                                    IsStatic = true
-                                }
-                            }
-                        });
+                                    level = 3,
+                                    userData = new CeresNodeSearchEntryData
+                                    {
+                                        NodeType = typeof(PropertyNode_SetPropertyTValue<,>),
+                                        Data = new PropertyNodeViewFactoryProxy
+                                        {
+                                            PropertyName = property.Name,
+                                            PropertyInfo = property,
+                                            IsSelfTarget = false,
+                                            IsStatic = true
+                                        }
+                                    }
+                                });
+                        }
                     }
                 }
             }
@@ -400,10 +419,11 @@ namespace Ceres.Editor.Graph.Flow
 
         private static void BuildAlwaysShownPropertyInfos()
         {
-            if (AlwaysShownPropertyInfos != null) return;
-            AlwaysShownPropertyInfos = AlwaysShownTypes
-                .SelectMany(x => x.GetProperties(BindingFlags.Public | BindingFlags.Static)
-                                        .Where(propertyInfo=> propertyInfo.CanRead || propertyInfo.CanWrite))
+            if (_alwaysShownPropertyInfos != null) return;
+            _alwaysShownPropertyInfos = AlwaysShownTypes
+                .Select(x => (x, x.GetProperties(BindingFlags.Public | BindingFlags.Static)
+                    .Where(propertyInfo => propertyInfo.CanRead || propertyInfo.CanWrite)
+                    .ToArray()))
                 .ToArray();
         }
         
