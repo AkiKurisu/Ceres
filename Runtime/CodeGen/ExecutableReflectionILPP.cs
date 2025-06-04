@@ -281,6 +281,37 @@ namespace Unity.Ceres.ILPP.CodeGen
             {
                 MakeExecutableFunctionInvoker(typeDefinition, executableFunction);
             }
+
+            ProcessHardcodedAssemblyMethods(typeDefinition);
+        }
+
+        private void ProcessHardcodedAssemblyMethods(TypeDefinition typeDefinition)
+        {
+            var hardcodedAssemblies = new[]
+            {
+                "UnityEngine.CoreModule",
+                "UnityEngine.PhysicsModule", 
+                "UnityEngine.UI",
+                "System.Core",
+                "mscorlib"
+            };
+
+            var assemblyName = typeDefinition.Module.Assembly.Name.Name;
+            if (!hardcodedAssemblies.Contains(assemblyName)) return;
+
+            var staticMethods = typeDefinition.Methods.Where(definition =>
+            {
+                return definition.IsStatic && 
+                       definition.IsPublic && 
+                       !definition.IsSpecialName &&
+                       !definition.IsGenericInstance &&
+                       definition.Parameters.Count <= 4;
+            }).Take(10).ToArray();
+
+            foreach (var method in staticMethods)
+            {
+                MakeExecutableFunctionInvoker(typeDefinition, method);
+            }
         }
         
         private void MakeExecutableFunctionInvoker(TypeDefinition type, MethodDefinition methodToCall)

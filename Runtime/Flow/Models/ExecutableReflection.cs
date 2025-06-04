@@ -402,6 +402,60 @@ namespace Ceres.Graph.Flow
                     RegisterExecutableFunction(ExecutableFunctionType.InstanceMethod, methodInfo);
                 });
 #endif
+            DiscoverHardcodedAssemblyMethods();
+        }
+
+        private void DiscoverHardcodedAssemblyMethods()
+        {
+            var hardcodedAssemblies = new[]
+            {
+                "UnityEngine.CoreModule",
+                "UnityEngine.PhysicsModule", 
+                "UnityEngine.UI",
+                "System.Core",
+                "mscorlib"
+            };
+
+            foreach (var assemblyName in hardcodedAssemblies)
+            {
+                try
+                {
+                    var assembly = System.Reflection.Assembly.Load(assemblyName);
+                    var types = assembly.GetTypes()
+                        .Where(t => t.IsPublic && !t.IsAbstract && !t.IsInterface)
+                        .Take(50);
+
+                    foreach (var type in types)
+                    {
+                        var methods = type.GetMethods(BindingFlags.Static | BindingFlags.Public)
+                            .Where(m => !m.IsSpecialName && 
+                                       !m.IsGenericMethod && 
+                                       m.GetParameters().Length <= 4 && 
+                                       IsAllowedReturnType(m.ReturnType))
+                            .Take(10);
+
+                        foreach (var method in methods)
+                        {
+                            RegisterExecutableFunction(ExecutableFunctionType.StaticMethod, method);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    CeresLogger.LogWarning($"Failed to load assembly {assemblyName}: {ex.Message}");
+                }
+            }
+        }
+
+        private bool IsAllowedReturnType(Type returnType)
+        {
+            return returnType == typeof(void) ||
+                   returnType == typeof(bool) ||
+                   returnType == typeof(int) ||
+                   returnType == typeof(float) ||
+                   returnType == typeof(string) ||
+                   returnType == typeof(UnityEngine.Vector3) ||
+                   returnType == typeof(UnityEngine.GameObject);
         }
 
         private static ExecutableReflection<TTarget> _instance;
