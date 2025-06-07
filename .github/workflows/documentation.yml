@@ -11,6 +11,12 @@ permissions:
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy:
     environment:
@@ -24,10 +30,10 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.x'
 
       - name: Install DocFX
-        run: dotnet tool update -g --version 2.61.0 docfx
+        run: dotnet tool update -g docfx
 
       - name: Build DocFX Documentation
         run: docfx Documentation~/docfx.json
