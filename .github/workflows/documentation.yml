@@ -33,10 +33,9 @@ jobs:
         run: docfx Documentation~/docfx.json
 
       - name: Upload GitHub Pages artifact
-        id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Documentation~/_site/
+          path: Documentation~/_site
 
       - name: Deploy to GitHub Pages
         id: deployment
