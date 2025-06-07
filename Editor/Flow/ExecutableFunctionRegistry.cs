@@ -21,6 +21,8 @@ namespace Ceres.Editor.Graph.Flow
         private readonly MethodInfo[] _staticFunctions;
 
         private static ExecutableFunctionRegistry _instance;
+
+        private static Assembly[] _alwaysIncludedAssemblies;
         
         private ExecutableFunctionRegistry()
         {
@@ -29,7 +31,7 @@ namespace Ceres.Editor.Graph.Flow
             // Collect static functions
             var methodInfos = SubClassSearchUtility.FindSubClassTypes(referencedAssemblies, typeof(ExecutableFunctionLibrary))
                         .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Static))
-                        .Where(methodInfo=> methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                        .Where(methodInfo => methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                         .Distinct()
                         .ToList();
             var groups = methodInfos.GroupBy(x => ExecutableReflection.GetFunction(x).Attribute.ScriptTargetType)
@@ -39,16 +41,20 @@ namespace Ceres.Editor.Graph.Flow
             _retargetFunctionTables = groups.ToDictionary(x => x.Key, x => x.ToArray());
             
             // Collect instance functions
-            _instanceFunctionTables = referencedAssemblies
+            _instanceFunctionTables = referencedAssemblies.Concat(GetAlwaysIncludedAssemblies())
+                .Distinct()
                 .SelectMany(a => a.GetTypes())
-                .Where(x=> !x.IsAbstract && GetInstanceExecutableFunctions(x).Any())
-                .ToDictionary(x => x, x=> GetInstanceExecutableFunctions(x).ToArray());
+                .Select(type => (type, functions: ExecutableReflection.GetInstanceExecutableFunctions(type)))
+                .Where(tuple=> !tuple.type.IsAbstract && tuple.functions.Any())
+                .ToDictionary(x => x.type, x => x.functions.ToArray());
         }
-
-        private static IEnumerable<MethodInfo> GetInstanceExecutableFunctions(Type type)
+                
+        private static Assembly[] GetAlwaysIncludedAssemblies()
         {
-            return type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
-                .Where(methodInfo => methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null);
+            _alwaysIncludedAssemblies ??= AppDomain.CurrentDomain.GetAssemblies()
+                .Where(FlowRuntimeSettings.IsIncludedAssembly)
+                .ToArray();
+            return _alwaysIncludedAssemblies;
         }
 
         public static ExecutableFunctionRegistry Get()

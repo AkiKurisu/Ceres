@@ -5,12 +5,13 @@ using System.Linq;
 using System.Reflection;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
+using UnityEngine;
 
 namespace Ceres.Editor.Utilities
 {
     internal static class MonoCecilHelper
     {
-        private static SequencePoint GetMethodFirstSequencePoint(MethodDefinition methodDefinition)
+        public static SequencePoint GetMethodFirstSequencePoint(MethodDefinition methodDefinition)
         {
             if (methodDefinition == null)
             {
@@ -75,15 +76,20 @@ namespace Ceres.Editor.Utilities
 
         public static (string filePath, int lineNumber) TryGetCecilFileOpenInfo(Type type, MethodInfo methodInfo)
         {
-            using var assemblyDefinition = ReadAssembly(type.Assembly.Location);
-            var methodDefinition = assemblyDefinition.MainModule.LookupToken(methodInfo.MetadataToken) as MethodDefinition;
-            var firstSequencePoint = GetMethodFirstSequencePoint(methodDefinition);
-            if (firstSequencePoint != null)
+            // May not find sequence point in unity modules
+            using( CeresLogger.LogScope(LogType.Error))
             {
-                return (firstSequencePoint.Document.Url, firstSequencePoint.StartLine);
-            }
+                using var assemblyDefinition = ReadAssembly(type.Assembly.Location);
+                var methodDefinition =
+                    assemblyDefinition.MainModule.LookupToken(methodInfo.MetadataToken) as MethodDefinition;
+                var firstSequencePoint = GetMethodFirstSequencePoint(methodDefinition);
+                if (firstSequencePoint != null)
+                {
+                    return (firstSequencePoint.Document.Url, firstSequencePoint.StartLine);
+                }
 
-            return (default, default);
+                return (default, default);
+            }
         }
     }
 }

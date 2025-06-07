@@ -157,6 +157,10 @@ namespace Ceres.Editor.Graph
         public CeresGraphView GraphView { get; private set; }
 
         public NodeSearchContext Context { get; private set; }
+        
+        public float Width { get; protected set; }
+        
+        public float Height { get; protected set; }
 
         public void Initialize(CeresGraphView graphView, NodeSearchContext context)
         {

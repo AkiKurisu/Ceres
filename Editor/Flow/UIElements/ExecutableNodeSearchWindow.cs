@@ -11,6 +11,7 @@ using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Properties;
 using Ceres.Graph.Flow.Utilities;
+using UnityEngine.Pool;
 using UnityEngine.Rendering;
 
 namespace Ceres.Editor.Graph.Flow
@@ -30,6 +31,9 @@ namespace Ceres.Editor.Graph.Flow
                 var atr = MethodInfo.GetCustomAttribute<CeresGroupAttribute>();
                 atr ??= TargetType!.GetCustomAttribute<CeresGroupAttribute>();
                 Group = atr?.Group;
+                var function =  ExecutableReflection.GetFunction(methodInfo);
+                Name = string.IsNullOrEmpty(function.Attribute.SearchName) ? ExecutableFunction.GetFunctionName(methodInfo, false) : function.Attribute.SearchName;
+                Signature = CeresLabel.GetMethodSignature(methodInfo, false);
             }
 
             public string GetGroupNameOrDefault()
@@ -38,6 +42,48 @@ namespace Ceres.Editor.Graph.Flow
             }
 
             public string Group { get; }
+            
+            public string Name { get; }
+            
+            public string Signature { get; }
+        }
+        
+        private readonly struct FunctionEntryNameCache : IDisposable
+        {
+            private readonly Dictionary<string, int> _nameCounts;
+            
+            private readonly Dictionary<FunctionCandidate, string> _nameCache;
+
+            public FunctionEntryNameCache(List<FunctionCandidate> candidates)
+            {
+                _nameCounts = DictionaryPool<string, int>.Get();
+                _nameCache = DictionaryPool<FunctionCandidate, string>.Get();
+                
+                foreach (var candidate in candidates)
+                {
+                    if (_nameCounts.TryGetValue(candidate.Name, out var count))
+                        _nameCounts[candidate.Name] = count + 1;
+                    else
+                        _nameCounts[candidate.Name] = 1;
+                }
+                
+                foreach (var candidate in candidates)
+                {
+                    var displayName = _nameCounts[candidate.Name] == 1 ? candidate.Name : candidate.Signature;
+                    _nameCache[candidate] = displayName;
+                }
+            }
+
+            public string GetName(FunctionCandidate candidate)
+            {
+                return _nameCache.TryGetValue(candidate, out var name) ? name : candidate.Signature;
+            }
+
+            public void Dispose()
+            {
+                DictionaryPool<string, int>.Release(_nameCounts);
+                DictionaryPool<FunctionCandidate, string>.Release(_nameCache);
+            }
         }
         
         private Texture2D _indentationIcon;
@@ -48,6 +94,7 @@ namespace Ceres.Editor.Graph.Flow
         
         protected override void OnInitialize()
         {
+            Width = 400;
             _indentationIcon = new Texture2D(1, 1);
             _indentationIcon.SetPixel(0, 0, new Color(0, 0, 0, 0));
             _indentationIcon.Apply();
@@ -468,9 +515,11 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     AddAllFunctionEntries(candidateGrouping, 2);
                 }
-                foreach (var method in rawMethodCandidates)
+
+                using var cache = new FunctionEntryNameCache(rawMethodCandidates);
+                foreach (var functionCandidate in rawMethodCandidates)
                 {
-                    AddFunctionEntry(method, 2);
+                    AddFunctionEntry(functionCandidate, 2, cache.GetName(functionCandidate));
                 }
             }
             return;
@@ -480,30 +529,21 @@ namespace Ceres.Editor.Graph.Flow
                 var groupName = group.Key;
                 builder.AddEntry(new SearchTreeGroupEntry(new GUIContent($"Select {groupName}"), level));
                 var subGroups = group.SubGroup(subCount).ToArray();
-                var left = group.Except(subGroups.SelectMany(x => x));
+                var left = group.Except(subGroups.SelectMany(grouping => grouping)).ToList();
                 foreach (var subGroup in subGroups)
                 {
                     AddAllFunctionEntries(subGroup,level + 1, subCount + 1);
                 }
+                using var cache = new FunctionEntryNameCache(left);
                 foreach (var functionCandidate in left)
                 {
-                    AddFunctionEntry(functionCandidate, level + 1);
+                    AddFunctionEntry(functionCandidate, level + 1, cache.GetName(functionCandidate));
                 }
             }
             
-            void AddFunctionEntry(FunctionCandidate candidate, int level)
+            void AddFunctionEntry(FunctionCandidate candidate, int level, string displayName)
             {
-                var function =  ExecutableReflection.GetFunction(candidate.MethodInfo);
-                string entryName;
-                if (string.IsNullOrEmpty(function.Attribute.SearchName))
-                {
-                    entryName = ExecutableFunction.GetFunctionName(candidate.MethodInfo, false);
-                }
-                else
-                {
-                    entryName = function.Attribute.SearchName;
-                }
-                builder.AddEntry(new SearchTreeEntry(new GUIContent(entryName, _indentationIcon))
+                builder.AddEntry(new SearchTreeEntry(new GUIContent(displayName, _indentationIcon))
                 {
                     level = level,
                     userData = new CeresNodeSearchEntryData

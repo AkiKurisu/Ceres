@@ -19,12 +19,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Install DocFX
+        run: dotnet tool install -g docfx
+
+      - name: Build DocFX Documentation
+        run: docfx Documentation~/docfx.json
+
       - name: Upload GitHub Pages artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Documentation~/
-
+          path: site~/
+          
   # Deployment job
   deploy:
     environment:
