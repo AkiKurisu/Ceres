@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Ceres.Graph.Flow.Utilities;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Ceres.Graph.Flow
@@ -83,6 +84,22 @@ namespace Ceres.Graph.Flow
         protected static void RegisterReflection<T>(ExecutableReflection instance)
         {
             TypeMap.Add(typeof(T), instance);
+        }
+
+        internal static IEnumerable<MethodInfo> GetInstanceExecutableFunctions(Type type)
+        {
+            if (FlowRuntimeSettings.IsIncludedAssembly(type.Assembly))
+            {
+                return type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                    .Where(methodInfo =>
+                    {
+                        if (methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null) return true;
+                        if (NativeBindingUtility.IsNativeMethod(methodInfo)) return false;
+                        return methodInfo.IsPublic && !methodInfo.IsSpecialName; // remove property getter and setter
+                    });
+            }
+            return type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                .Where(methodInfo => methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null);
         }
     }
 
@@ -389,19 +406,22 @@ namespace Ceres.Graph.Flow
             string className = targetType.Name;
             _il2cppClass = IL2CPP.GetIl2CppClass(assemblyName, @namespace, className);
 #elif ENABLE_IL2CPP
-            typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
-                .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
-                .ToList()
-                .ForEach(RegisterExecutableFunctionInvoker);
-#else
-            typeof(TTarget).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                .Where(x => x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+            // We haven't injected IL in always included assembly, use legacy way in this case.
+            if (!FlowRuntimeSettings.IsIncludedAssembly(targetType.Assembly))
+            {
+                typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
+                                .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+                                .ToList()
+                                .ForEach(RegisterExecutableFunctionInvoker);
+                return;
+            }
+#endif
+            GetInstanceExecutableFunctions(targetType)
                 .ToList()
                 .ForEach(methodInfo =>
                 {
                     RegisterExecutableFunction(ExecutableFunctionType.InstanceMethod, methodInfo);
                 });
-#endif
         }
 
         private static ExecutableReflection<TTarget> _instance;

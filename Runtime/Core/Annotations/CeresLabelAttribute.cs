@@ -60,14 +60,12 @@ namespace Ceres.Annotations
             {
                 return labelAttribute.GetLabel(richText);
             }
-            if(type == typeof(UObject))
+            
+            if (TryGetTypeAlias(type, out var name))
             {
-                return "UObject";
+                return name;
             }
-            if(type == typeof(float))
-            {
-                return "Float";
-            }
+            
             if (type.IsGenericType)
             {
                 return type.GetGenericTypeDefinition().Name.Split('`')[0] 
@@ -78,20 +76,68 @@ namespace Ceres.Annotations
 
         public static string GetTypeName(Type type)
         {
-            if(type == typeof(UObject))
+            if (TryGetTypeAlias(type, out var name))
             {
-                return "UObject";
+                return name;
             }
-            if(type == typeof(float))
-            {
-                return "Float";
-            }
+            
             if (type.IsGenericType)
             {
                 return type.GetGenericTypeDefinition().Name.Split('`')[0] 
                        + '<' + string.Join(", ",type.GetGenericArguments().Select(GetTypeName).ToArray()) + '>';
             }
             return GetLabel(type.Name);
+        }
+
+        private static bool TryGetTypeAlias(Type type, out string typeName)
+        {
+            if(type == typeof(UObject))
+            {
+                typeName = "UObject"; // No Object
+                return true;
+            }
+            if(type == typeof(float))
+            {
+                typeName = "Float"; // No Single
+                return true;
+            }
+            if(type == typeof(int))
+            {
+                typeName = "Int"; // No Int32
+                return true;
+            }
+
+            typeName = null;
+            return false;
+        }
+        
+        public static string GetMethodSignature(MethodInfo method, bool includeParameterName)
+        {
+            if (method == null)
+                throw new ArgumentNullException(nameof(method));
+
+            var sb = new StringBuilder();
+            sb.Append(method.Name);
+            sb.Append("(");
+
+            var parameters = method.GetParameters();
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                var param = parameters[i];
+                if (includeParameterName)
+                {
+                    sb.Append($"{GetTypeName(param.ParameterType)} {param.Name}");
+                }
+                else
+                {
+                    sb.Append(GetTypeName(param.ParameterType));
+                }
+                if (i < parameters.Length - 1)
+                    sb.Append(", ");
+            }
+
+            sb.Append(")");
+            return sb.ToString();
         }
     }
 }

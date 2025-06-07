@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+
 namespace Ceres.Editor
 {
     [FilePath("ProjectSettings/CeresSettings.asset", FilePathAttribute.Location.ProjectFolder)]
@@ -16,9 +17,6 @@ namespace Ceres.Editor
 
         [SerializeField, HideInInspector] 
         private GraphEditorDisplayMode graphEditorDisplayMode;
-        
-        [SerializeField, HideInInspector]
-        private bool disableILPostProcess;
         
         /// <summary>
         /// Ceres graph editor view display mode
@@ -42,7 +40,7 @@ namespace Ceres.Editor
         
         private class Styles
         {
-            public static readonly GUIContent GraphEditorDisplayModeStyle = new("Display Mode",
+            public static readonly GUIContent GraphEditorDisplayModeLabel = new("Display Mode",
                 "Set graph editor display mode");
         }
 
@@ -58,7 +56,7 @@ namespace Ceres.Editor
             var titleStyle = new GUIStyle(GUI.skin.label) { fontStyle = FontStyle.Bold };
             GUILayout.Label("Editor Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
-            EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphEditorDisplayMode"), Styles.GraphEditorDisplayModeStyle);
+            EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphEditorDisplayMode"), Styles.GraphEditorDisplayModeLabel);
             GUILayout.EndVertical();
             if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
             {

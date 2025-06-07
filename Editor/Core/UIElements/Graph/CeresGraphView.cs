@@ -289,7 +289,8 @@ namespace Ceres.Editor.Graph
             var settings = NodeSearchContext.Default;
             settings.AllowGeneric = true;
             SearchWindow.Initialize(this, settings);
-            USearchWindow.Open(new SearchWindowContext(screenPosition), SearchWindow);
+            var searchWindowContext = new SearchWindowContext(screenPosition, SearchWindow.Width, SearchWindow.Height);
+            USearchWindow.Open(searchWindowContext, SearchWindow);
         }
         
         /// <summary>
@@ -304,7 +305,8 @@ namespace Ceres.Editor.Graph
             settings.ParameterType = portView.PortElement.portType; /* Final display type */
             settings.RequestPortView = portView;
             SearchWindow.Initialize(this, settings);
-            USearchWindow.Open(new SearchWindowContext(screenPosition), SearchWindow);
+            var searchWindowContext = new SearchWindowContext(screenPosition, SearchWindow.Width, SearchWindow.Height);
+            USearchWindow.Open(searchWindowContext, SearchWindow);
         }
 
         /// <summary>
