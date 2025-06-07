@@ -30,12 +30,11 @@ Add following dependencies to `manifest.json`.
 - Editor debugging
 - Easy implementation
 - Optimized runtime performance
+- IL2CPP compatible
 
 ## Platform
 
 Unity 2022.3 LTS or later.
-
-Support Mono, IL2CPP.
 
 ## Documentation
 
@@ -74,17 +73,6 @@ AI powered dialogue visual designer for Unity.
 See [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue).
 
 ![Next-Gen-Dialogue](./Documentation~/resources/Images/ceres_ngd.png)
-
-## Reference
-
-[Chris](https://github.com/AkiKurisu/Chris) 
-
-> Support Ceres to serialize any object and edit them in editor, 
-also providing contextual event used in Flow.
-
-[UniTask](https://github.com/Cysharp/UniTask) 
-
-> Support Ceres to execute node in async.
 
 ## Articles
 
