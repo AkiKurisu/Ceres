@@ -15,6 +15,7 @@ Powerful visual scripting toolkit for Unity.
 - [Core Concepts](#core-concepts)
 - [Quick Start Guide](#quick-start-guide)
 - [Flow Visual Scripting](#flow-visual-scripting)
+- [ExecutableReflection](#executablereflection)
 - [Debugging](#debugging)
 - [Advanced Features](#advanced-features)
 - [Code Generation](#code-generation)
@@ -139,6 +140,109 @@ Functions are components that implement game functions. They complete specified 
 
 ### Container
 For any FlowGraph instance, there needs to be a specified Container at runtime. It can be your custom `MonoBehaviour` (need to implement interface) or inherit from a series of parent classes provided by Ceres.
+
+## ExecutableReflection
+
+ExecutableReflection allows you to expose C# methods to Flow graphs, making them available as nodes. There are three main ways to define executable functions:
+
+### 1. Instance Functions
+
+For instance methods, add `ExecutableFunctionAttribute` directly to your method:
+
+```csharp
+using Ceres.Graph.Flow.Annotations;
+using UnityEngine;
+
+public class MyComponent : MonoBehaviour
+{
+    [ExecutableFunction]
+    public void DoSomething(int arg1, float arg2)
+    {
+        Debug.Log($"Doing something with {arg1} and {arg2}");
+    }
+    
+    [ExecutableFunction]
+    public string GetPlayerName()
+    {
+        return "Player";
+    }
+}
+```
+
+### 2. Static Functions
+
+For static methods, create a **partial** class that inherits from `ExecutableFunctionLibrary` and add `ExecutableFunctionAttribute`:
+
+```csharp
+using Ceres.Graph.Flow;
+using Ceres.Graph.Flow.Annotations;
+using Ceres.Annotations;
+using UnityEngine;
+
+public partial class GameplayFunctionLibrary : ExecutableFunctionLibrary
+{
+    [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true)]
+    [CeresLabel("Get GameObject Name")]
+    public static string Flow_GetGameObjectName(GameObject gameObject)
+    {
+        return gameObject.name;
+    }
+    
+    [ExecutableFunction(ExecuteInDependency = true)]
+    public static float Flow_CalculateDistance(Vector3 pointA, Vector3 pointB)
+    {
+        return Vector3.Distance(pointA, pointB);
+    }
+    
+    [ExecutableFunction]
+    public static Component Flow_FindComponent(
+        GameObject target,
+        [ResolveReturn] SerializedType<Component> componentType)
+    {
+        return target.GetComponent(componentType);
+    }
+}
+```
+
+> **Important**: You must add the `partial` modifier to let the source generator work. The source generator registers static function pointers to enhance runtime performance instead of using MethodInfo.
+
+### 3. Always Included Assemblies
+
+Flow automatically includes assemblies matched by `Always Included Assembly Wildcards` in `Project Settings/Ceres/Flow Settings`. Methods in these assemblies can be invoked without adding attributes:
+
+```csharp
+public class UtilityClass
+{
+    public void AutomaticallyIncludedMethod(string message)
+    {
+        Debug.Log($"Auto-included: {message}");
+    }
+}
+```
+
+### Best Practices and Conventions
+
+1. **Unique Method Names**: Methods with the same name and parameter count in the same class hierarchy can only have one `ExecutableFunctionAttribute`.
+
+2. **Method Overloads**: For methods with the same name but different parameters, use `CeresLabelAttribute` to distinguish them:
+
+```csharp
+[ExecutableFunction, CeresLabel("Log Message")]
+public static void Flow_Log(string message)
+{
+    Debug.Log(message);
+}
+
+[ExecutableFunction, CeresLabel("Log Message with Color")]
+public static void Flow_Log(string message, Color color)
+{
+    Debug.Log($"<color=#{ColorUtility.ToHtmlStringRGB(color)}>{message}</color>");
+}
+```
+
+3. **Parameter Limits**: Keep input parameters ≤ 6 for optimal editor performance. Methods with more parameters use Uber nodes with greater runtime overhead.
+
+4. **Generic Methods**: Generic methods are not supported with `ExecutableFunctionAttribute`. Use [Generic Nodes](#generic-nodes) instead.
 
 ## Debugging
 
