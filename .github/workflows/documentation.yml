@@ -12,8 +12,10 @@ permissions:
   id-token: write
 
 jobs:
-  # Deploy the generated documentation to the gh-pages branch
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,7 +27,7 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Install DocFX
-        run: dotnet tool install -g --version 2.61.0 docfx
+        run: dotnet tool update -g --version 2.61.0 docfx
 
       - name: Build DocFX Documentation
         run: docfx Documentation~/docfx.json
@@ -34,16 +36,8 @@ jobs:
         id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site~/
-          
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+          path: Documentation~/_site/
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
