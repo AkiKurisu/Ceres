@@ -20,6 +20,9 @@ concurrency:
 jobs:
   # Build the documentation
   build:
+    environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,30 +47,6 @@ jobs:
         with:
           path: _site
           name: _site
- 
-  # Deploy the generated documentation to the gh-pages branch
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      # Download the generated documentation
-      - name: Download site artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: _site
-
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_branch: gh-pages
-      #     publish_dir: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
