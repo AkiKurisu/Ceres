@@ -400,22 +400,23 @@ namespace Ceres.Graph.Flow
                 return;
             }
 
-#if ENABLE_IL2CPP && UNITY_STANDALONE_WIN
-            string assemblyName = targetType.Module.Name;
-            string @namespace = targetType.Namespace ?? string.Empty;
-            string className = targetType.Name;
-            _il2cppClass = IL2CPP.GetIl2CppClass(assemblyName, @namespace, className);
-#elif ENABLE_IL2CPP
             // We haven't injected IL in always included assembly, use legacy way in this case.
             if (!FlowRuntimeSettings.IsIncludedAssembly(targetType.Assembly))
             {
+#if ENABLE_IL2CPP && UNITY_STANDALONE_WIN
+                string assemblyName = targetType.Module.Name;
+                string @namespace = targetType.Namespace ?? string.Empty;
+                string className = targetType.Name;
+                _il2cppClass = IL2CPP.GetIl2CppClass(assemblyName, @namespace, className);
+#elif ENABLE_IL2CPP
                 typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
                                 .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                                 .ToList()
                                 .ForEach(RegisterExecutableFunctionInvoker);
+#endif
                 return;
             }
-#endif
+            
             GetInstanceExecutableFunctions(targetType)
                 .ToList()
                 .ForEach(methodInfo =>
