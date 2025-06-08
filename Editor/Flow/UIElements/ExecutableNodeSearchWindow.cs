@@ -278,24 +278,6 @@ namespace Ceres.Editor.Graph.Flow
             if (parameterType.IsGenericType) parameterType = parameterType.GetGenericTypeDefinition();
             return SupportedDelegateTypes.Contains(parameterType);
         }
-        
-        /// <summary>
-        /// Always shown types in node search tree, currently hardcode.
-        /// </summary>
-        private static readonly Type[] AlwaysShownTypes = {
-            typeof(Application),
-            typeof(Input),
-            typeof(Screen),
-            typeof(Time),
-            typeof(QualitySettings),
-            typeof(GraphicsSettings),
-            typeof(RenderSettings),
-            typeof(SystemInfo),
-            typeof(Physics),
-            typeof(Cursor)
-        };
-
-        private static (Type type, PropertyInfo[] propertyInfos)[] _alwaysShownPropertyInfos;
 
         private void BuildPropertyEntries(CeresNodeSearchEntryBuilder builder, Type targetType, bool isSelfTarget)
         { 
@@ -305,6 +287,7 @@ namespace Ceres.Editor.Graph.Flow
                 .Where(x=> x.CanRead || x.CanWrite)
                 .ToArray();
             
+            /* Self reference and graph variables */
             if (isSelfTarget)
             {
                 builder.AddGroupEntry("Select Properties", 1);
@@ -360,6 +343,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
             }
 
+            /* Getter and Setter of scripting properties */
             foreach (var property in properties)
             {
                 var getMethod = property.GetGetMethod();
@@ -403,18 +387,14 @@ namespace Ceres.Editor.Graph.Flow
                 }
             }
             
+            /* Always included properties */
             if (isSelfTarget)
             {
-                BuildAlwaysShownPropertyInfos();
-                if (_alwaysShownPropertyInfos.Any())
+                foreach (var tuple in ExecutableFunctionRegistry.Get().GetAlwaysIncludedProperties())
                 {
-                    builder.AddGroupEntry("Select Static Properties", 1);
-                }
-                foreach (var group in _alwaysShownPropertyInfos)
-                {
-                    var type = group.type;
+                    var type = tuple.type;
                     builder.AddGroupEntry($"Select {type.Name}", 2);
-                    foreach (var property in group.propertyInfos)
+                    foreach (var property in tuple.propertyInfos)
                     {
                         var getMethod = property.GetGetMethod();
                         if (getMethod?.IsPublic ?? false)
@@ -462,16 +442,6 @@ namespace Ceres.Editor.Graph.Flow
                     }
                 }
             }
-        }
-
-        private static void BuildAlwaysShownPropertyInfos()
-        {
-            if (_alwaysShownPropertyInfos != null) return;
-            _alwaysShownPropertyInfos = AlwaysShownTypes
-                .Select(x => (x, x.GetProperties(BindingFlags.Public | BindingFlags.Static)
-                    .Where(propertyInfo => propertyInfo.CanRead || propertyInfo.CanWrite)
-                    .ToArray()))
-                .ToArray();
         }
         
         private void BuildExecutableFunctionEntries(CeresNodeSearchEntryBuilder builder, 
