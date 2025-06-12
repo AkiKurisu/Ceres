@@ -31,8 +31,9 @@ namespace Ceres.Editor.Graph.Flow
         private ExecutableFunctionRegistry()
         {
             var referencedAssemblies = SubClassSearchUtility.GetRuntimeReferencedAssemblies();
+            var alwaysIncludedAssemblies = GetAlwaysIncludedAssemblies();
 
-            // Collect static functions
+            Task<(MethodInfo[] staticFunctions, Dictionary<Type, MethodInfo[]> retargetFunctionTables)> staticTask = Task.Run(() =>
             {
                 var staticMethodInfos = new ConcurrentBag<MethodInfo>();
                 var staticTypes =
@@ -55,13 +56,14 @@ namespace Ceres.Editor.Graph.Flow
                     .Where(x => x.Key != null)
                     .ToArray();
 
-                _staticFunctions = distinctStaticMethods.Except(grouped.SelectMany(x => x)).ToArray();
-                _retargetFunctionTables = grouped.ToDictionary(x => x.Key, x => x.ToArray());
-            }
+                var staticFunctions = distinctStaticMethods.Except(grouped.SelectMany(x => x)).ToArray();
+                var retargetFunctionTables = grouped.ToDictionary(x => x.Key, x => x.ToArray());
+                return (staticFunctions, retargetFunctionTables);
+            });
 
-            // Collect instance functions
+            Task<Dictionary<Type, MethodInfo[]>> instanceTask = Task.Run(() =>
             {
-                var allAssemblies = referencedAssemblies.Concat(GetAlwaysIncludedAssemblies()).Distinct().ToList();
+                var allAssemblies = referencedAssemblies.Concat(alwaysIncludedAssemblies).Distinct().ToList();
                 var instanceFunctionDict = new ConcurrentDictionary<Type, MethodInfo[]>();
 
                 Parallel.ForEach(allAssemblies, assembly =>
@@ -78,13 +80,11 @@ namespace Ceres.Editor.Graph.Flow
                     }
                 });
 
-                _instanceFunctionTables = new Dictionary<Type, MethodInfo[]>(instanceFunctionDict);
-            }
+                return new Dictionary<Type, MethodInfo[]>(instanceFunctionDict);
+            });
 
-            // Collect always included properties
+            Task<(Type type, PropertyInfo[] propertyInfos)[]> propertyTask = Task.Run(() =>
             {
-                var alwaysIncludedAssemblies = GetAlwaysIncludedAssemblies();
-
                 var results = new ConcurrentBag<(Type Type, PropertyInfo[] Properties)>();
 
                 Parallel.ForEach(alwaysIncludedAssemblies, assembly =>
@@ -115,8 +115,15 @@ namespace Ceres.Editor.Graph.Flow
                     }
                 });
 
-                _alwaysIncludedPropertyInfos = results.ToArray();
-            }
+                return results.ToArray();
+            });
+
+            Task.WaitAll(staticTask, instanceTask, propertyTask);
+
+            _staticFunctions = staticTask.Result.staticFunctions;
+            _retargetFunctionTables = staticTask.Result.retargetFunctionTables;
+            _instanceFunctionTables = instanceTask.Result;
+            _alwaysIncludedPropertyInfos = propertyTask.Result;
         }
 
         public (Type type, PropertyInfo[] propertyInfos)[] GetAlwaysIncludedProperties()
