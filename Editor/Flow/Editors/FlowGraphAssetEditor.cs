@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 using UEditor = UnityEditor.Editor;
 namespace Ceres.Editor.Graph.Flow
 {
-    
     [CustomEditor(typeof(FlowGraphAsset), true)]
     public class FlowGraphAssetEditor : UEditor
     {
