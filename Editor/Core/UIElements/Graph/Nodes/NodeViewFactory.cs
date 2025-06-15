@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Ceres.Annotations;
 
 namespace Ceres.Editor.Graph
@@ -79,15 +81,42 @@ namespace Ceres.Editor.Graph
 
         private NodeViewFactory()
         {
-            _resolvers = AppDomain.CurrentDomain
-                                        .GetAssemblies()
-                                        .Select(x => x.GetTypes())
-                                        .SelectMany(x => x)
-                                        .Where(IsValidType)
-                                        .Select(x=> new ResolverStructure(x))
-                                        .ToList();
+            var validTypes = new ConcurrentBag<Type>();
+            
+            Parallel.ForEach(AppDomain.CurrentDomain.GetAssemblies(), assembly =>
+            {
+                try
+                {
+                    foreach (var type in assembly.GetTypes())
+                    {
+                        if (IsValidType(type))
+                        {
+                            validTypes.Add(type);
+                        }
+                    }
+                }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    foreach (var type in ex.Types)
+                    {
+                        if (type != null && IsValidType(type))
+                        {
+                            validTypes.Add(type);
+                        }
+                    }
+                }
+            });
+            
+            var resolverList = new ConcurrentBag<ResolverStructure>();
+            Parallel.ForEach(validTypes, type =>
+            {
+                resolverList.Add(new ResolverStructure(type));
+            });
+            
+            _resolvers = resolverList.ToList();
             _resolvers.Sort(new ResolverStructure.Comparer());
         }
+        
         private static bool IsValidType(Type type)
         {
             if (type.IsAbstract) return false;

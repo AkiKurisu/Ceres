@@ -1,11 +1,14 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Ceres.Utilities;
 using Chris.Serialization;
 using UnityEngine.Assertions;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Editor.Graph
 {
     /// <summary>
@@ -64,12 +67,34 @@ namespace Ceres.Editor.Graph
         private FieldResolverFactory()
         {
             _instance = this;
-            var resolverTypes = AppDomain.CurrentDomain
-                                        .GetAssemblies()
-                                        .Select(x => x.GetTypes())
-                                        .SelectMany(x => x)
-                                        .Where(IsValidType)
-                                        .ToList();
+            var validTypes = new ConcurrentBag<Type>();
+            var allAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+            Parallel.ForEach(allAssemblies, assembly =>
+            {
+                try
+                {
+                    foreach (var type in assembly.GetTypes())
+                    {
+                        if (IsValidType(type))
+                        {
+                            validTypes.Add(type);
+                        }
+                    }
+                }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    foreach (var type in ex.Types)
+                    {
+                        if (type != null && IsValidType(type))
+                        {
+                            validTypes.Add(type);
+                        }
+                    }
+                }
+            });
+
+            var resolverTypes = validTypes.ToList();
+
             resolverTypes.Sort((a, b) =>
             {
                 var aOrdered = a.GetCustomAttribute<OrderedAttribute>(false);
@@ -79,17 +104,23 @@ namespace Ceres.Editor.Graph
                 if (aOrdered != null) return -1;
                 return 1;
             });
+            
             var parameters = new object[]{ null };
-            _resolvers = resolverTypes.Select(x =>
+            var resolverList = new ConcurrentBag<ResolverStructure>();
+            Parallel.ForEach(resolverTypes, type =>
+            {
+                if (type.IsGenericTypeDefinition)
                 {
-                    if (x.IsGenericTypeDefinition)
-                    {
-                        /* Resolve later */
-                        return new ResolverStructure(x, null);
-                    }
-                    return new ResolverStructure(x, (IFieldResolver)Activator.CreateInstance(x, parameters));
-                })
-                .ToList();
+                    resolverList.Add(new ResolverStructure(type, null));
+                }
+                else
+                {
+                    var instance = (IFieldResolver)Activator.CreateInstance(type, parameters);
+                    resolverList.Add(new ResolverStructure(type, instance));
+                }
+            });
+            
+            _resolvers = resolverList.ToList();
         }
         
         private static bool IsValidType(Type type)

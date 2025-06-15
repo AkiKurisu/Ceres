@@ -9,6 +9,7 @@ using UnityEngine;
 namespace Ceres.Graph.Flow
 {
     [Serializable]
+    [ConfigPath("Ceres.Flow")]
     public class FlowRuntimeSettings: Config<FlowRuntimeSettings>
     {
         [SerializeField]
