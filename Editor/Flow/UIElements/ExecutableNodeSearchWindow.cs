@@ -470,7 +470,7 @@ namespace Ceres.Editor.Graph.Flow
             
             if (methodCandidates.Any())
             {
-                builder.AddGroupEntry("Execute Functions", 1);
+                builder.AddGroupEntry("Execute Functions", 1, true);
                 var groupedMethodCandidates = methodCandidates
                     .GroupBy(candidate => candidate.GetGroupNameOrDefault())
                     .Where(grouping => !string.IsNullOrEmpty(grouping.Key))
@@ -530,7 +530,7 @@ namespace Ceres.Editor.Graph.Flow
             var flowGraphFunctions = FlowGraphFunctionRegistry.Get().GetFlowGraphFunctions(GraphView.GetContainerType());
             if (!flowGraphFunctions.Any()) return;
             
-            builder.AddGroupEntry("Execute Functions", 1);
+            builder.AddGroupEntry("Execute Functions", 1, true);
             foreach (var flowGraphFunction in flowGraphFunctions)
             {
                 AddFlowGraphFunctionEntry(flowGraphFunction,2);
