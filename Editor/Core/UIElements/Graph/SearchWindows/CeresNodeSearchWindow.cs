@@ -59,9 +59,9 @@ namespace Ceres.Editor.Graph
             return true;
         }
 
-        public bool AddGroupEntry(string content, int level)
+        public bool AddGroupEntry(string content, int level, bool exclusive = false)
         {
-            if (_entries.OfType<SearchTreeGroupEntry>()
+            if (exclusive && _entries.OfType<SearchTreeGroupEntry>()
                 .Any(x => x.content.text == content && x.level == level))
             {
                 return false;
@@ -95,6 +95,7 @@ namespace Ceres.Editor.Graph
                 }
                 return hasEntry;
             }
+            
             AddEntry(new SearchTreeEntry(new GUIContent(label, _defaultIcon))
             {
                 level = level, 
@@ -114,8 +115,9 @@ namespace Ceres.Editor.Graph
             var left = group.Except(subGroups.SelectMany(x => x));
             foreach (var subGroup in subGroups)
             {
-                hasEntry |= AddAllEntries(subGroup,level + 1, subCount + 1);
+                hasEntry |= AddAllEntries(subGroup, level + 1, subCount + 1);
             }
+
             foreach (var type in left)
             {
                 hasEntry |= AddEntry(type, level + 1);
@@ -123,7 +125,7 @@ namespace Ceres.Editor.Graph
 
             if (!hasEntry)
             {
-                _entries.RemoveAt(_entries.Count-1);
+                _entries.RemoveAt(_entries.Count - 1);
             }
             return hasEntry;
         }
