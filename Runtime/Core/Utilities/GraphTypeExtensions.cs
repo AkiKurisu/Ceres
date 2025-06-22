@@ -218,9 +218,10 @@ namespace Ceres.Utilities
             return group.GroupBy(t =>
             {
                 var groupAttribute = t.GetCustomAttribute<CeresGroupAttribute>();
+                if (groupAttribute == null) return null;
                 var subcategory = SubClassSearchUtility.SplitGroupName(groupAttribute.Group);
                 return subcategory.Length > level ? subcategory[level] : null;
-            }).Where(x => !string.IsNullOrEmpty(x.Key));
+            }).Where(grouping => !string.IsNullOrEmpty(grouping.Key));
         }
         
         public static IEnumerable<IGrouping<string, Type>> SelectSubclass(this IEnumerable<IGrouping<string, Type>> groups, Type baseType)
