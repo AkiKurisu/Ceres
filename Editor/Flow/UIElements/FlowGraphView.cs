@@ -335,7 +335,7 @@ namespace Ceres.Editor.Graph.Flow
                     };
                     flowGraphData.PreSerialization();
                     // Save graph linker data
-                    CeresLinker.SaveLinker();
+                    CeresLinker.Save();
                     return flowGraphData;
                 }
 
