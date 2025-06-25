@@ -19,28 +19,28 @@ namespace Ceres.Editor.Graph.Flow
     public class FlowGraphDebugState
     {
         public bool enableDebug;
-        
+
         public List<string> breakpoints = new();
 
         public void AddBreakpoint(string guid)
         {
-            if(breakpoints.Contains(guid)) return;
+            if (breakpoints.Contains(guid)) return;
             breakpoints.Add(guid);
         }
-        
+
         public void RemoveBreakpoint(string guid)
         {
             breakpoints.Remove(guid);
         }
     }
-    
-    public class FlowGraphEditorWindow: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>
+
+    public class FlowGraphEditorWindow : CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>
     {
         /// <summary>
         /// Editor debug state
         /// </summary>
         [field: SerializeField]
-        public FlowGraphDebugState DebugState { get; private set; }= new();
+        public FlowGraphDebugState DebugState { get; private set; } = new();
 
         /// <summary>
         /// Editing graph view index
@@ -68,8 +68,8 @@ namespace Ceres.Editor.Graph.Flow
 
         protected override void OnDisable()
         {
-           if (EditorObject) EditorObject.DestroyTemporary();
-           base.OnDisable();
+            if (EditorObject) EditorObject.DestroyTemporary();
+            base.OnDisable();
         }
 
         private bool IsDirty()
@@ -99,26 +99,26 @@ namespace Ceres.Editor.Graph.Flow
         {
             EditorUtility.DisplayProgressBar(stepTitle, "First initialization requires a few seconds", progress);
         }
-        
+
         private static void ClearProgressBar()
         {
             EditorUtility.ClearProgressBar();
         }
-        
+
         private void StructVisualElements(int index)
         {
             rootVisualElement.Clear();
             rootVisualElement.Add(new IMGUIContainer(OnToolBarGUI));
             rootVisualElement.Add(GetOrCreateGraphView(index));
         }
-        
+
 #pragma warning disable IDE0051
         [OnOpenAsset]
         private static bool OnOpenAsset(int instanceId, int _)
         {
             var asset = EditorUtility.InstanceIDToObject(instanceId);
             if (asset is not FlowGraphScriptableObjectBase objectBase) return false;
-            
+
             Show(objectBase);
             return false;
         }
@@ -132,7 +132,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             return CurrentGraphView;
         }
-        
+
         /// <summary>
         /// Get or create graph view by id
         /// </summary>
@@ -141,7 +141,7 @@ namespace Ceres.Editor.Graph.Flow
         public FlowGraphView GetOrCreateGraphView(int id)
         {
             if (_graphViews.TryGetValue(id, out var view) && view != null) return view;
-            
+
             _graphViews.Add(id, view = new FlowGraphView(this));
             if (id == 0)
             {
@@ -185,7 +185,7 @@ namespace Ceres.Editor.Graph.Flow
                 StructVisualElements(GraphIndex);
                 CurrentGraphView.viewTransform.position = currentViewPosition;
                 /* Notify user */
-                // EditorInternalUtil.ClearConsole();
+                EditorInternalUtil.ClearConsole();
                 guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
                 ShowNotification(guiContent, 0.5f);
             }
@@ -208,7 +208,7 @@ namespace Ceres.Editor.Graph.Flow
 
             return true;
         }
-        
+
         private void OnToolBarGUI()
         {
             if (!Identifier.IsValid() || CurrentGraphView == null)
@@ -298,7 +298,7 @@ namespace Ceres.Editor.Graph.Flow
             guiContent = new GUIContent("Simulation End");
             ShowNotification(guiContent, 1f);
         }
-        
+
         protected override void OnReloadGraphView()
         {
             /* Create new editor container since it is not saved during play mode change  */
@@ -367,7 +367,7 @@ namespace Ceres.Editor.Graph.Flow
             }
             CurrentGraphView.Blackboard.AddVariable(function, true);
             EditorObject.Update();
-            
+
             /* Display new subGraph view */
             OpenSubgraphView(functionName);
         }
@@ -394,7 +394,7 @@ namespace Ceres.Editor.Graph.Flow
             var returnType = output!.parameter.hasReturn ? output.parameter.GetParameterType() : typeof(void);
             return (returnType, inputTypes);
         }
-        
+
         /// <summary>
         /// Resolve custom function input parameters
         /// </summary>
@@ -428,17 +428,17 @@ namespace Ceres.Editor.Graph.Flow
             var slot = EditorObject.GraphInstance.SubGraphSlots.First(subGraphSlot => subGraphSlot.Guid == guid);
             /* Rename graph instance */
             slot.Name = newName;
-            
+
             /* Rename subGraph data if exist */
             EditorObject.GraphData.RenameSubGraphData(guid, newName);
-            
+
             /* Update graph view binding name */
             var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
             if (slotIndex != -1 && _graphViews.TryGetValue(slotIndex + 1 /* graph index */, out var view))
             {
                 view.GraphName = newName;
             }
-            
+
             /* Update view model */
             EditorObject.Update();
         }
@@ -452,15 +452,15 @@ namespace Ceres.Editor.Graph.Flow
             var slot = EditorObject.GraphInstance.SubGraphSlots.First(subGraphSlot => subGraphSlot.Guid == guid);
             var slotIndex = Array.IndexOf(EditorObject.GraphInstance.SubGraphSlots, slot);
             if (slotIndex == -1) return;
-            
+
             /* Remove subGraph instance */
             ArrayUtils.Remove(ref EditorObject.GraphInstance.SubGraphSlots, slot);
             int graphIndex = slotIndex + 1;
             _graphViews.Remove(graphIndex);
-            
+
             /* Remove subGraph data if exist */
             EditorObject.GraphData.RemoveSubGraphData(guid);
-            
+
             /* Update view model */
             EditorObject.Update();
 
