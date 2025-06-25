@@ -295,7 +295,7 @@ namespace Ceres.Editor.Graph.Flow
             {
                 var serializableNodes = _graphElements.OfType<ExecutableNodeElement>().ToArray();
                 var nodeGroups = _graphElements.OfType<ExecutableNodeGroup>().ToArray();
-                var idMap = serializableNodes.ToDictionary(x => x, x => x.View.Guid);
+                var idMap = serializableNodes.ToDictionary(nodeElement => nodeElement, nodeElement => nodeElement.View.Guid);
                 
                 /* Need assign new guid before serialization */
                 if (copyPaste)
@@ -327,15 +327,28 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     var flowGraphData = new FlowGraphData
                     {
-                        nodeData = nodeInstances.Select(x => x.GetSerializedData()).ToArray(),
+                        nodeData = nodeInstances.Select(LinkAndGetNodeSerializedData).ToArray(),
                         variableData = _graphView.SharedVariables.Where(x => x is not LocalFunction)
                                                                 .Select(x => x.GetSerializedData())
                                                                 .ToArray(),
                         nodeGroups = nodeGroupData.ToArray()
                     };
                     flowGraphData.PreSerialization();
+                    // Save graph linker data
+                    CeresLinker.SaveLinker();
                     return flowGraphData;
                 }
+
+            }
+            
+            private static CeresNodeData LinkAndGetNodeSerializedData(CeresNode node)
+            {
+                var data = node.GetSerializedData();
+                if (data.genericParameters.Length > 0)
+                {
+                    CeresLinker.LinkTypes(node.GetType().GetGenericArguments());
+                }
+                return data;
             }
             
             /// <summary>

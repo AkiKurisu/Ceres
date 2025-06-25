@@ -185,7 +185,7 @@ namespace Ceres.Editor.Graph.Flow
                 StructVisualElements(GraphIndex);
                 CurrentGraphView.viewTransform.position = currentViewPosition;
                 /* Notify user */
-                EditorInternalUtil.ClearConsole();
+                // EditorInternalUtil.ClearConsole();
                 guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
                 ShowNotification(guiContent, 0.5f);
             }

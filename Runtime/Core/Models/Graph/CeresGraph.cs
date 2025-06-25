@@ -640,19 +640,31 @@ namespace Ceres.Graph
 
         private bool CreateGenericNodeInstance(int index, CeresNode[] nodes)
         {
+            var genericTypeDefinition = nodeData[index].nodeType.ToType();
+            var genericParameters = nodeData[index].genericParameters;
             try
             {
                 /* Try to make generic node type */
-                var genericTypeDefinition = nodeData[index].nodeType.ToType();
-                var parameterTypes = nodeData[index].genericParameters.Select(ResolveSerializedType).ToArray();
+                var parameterTypes = genericParameters.Select(ResolveSerializedTypeWithCheck).ToArray();
                 var genericType = genericTypeDefinition.MakeGenericType(parameterTypes);
                 nodes[index] = nodeData[index].Deserialize(genericType);
                 return true;
             }
             catch(Exception e)
             {
-                CeresLogger.LogWarning($"Can not create generic node instance from {nodeData[index].nodeType}, {e}");
+                var parametersString = string.Join(",", genericParameters);
+                CeresLogger.LogWarning($"Can not create generic node instance from {nodeData[index].nodeType} [{parametersString}].\n{e}");
                 return false;
+            }
+
+            Type ResolveSerializedTypeWithCheck(string serializedType)
+            {
+                var type = ResolveSerializedType(serializedType);
+                if (type == null)
+                {
+                    throw new ArgumentException($"Can not resolve type from {serializedType}, please check whether the type is stripped.");
+                }
+                return type;
             }
         }
         
@@ -794,7 +806,7 @@ namespace Ceres.Graph
                 linkedInterface.ClearChildren();
             }
             /* Must serialize node data after clear references */
-            nodeData = nodes.Select(x => x.GetSerializedData()).ToArray();
+            nodeData = nodes.Select(node => node.GetSerializedData()).ToArray();
             nodeGroups = graph.nodeGroups.ToArray();
         }
     }
