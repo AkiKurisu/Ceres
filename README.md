@@ -18,6 +18,7 @@ Powerful visual scripting toolkit for Unity.
 - [ExecutableReflection](#executablereflection)
 - [Debugging](#debugging)
 - [Advanced Features](#advanced-features)
+- [Type Preservation](#type-preservation)
 - [Code Generation](#code-generation)
 - [Documentation](#documentation)
 - [Implementation](#implementation)
@@ -272,6 +273,43 @@ You can define both local functions within your flow graph and shared functions 
 
 ### Port Arrays
 For nodes that need resizable port arrays, you can implement `IPortArrayNode` to define dynamic port collections.
+
+
+## Type Preservation
+
+Ceres provides an automatic type preservation system that prevents IL2CPP code stripping from removing types used in your visual scripts. 
+
+### How It Works
+
+`CeresLinker` will cache types used in nodes during your development and identifies all types that need to be preserved. It will generate a temporal `link.xml` file in build time to prevent IL2CPP from stripping these essential types.
+
+### Manual Type Registration
+
+You can manually register additional types that should be preserved using the `CeresLinker` API:
+
+```csharp
+using Ceres.Editor;
+
+// Register a single type
+CeresLinker.LinkType(typeof(MyCustomClass));
+
+// Register multiple types
+CeresLinker.LinkTypes(new Type[] { 
+    typeof(MyCustomClass), 
+    typeof(AnotherClass) 
+});
+
+// Save the registered types to settings
+CeresLinker.Save();
+```
+
+### Editor Integration
+
+You can view and manage preserved types through Unity's Project Settings:
+
+1. Go to `Edit > Project Settings > Ceres`
+2. Check the "Preserved Types" section to see all registered types
+3. Manually add type names if needed
 
 ## Code Generation
 
