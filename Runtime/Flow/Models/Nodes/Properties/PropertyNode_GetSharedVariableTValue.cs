@@ -1,6 +1,8 @@
 using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
+
 namespace Ceres.Graph.Flow.Properties
 {
     public abstract class PropertyNode_SharedVariableValue : PropertyNode
@@ -21,13 +23,19 @@ namespace Ceres.Graph.Flow.Properties
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
+            TOutValue outValue = default(TOutValue);
             if (executionContext.Graph.BlackBoard.GetSharedVariable(propertyName) is T variable)
             {
-                if(!_isValueType || variable.Value != null)
+                if (_isValueType)
                 {
-                    outputValue.Value = (TOutValue)variable.Value;
+                    outValue = (TOutValue)variable.Value;
+                }
+                else if (outputValue.Value is object boxValue && boxValue is TOutValue tValue) // Not null and can cast to TOutValue.
+                {
+                    outValue = tValue;
                 }
             }
+            outputValue.Value = outValue;
             return UniTask.CompletedTask;
         }
 
