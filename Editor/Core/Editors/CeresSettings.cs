@@ -20,9 +20,14 @@ namespace Ceres.Editor
 
         [SerializeField] 
         private GraphEditorDisplayMode graphEditorDisplayMode;
+
+        [SerializeField] 
+        private bool cleanLogAuto = true;
         
         [SerializeField]
         private string[] preservedTypes = Array.Empty<string>();
+        
+        public static bool CleanLogAuto => instance.cleanLogAuto;
         
         /// <summary>
         /// Ceres graph editor view display mode
@@ -65,6 +70,9 @@ namespace Ceres.Editor
             public static readonly GUIContent GraphEditorDisplayModeLabel = new("Display Mode",
                 "Set graph editor display mode.");
             
+            public static readonly GUIContent CleanLogAutoLabel = new("Clean Log Auto",
+                "Clean console log automatically after save graph successfully.");
+            
             public static readonly GUIContent PreserveTypesLabel = new("Preserved Types",
                 "Define types need to be preserved in build when using IL2CPP scripting backend.");
         }
@@ -82,6 +90,7 @@ namespace Ceres.Editor
             GUILayout.Label("Editor Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphEditorDisplayMode"), Styles.GraphEditorDisplayModeLabel);
+            EditorGUILayout.PropertyField(_serializedObject.FindProperty("cleanLogAuto"), Styles.CleanLogAutoLabel);
             GUILayout.EndVertical();
             GUILayout.Label("Stripping Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);

@@ -32,6 +32,11 @@ namespace Ceres.Editor.Graph.Flow.Utilities
         
         protected bool InstanceIsSelfTarget { get; private set; }
         
+        /// <summary>
+        /// Only valid when node is self target.
+        /// </summary>
+        protected bool IsTargetConnected { get; private set; }
+        
         protected Type ScriptTargetType { get; private set; }
         
         protected bool IsNeedResolveReturnType { get; private set; }
@@ -50,6 +55,10 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             DisplayTarget = attribute.DisplayTarget;
             StaticIsSelfTarget = attribute.IsSelfTarget && IsStatic;
             InstanceIsSelfTarget = !IsStatic && GraphView.GetContainerType().IsAssignableTo(methodInfo.DeclaringType);
+            if (!StaticIsSelfTarget && !InstanceIsSelfTarget)
+            {
+                IsTargetConnected = false;
+            }
             ScriptTargetType = attribute.ScriptTargetType;
             IsNeedResolveReturnType = attribute.IsNeedResolveReturnType;
             ParameterCount = methodInfo.GetParameters().Length;
@@ -126,7 +135,7 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             }
             
             portView.Flags &= ~CeresPortViewFlags.ValidateConnection;
-            portView.SetDisplayName("Self");
+            portView.SetDisplayName(IsTargetConnected ? "Target" : "Self");
             portView.SetTooltip(" [Default is Self]");
             portView.FieldResolver?.RegisterValueChangeCallback(_ =>
             {
@@ -140,8 +149,8 @@ namespace Ceres.Editor.Graph.Flow.Utilities
 
             void RefreshTargetPortDisplayName()
             {
-                var hasConnectionOrValue = portView.FieldResolver?.Value != null || portView.PortElement.connected;
-                portView.SetDisplayName(hasConnectionOrValue ? "Target" : "Self");
+                IsTargetConnected = portView.FieldResolver?.Value != null || portView.PortElement.connected;
+                portView.SetDisplayName(IsTargetConnected ? "Target" : "Self");
             }
         }
 
@@ -224,6 +233,7 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             }
             else
             {
+                IsTargetConnected = !functionNode.isSelfTarget;
                 SetMethodInfo(methodInfo);
             }
             base.SetNodeInstance(ceresNode);
@@ -236,7 +246,7 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             instance.methodName = MethodName;
             instance.isStatic = IsStatic;
             instance.isScriptMethod = IsScriptMethod;
-            instance.isSelfTarget = StaticIsSelfTarget || InstanceIsSelfTarget;
+            instance.isSelfTarget = (StaticIsSelfTarget || InstanceIsSelfTarget) && !IsTargetConnected;
             instance.executeInDependency = ExecuteInDependency;
             instance.parameterCount = ParameterCount;
             return instance;

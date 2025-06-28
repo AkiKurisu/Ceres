@@ -184,8 +184,11 @@ namespace Ceres.Editor.Graph.Flow
                 _graphViews.Clear();
                 StructVisualElements(GraphIndex);
                 CurrentGraphView.viewTransform.position = currentViewPosition;
+                if (CeresSettings.CleanLogAuto)
+                {
+                    EditorInternalUtil.ClearConsole();
+                }
                 /* Notify user */
-                EditorInternalUtil.ClearConsole();
                 guiContent.text = $"Save flow {Identifier.boundObject.name} succeed!";
                 ShowNotification(guiContent, 0.5f);
             }

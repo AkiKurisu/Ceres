@@ -23,7 +23,7 @@ namespace Ceres.Graph.Flow.Utilities
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("IsValid")]
         public static bool Flow_UObjectIsValid([NotNull] UObject uObject)
         {
-            return uObject;
+            return (bool)uObject;
         }
         
         /// <summary>
