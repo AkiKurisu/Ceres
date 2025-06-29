@@ -1,7 +1,6 @@
 using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace Ceres.Graph.Flow.Properties
 {
@@ -30,7 +29,7 @@ namespace Ceres.Graph.Flow.Properties
                 {
                     outValue = (TOutValue)variable.Value;
                 }
-                else if (outputValue.Value is object boxValue && boxValue is TOutValue tValue) // Not null and can cast to TOutValue.
+                else if (variable.Value is TOutValue tValue) // Not null and can cast to TOutValue.
                 {
                     outValue = tValue;
                 }
