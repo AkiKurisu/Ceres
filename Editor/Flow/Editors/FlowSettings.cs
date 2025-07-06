@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Ceres.Graph.Flow;
-using Chris.Configs;
+using Chris.Configs.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -18,7 +18,7 @@ namespace Ceres.Editor
         public static void SaveSettings()
         {
             instance.Save(true);
-            var serializer = ConfigsModule.PersistentSerializer;
+            var serializer = ConfigsEditorUtils.GetConfigSerializer();
             var settings = FlowRuntimeSettings.Get();
             settings.alwaysIncludedAssemblyWildcards = instance.alwaysIncludedAssemblyWildcards;
             settings.Save(serializer);
