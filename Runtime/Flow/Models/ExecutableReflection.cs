@@ -548,13 +548,13 @@ namespace Ceres.Graph.Flow
             var methodInfo = functionType switch
             {
                 ExecutableFunctionType.PropertySetter => typeof(TTarget).GetProperty(functionName,
-                    BindingFlags.Public | BindingFlags.Instance)!.SetMethod,
+                    BindingFlags.Public | BindingFlags.Instance)?.SetMethod,
                 ExecutableFunctionType.PropertyGetter => typeof(TTarget).GetProperty(functionName,
-                    BindingFlags.Public | BindingFlags.Instance)!.GetMethod,
+                    BindingFlags.Public | BindingFlags.Instance)?.GetMethod,
                 ExecutableFunctionType.StaticPropertySetter => typeof(TTarget).GetProperty(functionName,
-                    BindingFlags.Public | BindingFlags.Static)!.SetMethod,
+                    BindingFlags.Public | BindingFlags.Static)?.SetMethod,
                 ExecutableFunctionType.StaticPropertyGetter => typeof(TTarget).GetProperty(functionName,
-                    BindingFlags.Public | BindingFlags.Static)!.GetMethod,
+                    BindingFlags.Public | BindingFlags.Static)?.GetMethod,
                 ExecutableFunctionType.InstanceMethod or ExecutableFunctionType.StaticMethod => null,
                 _ => null
             };

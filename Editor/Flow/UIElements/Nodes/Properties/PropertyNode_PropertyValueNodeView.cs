@@ -54,6 +54,12 @@ namespace Ceres.Editor.Graph.Flow.Properties
             var propertyNode =(PropertyNode_PropertyValue)ceresNode;
             SetPropertyFlags(propertyNode.isSelfTarget, propertyNode.isStatic);
             base.SetNodeInstance(ceresNode);
+            var propertyInfo = propertyNode.GetPropertyInfo(NodeType.GetGenericArguments()[0]);
+            if (propertyInfo == null)
+            {
+                NodeElement.title += " <color=#FFE000>[Invalid Property]</size></color>";
+                NodeElement.tooltip = $"The presence of this node indicates that the property {PropertyName} bound to this node is invalid now.";
+            }
         }
 
         public override void SetPropertyName(string propertyName)

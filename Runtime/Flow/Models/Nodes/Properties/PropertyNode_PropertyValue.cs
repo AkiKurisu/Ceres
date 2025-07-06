@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Ceres.Annotations;
 using UObject = UnityEngine.Object;
 
@@ -12,7 +13,16 @@ namespace Ceres.Graph.Flow.Properties
         
         [HideInGraphEditor] 
         public bool isStatic;
-        
+
+        public virtual PropertyInfo GetPropertyInfo(Type targetType)
+        {
+            if (isStatic)
+            {
+                return targetType.GetProperty(propertyName, BindingFlags.Static | BindingFlags.Public);
+            }
+            return targetType.GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public);
+        }
+
         protected TValue GetTargetOrDefault<TValue>(CeresPort<TValue> inputPort, ExecutionContext context)
         {
             if (isStatic)
