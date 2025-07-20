@@ -9,7 +9,7 @@ Powerful visual scripting toolkit for Unity.
 
 ## Table of Contents
 
-- [Dependencies](#dependencies)
+- [Install](#install)
 - [Highlights](#highlights)
 - [Platform](#platform)
 - [Core Concepts](#core-concepts)
@@ -25,18 +25,18 @@ Powerful visual scripting toolkit for Unity.
 - [Articles](#articles)
 - [License](#license)
 
-## Dependencies
+## Install
 
 Add following dependencies to `manifest.json`.
 
 ```json
-  "dependencies": {
+"dependencies": {
     "com.kurisu.chris": "https://github.com/AkiKurisu/Chris.git",
-    "com.cysharp.unitask":"https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-    "com.unity.nuget.newtonsoft-json": "3.2.1"
-  }
-
+    "com.cysharp.unitask":"https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+}
 ```
+
+Use git URL to download package by Unity Package Manager ```https://github.com/AkiKurisu/Ceres.git```.
 
 ## Highlights
 
