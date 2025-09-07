@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 using Ceres.Graph.Flow;
 using Chris.Configs.Editor;
+using Chris.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Ceres.Editor
 {
-    [FilePath("ProjectSettings/FlowSettings.asset", FilePathAttribute.Location.ProjectFolder)]
-    public class FlowSettings : ScriptableSingleton<FlowSettings>
+    public class FlowSettings : ConfigSingleton<FlowSettings>
     {
         private static FlowSettings _setting;
         
@@ -17,10 +17,10 @@ namespace Ceres.Editor
 
         public static void SaveSettings()
         {
-            instance.Save(true);
+            Instance.Save(true);
             var serializer = ConfigsEditorUtils.GetConfigSerializer();
             var settings = FlowRuntimeSettings.Get();
-            settings.alwaysIncludedAssemblyWildcards = instance.alwaysIncludedAssemblyWildcards;
+            settings.alwaysIncludedAssemblyWildcards = Instance.alwaysIncludedAssemblyWildcards;
             settings.Save(serializer);
         }
     }
@@ -39,7 +39,7 @@ namespace Ceres.Editor
         
         public override void OnActivate(string searchContext, VisualElement rootElement)
         {
-            _serializedObject = new SerializedObject(FlowSettings.instance);
+            _serializedObject = new SerializedObject(FlowSettings.Instance);
         }
         
         public override void OnGUI(string searchContext)
