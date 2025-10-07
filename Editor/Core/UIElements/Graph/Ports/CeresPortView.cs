@@ -50,10 +50,7 @@ namespace Ceres.Editor.Graph
             evt.menu.ClearItems();
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Disconnect", _ =>
             {
-                var edge = connections.First();
-                edge.input.Disconnect(edge);
-                edge.output.Disconnect(edge);
-                View.NodeOwner.GraphView.DeleteElements(new []{ edge });
+                View.NodeOwner.GraphView.DisconnectPort(View);
             }, _ => connections.Any() ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Hidden));
             View.NodeOwner.GraphView.ContextualMenuRegistry.BuildContextualMenu(ContextualMenuType.Port, evt, portType);
         }

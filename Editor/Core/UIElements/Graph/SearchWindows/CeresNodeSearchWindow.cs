@@ -259,23 +259,22 @@ namespace Ceres.Editor.Graph
         protected virtual bool ConnectRequestPort(ICeresNodeView nodeView)
         {
             var portView = Context.RequestPortView;
-            if(portView == null) return false;
-            if (!portView.PortElement.IsConnectable()) return false;
-            if(nodeView is not CeresNodeView ceresNodeView) return false;
+            if (portView == null) return false;
+            
+            // Try disconnect if is not connectable
+            if (!portView.PortElement.IsConnectable())
+            {
+                GraphView.DisconnectPort(portView);
+            }
+            
+            if (nodeView is not CeresNodeView ceresNodeView) return false;
             var receivePort = ceresNodeView.FindConnectablePortView(portView);
             if (receivePort == null)
             {
                 return false;
             }
 
-            if(receivePort.PortElement.direction == Direction.Input)
-            {
-                GraphView.ConnectPorts(receivePort, portView);
-            }
-            else
-            {
-                GraphView.ConnectPorts(portView, receivePort);
-            }
+            GraphView.ConnectPorts(receivePort, portView);
             return true;
         }
 

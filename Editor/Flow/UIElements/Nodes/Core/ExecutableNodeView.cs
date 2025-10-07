@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Ceres.Annotations;
 using Ceres.Graph.Flow;
-using Ceres.Utilities;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+
 namespace Ceres.Editor.Graph.Flow
 {
     /// <summary>
@@ -85,9 +85,18 @@ namespace Ceres.Editor.Graph.Flow
         private void CollectConnectedEdges(HashSet<GraphElement> edgeSet)
         {
             /* Allow edges connected by port in titleContainer can be deleted */
-            edgeSet.UnionWith(titleContainer.Children().OfType<Port>().SelectMany(c => c.connections).Where(d => (d.capabilities & Capabilities.Deletable) != 0));
-            edgeSet.UnionWith(inputContainer.Children().OfType<Port>().SelectMany(c => c.connections).Where(d => (d.capabilities & Capabilities.Deletable) != 0));
-            edgeSet.UnionWith(outputContainer.Children().OfType<Port>().SelectMany(c => c.connections).Where(d => (d.capabilities & Capabilities.Deletable) != 0));
+            edgeSet.UnionWith(titleContainer.Children()
+                .OfType<Port>()
+                .SelectMany(port => port.connections)
+                .Where(edge => (edge.capabilities & Capabilities.Deletable) != 0));
+            edgeSet.UnionWith(inputContainer.Children()
+                .OfType<Port>()
+                .SelectMany(port => port.connections)
+                .Where(edge => (edge.capabilities & Capabilities.Deletable) != 0));
+            edgeSet.UnionWith(outputContainer.Children()
+                .OfType<Port>()
+                .SelectMany(port => port.connections)
+                .Where(edge => (edge.capabilities & Capabilities.Deletable) != 0));
         }
 
         public override void CollectElements(

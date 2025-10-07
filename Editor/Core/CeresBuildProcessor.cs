@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using Chris.Editor;
+using Chris.Resource.Editor;
 using Chris.Serialization;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
@@ -17,29 +18,15 @@ namespace Ceres.Editor
 
         protected override void PreprocessBuild(BuildReport report)
         {
-            var preservedTypes = CeresSettings.GetPreservedTypes();
-            _linker.AddTypes(preservedTypes.Select(SerializedType.FromString));
-            if (!Directory.Exists(CeresDirectory))
-            {
-                Directory.CreateDirectory(CeresDirectory);
-            }
-
+            Directory.CreateDirectory(CeresDirectory);
+            _linker.AddTypes(CeresSettings.GetPreservedTypes().Select(SerializedType.FromString));
             _linker.Save(XMLPath);
         }
 
         protected override void PostprocessBuild(BuildReport report)
         {
-            if (File.Exists(XMLPath))
-            {
-                File.Delete(XMLPath);
-                File.Delete(XMLPath + ".meta");
-            }
-
-            if (Directory.Exists(CeresDirectory))
-            {
-                Directory.Delete(CeresDirectory);
-                File.Delete(CeresDirectory + ".meta");
-            }
+            ResourceEditorUtils.DeleteAsset(XMLPath);
+            ResourceEditorUtils.DeleteDirectory(CeresDirectory);
         }
     }
 }
