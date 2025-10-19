@@ -22,18 +22,11 @@ namespace Ceres.Editor.Graph
                 if (graphView == null) return;
 
                 // Calculate world position with empirical offset
-                var position = evt.mousePosition + new Vector2(-10f, -28);
-                var worldPos = graphView.ChangeCoordinatesTo(
-                    graphView.contentViewContainer,
-                    position
-                );
+                var position = evt.mousePosition + new Vector2(-25f, -45);
+                var worldPos = graphView.ChangeCoordinatesTo(graphView.contentViewContainer, position);
 
                 // Insert relay node between the connected ports
-                graphView.InsertRelayNode(
-                    input as CeresPortElement,
-                    output as CeresPortElement,
-                    worldPos
-                );
+                graphView.InsertRelayNode((CeresPortElement)input, (CeresPortElement)output, worldPos);
 
                 evt.StopPropagation();
             }

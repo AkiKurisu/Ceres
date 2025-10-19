@@ -89,9 +89,11 @@ namespace Ceres.Graph
         public List<CeresNode> nodes;
         // ==================== Managed Reference =================== //
 
+#if UNITY_EDITOR
         public List<NodeGroup> nodeGroups;
         
         public List<RelayNode> relayNodes;
+#endif
 
         [NonSerialized]
         private int[][] _nodeDependencyPath;
@@ -510,9 +512,11 @@ namespace Ceres.Graph
 
         public CeresNodeData[] nodeData;
 
+#if UNITY_EDITOR
         public NodeGroup[] nodeGroups;
 
         public RelayNode[] relayNodes;
+#endif
 
         /// <summary>
         /// Build graph from data
@@ -538,8 +542,10 @@ namespace Ceres.Graph
             // Apply instances
             graph.variables = variables.ToList();
             graph.nodes = nodes.ToList();
+#if UNITY_EDITOR
             graph.nodeGroups = nodeGroups?.ToList() ?? new List<NodeGroup>();
             graph.relayNodes = relayNodes?.ToList() ?? new List<RelayNode>();
+#endif
         }
 
         protected void RestoreNode(int index, CeresNode[] nodes)
@@ -812,7 +818,10 @@ namespace Ceres.Graph
             }
             /* Must serialize node data after clear references */
             nodeData = nodes.Select(node => node.GetSerializedData()).ToArray();
+#if UNITY_EDITOR
             nodeGroups = graph.nodeGroups.ToArray();
+            relayNodes = graph.relayNodes.ToArray();
+#endif
         }
     }
 

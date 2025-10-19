@@ -251,24 +251,9 @@ namespace Ceres.Editor.Graph
             }
 
             // Create new edges: output -> relay -> input
-            var edgeToRelay = new CeresEdge
-            {
-                output = outputPort,
-                input = relayView.GetInputPort()
-            };
-            AddElement(edgeToRelay);
-            outputPort.Connect(edgeToRelay);
-            relayView.GetInputPort().Connect(edgeToRelay);
-
-            var edgeFromRelay = new CeresEdge
-            {
-                output = relayView.GetOutputPort(),
-                input = inputPort
-            };
-            AddElement(edgeFromRelay);
-            relayView.GetOutputPort().Connect(edgeFromRelay);
-            inputPort.Connect(edgeFromRelay);
-
+            this.ConnectPorts(outputPort, relayView.GetInputPort());
+            this.ConnectPorts(relayView.GetOutputPort(), inputPort);
+            
             SetDirty();
         }
 
