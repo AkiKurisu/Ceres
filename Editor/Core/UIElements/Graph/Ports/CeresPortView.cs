@@ -18,13 +18,13 @@ using UObject = UnityEngine.Object;
 
 namespace Ceres.Editor.Graph
 {
-    public class CeresPortElement: Port
+    public class CeresPortElement : Port
     {
         public CeresPortView View { get; private set; }
-        
+
         public VisualElement EditorField { get; private set; }
 
-        private CeresPortElement(Orientation portOrientation, Direction portDirection, Capacity portCapacity, Type type) : base(portOrientation, portDirection, portCapacity, type)
+        internal CeresPortElement(Orientation portOrientation, Direction portDirection, Capacity portCapacity, Type type) : base(portOrientation, portDirection, portCapacity, type)
         {
             AddToClassList(nameof(CeresPortElement));
             CeresPort.AssignValueType(type);
@@ -65,15 +65,15 @@ namespace Ceres.Editor.Graph
             {
                 return $"Output Delegate\n{CeresLabel.GetLabel(valueType)}";
             }
-            
+
             return CeresLabel.GetLabel(valueType);
         }
 
         public static CeresPortElement Create(CeresPortView ownerView)
         {
             var valueType = ownerView.PortData.GetValueType();
-            var view = new CeresPortElement(Orientation.Horizontal, ownerView.Binding.GetDirection(), 
-                                            ownerView.Binding.GetCapacity(), valueType) 
+            var view = new CeresPortElement(Orientation.Horizontal, ownerView.Binding.GetDirection(),
+                                            ownerView.Binding.GetCapacity(), valueType)
             {
                 m_EdgeConnector = new EdgeConnector<CeresEdge>(new CeresEdgeListener(ownerView.NodeOwner.GraphView)),
                 portName = ownerView.Binding.DisplayName.Value,
@@ -81,7 +81,7 @@ namespace Ceres.Editor.Graph
             };
             view.AddManipulator(view.m_EdgeConnector);
             if (ownerView.FieldResolver == null || view.direction == Direction.Output) return view;
-            
+
             // Add editor field
             view.EditorField = ownerView.FieldResolver.GetField(ownerView.NodeOwner.GraphView);
             view.m_ConnectorBox.parent.Add(view.EditorField);
@@ -110,7 +110,7 @@ namespace Ceres.Editor.Graph
         {
             return IsConnectable() && IsCompatibleTo(other);
         }
-        
+
         /// <summary>
         /// Whether this port's value is compatible to other port's value
         /// </summary>
@@ -130,17 +130,17 @@ namespace Ceres.Editor.Graph
         public void SetEditorFieldVisibility(bool isVisible)
         {
             if (EditorField == null) return;
-            
+
             if (isVisible)
             {
-                if(!m_ConnectorBox.parent.Contains(EditorField))
+                if (!m_ConnectorBox.parent.Contains(EditorField))
                 {
                     m_ConnectorBox.parent.Add(EditorField);
                 }
             }
             else
             {
-                if(m_ConnectorBox.parent.Contains(EditorField))
+                if (m_ConnectorBox.parent.Contains(EditorField))
                 {
                     m_ConnectorBox.parent.Remove(EditorField);
                 }
@@ -180,21 +180,21 @@ namespace Ceres.Editor.Graph
             Field,
             Parameter
         }
-        
+
         public FieldInfo PortFieldInfo { get; private set; }
-        
+
         public FieldInfo ResolvedFieldInfo { get; private set; }
-        
+
         public ParameterInfo ResolvedParameterInfo { get; private set; }
 
         public PortBindingType BindingType { get; private set; }
-        
+
         public ReactiveProperty<Type> DisplayType { get; }
 
         public ReactiveProperty<string> DisplayName { get; }
 
         public Type CeresPortType { get; private set; }
-        
+
         public ReactiveProperty<string> Tooltip { get; } = new(string.Empty);
 
         private const string DefaultOutputPortName = "Return Value";
@@ -210,7 +210,7 @@ namespace Ceres.Editor.Graph
                 Tooltip.OnNext(Tooltip.Value);
             });
         }
-        
+
         public void BindView(CeresPortElement portElement)
         {
             DisplayType.Subscribe(x =>
@@ -230,7 +230,7 @@ namespace Ceres.Editor.Graph
                 BindingType = PortBindingType.Field
             };
         }
-        
+
         public static CeresPortViewBinding RedirectField(CeresPortData portData, FieldInfo portFieldInfo, FieldInfo resolvedFieldInfo)
         {
             return new CeresPortViewBinding(CeresLabel.GetLabel(resolvedFieldInfo), portData.GetValueType())
@@ -240,19 +240,19 @@ namespace Ceres.Editor.Graph
                 BindingType = PortBindingType.Field
             };
         }
-        
+
         public static CeresPortViewBinding BindParameter(CeresPortData portData, FieldInfo portFieldInfo, ParameterInfo parameterInfo)
         {
             string displayName;
             /* Case when parameter is return parameter */
-            if(string.IsNullOrEmpty(parameterInfo.Name))
+            if (string.IsNullOrEmpty(parameterInfo.Name))
             {
                 displayName = DefaultOutputPortName;
             }
             else
             {
-               
-                displayName = CeresLabel.GetLabel(parameterInfo.Name); 
+
+                displayName = CeresLabel.GetLabel(parameterInfo.Name);
             }
             return new CeresPortViewBinding(displayName, portData.GetValueType())
             {
@@ -261,7 +261,7 @@ namespace Ceres.Editor.Graph
                 BindingType = PortBindingType.Parameter
             };
         }
-        
+
         public Direction GetDirection()
         {
             var inputPort = PortFieldInfo.GetCustomAttribute<InputPortAttribute>();
@@ -293,7 +293,7 @@ namespace Ceres.Editor.Graph
         {
             return CeresPort.IsCompatibleTo(DisplayType.Value, type);
         }
-        
+
         public bool IsRemappedFieldPort()
         {
             return BindingType == PortBindingType.Field && PortFieldInfo != ResolvedFieldInfo;
@@ -304,18 +304,18 @@ namespace Ceres.Editor.Graph
             if (BindingType == PortBindingType.Parameter) return true;
             return PortFieldInfo.GetCustomAttribute<HideInGraphEditorAttribute>() != null;
         }
-        
+
         public FieldInfo GetPortValueField()
         {
             if (BindingType != PortBindingType.Field) return null;
-            
+
             FieldInfo fieldInfo = ResolvedFieldInfo;
             var type = fieldInfo.FieldType;
             if (type.IsArray)
             {
                 type = type.GetElementType();
             }
-            while (!type!.IsGenericType && type.GetGenericTypeDefinition()!= typeof(CeresPort<>))
+            while (!type!.IsGenericType && type.GetGenericTypeDefinition() != typeof(CeresPort<>))
             {
                 type = type.BaseType;
             }
@@ -326,10 +326,10 @@ namespace Ceres.Editor.Graph
         public Type GetPortType()
         {
             if (BindingType != PortBindingType.Field) return null;
-            
+
             return ResolvedFieldInfo.FieldType;
         }
-        
+
         public string GetPortName()
         {
             return PortFieldInfo.Name;
@@ -337,8 +337,8 @@ namespace Ceres.Editor.Graph
 
         public void SetValue(CeresNode nodeInstance, CeresPort portInstance)
         {
-            if(BindingType != PortBindingType.Field) return;
-            
+            if (BindingType != PortBindingType.Field) return;
+
             ResolvedFieldInfo.SetValue(nodeInstance, portInstance);
         }
 
@@ -347,8 +347,8 @@ namespace Ceres.Editor.Graph
             return BindingType != PortBindingType.Field ? null : ResolvedFieldInfo.GetValue(nodeInstance);
         }
     }
-    
-        
+
+
     [Flags]
     public enum CeresPortViewFlags
     {
@@ -358,22 +358,22 @@ namespace Ceres.Editor.Graph
         /// </summary>
         ValidateConnection = 1
     }
-    
+
     /// <summary>
     /// Port view for <see cref="CeresNodeView"/>
     /// </summary>
     public class CeresPortView
     {
         public CeresPortViewBinding Binding { get; }
-        
+
         public CeresPortData PortData { get; private set; }
-        
+
         public CeresPortElement PortElement { get; }
-        
+
         public CeresNodeView NodeOwner { get; }
-        
+
         public IFieldResolver FieldResolver { get; }
-        
+
         public CeresPortViewFlags Flags { get; internal set; }
 
         public CeresPortView(CeresPortViewBinding binding, CeresNodeView nodeView, CeresPortData portData)
@@ -381,10 +381,10 @@ namespace Ceres.Editor.Graph
             PortData = portData;
             Binding = binding;
             NodeOwner = nodeView;
-            
+
             /* Create editor field */
             bool isInput = binding.GetDirection() == Direction.Input && !binding.IsRemappedFieldPort();
-            if(isInput && !binding.IsHideInGraphEditor() && IsPortSupportValueField(portData.GetValueType()))
+            if (isInput && !binding.IsHideInGraphEditor() && IsPortSupportValueField(portData.GetValueType()))
             {
                 FieldResolver = FieldResolverFactory.Get().Create(binding.GetPortValueField());
             }
@@ -392,7 +392,7 @@ namespace Ceres.Editor.Graph
             {
                 FieldResolver = null;
             }
-            
+
             /* Bind visual element */
             PortElement = CeresPortElement.Create(this);
             Binding.BindView(PortElement);
@@ -409,17 +409,17 @@ namespace Ceres.Editor.Graph
             {
                 return false;
             }
-            
+
             if (type == typeof(string)) return true;
             if (type.IsEnum) return true;
-            
+
             if (ReflectionUtility.IsSerializableNumericTypes(type)) return true;
             if (ReflectionUtility.IsUnityBuiltinTypes(type)) return true;
             if (type.IsSubclassOf(typeof(UObject)))
             {
                 return true;
             }
-            
+
             if (type.IsGenericType)
             {
                 if (type.GetGenericTypeDefinition() == typeof(SerializedType<>))
@@ -436,10 +436,10 @@ namespace Ceres.Editor.Graph
         public void Commit(CeresNode nodeInstance)
         {
             // Commit default value
-            if(PortElement.direction == Direction.Input && !Binding.IsRemappedFieldPort() && Binding.ResolvedFieldInfo != null)
+            if (PortElement.direction == Direction.Input && !Binding.IsRemappedFieldPort() && Binding.ResolvedFieldInfo != null)
             {
                 var fieldType = Binding.ResolvedFieldInfo.FieldType;
-                
+
                 // Special case for array
                 if (fieldType.IsArray)
                 {
@@ -457,26 +457,85 @@ namespace Ceres.Editor.Graph
                     Binding.SetValue(nodeInstance, portInstance);
                 }
             }
-            
+
             var connectionDataList = new List<PortConnectionData>();
-            
+
             // Skip input ports since outputs will save connection
-            if(PortElement.direction == Direction.Output)
+            if (PortElement.direction == Direction.Output)
             {
                 foreach (var connection in PortElement.connections)
                 {
                     var port = (CeresPortElement)connection.input;
-                    var connectionData = new PortConnectionData
+
+                    // Resolve final target ports, skipping relay nodes
+                    var finalPorts = ResolveTargetPortsThroughRelayNodes(port);
+
+                    foreach (var (finalPort, isFlattened) in finalPorts)
                     {
-                        portIndex = port.View.PortData.arrayIndex,
-                        portId = port.View.PortData.propertyName,
-                        nodeId = port.View.NodeOwner.Guid
-                    };
-                    connectionDataList.Add(connectionData);
+                        if (finalPort.View != null)
+                        {
+                            var connectionData = new PortConnectionData
+                            {
+                                portIndex = finalPort.View.PortData.arrayIndex,
+                                portId = finalPort.View.PortData.propertyName,
+                                nodeId = finalPort.View.NodeOwner.Guid,
+                                isFlattened = isFlattened
+                            };
+                            connectionDataList.Add(connectionData);
+                        }
+                    }
                 }
             }
             PortData.connections = connectionDataList.ToArray();
             nodeInstance.NodeData.AddPortData(PortData);
+        }
+
+        /// <summary>
+        /// Resolve target ports by traversing through relay nodes
+        /// </summary>
+        /// <param name="port">Starting port</param>
+        /// <returns>List of (final port, isFlattened) tuples. isFlattened is true if relay nodes were bypassed</returns>
+        private static List<(CeresPortElement port, bool isFlattened)> ResolveTargetPortsThroughRelayNodes(CeresPortElement port)
+        {
+            var result = new List<(CeresPortElement, bool)>();
+            var visited = new HashSet<CeresPortElement>();
+
+            void TraversePort(CeresPortElement currentPort, bool hasTraversedRelay)
+            {
+                // Prevent infinite loops
+                if (visited.Contains(currentPort))
+                    return;
+
+                visited.Add(currentPort);
+
+                // Check if this port belongs to a relay node
+                bool isRelayNodePort = currentPort.View == null &&
+                                       currentPort.node?.userData is RelayNodeView;
+
+                if (isRelayNodePort)
+                {
+                    // This is a relay node port, continue traversing through it
+                    var relayNodeView = currentPort.node.userData as RelayNodeView;
+
+                    // Get the output port of the relay node and traverse its connections
+                    var relayOutputPort = relayNodeView.GetOutputPort();
+                    foreach (var edge in relayOutputPort.connections)
+                    {
+                        if (edge.input is CeresPortElement nextPort)
+                        {
+                            TraversePort(nextPort, true); // Mark that we've traversed a relay
+                        }
+                    }
+                }
+                else if (currentPort.View != null)
+                {
+                    // This is a normal node port with a view, add it to results
+                    result.Add((currentPort, hasTraversedRelay));
+                }
+            }
+
+            TraversePort(port, false);
+            return result;
         }
 
         /// <summary>
@@ -485,13 +544,17 @@ namespace Ceres.Editor.Graph
         public void Connect()
         {
             // Skip input ports since outputs will connect it
-            if(PortElement.direction == Direction.Input) return;
-            
+            if (PortElement.direction == Direction.Input) return;
+
             foreach (var connection in PortData.connections)
             {
+                // Skip flattened connections (they will be restored by relay nodes)
+                if (connection.isFlattened)
+                    continue;
+
                 var node = NodeOwner.GraphView.FindNodeView<CeresNodeView>(connection.nodeId);
                 var port = node?.FindPortView(connection.portId, connection.portIndex);
-                if(port != null && port.PortElement.IsConnectable())
+                if (port != null && port.PortElement.IsConnectable())
                 {
                     NodeOwner.GraphView.ConnectPorts(port, this);
                 }
@@ -522,10 +585,11 @@ namespace Ceres.Editor.Graph
                     // ignored
                 }
             }
-            if(portData == null) return;
+
+            if (portData == null) return;
             PortData = portData;
         }
-        
+
         /// <summary>
         /// Set display name and default value from <see cref="ParameterInfo"/>
         /// </summary>
@@ -557,12 +621,12 @@ namespace Ceres.Editor.Graph
         {
             Binding.DisplayName.Value = CeresLabel.GetLabel(displayName);
         }
-        
+
         public void SetTooltip(string tooltip)
         {
             Binding.Tooltip.Value = tooltip;
         }
-        
+
         public void SetDisplayType(Type displayType)
         {
             Binding.DisplayType.Value = displayType;
@@ -584,7 +648,7 @@ namespace Ceres.Editor.Graph
             portData ??= CeresPortData.FromFieldInfo(fieldInfo);
             return new CeresPortView(CeresPortViewBinding.BindField(portData, fieldInfo), nodeView, portData);
         }
-        
+
         /// <summary>
         /// Create port view from redirected <see cref="FieldInfo"/>
         /// </summary>
@@ -593,7 +657,7 @@ namespace Ceres.Editor.Graph
         /// <param name="nodeView"></param>
         /// <param name="portData"></param>
         /// <returns></returns>
-        public static CeresPortView CreateInstance(FieldInfo portFieldInfo, FieldInfo valueFieldInfo, 
+        public static CeresPortView CreateInstance(FieldInfo portFieldInfo, FieldInfo valueFieldInfo,
             CeresNodeView nodeView, CeresPortData portData = null)
         {
             Assert.IsNotNull(portFieldInfo);
@@ -601,7 +665,7 @@ namespace Ceres.Editor.Graph
             portData ??= CeresPortData.FromFieldInfo(valueFieldInfo);
             return new CeresPortView(CeresPortViewBinding.RedirectField(portData, portFieldInfo, valueFieldInfo), nodeView, portData);
         }
-        
+
         /// <summary>
         /// Create port view from redirected <see cref="ParameterInfo"/>
         /// </summary>
@@ -610,7 +674,7 @@ namespace Ceres.Editor.Graph
         /// <param name="nodeView"></param>
         /// <param name="portData"></param>
         /// <returns></returns>
-        public static CeresPortView CreateInstance(FieldInfo portFieldInfo, ParameterInfo parameterInfo, 
+        public static CeresPortView CreateInstance(FieldInfo portFieldInfo, ParameterInfo parameterInfo,
             CeresNodeView nodeView, CeresPortData portData = null)
         {
             Assert.IsNotNull(portFieldInfo);
@@ -630,7 +694,7 @@ namespace Ceres.Editor.Graph
         {
             portView.PortElement.style.display = DisplayStyle.None;
         }
-        
+
         /// <summary>
         /// Show port in node view
         /// </summary>
@@ -639,7 +703,7 @@ namespace Ceres.Editor.Graph
         {
             portView.PortElement.style.display = DisplayStyle.Flex;
         }
-        
+
         /// <summary>
         /// Whether port is visible
         /// </summary>

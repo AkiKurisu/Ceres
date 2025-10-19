@@ -62,7 +62,18 @@ namespace Ceres.Editor.Graph
         /// <param name="portRight"></param>
         public static void ConnectPorts(this CeresGraphView graphView, CeresPortView portLeft, CeresPortView portRight)
         {
-            if (portLeft.PortElement.direction == Direction.Input)
+            graphView.ConnectPorts(portLeft.PortElement, portRight.PortElement);
+        }
+        
+        /// <summary>
+        /// Connect port to port by direction
+        /// </summary>
+        /// <param name="graphView"></param>
+        /// <param name="portLeft"></param>
+        /// <param name="portRight"></param>
+        public static void ConnectPorts(this CeresGraphView graphView, CeresPortElement portLeft, CeresPortElement portRight)
+        {
+            if (portLeft.direction == Direction.Input)
             {
                 graphView.ConnectPorts_Internal(portLeft, portRight);
             }
@@ -72,16 +83,16 @@ namespace Ceres.Editor.Graph
             }
         }
         
-        private static void ConnectPorts_Internal(this CeresGraphView graphView, CeresPortView input, CeresPortView output)
+        private static void ConnectPorts_Internal(this CeresGraphView graphView, CeresPortElement input, CeresPortElement output)
         {
             var edge = new CeresEdge
             {
-                input = input.PortElement,
-                output = output.PortElement,
+                input = input,
+                output = output,
             };
             graphView.AddElement(edge);
-            input.PortElement.Connect(edge);
-            output.PortElement.Connect(edge);
+            input.Connect(edge);
+            output.Connect(edge);
         }
         
         /// <summary>
@@ -91,7 +102,17 @@ namespace Ceres.Editor.Graph
         /// <param name="port"></param>
         public static void DisconnectPort(this CeresGraphView graphView, CeresPortView port)
         {
-            var edge = port.PortElement.connections.First();
+            graphView.DisconnectPort(port.PortElement);
+        }
+        
+        /// <summary>
+        /// Disconnect port first connection
+        /// </summary>
+        /// <param name="graphView"></param>
+        /// <param name="port"></param>
+        public static void DisconnectPort(this CeresGraphView graphView, CeresPortElement port)
+        {
+            var edge = port.connections.First();
             edge.input.Disconnect(edge);
             edge.output.Disconnect(edge);
             graphView.RemoveElement(edge);

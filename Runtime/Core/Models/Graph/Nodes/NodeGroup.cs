@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace Ceres.Graph
 {
+    /// <summary>
+    /// Metadata for editor node group
+    /// </summary>
     [Serializable]
     public class NodeGroup
     {

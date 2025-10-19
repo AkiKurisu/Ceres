@@ -22,14 +22,14 @@ namespace Ceres.Graph
         /// <remarks>Prefer use GameObject as container key since component is not persistent</remarks>
         /// <value></value>
         UObject Object { get; }
-        
+
         /// <summary>
         /// Set graph persistent data
         /// </summary>
         /// <param name="graphData"></param>
         void SetGraphData(CeresGraphData graphData);
     }
-    
+
     /// <summary>
     /// Ref to a node of graph
     /// </summary>
@@ -42,26 +42,26 @@ namespace Ceres.Graph
         {
             this.guid = guid;
         }
-        
+
         public CeresNode Get(CeresGraph graph)
         {
             return graph.FindNode(guid);
         }
-        
-        public T GetT<T>(CeresGraph graph) where T: CeresNode
+
+        public T GetT<T>(CeresGraph graph) where T : CeresNode
         {
             return graph.FindNode(guid) as T;
         }
-        
+
         public static implicit operator NodeReference(string guid)
         {
             return new NodeReference(guid);
         }
     }
-    
+
     /* Must set serializable to let managed reference work */
     [Serializable]
-    public class CeresGraph: IDisposable, IDisposableUnregister
+    public class CeresGraph : IDisposable, IDisposableUnregister
     {
         private BlackBoard _blackBoard;
 
@@ -75,22 +75,26 @@ namespace Ceres.Graph
                 return _blackBoard ??= BlackBoard.Create(variables, false);
             }
         }
-        
+
         private readonly HashSet<SharedVariable> _internalVariables = new();
-        
+
         private readonly HashSet<CeresPort> _internalPorts = new();
-        
+
         // ==================== Managed Reference =================== //
         /* Using SerializeReference to instantiate graph easily */
         [SerializeReference]
         public List<SharedVariable> variables;
 
-        [SerializeReference] 
+        [SerializeReference]
         public List<CeresNode> nodes;
         // ==================== Managed Reference =================== //
-        
+
+#if UNITY_EDITOR
         public List<NodeGroup> nodeGroups;
         
+        public List<RelayNode> relayNodes;
+#endif
+
         [NonSerialized]
         private int[][] _nodeDependencyPath;
 
@@ -100,9 +104,9 @@ namespace Ceres.Graph
 
         public CeresGraph()
         {
-            
+
         }
-        
+
         public CeresGraph(CeresGraphData graphData)
         {
             using (APIUpdateConfig.AutoScope())
@@ -123,21 +127,21 @@ namespace Ceres.Graph
         public virtual void Compile(CeresGraphCompiler compiler)
         {
             SetCompilerTarget(compiler);
-            
+
             /* Init variables to map blackboard */
             InitVariables(this);
-            
+
             /* Init ports while injecting dependency */
             InitPorts(this);
-                        
+
             /* Calculate dependency path if not cache */
             CollectDependencyPath(this);
-            
+
             CompileNodes(compiler);
-            
+
             BlackBoard.LinkToGlobal();
         }
-        
+
         /// <summary>
         /// Traverse the graph and init all shared variables automatically
         /// </summary>
@@ -156,7 +160,7 @@ namespace Ceres.Graph
                 }
             }
         }
-        
+
         /// <summary>
         /// Traverse the graph and init all ports automatically
         /// </summary>
@@ -188,14 +192,14 @@ namespace Ceres.Graph
         private void LinkPort(CeresPort port, string fieldName, CeresNode ownerNode)
         {
             var portData = ownerNode.NodeData.FindPortData(fieldName);
-            if(portData == null)
+            if (portData == null)
             {
                 CeresLogger.LogWarning($"Can not find port data for {fieldName}");
                 return;
             }
             LinkPort(port, ownerNode, portData);
         }
-        
+
         private void LinkPort(CeresPort port, string fieldName, int arrayIndex, CeresNode ownerNode)
         {
             var portData = ownerNode.NodeData.FindPortData(fieldName, arrayIndex);
@@ -213,7 +217,7 @@ namespace Ceres.Graph
             {
                 nodePort.Value = portData.connections[0].nodeId;
                 var targetNode = FindNode(portData.connections[0].nodeId);
-                if(targetNode == null)
+                if (targetNode == null)
                 {
                     CeresLogger.LogWarning($"Can not find connected node [{portData.connections[0].nodeId}] from port {portData.propertyName}");
                     return;
@@ -227,7 +231,7 @@ namespace Ceres.Graph
             foreach (var connection in portData.connections)
             {
                 var targetNode = FindNode(connection.nodeId);
-                if(targetNode == null)
+                if (targetNode == null)
                 {
                     CeresLogger.LogWarning($"Can not find connected node [{connection.nodeId}] from port {portData.propertyName}");
                     continue;
@@ -236,7 +240,7 @@ namespace Ceres.Graph
                 var targetPortData = targetNode.NodeData.FindPortData(connection.portId);
 
                 var targetPort = targetPortData?.GetPort(targetNode);
-                if(targetPort == null)
+                if (targetPort == null)
                 {
                     CeresLogger.LogWarning($"Can not find port {connection.portId}_{connection.portIndex} from node {targetNode.GetType().Name}");
                     continue;
@@ -256,11 +260,11 @@ namespace Ceres.Graph
                 }
             }
         }
-        
+
         protected static void CollectDependencyPath(CeresGraph graph)
         {
             var path = graph.GetDependencyPaths();
-            if(path == null || path.Length == 0)
+            if (path == null || path.Length == 0)
             {
                 graph.SetDependencyPath(TopologicalSort(graph, graph.nodes));
             }
@@ -290,7 +294,7 @@ namespace Ceres.Graph
         /// <param name="guid"></param>
         /// <typeparam name="TNode"></typeparam>
         /// <returns>Null if not exist</returns>
-        public TNode FindNode<TNode>(string guid) where TNode: CeresNode
+        public TNode FindNode<TNode>(string guid) where TNode : CeresNode
         {
             foreach (var node in nodes)
             {
@@ -330,7 +334,7 @@ namespace Ceres.Graph
         {
             _nodeDependencyPath = dependencyPath;
         }
-        
+
         /// <summary>
         /// Get graph node current dependency path if existed
         /// </summary>
@@ -339,7 +343,7 @@ namespace Ceres.Graph
         {
             return _nodeDependencyPath;
         }
-        
+
         /// <summary>
         /// Get dependency execution path for destination node with guid
         /// </summary>
@@ -349,7 +353,7 @@ namespace Ceres.Graph
         {
             return GetNodeDependencyPath(FindNode(guid));
         }
-        
+
         /// <summary>
         /// Get dependency execution path for destination node
         /// </summary>
@@ -359,7 +363,7 @@ namespace Ceres.Graph
         {
             return node == null ? null : _nodeDependencyPath[nodes.IndexOf(node)];
         }
-        
+
         /// <summary>
         /// Is graph on top level which means it can have subGraphs
         /// </summary>
@@ -368,14 +372,14 @@ namespace Ceres.Graph
         {
             return false;
         }
-        
+
         /// <summary>
         /// Find subGraph with specific type by name
         /// </summary>
         /// <param name="name"></param>
         /// <typeparam name="TGraph"></typeparam>
         /// <returns>Null if not exist</returns>
-        public TGraph FindSubGraph<TGraph>(string name) where TGraph: CeresGraph
+        public TGraph FindSubGraph<TGraph>(string name) where TGraph : CeresGraph
         {
             foreach (var subGraphSlot in SubGraphSlots)
             {
@@ -384,30 +388,30 @@ namespace Ceres.Graph
 
             return null;
         }
-        
+
         /// <summary>
         /// Try to add a subGraph slot with specific type validation
         /// </summary>
         /// <param name="slot"></param>
         /// <typeparam name="TGraph"></typeparam>
         /// <returns></returns>
-        public bool AddSubGraphSlot<TGraph>(CeresSubGraphSlot slot) where TGraph: CeresGraph
+        public bool AddSubGraphSlot<TGraph>(CeresSubGraphSlot slot) where TGraph : CeresGraph
         {
             foreach (var subGraphSlot in SubGraphSlots)
             {
                 if (subGraphSlot.Guid == slot.Guid && subGraphSlot.Graph is TGraph) return false;
             }
-            
+
             ArrayUtils.Add(ref SubGraphSlots, slot);
             return true;
         }
-        
+
         void IDisposableUnregister.Register(IDisposable disposable)
         {
             _disposables ??= ListPool<IDisposable>.Get();
             _disposables.Add(disposable);
         }
-        
+
         public virtual void Dispose()
         {
             foreach (var variable in variables)
@@ -451,7 +455,7 @@ namespace Ceres.Graph
             var visited = DictionaryPool<string, bool>.Get();
             try
             {
-                for(int i = 0; i < nodes.Count; ++i)
+                for (int i = 0; i < nodes.Count; ++i)
                 {
                     VisitDependency(i, nodes[i]);
                     paths[i] = sorted.ToArray();
@@ -491,13 +495,13 @@ namespace Ceres.Graph
                 }
 
                 visited[current.Guid] = false;
-                
-                if(!sorted.Contains(nodeIndex) && nodeIndex != destinationIndex)
+
+                if (!sorted.Contains(nodeIndex) && nodeIndex != destinationIndex)
                     sorted.Add(nodeIndex);
             }
         }
     }
-    
+
     /// <summary>
     /// Metadata for <see cref="CeresGraph"/>
     /// </summary>
@@ -505,11 +509,15 @@ namespace Ceres.Graph
     public class CeresGraphData
     {
         public SharedVariableData[] variableData;
-        
+
         public CeresNodeData[] nodeData;
-        
+
+#if UNITY_EDITOR
         public NodeGroup[] nodeGroups;
-        
+
+        public RelayNode[] relayNodes;
+#endif
+
         /// <summary>
         /// Build graph from data
         /// </summary>
@@ -534,7 +542,10 @@ namespace Ceres.Graph
             // Apply instances
             graph.variables = variables.ToList();
             graph.nodes = nodes.ToList();
+#if UNITY_EDITOR
             graph.nodeGroups = nodeGroups?.ToList() ?? new List<NodeGroup>();
+            graph.relayNodes = relayNodes?.ToList() ?? new List<RelayNode>();
+#endif
         }
 
         protected void RestoreNode(int index, CeresNode[] nodes)
@@ -577,7 +588,7 @@ namespace Ceres.Graph
                     variables[index] = variableData[index].Deserialize(redirectedType);
                 }
             }
-            
+
             /* Not support generic instance variable */
             variables[index] ??= variableData[index].Deserialize(variableData![index].variableType.ToType());
         }
@@ -592,7 +603,7 @@ namespace Ceres.Graph
             Assert.IsTrue((bool)APIUpdateConfig.Current);
             return APIUpdateConfig.Current.RedirectNode(nodeType);
         }
-        
+
         /// <summary>
         /// Redirect variable type from <see cref="ManagedReferenceType"/>, default using redirectors from <see cref="APIUpdateConfig"/>
         /// </summary>
@@ -603,7 +614,7 @@ namespace Ceres.Graph
             Assert.IsTrue((bool)APIUpdateConfig.Current);
             return APIUpdateConfig.Current.RedirectVariable(nodeType);
         }
-        
+
         /// <summary>
         /// Redirect serialized type from <see cref="SerializedType"/>, default using redirectors from <see cref="APIUpdateConfig"/>
         /// </summary>
@@ -650,7 +661,7 @@ namespace Ceres.Graph
                 nodes[index] = nodeData[index].Deserialize(genericType);
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 var parametersString = string.Join(",", genericParameters);
                 CeresLogger.LogWarning($"Can not create generic node instance from {nodeData[index].nodeType} [{parametersString}].\n{e}");
@@ -667,7 +678,7 @@ namespace Ceres.Graph
                 return type;
             }
         }
-        
+
         private bool CreateNodeInstance(int index, CeresNode[] nodes)
         {
             try
@@ -676,7 +687,7 @@ namespace Ceres.Graph
                 nodes[index] = nodeData[index].Deserialize(nodeType);
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 CeresLogger.LogWarning($"Can not create node instance from {nodeData[index].nodeType}, {e}");
                 return false;
@@ -688,8 +699,8 @@ namespace Ceres.Graph
             // use internal serialization to solve UObject hard reference
             return JsonUtility.FromJson<CeresGraphData>(JsonUtility.ToJson(this));
         }
-        
-        public T CloneT<T>() where T: CeresGraphData
+
+        public T CloneT<T>() where T : CeresGraphData
         {
             // use internal serialization to solve UObject hard reference
             return JsonUtility.FromJson<T>(JsonUtility.ToJson(this));
@@ -733,7 +744,7 @@ namespace Ceres.Graph
         /// </summary>
         /// <param name="serializedData"></param>
         /// <returns></returns>
-        public static T FromJson<T>(string serializedData) where T: CeresGraphData
+        public static T FromJson<T>(string serializedData) where T : CeresGraphData
         {
             return JsonUtility.FromJson<T>(serializedData);
         }
@@ -743,26 +754,26 @@ namespace Ceres.Graph
     /// Linked graph data for nodes implement <see cref="ILinkedNode"/>
     /// </summary>
     [Serializable]
-    public class LinkedGraphData: CeresGraphData
+    public class LinkedGraphData : CeresGraphData
     {
         [Serializable]
         public class Edge
         {
             public int[] children;
         }
-                
+
         public Edge[] edges;
 
         public LinkedGraphData()
         {
-       
+
         }
-        
+
         public LinkedGraphData(CeresGraph graph)
         {
             ReadFromLinkedNodes(graph);
         }
-        
+
         public override void BuildGraph(CeresGraph graph)
         {
             base.BuildGraph(graph);
@@ -771,7 +782,7 @@ namespace Ceres.Graph
             {
                 // connect if it can set linked child
                 if (graph.nodes[i] is not ILinkedNode linkedNode) continue;
-                
+
                 var edge = edges![i];
                 foreach (var childIndex in edge.children)
                 {
@@ -782,7 +793,7 @@ namespace Ceres.Graph
                 }
             }
         }
-        
+
         /// <summary>
         /// Read graph data from iterating graph nodes, only worked when node implement <see cref="ILinkedNode"/>
         /// </summary>
@@ -807,7 +818,10 @@ namespace Ceres.Graph
             }
             /* Must serialize node data after clear references */
             nodeData = nodes.Select(node => node.GetSerializedData()).ToArray();
+#if UNITY_EDITOR
             nodeGroups = graph.nodeGroups.ToArray();
+            relayNodes = graph.relayNodes.ToArray();
+#endif
         }
     }
 
@@ -815,7 +829,7 @@ namespace Ceres.Graph
     /// Identifier for <see cref="ICeresGraphContainer"/> instance
     /// </summary>
     [Serializable]
-    public struct CeresGraphIdentifier: IEquatable<CeresGraphIdentifier>
+    public struct CeresGraphIdentifier : IEquatable<CeresGraphIdentifier>
     {
         public UObject boundObject;
 
@@ -835,13 +849,13 @@ namespace Ceres.Graph
         {
             return boundObject && !string.IsNullOrEmpty(containerType);
         }
-        
+
         /// <summary>
         /// Get <see cref="ICeresGraphContainer"/> from identifier
         /// </summary>
         /// <typeparam name="TContainer"></typeparam>
         /// <returns></returns>
-        public TContainer GetContainer<TContainer>() where TContainer: class, ICeresGraphContainer
+        public TContainer GetContainer<TContainer>() where TContainer : class, ICeresGraphContainer
         {
             try
             {
@@ -878,7 +892,7 @@ namespace Ceres.Graph
             return $"Object {boundObject} Type {SerializedType.GetTypeName(containerType)}";
         }
     }
-    
+
     public static class CeresGraphContainerExtensions
     {
         /// <summary>

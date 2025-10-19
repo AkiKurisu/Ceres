@@ -9,24 +9,24 @@ using USearchWindow = UnityEditor.Experimental.GraphView.SearchWindow;
 
 namespace Ceres.Editor.Graph
 {
-    public abstract class CeresGraphView: GraphView, IVariableSource
+    public abstract class CeresGraphView : GraphView, IVariableSource
     {
         public List<SharedVariable> SharedVariables { get; } = new();
-        
+
         public CeresGraphEditorWindow EditorWindow { get; set; }
-        
+
         public CeresBlackboard Blackboard { get; private set; }
-        
+
         public NodeGroupHandler NodeGroupHandler { get; private set; }
 
         public ContextualMenuRegistry ContextualMenuRegistry { get; } = new();
 
         public HashSet<ICeresNodeView> NodeViews { get; } = new();
-        
+
         protected CeresNodeSearchWindow SearchWindow { get; private set; }
 
         private static readonly Dictionary<string, StyleSheet> StyleSheetsCache = new();
-        
+
         private static readonly Dictionary<string, VisualTreeAsset> VisualTreeAssetsCache = new();
 
         private bool _dirtyFlag;
@@ -59,16 +59,16 @@ namespace Ceres.Editor.Graph
         protected virtual void OnDragDropObjectPerform(UObject data, Vector3 mousePosition)
         {
         }
-        
-        protected virtual void OnDragDropElementPerform(List<ISelectable> selectables,GraphElement graphElement, Vector3 mousePosition)
+
+        protected virtual void OnDragDropElementPerform(List<ISelectable> selectables, GraphElement graphElement, Vector3 mousePosition)
         {
         }
-        
+
         protected virtual bool CanPasteSerializedGraph(string serializedData)
         {
             return true;
         }
-        
+
         protected virtual string OnCopySerializedGraph(IEnumerable<GraphElement> elements)
         {
             return string.Empty;
@@ -76,7 +76,7 @@ namespace Ceres.Editor.Graph
 
         protected virtual void OnPasteSerializedGraph(string operationName, string serializedData)
         {
-            
+
         }
 
         protected virtual GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
@@ -104,7 +104,7 @@ namespace Ceres.Editor.Graph
         {
             AddBlackboard(blackboard, new Rect(20, 70, 250, 400));
         }
-        
+
         /// <summary>
         /// Add custom blackboard to graph
         /// </summary>
@@ -125,7 +125,7 @@ namespace Ceres.Editor.Graph
         {
             SearchWindow = ScriptableObject.CreateInstance<T>();
         }
-        
+
         /// <summary>
         /// Add custom <see cref="NodeGroupHandler"/> to graph
         /// </summary>
@@ -134,7 +134,7 @@ namespace Ceres.Editor.Graph
         {
             UnregisterCallback<KeyDownEvent>(OnGroupKeyDown);
             NodeGroupHandler = groupHandler;
-            if(groupHandler != null)
+            if (groupHandler != null)
             {
                 RegisterCallback<KeyDownEvent>(OnGroupKeyDown);
             }
@@ -162,7 +162,7 @@ namespace Ceres.Editor.Graph
         {
             styleSheets.Add(GetOrLoadStyleSheet(resourcePath));
         }
-        
+
         /// <summary>
         /// Get or load custom <see cref="StyleSheet"/>
         /// </summary>
@@ -178,7 +178,7 @@ namespace Ceres.Editor.Graph
 
             return styleSheet;
         }
-        
+
         /// <summary>
         /// Get or load custom <see cref="VisualTreeAsset"/>
         /// </summary>
@@ -194,7 +194,7 @@ namespace Ceres.Editor.Graph
 
             return visualTreeAsset;
         }
-        
+
         /// <summary>
         /// Add custom node view to graph
         /// </summary>
@@ -204,7 +204,7 @@ namespace Ceres.Editor.Graph
             NodeViews.Add(nodeView);
             AddElement(nodeView.NodeElement);
             SetDirty();
-            
+
             /* Sync node view lifetime scope with NodeElement */
             nodeView.NodeElement.RegisterCallback<DetachFromPanelEvent>(_ =>
             {
@@ -214,6 +214,47 @@ namespace Ceres.Editor.Graph
             {
                 NodeViews.Add(nodeView);
             });
+        }
+
+        /// <summary>
+        /// Insert a relay node between two connected ports
+        /// </summary>
+        /// <param name="inputPort">Input port of the original edge</param>
+        /// <param name="outputPort">Output port of the original edge</param>
+        /// <param name="position">Position to place the relay node</param>
+        public virtual void InsertRelayNode(CeresPortElement inputPort, CeresPortElement outputPort, Vector2 position)
+        {
+            if (inputPort == null || outputPort == null)
+                return;
+
+            // Get the port type from the existing connection
+            var portType = outputPort.portType;
+
+            // Create relay node data
+            var relayData = new RelayNode
+            {
+                guid = System.Guid.NewGuid().ToString(),
+                graphPosition = new Rect(position, new Vector2(40, 20))
+            };
+
+            // Create relay node view
+            var relayView = new RelayNodeView(this, relayData, portType);
+            AddElement(relayView.NodeElement);
+
+            // Find and remove the original edge
+            var originalEdge = outputPort.connections.FirstOrDefault(e => e.input == inputPort);
+            if (originalEdge != null)
+            {
+                RemoveElement(originalEdge);
+                inputPort.Disconnect(originalEdge);
+                outputPort.Disconnect(originalEdge);
+            }
+
+            // Create new edges: output -> relay -> input
+            this.ConnectPorts(outputPort, relayView.GetInputPort());
+            this.ConnectPorts(relayView.GetOutputPort(), inputPort);
+            
+            SetDirty();
         }
 
         /// <summary>
@@ -231,7 +272,7 @@ namespace Ceres.Editor.Graph
         /// </summary>
         /// <param name="guid"></param>
         /// <returns></returns>
-        public TNodeView FindNodeView<TNodeView>(string guid) where TNodeView: class, ICeresNodeView
+        public TNodeView FindNodeView<TNodeView>(string guid) where TNodeView : class, ICeresNodeView
         {
             return NodeViews.FirstOrDefault(x => x.Guid == guid) as TNodeView;
         }
@@ -263,9 +304,9 @@ namespace Ceres.Editor.Graph
         /// <param name="duplicateWhenConflict"></param>
         public virtual void AddSharedVariables(List<SharedVariable> variables, bool duplicateWhenConflict)
         {
-            if(Blackboard == null) return;
+            if (Blackboard == null) return;
             foreach (var variable in variables.Where(variable => variable != null &&
-                                                                 (duplicateWhenConflict 
+                                                                 (duplicateWhenConflict
                                                                   || SharedVariables.All(x => x.Name != variable.Name))))
             {
                 // In play mode, use original variable to observe value change
@@ -291,7 +332,7 @@ namespace Ceres.Editor.Graph
             var searchWindowContext = new SearchWindowContext(screenPosition, SearchWindow.Width, SearchWindow.Height);
             USearchWindow.Open(searchWindowContext, SearchWindow);
         }
-        
+
         /// <summary>
         /// Open node search window with input port
         /// </summary>
@@ -315,7 +356,7 @@ namespace Ceres.Editor.Graph
         {
             _dirtyFlag = true;
         }
-        
+
         /// <summary>
         /// Clear graph view's dirty flag.
         /// </summary>
@@ -323,7 +364,7 @@ namespace Ceres.Editor.Graph
         {
             _dirtyFlag = false;
         }
-        
+
         /// <summary>
         /// Whether graph view is dirty
         /// </summary>
@@ -345,7 +386,7 @@ namespace Ceres.Editor.Graph
         /// </summary>
         protected virtual void OnDestroy()
         {
-            
+
         }
     }
 }
