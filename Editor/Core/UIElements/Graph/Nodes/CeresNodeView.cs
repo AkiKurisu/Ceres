@@ -20,6 +20,7 @@ namespace Ceres.Editor.Graph
         /// Graph scope node view guid
         /// </summary>
         public string Guid { get; }
+        
         /// <summary>
         /// Node visual element of this view
         /// </summary>

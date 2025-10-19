@@ -29,14 +29,14 @@ namespace Ceres.Editor.Graph.Flow
         public FlowGraphEditorWindow FlowGraphEditorWindow { get; }
 
         private FlowGraphDebugTracker _tracker;
-        
+
         private bool _isEditingSubGraph;
 
         /// <summary>
         /// Bound graph verified name
         /// </summary>
         public string GraphName { get; internal set; }
-        
+
         public FlowGraphView(FlowGraphEditorWindow editorWindow) : base(editorWindow)
         {
             FlowGraphEditorWindow = editorWindow;
@@ -74,7 +74,7 @@ namespace Ceres.Editor.Graph.Flow
                 schedule.Execute(() => FrameSelection()).ExecuteLater(10);
                 return false;
             }
-            
+
             var editableData = editorObject.GraphData;
             var flowGraphData = new CopyPasteGraph(this, graphElements).SerializeGraph();
             if (_isEditingSubGraph)
@@ -134,7 +134,7 @@ namespace Ceres.Editor.Graph.Flow
             GraphName = string.Empty;
             ClearDirty();
         }
-        
+
         public void DeserializeSubGraph(FlowGraphEditorObject editorObject, string slotName)
         {
             var subGraph = editorObject.GraphInstance.FindSubGraph<FlowGraph>(slotName);
@@ -186,15 +186,15 @@ namespace Ceres.Editor.Graph.Flow
             {
                 return;
             }
-            
+
             foreach (var selectable in selectables)
             {
                 if (selectable is not BlackboardField blackboardField) continue;
-                
-                
+
+
                 var variableName = blackboardField.text;
                 var variable = Blackboard.GetSharedVariable(variableName);
-                if(variable == null) continue;
+                if (variable == null) continue;
                 Rect newRect = new(contentViewContainer.WorldToLocal(mousePosition), new Vector2(100, 100));
 
                 if (variable is LocalFunction customFunction)
@@ -220,7 +220,7 @@ namespace Ceres.Editor.Graph.Flow
                     }
                     return;
                 }
-                
+
 
                 var menu = new GenericMenu();
                 menu.AddItem(new GUIContent($"Get {variableName}"), false, () =>
@@ -257,7 +257,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             _tracker.NextFrame();
         }
-        
+
         public void NextBreakpoint()
         {
             _tracker.NextBreakpoint();
@@ -273,19 +273,19 @@ namespace Ceres.Editor.Graph.Flow
             _tracker?.Dispose();
             _tracker = null;
         }
-        
+
         private class CopyPasteGraph
         {
             private readonly FlowGraphView _graphView;
 
             private readonly GraphElement[] _graphElements;
-            
+
             public CopyPasteGraph(FlowGraphView flowGraphView, IEnumerable<GraphElement> elements)
             {
                 _graphView = flowGraphView;
                 _graphElements = elements.ToArray();
             }
-            
+
             /// <summary>
             /// Serialize <see cref="FlowGraphView"/> to <see cref="FlowGraphData"/>
             /// </summary>
@@ -293,10 +293,20 @@ namespace Ceres.Editor.Graph.Flow
             /// <returns></returns>
             public FlowGraphData SerializeGraph(bool copyPaste = false)
             {
-                var serializableNodes = _graphElements.OfType<ExecutableNodeElement>().ToArray();
-                var nodeGroups = _graphElements.OfType<ExecutableNodeGroup>().ToArray();
-                var idMap = serializableNodes.ToDictionary(nodeElement => nodeElement, nodeElement => nodeElement.View.Guid);
-                
+                var serializableNodes = _graphElements
+                    .OfType<ExecutableNodeElement>()
+                    .ToArray();
+                var nodeGroups = _graphElements
+                    .OfType<ExecutableNodeGroup>().ToArray();
+                var idMap = serializableNodes
+                    .ToDictionary(nodeElement => nodeElement, nodeElement => nodeElement.View.Guid);
+
+                /* Collect relay nodes */
+                var relayNodes = _graphView.nodes
+                    .Where(n => n.userData is RelayNodeView)
+                    .Select(n => n.userData as RelayNodeView)
+                    .ToList();
+
                 /* Need assign new guid before serialization */
                 if (copyPaste)
                 {
@@ -304,9 +314,16 @@ namespace Ceres.Editor.Graph.Flow
                     {
                         nodeElement.View.Guid = Guid.NewGuid().ToString();
                     }
+                    foreach (var relay in relayNodes)
+                    {
+                        relay.Guid = Guid.NewGuid().ToString();
+                    }
                 }
-                
-                var nodeInstances = serializableNodes.Select(x => (CeresNode)x.View.CompileNode()).ToArray();
+
+                /* Record relay node connections BEFORE CompileNode flattens them */
+                var relayNodeData = relayNodes.Select(view => view.Compile()).ToArray();
+
+                var nodeInstances = serializableNodes.Select(element => (CeresNode)element.View.CompileNode()).ToArray();
                 var nodeGroupData = new List<NodeGroup>();
                 foreach (var group in nodeGroups)
                 {
@@ -328,10 +345,11 @@ namespace Ceres.Editor.Graph.Flow
                     var flowGraphData = new FlowGraphData
                     {
                         nodeData = nodeInstances.Select(LinkAndGetNodeSerializedData).ToArray(),
-                        variableData = _graphView.SharedVariables.Where(x => x is not LocalFunction)
-                                                                .Select(x => x.GetSerializedData())
+                        variableData = _graphView.SharedVariables.Where(variable => variable is not LocalFunction)
+                                                                .Select(variable => variable.GetSerializedData())
                                                                 .ToArray(),
-                        nodeGroups = nodeGroupData.ToArray()
+                        nodeGroups = nodeGroupData.ToArray(),
+                        relayNodes = relayNodeData
                     };
                     flowGraphData.PreSerialization();
                     // Save graph linker data
@@ -340,7 +358,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
 
             }
-            
+
             private static CeresNodeData LinkAndGetNodeSerializedData(CeresNode node)
             {
                 var data = node.GetSerializedData();
@@ -350,7 +368,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 return data;
             }
-            
+
             /// <summary>
             /// Serialize <see cref="FlowGraphView"/> from <see cref="FlowGraphData"/>
             /// </summary>
@@ -368,7 +386,7 @@ namespace Ceres.Editor.Graph.Flow
                         rect.y += 30;
                         nodeInstance.GraphPosition = rect;
                     }
-                    
+
                     foreach (var nodeGroup in flowGraph.nodeGroups)
                     {
                         var rect = nodeGroup.position;
@@ -377,10 +395,10 @@ namespace Ceres.Editor.Graph.Flow
                         nodeGroup.position = rect;
                     }
                 }
-                
+
                 // Restore variables
                 _graphView.AddSharedVariables(flowGraph.variables, !copyPaste);
-                
+
                 // Restore node views
                 foreach (var nodeInstance in flowGraph.nodes)
                 {
@@ -407,7 +425,7 @@ namespace Ceres.Editor.Graph.Flow
                         newElements.Add(nodeView!.NodeElement);
                     }
                 }
-                foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(x=> x.View).ToArray())
+                foreach (var nodeView in newElements.OfType<ExecutableNodeElement>().Select(element => element.View).ToArray())
                 {
                     // Restore edges
                     nodeView.ReconnectEdges();
@@ -417,20 +435,128 @@ namespace Ceres.Editor.Graph.Flow
                         nodeView.AddBreakpoint();
                     }
                 }
-            
+
                 // Restore node groups
                 newElements.AddRange(_graphView.NodeGroupHandler.RestoreGroups(flowGraph.nodeGroups));
+
+                // Restore relay nodes
+                RestoreRelayNodes(flowGraph.relayNodes, newElements, copyPaste);
 
                 if (copyPaste)
                 {
                     _graphView.ClearSelection();
-                    newElements.ForEach(x=> _graphView.AddToSelection(x));
+                    newElements.ForEach(x => _graphView.AddToSelection(x));
                     _graphView.schedule.Execute(() => _graphView.FrameSelection()).ExecuteLater(10);
+                }
+            }
+
+            /// <summary>
+            /// Restore relay nodes from serialized data
+            /// </summary>
+            private void RestoreRelayNodes(List<RelayNode> relayNodeData, List<GraphElement> newElements, bool copyPaste)
+            {
+                if (relayNodeData == null || relayNodeData.Count == 0)
+                    return;
+
+                // Create all relay nodes with saved port type
+                var relayViews = new List<RelayNodeView>();
+                foreach (var relayData in relayNodeData)
+                {
+                    // Adjust position for copy-paste
+                    if (copyPaste)
+                    {
+                        var rect = relayData.graphPosition;
+                        rect.x += 30;
+                        rect.y += 30;
+                        relayData.graphPosition = rect;
+                    }
+
+                    // Create relay node view with saved port type
+                    var portType = relayData.GetPortType();
+                    var relayView = new RelayNodeView(_graphView, relayData, portType);
+                    _graphView.AddElement(relayView.NodeElement);
+                    newElements.Add(relayView.NodeElement);
+                    relayViews.Add(relayView);
+                }
+
+                // Rebuild connections
+                for (int i = 0; i < relayViews.Count; i++)
+                {
+                    RestoreRelayConnections(relayViews[i], relayNodeData[i]);
+                }
+            }
+
+            /// <summary>
+            /// Restore relay node connections in the editor
+            /// </summary>
+            private void RestoreRelayConnections(RelayNodeView relay, RelayNode data)
+            {
+                var inputPort = relay.GetInputPort();
+                var outputPort = relay.GetOutputPort();
+
+                // Connect inputs
+                foreach (var input in data.inputs)
+                {
+                    CeresPortElement sourcePortElement = null;
+
+                    if (input.connectionType == RelayConnection.ConnectionType.ExecutableNode)
+                    {
+                        // Find ExecutableNode's port
+                        var sourceNode = _graphView.FindNodeView<ExecutableNodeView>(input.nodeId);
+                        var sourcePort = sourceNode?.FindPortView(input.portId, input.portIndex);
+                        sourcePortElement = sourcePort?.PortElement;
+                    }
+                    else if (input.connectionType == RelayConnection.ConnectionType.RelayNode)
+                    {
+                        // Find RelayNode's output port
+                        var sourceRelayNode = _graphView.nodes
+                            .FirstOrDefault(n => n.userData is RelayNodeView rv && rv.Guid == input.nodeId);
+                        if (sourceRelayNode?.userData is RelayNodeView sourceRelay)
+                        {
+                            sourcePortElement = sourceRelay.GetOutputPort();
+                        }
+                    }
+
+                    // Create connection to this relay's input
+                    if (sourcePortElement != null)
+                    {
+                        _graphView.ConnectPorts(sourcePortElement, inputPort);
+                    }
+                }
+
+                // Connect outputs
+                foreach (var output in data.outputs)
+                {
+                    CeresPortElement targetPortElement = null;
+
+                    if (output.connectionType == RelayConnection.ConnectionType.ExecutableNode)
+                    {
+                        // Find ExecutableNode's port
+                        var targetNode = _graphView.FindNodeView<ExecutableNodeView>(output.nodeId);
+                        var targetPort = targetNode?.FindPortView(output.portId, output.portIndex);
+                        targetPortElement = targetPort?.PortElement;
+                    }
+                    else if (output.connectionType == RelayConnection.ConnectionType.RelayNode)
+                    {
+                        // Find RelayNode's input port
+                        var targetRelayNode = _graphView.nodes
+                            .FirstOrDefault(n => n.userData is RelayNodeView rv && rv.Guid == output.nodeId);
+                        if (targetRelayNode?.userData is RelayNodeView targetRelay)
+                        {
+                            targetPortElement = targetRelay.GetInputPort();
+                        }
+                    }
+
+                    // Create connection from this relay's output
+                    if (targetPortElement != null)
+                    {
+                        _graphView.ConnectPorts(outputPort, targetPortElement);
+                    }
                 }
             }
         }
 
-        private class FlowGraphDebugTracker: FlowGraphTracker
+        private class FlowGraphDebugTracker : FlowGraphTracker
         {
             private FlowGraphView _graphView;
 
@@ -443,13 +569,13 @@ namespace Ceres.Editor.Graph.Flow
             private bool _breakOnNext;
 
             private readonly FlowGraphDebugState _debugState;
-            
+
             public FlowGraphDebugTracker(FlowGraphView graphView)
             {
                 _graphView = graphView;
                 _debugState = graphView.DebugState;
             }
-            
+
             public override async UniTask EnterNode(ExecutableNode node)
             {
                 _currentView = (ExecutableNodeView)_graphView.FindNodeView(node.Guid);

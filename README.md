@@ -1,6 +1,7 @@
 <div align="center">
 
 # Ceres
+
 Powerful visual scripting toolkit for Unity.
 
 ![banner](./Documentation~/resources/Images/ceres_banner.png)
@@ -20,6 +21,7 @@ Powerful visual scripting toolkit for Unity.
 - [Advanced Features](#advanced-features)
 - [Type Preservation](#type-preservation)
 - [Code Generation](#code-generation)
+- [Performance](#performance)
 - [Documentation](#documentation)
 - [Implementation](#implementation)
 - [Articles](#articles)
@@ -47,9 +49,9 @@ Use git URL to download package by Unity Package Manager ```https://github.com/A
 - Optimized runtime performance
 - IL2CPP compatible
 
-## Platform
+## Platforms
 
-Unity 2022.3 LTS or later.
+Unity 2022.3 LTS or later, compatible with Unity 6.
 
 ## Core Concepts
 
@@ -320,6 +322,17 @@ Analyzes partial classes annotated with `GenerateFlowAttribute` and generates th
 
 ### IL Post Process (ILPP)
 Uses ILPP to emit IL for initialization logic of `CeresNode` and methods annotated with `ImplementableEventAttribute` to enhance runtime performance.
+
+## Performance
+
+Ceres provides a variety of performance enhancements to improve the runtime performance of your visual scripts.
+
+### Flat Relay Nodes
+Relay nodes are completely flattened during serialization. At runtime, connections bypass relay nodes entirely, connecting source nodes directly to target nodes.
+
+![Relay Nodes](./Documentation~/resources/Images/relay_node.png)
+
+The picture above shows relay nodes do not effect execution flow (only forward execution three times for `Start`, `Find GameObject`, and `Log String`).
 
 ## Documentation
 
