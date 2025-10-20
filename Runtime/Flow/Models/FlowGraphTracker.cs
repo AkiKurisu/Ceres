@@ -63,11 +63,19 @@ namespace Ceres.Graph.Flow
             return new TrackerAutoScope(this);
         }
         
+        /// <summary>
+        /// Get current active <see cref="FlowGraphTracker"/>
+        /// </summary>
+        /// <returns></returns>
         public static FlowGraphTracker GetActiveTracker()
         {
             return _activeTracer ?? Default;
         }
 
+        /// <summary>
+        /// Set default <see cref="FlowGraphTracker"/>
+        /// </summary>
+        /// <param name="tracker"></param>
         internal static void SetDefaultTracker(FlowGraphTracker tracker)
         {
             Default = tracker;

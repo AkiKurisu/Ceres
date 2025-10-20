@@ -28,7 +28,7 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         public FlowGraphEditorWindow FlowGraphEditorWindow { get; }
 
-        private FlowGraphDebugTracker _tracker;
+        private FlowGraphDebugger _debugger;
 
         private bool _isEditingSubGraph;
 
@@ -45,7 +45,7 @@ namespace Ceres.Editor.Graph.Flow
             AddSearchWindow<ExecutableNodeSearchWindow>();
             AddNodeGroupHandler(new ExecutableNodeGroupHandler(this));
             AddBlackboard(new FlowBlackboard(this));
-            FlowGraphTracker.SetDefaultTracker(_tracker = new FlowGraphDebugTracker(this));
+            FlowGraphTracker.SetDefaultTracker(_debugger = new FlowGraphDebugger(this));
             RegisterCallback<KeyDownEvent>(HandleKeyBoardCommands);
         }
 
@@ -250,17 +250,17 @@ namespace Ceres.Editor.Graph.Flow
 
         public bool IsPaused()
         {
-            return _tracker?.IsPaused ?? false;
+            return _debugger?.IsPaused ?? false;
         }
 
         public void NextFrame()
         {
-            _tracker.NextFrame();
+            _debugger.NextFrame();
         }
 
         public void NextBreakpoint()
         {
-            _tracker.NextBreakpoint();
+            _debugger.NextBreakpoint();
         }
 
         protected override void OnDestroy()
@@ -270,8 +270,8 @@ namespace Ceres.Editor.Graph.Flow
 
         public void Dispose()
         {
-            _tracker?.Dispose();
-            _tracker = null;
+            _debugger?.Dispose();
+            _debugger = null;
         }
 
         private class CopyPasteGraph
@@ -499,9 +499,9 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     CeresPortElement sourcePortElement = null;
 
-                    if (input.connectionType == RelayConnection.ConnectionType.ExecutableNode)
+                    if (input.connectionType == RelayConnection.ConnectionType.CeresNode)
                     {
-                        // Find ExecutableNode's port
+                        // Find CeresNode's port
                         var sourceNode = _graphView.FindNodeView<ExecutableNodeView>(input.nodeId);
                         var sourcePort = sourceNode?.FindPortView(input.portId, input.portIndex);
                         sourcePortElement = sourcePort?.PortElement;
@@ -529,7 +529,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     CeresPortElement targetPortElement = null;
 
-                    if (output.connectionType == RelayConnection.ConnectionType.ExecutableNode)
+                    if (output.connectionType == RelayConnection.ConnectionType.CeresNode)
                     {
                         // Find ExecutableNode's port
                         var targetNode = _graphView.FindNodeView<ExecutableNodeView>(output.nodeId);
@@ -556,21 +556,35 @@ namespace Ceres.Editor.Graph.Flow
             }
         }
 
-        private class FlowGraphDebugTracker : FlowGraphTracker
+        private class FlowGraphDebugger : FlowGraphTracker
         {
             private FlowGraphView _graphView;
 
-            public bool IsPaused { get; private set; }
+            public bool IsPaused
+            {
+                get => _debugState.isPaused;
+                private set => _debugState.isPaused = value;
+            }
 
             private bool _isDestroyed;
 
             private ExecutableNodeView _currentView;
+            
+            private ExecutableNodeView CurrentView
+            {
+                get => _currentView;
+                set
+                {
+                    _currentView = value;
+                    _debugState.currentNode = _currentView?.Guid ?? string.Empty;
+                }
+            }
 
             private bool _breakOnNext;
 
             private readonly FlowGraphDebugState _debugState;
 
-            public FlowGraphDebugTracker(FlowGraphView graphView)
+            public FlowGraphDebugger(FlowGraphView graphView)
             {
                 _graphView = graphView;
                 _debugState = graphView.DebugState;
@@ -578,15 +592,15 @@ namespace Ceres.Editor.Graph.Flow
 
             public override async UniTask EnterNode(ExecutableNode node)
             {
-                _currentView = (ExecutableNodeView)_graphView.FindNodeView(node.Guid);
+                CurrentView = (ExecutableNodeView)_graphView.FindNodeView(node.Guid);
                 if (_debugState.enableDebug)
                 {
-                    if (_currentView != null)
+                    if (CurrentView != null)
                     {
-                        _currentView.NodeElement.AddToClassList("status_pending");
-                        _currentView.NodeElement.AddToClassList("status_execute");
+                        CurrentView.NodeElement.AddToClassList("status_pending");
+                        CurrentView.NodeElement.AddToClassList("status_execute");
                         _graphView.ClearSelection();
-                        _graphView.AddToSelection(_currentView.NodeElement);
+                        _graphView.AddToSelection(CurrentView.NodeElement);
                         _graphView.FrameSelection();
                     }
                     IsPaused = true;
@@ -624,9 +638,9 @@ namespace Ceres.Editor.Graph.Flow
             private bool CanPauseOnCurrentNode()
             {
                 var hasBreakpoint = false;
-                if (_currentView != null)
+                if (CurrentView != null)
                 {
-                    hasBreakpoint = _debugState.breakpoints.Contains(_currentView.Guid);
+                    hasBreakpoint = _debugState.breakpoints.Contains(CurrentView.Guid);
                 }
                 return _breakOnNext || hasBreakpoint;
             }

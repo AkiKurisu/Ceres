@@ -85,6 +85,11 @@ namespace Ceres.Graph.Flow
             return nextNode != null;
         }
 
+        private FlowGraphTracker GetTracker()
+        {
+            return _tracker;
+        }
+
         private bool IsExecutedInOnDestroy()
         {
            const string onDestroyEventName = "OnDestroy";
@@ -116,11 +121,11 @@ namespace Ceres.Graph.Flow
             /* Execute forward path */
             _forwardPath?.Add(node.Guid);
 #if !CERES_DISABLE_TRACKER
-            await _tracker.EnterNode(node);
+            await GetTracker().EnterNode(node);
 #endif
             await node.ExecuteNode(this);
 #if !CERES_DISABLE_TRACKER
-            await _tracker.ExitNode(node);
+            await GetTracker().ExitNode(node);
 #endif
             while (Next(out var nextNode))
             {

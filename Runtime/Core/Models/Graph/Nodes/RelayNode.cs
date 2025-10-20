@@ -16,9 +16,9 @@ namespace Ceres.Graph
         public enum ConnectionType
         {
             /// <summary>
-            /// Connected to an ExecutableNode port
+            /// Connected to an CeresNode port
             /// </summary>
-            ExecutableNode,
+            CeresNode,
 
             /// <summary>
             /// Connected to another RelayNode
@@ -32,17 +32,17 @@ namespace Ceres.Graph
         public ConnectionType connectionType;
 
         /// <summary>
-        /// Target node GUID (ExecutableNode or RelayNode)
+        /// Target node GUID (CeresNode or RelayNode)
         /// </summary>
         public string nodeId;
 
         /// <summary>
-        /// Target port property name (only used when connectionType is ExecutableNode)
+        /// Target port property name (only used when connectionType is CeresNode)
         /// </summary>
         public string portId;
 
         /// <summary>
-        /// Target port array index (only used when connectionType is ExecutableNode)
+        /// Target port array index (only used when connectionType is CeresNode)
         /// </summary>
         public int portIndex;
     }

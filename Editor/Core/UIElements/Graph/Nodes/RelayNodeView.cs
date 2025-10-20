@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Ceres.Graph;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine.UIElements;
 using NodeElement = UnityEditor.Experimental.GraphView.Node;
 
 namespace Ceres.Editor.Graph
@@ -20,7 +18,6 @@ namespace Ceres.Editor.Graph
         public CeresGraphView GraphView { get; }
 
         public RelayNode Data { get; }
-
 
         private CeresPortElement _inputPort;
 
@@ -79,19 +76,7 @@ namespace Ceres.Editor.Graph
             // Set position
             NodeElement.SetPosition(Data.graphPosition);
 
-            // Register deletion callback
-            NodeElement.RegisterCallback<DetachFromPanelEvent>(OnNodeDetached);
-
             NodeElement.userData = this;
-        }
-
-        private void OnNodeDetached(DetachFromPanelEvent evt)
-        {
-            // Check if this is a real deletion (not just graph reload)
-            if (GraphView != null)
-            {
-                OnRemoved();
-            }
         }
 
         public CeresPortElement GetInputPort() => _inputPort;
@@ -119,7 +104,7 @@ namespace Ceres.Editor.Graph
                         // Connected to ExecutableNode
                         inputs.Add(new RelayConnection
                         {
-                            connectionType = RelayConnection.ConnectionType.ExecutableNode,
+                            connectionType = RelayConnection.ConnectionType.CeresNode,
                             nodeId = outputPort.View.NodeOwner.Guid,
                             portId = outputPort.View.PortData.propertyName,
                             portIndex = outputPort.View.PortData.arrayIndex
@@ -150,7 +135,7 @@ namespace Ceres.Editor.Graph
                         // Connected to ExecutableNode
                         outputs.Add(new RelayConnection
                         {
-                            connectionType = RelayConnection.ConnectionType.ExecutableNode,
+                            connectionType = RelayConnection.ConnectionType.CeresNode,
                             nodeId = inputPort.View.NodeOwner.Guid,
                             portId = inputPort.View.PortData.propertyName,
                             portIndex = inputPort.View.PortData.arrayIndex
@@ -169,42 +154,6 @@ namespace Ceres.Editor.Graph
             }
             Data.outputs = outputs.ToArray();
             return Data;
-        }
-
-        private void OnRemoved()
-        {
-            // Schedule reconnection to avoid issues with cascading deletions
-            GraphView.schedule.Execute(() =>
-            {
-                var inputEdges = _inputPort.connections.ToList();
-                var outputEdges = _outputPort.connections.ToList();
-
-                if (inputEdges.Count == 0 || outputEdges.Count == 0)
-                    return;
-
-                // Get source port from first input edge
-                var sourceEdge = inputEdges.FirstOrDefault();
-                if (sourceEdge?.output is not CeresPortElement sourcePort)
-                    return;
-
-                // Reconnect all outputs to the source
-                foreach (var outputEdge in outputEdges)
-                {
-                    if (outputEdge.input is CeresPortElement targetPort)
-                    {
-                        // Create direct connection
-                        var newEdge = new CeresEdge
-                        {
-                            output = sourcePort,
-                            input = targetPort
-                        };
-
-                        GraphView.AddElement(newEdge);
-                        sourcePort.Connect(newEdge);
-                        targetPort.Connect(newEdge);
-                    }
-                }
-            }).ExecuteLater(1);
         }
     }
 }

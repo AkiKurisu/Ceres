@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using Ceres.Graph;
 using UnityEngine;
+
 namespace Ceres.Editor.Graph
 {
     public abstract class CeresGraphEditorWindow : EditorWindow, IHasCustomMenu
@@ -62,7 +63,10 @@ namespace Ceres.Editor.Graph
                     PreReload();
                     break;
                 case PlayModeStateChange.EnteredPlayMode:
-                    Reload();
+                    // Bug fix:
+                    // EnteredPlayMode actually happened after start.
+                    // We already reload graph in OnEnable, so skip reload here.
+                    // Reload();
                     break;
                 case PlayModeStateChange.ExitingPlayMode:
                     PreReload();
@@ -131,17 +135,15 @@ namespace Ceres.Editor.Graph
                 return window;
             }
 
-            public static void Register(TContainer container, TKWindow window)
+            public static void Register(CeresGraphIdentifier identifier, TKWindow window)
             {
-                var identifier = container.GetIdentifier();
                 EditorWindows[identifier] = window;
             }
             
-            public static void Unregister(TContainer container, TKWindow window)
+            public static void Unregister(CeresGraphIdentifier identifier, TKWindow window)
             {
-                if(container == null) return;
-                var identifier = container.GetIdentifier();
-                
+                if (!identifier.IsValid()) return;
+
                 if (EditorWindows.TryGetValue(identifier, out var existedWindow) && existedWindow == window)
                 {
                     EditorWindows.Remove(identifier);
@@ -163,6 +165,8 @@ namespace Ceres.Editor.Graph
         /// Actual graph container of this window
         /// </summary>
         public TContainer ContainerT => (TContainer)Container;
+
+        private CeresGraphIdentifier _cachedIdentifier;
 
         /// <summary>
         /// Create <see cref="CeresGraphEditorWindow"/> instance, return cached window if existed
@@ -187,10 +191,16 @@ namespace Ceres.Editor.Graph
             window.Show();
             return window;
         }
+
+        protected override void OnEnable()
+        {
+            EditorWindowRegistry.Register(Identifier, (TKWindow)this);
+            base.OnEnable();
+        }
         
         protected override void OnDisable()
         {
-           EditorWindowRegistry.Unregister(ContainerT, (TKWindow)this);
+           EditorWindowRegistry.Unregister(Identifier, (TKWindow)this);
            base.OnDisable();
         }
         

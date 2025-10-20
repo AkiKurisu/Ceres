@@ -21,6 +21,10 @@ namespace Ceres.Editor.Graph.Flow
         public bool enableDebug;
 
         public List<string> breakpoints = new();
+        
+        public bool isPaused;
+
+        public string currentNode;
 
         public void AddBreakpoint(string guid)
         {
