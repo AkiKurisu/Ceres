@@ -54,6 +54,8 @@ namespace Ceres.Graph.Flow
             
         }
 
+        public bool IsValid() => !_isDisposed;
+        
         /// <summary>
         /// Creates a helper struct for the scoped using blocks.
         /// </summary>

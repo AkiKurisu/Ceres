@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Pool;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Graph.Flow
 {
     /// <summary>
@@ -87,7 +88,7 @@ namespace Ceres.Graph.Flow
 
         private FlowGraphTracker GetTracker()
         {
-            return _tracker;
+            return _tracker.IsValid() ? _tracker : FlowGraphTracker.GetActiveTracker();
         }
 
         private bool IsExecutedInOnDestroy()

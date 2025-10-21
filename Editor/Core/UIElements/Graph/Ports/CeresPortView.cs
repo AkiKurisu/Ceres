@@ -376,6 +376,11 @@ namespace Ceres.Editor.Graph
 
         public CeresPortViewFlags Flags { get; internal set; }
 
+        // Debug state tracking
+        private bool _isDebugMode;
+
+        private string _originalTooltip = string.Empty;
+
         public CeresPortView(CeresPortViewBinding binding, CeresNodeView nodeView, CeresPortData portData)
         {
             PortData = portData;
@@ -500,23 +505,19 @@ namespace Ceres.Editor.Graph
             var result = new List<(CeresPortElement, bool)>();
             var visited = new HashSet<CeresPortElement>();
 
+            TraversePort(port, false);
+            return result;
+
             void TraversePort(CeresPortElement currentPort, bool hasTraversedRelay)
             {
                 // Prevent infinite loops
-                if (visited.Contains(currentPort))
+                if (!visited.Add(currentPort))
                     return;
 
-                visited.Add(currentPort);
-
                 // Check if this port belongs to a relay node
-                bool isRelayNodePort = currentPort.View == null &&
-                                       currentPort.node?.userData is RelayNodeView;
-
-                if (isRelayNodePort)
+                if (currentPort.View == null && currentPort.node?.userData is RelayNodeView relayNodeView)
                 {
                     // This is a relay node port, continue traversing through it
-                    var relayNodeView = currentPort.node.userData as RelayNodeView;
-
                     // Get the output port of the relay node and traverse its connections
                     var relayOutputPort = relayNodeView.GetOutputPort();
                     foreach (var edge in relayOutputPort.connections)
@@ -533,9 +534,6 @@ namespace Ceres.Editor.Graph
                     result.Add((currentPort, hasTraversedRelay));
                 }
             }
-
-            TraversePort(port, false);
-            return result;
         }
 
         /// <summary>
@@ -630,6 +628,48 @@ namespace Ceres.Editor.Graph
         public void SetDisplayType(Type displayType)
         {
             Binding.DisplayType.Value = displayType;
+        }
+
+        /// <summary>
+        /// Start debugging port
+        /// </summary>
+        public void StartDebug()
+        {
+            if (_isDebugMode) return;
+
+            _isDebugMode = true;
+            _originalTooltip = PortElement.tooltip;
+
+            // Add debug highlighting
+            PortElement.AddToClassList("debug-highlight");
+        }
+
+        /// <summary>
+        /// Set port debug data to display
+        /// </summary>
+        /// <param name="debugData">Debug data to display</param>
+        public void SetDebugData(string debugData)
+        {
+            if (!_isDebugMode) return;
+
+            // Update tooltip with debug information
+            PortElement.tooltip = $"{_originalTooltip}\nValue: {debugData}";
+        }
+
+        /// <summary>
+        /// End debugging port
+        /// </summary>
+        public void EndDebug()
+        {
+            if (!_isDebugMode) return;
+
+            _isDebugMode = false;
+
+            // Remove debug highlighting
+            PortElement.RemoveFromClassList("debug-highlight");
+
+            // Restore original tooltip
+            PortElement.tooltip = _originalTooltip;
         }
     }
 

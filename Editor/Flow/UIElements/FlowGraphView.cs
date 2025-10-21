@@ -8,6 +8,7 @@ using Ceres.Editor.Graph.Flow.Properties;
 using Ceres.Editor.Graph.Flow.CustomFunctions;
 using Chris;
 using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -602,6 +603,36 @@ namespace Ceres.Editor.Graph.Flow
                         _graphView.ClearSelection();
                         _graphView.AddToSelection(CurrentView.NodeElement);
                         _graphView.FrameSelection();
+                        foreach (var portView in CurrentView.GetAllPortViews())
+                        {
+                            // Only debug input
+                            if (portView.Binding.GetDirection() == Direction.Output)
+                            {
+                                continue;
+                            }
+                            
+                            // Hidden field (Exec)
+                            if (string.IsNullOrEmpty(portView.Binding.DisplayName.Value))
+                            {
+                                continue;
+                            }
+                            
+                            string portName = portView.Binding.GetPortName();
+                            if (!node.Ports.TryGetValue(portName, out var port))
+                            {
+                                continue;
+                            }
+
+                            var portValueType = port.GetValueType();
+                            if (!IsDebuggablePortType(portValueType))
+                            {
+                                continue;
+                            }
+                            
+                            portView.StartDebug();
+                            var value = port.GetValue();
+                            portView.SetDebugData(value == null ? "Null" : JsonConvert.SerializeObject(value));
+                        }
                     }
                     IsPaused = true;
                 }
@@ -615,13 +646,39 @@ namespace Ceres.Editor.Graph.Flow
                     await UniTask.WaitUntil(CanSkipFrame);
                     CeresLogger.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
                 }
-                _currentView?.NodeElement.RemoveFromClassList("status_execute");
+                CurrentView?.NodeElement.RemoveFromClassList("status_execute");
+            }
+
+            private static bool IsDebuggablePortType(Type portValueType)
+            {
+                if (ReflectionUtility.IsSerializableNumericTypes(portValueType))
+                {
+                    return true;
+                }
+                        
+                if (ReflectionUtility.IsUnityBuiltinTypes(portValueType))
+                {
+                    return true;
+                }
+
+                if (Attribute.IsDefined(portValueType, typeof(SerializableAttribute), true))
+                {
+                    return true;
+                }
+
+                return false;
             }
 
             public override UniTask ExitNode(ExecutableNode node)
             {
-                var nodeView = _graphView.FindNodeView(node.Guid);
-                nodeView?.NodeElement.RemoveFromClassList("status_pending");
+                if (_graphView?.FindNodeView(node.Guid) is ExecutableNodeView nodeView)
+                {
+                    foreach (var portView in nodeView.GetAllPortViews())
+                    {
+                        portView.EndDebug();
+                    }
+                    nodeView.NodeElement.RemoveFromClassList("status_pending");
+                }
                 return UniTask.CompletedTask;
             }
 
@@ -661,6 +718,11 @@ namespace Ceres.Editor.Graph.Flow
 
             public override void Dispose()
             {
+                if (IsPaused)
+                {
+                    IsPaused = false;
+                    EditorApplication.isPaused = false;
+                }
                 _isDestroyed = true;
                 _graphView = null;
                 _currentView = null;
