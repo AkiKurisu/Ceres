@@ -12,6 +12,12 @@ namespace Ceres.Graph.Flow
     [ConfigPath("Ceres.Flow")]
     public class FlowConfig: Config<FlowConfig>
     {
+        /// <summary>
+        /// Whether to log executable reflection
+        /// </summary>
+        [SerializeField] 
+        internal bool logExecutableReflection;
+        
         [SerializeField]
         internal string[] alwaysIncludedAssemblyWildcards = DefaultIncludedAssemblyWildcards.ToArray();
 

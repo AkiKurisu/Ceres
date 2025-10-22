@@ -466,9 +466,10 @@ namespace Ceres.Graph.Flow
         private void RegisterExecutableFunction(ExecutableFunctionType functionType, MethodInfo methodInfo)
         {
             var functionInfo = new ExecutableFunctionInfo(functionType, methodInfo.Name, methodInfo.GetParameters().Length);
-#if UNITY_EDITOR && DEBUG
-            CeresLogger.Log($"{typeof(TTarget).Name} RegisterExecutableFunction {functionInfo}");
-#endif
+            if (FlowConfig.Get().logExecutableReflection)
+            {
+                CeresLogger.Log($"{typeof(TTarget).Name} RegisterExecutableFunction {functionInfo}");
+            }
             var functionStructure = new ExecutableFunction(functionInfo, methodInfo);
             _functions.Add(functionStructure);
         }
@@ -476,9 +477,10 @@ namespace Ceres.Graph.Flow
         internal static void RegisterStaticExecutableFunctionPtr(string functionName, int parameterCount, IntPtr functionPtr)
         {
             var functionInfo = new ExecutableFunctionInfo(ExecutableFunctionType.StaticMethod, functionName, parameterCount);
-#if UNITY_EDITOR && DEBUG
-            CeresLogger.Log($"{typeof(TTarget).Name} RegisterStaticExecutableFunctionPtr {functionInfo}");
-#endif
+            if (FlowConfig.Get().logExecutableReflection)
+            {
+                CeresLogger.Log($"{typeof(TTarget).Name} RegisterStaticExecutableFunctionPtr {functionInfo}");
+            }
 #if UNITY_EDITOR
             var function = Instance.FindFunction_Internal(functionInfo);
             if (function != null)

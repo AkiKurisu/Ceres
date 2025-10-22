@@ -50,9 +50,9 @@ namespace Ceres.Editor
         {
             Instance.Save(true);
             var serializer = ConfigsEditorUtils.GetConfigSerializer();
-            var settings = CeresConfig.Get();
-            settings.logLevel = Instance.logLevel;
-            settings.Save(serializer);
+            var config = CeresConfig.Get();
+            config.logLevel = Instance.logLevel;
+            config.Save(serializer);
         }
 
         internal static void AddPreservedType(Type type)
@@ -98,19 +98,23 @@ namespace Ceres.Editor
         public override void OnGUI(string searchContext)
         {
             var titleStyle = new GUIStyle(GUI.skin.label) { fontStyle = FontStyle.Bold };
+            
             GUILayout.Label("Editor Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphEditorDisplayMode"), Styles.GraphEditorDisplayModeLabel);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("cleanLogAuto"), Styles.CleanLogAutoLabel);
             GUILayout.EndVertical();
+            
             GUILayout.Label("Runtime Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("logLevel"), Styles.LogLevelLabel);
             GUILayout.EndVertical();
+            
             GUILayout.Label("Stripping Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("preservedTypes"), Styles.PreserveTypesLabel);
             GUILayout.EndVertical();
+            
             if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
             {
                 CeresSettings.SaveSettings();

@@ -11,17 +11,21 @@ namespace Ceres.Editor
     public class FlowSettings : ConfigSingleton<FlowSettings>
     {
         private static FlowSettings _setting;
-        
-        [SerializeField, HideInInspector]
+
+        [SerializeField]
+        private bool logExecutableReflection;
+
+        [SerializeField]
         private string[] alwaysIncludedAssemblyWildcards = FlowConfig.DefaultIncludedAssemblyWildcards.ToArray();
 
         public static void SaveSettings()
         {
             Instance.Save(true);
             var serializer = ConfigsEditorUtils.GetConfigSerializer();
-            var settings = FlowConfig.Get();
-            settings.alwaysIncludedAssemblyWildcards = Instance.alwaysIncludedAssemblyWildcards;
-            settings.Save(serializer);
+            var config = FlowConfig.Get();
+            config.logExecutableReflection = Instance.logExecutableReflection;
+            config.alwaysIncludedAssemblyWildcards = Instance.alwaysIncludedAssemblyWildcards;
+            config.Save(serializer);
         }
     }
 
@@ -31,6 +35,9 @@ namespace Ceres.Editor
 
         private class Styles
         {
+            public static readonly GUIContent LogExecutableReflectionLabel = new("Executable Reflection",
+                "Log executable reflection.");
+
             public static readonly GUIContent AlwaysIncludedAssemblyWildcardsLabel = new("Always Included Assembly Wildcards",
                 "Add wildcards to define which assemblies should Flow always include in the executable reflection system.");
         }
@@ -45,10 +52,17 @@ namespace Ceres.Editor
         public override void OnGUI(string searchContext)
         {
             var titleStyle = new GUIStyle(GUI.skin.label) { fontStyle = FontStyle.Bold };
+            
             GUILayout.Label("Reflection System", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("alwaysIncludedAssemblyWildcards"), Styles.AlwaysIncludedAssemblyWildcardsLabel);
             GUILayout.EndVertical();
+            
+            GUILayout.Label("Log Settings", titleStyle);
+            GUILayout.BeginVertical(GUI.skin.box);
+            EditorGUILayout.PropertyField(_serializedObject.FindProperty("logExecutableReflection"), Styles.LogExecutableReflectionLabel);
+            GUILayout.EndVertical();
+            
             if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
             {
                 FlowSettings.SaveSettings();
