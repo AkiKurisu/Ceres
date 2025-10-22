@@ -88,12 +88,13 @@ namespace Ceres.Graph.Flow
 
         internal static IEnumerable<MethodInfo> GetInstanceExecutableFunctions(Type type)
         {
-            if (FlowRuntimeSettings.IsIncludedAssembly(type.Assembly))
+            if (FlowConfig.IsIncludedAssembly(type.Assembly))
             {
                 return type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                     .Where(methodInfo =>
                     {
                         if (methodInfo.GetCustomAttribute<ExecutableFunctionAttribute>() != null) return true;
+                        if (methodInfo.GetCustomAttribute<ObsoleteAttribute>() != null) return false;
                         if (NativeBindingUtility.IsNativeMethod(methodInfo)) return false;
                         return methodInfo.IsPublic && !methodInfo.IsSpecialName; // remove property getter and setter
                     });
@@ -378,6 +379,8 @@ namespace Ceres.Graph.Flow
 
 #if ENABLE_IL2CPP
         private readonly IntPtr _il2cppClass;
+
+        private bool _isAlwaysIncluded;
 #endif
 
         private ExecutableReflection()
@@ -385,10 +388,10 @@ namespace Ceres.Graph.Flow
             _instance = this;
             var targetType = typeof(TTarget);
             RegisterReflection<TTarget>(_instance);
-            if (typeof(TTarget).IsSubclassOf(typeof(ExecutableFunctionLibrary)))
+            if (targetType.IsSubclassOf(typeof(ExecutableFunctionLibrary)))
             {
 #if UNITY_EDITOR
-                typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public)
+                targetType.GetMethods(BindingFlags.Static | BindingFlags.Public)
                     .Where(x => x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                     .ToList()
                     .ForEach(methodInfo =>
@@ -401,8 +404,9 @@ namespace Ceres.Graph.Flow
             }
 
 #if ENABLE_IL2CPP
+            _isAlwaysIncluded = FlowConfig.IsIncludedAssembly(targetType.Assembly);
             // We haven't injected IL in always included assembly, use legacy way in this case.
-            if (!FlowRuntimeSettings.IsIncludedAssembly(targetType.Assembly))
+            if (!_isAlwaysIncluded)
             {
 #if UNITY_STANDALONE_WIN
                 string assemblyName = targetType.Module.Name;
@@ -410,7 +414,7 @@ namespace Ceres.Graph.Flow
                 string className = targetType.Name;
                 _il2cppClass = IL2CPP.GetIl2CppClass(assemblyName, @namespace, className);
 #else
-                typeof(TTarget).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
+                targetType.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
                                 .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                                 .ToList()
                                 .ForEach(RegisterExecutableFunctionInvoker);
@@ -462,6 +466,9 @@ namespace Ceres.Graph.Flow
         private void RegisterExecutableFunction(ExecutableFunctionType functionType, MethodInfo methodInfo)
         {
             var functionInfo = new ExecutableFunctionInfo(functionType, methodInfo.Name, methodInfo.GetParameters().Length);
+#if UNITY_EDITOR && DEBUG
+            CeresLogger.Log($"{typeof(TTarget).Name} RegisterExecutableFunction {functionInfo}");
+#endif
             var functionStructure = new ExecutableFunction(functionInfo, methodInfo);
             _functions.Add(functionStructure);
         }
@@ -469,6 +476,9 @@ namespace Ceres.Graph.Flow
         internal static void RegisterStaticExecutableFunctionPtr(string functionName, int parameterCount, IntPtr functionPtr)
         {
             var functionInfo = new ExecutableFunctionInfo(ExecutableFunctionType.StaticMethod, functionName, parameterCount);
+#if UNITY_EDITOR && DEBUG
+            CeresLogger.Log($"{typeof(TTarget).Name} RegisterStaticExecutableFunctionPtr {functionInfo}");
+#endif
 #if UNITY_EDITOR
             var function = Instance.FindFunction_Internal(functionInfo);
             if (function != null)
@@ -529,7 +539,7 @@ namespace Ceres.Graph.Flow
 #if ENABLE_IL2CPP && UNITY_STANDALONE_WIN
             unsafe
             {
-                if (functionType == ExecutableFunctionType.InstanceMethod)
+                if (functionType == ExecutableFunctionType.InstanceMethod && !_isAlwaysIncluded)
                 {
                     // Find invoker
                     int invokeParameterCount = functionInfo.ParameterCount >=0 ? functionInfo.ParameterCount + 1 : -1;

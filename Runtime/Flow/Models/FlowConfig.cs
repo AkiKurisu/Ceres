@@ -10,7 +10,7 @@ namespace Ceres.Graph.Flow
 {
     [Serializable]
     [ConfigPath("Ceres.Flow")]
-    public class FlowRuntimeSettings: Config<FlowRuntimeSettings>
+    public class FlowConfig: Config<FlowConfig>
     {
         [SerializeField]
         internal string[] alwaysIncludedAssemblyWildcards = DefaultIncludedAssemblyWildcards.ToArray();

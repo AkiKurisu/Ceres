@@ -1,4 +1,6 @@
 using System;
+using Chris.Configs.Editor;
+using Chris.Editor;
 using Chris.Serialization;
 using UnityEditor;
 using UnityEngine;
@@ -7,32 +9,34 @@ using UnityEngine.UIElements;
 
 namespace Ceres.Editor
 {
-    [FilePath("ProjectSettings/CeresSettings.asset", FilePathAttribute.Location.ProjectFolder)]
-    public class CeresSettings : ScriptableSingleton<CeresSettings>
+    public class CeresSettings : ConfigSingleton<CeresSettings>
     {
         public enum GraphEditorDisplayMode
         {
             Normal,
             Debug
         }
-        
+
         private static CeresSettings _setting;
 
-        [SerializeField] 
+        [SerializeField]
         private GraphEditorDisplayMode graphEditorDisplayMode;
 
-        [SerializeField] 
+        [SerializeField]
         private bool cleanLogAuto = true;
-        
+
         [SerializeField]
         private string[] preservedTypes = Array.Empty<string>();
-        
-        public static bool CleanLogAuto => instance.cleanLogAuto;
+
+        [SerializeField]
+        private LogType logLevel = LogType.Log;
+
+        public static bool CleanLogAuto => Instance.cleanLogAuto;
         
         /// <summary>
         /// Ceres graph editor view display mode
         /// </summary>
-        public static GraphEditorDisplayMode DisplayMode => instance.graphEditorDisplayMode;
+        public static GraphEditorDisplayMode DisplayMode => Instance.graphEditorDisplayMode;
 
         /// <summary>
         /// Ceres graph editor will display in debug mode
@@ -44,46 +48,53 @@ namespace Ceres.Editor
         /// </summary>
         public static void SaveSettings()
         {
-            instance.Save(true);
+            Instance.Save(true);
+            var serializer = ConfigsEditorUtils.GetConfigSerializer();
+            var settings = CeresConfig.Get();
+            settings.logLevel = Instance.logLevel;
+            settings.Save(serializer);
         }
 
         internal static void AddPreservedType(Type type)
         {
             Assert.IsNotNull(type);
             var serializedType = SerializedType.ToString(type);
-            if (ArrayUtility.IndexOf(instance.preservedTypes, serializedType) >= 0) return;
-            ArrayUtility.Add(ref instance.preservedTypes, serializedType);
+            if (ArrayUtility.IndexOf(Instance.preservedTypes, serializedType) >= 0) return;
+            ArrayUtility.Add(ref Instance.preservedTypes, serializedType);
         }
 
         internal static string[] GetPreservedTypes()
         {
-            return instance.preservedTypes;
+            return Instance.preservedTypes;
         }
     }
 
     internal class CeresSettingsProvider : SettingsProvider
     {
         private SerializedObject _serializedObject;
-        
+
         private class Styles
         {
             public static readonly GUIContent GraphEditorDisplayModeLabel = new("Display Mode",
                 "Set graph editor display mode.");
-            
+
             public static readonly GUIContent CleanLogAutoLabel = new("Clean Log Auto",
                 "Clean console log automatically after save graph successfully.");
-            
+
             public static readonly GUIContent PreserveTypesLabel = new("Preserved Types",
                 "Define types need to be preserved in build when using IL2CPP scripting backend.");
+
+            public static readonly GUIContent LogLevelLabel = new("Log Level",
+                "Ceres log level.");
         }
 
         private CeresSettingsProvider(string path, SettingsScope scope = SettingsScope.User) : base(path, scope) { }
-        
+
         public override void OnActivate(string searchContext, VisualElement rootElement)
         {
-            _serializedObject = new SerializedObject(CeresSettings.instance);
+            _serializedObject = new SerializedObject(CeresSettings.Instance);
         }
-        
+
         public override void OnGUI(string searchContext)
         {
             var titleStyle = new GUIStyle(GUI.skin.label) { fontStyle = FontStyle.Bold };
@@ -91,6 +102,10 @@ namespace Ceres.Editor
             GUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("graphEditorDisplayMode"), Styles.GraphEditorDisplayModeLabel);
             EditorGUILayout.PropertyField(_serializedObject.FindProperty("cleanLogAuto"), Styles.CleanLogAutoLabel);
+            GUILayout.EndVertical();
+            GUILayout.Label("Runtime Settings", titleStyle);
+            GUILayout.BeginVertical(GUI.skin.box);
+            EditorGUILayout.PropertyField(_serializedObject.FindProperty("logLevel"), Styles.LogLevelLabel);
             GUILayout.EndVertical();
             GUILayout.Label("Stripping Settings", titleStyle);
             GUILayout.BeginVertical(GUI.skin.box);
@@ -101,7 +116,7 @@ namespace Ceres.Editor
                 CeresSettings.SaveSettings();
             }
         }
-        
+
         [SettingsProvider]
         public static SettingsProvider CreateCeresSettingsProvider()
         {
@@ -109,7 +124,7 @@ namespace Ceres.Editor
             {
                 keywords = GetSearchKeywordsFromGUIContentProperties<Styles>()
             };
-            
+
             return provider;
         }
     }

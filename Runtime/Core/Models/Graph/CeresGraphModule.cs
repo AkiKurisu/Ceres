@@ -9,6 +9,9 @@ namespace Ceres.Graph
     {
         public override void Initialize(ModuleConfig config)
         {
+            // Set global log level
+            CeresLogger.LogLevel = CeresConfig.Get().logLevel;
+            
             /* Implicit conversation */
             // ======================== Value type =========================== //
             CeresPort<float>.MakeCompatibleTo<int>(f => (int)f);

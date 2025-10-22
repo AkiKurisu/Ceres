@@ -13,13 +13,13 @@ namespace Ceres.Editor
         private static FlowSettings _setting;
         
         [SerializeField, HideInInspector]
-        private string[] alwaysIncludedAssemblyWildcards = FlowRuntimeSettings.DefaultIncludedAssemblyWildcards.ToArray();
+        private string[] alwaysIncludedAssemblyWildcards = FlowConfig.DefaultIncludedAssemblyWildcards.ToArray();
 
         public static void SaveSettings()
         {
             Instance.Save(true);
             var serializer = ConfigsEditorUtils.GetConfigSerializer();
-            var settings = FlowRuntimeSettings.Get();
+            var settings = FlowConfig.Get();
             settings.alwaysIncludedAssemblyWildcards = Instance.alwaysIncludedAssemblyWildcards;
             settings.Save(serializer);
         }
@@ -28,7 +28,7 @@ namespace Ceres.Editor
     internal class FlowSettingsProvider : SettingsProvider
     {
         private SerializedObject _serializedObject;
-        
+
         private class Styles
         {
             public static readonly GUIContent AlwaysIncludedAssemblyWildcardsLabel = new("Always Included Assembly Wildcards",
@@ -36,12 +36,12 @@ namespace Ceres.Editor
         }
 
         private FlowSettingsProvider(string path, SettingsScope scope = SettingsScope.User) : base(path, scope) { }
-        
+
         public override void OnActivate(string searchContext, VisualElement rootElement)
         {
             _serializedObject = new SerializedObject(FlowSettings.Instance);
         }
-        
+
         public override void OnGUI(string searchContext)
         {
             var titleStyle = new GUIStyle(GUI.skin.label) { fontStyle = FontStyle.Bold };
@@ -54,7 +54,7 @@ namespace Ceres.Editor
                 FlowSettings.SaveSettings();
             }
         }
-        
+
         [SettingsProvider]
         public static SettingsProvider CreateFlowSettingsProvider()
         {
@@ -62,7 +62,7 @@ namespace Ceres.Editor
             {
                 keywords = GetSearchKeywordsFromGUIContentProperties<Styles>()
             };
-            
+
             return provider;
         }
     }

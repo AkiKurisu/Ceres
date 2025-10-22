@@ -105,7 +105,8 @@ namespace Ceres.Editor.Graph.Flow
 
                         var properties = type
                             .GetProperties(BindingFlags.Public | BindingFlags.Static)
-                            .Where(p => p.CanRead || p.CanWrite)
+                            .Where(p => p.CanRead || p.CanWrite 
+                                && p.GetCustomAttribute<ObsoleteAttribute>() == null)
                             .ToArray();
 
                         if (properties.Length > 0)
@@ -134,7 +135,7 @@ namespace Ceres.Editor.Graph.Flow
         public static Assembly[] GetAlwaysIncludedAssemblies()
         {
             _alwaysIncludedAssemblies ??= AppDomain.CurrentDomain.GetAssemblies()
-                .Where(FlowRuntimeSettings.IsIncludedAssembly)
+                .Where(FlowConfig.IsIncludedAssembly)
                 .ToArray();
             return _alwaysIncludedAssemblies;
         }
