@@ -343,9 +343,10 @@ namespace Ceres.Editor.Graph.Flow
                 /* Copy and paste may log warning for missing connect nodes which is expected. */
                 using (CeresLogger.LogScope(copyPaste ? LogType.Error : LogType.Log))
                 {
+                    var linker = new CeresLinker(FlowConfig.IsIncludedAssembly);
                     var flowGraphData = new FlowGraphData
                     {
-                        nodeData = nodeInstances.Select(LinkAndGetNodeSerializedData).ToArray(),
+                        nodeData = nodeInstances.Select(node => LinkAndGetNodeSerializedData(linker, node)).ToArray(),
                         variableData = _graphView.SharedVariables.Where(variable => variable is not LocalFunction)
                                                                 .Select(variable => variable.GetSerializedData())
                                                                 .ToArray(),
@@ -354,18 +355,18 @@ namespace Ceres.Editor.Graph.Flow
                     };
                     flowGraphData.PreSerialization();
                     // Save graph linker data
-                    CeresLinker.Save();
+                    linker.Save();
                     return flowGraphData;
                 }
 
             }
 
-            private static CeresNodeData LinkAndGetNodeSerializedData(CeresNode node)
+            private static CeresNodeData LinkAndGetNodeSerializedData(CeresLinker linker, CeresNode node)
             {
                 var data = node.GetSerializedData();
                 if (data.genericParameters.Length > 0)
                 {
-                    CeresLinker.LinkTypes(node.GetType().GetGenericArguments());
+                    linker.LinkTypes(node.GetType().GetGenericArguments());
                 }
                 return data;
             }

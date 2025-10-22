@@ -9,53 +9,66 @@ using UObject = UnityEngine.Object;
 namespace Ceres.Editor
 {
     /// <summary>
-    /// Global linker to manage runtime types that Ceres needs to be packed into the build.
+    /// Manage runtime types that Ceres needs to be packed into the build.
     /// </summary>
-    public static class CeresLinker
+    public class CeresLinker
     {
-        private static readonly Dictionary<Assembly, bool> SkippedAssemblyDict = new();
+        private readonly Dictionary<Assembly, bool> _skippedAssemblyDict = new();
 
-        private static readonly HashSet<Type> VisitedTypeSet = new();
+        private readonly HashSet<Type> _visitedTypeSet = new();
         
-        private static readonly List<Type> PreservedTypeList = new();
-        
+        private readonly List<Type> _preservedTypeList = new();
+
+        private readonly Func<Assembly, bool> _isAssemblyIncluded;
+
+        public CeresLinker(Func<Assembly, bool> isAssemblyIncluded = null)
+        {
+            _isAssemblyIncluded = isAssemblyIncluded;
+        }
+
         /// <summary>
         /// Add runtime type to Ceres global linker.
         /// </summary>
         /// <param name="type"></param>
-        public static void LinkType(Type type)
+        public void LinkType(Type type)
         {
-            if (!VisitedTypeSet.Add(type))
+            if (!_visitedTypeSet.Add(type))
             {
                 return;
             }
 
             var assembly = type.Assembly;
-            if (!SkippedAssemblyDict.TryGetValue(assembly, out var isSkipped))
+            if (!_skippedAssemblyDict.TryGetValue(assembly, out var isSkipped))
             {
                 // Already preserve by assembly.
                 isSkipped = assembly.GetCustomAttribute<PreserveAttribute>() != null;
                 isSkipped |= assembly.GetName().Name.Contains("mscorlib"); /* Not recommend to link system types in this way. */
-                SkippedAssemblyDict.Add(assembly, isSkipped);
+                _skippedAssemblyDict.Add(assembly, isSkipped);
             }
 
             isSkipped |= type.GetCustomAttribute<PreserveAttribute>() != null;
             isSkipped |= type.GetCustomAttribute<CompilerGeneratedAttribute>() != null;
             isSkipped |= type.IsPrimitive || type.IsValueType || type.IsGenericType;
-            isSkipped |= type.IsAssignableTo(typeof(UObject));
+            
+            if (type.IsAssignableTo(typeof(UObject)))
+            {
+                // Link always included UObjects only
+                bool? isAlwaysIncluded = _isAssemblyIncluded?.Invoke(type.Assembly);
+                isSkipped |= !isAlwaysIncluded ?? true;
+            }
             
             if (isSkipped)
             {
                 return;
             }
             
-            PreservedTypeList.Add(type);
+            _preservedTypeList.Add(type);
         }
 
         /// <summary>
         /// Add runtime types to Ceres global linker.
         /// </summary>
-        public static void LinkTypes(Type[] types)
+        public void LinkTypes(Type[] types)
         {
             foreach (var type in types)
             {
@@ -66,9 +79,9 @@ namespace Ceres.Editor
         /// <summary>
         /// Save linker data to settings.
         /// </summary>
-        public static void Save()
+        public void Save()
         {
-            foreach (var type in PreservedTypeList)
+            foreach (var type in _preservedTypeList)
             {
                 CeresSettings.AddPreservedType(type);
             }
