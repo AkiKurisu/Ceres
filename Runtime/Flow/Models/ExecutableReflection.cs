@@ -379,8 +379,6 @@ namespace Ceres.Graph.Flow
 
 #if ENABLE_IL2CPP
         private readonly IntPtr _il2cppClass;
-
-        private bool _isAlwaysIncluded;
 #endif
 
         private ExecutableReflection()
@@ -403,22 +401,24 @@ namespace Ceres.Graph.Flow
                 return;
             }
 
-#if ENABLE_IL2CPP
-            _isAlwaysIncluded = FlowConfig.IsIncludedAssembly(targetType.Assembly);
-            // We haven't injected IL in always included assembly, use legacy way in this case.
-            if (!_isAlwaysIncluded)
+#if ENABLE_IL2CPP && (UNITY_STANDALONE_WIN || UNITY_ANDROID)
+            // Engine class may be a wrapper which can not use libil2cpp api
+            if (!FlowConfig.IsIncludedAssembly(targetType.Assembly))
             {
-#if UNITY_STANDALONE_WIN
                 string assemblyName = targetType.Module.Name;
                 string @namespace = targetType.Namespace ?? string.Empty;
                 string className = targetType.Name;
                 _il2cppClass = IL2CPP.GetIl2CppClass(assemblyName, @namespace, className);
-#else
+                return;
+            }
+#elif ENABLE_IL2CPP
+            // We haven't injected IL in always included assembly, use legacy way in this case.
+            if (!FlowConfig.IsIncludedAssembly(targetType.Assembly))
+            {
                 targetType.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
                                 .Where(x=> x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
                                 .ToList()
                                 .ForEach(RegisterExecutableFunctionInvoker);
-#endif
                 return;
             }
 #endif
@@ -537,11 +537,11 @@ namespace Ceres.Graph.Flow
 
             var functionType = functionInfo.FunctionType;
             var functionName = functionInfo.FunctionName;
-
-#if ENABLE_IL2CPP && UNITY_STANDALONE_WIN
+            
+#if ENABLE_IL2CPP && (UNITY_STANDALONE_WIN || UNITY_ANDROID)
             unsafe
             {
-                if (functionType == ExecutableFunctionType.InstanceMethod && !_isAlwaysIncluded)
+                if (functionType == ExecutableFunctionType.InstanceMethod && _il2cppClass != IntPtr.Zero)
                 {
                     // Find invoker
                     int invokeParameterCount = functionInfo.ParameterCount >=0 ? functionInfo.ParameterCount + 1 : -1;

@@ -1,5 +1,4 @@
 ﻿// Reference: https://github.com/BepInEx/Il2CppInterop
-#if ENABLE_IL2CPP
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -12,28 +11,33 @@ namespace Ceres
         private const string IL2CPPDll = "GameAssembly";
 #elif UNITY_IOS || UNITY_STANDALONE_OSX || UNITY_WEBGL
         private const string IL2CPPDll = "__Internal";
-#else
+#elif UNITY_ANDROID
         private const string IL2CPPDll = "il2cpp";
+#else
+        private const string IL2CPPDll = "GameAssembly";
 #endif
         
         private static readonly Dictionary<string, IntPtr> Images = new();
-
+        
         static IL2CPP()
         {
-            var domain = il2cpp_domain_get();
-            if (domain == IntPtr.Zero)
+            checked // Prevent overflow in Android Release build.
             {
-                CeresLogger.LogError("No domain existed in il2cpp");
-                return;
-            }
+                var domain = il2cpp_domain_get();
+                if (domain == IntPtr.Zero)
+                {
+                    CeresLogger.LogError("No domain existed in il2cpp");
+                    return;
+                }
 
-            uint assembliesCount = 0;
-            var assemblies = il2cpp_domain_get_assemblies(domain, ref assembliesCount);
-            for (var i = 0; i < assembliesCount; i++)
-            {
-                var image = il2cpp_assembly_get_image(assemblies[i]);
-                var name = Marshal.PtrToStringAnsi(il2cpp_image_get_name(image));
-                Images[name!] = image;
+                uint assembliesCount = 0;
+                var assemblies = il2cpp_domain_get_assemblies(domain, ref assembliesCount);
+                for (var i = 0; i < assembliesCount; i++)
+                {
+                    var image = il2cpp_assembly_get_image(assemblies[i]);
+                    var name = Marshal.PtrToStringAnsi(il2cpp_image_get_name(image));
+                    Images[name!] = image;
+                }
             }
         }
 
@@ -718,4 +722,3 @@ namespace Ceres
         public static extern void il2cpp_custom_attrs_free(IntPtr ainfo);
     }
 }
-#endif
