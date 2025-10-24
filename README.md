@@ -269,6 +269,12 @@ You can right click any node and select `Add Breakpoint`, then click `Next Break
 
 ![Debug](./Documentation~/resources/Images/flow_debugger.png)
 
+### Port Debugging
+
+Ceres editor can display the current value of an input port when the mouse hovers over the port of the node at the current breakpoint.
+
+![Port Debug](./Documentation~/resources/Images/port_debug.png)
+
 ### Graph Tracker
 `FlowGraphTracker` is a class that can be used to track the execution of the graph for advanced debugging scenarios.
 
