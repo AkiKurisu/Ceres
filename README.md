@@ -12,7 +12,7 @@ Powerful visual scripting toolkit for Unity.
 
 - [Install](#install)
 - [Highlights](#highlights)
-- [Platform](#platform)
+- [Platforms](#platforms)
 - [Core Concepts](#core-concepts)
 - [Quick Start Guide](#quick-start-guide)
 - [Flow Visual Scripting](#flow-visual-scripting)
@@ -40,14 +40,24 @@ Add following dependencies to `manifest.json`.
 
 Use git URL to download package by Unity Package Manager ```https://github.com/AkiKurisu/Ceres.git```.
 
-## Highlights
+## ✨ Highlights
 
-- Generic and delegate support
-- Graph and C# integration
-- Editor debugging
-- Easy implementation
-- Optimized runtime performance
-- IL2CPP compatible
+> **Powerful visual scripting toolkit** that brings the best of both worlds - visual programming and C# code integration.
+
+### 🚀 **Core Features**
+
+- **🎯 Generic & Delegate Support** - Full support for C# generics and delegates in visual scripting
+- **🔗 Graph & C# Integration** - Seamless integration between visual graphs and traditional C# code
+- **🐛 Editor Debugging** - Built-in debugging tools with breakpoints and step-by-step execution
+- **⚡ Easy Implementation** - Simple setup with minimal configuration required
+- **🏃‍♂️ Optimized Runtime Performance** - High-performance execution with IL2CPP optimizations
+- **📱 IL2CPP Compatible** - Fully compatible with IL2CPP builds and recommended for production
+
+### 🎨 **Visual Excellence**
+
+- **Intuitive Node-Based Editor** - Clean, modern interface for creating visual scripts
+- **Real-time Preview** - See your logic flow as you build it
+- **Professional Workflow** - Industry-standard tools and practices
 
 ## Platforms
 
@@ -115,7 +125,7 @@ Click `Open Flow Graph` in the Inspector panel to open the Flow Graph Editor.
 ![Open Flow Graph](./Documentation~/resources/Images/flow_quick_start_1.png)
 
 ### 4. Create Start Event
-Right click the graph and click `Create Node/Select Events/Implement Start`.
+Right-click the graph and click `Create Node/Select Events/Implement Start`.
 
 ![Create Node](./Documentation~/resources/Images/flow_quick_start_2.png)
 
@@ -334,6 +344,62 @@ Relay nodes are completely flattened during serialization. At runtime, connectio
 
 The picture above shows relay nodes do not effect execution flow (only forward execution three times for `Start`, `Find GameObject`, and `Log String`).
 
+
+### IL2CPP Call
+
+Ceres implements sophisticated IL2CPP optimizations to achieve near-native performance for executable function calls. The optimization strategy varies by platform to maximize performance while maintaining compatibility.
+
+#### Platform-Specific Optimizations
+
+**Windows & Android Platforms**
+For Windows and Android builds, Ceres directly utilizes IL2CPP's native API to bypass reflection overhead entirely:
+
+```csharp
+#if ENABLE_IL2CPP && (UNITY_STANDALONE_WIN || UNITY_ANDROID)
+unsafe
+{
+    if (functionType == ExecutableFunctionType.InstanceMethod && _il2cppClass != IntPtr.Zero)
+    {
+        // Direct IL2CPP method lookup and function pointer invocation
+        var ptr = IL2CPP.GetIl2CppMethod(_il2cppClass, $"Invoke_{functionName}", invokeParameterCount);
+        if (ptr != IntPtr.Zero)
+        {
+            functionStructure = new ExecutableFunction(functionInfo, ptr, false);
+            _functions.Add(functionStructure);
+            return functionStructure;
+        }
+    }
+}
+#endif
+```
+
+This approach provides the highest performance by:
+- **Direct Function Pointer Calls**: Using `delegate* unmanaged[Cdecl]` function pointers for zero-overhead method invocation
+- **Native IL2CPP API**: Leveraging `il2cpp_class_get_method_from_name` and `il2cpp_method_get_function_pointer` for direct method resolution
+- **Bypassing Reflection**: Eliminating `MethodInfo` overhead completely at runtime
+
+**Other Platforms**
+For platforms where direct IL2CPP API access is limited, Ceres uses IL Post Processing (ILPP) to inject static bridge functions:
+
+```csharp
+#if ENABLE_IL2CPP
+// We haven't injected IL in always included assembly, use legacy way in this case.
+if (!FlowConfig.IsIncludedAssembly(targetType.Assembly))
+{
+    targetType.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
+        .Where(x => x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
+        .ToList()
+        .ForEach(RegisterExecutableFunctionInvoker);
+    return;
+}
+#endif
+```
+
+The ILPP approach provides significant performance improvements by:
+- **Static Bridge Functions**: Injecting `Invoke_` prefixed static methods that wrap executable functions
+- **Function Pointer Registration**: Registering native function pointers during build time
+- **Delegate Optimization**: Using `delegate* unmanaged[Cdecl]` calling convention for minimal overhead
+
 ## Documentation
 
 For more detailed information, you can also visit:
@@ -346,9 +412,7 @@ For more detailed information, you can also visit:
 
 ### Flow
 
-Powerful visual scripting solution inspired from Unreal's Blueprint.
-  
-Included in this repository. 
+Ceres built-in event-driven visual scripting solution. 
 
 See [Startup Flow](https://akikurisu.github.io/Ceres/docs/flow_startup.html)
 
@@ -374,11 +438,15 @@ See [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue).
 
 Technique articles related to Ceres.
 
+### Design
+
 [如何设计一个Unity可视化脚本框架（一）](https://zhuanlan.zhihu.com/p/20500696157)
 
 [如何设计一个Unity可视化脚本框架（二）](https://zhuanlan.zhihu.com/p/20711259559)
 
 [如何设计一个Unity可视化脚本框架（三）](https://zhuanlan.zhihu.com/p/23323693948)
+
+### Performance
 
 [让Unity IL2CPP下的反射性能提高100倍的方法](https://zhuanlan.zhihu.com/p/25806713882)
 
