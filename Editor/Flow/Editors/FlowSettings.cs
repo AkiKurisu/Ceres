@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Ceres.Graph.Flow;
-using Chris.Configs.Editor;
 using Chris.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -8,6 +7,7 @@ using UnityEngine.UIElements;
 
 namespace Ceres.Editor
 {
+    [BaseConfig]
     public class FlowSettings : ConfigSingleton<FlowSettings>
     {
         private static FlowSettings _setting;
@@ -21,11 +21,10 @@ namespace Ceres.Editor
         public static void SaveSettings()
         {
             Instance.Save(true);
-            var serializer = ConfigsEditorUtils.GetConfigSerializer();
             var config = FlowConfig.Get();
             config.logExecutableReflection = Instance.logExecutableReflection;
             config.alwaysIncludedAssemblyWildcards = Instance.alwaysIncludedAssemblyWildcards;
-            config.Save(serializer);
+            Serialize(config);
         }
     }
 
