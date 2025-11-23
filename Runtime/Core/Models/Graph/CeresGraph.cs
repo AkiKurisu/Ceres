@@ -819,8 +819,8 @@ namespace Ceres.Graph
             /* Must serialize node data after clear references */
             nodeData = nodes.Select(node => node.GetSerializedData()).ToArray();
 #if UNITY_EDITOR
-            nodeGroups = graph.nodeGroups.ToArray();
-            relayNodes = graph.relayNodes.ToArray();
+            nodeGroups = graph.nodeGroups?.ToArray() ?? Array.Empty<NodeGroup>();
+            relayNodes = graph.relayNodes?.ToArray() ?? Array.Empty<RelayNode>();
 #endif
         }
     }

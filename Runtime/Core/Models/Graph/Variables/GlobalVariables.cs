@@ -36,7 +36,11 @@ namespace Ceres.Graph
         
         private static GlobalVariables FindOrCreateDefault()
         {
+#if UNITY_6000_0_OR_NEWER
+            var scope = UObject.FindFirstObjectByType<SceneVariableScope>();
+#else
             var scope = UObject.FindObjectOfType<SceneVariableScope>();
+#endif
             if (scope != null)
             {
                 scope.Initialize();

@@ -1,5 +1,4 @@
 using System;
-using Chris.Configs.Editor;
 using Chris.Editor;
 using Chris.Serialization;
 using UnityEditor;
@@ -9,6 +8,7 @@ using UnityEngine.UIElements;
 
 namespace Ceres.Editor
 {
+    [BaseConfig]
     public class CeresSettings : ConfigSingleton<CeresSettings>
     {
         public enum GraphEditorDisplayMode
@@ -49,10 +49,9 @@ namespace Ceres.Editor
         public static void SaveSettings()
         {
             Instance.Save(true);
-            var serializer = ConfigsEditorUtils.GetConfigSerializer();
             var config = CeresConfig.Get();
             config.logLevel = Instance.logLevel;
-            config.Save(serializer);
+            Serialize(config);
         }
 
         internal static void AddPreservedType(Type type)

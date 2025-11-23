@@ -37,7 +37,7 @@ namespace Ceres.Graph.Flow.Utilities
         }
         
         /// <summary>
-        /// Returns the first active loaded object of Type type.
+        /// Retrieves the first active loaded object of Type type.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -45,7 +45,11 @@ namespace Ceres.Graph.Flow.Utilities
         public static UObject Flow_FindObjectOfType(
             [ResolveReturn] SerializedType<UObject> type)
         {
+#if UNITY_6000_0_OR_NEWER
+            return UObject.FindFirstObjectByType(type);
+#else
             return UObject.FindObjectOfType(type);
+#endif
         }
         
         #endregion UObject
