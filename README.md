@@ -339,6 +339,10 @@ Analyzes partial classes annotated with `GenerateFlowAttribute` and generates th
 ### IL Post Process (ILPP)
 Uses ILPP to emit IL for initialization logic of `CeresNode` and methods annotated with `ImplementableEventAttribute` to enhance runtime performance.
 
+Recommended to use the newest version of Rider to view the IL code after ILPP.
+
+![View IL](./Documentation~/resources/Images/rider_il.png)
+
 ## Performance
 
 Ceres provides a variety of performance enhancements to improve the runtime performance of your visual scripts.
@@ -354,57 +358,6 @@ The picture above shows relay nodes do not effect execution flow (only forward e
 ### IL2CPP Call
 
 Ceres implements sophisticated IL2CPP optimizations to achieve near-native performance for executable function calls. The optimization strategy varies by platform to maximize performance while maintaining compatibility.
-
-#### Platform-Specific Optimizations
-
-**Windows & Android Platforms**
-For Windows and Android builds, Ceres directly utilizes IL2CPP's native API to bypass reflection overhead entirely:
-
-```csharp
-#if ENABLE_IL2CPP && (UNITY_STANDALONE_WIN || UNITY_ANDROID)
-unsafe
-{
-    if (functionType == ExecutableFunctionType.InstanceMethod && _il2cppClass != IntPtr.Zero)
-    {
-        // Direct IL2CPP method lookup and function pointer invocation
-        var ptr = IL2CPP.GetIl2CppMethod(_il2cppClass, $"Invoke_{functionName}", invokeParameterCount);
-        if (ptr != IntPtr.Zero)
-        {
-            functionStructure = new ExecutableFunction(functionInfo, ptr, false);
-            _functions.Add(functionStructure);
-            return functionStructure;
-        }
-    }
-}
-#endif
-```
-
-This approach provides the highest performance by:
-- **Direct Function Pointer Calls**: Using `delegate* unmanaged[Cdecl]` function pointers for zero-overhead method invocation
-- **Native IL2CPP API**: Leveraging `il2cpp_class_get_method_from_name` and `il2cpp_method_get_function_pointer` for direct method resolution
-- **Bypassing Reflection**: Eliminating `MethodInfo` overhead completely at runtime
-
-**Other Platforms**
-For platforms where direct IL2CPP API access is limited, Ceres uses IL Post Processing (ILPP) to inject static bridge functions:
-
-```csharp
-#if ENABLE_IL2CPP
-// We haven't injected IL in always included assembly, use legacy way in this case.
-if (!FlowConfig.IsIncludedAssembly(targetType.Assembly))
-{
-    targetType.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
-        .Where(x => x.GetCustomAttribute<ExecutableFunctionAttribute>() != null)
-        .ToList()
-        .ForEach(RegisterExecutableFunctionInvoker);
-    return;
-}
-#endif
-```
-
-The ILPP approach provides significant performance improvements by:
-- **Static Bridge Functions**: Injecting `Invoke_` prefixed static methods that wrap executable functions
-- **Function Pointer Registration**: Registering native function pointers during build time
-- **Delegate Optimization**: Using `delegate* unmanaged[Cdecl]` calling convention for minimal overhead
 
 ## Documentation
 
