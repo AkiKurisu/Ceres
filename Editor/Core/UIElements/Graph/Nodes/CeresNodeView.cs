@@ -12,6 +12,28 @@ using NodeElement = UnityEditor.Experimental.GraphView.Node;
 namespace Ceres.Editor.Graph
 {
     /// <summary>
+    /// Wrapper class for field resolver and field info that appear together
+    /// </summary>
+    public class FieldResolverInfo
+    {
+        /// <summary>
+        /// Field resolver instance
+        /// </summary>
+        public IFieldResolver Resolver { get; }
+
+        /// <summary>
+        /// Field info instance
+        /// </summary>
+        public FieldInfo FieldInfo { get; }
+
+        public FieldResolverInfo(IFieldResolver resolver, FieldInfo fieldInfo)
+        {
+            Resolver = resolver;
+            FieldInfo = fieldInfo;
+        }
+    }
+
+    /// <summary>
     /// Interface for node views managed by <see cref="CeresGraphView"/>
     /// </summary>
     public interface ICeresNodeView
@@ -20,63 +42,58 @@ namespace Ceres.Editor.Graph
         /// Graph scope node view guid
         /// </summary>
         public string Guid { get; }
-        
+
         /// <summary>
         /// Node visual element of this view
         /// </summary>
         public NodeElement NodeElement { get; }
     }
-    
-    public abstract class CeresNodeView: ICeresNodeView
+
+    public abstract class CeresNodeView : ICeresNodeView
     {
         /// <summary>
         /// Graph scope node view guid
         /// </summary>
         public string Guid { get; set; } = System.Guid.NewGuid().ToString();
-        
+
         /// <summary>
         /// Node visual element of this view
         /// </summary>
         public NodeElement NodeElement { get; private set; }
-        
+
         /// <summary>
         /// The graph this view attached to
         /// </summary>
         public CeresGraphView GraphView { get; private set; }
-        
+
         /// <summary>
         /// Node instance type contained by this view
         /// </summary>
         public Type NodeType { get; private set; }
-        
+
         /// <summary>
         /// Node instance contained by this view
         /// </summary>
         public CeresNode NodeInstance { get; private set; }
 
         /// <summary>
-        /// Node instance visible <see cref="IFieldResolver"/>
+        /// Node instance visible field resolver info collection
         /// </summary>
-        protected readonly List<IFieldResolver> FieldResolvers = new();
-
-        /// <summary>
-        /// Node instance visible <see cref="FieldInfo"/>
-        /// </summary>
-        protected readonly List<FieldInfo> FieldInfos = new();
+        protected readonly List<FieldResolverInfo> FieldResolverInfos = new();
 
         /// <summary>
         /// Node port views
         /// </summary>
         protected readonly List<CeresPortView> PortViews = new();
-        
+
         /// <summary>
         /// Default constructor without initialization, please initialize node view in implementation
         /// </summary>
         protected CeresNodeView()
         {
-            
+
         }
-        
+
         /// <summary>
         /// Initialize node view
         /// </summary>
@@ -110,7 +127,7 @@ namespace Ceres.Editor.Graph
         /// <returns>Visual node element of this view</returns>
         protected virtual void OnSetupNodeElement()
         {
-            
+
         }
 
         /// <summary>
@@ -122,15 +139,15 @@ namespace Ceres.Editor.Graph
             GraphView = graphView;
             OnSetGraphView();
         }
-        
+
         /// <summary>
         /// Called after graph view setup
         /// </summary>
         protected virtual void OnSetGraphView()
         {
-            
+
         }
-        
+
         /// <summary>
         /// Set node view's <see cref="NodeType"/>
         /// </summary>
@@ -140,13 +157,13 @@ namespace Ceres.Editor.Graph
             NodeType = nodeType;
             OnSetNodeInstanceType();
         }
-        
+
         /// <summary>
         /// Called after node setup or change node instance type
         /// </summary>
         protected virtual void OnSetNodeInstanceType()
         {
-            
+
         }
 
         /// <summary>
@@ -159,7 +176,7 @@ namespace Ceres.Editor.Graph
         {
             return PortViews.FirstOrDefault(x => x.Binding.GetPortName() == propertyName && x.PortData.arrayIndex == portIndex);
         }
-        
+
         /// <summary>
         /// Find port view with display name if existed
         /// </summary>
@@ -170,7 +187,7 @@ namespace Ceres.Editor.Graph
         {
             return PortViews.FirstOrDefault(x => x.Binding.DisplayName.Value == displayName && x.PortData.arrayIndex == portIndex);
         }
-        
+
         /// <summary>
         /// Find port view with display type if existed
         /// </summary>
@@ -191,7 +208,7 @@ namespace Ceres.Editor.Graph
         {
             return PortViews.FirstOrDefault(x => x.PortElement.CanConnect(portView.PortElement));
         }
-        
+
         /// <summary>
         /// Get all port views
         /// </summary>
@@ -200,7 +217,7 @@ namespace Ceres.Editor.Graph
         {
             return PortViews.ToArray();
         }
-        
+
         /// <summary>
         /// Find field resolver with field name if existed
         /// </summary>
@@ -208,21 +225,29 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public IFieldResolver FindFieldResolver(string fieldName)
         {
-            var index = FieldInfos.FindIndex(x => x.Name == fieldName);
-            return index != -1 ? FieldResolvers[index] : null;
+            return FieldResolverInfos.FirstOrDefault(x => x.FieldInfo.Name == fieldName)?.Resolver;
         }
-        
-        public T FindFieldResolver<T>(string fieldName) where T: class, IFieldResolver
+
+        public T FindFieldResolver<T>(string fieldName) where T : class, IFieldResolver
         {
             return FindFieldResolver(fieldName) as T;
         }
-        
+
+        /// <summary>
+        /// Get all field resolver infos
+        /// </summary>
+        /// <returns></returns>
+        public FieldResolverInfo[] GetAllFieldResolverInfos()
+        {
+            return FieldResolverInfos.ToArray();
+        }
+
         /// <summary>
         /// Fill node element with default properties
         /// </summary>
         protected void FillDefaultNodeProperties()
         {
-            if(NodeType == null || GraphView == null || NodeElement == null) return;
+            if (NodeType == null || GraphView == null || NodeElement == null) return;
 
             var fieldContainer = new VisualElement();
             var nodeTemplate = Activator.CreateInstance(NodeType) as CeresNode;
@@ -235,10 +260,9 @@ namespace Ceres.Editor.Graph
                     fieldResolver.Restore(nodeTemplate);
                     var editorField = fieldResolver.GetField(GraphView);
                     fieldContainer.Add(editorField);
-                    FieldResolvers.Add(fieldResolver);
-                    FieldInfos.Add(p);
+                    FieldResolverInfos.Add(new FieldResolverInfo(fieldResolver, p));
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     CeresLogger.LogWarning($"Can not draw property {NodeType.Name}.{p.Name}, {e}");
                 }
@@ -256,7 +280,7 @@ namespace Ceres.Editor.Graph
             {
                 var definitionType = NodeType.GetGenericTypeDefinition();
                 var template = GenericNodeTemplateRegistry.GetTemplate(definitionType);
-                if(template != null)
+                if (template != null)
                 {
                     NodeElement.title = template.GetGenericNodeName(title, NodeType.GetGenericArguments());
                     return;
@@ -270,14 +294,14 @@ namespace Ceres.Editor.Graph
         /// </summary>
         protected void FillDefaultNodePorts()
         {
-            if(NodeType == null || GraphView == null || NodeElement == null) return;
-            
+            if (NodeType == null || GraphView == null || NodeElement == null) return;
+
             NodeType.GetGraphEditorPortFields()
             .ForEach((p) =>
             {
                 try
                 {
-                    if(!p.FieldType.IsArray)
+                    if (!p.FieldType.IsArray)
                     {
                         AddPortView(PortViewFactory.CreateInstance(p, this));
                     }
@@ -320,9 +344,9 @@ namespace Ceres.Editor.Graph
         public virtual void SetNodeInstance(CeresNode ceresNode)
         {
             NodeInstance = ceresNode;
-            foreach (var resolver in FieldResolvers)
+            foreach (var info in FieldResolverInfos)
             {
-                resolver.Restore(ceresNode);
+                info.Resolver.Restore(ceresNode);
             }
             Guid = ceresNode.Guid;
             NodeElement.SetPosition(ceresNode.GraphPosition);
@@ -337,7 +361,7 @@ namespace Ceres.Editor.Graph
         /// </summary>
         public void ReconnectEdges()
         {
-            PortViews.ForEach(x=> x.Connect());
+            PortViews.ForEach(x => x.Connect());
         }
 
         /// <summary>
@@ -354,7 +378,7 @@ namespace Ceres.Editor.Graph
             }
             NodeElement.tooltip = result + tooltip;
         }
-        
+
         /// <summary>
         /// Get node default tooltip
         /// </summary>
@@ -367,8 +391,8 @@ namespace Ceres.Editor.Graph
 
     public static class CeresNodeViewExtensions
     {
-        public static TSettingsView CreateSettingsView<TSettingsView>(this ICeresNodeView nodeView) 
-            where TSettingsView: NodeSettingsView, new()
+        public static TSettingsView CreateSettingsView<TSettingsView>(this ICeresNodeView nodeView)
+            where TSettingsView : NodeSettingsView, new()
         {
             var view = new TSettingsView();
             view.Attach(nodeView);

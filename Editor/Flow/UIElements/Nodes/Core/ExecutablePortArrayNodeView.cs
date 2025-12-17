@@ -59,7 +59,7 @@ namespace Ceres.Editor.Graph.Flow
                 /* Allocate before commit */
                 portArrayNode.SetPortArrayLength(PortLength);
             }
-            FieldResolvers.ForEach(r => r.Commit(nodeInstance));
+            FieldResolverInfos.ForEach(info => info.Resolver.Commit(nodeInstance));
             PortViews.ForEach(p => p.Commit(nodeInstance));
             nodeInstance.GraphPosition = NodeElement.GetPosition();
             nodeInstance.Guid = Guid;

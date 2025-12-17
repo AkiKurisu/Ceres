@@ -429,7 +429,6 @@ namespace Ceres.Editor.Graph
             {
                 if (type.GetGenericTypeDefinition() == typeof(SerializedType<>))
                     return true;
-                return false;
             }
             return false;
         }

@@ -21,7 +21,7 @@ namespace Ceres.Editor.Graph.Flow
         public bool enableDebug;
 
         public List<string> breakpoints = new();
-        
+
         public bool isPaused;
 
         public string currentNode;
@@ -62,11 +62,14 @@ namespace Ceres.Editor.Graph.Flow
 
         private FlowGraphView CurrentGraphView => _graphViews.GetValueOrDefault(GraphIndex);
 
+        private FlowGraphInspectorPanel _inspectorPanel;
+
         protected override void OnInitialize()
         {
             var icon = Resources.Load<Texture>("Ceres/editor_icon");
             titleContent = new GUIContent($"Flow ({Identifier.boundObject.name})", icon);
             EditorObject = FlowGraphEditorObject.CreateTemporary(ContainerT);
+            _inspectorPanel = new FlowGraphInspectorPanel(this);
             InitializeFlowGraphView();
         }
 
@@ -113,7 +116,33 @@ namespace Ceres.Editor.Graph.Flow
         {
             rootVisualElement.Clear();
             rootVisualElement.Add(new IMGUIContainer(OnToolBarGUI));
-            rootVisualElement.Add(GetOrCreateGraphView(index));
+
+            // Load inspector panel stylesheet
+            rootVisualElement.styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/Flow/InspectorPanel"));
+
+            // Create split view for graph view and inspector
+            var splitView = new TwoPaneSplitView(1, 400, TwoPaneSplitViewOrientation.Horizontal)
+            {
+                name = "GraphSplitView"
+            };
+
+            // Left pane: Graph View
+            var graphViewContainer = new VisualElement
+            {
+                name = "GraphViewContainer"
+            };
+            var graphView = GetOrCreateGraphView(index);
+            graphViewContainer.Add(graphView);
+            splitView.Add(graphViewContainer);
+
+            // Right pane: Inspector
+            var inspectorContainer = _inspectorPanel.CreatePanel();
+            splitView.Add(inspectorContainer);
+
+            rootVisualElement.Add(splitView);
+
+            // Setup selection listener for inspector
+            _inspectorPanel.AttachSelectionListener(rootVisualElement);
         }
 
 #pragma warning disable IDE0051
@@ -312,6 +341,7 @@ namespace Ceres.Editor.Graph.Flow
             if (EditorObject) EditorObject.DestroyTemporary();
             EditorObject = FlowGraphEditorObject.CreateTemporary(ContainerT);
             _graphViews.Clear();
+            _inspectorPanel = new FlowGraphInspectorPanel(this);
             InitializeFlowGraphView();
         }
 
