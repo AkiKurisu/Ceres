@@ -20,7 +20,7 @@ namespace Ceres.Editor.Graph.Flow.Utilities
             {
                 _settingsResolver = FieldResolverFactory.Get().Create(settingsField);
                 settingsView.SettingsElement.Add(_settingsResolver.EditorField);
-                FieldResolvers.Add(_settingsResolver);
+                FieldResolverInfos.Add(new FieldResolverInfo(_settingsResolver, settingsField));
                 _settingsResolver.RegisterValueChangeCallback(OnSettingsChange);
             }
         }

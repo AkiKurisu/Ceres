@@ -160,7 +160,7 @@ namespace Ceres.Editor.Graph.Flow
         public virtual ExecutableNode CompileNode()
         {
             var nodeInstance = (ExecutableNode)Activator.CreateInstance(NodeType);
-            FieldResolvers.ForEach(fieldResolver => fieldResolver.Commit(nodeInstance));
+            FieldResolverInfos.ForEach(info => info.Resolver.Commit(nodeInstance));
             PortViews.ForEach(portView => portView.Commit(nodeInstance));
             nodeInstance.GraphPosition = NodeElement.GetPosition();
             nodeInstance.Guid = Guid;
