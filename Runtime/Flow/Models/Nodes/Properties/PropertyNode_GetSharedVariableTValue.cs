@@ -23,7 +23,7 @@ namespace Ceres.Graph.Flow.Properties
         protected override UniTask Execute(ExecutionContext executionContext)
         {
             TOutValue outValue = default(TOutValue);
-            if (executionContext.Graph.BlackBoard.GetSharedVariable(propertyName) is T variable)
+            if (executionContext.Graph.Blackboard.GetSharedVariable(propertyName) is T variable)
             {
                 if (_isValueType)
                 {

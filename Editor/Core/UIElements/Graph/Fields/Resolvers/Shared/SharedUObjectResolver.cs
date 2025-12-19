@@ -4,17 +4,18 @@ using System;
 using Ceres.Graph;
 using UnityEngine.UIElements;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Editor.Graph
 {
-    public sealed class SharedObjectResolver : FieldResolver<SharedObjectField, SharedUObject>
+    public sealed class SharedUObjectResolver : FieldResolver<SharedUObjectField, SharedUObject>
     {
-        public SharedObjectResolver(FieldInfo fieldInfo) : base(fieldInfo)
+        public SharedUObjectResolver(FieldInfo fieldInfo) : base(fieldInfo)
         {
         }
         
-        protected override SharedObjectField CreateEditorField(FieldInfo fieldInfo)
+        protected override SharedUObjectField CreateEditorField(FieldInfo fieldInfo)
         {
-            return new SharedObjectField(fieldInfo.Name, fieldInfo.FieldType, fieldInfo);
+            return new SharedUObjectField(fieldInfo.Name, fieldInfo.FieldType, fieldInfo);
         }
         
         public override bool IsAcceptable(Type fieldValueType, FieldInfo _)
@@ -23,9 +24,9 @@ namespace Ceres.Editor.Graph
         }
     }
     
-    public sealed class SharedObjectField : SharedVariableField<SharedUObject, UObject>
+    public sealed class SharedUObjectField : SharedVariableField<SharedUObject, UObject>
     {
-        public SharedObjectField(string label, Type objectType, FieldInfo fieldInfo) : base(label, objectType, fieldInfo)
+        public SharedUObjectField(string label, Type objectType, FieldInfo fieldInfo) : base(label, objectType, fieldInfo)
         {
         }
         

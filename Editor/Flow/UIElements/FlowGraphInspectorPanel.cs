@@ -187,7 +187,7 @@ namespace Ceres.Editor.Graph.Flow
             DrawPortsSection(nodeView);
 
             // Field resolvers section
-            DrawFieldsSection(nodeView);
+            DrawFieldsSection();
         }
 
         /// <summary>
@@ -209,11 +209,11 @@ namespace Ceres.Editor.Graph.Flow
                 var direction = portView.Binding.GetDirection() == Direction.Input ? "Input" : "Output";
                 var portType = portView.PortElement.portType?.Name ?? "Unknown";
 
-                var portLabel = new Label($"  [{direction}] {portName}: {portType}")
+                var portLabel = new Label($"[{direction}] {portName}: {portType}")
                 {
                     style =
                     {
-                        marginLeft = 15,
+                        marginLeft = 10,
                         marginTop = 3,
                         fontSize = DefaultFontSize,
                         whiteSpace = WhiteSpace.Normal
@@ -224,11 +224,11 @@ namespace Ceres.Editor.Graph.Flow
                 // Show connection status
                 if (portView.PortElement.connected)
                 {
-                    var connectionLabel = new Label($"    Connected ({portView.PortElement.connections.Count()})")
+                    var connectionLabel = new Label($"Connected ({portView.PortElement.connections.Count()})")
                     {
                         style =
                         {
-                            marginLeft = 20,
+                            marginLeft = 15,
                             marginTop = 2,
                             fontSize = DefaultFontSize,
                             color = new Color(0.4f, 0.8f, 0.4f)
@@ -247,7 +247,7 @@ namespace Ceres.Editor.Graph.Flow
                     {
                         style =
                         {
-                            marginLeft = 15,
+                            marginLeft = 12,
                             marginRight = 10,
                             marginTop = 3,
                             marginBottom = 5
@@ -261,8 +261,7 @@ namespace Ceres.Editor.Graph.Flow
         /// <summary>
         /// Display fields section
         /// </summary>
-        /// <param name="nodeView">Node view</param>
-        private void DrawFieldsSection(ExecutableNodeView nodeView)
+        private void DrawFieldsSection()
         {
             AddSectionTitle("Fields", 15);
 

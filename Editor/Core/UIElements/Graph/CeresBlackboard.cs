@@ -10,6 +10,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Blackboard = UnityEditor.Experimental.GraphView.Blackboard;
 using UObject = UnityEngine.Object;
 
 namespace Ceres.Editor.Graph
@@ -286,7 +287,8 @@ namespace Ceres.Editor.Graph
         /// <param name="blackboardField"></param>
         /// <param name="valueField"></param>
         /// <returns></returns>
-        protected virtual BlackboardRow CreateVariableBlackboardRow(SharedVariable variable, BlackboardField blackboardField, VisualElement valueField)
+        protected virtual BlackboardRow CreateVariableBlackboardRow(SharedVariable variable, BlackboardField blackboardField, 
+            VisualElement valueField)
         {
             var propertyView = new VisualElement
             {
@@ -304,10 +306,10 @@ namespace Ceres.Editor.Graph
                 }
                 else
                 {
-                    toggle.RegisterValueChangedCallback(x =>
+                    toggle.RegisterValueChangedCallback(evt =>
                     {
                         var index = SharedVariables.FindIndex(sharedVariable => sharedVariable.Name == variable.Name);
-                        SharedVariables[index].IsExposed = x.newValue;
+                        SharedVariables[index].IsExposed = evt.newValue;
                         NotifyVariableChanged(variable, VariableChangeType.Value);
                     });
                 }

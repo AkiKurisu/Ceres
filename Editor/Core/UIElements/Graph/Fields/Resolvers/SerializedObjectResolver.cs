@@ -5,6 +5,7 @@ using Chris.Serialization.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+
 namespace Ceres.Editor.Graph
 {
     [Ordered]
@@ -28,6 +29,8 @@ namespace Ceres.Editor.Graph
     public class SerializedObjectField : BaseField<SerializedObjectBase>
     {
         private SoftObjectHandle _wrapperHandle;
+
+        public Action<SerializedObjectBase> onJsonValueUpdate;
         
         public SerializedObjectField(string label, IMGUIContainer container) : base(label, container)
         {
@@ -56,6 +59,7 @@ namespace Ceres.Editor.Graph
             if (EditorGUI.EndChangeCheck())
             {
                 value.jsonData = JsonUtility.ToJson(wrapper.Value);
+                onJsonValueUpdate?.Invoke(value);
             }
         }
 
