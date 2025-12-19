@@ -1,4 +1,5 @@
-﻿using Ceres.Graph.Flow;
+﻿using System.Linq;
+using Ceres.Graph.Flow;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -38,11 +39,37 @@ namespace Ceres.Editor.Graph.Flow
         }
         
         private FlowGraphAsset Asset => (FlowGraphAsset)target;
-        
+
+        private SerializedProperty _runtimeType;
+
+        public void OnEnable()
+        {
+            _runtimeType = serializedObject.FindProperty(nameof(FlowGraphAsset.runtimeType));
+        }
+
         public override VisualElement CreateInspectorGUI()
         {
             var myInspector = new VisualElement();
-            myInspector.Add(new PropertyField(serializedObject.FindProperty(nameof(FlowGraphAsset.runtimeType))));
+            var runtimeTypePropField = new PropertyField(_runtimeType);
+            runtimeTypePropField.Bind(serializedObject);
+            myInspector.Add(runtimeTypePropField);
+            
+            myInspector.Add(new BlackboardInspectorPanel(
+                () => Asset.GetFlowGraph(),
+                () => ((IFlowGraphContainer)Asset).GetFlowGraphData().saveTimestamp, 
+                instance =>
+                {
+                    // Do not serialize data in playing mode
+                    if (Application.isPlaying) return;
+                    
+                    var graphData = ((IFlowGraphContainer)Asset).GetFlowGraphData().CloneT<FlowGraphData>();
+                    graphData.variableData = instance.variables.Where(variable => variable is not LocalFunction)
+                        .Select(variable => variable.GetSerializedData())
+                        .ToArray();
+                    Asset.SetGraphData(graphData);
+                    EditorUtility.SetDirty(target);
+                }));
+            
             myInspector.Add(new OpenFlowGraphButton(Asset));
             return myInspector;
         }

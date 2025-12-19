@@ -25,7 +25,7 @@ namespace Ceres.Graph.Flow.Properties
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            if (executionContext.Graph.BlackBoard.GetSharedVariable(propertyName) is T variable) 
+            if (executionContext.Graph.Blackboard.GetSharedVariable(propertyName) is T variable) 
                 variable.Value = inputValue.Value;
             executionContext.SetNext(exec.GetT<ExecutableNode>());
             return UniTask.CompletedTask;

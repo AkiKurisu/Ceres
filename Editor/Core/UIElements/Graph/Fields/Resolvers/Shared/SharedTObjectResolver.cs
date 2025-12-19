@@ -8,6 +8,7 @@ using Ceres.Graph;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Editor.Graph
 {
     public sealed class SharedTObjectResolver<T> : FieldResolver<SharedTObjectField<T>, SharedUObject<T>> where T : UObject
@@ -116,8 +117,13 @@ namespace Ceres.Editor.Graph
             value.Name ??= string.Empty;
             int index = list.IndexOf(value.Name);
             _nameDropdown = new DropdownField($"Shared {typeof(T).Name}", list, index);
-            _nameDropdown.RegisterCallback<MouseEnterEvent>((evt) => { _nameDropdown.choices = GetList(_graphView); });
-            _nameDropdown.RegisterValueChangedCallback(evt => { value.Name = evt.newValue; BindProperty(); NotifyValueChange(); });
+            _nameDropdown.RegisterCallback<MouseEnterEvent>(_ => _nameDropdown.choices = GetList(_graphView));
+            _nameDropdown.RegisterValueChangedCallback(evt =>
+            {
+                value.Name = evt.newValue;
+                BindProperty(); 
+                NotifyValueChange();
+            });
             _foldout.Insert(0, _nameDropdown);
         }
         
@@ -139,7 +145,11 @@ namespace Ceres.Editor.Graph
             {
                 objectType = typeof(T)
             };
-            ValueField.RegisterValueChangedCallback(evt => { value.Value = (T)evt.newValue; NotifyValueChange(); });
+            ValueField.RegisterValueChangedCallback(evt => 
+            { 
+                value.Value = (T)evt.newValue;
+                NotifyValueChange(); 
+            });
             if (value != null) ValueField.value = value.Value;
             _foldout.Insert(0, ValueField);
         }

@@ -1,15 +1,40 @@
 using System.Collections.Generic;
+using System.Linq;
 using Chris.Serialization;
 using UnityEngine;
 using UObject = UnityEngine.Object;
+
 namespace Ceres.Graph
 {
     /// <summary>
     /// A medium for centralized storage and exchange of graph data
     /// </summary>
-    public class BlackBoard : IVariableSource
+    public class Blackboard : IVariableSource
     {
         public List<SharedVariable> SharedVariables { get; } = new();
+                
+        protected virtual bool CanVariableExposed(SharedVariable variable)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Get all exposed shared variables
+        /// </summary>
+        /// <returns></returns>
+        public SharedVariable[] GetExposedVariables()
+        {
+            return SharedVariables.Where(variable =>
+            {
+                if (!variable.IsExposed) return false;
+                if (variable is SharedObject sharedObject && sharedObject.GetValueType() == typeof(object))
+                {
+                    return false;
+                }
+
+                return CanVariableExposed(variable);
+            }).ToArray();
+        }
         
         /// <summary>
         /// Create a BlackBoard 
@@ -17,9 +42,10 @@ namespace Ceres.Graph
         /// <param name="variables">Variables to add</param>
         /// <param name="clone">Whether clone source variable</param>
         /// <returns></returns>
-        public static BlackBoard Create(List<SharedVariable> variables = null, bool clone = true)
+        public static TBlackboard Create<TBlackboard>(List<SharedVariable> variables = null, bool clone = true) 
+            where TBlackboard: Blackboard, new()
         {
-            var blackBoard = new BlackBoard();
+            var blackBoard = new TBlackboard();
             if (variables != null)
             {
                 foreach (var variable in variables)
@@ -34,7 +60,7 @@ namespace Ceres.Graph
         {
             if (!this.TryGetSharedVariable(key, out SharedVariable<float> variable))
             {
-                variable = new SharedFloat() { Name = key };
+                variable = new SharedFloat { Name = key };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;
@@ -45,7 +71,7 @@ namespace Ceres.Graph
         {
             if (!this.TryGetSharedVariable(key, out SharedVariable<int> variable))
             {
-                variable = new SharedInt() { Name = key };
+                variable = new SharedInt { Name = key };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;
@@ -56,7 +82,7 @@ namespace Ceres.Graph
         {
             if (!this.TryGetSharedVariable(key, out SharedVariable<Vector3> variable))
             {
-                variable = new SharedVector3() { Name = key };
+                variable = new SharedVector3 { Name = key };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;
@@ -67,7 +93,7 @@ namespace Ceres.Graph
         {
             if (!this.TryGetSharedVariable(key, out SharedVariable<Vector3Int> variable))
             {
-                variable = new SharedVector3Int() { Name = key };
+                variable = new SharedVector3Int { Name = key };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;
@@ -111,7 +137,7 @@ namespace Ceres.Graph
         {
             if (!this.TryGetSharedString(key, out var variable))
             {
-                variable = new SharedString() { Name = key };
+                variable = new SharedString { Name = key };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;
@@ -122,7 +148,7 @@ namespace Ceres.Graph
         {
             if (!this.TryGetSharedUObject(key, out var variable))
             {
-                variable = new SharedUObject() { Name = key };
+                variable = new SharedUObject { Name = key };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;
@@ -133,7 +159,7 @@ namespace Ceres.Graph
         {
             if (!this.TryGetSharedUObject(key, out var variable))
             {
-                variable = new SharedUObject() { Name = key, serializedType = SerializedType<UObject>.FromType(typeof(T)) };
+                variable = new SharedUObject { Name = key, serializedType = SerializedType<UObject>.FromType(typeof(T)) };
                 SharedVariables.Add(variable);
             }
             variable.Value = value;

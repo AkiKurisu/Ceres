@@ -63,16 +63,16 @@ namespace Ceres.Graph
     [Serializable]
     public class CeresGraph : IDisposable, IDisposableUnregister
     {
-        private BlackBoard _blackBoard;
+        private Blackboard _blackboard;
 
         /// <summary>
         /// Exposed blackboard for data exchange
         /// </summary>
-        public BlackBoard BlackBoard
+        public Blackboard Blackboard
         {
             get
             {
-                return _blackBoard ??= BlackBoard.Create(variables, false);
+                return _blackboard ??= CreateBlackboard(variables);
             }
         }
 
@@ -115,6 +115,16 @@ namespace Ceres.Graph
             }
         }
 
+        /// <summary>
+        /// Create a blackboard from provided variables
+        /// </summary>
+        /// <param name="inVariables"></param>
+        /// <returns></returns>
+        protected virtual Blackboard CreateBlackboard(List<SharedVariable> inVariables)
+        {
+            return Blackboard.Create<Blackboard>(inVariables, false);
+        }
+
         protected void SetCompilerTarget(CeresGraphCompiler compiler)
         {
             compiler.Target = this;
@@ -139,7 +149,7 @@ namespace Ceres.Graph
 
             CompileNodes(compiler);
 
-            BlackBoard.LinkToGlobal();
+            Blackboard.LinkToGlobal();
         }
 
         /// <summary>
@@ -156,7 +166,7 @@ namespace Ceres.Graph
                 foreach (var variable in node.SharedVariables)
                 {
                     internalVariables.Add(variable);
-                    variable.LinkToSource(graph.BlackBoard);
+                    variable.LinkToSource(graph.Blackboard);
                 }
             }
         }
@@ -516,6 +526,11 @@ namespace Ceres.Graph
         public NodeGroup[] nodeGroups;
 
         public RelayNode[] relayNodes;
+
+        /// <summary>
+        /// Timestamp when this graph data was saved
+        /// </summary>
+        public long saveTimestamp;
 #endif
 
         /// <summary>
@@ -726,7 +741,9 @@ namespace Ceres.Graph
         /// </summary>
         public virtual void PreSerialization()
         {
-
+#if UNITY_EDITOR
+            saveTimestamp = DateTime.UtcNow.Ticks;
+#endif
         }
 
         /// <summary>
@@ -821,6 +838,7 @@ namespace Ceres.Graph
 #if UNITY_EDITOR
             nodeGroups = graph.nodeGroups?.ToArray() ?? Array.Empty<NodeGroup>();
             relayNodes = graph.relayNodes?.ToArray() ?? Array.Empty<RelayNode>();
+            saveTimestamp = DateTime.UtcNow.Ticks;
 #endif
         }
     }
