@@ -339,7 +339,7 @@ Analyzes partial classes annotated with `GenerateFlowAttribute` and generates th
 ### IL Post Process (ILPP)
 Uses ILPP to emit IL for initialization logic of `CeresNode` and methods annotated with `ImplementableEventAttribute` to enhance runtime performance.
 
-Recommended to use the newest version of Rider to view the IL code after ILPP.
+Recommended to use the newest version of Rider to view the IL code after ILPP directly.
 
 ![View IL](./Documentation~/resources/Images/rider_il.png)
 
