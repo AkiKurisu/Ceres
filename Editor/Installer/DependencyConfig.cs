@@ -10,16 +10,16 @@ namespace Ceres.Editor.Installer
         public static readonly List<DependencyInfo> Dependencies = new()
         {
             new DependencyInfo(
-                "com.kurisu.chris",
-                "Chris",
-                "https://github.com/AkiKurisu/Chris.git",
-                "Chris framework - Required for Ceres core functionality"
-            ),
-            new DependencyInfo(
                 "com.cysharp.unitask",
                 "UniTask",
                 "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-                "UniTask - Provides efficient async/await support for Unity"
+                "UniTask - Provides Ceres async/await support"
+            ),
+            new DependencyInfo(
+                "com.kurisu.chris",
+                "Chris",
+                "https://github.com/AkiKurisu/Chris.git",
+                "Chris - Provides Ceres core functionality"
             )
         };
     }

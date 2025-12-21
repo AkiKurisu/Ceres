@@ -27,7 +27,9 @@ Powerful visual scripting toolkit for Unity.
 - [Articles](#articles)
 - [License](#license)
 
-## Install
+## 📦 Install
+
+### Install from UPM
 
 Add following dependencies to `manifest.json`.
 
@@ -39,6 +41,14 @@ Add following dependencies to `manifest.json`.
 ```
 
 Use git URL to download package by Unity Package Manager ```https://github.com/AkiKurisu/Ceres.git```.
+
+### Install from Disk
+
+Clone repo to your project `Packages` folder.
+
+Use `Ceres Installer` to install dependencies.
+
+![installer](./Documentation~/resources/Images/installer.png)
 
 ## ✨ Highlights
 

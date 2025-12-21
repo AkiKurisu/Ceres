@@ -337,7 +337,7 @@ namespace Ceres.Editor.Installer
                     label.style.color = Color.white;
                     break;
                 case DependencyStatus.Installing:
-                    label.text = "⟳ Installing...";
+                    label.text = "○ Installing...";
                     label.style.backgroundColor = new Color(0.4f, 0.4f, 0.8f);
                     label.style.color = Color.white;
                     break;
