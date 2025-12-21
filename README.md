@@ -46,7 +46,7 @@ Use git URL to download package by Unity Package Manager ```https://github.com/A
 
 Clone repo to your project `Packages` folder.
 
-Use `Ceres Installer` to install dependencies.
+Use `Tools/Ceres/Installer` to install dependencies.
 
 ![installer](./Documentation~/resources/Images/installer.png)
 
