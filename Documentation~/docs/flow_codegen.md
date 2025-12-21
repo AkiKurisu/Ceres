@@ -33,6 +33,10 @@ public void Test()
 }
 ```
 
+Recommended to use the newest version of Rider to view the IL code after ILPP directly.
+
+![View IL](../resources/Images/rider_il.png)
+
 ## Source Generator
 
 In [executable function part](./flow_executable_function.md#executable-function), it is mentioned that source generator will register static methods to improve runtime performance.

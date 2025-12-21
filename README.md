@@ -27,7 +27,9 @@ Powerful visual scripting toolkit for Unity.
 - [Articles](#articles)
 - [License](#license)
 
-## Install
+## 📦 Install
+
+### Install from UPM
 
 Add following dependencies to `manifest.json`.
 
@@ -39,6 +41,14 @@ Add following dependencies to `manifest.json`.
 ```
 
 Use git URL to download package by Unity Package Manager ```https://github.com/AkiKurisu/Ceres.git```.
+
+### Install from Disk
+
+Clone repo to your project `Packages` folder.
+
+Use `Ceres Installer` to install dependencies.
+
+![installer](./Documentation~/resources/Images/installer.png)
 
 ## ✨ Highlights
 
@@ -339,7 +349,7 @@ Analyzes partial classes annotated with `GenerateFlowAttribute` and generates th
 ### IL Post Process (ILPP)
 Uses ILPP to emit IL for initialization logic of `CeresNode` and methods annotated with `ImplementableEventAttribute` to enhance runtime performance.
 
-Recommended to use the newest version of Rider to view the IL code after ILPP.
+Recommended to use the newest version of Rider to view the IL code after ILPP directly.
 
 ![View IL](./Documentation~/resources/Images/rider_il.png)
 

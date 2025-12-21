@@ -24,7 +24,7 @@ public class GameplaySetup
     [UnityEditor.InitializeOnLoadMethod]
 #endif
     private static unsafe void InitializeOnLoad()
-    {/
+    {
         CeresPort<SchedulerHandle>.MakeCompatibleTo<double>(handle =>
         {
             double value = default;
