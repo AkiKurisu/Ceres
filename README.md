@@ -288,6 +288,14 @@ Ceres editor can display the current value of an input port when the mouse hover
 ### Graph Tracker
 `FlowGraphTracker` is a class that can be used to track the execution of the graph for advanced debugging scenarios.
 
+### Hot Reload
+
+Ceres supports hot reloading of `FlowGraphObject`. When you modify a `FlowGraphObject` in playing mode, the changes can be reflected immediately.
+
+To enable hot reload, you need toggle the `Hot Reload` option in Flow Editor's toolbar and then try to save your graph in playing mode.
+
+![Hot Reload](./Documentation~/resources/Images/hot_reload.png)
+
 ## Advanced Features
 
 ### Port Implicit Conversion
