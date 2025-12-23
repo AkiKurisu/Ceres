@@ -175,7 +175,7 @@ namespace Ceres.Editor.Graph.Flow
             using var serializedObject = new SerializedObject(_nodeWrapper);
             SerializedProperty prop = serializedObject.FindProperty("m_Value");
 
-            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.BeginVertical();
 
             if (prop != null && prop.NextVisible(true))
             {
@@ -194,6 +194,7 @@ namespace Ceres.Editor.Graph.Flow
                 // Properties were modified, sync back to FieldResolvers
                 SyncToFieldResolvers();
             }
+            EditorGUILayout.EndVertical();
         }
 
         /// <summary>
@@ -218,10 +219,10 @@ namespace Ceres.Editor.Graph.Flow
         /// <param name="portInfo">Port editor info</param>
         private static void DrawPortField(PortEditorInfo portInfo)
         {
-            EditorGUI.indentLevel++;
-
             using var serializedObject = new SerializedObject(portInfo.Wrapper);
             SerializedProperty prop = serializedObject.FindProperty("m_Value");
+            
+            EditorGUILayout.BeginVertical();
             if (prop != null && prop.NextVisible(true))
             {
                 do
@@ -230,13 +231,13 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 while (prop.NextVisible(false));
             }
+            
             if (serializedObject.ApplyModifiedProperties())
             {
                 // Port value changed, sync back to FieldResolver
                 SyncPortToFieldResolver(portInfo);
             }
-
-            EditorGUI.indentLevel--;
+            EditorGUILayout.EndVertical();
         }
 
         /// <summary>

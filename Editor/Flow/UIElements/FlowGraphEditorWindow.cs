@@ -64,6 +64,8 @@ namespace Ceres.Editor.Graph.Flow
 
         private FlowGraphInspectorPanel _inspectorPanel;
 
+        private VisualElement _graphViewContainer;
+
         protected override void OnInitialize()
         {
             var icon = Resources.Load<Texture>("Ceres/editor_icon");
@@ -102,6 +104,25 @@ namespace Ceres.Editor.Graph.Flow
             }
         }
 
+        /// <summary>
+        /// Update hot reload border style based on enabled state
+        /// </summary>
+        private void UpdateHotReloadBorderStyle()
+        {
+            if (_graphViewContainer == null) return;
+
+            var hotReloadEnabled = FlowGraphHotReloadManager.IsHotReloadEnabled;
+
+            if (hotReloadEnabled)
+            {
+                CurrentGraphView.AddToClassList("hot-reload-enabled");
+            }
+            else
+            {
+                CurrentGraphView.RemoveFromClassList("hot-reload-enabled");
+            }
+        }
+
         private static void DisplayProgressBar(string stepTitle, float progress)
         {
             EditorUtility.DisplayProgressBar(stepTitle, "First initialization requires a few seconds", progress);
@@ -127,13 +148,16 @@ namespace Ceres.Editor.Graph.Flow
             };
 
             // Left pane: Graph View
-            var graphViewContainer = new VisualElement
+            _graphViewContainer = new VisualElement
             {
                 name = "GraphViewContainer"
             };
             var graphView = GetOrCreateGraphView(index);
-            graphViewContainer.Add(graphView);
-            splitView.Add(graphViewContainer);
+            _graphViewContainer.Add(graphView);
+            splitView.Add(_graphViewContainer);
+
+            // Update hot reload border style
+            UpdateHotReloadBorderStyle();
 
             // Right pane: Inspector
             var inspectorContainer = _inspectorPanel.CreatePanel();
@@ -204,6 +228,11 @@ namespace Ceres.Editor.Graph.Flow
             var guiContent = new GUIContent();
             if (TrySerializeGraph())
             {
+                /* Trigger hot reload check if in play mode and hot reload is enabled */
+                if (Application.isPlaying && FlowGraphHotReloadManager.IsHotReloadEnabled)
+                {
+                    FlowGraphHotReloadManager.RefreshContainerTimestamps();
+                }
                 /* Commit graph data */
                 ContainerT.SetGraphData(EditorObject.GraphData);
                 /* Refresh editor object */
@@ -212,6 +241,12 @@ namespace Ceres.Editor.Graph.Flow
                 /* Refresh outer asset */
                 EditorUtility.SetDirty(Container.Object);
                 AssetDatabase.SaveAssetIfDirty(Container.Object);
+
+                if (Application.isPlaying && FlowGraphHotReloadManager.IsHotReloadEnabled)
+                {
+                    FlowGraphHotReloadManager.CheckForChanges();
+                }
+
                 /* Reload graph view */
                 var currentViewPosition = CurrentGraphView.viewTransform.position;
                 _graphViews.Clear();
@@ -256,24 +291,29 @@ namespace Ceres.Editor.Graph.Flow
             GUILayout.BeginHorizontal(EditorStyles.toolbar);
             // ========================= Left ToolBar ============================= //
             /* Draw save button */
-            GUI.enabled = !Application.isPlaying;
-            var image = EditorGUIUtility.IconContent("SaveAs@2x").image;
-            if (GUILayout.Button(new GUIContent(image, $"Save flow and serialize data to {Identifier.boundObject.name}"), EditorStyles.toolbarButton))
+            var hotReloadEnabled = FlowGraphHotReloadManager.IsHotReloadEnabled;
+            using (new EditorGUI.DisabledScope(Application.isPlaying && !hotReloadEnabled))
             {
-                SaveGraphData();
+                var image = EditorGUIUtility.IconContent("SaveAs@2x").image;
+                if (GUILayout.Button(new GUIContent(image, $"Save flow and serialize data to {Identifier.boundObject.name}"), EditorStyles.toolbarButton))
+                {
+                    SaveGraphData();
+                }
             }
 
             /* Draw simulation button */
             if (ContainerCanSimulate())
             {
-                GUI.enabled &= CurrentGraphView.CanSimulate();
-                image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
-                if (GUILayout.Button(new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"), EditorStyles.toolbarButton))
+                using (new EditorGUI.DisabledScope(!CurrentGraphView.CanSimulate()))
                 {
-                    DoSimulation().Forget();
+                    var image = EditorGUIUtility.IconContent("d_PlayButton On@2x").image;
+                    if (GUILayout.Button(
+                            new GUIContent("Run Flow", image, "Execute selected execution event in graph editor"),
+                            EditorStyles.toolbarButton))
+                    {
+                        DoSimulation().Forget();
+                    }
                 }
-
-                GUI.enabled = true;
             }
 
             /* Draw subGraph popup */
@@ -291,23 +331,65 @@ namespace Ceres.Editor.Graph.Flow
             GUILayout.FlexibleSpace();
 
             // ========================= Right ToolBar ============================= //
-            GUI.enabled = DebugState.enableDebug && CurrentGraphView.IsPaused();
-            image = EditorGUIUtility.IconContent("Animation.NextKey").image;
-            if (GUILayout.Button(new GUIContent(image, $"Next Breakpoint"), EditorStyles.toolbarButton))
+            using (new EditorGUI.DisabledScope(!DebugState.enableDebug || !CurrentGraphView.IsPaused()))
             {
-                CurrentGraphView.NextBreakpoint();
+                var image = EditorGUIUtility.IconContent("Animation.NextKey").image;
+                if (GUILayout.Button(new GUIContent(image, $"Next Breakpoint"), EditorStyles.toolbarButton))
+                {
+                    CurrentGraphView.NextBreakpoint();
+                }
+
+                image = EditorGUIUtility.IconContent("Animation.Play").image;
+                if (GUILayout.Button(new GUIContent(image, $"Next Frame"), EditorStyles.toolbarButton))
+                {
+                    CurrentGraphView.NextFrame();
+                }
             }
 
-            image = EditorGUIUtility.IconContent("Animation.Play").image;
-            if (GUILayout.Button(new GUIContent(image, $"Next Frame"), EditorStyles.toolbarButton))
+            /* Draw hot reload toggle button */
+            var originalColor = GUI.color;
+            var originalBgColor = GUI.backgroundColor;
+            var originalContentColor = GUI.contentColor;
+
+            if (hotReloadEnabled)
             {
-                CurrentGraphView.NextFrame();
+                // Cool pulsing effect when hot reload is enabled
+                var pulse = (Mathf.Sin((float)EditorApplication.timeSinceStartup * 3f) + 1f) * 0.5f;
+                var glowIntensity = 0.7f + pulse * 0.3f;
+
+                // Orange/red glowing effect
+                GUI.color = new Color(1f, 0.5f + pulse * 0.2f, 0.1f, 1f);
+                GUI.backgroundColor = new Color(1f, 0.4f, 0.1f, 0.4f * glowIntensity);
+                GUI.contentColor = new Color(1f, 0.9f, 0.7f, 1f); // Bright text
+            }
+            else
+            {
+                GUI.contentColor = new Color(0.7f, 0.7f, 0.7f, 1f); // Dimmed text
             }
 
-            GUI.enabled = true;
+            var hotReloadIcon = hotReloadEnabled
+                ? EditorGUIUtility.IconContent("d_Refresh@2x").image
+                : EditorGUIUtility.IconContent("Refresh@2x").image;
+            var hotReloadLabel = hotReloadEnabled ? "🔥 Hot Reload" : "Hot Reload";
+            var hotReloadTooltip = hotReloadEnabled
+                ? "Hot Reload: ON - Graph will auto-reload when saved during play mode"
+                : "Hot Reload: OFF - Click to enable hot reload during play mode";
+
+            if (GUILayout.Button(new GUIContent(hotReloadLabel, hotReloadIcon, hotReloadTooltip), EditorStyles.toolbarButton))
+            {
+                FlowGraphHotReloadManager.IsHotReloadEnabled = !FlowGraphHotReloadManager.IsHotReloadEnabled;
+                // Update border style when toggling hot reload
+                UpdateHotReloadBorderStyle();
+            }
+
+            GUI.color = originalColor;
+            GUI.backgroundColor = originalBgColor;
+            GUI.contentColor = originalContentColor;
+
+
             if (DebugState.enableDebug)
             {
-                image = EditorGUIUtility.IconContent("DebuggerAttached@2x").image;
+                var image = EditorGUIUtility.IconContent("DebuggerAttached@2x").image;
                 if (GUILayout.Button(new GUIContent(image, $"Disable Debug Mode"), EditorStyles.toolbarButton))
                 {
                     CurrentGraphView.SetDebugEnabled(false);
@@ -315,7 +397,7 @@ namespace Ceres.Editor.Graph.Flow
             }
             else
             {
-                image = EditorGUIUtility.IconContent("DebuggerDisabled@2x").image;
+                var image = EditorGUIUtility.IconContent("DebuggerDisabled@2x").image;
                 if (GUILayout.Button(new GUIContent(image, $"Enable Debug Mode"), EditorStyles.toolbarButton))
                 {
                     CurrentGraphView.SetDebugEnabled(true);

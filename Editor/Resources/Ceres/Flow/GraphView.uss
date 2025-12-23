@@ -3,14 +3,12 @@ GridBackground {
     --line-color: rgba(193, 196, 192, 0.1);
     --thick-line-color: rgba(193, 196, 192, 0.1);
     --spacing: 10;
-    
 }
 
 Label
 {
     min-width:10px;
 }
-
 
 .CeresPortElement.customFunction-blackboard {
     --port-color: #fabd60;
@@ -19,4 +17,12 @@ Label
 .customFunction-blackboard #pill #contents > #top > #title-label
 {
     color: #f6e0c5;
+}
+
+/* Hot reload grid style - warm orange glow effect */
+.hot-reload-enabled > GridBackground
+{
+    --grid-background-color: #2a1f15;
+    --line-color: rgba(255, 153, 51, 0.15);
+    --thick-line-color: rgba(255, 153, 51, 0.2);
 }
