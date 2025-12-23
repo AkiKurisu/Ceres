@@ -7,7 +7,7 @@ namespace Ceres.Graph.Flow
     public class FlowGraphInstanceObject: FlowGraphObjectBase
     {
         [SerializeField]
-        private FlowGraphAsset graphAsset;
+        internal FlowGraphAsset graphAsset;
         
         protected sealed override FlowGraph CreateRuntimeFlowGraphInstance()
         {
