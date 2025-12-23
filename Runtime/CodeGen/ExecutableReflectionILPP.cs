@@ -176,6 +176,13 @@ namespace Unity.Ceres.ILPP.CodeGen
                     // _diagnostics.AddWarning($"ProcessEvent has been called in ImplementableEvent method {typeDefinition.Name}.{methodDefinition.Name}, ILPP will be ignored");
                     continue;
                 }
+                
+                // Check if base class method also has ImplementableEvent attribute
+                // If so, and current method calls base method, skip injection to avoid double call
+                if (HasBaseMethodWithImplementableEvent(typeDefinition, methodDefinition))
+                {
+                    continue;
+                }
                 // Inject bridge method call
                 var parametersCount = methodDefinition.Parameters.Count;
                 var processor = methodDefinition.Body.GetILProcessor();
@@ -332,7 +339,8 @@ namespace Unity.Ceres.ILPP.CodeGen
             bool containsBridgeMethod = processor.Body.Instructions
                 .Any(instruction =>
                 {
-                    if (instruction.OpCode != OpCodes.Call) return false;
+                    // Check both Call and Callvirt opcodes
+                    if (instruction.OpCode != OpCodes.Call && instruction.OpCode != OpCodes.Callvirt) return false;
                     if (instruction.Operand is not MethodReference methodReference) return false;
                     return methodReference.Name is nameof(FlowGraphRuntimeExtensions.ProcessEvent) or nameof(FlowGraphRuntimeExtensions.ProcessEventUber);
                 });
@@ -341,7 +349,8 @@ namespace Unity.Ceres.ILPP.CodeGen
             if(processor.Body.Instructions
                    .FirstOrDefault(instruction =>
                    {
-                       if (instruction.OpCode != OpCodes.Call) return false;
+                       // Check both Call and Callvirt opcodes for base method calls
+                       if (instruction.OpCode != OpCodes.Call && instruction.OpCode != OpCodes.Callvirt) return false;
                        if (instruction.Operand is not MethodReference methodReference) return false;
                        return methodReference.Name == methodDefinition.Name;
                    })?.Operand is not MethodReference baseMethod)
@@ -349,7 +358,71 @@ namespace Unity.Ceres.ILPP.CodeGen
                 return false;
             }
             // Search in base method
-            return RecursiveSearchBridgeMethodCall(baseMethod.Resolve());
+            try
+            {
+                var baseMethodDef = baseMethod.Resolve();
+                if (baseMethodDef == null) return false;
+                return RecursiveSearchBridgeMethodCall(baseMethodDef);
+            }
+            catch
+            {
+                // Base method might not be resolvable (e.g., in different assembly)
+                return false;
+            }
+        }
+        
+        private bool HasBaseMethodWithImplementableEvent(TypeDefinition typeDefinition, MethodDefinition methodDefinition)
+        {
+            if (typeDefinition.BaseType == null) return false;
+            
+            try
+            {
+                var baseType = typeDefinition.BaseType.Resolve();
+                if (baseType == null) return false;
+                
+                // Find base method with same name and signature
+                var baseMethod = baseType.Methods.FirstOrDefault(m =>
+                {
+                    if (m.Name != methodDefinition.Name) return false;
+                    if (m.Parameters.Count != methodDefinition.Parameters.Count) return false;
+                    
+                    // Check if parameters match
+                    for (int i = 0; i < m.Parameters.Count; i++)
+                    {
+                        if (m.Parameters[i].ParameterType.FullName != methodDefinition.Parameters[i].ParameterType.FullName)
+                        {
+                            return false;
+                        }
+                    }
+                    
+                    return true;
+                });
+                
+                if (baseMethod == null) return false;
+                
+                // Check if base method has ImplementableEvent attribute
+                bool hasAttribute = baseMethod.CustomAttributes.Any(x =>
+                    x.AttributeType.Resolve().Name == nameof(ImplementableEventAttribute));
+                
+                if (!hasAttribute) return false;
+                
+                // Check if current method calls base method
+                var processor = methodDefinition.Body.GetILProcessor();
+                bool callsBaseMethod = processor.Body.Instructions
+                    .Any(instruction =>
+                    {
+                        if (instruction.OpCode != OpCodes.Call && instruction.OpCode != OpCodes.Callvirt) return false;
+                        if (instruction.Operand is not MethodReference methodReference) return false;
+                        return methodReference.Name == methodDefinition.Name;
+                    });
+                
+                return callsBaseMethod;
+            }
+            catch
+            {
+                // Base type might not be resolvable
+                return false;
+            }
         }
     }
 }
