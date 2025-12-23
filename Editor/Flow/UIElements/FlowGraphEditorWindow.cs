@@ -40,6 +40,10 @@ namespace Ceres.Editor.Graph.Flow
 
     public class FlowGraphEditorWindow : CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>
     {
+        private const string SplitViewWidthPrefsKey = "Ceres_FlowGraphEditorWindow_SplitViewWidth";
+        
+        private const float DefaultSplitViewWidth = 400f;
+
         /// <summary>
         /// Editor debug state
         /// </summary>
@@ -141,11 +145,24 @@ namespace Ceres.Editor.Graph.Flow
             // Load inspector panel stylesheet
             rootVisualElement.styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/Flow/InspectorPanel"));
 
+            // Load saved split view width from EditorPrefs
+            var savedWidth = EditorPrefs.GetFloat(SplitViewWidthPrefsKey, DefaultSplitViewWidth);
+
             // Create split view for graph view and inspector
-            var splitView = new TwoPaneSplitView(1, 400, TwoPaneSplitViewOrientation.Horizontal)
+            var splitView = new TwoPaneSplitView(1, savedWidth, TwoPaneSplitViewOrientation.Horizontal)
             {
                 name = "GraphSplitView"
             };
+
+            // Register callback to save split view width when it changes
+            splitView.RegisterCallback<PointerLeaveEvent>(evt =>
+            {
+                var currentWidth = splitView.fixedPane.resolvedStyle.width;
+                if (currentWidth > 0)
+                {
+                    EditorPrefs.SetFloat(SplitViewWidthPrefsKey, currentWidth);
+                }
+            });
 
             // Left pane: Graph View
             _graphViewContainer = new VisualElement
