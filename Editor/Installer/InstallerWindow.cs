@@ -41,6 +41,8 @@ namespace Ceres.Editor.Installer
 
         private readonly Queue<DependencyInfo> _installQueue = new();
 
+        private EditorApplication.CallbackFunction _installProgressHandler;
+
         [MenuItem("Tools/Ceres/Installer", false, 0)]
         public static void ShowWindow()
         {
@@ -479,12 +481,27 @@ namespace Ceres.Editor.Installer
             if (dependency.Status == DependencyStatus.Installing || dependency.Status == DependencyStatus.Installed)
                 return;
 
+            if (_isRefreshing)
+            {
+                _statusLabel.text = "Please wait for package list refresh to complete";
+                Debug.LogWarning("Cannot install package while refreshing dependency list");
+                return;
+            }
+
+            if (_addRequest != null && !_addRequest.IsCompleted)
+            {
+                _statusLabel.text = "Please wait for current installation to complete";
+                Debug.LogWarning("Another package installation is already in progress");
+                return;
+            }
+
             dependency.Status = DependencyStatus.Installing;
             UpdateDependencyCard(dependency);
 
             _statusLabel.text = $"Installing {dependency.DisplayName}...";
             _addRequest = Client.Add(dependency.GitUrl);
-            EditorApplication.update += () => CheckInstallProgress(dependency);
+            _installProgressHandler = () => CheckInstallProgress(dependency);
+            EditorApplication.update += _installProgressHandler;
         }
 
         private void CheckInstallProgress(DependencyInfo dependency)
@@ -492,7 +509,11 @@ namespace Ceres.Editor.Installer
             if (_addRequest == null || !_addRequest.IsCompleted)
                 return;
 
-            EditorApplication.update -= () => CheckInstallProgress(dependency);
+            if (_installProgressHandler != null)
+            {
+                EditorApplication.update -= _installProgressHandler;
+                _installProgressHandler = null;
+            }
 
             if (_addRequest.Status == StatusCode.Success)
             {
