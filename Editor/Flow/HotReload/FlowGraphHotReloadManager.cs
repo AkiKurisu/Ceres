@@ -186,9 +186,6 @@ namespace Ceres.Editor.Graph.Flow
                                "Active execution will continue with old graph instance, new events will use new graph.");
             }
 
-            // Capture current blackboard state
-            var blackboardState = FlowGraph.CaptureBlackboardState(oldGraph);
-
             // Create new graph instance from updated data
             var graphData = container.GetFlowGraphData();
             FlowGraph newGraph;
@@ -206,9 +203,6 @@ namespace Ceres.Editor.Graph.Flow
 
             // Reset compilation state to allow recompilation
             newGraph.ResetCompilationState();
-
-            // Restore blackboard state before compilation
-            FlowGraph.RestoreBlackboardState(newGraph, blackboardState);
 
             // Compile new graph
             using var compilationContext = FlowGraphCompilationContext.GetPooled();
