@@ -642,7 +642,6 @@ namespace Ceres.Editor.Graph.Flow
                     CeresLogger.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
                     /* Reset skip frame flag */
                     _breakOnNext = false;
-                    Time.timeScale = 0;
                     EditorApplication.isPaused = true;
                     await UniTask.WaitUntil(CanSkipFrame);
                     CeresLogger.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
