@@ -126,19 +126,6 @@ namespace Ceres.Graph.Flow
         }
 
         /// <summary>
-        /// Reset compilation state for hot reload
-        /// </summary>
-        internal void ResetCompilationState()
-        {
-            _hasCompiled = false;
-            if (_executionList != null)
-            {
-                ListPool<ExecutionContext>.Release(_executionList);
-                _executionList = null;
-            }
-        }
-
-        /// <summary>
         /// Get or create a <see cref="CallbackEventHandler"/> bound to an <see cref="UObject"/>
         /// </summary>
         /// <param name="contextObject"></param>

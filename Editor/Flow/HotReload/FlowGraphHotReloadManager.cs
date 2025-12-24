@@ -201,17 +201,10 @@ namespace Ceres.Editor.Graph.Flow
                 newGraph = graphData.CreateFlowGraphInstance();
             }
 
-            // Reset compilation state to allow recompilation
-            newGraph.ResetCompilationState();
-
             // Compile new graph
             using var compilationContext = FlowGraphCompilationContext.GetPooled();
             using var compiler = CeresGraphCompiler.GetPooled(newGraph, compilationContext);
             newGraph.Compile(compiler);
-
-            // Replace graph instance
-            // Note: Active ExecutionContext instances will continue using the old graph reference
-            // This is safe because the old graph won't be disposed until all references are released
             if (runtime is FlowGraphObjectBase flowGraphObject)
             {
                 flowGraphObject.ReplaceGraph(newGraph);
