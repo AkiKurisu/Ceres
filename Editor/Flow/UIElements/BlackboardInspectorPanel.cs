@@ -252,14 +252,23 @@ namespace Ceres.Editor.Graph.Flow
                 proxy.Dispose();
             }
             _observeProxies.Clear();
-            _instance?.Dispose();
-            _instance = null;
+            SafeRelease(ref _instance);
         }
         
         private void OnAttachToPanelEvent(AttachToPanelEvent _)
         {
             // Schedule periodic checks for external changes
             schedule.Execute(CheckAndRefresh).Every(200);
+        }
+
+        private static void SafeRelease(ref CeresGraph graph)
+        {
+            if (!Application.isPlaying)
+            {
+                graph?.Dispose();
+            }
+
+            graph = null;
         }
         
         /// <summary>
@@ -272,7 +281,7 @@ namespace Ceres.Editor.Graph.Flow
             var sourceTimestamp = _getTimestampFunc();
             if (_currentTimestamp != sourceTimestamp)
             {
-                _instance?.Dispose();
+                SafeRelease(ref _instance);
                 _instance = _getGraphFunc();
                 _currentTimestamp = sourceTimestamp;
                 _blackboard = _instance.Blackboard;
