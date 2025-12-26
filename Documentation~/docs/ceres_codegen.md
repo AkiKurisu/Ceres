@@ -35,3 +35,9 @@ That can be done with dotnet from within the `Packages\Ceres\Runtime\SourceGener
 `dotnet publish -c Release`
 
 Additionally, they can be built/debugged with the `Ceres.SourceGenerator.sln` solution in the same folder. In order to debug source generators you can replace `Release` with `Debug` when running the publish command.
+
+## Next Steps
+
+- Learn about [Flow Code Generation](./flow_codegen.md) for Flow-specific code generation details
+- Explore [Function Library](./flow_function_library.md) to see source generator in action
+- Check [Ceres Concept](./ceres_concept.md) for understanding Ceres core architecture

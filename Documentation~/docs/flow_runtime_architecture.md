@@ -48,3 +48,10 @@ Create a new `GameObject` in scene and add `TestInstanceObject` component to the
 Beside the use of data sharing, `ScriptableObject` can also be used as a logic container. You can use `FlowGraphScriptableObject` to implement logic from `ScriptableObject` directly which is useful to create skill, state machine, buff, dialogue, etc.
 
 Compared with `FlowGraphAsset`, `FlowGraphScriptableObject` owns an instance of `FlowGraph` at runtime.
+
+## Next Steps
+
+- Learn about [Executable Events](./flow_executable_event.md) to understand how events trigger graph execution
+- Explore [Quick Startup](./flow_startup.md) for a practical example using FlowGraphObject
+- Check [Flow Concept](./flow_concept.md) for understanding Flow's core architecture
+- See [Debugging](./flow_debugging.md) for debugging graph execution

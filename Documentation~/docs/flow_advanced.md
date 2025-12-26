@@ -212,3 +212,46 @@ You can create a flow graph function by following these steps:
 6. Open another flow graph.
 7. Select your flow graph function by its asset name in search window.
     ![Use Flow Graph Function](../resources/Images/flow_flow_graph_function.png)
+
+## Type Preservation
+
+Ceres provides an automatic type preservation system that prevents IL2CPP code stripping from removing types used in your visual scripts. 
+
+### How It Works
+
+`CeresLinker` will cache types used in nodes during your development and identifies all types that need to be preserved. It will generate a temporal `link.xml` file in build time to prevent IL2CPP from stripping these essential types.
+
+### Manual Type Registration
+
+You can manually register additional types that should be preserved using the `CeresLinker` API:
+
+```csharp
+using Ceres.Editor;
+
+// Register a single type
+CeresLinker.LinkType(typeof(MyCustomClass));
+
+// Register multiple types
+CeresLinker.LinkTypes(new Type[] { 
+    typeof(MyCustomClass), 
+    typeof(AnotherClass) 
+});
+
+// Save the registered types to settings
+CeresLinker.Save();
+```
+
+### Editor Integration
+
+You can view and manage preserved types through Unity's Project Settings:
+
+1. Go to `Edit > Project Settings > Ceres`
+2. Check the "Preserved Types" section to see all registered types
+3. Manually add type names if needed
+
+## Next Steps
+
+- Learn about [Custom Nodes](./flow_custom_node.md) for creating reusable node logic
+- Explore [Generic Nodes](./flow_generic_node.md) for type-safe generic operations
+- Check [Port Implicit Conversion](#port-implict-conversation) for custom type conversions
+- See [Custom Functions](#custom-function) for local and shared functions

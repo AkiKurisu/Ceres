@@ -93,3 +93,10 @@ Similar to the usage of Unity's `GameObject.SendMessage`.
 ### Technique Details
 
 The implementation of `CustomEvent` is based on source generator and [Chris.Events](https://github.com/AkiKurisu/Chris/blob/main/Docs/Events.md), a contextual event system.
+
+## Next Steps
+
+- Learn about [Executable Functions](./flow_executable_function.md) for exposing C# methods to Flow
+- Explore [Runtime Architecture](./flow_runtime_architecture.md) to understand how events are executed
+- Check [Code Generation](./flow_codegen.md) for technical details on event implementation
+- See [Quick Startup](./flow_startup.md) for a complete example using events

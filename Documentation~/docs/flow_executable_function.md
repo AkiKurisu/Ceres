@@ -125,3 +125,10 @@ public static string Flow_DoSomething(string arg1)
     
 }
 ```
+
+## Next Steps
+
+- Learn about [Function Library](./flow_function_library.md) for optimal performance with static functions
+- Explore [Generic Nodes](./flow_generic_node.md) for generic method support
+- Check [Custom Nodes](./flow_custom_node.md) for creating reusable node logic
+- See [Code Generation](./flow_codegen.md) for technical details on function registration

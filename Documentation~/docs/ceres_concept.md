@@ -39,3 +39,9 @@ Node can be executed in two way:
 ![ceres_concept_execution_path](../resources/Images/ceres_concept_execution_path.png)
 
 As shown in the figure, to execute `Log String`, we need first get the variable `message`. However, since `Get message` has no outer connect it, it has not been executed before. So the graph need consider `Get message` as dependency and execute it before executing `Log String`.
+
+## Next Steps
+
+- Learn about [Flow Concept](./flow_concept.md) to see how Ceres concepts apply to Flow
+- Explore [Code Generation](./ceres_codegen.md) for understanding Ceres's code generation system
+- Check [Flow Tutorial](./flow_startup.md) to start using Flow visual scripting

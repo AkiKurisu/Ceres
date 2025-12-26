@@ -79,3 +79,10 @@ public partial class CeresExecutableLibrary
     }
 }
 ```
+
+## Next Steps
+
+- Learn about [Function Library](./flow_function_library.md) for detailed explanation of source generator usage
+- Explore [Executable Functions](./flow_executable_function.md) for using executable functions in Flow
+- Check [Ceres Code Generation](./ceres_codegen.md) for core library code generation
+- See [Executable Events](./flow_executable_event.md) for ILPP usage with events

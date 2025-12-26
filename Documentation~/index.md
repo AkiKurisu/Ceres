@@ -14,8 +14,7 @@ Add following dependencies to `manifest.json`.
 ```json
   "dependencies": {
     "com.kurisu.chris": "https://github.com/AkiKurisu/Chris.git",
-    "com.cysharp.unitask":"https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-    "com.unity.nuget.newtonsoft-json": "3.2.1"
+    "com.cysharp.unitask":"https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
   }
 
 ```
