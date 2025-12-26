@@ -391,6 +391,11 @@ namespace Ceres.Graph
         /// <returns>Null if not exist</returns>
         public TGraph FindSubGraph<TGraph>(string name) where TGraph : CeresGraph
         {
+            if (SubGraphSlots == null)
+            {
+                return null;
+            }
+            
             foreach (var subGraphSlot in SubGraphSlots)
             {
                 if (subGraphSlot.Name == name && subGraphSlot.Graph is TGraph graph) return graph;
@@ -407,6 +412,7 @@ namespace Ceres.Graph
         /// <returns></returns>
         public bool AddSubGraphSlot<TGraph>(CeresSubGraphSlot slot) where TGraph : CeresGraph
         {
+            SubGraphSlots ??= Array.Empty<CeresSubGraphSlot>();
             foreach (var subGraphSlot in SubGraphSlots)
             {
                 if (subGraphSlot.Guid == slot.Guid && subGraphSlot.Graph is TGraph) return false;
