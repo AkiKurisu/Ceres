@@ -169,7 +169,7 @@ namespace Ceres.Editor.Graph.Flow.CustomFunctions
             Type targetNodeType;
             if (returnType == typeof(void))
             {
-                targetNodeType = definitionType.MakeGenericType(inputTypes);
+                targetNodeType = inputTypes.Length > 0 ? definitionType.MakeGenericType(inputTypes) : definitionType;
             }
             else
             {
