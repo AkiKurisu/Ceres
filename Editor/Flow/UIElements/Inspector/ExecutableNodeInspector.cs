@@ -114,6 +114,9 @@ namespace Ceres.Editor.Graph.Flow
 
             var portType = binding.GetPortType();
             if (portType == null) return null;
+            
+            // TODO: Support Port Array
+            if (portType.IsArray) return null;
 
             // Create port instance
             var portInstance = (CeresPort)Activator.CreateInstance(portType);
