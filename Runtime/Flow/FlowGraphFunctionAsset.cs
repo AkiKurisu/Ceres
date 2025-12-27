@@ -8,9 +8,9 @@ namespace Ceres.Graph.Flow
     [Serializable]
     public class FlowGraphFunctionSerializedInfo
     {
-        public CustomFunctionOutputParameter returnParameter;
+        public CustomFunctionOutputParameter returnParameter = new();
 
-        public CustomFunctionInputParameter[] inputParameters;
+        public CustomFunctionInputParameter[] inputParameters = Array.Empty<CustomFunctionInputParameter>();
     }
     
     /// <summary>
@@ -20,7 +20,7 @@ namespace Ceres.Graph.Flow
     public class FlowGraphFunctionAsset : FlowGraphAsset
     {
         [HideInInspector]
-        public FlowGraphFunctionSerializedInfo serializedInfo;
+        public FlowGraphFunctionSerializedInfo serializedInfo = new ();
 
 #if UNITY_EDITOR
         internal static Action<FlowGraphFunctionAsset> OnFunctionUpdate;
@@ -30,7 +30,7 @@ namespace Ceres.Graph.Flow
         {
 #if UNITY_EDITOR
             var graphData = GetGraphData();
-            if (graphData.nodeData?.Length == 0)
+            if (graphData.nodeData == null || graphData.nodeData.Length == 0)
             {
                 var json = Resources.Load<TextAsset>("Ceres/Flow/FunctionSubGraphData").text;
                 return new FlowGraph(JsonUtility.FromJson<FlowGraphSerializedData>(json));
