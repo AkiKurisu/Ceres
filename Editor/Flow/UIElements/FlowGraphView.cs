@@ -34,6 +34,11 @@ namespace Ceres.Editor.Graph.Flow
         private bool _isEditingSubGraph;
 
         /// <summary>
+        /// Cached mouse position for paste operations
+        /// </summary>
+        private Vector2 _cachedMousePosition;
+
+        /// <summary>
         /// Bound graph verified name
         /// </summary>
         public string GraphName { get; internal set; }
@@ -48,6 +53,7 @@ namespace Ceres.Editor.Graph.Flow
             AddBlackboard(new FlowBlackboard(this));
             FlowGraphTracker.SetDefaultTracker(_debugger = new FlowGraphDebugger(this));
             RegisterCallback<KeyDownEvent>(HandleKeyBoardCommands);
+            RegisterCallback<MouseMoveEvent>(OnMouseMoveEvent);
         }
 
         /// <summary>
@@ -125,7 +131,15 @@ namespace Ceres.Editor.Graph.Flow
         {
             var flowGraphData = JsonUtility.FromJson<FlowGraphData>(serializedData);
             var flowGraph = new FlowGraph(flowGraphData);
-            new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph, true);
+
+            var graphMousePosition = contentViewContainer.WorldToLocal(_cachedMousePosition);
+
+            new CopyPasteGraph(this, graphElements).DeserializeGraph(flowGraph, true, graphMousePosition);
+        }
+
+        private void OnMouseMoveEvent(MouseMoveEvent evt)
+        {
+            _cachedMousePosition = evt.mousePosition;
         }
 
         public void DeserializeGraph(FlowGraphEditorObject editorObject)
@@ -376,26 +390,15 @@ namespace Ceres.Editor.Graph.Flow
             /// </summary>
             /// <param name="flowGraph"></param>
             /// <param name="copyPaste"></param>
-            public void DeserializeGraph(FlowGraph flowGraph, bool copyPaste = false)
+            /// <param name="targetMousePosition">Target mouse position in graph coordinates. If null, uses default offset.</param>
+            public void DeserializeGraph(FlowGraph flowGraph, bool copyPaste = false, Vector2 targetMousePosition = default)
             {
                 using var collection = ListPool<GraphElement>.Get(out var newElements);
+                Vector2 offset = Vector2.zero;
                 if (copyPaste)
                 {
-                    foreach (var nodeInstance in flowGraph.nodes)
-                    {
-                        var rect = nodeInstance.GraphPosition;
-                        rect.x += 30;
-                        rect.y += 30;
-                        nodeInstance.GraphPosition = rect;
-                    }
-
-                    foreach (var nodeGroup in flowGraph.nodeGroups)
-                    {
-                        var rect = nodeGroup.position;
-                        rect.x += 30;
-                        rect.y += 30;
-                        nodeGroup.position = rect;
-                    }
+                    offset = CalculatePasteOffset(flowGraph, targetMousePosition);
+                    ApplyOffsetToGraphElements(flowGraph, offset);
                 }
 
                 // Restore variables
@@ -442,7 +445,7 @@ namespace Ceres.Editor.Graph.Flow
                 newElements.AddRange(_graphView.NodeGroupHandler.RestoreGroups(flowGraph.nodeGroups));
 
                 // Restore relay nodes
-                RestoreRelayNodes(flowGraph.relayNodes, newElements, copyPaste);
+                RestoreRelayNodes(flowGraph.relayNodes, newElements, copyPaste, offset);
 
                 if (copyPaste)
                 {
@@ -453,9 +456,71 @@ namespace Ceres.Editor.Graph.Flow
             }
 
             /// <summary>
+            /// Calculate paste offset based on graph centroid and target mouse position
+            /// </summary>
+            private static Vector2 CalculatePasteOffset(FlowGraph flowGraph, Vector2 targetMousePosition)
+            {
+                var centroid = CalculateGraphCentroid(flowGraph);
+                return targetMousePosition - centroid;
+            }
+
+            /// <summary>
+            /// Calculate centroid (average position) of all graph nodes
+            /// </summary>
+            private static Vector2 CalculateGraphCentroid(FlowGraph flowGraph)
+            {
+                Vector2 sum = Vector2.zero;
+                int count = 0;
+
+                // Sum up all node positions
+                foreach (var nodeInstance in flowGraph.nodes)
+                {
+                    sum += nodeInstance.GraphPosition.position;
+                    count++;
+                }
+
+                // Include relay nodes in centroid calculation
+                if (flowGraph.relayNodes != null)
+                {
+                    foreach (var relayNode in flowGraph.relayNodes)
+                    {
+                        sum += relayNode.graphPosition.position;
+                        count++;
+                    }
+                }
+
+                // Return average position (centroid)
+                return count > 0 ? sum / count : Vector2.zero;
+            }
+
+            /// <summary>
+            /// Apply offset to all graph elements (nodes and node groups)
+            /// </summary>
+            private static void ApplyOffsetToGraphElements(FlowGraph flowGraph, Vector2 offset)
+            {
+                // Apply offset to all nodes
+                foreach (var nodeInstance in flowGraph.nodes)
+                {
+                    var rect = nodeInstance.GraphPosition;
+                    rect.x += offset.x;
+                    rect.y += offset.y;
+                    nodeInstance.GraphPosition = rect;
+                }
+
+                // Apply offset to all node groups
+                foreach (var nodeGroup in flowGraph.nodeGroups)
+                {
+                    var rect = nodeGroup.position;
+                    rect.x += offset.x;
+                    rect.y += offset.y;
+                    nodeGroup.position = rect;
+                }
+            }
+
+            /// <summary>
             /// Restore relay nodes from serialized data
             /// </summary>
-            private void RestoreRelayNodes(List<RelayNode> relayNodeData, List<GraphElement> newElements, bool copyPaste)
+            private void RestoreRelayNodes(List<RelayNode> relayNodeData, List<GraphElement> newElements, bool copyPaste, Vector2 offset)
             {
                 if (relayNodeData == null || relayNodeData.Count == 0)
                     return;
@@ -468,8 +533,8 @@ namespace Ceres.Editor.Graph.Flow
                     if (copyPaste)
                     {
                         var rect = relayData.graphPosition;
-                        rect.x += 30;
-                        rect.y += 30;
+                        rect.x += offset.x;
+                        rect.y += offset.y;
                         relayData.graphPosition = rect;
                     }
 
@@ -571,7 +636,7 @@ namespace Ceres.Editor.Graph.Flow
             private bool _isDestroyed;
 
             private ExecutableNodeView _currentView;
-            
+
             private ExecutableNodeView CurrentView
             {
                 get => _currentView;
@@ -611,13 +676,13 @@ namespace Ceres.Editor.Graph.Flow
                             {
                                 continue;
                             }
-                            
+
                             // Hidden field (Exec)
                             if (string.IsNullOrEmpty(portView.Binding.DisplayName.Value))
                             {
                                 continue;
                             }
-                            
+
                             string portName = portView.Binding.GetPortName();
                             if (!node.Ports.TryGetValue(portName, out var port))
                             {
@@ -629,7 +694,7 @@ namespace Ceres.Editor.Graph.Flow
                             {
                                 continue;
                             }
-                            
+
                             portView.StartDebug();
                             var value = port.GetValue();
                             portView.SetDebugData(value == null ? "Null" : JsonConvert.SerializeObject(value));
@@ -655,7 +720,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     return true;
                 }
-                        
+
                 if (ReflectionUtility.IsUnityBuiltinTypes(portValueType))
                 {
                     return true;
