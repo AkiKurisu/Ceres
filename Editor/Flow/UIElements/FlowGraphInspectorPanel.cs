@@ -24,10 +24,12 @@ namespace Ceres.Editor.Graph.Flow
 
         private Label _positionLabel;
 
+        private bool _needsRebuild;
+
         private const int DefaultFontSize = 12;
-        
+
         private const int SectionFontSize = 14;
-        
+
         public FlowGraphInspectorPanel(FlowGraphEditorWindow editorWindow)
         {
             _editorWindow = editorWindow;
@@ -101,7 +103,16 @@ namespace Ceres.Editor.Graph.Flow
             }
             else if (_currentNodeView != null)
             {
-                UpdateInspectorContent();
+                // Check if inspector needs rebuild due to port changes
+                if (_needsRebuild)
+                {
+                    BuildInspectorContent();
+                    _needsRebuild = false;
+                }
+                else
+                {
+                    UpdateInspectorContent();
+                }
             }
         }
 
@@ -154,7 +165,13 @@ namespace Ceres.Editor.Graph.Flow
         {
             _currentNodeView = nodeView;
             _currentInspector = new ExecutableNodeInspector(nodeView);
-            
+
+            // Subscribe to port array changes if applicable
+            if (nodeView is ExecutablePortArrayNodeView portArrayNodeView)
+            {
+                portArrayNodeView.OnPortArrayChanged += OnPortArrayChanged;
+            }
+
             // Node title section
             AddSectionTitle("Node Information");
 
@@ -343,10 +360,24 @@ namespace Ceres.Editor.Graph.Flow
         }
 
         /// <summary>
+        /// Callback for port array changes
+        /// </summary>
+        private void OnPortArrayChanged()
+        {
+            _needsRebuild = true;
+        }
+
+        /// <summary>
         /// Destroy current inspector if exists
         /// </summary>
         private void DestroyCurrentInspector()
         {
+            // Unsubscribe from port array changes
+            if (_currentNodeView is ExecutablePortArrayNodeView portArrayNodeView)
+            {
+                portArrayNodeView.OnPortArrayChanged -= OnPortArrayChanged;
+            }
+
             if (_currentInspector != null)
             {
                 _currentInspector.Dispose();

@@ -174,7 +174,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public CeresPortView FindPortView(string propertyName, int portIndex = 0)
         {
-            return PortViews.FirstOrDefault(x => x.Binding.GetPortName() == propertyName && x.PortData.arrayIndex == portIndex);
+            return PortViews.FirstOrDefault(view => view.Binding.GetPortName() == propertyName && view.PortData.arrayIndex == portIndex);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public CeresPortView FindPortViewWithDisplayName(string displayName, int portIndex = 0)
         {
-            return PortViews.FirstOrDefault(x => x.Binding.DisplayName.Value == displayName && x.PortData.arrayIndex == portIndex);
+            return PortViews.FirstOrDefault(view => view.Binding.DisplayName.Value == displayName && view.PortData.arrayIndex == portIndex);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public CeresPortView FindPortViewWithDisplayType(Type displayType, int portIndex = 0)
         {
-            return PortViews.FirstOrDefault(x => x.Binding.DisplayType.Value == displayType && x.PortData.arrayIndex == portIndex);
+            return PortViews.FirstOrDefault(view => view.Binding.DisplayType.Value == displayType && view.PortData.arrayIndex == portIndex);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public CeresPortView FindConnectablePortView(CeresPortView portView)
         {
-            return PortViews.FirstOrDefault(x => x.PortElement.CanConnect(portView.PortElement));
+            return PortViews.FirstOrDefault(view => view.PortElement.CanConnect(portView.PortElement));
         }
 
         /// <summary>
@@ -216,6 +216,21 @@ namespace Ceres.Editor.Graph
         public CeresPortView[] GetAllPortViews()
         {
             return PortViews.ToArray();
+        }
+
+        /// <summary>
+        /// Get all port views can be edited in graph view
+        /// </summary>
+        /// <returns></returns>
+        public CeresPortView[] GetAllEditablePortViews()
+        {
+            return PortViews.Where(view =>
+            {
+                if (view.FieldResolver == null) return false;
+                if (!view.PortElement.GetEditorFieldVisibility()) return false;
+
+                return true;
+            }).ToArray();
         }
 
         /// <summary>

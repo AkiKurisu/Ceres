@@ -63,14 +63,10 @@ namespace Ceres.Editor.Graph.Flow
         /// </summary>
         private void InitializePortEditors()
         {
-            var portViews = _nodeView.GetAllPortViews();
+            var portViews = _nodeView.GetAllEditablePortViews();
 
             foreach (var portView in portViews)
             {
-                // Only include ports that have FieldResolver and are editable
-                if (portView.FieldResolver == null) continue;
-                if (!portView.PortElement.GetEditorFieldVisibility()) continue;
-
                 try
                 {
                     // Compile port to get CeresPort instance
@@ -114,9 +110,11 @@ namespace Ceres.Editor.Graph.Flow
 
             var portType = binding.GetPortType();
             if (portType == null) return null;
-            
-            // TODO: Support Port Array
-            if (portType.IsArray) return null;
+
+            if (portType.IsArray)
+            {
+                portType = portType.GetElementType()!;
+            }
 
             // Create port instance
             var portInstance = (CeresPort)Activator.CreateInstance(portType);
@@ -224,7 +222,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             using var serializedObject = new SerializedObject(portInfo.Wrapper);
             SerializedProperty prop = serializedObject.FindProperty("m_Value");
-            
+
             EditorGUILayout.BeginVertical();
             if (prop != null && prop.NextVisible(true))
             {
@@ -234,7 +232,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
                 while (prop.NextVisible(false));
             }
-            
+
             if (serializedObject.ApplyModifiedProperties())
             {
                 // Port value changed, sync back to FieldResolver

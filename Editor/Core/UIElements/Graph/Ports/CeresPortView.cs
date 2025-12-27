@@ -147,11 +147,13 @@ namespace Ceres.Editor.Graph
             }
         }
 
+        /// <summary>
+        /// Whether port editor field is visible
+        /// </summary>
+        /// <returns></returns>
         public bool GetEditorFieldVisibility()
         {
-            if (EditorField == null) return false;
-
-            return m_ConnectorBox.parent.Contains(EditorField);
+            return EditorField != null && m_ConnectorBox.parent.Contains(EditorField);
         }
 
         public override void Connect(Edge edge)

@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace Ceres.Editor.Graph.Flow
 {
-    public class ExecutablePortArrayNodeViewResolver: INodeViewResolver
+    public class ExecutablePortArrayNodeViewResolver : INodeViewResolver
     {
         public ICeresNodeView CreateNodeView(Type type, CeresGraphView graphView)
         {
@@ -19,20 +19,25 @@ namespace Ceres.Editor.Graph.Flow
                    typeof(IReadOnlyPortArrayNode).IsAssignableFrom(nodeType);
         }
     }
-    
+
     [CustomNodeView(null)]
-    public class ExecutablePortArrayNodeView: ExecutableNodeView
+    public class ExecutablePortArrayNodeView : ExecutableNodeView
     {
         protected int PortLength { get; private set; }
 
         private readonly List<CeresPortView> _dynamicPortViews = new();
 
         /// <summary>
+        /// Event triggered when port array changes (port added or removed)
+        /// </summary>
+        public event Action OnPortArrayChanged;
+
+        /// <summary>
         /// Reflection data for <see cref="IPortArrayNode"/>
         /// </summary>
         protected PortArrayNodeReflection NodeReflection { get; }
-        
-        public ExecutablePortArrayNodeView(Type type, CeresGraphView graphView): base(type, graphView)
+
+        public ExecutablePortArrayNodeView(Type type, CeresGraphView graphView) : base(type, graphView)
         {
             NodeReflection = PortArrayNodeReflection.Get(type);
             for (int i = 0; i < NodeReflection.DefaultArrayLength; i++)
@@ -54,13 +59,13 @@ namespace Ceres.Editor.Graph.Flow
         public override ExecutableNode CompileNode()
         {
             var nodeInstance = (ExecutableNode)Activator.CreateInstance(NodeType);
-            if(nodeInstance is IPortArrayNode portArrayNode)
+            if (nodeInstance is IPortArrayNode portArrayNode)
             {
                 /* Allocate before commit */
                 portArrayNode.SetPortArrayLength(PortLength);
             }
             FieldResolverInfos.ForEach(info => info.Resolver.Commit(nodeInstance));
-            PortViews.ForEach(p => p.Commit(nodeInstance));
+            PortViews.ForEach(portView => portView.Commit(nodeInstance));
             nodeInstance.GraphPosition = NodeElement.GetPosition();
             nodeInstance.Guid = Guid;
             return nodeInstance;
@@ -70,7 +75,7 @@ namespace Ceres.Editor.Graph.Flow
         {
             base.BuildContextualMenu(evt);
             if (!NodeReflection.IsResizeable) return;
-            
+
             evt.menu.MenuItems().Add(new CeresDropdownMenuAction("Add new port", _ =>
             {
                 AddPort(PortLength);
@@ -98,6 +103,9 @@ namespace Ceres.Editor.Graph.Flow
             AddPortView(newPortView);
             _dynamicPortViews.Add(newPortView);
             newPortView.SetDisplayName(GetPortArrayElementDisplayName(index));
+
+            // Notify inspector that port array changed
+            OnPortArrayChanged?.Invoke();
         }
 
         protected void RemovePort(int index)
@@ -106,13 +114,18 @@ namespace Ceres.Editor.Graph.Flow
             PortLength--;
             _dynamicPortViews.RemoveAt(index);
             RemovePortView(portView);
-            
+
             /* Reorder */
             ReorderDynamicPorts();
+
+            // Notify inspector that port array changed
+            OnPortArrayChanged?.Invoke();
         }
 
         protected void RemoveUnconnectedPorts()
         {
+            bool anyRemoved = false;
+
             for (int i = _dynamicPortViews.Count - 1; i >= 0; i--)
             {
                 var portView = _dynamicPortViews[i];
@@ -123,9 +136,17 @@ namespace Ceres.Editor.Graph.Flow
                 PortLength--;
                 _dynamicPortViews.RemoveAt(i);
                 RemovePortView(portView);
+                anyRemoved = true;
             }
+
             /* Reorder */
             ReorderDynamicPorts();
+
+            // Notify inspector that port array changed
+            if (anyRemoved)
+            {
+                OnPortArrayChanged?.Invoke();
+            }
         }
 
         protected void ReorderDynamicPorts()
