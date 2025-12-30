@@ -194,7 +194,7 @@ namespace Ceres.Editor.Graph.Flow
                    view.NodeType == typeof(ExecutionEvent);
         }
 
-        protected override void OnDragDropElementPerform(List<ISelectable> selectables, GraphElement graphElement, Vector3 mousePosition)
+        protected override void OnDragDropElementPerform(List<ISelectable> selectables, GraphElement graphElement, Vector2 mousePosition)
         {
             /* Need perform on background */
             if (graphElement != null)
@@ -397,8 +397,8 @@ namespace Ceres.Editor.Graph.Flow
                 Vector2 offset = Vector2.zero;
                 if (copyPaste)
                 {
-                    offset = CalculatePasteOffset(flowGraph, targetMousePosition);
-                    ApplyOffsetToGraphElements(flowGraph, offset);
+                    offset = flowGraph.CalculatePasteOffset(targetMousePosition);
+                    flowGraph.ApplyOffsetToGraph(offset);
                 }
 
                 // Restore variables
@@ -452,68 +452,6 @@ namespace Ceres.Editor.Graph.Flow
                     _graphView.ClearSelection();
                     newElements.ForEach(x => _graphView.AddToSelection(x));
                     _graphView.schedule.Execute(() => _graphView.FrameSelection()).ExecuteLater(10);
-                }
-            }
-
-            /// <summary>
-            /// Calculate paste offset based on graph centroid and target mouse position
-            /// </summary>
-            private static Vector2 CalculatePasteOffset(FlowGraph flowGraph, Vector2 targetMousePosition)
-            {
-                var centroid = CalculateGraphCentroid(flowGraph);
-                return targetMousePosition - centroid;
-            }
-
-            /// <summary>
-            /// Calculate centroid (average position) of all graph nodes
-            /// </summary>
-            private static Vector2 CalculateGraphCentroid(FlowGraph flowGraph)
-            {
-                Vector2 sum = Vector2.zero;
-                int count = 0;
-
-                // Sum up all node positions
-                foreach (var nodeInstance in flowGraph.nodes)
-                {
-                    sum += nodeInstance.GraphPosition.position;
-                    count++;
-                }
-
-                // Include relay nodes in centroid calculation
-                if (flowGraph.relayNodes != null)
-                {
-                    foreach (var relayNode in flowGraph.relayNodes)
-                    {
-                        sum += relayNode.graphPosition.position;
-                        count++;
-                    }
-                }
-
-                // Return average position (centroid)
-                return count > 0 ? sum / count : Vector2.zero;
-            }
-
-            /// <summary>
-            /// Apply offset to all graph elements (nodes and node groups)
-            /// </summary>
-            private static void ApplyOffsetToGraphElements(FlowGraph flowGraph, Vector2 offset)
-            {
-                // Apply offset to all nodes
-                foreach (var nodeInstance in flowGraph.nodes)
-                {
-                    var rect = nodeInstance.GraphPosition;
-                    rect.x += offset.x;
-                    rect.y += offset.y;
-                    nodeInstance.GraphPosition = rect;
-                }
-
-                // Apply offset to all node groups
-                foreach (var nodeGroup in flowGraph.nodeGroups)
-                {
-                    var rect = nodeGroup.position;
-                    rect.x += offset.x;
-                    rect.y += offset.y;
-                    nodeGroup.position = rect;
                 }
             }
 

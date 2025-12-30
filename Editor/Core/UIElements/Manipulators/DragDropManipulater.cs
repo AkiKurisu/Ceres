@@ -4,18 +4,20 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Object = UnityEngine.Object;
+using UObject = UnityEngine.Object;
+
 namespace Ceres.Editor.Graph
 {
     public class DragDropManipulator : PointerManipulator
     {
-        private Object _droppedObject;
+        private UObject _droppedObject;
         
-        private readonly Action<Object, Vector3> _dragObjectPerformEvent;
+        private readonly Action<UObject, Vector2> _dragObjectPerformEvent;
         
-        private readonly Action<List<ISelectable>, GraphElement, Vector3> _dragElementPerformEvent;
+        private readonly Action<List<ISelectable>, GraphElement, Vector2> _dragElementPerformEvent;
         
-        public DragDropManipulator(GraphView root, Action<Object, Vector3> onDragObjectPerformEvent, Action<List<ISelectable>, GraphElement, Vector3> dragElementPerformEvent)
+        public DragDropManipulator(GraphView root, Action<UObject, Vector2> onDragObjectPerformEvent, 
+            Action<List<ISelectable>, GraphElement, Vector2> dragElementPerformEvent)
         {
             target = root;
             _dragObjectPerformEvent = onDragObjectPerformEvent;
@@ -45,7 +47,7 @@ namespace Ceres.Editor.Graph
         private void OnPointerDown(PointerDownEvent _)
         {
             // Only do something if the window currently has a reference to an asset object.
-            if (_droppedObject == null) return;
+            if (!_droppedObject) return;
             // Clear existing data in DragAndDrop class.
             DragAndDrop.PrepareStartDrag();
 
@@ -64,7 +66,7 @@ namespace Ceres.Editor.Graph
         }
 
         // This method runs every frame while a drag is in progress.
-        private void OnDragUpdate(DragUpdatedEvent _)
+        private static void OnDragUpdate(DragUpdatedEvent _)
         {
             DragAndDrop.visualMode = DragAndDropVisualMode.Generic;
         }

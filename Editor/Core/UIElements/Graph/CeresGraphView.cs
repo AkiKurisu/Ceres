@@ -56,11 +56,11 @@ namespace Ceres.Editor.Graph
             OpenSearch(context.screenMousePosition);
         }
 
-        protected virtual void OnDragDropObjectPerform(UObject data, Vector3 mousePosition)
+        protected virtual void OnDragDropObjectPerform(UObject data, Vector2 mousePosition)
         {
         }
 
-        protected virtual void OnDragDropElementPerform(List<ISelectable> selectables, GraphElement graphElement, Vector3 mousePosition)
+        protected virtual void OnDragDropElementPerform(List<ISelectable> selectables, GraphElement graphElement, Vector2 mousePosition)
         {
         }
 
