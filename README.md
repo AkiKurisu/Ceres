@@ -367,14 +367,6 @@ Ceres built-in event-driven visual scripting solution.
 See [Startup Flow](https://akikurisu.github.io/Ceres/docs/flow_startup.html)
 
 ![Flow](./Documentation~/resources/Images/ceres_flow.png)
-
-### Flow Hotupdate
-
-Implement a Data-Driven and Per-Actor hotupdate solution.
-
-See [Chris.Gameplay](https://github.com/AkiKurisu/Chris.Gameplay) for more details.
-
-![Hotupdate](./Documentation~/resources/Images/flow_hotupdate.png)
  
 ### Next Gen Dialogue
 
