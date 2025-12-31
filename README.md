@@ -382,7 +382,7 @@ AI powered dialogue visual designer for Unity.
 
 See [Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue).
 
-![Next-Gen-Dialogue](./Documentation~/resources/Images/ceres_ngd.png)
+![Next-Gen-Dialogue](https://github.com/AkiKurisu/Next-Gen-Dialogue/raw/main/Documentation~/Images/banner.png)
 
 ## Articles
 
