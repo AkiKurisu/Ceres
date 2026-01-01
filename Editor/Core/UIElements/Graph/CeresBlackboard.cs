@@ -206,13 +206,7 @@ namespace Ceres.Editor.Graph
         {
             /* New variable */
             if (string.IsNullOrEmpty(variable.Name)) variable.Name = variable.GetType().Name;
-            var localPropertyName = variable.Name;
-            int index = 1;
-            while (SharedVariables.Any(x => x.Name == localPropertyName))
-            {
-                localPropertyName = $"{variable.Name}{index++}";
-            }
-            variable.Name = localPropertyName;
+            var localPropertyName = GetValidVariableName(variable);
             if (AlwaysExposed) variable.IsExposed = true;
             SharedVariables.Add(variable);
             
@@ -263,6 +257,18 @@ namespace Ceres.Editor.Graph
             var row = CreateVariableBlackboardRow(variable, field, valueField);
             AddVariableRow(variable, row);
             if (fireEvents) NotifyVariableChanged(variable, VariableChangeType.Add);
+        }
+
+        public string GetValidVariableName(SharedVariable variable)
+        {
+            var localPropertyName = variable.Name;
+            int index = 1;
+            while (SharedVariables.Any(x => x.Name == localPropertyName))
+            {
+                localPropertyName = $"{variable.Name}{index++}";
+            }
+            variable.Name = localPropertyName;
+            return localPropertyName;
         }
 
         protected virtual void AddVariableRow(SharedVariable variable, BlackboardRow blackboardRow)

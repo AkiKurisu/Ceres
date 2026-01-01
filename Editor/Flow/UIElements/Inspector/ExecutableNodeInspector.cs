@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using Ceres.Editor.Graph;
 using Ceres.Graph;
 using Chris.Serialization;
 using Chris.Serialization.Editor;
@@ -19,6 +21,8 @@ namespace Ceres.Editor.Graph.Flow
         private readonly HashSet<string> _allowedFieldNames;
 
         private readonly FieldResolverInfo[] _fieldResolverInfos;
+
+        private readonly Dictionary<string, FieldInfo> _fieldInfoMap;
 
         private readonly Dictionary<CeresPortView, PortEditorInfo> _portEditorInfos;
 
@@ -43,12 +47,14 @@ namespace Ceres.Editor.Graph.Flow
         {
             _nodeView = nodeView ?? throw new ArgumentNullException(nameof(nodeView));
 
-            // Build allowed field names from FieldResolverInfos
+            // Build allowed field names and field info map from FieldResolverInfos
             _fieldResolverInfos = _nodeView.GetAllFieldResolverInfos();
             _allowedFieldNames = new HashSet<string>();
+            _fieldInfoMap = new Dictionary<string, FieldInfo>();
             foreach (var info in _fieldResolverInfos)
             {
                 _allowedFieldNames.Add(info.FieldInfo.Name);
+                _fieldInfoMap[info.FieldInfo.Name] = info.FieldInfo;
             }
 
             // Initialize port editors
@@ -184,8 +190,7 @@ namespace Ceres.Editor.Graph.Flow
                 {
                     if (!IsPropertyAllowed(prop)) continue;
 
-                    EditorGUILayout.PropertyField(prop, true);
-                    EditorGUILayout.Space(3);
+                    _ = InspectorPropertyDrawer.DrawPropertyField(prop, _fieldInfoMap, _allowedFieldNames);
                 }
                 while (prop.NextVisible(false));
             }
