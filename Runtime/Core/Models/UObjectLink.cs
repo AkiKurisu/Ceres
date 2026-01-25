@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using UObject = UnityEngine.Object;
+
 namespace Ceres
 {
     [Serializable]
@@ -60,7 +61,11 @@ namespace Ceres
             {
                 if (prop.Name != "instanceID") continue;
                 var instanceId = (int)prop.Value;
+#if UNITY_6000_3_OR_NEWER
+                var uObject = UnityEditor.EditorUtility.EntityIdToObject(instanceId);
+#else
                 var uObject = UnityEditor.EditorUtility.InstanceIDToObject(instanceId);
+#endif
                 if (uObject)
                 {
                     Chris.Collections.ArrayUtils.Add(ref uobjectLinks, new UObjectLink(uObject));
