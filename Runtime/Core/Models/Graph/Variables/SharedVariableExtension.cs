@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace Ceres.Graph
 {
     public static class SharedVariableExtension
@@ -34,7 +35,7 @@ namespace Ceres.Graph
         /// <returns></returns>
         public static SharedVariable<T> GetSharedVariable<T>(this IVariableSource variableScope, string variableName)
         {
-            return GetSharedVariable(variableScope, variableName) as SharedVariable<T>;
+            return variableScope.GetSharedVariable(variableName) as SharedVariable<T>;
         }
         
         /// <summary>

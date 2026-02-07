@@ -6,6 +6,7 @@ using Chris.Schedulers;
 using R3;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+
 namespace Ceres.Tests
 {
     public class TestFlowGraphObject : FlowGraphObject
@@ -78,6 +79,16 @@ namespace Ceres.Tests
                 /* ILPP will recognize this instruction and skip injecting IL */
                 this.ProcessEvent(inGameObject);
             }
+        }
+
+        [ExecutableFunction]
+        public TestStructData TestGetStructData()
+        {
+            return new TestStructData
+            {
+                id = 100,
+                name = name
+            };
         }
 
         public override FlowGraph GetFlowGraph()

@@ -3,6 +3,10 @@ using Chris.Events;
 
 namespace Ceres.Tests
 {
+    /// <summary>
+    /// Example: EventBase source generator
+    /// Expected generated: FlowNode_CreateTestGlobalEvent, ExecutableEvent_TestGlobalEvent
+    /// </summary>
     [ExecutableEvent]
     public class TestGlobalEvent: EventBase<TestGlobalEvent>
     {
