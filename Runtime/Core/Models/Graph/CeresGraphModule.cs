@@ -7,7 +7,7 @@ namespace Ceres.Graph
 {
     internal class CeresGraphModule: RuntimeModule
     {
-        public override void Initialize(ModuleConfig config)
+        public override void Initialize()
         {
             // Set global log level
             CeresLogger.LogLevel = CeresConfig.Get().logLevel;
