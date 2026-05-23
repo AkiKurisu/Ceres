@@ -1,8 +1,10 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Ceres.Annotations;
 using Ceres.Graph.Flow.Annotations;
 using Chris.Serialization;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using UObject = UnityEngine.Object;
 
 namespace Ceres.Graph.Flow.Utilities
@@ -100,6 +102,12 @@ namespace Ceres.Graph.Flow.Utilities
             return GameObject.FindWithTag(tag);
         }
                 
+        /// <summary>
+        /// Retrieves a reference to a component of specified type, by providing the component type as a method parameter.
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetComponent")]
         public static Component Flow_GameObjectGetComponent(GameObject gameObject, 
             [ResolveReturn] SerializedType<Component> type)
@@ -112,6 +120,31 @@ namespace Ceres.Graph.Flow.Utilities
             [ResolveReturn] SerializedType<Component> type)
         {
             return gameObject.GetComponentInChildren(type);
+        }
+                
+        /// <summary>
+        /// Adds a component of the specified type to the GameObject.
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("AddComponent")]
+        public static Component Flow_GameObjectAddComponent(GameObject gameObject,
+            [ResolveReturn] SerializedType<Component> type)
+        {
+            return gameObject.AddComponent(type);
+        }
+                        
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true), CeresLabel("GetOrAddComponent")]
+        public static Component Flow_GameObjectGetOrAddComponent(GameObject gameObject,
+            [ResolveReturn] SerializedType<Component> type)
+        {
+            Type t = type;
+            if (gameObject.TryGetComponent(t, out Component component))
+            {
+                return component;
+            }
+            return gameObject.AddComponent(type);
         }
         
         #endregion GameObject
