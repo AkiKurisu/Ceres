@@ -317,10 +317,12 @@ namespace Ceres.Editor.Graph.Flow
                     .ToDictionary(nodeElement => nodeElement, nodeElement => nodeElement.View.Guid);
 
                 /* Collect relay nodes */
-                var relayNodes = _graphView.nodes
+                var relayNodes = _graphElements
                     .Where(n => n.userData is RelayNodeView)
                     .Select(n => n.userData as RelayNodeView)
                     .ToList();
+                var relayIdMap = relayNodes
+                    .ToDictionary(relay => relay, relay => relay.Guid);
 
                 /* Need assign new guid before serialization */
                 if (copyPaste)
@@ -336,7 +338,7 @@ namespace Ceres.Editor.Graph.Flow
                 }
 
                 /* Record relay node connections BEFORE CompileNode flattens them */
-                var relayNodeData = relayNodes.Select(view => view.Compile()).ToArray();
+                var relayNodeData = relayNodes.Select(view => CloneRelayNode(view.Compile())).ToArray();
 
                 var nodeInstances = serializableNodes.Select(element => (CeresNode)element.View.CompileNode()).ToArray();
                 var nodeGroupData = new List<NodeGroup>();
@@ -351,6 +353,11 @@ namespace Ceres.Editor.Graph.Flow
                     foreach (var nodeElement in serializableNodes)
                     {
                         nodeElement.View.Guid = idMap[nodeElement];
+                    }
+                    foreach (var relay in relayNodes)
+                    {
+                        relay.Guid = relayIdMap[relay];
+                        relay.Compile();
                     }
                 }
 
@@ -373,6 +380,31 @@ namespace Ceres.Editor.Graph.Flow
                     return flowGraphData;
                 }
 
+            }
+
+            private static RelayNode CloneRelayNode(RelayNode relayNode)
+            {
+                return new RelayNode
+                {
+                    guid = relayNode.guid,
+                    graphPosition = relayNode.graphPosition,
+                    portType = relayNode.portType,
+                    inputs = CloneRelayConnections(relayNode.inputs),
+                    outputs = CloneRelayConnections(relayNode.outputs)
+                };
+            }
+
+            private static RelayConnection[] CloneRelayConnections(RelayConnection[] connections)
+            {
+                return connections?
+                    .Select(connection => new RelayConnection
+                    {
+                        connectionType = connection.connectionType,
+                        nodeId = connection.nodeId,
+                        portId = connection.portId,
+                        portIndex = connection.portIndex
+                    })
+                    .ToArray() ?? Array.Empty<RelayConnection>();
             }
 
             private static CeresNodeData LinkAndGetNodeSerializedData(CeresLinker linker, CeresNode node)
