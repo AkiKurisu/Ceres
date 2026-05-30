@@ -1,5 +1,5 @@
 # Code Generation in Ceres
-Flow use two kinds of code generation to enhance runtime performance and save your time.  
+Flow uses several code generation layers to enhance runtime performance and save your time.
 
 ## Source Generator
 
@@ -15,6 +15,14 @@ To reduce duplication of code, Ceres.SourceGenerator will analyze any partial cl
 And their implementation will be done by generator.
 
 For more details, see [Code Generation in Flow](./flow_codegen.md#source-generator).
+
+## Generated C# Runtime
+
+Generated C# Runtime is a Flow graph runtime mode. It generates graph execution into C# program files, instead of generating partial C# container code.
+
+Use it for hot Flow graphs when you want generated event dispatch, typed data slots, and cached invokers while keeping the normal graph runtime as the disabled or Editor fallback path.
+
+For more details, see [Code Generation in Flow](./flow_codegen.md#generated-c-runtime).
 
 ## ILPP
 
@@ -38,6 +46,6 @@ Additionally, they can be built/debugged with the `Ceres.SourceGenerator.sln` so
 
 ## Next Steps
 
-- Learn about [Flow Code Generation](./flow_codegen.md) for Flow-specific code generation details
+- Learn about [Flow Code Generation](./flow_codegen.md#generated-c-runtime) for Generated C# Runtime details
 - Explore [Function Library](./flow_function_library.md) to see source generator in action
 - Check [Ceres Concept](./ceres_concept.md) for understanding Ceres core architecture

@@ -80,6 +80,24 @@ public partial class CeresExecutableLibrary
 }
 ```
 
+## Generated C# Runtime
+
+Generated C# Runtime compiles enabled Flow graphs into C# runtime programs. The generated program uses typed event methods, data slots, cached shared variables, and prewarmed invokers so event hot paths do not need graph object traversal or reflection lookup.
+
+Enable it from the Flow Graph Editor right-side Graph Inspector: turn on `Generated C# Runtime`, then click `Generate C# Runtime`.
+
+You can also use menu commands:
+
+- `Tools/Ceres/Flow/Generate C# Runtime/Selected Assets`
+- `Tools/Ceres/Flow/Generate C# Runtime/Selected Objects`
+- `Tools/Ceres/Flow/Generate C# Runtime/All Enabled Assets`
+
+Generated sources are written to `Assets/Ceres.Generated`. Flow program files use the `FlowProgram_*.generated.cs` pattern, and a shared registry file maps generated program ids to their factories.
+
+In Editor, missing or stale generated runtime can fall back to the normal graph runtime. In Build, an enabled graph with missing, stale, or unsupported generated runtime fails validation.
+
+Custom Flow nodes must provide an editor codegen handler before they can be used by Generated C# Runtime. The generated path does not mix in old `ExecutableNode.ExecuteNode` graph thunks.
+
 ## Next Steps
 
 - Learn about [Function Library](./flow_function_library.md) for detailed explanation of source generator usage
