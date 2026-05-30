@@ -713,6 +713,48 @@ namespace Ceres.Graph.Flow
             ReallocateDelegateIfNeed<Action<T1, T2, T3, T4, T5, T6>>(ref _delegate, _methodInfo);
         }
 
+        internal void Prewarm()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed();
+            else ReallocateDelegateIfNeed();
+        }
+
+        internal void Prewarm<T1>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1>();
+            else ReallocateDelegateIfNeed<T1>();
+        }
+
+        internal void Prewarm<T1, T2>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2>();
+            else ReallocateDelegateIfNeed<T1, T2>();
+        }
+
+        internal void Prewarm<T1, T2, T3>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, T3>();
+            else ReallocateDelegateIfNeed<T1, T2, T3>();
+        }
+
+        internal void Prewarm<T1, T2, T3, T4>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, T3, T4>();
+            else ReallocateDelegateIfNeed<T1, T2, T3, T4>();
+        }
+
+        internal void Prewarm<T1, T2, T3, T4, T5>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5>();
+            else ReallocateDelegateIfNeed<T1, T2, T3, T4, T5>();
+        }
+
+        internal void Prewarm<T1, T2, T3, T4, T5, T6>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, T6>();
+            else ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6>();
+        }
+
         public void Invoke(TTarget target)
         {
             if (IsStatic)
@@ -1006,6 +1048,48 @@ namespace Ceres.Graph.Flow
         private void ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>()
         {
             ReallocateDelegateIfNeed<Func<T1, T2, T3, T4, T5, T6, TR>>(ref _delegate, _methodInfo);
+        }
+
+        internal void Prewarm<TR>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<TR>();
+            else ReallocateDelegateIfNeed<TR>();
+        }
+
+        internal void Prewarm<T1, TR>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, TR>();
+            else ReallocateDelegateIfNeed<T1, TR>();
+        }
+
+        internal void Prewarm<T1, T2, TR>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, TR>();
+            else ReallocateDelegateIfNeed<T1, T2, TR>();
+        }
+
+        internal void Prewarm<T1, T2, T3, TR>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, T3, TR>();
+            else ReallocateDelegateIfNeed<T1, T2, T3, TR>();
+        }
+
+        internal void Prewarm<T1, T2, T3, T4, TR>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, TR>();
+            else ReallocateDelegateIfNeed<T1, T2, T3, T4, TR>();
+        }
+
+        internal void Prewarm<T1, T2, T3, T4, T5, TR>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, TR>();
+            else ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, TR>();
+        }
+
+        internal void Prewarm<T1, T2, T3, T4, T5, T6, TR>()
+        {
+            if (IsStatic) ReallocateStaticDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>();
+            else ReallocateDelegateIfNeed<T1, T2, T3, T4, T5, T6, TR>();
         }
 
         public TR Invoke<TR>(TTarget target)

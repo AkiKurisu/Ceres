@@ -9,6 +9,5 @@ namespace Ceres.Graph.Flow
     [CreateAssetMenu(fileName = "FlowGraphScriptableObject", menuName = "Ceres/Flow Graph ScriptableObject")]
     public partial class FlowGraphScriptableObject : FlowGraphScriptableObjectBase
     {
-
     }
 }

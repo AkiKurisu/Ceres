@@ -49,6 +49,12 @@ Beside the use of data sharing, `ScriptableObject` can also be used as a logic c
 
 Compared with `FlowGraphAsset`, `FlowGraphScriptableObject` owns an instance of `FlowGraph` at runtime.
 
+## Generated Runtime
+
+`FlowGraphAsset` and `[GenerateFlow(GenerateRuntime = true)]` containers can use Generated C# Runtime when generated runtime is enabled for the graph.
+
+Generated containers expose `IFlowGeneratedRuntimeContainer`, and runtime execution goes through `IFlowProgramRuntime.Program` when available. If generated runtime is disabled, or if it is stale in Editor, Flow can still use the normal `FlowGraph` runtime path.
+
 ## Next Steps
 
 - Learn about [Executable Events](./flow_executable_event.md) to understand how events trigger graph execution

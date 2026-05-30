@@ -52,9 +52,10 @@ namespace Ceres.Graph.Flow
     }
     
     [Serializable]
-    public class FlowGraph : CeresGraph
+    public class FlowGraph : CeresGraph, IFlowExecutableProgram, IFlowEventDelegateTarget,
+        IFlowEventHandlerProvider
     {
-        internal sealed class EventHandler: CallbackEventHandler, IDisposable
+        internal sealed class EventHandler: CallbackEventHandler, IDisposable, IFlowEventExecutionHandler
         {
             public override IEventCoordinator Coordinator => EventSystem.Instance;
 
@@ -80,9 +81,9 @@ namespace Ceres.Graph.Flow
                 ExecuteCustomEvent(evt);
             }
 
-            internal void ExecuteCustomEvent(EventBase eventBase)
+            public void ExecuteCustomEvent(EventBase eventBase)
             {
-                if (!_contextObject) return;
+                if (_flowGraph == null || !_contextObject) return;
                 /* Get event name if it has generated executable event */
                 var eventName = CustomExecutionEvent.GetEventName(eventBase.EventTypeId);
                 if (string.IsNullOrEmpty(eventName)) return;
@@ -106,6 +107,8 @@ namespace Ceres.Graph.Flow
         private List<ExecutionContext> _executionList;
 
         private EventHandler _eventHandler;
+
+        UObject IFlowEventDelegateTarget.CurrentContextObject => GetExecutionContext()?.Context;
 
         public FlowGraph(FlowGraphSerializedData flowGraphData) : base(flowGraphData)
         {
@@ -133,6 +136,11 @@ namespace Ceres.Graph.Flow
         {
             _eventHandler ??= new EventHandler(this, contextObject);
             return _eventHandler;
+        }
+
+        CallbackEventHandler IFlowEventHandlerProvider.GetEventHandler(UObject contextObject)
+        {
+            return GetOrCreateEventHandler(contextObject);
         }
 
         public override void Dispose()
@@ -427,6 +435,16 @@ namespace Ceres.Graph.Flow
 
     public static class FlowGraphRuntimeExtensions
     {
+        private static bool TryExecuteRuntimeEvent(IFlowGraphRuntime runtime, string eventName, EventBase evt)
+        {
+            if (runtime is IFlowProgramRuntime programRuntime)
+            {
+                return programRuntime.Program.TryExecuteEvent(runtime.Object, eventName, evt);
+            }
+
+            return runtime.Graph.TryExecuteEvent(runtime.Object, eventName, evt);
+        }
+
         /// <summary>
         /// Invoke flow graph event
         /// </summary>
@@ -435,7 +453,7 @@ namespace Ceres.Graph.Flow
         public static void ProcessEvent(this IFlowGraphRuntime runtime, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent.Create(eventName, ExecuteFlowEvent.DefaultArgs);
-            runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
+            TryExecuteRuntimeEvent(runtime, evt.FunctionName, evt);
         }
 
         /// <summary>
@@ -448,7 +466,7 @@ namespace Ceres.Graph.Flow
         public static void ProcessEvent<T1>(this IFlowGraphRuntime runtime, T1 arg1, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent<T1>.Create(eventName, arg1);
-            runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
+            TryExecuteRuntimeEvent(runtime, evt.FunctionName, evt);
         }
 
         /// <summary>
@@ -463,7 +481,7 @@ namespace Ceres.Graph.Flow
         public static void ProcessEvent<T1, T2>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent<T1, T2>.Create(eventName, arg1, arg2);
-            runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
+            TryExecuteRuntimeEvent(runtime, evt.FunctionName, evt);
         }
 
         /// <summary>
@@ -480,7 +498,7 @@ namespace Ceres.Graph.Flow
         public static void ProcessEvent<T1, T2, T3>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, T3 arg3, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent<T1, T2, T3>.Create(eventName, arg1, arg2, arg3);
-            runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
+            TryExecuteRuntimeEvent(runtime, evt.FunctionName, evt);
         }
 
         /// <summary>
@@ -499,7 +517,7 @@ namespace Ceres.Graph.Flow
         public static void ProcessEvent<T1, T2, T3, T4>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, T3 arg3, T4 arg4, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent<T1, T2, T3, T4>.Create(eventName, arg1, arg2, arg3, arg4);
-            runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
+            TryExecuteRuntimeEvent(runtime, evt.FunctionName, evt);
         }
 
         /// <summary>
@@ -520,7 +538,7 @@ namespace Ceres.Graph.Flow
         public static void ProcessEvent<T1, T2, T3, T4, T5>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent<T1, T2, T3, T4, T5>.Create(eventName, arg1, arg2, arg3, arg4, arg5);
-            runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
+            TryExecuteRuntimeEvent(runtime, evt.FunctionName, evt);
         }
 
         /// <summary>
@@ -543,7 +561,7 @@ namespace Ceres.Graph.Flow
         public static void ProcessEvent<T1, T2, T3, T4, T5, T6>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent<T1, T2, T3, T4, T5, T6>.Create(eventName, arg1, arg2, arg3, arg4, arg5, arg6);
-            runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
+            TryExecuteRuntimeEvent(runtime, evt.FunctionName, evt);
         }
         
         /// <summary>
@@ -557,7 +575,7 @@ namespace Ceres.Graph.Flow
         public static void ProcessEventUber(this IFlowGraphRuntime runtime, object[] parameters, [CallerMemberName] string eventName = "")
         {
             using var evt = ExecuteFlowEvent.Create(eventName, parameters);
-            runtime.Graph.TryExecuteEvent(runtime.Object, evt.FunctionName, evt);
+            TryExecuteRuntimeEvent(runtime, evt.FunctionName, evt);
         }
 
         /// <summary>
@@ -577,8 +595,13 @@ namespace Ceres.Graph.Flow
         /// </summary>
         /// <param name="runtime"></param>
         public static CallbackEventHandler GetEventHandler(this IFlowGraphRuntime runtime)
-        {   
-            return runtime.GetRuntimeFlowGraph().GetOrCreateEventHandler(runtime.Object);
+        {
+            if (runtime is IFlowProgramRuntime { Program: IFlowEventHandlerProvider provider })
+            {
+                return provider.GetEventHandler(runtime.Object);
+            }
+
+            return ((IFlowEventHandlerProvider)runtime.GetRuntimeFlowGraph()).GetEventHandler(runtime.Object);
         }
 
         /// <summary>
@@ -620,8 +643,11 @@ namespace Ceres.Graph.Flow
         {
             /* Check custom event registered */
             if (!CustomExecutionEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
-            return eventHandler.AsObservable<TEventType>()
-                .SubscribeSafe(((FlowGraph.EventHandler)runtime.GetEventHandler()).ExecuteCustomEvent);
+            if (runtime.GetEventHandler() is not IFlowEventExecutionHandler executionHandler)
+            {
+                return Disposable.Empty;
+            }
+            return eventHandler.AsObservable<TEventType>().SubscribeSafe(executionHandler.ExecuteCustomEvent);
         }
     }
 }

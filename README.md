@@ -64,6 +64,7 @@ Use `Tools/Ceres/Installer` to install dependencies.
 - **🔗 Graph & C# Integration** - Seamless integration between visual graphs and traditional C# code
 - **🐛 Editor Debugging** - Built-in debugging tools with breakpoints and step-by-step execution
 - **⚡ Easy Implementation** - Simple setup with minimal configuration required
+- **🔥 Generated C# Runtime** - Generate Flow graphs into C# runtime programs for hot paths
 - **🏃‍♂️ Optimized Runtime Performance** - High-performance execution with IL2CPP optimizations
 - **📱 IL2CPP Compatible** - Fully compatible with IL2CPP builds and recommended for production
 
@@ -318,6 +319,9 @@ Ceres uses multiple code generation techniques to enhance runtime performance:
 ### Source Generator
 Analyzes partial classes annotated with `GenerateFlowAttribute` and generates their implementation automatically, reducing code duplication.
 
+### Generated C# Runtime
+Generates enabled Flow graphs into `FlowProgram_*.generated.cs` files under `Assets/Ceres.Generated`, with a shared registry that creates the generated runtime program without event hot-path reflection.
+
 ### IL Post Process (ILPP)
 Uses ILPP to emit IL for initialization logic of `CeresNode` and methods annotated with `ImplementableEventAttribute` to enhance runtime performance.
 
@@ -348,6 +352,7 @@ Comprehensive documentation is available online:
 - [Flow Quick Start](https://akikurisu.github.io/Ceres/docs/flow_startup.html) - Get started with Flow visual scripting
 - [Flow Concepts](https://akikurisu.github.io/Ceres/docs/flow_concept.html) - Understanding Flow architecture
 - [Executable Functions](https://akikurisu.github.io/Ceres/docs/flow_executable_function.html) - Expose C# methods to Flow
+- [Flow Code Generation](https://akikurisu.github.io/Ceres/docs/flow_codegen.html) - Understand Source Generator, ILPP, and Generated C# Runtime
 - [Custom Nodes](https://akikurisu.github.io/Ceres/docs/flow_custom_node.html) - Create your own Flow nodes
 - [Generic Nodes](https://akikurisu.github.io/Ceres/docs/flow_generic_node.html) - Working with generic nodes
 - [Debugging Guide](https://akikurisu.github.io/Ceres/docs/flow_debugging.html) - Debug your visual scripts
