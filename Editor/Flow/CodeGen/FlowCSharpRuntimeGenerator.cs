@@ -1126,6 +1126,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 SetSubFlowReturn
             }
 
+            internal enum DependencyCancellationCheck
+            {
+                EmitIfNodeWillRun,
+                AlreadyChecked
+            }
+
             private FlowGraph _graph;
 
             private readonly string _className;
@@ -1338,7 +1344,6 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     var body = CaptureMethodBody(() =>
                     {
                         Emit("                PushExecutionContext(frame.ContextObject);");
-                        Emit("                frame.Cancellation.ThrowIfCancellationRequested();");
                         var firstNode = GetExecTarget(evt, "exec");
                         if (firstNode != null)
                         {
@@ -1995,7 +2000,6 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     GenerateFunctionFrame(binding);
                     var body = CaptureMethodBody(() =>
                     {
-                        Emit("                frame.CancellationToken.ThrowIfCancellationRequested();");
                         var firstNode = GetExecTarget(input, nameof(CustomFunctionInput.exec));
                         if (firstNode != null)
                         {
@@ -2394,18 +2398,24 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return false;
             }
 
-            internal void GenerateDependencyCall(CeresNode node, string frameTypeName, string frameVar, string indent)
+            internal void GenerateDependencyCall(CeresNode node, string frameTypeName, string frameVar, string indent,
+                DependencyCancellationCheck cancellationCheck = DependencyCancellationCheck.EmitIfNodeWillRun)
             {
                 var methodName = GetDependencyMethodName(node);
                 var executedField = EnsureFrameField($"executed:{node.Guid}", typeof(bool),
                     $"Executed_{SafeGuid(node.Guid)}");
+                if (cancellationCheck == DependencyCancellationCheck.EmitIfNodeWillRun)
+                {
+                    Emit($"{indent}if (!{frameVar}.{executedField})");
+                    Emit($"{indent}{{");
+                    Emit($"{indent}    {GetCancellationCheckExpression(frameTypeName, frameVar)};");
+                    Emit($"{indent}}}");
+                }
                 Emit($"{indent}{methodName}({frameVar});");
                 if (_generatedDependencyMethods.Add(node.Guid))
                 {
                     _pendingDependencyMethods.Enqueue(node);
                 }
-
-                _ = executedField;
             }
 
             private void FlushDependencyMethods()
@@ -2431,7 +2441,6 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 Emit("                return;");
                 Emit("            }");
                 Emit($"            frame.{executedField} = true;");
-                Emit($"            {GetCancellationCheckExpression(_currentFrameName, "frame")};");
 
                 foreach (var dependency in GetDependencyNodes(node))
                 {

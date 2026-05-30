@@ -273,7 +273,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
         public override void GenerateForward(FlowNode_ExecuteFunctionReturn node, NodeGenerationContext context)
         {
-            context.Source.GenerateDependencyCall(node, context.FrameTypeName, context.FrameVar, context.Indent);
+            context.Source.GenerateDependencyCall(node, context.FrameTypeName, context.FrameVar, context.Indent,
+                FlowCSharpRuntimeGenerator.SourceContext.DependencyCancellationCheck.AlreadyChecked);
             context.GenerateDefaultNext(node);
         }
 
@@ -485,7 +486,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
     {
         public override void GenerateForward(FlowNode node, NodeGenerationContext context)
         {
-            context.Source.GenerateDependencyCall(node, context.FrameTypeName, context.FrameVar, context.Indent);
+            context.Source.GenerateDependencyCall(node, context.FrameTypeName, context.FrameVar, context.Indent,
+                FlowCSharpRuntimeGenerator.SourceContext.DependencyCancellationCheck.AlreadyChecked);
             context.GenerateNext(node);
         }
 
