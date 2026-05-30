@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using Ceres.Graph.Flow;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -25,6 +27,8 @@ namespace Ceres.Editor.Graph.Flow
         private Label _positionLabel;
 
         private bool _needsRebuild;
+
+        private int _currentSelectionCount = -1;
 
         private const int DefaultFontSize = 12;
 
@@ -62,9 +66,7 @@ namespace Ceres.Editor.Graph.Flow
                 name = "InspectorContent"
             };
 
-            // Placeholder content
-            var contentLabel = new Label("Select a node to inspect");
-            _content.Add(contentLabel);
+            DrawGraphInspector();
 
             _container.Add(_content);
 
@@ -89,17 +91,13 @@ namespace Ceres.Editor.Graph.Flow
             var graphView = _editorWindow.GetGraphView();
             if (graphView == null || _content == null) return;
 
-            ExecutableNodeView selectedNodeView = null;
             var selection = graphView.selection.OfType<ExecutableNodeElement>().ToArray();
-            if (selection.Length == 1)
-            {
-                selectedNodeView = selection[0].View;
-            }
+            var selectedNodeView = selection.Length == 1 ? selection[0].View : null;
 
             // Check if selection changed
-            if (selectedNodeView != _currentNodeView)
+            if (selectedNodeView != _currentNodeView || selection.Length != _currentSelectionCount)
             {
-                BuildInspectorContent();
+                BuildInspectorContent(selection);
             }
             else if (_currentNodeView != null)
             {
@@ -119,19 +117,18 @@ namespace Ceres.Editor.Graph.Flow
         /// <summary>
         /// Build inspector content based on current selection
         /// </summary>
-        private void BuildInspectorContent()
+        private void BuildInspectorContent(ExecutableNodeElement[] selection = null)
         {
             var graphView = _editorWindow.GetGraphView();
             if (_content == null || graphView == null) return;
 
             DestroyCurrentInspector();
 
-            var selection = graphView.selection.OfType<ExecutableNodeElement>().ToArray();
+            selection ??= graphView.selection.OfType<ExecutableNodeElement>().ToArray();
+            _currentSelectionCount = selection.Length;
             if (selection.Length == 0)
             {
-                // No selection - show placeholder
-                var label = new Label("Select a node to inspect");
-                _content.Add(label);
+                DrawGraphInspector();
                 return;
             }
 
@@ -144,6 +141,37 @@ namespace Ceres.Editor.Graph.Flow
             }
 
             DrawNodeInspector(selection[0].View);
+        }
+
+        private void DrawGraphInspector()
+        {
+            AddSectionTitle("Graph Information");
+
+            var containerObject = _editorWindow.Container.Object;
+            AddInfoLabel($"Name: {(containerObject ? containerObject.name : "Unknown")}");
+            AddInfoLabel($"Container: {_editorWindow.GetContainerType().Name}");
+            AddInfoLabel($"Graph: {GetCurrentGraphName()}");
+
+            if (_editorWindow.ContainerT is not IFlowGeneratedRuntimeContainer generatedContainer ||
+                !generatedContainer.Object)
+            {
+                return;
+            }
+
+            var serializedObject = new SerializedObject(generatedContainer.Object);
+            _content.Add(new FlowGeneratedRuntimePanel(generatedContainer, serializedObject));
+        }
+
+        private string GetCurrentGraphName()
+        {
+            var graphNames = _editorWindow.EditorObject?.GraphNames;
+            var index = _editorWindow.GraphIndex;
+            if (graphNames == null || index < 0 || index >= graphNames.Length)
+            {
+                return "Main";
+            }
+
+            return graphNames[index];
         }
 
         /// <summary>

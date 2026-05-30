@@ -65,11 +65,28 @@ internal class FlowGraphGeneratorTemplate
         
                 [NonSerialized]
                 private FlowGraph _graph;
+
+                [NonSerialized]
+                private IFlowExecutableProgram _program;
                 
                 [SerializeField]
                 private FlowGraphData graphData;
+
+                [SerializeField]
+                [HideInInspector]
+                private FlowGeneratedProgramInfo generatedRuntimeInfo = new();
                 
                 public UObject Object => this;
+
+                FlowGeneratedProgramInfo IFlowGeneratedRuntimeContainer.GeneratedRuntimeInfo => generatedRuntimeInfo;
+
+                public IFlowExecutableProgram Program
+                {
+                    get
+                    {
+                        return _program ??= FlowGeneratedRuntimeUtility.CreateExecutableProgram(this, generatedRuntimeInfo);
+                    }
+                }
         
                 public FlowGraph Graph
                 {
@@ -93,7 +110,13 @@ internal class FlowGraphGeneratorTemplate
                 /// <returns></returns>
                 protected void ReleaseGraph()
                 {
+                    if (!ReferenceEquals(_program, _graph))
+                    {
+                        _program?.Dispose();
+                    }
+                    _program = null;
                     _graph?.Dispose();
+                    _graph = null;
                 }
         
                 public virtual FlowGraph GetFlowGraph()
@@ -128,6 +151,17 @@ internal class FlowGraphGeneratorTemplate
         
                 [NonSerialized]
                 private FlowGraph _graph;
+
+                [NonSerialized]
+                private IFlowExecutableProgram _program;
+
+                public IFlowExecutableProgram Program
+                {
+                    get
+                    {
+                        return _program ??= CreateRuntimeProgramInstance();
+                    }
+                }
         
                 public FlowGraph Graph
                 {
@@ -151,7 +185,24 @@ internal class FlowGraphGeneratorTemplate
                 /// <returns></returns>
                 protected void ReleaseGraph()
                 {
+                    if (!ReferenceEquals(_program, _graph))
+                    {
+                        _program?.Dispose();
+                    }
+                    _program = null;
                     _graph?.Dispose();
+                    _graph = null;
+                }
+
+                private IFlowExecutableProgram CreateRuntimeProgramInstance()
+                {
+                    if (this is IFlowGeneratedRuntimeContainer generatedContainer)
+                    {
+                        return FlowGeneratedRuntimeUtility.CreateExecutableProgram(generatedContainer,
+                            generatedContainer.GeneratedRuntimeInfo);
+                    }
+
+                    return FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram(GetFlowGraph());
                 }
             }
         }
@@ -159,7 +210,11 @@ internal class FlowGraphGeneratorTemplate
 
     private const string ImplementationInterface = "IFlowGraphContainer";
 
+    private const string GeneratedRuntimeContainerInterface = "IFlowGeneratedRuntimeContainer";
+
     private const string RuntimeInterface = "IFlowGraphRuntime";
+
+    private const string ProgramRuntimeInterface = "IFlowProgramRuntime";
 
     public string Namespace;
 
@@ -177,7 +232,8 @@ internal class FlowGraphGeneratorTemplate
         {
             if (GenerateRuntime)
             {
-                sb.Append(namedCode.Replace("{INTERFACE}", string.Join(", ", ImplementationInterface, RuntimeInterface)));
+                sb.Append(namedCode.Replace("{INTERFACE}", string.Join(", ", GeneratedRuntimeContainerInterface,
+                    RuntimeInterface, ProgramRuntimeInterface)));
                 sb.Append(ImplementationRuntimeTemplate);
             }
             else
@@ -190,7 +246,7 @@ internal class FlowGraphGeneratorTemplate
         {
             if (GenerateRuntime)
             {
-                sb.Append(namedCode.Replace("{INTERFACE}", RuntimeInterface));
+                sb.Append(namedCode.Replace("{INTERFACE}", string.Join(", ", RuntimeInterface, ProgramRuntimeInterface)));
                 sb.Append(NonImplementationRuntimeTemplate);
             }
             else

@@ -17,7 +17,7 @@ namespace Ceres.Editor.Graph.Flow
         private class OpenFlowGraphButton : Button
         {
             private const string ButtonText = "Open Flow Graph";
-        
+
             public OpenFlowGraphButton(IFlowGraphContainer container) : base(() => FlowGraphEditorWindow.Show(container))
             {
                 style.fontSize = 15;
@@ -50,11 +50,16 @@ namespace Ceres.Editor.Graph.Flow
         public override VisualElement CreateInspectorGUI()
         {
             var myInspector = new VisualElement();
+            myInspector.styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/Flow/FlowGraphAssetInspector"));
+            myInspector.AddToClassList("flow-asset-inspector");
+
             var runtimeTypePropField = new PropertyField(_runtimeType);
             runtimeTypePropField.Bind(serializedObject);
-            myInspector.Add(runtimeTypePropField);
-            
-            myInspector.Add(new BlackboardInspectorPanel(
+            var runtimeSection = CreateSection("Runtime");
+            runtimeSection.Add(runtimeTypePropField);
+            myInspector.Add(runtimeSection);
+
+            var blackboardPanel = new BlackboardInspectorPanel(
                 () => Asset.GetFlowGraph(),
                 () => ((IFlowGraphContainer)Asset).GetFlowGraphData().saveTimestamp, 
                 instance =>
@@ -68,10 +73,34 @@ namespace Ceres.Editor.Graph.Flow
                         .ToArray();
                     Asset.SetGraphData(graphData);
                     EditorUtility.SetDirty(target);
-                }));
+                });
+            blackboardPanel.AddToClassList("flow-asset-inspector-section");
+            myInspector.Add(blackboardPanel);
             
-            myInspector.Add(new OpenFlowGraphButton(Asset));
+            var actions = new VisualElement();
+            actions.AddToClassList("flow-asset-inspector-actions");
+            actions.Add(new OpenFlowGraphButton(Asset));
+            myInspector.Add(actions);
+
             return myInspector;
         }
+
+        private VisualElement CreateSection(string title, VisualElement trailing = null)
+        {
+            var section = new VisualElement();
+            section.AddToClassList("flow-asset-inspector-section");
+
+            var header = new VisualElement();
+            header.AddToClassList("flow-asset-inspector-section-header");
+            header.Add(new Label(title));
+            if (trailing != null)
+            {
+                trailing.AddToClassList("flow-asset-inspector-section-trailing");
+                header.Add(trailing);
+            }
+            section.Add(header);
+            return section;
+        }
+
     }
 }

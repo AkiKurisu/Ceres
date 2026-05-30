@@ -10,7 +10,7 @@ namespace Ceres.Graph.Flow
     /// <summary>
     /// Base class for <see cref="MonoBehaviour"/> contains Flow Graph.
     /// </summary>
-    public abstract class FlowGraphObjectBase : MonoBehaviour, IFlowGraphRuntime
+    public abstract class FlowGraphObjectBase : MonoBehaviour, IFlowGraphRuntime, IFlowProgramRuntime
     {
         private static readonly List<FlowGraphObjectBase> RuntimeInstances = new();
         
@@ -18,6 +18,23 @@ namespace Ceres.Graph.Flow
         
         [NonSerialized]
         private FlowGraph _graph;
+
+        [NonSerialized]
+        private IFlowExecutableProgram _program;
+
+        public IFlowExecutableProgram Program
+        {
+            get
+            {
+                if (_program == null)
+                {
+                    _program = CreateRuntimeProgramInstance();
+                    RegisterInstance();
+                }
+
+                return _program;
+            }
+        }
         
         FlowGraph IFlowGraphRuntime.Graph
         {
@@ -25,13 +42,8 @@ namespace Ceres.Graph.Flow
             {
                 if (_graph == null)
                 {
-                    _graph = CreateRuntimeFlowGraphInstance();
-                    using var context = FlowGraphCompilationContext.GetPooled();
-                    using var compiler = CeresGraphCompiler.GetPooled(_graph, context);
-                    _graph.Compile(compiler);
-                    
-                    // Register instance for hot reload
-                    RegisterInstance();
+                    _graph = CreateCompiledRuntimeFlowGraphInstance();
+                    RegisterInstance(); 
                 }
 
                 return _graph;
@@ -39,6 +51,27 @@ namespace Ceres.Graph.Flow
         }
 
         protected abstract FlowGraph CreateRuntimeFlowGraphInstance();
+
+        protected virtual IFlowExecutableProgram CreateRuntimeProgramInstance()
+        {
+            var container = GetContainer();
+            if (container is IFlowGeneratedRuntimeContainer generatedContainer)
+            {
+                return FlowGeneratedRuntimeUtility.CreateExecutableProgram(generatedContainer,
+                    generatedContainer.GeneratedRuntimeInfo);
+            }
+
+            return CreateCompiledRuntimeFlowGraphInstance();
+        }
+
+        private FlowGraph CreateCompiledRuntimeFlowGraphInstance()
+        {
+            var graph = CreateRuntimeFlowGraphInstance();
+            using var context = FlowGraphCompilationContext.GetPooled();
+            using var compiler = CeresGraphCompiler.GetPooled(graph, context);
+            graph.Compile(compiler);
+            return graph;
+        }
         
         /// <summary>
         /// Release graph instance safely
@@ -47,6 +80,11 @@ namespace Ceres.Graph.Flow
         protected void ReleaseGraph()
         {
             UnregisterInstance();
+            if (!ReferenceEquals(_program, _graph))
+            {
+                _program?.Dispose();
+            }
+            _program = null;
             _graph?.Dispose();
             _graph = null;
         }
@@ -95,8 +133,13 @@ namespace Ceres.Graph.Flow
         /// </summary>
         internal void ReplaceGraph(FlowGraph newGraph)
         {
+            if (!ReferenceEquals(_program, _graph))
+            {
+                _program?.Dispose();
+            }
             _graph?.Dispose();
             _graph = newGraph;
+            _program = newGraph;
         }
 
         /// <summary>

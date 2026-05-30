@@ -8,21 +8,26 @@ namespace Ceres.Graph.Flow
     /// </summary>
     public abstract class EventDelegateBase
     {
-        private WeakReference<FlowGraph> _graph;
+        private WeakReference<IFlowEventDelegateTarget> _target;
 
         private string _eventName;
 
         internal void Initialize(FlowGraph graph, string eventName)
         {
-            _graph = new WeakReference<FlowGraph>(graph);
+            Bind(graph, eventName);
+        }
+
+        public void Bind(IFlowEventDelegateTarget target, string eventName)
+        {
+            _target = new WeakReference<IFlowEventDelegateTarget>(target);
             _eventName = eventName;
         }
 
         protected void InvokeInternal(UObject contextObject, EventBase eventBase)
         {
-            if(_graph.TryGetTarget(out var graph))
+            if(_target != null && _target.TryGetTarget(out var target))
             {
-                graph.ExecuteEvent(contextObject, _eventName, eventBase);
+                target.TryExecuteEvent(contextObject, _eventName, eventBase);
             }  
         }
 
@@ -33,12 +38,12 @@ namespace Ceres.Graph.Flow
 
         internal bool IsValidInternal()
         {
-            return _graph.TryGetTarget(out _);
+            return _target != null && _target.TryGetTarget(out _);
         }
 
         protected UObject GetContextObject()
         {
-            return _graph.TryGetTarget(out var graph) ? graph.GetExecutionContext().Context : null;
+            return _target != null && _target.TryGetTarget(out var target) ? target.CurrentContextObject : null;
         }
 
         internal static void StaticInitialize<TDelegate>() where TDelegate: EventDelegateBase

@@ -108,7 +108,7 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public bool CanConnect(CeresPortElement other)
         {
-            return IsConnectable() && IsCompatibleTo(other);
+            return other != null && IsConnectable() && IsCompatibleTo(other);
         }
 
         /// <summary>
@@ -118,13 +118,19 @@ namespace Ceres.Editor.Graph
         /// <returns></returns>
         public bool IsCompatibleTo(CeresPortElement other)
         {
+            if (other == null) return false;
             if (other.direction == direction) return false;
-            if (other.portType == portType) return true;
-            if (direction == Direction.Input)
+
+            var outputPort = direction == Direction.Output ? this : other;
+            var inputPort = direction == Direction.Input ? this : other;
+            if (outputPort.portType == null || inputPort.portType == null) return false;
+            if (outputPort.portType == inputPort.portType) return true;
+            if (outputPort.View != null)
             {
-                return other.View.Binding.IsCompatibleTo(portType);
+                return outputPort.View.Binding.IsCompatibleTo(inputPort.portType);
             }
-            return View.Binding.IsCompatibleTo(other.portType);
+
+            return CeresPort.IsCompatibleTo(outputPort.portType, inputPort.portType);
         }
 
         public void SetEditorFieldVisibility(bool isVisible)

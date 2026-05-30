@@ -21,9 +21,18 @@ namespace Ceres.Graph.Flow
     /// Base class for <see cref="ScriptableObject"/> contains Flow Graph.
     /// </summary>
     [GenerateFlow(GenerateRuntime = false, GenerateImplementation = true)]
-    public abstract partial class FlowGraphScriptableObjectBase: ScriptableObject
+    public abstract partial class FlowGraphScriptableObjectBase: ScriptableObject, IFlowGeneratedRuntimeContainer
     {
+        [SerializeField]
+        [HideInInspector]
+        public FlowGeneratedProgramInfo generatedRuntimeInfo = new();
 
+        FlowGeneratedProgramInfo IFlowGeneratedRuntimeContainer.GeneratedRuntimeInfo => generatedRuntimeInfo;
+
+        public IFlowExecutableProgram CreateExecutableProgram()
+        {
+            return FlowGeneratedRuntimeUtility.CreateExecutableProgram(this, generatedRuntimeInfo);
+        }
     }
     
     /// <summary>
