@@ -54,7 +54,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// Cancels a scheduled task if the handle is valid.
         /// </summary>
         /// <param name="handle"></param>
-        [ExecutableFunction, CeresLabel("Cancel Scheduler")]
+        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Cancel Scheduler")]
         public static void Flow_SchedulerCancel(SchedulerHandle handle)
         {
             handle.Cancel();

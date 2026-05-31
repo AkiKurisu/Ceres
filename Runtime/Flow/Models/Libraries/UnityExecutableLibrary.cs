@@ -32,7 +32,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// Removes a GameObject, component or asset.
         /// </summary>
         /// <param name="uObject"></param>
-        [ExecutableFunction]
+        [ExecutableFunction(IsScriptMethod = true)]
         public static void Flow_Destroy([NotNull] UObject uObject)
         {
             UObject.Destroy(uObject);
@@ -281,7 +281,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <summary>
         /// Provides the Destroy GameObject operation for Flow graphs.
         /// </summary>
-        [ExecutableFunction, CeresGroup("Unity/GameObject"), CeresLabel("Destroy GameObject")]
+        [ExecutableFunction(IsScriptMethod = true), CeresGroup("Unity/GameObject"), CeresLabel("Destroy GameObject")]
         public static void Flow_DestroyGameObject(GameObject gameObject, float delay)
         {
             UObject.Destroy(gameObject, delay);
@@ -290,7 +290,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <summary>
         /// Provides the Dont Destroy On Load operation for Flow graphs.
         /// </summary>
-        [ExecutableFunction, CeresGroup("Unity/GameObject"), CeresLabel("Dont Destroy On Load")]
+        [ExecutableFunction(IsScriptMethod = true), CeresGroup("Unity/GameObject"), CeresLabel("Dont Destroy On Load")]
         public static void Flow_DontDestroyOnLoad(GameObject gameObject)
         {
             UObject.DontDestroyOnLoad(gameObject);

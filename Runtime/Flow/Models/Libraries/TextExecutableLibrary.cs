@@ -92,7 +92,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="oldValue">The substring to replace.</param>
         /// <param name="newValue">The replacement string.</param>
         /// <returns>The updated string.</returns>
-        [ExecutableFunction(IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("Replace String")]
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("Replace String")]
         public static string Flow_StringReplace(string stringValue, string oldValue, string newValue)
         {
             return stringValue.Replace(oldValue, newValue);
@@ -103,7 +103,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="stringValue">The source string.</param>
         /// <returns>The lower-case string.</returns>
-        [ExecutableFunction(IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("ToLower")]
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("ToLower")]
         public static string Flow_StringToLower(string stringValue)
         {
             return stringValue.ToLower(CultureInfo.CurrentCulture);
@@ -114,7 +114,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="stringValue">The source string.</param>
         /// <returns>The upper-case string.</returns>
-        [ExecutableFunction(IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("ToUpper")]
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("ToUpper")]
         public static string Flow_StringToUpper(string stringValue)
         {
             return stringValue.ToUpper(CultureInfo.CurrentCulture);
@@ -125,7 +125,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="stringValue">The source string.</param>
         /// <returns>The 64-bit hash value.</returns>
-        [ExecutableFunction(IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("Hash64")]
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("Hash64")]
         public static ulong Flow_StringHash64(string stringValue)
         {
             return stringValue.Hash64();
