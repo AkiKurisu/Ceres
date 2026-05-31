@@ -1,4 +1,5 @@
 using System;
+using Ceres.Graph;
 using Ceres.Graph.Flow.Utilities;
 
 namespace Ceres.Editor.Graph.Flow.CodeGen
@@ -24,7 +25,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
     }
 
     [CustomNodeGenerator(typeof(FlowNode_ExecuteFunctionReturn), true)]
-    internal sealed class FlowNode_ExecuteFunctionReturnNodeGenerator : NodeGenerator<FlowNode_ExecuteFunctionReturn>
+    internal sealed class FlowNode_ExecuteFunctionReturnNodeGenerator : NodeGenerator<FlowNode_ExecuteFunctionReturn>,
+        IInlineExpressionNodeGenerator
     {
         public override bool CanGenerate(FlowNode_ExecuteFunctionReturn node, NodeGenerationContext context)
         {
@@ -47,6 +49,20 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             NodeGenerationContext context, out Type outputType, out string slotField)
         {
             return context.Source.TryGetFunctionReturnOutputSlot(node, portId, out outputType, out slotField);
+        }
+
+        public bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression)
+        {
+            if (node is FlowNode_ExecuteFunctionReturn functionNode)
+            {
+                return context.Source.TryGenerateFunctionReturnOutputExpression(functionNode, portId,
+                    context.FrameTypeName, context.FrameVar, context.Indent, out outputType, out expression);
+            }
+
+            outputType = null;
+            expression = null;
+            return false;
         }
     }
 }
