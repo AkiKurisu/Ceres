@@ -139,6 +139,19 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             return Source.EnsureProgramField(node, fieldId, type);
         }
 
+        public bool TryGetLocalSharedVariableValueExpression(CeresNode node, string fieldName,
+            out Type valueType, out string expression)
+        {
+            return Source.TryGetLocalSharedVariableValueExpression(node, fieldName, out valueType, out expression);
+        }
+
+        public bool TryGetLocalSharedVariableValueExpression(CeresNode node, string fieldName, int index,
+            out Type valueType, out string expression)
+        {
+            return Source.TryGetLocalSharedVariableValueExpression(node, fieldName, index, out valueType,
+                out expression);
+        }
+
         public string GetFriendlyTypeName(Type type)
         {
             return FlowCSharpRuntimeGenerator.SourceContext.GetFriendlyTypeName(type);

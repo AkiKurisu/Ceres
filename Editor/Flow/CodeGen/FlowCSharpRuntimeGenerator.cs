@@ -202,17 +202,37 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             }
 
             var graphHash = FlowGeneratedRuntimeUtility.CalculateGraphHash(graphData);
-            var generated = GenerateSource(displayName, graphData, identity.ClassName);
-
-            WriteGeneratedSource(identity.SourcePath, generated.Source);
+            var generatorProfile = FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile;
+            var cancellationMode = FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode;
+            var variableStorageMode = FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode;
+            var serializedTypeMode = FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode;
 
             info.enabled = true;
             info.generatorVersion = FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion;
             info.programId = identity.ProgramId;
             info.assetGuid = assetGuid;
             info.graphHash = graphHash;
-            info.generatedTypeName = identity.TypeName;
+            info.generatorProfile = generatorProfile;
+            info.generatorCancellationMode = cancellationMode;
+            info.generatorVariableStorageMode = variableStorageMode;
+            info.generatorSerializedTypeMode = serializedTypeMode;
+            info.generatorOptionsHash =
+                FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash(generatorProfile, cancellationMode,
+                    variableStorageMode, serializedTypeMode);
             info.generatedUtcTicks = DateTime.UtcNow.Ticks;
+
+            if (!FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram)
+            {
+                info.generatedTypeName = string.Empty;
+                info.functionDependencies = Array.Empty<FlowGeneratedFunctionDependencyInfo>();
+                DeleteGeneratedAsset(identity.SourcePath);
+                return;
+            }
+
+            var generated = GenerateSource(displayName, graphData, identity.ClassName);
+            WriteGeneratedSource(identity.SourcePath, generated.Source);
+
+            info.generatedTypeName = identity.TypeName;
             info.functionDependencies = generated.FunctionDependencies;
         }
 
@@ -223,6 +243,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
         public static void ValidateGeneratedManifestEntries()
         {
+            if (!FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram)
+            {
+                return;
+            }
+
             foreach (var entry in ReadManifest().Entries)
             {
                 if (!TryResolveManifestContainer(entry, out var container, out var contextObject))
@@ -252,6 +277,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             {
                 throw new BuildFailedException(
                     $"Generated C# runtime for {displayName} is missing or stale. Run {GenerateRuntimeMenuPath} before building.");
+            }
+
+            if (!FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram)
+            {
+                return;
             }
 
             ValidateGeneratedSourceFiles(info, displayName);
@@ -410,7 +440,9 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
         {
             return info != null &&
                    info.enabled &&
+                   FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram &&
                    info.generatorVersion == FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion &&
+                   FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent(info) &&
                    !string.IsNullOrEmpty(info.GetProgramId()) &&
                    !string.IsNullOrEmpty(info.graphHash) &&
                    !string.IsNullOrEmpty(info.generatedTypeName);
@@ -961,8 +993,15 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
         private static bool CanAccessSharedVariable(PropertyNode_SharedVariableValue node, out Type variableType,
             out Type valueType)
         {
+            return CanAccessSharedVariable(node, out variableType, out _, out valueType);
+        }
+
+        private static bool CanAccessSharedVariable(PropertyNode_SharedVariableValue node, out Type variableType,
+            out Type variableValueType, out Type portValueType)
+        {
             variableType = null;
-            valueType = null;
+            variableValueType = null;
+            portValueType = null;
 
             var arguments = GetGenericArguments(node);
             if (arguments.Length < 3)
@@ -971,8 +1010,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             }
 
             variableType = arguments[0];
-            valueType = arguments[2];
-            return IsVisibleType(variableType) && IsVisibleType(valueType);
+            variableValueType = arguments[1];
+            portValueType = arguments[2];
+            return IsVisibleType(variableType) &&
+                   IsVisibleType(variableValueType) &&
+                   IsVisibleType(portValueType);
         }
 
         private static Type GetTargetType(FlowNode_ExecuteFunction node)
@@ -1121,6 +1163,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
         {
             private const string SynchronousExitLabel = "Complete";
             private const string SynchronousResultVariable = "__ceresResult";
+            private const string FrameArgumentMarker = "/*__CERES_FRAME_ARG__*/";
 
             private enum CustomFunctionReturnEmission
             {
@@ -1139,9 +1182,19 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private readonly string _className;
 
+            private readonly FlowGeneratedRuntimeProfile _profile;
+
+            private readonly FlowGeneratedRuntimeCancellationMode _cancellationMode;
+
+            private readonly FlowGeneratedRuntimeVariableStorageMode _variableStorageMode;
+
+            private readonly FlowGeneratedRuntimeSerializedTypeMode _serializedTypeMode;
+
             private Dictionary<string, CeresNode> _nodes;
 
             private readonly Dictionary<string, SharedVariableBinding> _sharedVariableBindings = new();
+
+            private readonly Dictionary<string, LocalVariableBinding> _localVariableBindings = new();
 
             private readonly Dictionary<string, FunctionInvokerBinding> _functionInvokerBindings = new();
 
@@ -1179,6 +1232,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private string _currentFrameName;
 
+            private bool _currentFramePassByReference;
+
+            private bool _currentFrameNeedsCancellation;
+
+            private bool _currentFrameNeedsEventBase;
+
             private CustomFunctionReturnEmission _customFunctionReturnEmission;
 
             private readonly Stack<string> _inlineEventStack = new();
@@ -1187,15 +1246,19 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             {
                 _graph = graph;
                 _className = className;
+                _profile = FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile;
+                _cancellationMode = FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode;
+                _variableStorageMode = FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode;
+                _serializedTypeMode = FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode;
                 _nodes = graph.nodes.ToDictionary(node => node.Guid);
                 foreach (var node in graph.nodes.OfType<PropertyNode_SharedVariableValue>())
                 {
-                    if (!CanAccessSharedVariable(node, out var variableType, out _))
+                    if (!CanAccessSharedVariable(node, out var variableType, out var variableValueType, out _))
                     {
                         continue;
                     }
 
-                    GetOrCreateSharedVariableBinding(node.propertyName, variableType);
+                    GetOrCreateGraphVariableBinding(node.propertyName, variableType, variableValueType);
                 }
 
                 foreach (var node in graph.nodes.OfType<FlowNode_ExecuteFunction>())
@@ -1255,6 +1318,10 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 {
                     body.AppendLine($"        private readonly {GetFriendlyTypeName(binding.VariableType)} {binding.FieldName};");
                 }
+                foreach (var binding in _localVariableBindings.Values)
+                {
+                    body.AppendLine($"        private {GetFriendlyTypeName(binding.StorageType)} {binding.FieldName};");
+                }
                 foreach (var binding in _functionInvokerBindings.Values)
                 {
                     var invokerType = binding.ReturnType == typeof(void)
@@ -1274,17 +1341,23 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 {
                     body.AppendLine($"        private {GetFriendlyTypeName(field.Type)} {field.FieldName};");
                 }
-                if (_sharedVariableBindings.Count > 0 || _functionInvokerBindings.Count > 0 ||
+                if (_sharedVariableBindings.Count > 0 || _localVariableBindings.Count > 0 ||
+                    _functionInvokerBindings.Count > 0 ||
                     _eventDelegateBindings.Count > 0 || _serializedTypeBindings.Count > 0 ||
                     _programFields.Count > 0)
                 {
                     body.AppendLine();
                 }
-                body.AppendLine($"        public {_className}(FlowGraphData graphData) : base(graphData)");
+                var createBlackboard = _sharedVariableBindings.Count > 0;
+                body.AppendLine($"        public {_className}(FlowGraphData graphData) : base(graphData, {createBlackboard.ToString().ToLowerInvariant()})");
                 body.AppendLine("        {");
                 foreach (var binding in _sharedVariableBindings.Values)
                 {
                     body.AppendLine($"            {binding.FieldName} = FlowGeneratedRuntimeUtility.GetRequiredSharedVariable<{GetFriendlyTypeName(binding.VariableType)}>(Blackboard, \"{Escape(binding.VariableName)}\");");
+                }
+                foreach (var binding in _localVariableBindings.Values)
+                {
+                    body.AppendLine($"            {binding.FieldName} = {binding.InitializerExpression};");
                 }
                 foreach (var binding in _functionInvokerBindings.Values)
                 {
@@ -1343,14 +1416,20 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     : CustomFunctionReturnEmission.SetSubFlowReturn;
                 try
                 {
-                    GenerateFrame(frameName, eventInfo, eventName);
+                    _cancellationHandleFrames.Add(frameName);
                     var body = CaptureMethodBody(() =>
                     {
                         Emit("                PushExecutionContext(frame.ContextObject);");
                         GenerateForwardConnection(GetExecConnection(evt, "exec"), frameName, "frame", "                ");
                     });
+                    var useStackFrame = ShouldUseStackFrame(body);
+                    _currentFramePassByReference = useStackFrame;
+                    body = ResolveFrameArgumentMarkers(body, useStackFrame);
+                    GenerateFrame(frameName, eventInfo, eventName, _currentFrameNeedsCancellation,
+                        _currentFrameNeedsEventBase, useStackFrame);
                     var hasAwait = AppendUniTaskMethod(methodName, frameName, typeof(void), body,
                         true,
+                        useStackFrame,
                         "                PopExecutionContext(frame.ContextObject);",
                         "                frame.Release();");
 
@@ -1359,7 +1438,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     switchBody.AppendLine($"                    var frame = {frameName}.Get(contextObject, evtBase);");
                     switchBody.AppendLine(hasAwait
                         ? $"                    RunEvent({methodName}(frame), evtBase);"
-                        : $"                    {methodName}(frame);");
+                        : $"                    {methodName}({(useStackFrame ? "ref " : string.Empty)}frame);");
                     switchBody.AppendLine("                    return true;");
                     switchBody.AppendLine("                }");
                     CompleteFrame();
@@ -1396,6 +1475,9 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 _deferredMembers.Clear();
                 _frameFieldMarker = $"            /* __CERES_FRAME_FIELDS_{frameName}__ */";
                 _frameReleaseMarker = $"                /* __CERES_FRAME_RELEASE_{frameName}__ */";
+                _currentFramePassByReference = false;
+                _currentFrameNeedsCancellation = false;
+                _currentFrameNeedsEventBase = false;
             }
 
             private void CompleteFrame()
@@ -1411,7 +1493,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
                 _members.Replace(_frameFieldMarker, fieldBuilder.ToString().TrimEnd('\r', '\n'));
                 _members.Replace(_frameReleaseMarker, releaseBuilder.ToString().TrimEnd('\r', '\n'));
-                _members.Append(_deferredMembers);
+                _members.Append(ResolveFrameArgumentMarkers(_deferredMembers.ToString(), _currentFramePassByReference));
                 _currentFrameName = null;
                 _frameFieldMarker = null;
                 _frameReleaseMarker = null;
@@ -1419,6 +1501,9 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 _generatedDependencyMethods.Clear();
                 _pendingDependencyMethods.Clear();
                 _deferredMembers.Clear();
+                _currentFramePassByReference = false;
+                _currentFrameNeedsCancellation = false;
+                _currentFrameNeedsEventBase = false;
                 FlushCustomFunctionMethods();
             }
 
@@ -1446,16 +1531,23 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             private bool AppendUniTaskMethod(string methodName, string frameName, Type resultType, string body,
                 params string[] finallyLines)
             {
-                return AppendUniTaskMethod(methodName, frameName, resultType, body, false, finallyLines);
+                return AppendUniTaskMethod(methodName, frameName, resultType, body, false, false, finallyLines);
             }
 
             private bool AppendUniTaskMethod(string methodName, string frameName, Type resultType, string body,
                 bool emitSynchronousVoidMethod, params string[] finallyLines)
             {
+                return AppendUniTaskMethod(methodName, frameName, resultType, body, emitSynchronousVoidMethod, false,
+                    finallyLines);
+            }
+
+            private bool AppendUniTaskMethod(string methodName, string frameName, Type resultType, string body,
+                bool emitSynchronousVoidMethod, bool passFrameByReference, params string[] finallyLines)
+            {
                 var hasAwait = HasAwaitExpression(body);
                 if (emitSynchronousVoidMethod && !hasAwait && resultType == typeof(void))
                 {
-                    _members.AppendLine($"        private void {methodName}({frameName} frame)");
+                    _members.AppendLine($"        private void {methodName}({(passFrameByReference ? "ref " : string.Empty)}{frameName} frame)");
                     _members.AppendLine("        {");
                     _members.AppendLine("            try");
                     _members.AppendLine("            {");
@@ -1481,7 +1573,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     ? body
                     : RewriteSynchronousUniTaskBody(body, resultType, out hasEarlyExit);
 
-                _members.AppendLine($"        private {(hasAwait ? "async " : string.Empty)}{returnTypeName} {methodName}({frameName} frame)");
+                _members.AppendLine($"        private {(hasAwait ? "async " : string.Empty)}{returnTypeName} {methodName}({(passFrameByReference ? "ref " : string.Empty)}{frameName} frame)");
                 _members.AppendLine("        {");
                 if (!hasAwait && resultType != typeof(void))
                 {
@@ -1514,6 +1606,17 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             private static bool HasAwaitExpression(string body)
             {
                 return body.Contains("await ", StringComparison.Ordinal);
+            }
+
+            private bool ShouldUseStackFrame(string body)
+            {
+                return _profile != FlowGeneratedRuntimeProfile.Debuggable &&
+                       !HasAwaitExpression(body);
+            }
+
+            private static string ResolveFrameArgumentMarkers(string body, bool passByReference)
+            {
+                return body.Replace(FrameArgumentMarker, passByReference ? "ref " : string.Empty);
             }
 
             private static string RewriteSynchronousUniTaskBody(string body, Type resultType, out bool hasEarlyExit)
@@ -1568,15 +1671,26 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     : $"return UniTask.FromResult({SynchronousResultVariable});";
             }
 
-            private void GenerateFrame(string frameName, EventInfo eventInfo, string eventName)
+            private void GenerateFrame(string frameName, EventInfo eventInfo, string eventName,
+                bool includeCancellation, bool includeEventBase, bool useStackFrame)
             {
-                _cancellationHandleFrames.Add(frameName);
-                _members.AppendLine($"        private sealed class {frameName}");
+                _members.AppendLine(useStackFrame
+                    ? $"        private struct {frameName}"
+                    : $"        private sealed class {frameName}");
                 _members.AppendLine("        {");
-                _members.AppendLine($"            private static readonly ObjectPool<{frameName}> Pool = new(() => new {frameName}());");
+                if (!useStackFrame)
+                {
+                    _members.AppendLine($"            private static readonly ObjectPool<{frameName}> Pool = new(() => new {frameName}());");
+                }
                 _members.AppendLine("            public UObject ContextObject;");
-                _members.AppendLine("            public EventBase EventBase;");
-                _members.AppendLine("            public CancellationTokenSourceHandle Cancellation;");
+                if (includeEventBase)
+                {
+                    _members.AppendLine("            public EventBase EventBase;");
+                }
+                if (includeCancellation)
+                {
+                    _members.AppendLine("            public CancellationTokenSourceHandle Cancellation;");
+                }
                 for (var i = 0; i < eventInfo.ArgumentTypes.Length; i++)
                 {
                     _members.AppendLine($"            public {GetFriendlyTypeName(eventInfo.ArgumentTypes[i])} Arg{i + 1};");
@@ -1589,10 +1703,18 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 _members.AppendLine();
                 _members.AppendLine($"            public static {frameName} Get(UObject contextObject, EventBase evtBase)");
                 _members.AppendLine("            {");
-                _members.AppendLine("                var frame = Pool.Get();");
+                _members.AppendLine(useStackFrame
+                    ? $"                var frame = new {frameName}();"
+                    : "                var frame = Pool.Get();");
                 _members.AppendLine("                frame.ContextObject = contextObject;");
-                _members.AppendLine("                frame.EventBase = evtBase;");
-                _members.AppendLine($"                frame.Cancellation = GetCancellation(contextObject, \"{Escape(eventName)}\");");
+                if (includeEventBase)
+                {
+                    _members.AppendLine("                frame.EventBase = evtBase;");
+                }
+                if (includeCancellation)
+                {
+                    _members.AppendLine($"                frame.Cancellation = GetCancellation(contextObject, \"{Escape(eventName)}\");");
+                }
                 eventInfo.GenerateAssignments(_members, "frame", "evtBase", "                ");
                 _members.AppendLine("                return frame;");
                 _members.AppendLine("            }");
@@ -1609,10 +1731,19 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 }
                 _members.AppendLine(_frameReleaseMarker);
                 _members.AppendLine("                ContextObject = null;");
-                _members.AppendLine("                EventBase = null;");
-                _members.AppendLine("                Cancellation.Dispose();");
-                _members.AppendLine("                Cancellation = default;");
-                _members.AppendLine("                Pool.Release(this);");
+                if (includeEventBase)
+                {
+                    _members.AppendLine("                EventBase = null;");
+                }
+                if (includeCancellation)
+                {
+                    _members.AppendLine("                Cancellation.Dispose();");
+                    _members.AppendLine("                Cancellation = default;");
+                }
+                if (!useStackFrame)
+                {
+                    _members.AppendLine("                Pool.Release(this);");
+                }
                 _members.AppendLine("            }");
                 _members.AppendLine("        }");
                 _members.AppendLine();
@@ -1621,7 +1752,10 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             internal void GenerateForwardNode(CeresNode node, string frameTypeName, string frameVar, string indent,
                 string entryPortId = null, int entryPortIndex = -1)
             {
-                Emit($"{indent}{GetCancellationCheckExpression(frameTypeName, frameVar)};");
+                if (ShouldEmitPerNodeCancellationChecks())
+                {
+                    Emit($"{indent}{GetCancellationCheckExpression(frameTypeName, frameVar)};");
+                }
 
                 var context = new NodeGenerationContext(this, frameTypeName, frameVar, indent, entryPortId,
                     entryPortIndex);
@@ -1647,16 +1781,39 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private string GetCancellationCheckExpression(string frameTypeName, string frameVar)
             {
-                return _cancellationHandleFrames.Contains(frameTypeName)
-                    ? $"{frameVar}.Cancellation.ThrowIfCancellationRequested()"
-                    : $"{frameVar}.CancellationToken.ThrowIfCancellationRequested()";
+                if (_cancellationHandleFrames.Contains(frameTypeName))
+                {
+                    _currentFrameNeedsCancellation = true;
+                    return $"{frameVar}.Cancellation.ThrowIfCancellationRequested()";
+                }
+
+                return $"{frameVar}.CancellationToken.ThrowIfCancellationRequested()";
+            }
+
+            private bool ShouldEmitPerNodeCancellationChecks()
+            {
+                return _cancellationMode switch
+                {
+                    FlowGeneratedRuntimeCancellationMode.Always => true,
+                    FlowGeneratedRuntimeCancellationMode.NeverForSync => false,
+                    _ => _profile == FlowGeneratedRuntimeProfile.Debuggable
+                };
+            }
+
+            private bool ShouldExpandTransitiveDependencyPath()
+            {
+                return _profile == FlowGeneratedRuntimeProfile.Debuggable;
             }
 
             internal string GetCancellationTokenExpression(string frameTypeName, string frameVar)
             {
-                return _cancellationHandleFrames.Contains(frameTypeName)
-                    ? $"{frameVar}.Cancellation.Token"
-                    : $"{frameVar}.CancellationToken";
+                if (_cancellationHandleFrames.Contains(frameTypeName))
+                {
+                    _currentFrameNeedsCancellation = true;
+                    return $"{frameVar}.Cancellation.Token";
+                }
+
+                return $"{frameVar}.CancellationToken";
             }
 
             internal void GenerateSequence(FlowNode_Sequence node, string frameTypeName, string frameVar, string indent)
@@ -1819,6 +1976,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                             Emit($"{indent}return {frameVar}.ReturnValue;");
                             break;
                         case CustomFunctionReturnEmission.SetSubFlowReturn:
+                            _currentFrameNeedsEventBase = true;
                             Emit($"{indent}FlowGeneratedRuntimeUtility.SetSubFlowReturn({frameVar}.EventBase, {frameVar}.ReturnValue);");
                             Emit($"{indent}return;");
                             break;
@@ -2044,6 +2202,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                             ? "                return;"
                             : "                return frame.ReturnValue;");
                     });
+                    body = ResolveFrameArgumentMarkers(body, false);
                     AppendUniTaskMethod(binding.MethodName, binding.FrameName, binding.ReturnType, body,
                         "                frame.Release();");
                     CompleteFrame();
@@ -2116,9 +2275,18 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             private string BuildFunctionCallExpression(FlowNode_ExecuteFunction node, DirectCallInfo directCall,
                 string frameTypeName, string frameVar, string indent)
             {
+                var useDirectSerializedType =
+                    TryGetDirectSerializedTypeArgument(node, directCall, out var directSerializedTypeArgument) &&
+                    CanBuildDirectSerializedTypeFunctionExpression(directCall, directSerializedTypeArgument);
                 var arguments = new List<string>();
                 for (var i = 0; i < directCall.ParameterTypes.Length; i++)
                 {
+                    if (useDirectSerializedType && i == directSerializedTypeArgument.ParameterIndex)
+                    {
+                        arguments.Add(null);
+                        continue;
+                    }
+
                     var expression = GetValueExpression(node, $"input{i + 1}", directCall.ParameterTypes[i],
                         frameTypeName, frameVar, indent);
                     if (node.isStatic && node.isSelfTarget && i == 0)
@@ -2128,6 +2296,13 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     }
 
                     arguments.Add($"({GetFriendlyTypeName(directCall.ParameterTypes[i])})({expression})");
+                }
+
+                if (useDirectSerializedType &&
+                    TryBuildDirectSerializedTypeFunctionExpression(directCall, directSerializedTypeArgument,
+                        arguments, out var directSerializedTypeExpression))
+                {
+                    return directSerializedTypeExpression;
                 }
 
                 if (!directCall.UseInvoker && node.isStatic &&
@@ -2170,6 +2345,162 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return $"{invokerField}.Invoke<{string.Join(", ", genericTypes.Select(GetFriendlyTypeName))}>({argumentList})";
             }
 
+            private bool TryGetDirectSerializedTypeArgument(FlowNode_ExecuteFunction node, DirectCallInfo directCall,
+                out DirectSerializedTypeArgument argument)
+            {
+                argument = default;
+                if (_serializedTypeMode != FlowGeneratedRuntimeSerializedTypeMode.DirectType ||
+                    directCall.UseInvoker ||
+                    !TryGetResolveReturnParameterIndex(directCall, out var parameterIndex) ||
+                    parameterIndex < 0 ||
+                    parameterIndex >= directCall.ParameterTypes.Length ||
+                    !IsSerializedType(directCall.ParameterTypes[parameterIndex]) ||
+                    !TryGetSerializedTypeConstraint(directCall.ParameterTypes[parameterIndex], out var constraintType))
+                {
+                    return false;
+                }
+
+                var portData = GetFunctionParameterPortData(node, parameterIndex);
+                if (portData?.connections?.Any(connection => !connection.isFlattened) == true)
+                {
+                    return false;
+                }
+
+                if (portData?.GetPort(node)?.GetValue() is not SerializedTypeBase serializedType)
+                {
+                    return false;
+                }
+
+                var selectedType = serializedType.GetObjectType();
+                if (selectedType == null ||
+                    !selectedType.IsAssignableTo(constraintType) ||
+                    !IsVisibleType(selectedType))
+                {
+                    return false;
+                }
+
+                argument = new DirectSerializedTypeArgument(parameterIndex, selectedType);
+                return true;
+            }
+
+            private static bool TryGetSerializedTypeConstraint(Type type, out Type constraintType)
+            {
+                constraintType = null;
+                while (type != null)
+                {
+                    if (type.IsGenericType &&
+                        type.GetGenericTypeDefinition() == typeof(SerializedType<>))
+                    {
+                        constraintType = type.GetGenericArguments()[0];
+                        return true;
+                    }
+
+                    type = type.BaseType;
+                }
+
+                return false;
+            }
+
+            private static bool CanBuildDirectSerializedTypeFunctionExpression(DirectCallInfo directCall,
+                DirectSerializedTypeArgument typeArgument)
+            {
+                if (directCall.DeclaringType == typeof(UnityExecutableLibrary))
+                {
+                    return directCall.MethodName is
+                        "Flow_FindObjectOfType" or
+                        "Flow_GameObjectGetComponent" or
+                        "Flow_GameObjectGetComponentInChildren" or
+                        "Flow_GameObjectGetComponentInParent" or
+                        "Flow_GameObjectGetComponents" or
+                        "Flow_GameObjectGetComponentsInChildren" or
+                        "Flow_GameObjectGetComponentsInParent" or
+                        "Flow_GameObjectAddComponent" or
+                        "Flow_GameObjectGetOrAddComponent" or
+                        "Flow_ComponentGetComponent" or
+                        "Flow_ComponentGetComponentInChildren" or
+                        "Flow_ComponentGetComponentInParent" or
+                        "Flow_ComponentGetComponents" or
+                        "Flow_ComponentGetComponentsInChildren" or
+                        "Flow_ComponentGetComponentsInParent";
+                }
+
+                if (directCall.DeclaringType == typeof(DataDrivenExecutableLibrary))
+                {
+                    return directCall.MethodName switch
+                    {
+                        "Flow_GetDataTableManager" => true,
+                        "Flow_DataTableGetRow" or "Flow_DataTableGetRowByIndex" =>
+                            !typeArgument.SelectedType.IsValueType,
+                        _ => false
+                    };
+                }
+
+                return false;
+            }
+
+            private static bool TryBuildDirectSerializedTypeFunctionExpression(DirectCallInfo directCall,
+                DirectSerializedTypeArgument typeArgument, IReadOnlyList<string> arguments, out string expression)
+            {
+                expression = null;
+                var typeName = GetFriendlyTypeName(typeArgument.SelectedType);
+
+                if (directCall.DeclaringType == typeof(UnityExecutableLibrary))
+                {
+                    expression = directCall.MethodName switch
+                    {
+                        "Flow_FindObjectOfType" =>
+                            $"FlowGeneratedRuntimeUtility.FindObjectOfType<{typeName}>()",
+                        "Flow_GameObjectGetComponent" =>
+                            $"{arguments[0]}.GetComponent<{typeName}>()",
+                        "Flow_GameObjectGetComponentInChildren" =>
+                            $"{arguments[0]}.GetComponentInChildren<{typeName}>()",
+                        "Flow_GameObjectGetComponentInParent" =>
+                            $"{arguments[0]}.GetComponentInParent<{typeName}>()",
+                        "Flow_GameObjectGetComponents" =>
+                            $"{arguments[0]}.GetComponents<{typeName}>()",
+                        "Flow_GameObjectGetComponentsInChildren" =>
+                            $"{arguments[0]}.GetComponentsInChildren<{typeName}>()",
+                        "Flow_GameObjectGetComponentsInParent" =>
+                            $"{arguments[0]}.GetComponentsInParent<{typeName}>()",
+                        "Flow_GameObjectAddComponent" =>
+                            $"{arguments[0]}.AddComponent<{typeName}>()",
+                        "Flow_GameObjectGetOrAddComponent" =>
+                            $"FlowGeneratedRuntimeUtility.GetOrAddComponent<{typeName}>({arguments[0]})",
+                        "Flow_ComponentGetComponent" =>
+                            $"{arguments[0]}.GetComponent<{typeName}>()",
+                        "Flow_ComponentGetComponentInChildren" =>
+                            $"{arguments[0]}.GetComponentInChildren<{typeName}>()",
+                        "Flow_ComponentGetComponentInParent" =>
+                            $"{arguments[0]}.GetComponentInParent<{typeName}>()",
+                        "Flow_ComponentGetComponents" =>
+                            $"{arguments[0]}.GetComponents<{typeName}>()",
+                        "Flow_ComponentGetComponentsInChildren" =>
+                            $"{arguments[0]}.GetComponentsInChildren<{typeName}>()",
+                        "Flow_ComponentGetComponentsInParent" =>
+                            $"{arguments[0]}.GetComponentsInParent<{typeName}>()",
+                        _ => null
+                    };
+                    return expression != null;
+                }
+
+                if (directCall.DeclaringType == typeof(DataDrivenExecutableLibrary))
+                {
+                    expression = directCall.MethodName switch
+                    {
+                        "Flow_GetDataTableManager" =>
+                            $"Chris.DataDriven.DataTableManager.GetOrCreateDataTableManager(typeof({typeName}))",
+                        "Flow_DataTableGetRow" =>
+                            $"{arguments[0]}.GetRow<{typeName}>({arguments[1]})",
+                        "Flow_DataTableGetRowByIndex" =>
+                            $"{arguments[0]}.GetRow<{typeName}>({arguments[1]})",
+                        _ => null
+                    };
+                    return expression != null;
+                }
+
+                return false;
+            }
+
             private static bool TryBuildIntrinsicFunctionExpression(DirectCallInfo directCall,
                 IReadOnlyList<string> arguments, out string expression)
             {
@@ -2185,6 +2516,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
                 expression = directCall.MethodName switch
                 {
+                    _ when TryBuildUnityTimeExpression(directCall, out var unityTimeExpression) => unityTimeExpression,
                     "Flow_FloatAdd" => Binary("+"),
                     "Flow_FloatSubtract" => Binary("-"),
                     "Flow_FloatMultiply" => Binary("*"),
@@ -2246,6 +2578,30 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return expression != null;
             }
 
+            private static bool TryBuildUnityTimeExpression(DirectCallInfo directCall, out string expression)
+            {
+                expression = null;
+                if (directCall.DeclaringType != typeof(UnityExecutableLibrary) ||
+                    directCall.ParameterTypes.Length != 0)
+                {
+                    return false;
+                }
+
+                expression = directCall.MethodName switch
+                {
+                    "Flow_TimeGetTime" => "Time.time",
+                    "Flow_TimeGetUnscaledTime" => "Time.unscaledTime",
+                    "Flow_TimeGetDeltaTime" => "Time.deltaTime",
+                    "Flow_TimeGetFixedDeltaTime" => "Time.fixedDeltaTime",
+                    "Flow_TimeGetFrameCount" => "Time.frameCount",
+                    "Flow_TimeGetRealtimeSinceStartup" => "Time.realtimeSinceStartup",
+                    "Flow_TimeGetTimeScale" => "Time.timeScale",
+                    _ => null
+                };
+
+                return expression != null;
+            }
+
             internal void GenerateSetProperty(PropertyNode_PropertyValue node, string frameTypeName, string frameVar,
                 string indent)
             {
@@ -2266,24 +2622,113 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             internal void GenerateSetSharedVariable(PropertyNode_SharedVariableValue node, string frameTypeName,
                 string frameVar, string indent)
             {
-                if (!CanAccessSharedVariable(node, out var variableType, out var valueType))
+                if (!CanAccessSharedVariable(node, out var variableType, out var variableValueType,
+                        out var portValueType))
                 {
                     throw new FlowCSharpRuntimeGenerationException(
                         $"Shared variable setter node {node.Guid} can not be generated.");
                 }
 
-                var field = GetSharedVariableField(node, variableType);
-                var value = GetValueExpression(node, "inputValue", valueType, frameTypeName, frameVar, indent);
-                Emit($"{indent}if ({field} != null)");
-                Emit($"{indent}{{");
-                Emit($"{indent}    {field}.Value = {value};");
-                Emit($"{indent}}}");
+                var binding = GetOrCreateGraphVariableBinding(node.propertyName, variableType, variableValueType);
+                var value = GetValueExpression(node, "inputValue", portValueType, frameTypeName, frameVar, indent);
+                if (binding.IsLocal)
+                {
+                    Emit($"{indent}{binding.FieldName} = {CastExpression(value, portValueType, binding.StorageType)};");
+                }
+                else
+                {
+                    Emit($"{indent}if ({binding.FieldName} != null)");
+                    Emit($"{indent}{{");
+                    Emit($"{indent}    {binding.FieldName}.Value = {value};");
+                    Emit($"{indent}}}");
+                }
                 GenerateNext(node, frameTypeName, frameVar, indent);
             }
 
-            private string GetSharedVariableField(PropertyNode_SharedVariableValue node, Type variableType)
+            private GraphVariableBinding GetOrCreateGraphVariableBinding(string variableName, Type variableType,
+                Type variableValueType)
             {
-                return GetOrCreateSharedVariableBinding(node.propertyName, variableType).FieldName;
+                if (TryCreateLocalGraphVariableBinding(variableName, variableType, variableValueType,
+                        out var localBinding))
+                {
+                    return GraphVariableBinding.FromLocal(localBinding);
+                }
+
+                return GraphVariableBinding.FromShared(GetOrCreateSharedVariableBinding(variableName, variableType));
+            }
+
+            private bool TryCreateLocalGraphVariableBinding(string variableName, Type variableType,
+                Type variableValueType, out LocalVariableBinding binding)
+            {
+                binding = default;
+                if (_variableStorageMode != FlowGeneratedRuntimeVariableStorageMode.LocalFieldsForUnshared ||
+                    !TryFindGraphVariable(variableName, variableType, out var variable) ||
+                    variable.IsShared ||
+                    variable.IsGlobal ||
+                    !TryGetLocalVariableStorageType(variable, variableValueType, out var storageType))
+                {
+                    return false;
+                }
+
+                var key = $"graph:{variableType.FullName}:{variableName}";
+                if (_localVariableBindings.TryGetValue(key, out binding))
+                {
+                    return true;
+                }
+
+                binding = new LocalVariableBinding(
+                    $"_local_{SanitizeIdentifier(variableName)}_{_localVariableBindings.Count}",
+                    storageType,
+                    $"FlowGeneratedRuntimeUtility.GetLocalVariableValue<{GetFriendlyTypeName(variableType)}, {GetFriendlyTypeName(storageType)}>(graphData, \"{Escape(variableName)}\")");
+                _localVariableBindings.Add(key, binding);
+                return true;
+            }
+
+            private bool TryFindGraphVariable(string variableName, Type variableType, out SharedVariable variable)
+            {
+                variable = null;
+                if (string.IsNullOrEmpty(variableName) || _graph.variables == null)
+                {
+                    return false;
+                }
+
+                foreach (var candidate in _graph.variables)
+                {
+                    if (candidate == null ||
+                        !string.Equals(candidate.Name, variableName, StringComparison.Ordinal) ||
+                        !variableType.IsInstanceOfType(candidate))
+                    {
+                        continue;
+                    }
+
+                    variable = candidate;
+                    return true;
+                }
+
+                return false;
+            }
+
+            private static bool TryGetLocalVariableStorageType(SharedVariable variable, Type variableValueType,
+                out Type storageType)
+            {
+                storageType = null;
+                if (variable == null || variableValueType == null || !IsVisibleType(variableValueType))
+                {
+                    return false;
+                }
+
+                var resolvedType = variable.GetValueType();
+                if (resolvedType != null &&
+                    resolvedType != typeof(object) &&
+                    resolvedType.IsAssignableTo(variableValueType) &&
+                    IsVisibleType(resolvedType))
+                {
+                    storageType = resolvedType;
+                    return true;
+                }
+
+                storageType = variableValueType;
+                return true;
             }
 
             private SharedVariableBinding GetOrCreateSharedVariableBinding(string variableName, Type variableType)
@@ -2598,18 +3043,24 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 var methodName = GetDependencyMethodName(node);
                 var executedField = EnsureFrameField($"executed:{node.Guid}", typeof(bool),
                     $"Executed_{SafeGuid(node.Guid)}");
-                if (cancellationCheck == DependencyCancellationCheck.EmitIfNodeWillRun)
+                if (cancellationCheck == DependencyCancellationCheck.EmitIfNodeWillRun &&
+                    ShouldEmitPerNodeCancellationChecks())
                 {
                     Emit($"{indent}if (!{frameVar}.{executedField})");
                     Emit($"{indent}{{");
                     Emit($"{indent}    {GetCancellationCheckExpression(frameTypeName, frameVar)};");
                     Emit($"{indent}}}");
                 }
-                Emit($"{indent}{methodName}({frameVar});");
+                Emit($"{indent}{methodName}({GetFrameArgumentPrefix(frameTypeName)}{frameVar});");
                 if (_generatedDependencyMethods.Add(node.Guid))
                 {
                     _pendingDependencyMethods.Enqueue(node);
                 }
+            }
+
+            private string GetFrameArgumentPrefix(string frameTypeName)
+            {
+                return frameTypeName == _currentFrameName ? FrameArgumentMarker : string.Empty;
             }
 
             private void FlushDependencyMethods()
@@ -2628,7 +3079,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 var executedField = EnsureFrameField($"executed:{node.Guid}", typeof(bool),
                     $"Executed_{SafeGuid(node.Guid)}");
 
-                _deferredMembers.AppendLine($"        private void {methodName}({_currentFrameName} frame)");
+                _deferredMembers.AppendLine($"        private void {methodName}({(_currentFramePassByReference ? "ref " : string.Empty)}{_currentFrameName} frame)");
                 _deferredMembers.AppendLine("        {");
                 Emit($"            if (frame.{executedField})");
                 Emit("            {");
@@ -2636,9 +3087,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 Emit("            }");
                 Emit($"            frame.{executedField} = true;");
 
-                foreach (var dependency in GetDependencyNodes(node))
+                if (ShouldExpandTransitiveDependencyPath())
                 {
-                    GenerateDependencyCall(dependency, _currentFrameName, "frame", "            ");
+                    foreach (var dependency in GetDependencyNodes(node))
+                    {
+                        GenerateDependencyCall(dependency, _currentFrameName, "frame", "            ");
+                    }
                 }
 
                 GenerateDependencyLocal(node, _currentFrameName, "frame", "            ");
@@ -2844,29 +3298,47 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             internal void GenerateGetSharedVariableLocal(PropertyNode_SharedVariableValue node, string frameTypeName,
                 string frameVar, string indent)
             {
-                if (!CanAccessSharedVariable(node, out var variableType, out var valueType))
+                if (!CanAccessSharedVariable(node, out var variableType, out var variableValueType,
+                        out var portValueType))
                 {
                     throw new FlowCSharpRuntimeGenerationException(
                         $"Shared variable getter node {node.Guid} can not be generated.");
                 }
 
-                var field = GetSharedVariableField(node, variableType);
-                var slot = EnsureOutputSlot(node, "outputValue", valueType);
+                var binding = GetOrCreateGraphVariableBinding(node.propertyName, variableType, variableValueType);
+                var slot = EnsureOutputSlot(node, "outputValue", portValueType);
                 Emit($"{indent}{frameVar}.{slot} = default;");
-                Emit($"{indent}if ({field} != null)");
-                Emit($"{indent}{{");
-                if (valueType.IsValueType)
+                if (binding.IsLocal)
                 {
-                    Emit($"{indent}    {frameVar}.{slot} = ({GetFriendlyTypeName(valueType)}){field}.Value;");
+                    if (portValueType.IsValueType || binding.StorageType.IsAssignableTo(portValueType))
+                    {
+                        Emit($"{indent}{frameVar}.{slot} = {CastExpression(binding.FieldName, binding.StorageType, portValueType)};");
+                    }
+                    else
+                    {
+                        Emit($"{indent}if ({binding.FieldName} is {GetFriendlyTypeName(portValueType)} value)");
+                        Emit($"{indent}{{");
+                        Emit($"{indent}    {frameVar}.{slot} = value;");
+                        Emit($"{indent}}}");
+                    }
                 }
                 else
                 {
-                    Emit($"{indent}    if ({field}.Value is {GetFriendlyTypeName(valueType)} value)");
-                    Emit($"{indent}    {{");
-                    Emit($"{indent}        {frameVar}.{slot} = value;");
-                    Emit($"{indent}    }}");
+                    Emit($"{indent}if ({binding.FieldName} != null)");
+                    Emit($"{indent}{{");
+                    if (portValueType.IsValueType)
+                    {
+                        Emit($"{indent}    {frameVar}.{slot} = ({GetFriendlyTypeName(portValueType)}){binding.FieldName}.Value;");
+                    }
+                    else
+                    {
+                        Emit($"{indent}    if ({binding.FieldName}.Value is {GetFriendlyTypeName(portValueType)} value)");
+                        Emit($"{indent}    {{");
+                        Emit($"{indent}        {frameVar}.{slot} = value;");
+                        Emit($"{indent}    }}");
+                    }
+                    Emit($"{indent}}}");
                 }
-                Emit($"{indent}}}");
             }
 
             private IEnumerable<CeresNode> GetDependencyNodes(CeresNode node)
@@ -2919,6 +3391,44 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 outputType = GetFunctionReturnOutputType(node, directCall);
                 slotField = EnsureOutputSlot(node, portId, outputType);
                 return true;
+            }
+
+            internal bool TryGenerateFunctionReturnOutputExpression(FlowNode_ExecuteFunctionReturn node,
+                string portId, string frameTypeName, string frameVar, string indent, out Type outputType,
+                out string expression)
+            {
+                outputType = null;
+                expression = null;
+                if (portId != "output" ||
+                    !CanGeneratedCall(node, out var directCall) ||
+                    directCall.ReturnType == typeof(void) ||
+                    !CanInlineFunctionReturn(node, directCall))
+                {
+                    return false;
+                }
+
+                outputType = GetFunctionReturnOutputType(node, directCall);
+                var callExpression = BuildFunctionCallExpression(node, directCall, frameTypeName, frameVar, indent);
+                expression = CastExpression(callExpression, directCall.ReturnType, outputType);
+                return true;
+            }
+
+            private bool CanInlineFunctionReturn(FlowNode_ExecuteFunctionReturn node, DirectCallInfo directCall)
+            {
+                if (_profile == FlowGeneratedRuntimeProfile.Debuggable ||
+                    !node.isStatic ||
+                    directCall.UseInvoker)
+                {
+                    return false;
+                }
+
+                if (directCall.DeclaringType == typeof(MathExecutableLibrary))
+                {
+                    return true;
+                }
+
+                return _profile == FlowGeneratedRuntimeProfile.OptimizedAggressive &&
+                       TryBuildUnityTimeExpression(directCall, out _);
             }
 
             internal bool TryGetPropertyOutputSlot(PropertyNode_PropertyValue node, string portId,
@@ -2983,6 +3493,101 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     $"_{SanitizeIdentifier(fieldId)}_{SafeGuid(node.Guid)}");
             }
 
+            internal bool TryGetLocalSharedVariableValueExpression(CeresNode node, string fieldName,
+                out Type valueType, out string expression)
+            {
+                return TryGetLocalSharedVariableValueExpression(node, fieldName, -1, out valueType, out expression);
+            }
+
+            internal bool TryGetLocalSharedVariableValueExpression(CeresNode node, string fieldName, int index,
+                out Type valueType, out string expression)
+            {
+                valueType = null;
+                expression = null;
+                if (!TryGetOrCreateNodeLocalVariableBinding(node, fieldName, index, out var binding))
+                {
+                    return false;
+                }
+
+                valueType = binding.StorageType;
+                expression = binding.FieldName;
+                return true;
+            }
+
+            private bool TryGetOrCreateNodeLocalVariableBinding(CeresNode node, string fieldName, int index,
+                out LocalVariableBinding binding)
+            {
+                binding = default;
+                if (_variableStorageMode != FlowGeneratedRuntimeVariableStorageMode.LocalFieldsForUnshared ||
+                    node == null ||
+                    string.IsNullOrEmpty(fieldName))
+                {
+                    return false;
+                }
+
+                var field = GetFieldInHierarchy(node.GetType(), fieldName);
+                if (field == null ||
+                    field.GetCustomAttribute<Ceres.Annotations.ForceSharedAttribute>() != null ||
+                    !TryGetSharedVariableFromFieldValue(field.GetValue(node), index, out var variable) ||
+                    variable.IsShared ||
+                    variable.IsGlobal ||
+                    !TryGetLocalVariableStorageType(variable, variable.GetValueType(), out var storageType))
+                {
+                    return false;
+                }
+
+                var key = $"node:{node.Guid}:{fieldName}:{index}";
+                if (_localVariableBindings.TryGetValue(key, out binding))
+                {
+                    return true;
+                }
+
+                var indexSuffix = index < 0 ? string.Empty : $"_{index}";
+                binding = new LocalVariableBinding(
+                    $"_local_{SanitizeIdentifier(fieldName)}{indexSuffix}_{SafeGuid(node.Guid)}",
+                    storageType,
+                    $"FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue<{GetFriendlyTypeName(storageType)}>(graphData, \"{Escape(node.Guid)}\", \"{Escape(fieldName)}\", {index.ToString(CultureInfo.InvariantCulture)})");
+                _localVariableBindings.Add(key, binding);
+                return true;
+            }
+
+            private static FieldInfo GetFieldInHierarchy(Type type, string fieldName)
+            {
+                const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+                while (type != null)
+                {
+                    var field = type.GetField(fieldName, flags);
+                    if (field != null)
+                    {
+                        return field;
+                    }
+
+                    type = type.BaseType;
+                }
+
+                return null;
+            }
+
+            private static bool TryGetSharedVariableFromFieldValue(object fieldValue, int index,
+                out SharedVariable variable)
+            {
+                variable = null;
+                if (index < 0)
+                {
+                    variable = fieldValue as SharedVariable;
+                    return variable != null;
+                }
+
+                if (fieldValue is not System.Collections.IList list ||
+                    index >= list.Count)
+                {
+                    return false;
+                }
+
+                variable = list[index] as SharedVariable;
+                return variable != null;
+            }
+
             private string EnsureProgramField(string key, Type type, string fieldName)
             {
                 if (!_programFields.TryGetValue(key, out var field))
@@ -3037,9 +3642,10 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return field.FieldType.GetGenericArguments()[0];
             }
 
-            private static string GetCustomEventOutputExpression(ExecutableEvent source, string portId,
+            private string GetCustomEventOutputExpression(ExecutableEvent source, string portId,
                 string frameVar)
             {
+                _currentFrameNeedsEventBase = true;
                 var eventType = GetCustomEventType(source.GetType());
                 if (eventType == null)
                 {
@@ -3352,6 +3958,61 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     VariableName = variableName;
                     VariableType = variableType;
                     FieldName = fieldName;
+                }
+            }
+
+            private readonly struct LocalVariableBinding
+            {
+                public readonly string FieldName;
+
+                public readonly Type StorageType;
+
+                public readonly string InitializerExpression;
+
+                public LocalVariableBinding(string fieldName, Type storageType, string initializerExpression)
+                {
+                    FieldName = fieldName;
+                    StorageType = storageType;
+                    InitializerExpression = initializerExpression;
+                }
+            }
+
+            private readonly struct GraphVariableBinding
+            {
+                public readonly bool IsLocal;
+
+                public readonly string FieldName;
+
+                public readonly Type StorageType;
+
+                private GraphVariableBinding(bool isLocal, string fieldName, Type storageType)
+                {
+                    IsLocal = isLocal;
+                    FieldName = fieldName;
+                    StorageType = storageType;
+                }
+
+                public static GraphVariableBinding FromLocal(LocalVariableBinding binding)
+                {
+                    return new GraphVariableBinding(true, binding.FieldName, binding.StorageType);
+                }
+
+                public static GraphVariableBinding FromShared(SharedVariableBinding binding)
+                {
+                    return new GraphVariableBinding(false, binding.FieldName, binding.VariableType);
+                }
+            }
+
+            private readonly struct DirectSerializedTypeArgument
+            {
+                public readonly int ParameterIndex;
+
+                public readonly Type SelectedType;
+
+                public DirectSerializedTypeArgument(int parameterIndex, Type selectedType)
+                {
+                    ParameterIndex = parameterIndex;
+                    SelectedType = selectedType;
                 }
             }
 

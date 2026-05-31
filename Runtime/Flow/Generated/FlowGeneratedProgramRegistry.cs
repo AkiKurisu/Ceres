@@ -99,9 +99,14 @@ namespace Ceres.Graph.Flow
             _executionContexts.Count > 0 ? _executionContexts[^1] : null;
 
         protected FlowGeneratedProgram(FlowGraphData graphData)
+            : this(graphData, true)
+        {
+        }
+
+        protected FlowGeneratedProgram(FlowGraphData graphData, bool createBlackboard)
         {
             GraphData = graphData;
-            Blackboard = FlowGeneratedRuntimeUtility.CreateBlackboard(graphData);
+            Blackboard = createBlackboard ? FlowGeneratedRuntimeUtility.CreateBlackboard(graphData) : null;
         }
 
         public abstract bool TryExecuteEvent(UObject contextObject, string eventName, EventBase evtBase = null);
@@ -368,6 +373,11 @@ namespace Ceres.Graph.Flow
             }
 
             if (info.generatorVersion != FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion)
+            {
+                return false;
+            }
+
+            if (!FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent(info))
             {
                 return false;
             }

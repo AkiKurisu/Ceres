@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Ceres.Utilities;
 using Chris.Serialization;
 using Chris.Events;
@@ -21,6 +22,19 @@ namespace Ceres.Graph.Flow
 
         public string generatedTypeName;
 
+        public FlowGeneratedRuntimeProfile generatorProfile = FlowGeneratedRuntimeProfile.OptimizedSafe;
+
+        public FlowGeneratedRuntimeCancellationMode generatorCancellationMode =
+            FlowGeneratedRuntimeCancellationMode.Auto;
+
+        public FlowGeneratedRuntimeVariableStorageMode generatorVariableStorageMode =
+            FlowGeneratedRuntimeVariableStorageMode.LocalFieldsForUnshared;
+
+        public FlowGeneratedRuntimeSerializedTypeMode generatorSerializedTypeMode =
+            FlowGeneratedRuntimeSerializedTypeMode.DirectType;
+
+        public string generatorOptionsHash;
+
         public long generatedUtcTicks;
 
         public FlowGeneratedFunctionDependencyInfo[] functionDependencies = Array.Empty<FlowGeneratedFunctionDependencyInfo>();
@@ -31,7 +45,8 @@ namespace Ceres.Graph.Flow
                 generatorVersion != FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion ||
                 string.IsNullOrEmpty(GetProgramId()) ||
                 string.IsNullOrEmpty(graphHash) ||
-                graphHash != FlowGeneratedRuntimeUtility.CalculateGraphHash(graphData))
+                graphHash != FlowGeneratedRuntimeUtility.CalculateGraphHash(graphData) ||
+                !FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent(this))
             {
                 return false;
             }
@@ -114,7 +129,48 @@ namespace Ceres.Graph.Flow
 
     public static class FlowGeneratedRuntimeUtility
     {
-        public const int CurrentProgramInfoVersion = 4;
+        public const int CurrentProgramInfoVersion = 6;
+
+        public static FlowGeneratedRuntimeProfile CurrentGeneratedRuntimeProfile =>
+            FlowConfig.Get().generatedRuntimeProfile;
+
+        public static FlowGeneratedRuntimeCancellationMode CurrentGeneratedRuntimeCancellationMode =>
+            FlowConfig.Get().generatedRuntimeCancellationMode;
+
+        public static FlowGeneratedRuntimeVariableStorageMode CurrentGeneratedRuntimeVariableStorageMode =>
+            FlowConfig.Get().generatedRuntimeVariableStorageMode;
+
+        public static FlowGeneratedRuntimeSerializedTypeMode CurrentGeneratedRuntimeSerializedTypeMode =>
+            FlowConfig.Get().generatedRuntimeSerializedTypeMode;
+
+        public static bool UsesGeneratedRuntimeProgram =>
+            CurrentGeneratedRuntimeProfile != FlowGeneratedRuntimeProfile.Debuggable;
+
+        public static string CurrentGeneratedRuntimeOptionsHash =>
+            CalculateGeneratedRuntimeOptionsHash(CurrentGeneratedRuntimeProfile,
+                CurrentGeneratedRuntimeCancellationMode,
+                CurrentGeneratedRuntimeVariableStorageMode,
+                CurrentGeneratedRuntimeSerializedTypeMode);
+
+        public static string CalculateGeneratedRuntimeOptionsHash(FlowGeneratedRuntimeProfile profile,
+            FlowGeneratedRuntimeCancellationMode cancellationMode,
+            FlowGeneratedRuntimeVariableStorageMode variableStorageMode,
+            FlowGeneratedRuntimeSerializedTypeMode serializedTypeMode)
+        {
+            return $"{(int)profile}:{(int)cancellationMode}:{(int)variableStorageMode}:{(int)serializedTypeMode}"
+                .Hash64().ToString("X16");
+        }
+
+        public static bool AreGeneratedRuntimeOptionsCurrent(FlowGeneratedProgramInfo info)
+        {
+            return info != null &&
+                   info.generatorProfile == CurrentGeneratedRuntimeProfile &&
+                   info.generatorCancellationMode == CurrentGeneratedRuntimeCancellationMode &&
+                   info.generatorVariableStorageMode == CurrentGeneratedRuntimeVariableStorageMode &&
+                   info.generatorSerializedTypeMode == CurrentGeneratedRuntimeSerializedTypeMode &&
+                   string.Equals(info.generatorOptionsHash, CurrentGeneratedRuntimeOptionsHash,
+                       StringComparison.Ordinal);
+        }
 
         public static string CalculateGraphHash(FlowGraphData graphData)
         {
@@ -146,10 +202,203 @@ namespace Ceres.Graph.Flow
             return blackboard;
         }
 
+        public static TValue GetLocalVariableValue<TVariable, TValue>(FlowGraphData graphData, string variableName)
+            where TVariable : SharedVariable
+        {
+            if (TryGetLocalVariableValue<TVariable, TValue>(graphData, variableName, out var value))
+            {
+                return value;
+            }
+
+            return default;
+        }
+
+        public static bool TryGetLocalVariableValue<TVariable, TValue>(FlowGraphData graphData, string variableName,
+            out TValue value)
+            where TVariable : SharedVariable
+        {
+            value = default;
+            if (graphData?.variableData == null || string.IsNullOrEmpty(variableName))
+            {
+                return false;
+            }
+
+            foreach (var data in graphData.variableData)
+            {
+                var variableType = data.variableType.ToType();
+                if (variableType == null || !typeof(TVariable).IsAssignableFrom(variableType))
+                {
+                    continue;
+                }
+
+                if (data.Deserialize(variableType) is not TVariable variable ||
+                    !string.Equals(variable.Name, variableName, StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                return TryReadLocalVariableValue(variable, out value);
+            }
+
+            return false;
+        }
+
+        public static TValue GetNodeLocalVariableValue<TValue>(FlowGraphData graphData, string nodeGuid,
+            string fieldName, int index)
+        {
+            if (TryGetNodeLocalVariableValue<TValue>(graphData, nodeGuid, fieldName, index, out var value))
+            {
+                return value;
+            }
+
+            return default;
+        }
+
+        public static bool TryGetNodeLocalVariableValue<TValue>(FlowGraphData graphData, string nodeGuid,
+            string fieldName, int index, out TValue value)
+        {
+            value = default;
+            if (graphData?.nodeData == null ||
+                string.IsNullOrEmpty(nodeGuid) ||
+                string.IsNullOrEmpty(fieldName))
+            {
+                return false;
+            }
+
+            foreach (var data in graphData.nodeData)
+            {
+                if (data == null || !string.Equals(data.guid, nodeGuid, StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                var nodeType = ResolveGeneratedNodeType(data);
+                if (nodeType == null || data.Deserialize(nodeType) is not CeresNode node)
+                {
+                    return false;
+                }
+
+                var field = GetFieldInHierarchy(nodeType, fieldName);
+                if (field == null)
+                {
+                    return false;
+                }
+
+                var fieldValue = field.GetValue(node);
+                if (!TryGetSharedVariableFromFieldValue(fieldValue, index, out var variable))
+                {
+                    return false;
+                }
+
+                return TryReadLocalVariableValue(variable, out value);
+            }
+
+            return false;
+        }
+
+        private static Type ResolveGeneratedNodeType(CeresNodeData data)
+        {
+            try
+            {
+                var nodeType = data.nodeType.ToType();
+                if (nodeType == null ||
+                    data.genericParameters == null ||
+                    data.genericParameters.Length == 0 ||
+                    !nodeType.IsGenericTypeDefinition)
+                {
+                    return nodeType;
+                }
+
+                var arguments = new Type[data.genericParameters.Length];
+                for (var i = 0; i < arguments.Length; i++)
+                {
+                    arguments[i] = SerializedType.FromString(data.genericParameters[i]);
+                    if (arguments[i] == null)
+                    {
+                        return null;
+                    }
+                }
+
+                return nodeType.MakeGenericType(arguments);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private static FieldInfo GetFieldInHierarchy(Type type, string fieldName)
+        {
+            const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            while (type != null)
+            {
+                var field = type.GetField(fieldName, flags);
+                if (field != null)
+                {
+                    return field;
+                }
+
+                type = type.BaseType;
+            }
+
+            return null;
+        }
+
+        private static bool TryGetSharedVariableFromFieldValue(object fieldValue, int index,
+            out SharedVariable variable)
+        {
+            variable = null;
+            if (index < 0)
+            {
+                variable = fieldValue as SharedVariable;
+                return variable != null;
+            }
+
+            if (fieldValue is not System.Collections.IList list ||
+                index >= list.Count)
+            {
+                return false;
+            }
+
+            variable = list[index] as SharedVariable;
+            return variable != null;
+        }
+
+        private static bool TryReadLocalVariableValue<TValue>(SharedVariable variable, out TValue value)
+        {
+            value = default;
+            if (variable == null || variable.IsShared || variable.IsGlobal)
+            {
+                return false;
+            }
+
+            var rawValue = variable.GetValue();
+            if (rawValue == null)
+            {
+                return !typeof(TValue).IsValueType || Nullable.GetUnderlyingType(typeof(TValue)) != null;
+            }
+
+            if (rawValue is TValue typedValue)
+            {
+                value = typedValue;
+                return true;
+            }
+
+            try
+            {
+                value = (TValue)Convert.ChangeType(rawValue, typeof(TValue));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static T GetRequiredSharedVariable<T>(Blackboard blackboard, string variableName)
             where T : SharedVariable
         {
-            return blackboard.GetSharedVariable(variableName) as T;
+            return blackboard?.GetSharedVariable(variableName) as T;
         }
 
         public static void DisposeBlackboard(Blackboard blackboard)
@@ -264,10 +513,39 @@ namespace Ceres.Graph.Flow
             return result;
         }
 
+        public static T FindObjectOfType<T>() where T : UnityEngine.Object
+        {
+#if UNITY_6000_0_OR_NEWER
+            return UnityEngine.Object.FindFirstObjectByType<T>();
+#else
+            return UnityEngine.Object.FindObjectOfType<T>();
+#endif
+        }
+
+        public static T GetOrAddComponent<T>(UnityEngine.GameObject gameObject) where T : UnityEngine.Component
+        {
+            if (!gameObject)
+            {
+                return null;
+            }
+
+            if (gameObject.TryGetComponent<T>(out var component))
+            {
+                return component;
+            }
+
+            return gameObject.AddComponent<T>();
+        }
+
         public static IFlowExecutableProgram CreateExecutableProgram(IFlowGraphContainer container,
             FlowGeneratedProgramInfo info)
         {
             var graphData = container.GetFlowGraphData();
+            if (!UsesGeneratedRuntimeProgram)
+            {
+                return CreateCompiledGraphProgram(container.GetFlowGraph());
+            }
+
             if (FlowGeneratedProgramRegistry.TryCreate(info, graphData, out var generatedProgram))
             {
                 return generatedProgram;

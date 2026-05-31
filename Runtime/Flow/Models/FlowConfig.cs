@@ -8,6 +8,32 @@ using UnityEngine;
 
 namespace Ceres.Graph.Flow
 {
+    public enum FlowGeneratedRuntimeProfile
+    {
+        OptimizedSafe,
+        OptimizedAggressive,
+        Debuggable
+    }
+
+    public enum FlowGeneratedRuntimeCancellationMode
+    {
+        Auto,
+        Always,
+        NeverForSync
+    }
+
+    public enum FlowGeneratedRuntimeVariableStorageMode
+    {
+        LocalFieldsForUnshared,
+        Blackboard
+    }
+
+    public enum FlowGeneratedRuntimeSerializedTypeMode
+    {
+        DirectType,
+        SerializedType
+    }
+
     [Serializable]
     [ConfigPath("Ceres.Flow")]
     public class FlowConfig: Config<FlowConfig>
@@ -20,6 +46,21 @@ namespace Ceres.Graph.Flow
         
         [SerializeField]
         internal string[] alwaysIncludedAssemblyWildcards = DefaultIncludedAssemblyWildcards.ToArray();
+
+        [SerializeField]
+        internal FlowGeneratedRuntimeProfile generatedRuntimeProfile = FlowGeneratedRuntimeProfile.OptimizedSafe;
+
+        [SerializeField]
+        internal FlowGeneratedRuntimeCancellationMode generatedRuntimeCancellationMode =
+            FlowGeneratedRuntimeCancellationMode.Auto;
+
+        [SerializeField]
+        internal FlowGeneratedRuntimeVariableStorageMode generatedRuntimeVariableStorageMode =
+            FlowGeneratedRuntimeVariableStorageMode.LocalFieldsForUnshared;
+
+        [SerializeField]
+        internal FlowGeneratedRuntimeSerializedTypeMode generatedRuntimeSerializedTypeMode =
+            FlowGeneratedRuntimeSerializedTypeMode.DirectType;
 
         internal static string[] DefaultIncludedAssemblyWildcards = 
         {
