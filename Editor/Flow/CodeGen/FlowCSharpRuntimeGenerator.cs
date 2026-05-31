@@ -1158,6 +1158,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private readonly Dictionary<string, FrameSlotInfo> _frameSlots = new();
 
+            private readonly Dictionary<string, ProgramFieldInfo> _programFields = new();
+
             private readonly HashSet<string> _generatedDependencyMethods = new();
 
             private readonly Queue<CeresNode> _pendingDependencyMethods = new();
@@ -1265,8 +1267,13 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 {
                     body.AppendLine($"        private static readonly {GetFriendlyTypeName(binding.SerializedType)} {binding.FieldName} = new() {{ serializedTypeString = \"{Escape(binding.SerializedTypeString)}\" }};");
                 }
+                foreach (var field in _programFields.Values)
+                {
+                    body.AppendLine($"        private {GetFriendlyTypeName(field.Type)} {field.FieldName};");
+                }
                 if (_sharedVariableBindings.Count > 0 || _functionInvokerBindings.Count > 0 ||
-                    _eventDelegateBindings.Count > 0 || _serializedTypeBindings.Count > 0)
+                    _eventDelegateBindings.Count > 0 || _serializedTypeBindings.Count > 0 ||
+                    _programFields.Count > 0)
                 {
                     body.AppendLine();
                 }
@@ -1333,26 +1340,25 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     : CustomFunctionReturnEmission.SetSubFlowReturn;
                 try
                 {
-                    switchBody.AppendLine($"                case \"{Escape(eventName)}\":");
-                    switchBody.AppendLine("                {");
-                    switchBody.AppendLine($"                    var frame = {frameName}.Get(contextObject, evtBase);");
-                    switchBody.AppendLine($"                    RunEvent({methodName}(frame), evtBase);");
-                    switchBody.AppendLine("                    return true;");
-                    switchBody.AppendLine("                }");
-
                     GenerateFrame(frameName, eventInfo, eventName);
                     var body = CaptureMethodBody(() =>
                     {
                         Emit("                PushExecutionContext(frame.ContextObject);");
-                        var firstNode = GetExecTarget(evt, "exec");
-                        if (firstNode != null)
-                        {
-                            GenerateForwardNode(firstNode, frameName, "frame", "                ");
-                        }
+                        GenerateForwardConnection(GetExecConnection(evt, "exec"), frameName, "frame", "                ");
                     });
-                    AppendUniTaskMethod(methodName, frameName, typeof(void), body,
+                    var hasAwait = AppendUniTaskMethod(methodName, frameName, typeof(void), body,
+                        true,
                         "                PopExecutionContext(frame.ContextObject);",
                         "                frame.Release();");
+
+                    switchBody.AppendLine($"                case \"{Escape(eventName)}\":");
+                    switchBody.AppendLine("                {");
+                    switchBody.AppendLine($"                    var frame = {frameName}.Get(contextObject, evtBase);");
+                    switchBody.AppendLine(hasAwait
+                        ? $"                    RunEvent({methodName}(frame), evtBase);"
+                        : $"                    {methodName}(frame);");
+                    switchBody.AppendLine("                    return true;");
+                    switchBody.AppendLine("                }");
                     CompleteFrame();
                 }
                 finally
@@ -1434,10 +1440,36 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 }
             }
 
-            private void AppendUniTaskMethod(string methodName, string frameName, Type resultType, string body,
+            private bool AppendUniTaskMethod(string methodName, string frameName, Type resultType, string body,
                 params string[] finallyLines)
             {
+                return AppendUniTaskMethod(methodName, frameName, resultType, body, false, finallyLines);
+            }
+
+            private bool AppendUniTaskMethod(string methodName, string frameName, Type resultType, string body,
+                bool emitSynchronousVoidMethod, params string[] finallyLines)
+            {
                 var hasAwait = HasAwaitExpression(body);
+                if (emitSynchronousVoidMethod && !hasAwait && resultType == typeof(void))
+                {
+                    _members.AppendLine($"        private void {methodName}({frameName} frame)");
+                    _members.AppendLine("        {");
+                    _members.AppendLine("            try");
+                    _members.AppendLine("            {");
+                    _members.Append(body);
+                    _members.AppendLine("            }");
+                    _members.AppendLine("            finally");
+                    _members.AppendLine("            {");
+                    foreach (var line in finallyLines)
+                    {
+                        _members.AppendLine(line);
+                    }
+                    _members.AppendLine("            }");
+                    _members.AppendLine("        }");
+                    _members.AppendLine();
+                    return false;
+                }
+
                 var returnTypeName = resultType == typeof(void)
                     ? "UniTask"
                     : $"UniTask<{GetFriendlyTypeName(resultType)}>";
@@ -1473,6 +1505,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 }
                 _members.AppendLine("        }");
                 _members.AppendLine();
+                return hasAwait;
             }
 
             private static bool HasAwaitExpression(string body)
@@ -1582,11 +1615,13 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 _members.AppendLine();
             }
 
-            internal void GenerateForwardNode(CeresNode node, string frameTypeName, string frameVar, string indent)
+            internal void GenerateForwardNode(CeresNode node, string frameTypeName, string frameVar, string indent,
+                string entryPortId = null, int entryPortIndex = -1)
             {
                 Emit($"{indent}{GetCancellationCheckExpression(frameTypeName, frameVar)};");
 
-                var context = new NodeGenerationContext(this, frameTypeName, frameVar, indent);
+                var context = new NodeGenerationContext(this, frameTypeName, frameVar, indent, entryPortId,
+                    entryPortIndex);
                 if (!NodeGeneratorFactory.Get().TryGetGenerator(node.GetType(), out var generator) ||
                     !generator.CanGenerate(node, context))
                 {
@@ -1597,6 +1632,16 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 generator.GenerateForward(node, context);
             }
 
+            internal void GenerateForwardConnection(ExecConnection connection, string frameTypeName, string frameVar,
+                string indent)
+            {
+                if (connection.Node != null)
+                {
+                    GenerateForwardNode(connection.Node, frameTypeName, frameVar, indent, connection.PortId,
+                        connection.PortIndex);
+                }
+            }
+
             private string GetCancellationCheckExpression(string frameTypeName, string frameVar)
             {
                 return _cancellationHandleFrames.Contains(frameTypeName)
@@ -1604,7 +1649,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     : $"{frameVar}.CancellationToken.ThrowIfCancellationRequested()";
             }
 
-            private string GetCancellationTokenExpression(string frameTypeName, string frameVar)
+            internal string GetCancellationTokenExpression(string frameTypeName, string frameVar)
             {
                 return _cancellationHandleFrames.Contains(frameTypeName)
                     ? $"{frameVar}.Cancellation.Token"
@@ -1613,9 +1658,9 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             internal void GenerateSequence(FlowNode_Sequence node, string frameTypeName, string frameVar, string indent)
             {
-                foreach (var next in GetExecTargets(node, "outputs"))
+                foreach (var next in GetExecConnections(node, "outputs"))
                 {
-                    GenerateForwardNode(next, frameTypeName, frameVar, indent);
+                    GenerateForwardConnection(next, frameTypeName, frameVar, indent);
                 }
             }
 
@@ -1624,19 +1669,13 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 var condition = GetValueExpression(node, "condition", typeof(bool), frameTypeName, frameVar, indent);
                 Emit($"{indent}if ({condition})");
                 Emit($"{indent}{{");
-                var trueNode = GetExecTarget(node, "trueOutput");
-                if (trueNode != null)
-                {
-                    GenerateForwardNode(trueNode, frameTypeName, frameVar, indent + "    ");
-                }
+                GenerateForwardConnection(GetExecConnection(node, "trueOutput"), frameTypeName, frameVar,
+                    indent + "    ");
                 Emit($"{indent}}}");
                 Emit($"{indent}else");
                 Emit($"{indent}{{");
-                var falseNode = GetExecTarget(node, "falseOutput");
-                if (falseNode != null)
-                {
-                    GenerateForwardNode(falseNode, frameTypeName, frameVar, indent + "    ");
-                }
+                GenerateForwardConnection(GetExecConnection(node, "falseOutput"), frameTypeName, frameVar,
+                    indent + "    ");
                 Emit($"{indent}}}");
             }
 
@@ -1678,11 +1717,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 _inlineEventStack.Push(target.Guid);
                 try
                 {
-                    var firstNode = GetExecTarget(target, "exec");
-                    if (firstNode != null)
-                    {
-                        GenerateForwardNode(firstNode, frameTypeName, frameVar, indent);
-                    }
+                    GenerateForwardConnection(GetExecConnection(target, "exec"), frameTypeName, frameVar, indent);
                 }
                 finally
                 {
@@ -2000,11 +2035,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     GenerateFunctionFrame(binding);
                     var body = CaptureMethodBody(() =>
                     {
-                        var firstNode = GetExecTarget(input, nameof(CustomFunctionInput.exec));
-                        if (firstNode != null)
-                        {
-                            GenerateForwardNode(firstNode, binding.FrameName, "frame", "                ");
-                        }
+                        GenerateForwardConnection(GetExecConnection(input, nameof(CustomFunctionInput.exec)),
+                            binding.FrameName, "frame", "                ");
                         Emit(binding.ReturnType == typeof(void)
                             ? "                return;"
                             : "                return frame.ReturnValue;");
@@ -2095,6 +2127,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     arguments.Add($"({GetFriendlyTypeName(directCall.ParameterTypes[i])})({expression})");
                 }
 
+                if (!directCall.UseInvoker && node.isStatic &&
+                    TryBuildIntrinsicFunctionExpression(directCall, arguments, out var intrinsicExpression))
+                {
+                    return intrinsicExpression;
+                }
+
                 if (!directCall.UseInvoker && node.isStatic)
                 {
                     return $"{GetFriendlyTypeName(directCall.DeclaringType)}.{EscapeIdentifier(directCall.MethodName)}({string.Join(", ", arguments)})";
@@ -2129,6 +2167,82 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return $"{invokerField}.Invoke<{string.Join(", ", genericTypes.Select(GetFriendlyTypeName))}>({argumentList})";
             }
 
+            private static bool TryBuildIntrinsicFunctionExpression(DirectCallInfo directCall,
+                IReadOnlyList<string> arguments, out string expression)
+            {
+                expression = null;
+                if (directCall.DeclaringType != typeof(MathExecutableLibrary))
+                {
+                    return false;
+                }
+
+                string Unary(string op) => $"({op}({arguments[0]}))";
+                string Binary(string op) => $"(({arguments[0]}) {op} ({arguments[1]}))";
+                string Call(string owner, string method) => $"{owner}.{method}({string.Join(", ", arguments)})";
+
+                expression = directCall.MethodName switch
+                {
+                    "Flow_FloatAdd" => Binary("+"),
+                    "Flow_FloatSubtract" => Binary("-"),
+                    "Flow_FloatMultiply" => Binary("*"),
+                    "Flow_FloatDivide" => Binary("/"),
+                    "Flow_FloatModulo" => Binary("%"),
+                    "Flow_FloatLessThan" => Binary("<"),
+                    "Flow_FloatLessThanOrEqualTo" => Binary("<="),
+                    "Flow_FloatGreaterThan" => Binary(">"),
+                    "Flow_FloatGreaterThanOrEqualTo" => Binary(">="),
+                    "Flow_FloatToInt" => $"((int)({arguments[0]}))",
+                    "Flow_FloatPow" => Call("Mathf", "Pow"),
+                    "Flow_FloatSqrt" => Call("Mathf", "Sqrt"),
+                    "Flow_FloatExp" => Call("Mathf", "Exp"),
+                    "Flow_FloatAbs" => Call("Mathf", "Abs"),
+                    "Flow_FloatClamp" => Call("Mathf", "Clamp"),
+                    "Flow_FloatClamp01" => Call("Mathf", "Clamp01"),
+                    "Flow_FloatLerp" => Call("Mathf", "Lerp"),
+                    "Flow_FloatInverseLerp" => Call("Mathf", "InverseLerp"),
+                    "Flow_FloatMin" => Call("Mathf", "Min"),
+                    "Flow_FloatMax" => Call("Mathf", "Max"),
+                    "Flow_FloatFloorToInt" => Call("Mathf", "FloorToInt"),
+                    "Flow_FloatCeilToInt" => Call("Mathf", "CeilToInt"),
+                    "Flow_FloatRoundToInt" => Call("Mathf", "RoundToInt"),
+                    "Flow_FloatSin" => Call("Mathf", "Sin"),
+                    "Flow_FloatCos" => Call("Mathf", "Cos"),
+                    "Flow_FloatTan" => Call("Mathf", "Tan"),
+                    "Flow_FloatAtan2" => Call("Mathf", "Atan2"),
+                    "Flow_FloatApproximately" => Call("Mathf", "Approximately"),
+                    "Flow_FloatSign" => Call("Mathf", "Sign"),
+                    "Flow_FloatDeg2Rad" => $"(({arguments[0]}) * Mathf.Deg2Rad)",
+                    "Flow_FloatRad2Deg" => $"(({arguments[0]}) * Mathf.Rad2Deg)",
+                    "Flow_IntAdd" => Binary("+"),
+                    "Flow_IntSubtract" => Binary("-"),
+                    "Flow_IntMultiply" => Binary("*"),
+                    "Flow_IntDivide" => Binary("/"),
+                    "Flow_IntModulo" => Binary("%"),
+                    "Flow_IntLessThan" => Binary("<"),
+                    "Flow_IntLessThanOrEqualTo" => Binary("<="),
+                    "Flow_IntGreaterThan" => Binary(">"),
+                    "Flow_IntGreaterThanOrEqualTo" => Binary(">="),
+                    "Flow_IntToFloat" => $"((float)({arguments[0]}))",
+                    "Flow_IntAbs" => Call("Mathf", "Abs"),
+                    "Flow_IntClamp" => Call("Mathf", "Clamp"),
+                    "Flow_IntMin" => Call("Mathf", "Min"),
+                    "Flow_IntMax" => Call("Mathf", "Max"),
+                    "Flow_BoolInvert" => Unary("!"),
+                    "Flow_BoolAnd" => Binary("&"),
+                    "Flow_BoolOr" => Binary("|"),
+                    "Flow_BoolXor" => Binary("^"),
+                    "Flow_Vector2" => $"new Vector2({arguments[0]}, {arguments[1]})",
+                    "Flow_Vector3" => $"new Vector3({arguments[0]}, {arguments[1]}, {arguments[2]})",
+                    "Flow_Vector3Add" => Binary("+"),
+                    "Flow_Vector3Subtract" => Binary("-"),
+                    "Flow_Vector3MultiplyFloat" => Binary("*"),
+                    "Flow_Vector3DivideFloat" => Binary("/"),
+                    _ => null
+                };
+
+                return expression != null;
+            }
+
             internal void GenerateSetProperty(PropertyNode_PropertyValue node, string frameTypeName, string frameVar,
                 string indent)
             {
@@ -2142,7 +2256,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     indent);
                 var targetExpression = BuildPropertyTargetExpression(node, propertyCall, frameTypeName, frameVar,
                     indent);
-                Emit($"{indent}{targetExpression}.{EscapeIdentifier(propertyCall.PropertyName)} = ({GetFriendlyTypeName(propertyCall.PropertyType)})({value});");
+                Emit($"{indent}{targetExpression}.{EscapeIdentifier(propertyCall.PropertyName)} = {value};");
                 GenerateNext(node, frameTypeName, frameVar, indent);
             }
 
@@ -2159,7 +2273,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 var value = GetValueExpression(node, "inputValue", valueType, frameTypeName, frameVar, indent);
                 Emit($"{indent}if ({field} != null)");
                 Emit($"{indent}{{");
-                Emit($"{indent}    {field}.Value = ({GetFriendlyTypeName(valueType)})({value});");
+                Emit($"{indent}    {field}.Value = {value};");
                 Emit($"{indent}}}");
                 GenerateNext(node, frameTypeName, frameVar, indent);
             }
@@ -2243,27 +2357,33 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             internal void GenerateNext(CeresNode node, string frameTypeName, string frameVar, string indent)
             {
-                var next = GetExecTarget(node, "exec");
-                if (next != null)
-                {
-                    GenerateForwardNode(next, frameTypeName, frameVar, indent);
-                }
+                GenerateForwardConnection(GetExecConnection(node, "exec"), frameTypeName, frameVar, indent);
             }
 
             internal CeresNode GetExecTarget(CeresNode node, string propertyName)
             {
+                return GetExecConnection(node, propertyName).Node;
+            }
+
+            internal ExecConnection GetExecConnection(CeresNode node, string propertyName)
+            {
                 var portData = node.NodeData.FindPortData(propertyName);
                 var connection = portData?.connections?.FirstOrDefault(connection => !connection.isFlattened);
-                if (connection == null) return null;
-                return FindNode(connection.nodeId);
+                if (connection == null) return default;
+                return new ExecConnection(FindNode(connection.nodeId), connection.portId, connection.portIndex);
             }
 
             internal CeresNode GetExecTarget(CeresNode node, string propertyName, int arrayIndex)
             {
+                return GetExecConnection(node, propertyName, arrayIndex).Node;
+            }
+
+            internal ExecConnection GetExecConnection(CeresNode node, string propertyName, int arrayIndex)
+            {
                 var portData = node.NodeData.FindPortData(propertyName, arrayIndex);
                 var connection = portData?.connections?.FirstOrDefault(connection => !connection.isFlattened);
-                if (connection == null) return null;
-                return FindNode(connection.nodeId);
+                if (connection == null) return default;
+                return new ExecConnection(FindNode(connection.nodeId), connection.portId, connection.portIndex);
             }
 
             internal IEnumerable<CeresNode> GetExecTargets(CeresNode node, string propertyName)
@@ -2275,6 +2395,18 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     .Where(connection => !connection.isFlattened)
                     .Select(connection => FindNode(connection.nodeId))
                     .Where(target => target != null);
+            }
+
+            internal IEnumerable<ExecConnection> GetExecConnections(CeresNode node, string propertyName)
+            {
+                return node.NodeData.portData
+                    .Where(port => port.propertyName == propertyName)
+                    .OrderBy(port => port.arrayIndex)
+                    .SelectMany(port => port.connections ?? Array.Empty<PortConnectionData>())
+                    .Where(connection => !connection.isFlattened)
+                    .Select(connection => new ExecConnection(FindNode(connection.nodeId), connection.portId,
+                        connection.portIndex))
+                    .Where(target => target.Node != null);
             }
 
             internal string GetValueExpression(CeresNode node, string propertyName, Type expectedType,
@@ -2298,6 +2430,13 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                             sourcePortIndex, expectedType, frameVar);
                     }
 
+                    if (source != null &&
+                        TryBuildInlineOutputExpression(source, sourcePortId, expectedType, frameTypeName,
+                            frameVar, indent, out var inlineExpression))
+                    {
+                        return inlineExpression;
+                    }
+
                     if (source == null || !TryGetOutputSlot(source, sourcePortId, out var outputType,
                             out var slotField))
                     {
@@ -2310,7 +2449,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                         GenerateDependencyCall(source, frameTypeName, frameVar, indent);
                     }
 
-                    return CastExpression($"{frameVar}.{slotField}", expectedType);
+                    return CastExpression($"{frameVar}.{slotField}", outputType, expectedType);
                 }
 
                 var port = portData?.GetPort(node);
@@ -2385,6 +2524,58 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 }
 
                 return CastExpression(GetEventOutputExpression(portId, frameVar), expectedType);
+            }
+
+            private bool TryBuildInlineOutputExpression(CeresNode source, string sourcePortId, Type expectedType,
+                string frameTypeName, string frameVar, string indent, out string expression)
+            {
+                expression = null;
+                if (!IsSingleValueOutputConnection(source, sourcePortId) ||
+                    !NodeGeneratorFactory.Get().TryGetGenerator(source.GetType(), out var generator) ||
+                    generator is not IInlineExpressionNodeGenerator inlineGenerator)
+                {
+                    return false;
+                }
+
+                var context = new NodeGenerationContext(this, frameTypeName, frameVar, indent);
+                if (!inlineGenerator.TryGenerateOutputExpression(source, sourcePortId, context, out var outputType,
+                        out var inlineExpression))
+                {
+                    return false;
+                }
+
+                expression = CastExpression(inlineExpression, outputType, expectedType);
+                return true;
+            }
+
+            private bool IsSingleValueOutputConnection(CeresNode source, string sourcePortId)
+            {
+                var count = 0;
+                foreach (var node in _graph.nodes)
+                {
+                    foreach (var portData in node.NodeData.portData)
+                    {
+                        foreach (var connection in portData.connections ?? Array.Empty<PortConnectionData>())
+                        {
+                            if (connection.isFlattened) continue;
+                            if (node == source && portData.propertyName == sourcePortId)
+                            {
+                                count++;
+                            }
+                            else if (connection.nodeId == source.Guid && connection.portId == sourcePortId)
+                            {
+                                count++;
+                            }
+
+                            if (count > 1)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+                return count == 1;
             }
 
             private static bool IsForwardOutputSlotAlreadyAssigned(CeresNode source, string portId)
@@ -2694,6 +2885,23 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     $"Slot_{SafeGuid(node.Guid)}_{SanitizeIdentifier(portId)}");
             }
 
+            internal string EnsureProgramField(CeresNode node, string fieldId, Type type)
+            {
+                return EnsureProgramField($"{node.Guid}:{fieldId}", type,
+                    $"_{SanitizeIdentifier(fieldId)}_{SafeGuid(node.Guid)}");
+            }
+
+            private string EnsureProgramField(string key, Type type, string fieldName)
+            {
+                if (!_programFields.TryGetValue(key, out var field))
+                {
+                    field = new ProgramFieldInfo(fieldName, type);
+                    _programFields.Add(key, field);
+                }
+
+                return field.FieldName;
+            }
+
             private string EnsureFrameField(string key, Type type, string fieldName)
             {
                 if (!_frameSlots.TryGetValue(key, out var slot))
@@ -2782,6 +2990,16 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private static string CastExpression(string expression, Type expectedType)
             {
+                return CastExpression(expression, null, expectedType);
+            }
+
+            private static string CastExpression(string expression, Type actualType, Type expectedType)
+            {
+                if (actualType == expectedType)
+                {
+                    return expression;
+                }
+
                 return $"({GetFriendlyTypeName(expectedType)})({expression})";
             }
 
@@ -2798,7 +3016,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private CeresNode FindNode(string guid)
             {
-                return _nodes.TryGetValue(guid, out var node) ? node : null;
+                return _nodes.GetValueOrDefault(guid);
             }
 
             private string ToLiteral(object value, Type expectedType)
@@ -2980,6 +3198,19 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 public readonly Type Type;
 
                 public FrameSlotInfo(string fieldName, Type type)
+                {
+                    FieldName = fieldName;
+                    Type = type;
+                }
+            }
+
+            private readonly struct ProgramFieldInfo
+            {
+                public readonly string FieldName;
+
+                public readonly Type Type;
+
+                public ProgramFieldInfo(string fieldName, Type type)
                 {
                     FieldName = fieldName;
                     Type = type;

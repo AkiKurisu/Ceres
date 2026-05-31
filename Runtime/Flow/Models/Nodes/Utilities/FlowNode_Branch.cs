@@ -1,6 +1,7 @@
 using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
+
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
@@ -9,6 +10,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Branch")]
+    [NodeInfo("Routes execution to True or False depending on the condition value.")]
     public class FlowNode_Branch: ForwardNode
     {
         [InputPort]

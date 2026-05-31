@@ -1,0 +1,179 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.ObserveProxyVariable
+  commentId: T:Ceres.Graph.ObserveProxyVariable
+  id: ObserveProxyVariable
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.ObserveProxyVariable.Dispose
+  - Ceres.Graph.ObserveProxyVariable.Register(Action{System.Object})
+  langs:
+  - csharp
+  - vb
+  name: ObserveProxyVariable
+  nameWithType: ObserveProxyVariable
+  fullName: Ceres.Graph.ObserveProxyVariable
+  type: Class
+  source:
+    id: ObserveProxyVariable
+    path: ''
+    startLine: 21206
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nProxy variable to observe value change\n"
+  example: []
+  syntax:
+    content: 'public abstract class ObserveProxyVariable : IDisposable'
+    content.vb: Public MustInherit Class ObserveProxyVariable Inherits IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Graph.ObserveProxyVariable`1
+- uid: Ceres.Graph.ObserveProxyVariable.Register(Action{System.Object})
+  commentId: M:Ceres.Graph.ObserveProxyVariable.Register(Action{System.Object})
+  id: Register(Action{System.Object})
+  parent: Ceres.Graph.ObserveProxyVariable
+  langs:
+  - csharp
+  - vb
+  name: Register(Action<object>)
+  nameWithType: ObserveProxyVariable.Register(Action<object>)
+  fullName: Ceres.Graph.ObserveProxyVariable.Register(Action<object>)
+  type: Method
+  source:
+    id: Register
+    path: ''
+    startLine: 21208
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public abstract void Register(Action<object> onValueChangeCallback)
+    parameters:
+    - id: onValueChangeCallback
+      type: Global.Action{System.Object}
+    content.vb: Public MustOverride Sub Register(onValueChangeCallback As Action(Of Object))
+  overload: Ceres.Graph.ObserveProxyVariable.Register*
+  nameWithType.vb: ObserveProxyVariable.Register(Action(Of Object))
+  fullName.vb: Ceres.Graph.ObserveProxyVariable.Register(Action(Of Object))
+  name.vb: Register(Action(Of Object))
+- uid: Ceres.Graph.ObserveProxyVariable.Dispose
+  commentId: M:Ceres.Graph.ObserveProxyVariable.Dispose
+  id: Dispose
+  parent: Ceres.Graph.ObserveProxyVariable
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ObserveProxyVariable.Dispose()
+  fullName: Ceres.Graph.ObserveProxyVariable.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 21210
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public abstract void Dispose()
+    content.vb: Public MustOverride Sub Dispose()
+  overload: Ceres.Graph.ObserveProxyVariable.Dispose*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.ObserveProxyVariable.Register*
+  commentId: Overload:Ceres.Graph.ObserveProxyVariable.Register
+  name: Register
+  nameWithType: ObserveProxyVariable.Register
+  fullName: Ceres.Graph.ObserveProxyVariable.Register
+- uid: Global.Action{System.Object}
+  commentId: '!:Global.Action{System.Object}'
+  definition: Global.Action`1
+  name: Action<object>
+  nameWithType: Action<object>
+  fullName: Action<object>
+  nameWithType.vb: Action(Of Object)
+  fullName.vb: Action(Of Object)
+  name.vb: Action(Of Object)
+  spec.csharp:
+  - uid: Global.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Global.Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Global.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Graph.ObserveProxyVariable.Dispose*
+  commentId: Overload:Ceres.Graph.ObserveProxyVariable.Dispose
+  name: Dispose
+  nameWithType: ObserveProxyVariable.Dispose
+  fullName: Ceres.Graph.ObserveProxyVariable.Dispose

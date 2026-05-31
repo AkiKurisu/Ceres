@@ -1,0 +1,334 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.DragDropManipulator
+  commentId: T:Ceres.Editor.Graph.DragDropManipulator
+  id: DragDropManipulator
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.DragDropManipulator.#ctor(GraphView,Action{Object,Vector3},Action{List{ISelectable},GraphElement,Vector3})
+  - Ceres.Editor.Graph.DragDropManipulator.RegisterCallbacksOnTarget
+  - Ceres.Editor.Graph.DragDropManipulator.UnregisterCallbacksFromTarget
+  langs:
+  - csharp
+  - vb
+  name: DragDropManipulator
+  nameWithType: DragDropManipulator
+  fullName: Ceres.Editor.Graph.DragDropManipulator
+  type: Class
+  source:
+    id: DragDropManipulator
+    path: ''
+    startLine: 6967
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class DragDropManipulator : PointerManipulator'
+    content.vb: Public Class DragDropManipulator Inherits PointerManipulator
+  inheritance:
+  - System.Object
+- uid: Ceres.Editor.Graph.DragDropManipulator.#ctor(GraphView,Action{Object,Vector3},Action{List{ISelectable},GraphElement,Vector3})
+  commentId: M:Ceres.Editor.Graph.DragDropManipulator.#ctor(GraphView,Action{Object,Vector3},Action{List{ISelectable},GraphElement,Vector3})
+  id: '#ctor(GraphView,Action{Object,Vector3},Action{List{ISelectable},GraphElement,Vector3})'
+  parent: Ceres.Editor.Graph.DragDropManipulator
+  langs:
+  - csharp
+  - vb
+  name: DragDropManipulator(GraphView, Action<Object, Vector3>, Action<List<ISelectable>, GraphElement, Vector3>)
+  nameWithType: DragDropManipulator.DragDropManipulator(GraphView, Action<Object, Vector3>, Action<List<ISelectable>, GraphElement, Vector3>)
+  fullName: Ceres.Editor.Graph.DragDropManipulator.DragDropManipulator(GraphView, Action<Object, Vector3>, Action<List<ISelectable>, GraphElement, Vector3>)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 6975
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public DragDropManipulator(GraphView root, Action<Object, Vector3> onDragObjectPerformEvent, Action<List<ISelectable>, GraphElement, Vector3> dragElementPerformEvent)
+    parameters:
+    - id: root
+      type: Global.GraphView
+    - id: onDragObjectPerformEvent
+      type: Global.Action{Object,Vector3}
+    - id: dragElementPerformEvent
+      type: Global.Action{List{ISelectable},GraphElement,Vector3}
+    content.vb: Public Sub New(root As GraphView, onDragObjectPerformEvent As Action(Of [Object], Vector3), dragElementPerformEvent As Action(Of List(Of ISelectable), GraphElement, Vector3))
+  overload: Ceres.Editor.Graph.DragDropManipulator.#ctor*
+  nameWithType.vb: DragDropManipulator.New(GraphView, Action(Of Object, Vector3), Action(Of List(Of ISelectable), GraphElement, Vector3))
+  fullName.vb: Ceres.Editor.Graph.DragDropManipulator.New(GraphView, Action(Of Object, Vector3), Action(Of List(Of ISelectable), GraphElement, Vector3))
+  name.vb: New(GraphView, Action(Of Object, Vector3), Action(Of List(Of ISelectable), GraphElement, Vector3))
+- uid: Ceres.Editor.Graph.DragDropManipulator.RegisterCallbacksOnTarget
+  commentId: M:Ceres.Editor.Graph.DragDropManipulator.RegisterCallbacksOnTarget
+  id: RegisterCallbacksOnTarget
+  parent: Ceres.Editor.Graph.DragDropManipulator
+  langs:
+  - csharp
+  - vb
+  name: RegisterCallbacksOnTarget()
+  nameWithType: DragDropManipulator.RegisterCallbacksOnTarget()
+  fullName: Ceres.Editor.Graph.DragDropManipulator.RegisterCallbacksOnTarget()
+  type: Method
+  source:
+    id: RegisterCallbacksOnTarget
+    path: ''
+    startLine: 6982
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override void RegisterCallbacksOnTarget()
+    content.vb: Protected Overrides Sub RegisterCallbacksOnTarget()
+  overload: Ceres.Editor.Graph.DragDropManipulator.RegisterCallbacksOnTarget*
+- uid: Ceres.Editor.Graph.DragDropManipulator.UnregisterCallbacksFromTarget
+  commentId: M:Ceres.Editor.Graph.DragDropManipulator.UnregisterCallbacksFromTarget
+  id: UnregisterCallbacksFromTarget
+  parent: Ceres.Editor.Graph.DragDropManipulator
+  langs:
+  - csharp
+  - vb
+  name: UnregisterCallbacksFromTarget()
+  nameWithType: DragDropManipulator.UnregisterCallbacksFromTarget()
+  fullName: Ceres.Editor.Graph.DragDropManipulator.UnregisterCallbacksFromTarget()
+  type: Method
+  source:
+    id: UnregisterCallbacksFromTarget
+    path: ''
+    startLine: 6992
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override void UnregisterCallbacksFromTarget()
+    content.vb: Protected Overrides Sub UnregisterCallbacksFromTarget()
+  overload: Ceres.Editor.Graph.DragDropManipulator.UnregisterCallbacksFromTarget*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.DragDropManipulator.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.DragDropManipulator.#ctor
+  name: DragDropManipulator
+  nameWithType: DragDropManipulator.DragDropManipulator
+  fullName: Ceres.Editor.Graph.DragDropManipulator.DragDropManipulator
+  nameWithType.vb: DragDropManipulator.New
+  fullName.vb: Ceres.Editor.Graph.DragDropManipulator.New
+  name.vb: New
+- uid: Global.GraphView
+  isExternal: true
+  name: GraphView
+  nameWithType: GraphView
+  fullName: GraphView
+- uid: Global.Action{Object,Vector3}
+  commentId: '!:Global.Action{Object,Vector3}'
+  definition: Global.Action`2
+  name: Action<Object, Vector3>
+  nameWithType: Action<Object, Vector3>
+  fullName: Action<Object, Vector3>
+  nameWithType.vb: Action(Of Object, Vector3)
+  fullName.vb: Action(Of Object, Vector3)
+  name.vb: Action(Of Object, Vector3)
+  spec.csharp:
+  - uid: Global.Action`2
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: Global.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.Vector3
+    name: Vector3
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.Action`2
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.Vector3
+    name: Vector3
+    isExternal: true
+  - name: )
+- uid: Global.Action{List{ISelectable},GraphElement,Vector3}
+  commentId: '!:Global.Action{List{ISelectable},GraphElement,Vector3}'
+  definition: Global.Action`3
+  name: Action<List<ISelectable>, GraphElement, Vector3>
+  nameWithType: Action<List<ISelectable>, GraphElement, Vector3>
+  fullName: Action<List<ISelectable>, GraphElement, Vector3>
+  nameWithType.vb: Action(Of List(Of ISelectable), GraphElement, Vector3)
+  fullName.vb: Action(Of List(Of ISelectable), GraphElement, Vector3)
+  name.vb: Action(Of List(Of ISelectable), GraphElement, Vector3)
+  spec.csharp:
+  - uid: Global.Action`3
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Global.ISelectable
+    name: ISelectable
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Global.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.Vector3
+    name: Vector3
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.Action`3
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.ISelectable
+    name: ISelectable
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Global.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.Vector3
+    name: Vector3
+    isExternal: true
+  - name: )
+- uid: Global.Action`2
+  isExternal: true
+  name: Action<, >
+  nameWithType: Action<, >
+  fullName: Action<, >
+  nameWithType.vb: Action(Of , )
+  fullName.vb: Action(Of , )
+  name.vb: Action(Of , )
+  spec.csharp:
+  - uid: Global.Action`2
+    name: Action
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.Action`2
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.Action`3
+  isExternal: true
+  name: Action<, , >
+  nameWithType: Action<, , >
+  fullName: Action<, , >
+  nameWithType.vb: Action(Of , , )
+  fullName.vb: Action(Of , , )
+  name.vb: Action(Of , , )
+  spec.csharp:
+  - uid: Global.Action`3
+    name: Action
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.Action`3
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.DragDropManipulator.RegisterCallbacksOnTarget*
+  commentId: Overload:Ceres.Editor.Graph.DragDropManipulator.RegisterCallbacksOnTarget
+  name: RegisterCallbacksOnTarget
+  nameWithType: DragDropManipulator.RegisterCallbacksOnTarget
+  fullName: Ceres.Editor.Graph.DragDropManipulator.RegisterCallbacksOnTarget
+- uid: Ceres.Editor.Graph.DragDropManipulator.UnregisterCallbacksFromTarget*
+  commentId: Overload:Ceres.Editor.Graph.DragDropManipulator.UnregisterCallbacksFromTarget
+  name: UnregisterCallbacksFromTarget
+  nameWithType: DragDropManipulator.UnregisterCallbacksFromTarget
+  fullName: Ceres.Editor.Graph.DragDropManipulator.UnregisterCallbacksFromTarget

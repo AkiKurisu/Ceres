@@ -1,0 +1,508 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.ObjectListField`1
+  commentId: T:Ceres.Editor.Graph.ObjectListField`1
+  id: ObjectListField`1
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.ObjectListField`1.#ctor(System.String,Func{VisualElement},Func{System.Object})
+  - Ceres.Editor.Graph.ObjectListField`1.OnMakeListItem
+  langs:
+  - csharp
+  - vb
+  name: ObjectListField<T>
+  nameWithType: ObjectListField<T>
+  fullName: Ceres.Editor.Graph.ObjectListField<T>
+  type: Class
+  source:
+    id: ObjectListField
+    path: ''
+    startLine: 2555
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class ObjectListField<T> : ListField<T> where T : UObject'
+    typeParameters:
+    - id: T
+    content.vb: Public Class ObjectListField(Of T As UObject) Inherits ListField(Of T)
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.ListField{{T}}
+  inheritedMembers:
+  - Ceres.Editor.Graph.ListField{{T}}.ElementCreator
+  - Ceres.Editor.Graph.ListField{{T}}.GetListItemHeight
+  - Ceres.Editor.Graph.ListField{{T}}.OnBindListItem(VisualElement,System.Int32)
+  - Ceres.Editor.Graph.ListField{{T}}.OnRequestAddListItem
+  - Ceres.Editor.Graph.ListField{{T}}.value
+  nameWithType.vb: ObjectListField(Of T)
+  fullName.vb: Ceres.Editor.Graph.ObjectListField(Of T)
+  name.vb: ObjectListField(Of T)
+- uid: Ceres.Editor.Graph.ObjectListField`1.#ctor(System.String,Func{VisualElement},Func{System.Object})
+  commentId: M:Ceres.Editor.Graph.ObjectListField`1.#ctor(System.String,Func{VisualElement},Func{System.Object})
+  id: '#ctor(System.String,Func{VisualElement},Func{System.Object})'
+  parent: Ceres.Editor.Graph.ObjectListField`1
+  langs:
+  - csharp
+  - vb
+  name: ObjectListField(string, Func<VisualElement>, Func<object>)
+  nameWithType: ObjectListField<T>.ObjectListField(string, Func<VisualElement>, Func<object>)
+  fullName: Ceres.Editor.Graph.ObjectListField<T>.ObjectListField(string, Func<VisualElement>, Func<object>)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2557
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public ObjectListField(string label, Func<VisualElement> elementCreator, Func<object> valueCreator)
+    parameters:
+    - id: label
+      type: System.String
+    - id: elementCreator
+      type: Global.Func{VisualElement}
+    - id: valueCreator
+      type: Global.Func{System.Object}
+    content.vb: Public Sub New(label As String, elementCreator As Func(Of VisualElement), valueCreator As Func(Of Object))
+  overload: Ceres.Editor.Graph.ObjectListField`1.#ctor*
+  nameWithType.vb: ObjectListField(Of T).New(String, Func(Of VisualElement), Func(Of Object))
+  fullName.vb: Ceres.Editor.Graph.ObjectListField(Of T).New(String, Func(Of VisualElement), Func(Of Object))
+  name.vb: New(String, Func(Of VisualElement), Func(Of Object))
+- uid: Ceres.Editor.Graph.ObjectListField`1.OnMakeListItem
+  commentId: M:Ceres.Editor.Graph.ObjectListField`1.OnMakeListItem
+  id: OnMakeListItem
+  parent: Ceres.Editor.Graph.ObjectListField`1
+  langs:
+  - csharp
+  - vb
+  name: OnMakeListItem()
+  nameWithType: ObjectListField<T>.OnMakeListItem()
+  fullName: Ceres.Editor.Graph.ObjectListField<T>.OnMakeListItem()
+  type: Method
+  source:
+    id: OnMakeListItem
+    path: ''
+    startLine: 2561
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override VisualElement OnMakeListItem()
+    return:
+      type: Global.VisualElement
+    content.vb: Protected Overrides Function OnMakeListItem() As VisualElement
+  overridden: Ceres.Editor.Graph.ListField{{T}}.OnMakeListItem
+  overload: Ceres.Editor.Graph.ObjectListField`1.OnMakeListItem*
+  nameWithType.vb: ObjectListField(Of T).OnMakeListItem()
+  fullName.vb: Ceres.Editor.Graph.ObjectListField(Of T).OnMakeListItem()
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.ListField{{T}}
+  commentId: T:Ceres.Editor.Graph.ListField{`0}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.ListField`1
+  name: ListField<T>
+  nameWithType: ListField<T>
+  fullName: Ceres.Editor.Graph.ListField<T>
+  nameWithType.vb: ListField(Of T)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T)
+  name.vb: ListField(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.ListField{{T}}.ElementCreator
+  commentId: F:Ceres.Editor.Graph.ListField{`0}.ElementCreator
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.ElementCreator
+  name: ElementCreator
+  nameWithType: ListField<T>.ElementCreator
+  fullName: Ceres.Editor.Graph.ListField<T>.ElementCreator
+  nameWithType.vb: ListField(Of T).ElementCreator
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).ElementCreator
+- uid: Ceres.Editor.Graph.ListField{{T}}.GetListItemHeight
+  commentId: M:Ceres.Editor.Graph.ListField{`0}.GetListItemHeight
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.GetListItemHeight
+  name: GetListItemHeight()
+  nameWithType: ListField<T>.GetListItemHeight()
+  fullName: Ceres.Editor.Graph.ListField<T>.GetListItemHeight()
+  nameWithType.vb: ListField(Of T).GetListItemHeight()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).GetListItemHeight()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField{`0}.GetListItemHeight
+    name: GetListItemHeight
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField{`0}.GetListItemHeight
+    name: GetListItemHeight
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ListField{{T}}.OnBindListItem(VisualElement,System.Int32)
+  commentId: M:Ceres.Editor.Graph.ListField{`0}.OnBindListItem(VisualElement,System.Int32)
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.OnBindListItem(VisualElement,System.Int32)
+  name: OnBindListItem(VisualElement, int)
+  nameWithType: ListField<T>.OnBindListItem(VisualElement, int)
+  fullName: Ceres.Editor.Graph.ListField<T>.OnBindListItem(VisualElement, int)
+  nameWithType.vb: ListField(Of T).OnBindListItem(VisualElement, Integer)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnBindListItem(VisualElement, Integer)
+  name.vb: OnBindListItem(VisualElement, Integer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnBindListItem(VisualElement,System.Int32)
+    name: OnBindListItem
+  - name: (
+  - uid: Global.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnBindListItem(VisualElement,System.Int32)
+    name: OnBindListItem
+  - name: (
+  - uid: Global.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.ListField{{T}}.OnRequestAddListItem
+  commentId: M:Ceres.Editor.Graph.ListField{`0}.OnRequestAddListItem
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+  name: OnRequestAddListItem()
+  nameWithType: ListField<T>.OnRequestAddListItem()
+  fullName: Ceres.Editor.Graph.ListField<T>.OnRequestAddListItem()
+  nameWithType.vb: ListField(Of T).OnRequestAddListItem()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnRequestAddListItem()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnRequestAddListItem
+    name: OnRequestAddListItem
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnRequestAddListItem
+    name: OnRequestAddListItem
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ListField{{T}}.value
+  commentId: P:Ceres.Editor.Graph.ListField{`0}.value
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.value
+  name: value
+  nameWithType: ListField<T>.value
+  fullName: Ceres.Editor.Graph.ListField<T>.value
+  nameWithType.vb: ListField(Of T).value
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).value
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.ListField`1
+  commentId: T:Ceres.Editor.Graph.ListField`1
+  name: ListField<T>
+  nameWithType: ListField<T>
+  fullName: Ceres.Editor.Graph.ListField<T>
+  nameWithType.vb: ListField(Of T)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T)
+  name.vb: ListField(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1.ElementCreator
+  commentId: F:Ceres.Editor.Graph.ListField`1.ElementCreator
+  name: ElementCreator
+  nameWithType: ListField<T>.ElementCreator
+  fullName: Ceres.Editor.Graph.ListField<T>.ElementCreator
+  nameWithType.vb: ListField(Of T).ElementCreator
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).ElementCreator
+- uid: Ceres.Editor.Graph.ListField`1.GetListItemHeight
+  commentId: M:Ceres.Editor.Graph.ListField`1.GetListItemHeight
+  name: GetListItemHeight()
+  nameWithType: ListField<T>.GetListItemHeight()
+  fullName: Ceres.Editor.Graph.ListField<T>.GetListItemHeight()
+  nameWithType.vb: ListField(Of T).GetListItemHeight()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).GetListItemHeight()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1.GetListItemHeight
+    name: GetListItemHeight
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1.GetListItemHeight
+    name: GetListItemHeight
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1.OnBindListItem(VisualElement,System.Int32)
+  commentId: M:Ceres.Editor.Graph.ListField`1.OnBindListItem(VisualElement,System.Int32)
+  isExternal: true
+  name: OnBindListItem(VisualElement, int)
+  nameWithType: ListField<T>.OnBindListItem(VisualElement, int)
+  fullName: Ceres.Editor.Graph.ListField<T>.OnBindListItem(VisualElement, int)
+  nameWithType.vb: ListField(Of T).OnBindListItem(VisualElement, Integer)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnBindListItem(VisualElement, Integer)
+  name.vb: OnBindListItem(VisualElement, Integer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1.OnBindListItem(VisualElement,System.Int32)
+    name: OnBindListItem
+  - name: (
+  - uid: Global.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1.OnBindListItem(VisualElement,System.Int32)
+    name: OnBindListItem
+  - name: (
+  - uid: Global.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+  commentId: M:Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+  name: OnRequestAddListItem()
+  nameWithType: ListField<T>.OnRequestAddListItem()
+  fullName: Ceres.Editor.Graph.ListField<T>.OnRequestAddListItem()
+  nameWithType.vb: ListField(Of T).OnRequestAddListItem()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnRequestAddListItem()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+    name: OnRequestAddListItem
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+    name: OnRequestAddListItem
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1.value
+  commentId: P:Ceres.Editor.Graph.ListField`1.value
+  name: value
+  nameWithType: ListField<T>.value
+  fullName: Ceres.Editor.Graph.ListField<T>.value
+  nameWithType.vb: ListField(Of T).value
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).value
+- uid: Ceres.Editor.Graph.ObjectListField`1.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.ObjectListField`1.#ctor
+  name: ObjectListField
+  nameWithType: ObjectListField<T>.ObjectListField
+  fullName: Ceres.Editor.Graph.ObjectListField<T>.ObjectListField
+  nameWithType.vb: ObjectListField(Of T).New
+  fullName.vb: Ceres.Editor.Graph.ObjectListField(Of T).New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Global.Func{VisualElement}
+  commentId: '!:Global.Func{VisualElement}'
+  definition: Global.Func`1
+  name: Func<VisualElement>
+  nameWithType: Func<VisualElement>
+  fullName: Func<VisualElement>
+  nameWithType.vb: Func(Of VisualElement)
+  fullName.vb: Func(Of VisualElement)
+  name.vb: Func(Of VisualElement)
+  spec.csharp:
+  - uid: Global.Func`1
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: Global.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.Func`1
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: )
+- uid: Global.Func{System.Object}
+  commentId: '!:Global.Func{System.Object}'
+  definition: Global.Func`1
+  name: Func<object>
+  nameWithType: Func<object>
+  fullName: Func<object>
+  nameWithType.vb: Func(Of Object)
+  fullName.vb: Func(Of Object)
+  name.vb: Func(Of Object)
+  spec.csharp:
+  - uid: Global.Func`1
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.Func`1
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Global.Func`1
+  isExternal: true
+  name: Func<>
+  nameWithType: Func<>
+  fullName: Func<>
+  nameWithType.vb: Func(Of )
+  fullName.vb: Func(Of )
+  name.vb: Func(Of )
+  spec.csharp:
+  - uid: Global.Func`1
+    name: Func
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.Func`1
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.ListField{{T}}.OnMakeListItem
+  commentId: M:Ceres.Editor.Graph.ListField{`0}.OnMakeListItem
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.OnMakeListItem
+  name: OnMakeListItem()
+  nameWithType: ListField<T>.OnMakeListItem()
+  fullName: Ceres.Editor.Graph.ListField<T>.OnMakeListItem()
+  nameWithType.vb: ListField(Of T).OnMakeListItem()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnMakeListItem()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnMakeListItem
+    name: OnMakeListItem
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnMakeListItem
+    name: OnMakeListItem
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ObjectListField`1.OnMakeListItem*
+  commentId: Overload:Ceres.Editor.Graph.ObjectListField`1.OnMakeListItem
+  name: OnMakeListItem
+  nameWithType: ObjectListField<T>.OnMakeListItem
+  fullName: Ceres.Editor.Graph.ObjectListField<T>.OnMakeListItem
+  nameWithType.vb: ObjectListField(Of T).OnMakeListItem
+  fullName.vb: Ceres.Editor.Graph.ObjectListField(Of T).OnMakeListItem
+- uid: Global.VisualElement
+  isExternal: true
+  name: VisualElement
+  nameWithType: VisualElement
+  fullName: VisualElement
+- uid: Ceres.Editor.Graph.ListField`1.OnMakeListItem
+  commentId: M:Ceres.Editor.Graph.ListField`1.OnMakeListItem
+  name: OnMakeListItem()
+  nameWithType: ListField<T>.OnMakeListItem()
+  fullName: Ceres.Editor.Graph.ListField<T>.OnMakeListItem()
+  nameWithType.vb: ListField(Of T).OnMakeListItem()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnMakeListItem()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1.OnMakeListItem
+    name: OnMakeListItem
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1.OnMakeListItem
+    name: OnMakeListItem
+  - name: (
+  - name: )

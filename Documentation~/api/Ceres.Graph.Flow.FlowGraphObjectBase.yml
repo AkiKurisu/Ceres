@@ -1,0 +1,250 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase
+  commentId: T:Ceres.Graph.Flow.FlowGraphObjectBase
+  id: FlowGraphObjectBase
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Graph
+  - Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Object
+  - Ceres.Graph.Flow.FlowGraphObjectBase.CreateRuntimeFlowGraphInstance
+  - Ceres.Graph.Flow.FlowGraphObjectBase.ReleaseGraph
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphObjectBase
+  nameWithType: FlowGraphObjectBase
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase
+  type: Class
+  source:
+    id: FlowGraphObjectBase
+    path: ''
+    startLine: 22406
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nBase class for <see cref=\"!:MonoBehaviour\"></see> contains Flow Graph.\n"
+  example: []
+  syntax:
+    content: 'public abstract class FlowGraphObjectBase : MonoBehaviour, IFlowGraphRuntime'
+    content.vb: Public MustInherit Class FlowGraphObjectBase Inherits MonoBehaviour Implements IFlowGraphRuntime
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Graph.Flow.FlowGraphInstanceObject
+  - Ceres.Graph.Flow.FlowGraphObject
+  implements:
+  - Ceres.Graph.Flow.IFlowGraphRuntime
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Object
+  commentId: P:Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Object
+  id: Ceres#Graph#Flow#IFlowGraphRuntime#Object
+  isEii: true
+  parent: Ceres.Graph.Flow.FlowGraphObjectBase
+  langs:
+  - csharp
+  - vb
+  name: IFlowGraphRuntime.Object
+  nameWithType: FlowGraphObjectBase.IFlowGraphRuntime.Object
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres.Graph.Flow.IFlowGraphRuntime.Object
+  type: Property
+  source:
+    id: Ceres.Graph.Flow.IFlowGraphRuntime.Object
+    path: ''
+    startLine: 22410
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: UObject IFlowGraphRuntime.Object { get; }
+    parameters: []
+    return:
+      type: Global.UObject
+    content.vb: ReadOnly Property Ceres.Graph.Flow.IFlowGraphRuntime.Object As UObject
+  overload: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Object*
+  implements:
+  - Ceres.Graph.Flow.IFlowGraphRuntime.Object
+  nameWithType.vb: FlowGraphObjectBase.Ceres.Graph.Flow.IFlowGraphRuntime.Object
+  name.vb: Ceres.Graph.Flow.IFlowGraphRuntime.Object
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Graph
+  commentId: P:Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Graph
+  id: Ceres#Graph#Flow#IFlowGraphRuntime#Graph
+  isEii: true
+  parent: Ceres.Graph.Flow.FlowGraphObjectBase
+  langs:
+  - csharp
+  - vb
+  name: IFlowGraphRuntime.Graph
+  nameWithType: FlowGraphObjectBase.IFlowGraphRuntime.Graph
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  type: Property
+  source:
+    id: Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+    path: ''
+    startLine: 22415
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: FlowGraph IFlowGraphRuntime.Graph { get; }
+    parameters: []
+    return:
+      type: Ceres.Graph.Flow.FlowGraph
+    content.vb: ReadOnly Property Ceres.Graph.Flow.IFlowGraphRuntime.Graph As FlowGraph
+  overload: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Graph*
+  implements:
+  - Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  nameWithType.vb: FlowGraphObjectBase.Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  name.vb: Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase.CreateRuntimeFlowGraphInstance
+  commentId: M:Ceres.Graph.Flow.FlowGraphObjectBase.CreateRuntimeFlowGraphInstance
+  id: CreateRuntimeFlowGraphInstance
+  parent: Ceres.Graph.Flow.FlowGraphObjectBase
+  langs:
+  - csharp
+  - vb
+  name: CreateRuntimeFlowGraphInstance()
+  nameWithType: FlowGraphObjectBase.CreateRuntimeFlowGraphInstance()
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase.CreateRuntimeFlowGraphInstance()
+  type: Method
+  source:
+    id: CreateRuntimeFlowGraphInstance
+    path: ''
+    startLine: 22434
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: protected abstract FlowGraph CreateRuntimeFlowGraphInstance()
+    return:
+      type: Ceres.Graph.Flow.FlowGraph
+    content.vb: Protected MustOverride Function CreateRuntimeFlowGraphInstance() As FlowGraph
+  overload: Ceres.Graph.Flow.FlowGraphObjectBase.CreateRuntimeFlowGraphInstance*
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase.ReleaseGraph
+  commentId: M:Ceres.Graph.Flow.FlowGraphObjectBase.ReleaseGraph
+  id: ReleaseGraph
+  parent: Ceres.Graph.Flow.FlowGraphObjectBase
+  langs:
+  - csharp
+  - vb
+  name: ReleaseGraph()
+  nameWithType: FlowGraphObjectBase.ReleaseGraph()
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase.ReleaseGraph()
+  type: Method
+  source:
+    id: ReleaseGraph
+    path: ''
+    startLine: 22440
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nRelease graph instance safely\n"
+  example: []
+  syntax:
+    content: protected void ReleaseGraph()
+    content.vb: Protected Sub ReleaseGraph()
+  overload: Ceres.Graph.Flow.FlowGraphObjectBase.ReleaseGraph*
+references:
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.Flow.IFlowGraphRuntime
+  commentId: T:Ceres.Graph.Flow.IFlowGraphRuntime
+  parent: Ceres.Graph.Flow
+  name: IFlowGraphRuntime
+  nameWithType: IFlowGraphRuntime
+  fullName: Ceres.Graph.Flow.IFlowGraphRuntime
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Object*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Object
+  name: IFlowGraphRuntime.Object
+  nameWithType: FlowGraphObjectBase.IFlowGraphRuntime.Object
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres.Graph.Flow.IFlowGraphRuntime.Object
+  nameWithType.vb: FlowGraphObjectBase.Ceres.Graph.Flow.IFlowGraphRuntime.Object
+  name.vb: Ceres.Graph.Flow.IFlowGraphRuntime.Object
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.IFlowGraphRuntime*
+    name: IFlowGraphRuntime
+  - name: .
+  - uid: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Object*
+    name: Object
+- uid: Ceres.Graph.Flow.IFlowGraphRuntime.Object
+  commentId: P:Ceres.Graph.Flow.IFlowGraphRuntime.Object
+  parent: Ceres.Graph.Flow.IFlowGraphRuntime
+  name: Object
+  nameWithType: IFlowGraphRuntime.Object
+  fullName: Ceres.Graph.Flow.IFlowGraphRuntime.Object
+- uid: Global.UObject
+  isExternal: true
+  name: UObject
+  nameWithType: UObject
+  fullName: UObject
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Graph*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Graph
+  name: IFlowGraphRuntime.Graph
+  nameWithType: FlowGraphObjectBase.IFlowGraphRuntime.Graph
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  nameWithType.vb: FlowGraphObjectBase.Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  name.vb: Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.IFlowGraphRuntime*
+    name: IFlowGraphRuntime
+  - name: .
+  - uid: Ceres.Graph.Flow.FlowGraphObjectBase.Ceres#Graph#Flow#IFlowGraphRuntime#Graph*
+    name: Graph
+- uid: Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  commentId: P:Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  parent: Ceres.Graph.Flow.IFlowGraphRuntime
+  name: Graph
+  nameWithType: IFlowGraphRuntime.Graph
+  fullName: Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+- uid: Ceres.Graph.Flow.FlowGraph
+  commentId: T:Ceres.Graph.Flow.FlowGraph
+  parent: Ceres.Graph.Flow
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Graph.Flow.FlowGraph
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase.CreateRuntimeFlowGraphInstance*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphObjectBase.CreateRuntimeFlowGraphInstance
+  name: CreateRuntimeFlowGraphInstance
+  nameWithType: FlowGraphObjectBase.CreateRuntimeFlowGraphInstance
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase.CreateRuntimeFlowGraphInstance
+- uid: Ceres.Graph.Flow.FlowGraphObjectBase.ReleaseGraph*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphObjectBase.ReleaseGraph
+  name: ReleaseGraph
+  nameWithType: FlowGraphObjectBase.ReleaseGraph
+  fullName: Ceres.Graph.Flow.FlowGraphObjectBase.ReleaseGraph

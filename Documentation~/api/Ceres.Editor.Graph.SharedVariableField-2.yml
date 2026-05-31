@@ -1,0 +1,543 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.SharedVariableField`2
+  commentId: T:Ceres.Editor.Graph.SharedVariableField`2
+  id: SharedVariableField`2
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.SharedVariableField`2.#ctor(System.String,Type,FieldInfo)
+  - Ceres.Editor.Graph.SharedVariableField`2.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+  - Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+  - Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+  - Ceres.Editor.Graph.SharedVariableField`2.Repaint
+  - Ceres.Editor.Graph.SharedVariableField`2.SetValue(`1)
+  - Ceres.Editor.Graph.SharedVariableField`2.value
+  - Ceres.Editor.Graph.SharedVariableField`2.ValueField
+  langs:
+  - csharp
+  - vb
+  name: SharedVariableField<TVariable, TKValue>
+  nameWithType: SharedVariableField<TVariable, TKValue>
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>
+  type: Class
+  source:
+    id: SharedVariableField
+    path: ''
+    startLine: 2580
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public abstract class SharedVariableField<TVariable, TKValue> : BaseField<TVariable>, IBindableField where TVariable : SharedVariable<TKValue>, new()'
+    typeParameters:
+    - id: TVariable
+    - id: TKValue
+    content.vb: Public MustInherit Class SharedVariableField(Of TVariable As {SharedVariable(Of TKValue), New}, TKValue) Inherits BaseField(Of TVariable) Implements IBindableField
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Editor.Graph.SharedUObjectField
+  - Ceres.Editor.Graph.SharedVariableResolver`3.Field
+  implements:
+  - Ceres.Editor.Graph.IBindableField
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue)
+  name.vb: SharedVariableField(Of TVariable, TKValue)
+- uid: Ceres.Editor.Graph.SharedVariableField`2.ValueField
+  commentId: P:Ceres.Editor.Graph.SharedVariableField`2.ValueField
+  id: ValueField
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: ValueField
+  nameWithType: SharedVariableField<TVariable, TKValue>.ValueField
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.ValueField
+  type: Property
+  source:
+    id: ValueField
+    path: ''
+    startLine: 2596
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected BaseField<TKValue> ValueField { get; }
+    parameters: []
+    return:
+      type: Global.BaseField{{TKValue}}
+    content.vb: Protected Property ValueField As BaseField(Of TKValue)
+  overload: Ceres.Editor.Graph.SharedVariableField`2.ValueField*
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).ValueField
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).ValueField
+- uid: Ceres.Editor.Graph.SharedVariableField`2.#ctor(System.String,Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.#ctor(System.String,Type,FieldInfo)
+  id: '#ctor(System.String,Type,FieldInfo)'
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: SharedVariableField(string, Type, FieldInfo)
+  nameWithType: SharedVariableField<TVariable, TKValue>.SharedVariableField(string, Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.SharedVariableField(string, Type, FieldInfo)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2598
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected SharedVariableField(string label, Type objectType, FieldInfo fieldInfo)
+    parameters:
+    - id: label
+      type: System.String
+    - id: objectType
+      type: Global.Type
+    - id: fieldInfo
+      type: Global.FieldInfo
+    content.vb: Protected Sub New(label As String, objectType As Type, fieldInfo As FieldInfo)
+  overload: Ceres.Editor.Graph.SharedVariableField`2.#ctor*
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).New(String, Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).New(String, Type, FieldInfo)
+  name.vb: New(String, Type, FieldInfo)
+- uid: Ceres.Editor.Graph.SharedVariableField`2.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  id: BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: BindGraph(CeresGraphView)
+  nameWithType: SharedVariableField<TVariable, TKValue>.BindGraph(CeresGraphView)
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  type: Method
+  source:
+    id: BindGraph
+    path: ''
+    startLine: 2621
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void BindGraph(CeresGraphView graph)
+    parameters:
+    - id: graph
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Public Sub BindGraph(graph As CeresGraphView)
+  overload: Ceres.Editor.Graph.SharedVariableField`2.BindGraph*
+  implements:
+  - Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).BindGraph(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).BindGraph(Ceres.Editor.Graph.CeresGraphView)
+- uid: Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+  id: CreateValueField
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: CreateValueField()
+  nameWithType: SharedVariableField<TVariable, TKValue>.CreateValueField()
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.CreateValueField()
+  type: Method
+  source:
+    id: CreateValueField
+    path: ''
+    startLine: 2698
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected abstract BaseField<TKValue> CreateValueField()
+    return:
+      type: Global.BaseField{{TKValue}}
+    content.vb: Protected MustOverride Function CreateValueField() As BaseField(Of TKValue)
+  overload: Ceres.Editor.Graph.SharedVariableField`2.CreateValueField*
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).CreateValueField()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).CreateValueField()
+- uid: Ceres.Editor.Graph.SharedVariableField`2.value
+  commentId: P:Ceres.Editor.Graph.SharedVariableField`2.value
+  id: value
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: value
+  nameWithType: SharedVariableField<TVariable, TKValue>.value
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.value
+  type: Property
+  source:
+    id: value
+    path: ''
+    startLine: 2700
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public override sealed TVariable value { get; set; }
+    parameters: []
+    return:
+      type: '{TVariable}'
+    content.vb: Public NotOverridable Overrides Property value As TVariable
+  overload: Ceres.Editor.Graph.SharedVariableField`2.value*
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).value
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).value
+- uid: Ceres.Editor.Graph.SharedVariableField`2.SetValue(`1)
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.SetValue(`1)
+  id: SetValue(`1)
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: SetValue(TKValue)
+  nameWithType: SharedVariableField<TVariable, TKValue>.SetValue(TKValue)
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.SetValue(TKValue)
+  type: Method
+  source:
+    id: SetValue
+    path: ''
+    startLine: 2712
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void SetValue(TKValue newValue)
+    parameters:
+    - id: newValue
+      type: '{TKValue}'
+    content.vb: Public Sub SetValue(newValue As TKValue)
+  overload: Ceres.Editor.Graph.SharedVariableField`2.SetValue*
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).SetValue(TKValue)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).SetValue(TKValue)
+- uid: Ceres.Editor.Graph.SharedVariableField`2.Repaint
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.Repaint
+  id: Repaint
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: Repaint()
+  nameWithType: SharedVariableField<TVariable, TKValue>.Repaint()
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.Repaint()
+  type: Method
+  source:
+    id: Repaint
+    path: ''
+    startLine: 2721
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nRepaint <xref href=\"Ceres.Editor.Graph.SharedVariableField%602\" data-throw-if-not-resolved=\"false\"></xref> and rebind property\n"
+  example: []
+  syntax:
+    content: public void Repaint()
+    content.vb: Public Sub Repaint()
+  overload: Ceres.Editor.Graph.SharedVariableField`2.Repaint*
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).Repaint()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).Repaint()
+- uid: Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+  id: NotifyValueChange
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: NotifyValueChange()
+  nameWithType: SharedVariableField<TVariable, TKValue>.NotifyValueChange()
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.NotifyValueChange()
+  type: Method
+  source:
+    id: NotifyValueChange
+    path: ''
+    startLine: 2730
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected void NotifyValueChange()
+    content.vb: Protected Sub NotifyValueChange()
+  overload: Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange*
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).NotifyValueChange()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).NotifyValueChange()
+- uid: Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+  id: OnRepaint
+  parent: Ceres.Editor.Graph.SharedVariableField`2
+  langs:
+  - csharp
+  - vb
+  name: OnRepaint()
+  nameWithType: SharedVariableField<TVariable, TKValue>.OnRepaint()
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.OnRepaint()
+  type: Method
+  source:
+    id: OnRepaint
+    path: ''
+    startLine: 2737
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void OnRepaint()
+    content.vb: Protected Overridable Sub OnRepaint()
+  overload: Ceres.Editor.Graph.SharedVariableField`2.OnRepaint*
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).OnRepaint()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).OnRepaint()
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.IBindableField
+  commentId: T:Ceres.Editor.Graph.IBindableField
+  parent: Ceres.Editor.Graph
+  name: IBindableField
+  nameWithType: IBindableField
+  fullName: Ceres.Editor.Graph.IBindableField
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.SharedVariableField`2.ValueField*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.ValueField
+  name: ValueField
+  nameWithType: SharedVariableField<TVariable, TKValue>.ValueField
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.ValueField
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).ValueField
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).ValueField
+- uid: Global.BaseField{{TKValue}}
+  commentId: '!:Global.BaseField{`1}'
+  definition: Global.BaseField`1
+  name: BaseField<TKValue>
+  nameWithType: BaseField<TKValue>
+  fullName: BaseField<TKValue>
+  nameWithType.vb: BaseField(Of TKValue)
+  fullName.vb: BaseField(Of TKValue)
+  name.vb: BaseField(Of TKValue)
+  spec.csharp:
+  - uid: Global.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: <
+  - name: TKValue
+  - name: '>'
+  spec.vb:
+  - uid: Global.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKValue
+  - name: )
+- uid: Global.BaseField`1
+  isExternal: true
+  name: BaseField<>
+  nameWithType: BaseField<>
+  fullName: BaseField<>
+  nameWithType.vb: BaseField(Of )
+  fullName.vb: BaseField(Of )
+  name.vb: BaseField(Of )
+  spec.csharp:
+  - uid: Global.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField`2.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.#ctor
+  name: SharedVariableField
+  nameWithType: SharedVariableField<TVariable, TKValue>.SharedVariableField
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.SharedVariableField
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).New
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Global.FieldInfo
+  isExternal: true
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: FieldInfo
+- uid: Ceres.Editor.Graph.SharedVariableField`2.BindGraph*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.BindGraph
+  name: BindGraph
+  nameWithType: SharedVariableField<TVariable, TKValue>.BindGraph
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.BindGraph
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).BindGraph
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).BindGraph
+- uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.IBindableField
+  name: BindGraph(CeresGraphView)
+  nameWithType: IBindableField.BindGraph(CeresGraphView)
+  fullName: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.SharedVariableField`2.CreateValueField*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+  name: CreateValueField
+  nameWithType: SharedVariableField<TVariable, TKValue>.CreateValueField
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.CreateValueField
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).CreateValueField
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).CreateValueField
+- uid: Ceres.Editor.Graph.SharedVariableField`2.value*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.value
+  name: value
+  nameWithType: SharedVariableField<TVariable, TKValue>.value
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.value
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).value
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).value
+- uid: '{TVariable}'
+  commentId: '!:TVariable'
+  definition: TVariable
+  name: TVariable
+  nameWithType: TVariable
+  fullName: TVariable
+- uid: TVariable
+  commentId: '!:TVariable'
+  name: TVariable
+  nameWithType: TVariable
+  fullName: TVariable
+- uid: Ceres.Editor.Graph.SharedVariableField`2.SetValue*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.SetValue
+  name: SetValue
+  nameWithType: SharedVariableField<TVariable, TKValue>.SetValue
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.SetValue
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).SetValue
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).SetValue
+- uid: '{TKValue}'
+  commentId: '!:TKValue'
+  definition: TKValue
+  name: TKValue
+  nameWithType: TKValue
+  fullName: TKValue
+- uid: TKValue
+  commentId: '!:TKValue'
+  name: TKValue
+  nameWithType: TKValue
+  fullName: TKValue
+- uid: Ceres.Editor.Graph.SharedVariableField`2
+  commentId: T:Ceres.Editor.Graph.SharedVariableField`2
+  name: SharedVariableField<TVariable, TKValue>
+  nameWithType: SharedVariableField<TVariable, TKValue>
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue)
+  name.vb: SharedVariableField(Of TVariable, TKValue)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2
+    name: SharedVariableField
+  - name: <
+  - name: TVariable
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2
+    name: SharedVariableField
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TVariable
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField`2.Repaint*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.Repaint
+  name: Repaint
+  nameWithType: SharedVariableField<TVariable, TKValue>.Repaint
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.Repaint
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).Repaint
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).Repaint
+- uid: Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+  name: NotifyValueChange
+  nameWithType: SharedVariableField<TVariable, TKValue>.NotifyValueChange
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.NotifyValueChange
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).NotifyValueChange
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).NotifyValueChange
+- uid: Ceres.Editor.Graph.SharedVariableField`2.OnRepaint*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+  name: OnRepaint
+  nameWithType: SharedVariableField<TVariable, TKValue>.OnRepaint
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.OnRepaint
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).OnRepaint
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).OnRepaint

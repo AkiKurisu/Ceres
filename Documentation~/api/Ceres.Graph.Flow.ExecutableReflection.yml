@@ -1,0 +1,389 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.ExecutableReflection
+  commentId: T:Ceres.Graph.Flow.ExecutableReflection
+  id: ExecutableReflection
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.ExecutableReflection.GetFunction_Imp(MethodInfo)
+  - Ceres.Graph.Flow.ExecutableReflection.GetFunction(MethodInfo)
+  - Ceres.Graph.Flow.ExecutableReflection.RegisterReflection``1(Ceres.Graph.Flow.ExecutableReflection)
+  langs:
+  - csharp
+  - vb
+  name: ExecutableReflection
+  nameWithType: ExecutableReflection
+  fullName: Ceres.Graph.Flow.ExecutableReflection
+  type: Class
+  source:
+    id: ExecutableReflection
+    path: ''
+    startLine: 22947
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nRuntime reflection helper for executable functions\n"
+  example: []
+  syntax:
+    content: public abstract class ExecutableReflection
+    content.vb: Public MustInherit Class ExecutableReflection
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Graph.Flow.ExecutableReflection`1
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Graph.Flow.ExecutableReflection.GetFunction(MethodInfo)
+  commentId: M:Ceres.Graph.Flow.ExecutableReflection.GetFunction(MethodInfo)
+  id: GetFunction(MethodInfo)
+  parent: Ceres.Graph.Flow.ExecutableReflection
+  langs:
+  - csharp
+  - vb
+  name: GetFunction(MethodInfo)
+  nameWithType: ExecutableReflection.GetFunction(MethodInfo)
+  fullName: Ceres.Graph.Flow.ExecutableReflection.GetFunction(MethodInfo)
+  type: Method
+  source:
+    id: GetFunction
+    path: ''
+    startLine: 22956
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nGet <xref href=\"Ceres.Graph.Flow.ExecutableFunction\" data-throw-if-not-resolved=\"false\"></xref> from <see cref=\"!:MethodInfo\"></see>\n"
+  example: []
+  syntax:
+    content: public static ExecutableFunction GetFunction(MethodInfo methodInfo)
+    parameters:
+    - id: methodInfo
+      type: Global.MethodInfo
+      description: ''
+    return:
+      type: Ceres.Graph.Flow.ExecutableFunction
+      description: ''
+    content.vb: Public Shared Function GetFunction(methodInfo As MethodInfo) As ExecutableFunction
+  overload: Ceres.Graph.Flow.ExecutableReflection.GetFunction*
+- uid: Ceres.Graph.Flow.ExecutableReflection.GetFunction_Imp(MethodInfo)
+  commentId: M:Ceres.Graph.Flow.ExecutableReflection.GetFunction_Imp(MethodInfo)
+  id: GetFunction_Imp(MethodInfo)
+  parent: Ceres.Graph.Flow.ExecutableReflection
+  langs:
+  - csharp
+  - vb
+  name: GetFunction_Imp(MethodInfo)
+  nameWithType: ExecutableReflection.GetFunction_Imp(MethodInfo)
+  fullName: Ceres.Graph.Flow.ExecutableReflection.GetFunction_Imp(MethodInfo)
+  type: Method
+  source:
+    id: GetFunction_Imp
+    path: ''
+    startLine: 22969
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: protected abstract ExecutableFunction GetFunction_Imp(MethodInfo methodInfo)
+    parameters:
+    - id: methodInfo
+      type: Global.MethodInfo
+    return:
+      type: Ceres.Graph.Flow.ExecutableFunction
+    content.vb: Protected MustOverride Function GetFunction_Imp(methodInfo As MethodInfo) As ExecutableFunction
+  overload: Ceres.Graph.Flow.ExecutableReflection.GetFunction_Imp*
+- uid: Ceres.Graph.Flow.ExecutableReflection.RegisterReflection``1(Ceres.Graph.Flow.ExecutableReflection)
+  commentId: M:Ceres.Graph.Flow.ExecutableReflection.RegisterReflection``1(Ceres.Graph.Flow.ExecutableReflection)
+  id: RegisterReflection``1(Ceres.Graph.Flow.ExecutableReflection)
+  parent: Ceres.Graph.Flow.ExecutableReflection
+  langs:
+  - csharp
+  - vb
+  name: RegisterReflection<T>(ExecutableReflection)
+  nameWithType: ExecutableReflection.RegisterReflection<T>(ExecutableReflection)
+  fullName: Ceres.Graph.Flow.ExecutableReflection.RegisterReflection<T>(Ceres.Graph.Flow.ExecutableReflection)
+  type: Method
+  source:
+    id: RegisterReflection
+    path: ''
+    startLine: 22971
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: protected static void RegisterReflection<T>(ExecutableReflection instance)
+    parameters:
+    - id: instance
+      type: Ceres.Graph.Flow.ExecutableReflection
+    typeParameters:
+    - id: T
+    content.vb: Protected Shared Sub RegisterReflection(Of T)(instance As ExecutableReflection)
+  overload: Ceres.Graph.Flow.ExecutableReflection.RegisterReflection*
+  nameWithType.vb: ExecutableReflection.RegisterReflection(Of T)(ExecutableReflection)
+  fullName.vb: Ceres.Graph.Flow.ExecutableReflection.RegisterReflection(Of T)(Ceres.Graph.Flow.ExecutableReflection)
+  name.vb: RegisterReflection(Of T)(ExecutableReflection)
+references:
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.ExecutableFunction
+  commentId: T:Ceres.Graph.Flow.ExecutableFunction
+  parent: Ceres.Graph.Flow
+  name: ExecutableFunction
+  nameWithType: ExecutableFunction
+  fullName: Ceres.Graph.Flow.ExecutableFunction
+- uid: Ceres.Graph.Flow.ExecutableReflection.GetFunction*
+  commentId: Overload:Ceres.Graph.Flow.ExecutableReflection.GetFunction
+  name: GetFunction
+  nameWithType: ExecutableReflection.GetFunction
+  fullName: Ceres.Graph.Flow.ExecutableReflection.GetFunction
+- uid: Global.MethodInfo
+  isExternal: true
+  name: MethodInfo
+  nameWithType: MethodInfo
+  fullName: MethodInfo
+- uid: Ceres.Graph.Flow.ExecutableReflection.GetFunction_Imp*
+  commentId: Overload:Ceres.Graph.Flow.ExecutableReflection.GetFunction_Imp
+  name: GetFunction_Imp
+  nameWithType: ExecutableReflection.GetFunction_Imp
+  fullName: Ceres.Graph.Flow.ExecutableReflection.GetFunction_Imp
+- uid: Ceres.Graph.Flow.ExecutableReflection.RegisterReflection*
+  commentId: Overload:Ceres.Graph.Flow.ExecutableReflection.RegisterReflection
+  name: RegisterReflection
+  nameWithType: ExecutableReflection.RegisterReflection
+  fullName: Ceres.Graph.Flow.ExecutableReflection.RegisterReflection
+- uid: Ceres.Graph.Flow.ExecutableReflection
+  commentId: T:Ceres.Graph.Flow.ExecutableReflection
+  parent: Ceres.Graph.Flow
+  name: ExecutableReflection
+  nameWithType: ExecutableReflection
+  fullName: Ceres.Graph.Flow.ExecutableReflection

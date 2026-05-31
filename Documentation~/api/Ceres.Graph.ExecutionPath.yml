@@ -1,0 +1,100 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.ExecutionPath
+  commentId: T:Ceres.Graph.ExecutionPath
+  id: ExecutionPath
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.ExecutionPath.Dependency
+  - Ceres.Graph.ExecutionPath.Forward
+  langs:
+  - csharp
+  - vb
+  name: ExecutionPath
+  nameWithType: ExecutionPath
+  fullName: Ceres.Graph.ExecutionPath
+  type: Enum
+  source:
+    id: ExecutionPath
+    path: ''
+    startLine: 19146
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nDefine how to execute node\n"
+  example: []
+  syntax:
+    content: public enum ExecutionPath
+    content.vb: Public Enum ExecutionPath
+- uid: Ceres.Graph.ExecutionPath.Forward
+  commentId: F:Ceres.Graph.ExecutionPath.Forward
+  id: Forward
+  parent: Ceres.Graph.ExecutionPath
+  langs:
+  - csharp
+  - vb
+  name: Forward
+  nameWithType: ExecutionPath.Forward
+  fullName: Ceres.Graph.ExecutionPath.Forward
+  type: Field
+  source:
+    id: Forward
+    path: ''
+    startLine: 19151
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nExecute node in a forward path that ensure order\n"
+  example: []
+  syntax:
+    content: Forward = 0
+    return:
+      type: Ceres.Graph.ExecutionPath
+- uid: Ceres.Graph.ExecutionPath.Dependency
+  commentId: F:Ceres.Graph.ExecutionPath.Dependency
+  id: Dependency
+  parent: Ceres.Graph.ExecutionPath
+  langs:
+  - csharp
+  - vb
+  name: Dependency
+  nameWithType: ExecutionPath.Dependency
+  fullName: Ceres.Graph.ExecutionPath.Dependency
+  type: Field
+  source:
+    id: Dependency
+    path: ''
+    startLine: 19155
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nExecute node by a dependency graph that let node executed only when used\n"
+  example: []
+  syntax:
+    content: Dependency = 1
+    return:
+      type: Ceres.Graph.ExecutionPath
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: Ceres.Graph.ExecutionPath
+  commentId: T:Ceres.Graph.ExecutionPath
+  parent: Ceres.Graph
+  name: ExecutionPath
+  nameWithType: ExecutionPath
+  fullName: Ceres.Graph.ExecutionPath

@@ -1,0 +1,1223 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.StringListResolver
+  commentId: T:Ceres.Editor.Graph.StringListResolver
+  id: StringListResolver
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.StringListResolver.#ctor(FieldInfo)
+  - Ceres.Editor.Graph.StringListResolver.CreateEditorField(FieldInfo)
+  - Ceres.Editor.Graph.StringListResolver.IsAcceptable(Type,FieldInfo)
+  langs:
+  - csharp
+  - vb
+  name: StringListResolver
+  nameWithType: StringListResolver
+  fullName: Ceres.Editor.Graph.StringListResolver
+  type: Class
+  source:
+    id: StringListResolver
+    path: ''
+    startLine: 4001
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class StringListResolver : ListResolver<string>, IFieldResolver'
+    content.vb: Public Class StringListResolver Inherits ListResolver(Of String) Implements IFieldResolver
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}
+  - Ceres.Editor.Graph.ListResolver{System.String}
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver
+  inheritedMembers:
+  - Ceres.Editor.Graph.ListResolver{System.String}.ChildResolver
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.Value
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.ValueSetter
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.ValueGetter
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.EditorField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.BaseField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Value
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Restore(System.Object)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Commit(System.Object)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.IsAcceptable(Type,FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateEditorField(FieldInfo)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Editor.Graph.StringListResolver.#ctor(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.StringListResolver.#ctor(FieldInfo)
+  id: '#ctor(FieldInfo)'
+  parent: Ceres.Editor.Graph.StringListResolver
+  langs:
+  - csharp
+  - vb
+  name: StringListResolver(FieldInfo)
+  nameWithType: StringListResolver.StringListResolver(FieldInfo)
+  fullName: Ceres.Editor.Graph.StringListResolver.StringListResolver(FieldInfo)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4003
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public StringListResolver(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: Global.FieldInfo
+    content.vb: Public Sub New(fieldInfo As FieldInfo)
+  overload: Ceres.Editor.Graph.StringListResolver.#ctor*
+  nameWithType.vb: StringListResolver.New(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.StringListResolver.New(FieldInfo)
+  name.vb: New(FieldInfo)
+- uid: Ceres.Editor.Graph.StringListResolver.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.StringListResolver.CreateEditorField(FieldInfo)
+  id: CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.StringListResolver
+  langs:
+  - csharp
+  - vb
+  name: CreateEditorField(FieldInfo)
+  nameWithType: StringListResolver.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.StringListResolver.CreateEditorField(FieldInfo)
+  type: Method
+  source:
+    id: CreateEditorField
+    path: ''
+    startLine: 4008
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override ListField<string> CreateEditorField(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: Global.FieldInfo
+    return:
+      type: Ceres.Editor.Graph.ListField{System.String}
+    content.vb: Protected Overrides Function CreateEditorField(fieldInfo As FieldInfo) As ListField(Of String)
+  overridden: Ceres.Editor.Graph.ListResolver{System.String}.CreateEditorField(FieldInfo)
+  overload: Ceres.Editor.Graph.StringListResolver.CreateEditorField*
+- uid: Ceres.Editor.Graph.StringListResolver.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.StringListResolver.IsAcceptable(Type,FieldInfo)
+  id: IsAcceptable(Type,FieldInfo)
+  parent: Ceres.Editor.Graph.StringListResolver
+  langs:
+  - csharp
+  - vb
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: StringListResolver.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.StringListResolver.IsAcceptable(Type, FieldInfo)
+  type: Method
+  source:
+    id: IsAcceptable
+    path: ''
+    startLine: 4013
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public override bool IsAcceptable(Type fieldValueType, FieldInfo _)
+    parameters:
+    - id: fieldValueType
+      type: Global.Type
+    - id: _
+      type: Global.FieldInfo
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function IsAcceptable(fieldValueType As Type, _ As FieldInfo) As Boolean
+  overridden: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.IsAcceptable(Type,FieldInfo)
+  overload: Ceres.Editor.Graph.StringListResolver.IsAcceptable*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  commentId: T:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.FieldResolver`2
+  name: FieldResolver<ListField<string>, List<string>>
+  nameWithType: FieldResolver<ListField<string>, List<string>>
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String))
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String))
+  name.vb: FieldResolver(Of ListField(Of String), List(Of String))
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: <
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}
+  commentId: T:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.FieldResolver`3
+  name: FieldResolver<ListField<string>, List<string>, IList<string>>
+  nameWithType: FieldResolver<ListField<string>, List<string>, IList<string>>
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>, IList<string>>
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String), IList(Of String))
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String), IList(Of String))
+  name.vb: FieldResolver(Of ListField(Of String), List(Of String), IList(Of String))
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`3
+    name: FieldResolver
+  - name: <
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Global.IList`1
+    name: IList
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`3
+    name: FieldResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Global.IList`1
+    name: IList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Ceres.Editor.Graph.ListResolver{System.String}
+  commentId: T:Ceres.Editor.Graph.ListResolver{System.String}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.ListResolver`1
+  name: ListResolver<string>
+  nameWithType: ListResolver<string>
+  fullName: Ceres.Editor.Graph.ListResolver<string>
+  nameWithType.vb: ListResolver(Of String)
+  fullName.vb: Ceres.Editor.Graph.ListResolver(Of String)
+  name.vb: ListResolver(Of String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListResolver`1
+    name: ListResolver
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListResolver`1
+    name: ListResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.IFieldResolver
+  commentId: T:Ceres.Editor.Graph.IFieldResolver
+  parent: Ceres.Editor.Graph
+  name: IFieldResolver
+  nameWithType: IFieldResolver
+  fullName: Ceres.Editor.Graph.IFieldResolver
+- uid: Ceres.Editor.Graph.ListResolver{System.String}.ChildResolver
+  commentId: F:Ceres.Editor.Graph.ListResolver{System.String}.ChildResolver
+  parent: Ceres.Editor.Graph.ListResolver{System.String}
+  definition: Ceres.Editor.Graph.ListResolver`1.ChildResolver
+  name: ChildResolver
+  nameWithType: ListResolver<string>.ChildResolver
+  fullName: Ceres.Editor.Graph.ListResolver<string>.ChildResolver
+  nameWithType.vb: ListResolver(Of String).ChildResolver
+  fullName.vb: Ceres.Editor.Graph.ListResolver(Of String).ChildResolver
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.Value
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`3.Value
+  name: Value
+  nameWithType: FieldResolver<ListField<string>, List<string>, IList<string>>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>, IList<string>>.Value
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String), IList(Of String)).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String), IList(Of String)).Value
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.ValueSetter
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.ValueSetter
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`3.ValueSetter
+  name: ValueSetter
+  nameWithType: FieldResolver<ListField<string>, List<string>, IList<string>>.ValueSetter
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>, IList<string>>.ValueSetter
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String), IList(Of String)).ValueSetter
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String), IList(Of String)).ValueSetter
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.ValueGetter
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}.ValueGetter
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String},IList{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`3.ValueGetter
+  name: ValueGetter
+  nameWithType: FieldResolver<ListField<string>, List<string>, IList<string>>.ValueGetter
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>, IList<string>>.ValueGetter
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String), IList(Of String)).ValueGetter
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String), IList(Of String)).ValueGetter
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.EditorField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  name: EditorField
+  nameWithType: FieldResolver<ListField<string>, List<string>>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.EditorField
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.BaseField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  name: BaseField
+  nameWithType: FieldResolver<ListField<string>, List<string>>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.BaseField
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Value
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Value
+  name: Value
+  nameWithType: FieldResolver<ListField<string>, List<string>>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.Value
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).Value
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  name: CreateField()
+  nameWithType: FieldResolver<ListField<string>, List<string>>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.CreateField()
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<ListField<string>, List<string>>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Restore(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  name: Restore(object)
+  nameWithType: FieldResolver<ListField<string>, List<string>>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.Restore(object)
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Commit(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  name: Commit(object)
+  nameWithType: FieldResolver<ListField<string>, List<string>>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.Commit(object)
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<ListField<string>, List<string>>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.IsAcceptable(Type,FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<ListField<string>, List<string>>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.IsAcceptable(Type, FieldInfo)
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<ListField<string>, List<string>>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.ListField<string>, List<string>>.CreateEditorField(FieldInfo)
+  nameWithType.vb: FieldResolver(Of ListField(Of String), List(Of String)).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.ListField(Of String), List(Of String)).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.ListField{System.String},List{System.String}}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.FieldResolver`2
+  commentId: T:Ceres.Editor.Graph.FieldResolver`2
+  name: FieldResolver<TField, TKValue>
+  nameWithType: FieldResolver<TField, TKValue>
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>
+  nameWithType.vb: FieldResolver(Of TField, TKValue)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue)
+  name.vb: FieldResolver(Of TField, TKValue)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: <
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`3
+  commentId: T:Ceres.Editor.Graph.FieldResolver`3
+  name: FieldResolver<TField, TKValue, TFInterface>
+  nameWithType: FieldResolver<TField, TKValue, TFInterface>
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue, TFInterface>
+  nameWithType.vb: FieldResolver(Of TField, TKValue, TFInterface)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue, TFInterface)
+  name.vb: FieldResolver(Of TField, TKValue, TFInterface)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`3
+    name: FieldResolver
+  - name: <
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: ','
+  - name: " "
+  - name: TFInterface
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`3
+    name: FieldResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: ','
+  - name: " "
+  - name: TFInterface
+  - name: )
+- uid: Ceres.Editor.Graph.ListResolver`1
+  commentId: T:Ceres.Editor.Graph.ListResolver`1
+  name: ListResolver<T>
+  nameWithType: ListResolver<T>
+  fullName: Ceres.Editor.Graph.ListResolver<T>
+  nameWithType.vb: ListResolver(Of T)
+  fullName.vb: Ceres.Editor.Graph.ListResolver(Of T)
+  name.vb: ListResolver(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListResolver`1
+    name: ListResolver
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListResolver`1
+    name: ListResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.ListResolver`1.ChildResolver
+  commentId: F:Ceres.Editor.Graph.ListResolver`1.ChildResolver
+  name: ChildResolver
+  nameWithType: ListResolver<T>.ChildResolver
+  fullName: Ceres.Editor.Graph.ListResolver<T>.ChildResolver
+  nameWithType.vb: ListResolver(Of T).ChildResolver
+  fullName.vb: Ceres.Editor.Graph.ListResolver(Of T).ChildResolver
+- uid: Ceres.Editor.Graph.FieldResolver`3.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver`3.Value
+  name: Value
+  nameWithType: FieldResolver<TField, TKValue, TFInterface>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue, TFInterface>.Value
+  nameWithType.vb: FieldResolver(Of TField, TKValue, TFInterface).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue, TFInterface).Value
+- uid: Ceres.Editor.Graph.FieldResolver`3.ValueSetter
+  commentId: P:Ceres.Editor.Graph.FieldResolver`3.ValueSetter
+  name: ValueSetter
+  nameWithType: FieldResolver<TField, TKValue, TFInterface>.ValueSetter
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue, TFInterface>.ValueSetter
+  nameWithType.vb: FieldResolver(Of TField, TKValue, TFInterface).ValueSetter
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue, TFInterface).ValueSetter
+- uid: Ceres.Editor.Graph.FieldResolver`3.ValueGetter
+  commentId: P:Ceres.Editor.Graph.FieldResolver`3.ValueGetter
+  name: ValueGetter
+  nameWithType: FieldResolver<TField, TKValue, TFInterface>.ValueGetter
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue, TFInterface>.ValueGetter
+  nameWithType.vb: FieldResolver(Of TField, TKValue, TFInterface).ValueGetter
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue, TFInterface).ValueGetter
+- uid: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.EditorField
+  name: EditorField
+  nameWithType: FieldResolver<TField, TKValue>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.EditorField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.BaseField
+  name: BaseField
+  nameWithType: FieldResolver<TField, TKValue>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.BaseField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver`2.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.Value
+  name: Value
+  nameWithType: FieldResolver<TField, TKValue>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Value
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Value
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateField
+  name: CreateField()
+  nameWithType: FieldResolver<TField, TKValue>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateField()
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<TField, TKValue>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  isExternal: true
+  name: Restore(object)
+  nameWithType: FieldResolver<TField, TKValue>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Restore(object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  isExternal: true
+  name: Commit(object)
+  nameWithType: FieldResolver<TField, TKValue>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Commit(object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<TField, TKValue>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  isExternal: true
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  isExternal: true
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.StringListResolver.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.StringListResolver.#ctor
+  name: StringListResolver
+  nameWithType: StringListResolver.StringListResolver
+  fullName: Ceres.Editor.Graph.StringListResolver.StringListResolver
+  nameWithType.vb: StringListResolver.New
+  fullName.vb: Ceres.Editor.Graph.StringListResolver.New
+  name.vb: New
+- uid: Global.FieldInfo
+  isExternal: true
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: FieldInfo
+- uid: Ceres.Editor.Graph.ListResolver{System.String}.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.ListResolver{System.String}.CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.ListResolver{System.String}
+  definition: Ceres.Editor.Graph.ListResolver`1.CreateEditorField(FieldInfo)
+  name: CreateEditorField(FieldInfo)
+  nameWithType: ListResolver<string>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.ListResolver<string>.CreateEditorField(FieldInfo)
+  nameWithType.vb: ListResolver(Of String).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.ListResolver(Of String).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListResolver{System.String}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListResolver{System.String}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.StringListResolver.CreateEditorField*
+  commentId: Overload:Ceres.Editor.Graph.StringListResolver.CreateEditorField
+  name: CreateEditorField
+  nameWithType: StringListResolver.CreateEditorField
+  fullName: Ceres.Editor.Graph.StringListResolver.CreateEditorField
+- uid: Ceres.Editor.Graph.ListField{System.String}
+  commentId: T:Ceres.Editor.Graph.ListField{System.String}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.ListField`1
+  name: ListField<string>
+  nameWithType: ListField<string>
+  fullName: Ceres.Editor.Graph.ListField<string>
+  nameWithType.vb: ListField(Of String)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of String)
+  name.vb: ListField(Of String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.ListResolver`1.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.ListResolver`1.CreateEditorField(FieldInfo)
+  isExternal: true
+  name: CreateEditorField(FieldInfo)
+  nameWithType: ListResolver<T>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.ListResolver<T>.CreateEditorField(FieldInfo)
+  nameWithType.vb: ListResolver(Of T).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.ListResolver(Of T).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListResolver`1.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListResolver`1.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1
+  commentId: T:Ceres.Editor.Graph.ListField`1
+  name: ListField<T>
+  nameWithType: ListField<T>
+  fullName: Ceres.Editor.Graph.ListField<T>
+  nameWithType.vb: ListField(Of T)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T)
+  name.vb: ListField(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.StringListResolver.IsAcceptable*
+  commentId: Overload:Ceres.Editor.Graph.StringListResolver.IsAcceptable
+  name: IsAcceptable
+  nameWithType: StringListResolver.IsAcceptable
+  fullName: Ceres.Editor.Graph.StringListResolver.IsAcceptable
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

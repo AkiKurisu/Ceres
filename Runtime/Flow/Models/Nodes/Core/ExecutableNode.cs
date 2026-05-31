@@ -77,7 +77,7 @@ namespace Ceres.Graph.Flow
         protected override UniTask Execute(ExecutionContext executionContext)
         {
             LocalExecute(executionContext);
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
         

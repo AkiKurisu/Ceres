@@ -10,6 +10,7 @@ namespace Ceres.Graph.Flow.Utilities
     /// Execute function in flow
     /// </summary>
     [Serializable]
+    [NodeInfo("Invokes a C# executable function from the Flow graph.")]
     public abstract class FlowNode_ExecuteFunction: FlowNode
     {
         [HideInGraphEditor]

@@ -8,6 +8,7 @@ namespace Ceres.Graph.Flow.Properties
     [Serializable]
     [CeresGroup("Hidden")]
     [CeresLabel("Set {0}")]
+    [NodeInfo("Writes the selected property value on the target object.")]
     [CeresMetadata("style = PropertyNode", "path = Forward")]
     public sealed class PropertyNode_SetPropertyTValue<TTarget, T>: PropertyNode_PropertyValue,
         ISerializationCallbackReceiver
@@ -32,7 +33,7 @@ namespace Ceres.Graph.Flow.Properties
         protected override UniTask Execute(ExecutionContext executionContext)
         {
             _delegate.Invoke(GetTargetOrDefault(target, executionContext), inputValue.Value);
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
 

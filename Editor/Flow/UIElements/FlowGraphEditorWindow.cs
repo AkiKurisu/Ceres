@@ -190,7 +190,11 @@ namespace Ceres.Editor.Graph.Flow
         [OnOpenAsset]
         private static bool OnOpenAsset(int instanceId, int _)
         {
+#if UNITY_6000_3_OR_NEWER
+            var asset = EditorUtility.EntityIdToObject(instanceId);
+#else
             var asset = EditorUtility.InstanceIDToObject(instanceId);
+#endif
             if (asset is not FlowGraphScriptableObjectBase objectBase) return false;
 
             Show(objectBase);
@@ -265,10 +269,10 @@ namespace Ceres.Editor.Graph.Flow
                 }
 
                 /* Reload graph view */
-                var currentViewPosition = CurrentGraphView.viewTransform.position;
+                var currentViewPosition = GetViewPosition(CurrentGraphView);
                 _graphViews.Clear();
                 StructVisualElements(GraphIndex);
-                CurrentGraphView.viewTransform.position = currentViewPosition;
+                SetViewPosition(CurrentGraphView, currentViewPosition);
                 if (CeresSettings.CleanLogAuto)
                 {
                     EditorInternalUtil.ClearConsole();
@@ -295,6 +299,25 @@ namespace Ceres.Editor.Graph.Flow
             }
 
             return true;
+        }
+
+        private static Vector3 GetViewPosition(FlowGraphView graphView)
+        {
+#if UNITY_6000_0_OR_NEWER
+            var translate = graphView.contentViewContainer.resolvedStyle.translate;
+            return new Vector3(translate.x, translate.y, translate.z);
+#else
+            return graphView.viewTransform.position;
+#endif
+        }
+
+        private static void SetViewPosition(FlowGraphView graphView, Vector3 position)
+        {
+#if UNITY_6000_0_OR_NEWER
+            graphView.contentViewContainer.style.translate = new Translate(position.x, position.y);
+#else
+            graphView.viewTransform.position = position;
+#endif
         }
 
         private void OnToolBarGUI()

@@ -6,11 +6,16 @@ using Chris.Serialization;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
-    /// Executable function library for Chris.DataDriven
+    /// Provides Chris.DataDriven table access helpers for Flow graphs.
     /// </summary>
     [CeresGroup("DataDriven")]
     public partial class DataDrivenExecutableLibrary: ExecutableFunctionLibrary
     {
+        /// <summary>
+        /// Gets or creates a data table manager of the selected manager type.
+        /// </summary>
+        /// <param name="managerType">The concrete data table manager type to resolve.</param>
+        /// <returns>The resolved data table manager instance.</returns>
         [ExecutableFunction]
         public static DataTableManager Flow_GetDataTableManager(
             [ResolveReturn] SerializedType<DataTableManager> managerType)
@@ -18,6 +23,12 @@ namespace Ceres.Graph.Flow.Utilities
             return DataTableManager.GetOrCreateDataTableManager(managerType);
         }
         
+        /// <summary>
+        /// Gets a named data table from the target manager.
+        /// </summary>
+        /// <param name="dataTableManager">The manager that owns the data table.</param>
+        /// <param name="name">The data table name.</param>
+        /// <returns>The matching data table, or null when it is not found.</returns>
         [ExecutableFunction(IsScriptMethod = true), CeresLabel("Get DataTable")]
         public static DataTable Flow_DataTableManagerGetDataTable(DataTableManager dataTableManager, string name)
         {
@@ -25,7 +36,7 @@ namespace Ceres.Graph.Flow.Utilities
         }
         
         /// <summary>
-        /// Get data row from table by RowId
+        /// Gets a data row from the table by row id.
         /// </summary>
         /// <param name="dataTable"></param>
         /// <param name="rowId"></param>
@@ -39,7 +50,7 @@ namespace Ceres.Graph.Flow.Utilities
         }
         
         /// <summary>
-        /// Get data row from table by index
+        /// Gets a data row from the table by index.
         /// </summary>
         /// <param name="dataTable"></param>
         /// <param name="index"></param>
@@ -53,7 +64,7 @@ namespace Ceres.Graph.Flow.Utilities
         }
         
         /// <summary>
-        /// Get all data rows from table.
+        /// Gets all rows from the data table.
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>

@@ -1,0 +1,588 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.SharedUObjectField
+  commentId: T:Ceres.Editor.Graph.SharedUObjectField
+  id: SharedUObjectField
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.SharedUObjectField.#ctor(System.String,Type,FieldInfo)
+  - Ceres.Editor.Graph.SharedUObjectField.CreateValueField
+  - Ceres.Editor.Graph.SharedUObjectField.OnRepaint
+  langs:
+  - csharp
+  - vb
+  name: SharedUObjectField
+  nameWithType: SharedUObjectField
+  fullName: Ceres.Editor.Graph.SharedUObjectField
+  type: Class
+  source:
+    id: SharedUObjectField
+    path: ''
+    startLine: 4277
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public sealed class SharedUObjectField : SharedVariableField<SharedUObject, UObject>, IBindableField'
+    content.vb: Public NotInheritable Class SharedUObjectField Inherits SharedVariableField(Of SharedUObject, UObject) Implements IBindableField
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  implements:
+  - Ceres.Editor.Graph.IBindableField
+  inheritedMembers:
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.ValueField
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.CreateValueField
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.value
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.SetValue(UObject)
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.Repaint
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.NotifyValueChange
+  - Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.OnRepaint
+- uid: Ceres.Editor.Graph.SharedUObjectField.#ctor(System.String,Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedUObjectField.#ctor(System.String,Type,FieldInfo)
+  id: '#ctor(System.String,Type,FieldInfo)'
+  parent: Ceres.Editor.Graph.SharedUObjectField
+  langs:
+  - csharp
+  - vb
+  name: SharedUObjectField(string, Type, FieldInfo)
+  nameWithType: SharedUObjectField.SharedUObjectField(string, Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedUObjectField.SharedUObjectField(string, Type, FieldInfo)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4279
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public SharedUObjectField(string label, Type objectType, FieldInfo fieldInfo)
+    parameters:
+    - id: label
+      type: System.String
+    - id: objectType
+      type: Global.Type
+    - id: fieldInfo
+      type: Global.FieldInfo
+    content.vb: Public Sub New(label As String, objectType As Type, fieldInfo As FieldInfo)
+  overload: Ceres.Editor.Graph.SharedUObjectField.#ctor*
+  nameWithType.vb: SharedUObjectField.New(String, Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.SharedUObjectField.New(String, Type, FieldInfo)
+  name.vb: New(String, Type, FieldInfo)
+- uid: Ceres.Editor.Graph.SharedUObjectField.CreateValueField
+  commentId: M:Ceres.Editor.Graph.SharedUObjectField.CreateValueField
+  id: CreateValueField
+  parent: Ceres.Editor.Graph.SharedUObjectField
+  langs:
+  - csharp
+  - vb
+  name: CreateValueField()
+  nameWithType: SharedUObjectField.CreateValueField()
+  fullName: Ceres.Editor.Graph.SharedUObjectField.CreateValueField()
+  type: Method
+  source:
+    id: CreateValueField
+    path: ''
+    startLine: 4283
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override BaseField<UObject> CreateValueField()
+    return:
+      type: Global.BaseField{UObject}
+    content.vb: Protected Overrides Function CreateValueField() As BaseField(Of UObject)
+  overridden: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.CreateValueField
+  overload: Ceres.Editor.Graph.SharedUObjectField.CreateValueField*
+- uid: Ceres.Editor.Graph.SharedUObjectField.OnRepaint
+  commentId: M:Ceres.Editor.Graph.SharedUObjectField.OnRepaint
+  id: OnRepaint
+  parent: Ceres.Editor.Graph.SharedUObjectField
+  langs:
+  - csharp
+  - vb
+  name: OnRepaint()
+  nameWithType: SharedUObjectField.OnRepaint()
+  fullName: Ceres.Editor.Graph.SharedUObjectField.OnRepaint()
+  type: Method
+  source:
+    id: OnRepaint
+    path: ''
+    startLine: 4291
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override void OnRepaint()
+    content.vb: Protected Overrides Sub OnRepaint()
+  overridden: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.OnRepaint
+  overload: Ceres.Editor.Graph.SharedUObjectField.OnRepaint*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  commentId: T:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.SharedVariableField`2
+  name: SharedVariableField<SharedUObject, UObject>
+  nameWithType: SharedVariableField<SharedUObject, UObject>
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject)
+  name.vb: SharedVariableField(Of SharedUObject, UObject)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2
+    name: SharedVariableField
+  - name: <
+  - uid: Global.SharedUObject
+    name: SharedUObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.UObject
+    name: UObject
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2
+    name: SharedVariableField
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.SharedUObject
+    name: SharedUObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.UObject
+    name: UObject
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.IBindableField
+  commentId: T:Ceres.Editor.Graph.IBindableField
+  parent: Ceres.Editor.Graph
+  name: IBindableField
+  nameWithType: IBindableField
+  fullName: Ceres.Editor.Graph.IBindableField
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.ValueField
+  commentId: P:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.ValueField
+  parent: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  definition: Ceres.Editor.Graph.SharedVariableField`2.ValueField
+  name: ValueField
+  nameWithType: SharedVariableField<SharedUObject, UObject>.ValueField
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>.ValueField
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject).ValueField
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject).ValueField
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  definition: Ceres.Editor.Graph.SharedVariableField`2.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  name: BindGraph(CeresGraphView)
+  nameWithType: SharedVariableField<SharedUObject, UObject>.BindGraph(CeresGraphView)
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject).BindGraph(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject).BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.CreateValueField
+  commentId: M:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.CreateValueField
+  parent: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  definition: Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+  name: CreateValueField()
+  nameWithType: SharedVariableField<SharedUObject, UObject>.CreateValueField()
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>.CreateValueField()
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject).CreateValueField()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject).CreateValueField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.CreateValueField
+    name: CreateValueField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.CreateValueField
+    name: CreateValueField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.value
+  commentId: P:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.value
+  parent: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  definition: Ceres.Editor.Graph.SharedVariableField`2.value
+  name: value
+  nameWithType: SharedVariableField<SharedUObject, UObject>.value
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>.value
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject).value
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject).value
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.SetValue(UObject)
+  commentId: M:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.SetValue(UObject)
+  parent: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  definition: Ceres.Editor.Graph.SharedVariableField`2.SetValue(`1)
+  name: SetValue(UObject)
+  nameWithType: SharedVariableField<SharedUObject, UObject>.SetValue(UObject)
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>.SetValue(UObject)
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject).SetValue(UObject)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject).SetValue(UObject)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.SetValue(UObject)
+    name: SetValue
+  - name: (
+  - uid: Global.UObject
+    name: UObject
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.SetValue(UObject)
+    name: SetValue
+  - name: (
+  - uid: Global.UObject
+    name: UObject
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.Repaint
+  commentId: M:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.Repaint
+  parent: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  definition: Ceres.Editor.Graph.SharedVariableField`2.Repaint
+  name: Repaint()
+  nameWithType: SharedVariableField<SharedUObject, UObject>.Repaint()
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>.Repaint()
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject).Repaint()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject).Repaint()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.Repaint
+    name: Repaint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.Repaint
+    name: Repaint
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.NotifyValueChange
+  commentId: M:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.NotifyValueChange
+  parent: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  definition: Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+  name: NotifyValueChange()
+  nameWithType: SharedVariableField<SharedUObject, UObject>.NotifyValueChange()
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>.NotifyValueChange()
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject).NotifyValueChange()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject).NotifyValueChange()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.NotifyValueChange
+    name: NotifyValueChange
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.NotifyValueChange
+    name: NotifyValueChange
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.OnRepaint
+  commentId: M:Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.OnRepaint
+  parent: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}
+  definition: Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+  name: OnRepaint()
+  nameWithType: SharedVariableField<SharedUObject, UObject>.OnRepaint()
+  fullName: Ceres.Editor.Graph.SharedVariableField<SharedUObject, UObject>.OnRepaint()
+  nameWithType.vb: SharedVariableField(Of SharedUObject, UObject).OnRepaint()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of SharedUObject, UObject).OnRepaint()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.OnRepaint
+    name: OnRepaint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField{SharedUObject,UObject}.OnRepaint
+    name: OnRepaint
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.SharedVariableField`2
+  commentId: T:Ceres.Editor.Graph.SharedVariableField`2
+  name: SharedVariableField<TVariable, TKValue>
+  nameWithType: SharedVariableField<TVariable, TKValue>
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue)
+  name.vb: SharedVariableField(Of TVariable, TKValue)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2
+    name: SharedVariableField
+  - name: <
+  - name: TVariable
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2
+    name: SharedVariableField
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TVariable
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField`2.ValueField
+  commentId: P:Ceres.Editor.Graph.SharedVariableField`2.ValueField
+  name: ValueField
+  nameWithType: SharedVariableField<TVariable, TKValue>.ValueField
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.ValueField
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).ValueField
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).ValueField
+- uid: Ceres.Editor.Graph.SharedVariableField`2.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  name: BindGraph(CeresGraphView)
+  nameWithType: SharedVariableField<TVariable, TKValue>.BindGraph(CeresGraphView)
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).BindGraph(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+  name: CreateValueField()
+  nameWithType: SharedVariableField<TVariable, TKValue>.CreateValueField()
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.CreateValueField()
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).CreateValueField()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).CreateValueField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+    name: CreateValueField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.CreateValueField
+    name: CreateValueField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField`2.value
+  commentId: P:Ceres.Editor.Graph.SharedVariableField`2.value
+  name: value
+  nameWithType: SharedVariableField<TVariable, TKValue>.value
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.value
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).value
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).value
+- uid: Ceres.Editor.Graph.SharedVariableField`2.SetValue(`1)
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.SetValue(`1)
+  name: SetValue(TKValue)
+  nameWithType: SharedVariableField<TVariable, TKValue>.SetValue(TKValue)
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.SetValue(TKValue)
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).SetValue(TKValue)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).SetValue(TKValue)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.SetValue(`1)
+    name: SetValue
+  - name: (
+  - name: TKValue
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.SetValue(`1)
+    name: SetValue
+  - name: (
+  - name: TKValue
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField`2.Repaint
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.Repaint
+  name: Repaint()
+  nameWithType: SharedVariableField<TVariable, TKValue>.Repaint()
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.Repaint()
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).Repaint()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).Repaint()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.Repaint
+    name: Repaint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.Repaint
+    name: Repaint
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+  name: NotifyValueChange()
+  nameWithType: SharedVariableField<TVariable, TKValue>.NotifyValueChange()
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.NotifyValueChange()
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).NotifyValueChange()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).NotifyValueChange()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+    name: NotifyValueChange
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.NotifyValueChange
+    name: NotifyValueChange
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+  commentId: M:Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+  name: OnRepaint()
+  nameWithType: SharedVariableField<TVariable, TKValue>.OnRepaint()
+  fullName: Ceres.Editor.Graph.SharedVariableField<TVariable, TKValue>.OnRepaint()
+  nameWithType.vb: SharedVariableField(Of TVariable, TKValue).OnRepaint()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableField(Of TVariable, TKValue).OnRepaint()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+    name: OnRepaint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableField`2.OnRepaint
+    name: OnRepaint
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.SharedUObjectField.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.SharedUObjectField.#ctor
+  name: SharedUObjectField
+  nameWithType: SharedUObjectField.SharedUObjectField
+  fullName: Ceres.Editor.Graph.SharedUObjectField.SharedUObjectField
+  nameWithType.vb: SharedUObjectField.New
+  fullName.vb: Ceres.Editor.Graph.SharedUObjectField.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Global.FieldInfo
+  isExternal: true
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: FieldInfo
+- uid: Ceres.Editor.Graph.SharedUObjectField.CreateValueField*
+  commentId: Overload:Ceres.Editor.Graph.SharedUObjectField.CreateValueField
+  name: CreateValueField
+  nameWithType: SharedUObjectField.CreateValueField
+  fullName: Ceres.Editor.Graph.SharedUObjectField.CreateValueField
+- uid: Global.BaseField{UObject}
+  commentId: '!:Global.BaseField{UObject}'
+  definition: Global.BaseField`1
+  name: BaseField<UObject>
+  nameWithType: BaseField<UObject>
+  fullName: BaseField<UObject>
+  nameWithType.vb: BaseField(Of UObject)
+  fullName.vb: BaseField(Of UObject)
+  name.vb: BaseField(Of UObject)
+  spec.csharp:
+  - uid: Global.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: <
+  - uid: Global.UObject
+    name: UObject
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.UObject
+    name: UObject
+    isExternal: true
+  - name: )
+- uid: Global.BaseField`1
+  isExternal: true
+  name: BaseField<>
+  nameWithType: BaseField<>
+  fullName: BaseField<>
+  nameWithType.vb: BaseField(Of )
+  fullName.vb: BaseField(Of )
+  name.vb: BaseField(Of )
+  spec.csharp:
+  - uid: Global.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.SharedUObjectField.OnRepaint*
+  commentId: Overload:Ceres.Editor.Graph.SharedUObjectField.OnRepaint
+  name: OnRepaint
+  nameWithType: SharedUObjectField.OnRepaint
+  fullName: Ceres.Editor.Graph.SharedUObjectField.OnRepaint

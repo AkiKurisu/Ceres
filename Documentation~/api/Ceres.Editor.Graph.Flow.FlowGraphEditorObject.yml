@@ -1,0 +1,353 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  commentId: T:Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  id: FlowGraphEditorObject
+  parent: Ceres.Editor.Graph.Flow
+  children:
+  - Ceres.Editor.Graph.Flow.FlowGraphEditorObject.CreateTemporary(IFlowGraphContainer)
+  - Ceres.Editor.Graph.Flow.FlowGraphEditorObject.DestroyTemporary
+  - Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphData
+  - Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphInstance
+  - Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNameContents
+  - Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNames
+  - Ceres.Editor.Graph.Flow.FlowGraphEditorObject.Update
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphEditorObject
+  nameWithType: FlowGraphEditorObject
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  type: Class
+  source:
+    id: FlowGraphEditorObject
+    path: ''
+    startLine: 7356
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  summary: "\nEditor flow graph data container\n"
+  example: []
+  syntax:
+    content: 'public class FlowGraphEditorObject : ScriptableObject'
+    content.vb: Public Class FlowGraphEditorObject Inherits ScriptableObject
+  inheritance:
+  - System.Object
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphData
+  commentId: P:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphData
+  id: GraphData
+  parent: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  langs:
+  - csharp
+  - vb
+  name: GraphData
+  nameWithType: FlowGraphEditorObject.GraphData
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphData
+  type: Property
+  source:
+    id: GraphData
+    path: ''
+    startLine: 7361
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  summary: "\nUndoable editor time graph data\n"
+  example: []
+  syntax:
+    content: public FlowGraphData GraphData { get; set; }
+    parameters: []
+    return:
+      type: Global.FlowGraphData
+    content.vb: Public Property GraphData As FlowGraphData
+  overload: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphData*
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphInstance
+  commentId: P:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphInstance
+  id: GraphInstance
+  parent: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  langs:
+  - csharp
+  - vb
+  name: GraphInstance
+  nameWithType: FlowGraphEditorObject.GraphInstance
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphInstance
+  type: Property
+  source:
+    id: GraphInstance
+    path: ''
+    startLine: 7368
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: public FlowGraph GraphInstance { get; }
+    parameters: []
+    return:
+      type: Global.FlowGraph
+    content.vb: Public ReadOnly Property GraphInstance As FlowGraph
+  overload: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphInstance*
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNameContents
+  commentId: P:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNameContents
+  id: GraphNameContents
+  parent: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  langs:
+  - csharp
+  - vb
+  name: GraphNameContents
+  nameWithType: FlowGraphEditorObject.GraphNameContents
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNameContents
+  type: Property
+  source:
+    id: GraphNameContents
+    path: ''
+    startLine: 7403
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: public GUIContent[] GraphNameContents { get; }
+    parameters: []
+    return:
+      type: Global.GUIContent[]
+    content.vb: Public Property GraphNameContents As GUIContent()
+  overload: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNameContents*
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNames
+  commentId: P:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNames
+  id: GraphNames
+  parent: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  langs:
+  - csharp
+  - vb
+  name: GraphNames
+  nameWithType: FlowGraphEditorObject.GraphNames
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNames
+  type: Property
+  source:
+    id: GraphNames
+    path: ''
+    startLine: 7405
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: public string[] GraphNames { get; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public Property GraphNames As String()
+  overload: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNames*
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.CreateTemporary(IFlowGraphContainer)
+  commentId: M:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.CreateTemporary(IFlowGraphContainer)
+  id: CreateTemporary(IFlowGraphContainer)
+  parent: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  langs:
+  - csharp
+  - vb
+  name: CreateTemporary(IFlowGraphContainer)
+  nameWithType: FlowGraphEditorObject.CreateTemporary(IFlowGraphContainer)
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.CreateTemporary(IFlowGraphContainer)
+  type: Method
+  source:
+    id: CreateTemporary
+    path: ''
+    startLine: 7407
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: public static FlowGraphEditorObject CreateTemporary(IFlowGraphContainer container)
+    parameters:
+    - id: container
+      type: Global.IFlowGraphContainer
+    return:
+      type: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+    content.vb: Public Shared Function CreateTemporary(container As IFlowGraphContainer) As FlowGraphEditorObject
+  overload: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.CreateTemporary*
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.Update
+  commentId: M:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.Update
+  id: Update
+  parent: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  langs:
+  - csharp
+  - vb
+  name: Update()
+  nameWithType: FlowGraphEditorObject.Update()
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.Update()
+  type: Method
+  source:
+    id: Update
+    path: ''
+    startLine: 7417
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: public void Update()
+    content.vb: Public Sub Update()
+  overload: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.Update*
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.DestroyTemporary
+  commentId: M:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.DestroyTemporary
+  id: DestroyTemporary
+  parent: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  langs:
+  - csharp
+  - vb
+  name: DestroyTemporary()
+  nameWithType: FlowGraphEditorObject.DestroyTemporary()
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.DestroyTemporary()
+  type: Method
+  source:
+    id: DestroyTemporary
+    path: ''
+    startLine: 7429
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: public void DestroyTemporary()
+    content.vb: Public Sub DestroyTemporary()
+  overload: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.DestroyTemporary*
+references:
+- uid: Ceres.Editor.Graph.Flow
+  commentId: N:Ceres.Editor.Graph.Flow
+  name: Ceres.Editor.Graph.Flow
+  nameWithType: Ceres.Editor.Graph.Flow
+  fullName: Ceres.Editor.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Editor.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Editor.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphData*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphData
+  name: GraphData
+  nameWithType: FlowGraphEditorObject.GraphData
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphData
+- uid: Global.FlowGraphData
+  commentId: '!:Global.FlowGraphData'
+  isExternal: true
+  name: FlowGraphData
+  nameWithType: FlowGraphData
+  fullName: FlowGraphData
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphInstance*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphInstance
+  name: GraphInstance
+  nameWithType: FlowGraphEditorObject.GraphInstance
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphInstance
+- uid: Global.FlowGraph
+  commentId: '!:Global.FlowGraph'
+  isExternal: true
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: FlowGraph
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNameContents*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNameContents
+  name: GraphNameContents
+  nameWithType: FlowGraphEditorObject.GraphNameContents
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNameContents
+- uid: Global.GUIContent[]
+  isExternal: true
+  name: GUIContent[]
+  nameWithType: GUIContent[]
+  fullName: GUIContent[]
+  nameWithType.vb: GUIContent()
+  fullName.vb: GUIContent()
+  name.vb: GUIContent()
+  spec.csharp:
+  - uid: Global.GUIContent
+    name: GUIContent
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Global.GUIContent
+    name: GUIContent
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNames*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNames
+  name: GraphNames
+  nameWithType: FlowGraphEditorObject.GraphNames
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.GraphNames
+- uid: System.String[]
+  isExternal: true
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.CreateTemporary*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.CreateTemporary
+  name: CreateTemporary
+  nameWithType: FlowGraphEditorObject.CreateTemporary
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.CreateTemporary
+- uid: Global.IFlowGraphContainer
+  commentId: '!:Global.IFlowGraphContainer'
+  isExternal: true
+  name: IFlowGraphContainer
+  nameWithType: IFlowGraphContainer
+  fullName: IFlowGraphContainer
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  commentId: T:Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+  parent: Ceres.Editor.Graph.Flow
+  name: FlowGraphEditorObject
+  nameWithType: FlowGraphEditorObject
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.Update*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.Update
+  name: Update
+  nameWithType: FlowGraphEditorObject.Update
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.Update
+- uid: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.DestroyTemporary*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowGraphEditorObject.DestroyTemporary
+  name: DestroyTemporary
+  nameWithType: FlowGraphEditorObject.DestroyTemporary
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphEditorObject.DestroyTemporary

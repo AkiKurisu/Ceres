@@ -1,0 +1,914 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.FieldResolver`2
+  commentId: T:Ceres.Editor.Graph.FieldResolver`2
+  id: FieldResolver`2
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.FieldResolver`2.#ctor(FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver`2.BaseField
+  - Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  - Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  - Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver`2.CreateField
+  - Ceres.Editor.Graph.FieldResolver`2.EditorField
+  - Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  - Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  - Ceres.Editor.Graph.FieldResolver`2.Value
+  langs:
+  - csharp
+  - vb
+  name: FieldResolver<TField, TKValue>
+  nameWithType: FieldResolver<TField, TKValue>
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>
+  type: Class
+  source:
+    id: FieldResolver
+    path: ''
+    startLine: 2952
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public abstract class FieldResolver<TField, TKValue> : IFieldResolver where TField : BaseField<TKValue>'
+    typeParameters:
+    - id: TField
+    - id: TKValue
+    content.vb: Public MustInherit Class FieldResolver(Of TField As BaseField(Of TKValue), TKValue) Implements IFieldResolver
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Editor.Graph.BoolResolver
+  - Ceres.Editor.Graph.BoundsIntResolver
+  - Ceres.Editor.Graph.BoundsResolver
+  - Ceres.Editor.Graph.ColorResolver
+  - Ceres.Editor.Graph.CurveResolver
+  - Ceres.Editor.Graph.DoubleResolver
+  - Ceres.Editor.Graph.EnumResolver
+  - Ceres.Editor.Graph.FieldResolver`3
+  - Ceres.Editor.Graph.FloatResolver
+  - Ceres.Editor.Graph.GradientResolver
+  - Ceres.Editor.Graph.IntResolver
+  - Ceres.Editor.Graph.LayerMaskResolver
+  - Ceres.Editor.Graph.LayerResolver
+  - Ceres.Editor.Graph.LongResolver
+  - Ceres.Editor.Graph.ObjectResolver
+  - Ceres.Editor.Graph.RectIntResolver
+  - Ceres.Editor.Graph.RectResolver
+  - Ceres.Editor.Graph.SerializedObjectFieldResolver
+  - Ceres.Editor.Graph.SharedTObjectResolver`1
+  - Ceres.Editor.Graph.SharedUObjectResolver
+  - Ceres.Editor.Graph.SharedVariableResolver`3
+  - Ceres.Editor.Graph.StringResolver
+  - Ceres.Editor.Graph.TagResolver
+  - Ceres.Editor.Graph.Vector2IntResolver
+  - Ceres.Editor.Graph.Vector2Resolver
+  - Ceres.Editor.Graph.Vector3IntResolver
+  - Ceres.Editor.Graph.Vector3Resolver
+  - Ceres.Editor.Graph.Vector4Resolver
+  - Ceres.Editor.Graph.WrapFieldResolver`1
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: FieldResolver(Of TField, TKValue)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue)
+  name.vb: FieldResolver(Of TField, TKValue)
+- uid: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.EditorField
+  id: EditorField
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: EditorField
+  nameWithType: FieldResolver<TField, TKValue>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.EditorField
+  type: Property
+  source:
+    id: EditorField
+    path: ''
+    startLine: 2956
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public VisualElement EditorField { get; }
+    parameters: []
+    return:
+      type: Global.VisualElement
+    content.vb: Public ReadOnly Property EditorField As VisualElement
+  overload: Ceres.Editor.Graph.FieldResolver`2.EditorField*
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver.EditorField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.BaseField
+  id: BaseField
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: BaseField
+  nameWithType: FieldResolver<TField, TKValue>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.BaseField
+  type: Property
+  source:
+    id: BaseField
+    path: ''
+    startLine: 2958
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public TField BaseField { get; }
+    parameters: []
+    return:
+      type: '{TField}'
+    content.vb: Public ReadOnly Property BaseField As TField
+  overload: Ceres.Editor.Graph.FieldResolver`2.BaseField*
+  nameWithType.vb: FieldResolver(Of TField, TKValue).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver`2.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.Value
+  id: Value
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: FieldResolver<TField, TKValue>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Value
+  type: Property
+  source:
+    id: Value
+    path: ''
+    startLine: 2960
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public virtual object Value { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Overridable Property Value As Object
+  overload: Ceres.Editor.Graph.FieldResolver`2.Value*
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver.Value
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Value
+- uid: Ceres.Editor.Graph.FieldResolver`2.#ctor(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.#ctor(FieldInfo)
+  id: '#ctor(FieldInfo)'
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: FieldResolver(FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.FieldResolver(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.FieldResolver(FieldInfo)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2966
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected FieldResolver(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: Global.FieldInfo
+    content.vb: Protected Sub New(fieldInfo As FieldInfo)
+  overload: Ceres.Editor.Graph.FieldResolver`2.#ctor*
+  nameWithType.vb: FieldResolver(Of TField, TKValue).New(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).New(FieldInfo)
+  name.vb: New(FieldInfo)
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateField
+  id: CreateField
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: CreateField()
+  nameWithType: FieldResolver<TField, TKValue>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateField()
+  type: Method
+  source:
+    id: CreateField
+    path: ''
+    startLine: 2979
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public VisualElement CreateField()
+    return:
+      type: Global.VisualElement
+    content.vb: Public Function CreateField() As VisualElement
+  overload: Ceres.Editor.Graph.FieldResolver`2.CreateField*
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver.CreateField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateField()
+- uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  id: Copy(Ceres.Editor.Graph.IFieldResolver)
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<TField, TKValue>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  type: Method
+  source:
+    id: Copy
+    path: ''
+    startLine: 2984
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void Copy(IFieldResolver resolver)
+    parameters:
+    - id: resolver
+      type: Ceres.Editor.Graph.IFieldResolver
+    content.vb: Public Sub Copy(resolver As IFieldResolver)
+  overload: Ceres.Editor.Graph.FieldResolver`2.Copy*
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Copy(Ceres.Editor.Graph.IFieldResolver)
+- uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  id: Restore(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: Restore(object)
+  nameWithType: FieldResolver<TField, TKValue>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Restore(object)
+  type: Method
+  source:
+    id: Restore
+    path: ''
+    startLine: 2991
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void Restore(object @object)
+    parameters:
+    - id: object
+      type: System.Object
+    content.vb: Public Sub Restore([object] As Object)
+  overload: Ceres.Editor.Graph.FieldResolver`2.Restore*
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver.Restore(System.Object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Restore(Object)
+  name.vb: Restore(Object)
+- uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  id: Commit(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: Commit(object)
+  nameWithType: FieldResolver<TField, TKValue>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Commit(object)
+  type: Method
+  source:
+    id: Commit
+    path: ''
+    startLine: 2996
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void Commit(object @object)
+    parameters:
+    - id: object
+      type: System.Object
+    content.vb: Public Sub Commit([object] As Object)
+  overload: Ceres.Editor.Graph.FieldResolver`2.Commit*
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver.Commit(System.Object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Commit(Object)
+  name.vb: Commit(Object)
+- uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  id: RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<TField, TKValue>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  type: Method
+  source:
+    id: RegisterValueChangeCallback
+    path: ''
+    startLine: 3001
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void RegisterValueChangeCallback(ValueChangeDelegate fieldChangeCallback)
+    parameters:
+    - id: fieldChangeCallback
+      type: Ceres.Editor.Graph.ValueChangeDelegate
+    content.vb: Public Sub RegisterValueChangeCallback(fieldChangeCallback As ValueChangeDelegate)
+  overload: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback*
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+- uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  id: IsAcceptable(Type,FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  type: Method
+  source:
+    id: IsAcceptable
+    path: ''
+    startLine: 3006
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public virtual bool IsAcceptable(Type fieldValueType, FieldInfo fieldInfo)
+    parameters:
+    - id: fieldValueType
+      type: Global.Type
+    - id: fieldInfo
+      type: Global.FieldInfo
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable Function IsAcceptable(fieldValueType As Type, fieldInfo As FieldInfo) As Boolean
+  overload: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable*
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver.IsAcceptable(Type,FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  id: CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver`2
+  langs:
+  - csharp
+  - vb
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  type: Method
+  source:
+    id: CreateEditorField
+    path: ''
+    startLine: 3021
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nCreate <see cref=\"!:BaseField&lt;T>\"></see>\n"
+  example: []
+  syntax:
+    content: protected abstract TField CreateEditorField(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: Global.FieldInfo
+      description: ''
+    return:
+      type: '{TField}'
+      description: ''
+    content.vb: Protected MustOverride Function CreateEditorField(fieldInfo As FieldInfo) As TField
+  overload: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField*
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.IFieldResolver
+  commentId: T:Ceres.Editor.Graph.IFieldResolver
+  parent: Ceres.Editor.Graph
+  name: IFieldResolver
+  nameWithType: IFieldResolver
+  fullName: Ceres.Editor.Graph.IFieldResolver
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.FieldResolver`2.EditorField*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.EditorField
+  name: EditorField
+  nameWithType: FieldResolver<TField, TKValue>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.EditorField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).EditorField
+- uid: Ceres.Editor.Graph.IFieldResolver.EditorField
+  commentId: P:Ceres.Editor.Graph.IFieldResolver.EditorField
+  parent: Ceres.Editor.Graph.IFieldResolver
+  name: EditorField
+  nameWithType: IFieldResolver.EditorField
+  fullName: Ceres.Editor.Graph.IFieldResolver.EditorField
+- uid: Global.VisualElement
+  isExternal: true
+  name: VisualElement
+  nameWithType: VisualElement
+  fullName: VisualElement
+- uid: Ceres.Editor.Graph.FieldResolver`2.BaseField*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.BaseField
+  name: BaseField
+  nameWithType: FieldResolver<TField, TKValue>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.BaseField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).BaseField
+- uid: '{TField}'
+  commentId: '!:TField'
+  definition: TField
+  name: TField
+  nameWithType: TField
+  fullName: TField
+- uid: TField
+  name: TField
+  nameWithType: TField
+  fullName: TField
+- uid: Ceres.Editor.Graph.FieldResolver`2.Value*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.Value
+  name: Value
+  nameWithType: FieldResolver<TField, TKValue>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Value
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Value
+- uid: Ceres.Editor.Graph.IFieldResolver.Value
+  commentId: P:Ceres.Editor.Graph.IFieldResolver.Value
+  parent: Ceres.Editor.Graph.IFieldResolver
+  name: Value
+  nameWithType: IFieldResolver.Value
+  fullName: Ceres.Editor.Graph.IFieldResolver.Value
+- uid: Ceres.Editor.Graph.FieldResolver`2.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.#ctor
+  name: FieldResolver
+  nameWithType: FieldResolver<TField, TKValue>.FieldResolver
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.FieldResolver
+  nameWithType.vb: FieldResolver(Of TField, TKValue).New
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).New
+  name.vb: New
+- uid: Global.FieldInfo
+  isExternal: true
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: FieldInfo
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateField*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.CreateField
+  name: CreateField
+  nameWithType: FieldResolver<TField, TKValue>.CreateField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateField
+- uid: Ceres.Editor.Graph.IFieldResolver.CreateField
+  commentId: M:Ceres.Editor.Graph.IFieldResolver.CreateField
+  parent: Ceres.Editor.Graph.IFieldResolver
+  name: CreateField()
+  nameWithType: IFieldResolver.CreateField()
+  fullName: Ceres.Editor.Graph.IFieldResolver.CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IFieldResolver.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IFieldResolver.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Copy*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.Copy
+  name: Copy
+  nameWithType: FieldResolver<TField, TKValue>.Copy
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Copy
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Copy
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Copy
+- uid: Ceres.Editor.Graph.IFieldResolver.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.IFieldResolver.Copy(Ceres.Editor.Graph.IFieldResolver)
+  parent: Ceres.Editor.Graph.IFieldResolver
+  name: Copy(IFieldResolver)
+  nameWithType: IFieldResolver.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.IFieldResolver.Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IFieldResolver.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IFieldResolver.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Restore*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.Restore
+  name: Restore
+  nameWithType: FieldResolver<TField, TKValue>.Restore
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Restore
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Restore
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Restore
+- uid: Ceres.Editor.Graph.IFieldResolver.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.IFieldResolver.Restore(System.Object)
+  parent: Ceres.Editor.Graph.IFieldResolver
+  isExternal: true
+  name: Restore(object)
+  nameWithType: IFieldResolver.Restore(object)
+  fullName: Ceres.Editor.Graph.IFieldResolver.Restore(object)
+  nameWithType.vb: IFieldResolver.Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.IFieldResolver.Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IFieldResolver.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IFieldResolver.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Commit*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.Commit
+  name: Commit
+  nameWithType: FieldResolver<TField, TKValue>.Commit
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Commit
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Commit
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Commit
+- uid: Ceres.Editor.Graph.IFieldResolver.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.IFieldResolver.Commit(System.Object)
+  parent: Ceres.Editor.Graph.IFieldResolver
+  isExternal: true
+  name: Commit(object)
+  nameWithType: IFieldResolver.Commit(object)
+  fullName: Ceres.Editor.Graph.IFieldResolver.Commit(object)
+  nameWithType.vb: IFieldResolver.Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.IFieldResolver.Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IFieldResolver.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IFieldResolver.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback
+  name: RegisterValueChangeCallback
+  nameWithType: FieldResolver<TField, TKValue>.RegisterValueChangeCallback
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.RegisterValueChangeCallback
+  nameWithType.vb: FieldResolver(Of TField, TKValue).RegisterValueChangeCallback
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).RegisterValueChangeCallback
+- uid: Ceres.Editor.Graph.IFieldResolver.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.IFieldResolver.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  parent: Ceres.Editor.Graph.IFieldResolver
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: IFieldResolver.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.IFieldResolver.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IFieldResolver.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IFieldResolver.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+- uid: Ceres.Editor.Graph.ValueChangeDelegate
+  commentId: T:Ceres.Editor.Graph.ValueChangeDelegate
+  parent: Ceres.Editor.Graph
+  name: ValueChangeDelegate
+  nameWithType: ValueChangeDelegate
+  fullName: Ceres.Editor.Graph.ValueChangeDelegate
+- uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.IsAcceptable
+  name: IsAcceptable
+  nameWithType: FieldResolver<TField, TKValue>.IsAcceptable
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.IsAcceptable
+  nameWithType.vb: FieldResolver(Of TField, TKValue).IsAcceptable
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).IsAcceptable
+- uid: Ceres.Editor.Graph.IFieldResolver.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.IFieldResolver.IsAcceptable(Type,FieldInfo)
+  parent: Ceres.Editor.Graph.IFieldResolver
+  isExternal: true
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: IFieldResolver.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.IFieldResolver.IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IFieldResolver.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IFieldResolver.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField*
+  commentId: Overload:Ceres.Editor.Graph.FieldResolver`2.CreateEditorField
+  name: CreateEditorField
+  nameWithType: FieldResolver<TField, TKValue>.CreateEditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateEditorField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateEditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateEditorField

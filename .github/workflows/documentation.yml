@@ -4,12 +4,23 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'Documentation~/**'
+      - '.github/workflows/documentation.yml'
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run
+# in-progress and latest queued. Do not cancel in-progress runs.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   # Build the documentation
@@ -20,18 +31,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.0.x'
 
       - name: Install DocFX
-        run: dotnet tool update -g --version 2.61.0 docfx
+        run: dotnet tool update -g docfx --version 2.78.5
 
+      # NOTE: only the `build` step runs in CI. `docfx metadata` (API reference
+      # generation) compiles the Unity C# sources and therefore needs the Unity /
+      # Chris assemblies, which are unavailable on a plain runner. The generated
+      # api/*.yml are committed instead; regenerate them locally with
+      # `docfx metadata Documentation~/docfx.json` when the public API changes.
       - name: Build DocFX Documentation
-        run: docfx Documentation~/docfx.json
+        run: docfx build Documentation~/docfx.json
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3

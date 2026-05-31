@@ -1,0 +1,327 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.FlowGraphDependencyTracker
+  commentId: T:Ceres.Graph.Flow.FlowGraphDependencyTracker
+  id: FlowGraphDependencyTracker
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.FlowGraphDependencyTracker.#ctor(Ceres.Graph.Flow.FlowGraph)
+  - Ceres.Graph.Flow.FlowGraphDependencyTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  - Ceres.Graph.Flow.FlowGraphDependencyTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphDependencyTracker
+  nameWithType: FlowGraphDependencyTracker
+  fullName: Ceres.Graph.Flow.FlowGraphDependencyTracker
+  type: Class
+  source:
+    id: FlowGraphDependencyTracker
+    path: ''
+    startLine: 25360
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nA helper tracker to dump nodes dependencies\n"
+  example: []
+  syntax:
+    content: 'public class FlowGraphDependencyTracker : FlowGraphTracker'
+    content.vb: Public Class FlowGraphDependencyTracker Inherits FlowGraphTracker
+  inheritance:
+  - System.Object
+  - Ceres.Graph.Flow.FlowGraphTracker
+  inheritedMembers:
+  - Ceres.Graph.Flow.FlowGraphTracker.IsValid
+  - Ceres.Graph.Flow.FlowGraphTracker.Auto
+  - Ceres.Graph.Flow.FlowGraphTracker.GetActiveTracker
+  - Ceres.Graph.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Graph.Flow.FlowGraphTracker)
+  - Ceres.Graph.Flow.FlowGraphTracker.Dispose
+- uid: Ceres.Graph.Flow.FlowGraphDependencyTracker.#ctor(Ceres.Graph.Flow.FlowGraph)
+  commentId: M:Ceres.Graph.Flow.FlowGraphDependencyTracker.#ctor(Ceres.Graph.Flow.FlowGraph)
+  id: '#ctor(Ceres.Graph.Flow.FlowGraph)'
+  parent: Ceres.Graph.Flow.FlowGraphDependencyTracker
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphDependencyTracker(FlowGraph)
+  nameWithType: FlowGraphDependencyTracker.FlowGraphDependencyTracker(FlowGraph)
+  fullName: Ceres.Graph.Flow.FlowGraphDependencyTracker.FlowGraphDependencyTracker(Ceres.Graph.Flow.FlowGraph)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 25364
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public FlowGraphDependencyTracker(FlowGraph flowGraph)
+    parameters:
+    - id: flowGraph
+      type: Ceres.Graph.Flow.FlowGraph
+    content.vb: Public Sub New(flowGraph As FlowGraph)
+  overload: Ceres.Graph.Flow.FlowGraphDependencyTracker.#ctor*
+  nameWithType.vb: FlowGraphDependencyTracker.New(FlowGraph)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphDependencyTracker.New(Ceres.Graph.Flow.FlowGraph)
+  name.vb: New(FlowGraph)
+- uid: Ceres.Graph.Flow.FlowGraphDependencyTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  commentId: M:Ceres.Graph.Flow.FlowGraphDependencyTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  id: EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  parent: Ceres.Graph.Flow.FlowGraphDependencyTracker
+  langs:
+  - csharp
+  - vb
+  name: EnterNode(ExecutableNode)
+  nameWithType: FlowGraphDependencyTracker.EnterNode(ExecutableNode)
+  fullName: Ceres.Graph.Flow.FlowGraphDependencyTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  type: Method
+  source:
+    id: EnterNode
+    path: ''
+    startLine: 25369
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public override UniTask EnterNode(ExecutableNode node)
+    parameters:
+    - id: node
+      type: Ceres.Graph.Flow.ExecutableNode
+    return:
+      type: Global.UniTask
+    content.vb: Public Overrides Function EnterNode(node As ExecutableNode) As UniTask
+  overridden: Ceres.Graph.Flow.FlowGraphTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  overload: Ceres.Graph.Flow.FlowGraphDependencyTracker.EnterNode*
+- uid: Ceres.Graph.Flow.FlowGraphDependencyTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  commentId: M:Ceres.Graph.Flow.FlowGraphDependencyTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  id: ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  parent: Ceres.Graph.Flow.FlowGraphDependencyTracker
+  langs:
+  - csharp
+  - vb
+  name: ExitNode(ExecutableNode)
+  nameWithType: FlowGraphDependencyTracker.ExitNode(ExecutableNode)
+  fullName: Ceres.Graph.Flow.FlowGraphDependencyTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  type: Method
+  source:
+    id: ExitNode
+    path: ''
+    startLine: 25387
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public override UniTask ExitNode(ExecutableNode node)
+    parameters:
+    - id: node
+      type: Ceres.Graph.Flow.ExecutableNode
+    return:
+      type: Global.UniTask
+    content.vb: Public Overrides Function ExitNode(node As ExecutableNode) As UniTask
+  overridden: Ceres.Graph.Flow.FlowGraphTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  overload: Ceres.Graph.Flow.FlowGraphDependencyTracker.ExitNode*
+references:
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.Flow.FlowGraphTracker
+  commentId: T:Ceres.Graph.Flow.FlowGraphTracker
+  parent: Ceres.Graph.Flow
+  name: FlowGraphTracker
+  nameWithType: FlowGraphTracker
+  fullName: Ceres.Graph.Flow.FlowGraphTracker
+- uid: Ceres.Graph.Flow.FlowGraphTracker.IsValid
+  commentId: M:Ceres.Graph.Flow.FlowGraphTracker.IsValid
+  parent: Ceres.Graph.Flow.FlowGraphTracker
+  name: IsValid()
+  nameWithType: FlowGraphTracker.IsValid()
+  fullName: Ceres.Graph.Flow.FlowGraphTracker.IsValid()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.IsValid
+    name: IsValid
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.IsValid
+    name: IsValid
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraphTracker.Auto
+  commentId: M:Ceres.Graph.Flow.FlowGraphTracker.Auto
+  parent: Ceres.Graph.Flow.FlowGraphTracker
+  name: Auto()
+  nameWithType: FlowGraphTracker.Auto()
+  fullName: Ceres.Graph.Flow.FlowGraphTracker.Auto()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.Auto
+    name: Auto
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.Auto
+    name: Auto
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraphTracker.GetActiveTracker
+  commentId: M:Ceres.Graph.Flow.FlowGraphTracker.GetActiveTracker
+  parent: Ceres.Graph.Flow.FlowGraphTracker
+  name: GetActiveTracker()
+  nameWithType: FlowGraphTracker.GetActiveTracker()
+  fullName: Ceres.Graph.Flow.FlowGraphTracker.GetActiveTracker()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.GetActiveTracker
+    name: GetActiveTracker
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.GetActiveTracker
+    name: GetActiveTracker
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Graph.Flow.FlowGraphTracker)
+  commentId: M:Ceres.Graph.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Graph.Flow.FlowGraphTracker)
+  parent: Ceres.Graph.Flow.FlowGraphTracker
+  name: SetActiveTracker(FlowGraphTracker)
+  nameWithType: FlowGraphTracker.SetActiveTracker(FlowGraphTracker)
+  fullName: Ceres.Graph.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Graph.Flow.FlowGraphTracker)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Graph.Flow.FlowGraphTracker)
+    name: SetActiveTracker
+  - name: (
+  - uid: Ceres.Graph.Flow.FlowGraphTracker
+    name: FlowGraphTracker
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Graph.Flow.FlowGraphTracker)
+    name: SetActiveTracker
+  - name: (
+  - uid: Ceres.Graph.Flow.FlowGraphTracker
+    name: FlowGraphTracker
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraphTracker.Dispose
+  commentId: M:Ceres.Graph.Flow.FlowGraphTracker.Dispose
+  parent: Ceres.Graph.Flow.FlowGraphTracker
+  name: Dispose()
+  nameWithType: FlowGraphTracker.Dispose()
+  fullName: Ceres.Graph.Flow.FlowGraphTracker.Dispose()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.FlowGraphDependencyTracker.#ctor*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphDependencyTracker.#ctor
+  name: FlowGraphDependencyTracker
+  nameWithType: FlowGraphDependencyTracker.FlowGraphDependencyTracker
+  fullName: Ceres.Graph.Flow.FlowGraphDependencyTracker.FlowGraphDependencyTracker
+  nameWithType.vb: FlowGraphDependencyTracker.New
+  fullName.vb: Ceres.Graph.Flow.FlowGraphDependencyTracker.New
+  name.vb: New
+- uid: Ceres.Graph.Flow.FlowGraph
+  commentId: T:Ceres.Graph.Flow.FlowGraph
+  parent: Ceres.Graph.Flow
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Graph.Flow.FlowGraph
+- uid: Ceres.Graph.Flow.FlowGraphTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  commentId: M:Ceres.Graph.Flow.FlowGraphTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  parent: Ceres.Graph.Flow.FlowGraphTracker
+  name: EnterNode(ExecutableNode)
+  nameWithType: FlowGraphTracker.EnterNode(ExecutableNode)
+  fullName: Ceres.Graph.Flow.FlowGraphTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+    name: EnterNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutableNode
+    name: ExecutableNode
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.EnterNode(Ceres.Graph.Flow.ExecutableNode)
+    name: EnterNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutableNode
+    name: ExecutableNode
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraphDependencyTracker.EnterNode*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphDependencyTracker.EnterNode
+  name: EnterNode
+  nameWithType: FlowGraphDependencyTracker.EnterNode
+  fullName: Ceres.Graph.Flow.FlowGraphDependencyTracker.EnterNode
+- uid: Ceres.Graph.Flow.ExecutableNode
+  commentId: T:Ceres.Graph.Flow.ExecutableNode
+  parent: Ceres.Graph.Flow
+  name: ExecutableNode
+  nameWithType: ExecutableNode
+  fullName: Ceres.Graph.Flow.ExecutableNode
+- uid: Global.UniTask
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: UniTask
+- uid: Ceres.Graph.Flow.FlowGraphTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  commentId: M:Ceres.Graph.Flow.FlowGraphTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  parent: Ceres.Graph.Flow.FlowGraphTracker
+  name: ExitNode(ExecutableNode)
+  nameWithType: FlowGraphTracker.ExitNode(ExecutableNode)
+  fullName: Ceres.Graph.Flow.FlowGraphTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+    name: ExitNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutableNode
+    name: ExecutableNode
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.FlowGraphTracker.ExitNode(Ceres.Graph.Flow.ExecutableNode)
+    name: ExitNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutableNode
+    name: ExecutableNode
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraphDependencyTracker.ExitNode*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphDependencyTracker.ExitNode
+  name: ExitNode
+  nameWithType: FlowGraphDependencyTracker.ExitNode
+  fullName: Ceres.Graph.Flow.FlowGraphDependencyTracker.ExitNode

@@ -1,0 +1,862 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.SharedFloat
+  commentId: T:Ceres.Graph.SharedFloat
+  id: SharedFloat
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.SharedFloat.#ctor
+  - Ceres.Graph.SharedFloat.#ctor(System.Single)
+  - Ceres.Graph.SharedFloat.CloneT
+  langs:
+  - csharp
+  - vb
+  name: SharedFloat
+  nameWithType: SharedFloat
+  fullName: Ceres.Graph.SharedFloat
+  type: Class
+  source:
+    id: SharedFloat
+    path: ''
+    startLine: 20710
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: 'public class SharedFloat : SharedVariable<float>, IDisposable, IVariable<float>'
+    content.vb: Public Class SharedFloat Inherits SharedVariable(Of Single) Implements IDisposable, IVariable(Of Single)
+  inheritance:
+  - System.Object
+  - Ceres.Graph.SharedVariable
+  - Ceres.Graph.SharedVariable{System.Single}
+  implements:
+  - Global.IDisposable
+  - Ceres.Graph.IVariable{System.Single}
+  inheritedMembers:
+  - Ceres.Graph.SharedVariable{System.Single}.Value
+  - Ceres.Graph.SharedVariable{System.Single}.GetValue
+  - Ceres.Graph.SharedVariable{System.Single}.SetValue(System.Object)
+  - Ceres.Graph.SharedVariable{System.Single}.Getter
+  - Ceres.Graph.SharedVariable{System.Single}.Setter
+  - Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.IVariable{System.Single})
+  - Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.SharedVariable)
+  - Ceres.Graph.SharedVariable{System.Single}.Dispose
+  - Ceres.Graph.SharedVariable{System.Single}.value
+  - Ceres.Graph.SharedVariable{System.Single}.Observe
+  - Ceres.Graph.SharedVariable{System.Single}.ObserveT
+  - Ceres.Graph.SharedVariable{System.Single}.Clone
+  - Ceres.Graph.SharedVariable{System.Single}.CopyProperty(Ceres.Graph.SharedVariable)
+  - Ceres.Graph.SharedVariable{System.Single}.GetValueType
+  - Ceres.Graph.SharedVariable.IsShared
+  - Ceres.Graph.SharedVariable.IsGlobal
+  - Ceres.Graph.SharedVariable.IsExposed
+  - Ceres.Graph.SharedVariable.Name
+  - Ceres.Graph.SharedVariable.GetSerializedData
+- uid: Ceres.Graph.SharedFloat.#ctor(System.Single)
+  commentId: M:Ceres.Graph.SharedFloat.#ctor(System.Single)
+  id: '#ctor(System.Single)'
+  parent: Ceres.Graph.SharedFloat
+  langs:
+  - csharp
+  - vb
+  name: SharedFloat(float)
+  nameWithType: SharedFloat.SharedFloat(float)
+  fullName: Ceres.Graph.SharedFloat.SharedFloat(float)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 20714
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedFloat(float value)
+    parameters:
+    - id: value
+      type: System.Single
+    content.vb: Public Sub New(value As Single)
+  overload: Ceres.Graph.SharedFloat.#ctor*
+  nameWithType.vb: SharedFloat.New(Single)
+  fullName.vb: Ceres.Graph.SharedFloat.New(Single)
+  name.vb: New(Single)
+- uid: Ceres.Graph.SharedFloat.#ctor
+  commentId: M:Ceres.Graph.SharedFloat.#ctor
+  id: '#ctor'
+  parent: Ceres.Graph.SharedFloat
+  langs:
+  - csharp
+  - vb
+  name: SharedFloat()
+  nameWithType: SharedFloat.SharedFloat()
+  fullName: Ceres.Graph.SharedFloat.SharedFloat()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 20719
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedFloat()
+    content.vb: Public Sub New()
+  overload: Ceres.Graph.SharedFloat.#ctor*
+  nameWithType.vb: SharedFloat.New()
+  fullName.vb: Ceres.Graph.SharedFloat.New()
+  name.vb: New()
+- uid: Ceres.Graph.SharedFloat.CloneT
+  commentId: M:Ceres.Graph.SharedFloat.CloneT
+  id: CloneT
+  parent: Ceres.Graph.SharedFloat
+  langs:
+  - csharp
+  - vb
+  name: CloneT()
+  nameWithType: SharedFloat.CloneT()
+  fullName: Ceres.Graph.SharedFloat.CloneT()
+  type: Method
+  source:
+    id: CloneT
+    path: ''
+    startLine: 20724
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: protected override SharedVariable<float> CloneT()
+    return:
+      type: Ceres.Graph.SharedVariable{System.Single}
+    content.vb: Protected Overrides Function CloneT() As SharedVariable(Of Single)
+  overridden: Ceres.Graph.SharedVariable{System.Single}.CloneT
+  overload: Ceres.Graph.SharedFloat.CloneT*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.SharedVariable
+  commentId: T:Ceres.Graph.SharedVariable
+  parent: Ceres.Graph
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: Ceres.Graph.SharedVariable
+- uid: Ceres.Graph.SharedVariable{System.Single}
+  commentId: T:Ceres.Graph.SharedVariable{System.Single}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<float>
+  nameWithType: SharedVariable<float>
+  fullName: Ceres.Graph.SharedVariable<float>
+  nameWithType.vb: SharedVariable(Of Single)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single)
+  name.vb: SharedVariable(Of Single)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: Ceres.Graph.IVariable{System.Single}
+  commentId: T:Ceres.Graph.IVariable{System.Single}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.IVariable`1
+  name: IVariable<float>
+  nameWithType: IVariable<float>
+  fullName: Ceres.Graph.IVariable<float>
+  nameWithType.vb: IVariable(Of Single)
+  fullName.vb: Ceres.Graph.IVariable(Of Single)
+  name.vb: IVariable(Of Single)
+  spec.csharp:
+  - uid: Ceres.Graph.IVariable`1
+    name: IVariable
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.IVariable`1
+    name: IVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.Value
+  commentId: P:Ceres.Graph.SharedVariable{System.Single}.Value
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.Value
+  name: Value
+  nameWithType: SharedVariable<float>.Value
+  fullName: Ceres.Graph.SharedVariable<float>.Value
+  nameWithType.vb: SharedVariable(Of Single).Value
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).Value
+- uid: Ceres.Graph.SharedVariable{System.Single}.GetValue
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.GetValue
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.GetValue
+  name: GetValue()
+  nameWithType: SharedVariable<float>.GetValue()
+  fullName: Ceres.Graph.SharedVariable<float>.GetValue()
+  nameWithType.vb: SharedVariable(Of Single).GetValue()
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).GetValue()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.GetValue
+    name: GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.GetValue
+    name: GetValue
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.SetValue(System.Object)
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.SetValue(System.Object)
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.SetValue(System.Object)
+  name: SetValue(object)
+  nameWithType: SharedVariable<float>.SetValue(object)
+  fullName: Ceres.Graph.SharedVariable<float>.SetValue(object)
+  nameWithType.vb: SharedVariable(Of Single).SetValue(Object)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).SetValue(Object)
+  name.vb: SetValue(Object)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.SetValue(System.Object)
+    name: SetValue
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.SetValue(System.Object)
+    name: SetValue
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.Getter
+  commentId: F:Ceres.Graph.SharedVariable{System.Single}.Getter
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.Getter
+  name: Getter
+  nameWithType: SharedVariable<float>.Getter
+  fullName: Ceres.Graph.SharedVariable<float>.Getter
+  nameWithType.vb: SharedVariable(Of Single).Getter
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).Getter
+- uid: Ceres.Graph.SharedVariable{System.Single}.Setter
+  commentId: F:Ceres.Graph.SharedVariable{System.Single}.Setter
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.Setter
+  name: Setter
+  nameWithType: SharedVariable<float>.Setter
+  fullName: Ceres.Graph.SharedVariable<float>.Setter
+  nameWithType.vb: SharedVariable(Of Single).Setter
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).Setter
+- uid: Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.IVariable{System.Single})
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.IVariable{System.Single})
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.IVariable{`0})
+  name: Bind(IVariable<float>)
+  nameWithType: SharedVariable<float>.Bind(IVariable<float>)
+  fullName: Ceres.Graph.SharedVariable<float>.Bind(Ceres.Graph.IVariable<float>)
+  nameWithType.vb: SharedVariable(Of Single).Bind(IVariable(Of Single))
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).Bind(Ceres.Graph.IVariable(Of Single))
+  name.vb: Bind(IVariable(Of Single))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.IVariable{System.Single})
+    name: Bind
+  - name: (
+  - uid: Ceres.Graph.IVariable`1
+    name: IVariable
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.IVariable{System.Single})
+    name: Bind
+  - name: (
+  - uid: Ceres.Graph.IVariable`1
+    name: IVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.SharedVariable)
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.SharedVariable)
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.SharedVariable)
+  name: Bind(SharedVariable)
+  nameWithType: SharedVariable<float>.Bind(SharedVariable)
+  fullName: Ceres.Graph.SharedVariable<float>.Bind(Ceres.Graph.SharedVariable)
+  nameWithType.vb: SharedVariable(Of Single).Bind(SharedVariable)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).Bind(Ceres.Graph.SharedVariable)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.SharedVariable)
+    name: Bind
+  - name: (
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Bind(Ceres.Graph.SharedVariable)
+    name: Bind
+  - name: (
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.Dispose
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.Dispose
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.Dispose
+  name: Dispose()
+  nameWithType: SharedVariable<float>.Dispose()
+  fullName: Ceres.Graph.SharedVariable<float>.Dispose()
+  nameWithType.vb: SharedVariable(Of Single).Dispose()
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).Dispose()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.value
+  commentId: F:Ceres.Graph.SharedVariable{System.Single}.value
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.value
+  name: value
+  nameWithType: SharedVariable<float>.value
+  fullName: Ceres.Graph.SharedVariable<float>.value
+  nameWithType.vb: SharedVariable(Of Single).value
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).value
+- uid: Ceres.Graph.SharedVariable{System.Single}.Observe
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.Observe
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.Observe
+  name: Observe()
+  nameWithType: SharedVariable<float>.Observe()
+  fullName: Ceres.Graph.SharedVariable<float>.Observe()
+  nameWithType.vb: SharedVariable(Of Single).Observe()
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).Observe()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Observe
+    name: Observe
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Observe
+    name: Observe
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.ObserveT
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.ObserveT
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.ObserveT
+  name: ObserveT()
+  nameWithType: SharedVariable<float>.ObserveT()
+  fullName: Ceres.Graph.SharedVariable<float>.ObserveT()
+  nameWithType.vb: SharedVariable(Of Single).ObserveT()
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).ObserveT()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.ObserveT
+    name: ObserveT
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.ObserveT
+    name: ObserveT
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.Clone
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.Clone
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.Clone
+  name: Clone()
+  nameWithType: SharedVariable<float>.Clone()
+  fullName: Ceres.Graph.SharedVariable<float>.Clone()
+  nameWithType.vb: SharedVariable(Of Single).Clone()
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).Clone()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Clone
+    name: Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.Clone
+    name: Clone
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.CopyProperty(Ceres.Graph.SharedVariable)
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.CopyProperty(Ceres.Graph.SharedVariable)
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.CopyProperty(Ceres.Graph.SharedVariable)
+  name: CopyProperty(SharedVariable)
+  nameWithType: SharedVariable<float>.CopyProperty(SharedVariable)
+  fullName: Ceres.Graph.SharedVariable<float>.CopyProperty(Ceres.Graph.SharedVariable)
+  nameWithType.vb: SharedVariable(Of Single).CopyProperty(SharedVariable)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).CopyProperty(Ceres.Graph.SharedVariable)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.CopyProperty(Ceres.Graph.SharedVariable)
+    name: CopyProperty
+  - name: (
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.CopyProperty(Ceres.Graph.SharedVariable)
+    name: CopyProperty
+  - name: (
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+- uid: Ceres.Graph.SharedVariable{System.Single}.GetValueType
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.GetValueType
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.GetValueType
+  name: GetValueType()
+  nameWithType: SharedVariable<float>.GetValueType()
+  fullName: Ceres.Graph.SharedVariable<float>.GetValueType()
+  nameWithType.vb: SharedVariable(Of Single).GetValueType()
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).GetValueType()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.GetValueType
+    name: GetValueType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.GetValueType
+    name: GetValueType
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable.IsShared
+  commentId: P:Ceres.Graph.SharedVariable.IsShared
+  parent: Ceres.Graph.SharedVariable
+  name: IsShared
+  nameWithType: SharedVariable.IsShared
+  fullName: Ceres.Graph.SharedVariable.IsShared
+- uid: Ceres.Graph.SharedVariable.IsGlobal
+  commentId: P:Ceres.Graph.SharedVariable.IsGlobal
+  parent: Ceres.Graph.SharedVariable
+  name: IsGlobal
+  nameWithType: SharedVariable.IsGlobal
+  fullName: Ceres.Graph.SharedVariable.IsGlobal
+- uid: Ceres.Graph.SharedVariable.IsExposed
+  commentId: P:Ceres.Graph.SharedVariable.IsExposed
+  parent: Ceres.Graph.SharedVariable
+  name: IsExposed
+  nameWithType: SharedVariable.IsExposed
+  fullName: Ceres.Graph.SharedVariable.IsExposed
+- uid: Ceres.Graph.SharedVariable.Name
+  commentId: P:Ceres.Graph.SharedVariable.Name
+  parent: Ceres.Graph.SharedVariable
+  name: Name
+  nameWithType: SharedVariable.Name
+  fullName: Ceres.Graph.SharedVariable.Name
+- uid: Ceres.Graph.SharedVariable.GetSerializedData
+  commentId: M:Ceres.Graph.SharedVariable.GetSerializedData
+  parent: Ceres.Graph.SharedVariable
+  name: GetSerializedData()
+  nameWithType: SharedVariable.GetSerializedData()
+  fullName: Ceres.Graph.SharedVariable.GetSerializedData()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable.GetSerializedData
+    name: GetSerializedData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable.GetSerializedData
+    name: GetSerializedData
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.SharedVariable`1
+  commentId: T:Ceres.Graph.SharedVariable`1
+  parent: Ceres.Graph
+  name: SharedVariable<T>
+  nameWithType: SharedVariable<T>
+  fullName: Ceres.Graph.SharedVariable<T>
+  nameWithType.vb: SharedVariable(Of T)
+  fullName.vb: Ceres.Graph.SharedVariable(Of T)
+  name.vb: SharedVariable(Of T)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Graph.IVariable`1
+  commentId: T:Ceres.Graph.IVariable`1
+  name: IVariable<T>
+  nameWithType: IVariable<T>
+  fullName: Ceres.Graph.IVariable<T>
+  nameWithType.vb: IVariable(Of T)
+  fullName.vb: Ceres.Graph.IVariable(Of T)
+  name.vb: IVariable(Of T)
+  spec.csharp:
+  - uid: Ceres.Graph.IVariable`1
+    name: IVariable
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.IVariable`1
+    name: IVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.Value
+  commentId: P:Ceres.Graph.SharedVariable`1.Value
+  name: Value
+  nameWithType: SharedVariable<T>.Value
+  fullName: Ceres.Graph.SharedVariable<T>.Value
+  nameWithType.vb: SharedVariable(Of T).Value
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).Value
+- uid: Ceres.Graph.SharedVariable`1.GetValue
+  commentId: M:Ceres.Graph.SharedVariable`1.GetValue
+  name: GetValue()
+  nameWithType: SharedVariable<T>.GetValue()
+  fullName: Ceres.Graph.SharedVariable<T>.GetValue()
+  nameWithType.vb: SharedVariable(Of T).GetValue()
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).GetValue()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.GetValue
+    name: GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.GetValue
+    name: GetValue
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.SetValue(System.Object)
+  commentId: M:Ceres.Graph.SharedVariable`1.SetValue(System.Object)
+  isExternal: true
+  name: SetValue(object)
+  nameWithType: SharedVariable<T>.SetValue(object)
+  fullName: Ceres.Graph.SharedVariable<T>.SetValue(object)
+  nameWithType.vb: SharedVariable(Of T).SetValue(Object)
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).SetValue(Object)
+  name.vb: SetValue(Object)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.SetValue(System.Object)
+    name: SetValue
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.SetValue(System.Object)
+    name: SetValue
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.Getter
+  commentId: F:Ceres.Graph.SharedVariable`1.Getter
+  name: Getter
+  nameWithType: SharedVariable<T>.Getter
+  fullName: Ceres.Graph.SharedVariable<T>.Getter
+  nameWithType.vb: SharedVariable(Of T).Getter
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).Getter
+- uid: Ceres.Graph.SharedVariable`1.Setter
+  commentId: F:Ceres.Graph.SharedVariable`1.Setter
+  name: Setter
+  nameWithType: SharedVariable<T>.Setter
+  fullName: Ceres.Graph.SharedVariable<T>.Setter
+  nameWithType.vb: SharedVariable(Of T).Setter
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).Setter
+- uid: Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.IVariable{`0})
+  commentId: M:Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.IVariable{`0})
+  name: Bind(IVariable<T>)
+  nameWithType: SharedVariable<T>.Bind(IVariable<T>)
+  fullName: Ceres.Graph.SharedVariable<T>.Bind(Ceres.Graph.IVariable<T>)
+  nameWithType.vb: SharedVariable(Of T).Bind(IVariable(Of T))
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).Bind(Ceres.Graph.IVariable(Of T))
+  name.vb: Bind(IVariable(Of T))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.IVariable{`0})
+    name: Bind
+  - name: (
+  - uid: Ceres.Graph.IVariable`1
+    name: IVariable
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.IVariable{`0})
+    name: Bind
+  - name: (
+  - uid: Ceres.Graph.IVariable`1
+    name: IVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.SharedVariable)
+  commentId: M:Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.SharedVariable)
+  name: Bind(SharedVariable)
+  nameWithType: SharedVariable<T>.Bind(SharedVariable)
+  fullName: Ceres.Graph.SharedVariable<T>.Bind(Ceres.Graph.SharedVariable)
+  nameWithType.vb: SharedVariable(Of T).Bind(SharedVariable)
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).Bind(Ceres.Graph.SharedVariable)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.SharedVariable)
+    name: Bind
+  - name: (
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.Bind(Ceres.Graph.SharedVariable)
+    name: Bind
+  - name: (
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.Dispose
+  commentId: M:Ceres.Graph.SharedVariable`1.Dispose
+  name: Dispose()
+  nameWithType: SharedVariable<T>.Dispose()
+  fullName: Ceres.Graph.SharedVariable<T>.Dispose()
+  nameWithType.vb: SharedVariable(Of T).Dispose()
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).Dispose()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.value
+  commentId: F:Ceres.Graph.SharedVariable`1.value
+  name: value
+  nameWithType: SharedVariable<T>.value
+  fullName: Ceres.Graph.SharedVariable<T>.value
+  nameWithType.vb: SharedVariable(Of T).value
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).value
+- uid: Ceres.Graph.SharedVariable`1.Observe
+  commentId: M:Ceres.Graph.SharedVariable`1.Observe
+  name: Observe()
+  nameWithType: SharedVariable<T>.Observe()
+  fullName: Ceres.Graph.SharedVariable<T>.Observe()
+  nameWithType.vb: SharedVariable(Of T).Observe()
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).Observe()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.Observe
+    name: Observe
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.Observe
+    name: Observe
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.ObserveT
+  commentId: M:Ceres.Graph.SharedVariable`1.ObserveT
+  name: ObserveT()
+  nameWithType: SharedVariable<T>.ObserveT()
+  fullName: Ceres.Graph.SharedVariable<T>.ObserveT()
+  nameWithType.vb: SharedVariable(Of T).ObserveT()
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).ObserveT()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.ObserveT
+    name: ObserveT
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.ObserveT
+    name: ObserveT
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.Clone
+  commentId: M:Ceres.Graph.SharedVariable`1.Clone
+  name: Clone()
+  nameWithType: SharedVariable<T>.Clone()
+  fullName: Ceres.Graph.SharedVariable<T>.Clone()
+  nameWithType.vb: SharedVariable(Of T).Clone()
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).Clone()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.Clone
+    name: Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.Clone
+    name: Clone
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.CopyProperty(Ceres.Graph.SharedVariable)
+  commentId: M:Ceres.Graph.SharedVariable`1.CopyProperty(Ceres.Graph.SharedVariable)
+  name: CopyProperty(SharedVariable)
+  nameWithType: SharedVariable<T>.CopyProperty(SharedVariable)
+  fullName: Ceres.Graph.SharedVariable<T>.CopyProperty(Ceres.Graph.SharedVariable)
+  nameWithType.vb: SharedVariable(Of T).CopyProperty(SharedVariable)
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).CopyProperty(Ceres.Graph.SharedVariable)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.CopyProperty(Ceres.Graph.SharedVariable)
+    name: CopyProperty
+  - name: (
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.CopyProperty(Ceres.Graph.SharedVariable)
+    name: CopyProperty
+  - name: (
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1.GetValueType
+  commentId: M:Ceres.Graph.SharedVariable`1.GetValueType
+  name: GetValueType()
+  nameWithType: SharedVariable<T>.GetValueType()
+  fullName: Ceres.Graph.SharedVariable<T>.GetValueType()
+  nameWithType.vb: SharedVariable(Of T).GetValueType()
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).GetValueType()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.GetValueType
+    name: GetValueType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.GetValueType
+    name: GetValueType
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedFloat.#ctor*
+  commentId: Overload:Ceres.Graph.SharedFloat.#ctor
+  name: SharedFloat
+  nameWithType: SharedFloat.SharedFloat
+  fullName: Ceres.Graph.SharedFloat.SharedFloat
+  nameWithType.vb: SharedFloat.New
+  fullName.vb: Ceres.Graph.SharedFloat.New
+  name.vb: New
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Ceres.Graph.SharedVariable{System.Single}.CloneT
+  commentId: M:Ceres.Graph.SharedVariable{System.Single}.CloneT
+  parent: Ceres.Graph.SharedVariable{System.Single}
+  definition: Ceres.Graph.SharedVariable`1.CloneT
+  name: CloneT()
+  nameWithType: SharedVariable<float>.CloneT()
+  fullName: Ceres.Graph.SharedVariable<float>.CloneT()
+  nameWithType.vb: SharedVariable(Of Single).CloneT()
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single).CloneT()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.CloneT
+    name: CloneT
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable{System.Single}.CloneT
+    name: CloneT
+  - name: (
+  - name: )
+- uid: Ceres.Graph.SharedFloat.CloneT*
+  commentId: Overload:Ceres.Graph.SharedFloat.CloneT
+  name: CloneT
+  nameWithType: SharedFloat.CloneT
+  fullName: Ceres.Graph.SharedFloat.CloneT
+- uid: Ceres.Graph.SharedVariable`1.CloneT
+  commentId: M:Ceres.Graph.SharedVariable`1.CloneT
+  name: CloneT()
+  nameWithType: SharedVariable<T>.CloneT()
+  fullName: Ceres.Graph.SharedVariable<T>.CloneT()
+  nameWithType.vb: SharedVariable(Of T).CloneT()
+  fullName.vb: Ceres.Graph.SharedVariable(Of T).CloneT()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1.CloneT
+    name: CloneT
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1.CloneT
+    name: CloneT
+  - name: (
+  - name: )

@@ -14,6 +14,12 @@ using UnityEngine;
 
 public partial class GameplayFunctionLibrary : ExecutableFunctionLibrary
 {
+    /// <summary>
+    /// Calculates the distance between two world-space points.
+    /// </summary>
+    /// <param name="pointA">The first point.</param>
+    /// <param name="pointB">The second point.</param>
+    /// <returns>The distance between the two points.</returns>
     [ExecutableFunction]
     public static float CalculateDistance(Vector3 pointA, Vector3 pointB)
     {
@@ -29,6 +35,8 @@ public partial class GameplayFunctionLibrary : ExecutableFunctionLibrary
 ```
 
 **Critical:** You **must** add the `partial` modifier to your class. The source generator needs it to inject the registration code.
+
+**Tooltips:** Add XML documentation comments to each exposed method. The Flow graph editor reads the method `<summary>`, `<param>`, and `<returns>` text and uses it as the node tooltip.
 
 ## How Source Generator Works
 

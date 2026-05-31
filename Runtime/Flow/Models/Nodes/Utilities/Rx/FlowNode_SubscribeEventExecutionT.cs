@@ -11,6 +11,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Rx")]
     [CeresLabel("Subscribe {0}")]
+    [NodeInfo("Subscribes to an event stream on the selected event handler and forwards matching events into this graph.")]
     public class FlowNode_SubscribeEventExecutionT<TEventType>: FlowNode
         where TEventType : EventBase<TEventType>, new()
     {
@@ -37,6 +38,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Rx")]
     [CeresLabel("Global Subscribe {0}")]
+    [NodeInfo("Subscribes to a global event stream and forwards matching events into this graph.")]
     public class FlowNode_SubscribeGlobalEventExecutionT<TEventType>: FlowNode
         where TEventType : EventBase<TEventType>, new()
     {

@@ -1,0 +1,501 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.SharedVariable
+  commentId: T:Ceres.Graph.SharedVariable
+  id: SharedVariable
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.SharedVariable.Bind(Ceres.Graph.SharedVariable)
+  - Ceres.Graph.SharedVariable.Clone
+  - Ceres.Graph.SharedVariable.Dispose
+  - Ceres.Graph.SharedVariable.GetSerializedData
+  - Ceres.Graph.SharedVariable.GetValue
+  - Ceres.Graph.SharedVariable.GetValueType
+  - Ceres.Graph.SharedVariable.IsExposed
+  - Ceres.Graph.SharedVariable.IsGlobal
+  - Ceres.Graph.SharedVariable.IsShared
+  - Ceres.Graph.SharedVariable.Name
+  - Ceres.Graph.SharedVariable.Observe
+  - Ceres.Graph.SharedVariable.SetValue(System.Object)
+  langs:
+  - csharp
+  - vb
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: Ceres.Graph.SharedVariable
+  type: Class
+  source:
+    id: SharedVariable
+    path: ''
+    startLine: 20921
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nVariable can be shared between behaviors in behavior tree\n"
+  example: []
+  syntax:
+    content: 'public abstract class SharedVariable : ICloneable, IDisposable'
+    content.vb: Public MustInherit Class SharedVariable Inherits ICloneable Implements IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Graph.SharedVariable`1
+  implements:
+  - Global.IDisposable
+- uid: Ceres.Graph.SharedVariable.IsShared
+  commentId: P:Ceres.Graph.SharedVariable.IsShared
+  id: IsShared
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: IsShared
+  nameWithType: SharedVariable.IsShared
+  fullName: Ceres.Graph.SharedVariable.IsShared
+  type: Property
+  source:
+    id: IsShared
+    path: ''
+    startLine: 20928
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nWhether variable is shared\n"
+  example: []
+  syntax:
+    content: public bool IsShared { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Property IsShared As Boolean
+  overload: Ceres.Graph.SharedVariable.IsShared*
+- uid: Ceres.Graph.SharedVariable.IsGlobal
+  commentId: P:Ceres.Graph.SharedVariable.IsGlobal
+  id: IsGlobal
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: IsGlobal
+  nameWithType: SharedVariable.IsGlobal
+  fullName: Ceres.Graph.SharedVariable.IsGlobal
+  type: Property
+  source:
+    id: IsGlobal
+    path: ''
+    startLine: 20941
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nWhether variable is global\n"
+  example: []
+  syntax:
+    content: public bool IsGlobal { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Property IsGlobal As Boolean
+  overload: Ceres.Graph.SharedVariable.IsGlobal*
+- uid: Ceres.Graph.SharedVariable.IsExposed
+  commentId: P:Ceres.Graph.SharedVariable.IsExposed
+  id: IsExposed
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: IsExposed
+  nameWithType: SharedVariable.IsExposed
+  fullName: Ceres.Graph.SharedVariable.IsExposed
+  type: Property
+  source:
+    id: IsExposed
+    path: ''
+    startLine: 20954
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nWhether variable is exposed to editor\n"
+  example: []
+  syntax:
+    content: public bool IsExposed { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Property IsExposed As Boolean
+  overload: Ceres.Graph.SharedVariable.IsExposed*
+- uid: Ceres.Graph.SharedVariable.Name
+  commentId: P:Ceres.Graph.SharedVariable.Name
+  id: Name
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: SharedVariable.Name
+  fullName: Ceres.Graph.SharedVariable.Name
+  type: Property
+  source:
+    id: Name
+    path: ''
+    startLine: 20963
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Ceres.Graph.SharedVariable.Name*
+- uid: Ceres.Graph.SharedVariable.GetValue
+  commentId: M:Ceres.Graph.SharedVariable.GetValue
+  id: GetValue
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: GetValue()
+  nameWithType: SharedVariable.GetValue()
+  fullName: Ceres.Graph.SharedVariable.GetValue()
+  type: Method
+  source:
+    id: GetValue
+    path: ''
+    startLine: 20969
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public abstract object GetValue()
+    return:
+      type: System.Object
+    content.vb: Public MustOverride Function GetValue() As Object
+  overload: Ceres.Graph.SharedVariable.GetValue*
+- uid: Ceres.Graph.SharedVariable.SetValue(System.Object)
+  commentId: M:Ceres.Graph.SharedVariable.SetValue(System.Object)
+  id: SetValue(System.Object)
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: SetValue(object)
+  nameWithType: SharedVariable.SetValue(object)
+  fullName: Ceres.Graph.SharedVariable.SetValue(object)
+  type: Method
+  source:
+    id: SetValue
+    path: ''
+    startLine: 20971
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public abstract void SetValue(object newValue)
+    parameters:
+    - id: newValue
+      type: System.Object
+    content.vb: Public MustOverride Sub SetValue(newValue As Object)
+  overload: Ceres.Graph.SharedVariable.SetValue*
+  nameWithType.vb: SharedVariable.SetValue(Object)
+  fullName.vb: Ceres.Graph.SharedVariable.SetValue(Object)
+  name.vb: SetValue(Object)
+- uid: Ceres.Graph.SharedVariable.Bind(Ceres.Graph.SharedVariable)
+  commentId: M:Ceres.Graph.SharedVariable.Bind(Ceres.Graph.SharedVariable)
+  id: Bind(Ceres.Graph.SharedVariable)
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: Bind(SharedVariable)
+  nameWithType: SharedVariable.Bind(SharedVariable)
+  fullName: Ceres.Graph.SharedVariable.Bind(Ceres.Graph.SharedVariable)
+  type: Method
+  source:
+    id: Bind
+    path: ''
+    startLine: 20977
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nBind to other sharedVariable\n"
+  example: []
+  syntax:
+    content: public abstract void Bind(SharedVariable other)
+    parameters:
+    - id: other
+      type: Ceres.Graph.SharedVariable
+      description: ''
+    content.vb: Public MustOverride Sub Bind(other As SharedVariable)
+  overload: Ceres.Graph.SharedVariable.Bind*
+- uid: Ceres.Graph.SharedVariable.Dispose
+  commentId: M:Ceres.Graph.SharedVariable.Dispose
+  id: Dispose
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: SharedVariable.Dispose()
+  fullName: Ceres.Graph.SharedVariable.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 20982
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nUnbind self\n"
+  example: []
+  syntax:
+    content: public abstract void Dispose()
+    content.vb: Public MustOverride Sub Dispose()
+  overload: Ceres.Graph.SharedVariable.Dispose*
+- uid: Ceres.Graph.SharedVariable.Clone
+  commentId: M:Ceres.Graph.SharedVariable.Clone
+  id: Clone
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: SharedVariable.Clone()
+  fullName: Ceres.Graph.SharedVariable.Clone()
+  type: Method
+  source:
+    id: Clone
+    path: ''
+    startLine: 20988
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nClone shared variable by deep copy, an option here is to override for preventing using reflection\n"
+  example: []
+  syntax:
+    content: public virtual SharedVariable Clone()
+    return:
+      type: Ceres.Graph.SharedVariable
+      description: ''
+    content.vb: Public Overridable Function Clone() As SharedVariable
+  overload: Ceres.Graph.SharedVariable.Clone*
+- uid: Ceres.Graph.SharedVariable.Observe
+  commentId: M:Ceres.Graph.SharedVariable.Observe
+  id: Observe
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: Observe()
+  nameWithType: SharedVariable.Observe()
+  fullName: Ceres.Graph.SharedVariable.Observe()
+  type: Method
+  source:
+    id: Observe
+    path: ''
+    startLine: 21000
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nCreate a observe proxy variable\n"
+  example: []
+  syntax:
+    content: public abstract ObserveProxyVariable Observe()
+    return:
+      type: Ceres.Graph.ObserveProxyVariable
+      description: ''
+    content.vb: Public MustOverride Function Observe() As ObserveProxyVariable
+  overload: Ceres.Graph.SharedVariable.Observe*
+- uid: Ceres.Graph.SharedVariable.GetValueType
+  commentId: M:Ceres.Graph.SharedVariable.GetValueType
+  id: GetValueType
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: GetValueType()
+  nameWithType: SharedVariable.GetValueType()
+  fullName: Ceres.Graph.SharedVariable.GetValueType()
+  type: Method
+  source:
+    id: GetValueType
+    path: ''
+    startLine: 21002
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public virtual Type GetValueType()
+    return:
+      type: Global.Type
+    content.vb: Public Overridable Function GetValueType() As Type
+  overload: Ceres.Graph.SharedVariable.GetValueType*
+- uid: Ceres.Graph.SharedVariable.GetSerializedData
+  commentId: M:Ceres.Graph.SharedVariable.GetSerializedData
+  id: GetSerializedData
+  parent: Ceres.Graph.SharedVariable
+  langs:
+  - csharp
+  - vb
+  name: GetSerializedData()
+  nameWithType: SharedVariable.GetSerializedData()
+  fullName: Ceres.Graph.SharedVariable.GetSerializedData()
+  type: Method
+  source:
+    id: GetSerializedData
+    path: ''
+    startLine: 21012
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public virtual SharedVariableData GetSerializedData()
+    return:
+      type: Ceres.Graph.SharedVariableData
+    content.vb: Public Overridable Function GetSerializedData() As SharedVariableData
+  overload: Ceres.Graph.SharedVariable.GetSerializedData*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.SharedVariable.IsShared*
+  commentId: Overload:Ceres.Graph.SharedVariable.IsShared
+  name: IsShared
+  nameWithType: SharedVariable.IsShared
+  fullName: Ceres.Graph.SharedVariable.IsShared
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Graph.SharedVariable.IsGlobal*
+  commentId: Overload:Ceres.Graph.SharedVariable.IsGlobal
+  name: IsGlobal
+  nameWithType: SharedVariable.IsGlobal
+  fullName: Ceres.Graph.SharedVariable.IsGlobal
+- uid: Ceres.Graph.SharedVariable.IsExposed*
+  commentId: Overload:Ceres.Graph.SharedVariable.IsExposed
+  name: IsExposed
+  nameWithType: SharedVariable.IsExposed
+  fullName: Ceres.Graph.SharedVariable.IsExposed
+- uid: Ceres.Graph.SharedVariable.Name*
+  commentId: Overload:Ceres.Graph.SharedVariable.Name
+  name: Name
+  nameWithType: SharedVariable.Name
+  fullName: Ceres.Graph.SharedVariable.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Graph.SharedVariable.GetValue*
+  commentId: Overload:Ceres.Graph.SharedVariable.GetValue
+  name: GetValue
+  nameWithType: SharedVariable.GetValue
+  fullName: Ceres.Graph.SharedVariable.GetValue
+- uid: Ceres.Graph.SharedVariable.SetValue*
+  commentId: Overload:Ceres.Graph.SharedVariable.SetValue
+  name: SetValue
+  nameWithType: SharedVariable.SetValue
+  fullName: Ceres.Graph.SharedVariable.SetValue
+- uid: Ceres.Graph.SharedVariable.Bind*
+  commentId: Overload:Ceres.Graph.SharedVariable.Bind
+  name: Bind
+  nameWithType: SharedVariable.Bind
+  fullName: Ceres.Graph.SharedVariable.Bind
+- uid: Ceres.Graph.SharedVariable
+  commentId: T:Ceres.Graph.SharedVariable
+  parent: Ceres.Graph
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: Ceres.Graph.SharedVariable
+- uid: Ceres.Graph.SharedVariable.Dispose*
+  commentId: Overload:Ceres.Graph.SharedVariable.Dispose
+  name: Dispose
+  nameWithType: SharedVariable.Dispose
+  fullName: Ceres.Graph.SharedVariable.Dispose
+- uid: Ceres.Graph.SharedVariable.Clone*
+  commentId: Overload:Ceres.Graph.SharedVariable.Clone
+  name: Clone
+  nameWithType: SharedVariable.Clone
+  fullName: Ceres.Graph.SharedVariable.Clone
+- uid: Ceres.Graph.SharedVariable.Observe*
+  commentId: Overload:Ceres.Graph.SharedVariable.Observe
+  name: Observe
+  nameWithType: SharedVariable.Observe
+  fullName: Ceres.Graph.SharedVariable.Observe
+- uid: Ceres.Graph.ObserveProxyVariable
+  commentId: T:Ceres.Graph.ObserveProxyVariable
+  parent: Ceres.Graph
+  name: ObserveProxyVariable
+  nameWithType: ObserveProxyVariable
+  fullName: Ceres.Graph.ObserveProxyVariable
+- uid: Ceres.Graph.SharedVariable.GetValueType*
+  commentId: Overload:Ceres.Graph.SharedVariable.GetValueType
+  name: GetValueType
+  nameWithType: SharedVariable.GetValueType
+  fullName: Ceres.Graph.SharedVariable.GetValueType
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Ceres.Graph.SharedVariable.GetSerializedData*
+  commentId: Overload:Ceres.Graph.SharedVariable.GetSerializedData
+  name: GetSerializedData
+  nameWithType: SharedVariable.GetSerializedData
+  fullName: Ceres.Graph.SharedVariable.GetSerializedData
+- uid: Ceres.Graph.SharedVariableData
+  commentId: T:Ceres.Graph.SharedVariableData
+  parent: Ceres.Graph
+  name: SharedVariableData
+  nameWithType: SharedVariableData
+  fullName: Ceres.Graph.SharedVariableData

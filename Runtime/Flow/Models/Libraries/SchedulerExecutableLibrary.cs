@@ -5,7 +5,7 @@ using Chris.Schedulers;
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
-    /// Executable function library for Chris.Schedulers
+    /// Provides scheduler timer and frame counter helpers for Flow graphs.
     /// </summary>
     [CeresGroup("Scheduler")]
     public partial class SchedulerExecutableLibrary: ExecutableFunctionLibrary
@@ -13,7 +13,7 @@ namespace Ceres.Graph.Flow.Utilities
         #region Scheduler
 
         /// <summary>
-        /// Delay some time and invoke callBack.
+        /// Schedules a timer and invokes callbacks as it updates and completes.
         /// </summary>
         /// <param name="delaySeconds"></param>
         /// <param name="onComplete"></param>
@@ -33,7 +33,7 @@ namespace Ceres.Graph.Flow.Utilities
         }
         
         /// <summary>
-        /// Wait some frames and invoke callBack.
+        /// Schedules a frame counter and invokes callbacks as it updates and completes.
         /// </summary>
         /// <param name="frame"></param>
         /// <param name="onComplete"></param>
@@ -51,7 +51,7 @@ namespace Ceres.Graph.Flow.Utilities
         }
         
         /// <summary>
-        /// Cancel a scheduled task if is valid.
+        /// Cancels a scheduled task if the handle is valid.
         /// </summary>
         /// <param name="handle"></param>
         [ExecutableFunction, CeresLabel("Cancel Scheduler")]

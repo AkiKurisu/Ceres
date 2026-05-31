@@ -1,0 +1,878 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresPortView
+  commentId: T:Ceres.Editor.Graph.CeresPortView
+  id: CeresPortView
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresPortView.#ctor(Ceres.Editor.Graph.CeresPortViewBinding,Ceres.Editor.Graph.CeresNodeView,CeresPortData)
+  - Ceres.Editor.Graph.CeresPortView.Binding
+  - Ceres.Editor.Graph.CeresPortView.Commit(CeresNode)
+  - Ceres.Editor.Graph.CeresPortView.Connect
+  - Ceres.Editor.Graph.CeresPortView.EndDebug
+  - Ceres.Editor.Graph.CeresPortView.FieldResolver
+  - Ceres.Editor.Graph.CeresPortView.Flags
+  - Ceres.Editor.Graph.CeresPortView.NodeOwner
+  - Ceres.Editor.Graph.CeresPortView.PortData
+  - Ceres.Editor.Graph.CeresPortView.PortElement
+  - Ceres.Editor.Graph.CeresPortView.Restore(CeresNode,CeresPortData)
+  - Ceres.Editor.Graph.CeresPortView.SetDebugData(System.String)
+  - Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo(ParameterInfo)
+  - Ceres.Editor.Graph.CeresPortView.SetDisplayName(System.String)
+  - Ceres.Editor.Graph.CeresPortView.SetDisplayType(Type)
+  - Ceres.Editor.Graph.CeresPortView.SetTooltip(System.String)
+  - Ceres.Editor.Graph.CeresPortView.StartDebug
+  langs:
+  - csharp
+  - vb
+  name: CeresPortView
+  nameWithType: CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView
+  type: Class
+  source:
+    id: CeresPortView
+    path: ''
+    startLine: 6116
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nPort view for <xref href=\"Ceres.Editor.Graph.CeresNodeView\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public class CeresPortView
+    content.vb: Public Class CeresPortView
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Editor.Graph.CeresPortView.Binding
+  commentId: P:Ceres.Editor.Graph.CeresPortView.Binding
+  id: Binding
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Binding
+  nameWithType: CeresPortView.Binding
+  fullName: Ceres.Editor.Graph.CeresPortView.Binding
+  type: Property
+  source:
+    id: Binding
+    path: ''
+    startLine: 6118
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortViewBinding Binding { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresPortViewBinding
+    content.vb: Public ReadOnly Property Binding As CeresPortViewBinding
+  overload: Ceres.Editor.Graph.CeresPortView.Binding*
+- uid: Ceres.Editor.Graph.CeresPortView.PortData
+  commentId: P:Ceres.Editor.Graph.CeresPortView.PortData
+  id: PortData
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: PortData
+  nameWithType: CeresPortView.PortData
+  fullName: Ceres.Editor.Graph.CeresPortView.PortData
+  type: Property
+  source:
+    id: PortData
+    path: ''
+    startLine: 6120
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortData PortData { get; }
+    parameters: []
+    return:
+      type: Global.CeresPortData
+    content.vb: Public Property PortData As CeresPortData
+  overload: Ceres.Editor.Graph.CeresPortView.PortData*
+- uid: Ceres.Editor.Graph.CeresPortView.PortElement
+  commentId: P:Ceres.Editor.Graph.CeresPortView.PortElement
+  id: PortElement
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: PortElement
+  nameWithType: CeresPortView.PortElement
+  fullName: Ceres.Editor.Graph.CeresPortView.PortElement
+  type: Property
+  source:
+    id: PortElement
+    path: ''
+    startLine: 6122
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortElement PortElement { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresPortElement
+    content.vb: Public ReadOnly Property PortElement As CeresPortElement
+  overload: Ceres.Editor.Graph.CeresPortView.PortElement*
+- uid: Ceres.Editor.Graph.CeresPortView.NodeOwner
+  commentId: P:Ceres.Editor.Graph.CeresPortView.NodeOwner
+  id: NodeOwner
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: NodeOwner
+  nameWithType: CeresPortView.NodeOwner
+  fullName: Ceres.Editor.Graph.CeresPortView.NodeOwner
+  type: Property
+  source:
+    id: NodeOwner
+    path: ''
+    startLine: 6124
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresNodeView NodeOwner { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresNodeView
+    content.vb: Public ReadOnly Property NodeOwner As CeresNodeView
+  overload: Ceres.Editor.Graph.CeresPortView.NodeOwner*
+- uid: Ceres.Editor.Graph.CeresPortView.FieldResolver
+  commentId: P:Ceres.Editor.Graph.CeresPortView.FieldResolver
+  id: FieldResolver
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: FieldResolver
+  nameWithType: CeresPortView.FieldResolver
+  fullName: Ceres.Editor.Graph.CeresPortView.FieldResolver
+  type: Property
+  source:
+    id: FieldResolver
+    path: ''
+    startLine: 6126
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public IFieldResolver FieldResolver { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.IFieldResolver
+    content.vb: Public ReadOnly Property FieldResolver As IFieldResolver
+  overload: Ceres.Editor.Graph.CeresPortView.FieldResolver*
+- uid: Ceres.Editor.Graph.CeresPortView.Flags
+  commentId: P:Ceres.Editor.Graph.CeresPortView.Flags
+  id: Flags
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Flags
+  nameWithType: CeresPortView.Flags
+  fullName: Ceres.Editor.Graph.CeresPortView.Flags
+  type: Property
+  source:
+    id: Flags
+    path: ''
+    startLine: 6128
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortViewFlags Flags { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresPortViewFlags
+    content.vb: Public Property Flags As CeresPortViewFlags
+  overload: Ceres.Editor.Graph.CeresPortView.Flags*
+- uid: Ceres.Editor.Graph.CeresPortView.#ctor(Ceres.Editor.Graph.CeresPortViewBinding,Ceres.Editor.Graph.CeresNodeView,CeresPortData)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.#ctor(Ceres.Editor.Graph.CeresPortViewBinding,Ceres.Editor.Graph.CeresNodeView,CeresPortData)
+  id: '#ctor(Ceres.Editor.Graph.CeresPortViewBinding,Ceres.Editor.Graph.CeresNodeView,CeresPortData)'
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: CeresPortView(CeresPortViewBinding, CeresNodeView, CeresPortData)
+  nameWithType: CeresPortView.CeresPortView(CeresPortViewBinding, CeresNodeView, CeresPortData)
+  fullName: Ceres.Editor.Graph.CeresPortView.CeresPortView(Ceres.Editor.Graph.CeresPortViewBinding, Ceres.Editor.Graph.CeresNodeView, CeresPortData)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 6135
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortView(CeresPortViewBinding binding, CeresNodeView nodeView, CeresPortData portData)
+    parameters:
+    - id: binding
+      type: Ceres.Editor.Graph.CeresPortViewBinding
+    - id: nodeView
+      type: Ceres.Editor.Graph.CeresNodeView
+    - id: portData
+      type: Global.CeresPortData
+    content.vb: Public Sub New(binding As CeresPortViewBinding, nodeView As CeresNodeView, portData As CeresPortData)
+  overload: Ceres.Editor.Graph.CeresPortView.#ctor*
+  nameWithType.vb: CeresPortView.New(CeresPortViewBinding, CeresNodeView, CeresPortData)
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.New(Ceres.Editor.Graph.CeresPortViewBinding, Ceres.Editor.Graph.CeresNodeView, CeresPortData)
+  name.vb: New(CeresPortViewBinding, CeresNodeView, CeresPortData)
+- uid: Ceres.Editor.Graph.CeresPortView.Commit(CeresNode)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.Commit(CeresNode)
+  id: Commit(CeresNode)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Commit(CeresNode)
+  nameWithType: CeresPortView.Commit(CeresNode)
+  fullName: Ceres.Editor.Graph.CeresPortView.Commit(CeresNode)
+  type: Method
+  source:
+    id: Commit
+    path: ''
+    startLine: 6191
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nLink all ports to <see cref=\"!:CeresNode\"></see> instance\n"
+  example: []
+  syntax:
+    content: public void Commit(CeresNode nodeInstance)
+    parameters:
+    - id: nodeInstance
+      type: Global.CeresNode
+      description: ''
+    content.vb: Public Sub Commit(nodeInstance As CeresNode)
+  overload: Ceres.Editor.Graph.CeresPortView.Commit*
+- uid: Ceres.Editor.Graph.CeresPortView.Connect
+  commentId: M:Ceres.Editor.Graph.CeresPortView.Connect
+  id: Connect
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Connect()
+  nameWithType: CeresPortView.Connect()
+  fullName: Ceres.Editor.Graph.CeresPortView.Connect()
+  type: Method
+  source:
+    id: Connect
+    path: ''
+    startLine: 6292
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nConnect port element based on current <see cref=\"!:CeresPortData\"></see>\n"
+  example: []
+  syntax:
+    content: public void Connect()
+    content.vb: Public Sub Connect()
+  overload: Ceres.Editor.Graph.CeresPortView.Connect*
+- uid: Ceres.Editor.Graph.CeresPortView.Restore(CeresNode,CeresPortData)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.Restore(CeresNode,CeresPortData)
+  id: Restore(CeresNode,CeresPortData)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Restore(CeresNode, CeresPortData)
+  nameWithType: CeresPortView.Restore(CeresNode, CeresPortData)
+  fullName: Ceres.Editor.Graph.CeresPortView.Restore(CeresNode, CeresPortData)
+  type: Method
+  source:
+    id: Restore
+    path: ''
+    startLine: 6312
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void Restore(CeresNode nodeInstance, CeresPortData portData)
+    parameters:
+    - id: nodeInstance
+      type: Global.CeresNode
+    - id: portData
+      type: Global.CeresPortData
+    content.vb: Public Sub Restore(nodeInstance As CeresNode, portData As CeresPortData)
+  overload: Ceres.Editor.Graph.CeresPortView.Restore*
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo(ParameterInfo)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo(ParameterInfo)
+  id: SetDisplayDataFromParameterInfo(ParameterInfo)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetDisplayDataFromParameterInfo(ParameterInfo)
+  nameWithType: CeresPortView.SetDisplayDataFromParameterInfo(ParameterInfo)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo(ParameterInfo)
+  type: Method
+  source:
+    id: SetDisplayDataFromParameterInfo
+    path: ''
+    startLine: 6345
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nSet display name and default value from <see cref=\"!:ParameterInfo\"></see>\n"
+  example: []
+  syntax:
+    content: public void SetDisplayDataFromParameterInfo(ParameterInfo parameterInfo)
+    parameters:
+    - id: parameterInfo
+      type: Global.ParameterInfo
+      description: ''
+    content.vb: Public Sub SetDisplayDataFromParameterInfo(parameterInfo As ParameterInfo)
+  overload: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo*
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayName(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetDisplayName(System.String)
+  id: SetDisplayName(System.String)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetDisplayName(string)
+  nameWithType: CeresPortView.SetDisplayName(string)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayName(string)
+  type: Method
+  source:
+    id: SetDisplayName
+    path: ''
+    startLine: 6368
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void SetDisplayName(string displayName)
+    parameters:
+    - id: displayName
+      type: System.String
+    content.vb: Public Sub SetDisplayName(displayName As String)
+  overload: Ceres.Editor.Graph.CeresPortView.SetDisplayName*
+  nameWithType.vb: CeresPortView.SetDisplayName(String)
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.SetDisplayName(String)
+  name.vb: SetDisplayName(String)
+- uid: Ceres.Editor.Graph.CeresPortView.SetTooltip(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetTooltip(System.String)
+  id: SetTooltip(System.String)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetTooltip(string)
+  nameWithType: CeresPortView.SetTooltip(string)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetTooltip(string)
+  type: Method
+  source:
+    id: SetTooltip
+    path: ''
+    startLine: 6373
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void SetTooltip(string tooltip)
+    parameters:
+    - id: tooltip
+      type: System.String
+    content.vb: Public Sub SetTooltip(tooltip As String)
+  overload: Ceres.Editor.Graph.CeresPortView.SetTooltip*
+  nameWithType.vb: CeresPortView.SetTooltip(String)
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.SetTooltip(String)
+  name.vb: SetTooltip(String)
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayType(Type)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetDisplayType(Type)
+  id: SetDisplayType(Type)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetDisplayType(Type)
+  nameWithType: CeresPortView.SetDisplayType(Type)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayType(Type)
+  type: Method
+  source:
+    id: SetDisplayType
+    path: ''
+    startLine: 6378
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void SetDisplayType(Type displayType)
+    parameters:
+    - id: displayType
+      type: Global.Type
+    content.vb: Public Sub SetDisplayType(displayType As Type)
+  overload: Ceres.Editor.Graph.CeresPortView.SetDisplayType*
+- uid: Ceres.Editor.Graph.CeresPortView.StartDebug
+  commentId: M:Ceres.Editor.Graph.CeresPortView.StartDebug
+  id: StartDebug
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: StartDebug()
+  nameWithType: CeresPortView.StartDebug()
+  fullName: Ceres.Editor.Graph.CeresPortView.StartDebug()
+  type: Method
+  source:
+    id: StartDebug
+    path: ''
+    startLine: 6386
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nStart debugging port\n"
+  example: []
+  syntax:
+    content: public void StartDebug()
+    content.vb: Public Sub StartDebug()
+  overload: Ceres.Editor.Graph.CeresPortView.StartDebug*
+- uid: Ceres.Editor.Graph.CeresPortView.SetDebugData(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetDebugData(System.String)
+  id: SetDebugData(System.String)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetDebugData(string)
+  nameWithType: CeresPortView.SetDebugData(string)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDebugData(string)
+  type: Method
+  source:
+    id: SetDebugData
+    path: ''
+    startLine: 6401
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nSet port debug data to display\n"
+  example: []
+  syntax:
+    content: public void SetDebugData(string debugData)
+    parameters:
+    - id: debugData
+      type: System.String
+      description: Debug data to display
+    content.vb: Public Sub SetDebugData(debugData As String)
+  overload: Ceres.Editor.Graph.CeresPortView.SetDebugData*
+  nameWithType.vb: CeresPortView.SetDebugData(String)
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.SetDebugData(String)
+  name.vb: SetDebugData(String)
+- uid: Ceres.Editor.Graph.CeresPortView.EndDebug
+  commentId: M:Ceres.Editor.Graph.CeresPortView.EndDebug
+  id: EndDebug
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: EndDebug()
+  nameWithType: CeresPortView.EndDebug()
+  fullName: Ceres.Editor.Graph.CeresPortView.EndDebug()
+  type: Method
+  source:
+    id: EndDebug
+    path: ''
+    startLine: 6412
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nEnd debugging port\n"
+  example: []
+  syntax:
+    content: public void EndDebug()
+    content.vb: Public Sub EndDebug()
+  overload: Ceres.Editor.Graph.CeresPortView.EndDebug*
+references:
+- uid: Ceres.Editor.Graph.CeresNodeView
+  commentId: T:Ceres.Editor.Graph.CeresNodeView
+  parent: Ceres.Editor.Graph
+  name: CeresNodeView
+  nameWithType: CeresNodeView
+  fullName: Ceres.Editor.Graph.CeresNodeView
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.CeresPortView.Binding*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Binding
+  name: Binding
+  nameWithType: CeresPortView.Binding
+  fullName: Ceres.Editor.Graph.CeresPortView.Binding
+- uid: Ceres.Editor.Graph.CeresPortViewBinding
+  commentId: T:Ceres.Editor.Graph.CeresPortViewBinding
+  parent: Ceres.Editor.Graph
+  name: CeresPortViewBinding
+  nameWithType: CeresPortViewBinding
+  fullName: Ceres.Editor.Graph.CeresPortViewBinding
+- uid: Ceres.Editor.Graph.CeresPortView.PortData*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.PortData
+  name: PortData
+  nameWithType: CeresPortView.PortData
+  fullName: Ceres.Editor.Graph.CeresPortView.PortData
+- uid: Global.CeresPortData
+  isExternal: true
+  name: CeresPortData
+  nameWithType: CeresPortData
+  fullName: CeresPortData
+- uid: Ceres.Editor.Graph.CeresPortView.PortElement*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.PortElement
+  name: PortElement
+  nameWithType: CeresPortView.PortElement
+  fullName: Ceres.Editor.Graph.CeresPortView.PortElement
+- uid: Ceres.Editor.Graph.CeresPortElement
+  commentId: T:Ceres.Editor.Graph.CeresPortElement
+  parent: Ceres.Editor.Graph
+  name: CeresPortElement
+  nameWithType: CeresPortElement
+  fullName: Ceres.Editor.Graph.CeresPortElement
+- uid: Ceres.Editor.Graph.CeresPortView.NodeOwner*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.NodeOwner
+  name: NodeOwner
+  nameWithType: CeresPortView.NodeOwner
+  fullName: Ceres.Editor.Graph.CeresPortView.NodeOwner
+- uid: Ceres.Editor.Graph.CeresPortView.FieldResolver*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.FieldResolver
+  name: FieldResolver
+  nameWithType: CeresPortView.FieldResolver
+  fullName: Ceres.Editor.Graph.CeresPortView.FieldResolver
+- uid: Ceres.Editor.Graph.IFieldResolver
+  commentId: T:Ceres.Editor.Graph.IFieldResolver
+  parent: Ceres.Editor.Graph
+  name: IFieldResolver
+  nameWithType: IFieldResolver
+  fullName: Ceres.Editor.Graph.IFieldResolver
+- uid: Ceres.Editor.Graph.CeresPortView.Flags*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Flags
+  name: Flags
+  nameWithType: CeresPortView.Flags
+  fullName: Ceres.Editor.Graph.CeresPortView.Flags
+- uid: Ceres.Editor.Graph.CeresPortViewFlags
+  commentId: T:Ceres.Editor.Graph.CeresPortViewFlags
+  parent: Ceres.Editor.Graph
+  name: CeresPortViewFlags
+  nameWithType: CeresPortViewFlags
+  fullName: Ceres.Editor.Graph.CeresPortViewFlags
+- uid: Ceres.Editor.Graph.CeresPortView.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.#ctor
+  name: CeresPortView
+  nameWithType: CeresPortView.CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView.CeresPortView
+  nameWithType.vb: CeresPortView.New
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.CeresPortView.Commit*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Commit
+  name: Commit
+  nameWithType: CeresPortView.Commit
+  fullName: Ceres.Editor.Graph.CeresPortView.Commit
+- uid: Global.CeresNode
+  isExternal: true
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: CeresNode
+- uid: Ceres.Editor.Graph.CeresPortView.Connect*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Connect
+  name: Connect
+  nameWithType: CeresPortView.Connect
+  fullName: Ceres.Editor.Graph.CeresPortView.Connect
+- uid: Ceres.Editor.Graph.CeresPortView.Restore*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Restore
+  name: Restore
+  nameWithType: CeresPortView.Restore
+  fullName: Ceres.Editor.Graph.CeresPortView.Restore
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo
+  name: SetDisplayDataFromParameterInfo
+  nameWithType: CeresPortView.SetDisplayDataFromParameterInfo
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo
+- uid: Global.ParameterInfo
+  isExternal: true
+  name: ParameterInfo
+  nameWithType: ParameterInfo
+  fullName: ParameterInfo
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayName*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetDisplayName
+  name: SetDisplayName
+  nameWithType: CeresPortView.SetDisplayName
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Editor.Graph.CeresPortView.SetTooltip*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetTooltip
+  name: SetTooltip
+  nameWithType: CeresPortView.SetTooltip
+  fullName: Ceres.Editor.Graph.CeresPortView.SetTooltip
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayType*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetDisplayType
+  name: SetDisplayType
+  nameWithType: CeresPortView.SetDisplayType
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayType
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Ceres.Editor.Graph.CeresPortView.StartDebug*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.StartDebug
+  name: StartDebug
+  nameWithType: CeresPortView.StartDebug
+  fullName: Ceres.Editor.Graph.CeresPortView.StartDebug
+- uid: Ceres.Editor.Graph.CeresPortView.SetDebugData*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetDebugData
+  name: SetDebugData
+  nameWithType: CeresPortView.SetDebugData
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDebugData
+- uid: Ceres.Editor.Graph.CeresPortView.EndDebug*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.EndDebug
+  name: EndDebug
+  nameWithType: CeresPortView.EndDebug
+  fullName: Ceres.Editor.Graph.CeresPortView.EndDebug

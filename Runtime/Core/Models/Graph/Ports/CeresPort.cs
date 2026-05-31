@@ -375,6 +375,22 @@ namespace Ceres.Graph
 
         internal WeakReference<CeresNode> Node;
 
+        [NonSerialized]
+        internal string TargetPortId;
+
+        [NonSerialized]
+        internal int TargetPortIndex = -1;
+
+        public string GetTargetPortId()
+        {
+            return TargetPortId;
+        }
+
+        public int GetTargetPortIndex()
+        {
+            return TargetPortIndex;
+        }
+
         /// <summary>
         /// Get <see cref="CeresNode"/> if exist
         /// </summary>
@@ -393,6 +409,14 @@ namespace Ceres.Graph
         public T GetT<T>() where T : CeresNode
         {
             return Get() as T;
+        }
+
+        public override void Dispose()
+        {
+            Node = null;
+            TargetPortId = null;
+            TargetPortIndex = -1;
+            base.Dispose();
         }
     }
 

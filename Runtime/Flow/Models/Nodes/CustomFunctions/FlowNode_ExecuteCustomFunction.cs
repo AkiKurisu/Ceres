@@ -8,6 +8,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
     /// Execute custom function implemented in flow graph
     /// </summary>
     [Serializable]
+    [NodeInfo("Invokes a local Flow function or FlowGraphFunction asset.")]
     [CeresMetadata("style = CustomFunctionNode")]
     public abstract class FlowNode_ExecuteCustomFunction : FlowNode, IRuntimeCompiledNode
     {
@@ -43,7 +44,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
                     evt);
                 PostExecuteCustomFunction(evt);
             }
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
         }
 
         private protected virtual void PreExecuteCustomFunction(ExecuteSubFlowEvent evt)

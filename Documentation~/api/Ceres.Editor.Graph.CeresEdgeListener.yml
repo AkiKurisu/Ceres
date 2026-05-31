@@ -1,0 +1,204 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresEdgeListener
+  commentId: T:Ceres.Editor.Graph.CeresEdgeListener
+  id: CeresEdgeListener
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresEdgeListener.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.CeresEdgeListener.OnDrop(GraphView,Edge)
+  - Ceres.Editor.Graph.CeresEdgeListener.OnDropOutsidePort(Edge,Vector2)
+  langs:
+  - csharp
+  - vb
+  name: CeresEdgeListener
+  nameWithType: CeresEdgeListener
+  fullName: Ceres.Editor.Graph.CeresEdgeListener
+  type: Class
+  source:
+    id: CeresEdgeListener
+    path: ''
+    startLine: 5669
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nEdge listener connecting <xref href=\"Ceres.Editor.Graph.CeresEdge\" data-throw-if-not-resolved=\"false\"></xref> between <xref href=\"Ceres.Editor.Graph.CeresPortElement\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: 'public class CeresEdgeListener : IEdgeConnectorListener'
+    content.vb: Public Class CeresEdgeListener Inherits IEdgeConnectorListener
+  inheritance:
+  - System.Object
+- uid: Ceres.Editor.Graph.CeresEdgeListener.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.CeresEdgeListener.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  id: '#ctor(Ceres.Editor.Graph.CeresGraphView)'
+  parent: Ceres.Editor.Graph.CeresEdgeListener
+  langs:
+  - csharp
+  - vb
+  name: CeresEdgeListener(CeresGraphView)
+  nameWithType: CeresEdgeListener.CeresEdgeListener(CeresGraphView)
+  fullName: Ceres.Editor.Graph.CeresEdgeListener.CeresEdgeListener(Ceres.Editor.Graph.CeresGraphView)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 5679
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresEdgeListener(CeresGraphView ceresGraphView)
+    parameters:
+    - id: ceresGraphView
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Public Sub New(ceresGraphView As CeresGraphView)
+  overload: Ceres.Editor.Graph.CeresEdgeListener.#ctor*
+  nameWithType.vb: CeresEdgeListener.New(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.CeresEdgeListener.New(Ceres.Editor.Graph.CeresGraphView)
+  name.vb: New(CeresGraphView)
+- uid: Ceres.Editor.Graph.CeresEdgeListener.OnDropOutsidePort(Edge,Vector2)
+  commentId: M:Ceres.Editor.Graph.CeresEdgeListener.OnDropOutsidePort(Edge,Vector2)
+  id: OnDropOutsidePort(Edge,Vector2)
+  parent: Ceres.Editor.Graph.CeresEdgeListener
+  langs:
+  - csharp
+  - vb
+  name: OnDropOutsidePort(Edge, Vector2)
+  nameWithType: CeresEdgeListener.OnDropOutsidePort(Edge, Vector2)
+  fullName: Ceres.Editor.Graph.CeresEdgeListener.OnDropOutsidePort(Edge, Vector2)
+  type: Method
+  source:
+    id: OnDropOutsidePort
+    path: ''
+    startLine: 5687
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void OnDropOutsidePort(Edge edge, Vector2 position)
+    parameters:
+    - id: edge
+      type: Global.Edge
+    - id: position
+      type: Global.Vector2
+    content.vb: Public Sub OnDropOutsidePort(edge As Edge, position As Vector2)
+  overload: Ceres.Editor.Graph.CeresEdgeListener.OnDropOutsidePort*
+- uid: Ceres.Editor.Graph.CeresEdgeListener.OnDrop(GraphView,Edge)
+  commentId: M:Ceres.Editor.Graph.CeresEdgeListener.OnDrop(GraphView,Edge)
+  id: OnDrop(GraphView,Edge)
+  parent: Ceres.Editor.Graph.CeresEdgeListener
+  langs:
+  - csharp
+  - vb
+  name: OnDrop(GraphView, Edge)
+  nameWithType: CeresEdgeListener.OnDrop(GraphView, Edge)
+  fullName: Ceres.Editor.Graph.CeresEdgeListener.OnDrop(GraphView, Edge)
+  type: Method
+  source:
+    id: OnDrop
+    path: ''
+    startLine: 5709
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void OnDrop(GraphView graphView, Edge edge)
+    parameters:
+    - id: graphView
+      type: Global.GraphView
+    - id: edge
+      type: Global.Edge
+    content.vb: Public Sub OnDrop(graphView As GraphView, edge As Edge)
+  overload: Ceres.Editor.Graph.CeresEdgeListener.OnDrop*
+references:
+- uid: Ceres.Editor.Graph.CeresEdge
+  commentId: T:Ceres.Editor.Graph.CeresEdge
+  parent: Ceres.Editor.Graph
+  name: CeresEdge
+  nameWithType: CeresEdge
+  fullName: Ceres.Editor.Graph.CeresEdge
+- uid: Ceres.Editor.Graph.CeresPortElement
+  commentId: T:Ceres.Editor.Graph.CeresPortElement
+  parent: Ceres.Editor.Graph
+  name: CeresPortElement
+  nameWithType: CeresPortElement
+  fullName: Ceres.Editor.Graph.CeresPortElement
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.CeresEdgeListener.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.CeresEdgeListener.#ctor
+  name: CeresEdgeListener
+  nameWithType: CeresEdgeListener.CeresEdgeListener
+  fullName: Ceres.Editor.Graph.CeresEdgeListener.CeresEdgeListener
+  nameWithType.vb: CeresEdgeListener.New
+  fullName.vb: Ceres.Editor.Graph.CeresEdgeListener.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.CeresEdgeListener.OnDropOutsidePort*
+  commentId: Overload:Ceres.Editor.Graph.CeresEdgeListener.OnDropOutsidePort
+  name: OnDropOutsidePort
+  nameWithType: CeresEdgeListener.OnDropOutsidePort
+  fullName: Ceres.Editor.Graph.CeresEdgeListener.OnDropOutsidePort
+- uid: Global.Edge
+  isExternal: true
+  name: Edge
+  nameWithType: Edge
+  fullName: Edge
+- uid: Global.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: Ceres.Editor.Graph.CeresEdgeListener.OnDrop*
+  commentId: Overload:Ceres.Editor.Graph.CeresEdgeListener.OnDrop
+  name: OnDrop
+  nameWithType: CeresEdgeListener.OnDrop
+  fullName: Ceres.Editor.Graph.CeresEdgeListener.OnDrop
+- uid: Global.GraphView
+  isExternal: true
+  name: GraphView
+  nameWithType: GraphView
+  fullName: GraphView

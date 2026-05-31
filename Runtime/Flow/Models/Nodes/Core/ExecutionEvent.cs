@@ -32,6 +32,7 @@ namespace Ceres.Graph.Flow
     /// </summary>
     [Serializable]
     [CeresGroup("Hidden")]
+    [NodeInfo("Entry point that starts graph execution from a named event.")]
     public class ExecutionEvent : ExecutionEventBase
     {
         [OutputPort, HideInGraphEditor, CeresLabel("")]
@@ -42,12 +43,13 @@ namespace Ceres.Graph.Flow
         
         protected override UniTask Execute(ExecutionContext executionContext)
         {
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
     }
     
     [Serializable]
+    [NodeInfo("Entry point that starts graph execution from a named event with typed parameters.")]
     public abstract class ExecutionEventGeneric : ExecutionEventBase
     {
         [OutputPort(false), CeresLabel("")]
@@ -56,6 +58,7 @@ namespace Ceres.Graph.Flow
     
     [Serializable]
     [CeresGroup("Hidden")]
+    [NodeInfo("Entry point that starts graph execution from a named event with dynamic parameters.")]
     public sealed class ExecutionEventUber: ExecutionEventBase, ISerializationCallbackReceiver
     {
         [OutputPort(false), CeresLabel("")]
@@ -78,7 +81,7 @@ namespace Ceres.Graph.Flow
                     outputs[i].Value = evt.Args[i];
                 }
             }
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
 
@@ -115,7 +118,7 @@ namespace Ceres.Graph.Flow
             Assert.IsNotNull(executionContext.GetEvent());
             var evt = executionContext.GetEventT<ExecuteFlowEvent<T1>>();
             output1.Value = evt.Arg1;
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
     }
@@ -139,7 +142,7 @@ namespace Ceres.Graph.Flow
             var evt = executionContext.GetEventT<ExecuteFlowEvent<T1, T2>>();
             output1.Value = evt.Arg1;
             output2.Value = evt.Arg2;
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
     }
@@ -167,7 +170,7 @@ namespace Ceres.Graph.Flow
             output1.Value = evt.Arg1;
             output2.Value = evt.Arg2;
             output3.Value = evt.Arg3;
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
     }
@@ -199,7 +202,7 @@ namespace Ceres.Graph.Flow
             output2.Value = evt.Arg2;
             output3.Value = evt.Arg3;
             output4.Value = evt.Arg4;
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
     }
@@ -235,7 +238,7 @@ namespace Ceres.Graph.Flow
             output3.Value = evt.Arg3;
             output4.Value = evt.Arg4;
             output5.Value = evt.Arg5;
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
     }
@@ -275,7 +278,7 @@ namespace Ceres.Graph.Flow
             output4.Value = evt.Arg4;
             output5.Value = evt.Arg5;
             output6.Value = evt.Arg6;
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
     }

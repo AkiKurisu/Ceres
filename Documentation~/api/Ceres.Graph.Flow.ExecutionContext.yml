@@ -1,0 +1,418 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.ExecutionContext
+  commentId: T:Ceres.Graph.Flow.ExecutionContext
+  id: ExecutionContext
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.ExecutionContext.#ctor
+  - Ceres.Graph.Flow.ExecutionContext.Context
+  - Ceres.Graph.Flow.ExecutionContext.Dispose
+  - Ceres.Graph.Flow.ExecutionContext.Forward(Ceres.Graph.Flow.ExecutableNode)
+  - Ceres.Graph.Flow.ExecutionContext.GetEvent
+  - Ceres.Graph.Flow.ExecutionContext.GetEventT``1
+  - Ceres.Graph.Flow.ExecutionContext.GetPooled(UObject,Ceres.Graph.Flow.FlowGraph,EventBase)
+  - Ceres.Graph.Flow.ExecutionContext.Graph
+  - Ceres.Graph.Flow.ExecutionContext.SetNext(Ceres.Graph.Flow.ExecutableNode)
+  langs:
+  - csharp
+  - vb
+  name: ExecutionContext
+  nameWithType: ExecutionContext
+  fullName: Ceres.Graph.Flow.ExecutionContext
+  type: Class
+  source:
+    id: ExecutionContext
+    path: ''
+    startLine: 24283
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nFlow graph execution context\n"
+  example: []
+  syntax:
+    content: 'public class ExecutionContext : IDisposable'
+    content.vb: Public Class ExecutionContext Inherits IDisposable
+  inheritance:
+  - System.Object
+- uid: Ceres.Graph.Flow.ExecutionContext.Graph
+  commentId: P:Ceres.Graph.Flow.ExecutionContext.Graph
+  id: Graph
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Graph
+  nameWithType: ExecutionContext.Graph
+  fullName: Ceres.Graph.Flow.ExecutionContext.Graph
+  type: Property
+  source:
+    id: Graph
+    path: ''
+    startLine: 24290
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nExecution owner graph\n"
+  example: []
+  syntax:
+    content: public FlowGraph Graph { get; }
+    parameters: []
+    return:
+      type: Ceres.Graph.Flow.FlowGraph
+    content.vb: Public Property Graph As FlowGraph
+  overload: Ceres.Graph.Flow.ExecutionContext.Graph*
+- uid: Ceres.Graph.Flow.ExecutionContext.Context
+  commentId: P:Ceres.Graph.Flow.ExecutionContext.Context
+  id: Context
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Context
+  nameWithType: ExecutionContext.Context
+  fullName: Ceres.Graph.Flow.ExecutionContext.Context
+  type: Property
+  source:
+    id: Context
+    path: ''
+    startLine: 24295
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nExecution source context object\n"
+  example: []
+  syntax:
+    content: public UObject Context { get; }
+    parameters: []
+    return:
+      type: Global.UObject
+    content.vb: Public Property Context As UObject
+  overload: Ceres.Graph.Flow.ExecutionContext.Context*
+- uid: Ceres.Graph.Flow.ExecutionContext.#ctor
+  commentId: M:Ceres.Graph.Flow.ExecutionContext.#ctor
+  id: '#ctor'
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: ExecutionContext()
+  nameWithType: ExecutionContext.ExecutionContext()
+  fullName: Ceres.Graph.Flow.ExecutionContext.ExecutionContext()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 24311
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: protected ExecutionContext()
+    content.vb: Protected Sub New()
+  overload: Ceres.Graph.Flow.ExecutionContext.#ctor*
+  nameWithType.vb: ExecutionContext.New()
+  fullName.vb: Ceres.Graph.Flow.ExecutionContext.New()
+  name.vb: New()
+- uid: Ceres.Graph.Flow.ExecutionContext.GetPooled(UObject,Ceres.Graph.Flow.FlowGraph,EventBase)
+  commentId: M:Ceres.Graph.Flow.ExecutionContext.GetPooled(UObject,Ceres.Graph.Flow.FlowGraph,EventBase)
+  id: GetPooled(UObject,Ceres.Graph.Flow.FlowGraph,EventBase)
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: GetPooled(UObject, FlowGraph, EventBase)
+  nameWithType: ExecutionContext.GetPooled(UObject, FlowGraph, EventBase)
+  fullName: Ceres.Graph.Flow.ExecutionContext.GetPooled(UObject, Ceres.Graph.Flow.FlowGraph, EventBase)
+  type: Method
+  source:
+    id: GetPooled
+    path: ''
+    startLine: 24316
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public static ExecutionContext GetPooled(UObject context, FlowGraph graph, EventBase evt = null)
+    parameters:
+    - id: context
+      type: Global.UObject
+    - id: graph
+      type: Ceres.Graph.Flow.FlowGraph
+    - id: evt
+      type: Global.EventBase
+    return:
+      type: Ceres.Graph.Flow.ExecutionContext
+    content.vb: Public Shared Function GetPooled(context As UObject, graph As FlowGraph, evt As EventBase = Nothing) As ExecutionContext
+  overload: Ceres.Graph.Flow.ExecutionContext.GetPooled*
+- uid: Ceres.Graph.Flow.ExecutionContext.SetNext(Ceres.Graph.Flow.ExecutableNode)
+  commentId: M:Ceres.Graph.Flow.ExecutionContext.SetNext(Ceres.Graph.Flow.ExecutableNode)
+  id: SetNext(Ceres.Graph.Flow.ExecutableNode)
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: SetNext(ExecutableNode)
+  nameWithType: ExecutionContext.SetNext(ExecutableNode)
+  fullName: Ceres.Graph.Flow.ExecutionContext.SetNext(Ceres.Graph.Flow.ExecutableNode)
+  type: Method
+  source:
+    id: SetNext
+    path: ''
+    startLine: 24339
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nSet execution flow next node\n"
+  example: []
+  syntax:
+    content: public void SetNext(ExecutableNode node)
+    parameters:
+    - id: node
+      type: Ceres.Graph.Flow.ExecutableNode
+      description: ''
+    content.vb: Public Sub SetNext(node As ExecutableNode)
+  overload: Ceres.Graph.Flow.ExecutionContext.SetNext*
+- uid: Ceres.Graph.Flow.ExecutionContext.Forward(Ceres.Graph.Flow.ExecutableNode)
+  commentId: M:Ceres.Graph.Flow.ExecutionContext.Forward(Ceres.Graph.Flow.ExecutableNode)
+  id: Forward(Ceres.Graph.Flow.ExecutableNode)
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Forward(ExecutableNode)
+  nameWithType: ExecutionContext.Forward(ExecutableNode)
+  fullName: Ceres.Graph.Flow.ExecutionContext.Forward(Ceres.Graph.Flow.ExecutableNode)
+  type: Method
+  source:
+    id: Forward
+    path: ''
+    startLine: 24372
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nExecute node in forward path\n"
+  example: []
+  syntax:
+    content: public UniTask Forward(ExecutableNode node)
+    parameters:
+    - id: node
+      type: Ceres.Graph.Flow.ExecutableNode
+      description: ''
+    return:
+      type: Global.UniTask
+      description: ''
+    content.vb: Public Function Forward(node As ExecutableNode) As UniTask
+  overload: Ceres.Graph.Flow.ExecutionContext.Forward*
+- uid: Ceres.Graph.Flow.ExecutionContext.Dispose
+  commentId: M:Ceres.Graph.Flow.ExecutionContext.Dispose
+  id: Dispose
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ExecutionContext.Dispose()
+  fullName: Ceres.Graph.Flow.ExecutionContext.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 24442
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Graph.Flow.ExecutionContext.Dispose*
+- uid: Ceres.Graph.Flow.ExecutionContext.GetEvent
+  commentId: M:Ceres.Graph.Flow.ExecutionContext.GetEvent
+  id: GetEvent
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: GetEvent()
+  nameWithType: ExecutionContext.GetEvent()
+  fullName: Ceres.Graph.Flow.ExecutionContext.GetEvent()
+  type: Method
+  source:
+    id: GetEvent
+    path: ''
+    startLine: 24476
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nGet source <see cref=\"!:EventBase\"></see> this execution fired from\n"
+  example: []
+  syntax:
+    content: public EventBase GetEvent()
+    return:
+      type: Global.EventBase
+      description: ''
+    content.vb: Public Function GetEvent() As EventBase
+  overload: Ceres.Graph.Flow.ExecutionContext.GetEvent*
+- uid: Ceres.Graph.Flow.ExecutionContext.GetEventT``1
+  commentId: M:Ceres.Graph.Flow.ExecutionContext.GetEventT``1
+  id: GetEventT``1
+  parent: Ceres.Graph.Flow.ExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: GetEventT<T>()
+  nameWithType: ExecutionContext.GetEventT<T>()
+  fullName: Ceres.Graph.Flow.ExecutionContext.GetEventT<T>()
+  type: Method
+  source:
+    id: GetEventT
+    path: ''
+    startLine: 24485
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nGet source <see cref=\"!:EventBase\"></see> this execution fired from with specific type check\n"
+  example: []
+  syntax:
+    content: 'public T GetEventT<T>() where T : EventBase<T>, new()'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function GetEventT(Of T As {EventBase(Of T), New})() As T
+  overload: Ceres.Graph.Flow.ExecutionContext.GetEventT*
+  nameWithType.vb: ExecutionContext.GetEventT(Of T)()
+  fullName.vb: Ceres.Graph.Flow.ExecutionContext.GetEventT(Of T)()
+  name.vb: GetEventT(Of T)()
+references:
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.ExecutionContext.Graph*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.Graph
+  name: Graph
+  nameWithType: ExecutionContext.Graph
+  fullName: Ceres.Graph.Flow.ExecutionContext.Graph
+- uid: Ceres.Graph.Flow.FlowGraph
+  commentId: T:Ceres.Graph.Flow.FlowGraph
+  parent: Ceres.Graph.Flow
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Graph.Flow.FlowGraph
+- uid: Ceres.Graph.Flow.ExecutionContext.Context*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.Context
+  name: Context
+  nameWithType: ExecutionContext.Context
+  fullName: Ceres.Graph.Flow.ExecutionContext.Context
+- uid: Global.UObject
+  isExternal: true
+  name: UObject
+  nameWithType: UObject
+  fullName: UObject
+- uid: Ceres.Graph.Flow.ExecutionContext.#ctor*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.#ctor
+  name: ExecutionContext
+  nameWithType: ExecutionContext.ExecutionContext
+  fullName: Ceres.Graph.Flow.ExecutionContext.ExecutionContext
+  nameWithType.vb: ExecutionContext.New
+  fullName.vb: Ceres.Graph.Flow.ExecutionContext.New
+  name.vb: New
+- uid: Ceres.Graph.Flow.ExecutionContext.GetPooled*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.GetPooled
+  name: GetPooled
+  nameWithType: ExecutionContext.GetPooled
+  fullName: Ceres.Graph.Flow.ExecutionContext.GetPooled
+- uid: Global.EventBase
+  isExternal: true
+  name: EventBase
+  nameWithType: EventBase
+  fullName: EventBase
+- uid: Ceres.Graph.Flow.ExecutionContext
+  commentId: T:Ceres.Graph.Flow.ExecutionContext
+  parent: Ceres.Graph.Flow
+  name: ExecutionContext
+  nameWithType: ExecutionContext
+  fullName: Ceres.Graph.Flow.ExecutionContext
+- uid: Ceres.Graph.Flow.ExecutionContext.SetNext*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.SetNext
+  name: SetNext
+  nameWithType: ExecutionContext.SetNext
+  fullName: Ceres.Graph.Flow.ExecutionContext.SetNext
+- uid: Ceres.Graph.Flow.ExecutableNode
+  commentId: T:Ceres.Graph.Flow.ExecutableNode
+  parent: Ceres.Graph.Flow
+  name: ExecutableNode
+  nameWithType: ExecutableNode
+  fullName: Ceres.Graph.Flow.ExecutableNode
+- uid: Ceres.Graph.Flow.ExecutionContext.Forward*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.Forward
+  name: Forward
+  nameWithType: ExecutionContext.Forward
+  fullName: Ceres.Graph.Flow.ExecutionContext.Forward
+- uid: Global.UniTask
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: UniTask
+- uid: Ceres.Graph.Flow.ExecutionContext.Dispose*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.Dispose
+  name: Dispose
+  nameWithType: ExecutionContext.Dispose
+  fullName: Ceres.Graph.Flow.ExecutionContext.Dispose
+- uid: Ceres.Graph.Flow.ExecutionContext.GetEvent*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.GetEvent
+  name: GetEvent
+  nameWithType: ExecutionContext.GetEvent
+  fullName: Ceres.Graph.Flow.ExecutionContext.GetEvent
+- uid: Ceres.Graph.Flow.ExecutionContext.GetEventT*
+  commentId: Overload:Ceres.Graph.Flow.ExecutionContext.GetEventT
+  name: GetEventT
+  nameWithType: ExecutionContext.GetEventT
+  fullName: Ceres.Graph.Flow.ExecutionContext.GetEventT
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

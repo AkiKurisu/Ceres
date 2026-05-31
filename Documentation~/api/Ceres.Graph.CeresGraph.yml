@@ -1,0 +1,1180 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.CeresGraph
+  commentId: T:Ceres.Graph.CeresGraph
+  id: CeresGraph
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.CeresGraph.#ctor
+  - Ceres.Graph.CeresGraph.#ctor(Ceres.Graph.CeresGraphData)
+  - Ceres.Graph.CeresGraph.AddSubGraphSlot``1(Ceres.Graph.CeresSubGraphSlot)
+  - Ceres.Graph.CeresGraph.Blackboard
+  - Ceres.Graph.CeresGraph.CollectDependencyPath(Ceres.Graph.CeresGraph)
+  - Ceres.Graph.CeresGraph.Compile(Ceres.Graph.CeresGraphCompiler)
+  - Ceres.Graph.CeresGraph.CompileNodes(Ceres.Graph.CeresGraphCompiler)
+  - Ceres.Graph.CeresGraph.CreateBlackboard(List{Ceres.Graph.SharedVariable})
+  - Ceres.Graph.CeresGraph.Dispose
+  - Ceres.Graph.CeresGraph.FindNode(System.String)
+  - Ceres.Graph.CeresGraph.FindNode``1(System.String)
+  - Ceres.Graph.CeresGraph.FindSubGraph``1(System.String)
+  - Ceres.Graph.CeresGraph.GetDependencyPaths
+  - Ceres.Graph.CeresGraph.GetFirstNodeOfType``1
+  - Ceres.Graph.CeresGraph.GetNodeDependencyPath(Ceres.Graph.CeresNode)
+  - Ceres.Graph.CeresGraph.GetNodeDependencyPath(System.String)
+  - Ceres.Graph.CeresGraph.InitPorts(Ceres.Graph.CeresGraph)
+  - Ceres.Graph.CeresGraph.InitVariables(Ceres.Graph.CeresGraph)
+  - Ceres.Graph.CeresGraph.IsUberGraph
+  - Ceres.Graph.CeresGraph.LinkPort(Ceres.Graph.CeresPort,Ceres.Graph.CeresNode,Ceres.Graph.CeresPortData)
+  - Ceres.Graph.CeresGraph.nodes
+  - Ceres.Graph.CeresGraph.SetCompilerTarget(Ceres.Graph.CeresGraphCompiler)
+  - Ceres.Graph.CeresGraph.SetDependencyPath(System.Int32[][])
+  - Ceres.Graph.CeresGraph.SubGraphSlots
+  - Ceres.Graph.CeresGraph.TopologicalSort(Ceres.Graph.CeresGraph,List{Ceres.Graph.CeresNode})
+  - Ceres.Graph.CeresGraph.variables
+  langs:
+  - csharp
+  - vb
+  name: CeresGraph
+  nameWithType: CeresGraph
+  fullName: Ceres.Graph.CeresGraph
+  type: Class
+  source:
+    id: CeresGraph
+    path: ''
+    startLine: 18061
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: 'public class CeresGraph : IDisposable, IDisposableUnregister'
+    content.vb: Public Class CeresGraph Inherits IDisposable Implements IDisposableUnregister
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Graph.Flow.FlowGraph
+  implements:
+  - Global.IDisposableUnregister
+- uid: Ceres.Graph.CeresGraph.Blackboard
+  commentId: P:Ceres.Graph.CeresGraph.Blackboard
+  id: Blackboard
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: Blackboard
+  nameWithType: CeresGraph.Blackboard
+  fullName: Ceres.Graph.CeresGraph.Blackboard
+  type: Property
+  source:
+    id: Blackboard
+    path: ''
+    startLine: 18069
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nExposed blackboard for data exchange\n"
+  example: []
+  syntax:
+    content: public Blackboard Blackboard { get; }
+    parameters: []
+    return:
+      type: Ceres.Graph.Blackboard
+    content.vb: Public ReadOnly Property Blackboard As Blackboard
+  overload: Ceres.Graph.CeresGraph.Blackboard*
+- uid: Ceres.Graph.CeresGraph.variables
+  commentId: F:Ceres.Graph.CeresGraph.variables
+  id: variables
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: variables
+  nameWithType: CeresGraph.variables
+  fullName: Ceres.Graph.CeresGraph.variables
+  type: Field
+  source:
+    id: variables
+    path: ''
+    startLine: 18084
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public List<SharedVariable> variables
+    return:
+      type: Global.List{Ceres.Graph.SharedVariable}
+    content.vb: Public variables As List(Of SharedVariable)
+- uid: Ceres.Graph.CeresGraph.nodes
+  commentId: F:Ceres.Graph.CeresGraph.nodes
+  id: nodes
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: nodes
+  nameWithType: CeresGraph.nodes
+  fullName: Ceres.Graph.CeresGraph.nodes
+  type: Field
+  source:
+    id: nodes
+    path: ''
+    startLine: 18087
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public List<CeresNode> nodes
+    return:
+      type: Global.List{Ceres.Graph.CeresNode}
+    content.vb: Public nodes As List(Of CeresNode)
+- uid: Ceres.Graph.CeresGraph.SubGraphSlots
+  commentId: F:Ceres.Graph.CeresGraph.SubGraphSlots
+  id: SubGraphSlots
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: SubGraphSlots
+  nameWithType: CeresGraph.SubGraphSlots
+  fullName: Ceres.Graph.CeresGraph.SubGraphSlots
+  type: Field
+  source:
+    id: SubGraphSlots
+    path: ''
+    startLine: 18101
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public CeresSubGraphSlot[] SubGraphSlots
+    return:
+      type: Ceres.Graph.CeresSubGraphSlot[]
+    content.vb: Public SubGraphSlots As CeresSubGraphSlot()
+- uid: Ceres.Graph.CeresGraph.#ctor
+  commentId: M:Ceres.Graph.CeresGraph.#ctor
+  id: '#ctor'
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: CeresGraph()
+  nameWithType: CeresGraph.CeresGraph()
+  fullName: Ceres.Graph.CeresGraph.CeresGraph()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 18103
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public CeresGraph()
+    content.vb: Public Sub New()
+  overload: Ceres.Graph.CeresGraph.#ctor*
+  nameWithType.vb: CeresGraph.New()
+  fullName.vb: Ceres.Graph.CeresGraph.New()
+  name.vb: New()
+- uid: Ceres.Graph.CeresGraph.#ctor(Ceres.Graph.CeresGraphData)
+  commentId: M:Ceres.Graph.CeresGraph.#ctor(Ceres.Graph.CeresGraphData)
+  id: '#ctor(Ceres.Graph.CeresGraphData)'
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: CeresGraph(CeresGraphData)
+  nameWithType: CeresGraph.CeresGraph(CeresGraphData)
+  fullName: Ceres.Graph.CeresGraph.CeresGraph(Ceres.Graph.CeresGraphData)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 18108
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public CeresGraph(CeresGraphData graphData)
+    parameters:
+    - id: graphData
+      type: Ceres.Graph.CeresGraphData
+    content.vb: Public Sub New(graphData As CeresGraphData)
+  overload: Ceres.Graph.CeresGraph.#ctor*
+  nameWithType.vb: CeresGraph.New(CeresGraphData)
+  fullName.vb: Ceres.Graph.CeresGraph.New(Ceres.Graph.CeresGraphData)
+  name.vb: New(CeresGraphData)
+- uid: Ceres.Graph.CeresGraph.CreateBlackboard(List{Ceres.Graph.SharedVariable})
+  commentId: M:Ceres.Graph.CeresGraph.CreateBlackboard(List{Ceres.Graph.SharedVariable})
+  id: CreateBlackboard(List{Ceres.Graph.SharedVariable})
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: CreateBlackboard(List<SharedVariable>)
+  nameWithType: CeresGraph.CreateBlackboard(List<SharedVariable>)
+  fullName: Ceres.Graph.CeresGraph.CreateBlackboard(List<Ceres.Graph.SharedVariable>)
+  type: Method
+  source:
+    id: CreateBlackboard
+    path: ''
+    startLine: 18121
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nCreate a blackboard from provided variables\n"
+  example: []
+  syntax:
+    content: protected virtual Blackboard CreateBlackboard(List<SharedVariable> inVariables)
+    parameters:
+    - id: inVariables
+      type: Global.List{Ceres.Graph.SharedVariable}
+      description: ''
+    return:
+      type: Ceres.Graph.Blackboard
+      description: ''
+    content.vb: Protected Overridable Function CreateBlackboard(inVariables As List(Of SharedVariable)) As Blackboard
+  overload: Ceres.Graph.CeresGraph.CreateBlackboard*
+  nameWithType.vb: CeresGraph.CreateBlackboard(List(Of SharedVariable))
+  fullName.vb: Ceres.Graph.CeresGraph.CreateBlackboard(List(Of Ceres.Graph.SharedVariable))
+  name.vb: CreateBlackboard(List(Of SharedVariable))
+- uid: Ceres.Graph.CeresGraph.SetCompilerTarget(Ceres.Graph.CeresGraphCompiler)
+  commentId: M:Ceres.Graph.CeresGraph.SetCompilerTarget(Ceres.Graph.CeresGraphCompiler)
+  id: SetCompilerTarget(Ceres.Graph.CeresGraphCompiler)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: SetCompilerTarget(CeresGraphCompiler)
+  nameWithType: CeresGraph.SetCompilerTarget(CeresGraphCompiler)
+  fullName: Ceres.Graph.CeresGraph.SetCompilerTarget(Ceres.Graph.CeresGraphCompiler)
+  type: Method
+  source:
+    id: SetCompilerTarget
+    path: ''
+    startLine: 18126
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: protected void SetCompilerTarget(CeresGraphCompiler compiler)
+    parameters:
+    - id: compiler
+      type: Ceres.Graph.CeresGraphCompiler
+    content.vb: Protected Sub SetCompilerTarget(compiler As CeresGraphCompiler)
+  overload: Ceres.Graph.CeresGraph.SetCompilerTarget*
+- uid: Ceres.Graph.CeresGraph.Compile(Ceres.Graph.CeresGraphCompiler)
+  commentId: M:Ceres.Graph.CeresGraph.Compile(Ceres.Graph.CeresGraphCompiler)
+  id: Compile(Ceres.Graph.CeresGraphCompiler)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: Compile(CeresGraphCompiler)
+  nameWithType: CeresGraph.Compile(CeresGraphCompiler)
+  fullName: Ceres.Graph.CeresGraph.Compile(Ceres.Graph.CeresGraphCompiler)
+  type: Method
+  source:
+    id: Compile
+    path: ''
+    startLine: 18135
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nCompile graph just in time\n"
+  example: []
+  syntax:
+    content: public virtual void Compile(CeresGraphCompiler compiler)
+    parameters:
+    - id: compiler
+      type: Ceres.Graph.CeresGraphCompiler
+      description: Runtime compiler
+    content.vb: Public Overridable Sub Compile(compiler As CeresGraphCompiler)
+  overload: Ceres.Graph.CeresGraph.Compile*
+- uid: Ceres.Graph.CeresGraph.InitVariables(Ceres.Graph.CeresGraph)
+  commentId: M:Ceres.Graph.CeresGraph.InitVariables(Ceres.Graph.CeresGraph)
+  id: InitVariables(Ceres.Graph.CeresGraph)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: InitVariables(CeresGraph)
+  nameWithType: CeresGraph.InitVariables(CeresGraph)
+  fullName: Ceres.Graph.CeresGraph.InitVariables(Ceres.Graph.CeresGraph)
+  type: Method
+  source:
+    id: InitVariables
+    path: ''
+    startLine: 18157
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nTraverse the graph and init all shared variables automatically\n"
+  example: []
+  syntax:
+    content: protected static void InitVariables(CeresGraph graph)
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraph
+      description: ''
+    content.vb: Protected Shared Sub InitVariables(graph As CeresGraph)
+  overload: Ceres.Graph.CeresGraph.InitVariables*
+- uid: Ceres.Graph.CeresGraph.InitPorts(Ceres.Graph.CeresGraph)
+  commentId: M:Ceres.Graph.CeresGraph.InitPorts(Ceres.Graph.CeresGraph)
+  id: InitPorts(Ceres.Graph.CeresGraph)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: InitPorts(CeresGraph)
+  nameWithType: CeresGraph.InitPorts(CeresGraph)
+  fullName: Ceres.Graph.CeresGraph.InitPorts(Ceres.Graph.CeresGraph)
+  type: Method
+  source:
+    id: InitPorts
+    path: ''
+    startLine: 18176
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nTraverse the graph and init all ports automatically\n"
+  example: []
+  syntax:
+    content: protected static void InitPorts(CeresGraph graph)
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraph
+      description: ''
+    content.vb: Protected Shared Sub InitPorts(graph As CeresGraph)
+  overload: Ceres.Graph.CeresGraph.InitPorts*
+- uid: Ceres.Graph.CeresGraph.LinkPort(Ceres.Graph.CeresPort,Ceres.Graph.CeresNode,Ceres.Graph.CeresPortData)
+  commentId: M:Ceres.Graph.CeresGraph.LinkPort(Ceres.Graph.CeresPort,Ceres.Graph.CeresNode,Ceres.Graph.CeresPortData)
+  id: LinkPort(Ceres.Graph.CeresPort,Ceres.Graph.CeresNode,Ceres.Graph.CeresPortData)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: LinkPort(CeresPort, CeresNode, CeresPortData)
+  nameWithType: CeresGraph.LinkPort(CeresPort, CeresNode, CeresPortData)
+  fullName: Ceres.Graph.CeresGraph.LinkPort(Ceres.Graph.CeresPort, Ceres.Graph.CeresNode, Ceres.Graph.CeresPortData)
+  type: Method
+  source:
+    id: LinkPort
+    path: ''
+    startLine: 18222
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: protected virtual void LinkPort(CeresPort port, CeresNode ownerNode, CeresPortData portData)
+    parameters:
+    - id: port
+      type: Ceres.Graph.CeresPort
+    - id: ownerNode
+      type: Ceres.Graph.CeresNode
+    - id: portData
+      type: Ceres.Graph.CeresPortData
+    content.vb: Protected Overridable Sub LinkPort(port As CeresPort, ownerNode As CeresNode, portData As CeresPortData)
+  overload: Ceres.Graph.CeresGraph.LinkPort*
+- uid: Ceres.Graph.CeresGraph.CompileNodes(Ceres.Graph.CeresGraphCompiler)
+  commentId: M:Ceres.Graph.CeresGraph.CompileNodes(Ceres.Graph.CeresGraphCompiler)
+  id: CompileNodes(Ceres.Graph.CeresGraphCompiler)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: CompileNodes(CeresGraphCompiler)
+  nameWithType: CeresGraph.CompileNodes(CeresGraphCompiler)
+  fullName: Ceres.Graph.CeresGraph.CompileNodes(Ceres.Graph.CeresGraphCompiler)
+  type: Method
+  source:
+    id: CompileNodes
+    path: ''
+    startLine: 18261
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: protected static void CompileNodes(CeresGraphCompiler compiler)
+    parameters:
+    - id: compiler
+      type: Ceres.Graph.CeresGraphCompiler
+    content.vb: Protected Shared Sub CompileNodes(compiler As CeresGraphCompiler)
+  overload: Ceres.Graph.CeresGraph.CompileNodes*
+- uid: Ceres.Graph.CeresGraph.CollectDependencyPath(Ceres.Graph.CeresGraph)
+  commentId: M:Ceres.Graph.CeresGraph.CollectDependencyPath(Ceres.Graph.CeresGraph)
+  id: CollectDependencyPath(Ceres.Graph.CeresGraph)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: CollectDependencyPath(CeresGraph)
+  nameWithType: CeresGraph.CollectDependencyPath(CeresGraph)
+  fullName: Ceres.Graph.CeresGraph.CollectDependencyPath(Ceres.Graph.CeresGraph)
+  type: Method
+  source:
+    id: CollectDependencyPath
+    path: ''
+    startLine: 18272
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: protected static void CollectDependencyPath(CeresGraph graph)
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraph
+    content.vb: Protected Shared Sub CollectDependencyPath(graph As CeresGraph)
+  overload: Ceres.Graph.CeresGraph.CollectDependencyPath*
+- uid: Ceres.Graph.CeresGraph.FindNode(System.String)
+  commentId: M:Ceres.Graph.CeresGraph.FindNode(System.String)
+  id: FindNode(System.String)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: FindNode(string)
+  nameWithType: CeresGraph.FindNode(string)
+  fullName: Ceres.Graph.CeresGraph.FindNode(string)
+  type: Method
+  source:
+    id: FindNode
+    path: ''
+    startLine: 18286
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nFind node by guid\n"
+  example: []
+  syntax:
+    content: public CeresNode FindNode(string guid)
+    parameters:
+    - id: guid
+      type: System.String
+      description: ''
+    return:
+      type: Ceres.Graph.CeresNode
+      description: Null if not exist
+    content.vb: Public Function FindNode(guid As String) As CeresNode
+  overload: Ceres.Graph.CeresGraph.FindNode*
+  nameWithType.vb: CeresGraph.FindNode(String)
+  fullName.vb: Ceres.Graph.CeresGraph.FindNode(String)
+  name.vb: FindNode(String)
+- uid: Ceres.Graph.CeresGraph.FindNode``1(System.String)
+  commentId: M:Ceres.Graph.CeresGraph.FindNode``1(System.String)
+  id: FindNode``1(System.String)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: FindNode<TNode>(string)
+  nameWithType: CeresGraph.FindNode<TNode>(string)
+  fullName: Ceres.Graph.CeresGraph.FindNode<TNode>(string)
+  type: Method
+  source:
+    id: FindNode
+    path: ''
+    startLine: 18305
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nFind node with specific type by guid\n"
+  example: []
+  syntax:
+    content: 'public TNode FindNode<TNode>(string guid) where TNode : CeresNode'
+    parameters:
+    - id: guid
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: TNode
+      description: ''
+    return:
+      type: '{TNode}'
+      description: Null if not exist
+    content.vb: Public Function FindNode(Of TNode As CeresNode)(guid As String) As TNode
+  overload: Ceres.Graph.CeresGraph.FindNode*
+  nameWithType.vb: CeresGraph.FindNode(Of TNode)(String)
+  fullName.vb: Ceres.Graph.CeresGraph.FindNode(Of TNode)(String)
+  name.vb: FindNode(Of TNode)(String)
+- uid: Ceres.Graph.CeresGraph.GetFirstNodeOfType``1
+  commentId: M:Ceres.Graph.CeresGraph.GetFirstNodeOfType``1
+  id: GetFirstNodeOfType``1
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: GetFirstNodeOfType<TNode>()
+  nameWithType: CeresGraph.GetFirstNodeOfType<TNode>()
+  fullName: Ceres.Graph.CeresGraph.GetFirstNodeOfType<TNode>()
+  type: Method
+  source:
+    id: GetFirstNodeOfType
+    path: ''
+    startLine: 18323
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet first node with specific type\n"
+  example: []
+  syntax:
+    content: 'public TNode GetFirstNodeOfType<TNode>() where TNode : CeresNode'
+    typeParameters:
+    - id: TNode
+      description: ''
+    return:
+      type: '{TNode}'
+      description: Null if not exist
+    content.vb: Public Function GetFirstNodeOfType(Of TNode As CeresNode)() As TNode
+  overload: Ceres.Graph.CeresGraph.GetFirstNodeOfType*
+  nameWithType.vb: CeresGraph.GetFirstNodeOfType(Of TNode)()
+  fullName.vb: Ceres.Graph.CeresGraph.GetFirstNodeOfType(Of TNode)()
+  name.vb: GetFirstNodeOfType(Of TNode)()
+- uid: Ceres.Graph.CeresGraph.SetDependencyPath(System.Int32[][])
+  commentId: M:Ceres.Graph.CeresGraph.SetDependencyPath(System.Int32[][])
+  id: SetDependencyPath(System.Int32[][])
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: SetDependencyPath(int[][])
+  nameWithType: CeresGraph.SetDependencyPath(int[][])
+  fullName: Ceres.Graph.CeresGraph.SetDependencyPath(int[][])
+  type: Method
+  source:
+    id: SetDependencyPath
+    path: ''
+    startLine: 18341
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nSet graph node pre-cached dependency path\n"
+  example: []
+  syntax:
+    content: public void SetDependencyPath(int[][] dependencyPath)
+    parameters:
+    - id: dependencyPath
+      type: System.Int32[][]
+      description: ''
+    content.vb: Public Sub SetDependencyPath(dependencyPath As Integer()())
+  overload: Ceres.Graph.CeresGraph.SetDependencyPath*
+  nameWithType.vb: CeresGraph.SetDependencyPath(Integer()())
+  fullName.vb: Ceres.Graph.CeresGraph.SetDependencyPath(Integer()())
+  name.vb: SetDependencyPath(Integer()())
+- uid: Ceres.Graph.CeresGraph.GetDependencyPaths
+  commentId: M:Ceres.Graph.CeresGraph.GetDependencyPaths
+  id: GetDependencyPaths
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: GetDependencyPaths()
+  nameWithType: CeresGraph.GetDependencyPaths()
+  fullName: Ceres.Graph.CeresGraph.GetDependencyPaths()
+  type: Method
+  source:
+    id: GetDependencyPaths
+    path: ''
+    startLine: 18350
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet graph node current dependency path if existed\n"
+  example: []
+  syntax:
+    content: public int[][] GetDependencyPaths()
+    return:
+      type: System.Int32[][]
+      description: ''
+    content.vb: Public Function GetDependencyPaths() As Integer()()
+  overload: Ceres.Graph.CeresGraph.GetDependencyPaths*
+- uid: Ceres.Graph.CeresGraph.GetNodeDependencyPath(System.String)
+  commentId: M:Ceres.Graph.CeresGraph.GetNodeDependencyPath(System.String)
+  id: GetNodeDependencyPath(System.String)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: GetNodeDependencyPath(string)
+  nameWithType: CeresGraph.GetNodeDependencyPath(string)
+  fullName: Ceres.Graph.CeresGraph.GetNodeDependencyPath(string)
+  type: Method
+  source:
+    id: GetNodeDependencyPath
+    path: ''
+    startLine: 18360
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet dependency execution path for destination node with guid\n"
+  example: []
+  syntax:
+    content: public int[] GetNodeDependencyPath(string guid)
+    parameters:
+    - id: guid
+      type: System.String
+      description: ''
+    return:
+      type: System.Int32[]
+      description: ''
+    content.vb: Public Function GetNodeDependencyPath(guid As String) As Integer()
+  overload: Ceres.Graph.CeresGraph.GetNodeDependencyPath*
+  nameWithType.vb: CeresGraph.GetNodeDependencyPath(String)
+  fullName.vb: Ceres.Graph.CeresGraph.GetNodeDependencyPath(String)
+  name.vb: GetNodeDependencyPath(String)
+- uid: Ceres.Graph.CeresGraph.GetNodeDependencyPath(Ceres.Graph.CeresNode)
+  commentId: M:Ceres.Graph.CeresGraph.GetNodeDependencyPath(Ceres.Graph.CeresNode)
+  id: GetNodeDependencyPath(Ceres.Graph.CeresNode)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: GetNodeDependencyPath(CeresNode)
+  nameWithType: CeresGraph.GetNodeDependencyPath(CeresNode)
+  fullName: Ceres.Graph.CeresGraph.GetNodeDependencyPath(Ceres.Graph.CeresNode)
+  type: Method
+  source:
+    id: GetNodeDependencyPath
+    path: ''
+    startLine: 18370
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet dependency execution path for destination node\n"
+  example: []
+  syntax:
+    content: public int[] GetNodeDependencyPath(CeresNode node)
+    parameters:
+    - id: node
+      type: Ceres.Graph.CeresNode
+      description: ''
+    return:
+      type: System.Int32[]
+      description: ''
+    content.vb: Public Function GetNodeDependencyPath(node As CeresNode) As Integer()
+  overload: Ceres.Graph.CeresGraph.GetNodeDependencyPath*
+- uid: Ceres.Graph.CeresGraph.IsUberGraph
+  commentId: M:Ceres.Graph.CeresGraph.IsUberGraph
+  id: IsUberGraph
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: IsUberGraph()
+  nameWithType: CeresGraph.IsUberGraph()
+  fullName: Ceres.Graph.CeresGraph.IsUberGraph()
+  type: Method
+  source:
+    id: IsUberGraph
+    path: ''
+    startLine: 18379
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nIs graph on top level which means it can have subGraphs\n"
+  example: []
+  syntax:
+    content: public virtual bool IsUberGraph()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overridable Function IsUberGraph() As Boolean
+  overload: Ceres.Graph.CeresGraph.IsUberGraph*
+- uid: Ceres.Graph.CeresGraph.FindSubGraph``1(System.String)
+  commentId: M:Ceres.Graph.CeresGraph.FindSubGraph``1(System.String)
+  id: FindSubGraph``1(System.String)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: FindSubGraph<TGraph>(string)
+  nameWithType: CeresGraph.FindSubGraph<TGraph>(string)
+  fullName: Ceres.Graph.CeresGraph.FindSubGraph<TGraph>(string)
+  type: Method
+  source:
+    id: FindSubGraph
+    path: ''
+    startLine: 18390
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nFind subGraph with specific type by name\n"
+  example: []
+  syntax:
+    content: 'public TGraph FindSubGraph<TGraph>(string name) where TGraph : CeresGraph'
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: TGraph
+      description: ''
+    return:
+      type: '{TGraph}'
+      description: Null if not exist
+    content.vb: Public Function FindSubGraph(Of TGraph As CeresGraph)(name As String) As TGraph
+  overload: Ceres.Graph.CeresGraph.FindSubGraph*
+  nameWithType.vb: CeresGraph.FindSubGraph(Of TGraph)(String)
+  fullName.vb: Ceres.Graph.CeresGraph.FindSubGraph(Of TGraph)(String)
+  name.vb: FindSubGraph(Of TGraph)(String)
+- uid: Ceres.Graph.CeresGraph.AddSubGraphSlot``1(Ceres.Graph.CeresSubGraphSlot)
+  commentId: M:Ceres.Graph.CeresGraph.AddSubGraphSlot``1(Ceres.Graph.CeresSubGraphSlot)
+  id: AddSubGraphSlot``1(Ceres.Graph.CeresSubGraphSlot)
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: AddSubGraphSlot<TGraph>(CeresSubGraphSlot)
+  nameWithType: CeresGraph.AddSubGraphSlot<TGraph>(CeresSubGraphSlot)
+  fullName: Ceres.Graph.CeresGraph.AddSubGraphSlot<TGraph>(Ceres.Graph.CeresSubGraphSlot)
+  type: Method
+  source:
+    id: AddSubGraphSlot
+    path: ''
+    startLine: 18406
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nTry to add a subGraph slot with specific type validation\n"
+  example: []
+  syntax:
+    content: 'public bool AddSubGraphSlot<TGraph>(CeresSubGraphSlot slot) where TGraph : CeresGraph'
+    parameters:
+    - id: slot
+      type: Ceres.Graph.CeresSubGraphSlot
+      description: ''
+    typeParameters:
+    - id: TGraph
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function AddSubGraphSlot(Of TGraph As CeresGraph)(slot As CeresSubGraphSlot) As Boolean
+  overload: Ceres.Graph.CeresGraph.AddSubGraphSlot*
+  nameWithType.vb: CeresGraph.AddSubGraphSlot(Of TGraph)(CeresSubGraphSlot)
+  fullName.vb: Ceres.Graph.CeresGraph.AddSubGraphSlot(Of TGraph)(Ceres.Graph.CeresSubGraphSlot)
+  name.vb: AddSubGraphSlot(Of TGraph)(CeresSubGraphSlot)
+- uid: Ceres.Graph.CeresGraph.Dispose
+  commentId: M:Ceres.Graph.CeresGraph.Dispose
+  id: Dispose
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: CeresGraph.Dispose()
+  fullName: Ceres.Graph.CeresGraph.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 18423
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: Ceres.Graph.CeresGraph.Dispose*
+- uid: Ceres.Graph.CeresGraph.TopologicalSort(Ceres.Graph.CeresGraph,List{Ceres.Graph.CeresNode})
+  commentId: M:Ceres.Graph.CeresGraph.TopologicalSort(Ceres.Graph.CeresGraph,List{Ceres.Graph.CeresNode})
+  id: TopologicalSort(Ceres.Graph.CeresGraph,List{Ceres.Graph.CeresNode})
+  parent: Ceres.Graph.CeresGraph
+  langs:
+  - csharp
+  - vb
+  name: TopologicalSort(CeresGraph, List<CeresNode>)
+  nameWithType: CeresGraph.TopologicalSort(CeresGraph, List<CeresNode>)
+  fullName: Ceres.Graph.CeresGraph.TopologicalSort(Ceres.Graph.CeresGraph, List<Ceres.Graph.CeresNode>)
+  type: Method
+  source:
+    id: TopologicalSort
+    path: ''
+    startLine: 18458
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: protected static int[][] TopologicalSort(CeresGraph graph, List<CeresNode> nodes)
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraph
+    - id: nodes
+      type: Global.List{Ceres.Graph.CeresNode}
+    return:
+      type: System.Int32[][]
+    content.vb: Protected Shared Function TopologicalSort(graph As CeresGraph, nodes As List(Of CeresNode)) As Integer()()
+  overload: Ceres.Graph.CeresGraph.TopologicalSort*
+  nameWithType.vb: CeresGraph.TopologicalSort(CeresGraph, List(Of CeresNode))
+  fullName.vb: Ceres.Graph.CeresGraph.TopologicalSort(Ceres.Graph.CeresGraph, List(Of Ceres.Graph.CeresNode))
+  name.vb: TopologicalSort(CeresGraph, List(Of CeresNode))
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.IDisposableUnregister
+  isExternal: true
+  name: IDisposableUnregister
+  nameWithType: IDisposableUnregister
+  fullName: IDisposableUnregister
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.CeresGraph.Blackboard*
+  commentId: Overload:Ceres.Graph.CeresGraph.Blackboard
+  name: Blackboard
+  nameWithType: CeresGraph.Blackboard
+  fullName: Ceres.Graph.CeresGraph.Blackboard
+- uid: Ceres.Graph.Blackboard
+  commentId: T:Ceres.Graph.Blackboard
+  parent: Ceres.Graph
+  name: Blackboard
+  nameWithType: Blackboard
+  fullName: Ceres.Graph.Blackboard
+- uid: Global.List{Ceres.Graph.SharedVariable}
+  commentId: '!:Global.List{Ceres.Graph.SharedVariable}'
+  definition: Global.List`1
+  name: List<SharedVariable>
+  nameWithType: List<SharedVariable>
+  fullName: List<Ceres.Graph.SharedVariable>
+  nameWithType.vb: List(Of SharedVariable)
+  fullName.vb: List(Of Ceres.Graph.SharedVariable)
+  name.vb: List(Of SharedVariable)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+- uid: Global.List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.List{Ceres.Graph.CeresNode}
+  commentId: '!:Global.List{Ceres.Graph.CeresNode}'
+  definition: Global.List`1
+  name: List<CeresNode>
+  nameWithType: List<CeresNode>
+  fullName: List<Ceres.Graph.CeresNode>
+  nameWithType.vb: List(Of CeresNode)
+  fullName.vb: List(Of Ceres.Graph.CeresNode)
+  name.vb: List(Of CeresNode)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Ceres.Graph.CeresNode
+    name: CeresNode
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.CeresNode
+    name: CeresNode
+  - name: )
+- uid: Ceres.Graph.CeresSubGraphSlot[]
+  isExternal: true
+  name: CeresSubGraphSlot[]
+  nameWithType: CeresSubGraphSlot[]
+  fullName: Ceres.Graph.CeresSubGraphSlot[]
+  nameWithType.vb: CeresSubGraphSlot()
+  fullName.vb: Ceres.Graph.CeresSubGraphSlot()
+  name.vb: CeresSubGraphSlot()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresSubGraphSlot
+    name: CeresSubGraphSlot
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Graph.CeresSubGraphSlot
+    name: CeresSubGraphSlot
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresGraph.#ctor*
+  commentId: Overload:Ceres.Graph.CeresGraph.#ctor
+  name: CeresGraph
+  nameWithType: CeresGraph.CeresGraph
+  fullName: Ceres.Graph.CeresGraph.CeresGraph
+  nameWithType.vb: CeresGraph.New
+  fullName.vb: Ceres.Graph.CeresGraph.New
+  name.vb: New
+- uid: Ceres.Graph.CeresGraphData
+  commentId: T:Ceres.Graph.CeresGraphData
+  parent: Ceres.Graph
+  name: CeresGraphData
+  nameWithType: CeresGraphData
+  fullName: Ceres.Graph.CeresGraphData
+- uid: Ceres.Graph.CeresGraph.CreateBlackboard*
+  commentId: Overload:Ceres.Graph.CeresGraph.CreateBlackboard
+  name: CreateBlackboard
+  nameWithType: CeresGraph.CreateBlackboard
+  fullName: Ceres.Graph.CeresGraph.CreateBlackboard
+- uid: Ceres.Graph.CeresGraph.SetCompilerTarget*
+  commentId: Overload:Ceres.Graph.CeresGraph.SetCompilerTarget
+  name: SetCompilerTarget
+  nameWithType: CeresGraph.SetCompilerTarget
+  fullName: Ceres.Graph.CeresGraph.SetCompilerTarget
+- uid: Ceres.Graph.CeresGraphCompiler
+  commentId: T:Ceres.Graph.CeresGraphCompiler
+  parent: Ceres.Graph
+  name: CeresGraphCompiler
+  nameWithType: CeresGraphCompiler
+  fullName: Ceres.Graph.CeresGraphCompiler
+- uid: Ceres.Graph.CeresGraph.Compile*
+  commentId: Overload:Ceres.Graph.CeresGraph.Compile
+  name: Compile
+  nameWithType: CeresGraph.Compile
+  fullName: Ceres.Graph.CeresGraph.Compile
+- uid: Ceres.Graph.CeresGraph.InitVariables*
+  commentId: Overload:Ceres.Graph.CeresGraph.InitVariables
+  name: InitVariables
+  nameWithType: CeresGraph.InitVariables
+  fullName: Ceres.Graph.CeresGraph.InitVariables
+- uid: Ceres.Graph.CeresGraph
+  commentId: T:Ceres.Graph.CeresGraph
+  parent: Ceres.Graph
+  name: CeresGraph
+  nameWithType: CeresGraph
+  fullName: Ceres.Graph.CeresGraph
+- uid: Ceres.Graph.CeresGraph.InitPorts*
+  commentId: Overload:Ceres.Graph.CeresGraph.InitPorts
+  name: InitPorts
+  nameWithType: CeresGraph.InitPorts
+  fullName: Ceres.Graph.CeresGraph.InitPorts
+- uid: Ceres.Graph.CeresGraph.LinkPort*
+  commentId: Overload:Ceres.Graph.CeresGraph.LinkPort
+  name: LinkPort
+  nameWithType: CeresGraph.LinkPort
+  fullName: Ceres.Graph.CeresGraph.LinkPort
+- uid: Ceres.Graph.CeresPort
+  commentId: T:Ceres.Graph.CeresPort
+  parent: Ceres.Graph
+  name: CeresPort
+  nameWithType: CeresPort
+  fullName: Ceres.Graph.CeresPort
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph.CeresPortData
+  commentId: T:Ceres.Graph.CeresPortData
+  parent: Ceres.Graph
+  name: CeresPortData
+  nameWithType: CeresPortData
+  fullName: Ceres.Graph.CeresPortData
+- uid: Ceres.Graph.CeresGraph.CompileNodes*
+  commentId: Overload:Ceres.Graph.CeresGraph.CompileNodes
+  name: CompileNodes
+  nameWithType: CeresGraph.CompileNodes
+  fullName: Ceres.Graph.CeresGraph.CompileNodes
+- uid: Ceres.Graph.CeresGraph.CollectDependencyPath*
+  commentId: Overload:Ceres.Graph.CeresGraph.CollectDependencyPath
+  name: CollectDependencyPath
+  nameWithType: CeresGraph.CollectDependencyPath
+  fullName: Ceres.Graph.CeresGraph.CollectDependencyPath
+- uid: Ceres.Graph.CeresGraph.FindNode*
+  commentId: Overload:Ceres.Graph.CeresGraph.FindNode
+  name: FindNode
+  nameWithType: CeresGraph.FindNode
+  fullName: Ceres.Graph.CeresGraph.FindNode
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{TNode}'
+  commentId: '!:TNode'
+  definition: TNode
+  name: TNode
+  nameWithType: TNode
+  fullName: TNode
+- uid: TNode
+  name: TNode
+  nameWithType: TNode
+  fullName: TNode
+- uid: Ceres.Graph.CeresGraph.GetFirstNodeOfType*
+  commentId: Overload:Ceres.Graph.CeresGraph.GetFirstNodeOfType
+  name: GetFirstNodeOfType
+  nameWithType: CeresGraph.GetFirstNodeOfType
+  fullName: Ceres.Graph.CeresGraph.GetFirstNodeOfType
+- uid: Ceres.Graph.CeresGraph.SetDependencyPath*
+  commentId: Overload:Ceres.Graph.CeresGraph.SetDependencyPath
+  name: SetDependencyPath
+  nameWithType: CeresGraph.SetDependencyPath
+  fullName: Ceres.Graph.CeresGraph.SetDependencyPath
+- uid: System.Int32[][]
+  isExternal: true
+  name: int[][]
+  nameWithType: int[][]
+  fullName: int[][]
+  nameWithType.vb: Integer()()
+  fullName.vb: Integer()()
+  name.vb: Integer()()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresGraph.GetDependencyPaths*
+  commentId: Overload:Ceres.Graph.CeresGraph.GetDependencyPaths
+  name: GetDependencyPaths
+  nameWithType: CeresGraph.GetDependencyPaths
+  fullName: Ceres.Graph.CeresGraph.GetDependencyPaths
+- uid: Ceres.Graph.CeresGraph.GetNodeDependencyPath*
+  commentId: Overload:Ceres.Graph.CeresGraph.GetNodeDependencyPath
+  name: GetNodeDependencyPath
+  nameWithType: CeresGraph.GetNodeDependencyPath
+  fullName: Ceres.Graph.CeresGraph.GetNodeDependencyPath
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresGraph.IsUberGraph*
+  commentId: Overload:Ceres.Graph.CeresGraph.IsUberGraph
+  name: IsUberGraph
+  nameWithType: CeresGraph.IsUberGraph
+  fullName: Ceres.Graph.CeresGraph.IsUberGraph
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Graph.CeresGraph.FindSubGraph*
+  commentId: Overload:Ceres.Graph.CeresGraph.FindSubGraph
+  name: FindSubGraph
+  nameWithType: CeresGraph.FindSubGraph
+  fullName: Ceres.Graph.CeresGraph.FindSubGraph
+- uid: '{TGraph}'
+  commentId: '!:TGraph'
+  definition: TGraph
+  name: TGraph
+  nameWithType: TGraph
+  fullName: TGraph
+- uid: TGraph
+  commentId: '!:TGraph'
+  name: TGraph
+  nameWithType: TGraph
+  fullName: TGraph
+- uid: Ceres.Graph.CeresGraph.AddSubGraphSlot*
+  commentId: Overload:Ceres.Graph.CeresGraph.AddSubGraphSlot
+  name: AddSubGraphSlot
+  nameWithType: CeresGraph.AddSubGraphSlot
+  fullName: Ceres.Graph.CeresGraph.AddSubGraphSlot
+- uid: Ceres.Graph.CeresSubGraphSlot
+  commentId: T:Ceres.Graph.CeresSubGraphSlot
+  parent: Ceres.Graph
+  name: CeresSubGraphSlot
+  nameWithType: CeresSubGraphSlot
+  fullName: Ceres.Graph.CeresSubGraphSlot
+- uid: Ceres.Graph.CeresGraph.Dispose*
+  commentId: Overload:Ceres.Graph.CeresGraph.Dispose
+  name: Dispose
+  nameWithType: CeresGraph.Dispose
+  fullName: Ceres.Graph.CeresGraph.Dispose
+- uid: Ceres.Graph.CeresGraph.TopologicalSort*
+  commentId: Overload:Ceres.Graph.CeresGraph.TopologicalSort
+  name: TopologicalSort
+  nameWithType: CeresGraph.TopologicalSort
+  fullName: Ceres.Graph.CeresGraph.TopologicalSort

@@ -1,0 +1,606 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo
+  commentId: T:Ceres.Graph.Flow.ExecutableFunctionInfo
+  id: ExecutableFunctionInfo
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.#ctor(Ceres.Graph.Flow.ExecutableFunctionType,System.String,System.Int32)
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.AmbiguousEquals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(System.Object)
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.FunctionName
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.FunctionType
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.GetHashCode
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.ParameterCount
+  - Ceres.Graph.Flow.ExecutableFunctionInfo.ToString
+  langs:
+  - csharp
+  - vb
+  name: ExecutableFunctionInfo
+  nameWithType: ExecutableFunctionInfo
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo
+  type: Struct
+  source:
+    id: ExecutableFunctionInfo
+    path: ''
+    startLine: 23185
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: 'public readonly struct ExecutableFunctionInfo : IEquatable<ExecutableFunctionInfo>'
+    content.vb: Public Structure ExecutableFunctionInfo Implements IEquatable(Of ExecutableFunctionInfo)
+  implements:
+  - Global.IEquatable{Ceres.Graph.Flow.ExecutableFunctionInfo}
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.FunctionType
+  commentId: F:Ceres.Graph.Flow.ExecutableFunctionInfo.FunctionType
+  id: FunctionType
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: FunctionType
+  nameWithType: ExecutableFunctionInfo.FunctionType
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.FunctionType
+  type: Field
+  source:
+    id: FunctionType
+    path: ''
+    startLine: 23187
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public readonly ExecutableFunctionType FunctionType
+    return:
+      type: Ceres.Graph.Flow.ExecutableFunctionType
+    content.vb: Public ReadOnly FunctionType As ExecutableFunctionType
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.FunctionName
+  commentId: F:Ceres.Graph.Flow.ExecutableFunctionInfo.FunctionName
+  id: FunctionName
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: FunctionName
+  nameWithType: ExecutableFunctionInfo.FunctionName
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.FunctionName
+  type: Field
+  source:
+    id: FunctionName
+    path: ''
+    startLine: 23189
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public readonly string FunctionName
+    return:
+      type: System.String
+    content.vb: Public ReadOnly FunctionName As String
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.ParameterCount
+  commentId: F:Ceres.Graph.Flow.ExecutableFunctionInfo.ParameterCount
+  id: ParameterCount
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: ParameterCount
+  nameWithType: ExecutableFunctionInfo.ParameterCount
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.ParameterCount
+  type: Field
+  source:
+    id: ParameterCount
+    path: ''
+    startLine: 23191
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public readonly int ParameterCount
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly ParameterCount As Integer
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.#ctor(Ceres.Graph.Flow.ExecutableFunctionType,System.String,System.Int32)
+  commentId: M:Ceres.Graph.Flow.ExecutableFunctionInfo.#ctor(Ceres.Graph.Flow.ExecutableFunctionType,System.String,System.Int32)
+  id: '#ctor(Ceres.Graph.Flow.ExecutableFunctionType,System.String,System.Int32)'
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: ExecutableFunctionInfo(ExecutableFunctionType, string, int)
+  nameWithType: ExecutableFunctionInfo.ExecutableFunctionInfo(ExecutableFunctionType, string, int)
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.ExecutableFunctionInfo(Ceres.Graph.Flow.ExecutableFunctionType, string, int)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 23193
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public ExecutableFunctionInfo(ExecutableFunctionType functionType, string functionName, int parameterCount = -1)
+    parameters:
+    - id: functionType
+      type: Ceres.Graph.Flow.ExecutableFunctionType
+    - id: functionName
+      type: System.String
+    - id: parameterCount
+      type: System.Int32
+    content.vb: Public Sub New(functionType As ExecutableFunctionType, functionName As String, parameterCount As Integer = -1)
+  overload: Ceres.Graph.Flow.ExecutableFunctionInfo.#ctor*
+  nameWithType.vb: ExecutableFunctionInfo.New(ExecutableFunctionType, String, Integer)
+  fullName.vb: Ceres.Graph.Flow.ExecutableFunctionInfo.New(Ceres.Graph.Flow.ExecutableFunctionType, String, Integer)
+  name.vb: New(ExecutableFunctionType, String, Integer)
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  commentId: M:Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  id: Equals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: Equals(ExecutableFunctionInfo)
+  nameWithType: ExecutableFunctionInfo.Equals(ExecutableFunctionInfo)
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  type: Method
+  source:
+    id: Equals
+    path: ''
+    startLine: 23207
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public bool Equals(ExecutableFunctionInfo other)
+    parameters:
+    - id: other
+      type: Ceres.Graph.Flow.ExecutableFunctionInfo
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As ExecutableFunctionInfo) As Boolean
+  overload: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals*
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(System.Object)
+  commentId: M:Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: ExecutableFunctionInfo.Equals(object)
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(object)
+  type: Method
+  source:
+    id: Equals
+    path: ''
+    startLine: 23212
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals*
+  nameWithType.vb: ExecutableFunctionInfo.Equals(Object)
+  fullName.vb: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.GetHashCode
+  commentId: M:Ceres.Graph.Flow.ExecutableFunctionInfo.GetHashCode
+  id: GetHashCode
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: ExecutableFunctionInfo.GetHashCode()
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.GetHashCode()
+  type: Method
+  source:
+    id: GetHashCode
+    path: ''
+    startLine: 23217
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Ceres.Graph.Flow.ExecutableFunctionInfo.GetHashCode*
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.ToString
+  commentId: M:Ceres.Graph.Flow.ExecutableFunctionInfo.ToString
+  id: ToString
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: ExecutableFunctionInfo.ToString()
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.ToString()
+  type: Method
+  source:
+    id: ToString
+    path: ''
+    startLine: 23222
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Ceres.Graph.Flow.ExecutableFunctionInfo.ToString*
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.AmbiguousEquals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  commentId: M:Ceres.Graph.Flow.ExecutableFunctionInfo.AmbiguousEquals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  id: AmbiguousEquals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  parent: Ceres.Graph.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: AmbiguousEquals(ExecutableFunctionInfo)
+  nameWithType: ExecutableFunctionInfo.AmbiguousEquals(ExecutableFunctionInfo)
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.AmbiguousEquals(Ceres.Graph.Flow.ExecutableFunctionInfo)
+  type: Method
+  source:
+    id: AmbiguousEquals
+    path: ''
+    startLine: 23227
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public bool AmbiguousEquals(ExecutableFunctionInfo other)
+    parameters:
+    - id: other
+      type: Ceres.Graph.Flow.ExecutableFunctionInfo
+    return:
+      type: System.Boolean
+    content.vb: Public Function AmbiguousEquals(other As ExecutableFunctionInfo) As Boolean
+  overload: Ceres.Graph.Flow.ExecutableFunctionInfo.AmbiguousEquals*
+references:
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: Global.IEquatable{Ceres.Graph.Flow.ExecutableFunctionInfo}
+  commentId: '!:Global.IEquatable{Ceres.Graph.Flow.ExecutableFunctionInfo}'
+  definition: Global.IEquatable`1
+  name: IEquatable<ExecutableFunctionInfo>
+  nameWithType: IEquatable<ExecutableFunctionInfo>
+  fullName: IEquatable<Ceres.Graph.Flow.ExecutableFunctionInfo>
+  nameWithType.vb: IEquatable(Of ExecutableFunctionInfo)
+  fullName.vb: IEquatable(Of Ceres.Graph.Flow.ExecutableFunctionInfo)
+  name.vb: IEquatable(Of ExecutableFunctionInfo)
+  spec.csharp:
+  - uid: Global.IEquatable`1
+    name: IEquatable
+    isExternal: true
+  - name: <
+  - uid: Ceres.Graph.Flow.ExecutableFunctionInfo
+    name: ExecutableFunctionInfo
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEquatable`1
+    name: IEquatable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.Flow.ExecutableFunctionInfo
+    name: ExecutableFunctionInfo
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Global.IEquatable`1
+  isExternal: true
+  name: IEquatable<>
+  nameWithType: IEquatable<>
+  fullName: IEquatable<>
+  nameWithType.vb: IEquatable(Of )
+  fullName.vb: IEquatable(Of )
+  name.vb: IEquatable(Of )
+  spec.csharp:
+  - uid: Global.IEquatable`1
+    name: IEquatable
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEquatable`1
+    name: IEquatable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.ExecutableFunctionType
+  commentId: T:Ceres.Graph.Flow.ExecutableFunctionType
+  parent: Ceres.Graph.Flow
+  name: ExecutableFunctionType
+  nameWithType: ExecutableFunctionType
+  fullName: Ceres.Graph.Flow.ExecutableFunctionType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.#ctor*
+  commentId: Overload:Ceres.Graph.Flow.ExecutableFunctionInfo.#ctor
+  name: ExecutableFunctionInfo
+  nameWithType: ExecutableFunctionInfo.ExecutableFunctionInfo
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.ExecutableFunctionInfo
+  nameWithType.vb: ExecutableFunctionInfo.New
+  fullName.vb: Ceres.Graph.Flow.ExecutableFunctionInfo.New
+  name.vb: New
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals*
+  commentId: Overload:Ceres.Graph.Flow.ExecutableFunctionInfo.Equals
+  name: Equals
+  nameWithType: ExecutableFunctionInfo.Equals
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.Equals
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo
+  commentId: T:Ceres.Graph.Flow.ExecutableFunctionInfo
+  parent: Ceres.Graph.Flow
+  name: ExecutableFunctionInfo
+  nameWithType: ExecutableFunctionInfo
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.GetHashCode*
+  commentId: Overload:Ceres.Graph.Flow.ExecutableFunctionInfo.GetHashCode
+  name: GetHashCode
+  nameWithType: ExecutableFunctionInfo.GetHashCode
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.GetHashCode
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.ToString*
+  commentId: Overload:Ceres.Graph.Flow.ExecutableFunctionInfo.ToString
+  name: ToString
+  nameWithType: ExecutableFunctionInfo.ToString
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.ToString
+- uid: Ceres.Graph.Flow.ExecutableFunctionInfo.AmbiguousEquals*
+  commentId: Overload:Ceres.Graph.Flow.ExecutableFunctionInfo.AmbiguousEquals
+  name: AmbiguousEquals
+  nameWithType: ExecutableFunctionInfo.AmbiguousEquals
+  fullName: Ceres.Graph.Flow.ExecutableFunctionInfo.AmbiguousEquals

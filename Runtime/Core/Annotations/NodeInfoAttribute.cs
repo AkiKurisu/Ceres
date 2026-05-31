@@ -5,7 +5,7 @@ namespace Ceres.Annotations
     /// <summary>
     /// Describe node description in the editor
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Class, Inherited = true)]
     public sealed class NodeInfoAttribute : Attribute
     {
         public string Description { get; }

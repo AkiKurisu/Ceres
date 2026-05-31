@@ -1,0 +1,1642 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  id: CeresGraphView
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresGraphView.#ctor(Ceres.Editor.Graph.CeresGraphEditorWindow)
+  - Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,Rect)
+  - Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  - Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  - Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  - Ceres.Editor.Graph.CeresGraphView.AddSearchWindow``1
+  - Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(List{SharedVariable},System.Boolean)
+  - Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.Blackboard
+  - Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(ContextualMenuPopulateEvent)
+  - Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.ClearDirty
+  - Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+  - Ceres.Editor.Graph.CeresGraphView.EditorWindow
+  - Ceres.Editor.Graph.CeresGraphView.FindNodeView(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.FindNodeView``1(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(Port,NodeAdapter)
+  - Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,Vector2)
+  - Ceres.Editor.Graph.CeresGraphView.IsDirty
+  - Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  - Ceres.Editor.Graph.CeresGraphView.NodeViews
+  - Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(IEnumerable{GraphElement})
+  - Ceres.Editor.Graph.CeresGraphView.OnDestroy
+  - Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(List{ISelectable},GraphElement,Vector3)
+  - Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UObject,Vector3)
+  - Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(GraphViewChange)
+  - Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(NodeCreationContext)
+  - Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(System.String,System.String)
+  - Ceres.Editor.Graph.CeresGraphView.OpenSearch(Vector2,Ceres.Editor.Graph.CeresPortView)
+  - Ceres.Editor.Graph.CeresGraphView.OpenSearch(Vector2)
+  - Ceres.Editor.Graph.CeresGraphView.SearchWindow
+  - Ceres.Editor.Graph.CeresGraphView.SetDirty
+  - Ceres.Editor.Graph.CeresGraphView.SharedVariables
+  langs:
+  - csharp
+  - vb
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+  type: Class
+  source:
+    id: CeresGraphView
+    path: ''
+    startLine: 1816
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public abstract class CeresGraphView : GraphView, IVariableSource'
+    content.vb: Public MustInherit Class CeresGraphView Inherits GraphView Implements IVariableSource
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Editor.Graph.Flow.FlowGraphView
+  implements:
+  - Global.IVariableSource
+- uid: Ceres.Editor.Graph.CeresGraphView.SharedVariables
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.SharedVariables
+  id: SharedVariables
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: SharedVariables
+  nameWithType: CeresGraphView.SharedVariables
+  fullName: Ceres.Editor.Graph.CeresGraphView.SharedVariables
+  type: Property
+  source:
+    id: SharedVariables
+    path: ''
+    startLine: 1818
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public List<SharedVariable> SharedVariables { get; }
+    parameters: []
+    return:
+      type: Global.List{SharedVariable}
+    content.vb: Public ReadOnly Property SharedVariables As List(Of SharedVariable)
+  overload: Ceres.Editor.Graph.CeresGraphView.SharedVariables*
+- uid: Ceres.Editor.Graph.CeresGraphView.EditorWindow
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.EditorWindow
+  id: EditorWindow
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: EditorWindow
+  nameWithType: CeresGraphView.EditorWindow
+  fullName: Ceres.Editor.Graph.CeresGraphView.EditorWindow
+  type: Property
+  source:
+    id: EditorWindow
+    path: ''
+    startLine: 1820
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresGraphEditorWindow EditorWindow { get; set; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresGraphEditorWindow
+    content.vb: Public Property EditorWindow As CeresGraphEditorWindow
+  overload: Ceres.Editor.Graph.CeresGraphView.EditorWindow*
+- uid: Ceres.Editor.Graph.CeresGraphView.Blackboard
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.Blackboard
+  id: Blackboard
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: Blackboard
+  nameWithType: CeresGraphView.Blackboard
+  fullName: Ceres.Editor.Graph.CeresGraphView.Blackboard
+  type: Property
+  source:
+    id: Blackboard
+    path: ''
+    startLine: 1822
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresBlackboard Blackboard { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresBlackboard
+    content.vb: Public Property Blackboard As CeresBlackboard
+  overload: Ceres.Editor.Graph.CeresGraphView.Blackboard*
+- uid: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  id: NodeGroupHandler
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: NodeGroupHandler
+  nameWithType: CeresGraphView.NodeGroupHandler
+  fullName: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  type: Property
+  source:
+    id: NodeGroupHandler
+    path: ''
+    startLine: 1824
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public NodeGroupHandler NodeGroupHandler { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.NodeGroupHandler
+    content.vb: Public Property NodeGroupHandler As NodeGroupHandler
+  overload: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler*
+- uid: Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+  id: ContextualMenuRegistry
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: ContextualMenuRegistry
+  nameWithType: CeresGraphView.ContextualMenuRegistry
+  fullName: Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+  type: Property
+  source:
+    id: ContextualMenuRegistry
+    path: ''
+    startLine: 1826
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public ContextualMenuRegistry ContextualMenuRegistry { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.ContextualMenuRegistry
+    content.vb: Public ReadOnly Property ContextualMenuRegistry As ContextualMenuRegistry
+  overload: Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry*
+- uid: Ceres.Editor.Graph.CeresGraphView.NodeViews
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.NodeViews
+  id: NodeViews
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: NodeViews
+  nameWithType: CeresGraphView.NodeViews
+  fullName: Ceres.Editor.Graph.CeresGraphView.NodeViews
+  type: Property
+  source:
+    id: NodeViews
+    path: ''
+    startLine: 1828
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public HashSet<ICeresNodeView> NodeViews { get; }
+    parameters: []
+    return:
+      type: Global.HashSet{Ceres.Editor.Graph.ICeresNodeView}
+    content.vb: Public ReadOnly Property NodeViews As HashSet(Of ICeresNodeView)
+  overload: Ceres.Editor.Graph.CeresGraphView.NodeViews*
+- uid: Ceres.Editor.Graph.CeresGraphView.SearchWindow
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.SearchWindow
+  id: SearchWindow
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: SearchWindow
+  nameWithType: CeresGraphView.SearchWindow
+  fullName: Ceres.Editor.Graph.CeresGraphView.SearchWindow
+  type: Property
+  source:
+    id: SearchWindow
+    path: ''
+    startLine: 1830
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected CeresNodeSearchWindow SearchWindow { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresNodeSearchWindow
+    content.vb: Protected Property SearchWindow As CeresNodeSearchWindow
+  overload: Ceres.Editor.Graph.CeresGraphView.SearchWindow*
+- uid: Ceres.Editor.Graph.CeresGraphView.#ctor(Ceres.Editor.Graph.CeresGraphEditorWindow)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.#ctor(Ceres.Editor.Graph.CeresGraphEditorWindow)
+  id: '#ctor(Ceres.Editor.Graph.CeresGraphEditorWindow)'
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: CeresGraphView(CeresGraphEditorWindow)
+  nameWithType: CeresGraphView.CeresGraphView(CeresGraphEditorWindow)
+  fullName: Ceres.Editor.Graph.CeresGraphView.CeresGraphView(Ceres.Editor.Graph.CeresGraphEditorWindow)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 1838
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected CeresGraphView(CeresGraphEditorWindow editorWindow)
+    parameters:
+    - id: editorWindow
+      type: Ceres.Editor.Graph.CeresGraphEditorWindow
+    content.vb: Protected Sub New(editorWindow As CeresGraphEditorWindow)
+  overload: Ceres.Editor.Graph.CeresGraphView.#ctor*
+  nameWithType.vb: CeresGraphView.New(CeresGraphEditorWindow)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.New(Ceres.Editor.Graph.CeresGraphEditorWindow)
+  name.vb: New(CeresGraphEditorWindow)
+- uid: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(NodeCreationContext)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(NodeCreationContext)
+  id: OnNodeCreationRequest(NodeCreationContext)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnNodeCreationRequest(NodeCreationContext)
+  nameWithType: CeresGraphView.OnNodeCreationRequest(NodeCreationContext)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(NodeCreationContext)
+  type: Method
+  source:
+    id: OnNodeCreationRequest
+    path: ''
+    startLine: 1858
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void OnNodeCreationRequest(NodeCreationContext context)
+    parameters:
+    - id: context
+      type: Global.NodeCreationContext
+    content.vb: Protected Overridable Sub OnNodeCreationRequest(context As NodeCreationContext)
+  overload: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest*
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UObject,Vector3)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UObject,Vector3)
+  id: OnDragDropObjectPerform(UObject,Vector3)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnDragDropObjectPerform(UObject, Vector3)
+  nameWithType: CeresGraphView.OnDragDropObjectPerform(UObject, Vector3)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UObject, Vector3)
+  type: Method
+  source:
+    id: OnDragDropObjectPerform
+    path: ''
+    startLine: 1863
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void OnDragDropObjectPerform(UObject data, Vector3 mousePosition)
+    parameters:
+    - id: data
+      type: Global.UObject
+    - id: mousePosition
+      type: Global.Vector3
+    content.vb: Protected Overridable Sub OnDragDropObjectPerform(data As UObject, mousePosition As Vector3)
+  overload: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform*
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(List{ISelectable},GraphElement,Vector3)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(List{ISelectable},GraphElement,Vector3)
+  id: OnDragDropElementPerform(List{ISelectable},GraphElement,Vector3)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnDragDropElementPerform(List<ISelectable>, GraphElement, Vector3)
+  nameWithType: CeresGraphView.OnDragDropElementPerform(List<ISelectable>, GraphElement, Vector3)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(List<ISelectable>, GraphElement, Vector3)
+  type: Method
+  source:
+    id: OnDragDropElementPerform
+    path: ''
+    startLine: 1867
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void OnDragDropElementPerform(List<ISelectable> selectables, GraphElement graphElement, Vector3 mousePosition)
+    parameters:
+    - id: selectables
+      type: Global.List{ISelectable}
+    - id: graphElement
+      type: Global.GraphElement
+    - id: mousePosition
+      type: Global.Vector3
+    content.vb: Protected Overridable Sub OnDragDropElementPerform(selectables As List(Of ISelectable), graphElement As GraphElement, mousePosition As Vector3)
+  overload: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform*
+  nameWithType.vb: CeresGraphView.OnDragDropElementPerform(List(Of ISelectable), GraphElement, Vector3)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(List(Of ISelectable), GraphElement, Vector3)
+  name.vb: OnDragDropElementPerform(List(Of ISelectable), GraphElement, Vector3)
+- uid: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(System.String)
+  id: CanPasteSerializedGraph(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: CanPasteSerializedGraph(string)
+  nameWithType: CeresGraphView.CanPasteSerializedGraph(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(string)
+  type: Method
+  source:
+    id: CanPasteSerializedGraph
+    path: ''
+    startLine: 1871
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual bool CanPasteSerializedGraph(string serializedData)
+    parameters:
+    - id: serializedData
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Protected Overridable Function CanPasteSerializedGraph(serializedData As String) As Boolean
+  overload: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph*
+  nameWithType.vb: CeresGraphView.CanPasteSerializedGraph(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(String)
+  name.vb: CanPasteSerializedGraph(String)
+- uid: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(IEnumerable{GraphElement})
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(IEnumerable{GraphElement})
+  id: OnCopySerializedGraph(IEnumerable{GraphElement})
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnCopySerializedGraph(IEnumerable<GraphElement>)
+  nameWithType: CeresGraphView.OnCopySerializedGraph(IEnumerable<GraphElement>)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(IEnumerable<GraphElement>)
+  type: Method
+  source:
+    id: OnCopySerializedGraph
+    path: ''
+    startLine: 1876
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual string OnCopySerializedGraph(IEnumerable<GraphElement> elements)
+    parameters:
+    - id: elements
+      type: Global.IEnumerable{GraphElement}
+    return:
+      type: System.String
+    content.vb: Protected Overridable Function OnCopySerializedGraph(elements As IEnumerable(Of GraphElement)) As String
+  overload: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph*
+  nameWithType.vb: CeresGraphView.OnCopySerializedGraph(IEnumerable(Of GraphElement))
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(IEnumerable(Of GraphElement))
+  name.vb: OnCopySerializedGraph(IEnumerable(Of GraphElement))
+- uid: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(System.String,System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(System.String,System.String)
+  id: OnPasteSerializedGraph(System.String,System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnPasteSerializedGraph(string, string)
+  nameWithType: CeresGraphView.OnPasteSerializedGraph(string, string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(string, string)
+  type: Method
+  source:
+    id: OnPasteSerializedGraph
+    path: ''
+    startLine: 1881
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void OnPasteSerializedGraph(string operationName, string serializedData)
+    parameters:
+    - id: operationName
+      type: System.String
+    - id: serializedData
+      type: System.String
+    content.vb: Protected Overridable Sub OnPasteSerializedGraph(operationName As String, serializedData As String)
+  overload: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph*
+  nameWithType.vb: CeresGraphView.OnPasteSerializedGraph(String, String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(String, String)
+  name.vb: OnPasteSerializedGraph(String, String)
+- uid: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(GraphViewChange)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(GraphViewChange)
+  id: OnGraphViewChanged(GraphViewChange)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnGraphViewChanged(GraphViewChange)
+  nameWithType: CeresGraphView.OnGraphViewChanged(GraphViewChange)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(GraphViewChange)
+  type: Method
+  source:
+    id: OnGraphViewChanged
+    path: ''
+    startLine: 1886
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
+    parameters:
+    - id: graphViewChange
+      type: Global.GraphViewChange
+    return:
+      type: Global.GraphViewChange
+    content.vb: Protected Overridable Function OnGraphViewChanged(graphViewChange As GraphViewChange) As GraphViewChange
+  overload: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged*
+- uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  id: AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: AddBlackboard(CeresBlackboard)
+  nameWithType: CeresGraphView.AddBlackboard(CeresBlackboard)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  type: Method
+  source:
+    id: AddBlackboard
+    path: ''
+    startLine: 1907
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nAdd custom blackboard to graph\n"
+  example: []
+  syntax:
+    content: public void AddBlackboard(CeresBlackboard blackboard)
+    parameters:
+    - id: blackboard
+      type: Ceres.Editor.Graph.CeresBlackboard
+      description: ''
+    content.vb: Public Sub AddBlackboard(blackboard As CeresBlackboard)
+  overload: Ceres.Editor.Graph.CeresGraphView.AddBlackboard*
+- uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,Rect)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,Rect)
+  id: AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,Rect)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: AddBlackboard(CeresBlackboard, Rect)
+  nameWithType: CeresGraphView.AddBlackboard(CeresBlackboard, Rect)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard, Rect)
+  type: Method
+  source:
+    id: AddBlackboard
+    path: ''
+    startLine: 1917
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nAdd custom blackboard to graph\n"
+  example: []
+  syntax:
+    content: public void AddBlackboard(CeresBlackboard blackboard, Rect rect)
+    parameters:
+    - id: blackboard
+      type: Ceres.Editor.Graph.CeresBlackboard
+      description: ''
+    - id: rect
+      type: Global.Rect
+      description: ''
+    content.vb: Public Sub AddBlackboard(blackboard As CeresBlackboard, rect As Rect)
+  overload: Ceres.Editor.Graph.CeresGraphView.AddBlackboard*
+- uid: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow``1
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddSearchWindow``1
+  id: AddSearchWindow``1
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: AddSearchWindow<T>()
+  nameWithType: CeresGraphView.AddSearchWindow<T>()
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow<T>()
+  type: Method
+  source:
+    id: AddSearchWindow
+    path: ''
+    startLine: 1928
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nAdd custom node search window to graph\n"
+  example: []
+  syntax:
+    content: 'public void AddSearchWindow<T>() where T : CeresNodeSearchWindow'
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public Sub AddSearchWindow(Of T As CeresNodeSearchWindow)()
+  overload: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow*
+  nameWithType.vb: CeresGraphView.AddSearchWindow(Of T)()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow(Of T)()
+  name.vb: AddSearchWindow(Of T)()
+- uid: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  id: AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: AddNodeGroupHandler(NodeGroupHandler)
+  nameWithType: CeresGraphView.AddNodeGroupHandler(NodeGroupHandler)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  type: Method
+  source:
+    id: AddNodeGroupHandler
+    path: ''
+    startLine: 1937
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nAdd custom <xref href=\"Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler\" data-throw-if-not-resolved=\"false\"></xref> to graph\n"
+  example: []
+  syntax:
+    content: public void AddNodeGroupHandler(NodeGroupHandler groupHandler)
+    parameters:
+    - id: groupHandler
+      type: Ceres.Editor.Graph.NodeGroupHandler
+      description: ''
+    content.vb: Public Sub AddNodeGroupHandler(groupHandler As NodeGroupHandler)
+  overload: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler*
+- uid: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(System.String)
+  id: AddStyleSheet(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: AddStyleSheet(string)
+  nameWithType: CeresGraphView.AddStyleSheet(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(string)
+  type: Method
+  source:
+    id: AddStyleSheet
+    path: ''
+    startLine: 1965
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nAdd custom <see cref=\"!:StyleSheet\"></see> to graph\n"
+  example: []
+  syntax:
+    content: public void AddStyleSheet(string resourcePath)
+    parameters:
+    - id: resourcePath
+      type: System.String
+      description: ''
+    content.vb: Public Sub AddStyleSheet(resourcePath As String)
+  overload: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet*
+  nameWithType.vb: CeresGraphView.AddStyleSheet(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(String)
+  name.vb: AddStyleSheet(String)
+- uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(System.String)
+  id: GetOrLoadStyleSheet(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: GetOrLoadStyleSheet(string)
+  nameWithType: CeresGraphView.GetOrLoadStyleSheet(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(string)
+  type: Method
+  source:
+    id: GetOrLoadStyleSheet
+    path: ''
+    startLine: 1975
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nGet or load custom <see cref=\"!:StyleSheet\"></see>\n"
+  example: []
+  syntax:
+    content: public static StyleSheet GetOrLoadStyleSheet(string resourcePath)
+    parameters:
+    - id: resourcePath
+      type: System.String
+      description: ''
+    return:
+      type: Global.StyleSheet
+      description: ''
+    content.vb: Public Shared Function GetOrLoadStyleSheet(resourcePath As String) As StyleSheet
+  overload: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet*
+  nameWithType.vb: CeresGraphView.GetOrLoadStyleSheet(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(String)
+  name.vb: GetOrLoadStyleSheet(String)
+- uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)
+  id: GetOrLoadVisualTreeAsset(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: GetOrLoadVisualTreeAsset(string)
+  nameWithType: CeresGraphView.GetOrLoadVisualTreeAsset(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(string)
+  type: Method
+  source:
+    id: GetOrLoadVisualTreeAsset
+    path: ''
+    startLine: 1991
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nGet or load custom <see cref=\"!:VisualTreeAsset\"></see>\n"
+  example: []
+  syntax:
+    content: public static VisualTreeAsset GetOrLoadVisualTreeAsset(string resourcePath)
+    parameters:
+    - id: resourcePath
+      type: System.String
+      description: ''
+    return:
+      type: Global.VisualTreeAsset
+      description: ''
+    content.vb: Public Shared Function GetOrLoadVisualTreeAsset(resourcePath As String) As VisualTreeAsset
+  overload: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset*
+  nameWithType.vb: CeresGraphView.GetOrLoadVisualTreeAsset(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(String)
+  name.vb: GetOrLoadVisualTreeAsset(String)
+- uid: Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  id: AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: AddNodeView(ICeresNodeView)
+  nameWithType: CeresGraphView.AddNodeView(ICeresNodeView)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  type: Method
+  source:
+    id: AddNodeView
+    path: ''
+    startLine: 2006
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nAdd custom node view to graph\n"
+  example: []
+  syntax:
+    content: public virtual void AddNodeView(ICeresNodeView nodeView)
+    parameters:
+    - id: nodeView
+      type: Ceres.Editor.Graph.ICeresNodeView
+      description: ''
+    content.vb: Public Overridable Sub AddNodeView(nodeView As ICeresNodeView)
+  overload: Ceres.Editor.Graph.CeresGraphView.AddNodeView*
+- uid: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,Vector2)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,Vector2)
+  id: InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,Vector2)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: InsertRelayNode(CeresPortElement, CeresPortElement, Vector2)
+  nameWithType: CeresGraphView.InsertRelayNode(CeresPortElement, CeresPortElement, Vector2)
+  fullName: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement, Ceres.Editor.Graph.CeresPortElement, Vector2)
+  type: Method
+  source:
+    id: InsertRelayNode
+    path: ''
+    startLine: 2029
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nInsert a relay node between two connected ports\n"
+  example: []
+  syntax:
+    content: public virtual void InsertRelayNode(CeresPortElement inputPort, CeresPortElement outputPort, Vector2 position)
+    parameters:
+    - id: inputPort
+      type: Ceres.Editor.Graph.CeresPortElement
+      description: Input port of the original edge
+    - id: outputPort
+      type: Ceres.Editor.Graph.CeresPortElement
+      description: Output port of the original edge
+    - id: position
+      type: Global.Vector2
+      description: Position to place the relay node
+    content.vb: Public Overridable Sub InsertRelayNode(inputPort As CeresPortElement, outputPort As CeresPortElement, position As Vector2)
+  overload: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode*
+- uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.FindNodeView(System.String)
+  id: FindNodeView(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: FindNodeView(string)
+  nameWithType: CeresGraphView.FindNodeView(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.FindNodeView(string)
+  type: Method
+  source:
+    id: FindNodeView
+    path: ''
+    startLine: 2069
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFind node by guid\n"
+  example: []
+  syntax:
+    content: public ICeresNodeView FindNodeView(string guid)
+    parameters:
+    - id: guid
+      type: System.String
+      description: ''
+    return:
+      type: Ceres.Editor.Graph.ICeresNodeView
+      description: ''
+    content.vb: Public Function FindNodeView(guid As String) As ICeresNodeView
+  overload: Ceres.Editor.Graph.CeresGraphView.FindNodeView*
+  nameWithType.vb: CeresGraphView.FindNodeView(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.FindNodeView(String)
+  name.vb: FindNodeView(String)
+- uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView``1(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.FindNodeView``1(System.String)
+  id: FindNodeView``1(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: FindNodeView<TNodeView>(string)
+  nameWithType: CeresGraphView.FindNodeView<TNodeView>(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.FindNodeView<TNodeView>(string)
+  type: Method
+  source:
+    id: FindNodeView
+    path: ''
+    startLine: 2079
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFind generic node by guid\n"
+  example: []
+  syntax:
+    content: 'public TNodeView FindNodeView<TNodeView>(string guid) where TNodeView : class, ICeresNodeView'
+    parameters:
+    - id: guid
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: TNodeView
+    return:
+      type: '{TNodeView}'
+      description: ''
+    content.vb: Public Function FindNodeView(Of TNodeView As {Class, ICeresNodeView})(guid As String) As TNodeView
+  overload: Ceres.Editor.Graph.CeresGraphView.FindNodeView*
+  nameWithType.vb: CeresGraphView.FindNodeView(Of TNodeView)(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.FindNodeView(Of TNodeView)(String)
+  name.vb: FindNodeView(Of TNodeView)(String)
+- uid: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(Port,NodeAdapter)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(Port,NodeAdapter)
+  id: GetCompatiblePorts(Port,NodeAdapter)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: GetCompatiblePorts(Port, NodeAdapter)
+  nameWithType: CeresGraphView.GetCompatiblePorts(Port, NodeAdapter)
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(Port, NodeAdapter)
+  type: Method
+  source:
+    id: GetCompatiblePorts
+    path: ''
+    startLine: 2084
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+    parameters:
+    - id: startPort
+      type: Global.Port
+    - id: nodeAdapter
+      type: Global.NodeAdapter
+    return:
+      type: Global.List{Port}
+    content.vb: Public Overrides Function GetCompatiblePorts(startPort As Port, nodeAdapter As NodeAdapter) As List(Of Port)
+  overload: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts*
+- uid: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(List{SharedVariable},System.Boolean)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(List{SharedVariable},System.Boolean)
+  id: AddSharedVariables(List{SharedVariable},System.Boolean)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: AddSharedVariables(List<SharedVariable>, bool)
+  nameWithType: CeresGraphView.AddSharedVariables(List<SharedVariable>, bool)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(List<SharedVariable>, bool)
+  type: Method
+  source:
+    id: AddSharedVariables
+    path: ''
+    startLine: 2109
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nAdd shared variables to graph&apos;s blackboard\n"
+  example: []
+  syntax:
+    content: public virtual void AddSharedVariables(List<SharedVariable> variables, bool duplicateWhenConflict)
+    parameters:
+    - id: variables
+      type: Global.List{SharedVariable}
+      description: ''
+    - id: duplicateWhenConflict
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overridable Sub AddSharedVariables(variables As List(Of SharedVariable), duplicateWhenConflict As Boolean)
+  overload: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables*
+  nameWithType.vb: CeresGraphView.AddSharedVariables(List(Of SharedVariable), Boolean)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(List(Of SharedVariable), Boolean)
+  name.vb: AddSharedVariables(List(Of SharedVariable), Boolean)
+- uid: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(ContextualMenuPopulateEvent)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(ContextualMenuPopulateEvent)
+  id: BuildContextualMenu(ContextualMenuPopulateEvent)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: BuildContextualMenu(ContextualMenuPopulateEvent)
+  nameWithType: CeresGraphView.BuildContextualMenu(ContextualMenuPopulateEvent)
+  fullName: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(ContextualMenuPopulateEvent)
+  type: Method
+  source:
+    id: BuildContextualMenu
+    path: ''
+    startLine: 2121
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+    parameters:
+    - id: evt
+      type: Global.ContextualMenuPopulateEvent
+    content.vb: Public Overrides Sub BuildContextualMenu(evt As ContextualMenuPopulateEvent)
+  overload: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu*
+- uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch(Vector2)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OpenSearch(Vector2)
+  id: OpenSearch(Vector2)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OpenSearch(Vector2)
+  nameWithType: CeresGraphView.OpenSearch(Vector2)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OpenSearch(Vector2)
+  type: Method
+  source:
+    id: OpenSearch
+    path: ''
+    startLine: 2131
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nOpen node search window\n"
+  example: []
+  syntax:
+    content: public virtual void OpenSearch(Vector2 screenPosition)
+    parameters:
+    - id: screenPosition
+      type: Global.Vector2
+      description: ''
+    content.vb: Public Overridable Sub OpenSearch(screenPosition As Vector2)
+  overload: Ceres.Editor.Graph.CeresGraphView.OpenSearch*
+- uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch(Vector2,Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OpenSearch(Vector2,Ceres.Editor.Graph.CeresPortView)
+  id: OpenSearch(Vector2,Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OpenSearch(Vector2, CeresPortView)
+  nameWithType: CeresGraphView.OpenSearch(Vector2, CeresPortView)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OpenSearch(Vector2, Ceres.Editor.Graph.CeresPortView)
+  type: Method
+  source:
+    id: OpenSearch
+    path: ''
+    startLine: 2145
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nOpen node search window with input port\n"
+  example: []
+  syntax:
+    content: public virtual void OpenSearch(Vector2 screenPosition, CeresPortView portView)
+    parameters:
+    - id: screenPosition
+      type: Global.Vector2
+      description: ''
+    - id: portView
+      type: Ceres.Editor.Graph.CeresPortView
+      description: ''
+    content.vb: Public Overridable Sub OpenSearch(screenPosition As Vector2, portView As CeresPortView)
+  overload: Ceres.Editor.Graph.CeresGraphView.OpenSearch*
+- uid: Ceres.Editor.Graph.CeresGraphView.SetDirty
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.SetDirty
+  id: SetDirty
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: SetDirty()
+  nameWithType: CeresGraphView.SetDirty()
+  fullName: Ceres.Editor.Graph.CeresGraphView.SetDirty()
+  type: Method
+  source:
+    id: SetDirty
+    path: ''
+    startLine: 2159
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nMarks graph view as dirty\n"
+  example: []
+  syntax:
+    content: public void SetDirty()
+    content.vb: Public Sub SetDirty()
+  overload: Ceres.Editor.Graph.CeresGraphView.SetDirty*
+- uid: Ceres.Editor.Graph.CeresGraphView.ClearDirty
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.ClearDirty
+  id: ClearDirty
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: ClearDirty()
+  nameWithType: CeresGraphView.ClearDirty()
+  fullName: Ceres.Editor.Graph.CeresGraphView.ClearDirty()
+  type: Method
+  source:
+    id: ClearDirty
+    path: ''
+    startLine: 2167
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nClear graph view&apos;s dirty flag.\n"
+  example: []
+  syntax:
+    content: public void ClearDirty()
+    content.vb: Public Sub ClearDirty()
+  overload: Ceres.Editor.Graph.CeresGraphView.ClearDirty*
+- uid: Ceres.Editor.Graph.CeresGraphView.IsDirty
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.IsDirty
+  id: IsDirty
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: IsDirty()
+  nameWithType: CeresGraphView.IsDirty()
+  fullName: Ceres.Editor.Graph.CeresGraphView.IsDirty()
+  type: Method
+  source:
+    id: IsDirty
+    path: ''
+    startLine: 2176
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nWhether graph view is dirty\n"
+  example: []
+  syntax:
+    content: public bool IsDirty()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function IsDirty() As Boolean
+  overload: Ceres.Editor.Graph.CeresGraphView.IsDirty*
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDestroy
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnDestroy
+  id: OnDestroy
+  parent: Ceres.Editor.Graph.CeresGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnDestroy()
+  nameWithType: CeresGraphView.OnDestroy()
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDestroy()
+  type: Method
+  source:
+    id: OnDestroy
+    path: ''
+    startLine: 2191
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nCalled after detached from editor window\n"
+  example: []
+  syntax:
+    content: protected virtual void OnDestroy()
+    content.vb: Protected Overridable Sub OnDestroy()
+  overload: Ceres.Editor.Graph.CeresGraphView.OnDestroy*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.IVariableSource
+  isExternal: true
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: IVariableSource
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.CeresGraphView.SharedVariables*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.SharedVariables
+  name: SharedVariables
+  nameWithType: CeresGraphView.SharedVariables
+  fullName: Ceres.Editor.Graph.CeresGraphView.SharedVariables
+- uid: Global.List{SharedVariable}
+  commentId: '!:Global.List{SharedVariable}'
+  definition: Global.List`1
+  name: List<SharedVariable>
+  nameWithType: List<SharedVariable>
+  fullName: List<SharedVariable>
+  nameWithType.vb: List(Of SharedVariable)
+  fullName.vb: List(Of SharedVariable)
+  name.vb: List(Of SharedVariable)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: )
+- uid: Global.List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.EditorWindow*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.EditorWindow
+  name: EditorWindow
+  nameWithType: CeresGraphView.EditorWindow
+  fullName: Ceres.Editor.Graph.CeresGraphView.EditorWindow
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow
+  commentId: T:Ceres.Editor.Graph.CeresGraphEditorWindow
+  parent: Ceres.Editor.Graph
+  name: CeresGraphEditorWindow
+  nameWithType: CeresGraphEditorWindow
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow
+- uid: Ceres.Editor.Graph.CeresGraphView.Blackboard*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.Blackboard
+  name: Blackboard
+  nameWithType: CeresGraphView.Blackboard
+  fullName: Ceres.Editor.Graph.CeresGraphView.Blackboard
+- uid: Ceres.Editor.Graph.CeresBlackboard
+  commentId: T:Ceres.Editor.Graph.CeresBlackboard
+  parent: Ceres.Editor.Graph
+  name: CeresBlackboard
+  nameWithType: CeresBlackboard
+  fullName: Ceres.Editor.Graph.CeresBlackboard
+- uid: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  name: NodeGroupHandler
+  nameWithType: CeresGraphView.NodeGroupHandler
+  fullName: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+- uid: Ceres.Editor.Graph.NodeGroupHandler
+  commentId: T:Ceres.Editor.Graph.NodeGroupHandler
+  parent: Ceres.Editor.Graph
+  name: NodeGroupHandler
+  nameWithType: NodeGroupHandler
+  fullName: Ceres.Editor.Graph.NodeGroupHandler
+- uid: Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+  name: ContextualMenuRegistry
+  nameWithType: CeresGraphView.ContextualMenuRegistry
+  fullName: Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+- uid: Ceres.Editor.Graph.ContextualMenuRegistry
+  commentId: T:Ceres.Editor.Graph.ContextualMenuRegistry
+  parent: Ceres.Editor.Graph
+  name: ContextualMenuRegistry
+  nameWithType: ContextualMenuRegistry
+  fullName: Ceres.Editor.Graph.ContextualMenuRegistry
+- uid: Ceres.Editor.Graph.CeresGraphView.NodeViews*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.NodeViews
+  name: NodeViews
+  nameWithType: CeresGraphView.NodeViews
+  fullName: Ceres.Editor.Graph.CeresGraphView.NodeViews
+- uid: Global.HashSet{Ceres.Editor.Graph.ICeresNodeView}
+  commentId: '!:Global.HashSet{Ceres.Editor.Graph.ICeresNodeView}'
+  definition: Global.HashSet`1
+  name: HashSet<ICeresNodeView>
+  nameWithType: HashSet<ICeresNodeView>
+  fullName: HashSet<Ceres.Editor.Graph.ICeresNodeView>
+  nameWithType.vb: HashSet(Of ICeresNodeView)
+  fullName.vb: HashSet(Of Ceres.Editor.Graph.ICeresNodeView)
+  name.vb: HashSet(Of ICeresNodeView)
+  spec.csharp:
+  - uid: Global.HashSet`1
+    name: HashSet
+    isExternal: true
+  - name: <
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+  - name: '>'
+  spec.vb:
+  - uid: Global.HashSet`1
+    name: HashSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+  - name: )
+- uid: Global.HashSet`1
+  isExternal: true
+  name: HashSet<>
+  nameWithType: HashSet<>
+  fullName: HashSet<>
+  nameWithType.vb: HashSet(Of )
+  fullName.vb: HashSet(Of )
+  name.vb: HashSet(Of )
+  spec.csharp:
+  - uid: Global.HashSet`1
+    name: HashSet
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.HashSet`1
+    name: HashSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.SearchWindow*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.SearchWindow
+  name: SearchWindow
+  nameWithType: CeresGraphView.SearchWindow
+  fullName: Ceres.Editor.Graph.CeresGraphView.SearchWindow
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow
+  commentId: T:Ceres.Editor.Graph.CeresNodeSearchWindow
+  parent: Ceres.Editor.Graph
+  name: CeresNodeSearchWindow
+  nameWithType: CeresNodeSearchWindow
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow
+- uid: Ceres.Editor.Graph.CeresGraphView.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.#ctor
+  name: CeresGraphView
+  nameWithType: CeresGraphView.CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView.CeresGraphView
+  nameWithType.vb: CeresGraphView.New
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest
+  name: OnNodeCreationRequest
+  nameWithType: CeresGraphView.OnNodeCreationRequest
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest
+- uid: Global.NodeCreationContext
+  commentId: '!:Global.NodeCreationContext'
+  isExternal: true
+  name: NodeCreationContext
+  nameWithType: NodeCreationContext
+  fullName: NodeCreationContext
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform
+  name: OnDragDropObjectPerform
+  nameWithType: CeresGraphView.OnDragDropObjectPerform
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform
+- uid: Global.UObject
+  isExternal: true
+  name: UObject
+  nameWithType: UObject
+  fullName: UObject
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform
+  name: OnDragDropElementPerform
+  nameWithType: CeresGraphView.OnDragDropElementPerform
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform
+- uid: Global.List{ISelectable}
+  commentId: '!:Global.List{ISelectable}'
+  definition: Global.List`1
+  name: List<ISelectable>
+  nameWithType: List<ISelectable>
+  fullName: List<ISelectable>
+  nameWithType.vb: List(Of ISelectable)
+  fullName.vb: List(Of ISelectable)
+  name.vb: List(Of ISelectable)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Global.ISelectable
+    name: ISelectable
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.ISelectable
+    name: ISelectable
+    isExternal: true
+  - name: )
+- uid: Global.GraphElement
+  isExternal: true
+  name: GraphElement
+  nameWithType: GraphElement
+  fullName: GraphElement
+- uid: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph
+  name: CanPasteSerializedGraph
+  nameWithType: CeresGraphView.CanPasteSerializedGraph
+  fullName: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph
+  name: OnCopySerializedGraph
+  nameWithType: CeresGraphView.OnCopySerializedGraph
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph
+- uid: Global.IEnumerable{GraphElement}
+  commentId: '!:Global.IEnumerable{GraphElement}'
+  definition: Global.IEnumerable`1
+  name: IEnumerable<GraphElement>
+  nameWithType: IEnumerable<GraphElement>
+  fullName: IEnumerable<GraphElement>
+  nameWithType.vb: IEnumerable(Of GraphElement)
+  fullName.vb: IEnumerable(Of GraphElement)
+  name.vb: IEnumerable(Of GraphElement)
+  spec.csharp:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: Global.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: )
+- uid: Global.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph
+  name: OnPasteSerializedGraph
+  nameWithType: CeresGraphView.OnPasteSerializedGraph
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph
+- uid: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged
+  name: OnGraphViewChanged
+  nameWithType: CeresGraphView.OnGraphViewChanged
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged
+- uid: Global.GraphViewChange
+  isExternal: true
+  name: GraphViewChange
+  nameWithType: GraphViewChange
+  fullName: GraphViewChange
+- uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.AddBlackboard
+  name: AddBlackboard
+  nameWithType: CeresGraphView.AddBlackboard
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddBlackboard
+- uid: Global.Rect
+  isExternal: true
+  name: Rect
+  nameWithType: Rect
+  fullName: Rect
+- uid: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.AddSearchWindow
+  name: AddSearchWindow
+  nameWithType: CeresGraphView.AddSearchWindow
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow
+- uid: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  parent: Ceres.Editor.Graph.CeresGraphView
+  name: NodeGroupHandler
+  nameWithType: CeresGraphView.NodeGroupHandler
+  fullName: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+- uid: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler
+  name: AddNodeGroupHandler
+  nameWithType: CeresGraphView.AddNodeGroupHandler
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.AddStyleSheet
+  name: AddStyleSheet
+  nameWithType: CeresGraphView.AddStyleSheet
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet
+- uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet
+  name: GetOrLoadStyleSheet
+  nameWithType: CeresGraphView.GetOrLoadStyleSheet
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet
+- uid: Global.StyleSheet
+  commentId: '!:Global.StyleSheet'
+  isExternal: true
+  name: StyleSheet
+  nameWithType: StyleSheet
+  fullName: StyleSheet
+- uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset
+  name: GetOrLoadVisualTreeAsset
+  nameWithType: CeresGraphView.GetOrLoadVisualTreeAsset
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset
+- uid: Global.VisualTreeAsset
+  commentId: '!:Global.VisualTreeAsset'
+  isExternal: true
+  name: VisualTreeAsset
+  nameWithType: VisualTreeAsset
+  fullName: VisualTreeAsset
+- uid: Ceres.Editor.Graph.CeresGraphView.AddNodeView*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.AddNodeView
+  name: AddNodeView
+  nameWithType: CeresGraphView.AddNodeView
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddNodeView
+- uid: Ceres.Editor.Graph.ICeresNodeView
+  commentId: T:Ceres.Editor.Graph.ICeresNodeView
+  parent: Ceres.Editor.Graph
+  name: ICeresNodeView
+  nameWithType: ICeresNodeView
+  fullName: Ceres.Editor.Graph.ICeresNodeView
+- uid: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.InsertRelayNode
+  name: InsertRelayNode
+  nameWithType: CeresGraphView.InsertRelayNode
+  fullName: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode
+- uid: Ceres.Editor.Graph.CeresPortElement
+  commentId: T:Ceres.Editor.Graph.CeresPortElement
+  parent: Ceres.Editor.Graph
+  name: CeresPortElement
+  nameWithType: CeresPortElement
+  fullName: Ceres.Editor.Graph.CeresPortElement
+- uid: Global.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.FindNodeView
+  name: FindNodeView
+  nameWithType: CeresGraphView.FindNodeView
+  fullName: Ceres.Editor.Graph.CeresGraphView.FindNodeView
+- uid: '{TNodeView}'
+  commentId: '!:TNodeView'
+  definition: TNodeView
+  name: TNodeView
+  nameWithType: TNodeView
+  fullName: TNodeView
+- uid: TNodeView
+  commentId: '!:TNodeView'
+  name: TNodeView
+  nameWithType: TNodeView
+  fullName: TNodeView
+- uid: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts
+  name: GetCompatiblePorts
+  nameWithType: CeresGraphView.GetCompatiblePorts
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts
+- uid: Global.Port
+  commentId: '!:Global.Port'
+  isExternal: true
+  name: Port
+  nameWithType: Port
+  fullName: Port
+- uid: Global.NodeAdapter
+  commentId: '!:Global.NodeAdapter'
+  isExternal: true
+  name: NodeAdapter
+  nameWithType: NodeAdapter
+  fullName: NodeAdapter
+- uid: Global.List{Port}
+  commentId: '!:Global.List{Port}'
+  definition: Global.List`1
+  name: List<Port>
+  nameWithType: List<Port>
+  fullName: List<Port>
+  nameWithType.vb: List(Of Port)
+  fullName.vb: List(Of Port)
+  name.vb: List(Of Port)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Global.Port
+    name: Port
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Port
+    name: Port
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.AddSharedVariables
+  name: AddSharedVariables
+  nameWithType: CeresGraphView.AddSharedVariables
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables
+- uid: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu
+  name: BuildContextualMenu
+  nameWithType: CeresGraphView.BuildContextualMenu
+  fullName: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu
+- uid: Global.ContextualMenuPopulateEvent
+  isExternal: true
+  name: ContextualMenuPopulateEvent
+  nameWithType: ContextualMenuPopulateEvent
+  fullName: ContextualMenuPopulateEvent
+- uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.OpenSearch
+  name: OpenSearch
+  nameWithType: CeresGraphView.OpenSearch
+  fullName: Ceres.Editor.Graph.CeresGraphView.OpenSearch
+- uid: Ceres.Editor.Graph.CeresPortView
+  commentId: T:Ceres.Editor.Graph.CeresPortView
+  parent: Ceres.Editor.Graph
+  name: CeresPortView
+  nameWithType: CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView
+- uid: Ceres.Editor.Graph.CeresGraphView.SetDirty*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.SetDirty
+  name: SetDirty
+  nameWithType: CeresGraphView.SetDirty
+  fullName: Ceres.Editor.Graph.CeresGraphView.SetDirty
+- uid: Ceres.Editor.Graph.CeresGraphView.ClearDirty*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.ClearDirty
+  name: ClearDirty
+  nameWithType: CeresGraphView.ClearDirty
+  fullName: Ceres.Editor.Graph.CeresGraphView.ClearDirty
+- uid: Ceres.Editor.Graph.CeresGraphView.IsDirty*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.IsDirty
+  name: IsDirty
+  nameWithType: CeresGraphView.IsDirty
+  fullName: Ceres.Editor.Graph.CeresGraphView.IsDirty
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDestroy*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphView.OnDestroy
+  name: OnDestroy
+  nameWithType: CeresGraphView.OnDestroy
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDestroy

@@ -1,0 +1,595 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.CustomExecutionEvent
+  commentId: T:Ceres.Graph.Flow.CustomExecutionEvent
+  id: CustomExecutionEvent
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.CustomExecutionEvent.exec
+  - Ceres.Graph.Flow.CustomExecutionEvent.Execute(Ceres.Graph.Flow.ExecutionContext)
+  - Ceres.Graph.Flow.CustomExecutionEvent.LocalExecute(Ceres.Graph.Flow.ExecutionContext)
+  - Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId``1(System.String)
+  langs:
+  - csharp
+  - vb
+  name: CustomExecutionEvent
+  nameWithType: CustomExecutionEvent
+  fullName: Ceres.Graph.Flow.CustomExecutionEvent
+  type: Class
+  source:
+    id: CustomExecutionEvent
+    path: ''
+    startLine: 26346
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nBase class for <xref href=\"Ceres.Graph.Flow.ExecutionEventBase\" data-throw-if-not-resolved=\"false\"></xref> generated from <see cref=\"!:EventBase&lt;T>\"></see> by Ceres.SourceGenerator\n"
+  example: []
+  syntax:
+    content: 'public abstract class CustomExecutionEvent : ExecutionEventBase, IDisposable'
+    content.vb: Public MustInherit Class CustomExecutionEvent Inherits ExecutionEventBase Implements IDisposable
+  inheritance:
+  - System.Object
+  - Ceres.Graph.CeresNode
+  - Ceres.Graph.Flow.ExecutableNode
+  - Ceres.Graph.Flow.ExecutableEvent
+  - Ceres.Graph.Flow.ExecutionEventBase
+  derivedClasses:
+  - Ceres.Graph.Flow.CustomExecutionEvent`1
+  implements:
+  - Global.IDisposable
+  inheritedMembers:
+  - Ceres.Graph.Flow.ExecutionEventBase.eventName
+  - Ceres.Graph.Flow.ExecutionEventBase.isImplementable
+  - Ceres.Graph.Flow.ExecutionEventBase.GetEventName
+  - Ceres.Graph.Flow.ExecutableNode.Graph
+  - Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  - Ceres.Graph.CeresNode.NodeData
+  - Ceres.Graph.CeresNode.Guid
+  - Ceres.Graph.CeresNode.GraphPosition
+  - Ceres.Graph.CeresNode.Dispose
+  - Ceres.Graph.CeresNode.GetSerializedData
+  - Ceres.Graph.CeresNode.GetExecutionPath
+  - Ceres.Graph.CeresNode.GetEnumerator
+  - Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  - Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTypeName
+- uid: Ceres.Graph.Flow.CustomExecutionEvent.exec
+  commentId: F:Ceres.Graph.Flow.CustomExecutionEvent.exec
+  id: exec
+  parent: Ceres.Graph.Flow.CustomExecutionEvent
+  langs:
+  - csharp
+  - vb
+  name: exec
+  nameWithType: CustomExecutionEvent.exec
+  fullName: Ceres.Graph.Flow.CustomExecutionEvent.exec
+  type: Field
+  source:
+    id: exec
+    path: ''
+    startLine: 26353
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public NodePort exec
+    return:
+      type: Ceres.Graph.NodePort
+    content.vb: Public exec As NodePort
+- uid: Ceres.Graph.Flow.CustomExecutionEvent.Execute(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.CustomExecutionEvent.Execute(Ceres.Graph.Flow.ExecutionContext)
+  id: Execute(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.CustomExecutionEvent
+  langs:
+  - csharp
+  - vb
+  name: Execute(ExecutionContext)
+  nameWithType: CustomExecutionEvent.Execute(ExecutionContext)
+  fullName: Ceres.Graph.Flow.CustomExecutionEvent.Execute(Ceres.Graph.Flow.ExecutionContext)
+  type: Method
+  source:
+    id: Execute
+    path: ''
+    startLine: 26355
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: protected override sealed UniTask Execute(ExecutionContext executionContext)
+    parameters:
+    - id: executionContext
+      type: Ceres.Graph.Flow.ExecutionContext
+    return:
+      type: Global.UniTask
+    content.vb: Protected NotOverridable Overrides Function Execute(executionContext As ExecutionContext) As UniTask
+  overridden: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  overload: Ceres.Graph.Flow.CustomExecutionEvent.Execute*
+- uid: Ceres.Graph.Flow.CustomExecutionEvent.LocalExecute(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.CustomExecutionEvent.LocalExecute(Ceres.Graph.Flow.ExecutionContext)
+  id: LocalExecute(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.CustomExecutionEvent
+  langs:
+  - csharp
+  - vb
+  name: LocalExecute(ExecutionContext)
+  nameWithType: CustomExecutionEvent.LocalExecute(ExecutionContext)
+  fullName: Ceres.Graph.Flow.CustomExecutionEvent.LocalExecute(Ceres.Graph.Flow.ExecutionContext)
+  type: Method
+  source:
+    id: LocalExecute
+    path: ''
+    startLine: 26362
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: protected virtual void LocalExecute(ExecutionContext executionContext)
+    parameters:
+    - id: executionContext
+      type: Ceres.Graph.Flow.ExecutionContext
+    content.vb: Protected Overridable Sub LocalExecute(executionContext As ExecutionContext)
+  overload: Ceres.Graph.Flow.CustomExecutionEvent.LocalExecute*
+- uid: Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId``1(System.String)
+  commentId: M:Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId``1(System.String)
+  id: RegisterEventId``1(System.String)
+  parent: Ceres.Graph.Flow.CustomExecutionEvent
+  langs:
+  - csharp
+  - vb
+  name: RegisterEventId<TEventBase>(string)
+  nameWithType: CustomExecutionEvent.RegisterEventId<TEventBase>(string)
+  fullName: Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId<TEventBase>(string)
+  type: Method
+  source:
+    id: RegisterEventId
+    path: ''
+    startLine: 26367
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: 'protected static void RegisterEventId<TEventBase>(string eventName) where TEventBase : EventBase<TEventBase>, new()'
+    parameters:
+    - id: eventName
+      type: System.String
+    typeParameters:
+    - id: TEventBase
+    content.vb: Protected Shared Sub RegisterEventId(Of TEventBase As {EventBase(Of TEventBase), New})(eventName As String)
+  overload: Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId*
+  nameWithType.vb: CustomExecutionEvent.RegisterEventId(Of TEventBase)(String)
+  fullName.vb: Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId(Of TEventBase)(String)
+  name.vb: RegisterEventId(Of TEventBase)(String)
+references:
+- uid: Ceres.Graph.Flow.ExecutionEventBase
+  commentId: T:Ceres.Graph.Flow.ExecutionEventBase
+  parent: Ceres.Graph.Flow
+  name: ExecutionEventBase
+  nameWithType: ExecutionEventBase
+  fullName: Ceres.Graph.Flow.ExecutionEventBase
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph.Flow.ExecutableNode
+  commentId: T:Ceres.Graph.Flow.ExecutableNode
+  parent: Ceres.Graph.Flow
+  name: ExecutableNode
+  nameWithType: ExecutableNode
+  fullName: Ceres.Graph.Flow.ExecutableNode
+- uid: Ceres.Graph.Flow.ExecutableEvent
+  commentId: T:Ceres.Graph.Flow.ExecutableEvent
+  parent: Ceres.Graph.Flow
+  name: ExecutableEvent
+  nameWithType: ExecutableEvent
+  fullName: Ceres.Graph.Flow.ExecutableEvent
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: Ceres.Graph.Flow.ExecutionEventBase.eventName
+  commentId: F:Ceres.Graph.Flow.ExecutionEventBase.eventName
+  parent: Ceres.Graph.Flow.ExecutionEventBase
+  name: eventName
+  nameWithType: ExecutionEventBase.eventName
+  fullName: Ceres.Graph.Flow.ExecutionEventBase.eventName
+- uid: Ceres.Graph.Flow.ExecutionEventBase.isImplementable
+  commentId: F:Ceres.Graph.Flow.ExecutionEventBase.isImplementable
+  parent: Ceres.Graph.Flow.ExecutionEventBase
+  name: isImplementable
+  nameWithType: ExecutionEventBase.isImplementable
+  fullName: Ceres.Graph.Flow.ExecutionEventBase.isImplementable
+- uid: Ceres.Graph.Flow.ExecutionEventBase.GetEventName
+  commentId: M:Ceres.Graph.Flow.ExecutionEventBase.GetEventName
+  parent: Ceres.Graph.Flow.ExecutionEventBase
+  name: GetEventName()
+  nameWithType: ExecutionEventBase.GetEventName()
+  fullName: Ceres.Graph.Flow.ExecutionEventBase.GetEventName()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecutionEventBase.GetEventName
+    name: GetEventName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecutionEventBase.GetEventName
+    name: GetEventName
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.ExecutableNode.Graph
+  commentId: P:Ceres.Graph.Flow.ExecutableNode.Graph
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: Graph
+  nameWithType: ExecutableNode.Graph
+  fullName: Ceres.Graph.Flow.ExecutableNode.Graph
+- uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: ExecuteNode(ExecutionContext)
+  nameWithType: ExecutableNode.ExecuteNode(ExecutionContext)
+  fullName: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+    name: ExecuteNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+    name: ExecuteNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+- uid: Ceres.Graph.CeresNode.NodeData
+  commentId: P:Ceres.Graph.CeresNode.NodeData
+  parent: Ceres.Graph.CeresNode
+  name: NodeData
+  nameWithType: CeresNode.NodeData
+  fullName: Ceres.Graph.CeresNode.NodeData
+- uid: Ceres.Graph.CeresNode.Guid
+  commentId: P:Ceres.Graph.CeresNode.Guid
+  parent: Ceres.Graph.CeresNode
+  name: Guid
+  nameWithType: CeresNode.Guid
+  fullName: Ceres.Graph.CeresNode.Guid
+- uid: Ceres.Graph.CeresNode.GraphPosition
+  commentId: P:Ceres.Graph.CeresNode.GraphPosition
+  parent: Ceres.Graph.CeresNode
+  name: GraphPosition
+  nameWithType: CeresNode.GraphPosition
+  fullName: Ceres.Graph.CeresNode.GraphPosition
+- uid: Ceres.Graph.CeresNode.Dispose
+  commentId: M:Ceres.Graph.CeresNode.Dispose
+  parent: Ceres.Graph.CeresNode
+  name: Dispose()
+  nameWithType: CeresNode.Dispose()
+  fullName: Ceres.Graph.CeresNode.Dispose()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetSerializedData
+  commentId: M:Ceres.Graph.CeresNode.GetSerializedData
+  parent: Ceres.Graph.CeresNode
+  name: GetSerializedData()
+  nameWithType: CeresNode.GetSerializedData()
+  fullName: Ceres.Graph.CeresNode.GetSerializedData()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetSerializedData
+    name: GetSerializedData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetSerializedData
+    name: GetSerializedData
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetExecutionPath
+  commentId: M:Ceres.Graph.CeresNode.GetExecutionPath
+  parent: Ceres.Graph.CeresNode
+  name: GetExecutionPath()
+  nameWithType: CeresNode.GetExecutionPath()
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath
+    name: GetExecutionPath
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath
+    name: GetExecutionPath
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetEnumerator
+  commentId: M:Ceres.Graph.CeresNode.GetEnumerator
+  parent: Ceres.Graph.CeresNode
+  name: GetEnumerator()
+  nameWithType: CeresNode.GetEnumerator()
+  fullName: Ceres.Graph.CeresNode.GetEnumerator()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetEnumerator
+    name: GetEnumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetEnumerator
+    name: GetEnumerator
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  commentId: M:Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetExecutionPath(Type)
+  nameWithType: CeresNode.GetExecutionPath(Type)
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+    name: GetExecutionPath
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+    name: GetExecutionPath
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: MakeSubtitle(string, bool)
+  nameWithType: CeresNode.MakeSubtitle(string, bool)
+  fullName: Ceres.Graph.CeresNode.MakeSubtitle(string, bool)
+  nameWithType.vb: CeresNode.MakeSubtitle(String, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.MakeSubtitle(String, Boolean)
+  name.vb: MakeSubtitle(String, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+    name: MakeSubtitle
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+    name: MakeSubtitle
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetTargetSubtitle(string, bool)
+  nameWithType: CeresNode.GetTargetSubtitle(string, bool)
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle(string, bool)
+  nameWithType.vb: CeresNode.GetTargetSubtitle(String, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.GetTargetSubtitle(String, Boolean)
+  name.vb: GetTargetSubtitle(String, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetTargetSubtitle(Type, bool)
+  nameWithType: CeresNode.GetTargetSubtitle(Type, bool)
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle(Type, bool)
+  nameWithType.vb: CeresNode.GetTargetSubtitle(Type, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.GetTargetSubtitle(Type, Boolean)
+  name.vb: GetTargetSubtitle(Type, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTypeName
+  commentId: M:Ceres.Graph.CeresNode.GetTypeName
+  parent: Ceres.Graph.CeresNode
+  name: GetTypeName()
+  nameWithType: CeresNode.GetTypeName()
+  fullName: Ceres.Graph.CeresNode.GetTypeName()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTypeName
+    name: GetTypeName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTypeName
+    name: GetTypeName
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: Ceres.Graph.NodePort
+  commentId: T:Ceres.Graph.NodePort
+  parent: Ceres.Graph
+  name: NodePort
+  nameWithType: NodePort
+  fullName: Ceres.Graph.NodePort
+- uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: Execute(ExecutionContext)
+  nameWithType: ExecutableNode.Execute(ExecutionContext)
+  fullName: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+    name: Execute
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+    name: Execute
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+- uid: Ceres.Graph.Flow.CustomExecutionEvent.Execute*
+  commentId: Overload:Ceres.Graph.Flow.CustomExecutionEvent.Execute
+  name: Execute
+  nameWithType: CustomExecutionEvent.Execute
+  fullName: Ceres.Graph.Flow.CustomExecutionEvent.Execute
+- uid: Ceres.Graph.Flow.ExecutionContext
+  commentId: T:Ceres.Graph.Flow.ExecutionContext
+  parent: Ceres.Graph.Flow
+  name: ExecutionContext
+  nameWithType: ExecutionContext
+  fullName: Ceres.Graph.Flow.ExecutionContext
+- uid: Global.UniTask
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: UniTask
+- uid: Ceres.Graph.Flow.CustomExecutionEvent.LocalExecute*
+  commentId: Overload:Ceres.Graph.Flow.CustomExecutionEvent.LocalExecute
+  name: LocalExecute
+  nameWithType: CustomExecutionEvent.LocalExecute
+  fullName: Ceres.Graph.Flow.CustomExecutionEvent.LocalExecute
+- uid: Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId*
+  commentId: Overload:Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId
+  name: RegisterEventId
+  nameWithType: CustomExecutionEvent.RegisterEventId
+  fullName: Ceres.Graph.Flow.CustomExecutionEvent.RegisterEventId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

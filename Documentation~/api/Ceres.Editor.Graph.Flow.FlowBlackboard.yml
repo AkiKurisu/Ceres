@@ -1,0 +1,713 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard
+  commentId: T:Ceres.Editor.Graph.Flow.FlowBlackboard
+  id: FlowBlackboard
+  parent: Ceres.Editor.Graph.Flow
+  children:
+  - Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor(Ceres.Editor.Graph.Flow.FlowGraphView)
+  - Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  - Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  - Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed(SharedVariable)
+  - Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu(GenericMenu)
+  - Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  langs:
+  - csharp
+  - vb
+  name: FlowBlackboard
+  nameWithType: FlowBlackboard
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard
+  type: Class
+  source:
+    id: FlowBlackboard
+    path: ''
+    startLine: 9234
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: 'public class FlowBlackboard : CeresBlackboard, IVariableSource, IDisposable'
+    content.vb: Public Class FlowBlackboard Inherits CeresBlackboard Implements IVariableSource, IDisposable
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.CeresBlackboard
+  implements:
+  - Global.IVariableSource
+  - Global.IDisposable
+  inheritedMembers:
+  - Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+  - Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+  - Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(System.String)
+  - Ceres.Editor.Graph.CeresBlackboard.Dispose
+  - Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)
+  - Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable,System.Boolean)
+  - Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable,System.Boolean)
+  - Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor(Ceres.Editor.Graph.Flow.FlowGraphView)
+  commentId: M:Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor(Ceres.Editor.Graph.Flow.FlowGraphView)
+  id: '#ctor(Ceres.Editor.Graph.Flow.FlowGraphView)'
+  parent: Ceres.Editor.Graph.Flow.FlowBlackboard
+  langs:
+  - csharp
+  - vb
+  name: FlowBlackboard(FlowGraphView)
+  nameWithType: FlowBlackboard.FlowBlackboard(FlowGraphView)
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.FlowBlackboard(Ceres.Editor.Graph.Flow.FlowGraphView)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 9238
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: public FlowBlackboard(FlowGraphView graphView)
+    parameters:
+    - id: graphView
+      type: Ceres.Editor.Graph.Flow.FlowGraphView
+    content.vb: Public Sub New(graphView As FlowGraphView)
+  overload: Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor*
+  nameWithType.vb: FlowBlackboard.New(FlowGraphView)
+  fullName.vb: Ceres.Editor.Graph.Flow.FlowBlackboard.New(Ceres.Editor.Graph.Flow.FlowGraphView)
+  name.vb: New(FlowGraphView)
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed(SharedVariable)
+  commentId: M:Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed(SharedVariable)
+  id: CanVariableExposed(SharedVariable)
+  parent: Ceres.Editor.Graph.Flow.FlowBlackboard
+  langs:
+  - csharp
+  - vb
+  name: CanVariableExposed(SharedVariable)
+  nameWithType: FlowBlackboard.CanVariableExposed(SharedVariable)
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed(SharedVariable)
+  type: Method
+  source:
+    id: CanVariableExposed
+    path: ''
+    startLine: 9264
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: protected override bool CanVariableExposed(SharedVariable variable)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+    return:
+      type: System.Boolean
+    content.vb: Protected Overrides Function CanVariableExposed(variable As SharedVariable) As Boolean
+  overridden: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+  overload: Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed*
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu(GenericMenu)
+  commentId: M:Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu(GenericMenu)
+  id: CreateBlackboardMenu(GenericMenu)
+  parent: Ceres.Editor.Graph.Flow.FlowBlackboard
+  langs:
+  - csharp
+  - vb
+  name: CreateBlackboardMenu(GenericMenu)
+  nameWithType: FlowBlackboard.CreateBlackboardMenu(GenericMenu)
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu(GenericMenu)
+  type: Method
+  source:
+    id: CreateBlackboardMenu
+    path: ''
+    startLine: 9269
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: protected override void CreateBlackboardMenu(GenericMenu menu)
+    parameters:
+    - id: menu
+      type: Global.GenericMenu
+    content.vb: Protected Overrides Sub CreateBlackboardMenu(menu As GenericMenu)
+  overridden: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  overload: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu*
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  commentId: M:Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  id: CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  parent: Ceres.Editor.Graph.Flow.FlowBlackboard
+  langs:
+  - csharp
+  - vb
+  name: CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  nameWithType: FlowBlackboard.CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  type: Method
+  source:
+    id: CreateVariableBlackboardRow
+    path: ''
+    startLine: 9294
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: protected override BlackboardRow CreateVariableBlackboardRow(SharedVariable variable, BlackboardField blackboardField, VisualElement valueField)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+    - id: blackboardField
+      type: Global.BlackboardField
+    - id: valueField
+      type: Global.VisualElement
+    return:
+      type: Global.BlackboardRow
+    content.vb: Protected Overrides Function CreateVariableBlackboardRow(variable As SharedVariable, blackboardField As BlackboardField, valueField As VisualElement) As BlackboardRow
+  overridden: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  overload: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow*
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  commentId: M:Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  id: AddVariableRow(SharedVariable,BlackboardRow)
+  parent: Ceres.Editor.Graph.Flow.FlowBlackboard
+  langs:
+  - csharp
+  - vb
+  name: AddVariableRow(SharedVariable, BlackboardRow)
+  nameWithType: FlowBlackboard.AddVariableRow(SharedVariable, BlackboardRow)
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow(SharedVariable, BlackboardRow)
+  type: Method
+  source:
+    id: AddVariableRow
+    path: ''
+    startLine: 9305
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: protected override void AddVariableRow(SharedVariable variable, BlackboardRow blackboardRow)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+    - id: blackboardRow
+      type: Global.BlackboardRow
+    content.vb: Protected Overrides Sub AddVariableRow(variable As SharedVariable, blackboardRow As BlackboardRow)
+  overridden: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  overload: Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow*
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  commentId: M:Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  id: BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  parent: Ceres.Editor.Graph.Flow.FlowBlackboard
+  langs:
+  - csharp
+  - vb
+  name: BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)
+  nameWithType: FlowBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent, Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  type: Method
+  source:
+    id: BuildBlackboardMenu
+    path: ''
+    startLine: 9315
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: protected override void BuildBlackboardMenu(ContextualMenuPopulateEvent evt, CeresBlackboardVariableRow variableRow)
+    parameters:
+    - id: evt
+      type: Global.ContextualMenuPopulateEvent
+    - id: variableRow
+      type: Ceres.Editor.Graph.CeresBlackboardVariableRow
+    content.vb: Protected Overrides Sub BuildBlackboardMenu(evt As ContextualMenuPopulateEvent, variableRow As CeresBlackboardVariableRow)
+  overridden: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  overload: Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu*
+references:
+- uid: Ceres.Editor.Graph.Flow
+  commentId: N:Ceres.Editor.Graph.Flow
+  name: Ceres.Editor.Graph.Flow
+  nameWithType: Ceres.Editor.Graph.Flow
+  fullName: Ceres.Editor.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Editor.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Editor.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.CeresBlackboard
+  commentId: T:Ceres.Editor.Graph.CeresBlackboard
+  parent: Ceres.Editor.Graph
+  name: CeresBlackboard
+  nameWithType: CeresBlackboard
+  fullName: Ceres.Editor.Graph.CeresBlackboard
+- uid: Global.IVariableSource
+  isExternal: true
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: IVariableSource
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+  commentId: P:Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  name: AlwaysExposed
+  nameWithType: CeresBlackboard.AlwaysExposed
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+- uid: Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+  commentId: P:Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  name: SharedVariables
+  nameWithType: CeresBlackboard.SharedVariables
+  fullName: Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+- uid: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(System.String)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: GetOrAddSection(string)
+  nameWithType: CeresBlackboard.GetOrAddSection(string)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(string)
+  nameWithType.vb: CeresBlackboard.GetOrAddSection(String)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(String)
+  name.vb: GetOrAddSection(String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(System.String)
+    name: GetOrAddSection
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(System.String)
+    name: GetOrAddSection
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresBlackboard.Dispose
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.Dispose
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  name: Dispose()
+  nameWithType: CeresBlackboard.Dispose()
+  fullName: Ceres.Editor.Graph.CeresBlackboard.Dispose()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: EditVariable(string)
+  nameWithType: CeresBlackboard.EditVariable(string)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.EditVariable(string)
+  nameWithType.vb: CeresBlackboard.EditVariable(String)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.EditVariable(String)
+  name.vb: EditVariable(String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)
+    name: EditVariable
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)
+    name: EditVariable
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable,System.Boolean)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable,System.Boolean)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: AddVariable(SharedVariable, bool)
+  nameWithType: CeresBlackboard.AddVariable(SharedVariable, bool)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable, bool)
+  nameWithType.vb: CeresBlackboard.AddVariable(SharedVariable, Boolean)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable, Boolean)
+  name.vb: AddVariable(SharedVariable, Boolean)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable,System.Boolean)
+    name: AddVariable
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable,System.Boolean)
+    name: AddVariable
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable,System.Boolean)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable,System.Boolean)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: RemoveVariable(SharedVariable, bool)
+  nameWithType: CeresBlackboard.RemoveVariable(SharedVariable, bool)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable, bool)
+  nameWithType.vb: CeresBlackboard.RemoveVariable(SharedVariable, Boolean)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable, Boolean)
+  name.vb: RemoveVariable(SharedVariable, Boolean)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable,System.Boolean)
+    name: RemoveVariable
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable,System.Boolean)
+    name: RemoveVariable
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: FindRow(SharedVariable)
+  nameWithType: CeresBlackboard.FindRow(SharedVariable)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+    name: FindRow
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+    name: FindRow
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowBlackboard.#ctor
+  name: FlowBlackboard
+  nameWithType: FlowBlackboard.FlowBlackboard
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.FlowBlackboard
+  nameWithType.vb: FlowBlackboard.New
+  fullName.vb: Ceres.Editor.Graph.Flow.FlowBlackboard.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.Flow.FlowGraphView
+  commentId: T:Ceres.Editor.Graph.Flow.FlowGraphView
+  parent: Ceres.Editor.Graph.Flow
+  name: FlowGraphView
+  nameWithType: FlowGraphView
+  fullName: Ceres.Editor.Graph.Flow.FlowGraphView
+- uid: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: CanVariableExposed(SharedVariable)
+  nameWithType: CeresBlackboard.CanVariableExposed(SharedVariable)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+    name: CanVariableExposed
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+    name: CanVariableExposed
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed
+  name: CanVariableExposed
+  nameWithType: FlowBlackboard.CanVariableExposed
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.CanVariableExposed
+- uid: Global.SharedVariable
+  isExternal: true
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: SharedVariable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: CreateBlackboardMenu(GenericMenu)
+  nameWithType: CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+    name: CreateBlackboardMenu
+  - name: (
+  - uid: Global.GenericMenu
+    name: GenericMenu
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+    name: CreateBlackboardMenu
+  - name: (
+  - uid: Global.GenericMenu
+    name: GenericMenu
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu
+  name: CreateBlackboardMenu
+  nameWithType: FlowBlackboard.CreateBlackboardMenu
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateBlackboardMenu
+- uid: Global.GenericMenu
+  isExternal: true
+  name: GenericMenu
+  nameWithType: GenericMenu
+  fullName: GenericMenu
+- uid: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  nameWithType: CeresBlackboard.CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+    name: CreateVariableBlackboardRow
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.BlackboardField
+    name: BlackboardField
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+    name: CreateVariableBlackboardRow
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.BlackboardField
+    name: BlackboardField
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow
+  name: CreateVariableBlackboardRow
+  nameWithType: FlowBlackboard.CreateVariableBlackboardRow
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.CreateVariableBlackboardRow
+- uid: Global.BlackboardField
+  isExternal: true
+  name: BlackboardField
+  nameWithType: BlackboardField
+  fullName: BlackboardField
+- uid: Global.VisualElement
+  isExternal: true
+  name: VisualElement
+  nameWithType: VisualElement
+  fullName: VisualElement
+- uid: Global.BlackboardRow
+  isExternal: true
+  name: BlackboardRow
+  nameWithType: BlackboardRow
+  fullName: BlackboardRow
+- uid: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: AddVariableRow(SharedVariable, BlackboardRow)
+  nameWithType: CeresBlackboard.AddVariableRow(SharedVariable, BlackboardRow)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable, BlackboardRow)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+    name: AddVariableRow
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.BlackboardRow
+    name: BlackboardRow
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+    name: AddVariableRow
+  - name: (
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.BlackboardRow
+    name: BlackboardRow
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow
+  name: AddVariableRow
+  nameWithType: FlowBlackboard.AddVariableRow
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.AddVariableRow
+- uid: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  isExternal: true
+  name: BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)
+  nameWithType: CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent, Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+    name: BuildBlackboardMenu
+  - name: (
+  - uid: Global.ContextualMenuPopulateEvent
+    name: ContextualMenuPopulateEvent
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresBlackboardVariableRow
+    name: CeresBlackboardVariableRow
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+    name: BuildBlackboardMenu
+  - name: (
+  - uid: Global.ContextualMenuPopulateEvent
+    name: ContextualMenuPopulateEvent
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresBlackboardVariableRow
+    name: CeresBlackboardVariableRow
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu*
+  commentId: Overload:Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu
+  name: BuildBlackboardMenu
+  nameWithType: FlowBlackboard.BuildBlackboardMenu
+  fullName: Ceres.Editor.Graph.Flow.FlowBlackboard.BuildBlackboardMenu
+- uid: Global.ContextualMenuPopulateEvent
+  isExternal: true
+  name: ContextualMenuPopulateEvent
+  nameWithType: ContextualMenuPopulateEvent
+  fullName: ContextualMenuPopulateEvent
+- uid: Ceres.Editor.Graph.CeresBlackboardVariableRow
+  commentId: T:Ceres.Editor.Graph.CeresBlackboardVariableRow
+  parent: Ceres.Editor.Graph
+  name: CeresBlackboardVariableRow
+  nameWithType: CeresBlackboardVariableRow
+  fullName: Ceres.Editor.Graph.CeresBlackboardVariableRow

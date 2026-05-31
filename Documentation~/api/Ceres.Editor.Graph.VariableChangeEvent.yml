@@ -1,0 +1,188 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.VariableChangeEvent
+  commentId: T:Ceres.Editor.Graph.VariableChangeEvent
+  id: VariableChangeEvent
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.VariableChangeEvent.ChangeType
+  - Ceres.Editor.Graph.VariableChangeEvent.GetPooled(SharedVariable,Ceres.Editor.Graph.VariableChangeType)
+  - Ceres.Editor.Graph.VariableChangeEvent.Variable
+  langs:
+  - csharp
+  - vb
+  name: VariableChangeEvent
+  nameWithType: VariableChangeEvent
+  fullName: Ceres.Editor.Graph.VariableChangeEvent
+  type: Class
+  source:
+    id: VariableChangeEvent
+    path: ''
+    startLine: 1106
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class VariableChangeEvent : EventBase<VariableChangeEvent>, ICeresEvent'
+    content.vb: Public Class VariableChangeEvent Inherits EventBase(Of VariableChangeEvent) Implements ICeresEvent
+  inheritance:
+  - System.Object
+  implements:
+  - Ceres.Editor.Graph.ICeresEvent
+- uid: Ceres.Editor.Graph.VariableChangeEvent.Variable
+  commentId: P:Ceres.Editor.Graph.VariableChangeEvent.Variable
+  id: Variable
+  parent: Ceres.Editor.Graph.VariableChangeEvent
+  langs:
+  - csharp
+  - vb
+  name: Variable
+  nameWithType: VariableChangeEvent.Variable
+  fullName: Ceres.Editor.Graph.VariableChangeEvent.Variable
+  type: Property
+  source:
+    id: Variable
+    path: ''
+    startLine: 1108
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public SharedVariable Variable { get; }
+    parameters: []
+    return:
+      type: Global.SharedVariable
+    content.vb: Public Property Variable As SharedVariable
+  overload: Ceres.Editor.Graph.VariableChangeEvent.Variable*
+- uid: Ceres.Editor.Graph.VariableChangeEvent.ChangeType
+  commentId: P:Ceres.Editor.Graph.VariableChangeEvent.ChangeType
+  id: ChangeType
+  parent: Ceres.Editor.Graph.VariableChangeEvent
+  langs:
+  - csharp
+  - vb
+  name: ChangeType
+  nameWithType: VariableChangeEvent.ChangeType
+  fullName: Ceres.Editor.Graph.VariableChangeEvent.ChangeType
+  type: Property
+  source:
+    id: ChangeType
+    path: ''
+    startLine: 1110
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public VariableChangeType ChangeType { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.VariableChangeType
+    content.vb: Public Property ChangeType As VariableChangeType
+  overload: Ceres.Editor.Graph.VariableChangeEvent.ChangeType*
+- uid: Ceres.Editor.Graph.VariableChangeEvent.GetPooled(SharedVariable,Ceres.Editor.Graph.VariableChangeType)
+  commentId: M:Ceres.Editor.Graph.VariableChangeEvent.GetPooled(SharedVariable,Ceres.Editor.Graph.VariableChangeType)
+  id: GetPooled(SharedVariable,Ceres.Editor.Graph.VariableChangeType)
+  parent: Ceres.Editor.Graph.VariableChangeEvent
+  langs:
+  - csharp
+  - vb
+  name: GetPooled(SharedVariable, VariableChangeType)
+  nameWithType: VariableChangeEvent.GetPooled(SharedVariable, VariableChangeType)
+  fullName: Ceres.Editor.Graph.VariableChangeEvent.GetPooled(SharedVariable, Ceres.Editor.Graph.VariableChangeType)
+  type: Method
+  source:
+    id: GetPooled
+    path: ''
+    startLine: 1112
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public static VariableChangeEvent GetPooled(SharedVariable notifyVariable, VariableChangeType changeType)
+    parameters:
+    - id: notifyVariable
+      type: Global.SharedVariable
+    - id: changeType
+      type: Ceres.Editor.Graph.VariableChangeType
+    return:
+      type: Ceres.Editor.Graph.VariableChangeEvent
+    content.vb: Public Shared Function GetPooled(notifyVariable As SharedVariable, changeType As VariableChangeType) As VariableChangeEvent
+  overload: Ceres.Editor.Graph.VariableChangeEvent.GetPooled*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.ICeresEvent
+  commentId: T:Ceres.Editor.Graph.ICeresEvent
+  parent: Ceres.Editor.Graph
+  name: ICeresEvent
+  nameWithType: ICeresEvent
+  fullName: Ceres.Editor.Graph.ICeresEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.VariableChangeEvent.Variable*
+  commentId: Overload:Ceres.Editor.Graph.VariableChangeEvent.Variable
+  name: Variable
+  nameWithType: VariableChangeEvent.Variable
+  fullName: Ceres.Editor.Graph.VariableChangeEvent.Variable
+- uid: Global.SharedVariable
+  isExternal: true
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: SharedVariable
+- uid: Ceres.Editor.Graph.VariableChangeEvent.ChangeType*
+  commentId: Overload:Ceres.Editor.Graph.VariableChangeEvent.ChangeType
+  name: ChangeType
+  nameWithType: VariableChangeEvent.ChangeType
+  fullName: Ceres.Editor.Graph.VariableChangeEvent.ChangeType
+- uid: Ceres.Editor.Graph.VariableChangeType
+  commentId: T:Ceres.Editor.Graph.VariableChangeType
+  parent: Ceres.Editor.Graph
+  name: VariableChangeType
+  nameWithType: VariableChangeType
+  fullName: Ceres.Editor.Graph.VariableChangeType
+- uid: Ceres.Editor.Graph.VariableChangeEvent.GetPooled*
+  commentId: Overload:Ceres.Editor.Graph.VariableChangeEvent.GetPooled
+  name: GetPooled
+  nameWithType: VariableChangeEvent.GetPooled
+  fullName: Ceres.Editor.Graph.VariableChangeEvent.GetPooled
+- uid: Ceres.Editor.Graph.VariableChangeEvent
+  commentId: T:Ceres.Editor.Graph.VariableChangeEvent
+  parent: Ceres.Editor.Graph
+  name: VariableChangeEvent
+  nameWithType: VariableChangeEvent
+  fullName: Ceres.Editor.Graph.VariableChangeEvent

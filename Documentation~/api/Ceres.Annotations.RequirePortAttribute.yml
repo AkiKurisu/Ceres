@@ -1,0 +1,185 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Annotations.RequirePortAttribute
+  commentId: T:Ceres.Annotations.RequirePortAttribute
+  id: RequirePortAttribute
+  parent: Ceres.Annotations
+  children:
+  - Ceres.Annotations.RequirePortAttribute.#ctor(Type,System.Boolean)
+  - Ceres.Annotations.RequirePortAttribute.AllowSubclass
+  - Ceres.Annotations.RequirePortAttribute.PortType
+  langs:
+  - csharp
+  - vb
+  name: RequirePortAttribute
+  nameWithType: RequirePortAttribute
+  fullName: Ceres.Annotations.RequirePortAttribute
+  type: Class
+  source:
+    id: RequirePortAttribute
+    path: ''
+    startLine: 16819
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Annotations
+  summary: "\nNotify editor that this node require input port and validate its value type\n"
+  example: []
+  syntax:
+    content: 'public sealed class RequirePortAttribute : Attribute'
+    content.vb: Public NotInheritable Class RequirePortAttribute Inherits Attribute
+  inheritance:
+  - System.Object
+- uid: Ceres.Annotations.RequirePortAttribute.PortType
+  commentId: P:Ceres.Annotations.RequirePortAttribute.PortType
+  id: PortType
+  parent: Ceres.Annotations.RequirePortAttribute
+  langs:
+  - csharp
+  - vb
+  name: PortType
+  nameWithType: RequirePortAttribute.PortType
+  fullName: Ceres.Annotations.RequirePortAttribute.PortType
+  type: Property
+  source:
+    id: PortType
+    path: ''
+    startLine: 16825
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Annotations
+  summary: "\nRequire port type constraint\n"
+  example: []
+  syntax:
+    content: public Type PortType { get; }
+    parameters: []
+    return:
+      type: Global.Type
+    content.vb: Public ReadOnly Property PortType As Type
+  overload: Ceres.Annotations.RequirePortAttribute.PortType*
+- uid: Ceres.Annotations.RequirePortAttribute.AllowSubclass
+  commentId: P:Ceres.Annotations.RequirePortAttribute.AllowSubclass
+  id: AllowSubclass
+  parent: Ceres.Annotations.RequirePortAttribute
+  langs:
+  - csharp
+  - vb
+  name: AllowSubclass
+  nameWithType: RequirePortAttribute.AllowSubclass
+  fullName: Ceres.Annotations.RequirePortAttribute.AllowSubclass
+  type: Property
+  source:
+    id: AllowSubclass
+    path: ''
+    startLine: 16830
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Annotations
+  summary: "\nWhether allow input port type is subclass of <xref href=\"Ceres.Annotations.RequirePortAttribute.PortType\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public bool AllowSubclass { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property AllowSubclass As Boolean
+  overload: Ceres.Annotations.RequirePortAttribute.AllowSubclass*
+- uid: Ceres.Annotations.RequirePortAttribute.#ctor(Type,System.Boolean)
+  commentId: M:Ceres.Annotations.RequirePortAttribute.#ctor(Type,System.Boolean)
+  id: '#ctor(Type,System.Boolean)'
+  parent: Ceres.Annotations.RequirePortAttribute
+  langs:
+  - csharp
+  - vb
+  name: RequirePortAttribute(Type, bool)
+  nameWithType: RequirePortAttribute.RequirePortAttribute(Type, bool)
+  fullName: Ceres.Annotations.RequirePortAttribute.RequirePortAttribute(Type, bool)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 16832
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Annotations
+  syntax:
+    content: public RequirePortAttribute(Type portType = null, bool allowSubclass = true)
+    parameters:
+    - id: portType
+      type: Global.Type
+    - id: allowSubclass
+      type: System.Boolean
+    content.vb: Public Sub New(portType As Type = Nothing, allowSubclass As Boolean = True)
+  overload: Ceres.Annotations.RequirePortAttribute.#ctor*
+  nameWithType.vb: RequirePortAttribute.New(Type, Boolean)
+  fullName.vb: Ceres.Annotations.RequirePortAttribute.New(Type, Boolean)
+  name.vb: New(Type, Boolean)
+references:
+- uid: Ceres.Annotations
+  commentId: N:Ceres.Annotations
+  name: Ceres.Annotations
+  nameWithType: Ceres.Annotations
+  fullName: Ceres.Annotations
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Annotations
+    name: Annotations
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Annotations
+    name: Annotations
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Annotations.RequirePortAttribute.PortType*
+  commentId: Overload:Ceres.Annotations.RequirePortAttribute.PortType
+  name: PortType
+  nameWithType: RequirePortAttribute.PortType
+  fullName: Ceres.Annotations.RequirePortAttribute.PortType
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Ceres.Annotations.RequirePortAttribute.PortType
+  commentId: P:Ceres.Annotations.RequirePortAttribute.PortType
+  isExternal: true
+- uid: Ceres.Annotations.RequirePortAttribute.AllowSubclass*
+  commentId: Overload:Ceres.Annotations.RequirePortAttribute.AllowSubclass
+  name: AllowSubclass
+  nameWithType: RequirePortAttribute.AllowSubclass
+  fullName: Ceres.Annotations.RequirePortAttribute.AllowSubclass
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Annotations.RequirePortAttribute.#ctor*
+  commentId: Overload:Ceres.Annotations.RequirePortAttribute.#ctor
+  name: RequirePortAttribute
+  nameWithType: RequirePortAttribute.RequirePortAttribute
+  fullName: Ceres.Annotations.RequirePortAttribute.RequirePortAttribute
+  nameWithType.vb: RequirePortAttribute.New
+  fullName.vb: Ceres.Annotations.RequirePortAttribute.New
+  name.vb: New

@@ -1,0 +1,557 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  id: CeresNode
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.CeresNode.Dispose
+  - Ceres.Graph.CeresNode.GetEnumerator
+  - Ceres.Graph.CeresNode.GetExecutionPath
+  - Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  - Ceres.Graph.CeresNode.GetSerializedData
+  - Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTypeName
+  - Ceres.Graph.CeresNode.GraphPosition
+  - Ceres.Graph.CeresNode.Guid
+  - Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  - Ceres.Graph.CeresNode.NodeData
+  langs:
+  - csharp
+  - vb
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+  type: Class
+  source:
+    id: CeresNode
+    path: ''
+    startLine: 19161
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nBase class for ceres graph node\n"
+  example: []
+  syntax:
+    content: 'public abstract class CeresNode : IEnumerable<CeresNode>, IDisposable'
+    content.vb: Public MustInherit Class CeresNode Inherits IEnumerable(Of CeresNode) Implements IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Graph.Flow.ExecutableNode
+  implements:
+  - Global.IDisposable
+- uid: Ceres.Graph.CeresNode.NodeData
+  commentId: P:Ceres.Graph.CeresNode.NodeData
+  id: NodeData
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: NodeData
+  nameWithType: CeresNode.NodeData
+  fullName: Ceres.Graph.CeresNode.NodeData
+  type: Property
+  source:
+    id: NodeData
+    path: ''
+    startLine: 19192
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public CeresNodeData NodeData { get; protected set; }
+    parameters: []
+    return:
+      type: Ceres.Graph.CeresNodeData
+    content.vb: Public Property NodeData As CeresNodeData
+  overload: Ceres.Graph.CeresNode.NodeData*
+- uid: Ceres.Graph.CeresNode.Guid
+  commentId: P:Ceres.Graph.CeresNode.Guid
+  id: Guid
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: Guid
+  nameWithType: CeresNode.Guid
+  fullName: Ceres.Graph.CeresNode.Guid
+  type: Property
+  source:
+    id: Guid
+    path: ''
+    startLine: 19197
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nNode unique id\n"
+  example: []
+  syntax:
+    content: public string Guid { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Guid As String
+  overload: Ceres.Graph.CeresNode.Guid*
+- uid: Ceres.Graph.CeresNode.GraphPosition
+  commentId: P:Ceres.Graph.CeresNode.GraphPosition
+  id: GraphPosition
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: GraphPosition
+  nameWithType: CeresNode.GraphPosition
+  fullName: Ceres.Graph.CeresNode.GraphPosition
+  type: Property
+  source:
+    id: GraphPosition
+    path: ''
+    startLine: 19206
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nNode graph position\n"
+  example: []
+  syntax:
+    content: public Rect GraphPosition { get; set; }
+    parameters: []
+    return:
+      type: Global.Rect
+    content.vb: Public Property GraphPosition As Rect
+  overload: Ceres.Graph.CeresNode.GraphPosition*
+- uid: Ceres.Graph.CeresNode.Dispose
+  commentId: M:Ceres.Graph.CeresNode.Dispose
+  id: Dispose
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: CeresNode.Dispose()
+  fullName: Ceres.Graph.CeresNode.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 19215
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nRelease on node destroy\n"
+  example: []
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: Ceres.Graph.CeresNode.Dispose*
+- uid: Ceres.Graph.CeresNode.GetSerializedData
+  commentId: M:Ceres.Graph.CeresNode.GetSerializedData
+  id: GetSerializedData
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: GetSerializedData()
+  nameWithType: CeresNode.GetSerializedData()
+  fullName: Ceres.Graph.CeresNode.GetSerializedData()
+  type: Method
+  source:
+    id: GetSerializedData
+    path: ''
+    startLine: 19224
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet serialized data of this node\n"
+  example: []
+  syntax:
+    content: public virtual CeresNodeData GetSerializedData()
+    return:
+      type: Ceres.Graph.CeresNodeData
+      description: ''
+    content.vb: Public Overridable Function GetSerializedData() As CeresNodeData
+  overload: Ceres.Graph.CeresNode.GetSerializedData*
+- uid: Ceres.Graph.CeresNode.GetExecutionPath
+  commentId: M:Ceres.Graph.CeresNode.GetExecutionPath
+  id: GetExecutionPath
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: GetExecutionPath()
+  nameWithType: CeresNode.GetExecutionPath()
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath()
+  type: Method
+  source:
+    id: GetExecutionPath
+    path: ''
+    startLine: 19237
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet node instance execution path\n"
+  example: []
+  syntax:
+    content: public virtual ExecutionPath GetExecutionPath()
+    return:
+      type: Ceres.Graph.ExecutionPath
+      description: ''
+    content.vb: Public Overridable Function GetExecutionPath() As ExecutionPath
+  overload: Ceres.Graph.CeresNode.GetExecutionPath*
+- uid: Ceres.Graph.CeresNode.GetEnumerator
+  commentId: M:Ceres.Graph.CeresNode.GetEnumerator
+  id: GetEnumerator
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: CeresNode.GetEnumerator()
+  fullName: Ceres.Graph.CeresNode.GetEnumerator()
+  type: Method
+  source:
+    id: GetEnumerator
+    path: ''
+    startLine: 19242
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public virtual IEnumerator<CeresNode> GetEnumerator()
+    return:
+      type: Global.IEnumerator{Ceres.Graph.CeresNode}
+    content.vb: Public Overridable Function GetEnumerator() As IEnumerator(Of CeresNode)
+  overload: Ceres.Graph.CeresNode.GetEnumerator*
+- uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  commentId: M:Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  id: GetExecutionPath(Type)
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: GetExecutionPath(Type)
+  nameWithType: CeresNode.GetExecutionPath(Type)
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  type: Method
+  source:
+    id: GetExecutionPath
+    path: ''
+    startLine: 19253
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static ExecutionPath GetExecutionPath(Type nodeType)
+    parameters:
+    - id: nodeType
+      type: Global.Type
+    return:
+      type: Ceres.Graph.ExecutionPath
+    content.vb: Public Shared Function GetExecutionPath(nodeType As Type) As ExecutionPath
+  overload: Ceres.Graph.CeresNode.GetExecutionPath*
+- uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  id: MakeSubtitle(System.String,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: MakeSubtitle(string, bool)
+  nameWithType: CeresNode.MakeSubtitle(string, bool)
+  fullName: Ceres.Graph.CeresNode.MakeSubtitle(string, bool)
+  type: Method
+  source:
+    id: MakeSubtitle
+    path: ''
+    startLine: 19270
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static string MakeSubtitle(string subtitle, bool richText = true)
+    parameters:
+    - id: subtitle
+      type: System.String
+    - id: richText
+      type: System.Boolean
+    return:
+      type: System.String
+    content.vb: Public Shared Function MakeSubtitle(subtitle As String, richText As Boolean = True) As String
+  overload: Ceres.Graph.CeresNode.MakeSubtitle*
+  nameWithType.vb: CeresNode.MakeSubtitle(String, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.MakeSubtitle(String, Boolean)
+  name.vb: MakeSubtitle(String, Boolean)
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  id: GetTargetSubtitle(System.String,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: GetTargetSubtitle(string, bool)
+  nameWithType: CeresNode.GetTargetSubtitle(string, bool)
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle(string, bool)
+  type: Method
+  source:
+    id: GetTargetSubtitle
+    path: ''
+    startLine: 19280
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static string GetTargetSubtitle(string name, bool richText = true)
+    parameters:
+    - id: name
+      type: System.String
+    - id: richText
+      type: System.Boolean
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetTargetSubtitle(name As String, richText As Boolean = True) As String
+  overload: Ceres.Graph.CeresNode.GetTargetSubtitle*
+  nameWithType.vb: CeresNode.GetTargetSubtitle(String, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.GetTargetSubtitle(String, Boolean)
+  name.vb: GetTargetSubtitle(String, Boolean)
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  id: GetTargetSubtitle(Type,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: GetTargetSubtitle(Type, bool)
+  nameWithType: CeresNode.GetTargetSubtitle(Type, bool)
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle(Type, bool)
+  type: Method
+  source:
+    id: GetTargetSubtitle
+    path: ''
+    startLine: 19285
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static string GetTargetSubtitle(Type type, bool richText = true)
+    parameters:
+    - id: type
+      type: Global.Type
+    - id: richText
+      type: System.Boolean
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetTargetSubtitle(type As Type, richText As Boolean = True) As String
+  overload: Ceres.Graph.CeresNode.GetTargetSubtitle*
+  nameWithType.vb: CeresNode.GetTargetSubtitle(Type, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.GetTargetSubtitle(Type, Boolean)
+  name.vb: GetTargetSubtitle(Type, Boolean)
+- uid: Ceres.Graph.CeresNode.GetTypeName
+  commentId: M:Ceres.Graph.CeresNode.GetTypeName
+  id: GetTypeName
+  parent: Ceres.Graph.CeresNode
+  langs:
+  - csharp
+  - vb
+  name: GetTypeName()
+  nameWithType: CeresNode.GetTypeName()
+  fullName: Ceres.Graph.CeresNode.GetTypeName()
+  type: Method
+  source:
+    id: GetTypeName
+    path: ''
+    startLine: 19310
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet node type short name for debug purpose\n"
+  example: []
+  syntax:
+    content: public string GetTypeName()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function GetTypeName() As String
+  overload: Ceres.Graph.CeresNode.GetTypeName*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.CeresNode.NodeData*
+  commentId: Overload:Ceres.Graph.CeresNode.NodeData
+  name: NodeData
+  nameWithType: CeresNode.NodeData
+  fullName: Ceres.Graph.CeresNode.NodeData
+- uid: Ceres.Graph.CeresNodeData
+  commentId: T:Ceres.Graph.CeresNodeData
+  parent: Ceres.Graph
+  name: CeresNodeData
+  nameWithType: CeresNodeData
+  fullName: Ceres.Graph.CeresNodeData
+- uid: Ceres.Graph.CeresNode.Guid*
+  commentId: Overload:Ceres.Graph.CeresNode.Guid
+  name: Guid
+  nameWithType: CeresNode.Guid
+  fullName: Ceres.Graph.CeresNode.Guid
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Graph.CeresNode.GraphPosition*
+  commentId: Overload:Ceres.Graph.CeresNode.GraphPosition
+  name: GraphPosition
+  nameWithType: CeresNode.GraphPosition
+  fullName: Ceres.Graph.CeresNode.GraphPosition
+- uid: Global.Rect
+  isExternal: true
+  name: Rect
+  nameWithType: Rect
+  fullName: Rect
+- uid: Ceres.Graph.CeresNode.Dispose*
+  commentId: Overload:Ceres.Graph.CeresNode.Dispose
+  name: Dispose
+  nameWithType: CeresNode.Dispose
+  fullName: Ceres.Graph.CeresNode.Dispose
+- uid: Ceres.Graph.CeresNode.GetSerializedData*
+  commentId: Overload:Ceres.Graph.CeresNode.GetSerializedData
+  name: GetSerializedData
+  nameWithType: CeresNode.GetSerializedData
+  fullName: Ceres.Graph.CeresNode.GetSerializedData
+- uid: Ceres.Graph.CeresNode.GetExecutionPath*
+  commentId: Overload:Ceres.Graph.CeresNode.GetExecutionPath
+  name: GetExecutionPath
+  nameWithType: CeresNode.GetExecutionPath
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath
+- uid: Ceres.Graph.ExecutionPath
+  commentId: T:Ceres.Graph.ExecutionPath
+  parent: Ceres.Graph
+  name: ExecutionPath
+  nameWithType: ExecutionPath
+  fullName: Ceres.Graph.ExecutionPath
+- uid: Ceres.Graph.CeresNode.GetEnumerator*
+  commentId: Overload:Ceres.Graph.CeresNode.GetEnumerator
+  name: GetEnumerator
+  nameWithType: CeresNode.GetEnumerator
+  fullName: Ceres.Graph.CeresNode.GetEnumerator
+- uid: Global.IEnumerator{Ceres.Graph.CeresNode}
+  commentId: '!:Global.IEnumerator{Ceres.Graph.CeresNode}'
+  definition: Global.IEnumerator`1
+  name: IEnumerator<CeresNode>
+  nameWithType: IEnumerator<CeresNode>
+  fullName: IEnumerator<Ceres.Graph.CeresNode>
+  nameWithType.vb: IEnumerator(Of CeresNode)
+  fullName.vb: IEnumerator(Of Ceres.Graph.CeresNode)
+  name.vb: IEnumerator(Of CeresNode)
+  spec.csharp:
+  - uid: Global.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+  - name: <
+  - uid: Ceres.Graph.CeresNode
+    name: CeresNode
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.CeresNode
+    name: CeresNode
+  - name: )
+- uid: Global.IEnumerator`1
+  isExternal: true
+  name: IEnumerator<>
+  nameWithType: IEnumerator<>
+  fullName: IEnumerator<>
+  nameWithType.vb: IEnumerator(Of )
+  fullName.vb: IEnumerator(Of )
+  name.vb: IEnumerator(Of )
+  spec.csharp:
+  - uid: Global.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Ceres.Graph.CeresNode.MakeSubtitle*
+  commentId: Overload:Ceres.Graph.CeresNode.MakeSubtitle
+  name: MakeSubtitle
+  nameWithType: CeresNode.MakeSubtitle
+  fullName: Ceres.Graph.CeresNode.MakeSubtitle
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle*
+  commentId: Overload:Ceres.Graph.CeresNode.GetTargetSubtitle
+  name: GetTargetSubtitle
+  nameWithType: CeresNode.GetTargetSubtitle
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle
+- uid: Ceres.Graph.CeresNode.GetTypeName*
+  commentId: Overload:Ceres.Graph.CeresNode.GetTypeName
+  name: GetTypeName
+  nameWithType: CeresNode.GetTypeName
+  fullName: Ceres.Graph.CeresNode.GetTypeName

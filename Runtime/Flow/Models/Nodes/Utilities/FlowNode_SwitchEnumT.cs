@@ -16,6 +16,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Switch on {0}")]
+    [NodeInfo("Routes execution to the output matching the selected enum value.")]
     public class FlowNode_SwitchEnumT<TEnum>: FlowNode_SwitchEnum, 
         ISerializationCallbackReceiver, IReadOnlyPortArrayNode
         where TEnum: Enum
@@ -30,7 +31,7 @@ namespace Ceres.Graph.Flow.Utilities
         {
             var index = sourceValue.Value.GetHashCode();
             index = Math.Min(index, outputs.Length - 1);
-            executionContext.SetNext(outputs[index].GetT<ExecutableNode>());
+            executionContext.SetNext(outputs[index]);
             return UniTask.CompletedTask;
         }
 

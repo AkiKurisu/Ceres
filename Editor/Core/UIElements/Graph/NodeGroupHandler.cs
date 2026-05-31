@@ -22,7 +22,12 @@ namespace Ceres.Editor.Graph
         {
             var nodes = GraphView.selection.OfType<Node>().ToArray();
             if(!nodes.Any()) return;
-            var block = CreateGroup(new Rect(nodes[0].transform.position, new Vector2(100, 100)));
+#if UNITY_6000_0_OR_NEWER
+            var groupPosition = nodes[0].GetPosition().position;
+#else
+            Vector2 groupPosition = nodes[0].transform.position;
+#endif
+            var block = CreateGroup(new Rect(groupPosition, new Vector2(100, 100)));
             foreach (var node in nodes)
             {
                 block.AddElement(node);

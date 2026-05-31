@@ -1,0 +1,728 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions
+  commentId: T:Ceres.Utilities.MemberInfoGroupingExtensions
+  id: MemberInfoGroupingExtensions
+  parent: Ceres.Utilities
+  children:
+  - Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup``1(IEnumerable{System.Linq.IGrouping{System.String,``0}},System.String[])
+  - Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup``1(IEnumerable{``0})
+  - Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup``1(IEnumerable{System.Linq.IGrouping{System.String,``0}},System.String[])
+  - Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass(IEnumerable{System.Linq.IGrouping{System.String,Type}},Type)
+  - Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup``1(System.Linq.IGrouping{System.String,``0},System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: MemberInfoGroupingExtensions
+  nameWithType: MemberInfoGroupingExtensions
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions
+  type: Class
+  source:
+    id: MemberInfoGroupingExtensions
+    path: ''
+    startLine: 21866
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static class MemberInfoGroupingExtensions
+    content.vb: Public Module MemberInfoGroupingExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup``1(IEnumerable{``0})
+  commentId: M:Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup``1(IEnumerable{``0})
+  id: GroupByFirstGroup``1(IEnumerable{``0})
+  isExtensionMethod: true
+  parent: Ceres.Utilities.MemberInfoGroupingExtensions
+  langs:
+  - csharp
+  - vb
+  name: GroupByFirstGroup<TMemberInfo>(IEnumerable<TMemberInfo>)
+  nameWithType: MemberInfoGroupingExtensions.GroupByFirstGroup<TMemberInfo>(IEnumerable<TMemberInfo>)
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup<TMemberInfo>(IEnumerable<TMemberInfo>)
+  type: Method
+  source:
+    id: GroupByFirstGroup
+    path: ''
+    startLine: 21868
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: 'public static IEnumerable<IGrouping<string, TMemberInfo>> GroupByFirstGroup<TMemberInfo>(this IEnumerable<TMemberInfo> types) where TMemberInfo : MemberInfo'
+    parameters:
+    - id: types
+      type: Global.IEnumerable{{TMemberInfo}}
+    typeParameters:
+    - id: TMemberInfo
+    return:
+      type: Global.IEnumerable{System.Linq.IGrouping{System.String,{TMemberInfo}}}
+    content.vb: Public Shared Function GroupByFirstGroup(Of TMemberInfo As MemberInfo)(types As IEnumerable(Of TMemberInfo)) As IEnumerable(Of IGrouping(Of String, TMemberInfo))
+  overload: Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup*
+  nameWithType.vb: MemberInfoGroupingExtensions.GroupByFirstGroup(Of TMemberInfo)(IEnumerable(Of TMemberInfo))
+  fullName.vb: Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup(Of TMemberInfo)(IEnumerable(Of TMemberInfo))
+  name.vb: GroupByFirstGroup(Of TMemberInfo)(IEnumerable(Of TMemberInfo))
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup``1(System.Linq.IGrouping{System.String,``0},System.Int32)
+  commentId: M:Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup``1(System.Linq.IGrouping{System.String,``0},System.Int32)
+  id: SubGroup``1(System.Linq.IGrouping{System.String,``0},System.Int32)
+  isExtensionMethod: true
+  parent: Ceres.Utilities.MemberInfoGroupingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SubGroup<TMemberInfo>(IGrouping<string, TMemberInfo>, int)
+  nameWithType: MemberInfoGroupingExtensions.SubGroup<TMemberInfo>(IGrouping<string, TMemberInfo>, int)
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup<TMemberInfo>(System.Linq.IGrouping<string, TMemberInfo>, int)
+  type: Method
+  source:
+    id: SubGroup
+    path: ''
+    startLine: 21873
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: 'public static IEnumerable<IGrouping<string, TMemberInfo>> SubGroup<TMemberInfo>(this IGrouping<string, TMemberInfo> group, int level) where TMemberInfo : MemberInfo'
+    parameters:
+    - id: group
+      type: System.Linq.IGrouping{System.String,{TMemberInfo}}
+    - id: level
+      type: System.Int32
+    typeParameters:
+    - id: TMemberInfo
+    return:
+      type: Global.IEnumerable{System.Linq.IGrouping{System.String,{TMemberInfo}}}
+    content.vb: Public Shared Function SubGroup(Of TMemberInfo As MemberInfo)(group As IGrouping(Of String, TMemberInfo), level As Integer) As IEnumerable(Of IGrouping(Of String, TMemberInfo))
+  overload: Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup*
+  nameWithType.vb: MemberInfoGroupingExtensions.SubGroup(Of TMemberInfo)(IGrouping(Of String, TMemberInfo), Integer)
+  fullName.vb: Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup(Of TMemberInfo)(System.Linq.IGrouping(Of String, TMemberInfo), Integer)
+  name.vb: SubGroup(Of TMemberInfo)(IGrouping(Of String, TMemberInfo), Integer)
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass(IEnumerable{System.Linq.IGrouping{System.String,Type}},Type)
+  commentId: M:Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass(IEnumerable{System.Linq.IGrouping{System.String,Type}},Type)
+  id: SelectSubclass(IEnumerable{System.Linq.IGrouping{System.String,Type}},Type)
+  isExtensionMethod: true
+  parent: Ceres.Utilities.MemberInfoGroupingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SelectSubclass(IEnumerable<IGrouping<string, Type>>, Type)
+  nameWithType: MemberInfoGroupingExtensions.SelectSubclass(IEnumerable<IGrouping<string, Type>>, Type)
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass(IEnumerable<System.Linq.IGrouping<string, Type>>, Type)
+  type: Method
+  source:
+    id: SelectSubclass
+    path: ''
+    startLine: 21884
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static IEnumerable<IGrouping<string, Type>> SelectSubclass(this IEnumerable<IGrouping<string, Type>> groups, Type baseType)
+    parameters:
+    - id: groups
+      type: Global.IEnumerable{System.Linq.IGrouping{System.String,Type}}
+    - id: baseType
+      type: Global.Type
+    return:
+      type: Global.IEnumerable{System.Linq.IGrouping{System.String,Type}}
+    content.vb: Public Shared Function SelectSubclass(groups As IEnumerable(Of IGrouping(Of String, Type)), baseType As Type) As IEnumerable(Of IGrouping(Of String, Type))
+  overload: Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass*
+  nameWithType.vb: MemberInfoGroupingExtensions.SelectSubclass(IEnumerable(Of IGrouping(Of String, Type)), Type)
+  fullName.vb: Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass(IEnumerable(Of System.Linq.IGrouping(Of String, Type)), Type)
+  name.vb: SelectSubclass(IEnumerable(Of IGrouping(Of String, Type)), Type)
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup``1(IEnumerable{System.Linq.IGrouping{System.String,``0}},System.String[])
+  commentId: M:Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup``1(IEnumerable{System.Linq.IGrouping{System.String,``0}},System.String[])
+  id: SelectGroup``1(IEnumerable{System.Linq.IGrouping{System.String,``0}},System.String[])
+  isExtensionMethod: true
+  parent: Ceres.Utilities.MemberInfoGroupingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SelectGroup<TMemberInfo>(IEnumerable<IGrouping<string, TMemberInfo>>, string[])
+  nameWithType: MemberInfoGroupingExtensions.SelectGroup<TMemberInfo>(IEnumerable<IGrouping<string, TMemberInfo>>, string[])
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup<TMemberInfo>(IEnumerable<System.Linq.IGrouping<string, TMemberInfo>>, string[])
+  type: Method
+  source:
+    id: SelectGroup
+    path: ''
+    startLine: 21889
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static IEnumerable<IGrouping<string, TMemberInfo>> SelectGroup<TMemberInfo>(this IEnumerable<IGrouping<string, TMemberInfo>> groups, string[] showGroupNames)
+    parameters:
+    - id: groups
+      type: Global.IEnumerable{System.Linq.IGrouping{System.String,{TMemberInfo}}}
+    - id: showGroupNames
+      type: System.String[]
+    typeParameters:
+    - id: TMemberInfo
+    return:
+      type: Global.IEnumerable{System.Linq.IGrouping{System.String,{TMemberInfo}}}
+    content.vb: Public Shared Function SelectGroup(Of TMemberInfo)(groups As IEnumerable(Of IGrouping(Of String, TMemberInfo)), showGroupNames As String()) As IEnumerable(Of IGrouping(Of String, TMemberInfo))
+  overload: Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup*
+  nameWithType.vb: MemberInfoGroupingExtensions.SelectGroup(Of TMemberInfo)(IEnumerable(Of IGrouping(Of String, TMemberInfo)), String())
+  fullName.vb: Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup(Of TMemberInfo)(IEnumerable(Of System.Linq.IGrouping(Of String, TMemberInfo)), String())
+  name.vb: SelectGroup(Of TMemberInfo)(IEnumerable(Of IGrouping(Of String, TMemberInfo)), String())
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup``1(IEnumerable{System.Linq.IGrouping{System.String,``0}},System.String[])
+  commentId: M:Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup``1(IEnumerable{System.Linq.IGrouping{System.String,``0}},System.String[])
+  id: ExceptGroup``1(IEnumerable{System.Linq.IGrouping{System.String,``0}},System.String[])
+  isExtensionMethod: true
+  parent: Ceres.Utilities.MemberInfoGroupingExtensions
+  langs:
+  - csharp
+  - vb
+  name: ExceptGroup<TMemberInfo>(IEnumerable<IGrouping<string, TMemberInfo>>, string[])
+  nameWithType: MemberInfoGroupingExtensions.ExceptGroup<TMemberInfo>(IEnumerable<IGrouping<string, TMemberInfo>>, string[])
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup<TMemberInfo>(IEnumerable<System.Linq.IGrouping<string, TMemberInfo>>, string[])
+  type: Method
+  source:
+    id: ExceptGroup
+    path: ''
+    startLine: 21898
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static IEnumerable<IGrouping<string, TMemberInfo>> ExceptGroup<TMemberInfo>(this IEnumerable<IGrouping<string, TMemberInfo>> groups, string[] notShowGroupNames)
+    parameters:
+    - id: groups
+      type: Global.IEnumerable{System.Linq.IGrouping{System.String,{TMemberInfo}}}
+    - id: notShowGroupNames
+      type: System.String[]
+    typeParameters:
+    - id: TMemberInfo
+    return:
+      type: Global.IEnumerable{System.Linq.IGrouping{System.String,{TMemberInfo}}}
+    content.vb: Public Shared Function ExceptGroup(Of TMemberInfo)(groups As IEnumerable(Of IGrouping(Of String, TMemberInfo)), notShowGroupNames As String()) As IEnumerable(Of IGrouping(Of String, TMemberInfo))
+  overload: Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup*
+  nameWithType.vb: MemberInfoGroupingExtensions.ExceptGroup(Of TMemberInfo)(IEnumerable(Of IGrouping(Of String, TMemberInfo)), String())
+  fullName.vb: Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup(Of TMemberInfo)(IEnumerable(Of System.Linq.IGrouping(Of String, TMemberInfo)), String())
+  name.vb: ExceptGroup(Of TMemberInfo)(IEnumerable(Of IGrouping(Of String, TMemberInfo)), String())
+references:
+- uid: Ceres.Utilities
+  commentId: N:Ceres.Utilities
+  name: Ceres.Utilities
+  nameWithType: Ceres.Utilities
+  fullName: Ceres.Utilities
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Utilities
+    name: Utilities
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Utilities
+    name: Utilities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup*
+  commentId: Overload:Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup
+  name: GroupByFirstGroup
+  nameWithType: MemberInfoGroupingExtensions.GroupByFirstGroup
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.GroupByFirstGroup
+- uid: Global.IEnumerable{{TMemberInfo}}
+  commentId: '!:Global.IEnumerable{``0}'
+  definition: Global.IEnumerable`1
+  name: IEnumerable<TMemberInfo>
+  nameWithType: IEnumerable<TMemberInfo>
+  fullName: IEnumerable<TMemberInfo>
+  nameWithType.vb: IEnumerable(Of TMemberInfo)
+  fullName.vb: IEnumerable(Of TMemberInfo)
+  name.vb: IEnumerable(Of TMemberInfo)
+  spec.csharp:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: TMemberInfo
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMemberInfo
+  - name: )
+- uid: Global.IEnumerable{System.Linq.IGrouping{System.String,{TMemberInfo}}}
+  commentId: '!:Global.IEnumerable{System.Linq.IGrouping{System.String,``0}}'
+  definition: Global.IEnumerable`1
+  name: IEnumerable<IGrouping<string, TMemberInfo>>
+  nameWithType: IEnumerable<IGrouping<string, TMemberInfo>>
+  fullName: IEnumerable<System.Linq.IGrouping<string, TMemberInfo>>
+  nameWithType.vb: IEnumerable(Of IGrouping(Of String, TMemberInfo))
+  fullName.vb: IEnumerable(Of System.Linq.IGrouping(Of String, TMemberInfo))
+  name.vb: IEnumerable(Of IGrouping(Of String, TMemberInfo))
+  spec.csharp:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: System.Linq.IGrouping`2
+    name: IGrouping
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: TMemberInfo
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.IGrouping`2
+    name: IGrouping
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: TMemberInfo
+  - name: )
+  - name: )
+- uid: Global.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup*
+  commentId: Overload:Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup
+  name: SubGroup
+  nameWithType: MemberInfoGroupingExtensions.SubGroup
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.SubGroup
+- uid: System.Linq.IGrouping{System.String,{TMemberInfo}}
+  commentId: T:System.Linq.IGrouping{System.String,``0}
+  parent: System.Linq
+  definition: System.Linq.IGrouping`2
+  name: IGrouping<string, TMemberInfo>
+  nameWithType: IGrouping<string, TMemberInfo>
+  fullName: System.Linq.IGrouping<string, TMemberInfo>
+  nameWithType.vb: IGrouping(Of String, TMemberInfo)
+  fullName.vb: System.Linq.IGrouping(Of String, TMemberInfo)
+  name.vb: IGrouping(Of String, TMemberInfo)
+  spec.csharp:
+  - uid: System.Linq.IGrouping`2
+    name: IGrouping
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: TMemberInfo
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.IGrouping`2
+    name: IGrouping
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: TMemberInfo
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Linq.IGrouping`2
+  commentId: T:System.Linq.IGrouping`2
+  isExternal: true
+  name: IGrouping<TKey, TElement>
+  nameWithType: IGrouping<TKey, TElement>
+  fullName: System.Linq.IGrouping<TKey, TElement>
+  nameWithType.vb: IGrouping(Of TKey, TElement)
+  fullName.vb: System.Linq.IGrouping(Of TKey, TElement)
+  name.vb: IGrouping(Of TKey, TElement)
+  spec.csharp:
+  - uid: System.Linq.IGrouping`2
+    name: IGrouping
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TElement
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.IGrouping`2
+    name: IGrouping
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TElement
+  - name: )
+- uid: System.Linq
+  commentId: N:System.Linq
+  isExternal: true
+  name: System.Linq
+  nameWithType: System.Linq
+  fullName: System.Linq
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass*
+  commentId: Overload:Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass
+  name: SelectSubclass
+  nameWithType: MemberInfoGroupingExtensions.SelectSubclass
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.SelectSubclass
+- uid: Global.IEnumerable{System.Linq.IGrouping{System.String,Type}}
+  commentId: '!:Global.IEnumerable{System.Linq.IGrouping{System.String,Type}}'
+  definition: Global.IEnumerable`1
+  name: IEnumerable<IGrouping<string, Type>>
+  nameWithType: IEnumerable<IGrouping<string, Type>>
+  fullName: IEnumerable<System.Linq.IGrouping<string, Type>>
+  nameWithType.vb: IEnumerable(Of IGrouping(Of String, Type))
+  fullName.vb: IEnumerable(Of System.Linq.IGrouping(Of String, Type))
+  name.vb: IEnumerable(Of IGrouping(Of String, Type))
+  spec.csharp:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: System.Linq.IGrouping`2
+    name: IGrouping
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.IGrouping`2
+    name: IGrouping
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup*
+  commentId: Overload:Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup
+  name: SelectGroup
+  nameWithType: MemberInfoGroupingExtensions.SelectGroup
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.SelectGroup
+- uid: System.String[]
+  isExternal: true
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup*
+  commentId: Overload:Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup
+  name: ExceptGroup
+  nameWithType: MemberInfoGroupingExtensions.ExceptGroup
+  fullName: Ceres.Utilities.MemberInfoGroupingExtensions.ExceptGroup

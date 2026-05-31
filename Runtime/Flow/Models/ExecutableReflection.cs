@@ -184,7 +184,7 @@ namespace Ceres.Graph.Flow
                         }
                         else if (line.StartsWith("<param name=\""))
                         {
-                            var match = Regex.Match(line, "<param name=\"(.*?)\">(.*?)");
+                            var match = Regex.Match(line, "<param name=\"(.*?)\">(.*?)</param>");
                             if (match.Success)
                             {
                                 parameters.Add((match.Groups[1].Value, CleanXmlCrefLabel(match.Groups[2].Value)));

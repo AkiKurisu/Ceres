@@ -1,0 +1,604 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow
+  commentId: T:Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow
+  id: ExecutableNodeSearchWindow
+  parent: Ceres.Editor.Graph.Flow
+  children:
+  - Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  - Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnInitialize
+  - Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+  langs:
+  - csharp
+  - vb
+  name: ExecutableNodeSearchWindow
+  nameWithType: ExecutableNodeSearchWindow
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow
+  type: Class
+  source:
+    id: ExecutableNodeSearchWindow
+    path: ''
+    startLine: 8668
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: 'public class ExecutableNodeSearchWindow : CeresNodeSearchWindow, ISearchWindowProvider'
+    content.vb: Public Class ExecutableNodeSearchWindow Inherits CeresNodeSearchWindow Implements ISearchWindowProvider
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.CeresNodeSearchWindow
+  implements:
+  - Global.ISearchWindowProvider
+  inheritedMembers:
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.GraphView
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.Context
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.Width
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.Height
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.Initialize(Ceres.Editor.Graph.CeresGraphView,Ceres.Editor.Graph.NodeSearchContext)
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.SearchTypes(Type[],Ceres.Editor.Graph.NodeSearchContext)
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.CanShowType(Type,Ceres.Editor.Graph.NodeSearchContext)
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.ConnectRequestPort(Ceres.Editor.Graph.ICeresNodeView)
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNonGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.CreateGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  - Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(SearchTreeEntry,SearchWindowContext)
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnInitialize
+  commentId: M:Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnInitialize
+  id: OnInitialize
+  parent: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow
+  langs:
+  - csharp
+  - vb
+  name: OnInitialize()
+  nameWithType: ExecutableNodeSearchWindow.OnInitialize()
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnInitialize()
+  type: Method
+  source:
+    id: OnInitialize
+    path: ''
+    startLine: 8744
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: protected override void OnInitialize()
+    content.vb: Protected Overrides Sub OnInitialize()
+  overridden: Ceres.Editor.Graph.CeresNodeSearchWindow.OnInitialize
+  overload: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnInitialize*
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  commentId: M:Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  id: CreateSearchTree(SearchWindowContext)
+  parent: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow
+  langs:
+  - csharp
+  - vb
+  name: CreateSearchTree(SearchWindowContext)
+  nameWithType: ExecutableNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  type: Method
+  source:
+    id: CreateSearchTree
+    path: ''
+    startLine: 8763
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: public override List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
+    parameters:
+    - id: context
+      type: Global.SearchWindowContext
+    return:
+      type: Global.List{SearchTreeEntry}
+    content.vb: Public Overrides Function CreateSearchTree(context As SearchWindowContext) As List(Of SearchTreeEntry)
+  overridden: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  overload: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.CreateSearchTree*
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+  commentId: M:Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+  id: OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+  parent: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow
+  langs:
+  - csharp
+  - vb
+  name: OnSelectEntry(CeresNodeSearchEntryData, Rect)
+  nameWithType: ExecutableNodeSearchWindow.OnSelectEntry(CeresNodeSearchEntryData, Rect)
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData, Rect)
+  type: Method
+  source:
+    id: OnSelectEntry
+    path: ''
+    startLine: 9205
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  syntax:
+    content: protected override bool OnSelectEntry(CeresNodeSearchEntryData entryData, Rect rect)
+    parameters:
+    - id: entryData
+      type: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    - id: rect
+      type: Global.Rect
+    return:
+      type: System.Boolean
+    content.vb: Protected Overrides Function OnSelectEntry(entryData As CeresNodeSearchEntryData, rect As Rect) As Boolean
+  overridden: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+  overload: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnSelectEntry*
+references:
+- uid: Ceres.Editor.Graph.Flow
+  commentId: N:Ceres.Editor.Graph.Flow
+  name: Ceres.Editor.Graph.Flow
+  nameWithType: Ceres.Editor.Graph.Flow
+  fullName: Ceres.Editor.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Editor.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Editor.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow
+  commentId: T:Ceres.Editor.Graph.CeresNodeSearchWindow
+  parent: Ceres.Editor.Graph
+  name: CeresNodeSearchWindow
+  nameWithType: CeresNodeSearchWindow
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow
+- uid: Global.ISearchWindowProvider
+  isExternal: true
+  name: ISearchWindowProvider
+  nameWithType: ISearchWindowProvider
+  fullName: ISearchWindowProvider
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.GraphView
+  commentId: P:Ceres.Editor.Graph.CeresNodeSearchWindow.GraphView
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: GraphView
+  nameWithType: CeresNodeSearchWindow.GraphView
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.GraphView
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.Context
+  commentId: P:Ceres.Editor.Graph.CeresNodeSearchWindow.Context
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: Context
+  nameWithType: CeresNodeSearchWindow.Context
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.Context
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.Width
+  commentId: P:Ceres.Editor.Graph.CeresNodeSearchWindow.Width
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: Width
+  nameWithType: CeresNodeSearchWindow.Width
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.Width
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.Height
+  commentId: P:Ceres.Editor.Graph.CeresNodeSearchWindow.Height
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: Height
+  nameWithType: CeresNodeSearchWindow.Height
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.Height
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.Initialize(Ceres.Editor.Graph.CeresGraphView,Ceres.Editor.Graph.NodeSearchContext)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.Initialize(Ceres.Editor.Graph.CeresGraphView,Ceres.Editor.Graph.NodeSearchContext)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: Initialize(CeresGraphView, NodeSearchContext)
+  nameWithType: CeresNodeSearchWindow.Initialize(CeresGraphView, NodeSearchContext)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.Initialize(Ceres.Editor.Graph.CeresGraphView, Ceres.Editor.Graph.NodeSearchContext)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.Initialize(Ceres.Editor.Graph.CeresGraphView,Ceres.Editor.Graph.NodeSearchContext)
+    name: Initialize
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.NodeSearchContext
+    name: NodeSearchContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.Initialize(Ceres.Editor.Graph.CeresGraphView,Ceres.Editor.Graph.NodeSearchContext)
+    name: Initialize
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.NodeSearchContext
+    name: NodeSearchContext
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.SearchTypes(Type[],Ceres.Editor.Graph.NodeSearchContext)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.SearchTypes(Type[],Ceres.Editor.Graph.NodeSearchContext)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  isExternal: true
+  name: SearchTypes(Type[], NodeSearchContext)
+  nameWithType: CeresNodeSearchWindow.SearchTypes(Type[], NodeSearchContext)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.SearchTypes(Type[], Ceres.Editor.Graph.NodeSearchContext)
+  nameWithType.vb: CeresNodeSearchWindow.SearchTypes(Type(), NodeSearchContext)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeSearchWindow.SearchTypes(Type(), Ceres.Editor.Graph.NodeSearchContext)
+  name.vb: SearchTypes(Type(), NodeSearchContext)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.SearchTypes(Type[],Ceres.Editor.Graph.NodeSearchContext)
+    name: SearchTypes
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.NodeSearchContext
+    name: NodeSearchContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.SearchTypes(Type[],Ceres.Editor.Graph.NodeSearchContext)
+    name: SearchTypes
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.NodeSearchContext
+    name: NodeSearchContext
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CanShowType(Type,Ceres.Editor.Graph.NodeSearchContext)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.CanShowType(Type,Ceres.Editor.Graph.NodeSearchContext)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  isExternal: true
+  name: CanShowType(Type, NodeSearchContext)
+  nameWithType: CeresNodeSearchWindow.CanShowType(Type, NodeSearchContext)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.CanShowType(Type, Ceres.Editor.Graph.NodeSearchContext)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CanShowType(Type,Ceres.Editor.Graph.NodeSearchContext)
+    name: CanShowType
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.NodeSearchContext
+    name: NodeSearchContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CanShowType(Type,Ceres.Editor.Graph.NodeSearchContext)
+    name: CanShowType
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.NodeSearchContext
+    name: NodeSearchContext
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.ConnectRequestPort(Ceres.Editor.Graph.ICeresNodeView)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.ConnectRequestPort(Ceres.Editor.Graph.ICeresNodeView)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: ConnectRequestPort(ICeresNodeView)
+  nameWithType: CeresNodeSearchWindow.ConnectRequestPort(ICeresNodeView)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.ConnectRequestPort(Ceres.Editor.Graph.ICeresNodeView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.ConnectRequestPort(Ceres.Editor.Graph.ICeresNodeView)
+    name: ConnectRequestPort
+  - name: (
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.ConnectRequestPort(Ceres.Editor.Graph.ICeresNodeView)
+    name: ConnectRequestPort
+  - name: (
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: CreateNodeView(CeresNodeSearchEntryData)
+  nameWithType: CeresNodeSearchWindow.CreateNodeView(CeresNodeSearchEntryData)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+    name: CreateNodeView
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    name: CeresNodeSearchEntryData
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+    name: CreateNodeView
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    name: CeresNodeSearchEntryData
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNonGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNonGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: CreateNonGenericNodeView(CeresNodeSearchEntryData)
+  nameWithType: CeresNodeSearchWindow.CreateNonGenericNodeView(CeresNodeSearchEntryData)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNonGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNonGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+    name: CreateNonGenericNodeView
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    name: CeresNodeSearchEntryData
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateNonGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+    name: CreateNonGenericNodeView
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    name: CeresNodeSearchEntryData
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.CreateGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: CreateGenericNodeView(CeresNodeSearchEntryData)
+  nameWithType: CeresNodeSearchWindow.CreateGenericNodeView(CeresNodeSearchEntryData)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+    name: CreateGenericNodeView
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    name: CeresNodeSearchEntryData
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateGenericNodeView(Ceres.Editor.Graph.CeresNodeSearchEntryData)
+    name: CreateGenericNodeView
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    name: CeresNodeSearchEntryData
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(SearchTreeEntry,SearchWindowContext)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(SearchTreeEntry,SearchWindowContext)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  isExternal: true
+  name: OnSelectEntry(SearchTreeEntry, SearchWindowContext)
+  nameWithType: CeresNodeSearchWindow.OnSelectEntry(SearchTreeEntry, SearchWindowContext)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(SearchTreeEntry, SearchWindowContext)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(SearchTreeEntry,SearchWindowContext)
+    name: OnSelectEntry
+  - name: (
+  - uid: Global.SearchTreeEntry
+    name: SearchTreeEntry
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.SearchWindowContext
+    name: SearchWindowContext
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(SearchTreeEntry,SearchWindowContext)
+    name: OnSelectEntry
+  - name: (
+  - uid: Global.SearchTreeEntry
+    name: SearchTreeEntry
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.SearchWindowContext
+    name: SearchWindowContext
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnInitialize
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.OnInitialize
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  name: OnInitialize()
+  nameWithType: CeresNodeSearchWindow.OnInitialize()
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.OnInitialize()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnInitialize
+    name: OnInitialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnInitialize
+    name: OnInitialize
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnInitialize*
+  commentId: Overload:Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnInitialize
+  name: OnInitialize
+  nameWithType: ExecutableNodeSearchWindow.OnInitialize
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnInitialize
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  isExternal: true
+  name: CreateSearchTree(SearchWindowContext)
+  nameWithType: CeresNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+    name: CreateSearchTree
+  - name: (
+  - uid: Global.SearchWindowContext
+    name: SearchWindowContext
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.CreateSearchTree(SearchWindowContext)
+    name: CreateSearchTree
+  - name: (
+  - uid: Global.SearchWindowContext
+    name: SearchWindowContext
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.CreateSearchTree*
+  commentId: Overload:Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.CreateSearchTree
+  name: CreateSearchTree
+  nameWithType: ExecutableNodeSearchWindow.CreateSearchTree
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.CreateSearchTree
+- uid: Global.SearchWindowContext
+  isExternal: true
+  name: SearchWindowContext
+  nameWithType: SearchWindowContext
+  fullName: SearchWindowContext
+- uid: Global.List{SearchTreeEntry}
+  commentId: '!:Global.List{SearchTreeEntry}'
+  definition: Global.List`1
+  name: List<SearchTreeEntry>
+  nameWithType: List<SearchTreeEntry>
+  fullName: List<SearchTreeEntry>
+  nameWithType.vb: List(Of SearchTreeEntry)
+  fullName.vb: List(Of SearchTreeEntry)
+  name.vb: List(Of SearchTreeEntry)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Global.SearchTreeEntry
+    name: SearchTreeEntry
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.SearchTreeEntry
+    name: SearchTreeEntry
+    isExternal: true
+  - name: )
+- uid: Global.List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+  commentId: M:Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+  parent: Ceres.Editor.Graph.CeresNodeSearchWindow
+  isExternal: true
+  name: OnSelectEntry(CeresNodeSearchEntryData, Rect)
+  nameWithType: CeresNodeSearchWindow.OnSelectEntry(CeresNodeSearchEntryData, Rect)
+  fullName: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData, Rect)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+    name: OnSelectEntry
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    name: CeresNodeSearchEntryData
+  - name: ','
+  - name: " "
+  - uid: Global.Rect
+    name: Rect
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeSearchWindow.OnSelectEntry(Ceres.Editor.Graph.CeresNodeSearchEntryData,Rect)
+    name: OnSelectEntry
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+    name: CeresNodeSearchEntryData
+  - name: ','
+  - name: " "
+  - uid: Global.Rect
+    name: Rect
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnSelectEntry*
+  commentId: Overload:Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnSelectEntry
+  name: OnSelectEntry
+  nameWithType: ExecutableNodeSearchWindow.OnSelectEntry
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeSearchWindow.OnSelectEntry
+- uid: Ceres.Editor.Graph.CeresNodeSearchEntryData
+  commentId: T:Ceres.Editor.Graph.CeresNodeSearchEntryData
+  parent: Ceres.Editor.Graph
+  name: CeresNodeSearchEntryData
+  nameWithType: CeresNodeSearchEntryData
+  fullName: Ceres.Editor.Graph.CeresNodeSearchEntryData
+- uid: Global.Rect
+  isExternal: true
+  name: Rect
+  nameWithType: Rect
+  fullName: Rect
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
