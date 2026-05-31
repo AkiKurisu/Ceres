@@ -28,6 +28,10 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
         {
             private readonly FlowCompilationContext _context;
 
+            private readonly FlowNodeLowererFactory _nodeLowerers;
+
+            private readonly FlowLoweringContext _loweringContext;
+
             private readonly Dictionary<string, GraphVariableBinding> _graphVariableBindings = new();
 
             private readonly Dictionary<string, SharedVariableBinding> _sharedVariableBindings = new();
@@ -51,6 +55,22 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             public Builder(FlowCompilationContext context)
             {
                 _context = context;
+                _nodeLowerers = FlowNodeLowererFactory.Get();
+                _loweringContext = FlowLoweringContext.CreateSync(
+                    _context,
+                    () => _currentBlock,
+                    LowerInput,
+                    LowerForwardConnection,
+                    LowerDefaultNext,
+                    LowerBranch,
+                    BuildFunctionCallExpression,
+                    BuildFunctionReturnExpression,
+                    MaterializeFunctionReturnIfNeeded,
+                    LowerSetProperty,
+                    LowerSetSharedVariable,
+                    BuildGetPropertyExpression,
+                    BuildSelfReferenceExpression,
+                    BuildGetSharedVariableExpression);
             }
 
             public CsCompilationUnit TryCompile()
@@ -96,30 +116,9 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return _context.Graph.nodes.All(CanCompileNode);
             }
 
-            private static bool CanCompileNode(CeresNode node)
+            private bool CanCompileNode(CeresNode node)
             {
-                return node switch
-                {
-                    ExecutableEvent => true,
-                    FlowNode_Sequence => true,
-                    FlowNode_Branch => true,
-                    FlowNode_DebugLog => true,
-                    FlowNode_DebugLogString => true,
-                    FlowNode_ExecuteFunctionVoid => true,
-                    FlowNode_ExecuteFunctionReturn => true,
-                    PropertyNode_PropertyValue propertyNode => CanCompilePropertyNode(propertyNode),
-                    PropertyNode_SharedVariableValue => true,
-                    PropertyNode => FlowCSharpRuntimeGenerator.TryGetSelfReferenceTargetType((PropertyNode)node, out _),
-                    _ => false
-                };
-            }
-
-            private static bool CanCompilePropertyNode(PropertyNode_PropertyValue node)
-            {
-                return FlowCSharpRuntimeGenerator.IsGenericInstance(node,
-                           typeof(PropertyNode_GetPropertyTValue<,>)) ||
-                       FlowCSharpRuntimeGenerator.IsGenericInstance(node,
-                           typeof(PropertyNode_SetPropertyTValue<,>));
+                return node is ExecutableEvent || _nodeLowerers.CanLower(node, _loweringContext);
             }
 
             private CsCompilationUnit CreateUnit()
@@ -203,6 +202,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 foreach (var statement in BuildEventArgumentStatements(evt))
                 {
                     _currentBlock.Add(statement);
+                }
+
+                if (ShouldEmitSyncCancellationChecks())
+                {
+                    _currentBlock.AddRaw(
+                        $"using var cancellation = GetCancellation(contextObject, \"{FlowCSharpRuntimeGenerator.Escape(evt.GetEventName())}\");");
                 }
 
                 _currentBlock.Add(new CsRawStatement("PushExecutionContext(contextObject);"));
@@ -301,43 +306,16 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
                 try
                 {
-                    switch (node)
+                    EmitSyncCancellationCheck();
+
+                    if (!_nodeLowerers.TryGetLowerer(node.GetType(), out var lowerer) ||
+                        !lowerer.CanLower(node, _loweringContext))
                     {
-                        case FlowNode_Sequence sequence:
-                            foreach (var next in _context.CompilationGraph.GetExecConnections(sequence, "outputs"))
-                            {
-                                LowerForwardConnection(next);
-                            }
-                            break;
-                        case FlowNode_Branch branch:
-                            LowerBranch(branch);
-                            break;
-                        case FlowNode_DebugLog debugLog:
-                            LowerDebugLog(debugLog);
-                            break;
-                        case FlowNode_DebugLogString debugLogString:
-                            LowerDebugLogString(debugLogString);
-                            break;
-                        case FlowNode_ExecuteFunctionVoid functionVoid:
-                            LowerFunctionVoid(functionVoid);
-                            break;
-                        case FlowNode_ExecuteFunctionReturn functionReturn:
-                            LowerFunctionReturnForward(functionReturn);
-                            break;
-                        case PropertyNode_PropertyValue propertyNode
-                            when FlowCSharpRuntimeGenerator.IsGenericInstance(propertyNode,
-                                typeof(PropertyNode_SetPropertyTValue<,>)):
-                            LowerSetProperty(propertyNode);
-                            break;
-                        case PropertyNode_SharedVariableValue sharedNode
-                            when FlowCSharpRuntimeGenerator.IsGenericInstance(sharedNode,
-                                typeof(PropertyNode_SetSharedVariableTValue<,,>)):
-                            LowerSetSharedVariable(sharedNode);
-                            break;
-                        default:
-                            throw new FlowCSharpRuntimeGenerationException(
-                                $"Node {node.GetType().Name} ({node.Guid}) is not supported by optimized sync lowering.");
+                        throw new FlowCSharpRuntimeGenerationException(
+                            $"Node {node.GetType().Name} ({node.Guid}) is not supported by optimized sync lowering.");
                     }
+
+                    lowerer.LowerForward(node, _loweringContext);
                 }
                 finally
                 {
@@ -350,44 +328,35 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 var condition = LowerInput(node, "condition", typeof(bool));
                 var statement = new CsIfStatement(condition);
                 var previous = _currentBlock;
+                var materializedBeforeBranch = new HashSet<FlowOutputKey>(_materializedValues.Keys);
                 _currentBlock = statement.Then;
                 LowerForwardConnection(_context.CompilationGraph.GetExecConnection(node, "trueOutput"));
+                RemoveMaterializationsAddedAfter(materializedBeforeBranch);
                 _currentBlock = statement.Else;
                 LowerForwardConnection(_context.CompilationGraph.GetExecConnection(node, "falseOutput"));
+                RemoveMaterializationsAddedAfter(materializedBeforeBranch);
                 _currentBlock = previous;
                 _currentBlock.Add(statement);
             }
 
-            private void LowerDebugLog(FlowNode_DebugLog node)
+            private void RemoveMaterializationsAddedAfter(HashSet<FlowOutputKey> snapshot)
             {
-                var message = LowerInput(node, "message", typeof(object));
-                _currentBlock.AddRaw($"Debug.unityLogger.Log(LogType.{node.logType}, {message.Code}, contextObject);");
-                LowerDefaultNext(node);
+                foreach (var key in _materializedValues.Keys.ToArray())
+                {
+                    if (!snapshot.Contains(key))
+                    {
+                        _materializedValues.Remove(key);
+                    }
+                }
             }
 
-            private void LowerDebugLogString(FlowNode_DebugLogString node)
-            {
-                var message = LowerInput(node, "inString", typeof(string));
-                _currentBlock.AddRaw($"Debug.unityLogger.Log(LogType.{node.logType}, {message.Code}, contextObject);");
-                LowerDefaultNext(node);
-            }
-
-            private void LowerFunctionVoid(FlowNode_ExecuteFunctionVoid node)
-            {
-                var expression = BuildFunctionCallExpression(node, out _);
-                _currentBlock.Add(new CsExpressionStatement(expression));
-                LowerDefaultNext(node);
-            }
-
-            private void LowerFunctionReturnForward(FlowNode_ExecuteFunctionReturn node)
+            private void MaterializeFunctionReturnIfNeeded(FlowNode_ExecuteFunctionReturn node)
             {
                 if (_context.CompilationGraph.GetConsumerCount(node, "output") > 0 ||
                     IsImpureFunction(node))
                 {
                     MaterializeOutput(node, "output", BuildFunctionReturnExpression(node));
                 }
-
-                LowerDefaultNext(node);
             }
 
             private void LowerSetProperty(PropertyNode_PropertyValue node)
@@ -490,34 +459,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                         materialized.Purity, true, false);
                 }
 
-                CsExpression expression;
-                switch (node)
+                if (!_nodeLowerers.TryGetLowerer(node.GetType(), out var lowerer) ||
+                    !lowerer.TryLowerValue(node, portId, _loweringContext, out var expression))
                 {
-                    case FlowNode_ExecuteFunctionReturn functionReturn when portId == "output":
-                        expression = BuildFunctionReturnExpression(functionReturn);
-                        break;
-                    case PropertyNode_PropertyValue propertyNode
-                        when portId == "outputValue" &&
-                             FlowCSharpRuntimeGenerator.IsGenericInstance(propertyNode,
-                                 typeof(PropertyNode_GetPropertyTValue<,>)):
-                        expression = BuildGetPropertyExpression(propertyNode);
-                        break;
-                    case PropertyNode propertyNode
-                        when portId == "outputValue" &&
-                             FlowCSharpRuntimeGenerator.TryGetSelfReferenceTargetType(propertyNode,
-                                 out var targetType):
-                        expression = new CsExpression($"({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(targetType)})contextObject",
-                            targetType);
-                        break;
-                    case PropertyNode_SharedVariableValue sharedNode
-                        when portId == "outputValue" &&
-                             FlowCSharpRuntimeGenerator.IsGenericInstance(sharedNode,
-                                 typeof(PropertyNode_GetSharedVariableTValue<,,>)):
-                        expression = BuildGetSharedVariableExpression(sharedNode);
-                        break;
-                    default:
-                        throw new FlowCSharpRuntimeGenerationException(
-                            $"Value node {node.GetType().Name}.{portId} ({node.Guid}) is not supported by optimized sync lowering.");
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Value node {node.GetType().Name}.{portId} ({node.Guid}) is not supported by optimized sync lowering.");
                 }
 
                 return ShouldMaterialize(node, portId, expression)
@@ -572,7 +518,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     return CreateCallExpression(directSerializedTypeExpression, directCall);
                 }
 
-                if (node.isStatic && TryBuildIntrinsicFunctionExpression(directCall, arguments, out var intrinsic))
+                if (node.isStatic &&
+                    FlowExpressionClassifier.TryBuildIntrinsicFunctionExpression(directCall, arguments, out var intrinsic))
                 {
                     return CreateCallExpression(intrinsic, directCall);
                 }
@@ -595,45 +542,9 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             private static CsExpression CreateCallExpression(string code,
                 FlowCSharpRuntimeGenerator.DirectCallInfo directCall)
             {
-                return new CsExpression(code, directCall.ReturnType, ClassifyFunctionPurity(directCall),
-                    CanInlineFunction(directCall), !CanInlineFunction(directCall));
-            }
-
-            private static CsExpressionPurity ClassifyFunctionPurity(
-                FlowCSharpRuntimeGenerator.DirectCallInfo directCall)
-            {
-                if (directCall.DeclaringType == typeof(UnityExecutableLibrary))
-                {
-                    if (TryBuildUnityTimeExpression(directCall, out _))
-                    {
-                        return CsExpressionPurity.PerEventStable;
-                    }
-
-                    if (directCall.MethodName is "Flow_RandomRange" or "Flow_RandomRangeInt")
-                    {
-                        return CsExpressionPurity.Impure;
-                    }
-
-                    if (directCall.MethodName.Contains("GetComponent", StringComparison.Ordinal) ||
-                        directCall.MethodName == "Flow_FindObjectOfType")
-                    {
-                        return CsExpressionPurity.CachePerEvent;
-                    }
-                }
-
-                if (directCall.DeclaringType == typeof(MathExecutableLibrary))
-                {
-                    return CsExpressionPurity.Pure;
-                }
-
-                return directCall.MethodInfo.GetCustomAttribute<System.Diagnostics.Contracts.PureAttribute>() != null
-                    ? CsExpressionPurity.Pure
-                    : CsExpressionPurity.Impure;
-            }
-
-            private static bool CanInlineFunction(FlowCSharpRuntimeGenerator.DirectCallInfo directCall)
-            {
-                return ClassifyFunctionPurity(directCall) is CsExpressionPurity.Pure or CsExpressionPurity.PerEventStable;
+                var canInline = FlowExpressionClassifier.CanInlineFunction(directCall);
+                return new CsExpression(code, directCall.ReturnType,
+                    FlowExpressionClassifier.ClassifyFunction(directCall), canInline, !canInline);
             }
 
             private bool ShouldMaterialize(CeresNode node, string portId, CsExpression expression)
@@ -653,10 +564,24 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
                 var localName =
                     $"value_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(portId)}_{SafeGuid(node.Guid)}_{_tempIndex++}";
+                EmitSyncCancellationCheck();
                 _currentBlock.Add(new CsDeclarationStatement(expression.Type, localName, expression));
                 var materialized = new MaterializedValue(localName, expression.Type, expression.Purity);
                 _materializedValues.Add(key, materialized);
                 return new CsExpression(localName, expression.Type, expression.Purity);
+            }
+
+            private bool ShouldEmitSyncCancellationChecks()
+            {
+                return _context.Options.CancellationMode == FlowGeneratedRuntimeCancellationMode.Always;
+            }
+
+            private void EmitSyncCancellationCheck()
+            {
+                if (ShouldEmitSyncCancellationChecks())
+                {
+                    _currentBlock.AddRaw("cancellation.ThrowIfCancellationRequested();");
+                }
             }
 
             private CsExpression BuildGetPropertyExpression(PropertyNode_PropertyValue node)
@@ -683,6 +608,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 var targetExpression = LowerInput(node, "target", propertyCall.TargetType).Code;
                 return
                     $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(propertyCall.TargetType)}>(false, {node.isSelfTarget.ToString().ToLowerInvariant()}, {targetExpression}, contextObject)";
+            }
+
+            private static CsExpression BuildSelfReferenceExpression(PropertyNode node, Type targetType)
+            {
+                return new CsExpression(
+                    $"({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(targetType)})contextObject", targetType);
             }
 
             private CsExpression BuildGetSharedVariableExpression(PropertyNode_SharedVariableValue node)
@@ -1081,114 +1012,6 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return false;
             }
 
-            private static bool TryBuildIntrinsicFunctionExpression(
-                FlowCSharpRuntimeGenerator.DirectCallInfo directCall,
-                IReadOnlyList<string> arguments, out string expression)
-            {
-                expression = null;
-                if (directCall.DeclaringType == typeof(UnityExecutableLibrary) &&
-                    TryBuildUnityTimeExpression(directCall, out expression))
-                {
-                    return true;
-                }
-
-                if (directCall.DeclaringType != typeof(MathExecutableLibrary))
-                {
-                    return false;
-                }
-
-                string Unary(string op) => $"({op}({arguments[0]}))";
-                string Binary(string op) => $"(({arguments[0]}) {op} ({arguments[1]}))";
-                string Call(string owner, string method) => $"{owner}.{method}({string.Join(", ", arguments)})";
-
-                expression = directCall.MethodName switch
-                {
-                    "Flow_FloatAdd" => Binary("+"),
-                    "Flow_FloatSubtract" => Binary("-"),
-                    "Flow_FloatMultiply" => Binary("*"),
-                    "Flow_FloatDivide" => Binary("/"),
-                    "Flow_FloatModulo" => Binary("%"),
-                    "Flow_FloatLessThan" => Binary("<"),
-                    "Flow_FloatLessThanOrEqualTo" => Binary("<="),
-                    "Flow_FloatGreaterThan" => Binary(">"),
-                    "Flow_FloatGreaterThanOrEqualTo" => Binary(">="),
-                    "Flow_FloatToInt" => $"((int)({arguments[0]}))",
-                    "Flow_FloatPow" => Call("Mathf", "Pow"),
-                    "Flow_FloatSqrt" => Call("Mathf", "Sqrt"),
-                    "Flow_FloatExp" => Call("Mathf", "Exp"),
-                    "Flow_FloatAbs" => Call("Mathf", "Abs"),
-                    "Flow_FloatClamp" => Call("Mathf", "Clamp"),
-                    "Flow_FloatClamp01" => Call("Mathf", "Clamp01"),
-                    "Flow_FloatLerp" => Call("Mathf", "Lerp"),
-                    "Flow_FloatInverseLerp" => Call("Mathf", "InverseLerp"),
-                    "Flow_FloatMin" => Call("Mathf", "Min"),
-                    "Flow_FloatMax" => Call("Mathf", "Max"),
-                    "Flow_FloatFloorToInt" => Call("Mathf", "FloorToInt"),
-                    "Flow_FloatCeilToInt" => Call("Mathf", "CeilToInt"),
-                    "Flow_FloatRoundToInt" => Call("Mathf", "RoundToInt"),
-                    "Flow_FloatSin" => Call("Mathf", "Sin"),
-                    "Flow_FloatCos" => Call("Mathf", "Cos"),
-                    "Flow_FloatTan" => Call("Mathf", "Tan"),
-                    "Flow_FloatAtan2" => Call("Mathf", "Atan2"),
-                    "Flow_FloatApproximately" => Call("Mathf", "Approximately"),
-                    "Flow_FloatSign" => Call("Mathf", "Sign"),
-                    "Flow_FloatDeg2Rad" => $"(({arguments[0]}) * Mathf.Deg2Rad)",
-                    "Flow_FloatRad2Deg" => $"(({arguments[0]}) * Mathf.Rad2Deg)",
-                    "Flow_IntAdd" => Binary("+"),
-                    "Flow_IntSubtract" => Binary("-"),
-                    "Flow_IntMultiply" => Binary("*"),
-                    "Flow_IntDivide" => Binary("/"),
-                    "Flow_IntModulo" => Binary("%"),
-                    "Flow_IntLessThan" => Binary("<"),
-                    "Flow_IntLessThanOrEqualTo" => Binary("<="),
-                    "Flow_IntGreaterThan" => Binary(">"),
-                    "Flow_IntGreaterThanOrEqualTo" => Binary(">="),
-                    "Flow_IntToFloat" => $"((float)({arguments[0]}))",
-                    "Flow_IntAbs" => Call("Mathf", "Abs"),
-                    "Flow_IntClamp" => Call("Mathf", "Clamp"),
-                    "Flow_IntMin" => Call("Mathf", "Min"),
-                    "Flow_IntMax" => Call("Mathf", "Max"),
-                    "Flow_BoolInvert" => Unary("!"),
-                    "Flow_BoolAnd" => Binary("&"),
-                    "Flow_BoolOr" => Binary("|"),
-                    "Flow_BoolXor" => Binary("^"),
-                    "Flow_Vector2" => $"new Vector2({arguments[0]}, {arguments[1]})",
-                    "Flow_Vector3" => $"new Vector3({arguments[0]}, {arguments[1]}, {arguments[2]})",
-                    "Flow_Vector3Add" => Binary("+"),
-                    "Flow_Vector3Subtract" => Binary("-"),
-                    "Flow_Vector3MultiplyFloat" => Binary("*"),
-                    "Flow_Vector3DivideFloat" => Binary("/"),
-                    _ => null
-                };
-
-                return expression != null;
-            }
-
-            private static bool TryBuildUnityTimeExpression(
-                FlowCSharpRuntimeGenerator.DirectCallInfo directCall, out string expression)
-            {
-                expression = null;
-                if (directCall.DeclaringType != typeof(UnityExecutableLibrary) ||
-                    directCall.ParameterTypes.Length != 0)
-                {
-                    return false;
-                }
-
-                expression = directCall.MethodName switch
-                {
-                    "Flow_TimeGetTime" => "Time.time",
-                    "Flow_TimeGetUnscaledTime" => "Time.unscaledTime",
-                    "Flow_TimeGetDeltaTime" => "Time.deltaTime",
-                    "Flow_TimeGetFixedDeltaTime" => "Time.fixedDeltaTime",
-                    "Flow_TimeGetFrameCount" => "Time.frameCount",
-                    "Flow_TimeGetRealtimeSinceStartup" => "Time.realtimeSinceStartup",
-                    "Flow_TimeGetTimeScale" => "Time.timeScale",
-                    _ => null
-                };
-
-                return expression != null;
-            }
-
             private bool IsImpureFunction(FlowNode_ExecuteFunctionReturn node)
             {
                 if (!FlowCSharpRuntimeGenerator.CanGeneratedCall(node, out var directCall))
@@ -1196,7 +1019,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     return true;
                 }
 
-                return ClassifyFunctionPurity(directCall) == CsExpressionPurity.Impure;
+                return FlowExpressionClassifier.ClassifyFunction(directCall) == CsExpressionPurity.Impure;
             }
 
             private static CsExpression CastExpression(CsExpression expression, Type expectedType)
