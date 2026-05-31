@@ -239,6 +239,43 @@ namespace Ceres.Graph
             return CompatibleStructure.AdapterCreateFunc[ceresPort.GetValueType()](this);
         }
 
+        private bool TryCreateArrayElementAdapterPort(CeresPort targetPort, out IPort adapterPort)
+        {
+            adapterPort = null;
+            var sourceType = typeof(TValue);
+            var targetType = targetPort.GetValueType();
+            if (!CanAdaptArrayElements(sourceType, targetType))
+            {
+                return false;
+            }
+
+            var adapterType = typeof(ArrayAdapterPort<,>).MakeGenericType(
+                sourceType.GetElementType()!,
+                targetType.GetElementType()!);
+            adapterPort = (IPort)Activator.CreateInstance(adapterType, this);
+            return adapterPort != null;
+        }
+
+        private static bool CanAdaptArrayElements(Type sourceType, Type targetType)
+        {
+            if (sourceType == null ||
+                targetType == null ||
+                !sourceType.IsArray ||
+                !targetType.IsArray ||
+                sourceType.GetArrayRank() != 1 ||
+                targetType.GetArrayRank() != 1)
+            {
+                return false;
+            }
+
+            var sourceElementType = sourceType.GetElementType();
+            var targetElementType = targetType.GetElementType();
+            return sourceElementType != null &&
+                   targetElementType != null &&
+                   sourceElementType != targetElementType &&
+                   targetElementType.IsAssignableTo(sourceElementType);
+        }
+
         protected internal override IPort CreateProxyPort(CeresPort<CeresPort> ceresPort)
         {
             return new ProxyPort<TValue>(ceresPort);
@@ -268,6 +305,11 @@ namespace Ceres.Graph
                 if (IsCompatibleTo_Internal(targetPort.GetValueType()))
                 {
                     targetPort.AssignValueGetter(CreateAdapterPort(targetPort));
+                    return;
+                }
+                if (TryCreateArrayElementAdapterPort(targetPort, out var arrayAdapterPort))
+                {
+                    targetPort.AssignValueGetter(arrayAdapterPort);
                     return;
                 }
 
@@ -323,6 +365,41 @@ namespace Ceres.Graph
         }
 
         public TOut Value => _adapterFunc(_port.Value);
+    }
+
+    public class ArrayAdapterPort<TIn, TOut> : IPort<TOut[]>
+    {
+        private readonly IPort<TIn[]> _port;
+
+        public ArrayAdapterPort(IPort<TIn[]> port)
+        {
+            _port = port;
+        }
+
+        public object GetValue()
+        {
+            return Value;
+        }
+
+        public TOut[] Value
+        {
+            get
+            {
+                var source = _port.Value;
+                if (source == null)
+                {
+                    return null;
+                }
+
+                var result = new TOut[source.Length];
+                for (var i = 0; i < source.Length; i++)
+                {
+                    result[i] = (TOut)(object)source[i];
+                }
+
+                return result;
+            }
+        }
     }
 
     internal class ProxyPort<TOut> : IPort<TOut>

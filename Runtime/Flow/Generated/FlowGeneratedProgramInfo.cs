@@ -114,7 +114,7 @@ namespace Ceres.Graph.Flow
 
     public static class FlowGeneratedRuntimeUtility
     {
-        public const int CurrentProgramInfoVersion = 3;
+        public const int CurrentProgramInfoVersion = 4;
 
         public static string CalculateGraphHash(FlowGraphData graphData)
         {
@@ -240,6 +240,28 @@ namespace Ceres.Graph.Flow
         public static void PrewarmSerializedType(SerializedTypeBase serializedType)
         {
             serializedType?.GetObjectType();
+        }
+
+        public static T[] CastArray<T>(Array source)
+        {
+            if (source == null)
+            {
+                return null;
+            }
+
+            if (source.Rank != 1)
+            {
+                throw new InvalidCastException("Ceres generated runtime only supports one-dimensional array return casts.");
+            }
+
+            var result = new T[source.Length];
+            var lowerBound = source.GetLowerBound(0);
+            for (var i = 0; i < source.Length; i++)
+            {
+                result[i] = (T)source.GetValue(lowerBound + i);
+            }
+
+            return result;
         }
 
         public static IFlowExecutableProgram CreateExecutableProgram(IFlowGraphContainer container,

@@ -832,7 +832,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return false;
             }
 
-            directCall = new DirectCallInfo(declaringType, targetType, methodInfo.Name, methodInfo.ReturnType,
+            directCall = new DirectCallInfo(declaringType, targetType, methodInfo, methodInfo.ReturnType,
                 parameterTypes, false);
             return true;
         }
@@ -850,7 +850,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return false;
             }
 
-            directCall = new DirectCallInfo(declaringType, targetType, methodInfo.Name, methodInfo.ReturnType,
+            directCall = new DirectCallInfo(declaringType, targetType, methodInfo, methodInfo.ReturnType,
                 parameterTypes, true);
             return true;
         }
@@ -1075,6 +1075,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             public readonly Type TargetType;
 
+            public readonly MethodInfo MethodInfo;
+
             public readonly string MethodName;
 
             public readonly Type ReturnType;
@@ -1083,12 +1085,13 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             public readonly bool UseInvoker;
 
-            public DirectCallInfo(Type declaringType, Type targetType, string methodName, Type returnType,
+            public DirectCallInfo(Type declaringType, Type targetType, MethodInfo methodInfo, Type returnType,
                 Type[] parameterTypes, bool useInvoker)
             {
                 DeclaringType = declaringType;
                 TargetType = targetType;
-                MethodName = methodName;
+                MethodInfo = methodInfo;
+                MethodName = methodInfo.Name;
                 ReturnType = returnType;
                 ParameterTypes = parameterTypes;
                 UseInvoker = useInvoker;
@@ -2696,6 +2699,93 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                        CanAccessSharedVariable(node, out _, out _);
             }
 
+            private Type GetFunctionReturnOutputType(FlowNode_ExecuteFunctionReturn node,
+                DirectCallInfo directCall)
+            {
+                return TryGetResolveReturnSelectedType(node, directCall, out var selectedType)
+                    ? ResolveFunctionReturnType(directCall.ReturnType, selectedType)
+                    : directCall.ReturnType;
+            }
+
+            private static Type ResolveFunctionReturnType(Type declaredReturnType, Type selectedType)
+            {
+                if (declaredReturnType == null || selectedType == null)
+                {
+                    return declaredReturnType;
+                }
+
+                if (declaredReturnType.IsArray && declaredReturnType.GetArrayRank() == 1)
+                {
+                    var declaredElementType = declaredReturnType.GetElementType();
+                    return selectedType.IsAssignableTo(declaredElementType)
+                        ? selectedType.MakeArrayType()
+                        : declaredReturnType;
+                }
+
+                return selectedType.IsAssignableTo(declaredReturnType) ? selectedType : declaredReturnType;
+            }
+
+            private static bool TryGetResolveReturnSelectedType(FlowNode_ExecuteFunction node,
+                DirectCallInfo directCall, out Type selectedType)
+            {
+                selectedType = null;
+                if (!TryGetResolveReturnParameterIndex(directCall, out var parameterIndex))
+                {
+                    return false;
+                }
+
+                var portData = GetFunctionParameterPortData(node, parameterIndex);
+                if (portData?.connections?.Any(connection => !connection.isFlattened) == true)
+                {
+                    return false;
+                }
+
+                var value = portData?.GetPort(node)?.GetValue();
+                if (value is not SerializedTypeBase serializedType)
+                {
+                    return false;
+                }
+
+                selectedType = serializedType.GetObjectType();
+                return selectedType != null;
+            }
+
+            private static bool TryGetResolveReturnParameterIndex(DirectCallInfo directCall, out int parameterIndex)
+            {
+                parameterIndex = -1;
+                try
+                {
+                    var attribute = ExecutableReflection.GetFunction(directCall.MethodInfo).Attribute;
+                    if (!attribute.IsNeedResolveReturnType || attribute.ResolveReturnTypeParameter == null)
+                    {
+                        return false;
+                    }
+
+                    var parameter = attribute.ResolveReturnTypeParameter;
+                    var parameters = directCall.MethodInfo.GetParameters();
+                    if (parameter.Position >= 0 && parameter.Position < parameters.Length)
+                    {
+                        parameterIndex = parameter.Position;
+                        return true;
+                    }
+
+                    parameterIndex = Array.FindIndex(parameters, x => x.Name == parameter.Name);
+                    return parameterIndex >= 0;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            private static CeresPortData GetFunctionParameterPortData(FlowNode_ExecuteFunction node,
+                int parameterIndex)
+            {
+                return node is FlowNode_ExecuteFunctionUber
+                    ? node.NodeData.FindPortData("inputs", parameterIndex)
+                    : node.NodeData.FindPortData($"input{parameterIndex + 1}");
+            }
+
             internal void GenerateExecuteFunctionVoidLocal(FlowNode_ExecuteFunctionVoid node, string frameTypeName,
                 string frameVar, string indent)
             {
@@ -2717,8 +2807,10 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                         $"Function return node {node.Guid} can not be generated as a direct call.");
                 }
 
-                var slot = EnsureOutputSlot(node, "output", directCall.ReturnType);
-                Emit($"{indent}{frameVar}.{slot} = {BuildFunctionCallExpression(node, directCall, frameTypeName, frameVar, indent)};");
+                var outputType = GetFunctionReturnOutputType(node, directCall);
+                var slot = EnsureOutputSlot(node, "output", outputType);
+                var callExpression = BuildFunctionCallExpression(node, directCall, frameTypeName, frameVar, indent);
+                Emit($"{indent}{frameVar}.{slot} = {CastExpression(callExpression, directCall.ReturnType, outputType)};");
             }
 
             internal void GenerateGetPropertyLocal(PropertyNode_PropertyValue node, string frameTypeName,
@@ -2824,7 +2916,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     return false;
                 }
 
-                outputType = directCall.ReturnType;
+                outputType = GetFunctionReturnOutputType(node, directCall);
                 slotField = EnsureOutputSlot(node, portId, outputType);
                 return true;
             }
@@ -2995,12 +3087,42 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private static string CastExpression(string expression, Type actualType, Type expectedType)
             {
-                if (actualType == expectedType)
+                if (expectedType == null)
                 {
                     return expression;
                 }
 
+                if (actualType == expectedType || actualType != null && actualType.IsAssignableTo(expectedType))
+                {
+                    return expression;
+                }
+
+                if (CanCastArrayElements(actualType, expectedType))
+                {
+                    return $"FlowGeneratedRuntimeUtility.CastArray<{GetFriendlyTypeName(expectedType.GetElementType())}>({expression})";
+                }
+
                 return $"({GetFriendlyTypeName(expectedType)})({expression})";
+            }
+
+            private static bool CanCastArrayElements(Type actualType, Type expectedType)
+            {
+                if (actualType == null ||
+                    expectedType == null ||
+                    !actualType.IsArray ||
+                    !expectedType.IsArray ||
+                    actualType.GetArrayRank() != 1 ||
+                    expectedType.GetArrayRank() != 1)
+                {
+                    return false;
+                }
+
+                var actualElementType = actualType.GetElementType();
+                var expectedElementType = expectedType.GetElementType();
+                return actualElementType != null &&
+                       expectedElementType != null &&
+                       actualElementType != expectedElementType &&
+                       expectedElementType.IsAssignableTo(actualElementType);
             }
 
             private static string GetEventOutputExpression(string portId, string frameVar)

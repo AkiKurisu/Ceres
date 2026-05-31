@@ -110,11 +110,16 @@ namespace Ceres.Editor.Graph.Flow.Utilities
         private void RegisterMethodReturnPortValueChange()
         {
             var portView = FindPortViewWithDisplayName(CeresLabel.GetLabel(ResolveReturnTypeParameter.Name));
-            var returnPortView = FindPortView("output");
+            var returnPortView = FindReturnPortView();
+            if (portView?.FieldResolver == null || returnPortView == null)
+            {
+                return;
+            }
+
             portView.FieldResolver.RegisterValueChangeCallback(x =>
             {
-                var type = ((SerializedTypeBase)x).GetObjectType();
-                returnPortView.SetDisplayType(type ?? returnPortView.PortData.GetValueType());
+                var selectedType = (x as SerializedTypeBase)?.GetObjectType();
+                returnPortView.SetDisplayType(ResolveMethodReturnType(returnPortView, selectedType));
             });
         }
 
@@ -158,9 +163,35 @@ namespace Ceres.Editor.Graph.Flow.Utilities
         {
             if (!IsNeedResolveReturnType) return;
             var portView = FindPortViewWithDisplayName(CeresLabel.GetLabel(ResolveReturnTypeParameter.Name));
-            var returnPortView = FindPortView("output");
-            var currentType = (portView.FieldResolver.Value as SerializedTypeBase)?.GetObjectType();
-            returnPortView.SetDisplayType(currentType ?? returnPortView.PortData.GetValueType());
+            var returnPortView = FindReturnPortView();
+            if (returnPortView == null) return;
+
+            var currentType = (portView?.FieldResolver?.Value as SerializedTypeBase)?.GetObjectType();
+            returnPortView.SetDisplayType(ResolveMethodReturnType(returnPortView, currentType));
+        }
+
+        private CeresPortView FindReturnPortView()
+        {
+            return FindPortView("output") ?? FindPortView("outputs");
+        }
+
+        private Type ResolveMethodReturnType(CeresPortView returnPortView, Type selectedType)
+        {
+            var declaredReturnType = MethodInfo?.ReturnType ?? returnPortView.PortData.GetValueType();
+            if (declaredReturnType == null || selectedType == null)
+            {
+                return declaredReturnType;
+            }
+
+            if (declaredReturnType.IsArray && declaredReturnType.GetArrayRank() == 1)
+            {
+                var declaredElementType = declaredReturnType.GetElementType();
+                return selectedType.IsAssignableTo(declaredElementType)
+                    ? selectedType.MakeArrayType()
+                    : declaredReturnType;
+            }
+
+            return selectedType.IsAssignableTo(declaredReturnType) ? selectedType : declaredReturnType;
         }
 
         private void SetNodeElementTitle(string functionTitle)
