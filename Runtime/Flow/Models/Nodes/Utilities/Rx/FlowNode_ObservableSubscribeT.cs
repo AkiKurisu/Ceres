@@ -7,6 +7,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Rx")]
     [CeresLabel("Subscribe")]
+    [NodeInfo("Subscribes to an observable source and invokes the callback for each value.")]
     public class FlowNode_ObservableSubscribeT<T>: FlowNode
     {
         [InputPort(true), HideInGraphEditor]

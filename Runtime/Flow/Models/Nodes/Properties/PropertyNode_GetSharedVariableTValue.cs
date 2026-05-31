@@ -11,6 +11,7 @@ namespace Ceres.Graph.Flow.Properties
     [Serializable]
     [CeresGroup("Hidden")]
     [CeresLabel("Get {0}")]
+    [NodeInfo("Reads the selected shared variable from the graph blackboard.")]
     public sealed class PropertyNode_GetSharedVariableTValue<T, TVariableValue, TOutValue>: PropertyNode_SharedVariableValue 
         where T: SharedVariable<TVariableValue>
         where TOutValue: TVariableValue

@@ -11,6 +11,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Array")]
     [CeresLabel("For Each Loop")]
+    [NodeInfo("Iterates over each element of an object array and executes the loop body.")]
     public sealed class FlowNode_ForEachLoop: ForwardNode
     {
         [InputPort(true), HideInGraphEditor]
@@ -32,10 +33,10 @@ namespace Ceres.Graph.Flow.Utilities
                 foreach (var element in array.Value)
                 {
                     arrayElement.Value = element;
-                    await executionContext.Forward(loopBody.GetT<ExecutableNode>());
+                    await executionContext.Forward(loopBody);
                 }
             }
-            executionContext.SetNext(completed.GetT<ExecutableNode>());
+            executionContext.SetNext(completed);
         }
     }
     
@@ -50,6 +51,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Array")]
     [CeresLabel("For Each Loop")]
+    [NodeInfo("Iterates over each element of a typed array and executes the loop body.")]
     public sealed class FlowNode_ForEachLoopT<T>: FlowNode_ForEachLoopGeneric
     {
         [InputPort(true), HideInGraphEditor]
@@ -71,10 +73,10 @@ namespace Ceres.Graph.Flow.Utilities
                 foreach (var element in array.Value)
                 {
                     arrayElement.Value = element;
-                    await executionContext.Forward(loopBody.GetT<ExecutableNode>());
+                    await executionContext.Forward(loopBody);
                 }
             }
-            executionContext.SetNext(completed.GetT<ExecutableNode>());
+            executionContext.SetNext(completed);
         }
     }
 }

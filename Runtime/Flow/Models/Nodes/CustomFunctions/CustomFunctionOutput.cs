@@ -14,6 +14,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
     [Serializable]
     [CeresGroup("Hidden")]
     [CeresLabel("Function Output")]
+    [NodeInfo("Returns from a local Flow function and writes the configured output value.")]
     [CeresMetadata("style = CustomFunctionOutput")]
     public class CustomFunctionOutput: ForwardNode
     {

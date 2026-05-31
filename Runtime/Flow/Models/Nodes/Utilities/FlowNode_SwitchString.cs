@@ -2,11 +2,13 @@ using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+
 namespace Ceres.Graph.Flow.Utilities
 {
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Switch on String")]
+    [NodeInfo("Routes execution to the output matching the selected string case, or Default when enabled.")]
     public class FlowNode_SwitchString: ForwardNode, 
         ISerializationCallbackReceiver, IReadOnlyPortArrayNode
     {
@@ -36,14 +38,14 @@ namespace Ceres.Graph.Flow.Utilities
             {
                 if (settings.conditions[i] == sourceValue.Value)
                 {
-                    executionContext.SetNext(outputs[i].GetT<ExecutableNode>());
+                    executionContext.SetNext(outputs[i]);
                     return UniTask.CompletedTask;
                 }
             }
 
             if (settings.hasDefault)
             {
-                executionContext.SetNext(defaultOutput.GetT<ExecutableNode>());
+                executionContext.SetNext(defaultOutput);
             }
             return UniTask.CompletedTask;
         }

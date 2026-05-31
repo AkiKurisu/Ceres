@@ -36,6 +36,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
     [Serializable]
     [CeresGroup("Hidden")]
     [CeresLabel("Function Input")]
+    [NodeInfo("Entry node for a local Flow function. Configure input parameters in the node settings.")]
     [CeresMetadata("style = CustomFunctionInput")]
     public class CustomFunctionInput: ExecutableEvent, ISerializationCallbackReceiver, IReadOnlyPortArrayNode
     {
@@ -60,7 +61,7 @@ namespace Ceres.Graph.Flow.CustomFunctions
                     outputs[i].Value = evt.Args[i];
                 }
             }
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         }
 

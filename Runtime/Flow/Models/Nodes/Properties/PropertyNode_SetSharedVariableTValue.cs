@@ -6,6 +6,7 @@ namespace Ceres.Graph.Flow.Properties
     [Serializable]
     [CeresGroup("Hidden")]
     [CeresLabel("Set {0}")]
+    [NodeInfo("Writes the selected shared variable on the graph blackboard.")]
     [CeresMetadata("style = PropertyNode", "path = Forward")]
     public sealed class PropertyNode_SetSharedVariableTValue<T, TVariableValue, TInValue>: PropertyNode_SharedVariableValue 
         where T: SharedVariable<TVariableValue>
@@ -27,7 +28,7 @@ namespace Ceres.Graph.Flow.Properties
         {
             if (executionContext.Graph.Blackboard.GetSharedVariable(propertyName) is T variable) 
                 variable.Value = inputValue.Value;
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
             return UniTask.CompletedTask;
         } 
     }

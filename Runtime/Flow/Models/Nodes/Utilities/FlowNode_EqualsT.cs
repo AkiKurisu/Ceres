@@ -6,6 +6,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Equals")]
+    [NodeInfo("Returns true when the two input values are equal.")]
     public class FlowNode_EqualsT<T>: FlowNode
     {
         [InputPort]

@@ -16,10 +16,11 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Array")]
     [CeresLabel("Make {0} Array")]
+    [NodeInfo("Builds an array from a dynamic list of input values.")]
     [CeresMetadata("style = ConstNode", "path = Dependency", "ResolverOnly")]
     public class FlowNode_MakeArrayT<T>: FlowNode_MakeArray, ISerializationCallbackReceiver, IPortArrayNode
     {
-        [InputPort, CeresMetadata("DefaultLength = 1")]
+        [InputPort, CeresLabel("Item"), CeresMetadata("DefaultLength = 1")]
         public CeresPort<T>[] items;
         
         [HideInGraphEditor]

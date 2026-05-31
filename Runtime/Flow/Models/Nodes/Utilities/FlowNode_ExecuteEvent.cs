@@ -8,6 +8,7 @@ namespace Ceres.Graph.Flow.Utilities
     /// </summary>
     [Serializable]
     [CeresGroup("Hidden")]
+    [NodeInfo("Invokes another execution event node in the same graph.")]
     public class FlowNode_ExecuteEvent: FlowNode
     {
         [HideInGraphEditor]
@@ -16,7 +17,7 @@ namespace Ceres.Graph.Flow.Utilities
         protected override async UniTask Execute(ExecutionContext executionContext)
         {
             await executionContext.Forward((ExecutableNode)executionContext.Graph.FindNode(eventName)); 
-            executionContext.SetNext(exec.GetT<ExecutableNode>());
+            executionContext.SetNext(exec);
         }
     }
 }

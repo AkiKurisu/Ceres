@@ -9,6 +9,11 @@ For instance method, add `ExecutableFunctionAttribute` directly.
 ```C#
 public class MyComponent: Component
 {
+    /// <summary>
+    /// Runs gameplay work exposed to Flow.
+    /// </summary>
+    /// <param name="arg1">An integer argument.</param>
+    /// <param name="arg2">A float argument.</param>
     [ExecutableFunction]
     public void DoSomething(int arg1, float arg2)
     {
@@ -16,6 +21,8 @@ public class MyComponent: Component
     }
 }
 ```
+
+The graph editor uses XML comments from executable methods as function-node tooltips. Prefer concise `<summary>` text and add `<param>` / `<returns>` when the node is not self-explanatory.
 
 ## Static Function
 

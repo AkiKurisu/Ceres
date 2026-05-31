@@ -7,6 +7,7 @@ namespace Ceres.Graph.Flow.Properties
     [Serializable]
     [CeresGroup("Hidden")]
     [CeresLabel("{0}")]
+    [NodeInfo("Outputs the graph context as the selected self reference type.")]
     public class PropertyNode_GetSelfTReference<TTarget>: PropertyNode where TTarget: UObject
     {
         [OutputPort, CeresLabel("Value")]

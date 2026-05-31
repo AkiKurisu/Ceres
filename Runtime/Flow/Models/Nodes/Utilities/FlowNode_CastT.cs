@@ -1,6 +1,7 @@
 using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
+
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
@@ -11,6 +12,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Cast to {0}")]
+    [NodeInfo("Attempts to cast the source value to the selected target type, with separate success and failure execution outputs.")]
     [CeresMetadata("style = ConstNode")]
     public class FlowNode_CastT<TFrom, TTo>: ForwardNode where TTo: TFrom
     {
@@ -31,11 +33,11 @@ namespace Ceres.Graph.Flow.Utilities
             try
             {
                 resultValue.Value = (TTo)sourceValue.Value;
-                executionContext.SetNext(exec.GetT<ExecutableNode>());
+                executionContext.SetNext(exec);
             }
             catch (InvalidCastException)
             {
-                executionContext.SetNext(castFailed.GetT<ExecutableNode>());
+                executionContext.SetNext(castFailed);
             }
 
             return UniTask.CompletedTask;

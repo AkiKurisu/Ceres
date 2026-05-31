@@ -9,6 +9,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Debug")]
     [CeresLabel("Debug Log")]
+    [NodeInfo("Writes the input value to the Unity Console.")]
     public sealed class FlowNode_DebugLog: FlowNode
     {
         [InputPort]
@@ -29,6 +30,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Debug")]
     [CeresLabel("Log String")]
+    [NodeInfo("Writes a string message to the Unity Console.")]
     public sealed class FlowNode_DebugLogString: FlowNode
     {
         [InputPort]

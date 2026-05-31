@@ -11,6 +11,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Unity")]
     [CeresLabel("Instantiate {0}")]
+    [NodeInfo("Instantiates the referenced Unity object and outputs the created instance.")]
     public class FlowNode_InstantiateT<TObject>: FlowNode where TObject: UObject
     {
         [InputPort]

@@ -30,7 +30,7 @@ namespace Ceres.Editor.Graph.Flow
                 function.Documentation = new ExecutableFunction.ExecutableDocumentation(filePath, lineNumber);
             }
 
-            return function.Documentation.Summary;
+            return function.Documentation.ToString();
         }
     }
 }

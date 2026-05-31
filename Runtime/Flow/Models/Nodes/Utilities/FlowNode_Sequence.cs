@@ -2,6 +2,7 @@ using System;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+
 namespace Ceres.Graph.Flow.Utilities
 {
     /// <summary>
@@ -11,6 +12,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Sequence")]
+    [NodeInfo("Executes each connected output port in order.")]
     [CeresMetadata("style = ForwardNode", "ResolverOnly")]
     public class FlowNode_Sequence : ForwardNode, ISerializationCallbackReceiver, IPortArrayNode
     {
@@ -26,7 +28,7 @@ namespace Ceres.Graph.Flow.Utilities
             {
                 var next = output.GetT<ExecutableNode>();
                 if(next == null) continue;
-                await executionContext.Forward(output.GetT<ExecutableNode>());
+                await executionContext.Forward(output);
             }
         }
 

@@ -8,6 +8,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Load {0} Async")]
+    [NodeInfo("Asynchronously loads the soft asset reference and outputs the loaded object.")]
     public sealed class FlowNode_SoftAssetReferenceTLoadAssetAsync<TObject>: FlowNode where TObject: UObject
     {
         [InputPort(true), HideInGraphEditor]
@@ -25,6 +26,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities")]
     [CeresLabel("Load Asset Async")]
+    [NodeInfo("Asynchronously loads the soft asset reference and outputs the loaded object.")]
     [RequirePort(typeof(SoftAssetReference))]
     public sealed class FlowNode_SoftAssetReferenceLoadAssetAsync: FlowNode
     {

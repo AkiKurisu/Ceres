@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Chris.Events;
 using Cysharp.Threading.Tasks;
+using Ceres.Graph;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Pool;
@@ -32,6 +33,14 @@ namespace Ceres.Graph.Flow
         private bool _isPooled;
 
         private ExecutableNode _nextNode;
+
+        private string _nextInputPortId;
+
+        private int _nextInputPortIndex = -1;
+
+        public string CurrentInputPortId { get; private set; }
+
+        public int CurrentInputPortIndex { get; private set; } = -1;
 
 #if !CERES_DISABLE_TRACKER
         private FlowGraphTracker _tracker;
@@ -72,6 +81,15 @@ namespace Ceres.Graph.Flow
         public void SetNext(ExecutableNode node)
         {
             _nextNode = node;
+            _nextInputPortId = null;
+            _nextInputPortIndex = -1;
+        }
+
+        public void SetNext(NodePort port)
+        {
+            _nextNode = port?.GetT<ExecutableNode>();
+            _nextInputPortId = port?.GetTargetPortId();
+            _nextInputPortIndex = port?.GetTargetPortIndex() ?? -1;
         }
 
         /// <summary>
@@ -79,10 +97,14 @@ namespace Ceres.Graph.Flow
         /// </summary>
         /// <param name="nextNode"></param>
         /// <returns></returns>
-        private bool Next(out ExecutableNode nextNode)
+        private bool Next(out ExecutableNode nextNode, out string inputPortId, out int inputPortIndex)
         {
             nextNode = _nextNode;
+            inputPortId = _nextInputPortId;
+            inputPortIndex = _nextInputPortIndex;
             _nextNode = null;
+            _nextInputPortId = null;
+            _nextInputPortIndex = -1;
             return nextNode != null;
         }
 
@@ -111,10 +133,33 @@ namespace Ceres.Graph.Flow
             {
                 _cancellationToken = new CancellationToken();
             }
-            return Forward_Internal(node, _cancellationToken.Value);
+            return Forward_Internal(node, _cancellationToken.Value, null, -1);
+        }
+
+        public UniTask Forward(NodePort port)
+        {
+            return port == null
+                ? UniTask.CompletedTask
+                : Forward(port.GetT<ExecutableNode>(), port.GetTargetPortId(), port.GetTargetPortIndex());
         }
         
-        private async UniTask Forward_Internal(ExecutableNode node, CancellationToken cancellationToken)
+        private UniTask Forward(ExecutableNode node, string inputPortId, int inputPortIndex)
+        {
+            if (node == null)
+            {
+                return UniTask.CompletedTask;
+            }
+
+            _cancellationToken ??= GetCancellationToken();
+            if (_cancellationToken.Value.IsCancellationRequested && IsExecutedInOnDestroy())
+            {
+                _cancellationToken = new CancellationToken();
+            }
+            return Forward_Internal(node, _cancellationToken.Value, inputPortId, inputPortIndex);
+        }
+
+        private async UniTask Forward_Internal(ExecutableNode node, CancellationToken cancellationToken,
+            string inputPortId, int inputPortIndex)
         {
             cancellationToken.ThrowIfCancellationRequested();
             /* Execute dependency path */
@@ -124,14 +169,26 @@ namespace Ceres.Graph.Flow
 #if !CERES_DISABLE_TRACKER
             await GetTracker().EnterNode(node);
 #endif
-            await node.ExecuteNode(this);
+            var previousInputPortId = CurrentInputPortId;
+            var previousInputPortIndex = CurrentInputPortIndex;
+            CurrentInputPortId = inputPortId;
+            CurrentInputPortIndex = inputPortIndex;
+            try
+            {
+                await node.ExecuteNode(this);
+            }
+            finally
+            {
+                CurrentInputPortId = previousInputPortId;
+                CurrentInputPortIndex = previousInputPortIndex;
+            }
 #if !CERES_DISABLE_TRACKER
             await GetTracker().ExitNode(node);
 #endif
-            while (Next(out var nextNode))
+            while (Next(out var nextNode, out var nextInputPortId, out var nextInputPortIndex))
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await Forward_Internal(nextNode, cancellationToken);
+                await Forward_Internal(nextNode, cancellationToken, nextInputPortId, nextInputPortIndex);
             }
         }
         
@@ -143,7 +200,7 @@ namespace Ceres.Graph.Flow
                 /* Find dependency root in current context */
                 if(HasNodeExecuted(Graph.nodes[id].Guid)) continue;
                 var node = (ExecutableNode)Graph.nodes[id];
-                await Forward_Internal(node, cancellationToken);
+                await Forward_Internal(node, cancellationToken, null, -1);
             }
         }
 
@@ -175,6 +232,10 @@ namespace Ceres.Graph.Flow
         public void Dispose()
         {
             _nextNode = null;
+            _nextInputPortId = null;
+            _nextInputPortIndex = -1;
+            CurrentInputPortId = null;
+            CurrentInputPortIndex = -1;
             Graph.PopContext(this);
             Graph = null;
             _cancellationToken = null;

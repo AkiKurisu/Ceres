@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Ceres.Annotations;
 using Cysharp.Threading.Tasks;
@@ -12,6 +12,7 @@ namespace Ceres.Graph.Flow.Utilities
     [Serializable]
     [CeresGroup("Utilities/Array")]
     [CeresLabel("Get")]
+    [NodeInfo("Outputs the array element at the specified index.")]
     [CeresMetadata("style = ConstNode", "path = Dependency")]
     public sealed class FlowNode_GetArrayElementT<T>: ExecutableNode
     {

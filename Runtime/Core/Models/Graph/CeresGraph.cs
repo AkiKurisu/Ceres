@@ -225,11 +225,14 @@ namespace Ceres.Graph
         {
             if (port is NodePort nodePort && portData.connections.Length > 0)
             {
-                nodePort.Value = portData.connections[0].nodeId;
-                var targetNode = FindNode(portData.connections[0].nodeId);
+                var connection = portData.connections[0];
+                nodePort.Value = connection.nodeId;
+                nodePort.TargetPortId = connection.portId;
+                nodePort.TargetPortIndex = connection.portIndex;
+                var targetNode = FindNode(connection.nodeId);
                 if (targetNode == null)
                 {
-                    CeresLogger.LogWarning($"Can not find connected node [{portData.connections[0].nodeId}] from port {portData.propertyName}");
+                    CeresLogger.LogWarning($"Can not find connected node [{connection.nodeId}] from port {portData.propertyName}");
                     return;
                 }
                 /* Set WeakPtr to easier get target node in graph lifetime scope */

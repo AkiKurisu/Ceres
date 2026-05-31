@@ -252,7 +252,7 @@ Use attributes to customize node appearance and behavior:
 - `[CeresGroup("Group Name")]` - Groups nodes in the search window
 - `[CeresLabel("Display Name")]` - Custom display name
 - `[CeresMetadata("key = value")]` - Additional metadata
-- `[NodeInfo("Description")]` - Tooltip description
+- `[NodeInfo("Description")]` - Tooltip description shown by the graph editor for custom runtime nodes
 
 ## Execution Context
 
@@ -309,6 +309,8 @@ The `ExecutionContext` provides important information and methods:
    ```csharp
    [NodeInfo("Waits for the specified duration before continuing execution.")]
    ```
+
+7. **Document executable functions with XML comments** - Function nodes created from `ExecutableFunctionLibrary` methods read their tooltip from the method XML documentation. Use `<summary>`, `<param>`, and `<returns>` comments on every exposed function.
 
 ## Common Patterns
 
