@@ -1,0 +1,1443 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Reflection;
+using Ceres.Graph;
+using Ceres.Graph.Flow;
+using Ceres.Graph.Flow.CustomFunctions;
+using Ceres.Graph.Flow.Properties;
+using Ceres.Graph.Flow.Utilities;
+using Ceres.Utilities;
+using Chris.Events;
+using Chris.Serialization;
+using UnityEngine;
+using UObject = UnityEngine.Object;
+
+namespace Ceres.Editor.Graph.Flow.CodeGen
+{
+    internal static class FlowSyncIrCompiler
+    {
+        public static CsCompilationUnit TryCompile(FlowCompilationContext context)
+        {
+            var builder = new Builder(context);
+            return builder.TryCompile();
+        }
+
+        private sealed class Builder
+        {
+            private readonly FlowCompilationContext _context;
+
+            private readonly Dictionary<string, GraphVariableBinding> _graphVariableBindings = new();
+
+            private readonly Dictionary<string, SharedVariableBinding> _sharedVariableBindings = new();
+
+            private readonly Dictionary<string, LocalVariableBinding> _localVariableBindings = new();
+
+            private readonly Dictionary<FlowOutputKey, MaterializedValue> _materializedValues = new();
+
+            private readonly HashSet<string> _loweringStack = new();
+
+            private CsMethod _currentMethod;
+
+            private CsBlock _currentBlock;
+
+            private ExecutableEvent _currentEvent;
+
+            private Dictionary<string, string> _eventArgumentExpressions;
+
+            private int _tempIndex;
+
+            public Builder(FlowCompilationContext context)
+            {
+                _context = context;
+            }
+
+            public CsCompilationUnit TryCompile()
+            {
+                if (!CanCompileGraph())
+                {
+                    return null;
+                }
+
+                try
+                {
+                    var unit = CreateUnit();
+                    var model = unit.Class;
+                    foreach (var evt in _context.CompilationGraph.Events)
+                    {
+                        if (!TryCompileEvent(evt, model, out var methodName))
+                        {
+                            return null;
+                        }
+
+                        RegisterEventCase(model, evt.GetEventName(), methodName);
+                    }
+
+                    EmitFieldsAndConstructor(model);
+                    return unit;
+                }
+                catch (FlowCSharpRuntimeGenerationException ex)
+                {
+                    _context.AddDiagnostic(new FlowCompilationDiagnostic(FlowCompilationDiagnosticSeverity.Info,
+                        $"IR lowering fallback: {ex.Message}"));
+                    return null;
+                }
+            }
+
+            private bool CanCompileGraph()
+            {
+                if (_context.Graph.nodes.OfType<CustomFunctionInput>().Any() ||
+                    _context.Graph.nodes.OfType<CustomFunctionOutput>().Any())
+                {
+                    return false;
+                }
+
+                return _context.Graph.nodes.All(CanCompileNode);
+            }
+
+            private static bool CanCompileNode(CeresNode node)
+            {
+                return node switch
+                {
+                    ExecutableEvent => true,
+                    FlowNode_Sequence => true,
+                    FlowNode_Branch => true,
+                    FlowNode_DebugLog => true,
+                    FlowNode_DebugLogString => true,
+                    FlowNode_ExecuteFunctionVoid => true,
+                    FlowNode_ExecuteFunctionReturn => true,
+                    PropertyNode_PropertyValue propertyNode => CanCompilePropertyNode(propertyNode),
+                    PropertyNode_SharedVariableValue => true,
+                    PropertyNode => FlowCSharpRuntimeGenerator.TryGetSelfReferenceTargetType((PropertyNode)node, out _),
+                    _ => false
+                };
+            }
+
+            private static bool CanCompilePropertyNode(PropertyNode_PropertyValue node)
+            {
+                return FlowCSharpRuntimeGenerator.IsGenericInstance(node,
+                           typeof(PropertyNode_GetPropertyTValue<,>)) ||
+                       FlowCSharpRuntimeGenerator.IsGenericInstance(node,
+                           typeof(PropertyNode_SetPropertyTValue<,>));
+            }
+
+            private CsCompilationUnit CreateUnit()
+            {
+                var unit = new CsCompilationUnit
+                {
+                    Namespace = FlowCSharpRuntimeGenerator.GeneratedNamespace,
+                    Class = new CsClassModel
+                    {
+                        Name = _context.ClassName,
+                        BaseType = "FlowGeneratedProgram",
+                        BaseConstructorArguments = "graphData, false"
+                    }
+                };
+                unit.HeaderLines.AddRange(FlowCSharpRuntimeGenerator.GeneratedHeaderLines);
+                unit.UsingLines.AddRange(FlowCSharpRuntimeGenerator.ProgramUsingLines);
+
+                unit.Class.Methods.Add(new CsMethod
+                {
+                    Modifiers = "public override",
+                    ReturnType = typeof(bool),
+                    Name = "TryExecuteEvent"
+                });
+                var tryExecute = unit.Class.Methods[0];
+                tryExecute.Parameters.Add(new CsParameter(typeof(UObject), "contextObject"));
+                tryExecute.Parameters.Add(new CsParameter(typeof(string), "eventName"));
+                unit.Class.RawMembers.Add("__CERES_EVENT_SWITCH_CASES__");
+                return unit;
+            }
+
+            private void RegisterEventCase(CsClassModel model, string eventName, string methodName)
+            {
+                var @case =
+                    $"            case \"{FlowCSharpRuntimeGenerator.Escape(eventName)}\":\n" +
+                    "            {\n" +
+                    $"                {methodName}(contextObject, evtBase);\n" +
+                    "                return true;\n" +
+                    "            }";
+                var cases = model.RawMembers[0];
+                model.RawMembers[0] = cases == "__CERES_EVENT_SWITCH_CASES__" ? @case : cases + "\n" + @case;
+            }
+
+            private void CompleteTryExecuteMethod(CsClassModel model)
+            {
+                var cases = model.RawMembers.Count == 0 ? string.Empty : model.RawMembers[0];
+                model.RawMembers.Clear();
+                var method = model.Methods.First(x => x.Name == "TryExecuteEvent");
+                method.Parameters.Clear();
+                method.Parameters.Add(new CsParameter(typeof(UObject), "contextObject"));
+                method.Parameters.Add(new CsParameter(typeof(string), "eventName"));
+                method.Parameters.Add(new CsParameter(typeof(EventBase), "evtBase = null"));
+                method.Body.AddRaw("switch (eventName)\n{");
+                method.Body.AddRaw(cases);
+                method.Body.AddRaw("            default:\n                return false;\n        }");
+            }
+
+            private bool TryCompileEvent(ExecutableEvent evt, CsClassModel model, out string methodName)
+            {
+                methodName =
+                    $"Execute_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(evt.GetEventName())}_{SafeGuid(evt.Guid)}";
+                _currentEvent = evt;
+                _eventArgumentExpressions = BuildEventArgumentExpressions(evt);
+                if (_eventArgumentExpressions == null)
+                {
+                    return false;
+                }
+
+                _tempIndex = 0;
+                _materializedValues.Clear();
+                _loweringStack.Clear();
+
+                _currentMethod = new CsMethod
+                {
+                    Name = methodName,
+                    ReturnType = typeof(void)
+                };
+                _currentMethod.Parameters.Add(new CsParameter(typeof(UObject), "contextObject"));
+                _currentMethod.Parameters.Add(new CsParameter(typeof(EventBase), "evtBase"));
+                _currentBlock = new CsBlock();
+
+                foreach (var statement in BuildEventArgumentStatements(evt))
+                {
+                    _currentBlock.Add(statement);
+                }
+
+                _currentBlock.Add(new CsRawStatement("PushExecutionContext(contextObject);"));
+                LowerForwardConnection(_context.CompilationGraph.GetExecConnection(evt, "exec"));
+
+                var tryFinally = new CsTryFinallyStatement();
+                foreach (var statement in _currentBlock.Statements)
+                {
+                    tryFinally.Try.Add(statement);
+                }
+
+                tryFinally.Finally.Add(new CsRawStatement("PopExecutionContext(contextObject);"));
+                _currentMethod.Body.Add(tryFinally);
+                model.Methods.Add(_currentMethod);
+                _currentEvent = null;
+                _eventArgumentExpressions = null;
+                _currentMethod = null;
+                _currentBlock = null;
+                return true;
+            }
+
+            private Dictionary<string, string> BuildEventArgumentExpressions(ExecutableEvent evt)
+            {
+                if (evt is ExecutionEventUber)
+                {
+                    return null;
+                }
+
+                if (evt is CustomExecutionEvent)
+                {
+                    return new Dictionary<string, string>();
+                }
+
+                var result = new Dictionary<string, string>();
+                if (evt is not ExecutionEventGeneric || !evt.GetType().IsGenericType)
+                {
+                    return result;
+                }
+
+                var arguments = evt.GetType().GetGenericArguments();
+                for (var i = 0; i < arguments.Length; i++)
+                {
+                    result[$"output{i + 1}"] = $"flowEvent.Arg{i + 1}";
+                }
+
+                return result;
+            }
+
+            private IEnumerable<CsStatement> BuildEventArgumentStatements(ExecutableEvent evt)
+            {
+                if (evt is not ExecutionEventGeneric || !evt.GetType().IsGenericType)
+                {
+                    yield break;
+                }
+
+                var arguments = evt.GetType().GetGenericArguments();
+                var eventType = $"ExecuteFlowEvent<{string.Join(", ", arguments.Select(FlowCSharpRuntimeGenerator.GetFriendlyTypeName))}>";
+                yield return new CsRawStatement($"var flowEvent = ({eventType})evtBase;");
+            }
+
+            private void EmitFieldsAndConstructor(CsClassModel model)
+            {
+                foreach (var binding in _sharedVariableBindings.Values)
+                {
+                    model.Fields.Add(new CsField("private readonly", binding.VariableType, binding.FieldName));
+                    model.ConstructorBody.AddRaw(
+                        $"{binding.FieldName} = FlowGeneratedRuntimeUtility.GetRequiredSharedVariable<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(binding.VariableType)}>(Blackboard, \"{FlowCSharpRuntimeGenerator.Escape(binding.VariableName)}\");");
+                }
+
+                foreach (var binding in _localVariableBindings.Values)
+                {
+                    model.Fields.Add(new CsField("private", binding.StorageType, binding.FieldName));
+                    model.ConstructorBody.AddRaw($"{binding.FieldName} = {binding.InitializerExpression};");
+                }
+
+                model.BaseConstructorArguments =
+                    _sharedVariableBindings.Count > 0 ? "graphData, true" : "graphData, false";
+                CompleteTryExecuteMethod(model);
+            }
+
+            private void LowerForwardConnection(FlowConnection connection)
+            {
+                if (connection.IsValid)
+                {
+                    LowerForwardNode(connection.Node);
+                }
+            }
+
+            private void LowerForwardNode(CeresNode node)
+            {
+                if (!_loweringStack.Add(node.Guid))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Execution cycle is not supported by optimized sync lowering ({node.Guid}).");
+                }
+
+                try
+                {
+                    switch (node)
+                    {
+                        case FlowNode_Sequence sequence:
+                            foreach (var next in _context.CompilationGraph.GetExecConnections(sequence, "outputs"))
+                            {
+                                LowerForwardConnection(next);
+                            }
+                            break;
+                        case FlowNode_Branch branch:
+                            LowerBranch(branch);
+                            break;
+                        case FlowNode_DebugLog debugLog:
+                            LowerDebugLog(debugLog);
+                            break;
+                        case FlowNode_DebugLogString debugLogString:
+                            LowerDebugLogString(debugLogString);
+                            break;
+                        case FlowNode_ExecuteFunctionVoid functionVoid:
+                            LowerFunctionVoid(functionVoid);
+                            break;
+                        case FlowNode_ExecuteFunctionReturn functionReturn:
+                            LowerFunctionReturnForward(functionReturn);
+                            break;
+                        case PropertyNode_PropertyValue propertyNode
+                            when FlowCSharpRuntimeGenerator.IsGenericInstance(propertyNode,
+                                typeof(PropertyNode_SetPropertyTValue<,>)):
+                            LowerSetProperty(propertyNode);
+                            break;
+                        case PropertyNode_SharedVariableValue sharedNode
+                            when FlowCSharpRuntimeGenerator.IsGenericInstance(sharedNode,
+                                typeof(PropertyNode_SetSharedVariableTValue<,,>)):
+                            LowerSetSharedVariable(sharedNode);
+                            break;
+                        default:
+                            throw new FlowCSharpRuntimeGenerationException(
+                                $"Node {node.GetType().Name} ({node.Guid}) is not supported by optimized sync lowering.");
+                    }
+                }
+                finally
+                {
+                    _loweringStack.Remove(node.Guid);
+                }
+            }
+
+            private void LowerBranch(FlowNode_Branch node)
+            {
+                var condition = LowerInput(node, "condition", typeof(bool));
+                var statement = new CsIfStatement(condition);
+                var previous = _currentBlock;
+                _currentBlock = statement.Then;
+                LowerForwardConnection(_context.CompilationGraph.GetExecConnection(node, "trueOutput"));
+                _currentBlock = statement.Else;
+                LowerForwardConnection(_context.CompilationGraph.GetExecConnection(node, "falseOutput"));
+                _currentBlock = previous;
+                _currentBlock.Add(statement);
+            }
+
+            private void LowerDebugLog(FlowNode_DebugLog node)
+            {
+                var message = LowerInput(node, "message", typeof(object));
+                _currentBlock.AddRaw($"Debug.unityLogger.Log(LogType.{node.logType}, {message.Code}, contextObject);");
+                LowerDefaultNext(node);
+            }
+
+            private void LowerDebugLogString(FlowNode_DebugLogString node)
+            {
+                var message = LowerInput(node, "inString", typeof(string));
+                _currentBlock.AddRaw($"Debug.unityLogger.Log(LogType.{node.logType}, {message.Code}, contextObject);");
+                LowerDefaultNext(node);
+            }
+
+            private void LowerFunctionVoid(FlowNode_ExecuteFunctionVoid node)
+            {
+                var expression = BuildFunctionCallExpression(node, out _);
+                _currentBlock.Add(new CsExpressionStatement(expression));
+                LowerDefaultNext(node);
+            }
+
+            private void LowerFunctionReturnForward(FlowNode_ExecuteFunctionReturn node)
+            {
+                if (_context.CompilationGraph.GetConsumerCount(node, "output") > 0 ||
+                    IsImpureFunction(node))
+                {
+                    MaterializeOutput(node, "output", BuildFunctionReturnExpression(node));
+                }
+
+                LowerDefaultNext(node);
+            }
+
+            private void LowerSetProperty(PropertyNode_PropertyValue node)
+            {
+                if (!FlowCSharpRuntimeGenerator.CanDirectSetProperty(node, out var propertyCall))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Property setter node {node.Guid} can not be generated as a direct call.");
+                }
+
+                var target = BuildPropertyTargetExpression(node, propertyCall);
+                var value = LowerInput(node, "inputValue", propertyCall.PropertyType);
+                _currentBlock.AddRaw($"{target}.{EscapeIdentifier(propertyCall.PropertyName)} = {value.Code};");
+                LowerDefaultNext(node);
+            }
+
+            private void LowerSetSharedVariable(PropertyNode_SharedVariableValue node)
+            {
+                if (!FlowCSharpRuntimeGenerator.CanAccessSharedVariable(node, out var variableType,
+                        out var variableValueType, out var portValueType))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Shared variable setter node {node.Guid} can not be generated.");
+                }
+
+                var binding = GetGraphVariableBinding(node.propertyName, variableType, variableValueType);
+                var value = LowerInput(node, "inputValue", portValueType);
+                if (binding.IsLocal)
+                {
+                    _currentBlock.AddRaw($"{binding.FieldName} = {CastExpression(value.Code, portValueType, binding.StorageType)};");
+                }
+                else
+                {
+                    _currentBlock.AddRaw(
+                        $"if ({binding.FieldName} != null)\n{{\n    {binding.FieldName}.Value = {value.Code};\n}}");
+                }
+
+                LowerDefaultNext(node);
+            }
+
+            private void LowerDefaultNext(CeresNode node)
+            {
+                LowerForwardConnection(_context.CompilationGraph.GetExecConnection(node, "exec"));
+            }
+
+            private CsExpression LowerInput(CeresNode node, string propertyName, Type expectedType)
+            {
+                return LowerInput(node, propertyName, -1, expectedType);
+            }
+
+            private CsExpression LowerInput(CeresNode node, string propertyName, int arrayIndex, Type expectedType)
+            {
+                if (_context.CompilationGraph.TryGetInputConnection(node, propertyName, arrayIndex,
+                        out var connection))
+                {
+                    return LowerValueConnection(connection, expectedType);
+                }
+
+                var portData = arrayIndex < 0
+                    ? node.NodeData.FindPortData(propertyName)
+                    : node.NodeData.FindPortData(propertyName, arrayIndex);
+                var value = portData?.GetPort(node)?.GetValue();
+                return new CsExpression(ToLiteral(value, expectedType), expectedType);
+            }
+
+            private CsExpression LowerValueConnection(FlowConnection connection, Type expectedType)
+            {
+                if (connection.Node is ExecutableEvent evt)
+                {
+                    return LowerEventOutput(evt, connection.PortId, expectedType);
+                }
+
+                var expression = BuildValueExpression(connection.Node, connection.PortId);
+                return CastExpression(expression, expectedType);
+            }
+
+            private CsExpression LowerEventOutput(ExecutableEvent evt, string portId, Type expectedType)
+            {
+                if (evt != _currentEvent)
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Cross-event value reads are not supported by optimized sync lowering ({evt.Guid}).");
+                }
+
+                if (!_eventArgumentExpressions.TryGetValue(portId, out var expression))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Event output {evt.GetType().Name}.{portId} is not supported by optimized sync lowering.");
+                }
+
+                return new CsExpression(CastExpression(expression, null, expectedType), expectedType);
+            }
+
+            private CsExpression BuildValueExpression(CeresNode node, string portId)
+            {
+                var key = new FlowOutputKey(node.Guid, portId, -1);
+                if (_materializedValues.TryGetValue(key, out var materialized))
+                {
+                    return new CsExpression(materialized.LocalName, materialized.Type,
+                        materialized.Purity, true, false);
+                }
+
+                CsExpression expression;
+                switch (node)
+                {
+                    case FlowNode_ExecuteFunctionReturn functionReturn when portId == "output":
+                        expression = BuildFunctionReturnExpression(functionReturn);
+                        break;
+                    case PropertyNode_PropertyValue propertyNode
+                        when portId == "outputValue" &&
+                             FlowCSharpRuntimeGenerator.IsGenericInstance(propertyNode,
+                                 typeof(PropertyNode_GetPropertyTValue<,>)):
+                        expression = BuildGetPropertyExpression(propertyNode);
+                        break;
+                    case PropertyNode propertyNode
+                        when portId == "outputValue" &&
+                             FlowCSharpRuntimeGenerator.TryGetSelfReferenceTargetType(propertyNode,
+                                 out var targetType):
+                        expression = new CsExpression($"({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(targetType)})contextObject",
+                            targetType);
+                        break;
+                    case PropertyNode_SharedVariableValue sharedNode
+                        when portId == "outputValue" &&
+                             FlowCSharpRuntimeGenerator.IsGenericInstance(sharedNode,
+                                 typeof(PropertyNode_GetSharedVariableTValue<,,>)):
+                        expression = BuildGetSharedVariableExpression(sharedNode);
+                        break;
+                    default:
+                        throw new FlowCSharpRuntimeGenerationException(
+                            $"Value node {node.GetType().Name}.{portId} ({node.Guid}) is not supported by optimized sync lowering.");
+                }
+
+                return ShouldMaterialize(node, portId, expression)
+                    ? MaterializeOutput(node, portId, expression)
+                    : expression;
+            }
+
+            private CsExpression BuildFunctionReturnExpression(FlowNode_ExecuteFunctionReturn node)
+            {
+                var expression = BuildFunctionCallExpression(node, out var directCall);
+                var outputType = GetFunctionReturnOutputType(node, directCall);
+                return CastExpression(expression, outputType);
+            }
+
+            private CsExpression BuildFunctionCallExpression(FlowNode_ExecuteFunction node,
+                out FlowCSharpRuntimeGenerator.DirectCallInfo directCall)
+            {
+                if (!FlowCSharpRuntimeGenerator.CanGeneratedCall(node, out directCall) ||
+                    directCall.UseInvoker)
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Function node {node.Guid} can not be generated as a direct optimized call.");
+                }
+
+                var useDirectSerializedType =
+                    TryGetDirectSerializedTypeArgument(node, directCall, out var directSerializedTypeArgument) &&
+                    CanBuildDirectSerializedTypeFunctionExpression(directCall, directSerializedTypeArgument);
+                var arguments = new List<string>();
+                for (var i = 0; i < directCall.ParameterTypes.Length; i++)
+                {
+                    if (useDirectSerializedType && i == directSerializedTypeArgument.ParameterIndex)
+                    {
+                        arguments.Add(null);
+                        continue;
+                    }
+
+                    var expression = LowerInput(node, $"input{i + 1}", directCall.ParameterTypes[i]);
+                    var argumentExpression = expression.Code;
+                    if (node.isStatic && node.isSelfTarget && i == 0)
+                    {
+                        argumentExpression =
+                            $"FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(directCall.ParameterTypes[i])}>(true, {argumentExpression}, contextObject)";
+                    }
+
+                    arguments.Add($"({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(directCall.ParameterTypes[i])})({argumentExpression})");
+                }
+
+                if (useDirectSerializedType &&
+                    TryBuildDirectSerializedTypeFunctionExpression(directCall, directSerializedTypeArgument,
+                        arguments, out var directSerializedTypeExpression))
+                {
+                    return CreateCallExpression(directSerializedTypeExpression, directCall);
+                }
+
+                if (node.isStatic && TryBuildIntrinsicFunctionExpression(directCall, arguments, out var intrinsic))
+                {
+                    return CreateCallExpression(intrinsic, directCall);
+                }
+
+                if (node.isStatic)
+                {
+                    return CreateCallExpression(
+                        $"{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(directCall.DeclaringType)}.{EscapeIdentifier(directCall.MethodName)}({string.Join(", ", arguments)})",
+                        directCall);
+                }
+
+                var targetExpression = LowerInput(node, "target", directCall.TargetType).Code;
+                targetExpression =
+                    $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(directCall.TargetType)}>(false, {node.isSelfTarget.ToString().ToLowerInvariant()}, {targetExpression}, contextObject)";
+                return CreateCallExpression(
+                    $"{targetExpression}.{EscapeIdentifier(directCall.MethodName)}({string.Join(", ", arguments)})",
+                    directCall);
+            }
+
+            private static CsExpression CreateCallExpression(string code,
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall)
+            {
+                return new CsExpression(code, directCall.ReturnType, ClassifyFunctionPurity(directCall),
+                    CanInlineFunction(directCall), !CanInlineFunction(directCall));
+            }
+
+            private static CsExpressionPurity ClassifyFunctionPurity(
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall)
+            {
+                if (directCall.DeclaringType == typeof(UnityExecutableLibrary))
+                {
+                    if (TryBuildUnityTimeExpression(directCall, out _))
+                    {
+                        return CsExpressionPurity.PerEventStable;
+                    }
+
+                    if (directCall.MethodName is "Flow_RandomRange" or "Flow_RandomRangeInt")
+                    {
+                        return CsExpressionPurity.Impure;
+                    }
+
+                    if (directCall.MethodName.Contains("GetComponent", StringComparison.Ordinal) ||
+                        directCall.MethodName == "Flow_FindObjectOfType")
+                    {
+                        return CsExpressionPurity.CachePerEvent;
+                    }
+                }
+
+                if (directCall.DeclaringType == typeof(MathExecutableLibrary))
+                {
+                    return CsExpressionPurity.Pure;
+                }
+
+                return directCall.MethodInfo.GetCustomAttribute<System.Diagnostics.Contracts.PureAttribute>() != null
+                    ? CsExpressionPurity.Pure
+                    : CsExpressionPurity.Impure;
+            }
+
+            private static bool CanInlineFunction(FlowCSharpRuntimeGenerator.DirectCallInfo directCall)
+            {
+                return ClassifyFunctionPurity(directCall) is CsExpressionPurity.Pure or CsExpressionPurity.PerEventStable;
+            }
+
+            private bool ShouldMaterialize(CeresNode node, string portId, CsExpression expression)
+            {
+                return expression.RequiresMaterialization ||
+                       expression.Purity is CsExpressionPurity.Impure or CsExpressionPurity.CachePerEvent ||
+                       _context.CompilationGraph.GetConsumerCount(node, portId) > 1;
+            }
+
+            private CsExpression MaterializeOutput(CeresNode node, string portId, CsExpression expression)
+            {
+                var key = new FlowOutputKey(node.Guid, portId, -1);
+                if (_materializedValues.TryGetValue(key, out var existing))
+                {
+                    return new CsExpression(existing.LocalName, existing.Type, existing.Purity);
+                }
+
+                var localName =
+                    $"value_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(portId)}_{SafeGuid(node.Guid)}_{_tempIndex++}";
+                _currentBlock.Add(new CsDeclarationStatement(expression.Type, localName, expression));
+                var materialized = new MaterializedValue(localName, expression.Type, expression.Purity);
+                _materializedValues.Add(key, materialized);
+                return new CsExpression(localName, expression.Type, expression.Purity);
+            }
+
+            private CsExpression BuildGetPropertyExpression(PropertyNode_PropertyValue node)
+            {
+                if (!FlowCSharpRuntimeGenerator.CanDirectGetProperty(node, out var propertyCall))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Property getter node {node.Guid} can not be generated as a direct call.");
+                }
+
+                var target = BuildPropertyTargetExpression(node, propertyCall);
+                return new CsExpression($"{target}.{EscapeIdentifier(propertyCall.PropertyName)}",
+                    propertyCall.PropertyType, CsExpressionPurity.CachePerEvent, false, true);
+            }
+
+            private string BuildPropertyTargetExpression(PropertyNode_PropertyValue node,
+                FlowCSharpRuntimeGenerator.PropertyCallInfo propertyCall)
+            {
+                if (node.isStatic)
+                {
+                    return FlowCSharpRuntimeGenerator.GetFriendlyTypeName(propertyCall.DeclaringType);
+                }
+
+                var targetExpression = LowerInput(node, "target", propertyCall.TargetType).Code;
+                return
+                    $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(propertyCall.TargetType)}>(false, {node.isSelfTarget.ToString().ToLowerInvariant()}, {targetExpression}, contextObject)";
+            }
+
+            private CsExpression BuildGetSharedVariableExpression(PropertyNode_SharedVariableValue node)
+            {
+                if (!FlowCSharpRuntimeGenerator.CanAccessSharedVariable(node, out var variableType,
+                        out var variableValueType, out var portValueType))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Shared variable getter node {node.Guid} can not be generated.");
+                }
+
+                var binding = GetGraphVariableBinding(node.propertyName, variableType, variableValueType);
+                if (binding.IsLocal)
+                {
+                    return new CsExpression(CastExpression(binding.FieldName, binding.StorageType, portValueType),
+                        portValueType, CsExpressionPurity.CachePerEvent, true, false);
+                }
+
+                var sharedValue = $"{binding.FieldName}.Value";
+                return new CsExpression(
+                    $"({binding.FieldName} != null ? {CastExpression(sharedValue, binding.StorageType, portValueType)} : default({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(portValueType)}))",
+                    portValueType, CsExpressionPurity.CachePerEvent, false, true);
+            }
+
+            private GraphVariableBinding GetGraphVariableBinding(string variableName, Type variableType,
+                Type variableValueType)
+            {
+                var key = $"{variableType.FullName}:{variableName}";
+                if (_graphVariableBindings.TryGetValue(key, out var binding))
+                {
+                    return binding;
+                }
+
+                if (TryCreateLocalGraphVariableBinding(variableName, variableType, variableValueType,
+                        out var localBinding))
+                {
+                    binding = GraphVariableBinding.FromLocal(localBinding);
+                }
+                else
+                {
+                    binding = GraphVariableBinding.FromShared(GetOrCreateSharedVariableBinding(variableName,
+                        variableType));
+                }
+
+                _graphVariableBindings.Add(key, binding);
+                return binding;
+            }
+
+            private bool TryCreateLocalGraphVariableBinding(string variableName, Type variableType,
+                Type variableValueType, out LocalVariableBinding binding)
+            {
+                binding = default;
+                if (_context.Options.VariableStorageMode != FlowGeneratedRuntimeVariableStorageMode.LocalFieldsForUnshared ||
+                    !TryFindGraphVariable(variableName, variableType, out var variable) ||
+                    variable.IsShared ||
+                    variable.IsGlobal ||
+                    !TryGetLocalVariableStorageType(variable, variableValueType, out var storageType))
+                {
+                    return false;
+                }
+
+                var key = $"graph:{variableType.FullName}:{variableName}";
+                if (_localVariableBindings.TryGetValue(key, out binding))
+                {
+                    return true;
+                }
+
+                binding = new LocalVariableBinding(
+                    $"_local_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(variableName)}_{_localVariableBindings.Count}",
+                    storageType,
+                    $"FlowGeneratedRuntimeUtility.GetLocalVariableValue<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(variableType)}, {FlowCSharpRuntimeGenerator.GetFriendlyTypeName(storageType)}>(graphData, \"{FlowCSharpRuntimeGenerator.Escape(variableName)}\")");
+                _localVariableBindings.Add(key, binding);
+                return true;
+            }
+
+            private bool TryFindGraphVariable(string variableName, Type variableType, out SharedVariable variable)
+            {
+                variable = null;
+                if (string.IsNullOrEmpty(variableName) || _context.Graph.variables == null)
+                {
+                    return false;
+                }
+
+                foreach (var candidate in _context.Graph.variables)
+                {
+                    if (candidate == null ||
+                        !string.Equals(candidate.Name, variableName, StringComparison.Ordinal) ||
+                        !variableType.IsInstanceOfType(candidate))
+                    {
+                        continue;
+                    }
+
+                    variable = candidate;
+                    return true;
+                }
+
+                return false;
+            }
+
+            private static bool TryGetLocalVariableStorageType(SharedVariable variable, Type variableValueType,
+                out Type storageType)
+            {
+                storageType = null;
+                if (variable == null || variableValueType == null ||
+                    !FlowCSharpRuntimeGenerator.IsVisibleType(variableValueType))
+                {
+                    return false;
+                }
+
+                var resolvedType = variable.GetValueType();
+                if (resolvedType != null &&
+                    resolvedType != typeof(object) &&
+                    resolvedType.IsAssignableTo(variableValueType) &&
+                    FlowCSharpRuntimeGenerator.IsVisibleType(resolvedType))
+                {
+                    storageType = resolvedType;
+                    return true;
+                }
+
+                storageType = variableValueType;
+                return true;
+            }
+
+            private SharedVariableBinding GetOrCreateSharedVariableBinding(string variableName, Type variableType)
+            {
+                var key = $"{variableType.FullName}:{variableName}";
+                if (_sharedVariableBindings.TryGetValue(key, out var binding))
+                {
+                    return binding;
+                }
+
+                binding = new SharedVariableBinding(variableName, variableType,
+                    $"_shared_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(variableName)}_{_sharedVariableBindings.Count}");
+                _sharedVariableBindings.Add(key, binding);
+                return binding;
+            }
+
+            private Type GetFunctionReturnOutputType(FlowNode_ExecuteFunctionReturn node,
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall)
+            {
+                return TryGetResolveReturnSelectedType(node, directCall, out var selectedType)
+                    ? ResolveFunctionReturnType(directCall.ReturnType, selectedType)
+                    : directCall.ReturnType;
+            }
+
+            private static Type ResolveFunctionReturnType(Type declaredReturnType, Type selectedType)
+            {
+                if (declaredReturnType == null || selectedType == null)
+                {
+                    return declaredReturnType;
+                }
+
+                if (declaredReturnType.IsArray && declaredReturnType.GetArrayRank() == 1)
+                {
+                    var declaredElementType = declaredReturnType.GetElementType();
+                    return selectedType.IsAssignableTo(declaredElementType)
+                        ? selectedType.MakeArrayType()
+                        : declaredReturnType;
+                }
+
+                return selectedType.IsAssignableTo(declaredReturnType) ? selectedType : declaredReturnType;
+            }
+
+            private static bool TryGetResolveReturnSelectedType(FlowNode_ExecuteFunction node,
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall, out Type selectedType)
+            {
+                selectedType = null;
+                if (!TryGetResolveReturnParameterIndex(directCall, out var parameterIndex))
+                {
+                    return false;
+                }
+
+                var portData = GetFunctionParameterPortData(node, parameterIndex);
+                if (portData?.connections?.Any(connection => !connection.isFlattened) == true)
+                {
+                    return false;
+                }
+
+                if (portData?.GetPort(node)?.GetValue() is not SerializedTypeBase serializedType)
+                {
+                    return false;
+                }
+
+                selectedType = serializedType.GetObjectType();
+                return selectedType != null;
+            }
+
+            private static bool TryGetResolveReturnParameterIndex(
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall, out int parameterIndex)
+            {
+                parameterIndex = -1;
+                try
+                {
+                    var attribute = ExecutableReflection.GetFunction(directCall.MethodInfo).Attribute;
+                    if (!attribute.IsNeedResolveReturnType || attribute.ResolveReturnTypeParameter == null)
+                    {
+                        return false;
+                    }
+
+                    var parameter = attribute.ResolveReturnTypeParameter;
+                    var parameters = directCall.MethodInfo.GetParameters();
+                    if (parameter.Position >= 0 && parameter.Position < parameters.Length)
+                    {
+                        parameterIndex = parameter.Position;
+                        return true;
+                    }
+
+                    parameterIndex = Array.FindIndex(parameters, x => x.Name == parameter.Name);
+                    return parameterIndex >= 0;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            private bool TryGetDirectSerializedTypeArgument(FlowNode_ExecuteFunction node,
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall, out DirectSerializedTypeArgument argument)
+            {
+                argument = default;
+                if (_context.Options.SerializedTypeMode != FlowGeneratedRuntimeSerializedTypeMode.DirectType ||
+                    directCall.UseInvoker ||
+                    !TryGetResolveReturnParameterIndex(directCall, out var parameterIndex) ||
+                    parameterIndex < 0 ||
+                    parameterIndex >= directCall.ParameterTypes.Length ||
+                    !IsSerializedType(directCall.ParameterTypes[parameterIndex]) ||
+                    !TryGetSerializedTypeConstraint(directCall.ParameterTypes[parameterIndex], out var constraintType))
+                {
+                    return false;
+                }
+
+                var portData = GetFunctionParameterPortData(node, parameterIndex);
+                if (portData?.connections?.Any(connection => !connection.isFlattened) == true)
+                {
+                    return false;
+                }
+
+                if (portData?.GetPort(node)?.GetValue() is not SerializedTypeBase serializedType)
+                {
+                    return false;
+                }
+
+                var selectedType = serializedType.GetObjectType();
+                if (selectedType == null ||
+                    !selectedType.IsAssignableTo(constraintType) ||
+                    !FlowCSharpRuntimeGenerator.IsVisibleType(selectedType))
+                {
+                    return false;
+                }
+
+                argument = new DirectSerializedTypeArgument(parameterIndex, selectedType);
+                return true;
+            }
+
+            private static CeresPortData GetFunctionParameterPortData(FlowNode_ExecuteFunction node,
+                int parameterIndex)
+            {
+                return node is FlowNode_ExecuteFunctionUber
+                    ? node.NodeData.FindPortData("inputs", parameterIndex)
+                    : node.NodeData.FindPortData($"input{parameterIndex + 1}");
+            }
+
+            private static bool IsSerializedType(Type type)
+            {
+                while (type != null)
+                {
+                    if (type.IsGenericType &&
+                        type.GetGenericTypeDefinition() == typeof(SerializedType<>))
+                    {
+                        return true;
+                    }
+
+                    type = type.BaseType;
+                }
+
+                return false;
+            }
+
+            private static bool TryGetSerializedTypeConstraint(Type type, out Type constraintType)
+            {
+                constraintType = null;
+                while (type != null)
+                {
+                    if (type.IsGenericType &&
+                        type.GetGenericTypeDefinition() == typeof(SerializedType<>))
+                    {
+                        constraintType = type.GetGenericArguments()[0];
+                        return true;
+                    }
+
+                    type = type.BaseType;
+                }
+
+                return false;
+            }
+
+            private static bool CanBuildDirectSerializedTypeFunctionExpression(
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall,
+                DirectSerializedTypeArgument typeArgument)
+            {
+                if (directCall.DeclaringType == typeof(UnityExecutableLibrary))
+                {
+                    return directCall.MethodName is
+                        "Flow_FindObjectOfType" or
+                        "Flow_GameObjectGetComponent" or
+                        "Flow_GameObjectGetComponentInChildren" or
+                        "Flow_GameObjectGetComponentInParent" or
+                        "Flow_GameObjectGetComponents" or
+                        "Flow_GameObjectGetComponentsInChildren" or
+                        "Flow_GameObjectGetComponentsInParent" or
+                        "Flow_GameObjectAddComponent" or
+                        "Flow_GameObjectGetOrAddComponent" or
+                        "Flow_ComponentGetComponent" or
+                        "Flow_ComponentGetComponentInChildren" or
+                        "Flow_ComponentGetComponentInParent" or
+                        "Flow_ComponentGetComponents" or
+                        "Flow_ComponentGetComponentsInChildren" or
+                        "Flow_ComponentGetComponentsInParent";
+                }
+
+                if (directCall.DeclaringType == typeof(DataDrivenExecutableLibrary))
+                {
+                    return directCall.MethodName switch
+                    {
+                        "Flow_GetDataTableManager" => true,
+                        "Flow_DataTableGetRow" or "Flow_DataTableGetRowByIndex" =>
+                            !typeArgument.SelectedType.IsValueType,
+                        _ => false
+                    };
+                }
+
+                return false;
+            }
+
+            private static bool TryBuildDirectSerializedTypeFunctionExpression(
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall,
+                DirectSerializedTypeArgument typeArgument, IReadOnlyList<string> arguments, out string expression)
+            {
+                expression = null;
+                var typeName = FlowCSharpRuntimeGenerator.GetFriendlyTypeName(typeArgument.SelectedType);
+
+                if (directCall.DeclaringType == typeof(UnityExecutableLibrary))
+                {
+                    expression = directCall.MethodName switch
+                    {
+                        "Flow_FindObjectOfType" =>
+                            $"FlowGeneratedRuntimeUtility.FindObjectOfType<{typeName}>()",
+                        "Flow_GameObjectGetComponent" =>
+                            $"{arguments[0]}.GetComponent<{typeName}>()",
+                        "Flow_GameObjectGetComponentInChildren" =>
+                            $"{arguments[0]}.GetComponentInChildren<{typeName}>()",
+                        "Flow_GameObjectGetComponentInParent" =>
+                            $"{arguments[0]}.GetComponentInParent<{typeName}>()",
+                        "Flow_GameObjectGetComponents" =>
+                            $"{arguments[0]}.GetComponents<{typeName}>()",
+                        "Flow_GameObjectGetComponentsInChildren" =>
+                            $"{arguments[0]}.GetComponentsInChildren<{typeName}>()",
+                        "Flow_GameObjectGetComponentsInParent" =>
+                            $"{arguments[0]}.GetComponentsInParent<{typeName}>()",
+                        "Flow_GameObjectAddComponent" =>
+                            $"{arguments[0]}.AddComponent<{typeName}>()",
+                        "Flow_GameObjectGetOrAddComponent" =>
+                            $"FlowGeneratedRuntimeUtility.GetOrAddComponent<{typeName}>({arguments[0]})",
+                        "Flow_ComponentGetComponent" =>
+                            $"{arguments[0]}.GetComponent<{typeName}>()",
+                        "Flow_ComponentGetComponentInChildren" =>
+                            $"{arguments[0]}.GetComponentInChildren<{typeName}>()",
+                        "Flow_ComponentGetComponentInParent" =>
+                            $"{arguments[0]}.GetComponentInParent<{typeName}>()",
+                        "Flow_ComponentGetComponents" =>
+                            $"{arguments[0]}.GetComponents<{typeName}>()",
+                        "Flow_ComponentGetComponentsInChildren" =>
+                            $"{arguments[0]}.GetComponentsInChildren<{typeName}>()",
+                        "Flow_ComponentGetComponentsInParent" =>
+                            $"{arguments[0]}.GetComponentsInParent<{typeName}>()",
+                        _ => null
+                    };
+                    return expression != null;
+                }
+
+                if (directCall.DeclaringType == typeof(DataDrivenExecutableLibrary))
+                {
+                    expression = directCall.MethodName switch
+                    {
+                        "Flow_GetDataTableManager" =>
+                            $"Chris.DataDriven.DataTableManager.GetOrCreateDataTableManager(typeof({typeName}))",
+                        "Flow_DataTableGetRow" =>
+                            $"{arguments[0]}.GetRow<{typeName}>({arguments[1]})",
+                        "Flow_DataTableGetRowByIndex" =>
+                            $"{arguments[0]}.GetRow<{typeName}>({arguments[1]})",
+                        _ => null
+                    };
+                    return expression != null;
+                }
+
+                return false;
+            }
+
+            private static bool TryBuildIntrinsicFunctionExpression(
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall,
+                IReadOnlyList<string> arguments, out string expression)
+            {
+                expression = null;
+                if (directCall.DeclaringType == typeof(UnityExecutableLibrary) &&
+                    TryBuildUnityTimeExpression(directCall, out expression))
+                {
+                    return true;
+                }
+
+                if (directCall.DeclaringType != typeof(MathExecutableLibrary))
+                {
+                    return false;
+                }
+
+                string Unary(string op) => $"({op}({arguments[0]}))";
+                string Binary(string op) => $"(({arguments[0]}) {op} ({arguments[1]}))";
+                string Call(string owner, string method) => $"{owner}.{method}({string.Join(", ", arguments)})";
+
+                expression = directCall.MethodName switch
+                {
+                    "Flow_FloatAdd" => Binary("+"),
+                    "Flow_FloatSubtract" => Binary("-"),
+                    "Flow_FloatMultiply" => Binary("*"),
+                    "Flow_FloatDivide" => Binary("/"),
+                    "Flow_FloatModulo" => Binary("%"),
+                    "Flow_FloatLessThan" => Binary("<"),
+                    "Flow_FloatLessThanOrEqualTo" => Binary("<="),
+                    "Flow_FloatGreaterThan" => Binary(">"),
+                    "Flow_FloatGreaterThanOrEqualTo" => Binary(">="),
+                    "Flow_FloatToInt" => $"((int)({arguments[0]}))",
+                    "Flow_FloatPow" => Call("Mathf", "Pow"),
+                    "Flow_FloatSqrt" => Call("Mathf", "Sqrt"),
+                    "Flow_FloatExp" => Call("Mathf", "Exp"),
+                    "Flow_FloatAbs" => Call("Mathf", "Abs"),
+                    "Flow_FloatClamp" => Call("Mathf", "Clamp"),
+                    "Flow_FloatClamp01" => Call("Mathf", "Clamp01"),
+                    "Flow_FloatLerp" => Call("Mathf", "Lerp"),
+                    "Flow_FloatInverseLerp" => Call("Mathf", "InverseLerp"),
+                    "Flow_FloatMin" => Call("Mathf", "Min"),
+                    "Flow_FloatMax" => Call("Mathf", "Max"),
+                    "Flow_FloatFloorToInt" => Call("Mathf", "FloorToInt"),
+                    "Flow_FloatCeilToInt" => Call("Mathf", "CeilToInt"),
+                    "Flow_FloatRoundToInt" => Call("Mathf", "RoundToInt"),
+                    "Flow_FloatSin" => Call("Mathf", "Sin"),
+                    "Flow_FloatCos" => Call("Mathf", "Cos"),
+                    "Flow_FloatTan" => Call("Mathf", "Tan"),
+                    "Flow_FloatAtan2" => Call("Mathf", "Atan2"),
+                    "Flow_FloatApproximately" => Call("Mathf", "Approximately"),
+                    "Flow_FloatSign" => Call("Mathf", "Sign"),
+                    "Flow_FloatDeg2Rad" => $"(({arguments[0]}) * Mathf.Deg2Rad)",
+                    "Flow_FloatRad2Deg" => $"(({arguments[0]}) * Mathf.Rad2Deg)",
+                    "Flow_IntAdd" => Binary("+"),
+                    "Flow_IntSubtract" => Binary("-"),
+                    "Flow_IntMultiply" => Binary("*"),
+                    "Flow_IntDivide" => Binary("/"),
+                    "Flow_IntModulo" => Binary("%"),
+                    "Flow_IntLessThan" => Binary("<"),
+                    "Flow_IntLessThanOrEqualTo" => Binary("<="),
+                    "Flow_IntGreaterThan" => Binary(">"),
+                    "Flow_IntGreaterThanOrEqualTo" => Binary(">="),
+                    "Flow_IntToFloat" => $"((float)({arguments[0]}))",
+                    "Flow_IntAbs" => Call("Mathf", "Abs"),
+                    "Flow_IntClamp" => Call("Mathf", "Clamp"),
+                    "Flow_IntMin" => Call("Mathf", "Min"),
+                    "Flow_IntMax" => Call("Mathf", "Max"),
+                    "Flow_BoolInvert" => Unary("!"),
+                    "Flow_BoolAnd" => Binary("&"),
+                    "Flow_BoolOr" => Binary("|"),
+                    "Flow_BoolXor" => Binary("^"),
+                    "Flow_Vector2" => $"new Vector2({arguments[0]}, {arguments[1]})",
+                    "Flow_Vector3" => $"new Vector3({arguments[0]}, {arguments[1]}, {arguments[2]})",
+                    "Flow_Vector3Add" => Binary("+"),
+                    "Flow_Vector3Subtract" => Binary("-"),
+                    "Flow_Vector3MultiplyFloat" => Binary("*"),
+                    "Flow_Vector3DivideFloat" => Binary("/"),
+                    _ => null
+                };
+
+                return expression != null;
+            }
+
+            private static bool TryBuildUnityTimeExpression(
+                FlowCSharpRuntimeGenerator.DirectCallInfo directCall, out string expression)
+            {
+                expression = null;
+                if (directCall.DeclaringType != typeof(UnityExecutableLibrary) ||
+                    directCall.ParameterTypes.Length != 0)
+                {
+                    return false;
+                }
+
+                expression = directCall.MethodName switch
+                {
+                    "Flow_TimeGetTime" => "Time.time",
+                    "Flow_TimeGetUnscaledTime" => "Time.unscaledTime",
+                    "Flow_TimeGetDeltaTime" => "Time.deltaTime",
+                    "Flow_TimeGetFixedDeltaTime" => "Time.fixedDeltaTime",
+                    "Flow_TimeGetFrameCount" => "Time.frameCount",
+                    "Flow_TimeGetRealtimeSinceStartup" => "Time.realtimeSinceStartup",
+                    "Flow_TimeGetTimeScale" => "Time.timeScale",
+                    _ => null
+                };
+
+                return expression != null;
+            }
+
+            private bool IsImpureFunction(FlowNode_ExecuteFunctionReturn node)
+            {
+                if (!FlowCSharpRuntimeGenerator.CanGeneratedCall(node, out var directCall))
+                {
+                    return true;
+                }
+
+                return ClassifyFunctionPurity(directCall) == CsExpressionPurity.Impure;
+            }
+
+            private static CsExpression CastExpression(CsExpression expression, Type expectedType)
+            {
+                return new CsExpression(CastExpression(expression.Code, expression.Type, expectedType),
+                    expectedType, expression.Purity, expression.CanInline, expression.RequiresMaterialization);
+            }
+
+            private static string CastExpression(string expression, Type actualType, Type expectedType)
+            {
+                if (expectedType == null)
+                {
+                    return expression;
+                }
+
+                if (actualType == expectedType || actualType != null && actualType.IsAssignableTo(expectedType))
+                {
+                    return expression;
+                }
+
+                if (CanCastArrayElements(actualType, expectedType))
+                {
+                    return $"FlowGeneratedRuntimeUtility.CastArray<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType.GetElementType())}>({expression})";
+                }
+
+                return $"({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType)})({expression})";
+            }
+
+            private static bool CanCastArrayElements(Type actualType, Type expectedType)
+            {
+                if (actualType == null ||
+                    expectedType == null ||
+                    !actualType.IsArray ||
+                    !expectedType.IsArray ||
+                    actualType.GetArrayRank() != 1 ||
+                    expectedType.GetArrayRank() != 1)
+                {
+                    return false;
+                }
+
+                var actualElementType = actualType.GetElementType();
+                var expectedElementType = expectedType.GetElementType();
+                return actualElementType != null &&
+                       expectedElementType != null &&
+                       actualElementType != expectedElementType &&
+                       expectedElementType.IsAssignableTo(actualElementType);
+            }
+
+            private static string ToLiteral(object value, Type expectedType)
+            {
+                if (value == null || value is UObject unityObject && !unityObject)
+                {
+                    return expectedType.IsValueType && Nullable.GetUnderlyingType(expectedType) == null
+                        ? $"default({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType)})"
+                        : "null";
+                }
+
+                if (expectedType.IsEnum)
+                {
+                    return $"({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType)}){Convert.ToInt64(value, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture)}";
+                }
+
+                if (expectedType == typeof(string))
+                {
+                    return $"\"{FlowCSharpRuntimeGenerator.Escape(value.ToString())}\"";
+                }
+
+                if (expectedType == typeof(bool))
+                {
+                    return value is bool b && b ? "true" : "false";
+                }
+
+                if (expectedType == typeof(int))
+                {
+                    return value is int i ? i.ToString(CultureInfo.InvariantCulture) : "0";
+                }
+
+                if (expectedType == typeof(float))
+                {
+                    return value is float f ? f.ToString(CultureInfo.InvariantCulture) + "f" : "0f";
+                }
+
+                if (expectedType == typeof(double))
+                {
+                    return value is double d ? d.ToString(CultureInfo.InvariantCulture) : "0d";
+                }
+
+                if (expectedType == typeof(long))
+                {
+                    return value is long l ? l.ToString(CultureInfo.InvariantCulture) + "L" : "0L";
+                }
+
+                if (expectedType == typeof(Vector2) && value is Vector2 vector2)
+                {
+                    return $"new Vector2({vector2.x.ToString(CultureInfo.InvariantCulture)}f, {vector2.y.ToString(CultureInfo.InvariantCulture)}f)";
+                }
+
+                if (expectedType == typeof(Vector3) && value is Vector3 vector3)
+                {
+                    return $"new Vector3({vector3.x.ToString(CultureInfo.InvariantCulture)}f, {vector3.y.ToString(CultureInfo.InvariantCulture)}f, {vector3.z.ToString(CultureInfo.InvariantCulture)}f)";
+                }
+
+                if (expectedType == typeof(Quaternion) && value is Quaternion quaternion)
+                {
+                    return $"new Quaternion({quaternion.x.ToString(CultureInfo.InvariantCulture)}f, {quaternion.y.ToString(CultureInfo.InvariantCulture)}f, {quaternion.z.ToString(CultureInfo.InvariantCulture)}f, {quaternion.w.ToString(CultureInfo.InvariantCulture)}f)";
+                }
+
+                if (expectedType == typeof(object))
+                {
+                    return value switch
+                    {
+                        string text => $"\"{FlowCSharpRuntimeGenerator.Escape(text)}\"",
+                        bool b => b ? "true" : "false",
+                        int i => i.ToString(CultureInfo.InvariantCulture),
+                        float f => f.ToString(CultureInfo.InvariantCulture) + "f",
+                        double d => d.ToString(CultureInfo.InvariantCulture),
+                        long l => l.ToString(CultureInfo.InvariantCulture) + "L",
+                        _ => throw new FlowCSharpRuntimeGenerationException(
+                            $"Default object literal of type {value.GetType().Name} is not supported.")
+                    };
+                }
+
+                if (IsSerializedType(expectedType))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"SerializedType default literal for {expectedType.Name} requires legacy lowering.");
+                }
+
+                throw new FlowCSharpRuntimeGenerationException(
+                    $"Default literal for {expectedType.Name} is not supported.");
+            }
+
+            private static string EscapeIdentifier(string value)
+            {
+                return CSharpKeywords.Contains(value) ? $"@{value}" : value;
+            }
+
+            private static string SafeGuid(string guid)
+            {
+                return guid.Replace("-", "_");
+            }
+
+            private static readonly HashSet<string> CSharpKeywords = new()
+            {
+                "abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char", "checked",
+                "class", "const", "continue", "decimal", "default", "delegate", "do", "double", "else",
+                "enum", "event", "explicit", "extern", "false", "finally", "fixed", "float", "for",
+                "foreach", "goto", "if", "implicit", "in", "int", "interface", "internal", "is", "lock",
+                "long", "namespace", "new", "null", "object", "operator", "out", "override", "params",
+                "private", "protected", "public", "readonly", "ref", "return", "sbyte", "sealed",
+                "short", "sizeof", "stackalloc", "static", "string", "struct", "switch", "this",
+                "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort",
+                "using", "virtual", "void", "volatile", "while"
+            };
+        }
+
+        private readonly struct MaterializedValue
+        {
+            public readonly string LocalName;
+
+            public readonly Type Type;
+
+            public readonly CsExpressionPurity Purity;
+
+            public MaterializedValue(string localName, Type type, CsExpressionPurity purity)
+            {
+                LocalName = localName;
+                Type = type;
+                Purity = purity;
+            }
+        }
+
+        private readonly struct SharedVariableBinding
+        {
+            public readonly string VariableName;
+
+            public readonly Type VariableType;
+
+            public readonly string FieldName;
+
+            public SharedVariableBinding(string variableName, Type variableType, string fieldName)
+            {
+                VariableName = variableName;
+                VariableType = variableType;
+                FieldName = fieldName;
+            }
+        }
+
+        private readonly struct LocalVariableBinding
+        {
+            public readonly string FieldName;
+
+            public readonly Type StorageType;
+
+            public readonly string InitializerExpression;
+
+            public LocalVariableBinding(string fieldName, Type storageType, string initializerExpression)
+            {
+                FieldName = fieldName;
+                StorageType = storageType;
+                InitializerExpression = initializerExpression;
+            }
+        }
+
+        private readonly struct GraphVariableBinding
+        {
+            public readonly bool IsLocal;
+
+            public readonly string FieldName;
+
+            public readonly Type StorageType;
+
+            private GraphVariableBinding(bool isLocal, string fieldName, Type storageType)
+            {
+                IsLocal = isLocal;
+                FieldName = fieldName;
+                StorageType = storageType;
+            }
+
+            public static GraphVariableBinding FromLocal(LocalVariableBinding binding)
+            {
+                return new GraphVariableBinding(true, binding.FieldName, binding.StorageType);
+            }
+
+            public static GraphVariableBinding FromShared(SharedVariableBinding binding)
+            {
+                return new GraphVariableBinding(false, binding.FieldName, binding.VariableType);
+            }
+        }
+
+        private readonly struct DirectSerializedTypeArgument
+        {
+            public readonly int ParameterIndex;
+
+            public readonly Type SelectedType;
+
+            public DirectSerializedTypeArgument(int parameterIndex, Type selectedType)
+            {
+                ParameterIndex = parameterIndex;
+                SelectedType = selectedType;
+            }
+        }
+    }
+}

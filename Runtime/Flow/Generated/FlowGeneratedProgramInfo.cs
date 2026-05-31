@@ -129,7 +129,7 @@ namespace Ceres.Graph.Flow
 
     public static class FlowGeneratedRuntimeUtility
     {
-        public const int CurrentProgramInfoVersion = 6;
+        public const int CurrentProgramInfoVersion = 7;
 
         public static FlowGeneratedRuntimeProfile CurrentGeneratedRuntimeProfile =>
             FlowConfig.Get().generatedRuntimeProfile;
