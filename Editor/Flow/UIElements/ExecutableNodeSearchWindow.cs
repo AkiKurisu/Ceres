@@ -32,7 +32,50 @@ namespace Ceres.Editor.Graph.Flow
                 Group = atr?.Group;
                 var function =  ExecutableReflection.GetFunction(methodInfo);
                 Name = string.IsNullOrEmpty(function.Attribute.SearchName) ? ExecutableFunction.GetFunctionName(methodInfo, false) : function.Attribute.SearchName;
+                SearchText = BuildSearchText(methodInfo, function.Attribute, Name);
                 Signature = CeresLabel.GetMethodSignature(methodInfo, false);
+            }
+
+            private static string BuildSearchText(MethodInfo methodInfo, ExecutableFunction.ExecutableAttribute attribute, string displayName)
+            {
+                var methodName = methodInfo.Name;
+                var strippedMethodName = methodName.StartsWith("Flow_", StringComparison.Ordinal)
+                    ? methodName["Flow_".Length..]
+                    : methodName;
+                var labelName = ExecutableFunction.GetFunctionName(methodInfo, false);
+                var aliases = (attribute.SearchAliases ?? string.Empty)
+                    .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(text => text.Trim())
+                    .Where(text => !string.IsNullOrWhiteSpace(text))
+                    .ToArray();
+                var searchParts = new List<string>
+                {
+                    displayName,
+                    attribute.SearchName,
+                    labelName,
+                    methodName,
+                    strippedMethodName
+                };
+                searchParts.AddRange(aliases);
+                foreach (var alias in aliases)
+                {
+                    searchParts.Add($"{displayName} {alias}");
+                    searchParts.Add($"{labelName} {alias}");
+                }
+                return string.Join(" ", searchParts
+                    .SelectMany(text => new[] { text, NormalizeSearchText(text) })
+                    .Where(text => !string.IsNullOrWhiteSpace(text))
+                    .Distinct(StringComparer.OrdinalIgnoreCase));
+            }
+
+            private static string NormalizeSearchText(string text)
+            {
+                if (string.IsNullOrWhiteSpace(text))
+                {
+                    return string.Empty;
+                }
+                var normalized = new string(text.Select(c => char.IsLetterOrDigit(c) ? c : ' ').ToArray());
+                return string.Join(" ", normalized.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
             }
 
             public string GetGroupNameOrDefault()
@@ -43,6 +86,8 @@ namespace Ceres.Editor.Graph.Flow
             public string Group { get; }
             
             public string Name { get; }
+
+            public string SearchText { get; }
             
             public string Signature { get; }
         }
@@ -512,7 +557,7 @@ namespace Ceres.Editor.Graph.Flow
             
             void AddFunctionEntry(FunctionCandidate candidate, int level, string displayName)
             {
-                builder.AddEntry(new SearchTreeEntry(new GUIContent(displayName, _indentationIcon))
+                builder.AddEntry(new SearchTreeEntry(CreateFunctionContent(displayName, candidate.SearchText))
                 {
                     level = level,
                     userData = new CeresNodeSearchEntryData
@@ -523,6 +568,16 @@ namespace Ceres.Editor.Graph.Flow
                     }
                 });
             }
+        }
+
+        private GUIContent CreateFunctionContent(string displayName, string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                return new GUIContent(displayName, _indentationIcon);
+            }
+            // GraphView SearchWindow filters GUIContent.text; the null suffix keeps aliases searchable without drawing them.
+            return new GUIContent($"{displayName}\0{searchText}", _indentationIcon);
         }
 
         private void BuildFlowGraphFunctionEntries(CeresNodeSearchEntryBuilder builder)

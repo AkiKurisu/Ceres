@@ -229,6 +229,8 @@ namespace Ceres.Graph.Flow
 
             public string SearchName { get; }
 
+            public string SearchAliases { get; }
+
             public bool IsSelfTarget { get; }
 
             public bool IsNeedResolveReturnType { get; }
@@ -261,6 +263,7 @@ namespace Ceres.Graph.Flow
                 }
 
                 SearchName = attribute.SearchName;
+                SearchAliases = attribute.SearchAliases;
                 ExecuteInDependency = attribute.ExecuteInDependency;
             }
         }

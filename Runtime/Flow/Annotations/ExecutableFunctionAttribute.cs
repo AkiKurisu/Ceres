@@ -11,7 +11,7 @@ namespace Ceres.Graph.Flow.Annotations
         /// Function should use first parameter type as its script type
         /// </summary>
         public bool IsScriptMethod { get; set; }
-        
+
         /// <summary>
         /// Function can be executed in dependency execution path, only support static method
         /// </summary>
@@ -29,6 +29,11 @@ namespace Ceres.Graph.Flow.Annotations
         /// Function entry name displayed in search window
         /// </summary>
         public string SearchName { get; set; }
+
+        /// <summary>
+        /// Extra search keywords for the function entry, separated by commas.
+        /// </summary>
+        public string SearchAliases { get; set; }
 
         /// <summary>
         /// Function first parameter that should pass graph context object as default value
