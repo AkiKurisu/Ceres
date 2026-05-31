@@ -69,7 +69,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
     }
 
     [CustomNodeGenerator(typeof(FlowNode_ArrayLengthT<>))]
-    internal sealed class FlowNode_ArrayLengthTNodeGenerator : NodeGenerator<ExecutableNode>
+    internal sealed class FlowNode_ArrayLengthTNodeGenerator : NodeGenerator<ExecutableNode>, IInlineExpressionNodeGenerator
     {
         public override void GenerateDependency(ExecutableNode node, NodeGenerationContext context)
         {
@@ -85,10 +85,24 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
         {
             return BuiltInNodeGeneratorUtility.TryGetSingleOutputSlot(node, portId, "length", typeof(int), context, out outputType, out slotField);
         }
+
+        public bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression)
+        {
+            outputType = null;
+            expression = null;
+            if (portId != "length") return false;
+            var elementType = node.GetType().GetGenericArguments()[0];
+            var listType = typeof(IReadOnlyList<>).MakeGenericType(elementType);
+            var array = context.GetValueExpression(node, "array", listType);
+            outputType = typeof(int);
+            expression = $"{array}?.Count ?? 0";
+            return true;
+        }
     }
 
     [CustomNodeGenerator(typeof(FlowNode_ArrayIsValidIndexT<>))]
-    internal sealed class FlowNode_ArrayIsValidIndexTNodeGenerator : NodeGenerator<ExecutableNode>
+    internal sealed class FlowNode_ArrayIsValidIndexTNodeGenerator : NodeGenerator<ExecutableNode>, IInlineExpressionNodeGenerator
     {
         public override void GenerateDependency(ExecutableNode node, NodeGenerationContext context)
         {
@@ -104,6 +118,21 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             out Type outputType, out string slotField)
         {
             return BuiltInNodeGeneratorUtility.TryGetSingleOutputSlot(node, portId, "result", typeof(bool), context, out outputType, out slotField);
+        }
+
+        public bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression)
+        {
+            outputType = null;
+            expression = null;
+            if (portId != "result") return false;
+            var elementType = node.GetType().GetGenericArguments()[0];
+            var listType = typeof(IReadOnlyList<>).MakeGenericType(elementType);
+            var array = context.GetValueExpression(node, "array", listType);
+            var index = context.GetValueExpression(node, "index", typeof(int));
+            outputType = typeof(bool);
+            expression = $"{array} != null && {index} >= 0 && {index} < {array}.Count";
+            return true;
         }
     }
 

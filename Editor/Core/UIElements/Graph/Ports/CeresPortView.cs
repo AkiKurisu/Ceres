@@ -20,15 +20,28 @@ namespace Ceres.Editor.Graph
 {
     public class CeresPortElement : Port
     {
+        private const string ExecutionPortClass = "exec-port";
+
+        private const string ExecutionInputPortClass = "exec-input";
+
+        private const string ExecutionOutputPortClass = "exec-output";
+
+        private const string ConnectedPortClass = "connected";
+
+        private const string ValuePortClass = "value-port";
+
         public CeresPortView View { get; private set; }
 
         public VisualElement EditorField { get; private set; }
+
+        public bool IsExecutionPort => IsExecutionPortType(portType);
 
         internal CeresPortElement(Orientation portOrientation, Direction portDirection, Capacity portCapacity, Type type) : base(portOrientation, portDirection, portCapacity, type)
         {
             AddToClassList(nameof(CeresPortElement));
             CeresPort.AssignValueType(type);
             styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/CeresPortElement"));
+            ApplySemanticClasses(type);
             if (type.IsSubclassOf(typeof(UObject)) && type != typeof(Component) && type != typeof(GameObject))
             {
                 AddToClassList("typeObject");
@@ -45,6 +58,27 @@ namespace Ceres.Editor.Graph
             this.AddManipulator(new ContextualMenuManipulator(BuildContextualMenu));
         }
 
+        public static bool IsExecutionPortType(Type valueType)
+        {
+            return valueType == typeof(NodeReference);
+        }
+
+        internal void SetPortValueType(Type valueType)
+        {
+            portType = valueType;
+            ApplySemanticClasses(valueType);
+        }
+
+        private void ApplySemanticClasses(Type valueType)
+        {
+            var isExecutionPort = IsExecutionPortType(valueType);
+            EnableInClassList(ExecutionPortClass, isExecutionPort);
+            EnableInClassList(ExecutionInputPortClass, isExecutionPort && direction == Direction.Input);
+            EnableInClassList(ExecutionOutputPortClass, isExecutionPort && direction == Direction.Output);
+            EnableInClassList(ValuePortClass, !isExecutionPort);
+            EnableInClassList("typeNodeReference", isExecutionPort);
+        }
+
         protected virtual void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             evt.menu.ClearItems();
@@ -59,7 +93,7 @@ namespace Ceres.Editor.Graph
         {
             if (valueType == typeof(NodeReference))
             {
-                return "Exec";
+                return "Execution Flow";
             }
             if (valueType.IsSubclassOf(typeof(EventDelegateBase)) && direction == Direction.Output)
             {
@@ -165,7 +199,12 @@ namespace Ceres.Editor.Graph
         public override void Connect(Edge edge)
         {
             base.Connect(edge);
+            EnableInClassList(ConnectedPortClass, connected);
             SetEditorFieldVisibility(!connections.Any() || direction == Direction.Output);
+            if (edge is CeresEdge ceresEdge)
+            {
+                ceresEdge.ApplyPortStyle();
+            }
             using var evt = PortConnectionChangeEvent.GetPooled(View, (CeresEdge)edge, PortConnectionChangeType.Connect);
             evt.target = this;
             SendEvent(evt);
@@ -174,6 +213,7 @@ namespace Ceres.Editor.Graph
         public override void Disconnect(Edge edge)
         {
             base.Disconnect(edge);
+            EnableInClassList(ConnectedPortClass, connected);
             SetEditorFieldVisibility(!connections.Any() || direction == Direction.Output);
             using var evt = PortConnectionChangeEvent.GetPooled(View, (CeresEdge)edge, PortConnectionChangeType.Disconnect);
             evt.target = this;
@@ -223,7 +263,7 @@ namespace Ceres.Editor.Graph
         {
             DisplayType.Subscribe(x =>
             {
-                portElement.portType = x;
+                portElement.SetPortValueType(x);
             });
             DisplayName.Subscribe(x => portElement.portName = x);
             Tooltip.Subscribe(x => portElement.tooltip = portElement.CreatePortTooltip(DisplayType.Value) + x);

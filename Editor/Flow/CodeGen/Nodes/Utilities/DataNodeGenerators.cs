@@ -59,7 +59,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
     }
 
     [CustomNodeGenerator(typeof(FlowNode_EqualsT<>))]
-    internal sealed class FlowNode_EqualsTNodeGenerator : NodeGenerator<FlowNode>
+    internal sealed class FlowNode_EqualsTNodeGenerator : NodeGenerator<FlowNode>, IInlineExpressionNodeGenerator
     {
         public override void GenerateForward(FlowNode node, NodeGenerationContext context)
         {
@@ -95,10 +95,24 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             var slot = context.EnsureOutputSlot(node, "resultValue", typeof(bool));
             context.Emit($"{context.Indent}{context.FrameVar}.{slot} = {value1}.Equals({value2});");
         }
+
+        public bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression)
+        {
+            outputType = null;
+            expression = null;
+            if (portId != "resultValue") return false;
+            var valueType = node.GetType().GetGenericArguments()[0];
+            var value1 = context.GetValueExpression(node, "value1", valueType);
+            var value2 = context.GetValueExpression(node, "value2", valueType);
+            outputType = typeof(bool);
+            expression = $"{value1}.Equals({value2})";
+            return true;
+        }
     }
 
     [CustomNodeGenerator(typeof(FlowNode_NotEqualsT<>))]
-    internal sealed class FlowNode_NotEqualsTNodeGenerator : NodeGenerator<ExecutableNode>
+    internal sealed class FlowNode_NotEqualsTNodeGenerator : NodeGenerator<ExecutableNode>, IInlineExpressionNodeGenerator
     {
         public override void GenerateDependency(ExecutableNode node, NodeGenerationContext context)
         {
@@ -115,10 +129,24 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             return BuiltInNodeGeneratorUtility.TryGetSingleOutputSlot(node, portId, "resultValue", typeof(bool), context, out outputType,
                 out slotField);
         }
+
+        public bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression)
+        {
+            outputType = null;
+            expression = null;
+            if (portId != "resultValue") return false;
+            var valueType = node.GetType().GetGenericArguments()[0];
+            var value1 = context.GetValueExpression(node, "value1", valueType);
+            var value2 = context.GetValueExpression(node, "value2", valueType);
+            outputType = typeof(bool);
+            expression = $"!System.Collections.Generic.EqualityComparer<{context.GetFriendlyTypeName(valueType)}>.Default.Equals({value1}, {value2})";
+            return true;
+        }
     }
 
     [CustomNodeGenerator(typeof(FlowNode_IsNullT<>))]
-    internal sealed class FlowNode_IsNullTNodeGenerator : NodeGenerator<ExecutableNode>
+    internal sealed class FlowNode_IsNullTNodeGenerator : NodeGenerator<ExecutableNode>, IInlineExpressionNodeGenerator
     {
         public override void GenerateDependency(ExecutableNode node, NodeGenerationContext context)
         {
@@ -134,10 +162,23 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             return BuiltInNodeGeneratorUtility.TryGetSingleOutputSlot(node, portId, "resultValue", typeof(bool), context, out outputType,
                 out slotField);
         }
+
+        public bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression)
+        {
+            outputType = null;
+            expression = null;
+            if (portId != "resultValue") return false;
+            var valueType = node.GetType().GetGenericArguments()[0];
+            var value = context.GetValueExpression(node, "value", valueType);
+            outputType = typeof(bool);
+            expression = $"object.Equals({value}, null)";
+            return true;
+        }
     }
 
     [CustomNodeGenerator(typeof(FlowNode_IsNotNullT<>))]
-    internal sealed class FlowNode_IsNotNullTNodeGenerator : NodeGenerator<ExecutableNode>
+    internal sealed class FlowNode_IsNotNullTNodeGenerator : NodeGenerator<ExecutableNode>, IInlineExpressionNodeGenerator
     {
         public override void GenerateDependency(ExecutableNode node, NodeGenerationContext context)
         {
@@ -153,10 +194,23 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             return BuiltInNodeGeneratorUtility.TryGetSingleOutputSlot(node, portId, "resultValue", typeof(bool), context, out outputType,
                 out slotField);
         }
+
+        public bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression)
+        {
+            outputType = null;
+            expression = null;
+            if (portId != "resultValue") return false;
+            var valueType = node.GetType().GetGenericArguments()[0];
+            var value = context.GetValueExpression(node, "value", valueType);
+            outputType = typeof(bool);
+            expression = $"!object.Equals({value}, null)";
+            return true;
+        }
     }
 
     [CustomNodeGenerator(typeof(FlowNode_CompareT<>))]
-    internal sealed class FlowNode_CompareTNodeGenerator : NodeGenerator<ExecutableNode>
+    internal sealed class FlowNode_CompareTNodeGenerator : NodeGenerator<ExecutableNode>, IInlineExpressionNodeGenerator
     {
         public override void GenerateDependency(ExecutableNode node, NodeGenerationContext context)
         {
@@ -172,6 +226,20 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
         {
             return BuiltInNodeGeneratorUtility.TryGetSingleOutputSlot(node, portId, "resultValue", typeof(int), context, out outputType,
                 out slotField);
+        }
+
+        public bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression)
+        {
+            outputType = null;
+            expression = null;
+            if (portId != "resultValue") return false;
+            var valueType = node.GetType().GetGenericArguments()[0];
+            var value1 = context.GetValueExpression(node, "value1", valueType);
+            var value2 = context.GetValueExpression(node, "value2", valueType);
+            outputType = typeof(int);
+            expression = $"System.Collections.Generic.Comparer<{context.GetFriendlyTypeName(valueType)}>.Default.Compare({value1}, {value2})";
+            return true;
         }
     }
 

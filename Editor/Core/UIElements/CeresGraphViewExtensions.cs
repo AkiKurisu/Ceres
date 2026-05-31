@@ -93,6 +93,7 @@ namespace Ceres.Editor.Graph
             graphView.AddElement(edge);
             input.Connect(edge);
             output.Connect(edge);
+            edge.ApplyPortStyle(input, output);
         }
         
         /// <summary>

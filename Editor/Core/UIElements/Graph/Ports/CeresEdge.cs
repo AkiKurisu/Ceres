@@ -7,10 +7,81 @@ namespace Ceres.Editor.Graph
 {
     public class CeresEdge : Edge
     {
+        private const string ExecutionEdgeClass = "exec-edge";
+
+        private const string ValueEdgeClass = "value-edge";
+
+        private const int ExecutionEdgeWidth = 4;
+
+        private static readonly Color ExecutionEdgeColor = new(0.86f, 0.86f, 0.86f, 1f);
+
+        private bool _isEdgeControlStyleScheduled;
+
+        public bool IsExecutionEdge { get; private set; }
+
         public CeresEdge()
         {
             AddToClassList(nameof(CeresEdge));
+            styleSheets.Add(CeresGraphView.GetOrLoadStyleSheet("Ceres/CeresPortElement"));
             RegisterCallback<MouseDownEvent>(OnMouseDown);
+        }
+
+        public void ApplyPortStyle()
+        {
+            ApplyPortStyle(input as CeresPortElement, output as CeresPortElement);
+        }
+
+        public void ApplyPortStyle(CeresPortElement inputPort, CeresPortElement outputPort)
+        {
+            IsExecutionEdge = inputPort != null && outputPort != null &&
+                              inputPort.IsExecutionPort && outputPort.IsExecutionPort;
+            EnableInClassList(ExecutionEdgeClass, IsExecutionEdge);
+            EnableInClassList(ValueEdgeClass, !IsExecutionEdge);
+            if (!IsExecutionEdge)
+            {
+                UnregisterCallback<AttachToPanelEvent>(OnAttachToPanelApplyEdgeControlStyle);
+                _isEdgeControlStyleScheduled = false;
+                return;
+            }
+
+            ScheduleApplyEdgeControlStyle();
+        }
+
+        private void ScheduleApplyEdgeControlStyle()
+        {
+            if (_isEdgeControlStyleScheduled)
+            {
+                return;
+            }
+
+            _isEdgeControlStyleScheduled = true;
+            if (panel == null)
+            {
+                RegisterCallback<AttachToPanelEvent>(OnAttachToPanelApplyEdgeControlStyle);
+                return;
+            }
+
+            schedule.Execute(ApplyEdgeControlStyle).ExecuteLater(0);
+        }
+
+        private void OnAttachToPanelApplyEdgeControlStyle(AttachToPanelEvent evt)
+        {
+            UnregisterCallback<AttachToPanelEvent>(OnAttachToPanelApplyEdgeControlStyle);
+            schedule.Execute(ApplyEdgeControlStyle).ExecuteLater(0);
+        }
+
+        private void ApplyEdgeControlStyle()
+        {
+            _isEdgeControlStyleScheduled = false;
+            if (!IsExecutionEdge || edgeControl == null)
+            {
+                return;
+            }
+
+            edgeControl.inputColor = ExecutionEdgeColor;
+            edgeControl.outputColor = ExecutionEdgeColor;
+            edgeControl.edgeWidth = ExecutionEdgeWidth;
+            edgeControl.MarkDirtyRepaint();
         }
 
         private void OnMouseDown(MouseDownEvent evt)
@@ -115,6 +186,10 @@ namespace Ceres.Editor.Graph
                 graphView.AddElement(edgeToCreate);
                 edgeToCreate.input.Connect(edgeToCreate);
                 edgeToCreate.output.Connect(edgeToCreate);
+                if (edgeToCreate is CeresEdge ceresEdge)
+                {
+                    ceresEdge.ApplyPortStyle();
+                }
             }
         }
     }

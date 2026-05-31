@@ -27,6 +27,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
         bool IsForwardOutputSlot(CeresNode node, string portId);
     }
 
+    public interface IInlineExpressionNodeGenerator
+    {
+        bool TryGenerateOutputExpression(CeresNode node, string portId, NodeGenerationContext context,
+            out Type outputType, out string expression);
+    }
+
     public abstract class NodeGenerator<TNode> : INodeGenerator where TNode : CeresNode
     {
         public virtual bool CanGenerate(TNode node, NodeGenerationContext context)
