@@ -40,6 +40,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private readonly Dictionary<FlowOutputKey, MaterializedValue> _materializedValues = new();
 
+            private readonly Dictionary<FlowOutputKey, PersistentOutputBinding> _persistentOutputs = new();
+
             private readonly HashSet<string> _loweringStack = new();
 
             private CsMethod _currentMethod;
@@ -283,6 +285,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     model.ConstructorBody.AddRaw($"{binding.FieldName} = {binding.InitializerExpression};");
                 }
 
+                foreach (var binding in _persistentOutputs.Values)
+                {
+                    model.Fields.Add(new CsField("private", binding.Type, binding.FieldName));
+                    model.ConstructorBody.AddRaw($"{binding.FieldName} = {binding.InitializerExpression};");
+                }
+
                 model.BaseConstructorArguments =
                     _sharedVariableBindings.Count > 0 ? "graphData, true" : "graphData, false";
                 CompleteTryExecuteMethod(model);
@@ -459,6 +467,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                         materialized.Purity, true, false);
                 }
 
+                if (TryGetPersistentOutputExpression(node, portId, out var persistentExpression))
+                {
+                    return persistentExpression;
+                }
+
                 if (!_nodeLowerers.TryGetLowerer(node.GetType(), out var lowerer) ||
                     !lowerer.TryLowerValue(node, portId, _loweringContext, out var expression))
                 {
@@ -504,8 +517,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     var argumentExpression = expression.Code;
                     if (node.isStatic && node.isSelfTarget && i == 0)
                     {
-                        argumentExpression =
-                            $"FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(directCall.ParameterTypes[i])}>(true, {argumentExpression}, contextObject)";
+                        argumentExpression = BuildSelfTargetArgumentExpression(
+                            node,
+                            $"input{i + 1}",
+                            directCall.ParameterTypes[i],
+                            expression).Code;
                     }
 
                     arguments.Add($"({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(directCall.ParameterTypes[i])})({argumentExpression})");
@@ -531,9 +547,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                         directCall);
                 }
 
-                var targetExpression = LowerInput(node, "target", directCall.TargetType).Code;
-                targetExpression =
-                    $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(directCall.TargetType)}>(false, {node.isSelfTarget.ToString().ToLowerInvariant()}, {targetExpression}, contextObject)";
+                var targetExpression = BuildTargetOrDefaultExpression(
+                    node,
+                    "target",
+                    directCall.TargetType,
+                    node.isSelfTarget,
+                    false).Code;
                 return CreateCallExpression(
                     $"{targetExpression}.{EscapeIdentifier(directCall.MethodName)}({string.Join(", ", arguments)})",
                     directCall);
@@ -562,6 +581,16 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     return new CsExpression(existing.LocalName, existing.Type, existing.Purity);
                 }
 
+                if (TryGetPersistentOutputBinding(node, portId, expression.Type, out var persistent))
+                {
+                    EmitSyncCancellationCheck();
+                    var assignment = new CsAssignmentStatement(persistent.FieldName, CastExpression(expression, persistent.Type));
+                    _currentBlock.Add(assignment);
+                    var persistentValue = new MaterializedValue(persistent.FieldName, persistent.Type, expression.Purity);
+                    _materializedValues.Add(key, persistentValue);
+                    return new CsExpression(persistent.FieldName, persistent.Type, expression.Purity);
+                }
+
                 var localName =
                     $"value_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(portId)}_{SafeGuid(node.Guid)}_{_tempIndex++}";
                 EmitSyncCancellationCheck();
@@ -569,6 +598,59 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 var materialized = new MaterializedValue(localName, expression.Type, expression.Purity);
                 _materializedValues.Add(key, materialized);
                 return new CsExpression(localName, expression.Type, expression.Purity);
+            }
+
+            private bool TryGetPersistentOutputExpression(CeresNode node, string portId, out CsExpression expression)
+            {
+                expression = null;
+                if (!ShouldPersistOutput(node, portId))
+                {
+                    return false;
+                }
+
+                if (!TryGetOutputType(node, portId, out var outputType) ||
+                    !TryGetPersistentOutputBinding(node, portId, outputType, out var binding))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Persistent output {node.GetType().Name}.{portId} ({node.Guid}) can not be typed for optimized lowering.");
+                }
+
+                expression = new CsExpression(binding.FieldName, binding.Type, CsExpressionPurity.CachePerEvent);
+                return true;
+            }
+
+            private bool TryGetPersistentOutputBinding(CeresNode node, string portId, Type type,
+                out PersistentOutputBinding binding)
+            {
+                binding = default;
+                if (!ShouldPersistOutput(node, portId))
+                {
+                    return false;
+                }
+
+                if (type == null || !FlowCSharpRuntimeGenerator.IsVisibleType(type))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Persistent output {node.GetType().Name}.{portId} ({node.Guid}) has inaccessible type {type?.FullName ?? "<null>"}.");
+                }
+
+                var key = new FlowOutputKey(node.Guid, portId, -1);
+                if (_persistentOutputs.TryGetValue(key, out binding))
+                {
+                    return true;
+                }
+
+                binding = new PersistentOutputBinding(
+                    $"_port_{SafeGuid(node.Guid)}_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(portId)}",
+                    type,
+                    $"FlowGeneratedRuntimeUtility.GetNodePortDefaultValue<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(type)}>(graphData, \"{FlowCSharpRuntimeGenerator.Escape(node.Guid)}\", \"{FlowCSharpRuntimeGenerator.Escape(portId)}\", -1)");
+                _persistentOutputs.Add(key, binding);
+                return true;
+            }
+
+            private bool ShouldPersistOutput(CeresNode node, string portId)
+            {
+                return _context.CompilationGraph.ShouldPersistOutput(node, portId);
             }
 
             private bool ShouldEmitSyncCancellationChecks()
@@ -606,8 +688,77 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 }
 
                 var targetExpression = LowerInput(node, "target", propertyCall.TargetType).Code;
-                return
-                    $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(propertyCall.TargetType)}>(false, {node.isSelfTarget.ToString().ToLowerInvariant()}, {targetExpression}, contextObject)";
+                return BuildTargetOrDefaultExpression(
+                    node,
+                    "target",
+                    propertyCall.TargetType,
+                    node.isSelfTarget,
+                    false,
+                    targetExpression).Code;
+            }
+
+            private CsExpression BuildSelfTargetArgumentExpression(FlowNode_ExecuteFunction node,
+                string propertyName, Type targetType, CsExpression inputExpression)
+            {
+                return BuildTargetOrDefaultExpression(node, propertyName, targetType, true, true,
+                    inputExpression.Code, inputExpression);
+            }
+
+            private CsExpression BuildTargetOrDefaultExpression(CeresNode node, string propertyName,
+                Type targetType, bool isSelfTarget, bool useSelfTargetUtility,
+                string inputCode = null, CsExpression inputExpression = null)
+            {
+                inputExpression ??= LowerInput(node, propertyName, targetType);
+                inputCode ??= inputExpression.Code;
+                if (!isSelfTarget)
+                {
+                    return inputExpression;
+                }
+
+                if (CanUseContextSelfTarget(node, propertyName, -1, targetType))
+                {
+                    return new CsExpression(
+                        $"contextObject as {FlowCSharpRuntimeGenerator.GetFriendlyTypeName(targetType)}",
+                        targetType,
+                        CsExpressionPurity.CachePerEvent,
+                        true,
+                        false);
+                }
+
+                var typeName = FlowCSharpRuntimeGenerator.GetFriendlyTypeName(targetType);
+                var code = useSelfTargetUtility
+                    ? $"FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault<{typeName}>(true, {inputCode}, contextObject)"
+                    : $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{typeName}>(false, true, {inputCode}, contextObject)";
+                return new CsExpression(code, targetType, inputExpression.Purity, false, true);
+            }
+
+            private bool CanUseContextSelfTarget(CeresNode node, string propertyName, int arrayIndex, Type targetType)
+            {
+                return CanCastContextAs(targetType) &&
+                       IsUnconnectedNullInput(node, propertyName, arrayIndex);
+            }
+
+            private bool IsUnconnectedNullInput(CeresNode node, string propertyName, int arrayIndex)
+            {
+                if (_context.CompilationGraph.TryGetInputConnection(node, propertyName, arrayIndex, out _))
+                {
+                    return false;
+                }
+
+                var portData = arrayIndex < 0
+                    ? node.NodeData.FindPortData(propertyName)
+                    : node.NodeData.FindPortData(propertyName, arrayIndex);
+                var value = portData?.GetPort(node)?.GetValue();
+                return IsNullLiteralValue(value);
+            }
+
+            private static bool CanCastContextAs(Type targetType)
+            {
+                return targetType != null &&
+                       !targetType.IsValueType &&
+                       (targetType.IsInterface ||
+                        targetType.IsAssignableFrom(typeof(UObject)) ||
+                        typeof(UObject).IsAssignableFrom(targetType));
             }
 
             private static CsExpression BuildSelfReferenceExpression(PropertyNode node, Type targetType)
@@ -749,6 +900,46 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     $"_shared_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(variableName)}_{_sharedVariableBindings.Count}");
                 _sharedVariableBindings.Add(key, binding);
                 return binding;
+            }
+
+            private bool TryGetOutputType(CeresNode node, string portId, out Type outputType)
+            {
+                outputType = null;
+                if (node is FlowNode_ExecuteFunctionReturn functionNode &&
+                    portId == "output" &&
+                    FlowCSharpRuntimeGenerator.CanGeneratedCall(functionNode, out var directCall) &&
+                    directCall.ReturnType != typeof(void))
+                {
+                    outputType = GetFunctionReturnOutputType(functionNode, directCall);
+                    return true;
+                }
+
+                if (node is PropertyNode_PropertyValue propertyNode &&
+                    portId == "outputValue" &&
+                    FlowCSharpRuntimeGenerator.CanDirectGetProperty(propertyNode, out var propertyCall))
+                {
+                    outputType = propertyCall.PropertyType;
+                    return true;
+                }
+
+                if (node is PropertyNode_SharedVariableValue sharedVariableNode &&
+                    portId == "outputValue" &&
+                    FlowCSharpRuntimeGenerator.CanAccessSharedVariable(sharedVariableNode, out _, out var valueType))
+                {
+                    outputType = valueType;
+                    return true;
+                }
+
+                if (node is PropertyNode selfReferenceNode &&
+                    portId == "outputValue" &&
+                    FlowCSharpRuntimeGenerator.TryGetSelfReferenceTargetType(selfReferenceNode, out var targetType))
+                {
+                    outputType = targetType;
+                    return true;
+                }
+
+                outputType = node.NodeData.FindPortData(portId)?.GetValueType();
+                return outputType != null && outputType != typeof(NodeReference);
             }
 
             private Type GetFunctionReturnOutputType(FlowNode_ExecuteFunctionReturn node,
@@ -1070,7 +1261,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private static string ToLiteral(object value, Type expectedType)
             {
-                if (value == null || value is UObject unityObject && !unityObject)
+                if (IsNullLiteralValue(value))
                 {
                     return expectedType.IsValueType && Nullable.GetUnderlyingType(expectedType) == null
                         ? $"default({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType)})"
@@ -1152,6 +1343,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     $"Default literal for {expectedType.Name} is not supported.");
             }
 
+            private static bool IsNullLiteralValue(object value)
+            {
+                return value == null || value is UObject unityObject && !unityObject;
+            }
+
             private static string EscapeIdentifier(string value)
             {
                 return CSharpKeywords.Contains(value) ? $"@{value}" : value;
@@ -1220,6 +1416,22 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             {
                 FieldName = fieldName;
                 StorageType = storageType;
+                InitializerExpression = initializerExpression;
+            }
+        }
+
+        private readonly struct PersistentOutputBinding
+        {
+            public readonly string FieldName;
+
+            public readonly Type Type;
+
+            public readonly string InitializerExpression;
+
+            public PersistentOutputBinding(string fieldName, Type type, string initializerExpression)
+            {
+                FieldName = fieldName;
+                Type = type;
                 InitializerExpression = initializerExpression;
             }
         }

@@ -296,6 +296,76 @@ namespace Ceres.Graph.Flow
             return false;
         }
 
+        public static TValue GetNodePortDefaultValue<TValue>(FlowGraphData graphData, string nodeGuid,
+            string portName, int portIndex)
+        {
+            if (TryGetNodePortDefaultValue<TValue>(graphData, nodeGuid, portName, portIndex, out var value))
+            {
+                return value;
+            }
+
+            return default;
+        }
+
+        public static bool TryGetNodePortDefaultValue<TValue>(FlowGraphData graphData, string nodeGuid,
+            string portName, int portIndex, out TValue value)
+        {
+            value = default;
+            if (graphData?.nodeData == null ||
+                string.IsNullOrEmpty(nodeGuid) ||
+                string.IsNullOrEmpty(portName))
+            {
+                return false;
+            }
+
+            foreach (var data in graphData.nodeData)
+            {
+                if (data == null || !string.Equals(data.guid, nodeGuid, StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                var nodeType = ResolveGeneratedNodeType(data);
+                if (nodeType == null || data.Deserialize(nodeType) is not CeresNode node)
+                {
+                    return false;
+                }
+
+                var portData = FindNodePortData(data, portName, portIndex);
+                var port = portData?.GetPort(node);
+                if (port == null)
+                {
+                    return false;
+                }
+
+                return TryConvertValue(port.GetValue(), out value);
+            }
+
+            return false;
+        }
+
+        private static CeresPortData FindNodePortData(CeresNodeData data, string portName, int portIndex)
+        {
+            if (data?.portData == null)
+            {
+                return null;
+            }
+
+            foreach (var portData in data.portData)
+            {
+                if (portData == null ||
+                    !string.Equals(portData.propertyName, portName, StringComparison.Ordinal) ||
+                    portIndex >= 0 && portData.arrayIndex != portIndex)
+                {
+                    continue;
+                }
+
+                return portData;
+            }
+
+            return null;
+        }
+
         private static Type ResolveGeneratedNodeType(CeresNodeData data)
         {
             try
@@ -372,7 +442,12 @@ namespace Ceres.Graph.Flow
                 return false;
             }
 
-            var rawValue = variable.GetValue();
+            return TryConvertValue(variable.GetValue(), out value);
+        }
+
+        private static bool TryConvertValue<TValue>(object rawValue, out TValue value)
+        {
+            value = default;
             if (rawValue == null)
             {
                 return !typeof(TValue).IsValueType || Nullable.GetUnderlyingType(typeof(TValue)) != null;
@@ -384,6 +459,16 @@ namespace Ceres.Graph.Flow
                 return true;
             }
 
+            if (typeof(TValue).IsArray && rawValue is Array arrayValue)
+            {
+                var converted = ConvertArray(arrayValue, typeof(TValue).GetElementType());
+                if (converted != null)
+                {
+                    value = (TValue)(object)converted;
+                    return true;
+                }
+            }
+
             try
             {
                 value = (TValue)Convert.ChangeType(rawValue, typeof(TValue));
@@ -393,6 +478,29 @@ namespace Ceres.Graph.Flow
             {
                 return false;
             }
+        }
+
+        private static Array ConvertArray(Array source, Type elementType)
+        {
+            if (source == null || elementType == null || source.Rank != 1)
+            {
+                return null;
+            }
+
+            var result = Array.CreateInstance(elementType, source.Length);
+            var lowerBound = source.GetLowerBound(0);
+            for (var i = 0; i < source.Length; i++)
+            {
+                var item = source.GetValue(lowerBound + i);
+                if (item != null && !elementType.IsInstanceOfType(item))
+                {
+                    return null;
+                }
+
+                result.SetValue(item, i);
+            }
+
+            return result;
         }
 
         public static T GetRequiredSharedVariable<T>(Blackboard blackboard, string variableName)

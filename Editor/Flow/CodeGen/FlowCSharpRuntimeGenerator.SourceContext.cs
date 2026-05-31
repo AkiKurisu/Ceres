@@ -1156,8 +1156,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                         frameTypeName, frameVar, indent);
                     if (node.isStatic && node.isSelfTarget && i == 0)
                     {
-                        expression =
-                            $"FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault<{GetFriendlyTypeName(directCall.ParameterTypes[i])}>(true, {expression}, {frameVar}.ContextObject)";
+                        expression = BuildSelfTargetArgumentExpression(node, $"input{i + 1}",
+                            directCall.ParameterTypes[i], expression, frameVar);
                     }
 
                     arguments.Add($"({GetFriendlyTypeName(directCall.ParameterTypes[i])})({expression})");
@@ -1186,8 +1186,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     : GetValueExpression(node, "target", directCall.TargetType, frameTypeName, frameVar, indent);
                 if (!node.isStatic)
                 {
-                    targetExpression =
-                        $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{GetFriendlyTypeName(directCall.TargetType)}>(false, {node.isSelfTarget.ToString().ToLowerInvariant()}, {targetExpression}, {frameVar}.ContextObject)";
+                    targetExpression = BuildTargetOrDefaultExpression(node, "target", directCall.TargetType,
+                        node.isSelfTarget, false, targetExpression, frameVar);
                 }
 
                 if (!directCall.UseInvoker)
@@ -1659,8 +1659,63 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
                 var targetExpression = GetValueExpression(node, "target", propertyCall.TargetType, frameTypeName,
                     frameVar, indent);
-                return
-                    $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{GetFriendlyTypeName(propertyCall.TargetType)}>(false, {node.isSelfTarget.ToString().ToLowerInvariant()}, {targetExpression}, {frameVar}.ContextObject)";
+                return BuildTargetOrDefaultExpression(node, "target", propertyCall.TargetType,
+                    node.isSelfTarget, false, targetExpression, frameVar);
+            }
+
+            private string BuildSelfTargetArgumentExpression(FlowNode_ExecuteFunction node, string propertyName,
+                Type targetType, string inputExpression, string frameVar)
+            {
+                return BuildTargetOrDefaultExpression(node, propertyName, targetType, true, true,
+                    inputExpression, frameVar);
+            }
+
+            private string BuildTargetOrDefaultExpression(CeresNode node, string propertyName, Type targetType,
+                bool isSelfTarget, bool useSelfTargetUtility, string inputExpression, string frameVar)
+            {
+                if (!isSelfTarget)
+                {
+                    return inputExpression;
+                }
+
+                if (CanUseContextSelfTarget(node, propertyName, -1, targetType))
+                {
+                    return $"{frameVar}.ContextObject as {GetFriendlyTypeName(targetType)}";
+                }
+
+                var typeName = GetFriendlyTypeName(targetType);
+                return useSelfTargetUtility
+                    ? $"FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault<{typeName}>(true, {inputExpression}, {frameVar}.ContextObject)"
+                    : $"FlowGeneratedRuntimeUtility.GetTargetOrDefault<{typeName}>(false, true, {inputExpression}, {frameVar}.ContextObject)";
+            }
+
+            private bool CanUseContextSelfTarget(CeresNode node, string propertyName, int arrayIndex, Type targetType)
+            {
+                return CanCastContextAs(targetType) &&
+                       IsUnconnectedNullInput(node, propertyName, arrayIndex);
+            }
+
+            private bool IsUnconnectedNullInput(CeresNode node, string propertyName, int arrayIndex)
+            {
+                if (TryFindValueConnection(node, propertyName, arrayIndex, out _, out _, out _))
+                {
+                    return false;
+                }
+
+                var portData = arrayIndex < 0
+                    ? node.NodeData.FindPortData(propertyName)
+                    : node.NodeData.FindPortData(propertyName, arrayIndex);
+                var value = portData?.GetPort(node)?.GetValue();
+                return IsNullLiteralValue(value);
+            }
+
+            private static bool CanCastContextAs(Type targetType)
+            {
+                return targetType != null &&
+                       !targetType.IsValueType &&
+                       (targetType.IsInterface ||
+                        targetType.IsAssignableFrom(typeof(UObject)) ||
+                        typeof(UObject).IsAssignableFrom(targetType));
             }
 
             internal void GenerateDefaultNext(FlowNode node, string frameTypeName, string frameVar, string indent)
