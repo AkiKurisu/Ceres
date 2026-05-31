@@ -16,7 +16,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="managerType">The concrete data table manager type to resolve.</param>
         /// <returns>The resolved data table manager instance.</returns>
-        [ExecutableFunction]
+        [ExecutableFunction(SearchAliases = "Get DataTable Manager, DataTable Manager"), CeresLabel("Get Data Table Manager")]
         public static DataTableManager Flow_GetDataTableManager(
             [ResolveReturn] SerializedType<DataTableManager> managerType)
         {
@@ -29,7 +29,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="dataTableManager">The manager that owns the data table.</param>
         /// <param name="name">The data table name.</param>
         /// <returns>The matching data table, or null when it is not found.</returns>
-        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Get DataTable")]
+        [ExecutableFunction(IsScriptMethod = true, SearchAliases = "Get DataTable, DataTable"), CeresLabel("Get Data Table")]
         public static DataTable Flow_DataTableManagerGetDataTable(DataTableManager dataTableManager, string name)
         {
             return dataTableManager.GetDataTable(name);
@@ -56,7 +56,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="index"></param>
         /// <param name="rowType"></param>
         /// <returns></returns>
-        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Get Row by Index")]
+        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Get Row By Index")]
         public static IDataTableRow Flow_DataTableGetRowByIndex(DataTable dataTable, int index,
             [ResolveReturn] SerializedType<IDataTableRow> rowType)
         {

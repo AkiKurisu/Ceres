@@ -40,7 +40,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="separator"></param>
         /// <param name="argument"></param>
         /// <returns></returns>
-        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with One Argument")]
+        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String With One Argument")]
         public static string Flow_StringFormatOneArgument(string separator, object argument)
         {
             return string.Format(separator, argument);
@@ -53,7 +53,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="argument0"></param>
         /// <param name="argument1"></param>
         /// <returns></returns>
-        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with Two Arguments")]
+        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String With Two Arguments")]
         public static string Flow_StringFormatTwoArguments(string separator, object argument0, object argument1)
         {
             return string.Format(separator, argument0, argument1);
@@ -67,7 +67,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="argument1"></param>
         /// <param name="argument2"></param>
         /// <returns></returns>
-        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String with Three Arguments")]
+        [ExecutableFunction(ExecuteInDependency = true), CeresLabel("Format String With Three Arguments")]
         public static string Flow_StringFormatThreeArguments(string separator, object argument0, object argument1, object argument2)
         {
             return string.Format(separator, argument0, argument1, argument2);
@@ -92,7 +92,8 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="oldValue">The substring to replace.</param>
         /// <param name="newValue">The replacement string.</param>
         /// <returns>The updated string.</returns>
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("Replace String")]
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true, SearchAliases = "Replace String"),
+         CeresLabel("Replace")]
         public static string Flow_StringReplace(string stringValue, string oldValue, string newValue)
         {
             return stringValue.Replace(oldValue, newValue);
@@ -103,7 +104,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="stringValue">The source string.</param>
         /// <returns>The lower-case string.</returns>
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("ToLower")]
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("To Lower")]
         public static string Flow_StringToLower(string stringValue)
         {
             return stringValue.ToLower(CultureInfo.CurrentCulture);
@@ -114,7 +115,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="stringValue">The source string.</param>
         /// <returns>The upper-case string.</returns>
-        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("ToUpper")]
+        [ExecutableFunction(IsScriptMethod = true, IsSelfTarget = true, ExecuteInDependency = true), CeresLabel("To Upper")]
         public static string Flow_StringToUpper(string stringValue)
         {
             return stringValue.ToUpper(CultureInfo.CurrentCulture);

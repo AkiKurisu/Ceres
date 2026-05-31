@@ -147,7 +147,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <summary>
         /// Provides the Float To Int operation for Flow graphs.
         /// </summary>
-        [ExecutableFunction(IsScriptMethod = true, ExecuteInDependency = true,  DisplayTarget = false, SearchName = "Float to Int"),
+        [ExecutableFunction(IsScriptMethod = true, ExecuteInDependency = true,  DisplayTarget = false, SearchName = "Float To Int"),
          CeresLabel("To Int")]
         public static int Flow_FloatToInt(float floatValue)
         {
@@ -423,7 +423,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <summary>
         /// Provides the Int To Float operation for Flow graphs.
         /// </summary>
-        [ExecutableFunction(IsScriptMethod = true, ExecuteInDependency = true,  DisplayTarget = false, SearchName = "Int to Float"), 
+        [ExecutableFunction(IsScriptMethod = true, ExecuteInDependency = true,  DisplayTarget = false, SearchName = "Int To Float"),
          CeresLabel("To Float")]
         public static float Flow_IntToFloat(int intValue)
         {

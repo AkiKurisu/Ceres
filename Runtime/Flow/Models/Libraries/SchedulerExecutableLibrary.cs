@@ -22,7 +22,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="isLooped"></param>
         /// <param name="ignoreTimeScale"></param>
         /// <returns></returns>
-        [ExecutableFunction, CeresLabel("Schedule Timer by Event")]
+        [ExecutableFunction, CeresLabel("Schedule Timer By Event")]
         public static SchedulerHandle Flow_SchedulerDelay(
             float delaySeconds, EventDelegate onComplete, EventDelegate<float> onUpdate, 
             TickFrame tickFrame, bool isLooped, bool ignoreTimeScale)
@@ -41,7 +41,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// <param name="tickFrame"></param>
         /// <param name="isLooped"></param>
         /// <returns></returns>
-        [ExecutableFunction, CeresLabel("Schedule FrameCounter by Event")]
+        [ExecutableFunction(SearchAliases = "Schedule FrameCounter By Event, FrameCounter"), CeresLabel("Schedule Frame Counter By Event")]
         public static SchedulerHandle Flow_SchedulerWaitFrame(
             int frame, EventDelegate onComplete, EventDelegate<int> onUpdate,
             TickFrame tickFrame, bool isLooped)

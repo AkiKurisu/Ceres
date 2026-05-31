@@ -28,7 +28,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="disposable">The disposable to register.</param>
         /// <param name="disposableUnregister">The unregister owner that will dispose it.</param>
-        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Add to Disposable Unregister")]
+        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Add To Disposable Unregister")]
         public static void Flow_IDisposableAddToIDisposableUnregister(IDisposable disposable, IDisposableUnregister disposableUnregister)
         {
             disposable.AddTo(disposableUnregister);
@@ -39,7 +39,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="disposable">The disposable to register.</param>
         /// <param name="component">The component whose lifetime owns the disposable.</param>
-        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Add to Component")]
+        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Add To Component")]
         public static void Flow_IDisposableAddToComponent(IDisposable disposable, Component component)
         {
             disposable.AddTo(component);
@@ -50,7 +50,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="disposable">The disposable to register.</param>
         /// <param name="gameObject">The GameObject whose lifetime owns the disposable.</param>
-        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Add to GameObject")]
+        [ExecutableFunction(IsScriptMethod = true), CeresLabel("Add To GameObject")]
         public static void Flow_IDisposableAddToGameObject(IDisposable disposable, GameObject gameObject)
         {
             disposable.AddTo(gameObject);
@@ -61,7 +61,7 @@ namespace Ceres.Graph.Flow.Utilities
         /// </summary>
         /// <param name="onDispose">Callback invoked when the disposable is disposed.</param>
         /// <returns>A disposable callback wrapper.</returns>
-        [ExecutableFunction, CeresLabel("Create Disposable from Event")]
+        [ExecutableFunction, CeresLabel("Create Disposable From Event")]
         public static IDisposable Flow_DisposableCreate(EventDelegate onDispose)
         {
             return Disposable.Create(onDispose);
