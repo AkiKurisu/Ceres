@@ -1,0 +1,228 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent
+  commentId: T:Ceres.Editor.Graph.PortConnectionChangeEvent
+  id: PortConnectionChangeEvent
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.PortConnectionChangeEvent.ConnectionChangeType
+  - Ceres.Editor.Graph.PortConnectionChangeEvent.Edge
+  - Ceres.Editor.Graph.PortConnectionChangeEvent.GetPooled(Ceres.Editor.Graph.CeresPortView,Ceres.Editor.Graph.CeresEdge,Ceres.Editor.Graph.PortConnectionChangeType)
+  - Ceres.Editor.Graph.PortConnectionChangeEvent.PortView
+  langs:
+  - csharp
+  - vb
+  name: PortConnectionChangeEvent
+  nameWithType: PortConnectionChangeEvent
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent
+  type: Class
+  source:
+    id: PortConnectionChangeEvent
+    path: ''
+    startLine: 1054
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class PortConnectionChangeEvent : EventBase<PortConnectionChangeEvent>, ICeresEvent'
+    content.vb: Public Class PortConnectionChangeEvent Inherits EventBase(Of PortConnectionChangeEvent) Implements ICeresEvent
+  inheritance:
+  - System.Object
+  implements:
+  - Ceres.Editor.Graph.ICeresEvent
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent.PortView
+  commentId: P:Ceres.Editor.Graph.PortConnectionChangeEvent.PortView
+  id: PortView
+  parent: Ceres.Editor.Graph.PortConnectionChangeEvent
+  langs:
+  - csharp
+  - vb
+  name: PortView
+  nameWithType: PortConnectionChangeEvent.PortView
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent.PortView
+  type: Property
+  source:
+    id: PortView
+    path: ''
+    startLine: 1056
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortView PortView { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresPortView
+    content.vb: Public Property PortView As CeresPortView
+  overload: Ceres.Editor.Graph.PortConnectionChangeEvent.PortView*
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent.Edge
+  commentId: P:Ceres.Editor.Graph.PortConnectionChangeEvent.Edge
+  id: Edge
+  parent: Ceres.Editor.Graph.PortConnectionChangeEvent
+  langs:
+  - csharp
+  - vb
+  name: Edge
+  nameWithType: PortConnectionChangeEvent.Edge
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent.Edge
+  type: Property
+  source:
+    id: Edge
+    path: ''
+    startLine: 1058
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresEdge Edge { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresEdge
+    content.vb: Public Property Edge As CeresEdge
+  overload: Ceres.Editor.Graph.PortConnectionChangeEvent.Edge*
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent.ConnectionChangeType
+  commentId: P:Ceres.Editor.Graph.PortConnectionChangeEvent.ConnectionChangeType
+  id: ConnectionChangeType
+  parent: Ceres.Editor.Graph.PortConnectionChangeEvent
+  langs:
+  - csharp
+  - vb
+  name: ConnectionChangeType
+  nameWithType: PortConnectionChangeEvent.ConnectionChangeType
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent.ConnectionChangeType
+  type: Property
+  source:
+    id: ConnectionChangeType
+    path: ''
+    startLine: 1060
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public PortConnectionChangeType ConnectionChangeType { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.PortConnectionChangeType
+    content.vb: Public Property ConnectionChangeType As PortConnectionChangeType
+  overload: Ceres.Editor.Graph.PortConnectionChangeEvent.ConnectionChangeType*
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent.GetPooled(Ceres.Editor.Graph.CeresPortView,Ceres.Editor.Graph.CeresEdge,Ceres.Editor.Graph.PortConnectionChangeType)
+  commentId: M:Ceres.Editor.Graph.PortConnectionChangeEvent.GetPooled(Ceres.Editor.Graph.CeresPortView,Ceres.Editor.Graph.CeresEdge,Ceres.Editor.Graph.PortConnectionChangeType)
+  id: GetPooled(Ceres.Editor.Graph.CeresPortView,Ceres.Editor.Graph.CeresEdge,Ceres.Editor.Graph.PortConnectionChangeType)
+  parent: Ceres.Editor.Graph.PortConnectionChangeEvent
+  langs:
+  - csharp
+  - vb
+  name: GetPooled(CeresPortView, CeresEdge, PortConnectionChangeType)
+  nameWithType: PortConnectionChangeEvent.GetPooled(CeresPortView, CeresEdge, PortConnectionChangeType)
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent.GetPooled(Ceres.Editor.Graph.CeresPortView, Ceres.Editor.Graph.CeresEdge, Ceres.Editor.Graph.PortConnectionChangeType)
+  type: Method
+  source:
+    id: GetPooled
+    path: ''
+    startLine: 1062
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public static PortConnectionChangeEvent GetPooled(CeresPortView portView, CeresEdge edge, PortConnectionChangeType connectionChangeType)
+    parameters:
+    - id: portView
+      type: Ceres.Editor.Graph.CeresPortView
+    - id: edge
+      type: Ceres.Editor.Graph.CeresEdge
+    - id: connectionChangeType
+      type: Ceres.Editor.Graph.PortConnectionChangeType
+    return:
+      type: Ceres.Editor.Graph.PortConnectionChangeEvent
+    content.vb: Public Shared Function GetPooled(portView As CeresPortView, edge As CeresEdge, connectionChangeType As PortConnectionChangeType) As PortConnectionChangeEvent
+  overload: Ceres.Editor.Graph.PortConnectionChangeEvent.GetPooled*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.ICeresEvent
+  commentId: T:Ceres.Editor.Graph.ICeresEvent
+  parent: Ceres.Editor.Graph
+  name: ICeresEvent
+  nameWithType: ICeresEvent
+  fullName: Ceres.Editor.Graph.ICeresEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent.PortView*
+  commentId: Overload:Ceres.Editor.Graph.PortConnectionChangeEvent.PortView
+  name: PortView
+  nameWithType: PortConnectionChangeEvent.PortView
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent.PortView
+- uid: Ceres.Editor.Graph.CeresPortView
+  commentId: T:Ceres.Editor.Graph.CeresPortView
+  parent: Ceres.Editor.Graph
+  name: CeresPortView
+  nameWithType: CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent.Edge*
+  commentId: Overload:Ceres.Editor.Graph.PortConnectionChangeEvent.Edge
+  name: Edge
+  nameWithType: PortConnectionChangeEvent.Edge
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent.Edge
+- uid: Ceres.Editor.Graph.CeresEdge
+  commentId: T:Ceres.Editor.Graph.CeresEdge
+  parent: Ceres.Editor.Graph
+  name: CeresEdge
+  nameWithType: CeresEdge
+  fullName: Ceres.Editor.Graph.CeresEdge
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent.ConnectionChangeType*
+  commentId: Overload:Ceres.Editor.Graph.PortConnectionChangeEvent.ConnectionChangeType
+  name: ConnectionChangeType
+  nameWithType: PortConnectionChangeEvent.ConnectionChangeType
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent.ConnectionChangeType
+- uid: Ceres.Editor.Graph.PortConnectionChangeType
+  commentId: T:Ceres.Editor.Graph.PortConnectionChangeType
+  parent: Ceres.Editor.Graph
+  name: PortConnectionChangeType
+  nameWithType: PortConnectionChangeType
+  fullName: Ceres.Editor.Graph.PortConnectionChangeType
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent.GetPooled*
+  commentId: Overload:Ceres.Editor.Graph.PortConnectionChangeEvent.GetPooled
+  name: GetPooled
+  nameWithType: PortConnectionChangeEvent.GetPooled
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent.GetPooled
+- uid: Ceres.Editor.Graph.PortConnectionChangeEvent
+  commentId: T:Ceres.Editor.Graph.PortConnectionChangeEvent
+  parent: Ceres.Editor.Graph
+  name: PortConnectionChangeEvent
+  nameWithType: PortConnectionChangeEvent
+  fullName: Ceres.Editor.Graph.PortConnectionChangeEvent

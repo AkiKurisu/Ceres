@@ -1,0 +1,1295 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Blackboard
+  commentId: T:Ceres.Graph.Blackboard
+  id: Blackboard
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.Blackboard.CanVariableExposed(Ceres.Graph.SharedVariable)
+  - Ceres.Graph.Blackboard.Create``1(List{Ceres.Graph.SharedVariable},System.Boolean)
+  - Ceres.Graph.Blackboard.GetExposedVariables
+  - Ceres.Graph.Blackboard.SetBool(System.String,System.Boolean)
+  - Ceres.Graph.Blackboard.SetFloat(System.String,System.Single)
+  - Ceres.Graph.Blackboard.SetInt(System.String,System.Int32)
+  - Ceres.Graph.Blackboard.SetObject(System.String,System.Object)
+  - Ceres.Graph.Blackboard.SetString(System.String,System.String)
+  - Ceres.Graph.Blackboard.SetUObject(System.String,UObject)
+  - Ceres.Graph.Blackboard.SetUObject``1(System.String,``0)
+  - Ceres.Graph.Blackboard.SetVector2(System.String,Vector2)
+  - Ceres.Graph.Blackboard.SetVector2Int(System.String,Vector2Int)
+  - Ceres.Graph.Blackboard.SetVector3(System.String,Vector3)
+  - Ceres.Graph.Blackboard.SetVector3Int(System.String,Vector3Int)
+  - Ceres.Graph.Blackboard.SharedVariables
+  langs:
+  - csharp
+  - vb
+  name: Blackboard
+  nameWithType: Blackboard
+  fullName: Ceres.Graph.Blackboard
+  type: Class
+  source:
+    id: Blackboard
+    path: ''
+    startLine: 20418
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nA medium for centralized storage and exchange of graph data\n"
+  example: []
+  syntax:
+    content: 'public class Blackboard : IVariableSource'
+    content.vb: Public Class Blackboard Implements IVariableSource
+  inheritance:
+  - System.Object
+  implements:
+  - Ceres.Graph.IVariableSource
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Graph.Blackboard.SharedVariables
+  commentId: P:Ceres.Graph.Blackboard.SharedVariables
+  id: SharedVariables
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SharedVariables
+  nameWithType: Blackboard.SharedVariables
+  fullName: Ceres.Graph.Blackboard.SharedVariables
+  type: Property
+  source:
+    id: SharedVariables
+    path: ''
+    startLine: 20420
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public List<SharedVariable> SharedVariables { get; }
+    parameters: []
+    return:
+      type: Global.List{Ceres.Graph.SharedVariable}
+    content.vb: Public ReadOnly Property SharedVariables As List(Of SharedVariable)
+  overload: Ceres.Graph.Blackboard.SharedVariables*
+  implements:
+  - Ceres.Graph.IVariableSource.SharedVariables
+- uid: Ceres.Graph.Blackboard.CanVariableExposed(Ceres.Graph.SharedVariable)
+  commentId: M:Ceres.Graph.Blackboard.CanVariableExposed(Ceres.Graph.SharedVariable)
+  id: CanVariableExposed(Ceres.Graph.SharedVariable)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: CanVariableExposed(SharedVariable)
+  nameWithType: Blackboard.CanVariableExposed(SharedVariable)
+  fullName: Ceres.Graph.Blackboard.CanVariableExposed(Ceres.Graph.SharedVariable)
+  type: Method
+  source:
+    id: CanVariableExposed
+    path: ''
+    startLine: 20422
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: protected virtual bool CanVariableExposed(SharedVariable variable)
+    parameters:
+    - id: variable
+      type: Ceres.Graph.SharedVariable
+    return:
+      type: System.Boolean
+    content.vb: Protected Overridable Function CanVariableExposed(variable As SharedVariable) As Boolean
+  overload: Ceres.Graph.Blackboard.CanVariableExposed*
+- uid: Ceres.Graph.Blackboard.GetExposedVariables
+  commentId: M:Ceres.Graph.Blackboard.GetExposedVariables
+  id: GetExposedVariables
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: GetExposedVariables()
+  nameWithType: Blackboard.GetExposedVariables()
+  fullName: Ceres.Graph.Blackboard.GetExposedVariables()
+  type: Method
+  source:
+    id: GetExposedVariables
+    path: ''
+    startLine: 20431
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet all exposed shared variables\n"
+  example: []
+  syntax:
+    content: public SharedVariable[] GetExposedVariables()
+    return:
+      type: Ceres.Graph.SharedVariable[]
+      description: ''
+    content.vb: Public Function GetExposedVariables() As SharedVariable()
+  overload: Ceres.Graph.Blackboard.GetExposedVariables*
+- uid: Ceres.Graph.Blackboard.Create``1(List{Ceres.Graph.SharedVariable},System.Boolean)
+  commentId: M:Ceres.Graph.Blackboard.Create``1(List{Ceres.Graph.SharedVariable},System.Boolean)
+  id: Create``1(List{Ceres.Graph.SharedVariable},System.Boolean)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: Create<TBlackboard>(List<SharedVariable>, bool)
+  nameWithType: Blackboard.Create<TBlackboard>(List<SharedVariable>, bool)
+  fullName: Ceres.Graph.Blackboard.Create<TBlackboard>(List<Ceres.Graph.SharedVariable>, bool)
+  type: Method
+  source:
+    id: Create
+    path: ''
+    startLine: 20451
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nCreate a BlackBoard \n"
+  example: []
+  syntax:
+    content: 'public static TBlackboard Create<TBlackboard>(List<SharedVariable> variables = null, bool clone = true) where TBlackboard : Blackboard, new()'
+    parameters:
+    - id: variables
+      type: Global.List{Ceres.Graph.SharedVariable}
+      description: Variables to add
+    - id: clone
+      type: System.Boolean
+      description: Whether clone source variable
+    typeParameters:
+    - id: TBlackboard
+    return:
+      type: '{TBlackboard}'
+      description: ''
+    content.vb: Public Shared Function Create(Of TBlackboard As {Blackboard, New})(variables As List(Of SharedVariable) = Nothing, clone As Boolean = True) As TBlackboard
+  overload: Ceres.Graph.Blackboard.Create*
+  nameWithType.vb: Blackboard.Create(Of TBlackboard)(List(Of SharedVariable), Boolean)
+  fullName.vb: Ceres.Graph.Blackboard.Create(Of TBlackboard)(List(Of Ceres.Graph.SharedVariable), Boolean)
+  name.vb: Create(Of TBlackboard)(List(Of SharedVariable), Boolean)
+- uid: Ceres.Graph.Blackboard.SetFloat(System.String,System.Single)
+  commentId: M:Ceres.Graph.Blackboard.SetFloat(System.String,System.Single)
+  id: SetFloat(System.String,System.Single)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetFloat(string, float)
+  nameWithType: Blackboard.SetFloat(string, float)
+  fullName: Ceres.Graph.Blackboard.SetFloat(string, float)
+  type: Method
+  source:
+    id: SetFloat
+    path: ''
+    startLine: 20465
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<float> SetFloat(string key, float value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: System.Single
+    return:
+      type: Ceres.Graph.SharedVariable{System.Single}
+    content.vb: Public Function SetFloat(key As String, value As Single) As SharedVariable(Of Single)
+  overload: Ceres.Graph.Blackboard.SetFloat*
+  nameWithType.vb: Blackboard.SetFloat(String, Single)
+  fullName.vb: Ceres.Graph.Blackboard.SetFloat(String, Single)
+  name.vb: SetFloat(String, Single)
+- uid: Ceres.Graph.Blackboard.SetInt(System.String,System.Int32)
+  commentId: M:Ceres.Graph.Blackboard.SetInt(System.String,System.Int32)
+  id: SetInt(System.String,System.Int32)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetInt(string, int)
+  nameWithType: Blackboard.SetInt(string, int)
+  fullName: Ceres.Graph.Blackboard.SetInt(string, int)
+  type: Method
+  source:
+    id: SetInt
+    path: ''
+    startLine: 20476
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<int> SetInt(string key, int value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: System.Int32
+    return:
+      type: Ceres.Graph.SharedVariable{System.Int32}
+    content.vb: Public Function SetInt(key As String, value As Integer) As SharedVariable(Of Integer)
+  overload: Ceres.Graph.Blackboard.SetInt*
+  nameWithType.vb: Blackboard.SetInt(String, Integer)
+  fullName.vb: Ceres.Graph.Blackboard.SetInt(String, Integer)
+  name.vb: SetInt(String, Integer)
+- uid: Ceres.Graph.Blackboard.SetVector3(System.String,Vector3)
+  commentId: M:Ceres.Graph.Blackboard.SetVector3(System.String,Vector3)
+  id: SetVector3(System.String,Vector3)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetVector3(string, Vector3)
+  nameWithType: Blackboard.SetVector3(string, Vector3)
+  fullName: Ceres.Graph.Blackboard.SetVector3(string, Vector3)
+  type: Method
+  source:
+    id: SetVector3
+    path: ''
+    startLine: 20487
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<Vector3> SetVector3(string key, Vector3 value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: Global.Vector3
+    return:
+      type: Ceres.Graph.SharedVariable{Vector3}
+    content.vb: Public Function SetVector3(key As String, value As Vector3) As SharedVariable(Of Vector3)
+  overload: Ceres.Graph.Blackboard.SetVector3*
+  nameWithType.vb: Blackboard.SetVector3(String, Vector3)
+  fullName.vb: Ceres.Graph.Blackboard.SetVector3(String, Vector3)
+  name.vb: SetVector3(String, Vector3)
+- uid: Ceres.Graph.Blackboard.SetVector3Int(System.String,Vector3Int)
+  commentId: M:Ceres.Graph.Blackboard.SetVector3Int(System.String,Vector3Int)
+  id: SetVector3Int(System.String,Vector3Int)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetVector3Int(string, Vector3Int)
+  nameWithType: Blackboard.SetVector3Int(string, Vector3Int)
+  fullName: Ceres.Graph.Blackboard.SetVector3Int(string, Vector3Int)
+  type: Method
+  source:
+    id: SetVector3Int
+    path: ''
+    startLine: 20498
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<Vector3Int> SetVector3Int(string key, Vector3Int value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: Global.Vector3Int
+    return:
+      type: Ceres.Graph.SharedVariable{Vector3Int}
+    content.vb: Public Function SetVector3Int(key As String, value As Vector3Int) As SharedVariable(Of Vector3Int)
+  overload: Ceres.Graph.Blackboard.SetVector3Int*
+  nameWithType.vb: Blackboard.SetVector3Int(String, Vector3Int)
+  fullName.vb: Ceres.Graph.Blackboard.SetVector3Int(String, Vector3Int)
+  name.vb: SetVector3Int(String, Vector3Int)
+- uid: Ceres.Graph.Blackboard.SetVector2(System.String,Vector2)
+  commentId: M:Ceres.Graph.Blackboard.SetVector2(System.String,Vector2)
+  id: SetVector2(System.String,Vector2)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetVector2(string, Vector2)
+  nameWithType: Blackboard.SetVector2(string, Vector2)
+  fullName: Ceres.Graph.Blackboard.SetVector2(string, Vector2)
+  type: Method
+  source:
+    id: SetVector2
+    path: ''
+    startLine: 20509
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<Vector2> SetVector2(string key, Vector2 value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: Global.Vector2
+    return:
+      type: Ceres.Graph.SharedVariable{Vector2}
+    content.vb: Public Function SetVector2(key As String, value As Vector2) As SharedVariable(Of Vector2)
+  overload: Ceres.Graph.Blackboard.SetVector2*
+  nameWithType.vb: Blackboard.SetVector2(String, Vector2)
+  fullName.vb: Ceres.Graph.Blackboard.SetVector2(String, Vector2)
+  name.vb: SetVector2(String, Vector2)
+- uid: Ceres.Graph.Blackboard.SetVector2Int(System.String,Vector2Int)
+  commentId: M:Ceres.Graph.Blackboard.SetVector2Int(System.String,Vector2Int)
+  id: SetVector2Int(System.String,Vector2Int)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetVector2Int(string, Vector2Int)
+  nameWithType: Blackboard.SetVector2Int(string, Vector2Int)
+  fullName: Ceres.Graph.Blackboard.SetVector2Int(string, Vector2Int)
+  type: Method
+  source:
+    id: SetVector2Int
+    path: ''
+    startLine: 20520
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<Vector2Int> SetVector2Int(string key, Vector2Int value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: Global.Vector2Int
+    return:
+      type: Ceres.Graph.SharedVariable{Vector2Int}
+    content.vb: Public Function SetVector2Int(key As String, value As Vector2Int) As SharedVariable(Of Vector2Int)
+  overload: Ceres.Graph.Blackboard.SetVector2Int*
+  nameWithType.vb: Blackboard.SetVector2Int(String, Vector2Int)
+  fullName.vb: Ceres.Graph.Blackboard.SetVector2Int(String, Vector2Int)
+  name.vb: SetVector2Int(String, Vector2Int)
+- uid: Ceres.Graph.Blackboard.SetBool(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.Blackboard.SetBool(System.String,System.Boolean)
+  id: SetBool(System.String,System.Boolean)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetBool(string, bool)
+  nameWithType: Blackboard.SetBool(string, bool)
+  fullName: Ceres.Graph.Blackboard.SetBool(string, bool)
+  type: Method
+  source:
+    id: SetBool
+    path: ''
+    startLine: 20531
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<bool> SetBool(string key, bool value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: System.Boolean
+    return:
+      type: Ceres.Graph.SharedVariable{System.Boolean}
+    content.vb: Public Function SetBool(key As String, value As Boolean) As SharedVariable(Of Boolean)
+  overload: Ceres.Graph.Blackboard.SetBool*
+  nameWithType.vb: Blackboard.SetBool(String, Boolean)
+  fullName.vb: Ceres.Graph.Blackboard.SetBool(String, Boolean)
+  name.vb: SetBool(String, Boolean)
+- uid: Ceres.Graph.Blackboard.SetString(System.String,System.String)
+  commentId: M:Ceres.Graph.Blackboard.SetString(System.String,System.String)
+  id: SetString(System.String,System.String)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetString(string, string)
+  nameWithType: Blackboard.SetString(string, string)
+  fullName: Ceres.Graph.Blackboard.SetString(string, string)
+  type: Method
+  source:
+    id: SetString
+    path: ''
+    startLine: 20542
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<string> SetString(string key, string value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: System.String
+    return:
+      type: Ceres.Graph.SharedVariable{System.String}
+    content.vb: Public Function SetString(key As String, value As String) As SharedVariable(Of String)
+  overload: Ceres.Graph.Blackboard.SetString*
+  nameWithType.vb: Blackboard.SetString(String, String)
+  fullName.vb: Ceres.Graph.Blackboard.SetString(String, String)
+  name.vb: SetString(String, String)
+- uid: Ceres.Graph.Blackboard.SetUObject(System.String,UObject)
+  commentId: M:Ceres.Graph.Blackboard.SetUObject(System.String,UObject)
+  id: SetUObject(System.String,UObject)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetUObject(string, UObject)
+  nameWithType: Blackboard.SetUObject(string, UObject)
+  fullName: Ceres.Graph.Blackboard.SetUObject(string, UObject)
+  type: Method
+  source:
+    id: SetUObject
+    path: ''
+    startLine: 20553
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<UObject> SetUObject(string key, UObject value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: Global.UObject
+    return:
+      type: Ceres.Graph.SharedVariable{UObject}
+    content.vb: Public Function SetUObject(key As String, value As UObject) As SharedVariable(Of UObject)
+  overload: Ceres.Graph.Blackboard.SetUObject*
+  nameWithType.vb: Blackboard.SetUObject(String, UObject)
+  fullName.vb: Ceres.Graph.Blackboard.SetUObject(String, UObject)
+  name.vb: SetUObject(String, UObject)
+- uid: Ceres.Graph.Blackboard.SetUObject``1(System.String,``0)
+  commentId: M:Ceres.Graph.Blackboard.SetUObject``1(System.String,``0)
+  id: SetUObject``1(System.String,``0)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetUObject<T>(string, T)
+  nameWithType: Blackboard.SetUObject<T>(string, T)
+  fullName: Ceres.Graph.Blackboard.SetUObject<T>(string, T)
+  type: Method
+  source:
+    id: SetUObject
+    path: ''
+    startLine: 20564
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: 'public SharedVariable<UObject> SetUObject<T>(string key, T value) where T : UObject'
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: '{T}'
+    typeParameters:
+    - id: T
+    return:
+      type: Ceres.Graph.SharedVariable{UObject}
+    content.vb: Public Function SetUObject(Of T As UObject)(key As String, value As T) As SharedVariable(Of UObject)
+  overload: Ceres.Graph.Blackboard.SetUObject*
+  nameWithType.vb: Blackboard.SetUObject(Of T)(String, T)
+  fullName.vb: Ceres.Graph.Blackboard.SetUObject(Of T)(String, T)
+  name.vb: SetUObject(Of T)(String, T)
+- uid: Ceres.Graph.Blackboard.SetObject(System.String,System.Object)
+  commentId: M:Ceres.Graph.Blackboard.SetObject(System.String,System.Object)
+  id: SetObject(System.String,System.Object)
+  parent: Ceres.Graph.Blackboard
+  langs:
+  - csharp
+  - vb
+  name: SetObject(string, object)
+  nameWithType: Blackboard.SetObject(string, object)
+  fullName: Ceres.Graph.Blackboard.SetObject(string, object)
+  type: Method
+  source:
+    id: SetObject
+    path: ''
+    startLine: 20575
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public SharedVariable<object> SetObject(string key, object value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: System.Object
+    return:
+      type: Ceres.Graph.SharedVariable{System.Object}
+    content.vb: Public Function SetObject(key As String, value As Object) As SharedVariable(Of Object)
+  overload: Ceres.Graph.Blackboard.SetObject*
+  nameWithType.vb: Blackboard.SetObject(String, Object)
+  fullName.vb: Ceres.Graph.Blackboard.SetObject(String, Object)
+  name.vb: SetObject(String, Object)
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.IVariableSource
+  commentId: T:Ceres.Graph.IVariableSource
+  parent: Ceres.Graph
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: Ceres.Graph.IVariableSource
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Blackboard.SharedVariables*
+  commentId: Overload:Ceres.Graph.Blackboard.SharedVariables
+  name: SharedVariables
+  nameWithType: Blackboard.SharedVariables
+  fullName: Ceres.Graph.Blackboard.SharedVariables
+- uid: Ceres.Graph.IVariableSource.SharedVariables
+  commentId: P:Ceres.Graph.IVariableSource.SharedVariables
+  parent: Ceres.Graph.IVariableSource
+  name: SharedVariables
+  nameWithType: IVariableSource.SharedVariables
+  fullName: Ceres.Graph.IVariableSource.SharedVariables
+- uid: Global.List{Ceres.Graph.SharedVariable}
+  commentId: '!:Global.List{Ceres.Graph.SharedVariable}'
+  definition: Global.List`1
+  name: List<SharedVariable>
+  nameWithType: List<SharedVariable>
+  fullName: List<Ceres.Graph.SharedVariable>
+  nameWithType.vb: List(Of SharedVariable)
+  fullName.vb: List(Of Ceres.Graph.SharedVariable)
+  name.vb: List(Of SharedVariable)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+- uid: Global.List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Graph.Blackboard.CanVariableExposed*
+  commentId: Overload:Ceres.Graph.Blackboard.CanVariableExposed
+  name: CanVariableExposed
+  nameWithType: Blackboard.CanVariableExposed
+  fullName: Ceres.Graph.Blackboard.CanVariableExposed
+- uid: Ceres.Graph.SharedVariable
+  commentId: T:Ceres.Graph.SharedVariable
+  parent: Ceres.Graph
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: Ceres.Graph.SharedVariable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Graph.Blackboard.GetExposedVariables*
+  commentId: Overload:Ceres.Graph.Blackboard.GetExposedVariables
+  name: GetExposedVariables
+  nameWithType: Blackboard.GetExposedVariables
+  fullName: Ceres.Graph.Blackboard.GetExposedVariables
+- uid: Ceres.Graph.SharedVariable[]
+  isExternal: true
+  name: SharedVariable[]
+  nameWithType: SharedVariable[]
+  fullName: Ceres.Graph.SharedVariable[]
+  nameWithType.vb: SharedVariable()
+  fullName.vb: Ceres.Graph.SharedVariable()
+  name.vb: SharedVariable()
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Blackboard.Create*
+  commentId: Overload:Ceres.Graph.Blackboard.Create
+  name: Create
+  nameWithType: Blackboard.Create
+  fullName: Ceres.Graph.Blackboard.Create
+- uid: '{TBlackboard}'
+  commentId: '!:TBlackboard'
+  definition: TBlackboard
+  name: TBlackboard
+  nameWithType: TBlackboard
+  fullName: TBlackboard
+- uid: TBlackboard
+  commentId: '!:TBlackboard'
+  name: TBlackboard
+  nameWithType: TBlackboard
+  fullName: TBlackboard
+- uid: Ceres.Graph.Blackboard.SetFloat*
+  commentId: Overload:Ceres.Graph.Blackboard.SetFloat
+  name: SetFloat
+  nameWithType: Blackboard.SetFloat
+  fullName: Ceres.Graph.Blackboard.SetFloat
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Ceres.Graph.SharedVariable{System.Single}
+  commentId: T:Ceres.Graph.SharedVariable{System.Single}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<float>
+  nameWithType: SharedVariable<float>
+  fullName: Ceres.Graph.SharedVariable<float>
+  nameWithType.vb: SharedVariable(Of Single)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Single)
+  name.vb: SharedVariable(Of Single)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.SharedVariable`1
+  commentId: T:Ceres.Graph.SharedVariable`1
+  parent: Ceres.Graph
+  name: SharedVariable<T>
+  nameWithType: SharedVariable<T>
+  fullName: Ceres.Graph.SharedVariable<T>
+  nameWithType.vb: SharedVariable(Of T)
+  fullName.vb: Ceres.Graph.SharedVariable(Of T)
+  name.vb: SharedVariable(Of T)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Graph.Blackboard.SetInt*
+  commentId: Overload:Ceres.Graph.Blackboard.SetInt
+  name: SetInt
+  nameWithType: Blackboard.SetInt
+  fullName: Ceres.Graph.Blackboard.SetInt
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Graph.SharedVariable{System.Int32}
+  commentId: T:Ceres.Graph.SharedVariable{System.Int32}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<int>
+  nameWithType: SharedVariable<int>
+  fullName: Ceres.Graph.SharedVariable<int>
+  nameWithType.vb: SharedVariable(Of Integer)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Integer)
+  name.vb: SharedVariable(Of Integer)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Blackboard.SetVector3*
+  commentId: Overload:Ceres.Graph.Blackboard.SetVector3
+  name: SetVector3
+  nameWithType: Blackboard.SetVector3
+  fullName: Ceres.Graph.Blackboard.SetVector3
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: Ceres.Graph.SharedVariable{Vector3}
+  commentId: T:Ceres.Graph.SharedVariable{Vector3}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<Vector3>
+  nameWithType: SharedVariable<Vector3>
+  fullName: Ceres.Graph.SharedVariable<Vector3>
+  nameWithType.vb: SharedVariable(Of Vector3)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Vector3)
+  name.vb: SharedVariable(Of Vector3)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: Global.Vector3
+    name: Vector3
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Vector3
+    name: Vector3
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Blackboard.SetVector3Int*
+  commentId: Overload:Ceres.Graph.Blackboard.SetVector3Int
+  name: SetVector3Int
+  nameWithType: Blackboard.SetVector3Int
+  fullName: Ceres.Graph.Blackboard.SetVector3Int
+- uid: Global.Vector3Int
+  isExternal: true
+  name: Vector3Int
+  nameWithType: Vector3Int
+  fullName: Vector3Int
+- uid: Ceres.Graph.SharedVariable{Vector3Int}
+  commentId: T:Ceres.Graph.SharedVariable{Vector3Int}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<Vector3Int>
+  nameWithType: SharedVariable<Vector3Int>
+  fullName: Ceres.Graph.SharedVariable<Vector3Int>
+  nameWithType.vb: SharedVariable(Of Vector3Int)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Vector3Int)
+  name.vb: SharedVariable(Of Vector3Int)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: Global.Vector3Int
+    name: Vector3Int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Vector3Int
+    name: Vector3Int
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Blackboard.SetVector2*
+  commentId: Overload:Ceres.Graph.Blackboard.SetVector2
+  name: SetVector2
+  nameWithType: Blackboard.SetVector2
+  fullName: Ceres.Graph.Blackboard.SetVector2
+- uid: Global.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: Ceres.Graph.SharedVariable{Vector2}
+  commentId: T:Ceres.Graph.SharedVariable{Vector2}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<Vector2>
+  nameWithType: SharedVariable<Vector2>
+  fullName: Ceres.Graph.SharedVariable<Vector2>
+  nameWithType.vb: SharedVariable(Of Vector2)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Vector2)
+  name.vb: SharedVariable(Of Vector2)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Blackboard.SetVector2Int*
+  commentId: Overload:Ceres.Graph.Blackboard.SetVector2Int
+  name: SetVector2Int
+  nameWithType: Blackboard.SetVector2Int
+  fullName: Ceres.Graph.Blackboard.SetVector2Int
+- uid: Global.Vector2Int
+  isExternal: true
+  name: Vector2Int
+  nameWithType: Vector2Int
+  fullName: Vector2Int
+- uid: Ceres.Graph.SharedVariable{Vector2Int}
+  commentId: T:Ceres.Graph.SharedVariable{Vector2Int}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<Vector2Int>
+  nameWithType: SharedVariable<Vector2Int>
+  fullName: Ceres.Graph.SharedVariable<Vector2Int>
+  nameWithType.vb: SharedVariable(Of Vector2Int)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Vector2Int)
+  name.vb: SharedVariable(Of Vector2Int)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: Global.Vector2Int
+    name: Vector2Int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Vector2Int
+    name: Vector2Int
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Blackboard.SetBool*
+  commentId: Overload:Ceres.Graph.Blackboard.SetBool
+  name: SetBool
+  nameWithType: Blackboard.SetBool
+  fullName: Ceres.Graph.Blackboard.SetBool
+- uid: Ceres.Graph.SharedVariable{System.Boolean}
+  commentId: T:Ceres.Graph.SharedVariable{System.Boolean}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<bool>
+  nameWithType: SharedVariable<bool>
+  fullName: Ceres.Graph.SharedVariable<bool>
+  nameWithType.vb: SharedVariable(Of Boolean)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Boolean)
+  name.vb: SharedVariable(Of Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Blackboard.SetString*
+  commentId: Overload:Ceres.Graph.Blackboard.SetString
+  name: SetString
+  nameWithType: Blackboard.SetString
+  fullName: Ceres.Graph.Blackboard.SetString
+- uid: Ceres.Graph.SharedVariable{System.String}
+  commentId: T:Ceres.Graph.SharedVariable{System.String}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<string>
+  nameWithType: SharedVariable<string>
+  fullName: Ceres.Graph.SharedVariable<string>
+  nameWithType.vb: SharedVariable(Of String)
+  fullName.vb: Ceres.Graph.SharedVariable(Of String)
+  name.vb: SharedVariable(Of String)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Blackboard.SetUObject*
+  commentId: Overload:Ceres.Graph.Blackboard.SetUObject
+  name: SetUObject
+  nameWithType: Blackboard.SetUObject
+  fullName: Ceres.Graph.Blackboard.SetUObject
+- uid: Global.UObject
+  isExternal: true
+  name: UObject
+  nameWithType: UObject
+  fullName: UObject
+- uid: Ceres.Graph.SharedVariable{UObject}
+  commentId: T:Ceres.Graph.SharedVariable{UObject}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<UObject>
+  nameWithType: SharedVariable<UObject>
+  fullName: Ceres.Graph.SharedVariable<UObject>
+  nameWithType.vb: SharedVariable(Of UObject)
+  fullName.vb: Ceres.Graph.SharedVariable(Of UObject)
+  name.vb: SharedVariable(Of UObject)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: Global.UObject
+    name: UObject
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.UObject
+    name: UObject
+    isExternal: true
+  - name: )
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Graph.Blackboard.SetObject*
+  commentId: Overload:Ceres.Graph.Blackboard.SetObject
+  name: SetObject
+  nameWithType: Blackboard.SetObject
+  fullName: Ceres.Graph.Blackboard.SetObject
+- uid: Ceres.Graph.SharedVariable{System.Object}
+  commentId: T:Ceres.Graph.SharedVariable{System.Object}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<object>
+  nameWithType: SharedVariable<object>
+  fullName: Ceres.Graph.SharedVariable<object>
+  nameWithType.vb: SharedVariable(Of Object)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Object)
+  name.vb: SharedVariable(Of Object)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )

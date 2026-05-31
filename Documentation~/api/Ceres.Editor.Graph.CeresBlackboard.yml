@@ -1,0 +1,717 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresBlackboard
+  commentId: T:Ceres.Editor.Graph.CeresBlackboard
+  id: CeresBlackboard
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresBlackboard.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.CeresBlackboard.#ctor(IVariableSource,GraphView)
+  - Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable,System.Boolean)
+  - Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  - Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+  - Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  - Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+  - Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  - Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  - Ceres.Editor.Graph.CeresBlackboard.Dispose
+  - Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)
+  - Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+  - Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(System.String)
+  - Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable,System.Boolean)
+  - Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+  langs:
+  - csharp
+  - vb
+  name: CeresBlackboard
+  nameWithType: CeresBlackboard
+  fullName: Ceres.Editor.Graph.CeresBlackboard
+  type: Class
+  source:
+    id: CeresBlackboard
+    path: ''
+    startLine: 1194
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class CeresBlackboard : Blackboard, IVariableSource, IDisposable'
+    content.vb: Public Class CeresBlackboard Inherits Blackboard Implements IVariableSource, IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Editor.Graph.Flow.FlowBlackboard
+  implements:
+  - Global.IVariableSource
+  - Global.IDisposable
+- uid: Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+  commentId: P:Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+  id: AlwaysExposed
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: AlwaysExposed
+  nameWithType: CeresBlackboard.AlwaysExposed
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+  type: Property
+  source:
+    id: AlwaysExposed
+    path: ''
+    startLine: 1196
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public bool AlwaysExposed { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AlwaysExposed As Boolean
+  overload: Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed*
+- uid: Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+  commentId: P:Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+  id: SharedVariables
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: SharedVariables
+  nameWithType: CeresBlackboard.SharedVariables
+  fullName: Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+  type: Property
+  source:
+    id: SharedVariables
+    path: ''
+    startLine: 1200
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public List<SharedVariable> SharedVariables { get; }
+    parameters: []
+    return:
+      type: Global.List{SharedVariable}
+    content.vb: Public ReadOnly Property SharedVariables As List(Of SharedVariable)
+  overload: Ceres.Editor.Graph.CeresBlackboard.SharedVariables*
+- uid: Ceres.Editor.Graph.CeresBlackboard.#ctor(IVariableSource,GraphView)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.#ctor(IVariableSource,GraphView)
+  id: '#ctor(IVariableSource,GraphView)'
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: CeresBlackboard(IVariableSource, GraphView)
+  nameWithType: CeresBlackboard.CeresBlackboard(IVariableSource, GraphView)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CeresBlackboard(IVariableSource, GraphView)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 1208
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresBlackboard(IVariableSource source, GraphView graphView)
+    parameters:
+    - id: source
+      type: Global.IVariableSource
+    - id: graphView
+      type: Global.GraphView
+    content.vb: Public Sub New(source As IVariableSource, graphView As GraphView)
+  overload: Ceres.Editor.Graph.CeresBlackboard.#ctor*
+  nameWithType.vb: CeresBlackboard.New(IVariableSource, GraphView)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.New(IVariableSource, GraphView)
+  name.vb: New(IVariableSource, GraphView)
+- uid: Ceres.Editor.Graph.CeresBlackboard.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  id: '#ctor(Ceres.Editor.Graph.CeresGraphView)'
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: CeresBlackboard(CeresGraphView)
+  nameWithType: CeresBlackboard.CeresBlackboard(CeresGraphView)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CeresBlackboard(Ceres.Editor.Graph.CeresGraphView)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 1223
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected CeresBlackboard(CeresGraphView graphView)
+    parameters:
+    - id: graphView
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Protected Sub New(graphView As CeresGraphView)
+  overload: Ceres.Editor.Graph.CeresBlackboard.#ctor*
+  nameWithType.vb: CeresBlackboard.New(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.New(Ceres.Editor.Graph.CeresGraphView)
+  name.vb: New(CeresGraphView)
+- uid: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(System.String)
+  id: GetOrAddSection(System.String)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: GetOrAddSection(string)
+  nameWithType: CeresBlackboard.GetOrAddSection(string)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(string)
+  type: Method
+  source:
+    id: GetOrAddSection
+    path: ''
+    startLine: 1228
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected BlackboardSection GetOrAddSection(string sectionName)
+    parameters:
+    - id: sectionName
+      type: System.String
+    return:
+      type: Global.BlackboardSection
+    content.vb: Protected Function GetOrAddSection(sectionName As String) As BlackboardSection
+  overload: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection*
+  nameWithType.vb: CeresBlackboard.GetOrAddSection(String)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection(String)
+  name.vb: GetOrAddSection(String)
+- uid: Ceres.Editor.Graph.CeresBlackboard.Dispose
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.Dispose
+  id: Dispose
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: CeresBlackboard.Dispose()
+  fullName: Ceres.Editor.Graph.CeresBlackboard.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 1240
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Editor.Graph.CeresBlackboard.Dispose*
+- uid: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  id: CreateBlackboardMenu(GenericMenu)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: CreateBlackboardMenu(GenericMenu)
+  nameWithType: CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu(GenericMenu)
+  type: Method
+  source:
+    id: CreateBlackboardMenu
+    path: ''
+    startLine: 1259
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void CreateBlackboardMenu(GenericMenu menu)
+    parameters:
+    - id: menu
+      type: Global.GenericMenu
+    content.vb: Protected Overridable Sub CreateBlackboardMenu(menu As GenericMenu)
+  overload: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu*
+- uid: Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.EditVariable(System.String)
+  id: EditVariable(System.String)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: EditVariable(string)
+  nameWithType: CeresBlackboard.EditVariable(string)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.EditVariable(string)
+  type: Method
+  source:
+    id: EditVariable
+    path: ''
+    startLine: 1317
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void EditVariable(string variableName)
+    parameters:
+    - id: variableName
+      type: System.String
+    content.vb: Public Sub EditVariable(variableName As String)
+  overload: Ceres.Editor.Graph.CeresBlackboard.EditVariable*
+  nameWithType.vb: CeresBlackboard.EditVariable(String)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.EditVariable(String)
+  name.vb: EditVariable(String)
+- uid: Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable,System.Boolean)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable,System.Boolean)
+  id: AddVariable(SharedVariable,System.Boolean)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: AddVariable(SharedVariable, bool)
+  nameWithType: CeresBlackboard.AddVariable(SharedVariable, bool)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable, bool)
+  type: Method
+  source:
+    id: AddVariable
+    path: ''
+    startLine: 1326
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void AddVariable(SharedVariable variable, bool fireEvents)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+    - id: fireEvents
+      type: System.Boolean
+    content.vb: Public Sub AddVariable(variable As SharedVariable, fireEvents As Boolean)
+  overload: Ceres.Editor.Graph.CeresBlackboard.AddVariable*
+  nameWithType.vb: CeresBlackboard.AddVariable(SharedVariable, Boolean)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.AddVariable(SharedVariable, Boolean)
+  name.vb: AddVariable(SharedVariable, Boolean)
+- uid: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable,BlackboardRow)
+  id: AddVariableRow(SharedVariable,BlackboardRow)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: AddVariableRow(SharedVariable, BlackboardRow)
+  nameWithType: CeresBlackboard.AddVariableRow(SharedVariable, BlackboardRow)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow(SharedVariable, BlackboardRow)
+  type: Method
+  source:
+    id: AddVariableRow
+    path: ''
+    startLine: 1389
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void AddVariableRow(SharedVariable variable, BlackboardRow blackboardRow)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+    - id: blackboardRow
+      type: Global.BlackboardRow
+    content.vb: Protected Overridable Sub AddVariableRow(variable As SharedVariable, blackboardRow As BlackboardRow)
+  overload: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow*
+- uid: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+  id: CanVariableExposed(SharedVariable)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: CanVariableExposed(SharedVariable)
+  nameWithType: CeresBlackboard.CanVariableExposed(SharedVariable)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed(SharedVariable)
+  type: Method
+  source:
+    id: CanVariableExposed
+    path: ''
+    startLine: 1399
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nWhether variable can be exposed in blackboard\n"
+  example: []
+  syntax:
+    content: protected virtual bool CanVariableExposed(SharedVariable variable)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Protected Overridable Function CanVariableExposed(variable As SharedVariable) As Boolean
+  overload: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed*
+- uid: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  id: CreateVariableBlackboardRow(SharedVariable,BlackboardField,VisualElement)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  nameWithType: CeresBlackboard.CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow(SharedVariable, BlackboardField, VisualElement)
+  type: Method
+  source:
+    id: CreateVariableBlackboardRow
+    path: ''
+    startLine: 1411
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nCreate <see cref=\"!:BlackboardRow\"></see> for variable\n"
+  example: []
+  syntax:
+    content: protected virtual BlackboardRow CreateVariableBlackboardRow(SharedVariable variable, BlackboardField blackboardField, VisualElement valueField)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+      description: ''
+    - id: blackboardField
+      type: Global.BlackboardField
+      description: ''
+    - id: valueField
+      type: Global.VisualElement
+      description: ''
+    return:
+      type: Global.BlackboardRow
+      description: ''
+    content.vb: Protected Overridable Function CreateVariableBlackboardRow(variable As SharedVariable, blackboardField As BlackboardField, valueField As VisualElement) As BlackboardRow
+  overload: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow*
+- uid: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable,System.Boolean)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable,System.Boolean)
+  id: RemoveVariable(SharedVariable,System.Boolean)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: RemoveVariable(SharedVariable, bool)
+  nameWithType: CeresBlackboard.RemoveVariable(SharedVariable, bool)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable, bool)
+  type: Method
+  source:
+    id: RemoveVariable
+    path: ''
+    startLine: 1468
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void RemoveVariable(SharedVariable variable, bool fireEvents)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+    - id: fireEvents
+      type: System.Boolean
+    content.vb: Public Sub RemoveVariable(variable As SharedVariable, fireEvents As Boolean)
+  overload: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable*
+  nameWithType.vb: CeresBlackboard.RemoveVariable(SharedVariable, Boolean)
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable(SharedVariable, Boolean)
+  name.vb: RemoveVariable(SharedVariable, Boolean)
+- uid: Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+  id: FindRow(SharedVariable)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: FindRow(SharedVariable)
+  nameWithType: CeresBlackboard.FindRow(SharedVariable)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.FindRow(SharedVariable)
+  type: Method
+  source:
+    id: FindRow
+    path: ''
+    startLine: 1482
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected CeresBlackboardVariableRow FindRow(SharedVariable variable)
+    parameters:
+    - id: variable
+      type: Global.SharedVariable
+    return:
+      type: Ceres.Editor.Graph.CeresBlackboardVariableRow
+    content.vb: Protected Function FindRow(variable As SharedVariable) As CeresBlackboardVariableRow
+  overload: Ceres.Editor.Graph.CeresBlackboard.FindRow*
+- uid: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  commentId: M:Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  id: BuildBlackboardMenu(ContextualMenuPopulateEvent,Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  parent: Ceres.Editor.Graph.CeresBlackboard
+  langs:
+  - csharp
+  - vb
+  name: BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)
+  nameWithType: CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent, CeresBlackboardVariableRow)
+  fullName: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu(ContextualMenuPopulateEvent, Ceres.Editor.Graph.CeresBlackboardVariableRow)
+  type: Method
+  source:
+    id: BuildBlackboardMenu
+    path: ''
+    startLine: 1496
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void BuildBlackboardMenu(ContextualMenuPopulateEvent evt, CeresBlackboardVariableRow variableRow)
+    parameters:
+    - id: evt
+      type: Global.ContextualMenuPopulateEvent
+    - id: variableRow
+      type: Ceres.Editor.Graph.CeresBlackboardVariableRow
+    content.vb: Protected Overridable Sub BuildBlackboardMenu(evt As ContextualMenuPopulateEvent, variableRow As CeresBlackboardVariableRow)
+  overload: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.IVariableSource
+  isExternal: true
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: IVariableSource
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+  name: AlwaysExposed
+  nameWithType: CeresBlackboard.AlwaysExposed
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AlwaysExposed
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Graph.CeresBlackboard.SharedVariables*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+  name: SharedVariables
+  nameWithType: CeresBlackboard.SharedVariables
+  fullName: Ceres.Editor.Graph.CeresBlackboard.SharedVariables
+- uid: Global.List{SharedVariable}
+  commentId: '!:Global.List{SharedVariable}'
+  definition: Global.List`1
+  name: List<SharedVariable>
+  nameWithType: List<SharedVariable>
+  fullName: List<SharedVariable>
+  nameWithType.vb: List(Of SharedVariable)
+  fullName.vb: List(Of SharedVariable)
+  name.vb: List(Of SharedVariable)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: )
+- uid: Global.List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.CeresBlackboard.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.#ctor
+  name: CeresBlackboard
+  nameWithType: CeresBlackboard.CeresBlackboard
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CeresBlackboard
+  nameWithType.vb: CeresBlackboard.New
+  fullName.vb: Ceres.Editor.Graph.CeresBlackboard.New
+  name.vb: New
+- uid: Global.GraphView
+  isExternal: true
+  name: GraphView
+  nameWithType: GraphView
+  fullName: GraphView
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection
+  name: GetOrAddSection
+  nameWithType: CeresBlackboard.GetOrAddSection
+  fullName: Ceres.Editor.Graph.CeresBlackboard.GetOrAddSection
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Global.BlackboardSection
+  commentId: '!:Global.BlackboardSection'
+  isExternal: true
+  name: BlackboardSection
+  nameWithType: BlackboardSection
+  fullName: BlackboardSection
+- uid: Ceres.Editor.Graph.CeresBlackboard.Dispose*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.Dispose
+  name: Dispose
+  nameWithType: CeresBlackboard.Dispose
+  fullName: Ceres.Editor.Graph.CeresBlackboard.Dispose
+- uid: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu
+  name: CreateBlackboardMenu
+  nameWithType: CeresBlackboard.CreateBlackboardMenu
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CreateBlackboardMenu
+- uid: Global.GenericMenu
+  isExternal: true
+  name: GenericMenu
+  nameWithType: GenericMenu
+  fullName: GenericMenu
+- uid: Ceres.Editor.Graph.CeresBlackboard.EditVariable*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.EditVariable
+  name: EditVariable
+  nameWithType: CeresBlackboard.EditVariable
+  fullName: Ceres.Editor.Graph.CeresBlackboard.EditVariable
+- uid: Ceres.Editor.Graph.CeresBlackboard.AddVariable*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.AddVariable
+  name: AddVariable
+  nameWithType: CeresBlackboard.AddVariable
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AddVariable
+- uid: Global.SharedVariable
+  isExternal: true
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: SharedVariable
+- uid: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.AddVariableRow
+  name: AddVariableRow
+  nameWithType: CeresBlackboard.AddVariableRow
+  fullName: Ceres.Editor.Graph.CeresBlackboard.AddVariableRow
+- uid: Global.BlackboardRow
+  isExternal: true
+  name: BlackboardRow
+  nameWithType: BlackboardRow
+  fullName: BlackboardRow
+- uid: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed
+  name: CanVariableExposed
+  nameWithType: CeresBlackboard.CanVariableExposed
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CanVariableExposed
+- uid: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow
+  name: CreateVariableBlackboardRow
+  nameWithType: CeresBlackboard.CreateVariableBlackboardRow
+  fullName: Ceres.Editor.Graph.CeresBlackboard.CreateVariableBlackboardRow
+- uid: Global.BlackboardField
+  isExternal: true
+  name: BlackboardField
+  nameWithType: BlackboardField
+  fullName: BlackboardField
+- uid: Global.VisualElement
+  isExternal: true
+  name: VisualElement
+  nameWithType: VisualElement
+  fullName: VisualElement
+- uid: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.RemoveVariable
+  name: RemoveVariable
+  nameWithType: CeresBlackboard.RemoveVariable
+  fullName: Ceres.Editor.Graph.CeresBlackboard.RemoveVariable
+- uid: Ceres.Editor.Graph.CeresBlackboard.FindRow*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.FindRow
+  name: FindRow
+  nameWithType: CeresBlackboard.FindRow
+  fullName: Ceres.Editor.Graph.CeresBlackboard.FindRow
+- uid: Ceres.Editor.Graph.CeresBlackboardVariableRow
+  commentId: T:Ceres.Editor.Graph.CeresBlackboardVariableRow
+  parent: Ceres.Editor.Graph
+  name: CeresBlackboardVariableRow
+  nameWithType: CeresBlackboardVariableRow
+  fullName: Ceres.Editor.Graph.CeresBlackboardVariableRow
+- uid: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu*
+  commentId: Overload:Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu
+  name: BuildBlackboardMenu
+  nameWithType: CeresBlackboard.BuildBlackboardMenu
+  fullName: Ceres.Editor.Graph.CeresBlackboard.BuildBlackboardMenu
+- uid: Global.ContextualMenuPopulateEvent
+  isExternal: true
+  name: ContextualMenuPopulateEvent
+  nameWithType: ContextualMenuPopulateEvent
+  fullName: ContextualMenuPopulateEvent

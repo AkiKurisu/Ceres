@@ -1,0 +1,274 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.ExecuteFlowEvent
+  commentId: T:Ceres.Graph.Flow.ExecuteFlowEvent
+  id: ExecuteFlowEvent
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.ExecuteFlowEvent.Args
+  - Ceres.Graph.Flow.ExecuteFlowEvent.Create(System.String,System.Object[])
+  - Ceres.Graph.Flow.ExecuteFlowEvent.DefaultArgs
+  langs:
+  - csharp
+  - vb
+  name: ExecuteFlowEvent
+  nameWithType: ExecuteFlowEvent
+  fullName: Ceres.Graph.Flow.ExecuteFlowEvent
+  type: Class
+  source:
+    id: ExecuteFlowEvent
+    path: ''
+    startLine: 24080
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nEvent for executing Flow Graph\n"
+  example: []
+  syntax:
+    content: 'public sealed class ExecuteFlowEvent : ExecuteFlowEventBase<ExecuteFlowEvent>, IFlowEvent'
+    content.vb: Public NotInheritable Class ExecuteFlowEvent Inherits ExecuteFlowEventBase(Of ExecuteFlowEvent) Implements IFlowEvent
+  inheritance:
+  - System.Object
+  - Ceres.Graph.Flow.ExecuteFlowEventBase{Ceres.Graph.Flow.ExecuteFlowEvent}
+  implements:
+  - Ceres.Graph.Flow.IFlowEvent
+  inheritedMembers:
+  - Ceres.Graph.Flow.ExecuteFlowEventBase{Ceres.Graph.Flow.ExecuteFlowEvent}.FunctionName
+- uid: Ceres.Graph.Flow.ExecuteFlowEvent.Args
+  commentId: P:Ceres.Graph.Flow.ExecuteFlowEvent.Args
+  id: Args
+  parent: Ceres.Graph.Flow.ExecuteFlowEvent
+  langs:
+  - csharp
+  - vb
+  name: Args
+  nameWithType: ExecuteFlowEvent.Args
+  fullName: Ceres.Graph.Flow.ExecuteFlowEvent.Args
+  type: Property
+  source:
+    id: Args
+    path: ''
+    startLine: 24085
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInput args\n"
+  example: []
+  syntax:
+    content: public object[] Args { get; }
+    parameters: []
+    return:
+      type: System.Object[]
+    content.vb: Public Property Args As Object()
+  overload: Ceres.Graph.Flow.ExecuteFlowEvent.Args*
+- uid: Ceres.Graph.Flow.ExecuteFlowEvent.DefaultArgs
+  commentId: F:Ceres.Graph.Flow.ExecuteFlowEvent.DefaultArgs
+  id: DefaultArgs
+  parent: Ceres.Graph.Flow.ExecuteFlowEvent
+  langs:
+  - csharp
+  - vb
+  name: DefaultArgs
+  nameWithType: ExecuteFlowEvent.DefaultArgs
+  fullName: Ceres.Graph.Flow.ExecuteFlowEvent.DefaultArgs
+  type: Field
+  source:
+    id: DefaultArgs
+    path: ''
+    startLine: 24087
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public static readonly object[] DefaultArgs
+    return:
+      type: System.Object[]
+    content.vb: Public Shared ReadOnly DefaultArgs As Object()
+- uid: Ceres.Graph.Flow.ExecuteFlowEvent.Create(System.String,System.Object[])
+  commentId: M:Ceres.Graph.Flow.ExecuteFlowEvent.Create(System.String,System.Object[])
+  id: Create(System.String,System.Object[])
+  parent: Ceres.Graph.Flow.ExecuteFlowEvent
+  langs:
+  - csharp
+  - vb
+  name: Create(string, params object[])
+  nameWithType: ExecuteFlowEvent.Create(string, params object[])
+  fullName: Ceres.Graph.Flow.ExecuteFlowEvent.Create(string, params object[])
+  type: Method
+  source:
+    id: Create
+    path: ''
+    startLine: 24089
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public static ExecuteFlowEvent Create(string functionName, params object[] arguments)
+    parameters:
+    - id: functionName
+      type: System.String
+    - id: arguments
+      type: System.Object[]
+    return:
+      type: Ceres.Graph.Flow.ExecuteFlowEvent
+    content.vb: Public Shared Function Create(functionName As String, ParamArray arguments As Object()) As ExecuteFlowEvent
+  overload: Ceres.Graph.Flow.ExecuteFlowEvent.Create*
+  nameWithType.vb: ExecuteFlowEvent.Create(String, ParamArray Object())
+  fullName.vb: Ceres.Graph.Flow.ExecuteFlowEvent.Create(String, ParamArray Object())
+  name.vb: Create(String, ParamArray Object())
+references:
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.Flow.ExecuteFlowEventBase{Ceres.Graph.Flow.ExecuteFlowEvent}
+  commentId: T:Ceres.Graph.Flow.ExecuteFlowEventBase{Ceres.Graph.Flow.ExecuteFlowEvent}
+  parent: Ceres.Graph.Flow
+  definition: Ceres.Graph.Flow.ExecuteFlowEventBase`1
+  name: ExecuteFlowEventBase<ExecuteFlowEvent>
+  nameWithType: ExecuteFlowEventBase<ExecuteFlowEvent>
+  fullName: Ceres.Graph.Flow.ExecuteFlowEventBase<Ceres.Graph.Flow.ExecuteFlowEvent>
+  nameWithType.vb: ExecuteFlowEventBase(Of ExecuteFlowEvent)
+  fullName.vb: Ceres.Graph.Flow.ExecuteFlowEventBase(Of Ceres.Graph.Flow.ExecuteFlowEvent)
+  name.vb: ExecuteFlowEventBase(Of ExecuteFlowEvent)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecuteFlowEventBase`1
+    name: ExecuteFlowEventBase
+  - name: <
+  - uid: Ceres.Graph.Flow.ExecuteFlowEvent
+    name: ExecuteFlowEvent
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecuteFlowEventBase`1
+    name: ExecuteFlowEventBase
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.Flow.ExecuteFlowEvent
+    name: ExecuteFlowEvent
+  - name: )
+- uid: Ceres.Graph.Flow.IFlowEvent
+  commentId: T:Ceres.Graph.Flow.IFlowEvent
+  parent: Ceres.Graph.Flow
+  name: IFlowEvent
+  nameWithType: IFlowEvent
+  fullName: Ceres.Graph.Flow.IFlowEvent
+- uid: Ceres.Graph.Flow.ExecuteFlowEventBase{Ceres.Graph.Flow.ExecuteFlowEvent}.FunctionName
+  commentId: P:Ceres.Graph.Flow.ExecuteFlowEventBase{Ceres.Graph.Flow.ExecuteFlowEvent}.FunctionName
+  parent: Ceres.Graph.Flow.ExecuteFlowEventBase{Ceres.Graph.Flow.ExecuteFlowEvent}
+  definition: Ceres.Graph.Flow.ExecuteFlowEventBase`1.FunctionName
+  name: FunctionName
+  nameWithType: ExecuteFlowEventBase<ExecuteFlowEvent>.FunctionName
+  fullName: Ceres.Graph.Flow.ExecuteFlowEventBase<Ceres.Graph.Flow.ExecuteFlowEvent>.FunctionName
+  nameWithType.vb: ExecuteFlowEventBase(Of ExecuteFlowEvent).FunctionName
+  fullName.vb: Ceres.Graph.Flow.ExecuteFlowEventBase(Of Ceres.Graph.Flow.ExecuteFlowEvent).FunctionName
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.ExecuteFlowEventBase`1
+  commentId: T:Ceres.Graph.Flow.ExecuteFlowEventBase`1
+  name: ExecuteFlowEventBase<TEvent>
+  nameWithType: ExecuteFlowEventBase<TEvent>
+  fullName: Ceres.Graph.Flow.ExecuteFlowEventBase<TEvent>
+  nameWithType.vb: ExecuteFlowEventBase(Of TEvent)
+  fullName.vb: Ceres.Graph.Flow.ExecuteFlowEventBase(Of TEvent)
+  name.vb: ExecuteFlowEventBase(Of TEvent)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecuteFlowEventBase`1
+    name: ExecuteFlowEventBase
+  - name: <
+  - name: TEvent
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecuteFlowEventBase`1
+    name: ExecuteFlowEventBase
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: Ceres.Graph.Flow.ExecuteFlowEventBase`1.FunctionName
+  commentId: P:Ceres.Graph.Flow.ExecuteFlowEventBase`1.FunctionName
+  name: FunctionName
+  nameWithType: ExecuteFlowEventBase<TEvent>.FunctionName
+  fullName: Ceres.Graph.Flow.ExecuteFlowEventBase<TEvent>.FunctionName
+  nameWithType.vb: ExecuteFlowEventBase(Of TEvent).FunctionName
+  fullName.vb: Ceres.Graph.Flow.ExecuteFlowEventBase(Of TEvent).FunctionName
+- uid: Ceres.Graph.Flow.ExecuteFlowEvent.Args*
+  commentId: Overload:Ceres.Graph.Flow.ExecuteFlowEvent.Args
+  name: Args
+  nameWithType: ExecuteFlowEvent.Args
+  fullName: Ceres.Graph.Flow.ExecuteFlowEvent.Args
+- uid: System.Object[]
+  isExternal: true
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.ExecuteFlowEvent.Create*
+  commentId: Overload:Ceres.Graph.Flow.ExecuteFlowEvent.Create
+  name: Create
+  nameWithType: ExecuteFlowEvent.Create
+  fullName: Ceres.Graph.Flow.ExecuteFlowEvent.Create
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Graph.Flow.ExecuteFlowEvent
+  commentId: T:Ceres.Graph.Flow.ExecuteFlowEvent
+  parent: Ceres.Graph.Flow
+  name: ExecuteFlowEvent
+  nameWithType: ExecuteFlowEvent
+  fullName: Ceres.Graph.Flow.ExecuteFlowEvent

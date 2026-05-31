@@ -1,0 +1,872 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.BoolResolver
+  commentId: T:Ceres.Editor.Graph.BoolResolver
+  id: BoolResolver
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.BoolResolver.#ctor(FieldInfo)
+  - Ceres.Editor.Graph.BoolResolver.CreateEditorField(FieldInfo)
+  - Ceres.Editor.Graph.BoolResolver.IsAcceptable(Type,FieldInfo)
+  langs:
+  - csharp
+  - vb
+  name: BoolResolver
+  nameWithType: BoolResolver
+  fullName: Ceres.Editor.Graph.BoolResolver
+  type: Class
+  source:
+    id: BoolResolver
+    path: ''
+    startLine: 2748
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class BoolResolver : FieldResolver<Toggle, bool>, IFieldResolver'
+    content.vb: Public Class BoolResolver Inherits FieldResolver(Of Toggle, Boolean) Implements IFieldResolver
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver
+  inheritedMembers:
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.EditorField
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.BaseField
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Value
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateField
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Restore(System.Object)
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Commit(System.Object)
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.IsAcceptable(Type,FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateEditorField(FieldInfo)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Editor.Graph.BoolResolver.#ctor(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.BoolResolver.#ctor(FieldInfo)
+  id: '#ctor(FieldInfo)'
+  parent: Ceres.Editor.Graph.BoolResolver
+  langs:
+  - csharp
+  - vb
+  name: BoolResolver(FieldInfo)
+  nameWithType: BoolResolver.BoolResolver(FieldInfo)
+  fullName: Ceres.Editor.Graph.BoolResolver.BoolResolver(FieldInfo)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2750
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public BoolResolver(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: Global.FieldInfo
+    content.vb: Public Sub New(fieldInfo As FieldInfo)
+  overload: Ceres.Editor.Graph.BoolResolver.#ctor*
+  nameWithType.vb: BoolResolver.New(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.BoolResolver.New(FieldInfo)
+  name.vb: New(FieldInfo)
+- uid: Ceres.Editor.Graph.BoolResolver.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.BoolResolver.CreateEditorField(FieldInfo)
+  id: CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.BoolResolver
+  langs:
+  - csharp
+  - vb
+  name: CreateEditorField(FieldInfo)
+  nameWithType: BoolResolver.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.BoolResolver.CreateEditorField(FieldInfo)
+  type: Method
+  source:
+    id: CreateEditorField
+    path: ''
+    startLine: 2754
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override Toggle CreateEditorField(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: Global.FieldInfo
+    return:
+      type: Global.Toggle
+    content.vb: Protected Overrides Function CreateEditorField(fieldInfo As FieldInfo) As Toggle
+  overridden: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateEditorField(FieldInfo)
+  overload: Ceres.Editor.Graph.BoolResolver.CreateEditorField*
+- uid: Ceres.Editor.Graph.BoolResolver.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.BoolResolver.IsAcceptable(Type,FieldInfo)
+  id: IsAcceptable(Type,FieldInfo)
+  parent: Ceres.Editor.Graph.BoolResolver
+  langs:
+  - csharp
+  - vb
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: BoolResolver.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.BoolResolver.IsAcceptable(Type, FieldInfo)
+  type: Method
+  source:
+    id: IsAcceptable
+    path: ''
+    startLine: 2759
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public override bool IsAcceptable(Type fieldValueType, FieldInfo info)
+    parameters:
+    - id: fieldValueType
+      type: Global.Type
+    - id: info
+      type: Global.FieldInfo
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function IsAcceptable(fieldValueType As Type, info As FieldInfo) As Boolean
+  overridden: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.IsAcceptable(Type,FieldInfo)
+  overload: Ceres.Editor.Graph.BoolResolver.IsAcceptable*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  commentId: T:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.FieldResolver`2
+  name: FieldResolver<Toggle, bool>
+  nameWithType: FieldResolver<Toggle, bool>
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean)
+  name.vb: FieldResolver(Of Toggle, Boolean)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: <
+  - uid: Global.Toggle
+    name: Toggle
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Toggle
+    name: Toggle
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.IFieldResolver
+  commentId: T:Ceres.Editor.Graph.IFieldResolver
+  parent: Ceres.Editor.Graph
+  name: IFieldResolver
+  nameWithType: IFieldResolver
+  fullName: Ceres.Editor.Graph.IFieldResolver
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.EditorField
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  name: EditorField
+  nameWithType: FieldResolver<Toggle, bool>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.EditorField
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.BaseField
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  name: BaseField
+  nameWithType: FieldResolver<Toggle, bool>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.BaseField
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Value
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Value
+  name: Value
+  nameWithType: FieldResolver<Toggle, bool>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.Value
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).Value
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateField
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  name: CreateField()
+  nameWithType: FieldResolver<Toggle, bool>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.CreateField()
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<Toggle, bool>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Restore(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  name: Restore(object)
+  nameWithType: FieldResolver<Toggle, bool>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.Restore(object)
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Commit(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  name: Commit(object)
+  nameWithType: FieldResolver<Toggle, bool>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.Commit(object)
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<Toggle, bool>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.IsAcceptable(Type,FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<Toggle, bool>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.IsAcceptable(Type, FieldInfo)
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}
+  definition: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<Toggle, bool>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<Toggle, bool>.CreateEditorField(FieldInfo)
+  nameWithType.vb: FieldResolver(Of Toggle, Boolean).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Toggle, Boolean).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Toggle,System.Boolean}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.FieldResolver`2
+  commentId: T:Ceres.Editor.Graph.FieldResolver`2
+  name: FieldResolver<TField, TKValue>
+  nameWithType: FieldResolver<TField, TKValue>
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>
+  nameWithType.vb: FieldResolver(Of TField, TKValue)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue)
+  name.vb: FieldResolver(Of TField, TKValue)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: <
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.EditorField
+  name: EditorField
+  nameWithType: FieldResolver<TField, TKValue>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.EditorField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.BaseField
+  name: BaseField
+  nameWithType: FieldResolver<TField, TKValue>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.BaseField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver`2.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.Value
+  name: Value
+  nameWithType: FieldResolver<TField, TKValue>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Value
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Value
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateField
+  name: CreateField()
+  nameWithType: FieldResolver<TField, TKValue>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateField()
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<TField, TKValue>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  isExternal: true
+  name: Restore(object)
+  nameWithType: FieldResolver<TField, TKValue>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Restore(object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  isExternal: true
+  name: Commit(object)
+  nameWithType: FieldResolver<TField, TKValue>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Commit(object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<TField, TKValue>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  isExternal: true
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  isExternal: true
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.BoolResolver.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.BoolResolver.#ctor
+  name: BoolResolver
+  nameWithType: BoolResolver.BoolResolver
+  fullName: Ceres.Editor.Graph.BoolResolver.BoolResolver
+  nameWithType.vb: BoolResolver.New
+  fullName.vb: Ceres.Editor.Graph.BoolResolver.New
+  name.vb: New
+- uid: Global.FieldInfo
+  isExternal: true
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: FieldInfo
+- uid: Ceres.Editor.Graph.BoolResolver.CreateEditorField*
+  commentId: Overload:Ceres.Editor.Graph.BoolResolver.CreateEditorField
+  name: CreateEditorField
+  nameWithType: BoolResolver.CreateEditorField
+  fullName: Ceres.Editor.Graph.BoolResolver.CreateEditorField
+- uid: Global.Toggle
+  commentId: '!:Global.Toggle'
+  isExternal: true
+  name: Toggle
+  nameWithType: Toggle
+  fullName: Toggle
+- uid: Ceres.Editor.Graph.BoolResolver.IsAcceptable*
+  commentId: Overload:Ceres.Editor.Graph.BoolResolver.IsAcceptable
+  name: IsAcceptable
+  nameWithType: BoolResolver.IsAcceptable
+  fullName: Ceres.Editor.Graph.BoolResolver.IsAcceptable
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

@@ -1,0 +1,214 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.CustomNodeViewAttribute
+  commentId: T:Ceres.Editor.CustomNodeViewAttribute
+  id: CustomNodeViewAttribute
+  parent: Ceres.Editor
+  children:
+  - Ceres.Editor.CustomNodeViewAttribute.#ctor(Type,System.Boolean)
+  - Ceres.Editor.CustomNodeViewAttribute.#ctor(Type)
+  - Ceres.Editor.CustomNodeViewAttribute.CanInherit
+  - Ceres.Editor.CustomNodeViewAttribute.NodeType
+  langs:
+  - csharp
+  - vb
+  name: CustomNodeViewAttribute
+  nameWithType: CustomNodeViewAttribute
+  fullName: Ceres.Editor.CustomNodeViewAttribute
+  type: Class
+  source:
+    id: CustomNodeViewAttribute
+    path: ''
+    startLine: 415
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor
+  summary: "\nTells a node view class which run-time node type it&apos;s an editor for.\n"
+  example: []
+  syntax:
+    content: 'public sealed class CustomNodeViewAttribute : Attribute'
+    content.vb: Public NotInheritable Class CustomNodeViewAttribute Inherits Attribute
+  inheritance:
+  - System.Object
+- uid: Ceres.Editor.CustomNodeViewAttribute.NodeType
+  commentId: P:Ceres.Editor.CustomNodeViewAttribute.NodeType
+  id: NodeType
+  parent: Ceres.Editor.CustomNodeViewAttribute
+  langs:
+  - csharp
+  - vb
+  name: NodeType
+  nameWithType: CustomNodeViewAttribute.NodeType
+  fullName: Ceres.Editor.CustomNodeViewAttribute.NodeType
+  type: Property
+  source:
+    id: NodeType
+    path: ''
+    startLine: 420
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor
+  summary: "\nView bound node type, leave null to treat node view as hidden in factory\n"
+  example: []
+  syntax:
+    content: public Type NodeType { get; }
+    parameters: []
+    return:
+      type: Global.Type
+    content.vb: Public ReadOnly Property NodeType As Type
+  overload: Ceres.Editor.CustomNodeViewAttribute.NodeType*
+- uid: Ceres.Editor.CustomNodeViewAttribute.CanInherit
+  commentId: P:Ceres.Editor.CustomNodeViewAttribute.CanInherit
+  id: CanInherit
+  parent: Ceres.Editor.CustomNodeViewAttribute
+  langs:
+  - csharp
+  - vb
+  name: CanInherit
+  nameWithType: CustomNodeViewAttribute.CanInherit
+  fullName: Ceres.Editor.CustomNodeViewAttribute.CanInherit
+  type: Property
+  source:
+    id: CanInherit
+    path: ''
+    startLine: 425
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor
+  summary: "\nWhether this view can be used for inherit types of <xref href=\"Ceres.Editor.CustomNodeViewAttribute.NodeType\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public bool CanInherit { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property CanInherit As Boolean
+  overload: Ceres.Editor.CustomNodeViewAttribute.CanInherit*
+- uid: Ceres.Editor.CustomNodeViewAttribute.#ctor(Type)
+  commentId: M:Ceres.Editor.CustomNodeViewAttribute.#ctor(Type)
+  id: '#ctor(Type)'
+  parent: Ceres.Editor.CustomNodeViewAttribute
+  langs:
+  - csharp
+  - vb
+  name: CustomNodeViewAttribute(Type)
+  nameWithType: CustomNodeViewAttribute.CustomNodeViewAttribute(Type)
+  fullName: Ceres.Editor.CustomNodeViewAttribute.CustomNodeViewAttribute(Type)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 427
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor
+  syntax:
+    content: public CustomNodeViewAttribute(Type nodeType)
+    parameters:
+    - id: nodeType
+      type: Global.Type
+    content.vb: Public Sub New(nodeType As Type)
+  overload: Ceres.Editor.CustomNodeViewAttribute.#ctor*
+  nameWithType.vb: CustomNodeViewAttribute.New(Type)
+  fullName.vb: Ceres.Editor.CustomNodeViewAttribute.New(Type)
+  name.vb: New(Type)
+- uid: Ceres.Editor.CustomNodeViewAttribute.#ctor(Type,System.Boolean)
+  commentId: M:Ceres.Editor.CustomNodeViewAttribute.#ctor(Type,System.Boolean)
+  id: '#ctor(Type,System.Boolean)'
+  parent: Ceres.Editor.CustomNodeViewAttribute
+  langs:
+  - csharp
+  - vb
+  name: CustomNodeViewAttribute(Type, bool)
+  nameWithType: CustomNodeViewAttribute.CustomNodeViewAttribute(Type, bool)
+  fullName: Ceres.Editor.CustomNodeViewAttribute.CustomNodeViewAttribute(Type, bool)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 433
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor
+  syntax:
+    content: public CustomNodeViewAttribute(Type nodeType, bool canInherit)
+    parameters:
+    - id: nodeType
+      type: Global.Type
+    - id: canInherit
+      type: System.Boolean
+    content.vb: Public Sub New(nodeType As Type, canInherit As Boolean)
+  overload: Ceres.Editor.CustomNodeViewAttribute.#ctor*
+  nameWithType.vb: CustomNodeViewAttribute.New(Type, Boolean)
+  fullName.vb: Ceres.Editor.CustomNodeViewAttribute.New(Type, Boolean)
+  name.vb: New(Type, Boolean)
+references:
+- uid: Ceres.Editor
+  commentId: N:Ceres.Editor
+  name: Ceres.Editor
+  nameWithType: Ceres.Editor
+  fullName: Ceres.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.CustomNodeViewAttribute.NodeType*
+  commentId: Overload:Ceres.Editor.CustomNodeViewAttribute.NodeType
+  name: NodeType
+  nameWithType: CustomNodeViewAttribute.NodeType
+  fullName: Ceres.Editor.CustomNodeViewAttribute.NodeType
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Ceres.Editor.CustomNodeViewAttribute.NodeType
+  commentId: P:Ceres.Editor.CustomNodeViewAttribute.NodeType
+  isExternal: true
+- uid: Ceres.Editor.CustomNodeViewAttribute.CanInherit*
+  commentId: Overload:Ceres.Editor.CustomNodeViewAttribute.CanInherit
+  name: CanInherit
+  nameWithType: CustomNodeViewAttribute.CanInherit
+  fullName: Ceres.Editor.CustomNodeViewAttribute.CanInherit
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.CustomNodeViewAttribute.#ctor*
+  commentId: Overload:Ceres.Editor.CustomNodeViewAttribute.#ctor
+  name: CustomNodeViewAttribute
+  nameWithType: CustomNodeViewAttribute.CustomNodeViewAttribute
+  fullName: Ceres.Editor.CustomNodeViewAttribute.CustomNodeViewAttribute
+  nameWithType.vb: CustomNodeViewAttribute.New
+  fullName.vb: Ceres.Editor.CustomNodeViewAttribute.New
+  name.vb: New

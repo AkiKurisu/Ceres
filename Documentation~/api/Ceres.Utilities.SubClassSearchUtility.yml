@@ -1,0 +1,669 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Utilities.SubClassSearchUtility
+  commentId: T:Ceres.Utilities.SubClassSearchUtility
+  id: SubClassSearchUtility
+  parent: Ceres.Utilities
+  children:
+  - Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(IEnumerable{Assembly},Type)
+  - Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type)
+  - Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type[])
+  - Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(MemberInfo)
+  - Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(System.String)
+  - Ceres.Utilities.SubClassSearchUtility.GetRuntimeReferencedAssemblies
+  - Ceres.Utilities.SubClassSearchUtility.SplitGroupName(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SubClassSearchUtility
+  nameWithType: SubClassSearchUtility
+  fullName: Ceres.Utilities.SubClassSearchUtility
+  type: Class
+  source:
+    id: SubClassSearchUtility
+    path: ''
+    startLine: 21936
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static class SubClassSearchUtility
+    content.vb: Public Module SubClassSearchUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Utilities.SubClassSearchUtility.GetRuntimeReferencedAssemblies
+  commentId: M:Ceres.Utilities.SubClassSearchUtility.GetRuntimeReferencedAssemblies
+  id: GetRuntimeReferencedAssemblies
+  parent: Ceres.Utilities.SubClassSearchUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRuntimeReferencedAssemblies()
+  nameWithType: SubClassSearchUtility.GetRuntimeReferencedAssemblies()
+  fullName: Ceres.Utilities.SubClassSearchUtility.GetRuntimeReferencedAssemblies()
+  type: Method
+  source:
+    id: GetRuntimeReferencedAssemblies
+    path: ''
+    startLine: 21942
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static Assembly[] GetRuntimeReferencedAssemblies()
+    return:
+      type: Global.Assembly[]
+    content.vb: Public Shared Function GetRuntimeReferencedAssemblies() As Assembly()
+  overload: Ceres.Utilities.SubClassSearchUtility.GetRuntimeReferencedAssemblies*
+- uid: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type)
+  commentId: M:Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type)
+  id: FindSubClassTypes(Type)
+  parent: Ceres.Utilities.SubClassSearchUtility
+  langs:
+  - csharp
+  - vb
+  name: FindSubClassTypes(Type)
+  nameWithType: SubClassSearchUtility.FindSubClassTypes(Type)
+  fullName: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type)
+  type: Method
+  source:
+    id: FindSubClassTypes
+    path: ''
+    startLine: 21959
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static List<Type> FindSubClassTypes(Type searchType)
+    parameters:
+    - id: searchType
+      type: Global.Type
+    return:
+      type: Global.List{Type}
+    content.vb: Public Shared Function FindSubClassTypes(searchType As Type) As List(Of Type)
+  overload: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes*
+- uid: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(IEnumerable{Assembly},Type)
+  commentId: M:Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(IEnumerable{Assembly},Type)
+  id: FindSubClassTypes(IEnumerable{Assembly},Type)
+  parent: Ceres.Utilities.SubClassSearchUtility
+  langs:
+  - csharp
+  - vb
+  name: FindSubClassTypes(IEnumerable<Assembly>, Type)
+  nameWithType: SubClassSearchUtility.FindSubClassTypes(IEnumerable<Assembly>, Type)
+  fullName: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(IEnumerable<Assembly>, Type)
+  type: Method
+  source:
+    id: FindSubClassTypes
+    path: ''
+    startLine: 21964
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static List<Type> FindSubClassTypes(IEnumerable<Assembly> assemblies, Type searchType)
+    parameters:
+    - id: assemblies
+      type: Global.IEnumerable{Assembly}
+    - id: searchType
+      type: Global.Type
+    return:
+      type: Global.List{Type}
+    content.vb: Public Shared Function FindSubClassTypes(assemblies As IEnumerable(Of Assembly), searchType As Type) As List(Of Type)
+  overload: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes*
+  nameWithType.vb: SubClassSearchUtility.FindSubClassTypes(IEnumerable(Of Assembly), Type)
+  fullName.vb: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(IEnumerable(Of Assembly), Type)
+  name.vb: FindSubClassTypes(IEnumerable(Of Assembly), Type)
+- uid: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type[])
+  commentId: M:Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type[])
+  id: FindSubClassTypes(Type[])
+  parent: Ceres.Utilities.SubClassSearchUtility
+  langs:
+  - csharp
+  - vb
+  name: FindSubClassTypes(Type[])
+  nameWithType: SubClassSearchUtility.FindSubClassTypes(Type[])
+  fullName: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type[])
+  type: Method
+  source:
+    id: FindSubClassTypes
+    path: ''
+    startLine: 21971
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static List<Type> FindSubClassTypes(Type[] searchTypes)
+    parameters:
+    - id: searchTypes
+      type: Global.Type[]
+    return:
+      type: Global.List{Type}
+    content.vb: Public Shared Function FindSubClassTypes(searchTypes As Type()) As List(Of Type)
+  overload: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes*
+  nameWithType.vb: SubClassSearchUtility.FindSubClassTypes(Type())
+  fullName.vb: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes(Type())
+  name.vb: FindSubClassTypes(Type())
+- uid: Ceres.Utilities.SubClassSearchUtility.SplitGroupName(System.String)
+  commentId: M:Ceres.Utilities.SubClassSearchUtility.SplitGroupName(System.String)
+  id: SplitGroupName(System.String)
+  parent: Ceres.Utilities.SubClassSearchUtility
+  langs:
+  - csharp
+  - vb
+  name: SplitGroupName(string)
+  nameWithType: SubClassSearchUtility.SplitGroupName(string)
+  fullName: Ceres.Utilities.SubClassSearchUtility.SplitGroupName(string)
+  type: Method
+  source:
+    id: SplitGroupName
+    path: ''
+    startLine: 21979
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static string[] SplitGroupName(string group)
+    parameters:
+    - id: group
+      type: System.String
+    return:
+      type: System.String[]
+    content.vb: Public Shared Function SplitGroupName(group As String) As String()
+  overload: Ceres.Utilities.SubClassSearchUtility.SplitGroupName*
+  nameWithType.vb: SubClassSearchUtility.SplitGroupName(String)
+  fullName.vb: Ceres.Utilities.SubClassSearchUtility.SplitGroupName(String)
+  name.vb: SplitGroupName(String)
+- uid: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(MemberInfo)
+  commentId: M:Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(MemberInfo)
+  id: GetFirstGroupNameOrDefault(MemberInfo)
+  parent: Ceres.Utilities.SubClassSearchUtility
+  langs:
+  - csharp
+  - vb
+  name: GetFirstGroupNameOrDefault(MemberInfo)
+  nameWithType: SubClassSearchUtility.GetFirstGroupNameOrDefault(MemberInfo)
+  fullName: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(MemberInfo)
+  type: Method
+  source:
+    id: GetFirstGroupNameOrDefault
+    path: ''
+    startLine: 21985
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static string GetFirstGroupNameOrDefault(MemberInfo memberInfo)
+    parameters:
+    - id: memberInfo
+      type: Global.MemberInfo
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetFirstGroupNameOrDefault(memberInfo As MemberInfo) As String
+  overload: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault*
+- uid: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(System.String)
+  commentId: M:Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(System.String)
+  id: GetFirstGroupNameOrDefault(System.String)
+  parent: Ceres.Utilities.SubClassSearchUtility
+  langs:
+  - csharp
+  - vb
+  name: GetFirstGroupNameOrDefault(string)
+  nameWithType: SubClassSearchUtility.GetFirstGroupNameOrDefault(string)
+  fullName: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(string)
+  type: Method
+  source:
+    id: GetFirstGroupNameOrDefault
+    path: ''
+    startLine: 21991
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Utilities
+  syntax:
+    content: public static string GetFirstGroupNameOrDefault(string group)
+    parameters:
+    - id: group
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetFirstGroupNameOrDefault(group As String) As String
+  overload: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault*
+  nameWithType.vb: SubClassSearchUtility.GetFirstGroupNameOrDefault(String)
+  fullName.vb: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault(String)
+  name.vb: GetFirstGroupNameOrDefault(String)
+references:
+- uid: Ceres.Utilities
+  commentId: N:Ceres.Utilities
+  name: Ceres.Utilities
+  nameWithType: Ceres.Utilities
+  fullName: Ceres.Utilities
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Utilities
+    name: Utilities
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Utilities
+    name: Utilities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Utilities.SubClassSearchUtility.GetRuntimeReferencedAssemblies*
+  commentId: Overload:Ceres.Utilities.SubClassSearchUtility.GetRuntimeReferencedAssemblies
+  name: GetRuntimeReferencedAssemblies
+  nameWithType: SubClassSearchUtility.GetRuntimeReferencedAssemblies
+  fullName: Ceres.Utilities.SubClassSearchUtility.GetRuntimeReferencedAssemblies
+- uid: Global.Assembly[]
+  isExternal: true
+  name: Assembly[]
+  nameWithType: Assembly[]
+  fullName: Assembly[]
+  nameWithType.vb: Assembly()
+  fullName.vb: Assembly()
+  name.vb: Assembly()
+  spec.csharp:
+  - uid: Global.Assembly
+    name: Assembly
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Global.Assembly
+    name: Assembly
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes*
+  commentId: Overload:Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes
+  name: FindSubClassTypes
+  nameWithType: SubClassSearchUtility.FindSubClassTypes
+  fullName: Ceres.Utilities.SubClassSearchUtility.FindSubClassTypes
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Global.List{Type}
+  commentId: '!:Global.List{Type}'
+  definition: Global.List`1
+  name: List<Type>
+  nameWithType: List<Type>
+  fullName: List<Type>
+  nameWithType.vb: List(Of Type)
+  fullName.vb: List(Of Type)
+  name.vb: List(Of Type)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: Global.List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.IEnumerable{Assembly}
+  commentId: '!:Global.IEnumerable{Assembly}'
+  definition: Global.IEnumerable`1
+  name: IEnumerable<Assembly>
+  nameWithType: IEnumerable<Assembly>
+  fullName: IEnumerable<Assembly>
+  nameWithType.vb: IEnumerable(Of Assembly)
+  fullName.vb: IEnumerable(Of Assembly)
+  name.vb: IEnumerable(Of Assembly)
+  spec.csharp:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: Global.Assembly
+    name: Assembly
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Assembly
+    name: Assembly
+    isExternal: true
+  - name: )
+- uid: Global.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.Type[]
+  isExternal: true
+  name: Type[]
+  nameWithType: Type[]
+  fullName: Type[]
+  nameWithType.vb: Type()
+  fullName.vb: Type()
+  name.vb: Type()
+  spec.csharp:
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Utilities.SubClassSearchUtility.SplitGroupName*
+  commentId: Overload:Ceres.Utilities.SubClassSearchUtility.SplitGroupName
+  name: SplitGroupName
+  nameWithType: SubClassSearchUtility.SplitGroupName
+  fullName: Ceres.Utilities.SubClassSearchUtility.SplitGroupName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.String[]
+  isExternal: true
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault*
+  commentId: Overload:Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault
+  name: GetFirstGroupNameOrDefault
+  nameWithType: SubClassSearchUtility.GetFirstGroupNameOrDefault
+  fullName: Ceres.Utilities.SubClassSearchUtility.GetFirstGroupNameOrDefault
+- uid: Global.MemberInfo
+  isExternal: true
+  name: MemberInfo
+  nameWithType: MemberInfo
+  fullName: MemberInfo

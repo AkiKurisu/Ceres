@@ -77,6 +77,9 @@ crashlytics-build.properties
 /Runtime/SourceGenerators/Source~/.idea/*
 obj/
 obj.meta
-/Documentation~/api/*
+# Documentation~/api/*.yml are committed: CI builds docs without Unity, so it
+# cannot regenerate the API metadata itself. Regenerate locally with
+# `docfx metadata Documentation~/docfx.json` (needs Unity refs) and commit.
+/Documentation~/api/.manifest
 /site~/*
 /.craft

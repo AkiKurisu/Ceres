@@ -1,0 +1,264 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.ObjectTypeSearchWindow
+  commentId: T:Ceres.Editor.Graph.ObjectTypeSearchWindow
+  id: ObjectTypeSearchWindow
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize(Action{Type},Type,Func{IEnumerable{Type},IEnumerable{Type}})
+  langs:
+  - csharp
+  - vb
+  name: ObjectTypeSearchWindow
+  nameWithType: ObjectTypeSearchWindow
+  fullName: Ceres.Editor.Graph.ObjectTypeSearchWindow
+  type: Class
+  source:
+    id: ObjectTypeSearchWindow
+    path: ''
+    startLine: 6850
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nSearch window for getting type\n"
+  example: []
+  syntax:
+    content: 'public class ObjectTypeSearchWindow : ScriptableObject, ISearchWindowProvider'
+    content.vb: Public Class ObjectTypeSearchWindow Inherits ScriptableObject Implements ISearchWindowProvider
+  inheritance:
+  - System.Object
+  implements:
+  - Global.ISearchWindowProvider
+- uid: Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize(Action{Type},Type,Func{IEnumerable{Type},IEnumerable{Type}})
+  commentId: M:Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize(Action{Type},Type,Func{IEnumerable{Type},IEnumerable{Type}})
+  id: Initialize(Action{Type},Type,Func{IEnumerable{Type},IEnumerable{Type}})
+  parent: Ceres.Editor.Graph.ObjectTypeSearchWindow
+  langs:
+  - csharp
+  - vb
+  name: Initialize(Action<Type>, Type, Func<IEnumerable<Type>, IEnumerable<Type>>)
+  nameWithType: ObjectTypeSearchWindow.Initialize(Action<Type>, Type, Func<IEnumerable<Type>, IEnumerable<Type>>)
+  fullName: Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize(Action<Type>, Type, Func<IEnumerable<Type>, IEnumerable<Type>>)
+  type: Method
+  source:
+    id: Initialize
+    path: ''
+    startLine: 6860
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void Initialize(Action<Type> typeSelectCallBack, Type baseType = null, Func<IEnumerable<Type>, IEnumerable<Type>> customTypeProvideFunc = null)
+    parameters:
+    - id: typeSelectCallBack
+      type: Global.Action{Type}
+    - id: baseType
+      type: Global.Type
+    - id: customTypeProvideFunc
+      type: Global.Func{IEnumerable{Type},IEnumerable{Type}}
+    content.vb: Public Sub Initialize(typeSelectCallBack As Action(Of Type), baseType As Type = Nothing, customTypeProvideFunc As Func(Of IEnumerable(Of Type), IEnumerable(Of Type)) = Nothing)
+  overload: Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize*
+  nameWithType.vb: ObjectTypeSearchWindow.Initialize(Action(Of Type), Type, Func(Of IEnumerable(Of Type), IEnumerable(Of Type)))
+  fullName.vb: Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize(Action(Of Type), Type, Func(Of IEnumerable(Of Type), IEnumerable(Of Type)))
+  name.vb: Initialize(Action(Of Type), Type, Func(Of IEnumerable(Of Type), IEnumerable(Of Type)))
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.ISearchWindowProvider
+  isExternal: true
+  name: ISearchWindowProvider
+  nameWithType: ISearchWindowProvider
+  fullName: ISearchWindowProvider
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize*
+  commentId: Overload:Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize
+  name: Initialize
+  nameWithType: ObjectTypeSearchWindow.Initialize
+  fullName: Ceres.Editor.Graph.ObjectTypeSearchWindow.Initialize
+- uid: Global.Action{Type}
+  commentId: '!:Global.Action{Type}'
+  definition: Global.Action`1
+  name: Action<Type>
+  nameWithType: Action<Type>
+  fullName: Action<Type>
+  nameWithType.vb: Action(Of Type)
+  fullName.vb: Action(Of Type)
+  name.vb: Action(Of Type)
+  spec.csharp:
+  - uid: Global.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Global.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Global.Func{IEnumerable{Type},IEnumerable{Type}}
+  commentId: '!:Global.Func{IEnumerable{Type},IEnumerable{Type}}'
+  definition: Global.Func`2
+  name: Func<IEnumerable<Type>, IEnumerable<Type>>
+  nameWithType: Func<IEnumerable<Type>, IEnumerable<Type>>
+  fullName: Func<IEnumerable<Type>, IEnumerable<Type>>
+  nameWithType.vb: Func(Of IEnumerable(Of Type), IEnumerable(Of Type))
+  fullName.vb: Func(Of IEnumerable(Of Type), IEnumerable(Of Type))
+  name.vb: Func(Of IEnumerable(Of Type), IEnumerable(Of Type))
+  spec.csharp:
+  - uid: Global.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: Global.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Global.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Global.Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Global.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Global.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: )

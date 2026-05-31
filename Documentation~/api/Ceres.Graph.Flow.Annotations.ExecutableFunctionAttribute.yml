@@ -1,0 +1,268 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute
+  commentId: T:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute
+  id: ExecutableFunctionAttribute
+  parent: Ceres.Graph.Flow.Annotations
+  children:
+  - Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.DisplayTarget
+  - Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.ExecuteInDependency
+  - Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod
+  - Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsSelfTarget
+  - Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.SearchName
+  langs:
+  - csharp
+  - vb
+  name: ExecutableFunctionAttribute
+  nameWithType: ExecutableFunctionAttribute
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute
+  type: Class
+  source:
+    id: ExecutableFunctionAttribute
+    path: ''
+    startLine: 22574
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nAllow flow graph to execute this method\n"
+  example: []
+  syntax:
+    content: 'public sealed class ExecutableFunctionAttribute : Attribute'
+    content.vb: Public NotInheritable Class ExecutableFunctionAttribute Inherits Attribute
+  inheritance:
+  - System.Object
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod
+  commentId: P:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod
+  id: IsScriptMethod
+  parent: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute
+  langs:
+  - csharp
+  - vb
+  name: IsScriptMethod
+  nameWithType: ExecutableFunctionAttribute.IsScriptMethod
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod
+  type: Property
+  source:
+    id: IsScriptMethod
+    path: ''
+    startLine: 22580
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nFunction should use first parameter type as its script type\n"
+  example: []
+  syntax:
+    content: public bool IsScriptMethod { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsScriptMethod As Boolean
+  overload: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod*
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.ExecuteInDependency
+  commentId: P:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.ExecuteInDependency
+  id: ExecuteInDependency
+  parent: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute
+  langs:
+  - csharp
+  - vb
+  name: ExecuteInDependency
+  nameWithType: ExecutableFunctionAttribute.ExecuteInDependency
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.ExecuteInDependency
+  type: Property
+  source:
+    id: ExecuteInDependency
+    path: ''
+    startLine: 22588
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nFunction can be executed in dependency execution path, only support static method\n"
+  remarks: >-
+    Functions executed in dependency mode should not depend on the execution order
+
+    between nodes, and only execute based on the input values. For functions whose input
+
+    parameters contain reference types, it is more appropriate to use forward path.
+  example: []
+  syntax:
+    content: public bool ExecuteInDependency { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ExecuteInDependency As Boolean
+  overload: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.ExecuteInDependency*
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.DisplayTarget
+  commentId: P:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.DisplayTarget
+  id: DisplayTarget
+  parent: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute
+  langs:
+  - csharp
+  - vb
+  name: DisplayTarget
+  nameWithType: ExecutableFunctionAttribute.DisplayTarget
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.DisplayTarget
+  type: Property
+  source:
+    id: DisplayTarget
+    path: ''
+    startLine: 22593
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nFunction should display first parameter as method declare type target, need set <xref href=\"Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod\" data-throw-if-not-resolved=\"false\"></xref> first\n"
+  example: []
+  syntax:
+    content: public bool DisplayTarget { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DisplayTarget As Boolean
+  overload: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.DisplayTarget*
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.SearchName
+  commentId: P:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.SearchName
+  id: SearchName
+  parent: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute
+  langs:
+  - csharp
+  - vb
+  name: SearchName
+  nameWithType: ExecutableFunctionAttribute.SearchName
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.SearchName
+  type: Property
+  source:
+    id: SearchName
+    path: ''
+    startLine: 22598
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nFunction entry name displayed in search window\n"
+  example: []
+  syntax:
+    content: public string SearchName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SearchName As String
+  overload: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.SearchName*
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsSelfTarget
+  commentId: P:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsSelfTarget
+  id: IsSelfTarget
+  parent: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute
+  langs:
+  - csharp
+  - vb
+  name: IsSelfTarget
+  nameWithType: ExecutableFunctionAttribute.IsSelfTarget
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsSelfTarget
+  type: Property
+  source:
+    id: IsSelfTarget
+    path: ''
+    startLine: 22603
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nFunction first parameter that should pass graph context object as default value\n"
+  example: []
+  syntax:
+    content: public bool IsSelfTarget { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsSelfTarget As Boolean
+  overload: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsSelfTarget*
+references:
+- uid: Ceres.Graph.Flow.Annotations
+  commentId: N:Ceres.Graph.Flow.Annotations
+  name: Ceres.Graph.Flow.Annotations
+  nameWithType: Ceres.Graph.Flow.Annotations
+  fullName: Ceres.Graph.Flow.Annotations
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  - name: .
+  - uid: Ceres.Graph.Flow.Annotations
+    name: Annotations
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  - name: .
+  - uid: Ceres.Graph.Flow.Annotations
+    name: Annotations
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod*
+  commentId: Overload:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod
+  name: IsScriptMethod
+  nameWithType: ExecutableFunctionAttribute.IsScriptMethod
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.ExecuteInDependency*
+  commentId: Overload:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.ExecuteInDependency
+  name: ExecuteInDependency
+  nameWithType: ExecutableFunctionAttribute.ExecuteInDependency
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.ExecuteInDependency
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod
+  commentId: P:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsScriptMethod
+  isExternal: true
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.DisplayTarget*
+  commentId: Overload:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.DisplayTarget
+  name: DisplayTarget
+  nameWithType: ExecutableFunctionAttribute.DisplayTarget
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.DisplayTarget
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.SearchName*
+  commentId: Overload:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.SearchName
+  name: SearchName
+  nameWithType: ExecutableFunctionAttribute.SearchName
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.SearchName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsSelfTarget*
+  commentId: Overload:Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsSelfTarget
+  name: IsSelfTarget
+  nameWithType: ExecutableFunctionAttribute.IsSelfTarget
+  fullName: Ceres.Graph.Flow.Annotations.ExecutableFunctionAttribute.IsSelfTarget

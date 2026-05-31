@@ -1,0 +1,1062 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  commentId: T:Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  id: FlowGraphRuntimeExtensions
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Graph.Flow.IFlowGraphRuntime)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Graph.Flow.IFlowGraphRuntime)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Graph.Flow.IFlowGraphRuntime,EventCallback{``0})
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Graph.Flow.IFlowGraphRuntime,System.String)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Graph.Flow.IFlowGraphRuntime,``0,System.String)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,System.String)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Graph.Flow.IFlowGraphRuntime,System.Object[],System.String)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Graph.Flow.IFlowGraphRuntime,EventBase)
+  - Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution``1(CallbackEventHandler,Ceres.Graph.Flow.IFlowGraphRuntime)
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphRuntimeExtensions
+  nameWithType: FlowGraphRuntimeExtensions
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  type: Class
+  source:
+    id: FlowGraphRuntimeExtensions
+    path: ''
+    startLine: 24976
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public static class FlowGraphRuntimeExtensions
+    content.vb: Public Module FlowGraphRuntimeExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Graph.Flow.IFlowGraphRuntime,System.String)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Graph.Flow.IFlowGraphRuntime,System.String)
+  id: ProcessEvent(Ceres.Graph.Flow.IFlowGraphRuntime,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvent(IFlowGraphRuntime, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent(IFlowGraphRuntime, string)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Graph.Flow.IFlowGraphRuntime, string)
+  type: Method
+  source:
+    id: ProcessEvent
+    path: ''
+    startLine: 24983
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInvoke flow graph event\n"
+  example: []
+  syntax:
+    content: public static void ProcessEvent(this IFlowGraphRuntime runtime, string eventName = "")
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: eventName
+      type: System.String
+      description: ''
+    content.vb: Public Shared Sub ProcessEvent(runtime As IFlowGraphRuntime, eventName As String = "")
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(IFlowGraphRuntime, String)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Graph.Flow.IFlowGraphRuntime, String)
+  name.vb: ProcessEvent(IFlowGraphRuntime, String)
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Graph.Flow.IFlowGraphRuntime,``0,System.String)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Graph.Flow.IFlowGraphRuntime,``0,System.String)
+  id: ProcessEvent``1(Ceres.Graph.Flow.IFlowGraphRuntime,``0,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvent<T1>(IFlowGraphRuntime, T1, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1>(IFlowGraphRuntime, T1, string)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1>(Ceres.Graph.Flow.IFlowGraphRuntime, T1, string)
+  type: Method
+  source:
+    id: ProcessEvent
+    path: ''
+    startLine: 24996
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInvoke flow graph event with parameters\n"
+  example: []
+  syntax:
+    content: public static void ProcessEvent<T1>(this IFlowGraphRuntime runtime, T1 arg1, string eventName = "")
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: arg1
+      type: '{T1}'
+      description: ''
+    - id: eventName
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T1
+      description: ''
+    content.vb: Public Shared Sub ProcessEvent(Of T1)(runtime As IFlowGraphRuntime, arg1 As T1, eventName As String = "")
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1)(IFlowGraphRuntime, T1, String)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1)(Ceres.Graph.Flow.IFlowGraphRuntime, T1, String)
+  name.vb: ProcessEvent(Of T1)(IFlowGraphRuntime, T1, String)
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,System.String)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,System.String)
+  id: ProcessEvent``2(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvent<T1, T2>(IFlowGraphRuntime, T1, T2, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2>(IFlowGraphRuntime, T1, T2, string)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2>(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, string)
+  type: Method
+  source:
+    id: ProcessEvent
+    path: ''
+    startLine: 25011
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInvoke flow graph event with parameters\n"
+  example: []
+  syntax:
+    content: public static void ProcessEvent<T1, T2>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, string eventName = "")
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: arg1
+      type: '{T1}'
+      description: ''
+    - id: arg2
+      type: '{T2}'
+      description: ''
+    - id: eventName
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T1
+      description: ''
+    - id: T2
+      description: ''
+    content.vb: Public Shared Sub ProcessEvent(Of T1, T2)(runtime As IFlowGraphRuntime, arg1 As T1, arg2 As T2, eventName As String = "")
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2)(IFlowGraphRuntime, T1, T2, String)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2)(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, String)
+  name.vb: ProcessEvent(Of T1, T2)(IFlowGraphRuntime, T1, T2, String)
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+  id: ProcessEvent``3(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvent<T1, T2, T3>(IFlowGraphRuntime, T1, T2, T3, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3>(IFlowGraphRuntime, T1, T2, T3, string)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3>(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, T3, string)
+  type: Method
+  source:
+    id: ProcessEvent
+    path: ''
+    startLine: 25028
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInvoke flow graph event with parameters\n"
+  example: []
+  syntax:
+    content: public static void ProcessEvent<T1, T2, T3>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, T3 arg3, string eventName = "")
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: arg1
+      type: '{T1}'
+      description: ''
+    - id: arg2
+      type: '{T2}'
+      description: ''
+    - id: arg3
+      type: '{T3}'
+      description: ''
+    - id: eventName
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T1
+      description: ''
+    - id: T2
+      description: ''
+    - id: T3
+      description: ''
+    content.vb: Public Shared Sub ProcessEvent(Of T1, T2, T3)(runtime As IFlowGraphRuntime, arg1 As T1, arg2 As T2, arg3 As T3, eventName As String = "")
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3)(IFlowGraphRuntime, T1, T2, T3, String)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3)(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, T3, String)
+  name.vb: ProcessEvent(Of T1, T2, T3)(IFlowGraphRuntime, T1, T2, T3, String)
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+  id: ProcessEvent``4(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvent<T1, T2, T3, T4>(IFlowGraphRuntime, T1, T2, T3, T4, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4>(IFlowGraphRuntime, T1, T2, T3, T4, string)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4>(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, T3, T4, string)
+  type: Method
+  source:
+    id: ProcessEvent
+    path: ''
+    startLine: 25047
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInvoke flow graph event with parameters\n"
+  example: []
+  syntax:
+    content: public static void ProcessEvent<T1, T2, T3, T4>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, T3 arg3, T4 arg4, string eventName = "")
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: arg1
+      type: '{T1}'
+      description: ''
+    - id: arg2
+      type: '{T2}'
+      description: ''
+    - id: arg3
+      type: '{T3}'
+      description: ''
+    - id: arg4
+      type: '{T4}'
+      description: ''
+    - id: eventName
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T1
+      description: ''
+    - id: T2
+      description: ''
+    - id: T3
+      description: ''
+    - id: T4
+      description: ''
+    content.vb: Public Shared Sub ProcessEvent(Of T1, T2, T3, T4)(runtime As IFlowGraphRuntime, arg1 As T1, arg2 As T2, arg3 As T3, arg4 As T4, eventName As String = "")
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4)(IFlowGraphRuntime, T1, T2, T3, T4, String)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4)(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, T3, T4, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4)(IFlowGraphRuntime, T1, T2, T3, T4, String)
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+  id: ProcessEvent``5(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvent<T1, T2, T3, T4, T5>(IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5>(IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5>(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  type: Method
+  source:
+    id: ProcessEvent
+    path: ''
+    startLine: 25068
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInvoke flow graph event with parameters\n"
+  example: []
+  syntax:
+    content: public static void ProcessEvent<T1, T2, T3, T4, T5>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, string eventName = "")
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: arg1
+      type: '{T1}'
+      description: ''
+    - id: arg2
+      type: '{T2}'
+      description: ''
+    - id: arg3
+      type: '{T3}'
+      description: ''
+    - id: arg4
+      type: '{T4}'
+      description: ''
+    - id: arg5
+      type: '{T5}'
+      description: ''
+    - id: eventName
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T1
+      description: ''
+    - id: T2
+      description: ''
+    - id: T3
+      description: ''
+    - id: T4
+      description: ''
+    - id: T5
+      description: ''
+    content.vb: Public Shared Sub ProcessEvent(Of T1, T2, T3, T4, T5)(runtime As IFlowGraphRuntime, arg1 As T1, arg2 As T2, arg3 As T3, arg4 As T4, arg5 As T5, eventName As String = "")
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5)(IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5)(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4, T5)(IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+  id: ProcessEvent``6(Ceres.Graph.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvent<T1, T2, T3, T4, T5, T6>(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5, T6>(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5, T6>(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  type: Method
+  source:
+    id: ProcessEvent
+    path: ''
+    startLine: 25091
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInvoke flow graph event with parameters\n"
+  example: []
+  syntax:
+    content: public static void ProcessEvent<T1, T2, T3, T4, T5, T6>(this IFlowGraphRuntime runtime, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, string eventName = "")
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: arg1
+      type: '{T1}'
+      description: ''
+    - id: arg2
+      type: '{T2}'
+      description: ''
+    - id: arg3
+      type: '{T3}'
+      description: ''
+    - id: arg4
+      type: '{T4}'
+      description: ''
+    - id: arg5
+      type: '{T5}'
+      description: ''
+    - id: arg6
+      type: '{T6}'
+      description: ''
+    - id: eventName
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T1
+      description: ''
+    - id: T2
+      description: ''
+    - id: T3
+      description: ''
+    - id: T4
+      description: ''
+    - id: T5
+      description: ''
+    - id: T6
+      description: ''
+    content.vb: Public Shared Sub ProcessEvent(Of T1, T2, T3, T4, T5, T6)(runtime As IFlowGraphRuntime, arg1 As T1, arg2 As T2, arg3 As T3, arg4 As T4, arg5 As T5, arg6 As T6, eventName As String = "")
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5, T6)(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5, T6)(Ceres.Graph.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4, T5, T6)(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Graph.Flow.IFlowGraphRuntime,System.Object[],System.String)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Graph.Flow.IFlowGraphRuntime,System.Object[],System.String)
+  id: ProcessEventUber(Ceres.Graph.Flow.IFlowGraphRuntime,System.Object[],System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: ProcessEventUber(IFlowGraphRuntime, object[], string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEventUber(IFlowGraphRuntime, object[], string)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Graph.Flow.IFlowGraphRuntime, object[], string)
+  type: Method
+  source:
+    id: ProcessEventUber
+    path: ''
+    startLine: 25105
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nInvoke flow graph event with any parameters\n"
+  remarks: >-
+    Note that this method causes boxing and unboxing, which results in allocation.
+
+    Consider using an overload method with fewer parameters.
+  example: []
+  syntax:
+    content: public static void ProcessEventUber(this IFlowGraphRuntime runtime, object[] parameters, string eventName = "")
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: parameters
+      type: System.Object[]
+      description: ''
+    - id: eventName
+      type: System.String
+      description: ''
+    content.vb: Public Shared Sub ProcessEventUber(runtime As IFlowGraphRuntime, parameters As Object(), eventName As String = "")
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber*
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEventUber(IFlowGraphRuntime, Object(), String)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Graph.Flow.IFlowGraphRuntime, Object(), String)
+  name.vb: ProcessEventUber(IFlowGraphRuntime, Object(), String)
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Graph.Flow.IFlowGraphRuntime)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Graph.Flow.IFlowGraphRuntime)
+  id: GetRuntimeFlowGraph(Ceres.Graph.Flow.IFlowGraphRuntime)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetRuntimeFlowGraph(IFlowGraphRuntime)
+  nameWithType: FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(IFlowGraphRuntime)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Graph.Flow.IFlowGraphRuntime)
+  type: Method
+  source:
+    id: GetRuntimeFlowGraph
+    path: ''
+    startLine: 25118
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nGet runtime <xref href=\"Ceres.Graph.Flow.FlowGraph\" data-throw-if-not-resolved=\"false\"></xref> instance\n"
+  remarks: >-
+    Convenient for inheritors to implicitly obtain the runtime graph instance
+
+    when <xref href="Ceres.Graph.Flow.IFlowGraphRuntime.Graph" data-throw-if-not-resolved="false"></xref> is explicitly implemented.
+  example: []
+  syntax:
+    content: public static FlowGraph GetRuntimeFlowGraph(this IFlowGraphRuntime runtime)
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    return:
+      type: Ceres.Graph.Flow.FlowGraph
+      description: ''
+    content.vb: Public Shared Function GetRuntimeFlowGraph(runtime As IFlowGraphRuntime) As FlowGraph
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph*
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Graph.Flow.IFlowGraphRuntime)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Graph.Flow.IFlowGraphRuntime)
+  id: GetEventHandler(Ceres.Graph.Flow.IFlowGraphRuntime)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetEventHandler(IFlowGraphRuntime)
+  nameWithType: FlowGraphRuntimeExtensions.GetEventHandler(IFlowGraphRuntime)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Graph.Flow.IFlowGraphRuntime)
+  type: Method
+  source:
+    id: GetEventHandler
+    path: ''
+    startLine: 25127
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nGet the <see cref=\"!:CallbackEventHandler\"></see> bound to runtime <xref href=\"Ceres.Graph.Flow.FlowGraph\" data-throw-if-not-resolved=\"false\"></xref> instance\n"
+  example: []
+  syntax:
+    content: public static CallbackEventHandler GetEventHandler(this IFlowGraphRuntime runtime)
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    return:
+      type: Global.CallbackEventHandler
+    content.vb: Public Shared Function GetEventHandler(runtime As IFlowGraphRuntime) As CallbackEventHandler
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler*
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Graph.Flow.IFlowGraphRuntime,EventBase)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Graph.Flow.IFlowGraphRuntime,EventBase)
+  id: SendEvent(Ceres.Graph.Flow.IFlowGraphRuntime,EventBase)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: SendEvent(IFlowGraphRuntime, EventBase)
+  nameWithType: FlowGraphRuntimeExtensions.SendEvent(IFlowGraphRuntime, EventBase)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Graph.Flow.IFlowGraphRuntime, EventBase)
+  type: Method
+  source:
+    id: SendEvent
+    path: ''
+    startLine: 25137
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nSend event to runtime <xref href=\"Ceres.Graph.Flow.FlowGraph\" data-throw-if-not-resolved=\"false\"></xref> instance\n"
+  example: []
+  syntax:
+    content: public static void SendEvent(this IFlowGraphRuntime runtime, EventBase @event)
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: event
+      type: Global.EventBase
+      description: ''
+    content.vb: Public Shared Sub SendEvent(runtime As IFlowGraphRuntime, [event] As EventBase)
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent*
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Graph.Flow.IFlowGraphRuntime,EventCallback{``0})
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Graph.Flow.IFlowGraphRuntime,EventCallback{``0})
+  id: OverrideEventImplementation``1(Ceres.Graph.Flow.IFlowGraphRuntime,EventCallback{``0})
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: OverrideEventImplementation<TEventType>(IFlowGraphRuntime, EventCallback<TEventType>)
+  nameWithType: FlowGraphRuntimeExtensions.OverrideEventImplementation<TEventType>(IFlowGraphRuntime, EventCallback<TEventType>)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation<TEventType>(Ceres.Graph.Flow.IFlowGraphRuntime, EventCallback<TEventType>)
+  type: Method
+  source:
+    id: OverrideEventImplementation
+    path: ''
+    startLine: 25149
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nOverride graph implementation of <see cref=\"!:EventBase&lt;TEventType>\"></see>>\n"
+  example: []
+  syntax:
+    content: 'public static IDisposable OverrideEventImplementation<TEventType>(this IFlowGraphRuntime runtime, EventCallback<TEventType> implementation) where TEventType : EventBase<TEventType>, new()'
+    parameters:
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    - id: implementation
+      type: Global.EventCallback{{TEventType}}
+      description: ''
+    typeParameters:
+    - id: TEventType
+      description: ''
+    return:
+      type: Global.IDisposable
+      description: ''
+    content.vb: Public Shared Function OverrideEventImplementation(Of TEventType As {EventBase(Of TEventType), New})(runtime As IFlowGraphRuntime, implementation As EventCallback(Of TEventType)) As IDisposable
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation*
+  nameWithType.vb: FlowGraphRuntimeExtensions.OverrideEventImplementation(Of TEventType)(IFlowGraphRuntime, EventCallback(Of TEventType))
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation(Of TEventType)(Ceres.Graph.Flow.IFlowGraphRuntime, EventCallback(Of TEventType))
+  name.vb: OverrideEventImplementation(Of TEventType)(IFlowGraphRuntime, EventCallback(Of TEventType))
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution``1(CallbackEventHandler,Ceres.Graph.Flow.IFlowGraphRuntime)
+  commentId: M:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution``1(CallbackEventHandler,Ceres.Graph.Flow.IFlowGraphRuntime)
+  id: SubscribeExecution``1(CallbackEventHandler,Ceres.Graph.Flow.IFlowGraphRuntime)
+  isExtensionMethod: true
+  parent: Ceres.Graph.Flow.FlowGraphRuntimeExtensions
+  langs:
+  - csharp
+  - vb
+  name: SubscribeExecution<TEventType>(CallbackEventHandler, IFlowGraphRuntime)
+  nameWithType: FlowGraphRuntimeExtensions.SubscribeExecution<TEventType>(CallbackEventHandler, IFlowGraphRuntime)
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution<TEventType>(CallbackEventHandler, Ceres.Graph.Flow.IFlowGraphRuntime)
+  type: Method
+  source:
+    id: SubscribeExecution
+    path: ''
+    startLine: 25165
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nSubscribe an execution of <see cref=\"!:EventBase&lt;TEventType>\"></see>> as callback\n"
+  example: []
+  syntax:
+    content: 'public static IDisposable SubscribeExecution<TEventType>(this CallbackEventHandler eventHandler, IFlowGraphRuntime runtime) where TEventType : EventBase<TEventType>, new()'
+    parameters:
+    - id: eventHandler
+      type: Global.CallbackEventHandler
+      description: ''
+    - id: runtime
+      type: Ceres.Graph.Flow.IFlowGraphRuntime
+      description: ''
+    typeParameters:
+    - id: TEventType
+      description: ''
+    return:
+      type: Global.IDisposable
+      description: ''
+    content.vb: Public Shared Function SubscribeExecution(Of TEventType As {EventBase(Of TEventType), New})(eventHandler As CallbackEventHandler, runtime As IFlowGraphRuntime) As IDisposable
+  overload: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution*
+  nameWithType.vb: FlowGraphRuntimeExtensions.SubscribeExecution(Of TEventType)(CallbackEventHandler, IFlowGraphRuntime)
+  fullName.vb: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution(Of TEventType)(CallbackEventHandler, Ceres.Graph.Flow.IFlowGraphRuntime)
+  name.vb: SubscribeExecution(Of TEventType)(CallbackEventHandler, IFlowGraphRuntime)
+references:
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent
+  name: ProcessEvent
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEvent
+- uid: Ceres.Graph.Flow.IFlowGraphRuntime
+  commentId: T:Ceres.Graph.Flow.IFlowGraphRuntime
+  parent: Ceres.Graph.Flow
+  name: IFlowGraphRuntime
+  nameWithType: IFlowGraphRuntime
+  fullName: Ceres.Graph.Flow.IFlowGraphRuntime
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{T1}'
+  commentId: '!:T1'
+  definition: T1
+  name: T1
+  nameWithType: T1
+  fullName: T1
+- uid: T1
+  name: T1
+  nameWithType: T1
+  fullName: T1
+- uid: '{T2}'
+  commentId: '!:T2'
+  definition: T2
+  name: T2
+  nameWithType: T2
+  fullName: T2
+- uid: T2
+  name: T2
+  nameWithType: T2
+  fullName: T2
+- uid: '{T3}'
+  commentId: '!:T3'
+  definition: T3
+  name: T3
+  nameWithType: T3
+  fullName: T3
+- uid: T3
+  name: T3
+  nameWithType: T3
+  fullName: T3
+- uid: '{T4}'
+  commentId: '!:T4'
+  definition: T4
+  name: T4
+  nameWithType: T4
+  fullName: T4
+- uid: T4
+  name: T4
+  nameWithType: T4
+  fullName: T4
+- uid: '{T5}'
+  commentId: '!:T5'
+  definition: T5
+  name: T5
+  nameWithType: T5
+  fullName: T5
+- uid: T5
+  name: T5
+  nameWithType: T5
+  fullName: T5
+- uid: '{T6}'
+  commentId: '!:T6'
+  definition: T6
+  name: T6
+  nameWithType: T6
+  fullName: T6
+- uid: T6
+  name: T6
+  nameWithType: T6
+  fullName: T6
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber
+  name: ProcessEventUber
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEventUber
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.ProcessEventUber
+- uid: System.Object[]
+  isExternal: true
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraph
+  commentId: T:Ceres.Graph.Flow.FlowGraph
+  parent: Ceres.Graph.Flow
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Graph.Flow.FlowGraph
+- uid: Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  commentId: P:Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+  parent: Ceres.Graph.Flow.IFlowGraphRuntime
+  name: Graph
+  nameWithType: IFlowGraphRuntime.Graph
+  fullName: Ceres.Graph.Flow.IFlowGraphRuntime.Graph
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph
+  name: GetRuntimeFlowGraph
+  nameWithType: FlowGraphRuntimeExtensions.GetRuntimeFlowGraph
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler
+  name: GetEventHandler
+  nameWithType: FlowGraphRuntimeExtensions.GetEventHandler
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.GetEventHandler
+- uid: Global.CallbackEventHandler
+  isExternal: true
+  name: CallbackEventHandler
+  nameWithType: CallbackEventHandler
+  fullName: CallbackEventHandler
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent
+  name: SendEvent
+  nameWithType: FlowGraphRuntimeExtensions.SendEvent
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SendEvent
+- uid: Global.EventBase
+  isExternal: true
+  name: EventBase
+  nameWithType: EventBase
+  fullName: EventBase
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation
+  name: OverrideEventImplementation
+  nameWithType: FlowGraphRuntimeExtensions.OverrideEventImplementation
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation
+- uid: Global.EventCallback{{TEventType}}
+  commentId: '!:Global.EventCallback{``0}'
+  definition: Global.EventCallback`1
+  name: EventCallback<TEventType>
+  nameWithType: EventCallback<TEventType>
+  fullName: EventCallback<TEventType>
+  nameWithType.vb: EventCallback(Of TEventType)
+  fullName.vb: EventCallback(Of TEventType)
+  name.vb: EventCallback(Of TEventType)
+  spec.csharp:
+  - uid: Global.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: <
+  - name: TEventType
+  - name: '>'
+  spec.vb:
+  - uid: Global.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: Global.EventCallback`1
+  commentId: '!:Global.EventCallback`1'
+  isExternal: true
+  name: EventCallback<>
+  nameWithType: EventCallback<>
+  fullName: EventCallback<>
+  nameWithType.vb: EventCallback(Of )
+  fullName.vb: EventCallback(Of )
+  name.vb: EventCallback(Of )
+  spec.csharp:
+  - uid: Global.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution
+  name: SubscribeExecution
+  nameWithType: FlowGraphRuntimeExtensions.SubscribeExecution
+  fullName: Ceres.Graph.Flow.FlowGraphRuntimeExtensions.SubscribeExecution

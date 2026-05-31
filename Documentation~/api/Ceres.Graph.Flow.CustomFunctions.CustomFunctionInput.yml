@@ -1,0 +1,831 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  commentId: T:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  id: CustomFunctionInput
+  parent: Ceres.Graph.Flow.CustomFunctions
+  children:
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.exec
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.Execute(Ceres.Graph.Flow.ExecutionContext)
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetEventName
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayFieldName
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayLength
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnAfterDeserialize
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnBeforeSerialize
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.outputs
+  - Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.parameters
+  langs:
+  - csharp
+  - vb
+  name: CustomFunctionInput
+  nameWithType: CustomFunctionInput
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  type: Class
+  source:
+    id: CustomFunctionInput
+    path: ''
+    startLine: 26844
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: 'public class CustomFunctionInput : ExecutableEvent, IDisposable, ISerializationCallbackReceiver, IReadOnlyPortArrayNode'
+    content.vb: Public Class CustomFunctionInput Inherits ExecutableEvent Implements IDisposable, ISerializationCallbackReceiver, IReadOnlyPortArrayNode
+  inheritance:
+  - System.Object
+  - Ceres.Graph.CeresNode
+  - Ceres.Graph.Flow.ExecutableNode
+  - Ceres.Graph.Flow.ExecutableEvent
+  implements:
+  - Global.IDisposable
+  - Global.ISerializationCallbackReceiver
+  - Ceres.Graph.IReadOnlyPortArrayNode
+  inheritedMembers:
+  - Ceres.Graph.Flow.ExecutableNode.Graph
+  - Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  - Ceres.Graph.CeresNode.NodeData
+  - Ceres.Graph.CeresNode.Guid
+  - Ceres.Graph.CeresNode.GraphPosition
+  - Ceres.Graph.CeresNode.Dispose
+  - Ceres.Graph.CeresNode.GetSerializedData
+  - Ceres.Graph.CeresNode.GetExecutionPath
+  - Ceres.Graph.CeresNode.GetEnumerator
+  - Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  - Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTypeName
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.exec
+  commentId: F:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.exec
+  id: exec
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: exec
+  nameWithType: CustomFunctionInput.exec
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.exec
+  type: Field
+  source:
+    id: exec
+    path: ''
+    startLine: 26851
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: public NodePort exec
+    return:
+      type: Ceres.Graph.NodePort
+    content.vb: Public exec As NodePort
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.outputs
+  commentId: F:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.outputs
+  id: outputs
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: outputs
+  nameWithType: CustomFunctionInput.outputs
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.outputs
+  type: Field
+  source:
+    id: outputs
+    path: ''
+    startLine: 26855
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: public CeresPort<CeresPort>[] outputs
+    return:
+      type: Ceres.Graph.CeresPort{Ceres.Graph.CeresPort}[]
+    content.vb: Public outputs As CeresPort(Of CeresPort)()
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.parameters
+  commentId: F:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.parameters
+  id: parameters
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: parameters
+  nameWithType: CustomFunctionInput.parameters
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.parameters
+  type: Field
+  source:
+    id: parameters
+    path: ''
+    startLine: 26858
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: public CustomFunctionInputParameter[] parameters
+    return:
+      type: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInputParameter[]
+    content.vb: Public parameters As CustomFunctionInputParameter()
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.Execute(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.Execute(Ceres.Graph.Flow.ExecutionContext)
+  id: Execute(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: Execute(ExecutionContext)
+  nameWithType: CustomFunctionInput.Execute(ExecutionContext)
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.Execute(Ceres.Graph.Flow.ExecutionContext)
+  type: Method
+  source:
+    id: Execute
+    path: ''
+    startLine: 26860
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: protected override UniTask Execute(ExecutionContext executionContext)
+    parameters:
+    - id: executionContext
+      type: Ceres.Graph.Flow.ExecutionContext
+    return:
+      type: Global.UniTask
+    content.vb: Protected Overrides Function Execute(executionContext As ExecutionContext) As UniTask
+  overridden: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  overload: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.Execute*
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetEventName
+  commentId: M:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetEventName
+  id: GetEventName
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: GetEventName()
+  nameWithType: CustomFunctionInput.GetEventName()
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetEventName()
+  type: Method
+  source:
+    id: GetEventName
+    path: ''
+    startLine: 26875
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: public override string GetEventName()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function GetEventName() As String
+  overridden: Ceres.Graph.Flow.ExecutableEvent.GetEventName
+  overload: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetEventName*
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnBeforeSerialize
+  commentId: M:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnBeforeSerialize
+  id: OnBeforeSerialize
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: OnBeforeSerialize()
+  nameWithType: CustomFunctionInput.OnBeforeSerialize()
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnBeforeSerialize()
+  type: Method
+  source:
+    id: OnBeforeSerialize
+    path: ''
+    startLine: 26880
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: public void OnBeforeSerialize()
+    content.vb: Public Sub OnBeforeSerialize()
+  overload: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnBeforeSerialize*
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnAfterDeserialize
+  commentId: M:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnAfterDeserialize
+  id: OnAfterDeserialize
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: OnAfterDeserialize()
+  nameWithType: CustomFunctionInput.OnAfterDeserialize()
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnAfterDeserialize()
+  type: Method
+  source:
+    id: OnAfterDeserialize
+    path: ''
+    startLine: 26885
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: public void OnAfterDeserialize()
+    content.vb: Public Sub OnAfterDeserialize()
+  overload: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnAfterDeserialize*
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayLength
+  commentId: M:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayLength
+  id: GetPortArrayLength
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: GetPortArrayLength()
+  nameWithType: CustomFunctionInput.GetPortArrayLength()
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayLength()
+  type: Method
+  source:
+    id: GetPortArrayLength
+    path: ''
+    startLine: 26894
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: public int GetPortArrayLength()
+    return:
+      type: System.Int32
+    content.vb: Public Function GetPortArrayLength() As Integer
+  overload: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayLength*
+  implements:
+  - Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayLength
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayFieldName
+  commentId: M:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayFieldName
+  id: GetPortArrayFieldName
+  parent: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput
+  langs:
+  - csharp
+  - vb
+  name: GetPortArrayFieldName()
+  nameWithType: CustomFunctionInput.GetPortArrayFieldName()
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayFieldName()
+  type: Method
+  source:
+    id: GetPortArrayFieldName
+    path: ''
+    startLine: 26899
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.CustomFunctions
+  syntax:
+    content: public string GetPortArrayFieldName()
+    return:
+      type: System.String
+    content.vb: Public Function GetPortArrayFieldName() As String
+  overload: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayFieldName*
+  implements:
+  - Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayFieldName
+references:
+- uid: Ceres.Graph.Flow.CustomFunctions
+  commentId: N:Ceres.Graph.Flow.CustomFunctions
+  name: Ceres.Graph.Flow.CustomFunctions
+  nameWithType: Ceres.Graph.Flow.CustomFunctions
+  fullName: Ceres.Graph.Flow.CustomFunctions
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  - name: .
+  - uid: Ceres.Graph.Flow.CustomFunctions
+    name: CustomFunctions
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  - name: .
+  - uid: Ceres.Graph.Flow.CustomFunctions
+    name: CustomFunctions
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph.Flow.ExecutableNode
+  commentId: T:Ceres.Graph.Flow.ExecutableNode
+  parent: Ceres.Graph.Flow
+  name: ExecutableNode
+  nameWithType: ExecutableNode
+  fullName: Ceres.Graph.Flow.ExecutableNode
+- uid: Ceres.Graph.Flow.ExecutableEvent
+  commentId: T:Ceres.Graph.Flow.ExecutableEvent
+  parent: Ceres.Graph.Flow
+  name: ExecutableEvent
+  nameWithType: ExecutableEvent
+  fullName: Ceres.Graph.Flow.ExecutableEvent
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: Global.ISerializationCallbackReceiver
+  isExternal: true
+  name: ISerializationCallbackReceiver
+  nameWithType: ISerializationCallbackReceiver
+  fullName: ISerializationCallbackReceiver
+- uid: Ceres.Graph.IReadOnlyPortArrayNode
+  commentId: T:Ceres.Graph.IReadOnlyPortArrayNode
+  parent: Ceres.Graph
+  name: IReadOnlyPortArrayNode
+  nameWithType: IReadOnlyPortArrayNode
+  fullName: Ceres.Graph.IReadOnlyPortArrayNode
+- uid: Ceres.Graph.Flow.ExecutableNode.Graph
+  commentId: P:Ceres.Graph.Flow.ExecutableNode.Graph
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: Graph
+  nameWithType: ExecutableNode.Graph
+  fullName: Ceres.Graph.Flow.ExecutableNode.Graph
+- uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: ExecuteNode(ExecutionContext)
+  nameWithType: ExecutableNode.ExecuteNode(ExecutionContext)
+  fullName: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+    name: ExecuteNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+    name: ExecuteNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+- uid: Ceres.Graph.CeresNode.NodeData
+  commentId: P:Ceres.Graph.CeresNode.NodeData
+  parent: Ceres.Graph.CeresNode
+  name: NodeData
+  nameWithType: CeresNode.NodeData
+  fullName: Ceres.Graph.CeresNode.NodeData
+- uid: Ceres.Graph.CeresNode.Guid
+  commentId: P:Ceres.Graph.CeresNode.Guid
+  parent: Ceres.Graph.CeresNode
+  name: Guid
+  nameWithType: CeresNode.Guid
+  fullName: Ceres.Graph.CeresNode.Guid
+- uid: Ceres.Graph.CeresNode.GraphPosition
+  commentId: P:Ceres.Graph.CeresNode.GraphPosition
+  parent: Ceres.Graph.CeresNode
+  name: GraphPosition
+  nameWithType: CeresNode.GraphPosition
+  fullName: Ceres.Graph.CeresNode.GraphPosition
+- uid: Ceres.Graph.CeresNode.Dispose
+  commentId: M:Ceres.Graph.CeresNode.Dispose
+  parent: Ceres.Graph.CeresNode
+  name: Dispose()
+  nameWithType: CeresNode.Dispose()
+  fullName: Ceres.Graph.CeresNode.Dispose()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetSerializedData
+  commentId: M:Ceres.Graph.CeresNode.GetSerializedData
+  parent: Ceres.Graph.CeresNode
+  name: GetSerializedData()
+  nameWithType: CeresNode.GetSerializedData()
+  fullName: Ceres.Graph.CeresNode.GetSerializedData()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetSerializedData
+    name: GetSerializedData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetSerializedData
+    name: GetSerializedData
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetExecutionPath
+  commentId: M:Ceres.Graph.CeresNode.GetExecutionPath
+  parent: Ceres.Graph.CeresNode
+  name: GetExecutionPath()
+  nameWithType: CeresNode.GetExecutionPath()
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath
+    name: GetExecutionPath
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath
+    name: GetExecutionPath
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetEnumerator
+  commentId: M:Ceres.Graph.CeresNode.GetEnumerator
+  parent: Ceres.Graph.CeresNode
+  name: GetEnumerator()
+  nameWithType: CeresNode.GetEnumerator()
+  fullName: Ceres.Graph.CeresNode.GetEnumerator()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetEnumerator
+    name: GetEnumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetEnumerator
+    name: GetEnumerator
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  commentId: M:Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetExecutionPath(Type)
+  nameWithType: CeresNode.GetExecutionPath(Type)
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+    name: GetExecutionPath
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+    name: GetExecutionPath
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: MakeSubtitle(string, bool)
+  nameWithType: CeresNode.MakeSubtitle(string, bool)
+  fullName: Ceres.Graph.CeresNode.MakeSubtitle(string, bool)
+  nameWithType.vb: CeresNode.MakeSubtitle(String, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.MakeSubtitle(String, Boolean)
+  name.vb: MakeSubtitle(String, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+    name: MakeSubtitle
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+    name: MakeSubtitle
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetTargetSubtitle(string, bool)
+  nameWithType: CeresNode.GetTargetSubtitle(string, bool)
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle(string, bool)
+  nameWithType.vb: CeresNode.GetTargetSubtitle(String, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.GetTargetSubtitle(String, Boolean)
+  name.vb: GetTargetSubtitle(String, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetTargetSubtitle(Type, bool)
+  nameWithType: CeresNode.GetTargetSubtitle(Type, bool)
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle(Type, bool)
+  nameWithType.vb: CeresNode.GetTargetSubtitle(Type, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.GetTargetSubtitle(Type, Boolean)
+  name.vb: GetTargetSubtitle(Type, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTypeName
+  commentId: M:Ceres.Graph.CeresNode.GetTypeName
+  parent: Ceres.Graph.CeresNode
+  name: GetTypeName()
+  nameWithType: CeresNode.GetTypeName()
+  fullName: Ceres.Graph.CeresNode.GetTypeName()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTypeName
+    name: GetTypeName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTypeName
+    name: GetTypeName
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: Ceres.Graph.NodePort
+  commentId: T:Ceres.Graph.NodePort
+  parent: Ceres.Graph
+  name: NodePort
+  nameWithType: NodePort
+  fullName: Ceres.Graph.NodePort
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.CeresPort}[]
+  isExternal: true
+  name: CeresPort<CeresPort>[]
+  nameWithType: CeresPort<CeresPort>[]
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.CeresPort>[]
+  nameWithType.vb: CeresPort(Of CeresPort)()
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.CeresPort)()
+  name.vb: CeresPort(Of CeresPort)()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: <
+  - uid: Ceres.Graph.CeresPort
+    name: CeresPort
+  - name: '>'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.CeresPort
+    name: CeresPort
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInputParameter[]
+  isExternal: true
+  name: CustomFunctionInputParameter[]
+  nameWithType: CustomFunctionInputParameter[]
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInputParameter[]
+  nameWithType.vb: CustomFunctionInputParameter()
+  fullName.vb: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInputParameter()
+  name.vb: CustomFunctionInputParameter()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInputParameter
+    name: CustomFunctionInputParameter
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInputParameter
+    name: CustomFunctionInputParameter
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: Execute(ExecutionContext)
+  nameWithType: ExecutableNode.Execute(ExecutionContext)
+  fullName: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+    name: Execute
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+    name: Execute
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.Execute*
+  commentId: Overload:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.Execute
+  name: Execute
+  nameWithType: CustomFunctionInput.Execute
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.Execute
+- uid: Ceres.Graph.Flow.ExecutionContext
+  commentId: T:Ceres.Graph.Flow.ExecutionContext
+  parent: Ceres.Graph.Flow
+  name: ExecutionContext
+  nameWithType: ExecutionContext
+  fullName: Ceres.Graph.Flow.ExecutionContext
+- uid: Global.UniTask
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: UniTask
+- uid: Ceres.Graph.Flow.ExecutableEvent.GetEventName
+  commentId: M:Ceres.Graph.Flow.ExecutableEvent.GetEventName
+  parent: Ceres.Graph.Flow.ExecutableEvent
+  name: GetEventName()
+  nameWithType: ExecutableEvent.GetEventName()
+  fullName: Ceres.Graph.Flow.ExecutableEvent.GetEventName()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecutableEvent.GetEventName
+    name: GetEventName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecutableEvent.GetEventName
+    name: GetEventName
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetEventName*
+  commentId: Overload:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetEventName
+  name: GetEventName
+  nameWithType: CustomFunctionInput.GetEventName
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetEventName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnBeforeSerialize*
+  commentId: Overload:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnBeforeSerialize
+  name: OnBeforeSerialize
+  nameWithType: CustomFunctionInput.OnBeforeSerialize
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnBeforeSerialize
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnAfterDeserialize*
+  commentId: Overload:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnAfterDeserialize
+  name: OnAfterDeserialize
+  nameWithType: CustomFunctionInput.OnAfterDeserialize
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.OnAfterDeserialize
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayLength*
+  commentId: Overload:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayLength
+  name: GetPortArrayLength
+  nameWithType: CustomFunctionInput.GetPortArrayLength
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayLength
+- uid: Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayLength
+  commentId: M:Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayLength
+  parent: Ceres.Graph.IReadOnlyPortArrayNode
+  name: GetPortArrayLength()
+  nameWithType: IReadOnlyPortArrayNode.GetPortArrayLength()
+  fullName: Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayLength()
+  spec.csharp:
+  - uid: Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayLength
+    name: GetPortArrayLength
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayLength
+    name: GetPortArrayLength
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayFieldName*
+  commentId: Overload:Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayFieldName
+  name: GetPortArrayFieldName
+  nameWithType: CustomFunctionInput.GetPortArrayFieldName
+  fullName: Ceres.Graph.Flow.CustomFunctions.CustomFunctionInput.GetPortArrayFieldName
+- uid: Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayFieldName
+  commentId: M:Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayFieldName
+  parent: Ceres.Graph.IReadOnlyPortArrayNode
+  name: GetPortArrayFieldName()
+  nameWithType: IReadOnlyPortArrayNode.GetPortArrayFieldName()
+  fullName: Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayFieldName()
+  spec.csharp:
+  - uid: Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayFieldName
+    name: GetPortArrayFieldName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.IReadOnlyPortArrayNode.GetPortArrayFieldName
+    name: GetPortArrayFieldName
+  - name: (
+  - name: )

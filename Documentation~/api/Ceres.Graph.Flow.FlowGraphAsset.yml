@@ -1,0 +1,227 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.FlowGraphAsset
+  commentId: T:Ceres.Graph.Flow.FlowGraphAsset
+  id: FlowGraphAsset
+  parent: Ceres.Graph.Flow
+  children:
+  - Ceres.Graph.Flow.FlowGraphAsset.GetRuntimeType
+  - Ceres.Graph.Flow.FlowGraphAsset.runtimeType
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphAsset
+  nameWithType: FlowGraphAsset
+  fullName: Ceres.Graph.Flow.FlowGraphAsset
+  type: Class
+  source:
+    id: FlowGraphAsset
+    path: ''
+    startLine: 22278
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nAsset contains <xref href=\"Ceres.Graph.Flow.FlowGraphData\" data-throw-if-not-resolved=\"false\"></xref> that can be shared between multi <xref href=\"Ceres.Graph.Flow.IFlowGraphRuntime\" data-throw-if-not-resolved=\"false\"></xref> instances.\n"
+  example: []
+  syntax:
+    content: 'public class FlowGraphAsset : FlowGraphScriptableObjectBase, IRedirectFlowGraphRuntimeType'
+    content.vb: Public Class FlowGraphAsset Inherits FlowGraphScriptableObjectBase Implements IRedirectFlowGraphRuntimeType
+  inheritance:
+  - System.Object
+  - Ceres.Graph.Flow.FlowGraphScriptableObjectBase
+  derivedClasses:
+  - Ceres.Graph.Flow.FlowGraphFunctionAsset
+  implements:
+  - Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType
+- uid: Ceres.Graph.Flow.FlowGraphAsset.runtimeType
+  commentId: F:Ceres.Graph.Flow.FlowGraphAsset.runtimeType
+  id: runtimeType
+  parent: Ceres.Graph.Flow.FlowGraphAsset
+  langs:
+  - csharp
+  - vb
+  name: runtimeType
+  nameWithType: FlowGraphAsset.runtimeType
+  fullName: Ceres.Graph.Flow.FlowGraphAsset.runtimeType
+  type: Field
+  source:
+    id: runtimeType
+    path: ''
+    startLine: 22284
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  summary: "\nSpecific <xref href=\"Ceres.Graph.Flow.IFlowGraphRuntime\" data-throw-if-not-resolved=\"false\"></xref> type this asset act as at runtime\n"
+  example: []
+  syntax:
+    content: public SerializedType<IFlowGraphRuntime> runtimeType
+    return:
+      type: Global.SerializedType{Ceres.Graph.Flow.IFlowGraphRuntime}
+    content.vb: Public runtimeType As SerializedType(Of IFlowGraphRuntime)
+- uid: Ceres.Graph.Flow.FlowGraphAsset.GetRuntimeType
+  commentId: M:Ceres.Graph.Flow.FlowGraphAsset.GetRuntimeType
+  id: GetRuntimeType
+  parent: Ceres.Graph.Flow.FlowGraphAsset
+  langs:
+  - csharp
+  - vb
+  name: GetRuntimeType()
+  nameWithType: FlowGraphAsset.GetRuntimeType()
+  fullName: Ceres.Graph.Flow.FlowGraphAsset.GetRuntimeType()
+  type: Method
+  source:
+    id: GetRuntimeType
+    path: ''
+    startLine: 22286
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow
+  syntax:
+    content: public virtual Type GetRuntimeType()
+    return:
+      type: Global.Type
+    content.vb: Public Overridable Function GetRuntimeType() As Type
+  overload: Ceres.Graph.Flow.FlowGraphAsset.GetRuntimeType*
+  implements:
+  - Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType.GetRuntimeType
+references:
+- uid: Ceres.Graph.Flow.FlowGraphData
+  commentId: T:Ceres.Graph.Flow.FlowGraphData
+  parent: Ceres.Graph.Flow
+  name: FlowGraphData
+  nameWithType: FlowGraphData
+  fullName: Ceres.Graph.Flow.FlowGraphData
+- uid: Ceres.Graph.Flow.IFlowGraphRuntime
+  commentId: T:Ceres.Graph.Flow.IFlowGraphRuntime
+  parent: Ceres.Graph.Flow
+  name: IFlowGraphRuntime
+  nameWithType: IFlowGraphRuntime
+  fullName: Ceres.Graph.Flow.IFlowGraphRuntime
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.Flow.FlowGraphScriptableObjectBase
+  commentId: T:Ceres.Graph.Flow.FlowGraphScriptableObjectBase
+  parent: Ceres.Graph.Flow
+  name: FlowGraphScriptableObjectBase
+  nameWithType: FlowGraphScriptableObjectBase
+  fullName: Ceres.Graph.Flow.FlowGraphScriptableObjectBase
+- uid: Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType
+  commentId: T:Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType
+  parent: Ceres.Graph.Flow
+  name: IRedirectFlowGraphRuntimeType
+  nameWithType: IRedirectFlowGraphRuntimeType
+  fullName: Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.SerializedType{Ceres.Graph.Flow.IFlowGraphRuntime}
+  commentId: '!:Global.SerializedType{Ceres.Graph.Flow.IFlowGraphRuntime}'
+  definition: Global.SerializedType`1
+  name: SerializedType<IFlowGraphRuntime>
+  nameWithType: SerializedType<IFlowGraphRuntime>
+  fullName: SerializedType<Ceres.Graph.Flow.IFlowGraphRuntime>
+  nameWithType.vb: SerializedType(Of IFlowGraphRuntime)
+  fullName.vb: SerializedType(Of Ceres.Graph.Flow.IFlowGraphRuntime)
+  name.vb: SerializedType(Of IFlowGraphRuntime)
+  spec.csharp:
+  - uid: Global.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: <
+  - uid: Ceres.Graph.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+  - name: '>'
+  spec.vb:
+  - uid: Global.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+  - name: )
+- uid: Global.SerializedType`1
+  isExternal: true
+  name: SerializedType<>
+  nameWithType: SerializedType<>
+  fullName: SerializedType<>
+  nameWithType.vb: SerializedType(Of )
+  fullName.vb: SerializedType(Of )
+  name.vb: SerializedType(Of )
+  spec.csharp:
+  - uid: Global.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Graph.Flow.FlowGraphAsset.GetRuntimeType*
+  commentId: Overload:Ceres.Graph.Flow.FlowGraphAsset.GetRuntimeType
+  name: GetRuntimeType
+  nameWithType: FlowGraphAsset.GetRuntimeType
+  fullName: Ceres.Graph.Flow.FlowGraphAsset.GetRuntimeType
+- uid: Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType.GetRuntimeType
+  commentId: M:Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType.GetRuntimeType
+  parent: Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType
+  name: GetRuntimeType()
+  nameWithType: IRedirectFlowGraphRuntimeType.GetRuntimeType()
+  fullName: Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType.GetRuntimeType()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType.GetRuntimeType
+    name: GetRuntimeType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.IRedirectFlowGraphRuntimeType.GetRuntimeType
+    name: GetRuntimeType
+  - name: (
+  - name: )
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type

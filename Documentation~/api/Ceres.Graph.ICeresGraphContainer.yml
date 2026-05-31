@@ -1,0 +1,130 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.ICeresGraphContainer
+  commentId: T:Ceres.Graph.ICeresGraphContainer
+  id: ICeresGraphContainer
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.ICeresGraphContainer.Object
+  - Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  langs:
+  - csharp
+  - vb
+  name: ICeresGraphContainer
+  nameWithType: ICeresGraphContainer
+  fullName: Ceres.Graph.ICeresGraphContainer
+  type: Interface
+  source:
+    id: ICeresGraphContainer
+    path: ''
+    startLine: 18015
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nInterface for containing <xref href=\"Ceres.Graph.CeresGraph\" data-throw-if-not-resolved=\"false\"></xref> data\n"
+  example: []
+  syntax:
+    content: public interface ICeresGraphContainer
+    content.vb: Public Interface ICeresGraphContainer
+- uid: Ceres.Graph.ICeresGraphContainer.Object
+  commentId: P:Ceres.Graph.ICeresGraphContainer.Object
+  id: Object
+  parent: Ceres.Graph.ICeresGraphContainer
+  langs:
+  - csharp
+  - vb
+  name: Object
+  nameWithType: ICeresGraphContainer.Object
+  fullName: Ceres.Graph.ICeresGraphContainer.Object
+  type: Property
+  source:
+    id: Object
+    path: ''
+    startLine: 18022
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nContainer bound <see cref=\"!:UObject\"></see>\n"
+  remarks: Prefer use GameObject as container key since component is not persistent
+  example: []
+  syntax:
+    content: UObject Object { get; }
+    parameters: []
+    return:
+      type: Global.UObject
+      description: ''
+    content.vb: ReadOnly Property [Object] As UObject
+  overload: Ceres.Graph.ICeresGraphContainer.Object*
+- uid: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  commentId: M:Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  id: SetGraphData(Ceres.Graph.CeresGraphData)
+  parent: Ceres.Graph.ICeresGraphContainer
+  langs:
+  - csharp
+  - vb
+  name: SetGraphData(CeresGraphData)
+  nameWithType: ICeresGraphContainer.SetGraphData(CeresGraphData)
+  fullName: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  type: Method
+  source:
+    id: SetGraphData
+    path: ''
+    startLine: 18028
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nSet graph persistent data\n"
+  example: []
+  syntax:
+    content: void SetGraphData(CeresGraphData graphData)
+    parameters:
+    - id: graphData
+      type: Ceres.Graph.CeresGraphData
+      description: ''
+    content.vb: Sub SetGraphData(graphData As CeresGraphData)
+  overload: Ceres.Graph.ICeresGraphContainer.SetGraphData*
+references:
+- uid: Ceres.Graph.CeresGraph
+  commentId: T:Ceres.Graph.CeresGraph
+  parent: Ceres.Graph
+  name: CeresGraph
+  nameWithType: CeresGraph
+  fullName: Ceres.Graph.CeresGraph
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: Ceres.Graph.ICeresGraphContainer.Object*
+  commentId: Overload:Ceres.Graph.ICeresGraphContainer.Object
+  name: Object
+  nameWithType: ICeresGraphContainer.Object
+  fullName: Ceres.Graph.ICeresGraphContainer.Object
+- uid: Global.UObject
+  isExternal: true
+  name: UObject
+  nameWithType: UObject
+  fullName: UObject
+- uid: Ceres.Graph.ICeresGraphContainer.SetGraphData*
+  commentId: Overload:Ceres.Graph.ICeresGraphContainer.SetGraphData
+  name: SetGraphData
+  nameWithType: ICeresGraphContainer.SetGraphData
+  fullName: Ceres.Graph.ICeresGraphContainer.SetGraphData
+- uid: Ceres.Graph.CeresGraphData
+  commentId: T:Ceres.Graph.CeresGraphData
+  parent: Ceres.Graph
+  name: CeresGraphData
+  nameWithType: CeresGraphData
+  fullName: Ceres.Graph.CeresGraphData

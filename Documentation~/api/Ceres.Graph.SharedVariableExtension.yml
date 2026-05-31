@@ -1,0 +1,824 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.SharedVariableExtension
+  commentId: T:Ceres.Graph.SharedVariableExtension
+  id: SharedVariableExtension
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+  - Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+  - Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  - Ceres.Graph.SharedVariableExtension.LinkToSource(Ceres.Graph.SharedVariable,Ceres.Graph.IVariableSource)
+  - Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  - Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+  - Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{Object}@)
+  - Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  - Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+  - Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  langs:
+  - csharp
+  - vb
+  name: SharedVariableExtension
+  nameWithType: SharedVariableExtension
+  fullName: Ceres.Graph.SharedVariableExtension
+  type: Class
+  source:
+    id: SharedVariableExtension
+    path: ''
+    startLine: 21263
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static class SharedVariableExtension
+    content.vb: Public Module SharedVariableExtension
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+  commentId: M:Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+  id: GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: GetSharedVariable(IVariableSource, string)
+  nameWithType: SharedVariableExtension.GetSharedVariable(IVariableSource, string)
+  fullName: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource, string)
+  type: Method
+  source:
+    id: GetSharedVariable
+    path: ''
+    startLine: 21271
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet <xref href=\"Ceres.Graph.SharedVariable\" data-throw-if-not-resolved=\"false\"></xref> by name\n"
+  example: []
+  syntax:
+    content: public static SharedVariable GetSharedVariable(this IVariableSource variableScope, string variableName)
+    parameters:
+    - id: variableScope
+      type: Ceres.Graph.IVariableSource
+      description: ''
+    - id: variableName
+      type: System.String
+      description: ''
+    return:
+      type: Ceres.Graph.SharedVariable
+      description: ''
+    content.vb: Public Shared Function GetSharedVariable(variableScope As IVariableSource, variableName As String) As SharedVariable
+  overload: Ceres.Graph.SharedVariableExtension.GetSharedVariable*
+  nameWithType.vb: SharedVariableExtension.GetSharedVariable(IVariableSource, String)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource, String)
+  name.vb: GetSharedVariable(IVariableSource, String)
+- uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+  commentId: M:Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+  id: GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: GetSharedVariable<T>(IVariableSource, string)
+  nameWithType: SharedVariableExtension.GetSharedVariable<T>(IVariableSource, string)
+  fullName: Ceres.Graph.SharedVariableExtension.GetSharedVariable<T>(Ceres.Graph.IVariableSource, string)
+  type: Method
+  source:
+    id: GetSharedVariable
+    path: ''
+    startLine: 21294
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nGet <xref href=\"Ceres.Graph.SharedVariable%601\" data-throw-if-not-resolved=\"false\"></xref> by name\n"
+  example: []
+  syntax:
+    content: public static SharedVariable<T> GetSharedVariable<T>(this IVariableSource variableScope, string variableName)
+    parameters:
+    - id: variableScope
+      type: Ceres.Graph.IVariableSource
+      description: ''
+    - id: variableName
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: Ceres.Graph.SharedVariable{{T}}
+      description: ''
+    content.vb: Public Shared Function GetSharedVariable(Of T)(variableScope As IVariableSource, variableName As String) As SharedVariable(Of T)
+  overload: Ceres.Graph.SharedVariableExtension.GetSharedVariable*
+  nameWithType.vb: SharedVariableExtension.GetSharedVariable(Of T)(IVariableSource, String)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Of T)(Ceres.Graph.IVariableSource, String)
+  name.vb: GetSharedVariable(Of T)(IVariableSource, String)
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+  id: TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: TryGetSharedVariable(IVariableSource, string, out SharedVariable)
+  nameWithType: SharedVariableExtension.TryGetSharedVariable(IVariableSource, string, out SharedVariable)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable)
+  type: Method
+  source:
+    id: TryGetSharedVariable
+    path: ''
+    startLine: 21306
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nTry get shared variable by its name\n"
+  example: []
+  syntax:
+    content: public static bool TryGetSharedVariable(this IVariableSource variableScope, string variableName, out SharedVariable sharedVariable)
+    parameters:
+    - id: variableScope
+      type: Ceres.Graph.IVariableSource
+      description: ''
+    - id: variableName
+      type: System.String
+      description: ''
+    - id: sharedVariable
+      type: Ceres.Graph.SharedVariable
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function TryGetSharedVariable(variableScope As IVariableSource, variableName As String, sharedVariable As SharedVariable) As Boolean
+  overload: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable*
+  nameWithType.vb: SharedVariableExtension.TryGetSharedVariable(IVariableSource, String, SharedVariable)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable)
+  name.vb: TryGetSharedVariable(IVariableSource, String, SharedVariable)
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  id: TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: TryGetSharedVariable<T>(IVariableSource, string, out SharedVariable<T>)
+  nameWithType: SharedVariableExtension.TryGetSharedVariable<T>(IVariableSource, string, out SharedVariable<T>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable<T>(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<T>)
+  type: Method
+  source:
+    id: TryGetSharedVariable
+    path: ''
+    startLine: 21325
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: 'public static bool TryGetSharedVariable<T>(this IVariableSource variableScope, string variableName, out SharedVariable<T> sharedTVariable) where T : unmanaged'
+    parameters:
+    - id: variableScope
+      type: Ceres.Graph.IVariableSource
+    - id: variableName
+      type: System.String
+    - id: sharedTVariable
+      type: Ceres.Graph.SharedVariable{{T}}
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetSharedVariable(Of T As Structure)(variableScope As IVariableSource, variableName As String, sharedTVariable As SharedVariable(Of T)) As Boolean
+  overload: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable*
+  nameWithType.vb: SharedVariableExtension.TryGetSharedVariable(Of T)(IVariableSource, String, SharedVariable(Of T))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Of T)(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of T))
+  name.vb: TryGetSharedVariable(Of T)(IVariableSource, String, SharedVariable(Of T))
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+  id: TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: TryGetSharedString(IVariableSource, string, out SharedVariable<string>)
+  nameWithType: SharedVariableExtension.TryGetSharedString(IVariableSource, string, out SharedVariable<string>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<string>)
+  type: Method
+  source:
+    id: TryGetSharedString
+    path: ''
+    startLine: 21336
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static bool TryGetSharedString(this IVariableSource variableScope, string variableName, out SharedVariable<string> sharedTVariable)
+    parameters:
+    - id: variableScope
+      type: Ceres.Graph.IVariableSource
+    - id: variableName
+      type: System.String
+    - id: sharedTVariable
+      type: Ceres.Graph.SharedVariable{System.String}
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetSharedString(variableScope As IVariableSource, variableName As String, sharedTVariable As SharedVariable(Of String)) As Boolean
+  overload: Ceres.Graph.SharedVariableExtension.TryGetSharedString*
+  nameWithType.vb: SharedVariableExtension.TryGetSharedString(IVariableSource, String, SharedVariable(Of String))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of String))
+  name.vb: TryGetSharedString(IVariableSource, String, SharedVariable(Of String))
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{Object}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{Object}@)
+  id: TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{Object}@)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: TryGetSharedUObject(IVariableSource, string, out SharedVariable<Object>)
+  nameWithType: SharedVariableExtension.TryGetSharedUObject(IVariableSource, string, out SharedVariable<Object>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<Object>)
+  type: Method
+  source:
+    id: TryGetSharedUObject
+    path: ''
+    startLine: 21347
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static bool TryGetSharedUObject(this IVariableSource variableScope, string variableName, out SharedVariable<Object> sharedObject)
+    parameters:
+    - id: variableScope
+      type: Ceres.Graph.IVariableSource
+    - id: variableName
+      type: System.String
+    - id: sharedObject
+      type: Ceres.Graph.SharedVariable{Object}
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetSharedUObject(variableScope As IVariableSource, variableName As String, sharedObject As SharedVariable(Of [Object])) As Boolean
+  overload: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject*
+  nameWithType.vb: SharedVariableExtension.TryGetSharedUObject(IVariableSource, String, SharedVariable(Of Object))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of Object))
+  name.vb: TryGetSharedUObject(IVariableSource, String, SharedVariable(Of Object))
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  id: TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: TryGetSharedUObject<T>(IVariableSource, string, out SharedVariable<T>)
+  nameWithType: SharedVariableExtension.TryGetSharedUObject<T>(IVariableSource, string, out SharedVariable<T>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject<T>(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<T>)
+  type: Method
+  source:
+    id: TryGetSharedUObject
+    path: ''
+    startLine: 21358
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: 'public static bool TryGetSharedUObject<T>(this IVariableSource variableScope, string variableName, out SharedVariable<T> sharedTObject) where T : Object'
+    parameters:
+    - id: variableScope
+      type: Ceres.Graph.IVariableSource
+    - id: variableName
+      type: System.String
+    - id: sharedTObject
+      type: Ceres.Graph.SharedVariable{{T}}
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetSharedUObject(Of T As [Object])(variableScope As IVariableSource, variableName As String, sharedTObject As SharedVariable(Of T)) As Boolean
+  overload: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject*
+  nameWithType.vb: SharedVariableExtension.TryGetSharedUObject(Of T)(IVariableSource, String, SharedVariable(Of T))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Of T)(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of T))
+  name.vb: TryGetSharedUObject(Of T)(IVariableSource, String, SharedVariable(Of T))
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  id: TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: TryGetSharedObject(IVariableSource, string, out SharedVariable<object>)
+  nameWithType: SharedVariableExtension.TryGetSharedObject(IVariableSource, string, out SharedVariable<object>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<object>)
+  type: Method
+  source:
+    id: TryGetSharedObject
+    path: ''
+    startLine: 21369
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static bool TryGetSharedObject(this IVariableSource variableScope, string variableName, out SharedVariable<object> sharedObject)
+    parameters:
+    - id: variableScope
+      type: Ceres.Graph.IVariableSource
+    - id: variableName
+      type: System.String
+    - id: sharedObject
+      type: Ceres.Graph.SharedVariable{System.Object}
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetSharedObject(variableScope As IVariableSource, variableName As String, sharedObject As SharedVariable(Of Object)) As Boolean
+  overload: Ceres.Graph.SharedVariableExtension.TryGetSharedObject*
+  nameWithType.vb: SharedVariableExtension.TryGetSharedObject(IVariableSource, String, SharedVariable(Of Object))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of Object))
+  name.vb: TryGetSharedObject(IVariableSource, String, SharedVariable(Of Object))
+- uid: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  commentId: M:Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  id: LinkToGlobal(Ceres.Graph.IVariableSource)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: LinkToGlobal(IVariableSource)
+  nameWithType: SharedVariableExtension.LinkToGlobal(IVariableSource)
+  fullName: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  type: Method
+  source:
+    id: LinkToGlobal
+    path: ''
+    startLine: 21384
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nLink variable to global variables\n"
+  example: []
+  syntax:
+    content: public static void LinkToGlobal(this IVariableSource variableSource)
+    parameters:
+    - id: variableSource
+      type: Ceres.Graph.IVariableSource
+      description: ''
+    content.vb: Public Shared Sub LinkToGlobal(variableSource As IVariableSource)
+  overload: Ceres.Graph.SharedVariableExtension.LinkToGlobal*
+- uid: Ceres.Graph.SharedVariableExtension.LinkToSource(Ceres.Graph.SharedVariable,Ceres.Graph.IVariableSource)
+  commentId: M:Ceres.Graph.SharedVariableExtension.LinkToSource(Ceres.Graph.SharedVariable,Ceres.Graph.IVariableSource)
+  id: LinkToSource(Ceres.Graph.SharedVariable,Ceres.Graph.IVariableSource)
+  isExtensionMethod: true
+  parent: Ceres.Graph.SharedVariableExtension
+  langs:
+  - csharp
+  - vb
+  name: LinkToSource(SharedVariable, IVariableSource)
+  nameWithType: SharedVariableExtension.LinkToSource(SharedVariable, IVariableSource)
+  fullName: Ceres.Graph.SharedVariableExtension.LinkToSource(Ceres.Graph.SharedVariable, Ceres.Graph.IVariableSource)
+  type: Method
+  source:
+    id: LinkToSource
+    path: ''
+    startLine: 21399
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nLink variable to target variable source\n"
+  example: []
+  syntax:
+    content: public static void LinkToSource(this SharedVariable variable, IVariableSource variableSource)
+    parameters:
+    - id: variable
+      type: Ceres.Graph.SharedVariable
+      description: ''
+    - id: variableSource
+      type: Ceres.Graph.IVariableSource
+      description: ''
+    content.vb: Public Shared Sub LinkToSource(variable As SharedVariable, variableSource As IVariableSource)
+  overload: Ceres.Graph.SharedVariableExtension.LinkToSource*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.SharedVariable
+  commentId: T:Ceres.Graph.SharedVariable
+  parent: Ceres.Graph
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: Ceres.Graph.SharedVariable
+- uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable*
+  commentId: Overload:Ceres.Graph.SharedVariableExtension.GetSharedVariable
+  name: GetSharedVariable
+  nameWithType: SharedVariableExtension.GetSharedVariable
+  fullName: Ceres.Graph.SharedVariableExtension.GetSharedVariable
+- uid: Ceres.Graph.IVariableSource
+  commentId: T:Ceres.Graph.IVariableSource
+  parent: Ceres.Graph
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: Ceres.Graph.IVariableSource
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Graph.SharedVariable`1
+  commentId: T:Ceres.Graph.SharedVariable`1
+  parent: Ceres.Graph
+  name: SharedVariable<T>
+  nameWithType: SharedVariable<T>
+  fullName: Ceres.Graph.SharedVariable<T>
+  nameWithType.vb: SharedVariable(Of T)
+  fullName.vb: Ceres.Graph.SharedVariable(Of T)
+  name.vb: SharedVariable(Of T)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Graph.SharedVariable{{T}}
+  commentId: T:Ceres.Graph.SharedVariable{``0}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<T>
+  nameWithType: SharedVariable<T>
+  fullName: Ceres.Graph.SharedVariable<T>
+  nameWithType.vb: SharedVariable(Of T)
+  fullName.vb: Ceres.Graph.SharedVariable(Of T)
+  name.vb: SharedVariable(Of T)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable*
+  commentId: Overload:Ceres.Graph.SharedVariableExtension.TryGetSharedVariable
+  name: TryGetSharedVariable
+  nameWithType: SharedVariableExtension.TryGetSharedVariable
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedString*
+  commentId: Overload:Ceres.Graph.SharedVariableExtension.TryGetSharedString
+  name: TryGetSharedString
+  nameWithType: SharedVariableExtension.TryGetSharedString
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedString
+- uid: Ceres.Graph.SharedVariable{System.String}
+  commentId: T:Ceres.Graph.SharedVariable{System.String}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<string>
+  nameWithType: SharedVariable<string>
+  fullName: Ceres.Graph.SharedVariable<string>
+  nameWithType.vb: SharedVariable(Of String)
+  fullName.vb: Ceres.Graph.SharedVariable(Of String)
+  name.vb: SharedVariable(Of String)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject*
+  commentId: Overload:Ceres.Graph.SharedVariableExtension.TryGetSharedUObject
+  name: TryGetSharedUObject
+  nameWithType: SharedVariableExtension.TryGetSharedUObject
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject
+- uid: Ceres.Graph.SharedVariable{Object}
+  commentId: T:Ceres.Graph.SharedVariable{Object}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<Object>
+  nameWithType: SharedVariable<Object>
+  fullName: Ceres.Graph.SharedVariable<Object>
+  nameWithType.vb: SharedVariable(Of Object)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Object)
+  name.vb: SharedVariable(Of Object)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: Global.Object
+    name: Object
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedObject*
+  commentId: Overload:Ceres.Graph.SharedVariableExtension.TryGetSharedObject
+  name: TryGetSharedObject
+  nameWithType: SharedVariableExtension.TryGetSharedObject
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedObject
+- uid: Ceres.Graph.SharedVariable{System.Object}
+  commentId: T:Ceres.Graph.SharedVariable{System.Object}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.SharedVariable`1
+  name: SharedVariable<object>
+  nameWithType: SharedVariable<object>
+  fullName: Ceres.Graph.SharedVariable<object>
+  nameWithType.vb: SharedVariable(Of Object)
+  fullName.vb: Ceres.Graph.SharedVariable(Of Object)
+  name.vb: SharedVariable(Of Object)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.LinkToGlobal*
+  commentId: Overload:Ceres.Graph.SharedVariableExtension.LinkToGlobal
+  name: LinkToGlobal
+  nameWithType: SharedVariableExtension.LinkToGlobal
+  fullName: Ceres.Graph.SharedVariableExtension.LinkToGlobal
+- uid: Ceres.Graph.SharedVariableExtension.LinkToSource*
+  commentId: Overload:Ceres.Graph.SharedVariableExtension.LinkToSource
+  name: LinkToSource
+  nameWithType: SharedVariableExtension.LinkToSource
+  fullName: Ceres.Graph.SharedVariableExtension.LinkToSource

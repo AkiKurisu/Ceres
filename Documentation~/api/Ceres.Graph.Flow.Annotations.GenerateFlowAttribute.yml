@@ -1,0 +1,185 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute
+  commentId: T:Ceres.Graph.Flow.Annotations.GenerateFlowAttribute
+  id: GenerateFlowAttribute
+  parent: Ceres.Graph.Flow.Annotations
+  children:
+  - Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateImplementation
+  - Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateRuntime
+  langs:
+  - csharp
+  - vb
+  name: GenerateFlowAttribute
+  nameWithType: GenerateFlowAttribute
+  fullName: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute
+  type: Class
+  source:
+    id: GenerateFlowAttribute
+    path: ''
+    startLine: 22613
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nAttribute for notifying Ceres source generator to emit code for partial class implementing <xref href=\"Ceres.Graph.Flow.IFlowGraphContainer\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  remarks: Must add partial modifier
+  example: []
+  syntax:
+    content: 'public class GenerateFlowAttribute : Attribute'
+    content.vb: Public Class GenerateFlowAttribute Inherits Attribute
+  inheritance:
+  - System.Object
+- uid: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateImplementation
+  commentId: P:Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateImplementation
+  id: GenerateImplementation
+  parent: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute
+  langs:
+  - csharp
+  - vb
+  name: GenerateImplementation
+  nameWithType: GenerateFlowAttribute.GenerateImplementation
+  fullName: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateImplementation
+  type: Property
+  source:
+    id: GenerateImplementation
+    path: ''
+    startLine: 22619
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nWhether add implementation for <xref href=\"Ceres.Graph.Flow.IFlowGraphContainer\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public bool GenerateImplementation { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GenerateImplementation As Boolean
+  overload: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateImplementation*
+- uid: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateRuntime
+  commentId: P:Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateRuntime
+  id: GenerateRuntime
+  parent: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute
+  langs:
+  - csharp
+  - vb
+  name: GenerateRuntime
+  nameWithType: GenerateFlowAttribute.GenerateRuntime
+  fullName: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateRuntime
+  type: Property
+  source:
+    id: GenerateRuntime
+    path: ''
+    startLine: 22624
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Annotations
+  summary: "\nWhether generate runtime implementation for <xref href=\"Ceres.Graph.Flow.IFlowGraphRuntime\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public bool GenerateRuntime { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GenerateRuntime As Boolean
+  overload: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateRuntime*
+references:
+- uid: Ceres.Graph.Flow.IFlowGraphContainer
+  commentId: T:Ceres.Graph.Flow.IFlowGraphContainer
+  name: IFlowGraphContainer
+  nameWithType: IFlowGraphContainer
+  fullName: Ceres.Graph.Flow.IFlowGraphContainer
+- uid: Ceres.Graph.Flow.Annotations
+  commentId: N:Ceres.Graph.Flow.Annotations
+  name: Ceres.Graph.Flow.Annotations
+  nameWithType: Ceres.Graph.Flow.Annotations
+  fullName: Ceres.Graph.Flow.Annotations
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  - name: .
+  - uid: Ceres.Graph.Flow.Annotations
+    name: Annotations
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  - name: .
+  - uid: Ceres.Graph.Flow.Annotations
+    name: Annotations
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateImplementation*
+  commentId: Overload:Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateImplementation
+  name: GenerateImplementation
+  nameWithType: GenerateFlowAttribute.GenerateImplementation
+  fullName: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateImplementation
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Graph.Flow.IFlowGraphRuntime
+  commentId: T:Ceres.Graph.Flow.IFlowGraphRuntime
+  parent: Ceres.Graph.Flow
+  name: IFlowGraphRuntime
+  nameWithType: IFlowGraphRuntime
+  fullName: Ceres.Graph.Flow.IFlowGraphRuntime
+- uid: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateRuntime*
+  commentId: Overload:Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateRuntime
+  name: GenerateRuntime
+  nameWithType: GenerateFlowAttribute.GenerateRuntime
+  fullName: Ceres.Graph.Flow.Annotations.GenerateFlowAttribute.GenerateRuntime
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow

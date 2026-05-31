@@ -1,0 +1,519 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.NodeGroupHandler`1
+  commentId: T:Ceres.Editor.Graph.NodeGroupHandler`1
+  id: NodeGroupHandler`1
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.NodeGroupHandler`1.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.NodeGroupHandler`1.CreateGroup(Rect,NodeGroup)
+  - Ceres.Editor.Graph.NodeGroupHandler`1.DoUnGroup
+  langs:
+  - csharp
+  - vb
+  name: NodeGroupHandler<TGroup>
+  nameWithType: NodeGroupHandler<TGroup>
+  fullName: Ceres.Editor.Graph.NodeGroupHandler<TGroup>
+  type: Class
+  source:
+    id: NodeGroupHandler
+    path: ''
+    startLine: 2272
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class NodeGroupHandler<TGroup> : NodeGroupHandler where TGroup : CeresNodeGroup, new()'
+    typeParameters:
+    - id: TGroup
+    content.vb: Public Class NodeGroupHandler(Of TGroup As {CeresNodeGroup, New}) Inherits NodeGroupHandler
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.NodeGroupHandler
+  derivedClasses:
+  - Ceres.Editor.Graph.Flow.ExecutableNodeGroupHandler
+  inheritedMembers:
+  - Ceres.Editor.Graph.NodeGroupHandler.GraphView
+  - Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+  - Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(List{NodeGroup})
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: NodeGroupHandler(Of TGroup)
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler(Of TGroup)
+  name.vb: NodeGroupHandler(Of TGroup)
+- uid: Ceres.Editor.Graph.NodeGroupHandler`1.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler`1.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  id: '#ctor(Ceres.Editor.Graph.CeresGraphView)'
+  parent: Ceres.Editor.Graph.NodeGroupHandler`1
+  langs:
+  - csharp
+  - vb
+  name: NodeGroupHandler(CeresGraphView)
+  nameWithType: NodeGroupHandler<TGroup>.NodeGroupHandler(CeresGraphView)
+  fullName: Ceres.Editor.Graph.NodeGroupHandler<TGroup>.NodeGroupHandler(Ceres.Editor.Graph.CeresGraphView)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2274
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public NodeGroupHandler(CeresGraphView graphView)
+    parameters:
+    - id: graphView
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Public Sub New(graphView As CeresGraphView)
+  overload: Ceres.Editor.Graph.NodeGroupHandler`1.#ctor*
+  nameWithType.vb: NodeGroupHandler(Of TGroup).New(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler(Of TGroup).New(Ceres.Editor.Graph.CeresGraphView)
+  name.vb: New(CeresGraphView)
+- uid: Ceres.Editor.Graph.NodeGroupHandler`1.CreateGroup(Rect,NodeGroup)
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler`1.CreateGroup(Rect,NodeGroup)
+  id: CreateGroup(Rect,NodeGroup)
+  parent: Ceres.Editor.Graph.NodeGroupHandler`1
+  langs:
+  - csharp
+  - vb
+  name: CreateGroup(Rect, NodeGroup)
+  nameWithType: NodeGroupHandler<TGroup>.CreateGroup(Rect, NodeGroup)
+  fullName: Ceres.Editor.Graph.NodeGroupHandler<TGroup>.CreateGroup(Rect, NodeGroup)
+  type: Method
+  source:
+    id: CreateGroup
+    path: ''
+    startLine: 2278
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public override Group CreateGroup(Rect rect, NodeGroup dataData = null)
+    parameters:
+    - id: rect
+      type: Global.Rect
+    - id: dataData
+      type: Global.NodeGroup
+    return:
+      type: Global.Group
+    content.vb: Public Overrides Function CreateGroup(rect As Rect, dataData As NodeGroup = Nothing) As Group
+  overridden: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(Rect,NodeGroup)
+  overload: Ceres.Editor.Graph.NodeGroupHandler`1.CreateGroup*
+  nameWithType.vb: NodeGroupHandler(Of TGroup).CreateGroup(Rect, NodeGroup)
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler(Of TGroup).CreateGroup(Rect, NodeGroup)
+- uid: Ceres.Editor.Graph.NodeGroupHandler`1.DoUnGroup
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler`1.DoUnGroup
+  id: DoUnGroup
+  parent: Ceres.Editor.Graph.NodeGroupHandler`1
+  langs:
+  - csharp
+  - vb
+  name: DoUnGroup()
+  nameWithType: NodeGroupHandler<TGroup>.DoUnGroup()
+  fullName: Ceres.Editor.Graph.NodeGroupHandler<TGroup>.DoUnGroup()
+  type: Method
+  source:
+    id: DoUnGroup
+    path: ''
+    startLine: 2291
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public override void DoUnGroup()
+    content.vb: Public Overrides Sub DoUnGroup()
+  overridden: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+  overload: Ceres.Editor.Graph.NodeGroupHandler`1.DoUnGroup*
+  nameWithType.vb: NodeGroupHandler(Of TGroup).DoUnGroup()
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler(Of TGroup).DoUnGroup()
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.NodeGroupHandler
+  commentId: T:Ceres.Editor.Graph.NodeGroupHandler
+  parent: Ceres.Editor.Graph
+  name: NodeGroupHandler
+  nameWithType: NodeGroupHandler
+  fullName: Ceres.Editor.Graph.NodeGroupHandler
+- uid: Ceres.Editor.Graph.NodeGroupHandler.GraphView
+  commentId: P:Ceres.Editor.Graph.NodeGroupHandler.GraphView
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  name: GraphView
+  nameWithType: NodeGroupHandler.GraphView
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.GraphView
+- uid: Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  name: DoGroup()
+  nameWithType: NodeGroupHandler.DoGroup()
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.DoGroup()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+    name: DoGroup
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+    name: DoGroup
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(List{NodeGroup})
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(List{NodeGroup})
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  isExternal: true
+  name: RestoreGroups(List<NodeGroup>)
+  nameWithType: NodeGroupHandler.RestoreGroups(List<NodeGroup>)
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(List<NodeGroup>)
+  nameWithType.vb: NodeGroupHandler.RestoreGroups(List(Of NodeGroup))
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(List(Of NodeGroup))
+  name.vb: RestoreGroups(List(Of NodeGroup))
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(List{NodeGroup})
+    name: RestoreGroups
+  - name: (
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Global.NodeGroup
+    name: NodeGroup
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(List{NodeGroup})
+    name: RestoreGroups
+  - name: (
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.NodeGroup
+    name: NodeGroup
+    isExternal: true
+  - name: )
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.NodeGroupHandler`1.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler`1.#ctor
+  name: NodeGroupHandler
+  nameWithType: NodeGroupHandler<TGroup>.NodeGroupHandler
+  fullName: Ceres.Editor.Graph.NodeGroupHandler<TGroup>.NodeGroupHandler
+  nameWithType.vb: NodeGroupHandler(Of TGroup).New
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler(Of TGroup).New
+  name.vb: New
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(Rect,NodeGroup)
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(Rect,NodeGroup)
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  isExternal: true
+  name: CreateGroup(Rect, NodeGroup)
+  nameWithType: NodeGroupHandler.CreateGroup(Rect, NodeGroup)
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(Rect, NodeGroup)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(Rect,NodeGroup)
+    name: CreateGroup
+  - name: (
+  - uid: Global.Rect
+    name: Rect
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.NodeGroup
+    name: NodeGroup
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(Rect,NodeGroup)
+    name: CreateGroup
+  - name: (
+  - uid: Global.Rect
+    name: Rect
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.NodeGroup
+    name: NodeGroup
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.NodeGroupHandler`1.CreateGroup*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler`1.CreateGroup
+  name: CreateGroup
+  nameWithType: NodeGroupHandler<TGroup>.CreateGroup
+  fullName: Ceres.Editor.Graph.NodeGroupHandler<TGroup>.CreateGroup
+  nameWithType.vb: NodeGroupHandler(Of TGroup).CreateGroup
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler(Of TGroup).CreateGroup
+- uid: Global.Rect
+  isExternal: true
+  name: Rect
+  nameWithType: Rect
+  fullName: Rect
+- uid: Global.NodeGroup
+  isExternal: true
+  name: NodeGroup
+  nameWithType: NodeGroup
+  fullName: NodeGroup
+- uid: Global.Group
+  isExternal: true
+  name: Group
+  nameWithType: Group
+  fullName: Group
+- uid: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  name: DoUnGroup()
+  nameWithType: NodeGroupHandler.DoUnGroup()
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+    name: DoUnGroup
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+    name: DoUnGroup
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.NodeGroupHandler`1.DoUnGroup*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler`1.DoUnGroup
+  name: DoUnGroup
+  nameWithType: NodeGroupHandler<TGroup>.DoUnGroup
+  fullName: Ceres.Editor.Graph.NodeGroupHandler<TGroup>.DoUnGroup
+  nameWithType.vb: NodeGroupHandler(Of TGroup).DoUnGroup
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler(Of TGroup).DoUnGroup

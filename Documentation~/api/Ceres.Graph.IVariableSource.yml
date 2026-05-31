@@ -1,0 +1,126 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.IVariableSource
+  commentId: T:Ceres.Graph.IVariableSource
+  id: IVariableSource
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.IVariableSource.SharedVariables
+  langs:
+  - csharp
+  - vb
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: Ceres.Graph.IVariableSource
+  type: Interface
+  source:
+    id: IVariableSource
+    path: ''
+    startLine: 21529
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nShared variables owner\n"
+  example: []
+  syntax:
+    content: public interface IVariableSource
+    content.vb: Public Interface IVariableSource
+- uid: Ceres.Graph.IVariableSource.SharedVariables
+  commentId: P:Ceres.Graph.IVariableSource.SharedVariables
+  id: SharedVariables
+  parent: Ceres.Graph.IVariableSource
+  langs:
+  - csharp
+  - vb
+  name: SharedVariables
+  nameWithType: IVariableSource.SharedVariables
+  fullName: Ceres.Graph.IVariableSource.SharedVariables
+  type: Property
+  source:
+    id: SharedVariables
+    path: ''
+    startLine: 21531
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: List<SharedVariable> SharedVariables { get; }
+    parameters: []
+    return:
+      type: Global.List{Ceres.Graph.SharedVariable}
+    content.vb: ReadOnly Property SharedVariables As List(Of SharedVariable)
+  overload: Ceres.Graph.IVariableSource.SharedVariables*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: Ceres.Graph.IVariableSource.SharedVariables*
+  commentId: Overload:Ceres.Graph.IVariableSource.SharedVariables
+  name: SharedVariables
+  nameWithType: IVariableSource.SharedVariables
+  fullName: Ceres.Graph.IVariableSource.SharedVariables
+- uid: Global.List{Ceres.Graph.SharedVariable}
+  commentId: '!:Global.List{Ceres.Graph.SharedVariable}'
+  definition: Global.List`1
+  name: List<SharedVariable>
+  nameWithType: List<SharedVariable>
+  fullName: List<Ceres.Graph.SharedVariable>
+  nameWithType.vb: List(Of SharedVariable)
+  fullName.vb: List(Of Ceres.Graph.SharedVariable)
+  name.vb: List(Of SharedVariable)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+  - name: )
+- uid: Global.List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )

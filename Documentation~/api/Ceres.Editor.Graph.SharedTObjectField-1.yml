@@ -1,0 +1,313 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.SharedTObjectField`1
+  commentId: T:Ceres.Editor.Graph.SharedTObjectField`1
+  id: SharedTObjectField`1
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.SharedTObjectField`1.#ctor(System.String,FieldInfo)
+  - Ceres.Editor.Graph.SharedTObjectField`1.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.SharedTObjectField`1.Repaint
+  - Ceres.Editor.Graph.SharedTObjectField`1.value
+  langs:
+  - csharp
+  - vb
+  name: SharedTObjectField<T>
+  nameWithType: SharedTObjectField<T>
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>
+  type: Class
+  source:
+    id: SharedTObjectField
+    path: ''
+    startLine: 4089
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class SharedTObjectField<T> : BaseField<SharedUObject<T>>, IBindableField where T : UObject'
+    typeParameters:
+    - id: T
+    content.vb: Public Class SharedTObjectField(Of T As UObject) Inherits BaseField(Of SharedUObject(Of T)) Implements IBindableField
+  inheritance:
+  - System.Object
+  implements:
+  - Ceres.Editor.Graph.IBindableField
+  nameWithType.vb: SharedTObjectField(Of T)
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T)
+  name.vb: SharedTObjectField(Of T)
+- uid: Ceres.Editor.Graph.SharedTObjectField`1.#ctor(System.String,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedTObjectField`1.#ctor(System.String,FieldInfo)
+  id: '#ctor(System.String,FieldInfo)'
+  parent: Ceres.Editor.Graph.SharedTObjectField`1
+  langs:
+  - csharp
+  - vb
+  name: SharedTObjectField(string, FieldInfo)
+  nameWithType: SharedTObjectField<T>.SharedTObjectField(string, FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>.SharedTObjectField(string, FieldInfo)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4103
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public SharedTObjectField(string label, FieldInfo fieldInfo)
+    parameters:
+    - id: label
+      type: System.String
+    - id: fieldInfo
+      type: Global.FieldInfo
+    content.vb: Public Sub New(label As String, fieldInfo As FieldInfo)
+  overload: Ceres.Editor.Graph.SharedTObjectField`1.#ctor*
+  nameWithType.vb: SharedTObjectField(Of T).New(String, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T).New(String, FieldInfo)
+  name.vb: New(String, FieldInfo)
+- uid: Ceres.Editor.Graph.SharedTObjectField`1.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.SharedTObjectField`1.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  id: BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.SharedTObjectField`1
+  langs:
+  - csharp
+  - vb
+  name: BindGraph(CeresGraphView)
+  nameWithType: SharedTObjectField<T>.BindGraph(CeresGraphView)
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  type: Method
+  source:
+    id: BindGraph
+    path: ''
+    startLine: 4125
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void BindGraph(CeresGraphView graph)
+    parameters:
+    - id: graph
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Public Sub BindGraph(graph As CeresGraphView)
+  overload: Ceres.Editor.Graph.SharedTObjectField`1.BindGraph*
+  implements:
+  - Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  nameWithType.vb: SharedTObjectField(Of T).BindGraph(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T).BindGraph(Ceres.Editor.Graph.CeresGraphView)
+- uid: Ceres.Editor.Graph.SharedTObjectField`1.value
+  commentId: P:Ceres.Editor.Graph.SharedTObjectField`1.value
+  id: value
+  parent: Ceres.Editor.Graph.SharedTObjectField`1
+  langs:
+  - csharp
+  - vb
+  name: value
+  nameWithType: SharedTObjectField<T>.value
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>.value
+  type: Property
+  source:
+    id: value
+    path: ''
+    startLine: 4214
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public override sealed SharedUObject<T> value { get; set; }
+    parameters: []
+    return:
+      type: Global.SharedUObject{{T}}
+    content.vb: Public NotOverridable Overrides Property value As SharedUObject(Of T)
+  overload: Ceres.Editor.Graph.SharedTObjectField`1.value*
+  nameWithType.vb: SharedTObjectField(Of T).value
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T).value
+- uid: Ceres.Editor.Graph.SharedTObjectField`1.Repaint
+  commentId: M:Ceres.Editor.Graph.SharedTObjectField`1.Repaint
+  id: Repaint
+  parent: Ceres.Editor.Graph.SharedTObjectField`1
+  langs:
+  - csharp
+  - vb
+  name: Repaint()
+  nameWithType: SharedTObjectField<T>.Repaint()
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>.Repaint()
+  type: Method
+  source:
+    id: Repaint
+    path: ''
+    startLine: 4233
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void Repaint()
+    content.vb: Public Sub Repaint()
+  overload: Ceres.Editor.Graph.SharedTObjectField`1.Repaint*
+  nameWithType.vb: SharedTObjectField(Of T).Repaint()
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T).Repaint()
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.IBindableField
+  commentId: T:Ceres.Editor.Graph.IBindableField
+  parent: Ceres.Editor.Graph
+  name: IBindableField
+  nameWithType: IBindableField
+  fullName: Ceres.Editor.Graph.IBindableField
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.SharedTObjectField`1.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.SharedTObjectField`1.#ctor
+  name: SharedTObjectField
+  nameWithType: SharedTObjectField<T>.SharedTObjectField
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>.SharedTObjectField
+  nameWithType.vb: SharedTObjectField(Of T).New
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T).New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Global.FieldInfo
+  isExternal: true
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: FieldInfo
+- uid: Ceres.Editor.Graph.SharedTObjectField`1.BindGraph*
+  commentId: Overload:Ceres.Editor.Graph.SharedTObjectField`1.BindGraph
+  name: BindGraph
+  nameWithType: SharedTObjectField<T>.BindGraph
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>.BindGraph
+  nameWithType.vb: SharedTObjectField(Of T).BindGraph
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T).BindGraph
+- uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.IBindableField
+  name: BindGraph(CeresGraphView)
+  nameWithType: IBindableField.BindGraph(CeresGraphView)
+  fullName: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.SharedTObjectField`1.value*
+  commentId: Overload:Ceres.Editor.Graph.SharedTObjectField`1.value
+  name: value
+  nameWithType: SharedTObjectField<T>.value
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>.value
+  nameWithType.vb: SharedTObjectField(Of T).value
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T).value
+- uid: Global.SharedUObject{{T}}
+  commentId: '!:Global.SharedUObject{`0}'
+  definition: Global.SharedUObject`1
+  name: SharedUObject<T>
+  nameWithType: SharedUObject<T>
+  fullName: SharedUObject<T>
+  nameWithType.vb: SharedUObject(Of T)
+  fullName.vb: SharedUObject(Of T)
+  name.vb: SharedUObject(Of T)
+  spec.csharp:
+  - uid: Global.SharedUObject`1
+    name: SharedUObject
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Global.SharedUObject`1
+    name: SharedUObject
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Global.SharedUObject`1
+  commentId: '!:Global.SharedUObject`1'
+  isExternal: true
+  name: SharedUObject<>
+  nameWithType: SharedUObject<>
+  fullName: SharedUObject<>
+  nameWithType.vb: SharedUObject(Of )
+  fullName.vb: SharedUObject(Of )
+  name.vb: SharedUObject(Of )
+  spec.csharp:
+  - uid: Global.SharedUObject`1
+    name: SharedUObject
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.SharedUObject`1
+    name: SharedUObject
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.SharedTObjectField`1.Repaint*
+  commentId: Overload:Ceres.Editor.Graph.SharedTObjectField`1.Repaint
+  name: Repaint
+  nameWithType: SharedTObjectField<T>.Repaint
+  fullName: Ceres.Editor.Graph.SharedTObjectField<T>.Repaint
+  nameWithType.vb: SharedTObjectField(Of T).Repaint
+  fullName.vb: Ceres.Editor.Graph.SharedTObjectField(Of T).Repaint

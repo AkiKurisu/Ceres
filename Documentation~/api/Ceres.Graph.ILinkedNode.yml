@@ -1,0 +1,165 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.ILinkedNode
+  commentId: T:Ceres.Graph.ILinkedNode
+  id: ILinkedNode
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.ILinkedNode.AddChild(Ceres.Graph.CeresNode)
+  - Ceres.Graph.ILinkedNode.ClearChildren
+  langs:
+  - csharp
+  - vb
+  name: ILinkedNode
+  nameWithType: ILinkedNode
+  fullName: Ceres.Graph.ILinkedNode
+  type: Interface
+  source:
+    id: ILinkedNode
+    path: ''
+    startLine: 19121
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nInterface for iterate linked node, useful when your graph is based on a linked list\nwhich is often used in a forward execution mode like behavior tree\n"
+  example: []
+  syntax:
+    content: 'public interface ILinkedNode : IReadOnlyLinkedNode'
+    content.vb: Public Interface ILinkedNode Inherits IReadOnlyLinkedNode
+  inheritedMembers:
+  - Ceres.Graph.IReadOnlyLinkedNode.GetChildAt(System.Int32)
+  - Ceres.Graph.IReadOnlyLinkedNode.GetChildrenCount
+- uid: Ceres.Graph.ILinkedNode.AddChild(Ceres.Graph.CeresNode)
+  commentId: M:Ceres.Graph.ILinkedNode.AddChild(Ceres.Graph.CeresNode)
+  id: AddChild(Ceres.Graph.CeresNode)
+  parent: Ceres.Graph.ILinkedNode
+  langs:
+  - csharp
+  - vb
+  name: AddChild(CeresNode)
+  nameWithType: ILinkedNode.AddChild(CeresNode)
+  fullName: Ceres.Graph.ILinkedNode.AddChild(Ceres.Graph.CeresNode)
+  type: Method
+  source:
+    id: AddChild
+    path: ''
+    startLine: 19127
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nAdd new child node\n"
+  example: []
+  syntax:
+    content: void AddChild(CeresNode node)
+    parameters:
+    - id: node
+      type: Ceres.Graph.CeresNode
+      description: ''
+    content.vb: Sub AddChild(node As CeresNode)
+  overload: Ceres.Graph.ILinkedNode.AddChild*
+- uid: Ceres.Graph.ILinkedNode.ClearChildren
+  commentId: M:Ceres.Graph.ILinkedNode.ClearChildren
+  id: ClearChildren
+  parent: Ceres.Graph.ILinkedNode
+  langs:
+  - csharp
+  - vb
+  name: ClearChildren()
+  nameWithType: ILinkedNode.ClearChildren()
+  fullName: Ceres.Graph.ILinkedNode.ClearChildren()
+  type: Method
+  source:
+    id: ClearChildren
+    path: ''
+    startLine: 19132
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nClear all child nodes\n"
+  example: []
+  syntax:
+    content: void ClearChildren()
+    content.vb: Sub ClearChildren()
+  overload: Ceres.Graph.ILinkedNode.ClearChildren*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: Ceres.Graph.IReadOnlyLinkedNode.GetChildAt(System.Int32)
+  commentId: M:Ceres.Graph.IReadOnlyLinkedNode.GetChildAt(System.Int32)
+  parent: Ceres.Graph.IReadOnlyLinkedNode
+  isExternal: true
+  name: GetChildAt(int)
+  nameWithType: IReadOnlyLinkedNode.GetChildAt(int)
+  fullName: Ceres.Graph.IReadOnlyLinkedNode.GetChildAt(int)
+  nameWithType.vb: IReadOnlyLinkedNode.GetChildAt(Integer)
+  fullName.vb: Ceres.Graph.IReadOnlyLinkedNode.GetChildAt(Integer)
+  name.vb: GetChildAt(Integer)
+  spec.csharp:
+  - uid: Ceres.Graph.IReadOnlyLinkedNode.GetChildAt(System.Int32)
+    name: GetChildAt
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.IReadOnlyLinkedNode.GetChildAt(System.Int32)
+    name: GetChildAt
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.IReadOnlyLinkedNode.GetChildrenCount
+  commentId: M:Ceres.Graph.IReadOnlyLinkedNode.GetChildrenCount
+  parent: Ceres.Graph.IReadOnlyLinkedNode
+  name: GetChildrenCount()
+  nameWithType: IReadOnlyLinkedNode.GetChildrenCount()
+  fullName: Ceres.Graph.IReadOnlyLinkedNode.GetChildrenCount()
+  spec.csharp:
+  - uid: Ceres.Graph.IReadOnlyLinkedNode.GetChildrenCount
+    name: GetChildrenCount
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.IReadOnlyLinkedNode.GetChildrenCount
+    name: GetChildrenCount
+  - name: (
+  - name: )
+- uid: Ceres.Graph.IReadOnlyLinkedNode
+  commentId: T:Ceres.Graph.IReadOnlyLinkedNode
+  parent: Ceres.Graph
+  name: IReadOnlyLinkedNode
+  nameWithType: IReadOnlyLinkedNode
+  fullName: Ceres.Graph.IReadOnlyLinkedNode
+- uid: Ceres.Graph.ILinkedNode.AddChild*
+  commentId: Overload:Ceres.Graph.ILinkedNode.AddChild
+  name: AddChild
+  nameWithType: ILinkedNode.AddChild
+  fullName: Ceres.Graph.ILinkedNode.AddChild
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph.ILinkedNode.ClearChildren*
+  commentId: Overload:Ceres.Graph.ILinkedNode.ClearChildren
+  name: ClearChildren
+  nameWithType: ILinkedNode.ClearChildren
+  fullName: Ceres.Graph.ILinkedNode.ClearChildren

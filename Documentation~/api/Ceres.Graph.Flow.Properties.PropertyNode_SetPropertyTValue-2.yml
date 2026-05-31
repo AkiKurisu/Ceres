@@ -1,0 +1,936 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  commentId: T:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  id: PropertyNode_SetPropertyTValue`2
+  parent: Ceres.Graph.Flow.Properties
+  children:
+  - Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.exec
+  - Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.Execute(Ceres.Graph.Flow.ExecutionContext)
+  - Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.input
+  - Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.inputValue
+  - Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnAfterDeserialize
+  - Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnBeforeSerialize
+  - Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.target
+  langs:
+  - csharp
+  - vb
+  name: PropertyNode_SetPropertyTValue<TTarget, T>
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>
+  type: Class
+  source:
+    id: PropertyNode_SetPropertyTValue
+    path: ''
+    startLine: 27565
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Properties
+  syntax:
+    content: 'public sealed class PropertyNode_SetPropertyTValue<TTarget, T> : PropertyNode_PropertyValue, IDisposable, IPropertyNode, ISerializationCallbackReceiver'
+    typeParameters:
+    - id: TTarget
+    - id: T
+    content.vb: Public NotInheritable Class PropertyNode_SetPropertyTValue(Of TTarget, T) Inherits PropertyNode_PropertyValue Implements IDisposable, IPropertyNode, ISerializationCallbackReceiver
+  inheritance:
+  - System.Object
+  - Ceres.Graph.CeresNode
+  - Ceres.Graph.Flow.ExecutableNode
+  - Ceres.Graph.Flow.PropertyNode
+  - Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue
+  implements:
+  - Global.IDisposable
+  - Ceres.Graph.Flow.IPropertyNode
+  - Global.ISerializationCallbackReceiver
+  inheritedMembers:
+  - Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isSelfTarget
+  - Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isStatic
+  - Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetPropertyInfo(Type)
+  - Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{{TValue}},Ceres.Graph.Flow.ExecutionContext)
+  - Ceres.Graph.Flow.PropertyNode.propertyName
+  - Ceres.Graph.Flow.PropertyNode.SetPropertyName(System.String)
+  - Ceres.Graph.Flow.PropertyNode.GetPropertyName
+  - Ceres.Graph.Flow.ExecutableNode.Graph
+  - Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  - Ceres.Graph.CeresNode.NodeData
+  - Ceres.Graph.CeresNode.Guid
+  - Ceres.Graph.CeresNode.GraphPosition
+  - Ceres.Graph.CeresNode.Dispose
+  - Ceres.Graph.CeresNode.GetSerializedData
+  - Ceres.Graph.CeresNode.GetExecutionPath
+  - Ceres.Graph.CeresNode.GetEnumerator
+  - Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  - Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  - Ceres.Graph.CeresNode.GetTypeName
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T)
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T)
+  name.vb: PropertyNode_SetPropertyTValue(Of TTarget, T)
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.input
+  commentId: F:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.input
+  id: input
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  langs:
+  - csharp
+  - vb
+  name: input
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.input
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.input
+  type: Field
+  source:
+    id: input
+    path: ''
+    startLine: 27576
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Properties
+  summary: "\nDependency node port\n"
+  example: []
+  syntax:
+    content: public NodePort input
+    return:
+      type: Ceres.Graph.NodePort
+    content.vb: Public input As NodePort
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).input
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).input
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.target
+  commentId: F:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.target
+  id: target
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  langs:
+  - csharp
+  - vb
+  name: target
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.target
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.target
+  type: Field
+  source:
+    id: target
+    path: ''
+    startLine: 27579
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Properties
+  syntax:
+    content: public CeresPort<TTarget> target
+    return:
+      type: Ceres.Graph.CeresPort{{TTarget}}
+    content.vb: Public target As CeresPort(Of TTarget)
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).target
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).target
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.inputValue
+  commentId: F:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.inputValue
+  id: inputValue
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  langs:
+  - csharp
+  - vb
+  name: inputValue
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.inputValue
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.inputValue
+  type: Field
+  source:
+    id: inputValue
+    path: ''
+    startLine: 27582
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Properties
+  syntax:
+    content: public CeresPort<T> inputValue
+    return:
+      type: Ceres.Graph.CeresPort{{T}}
+    content.vb: Public inputValue As CeresPort(Of T)
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).inputValue
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).inputValue
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.exec
+  commentId: F:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.exec
+  id: exec
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  langs:
+  - csharp
+  - vb
+  name: exec
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.exec
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.exec
+  type: Field
+  source:
+    id: exec
+    path: ''
+    startLine: 27585
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Properties
+  syntax:
+    content: public NodePort exec
+    return:
+      type: Ceres.Graph.NodePort
+    content.vb: Public exec As NodePort
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).exec
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).exec
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.Execute(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.Execute(Ceres.Graph.Flow.ExecutionContext)
+  id: Execute(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  langs:
+  - csharp
+  - vb
+  name: Execute(ExecutionContext)
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.Execute(ExecutionContext)
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.Execute(Ceres.Graph.Flow.ExecutionContext)
+  type: Method
+  source:
+    id: Execute
+    path: ''
+    startLine: 27589
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Properties
+  syntax:
+    content: protected override UniTask Execute(ExecutionContext executionContext)
+    parameters:
+    - id: executionContext
+      type: Ceres.Graph.Flow.ExecutionContext
+    return:
+      type: Global.UniTask
+    content.vb: Protected Overrides Function Execute(executionContext As ExecutionContext) As UniTask
+  overridden: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  overload: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.Execute*
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).Execute(ExecutionContext)
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).Execute(Ceres.Graph.Flow.ExecutionContext)
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnBeforeSerialize
+  commentId: M:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnBeforeSerialize
+  id: OnBeforeSerialize
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  langs:
+  - csharp
+  - vb
+  name: OnBeforeSerialize()
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.OnBeforeSerialize()
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.OnBeforeSerialize()
+  type: Method
+  source:
+    id: OnBeforeSerialize
+    path: ''
+    startLine: 27608
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Properties
+  syntax:
+    content: public void OnBeforeSerialize()
+    content.vb: Public Sub OnBeforeSerialize()
+  overload: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnBeforeSerialize*
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).OnBeforeSerialize()
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).OnBeforeSerialize()
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnAfterDeserialize
+  commentId: M:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnAfterDeserialize
+  id: OnAfterDeserialize
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2
+  langs:
+  - csharp
+  - vb
+  name: OnAfterDeserialize()
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.OnAfterDeserialize()
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.OnAfterDeserialize()
+  type: Method
+  source:
+    id: OnAfterDeserialize
+    path: ''
+    startLine: 27613
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph.Flow.Properties
+  syntax:
+    content: public void OnAfterDeserialize()
+    content.vb: Public Sub OnAfterDeserialize()
+  overload: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnAfterDeserialize*
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).OnAfterDeserialize()
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).OnAfterDeserialize()
+references:
+- uid: Ceres.Graph.Flow.Properties
+  commentId: N:Ceres.Graph.Flow.Properties
+  name: Ceres.Graph.Flow.Properties
+  nameWithType: Ceres.Graph.Flow.Properties
+  fullName: Ceres.Graph.Flow.Properties
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  - name: .
+  - uid: Ceres.Graph.Flow.Properties
+    name: Properties
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  - name: .
+  - uid: Ceres.Graph.Flow.Properties
+    name: Properties
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph.Flow.ExecutableNode
+  commentId: T:Ceres.Graph.Flow.ExecutableNode
+  parent: Ceres.Graph.Flow
+  name: ExecutableNode
+  nameWithType: ExecutableNode
+  fullName: Ceres.Graph.Flow.ExecutableNode
+- uid: Ceres.Graph.Flow.PropertyNode
+  commentId: T:Ceres.Graph.Flow.PropertyNode
+  parent: Ceres.Graph.Flow
+  name: PropertyNode
+  nameWithType: PropertyNode
+  fullName: Ceres.Graph.Flow.PropertyNode
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue
+  commentId: T:Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue
+  parent: Ceres.Graph.Flow.Properties
+  name: PropertyNode_PropertyValue
+  nameWithType: PropertyNode_PropertyValue
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue
+- uid: Global.IDisposable
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: Ceres.Graph.Flow.IPropertyNode
+  commentId: T:Ceres.Graph.Flow.IPropertyNode
+  parent: Ceres.Graph.Flow
+  name: IPropertyNode
+  nameWithType: IPropertyNode
+  fullName: Ceres.Graph.Flow.IPropertyNode
+- uid: Global.ISerializationCallbackReceiver
+  isExternal: true
+  name: ISerializationCallbackReceiver
+  nameWithType: ISerializationCallbackReceiver
+  fullName: ISerializationCallbackReceiver
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isSelfTarget
+  commentId: F:Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isSelfTarget
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue
+  name: isSelfTarget
+  nameWithType: PropertyNode_PropertyValue.isSelfTarget
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isSelfTarget
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isStatic
+  commentId: F:Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isStatic
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue
+  name: isStatic
+  nameWithType: PropertyNode_PropertyValue.isStatic
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.isStatic
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetPropertyInfo(Type)
+  commentId: M:Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetPropertyInfo(Type)
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue
+  isExternal: true
+  name: GetPropertyInfo(Type)
+  nameWithType: PropertyNode_PropertyValue.GetPropertyInfo(Type)
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetPropertyInfo(Type)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetPropertyInfo(Type)
+    name: GetPropertyInfo
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetPropertyInfo(Type)
+    name: GetPropertyInfo
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{{TValue}},Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue
+  definition: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)
+  name: GetTargetOrDefault<TValue>(CeresPort<TValue>, ExecutionContext)
+  nameWithType: PropertyNode_PropertyValue.GetTargetOrDefault<TValue>(CeresPort<TValue>, ExecutionContext)
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault<TValue>(Ceres.Graph.CeresPort<TValue>, Ceres.Graph.Flow.ExecutionContext)
+  nameWithType.vb: PropertyNode_PropertyValue.GetTargetOrDefault(Of TValue)(CeresPort(Of TValue), ExecutionContext)
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault(Of TValue)(Ceres.Graph.CeresPort(Of TValue), Ceres.Graph.Flow.ExecutionContext)
+  name.vb: GetTargetOrDefault(Of TValue)(CeresPort(Of TValue), ExecutionContext)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)
+    name: GetTargetOrDefault
+  - name: <
+  - name: TValue
+  - name: '>'
+  - name: (
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: <
+  - name: TValue
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)
+    name: GetTargetOrDefault
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: (
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+- uid: Ceres.Graph.Flow.PropertyNode.propertyName
+  commentId: F:Ceres.Graph.Flow.PropertyNode.propertyName
+  parent: Ceres.Graph.Flow.PropertyNode
+  name: propertyName
+  nameWithType: PropertyNode.propertyName
+  fullName: Ceres.Graph.Flow.PropertyNode.propertyName
+- uid: Ceres.Graph.Flow.PropertyNode.SetPropertyName(System.String)
+  commentId: M:Ceres.Graph.Flow.PropertyNode.SetPropertyName(System.String)
+  parent: Ceres.Graph.Flow.PropertyNode
+  isExternal: true
+  name: SetPropertyName(string)
+  nameWithType: PropertyNode.SetPropertyName(string)
+  fullName: Ceres.Graph.Flow.PropertyNode.SetPropertyName(string)
+  nameWithType.vb: PropertyNode.SetPropertyName(String)
+  fullName.vb: Ceres.Graph.Flow.PropertyNode.SetPropertyName(String)
+  name.vb: SetPropertyName(String)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.PropertyNode.SetPropertyName(System.String)
+    name: SetPropertyName
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.PropertyNode.SetPropertyName(System.String)
+    name: SetPropertyName
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.Flow.PropertyNode.GetPropertyName
+  commentId: M:Ceres.Graph.Flow.PropertyNode.GetPropertyName
+  parent: Ceres.Graph.Flow.PropertyNode
+  name: GetPropertyName()
+  nameWithType: PropertyNode.GetPropertyName()
+  fullName: Ceres.Graph.Flow.PropertyNode.GetPropertyName()
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.PropertyNode.GetPropertyName
+    name: GetPropertyName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.PropertyNode.GetPropertyName
+    name: GetPropertyName
+  - name: (
+  - name: )
+- uid: Ceres.Graph.Flow.ExecutableNode.Graph
+  commentId: P:Ceres.Graph.Flow.ExecutableNode.Graph
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: Graph
+  nameWithType: ExecutableNode.Graph
+  fullName: Ceres.Graph.Flow.ExecutableNode.Graph
+- uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: ExecuteNode(ExecutionContext)
+  nameWithType: ExecutableNode.ExecuteNode(ExecutionContext)
+  fullName: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+    name: ExecuteNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecutableNode.ExecuteNode(Ceres.Graph.Flow.ExecutionContext)
+    name: ExecuteNode
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+- uid: Ceres.Graph.CeresNode.NodeData
+  commentId: P:Ceres.Graph.CeresNode.NodeData
+  parent: Ceres.Graph.CeresNode
+  name: NodeData
+  nameWithType: CeresNode.NodeData
+  fullName: Ceres.Graph.CeresNode.NodeData
+- uid: Ceres.Graph.CeresNode.Guid
+  commentId: P:Ceres.Graph.CeresNode.Guid
+  parent: Ceres.Graph.CeresNode
+  name: Guid
+  nameWithType: CeresNode.Guid
+  fullName: Ceres.Graph.CeresNode.Guid
+- uid: Ceres.Graph.CeresNode.GraphPosition
+  commentId: P:Ceres.Graph.CeresNode.GraphPosition
+  parent: Ceres.Graph.CeresNode
+  name: GraphPosition
+  nameWithType: CeresNode.GraphPosition
+  fullName: Ceres.Graph.CeresNode.GraphPosition
+- uid: Ceres.Graph.CeresNode.Dispose
+  commentId: M:Ceres.Graph.CeresNode.Dispose
+  parent: Ceres.Graph.CeresNode
+  name: Dispose()
+  nameWithType: CeresNode.Dispose()
+  fullName: Ceres.Graph.CeresNode.Dispose()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetSerializedData
+  commentId: M:Ceres.Graph.CeresNode.GetSerializedData
+  parent: Ceres.Graph.CeresNode
+  name: GetSerializedData()
+  nameWithType: CeresNode.GetSerializedData()
+  fullName: Ceres.Graph.CeresNode.GetSerializedData()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetSerializedData
+    name: GetSerializedData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetSerializedData
+    name: GetSerializedData
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetExecutionPath
+  commentId: M:Ceres.Graph.CeresNode.GetExecutionPath
+  parent: Ceres.Graph.CeresNode
+  name: GetExecutionPath()
+  nameWithType: CeresNode.GetExecutionPath()
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath
+    name: GetExecutionPath
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath
+    name: GetExecutionPath
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetEnumerator
+  commentId: M:Ceres.Graph.CeresNode.GetEnumerator
+  parent: Ceres.Graph.CeresNode
+  name: GetEnumerator()
+  nameWithType: CeresNode.GetEnumerator()
+  fullName: Ceres.Graph.CeresNode.GetEnumerator()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetEnumerator
+    name: GetEnumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetEnumerator
+    name: GetEnumerator
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  commentId: M:Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetExecutionPath(Type)
+  nameWithType: CeresNode.GetExecutionPath(Type)
+  fullName: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+    name: GetExecutionPath
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetExecutionPath(Type)
+    name: GetExecutionPath
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: MakeSubtitle(string, bool)
+  nameWithType: CeresNode.MakeSubtitle(string, bool)
+  fullName: Ceres.Graph.CeresNode.MakeSubtitle(string, bool)
+  nameWithType.vb: CeresNode.MakeSubtitle(String, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.MakeSubtitle(String, Boolean)
+  name.vb: MakeSubtitle(String, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+    name: MakeSubtitle
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.MakeSubtitle(System.String,System.Boolean)
+    name: MakeSubtitle
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetTargetSubtitle(string, bool)
+  nameWithType: CeresNode.GetTargetSubtitle(string, bool)
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle(string, bool)
+  nameWithType.vb: CeresNode.GetTargetSubtitle(String, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.GetTargetSubtitle(String, Boolean)
+  name.vb: GetTargetSubtitle(String, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(System.String,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  commentId: M:Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+  parent: Ceres.Graph.CeresNode
+  isExternal: true
+  name: GetTargetSubtitle(Type, bool)
+  nameWithType: CeresNode.GetTargetSubtitle(Type, bool)
+  fullName: Ceres.Graph.CeresNode.GetTargetSubtitle(Type, bool)
+  nameWithType.vb: CeresNode.GetTargetSubtitle(Type, Boolean)
+  fullName.vb: Ceres.Graph.CeresNode.GetTargetSubtitle(Type, Boolean)
+  name.vb: GetTargetSubtitle(Type, Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTargetSubtitle(Type,System.Boolean)
+    name: GetTargetSubtitle
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresNode.GetTypeName
+  commentId: M:Ceres.Graph.CeresNode.GetTypeName
+  parent: Ceres.Graph.CeresNode
+  name: GetTypeName()
+  nameWithType: CeresNode.GetTypeName()
+  fullName: Ceres.Graph.CeresNode.GetTypeName()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresNode.GetTypeName
+    name: GetTypeName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresNode.GetTypeName
+    name: GetTypeName
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: Ceres.Graph.Flow
+  commentId: N:Ceres.Graph.Flow
+  name: Ceres.Graph.Flow
+  nameWithType: Ceres.Graph.Flow
+  fullName: Ceres.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Graph.Flow
+    name: Flow
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)
+  name: GetTargetOrDefault<TValue>(CeresPort<TValue>, ExecutionContext)
+  nameWithType: PropertyNode_PropertyValue.GetTargetOrDefault<TValue>(CeresPort<TValue>, ExecutionContext)
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault<TValue>(Ceres.Graph.CeresPort<TValue>, Ceres.Graph.Flow.ExecutionContext)
+  nameWithType.vb: PropertyNode_PropertyValue.GetTargetOrDefault(Of TValue)(CeresPort(Of TValue), ExecutionContext)
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault(Of TValue)(Ceres.Graph.CeresPort(Of TValue), Ceres.Graph.Flow.ExecutionContext)
+  name.vb: GetTargetOrDefault(Of TValue)(CeresPort(Of TValue), ExecutionContext)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)
+    name: GetTargetOrDefault
+  - name: <
+  - name: TValue
+  - name: '>'
+  - name: (
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: <
+  - name: TValue
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.Properties.PropertyNode_PropertyValue.GetTargetOrDefault``1(Ceres.Graph.CeresPort{``0},Ceres.Graph.Flow.ExecutionContext)
+    name: GetTargetOrDefault
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: (
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+- uid: Ceres.Graph.NodePort
+  commentId: T:Ceres.Graph.NodePort
+  parent: Ceres.Graph
+  name: NodePort
+  nameWithType: NodePort
+  fullName: Ceres.Graph.NodePort
+- uid: Ceres.Graph.CeresPort{{TTarget}}
+  commentId: T:Ceres.Graph.CeresPort{`0}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.CeresPort`1
+  name: CeresPort<TTarget>
+  nameWithType: CeresPort<TTarget>
+  fullName: Ceres.Graph.CeresPort<TTarget>
+  nameWithType.vb: CeresPort(Of TTarget)
+  fullName.vb: Ceres.Graph.CeresPort(Of TTarget)
+  name.vb: CeresPort(Of TTarget)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: <
+  - name: TTarget
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TTarget
+  - name: )
+- uid: Ceres.Graph.CeresPort`1
+  commentId: T:Ceres.Graph.CeresPort`1
+  parent: Ceres.Graph
+  name: CeresPort<TValue>
+  nameWithType: CeresPort<TValue>
+  fullName: Ceres.Graph.CeresPort<TValue>
+  nameWithType.vb: CeresPort(Of TValue)
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue)
+  name.vb: CeresPort(Of TValue)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Ceres.Graph.CeresPort{{T}}
+  commentId: T:Ceres.Graph.CeresPort{`0}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.CeresPort`1
+  name: CeresPort<T>
+  nameWithType: CeresPort<T>
+  fullName: Ceres.Graph.CeresPort<T>
+  nameWithType.vb: CeresPort(Of T)
+  fullName.vb: Ceres.Graph.CeresPort(Of T)
+  name.vb: CeresPort(Of T)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  commentId: M:Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  parent: Ceres.Graph.Flow.ExecutableNode
+  name: Execute(ExecutionContext)
+  nameWithType: ExecutableNode.Execute(ExecutionContext)
+  fullName: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+  spec.csharp:
+  - uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+    name: Execute
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.Flow.ExecutableNode.Execute(Ceres.Graph.Flow.ExecutionContext)
+    name: Execute
+  - name: (
+  - uid: Ceres.Graph.Flow.ExecutionContext
+    name: ExecutionContext
+  - name: )
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.Execute*
+  commentId: Overload:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.Execute
+  name: Execute
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.Execute
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.Execute
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).Execute
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).Execute
+- uid: Ceres.Graph.Flow.ExecutionContext
+  commentId: T:Ceres.Graph.Flow.ExecutionContext
+  parent: Ceres.Graph.Flow
+  name: ExecutionContext
+  nameWithType: ExecutionContext
+  fullName: Ceres.Graph.Flow.ExecutionContext
+- uid: Global.UniTask
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: UniTask
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnBeforeSerialize*
+  commentId: Overload:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnBeforeSerialize
+  name: OnBeforeSerialize
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.OnBeforeSerialize
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.OnBeforeSerialize
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).OnBeforeSerialize
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).OnBeforeSerialize
+- uid: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnAfterDeserialize*
+  commentId: Overload:Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue`2.OnAfterDeserialize
+  name: OnAfterDeserialize
+  nameWithType: PropertyNode_SetPropertyTValue<TTarget, T>.OnAfterDeserialize
+  fullName: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue<TTarget, T>.OnAfterDeserialize
+  nameWithType.vb: PropertyNode_SetPropertyTValue(Of TTarget, T).OnAfterDeserialize
+  fullName.vb: Ceres.Graph.Flow.Properties.PropertyNode_SetPropertyTValue(Of TTarget, T).OnAfterDeserialize

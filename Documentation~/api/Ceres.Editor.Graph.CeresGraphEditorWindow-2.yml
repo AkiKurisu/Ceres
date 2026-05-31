@@ -1,0 +1,583 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  commentId: T:Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  id: CeresGraphEditorWindow`2
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT
+  - Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+  - Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow(`0)
+  - Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+  - Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+  - Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+  - Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+  - Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show(`0)
+  langs:
+  - csharp
+  - vb
+  name: CeresGraphEditorWindow<TContainer, TKWindow>
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>
+  type: Class
+  source:
+    id: CeresGraphEditorWindow
+    path: ''
+    startLine: 1685
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public abstract class CeresGraphEditorWindow<TContainer, TKWindow> : CeresGraphEditorWindow, IHasCustomMenu where TContainer : class, ICeresGraphContainer where TKWindow : CeresGraphEditorWindow<TContainer, TKWindow>'
+    typeParameters:
+    - id: TContainer
+    - id: TKWindow
+    content.vb: Public MustInherit Class CeresGraphEditorWindow(Of TContainer As {Class, ICeresGraphContainer}, TKWindow As CeresGraphEditorWindow(Of TContainer, TKWindow)) Inherits CeresGraphEditorWindow Implements IHasCustomMenu
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.CeresGraphEditorWindow
+  derivedClasses:
+  - Ceres.Editor.Graph.Flow.FlowGraphEditorWindow
+  implements:
+  - Global.IHasCustomMenu
+  inheritedMembers:
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.Identifier
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.Container
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(ICeresGraphContainer)
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(Type)
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow)
+  name.vb: CeresGraphEditorWindow(Of TContainer, TKWindow)
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT
+  commentId: P:Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT
+  id: ContainerT
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  langs:
+  - csharp
+  - vb
+  name: ContainerT
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.ContainerT
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.ContainerT
+  type: Property
+  source:
+    id: ContainerT
+    path: ''
+    startLine: 1736
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nActual graph container of this window\n"
+  example: []
+  syntax:
+    content: public TContainer ContainerT { get; }
+    parameters: []
+    return:
+      type: '{TContainer}'
+    content.vb: Public ReadOnly Property ContainerT As TContainer
+  overload: Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT*
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).ContainerT
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).ContainerT
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow(`0)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow(`0)
+  id: GetOrCreateEditorWindow(`0)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  langs:
+  - csharp
+  - vb
+  name: GetOrCreateEditorWindow(TContainer)
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.GetOrCreateEditorWindow(TContainer)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.GetOrCreateEditorWindow(TContainer)
+  type: Method
+  source:
+    id: GetOrCreateEditorWindow
+    path: ''
+    startLine: 1746
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nCreate <xref href=\"Ceres.Editor.Graph.CeresGraphEditorWindow\" data-throw-if-not-resolved=\"false\"></xref> instance, return cached window if existed\n"
+  example: []
+  syntax:
+    content: public static TKWindow GetOrCreateEditorWindow(TContainer container)
+    parameters:
+    - id: container
+      type: '{TContainer}'
+      description: ''
+    return:
+      type: '{TKWindow}'
+      description: ''
+    content.vb: Public Shared Function GetOrCreateEditorWindow(container As TContainer) As TKWindow
+  overload: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow*
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).GetOrCreateEditorWindow(TContainer)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).GetOrCreateEditorWindow(TContainer)
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show(`0)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show(`0)
+  id: Show(`0)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  langs:
+  - csharp
+  - vb
+  name: Show(TContainer)
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.Show(TContainer)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.Show(TContainer)
+  type: Method
+  source:
+    id: Show
+    path: ''
+    startLine: 1756
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nShow the graph editor window for the container instance\n"
+  example: []
+  syntax:
+    content: public static TKWindow Show(TContainer container)
+    parameters:
+    - id: container
+      type: '{TContainer}'
+      description: ''
+    return:
+      type: '{TKWindow}'
+      description: ''
+    content.vb: Public Shared Function Show(container As TContainer) As TKWindow
+  overload: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show*
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).Show(TContainer)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).Show(TContainer)
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+  id: OnEnable
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  langs:
+  - csharp
+  - vb
+  name: OnEnable()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnEnable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnEnable()
+  type: Method
+  source:
+    id: OnEnable
+    path: ''
+    startLine: 1764
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override void OnEnable()
+    content.vb: Protected Overrides Sub OnEnable()
+  overridden: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+  overload: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable*
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnEnable()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnEnable()
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+  id: OnDisable
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  langs:
+  - csharp
+  - vb
+  name: OnDisable()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnDisable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnDisable()
+  type: Method
+  source:
+    id: OnDisable
+    path: ''
+    startLine: 1770
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override void OnDisable()
+    content.vb: Protected Overrides Sub OnDisable()
+  overridden: Ceres.Editor.Graph.CeresGraphEditorWindow.OnDisable
+  overload: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable*
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnDisable()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnDisable()
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+  id: GetContainer
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  langs:
+  - csharp
+  - vb
+  name: GetContainer()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.GetContainer()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.GetContainer()
+  type: Method
+  source:
+    id: GetContainer
+    path: ''
+    startLine: 1781
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nGet <see cref=\"!:ICeresGraphContainer\"></see> from editor window key object\n"
+  example: []
+  syntax:
+    content: public TContainer GetContainer()
+    return:
+      type: '{TContainer}'
+      description: ''
+    content.vb: Public Function GetContainer() As TContainer
+  overload: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer*
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).GetContainer()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).GetContainer()
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+  id: Reload
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  langs:
+  - csharp
+  - vb
+  name: Reload()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.Reload()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.Reload()
+  type: Method
+  source:
+    id: Reload
+    path: ''
+    startLine: 1786
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override void Reload()
+    content.vb: Protected Overrides Sub Reload()
+  overridden: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+  overload: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload*
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).Reload()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).Reload()
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+  id: OnReloadGraphView
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  langs:
+  - csharp
+  - vb
+  name: OnReloadGraphView()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnReloadGraphView()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnReloadGraphView()
+  type: Method
+  source:
+    id: OnReloadGraphView
+    path: ''
+    startLine: 1799
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nConstruct graph view after reloading\n"
+  example: []
+  syntax:
+    content: protected virtual void OnReloadGraphView()
+    content.vb: Protected Overridable Sub OnReloadGraphView()
+  overload: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView*
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnReloadGraphView()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnReloadGraphView()
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow
+  commentId: T:Ceres.Editor.Graph.CeresGraphEditorWindow
+  parent: Ceres.Editor.Graph
+  name: CeresGraphEditorWindow
+  nameWithType: CeresGraphEditorWindow
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow
+- uid: Global.IHasCustomMenu
+  isExternal: true
+  name: IHasCustomMenu
+  nameWithType: IHasCustomMenu
+  fullName: IHasCustomMenu
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Identifier
+  commentId: P:Ceres.Editor.Graph.CeresGraphEditorWindow.Identifier
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  name: Identifier
+  nameWithType: CeresGraphEditorWindow.Identifier
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.Identifier
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Container
+  commentId: P:Ceres.Editor.Graph.CeresGraphEditorWindow.Container
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  name: Container
+  nameWithType: CeresGraphEditorWindow.Container
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.Container
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(ICeresGraphContainer)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(ICeresGraphContainer)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  name: Initialize(ICeresGraphContainer)
+  nameWithType: CeresGraphEditorWindow.Initialize(ICeresGraphContainer)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(ICeresGraphContainer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(ICeresGraphContainer)
+    name: Initialize
+  - name: (
+  - uid: Global.ICeresGraphContainer
+    name: ICeresGraphContainer
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(ICeresGraphContainer)
+    name: Initialize
+  - name: (
+  - uid: Global.ICeresGraphContainer
+    name: ICeresGraphContainer
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  name: OnInitialize()
+  nameWithType: CeresGraphEditorWindow.OnInitialize()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+    name: OnInitialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+    name: OnInitialize
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  name: AddItemsToMenu(GenericMenu)
+  nameWithType: CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)
+    name: AddItemsToMenu
+  - name: (
+  - uid: Global.GenericMenu
+    name: GenericMenu
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)
+    name: AddItemsToMenu
+  - name: (
+  - uid: Global.GenericMenu
+    name: GenericMenu
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  name: PreReload()
+  nameWithType: CeresGraphEditorWindow.PreReload()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+    name: PreReload
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+    name: PreReload
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  name: GetContainerType()
+  nameWithType: CeresGraphEditorWindow.GetContainerType()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+    name: GetContainerType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+    name: GetContainerType
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(Type)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(Type)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  name: SetContainerType(Type)
+  nameWithType: CeresGraphEditorWindow.SetContainerType(Type)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(Type)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(Type)
+    name: SetContainerType
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(Type)
+    name: SetContainerType
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT
+  name: ContainerT
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.ContainerT
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.ContainerT
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).ContainerT
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).ContainerT
+- uid: '{TContainer}'
+  commentId: '!:TContainer'
+  definition: TContainer
+  name: TContainer
+  nameWithType: TContainer
+  fullName: TContainer
+- uid: TContainer
+  name: TContainer
+  nameWithType: TContainer
+  fullName: TContainer
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow
+  name: GetOrCreateEditorWindow
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.GetOrCreateEditorWindow
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.GetOrCreateEditorWindow
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).GetOrCreateEditorWindow
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).GetOrCreateEditorWindow
+- uid: '{TKWindow}'
+  commentId: '!:TKWindow'
+  definition: TKWindow
+  name: TKWindow
+  nameWithType: TKWindow
+  fullName: TKWindow
+- uid: TKWindow
+  name: TKWindow
+  nameWithType: TKWindow
+  fullName: TKWindow
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show
+  name: Show
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.Show
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.Show
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).Show
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).Show
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  name: OnEnable()
+  nameWithType: CeresGraphEditorWindow.OnEnable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+    name: OnEnable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+    name: OnEnable
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+  name: OnEnable
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnEnable
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnEnable
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnEnable
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnEnable
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnDisable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.OnDisable
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  name: OnDisable()
+  nameWithType: CeresGraphEditorWindow.OnDisable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.OnDisable()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnDisable
+    name: OnDisable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnDisable
+    name: OnDisable
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+  name: OnDisable
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnDisable
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnDisable
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnDisable
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnDisable
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+  name: GetContainer
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.GetContainer
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.GetContainer
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).GetContainer
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).GetContainer
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  name: Reload()
+  nameWithType: CeresGraphEditorWindow.Reload()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+    name: Reload
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+    name: Reload
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+  name: Reload
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.Reload
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.Reload
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).Reload
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).Reload
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView*
+  commentId: Overload:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+  name: OnReloadGraphView
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnReloadGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnReloadGraphView
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnReloadGraphView
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnReloadGraphView

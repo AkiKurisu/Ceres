@@ -1,0 +1,1149 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.SharedStringResolver
+  commentId: T:Ceres.Editor.Graph.SharedStringResolver
+  id: SharedStringResolver
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.SharedStringResolver.#ctor(FieldInfo)
+  - Ceres.Editor.Graph.SharedStringResolver.CreateEditorField(FieldInfo)
+  langs:
+  - csharp
+  - vb
+  name: SharedStringResolver
+  nameWithType: SharedStringResolver
+  fullName: Ceres.Editor.Graph.SharedStringResolver
+  type: Class
+  source:
+    id: SharedStringResolver
+    path: ''
+    startLine: 4026
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public sealed class SharedStringResolver : SharedVariableResolver<SharedString, string, TextField>, IFieldResolver'
+    content.vb: Public NotInheritable Class SharedStringResolver Inherits SharedVariableResolver(Of SharedString, String, TextField) Implements IFieldResolver
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  - Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver
+  inheritedMembers:
+  - Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.CreateEditorField(FieldInfo)
+  - Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.IsAcceptable(Type,FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.EditorField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.BaseField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Value
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Restore(System.Object)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Commit(System.Object)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.IsAcceptable(Type,FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateEditorField(FieldInfo)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Editor.Graph.SharedStringResolver.#ctor(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedStringResolver.#ctor(FieldInfo)
+  id: '#ctor(FieldInfo)'
+  parent: Ceres.Editor.Graph.SharedStringResolver
+  langs:
+  - csharp
+  - vb
+  name: SharedStringResolver(FieldInfo)
+  nameWithType: SharedStringResolver.SharedStringResolver(FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedStringResolver.SharedStringResolver(FieldInfo)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4028
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public SharedStringResolver(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: Global.FieldInfo
+    content.vb: Public Sub New(fieldInfo As FieldInfo)
+  overload: Ceres.Editor.Graph.SharedStringResolver.#ctor*
+  nameWithType.vb: SharedStringResolver.New(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.SharedStringResolver.New(FieldInfo)
+  name.vb: New(FieldInfo)
+- uid: Ceres.Editor.Graph.SharedStringResolver.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedStringResolver.CreateEditorField(FieldInfo)
+  id: CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.SharedStringResolver
+  langs:
+  - csharp
+  - vb
+  name: CreateEditorField(FieldInfo)
+  nameWithType: SharedStringResolver.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedStringResolver.CreateEditorField(FieldInfo)
+  type: Method
+  source:
+    id: CreateEditorField
+    path: ''
+    startLine: 4032
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected override SharedVariableResolver<SharedString, string, TextField>.Field CreateEditorField(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: Global.FieldInfo
+    return:
+      type: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field
+    content.vb: Protected Overrides Function CreateEditorField(fieldInfo As FieldInfo) As SharedVariableResolver(Of SharedString, String, TextField).Field
+  overridden: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.CreateEditorField(FieldInfo)
+  overload: Ceres.Editor.Graph.SharedStringResolver.CreateEditorField*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  commentId: T:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.FieldResolver`2
+  name: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString)
+  name.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: <
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: <
+  - uid: Global.SharedString
+    name: SharedString
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.TextField
+    name: TextField
+    isExternal: true
+  - name: '>'
+  - name: .
+  - uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field
+    name: Field
+  - name: ','
+  - name: " "
+  - uid: Global.SharedString
+    name: SharedString
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.SharedString
+    name: SharedString
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.TextField
+    name: TextField
+    isExternal: true
+  - name: )
+  - name: .
+  - uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field
+    name: Field
+  - name: ','
+  - name: " "
+  - uid: Global.SharedString
+    name: SharedString
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}
+  commentId: T:Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.SharedVariableResolver`3
+  name: SharedVariableResolver<SharedString, string, TextField>
+  nameWithType: SharedVariableResolver<SharedString, string, TextField>
+  fullName: Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>
+  nameWithType.vb: SharedVariableResolver(Of SharedString, String, TextField)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField)
+  name.vb: SharedVariableResolver(Of SharedString, String, TextField)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: <
+  - uid: Global.SharedString
+    name: SharedString
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.TextField
+    name: TextField
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.SharedString
+    name: SharedString
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.TextField
+    name: TextField
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.IFieldResolver
+  commentId: T:Ceres.Editor.Graph.IFieldResolver
+  parent: Ceres.Editor.Graph
+  name: IFieldResolver
+  nameWithType: IFieldResolver
+  fullName: Ceres.Editor.Graph.IFieldResolver
+- uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}
+  definition: Ceres.Editor.Graph.SharedVariableResolver`3.CreateEditorField(FieldInfo)
+  name: CreateEditorField(FieldInfo)
+  nameWithType: SharedVariableResolver<SharedString, string, TextField>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.CreateEditorField(FieldInfo)
+  nameWithType.vb: SharedVariableResolver(Of SharedString, String, TextField).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.IsAcceptable(Type,FieldInfo)
+  parent: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}
+  definition: Ceres.Editor.Graph.SharedVariableResolver`3.IsAcceptable(Type,FieldInfo)
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: SharedVariableResolver<SharedString, string, TextField>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.IsAcceptable(Type, FieldInfo)
+  nameWithType.vb: SharedVariableResolver(Of SharedString, String, TextField).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.EditorField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  name: EditorField
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.EditorField
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.BaseField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  name: BaseField
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.BaseField
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Value
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Value
+  name: Value
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.Value
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).Value
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  name: CreateField()
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.CreateField()
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Restore(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  name: Restore(object)
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.Restore(object)
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Commit(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  name: Commit(object)
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.Commit(object)
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.IsAcceptable(Type,FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.IsAcceptable(Type, FieldInfo)
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateEditorField(FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}
+  definition: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field, SharedString>.CreateEditorField(FieldInfo)
+  nameWithType.vb: FieldResolver(Of SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field, SharedString).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field,SharedString}.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.FieldResolver`2
+  commentId: T:Ceres.Editor.Graph.FieldResolver`2
+  name: FieldResolver<TField, TKValue>
+  nameWithType: FieldResolver<TField, TKValue>
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>
+  nameWithType.vb: FieldResolver(Of TField, TKValue)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue)
+  name.vb: FieldResolver(Of TField, TKValue)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: <
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableResolver`3
+  commentId: T:Ceres.Editor.Graph.SharedVariableResolver`3
+  name: SharedVariableResolver<TVariable, TValue, TField>
+  nameWithType: SharedVariableResolver<TVariable, TValue, TField>
+  fullName: Ceres.Editor.Graph.SharedVariableResolver<TVariable, TValue, TField>
+  nameWithType.vb: SharedVariableResolver(Of TVariable, TValue, TField)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableResolver(Of TVariable, TValue, TField)
+  name.vb: SharedVariableResolver(Of TVariable, TValue, TField)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: <
+  - name: TVariable
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TField
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TVariable
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TField
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableResolver`3.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedVariableResolver`3.CreateEditorField(FieldInfo)
+  isExternal: true
+  name: CreateEditorField(FieldInfo)
+  nameWithType: SharedVariableResolver<TVariable, TValue, TField>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedVariableResolver<TVariable, TValue, TField>.CreateEditorField(FieldInfo)
+  nameWithType.vb: SharedVariableResolver(Of TVariable, TValue, TField).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableResolver(Of TVariable, TValue, TField).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableResolver`3.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.SharedVariableResolver`3.IsAcceptable(Type,FieldInfo)
+  isExternal: true
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: SharedVariableResolver<TVariable, TValue, TField>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.SharedVariableResolver<TVariable, TValue, TField>.IsAcceptable(Type, FieldInfo)
+  nameWithType.vb: SharedVariableResolver(Of TVariable, TValue, TField).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableResolver(Of TVariable, TValue, TField).IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.EditorField
+  name: EditorField
+  nameWithType: FieldResolver<TField, TKValue>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.EditorField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.BaseField
+  name: BaseField
+  nameWithType: FieldResolver<TField, TKValue>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.BaseField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver`2.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.Value
+  name: Value
+  nameWithType: FieldResolver<TField, TKValue>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Value
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Value
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateField
+  name: CreateField()
+  nameWithType: FieldResolver<TField, TKValue>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateField()
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+    name: CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<TField, TKValue>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  isExternal: true
+  name: Restore(object)
+  nameWithType: FieldResolver<TField, TKValue>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Restore(object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+    name: Restore
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  isExternal: true
+  name: Commit(object)
+  nameWithType: FieldResolver<TField, TKValue>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Commit(object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+    name: Commit
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<TField, TKValue>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+  isExternal: true
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(Type,FieldInfo)
+    name: IsAcceptable
+  - name: (
+  - uid: Global.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+  isExternal: true
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(FieldInfo)
+    name: CreateEditorField
+  - name: (
+  - uid: Global.FieldInfo
+    name: FieldInfo
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.SharedStringResolver.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.SharedStringResolver.#ctor
+  name: SharedStringResolver
+  nameWithType: SharedStringResolver.SharedStringResolver
+  fullName: Ceres.Editor.Graph.SharedStringResolver.SharedStringResolver
+  nameWithType.vb: SharedStringResolver.New
+  fullName.vb: Ceres.Editor.Graph.SharedStringResolver.New
+  name.vb: New
+- uid: Global.FieldInfo
+  isExternal: true
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: FieldInfo
+- uid: Ceres.Editor.Graph.SharedStringResolver.CreateEditorField*
+  commentId: Overload:Ceres.Editor.Graph.SharedStringResolver.CreateEditorField
+  name: CreateEditorField
+  nameWithType: SharedStringResolver.CreateEditorField
+  fullName: Ceres.Editor.Graph.SharedStringResolver.CreateEditorField
+- uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field
+  commentId: T:Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.SharedVariableResolver`3.Field
+  name: SharedVariableResolver<SharedString, string, TextField>.Field
+  nameWithType: SharedVariableResolver<SharedString, string, TextField>.Field
+  fullName: Ceres.Editor.Graph.SharedVariableResolver<SharedString, string, TextField>.Field
+  nameWithType.vb: SharedVariableResolver(Of SharedString, String, TextField).Field
+  fullName.vb: Ceres.Editor.Graph.SharedVariableResolver(Of SharedString, String, TextField).Field
+  name.vb: SharedVariableResolver(Of SharedString, String, TextField).Field
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: <
+  - uid: Global.SharedString
+    name: SharedString
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.TextField
+    name: TextField
+    isExternal: true
+  - name: '>'
+  - name: .
+  - uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field
+    name: Field
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.SharedString
+    name: SharedString
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Global.TextField
+    name: TextField
+    isExternal: true
+  - name: )
+  - name: .
+  - uid: Ceres.Editor.Graph.SharedVariableResolver{SharedString,System.String,TextField}.Field
+    name: Field
+- uid: Ceres.Editor.Graph.SharedVariableResolver`3.Field
+  commentId: T:Ceres.Editor.Graph.SharedVariableResolver`3.Field
+  parent: Ceres.Editor.Graph
+  name: SharedVariableResolver<TVariable, TValue, TField>.Field
+  nameWithType: SharedVariableResolver<TVariable, TValue, TField>.Field
+  fullName: Ceres.Editor.Graph.SharedVariableResolver<TVariable, TValue, TField>.Field
+  nameWithType.vb: SharedVariableResolver(Of TVariable, TValue, TField).Field
+  fullName.vb: Ceres.Editor.Graph.SharedVariableResolver(Of TVariable, TValue, TField).Field
+  name.vb: SharedVariableResolver(Of TVariable, TValue, TField).Field
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: <
+  - name: TVariable
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TField
+  - name: '>'
+  - name: .
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3.Field
+    name: Field
+  spec.vb:
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3
+    name: SharedVariableResolver
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TVariable
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TField
+  - name: )
+  - name: .
+  - uid: Ceres.Editor.Graph.SharedVariableResolver`3.Field
+    name: Field

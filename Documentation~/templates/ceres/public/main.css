@@ -1,0 +1,545 @@
+/* ============================================================
+   Ceres brand layer for the DocFX "modern" template
+   Theme: tech cyan-blue, dark-first
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ---------- Brand tokens ---------- */
+:root {
+  --ceres-cyan: #00c2d1;
+  --ceres-cyan-bright: #22d3ee;
+  --ceres-blue: #3b82f6;
+  --ceres-grad: linear-gradient(120deg, #00c2d1 0%, #3b82f6 100%);
+  --ceres-radius: 14px;
+  --ceres-radius-sm: 10px;
+
+  --ceres-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --ceres-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+    Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* ---------- Map Bootstrap primary / links to brand ---------- */
+:root,
+[data-bs-theme="light"] {
+  --bs-primary: #0892a3;
+  --bs-primary-rgb: 8, 146, 163;
+  --bs-link-color: #0a7d8c;
+  --bs-link-color-rgb: 10, 125, 140;
+  --bs-link-hover-color: #00525c;
+  --bs-link-hover-color-rgb: 0, 82, 92;
+  --bs-border-radius: var(--ceres-radius-sm);
+}
+
+[data-bs-theme="dark"] {
+  --bs-primary: var(--ceres-cyan);
+  --bs-primary-rgb: 0, 194, 209;
+  --bs-link-color: var(--ceres-cyan-bright);
+  --bs-link-color-rgb: 34, 211, 238;
+  --bs-link-hover-color: #67e8f9;
+  --bs-link-hover-color-rgb: 103, 232, 249;
+
+  --bs-body-bg: #0d1117;
+  --bs-body-bg-rgb: 13, 17, 23;
+  --bs-body-color: #c4ccd6;
+  --bs-emphasis-color: #f0f6fc;
+  --bs-emphasis-color-rgb: 240, 246, 252;
+  --bs-border-color: #21262d;
+  --bs-secondary-bg: #161b22;
+  --bs-secondary-bg-rgb: 22, 27, 34;
+  --bs-tertiary-bg: #11151b;
+}
+
+/* ---------- Typography ---------- */
+body {
+  font-family: var(--ceres-font);
+  letter-spacing: -0.003em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand {
+  font-family: var(--ceres-font);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+article h2 {
+  margin-top: 2.2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+article h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1.05em;
+  margin-right: 0.6rem;
+  vertical-align: -0.16em;
+  border-radius: 3px;
+  background: var(--ceres-grad);
+}
+
+/* ---------- Top navigation ---------- */
+.navbar {
+  background-color: rgba(13, 17, 23, 0.72) !important;
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+[data-bs-theme="light"] .navbar {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.navbar-brand img {
+  height: 26px;
+  width: auto;
+  color: var(--ceres-cyan); /* drives currentColor in the SVG logo */
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  color: var(--bs-link-color) !important;
+}
+
+/* search box */
+#search-query,
+.form-control {
+  border-radius: var(--ceres-radius-sm);
+}
+#search-query:focus,
+.form-control:focus {
+  border-color: var(--ceres-cyan);
+  box-shadow: 0 0 0 0.18rem rgba(0, 194, 209, 0.25);
+}
+
+/* ---------- Sidebar / TOC ---------- */
+.toc .nav > li > a.active,
+.toc .nav > li.active > a {
+  color: var(--bs-link-color) !important;
+  font-weight: 600;
+}
+.affix ul > li.active > a,
+#affix a.active {
+  color: var(--bs-link-color) !important;
+  border-left-color: var(--ceres-cyan) !important;
+}
+
+/* ---------- Code ---------- */
+code {
+  font-family: var(--ceres-mono);
+}
+
+:not(pre) > code {
+  color: var(--ceres-cyan-bright);
+  background: rgba(0, 194, 209, 0.1);
+  padding: 0.14em 0.42em;
+  border-radius: 6px;
+  font-size: 0.875em;
+}
+[data-bs-theme="light"] :not(pre) > code {
+  color: #0a7d8c;
+  background: rgba(8, 146, 163, 0.1);
+}
+
+pre {
+  border-radius: var(--ceres-radius);
+  border: 1px solid var(--bs-border-color);
+  padding: 1rem 1.1rem;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+[data-bs-theme="dark"] pre {
+  background: #0a0d12 !important;
+}
+
+/* ---------- Tables ---------- */
+table:not(.table-borderless) {
+  border-radius: var(--ceres-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--bs-border-color);
+}
+table thead th {
+  background: var(--bs-secondary-bg);
+  border-bottom: 2px solid var(--bs-border-color) !important;
+}
+
+/* ---------- Blockquotes / alerts ---------- */
+blockquote {
+  border-left: 3px solid var(--ceres-cyan);
+  background: rgba(0, 194, 209, 0.06);
+  border-radius: 0 var(--ceres-radius-sm) var(--ceres-radius-sm) 0;
+  padding: 0.7rem 1rem;
+}
+
+/* ---------- Images in articles ---------- */
+article img {
+  border-radius: var(--ceres-radius-sm);
+  border: 1px solid var(--bs-border-color);
+  max-width: 100%;
+}
+
+/* ============================================================
+   Landing page components (used by index.md)
+   ============================================================ */
+.ceres-hero {
+  position: relative;
+  margin: -1.5rem -1rem 3.5rem;
+  padding: 4rem 1.5rem 3.75rem;
+  border-radius: var(--ceres-radius);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% -10%, rgba(0, 194, 209, 0.22), transparent 50%),
+    radial-gradient(circle at 92% 120%, rgba(59, 130, 246, 0.2), transparent 48%);
+}
+
+/* node-connection grid */
+.ceres-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(120, 170, 210, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 170, 210, 0.08) 1px, transparent 1px);
+  background-size: 38px 38px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 35% 40%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 70% at 35% 40%, #000 0%, transparent 78%);
+  pointer-events: none;
+}
+
+.ceres-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+  align-items: center;
+}
+/* prevent grid blow-out (image column overflowing the viewport) */
+.ceres-hero-inner > * {
+  min-width: 0;
+}
+
+.ceres-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ceres-cyan-bright);
+  background: rgba(0, 194, 209, 0.1);
+  border: 1px solid rgba(0, 194, 209, 0.32);
+  margin-bottom: 1.15rem;
+}
+[data-bs-theme="light"] .ceres-hero-eyebrow {
+  color: #0a7d8c;
+}
+
+.ceres-hero-title {
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  line-height: 1.12;
+  font-weight: 800;
+  margin: 0 0 1rem;
+}
+.ceres-hero-title .grad {
+  background: var(--ceres-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ceres-hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--bs-secondary-color, #8b949e);
+  margin: 0 0 1.7rem;
+  max-width: 34rem;
+}
+
+.ceres-hero-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: var(--ceres-radius) !important;
+  border: 1px solid var(--bs-border-color);
+  box-shadow: 0 28px 70px -26px rgba(0, 194, 209, 0.55);
+}
+
+.ceres-hero-actions {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.ceres-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.6rem;
+}
+.ceres-hero-badges span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.32rem 0.7rem;
+  border-radius: 8px;
+  color: var(--bs-body-color);
+  background: var(--bs-secondary-bg);
+  border: 1px solid var(--bs-border-color);
+}
+
+@media (max-width: 900px) {
+  .ceres-hero {
+    padding: 3rem 1.25rem;
+  }
+  .ceres-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    text-align: center;
+  }
+  .ceres-hero-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ceres-hero-actions,
+  .ceres-hero-badges {
+    justify-content: center;
+  }
+  .ceres-hero-banner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+/* ---------- Buttons ---------- */
+.ceres-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.72rem 1.5rem;
+  border-radius: var(--ceres-radius-sm);
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+.ceres-btn-primary {
+  background: var(--ceres-grad);
+  color: #fff !important;
+  box-shadow: 0 10px 28px -10px rgba(0, 194, 209, 0.65);
+}
+.ceres-btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+.ceres-btn-ghost {
+  border: 1px solid var(--bs-border-color);
+  background: var(--bs-secondary-bg);
+  color: var(--bs-emphasis-color) !important;
+}
+.ceres-btn-ghost:hover {
+  transform: translateY(-2px);
+  border-color: var(--ceres-cyan);
+}
+
+/* ---------- Feature cards ---------- */
+.ceres-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 2.25rem 0 3rem;
+}
+.ceres-card {
+  padding: 1.5rem 1.4rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--ceres-radius);
+  background: var(--bs-secondary-bg);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.ceres-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ceres-cyan);
+  box-shadow: 0 16px 38px -16px rgba(0, 194, 209, 0.4);
+}
+.ceres-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--ceres-radius-sm);
+  background: rgba(0, 194, 209, 0.12);
+  font-size: 1.4rem;
+  margin-bottom: 0.85rem;
+}
+.ceres-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.4rem;
+}
+.ceres-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--bs-secondary-color, #8b949e);
+}
+.ceres-card a.stretched {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- "Next steps" grid ---------- */
+.ceres-next {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin: 1.75rem 0 2.5rem;
+}
+.ceres-next-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--ceres-radius-sm);
+  background: var(--bs-secondary-bg);
+  text-decoration: none !important;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.ceres-next-item:hover {
+  border-color: var(--ceres-cyan);
+  transform: translateY(-2px);
+}
+.ceres-next-item strong {
+  color: var(--bs-link-color);
+  font-weight: 600;
+}
+.ceres-next-item span {
+  font-size: 0.86rem;
+  color: var(--bs-secondary-color, #8b949e);
+}
+
+/* ---------- Get Started: install steps + screenshot ---------- */
+.ceres-install {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin: 1.5rem 0 2rem;
+}
+.ceres-install > * {
+  min-width: 0;
+}
+
+.ceres-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.ceres-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+}
+.ceres-step-num {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+  background: var(--ceres-grad);
+  box-shadow: 0 6px 16px -6px rgba(0, 194, 209, 0.65);
+  flex-shrink: 0;
+}
+/* timeline connector spanning from this step's number to the next */
+.ceres-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 42px;
+  bottom: -1.6rem;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(rgba(0, 194, 209, 0.7), rgba(0, 194, 209, 0.08));
+}
+.ceres-step-body h3 {
+  font-size: 1.05rem;
+  margin: 0.35rem 0 0.4rem;
+}
+.ceres-step-body p {
+  margin: 0 0 0.5rem;
+  font-size: 0.94rem;
+  color: var(--bs-secondary-color, #8b949e);
+}
+.ceres-step-body pre {
+  margin: 0.5rem 0;
+  font-size: 0.82rem;
+}
+.ceres-step-note {
+  font-size: 0.86rem;
+}
+
+.ceres-install-shot {
+  margin: 0;
+}
+.ceres-install-shot img {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  border-radius: var(--ceres-radius) !important;
+  border: 1px solid var(--bs-border-color);
+  box-shadow: 0 24px 60px -28px rgba(0, 194, 209, 0.5);
+}
+.ceres-install-shot figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.82rem;
+  text-align: center;
+  color: var(--bs-secondary-color, #8b949e);
+}
+
+@media (max-width: 860px) {
+  .ceres-install {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ---------- Custom scrollbar (dark) ---------- */
+[data-bs-theme="dark"] ::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 6px;
+  border: 2px solid var(--bs-body-bg);
+}
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #3f4651;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--bs-border-color);
+  color: var(--bs-secondary-color, #8b949e);
+}

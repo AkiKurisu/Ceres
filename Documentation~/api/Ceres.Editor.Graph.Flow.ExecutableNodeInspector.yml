@@ -1,0 +1,289 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector
+  commentId: T:Ceres.Editor.Graph.Flow.ExecutableNodeInspector
+  id: ExecutableNodeInspector
+  parent: Ceres.Editor.Graph.Flow
+  children:
+  - Ceres.Editor.Graph.Flow.ExecutableNodeInspector.#ctor(Ceres.Editor.Graph.Flow.ExecutableNodeView)
+  - Ceres.Editor.Graph.Flow.ExecutableNodeInspector.Dispose
+  - Ceres.Editor.Graph.Flow.ExecutableNodeInspector.DrawPortField(Ceres.Editor.Graph.CeresPortView)
+  - Ceres.Editor.Graph.Flow.ExecutableNodeInspector.GetNodeData
+  - Ceres.Editor.Graph.Flow.ExecutableNodeInspector.OnGUI
+  langs:
+  - csharp
+  - vb
+  name: ExecutableNodeInspector
+  nameWithType: ExecutableNodeInspector
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector
+  type: Class
+  source:
+    id: ExecutableNodeInspector
+    path: ''
+    startLine: 11112
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  summary: "\nInspector for displaying and editing executable node fields using IMGUI\nOnly draws fields that have FieldResolver\n"
+  example: []
+  syntax:
+    content: 'public class ExecutableNodeInspector : IDisposable'
+    content.vb: Public Class ExecutableNodeInspector Inherits IDisposable
+  inheritance:
+  - System.Object
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.#ctor(Ceres.Editor.Graph.Flow.ExecutableNodeView)
+  commentId: M:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.#ctor(Ceres.Editor.Graph.Flow.ExecutableNodeView)
+  id: '#ctor(Ceres.Editor.Graph.Flow.ExecutableNodeView)'
+  parent: Ceres.Editor.Graph.Flow.ExecutableNodeInspector
+  langs:
+  - csharp
+  - vb
+  name: ExecutableNodeInspector(ExecutableNodeView)
+  nameWithType: ExecutableNodeInspector.ExecutableNodeInspector(ExecutableNodeView)
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.ExecutableNodeInspector(Ceres.Editor.Graph.Flow.ExecutableNodeView)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 11139
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  summary: "\nCreate inspector for the given node view\n"
+  example: []
+  syntax:
+    content: public ExecutableNodeInspector(ExecutableNodeView nodeView)
+    parameters:
+    - id: nodeView
+      type: Ceres.Editor.Graph.Flow.ExecutableNodeView
+      description: Node view to inspect
+    content.vb: Public Sub New(nodeView As ExecutableNodeView)
+  overload: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.#ctor*
+  nameWithType.vb: ExecutableNodeInspector.New(ExecutableNodeView)
+  fullName.vb: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.New(Ceres.Editor.Graph.Flow.ExecutableNodeView)
+  name.vb: New(ExecutableNodeView)
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.OnGUI
+  commentId: M:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.OnGUI
+  id: OnGUI
+  parent: Ceres.Editor.Graph.Flow.ExecutableNodeInspector
+  langs:
+  - csharp
+  - vb
+  name: OnGUI()
+  nameWithType: ExecutableNodeInspector.OnGUI()
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.OnGUI()
+  type: Method
+  source:
+    id: OnGUI
+    path: ''
+    startLine: 11248
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  summary: "\nDraw node fields using IMGUI\nCalled from IMGUIContainer.onGUIHandler\n"
+  example: []
+  syntax:
+    content: public void OnGUI()
+    content.vb: Public Sub OnGUI()
+  overload: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.OnGUI*
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.DrawPortField(Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.DrawPortField(Ceres.Editor.Graph.CeresPortView)
+  id: DrawPortField(Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.Flow.ExecutableNodeInspector
+  langs:
+  - csharp
+  - vb
+  name: DrawPortField(CeresPortView)
+  nameWithType: ExecutableNodeInspector.DrawPortField(CeresPortView)
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.DrawPortField(Ceres.Editor.Graph.CeresPortView)
+  type: Method
+  source:
+    id: DrawPortField
+    path: ''
+    startLine: 11302
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  summary: "\nDraw port field for the given port view if is editable\n"
+  example: []
+  syntax:
+    content: public bool DrawPortField(CeresPortView portView)
+    parameters:
+    - id: portView
+      type: Ceres.Editor.Graph.CeresPortView
+      description: Port view to draw field for
+    return:
+      type: System.Boolean
+      description: True if port has editable field and was drawn
+    content.vb: Public Function DrawPortField(portView As CeresPortView) As Boolean
+  overload: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.DrawPortField*
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.GetNodeData
+  commentId: M:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.GetNodeData
+  id: GetNodeData
+  parent: Ceres.Editor.Graph.Flow.ExecutableNodeInspector
+  langs:
+  - csharp
+  - vb
+  name: GetNodeData()
+  nameWithType: ExecutableNodeInspector.GetNodeData()
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.GetNodeData()
+  type: Method
+  source:
+    id: GetNodeData
+    path: ''
+    startLine: 11410
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  summary: "\nGet current node data from inspector\n"
+  example: []
+  syntax:
+    content: public object GetNodeData()
+    return:
+      type: System.Object
+      description: Node instance with current inspector values
+    content.vb: Public Function GetNodeData() As Object
+  overload: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.GetNodeData*
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.Dispose
+  commentId: M:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.Dispose
+  id: Dispose
+  parent: Ceres.Editor.Graph.Flow.ExecutableNodeInspector
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ExecutableNodeInspector.Dispose()
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 11418
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph.Flow
+  summary: "\nClean up resources\n"
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.Dispose*
+references:
+- uid: Ceres.Editor.Graph.Flow
+  commentId: N:Ceres.Editor.Graph.Flow
+  name: Ceres.Editor.Graph.Flow
+  nameWithType: Ceres.Editor.Graph.Flow
+  fullName: Ceres.Editor.Graph.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Editor.Graph.Flow
+    name: Flow
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  - name: .
+  - uid: Ceres.Editor.Graph.Flow
+    name: Flow
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.#ctor
+  name: ExecutableNodeInspector
+  nameWithType: ExecutableNodeInspector.ExecutableNodeInspector
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.ExecutableNodeInspector
+  nameWithType.vb: ExecutableNodeInspector.New
+  fullName.vb: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeView
+  commentId: T:Ceres.Editor.Graph.Flow.ExecutableNodeView
+  parent: Ceres.Editor.Graph.Flow
+  name: ExecutableNodeView
+  nameWithType: ExecutableNodeView
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeView
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.OnGUI*
+  commentId: Overload:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.OnGUI
+  name: OnGUI
+  nameWithType: ExecutableNodeInspector.OnGUI
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.OnGUI
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.DrawPortField*
+  commentId: Overload:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.DrawPortField
+  name: DrawPortField
+  nameWithType: ExecutableNodeInspector.DrawPortField
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.DrawPortField
+- uid: Ceres.Editor.Graph.CeresPortView
+  commentId: T:Ceres.Editor.Graph.CeresPortView
+  parent: Ceres.Editor.Graph
+  name: CeresPortView
+  nameWithType: CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.GetNodeData*
+  commentId: Overload:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.GetNodeData
+  name: GetNodeData
+  nameWithType: ExecutableNodeInspector.GetNodeData
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.GetNodeData
+- uid: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.Dispose*
+  commentId: Overload:Ceres.Editor.Graph.Flow.ExecutableNodeInspector.Dispose
+  name: Dispose
+  nameWithType: ExecutableNodeInspector.Dispose
+  fullName: Ceres.Editor.Graph.Flow.ExecutableNodeInspector.Dispose

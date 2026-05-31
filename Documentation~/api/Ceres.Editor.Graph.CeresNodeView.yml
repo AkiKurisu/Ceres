@@ -1,0 +1,1586 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresNodeView
+  commentId: T:Ceres.Editor.Graph.CeresNodeView
+  id: CeresNodeView
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresNodeView.#ctor
+  - Ceres.Editor.Graph.CeresNodeView.AddPortView(Ceres.Editor.Graph.CeresPortView)
+  - Ceres.Editor.Graph.CeresNodeView.FieldResolverInfos
+  - Ceres.Editor.Graph.CeresNodeView.FillDefaultNodePorts
+  - Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeProperties
+  - Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeTitle
+  - Ceres.Editor.Graph.CeresNodeView.FindConnectablePortView(Ceres.Editor.Graph.CeresPortView)
+  - Ceres.Editor.Graph.CeresNodeView.FindFieldResolver(System.String)
+  - Ceres.Editor.Graph.CeresNodeView.FindFieldResolver``1(System.String)
+  - Ceres.Editor.Graph.CeresNodeView.FindPortView(System.String,System.Int32)
+  - Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName(System.String,System.Int32)
+  - Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType(Type,System.Int32)
+  - Ceres.Editor.Graph.CeresNodeView.GetAllFieldResolverInfos
+  - Ceres.Editor.Graph.CeresNodeView.GetAllPortViews
+  - Ceres.Editor.Graph.CeresNodeView.GetContainerType
+  - Ceres.Editor.Graph.CeresNodeView.GetDefaultTooltip
+  - Ceres.Editor.Graph.CeresNodeView.GraphView
+  - Ceres.Editor.Graph.CeresNodeView.Guid
+  - Ceres.Editor.Graph.CeresNodeView.Initialize(Type,Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.CeresNodeView.NodeElement
+  - Ceres.Editor.Graph.CeresNodeView.NodeInstance
+  - Ceres.Editor.Graph.CeresNodeView.NodeType
+  - Ceres.Editor.Graph.CeresNodeView.OnSetGraphView
+  - Ceres.Editor.Graph.CeresNodeView.OnSetNodeInstanceType
+  - Ceres.Editor.Graph.CeresNodeView.OnSetupNodeElement
+  - Ceres.Editor.Graph.CeresNodeView.PortViews
+  - Ceres.Editor.Graph.CeresNodeView.ReconnectEdges
+  - Ceres.Editor.Graph.CeresNodeView.RemovePortView(Ceres.Editor.Graph.CeresPortView)
+  - Ceres.Editor.Graph.CeresNodeView.SetGraphOwner(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.CeresNodeView.SetNodeInstance(CeresNode)
+  - Ceres.Editor.Graph.CeresNodeView.SetNodeInstanceType(Type)
+  - Ceres.Editor.Graph.CeresNodeView.SetTooltip(System.String)
+  - Ceres.Editor.Graph.CeresNodeView.SetupNodeElement(NodeElement)
+  langs:
+  - csharp
+  - vb
+  name: CeresNodeView
+  nameWithType: CeresNodeView
+  fullName: Ceres.Editor.Graph.CeresNodeView
+  type: Class
+  source:
+    id: CeresNodeView
+    path: ''
+    startLine: 4468
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public abstract class CeresNodeView : ICeresNodeView'
+    content.vb: Public MustInherit Class CeresNodeView Implements ICeresNodeView
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Editor.Graph.Flow.ExecutableNodeView
+  implements:
+  - Ceres.Editor.Graph.ICeresNodeView
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Ceres.Editor.Graph.CeresNodeView.Guid
+  commentId: P:Ceres.Editor.Graph.CeresNodeView.Guid
+  id: Guid
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: Guid
+  nameWithType: CeresNodeView.Guid
+  fullName: Ceres.Editor.Graph.CeresNodeView.Guid
+  type: Property
+  source:
+    id: Guid
+    path: ''
+    startLine: 4473
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nGraph scope node view guid\n"
+  example: []
+  syntax:
+    content: public string Guid { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Guid As String
+  overload: Ceres.Editor.Graph.CeresNodeView.Guid*
+  implements:
+  - Ceres.Editor.Graph.ICeresNodeView.Guid
+- uid: Ceres.Editor.Graph.CeresNodeView.NodeElement
+  commentId: P:Ceres.Editor.Graph.CeresNodeView.NodeElement
+  id: NodeElement
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: NodeElement
+  nameWithType: CeresNodeView.NodeElement
+  fullName: Ceres.Editor.Graph.CeresNodeView.NodeElement
+  type: Property
+  source:
+    id: NodeElement
+    path: ''
+    startLine: 4478
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nNode visual element of this view\n"
+  example: []
+  syntax:
+    content: public NodeElement NodeElement { get; }
+    parameters: []
+    return:
+      type: Global.NodeElement
+    content.vb: Public Property NodeElement As NodeElement
+  overload: Ceres.Editor.Graph.CeresNodeView.NodeElement*
+  implements:
+  - Ceres.Editor.Graph.ICeresNodeView.NodeElement
+- uid: Ceres.Editor.Graph.CeresNodeView.GraphView
+  commentId: P:Ceres.Editor.Graph.CeresNodeView.GraphView
+  id: GraphView
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: GraphView
+  nameWithType: CeresNodeView.GraphView
+  fullName: Ceres.Editor.Graph.CeresNodeView.GraphView
+  type: Property
+  source:
+    id: GraphView
+    path: ''
+    startLine: 4483
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nThe graph this view attached to\n"
+  example: []
+  syntax:
+    content: public CeresGraphView GraphView { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Public Property GraphView As CeresGraphView
+  overload: Ceres.Editor.Graph.CeresNodeView.GraphView*
+- uid: Ceres.Editor.Graph.CeresNodeView.NodeType
+  commentId: P:Ceres.Editor.Graph.CeresNodeView.NodeType
+  id: NodeType
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: NodeType
+  nameWithType: CeresNodeView.NodeType
+  fullName: Ceres.Editor.Graph.CeresNodeView.NodeType
+  type: Property
+  source:
+    id: NodeType
+    path: ''
+    startLine: 4488
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nNode instance type contained by this view\n"
+  example: []
+  syntax:
+    content: public Type NodeType { get; }
+    parameters: []
+    return:
+      type: Global.Type
+    content.vb: Public Property NodeType As Type
+  overload: Ceres.Editor.Graph.CeresNodeView.NodeType*
+- uid: Ceres.Editor.Graph.CeresNodeView.NodeInstance
+  commentId: P:Ceres.Editor.Graph.CeresNodeView.NodeInstance
+  id: NodeInstance
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: NodeInstance
+  nameWithType: CeresNodeView.NodeInstance
+  fullName: Ceres.Editor.Graph.CeresNodeView.NodeInstance
+  type: Property
+  source:
+    id: NodeInstance
+    path: ''
+    startLine: 4493
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nNode instance contained by this view\n"
+  example: []
+  syntax:
+    content: public CeresNode NodeInstance { get; }
+    parameters: []
+    return:
+      type: Global.CeresNode
+    content.vb: Public Property NodeInstance As CeresNode
+  overload: Ceres.Editor.Graph.CeresNodeView.NodeInstance*
+- uid: Ceres.Editor.Graph.CeresNodeView.FieldResolverInfos
+  commentId: F:Ceres.Editor.Graph.CeresNodeView.FieldResolverInfos
+  id: FieldResolverInfos
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FieldResolverInfos
+  nameWithType: CeresNodeView.FieldResolverInfos
+  fullName: Ceres.Editor.Graph.CeresNodeView.FieldResolverInfos
+  type: Field
+  source:
+    id: FieldResolverInfos
+    path: ''
+    startLine: 4498
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nNode instance visible field resolver info collection\n"
+  example: []
+  syntax:
+    content: protected readonly List<FieldResolverInfo> FieldResolverInfos
+    return:
+      type: Global.List{Ceres.Editor.Graph.FieldResolverInfo}
+    content.vb: Protected ReadOnly FieldResolverInfos As List(Of FieldResolverInfo)
+- uid: Ceres.Editor.Graph.CeresNodeView.PortViews
+  commentId: F:Ceres.Editor.Graph.CeresNodeView.PortViews
+  id: PortViews
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: PortViews
+  nameWithType: CeresNodeView.PortViews
+  fullName: Ceres.Editor.Graph.CeresNodeView.PortViews
+  type: Field
+  source:
+    id: PortViews
+    path: ''
+    startLine: 4503
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nNode port views\n"
+  example: []
+  syntax:
+    content: protected readonly List<CeresPortView> PortViews
+    return:
+      type: Global.List{Ceres.Editor.Graph.CeresPortView}
+    content.vb: Protected ReadOnly PortViews As List(Of CeresPortView)
+- uid: Ceres.Editor.Graph.CeresNodeView.#ctor
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.#ctor
+  id: '#ctor'
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: CeresNodeView()
+  nameWithType: CeresNodeView.CeresNodeView()
+  fullName: Ceres.Editor.Graph.CeresNodeView.CeresNodeView()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4508
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nDefault constructor without initialization, please initialize node view in implementation\n"
+  example: []
+  syntax:
+    content: protected CeresNodeView()
+    content.vb: Protected Sub New()
+  overload: Ceres.Editor.Graph.CeresNodeView.#ctor*
+  nameWithType.vb: CeresNodeView.New()
+  fullName.vb: Ceres.Editor.Graph.CeresNodeView.New()
+  name.vb: New()
+- uid: Ceres.Editor.Graph.CeresNodeView.Initialize(Type,Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.Initialize(Type,Ceres.Editor.Graph.CeresGraphView)
+  id: Initialize(Type,Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: Initialize(Type, CeresGraphView)
+  nameWithType: CeresNodeView.Initialize(Type, CeresGraphView)
+  fullName: Ceres.Editor.Graph.CeresNodeView.Initialize(Type, Ceres.Editor.Graph.CeresGraphView)
+  type: Method
+  source:
+    id: Initialize
+    path: ''
+    startLine: 4518
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nInitialize node view\n"
+  example: []
+  syntax:
+    content: public void Initialize(Type nodeType, CeresGraphView graphView)
+    parameters:
+    - id: nodeType
+      type: Global.Type
+      description: ''
+    - id: graphView
+      type: Ceres.Editor.Graph.CeresGraphView
+      description: ''
+    content.vb: Public Sub Initialize(nodeType As Type, graphView As CeresGraphView)
+  overload: Ceres.Editor.Graph.CeresNodeView.Initialize*
+- uid: Ceres.Editor.Graph.CeresNodeView.SetupNodeElement(NodeElement)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.SetupNodeElement(NodeElement)
+  id: SetupNodeElement(NodeElement)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: SetupNodeElement(NodeElement)
+  nameWithType: CeresNodeView.SetupNodeElement(NodeElement)
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetupNodeElement(NodeElement)
+  type: Method
+  source:
+    id: SetupNodeElement
+    path: ''
+    startLine: 4528
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nSet node element of this view\n"
+  example: []
+  syntax:
+    content: public void SetupNodeElement(NodeElement nodeElement)
+    parameters:
+    - id: nodeElement
+      type: Global.NodeElement
+      description: ''
+    content.vb: Public Sub SetupNodeElement(nodeElement As NodeElement)
+  overload: Ceres.Editor.Graph.CeresNodeView.SetupNodeElement*
+- uid: Ceres.Editor.Graph.CeresNodeView.OnSetupNodeElement
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.OnSetupNodeElement
+  id: OnSetupNodeElement
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: OnSetupNodeElement()
+  nameWithType: CeresNodeView.OnSetupNodeElement()
+  fullName: Ceres.Editor.Graph.CeresNodeView.OnSetupNodeElement()
+  type: Method
+  source:
+    id: OnSetupNodeElement
+    path: ''
+    startLine: 4544
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nCalled in graph view initialize node style stage\n"
+  example: []
+  syntax:
+    content: protected virtual void OnSetupNodeElement()
+    content.vb: Protected Overridable Sub OnSetupNodeElement()
+  overload: Ceres.Editor.Graph.CeresNodeView.OnSetupNodeElement*
+- uid: Ceres.Editor.Graph.CeresNodeView.SetGraphOwner(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.SetGraphOwner(Ceres.Editor.Graph.CeresGraphView)
+  id: SetGraphOwner(Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: SetGraphOwner(CeresGraphView)
+  nameWithType: CeresNodeView.SetGraphOwner(CeresGraphView)
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetGraphOwner(Ceres.Editor.Graph.CeresGraphView)
+  type: Method
+  source:
+    id: SetGraphOwner
+    path: ''
+    startLine: 4553
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nSet node view&apos;s <xref href=\"Ceres.Editor.Graph.CeresNodeView.GraphView\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public void SetGraphOwner(CeresGraphView graphView)
+    parameters:
+    - id: graphView
+      type: Ceres.Editor.Graph.CeresGraphView
+      description: ''
+    content.vb: Public Sub SetGraphOwner(graphView As CeresGraphView)
+  overload: Ceres.Editor.Graph.CeresNodeView.SetGraphOwner*
+- uid: Ceres.Editor.Graph.CeresNodeView.OnSetGraphView
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.OnSetGraphView
+  id: OnSetGraphView
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: OnSetGraphView()
+  nameWithType: CeresNodeView.OnSetGraphView()
+  fullName: Ceres.Editor.Graph.CeresNodeView.OnSetGraphView()
+  type: Method
+  source:
+    id: OnSetGraphView
+    path: ''
+    startLine: 4562
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nCalled after graph view setup\n"
+  example: []
+  syntax:
+    content: protected virtual void OnSetGraphView()
+    content.vb: Protected Overridable Sub OnSetGraphView()
+  overload: Ceres.Editor.Graph.CeresNodeView.OnSetGraphView*
+- uid: Ceres.Editor.Graph.CeresNodeView.SetNodeInstanceType(Type)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.SetNodeInstanceType(Type)
+  id: SetNodeInstanceType(Type)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: SetNodeInstanceType(Type)
+  nameWithType: CeresNodeView.SetNodeInstanceType(Type)
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetNodeInstanceType(Type)
+  type: Method
+  source:
+    id: SetNodeInstanceType
+    path: ''
+    startLine: 4571
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nSet node view&apos;s <xref href=\"Ceres.Editor.Graph.CeresNodeView.NodeType\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public void SetNodeInstanceType(Type nodeType)
+    parameters:
+    - id: nodeType
+      type: Global.Type
+      description: ''
+    content.vb: Public Sub SetNodeInstanceType(nodeType As Type)
+  overload: Ceres.Editor.Graph.CeresNodeView.SetNodeInstanceType*
+- uid: Ceres.Editor.Graph.CeresNodeView.OnSetNodeInstanceType
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.OnSetNodeInstanceType
+  id: OnSetNodeInstanceType
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: OnSetNodeInstanceType()
+  nameWithType: CeresNodeView.OnSetNodeInstanceType()
+  fullName: Ceres.Editor.Graph.CeresNodeView.OnSetNodeInstanceType()
+  type: Method
+  source:
+    id: OnSetNodeInstanceType
+    path: ''
+    startLine: 4580
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nCalled after node setup or change node instance type\n"
+  example: []
+  syntax:
+    content: protected virtual void OnSetNodeInstanceType()
+    content.vb: Protected Overridable Sub OnSetNodeInstanceType()
+  overload: Ceres.Editor.Graph.CeresNodeView.OnSetNodeInstanceType*
+- uid: Ceres.Editor.Graph.CeresNodeView.FindPortView(System.String,System.Int32)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FindPortView(System.String,System.Int32)
+  id: FindPortView(System.String,System.Int32)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FindPortView(string, int)
+  nameWithType: CeresNodeView.FindPortView(string, int)
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindPortView(string, int)
+  type: Method
+  source:
+    id: FindPortView
+    path: ''
+    startLine: 4591
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFind port view with property name if existed\n"
+  example: []
+  syntax:
+    content: public CeresPortView FindPortView(string propertyName, int portIndex = 0)
+    parameters:
+    - id: propertyName
+      type: System.String
+      description: ''
+    - id: portIndex
+      type: System.Int32
+      description: ''
+    return:
+      type: Ceres.Editor.Graph.CeresPortView
+      description: ''
+    content.vb: Public Function FindPortView(propertyName As String, portIndex As Integer = 0) As CeresPortView
+  overload: Ceres.Editor.Graph.CeresNodeView.FindPortView*
+  nameWithType.vb: CeresNodeView.FindPortView(String, Integer)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeView.FindPortView(String, Integer)
+  name.vb: FindPortView(String, Integer)
+- uid: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName(System.String,System.Int32)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName(System.String,System.Int32)
+  id: FindPortViewWithDisplayName(System.String,System.Int32)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FindPortViewWithDisplayName(string, int)
+  nameWithType: CeresNodeView.FindPortViewWithDisplayName(string, int)
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName(string, int)
+  type: Method
+  source:
+    id: FindPortViewWithDisplayName
+    path: ''
+    startLine: 4602
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFind port view with display name if existed\n"
+  example: []
+  syntax:
+    content: public CeresPortView FindPortViewWithDisplayName(string displayName, int portIndex = 0)
+    parameters:
+    - id: displayName
+      type: System.String
+      description: ''
+    - id: portIndex
+      type: System.Int32
+      description: ''
+    return:
+      type: Ceres.Editor.Graph.CeresPortView
+      description: ''
+    content.vb: Public Function FindPortViewWithDisplayName(displayName As String, portIndex As Integer = 0) As CeresPortView
+  overload: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName*
+  nameWithType.vb: CeresNodeView.FindPortViewWithDisplayName(String, Integer)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName(String, Integer)
+  name.vb: FindPortViewWithDisplayName(String, Integer)
+- uid: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType(Type,System.Int32)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType(Type,System.Int32)
+  id: FindPortViewWithDisplayType(Type,System.Int32)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FindPortViewWithDisplayType(Type, int)
+  nameWithType: CeresNodeView.FindPortViewWithDisplayType(Type, int)
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType(Type, int)
+  type: Method
+  source:
+    id: FindPortViewWithDisplayType
+    path: ''
+    startLine: 4613
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFind port view with display type if existed\n"
+  example: []
+  syntax:
+    content: public CeresPortView FindPortViewWithDisplayType(Type displayType, int portIndex = 0)
+    parameters:
+    - id: displayType
+      type: Global.Type
+      description: ''
+    - id: portIndex
+      type: System.Int32
+      description: ''
+    return:
+      type: Ceres.Editor.Graph.CeresPortView
+      description: ''
+    content.vb: Public Function FindPortViewWithDisplayType(displayType As Type, portIndex As Integer = 0) As CeresPortView
+  overload: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType*
+  nameWithType.vb: CeresNodeView.FindPortViewWithDisplayType(Type, Integer)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType(Type, Integer)
+  name.vb: FindPortViewWithDisplayType(Type, Integer)
+- uid: Ceres.Editor.Graph.CeresNodeView.FindConnectablePortView(Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FindConnectablePortView(Ceres.Editor.Graph.CeresPortView)
+  id: FindConnectablePortView(Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FindConnectablePortView(CeresPortView)
+  nameWithType: CeresNodeView.FindConnectablePortView(CeresPortView)
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindConnectablePortView(Ceres.Editor.Graph.CeresPortView)
+  type: Method
+  source:
+    id: FindConnectablePortView
+    path: ''
+    startLine: 4623
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFind port view that is compatible to connect\n"
+  example: []
+  syntax:
+    content: public CeresPortView FindConnectablePortView(CeresPortView portView)
+    parameters:
+    - id: portView
+      type: Ceres.Editor.Graph.CeresPortView
+      description: ''
+    return:
+      type: Ceres.Editor.Graph.CeresPortView
+      description: ''
+    content.vb: Public Function FindConnectablePortView(portView As CeresPortView) As CeresPortView
+  overload: Ceres.Editor.Graph.CeresNodeView.FindConnectablePortView*
+- uid: Ceres.Editor.Graph.CeresNodeView.GetAllPortViews
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.GetAllPortViews
+  id: GetAllPortViews
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: GetAllPortViews()
+  nameWithType: CeresNodeView.GetAllPortViews()
+  fullName: Ceres.Editor.Graph.CeresNodeView.GetAllPortViews()
+  type: Method
+  source:
+    id: GetAllPortViews
+    path: ''
+    startLine: 4632
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nGet all port views\n"
+  example: []
+  syntax:
+    content: public CeresPortView[] GetAllPortViews()
+    return:
+      type: Ceres.Editor.Graph.CeresPortView[]
+      description: ''
+    content.vb: Public Function GetAllPortViews() As CeresPortView()
+  overload: Ceres.Editor.Graph.CeresNodeView.GetAllPortViews*
+- uid: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FindFieldResolver(System.String)
+  id: FindFieldResolver(System.String)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FindFieldResolver(string)
+  nameWithType: CeresNodeView.FindFieldResolver(string)
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver(string)
+  type: Method
+  source:
+    id: FindFieldResolver
+    path: ''
+    startLine: 4642
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFind field resolver with field name if existed\n"
+  example: []
+  syntax:
+    content: public IFieldResolver FindFieldResolver(string fieldName)
+    parameters:
+    - id: fieldName
+      type: System.String
+      description: ''
+    return:
+      type: Ceres.Editor.Graph.IFieldResolver
+      description: ''
+    content.vb: Public Function FindFieldResolver(fieldName As String) As IFieldResolver
+  overload: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver*
+  nameWithType.vb: CeresNodeView.FindFieldResolver(String)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver(String)
+  name.vb: FindFieldResolver(String)
+- uid: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver``1(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FindFieldResolver``1(System.String)
+  id: FindFieldResolver``1(System.String)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FindFieldResolver<T>(string)
+  nameWithType: CeresNodeView.FindFieldResolver<T>(string)
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver<T>(string)
+  type: Method
+  source:
+    id: FindFieldResolver
+    path: ''
+    startLine: 4647
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public T FindFieldResolver<T>(string fieldName) where T : class, IFieldResolver'
+    parameters:
+    - id: fieldName
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function FindFieldResolver(Of T As {Class, IFieldResolver})(fieldName As String) As T
+  overload: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver*
+  nameWithType.vb: CeresNodeView.FindFieldResolver(Of T)(String)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver(Of T)(String)
+  name.vb: FindFieldResolver(Of T)(String)
+- uid: Ceres.Editor.Graph.CeresNodeView.GetAllFieldResolverInfos
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.GetAllFieldResolverInfos
+  id: GetAllFieldResolverInfos
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: GetAllFieldResolverInfos()
+  nameWithType: CeresNodeView.GetAllFieldResolverInfos()
+  fullName: Ceres.Editor.Graph.CeresNodeView.GetAllFieldResolverInfos()
+  type: Method
+  source:
+    id: GetAllFieldResolverInfos
+    path: ''
+    startLine: 4656
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nGet all field resolver infos\n"
+  example: []
+  syntax:
+    content: public FieldResolverInfo[] GetAllFieldResolverInfos()
+    return:
+      type: Ceres.Editor.Graph.FieldResolverInfo[]
+      description: ''
+    content.vb: Public Function GetAllFieldResolverInfos() As FieldResolverInfo()
+  overload: Ceres.Editor.Graph.CeresNodeView.GetAllFieldResolverInfos*
+- uid: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeProperties
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeProperties
+  id: FillDefaultNodeProperties
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FillDefaultNodeProperties()
+  nameWithType: CeresNodeView.FillDefaultNodeProperties()
+  fullName: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeProperties()
+  type: Method
+  source:
+    id: FillDefaultNodeProperties
+    path: ''
+    startLine: 4664
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFill node element with default properties\n"
+  example: []
+  syntax:
+    content: protected void FillDefaultNodeProperties()
+    content.vb: Protected Sub FillDefaultNodeProperties()
+  overload: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeProperties*
+- uid: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeTitle
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeTitle
+  id: FillDefaultNodeTitle
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FillDefaultNodeTitle()
+  nameWithType: CeresNodeView.FillDefaultNodeTitle()
+  fullName: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeTitle()
+  type: Method
+  source:
+    id: FillDefaultNodeTitle
+    path: ''
+    startLine: 4692
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFill node element with default title\n"
+  example: []
+  syntax:
+    content: protected void FillDefaultNodeTitle()
+    content.vb: Protected Sub FillDefaultNodeTitle()
+  overload: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeTitle*
+- uid: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodePorts
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.FillDefaultNodePorts
+  id: FillDefaultNodePorts
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: FillDefaultNodePorts()
+  nameWithType: CeresNodeView.FillDefaultNodePorts()
+  fullName: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodePorts()
+  type: Method
+  source:
+    id: FillDefaultNodePorts
+    path: ''
+    startLine: 4711
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nFill node element with default ports\n"
+  example: []
+  syntax:
+    content: protected void FillDefaultNodePorts()
+    content.vb: Protected Sub FillDefaultNodePorts()
+  overload: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodePorts*
+- uid: Ceres.Editor.Graph.CeresNodeView.GetContainerType
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.GetContainerType
+  id: GetContainerType
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: GetContainerType()
+  nameWithType: CeresNodeView.GetContainerType()
+  fullName: Ceres.Editor.Graph.CeresNodeView.GetContainerType()
+  type: Method
+  source:
+    id: GetContainerType
+    path: ''
+    startLine: 4732
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected Type GetContainerType()
+    return:
+      type: Global.Type
+    content.vb: Protected Function GetContainerType() As Type
+  overload: Ceres.Editor.Graph.CeresNodeView.GetContainerType*
+- uid: Ceres.Editor.Graph.CeresNodeView.AddPortView(Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.AddPortView(Ceres.Editor.Graph.CeresPortView)
+  id: AddPortView(Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: AddPortView(CeresPortView)
+  nameWithType: CeresNodeView.AddPortView(CeresPortView)
+  fullName: Ceres.Editor.Graph.CeresNodeView.AddPortView(Ceres.Editor.Graph.CeresPortView)
+  type: Method
+  source:
+    id: AddPortView
+    path: ''
+    startLine: 4737
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public virtual void AddPortView(CeresPortView portView)
+    parameters:
+    - id: portView
+      type: Ceres.Editor.Graph.CeresPortView
+    content.vb: Public Overridable Sub AddPortView(portView As CeresPortView)
+  overload: Ceres.Editor.Graph.CeresNodeView.AddPortView*
+- uid: Ceres.Editor.Graph.CeresNodeView.RemovePortView(Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.RemovePortView(Ceres.Editor.Graph.CeresPortView)
+  id: RemovePortView(Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: RemovePortView(CeresPortView)
+  nameWithType: CeresNodeView.RemovePortView(CeresPortView)
+  fullName: Ceres.Editor.Graph.CeresNodeView.RemovePortView(Ceres.Editor.Graph.CeresPortView)
+  type: Method
+  source:
+    id: RemovePortView
+    path: ''
+    startLine: 4750
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public virtual void RemovePortView(CeresPortView portView)
+    parameters:
+    - id: portView
+      type: Ceres.Editor.Graph.CeresPortView
+    content.vb: Public Overridable Sub RemovePortView(portView As CeresPortView)
+  overload: Ceres.Editor.Graph.CeresNodeView.RemovePortView*
+- uid: Ceres.Editor.Graph.CeresNodeView.SetNodeInstance(CeresNode)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.SetNodeInstance(CeresNode)
+  id: SetNodeInstance(CeresNode)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: SetNodeInstance(CeresNode)
+  nameWithType: CeresNodeView.SetNodeInstance(CeresNode)
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetNodeInstance(CeresNode)
+  type: Method
+  source:
+    id: SetNodeInstance
+    path: ''
+    startLine: 4760
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nSet node instance attached to this view and restore all properties\n"
+  example: []
+  syntax:
+    content: public virtual void SetNodeInstance(CeresNode ceresNode)
+    parameters:
+    - id: ceresNode
+      type: Global.CeresNode
+      description: ''
+    content.vb: Public Overridable Sub SetNodeInstance(ceresNode As CeresNode)
+  overload: Ceres.Editor.Graph.CeresNodeView.SetNodeInstance*
+- uid: Ceres.Editor.Graph.CeresNodeView.ReconnectEdges
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.ReconnectEdges
+  id: ReconnectEdges
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: ReconnectEdges()
+  nameWithType: CeresNodeView.ReconnectEdges()
+  fullName: Ceres.Editor.Graph.CeresNodeView.ReconnectEdges()
+  type: Method
+  source:
+    id: ReconnectEdges
+    path: ''
+    startLine: 4778
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nReconnect edge from current metadata\n"
+  example: []
+  syntax:
+    content: public void ReconnectEdges()
+    content.vb: Public Sub ReconnectEdges()
+  overload: Ceres.Editor.Graph.CeresNodeView.ReconnectEdges*
+- uid: Ceres.Editor.Graph.CeresNodeView.SetTooltip(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.SetTooltip(System.String)
+  id: SetTooltip(System.String)
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: SetTooltip(string)
+  nameWithType: CeresNodeView.SetTooltip(string)
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetTooltip(string)
+  type: Method
+  source:
+    id: SetTooltip
+    path: ''
+    startLine: 4787
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nSet node tooltip\n"
+  example: []
+  syntax:
+    content: public void SetTooltip(string tooltip)
+    parameters:
+    - id: tooltip
+      type: System.String
+      description: ''
+    content.vb: Public Sub SetTooltip(tooltip As String)
+  overload: Ceres.Editor.Graph.CeresNodeView.SetTooltip*
+  nameWithType.vb: CeresNodeView.SetTooltip(String)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeView.SetTooltip(String)
+  name.vb: SetTooltip(String)
+- uid: Ceres.Editor.Graph.CeresNodeView.GetDefaultTooltip
+  commentId: M:Ceres.Editor.Graph.CeresNodeView.GetDefaultTooltip
+  id: GetDefaultTooltip
+  parent: Ceres.Editor.Graph.CeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultTooltip()
+  nameWithType: CeresNodeView.GetDefaultTooltip()
+  fullName: Ceres.Editor.Graph.CeresNodeView.GetDefaultTooltip()
+  type: Method
+  source:
+    id: GetDefaultTooltip
+    path: ''
+    startLine: 4802
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Editor.Graph
+  summary: "\nGet node default tooltip\n"
+  example: []
+  syntax:
+    content: public virtual string GetDefaultTooltip()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Overridable Function GetDefaultTooltip() As String
+  overload: Ceres.Editor.Graph.CeresNodeView.GetDefaultTooltip*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.ICeresNodeView
+  commentId: T:Ceres.Editor.Graph.ICeresNodeView
+  parent: Ceres.Editor.Graph
+  name: ICeresNodeView
+  nameWithType: ICeresNodeView
+  fullName: Ceres.Editor.Graph.ICeresNodeView
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.CeresNodeView.Guid*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.Guid
+  name: Guid
+  nameWithType: CeresNodeView.Guid
+  fullName: Ceres.Editor.Graph.CeresNodeView.Guid
+- uid: Ceres.Editor.Graph.ICeresNodeView.Guid
+  commentId: P:Ceres.Editor.Graph.ICeresNodeView.Guid
+  parent: Ceres.Editor.Graph.ICeresNodeView
+  name: Guid
+  nameWithType: ICeresNodeView.Guid
+  fullName: Ceres.Editor.Graph.ICeresNodeView.Guid
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Editor.Graph.CeresNodeView.NodeElement*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.NodeElement
+  name: NodeElement
+  nameWithType: CeresNodeView.NodeElement
+  fullName: Ceres.Editor.Graph.CeresNodeView.NodeElement
+- uid: Ceres.Editor.Graph.ICeresNodeView.NodeElement
+  commentId: P:Ceres.Editor.Graph.ICeresNodeView.NodeElement
+  parent: Ceres.Editor.Graph.ICeresNodeView
+  name: NodeElement
+  nameWithType: ICeresNodeView.NodeElement
+  fullName: Ceres.Editor.Graph.ICeresNodeView.NodeElement
+- uid: Global.NodeElement
+  isExternal: true
+  name: NodeElement
+  nameWithType: NodeElement
+  fullName: NodeElement
+- uid: Ceres.Editor.Graph.CeresNodeView.GraphView*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.GraphView
+  name: GraphView
+  nameWithType: CeresNodeView.GraphView
+  fullName: Ceres.Editor.Graph.CeresNodeView.GraphView
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.CeresNodeView.NodeType*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.NodeType
+  name: NodeType
+  nameWithType: CeresNodeView.NodeType
+  fullName: Ceres.Editor.Graph.CeresNodeView.NodeType
+- uid: Global.Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: Ceres.Editor.Graph.CeresNodeView.NodeInstance*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.NodeInstance
+  name: NodeInstance
+  nameWithType: CeresNodeView.NodeInstance
+  fullName: Ceres.Editor.Graph.CeresNodeView.NodeInstance
+- uid: Global.CeresNode
+  isExternal: true
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: CeresNode
+- uid: Global.List{Ceres.Editor.Graph.FieldResolverInfo}
+  commentId: '!:Global.List{Ceres.Editor.Graph.FieldResolverInfo}'
+  definition: Global.List`1
+  name: List<FieldResolverInfo>
+  nameWithType: List<FieldResolverInfo>
+  fullName: List<Ceres.Editor.Graph.FieldResolverInfo>
+  nameWithType.vb: List(Of FieldResolverInfo)
+  fullName.vb: List(Of Ceres.Editor.Graph.FieldResolverInfo)
+  name.vb: List(Of FieldResolverInfo)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Ceres.Editor.Graph.FieldResolverInfo
+    name: FieldResolverInfo
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.Graph.FieldResolverInfo
+    name: FieldResolverInfo
+  - name: )
+- uid: Global.List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.List{Ceres.Editor.Graph.CeresPortView}
+  commentId: '!:Global.List{Ceres.Editor.Graph.CeresPortView}'
+  definition: Global.List`1
+  name: List<CeresPortView>
+  nameWithType: List<CeresPortView>
+  fullName: List<Ceres.Editor.Graph.CeresPortView>
+  nameWithType.vb: List(Of CeresPortView)
+  fullName.vb: List(Of Ceres.Editor.Graph.CeresPortView)
+  name.vb: List(Of CeresPortView)
+  spec.csharp:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+  - name: '>'
+  spec.vb:
+  - uid: Global.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeView.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.#ctor
+  name: CeresNodeView
+  nameWithType: CeresNodeView.CeresNodeView
+  fullName: Ceres.Editor.Graph.CeresNodeView.CeresNodeView
+  nameWithType.vb: CeresNodeView.New
+  fullName.vb: Ceres.Editor.Graph.CeresNodeView.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.CeresNodeView.Initialize*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.Initialize
+  name: Initialize
+  nameWithType: CeresNodeView.Initialize
+  fullName: Ceres.Editor.Graph.CeresNodeView.Initialize
+- uid: Ceres.Editor.Graph.CeresNodeView.SetupNodeElement*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.SetupNodeElement
+  name: SetupNodeElement
+  nameWithType: CeresNodeView.SetupNodeElement
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetupNodeElement
+- uid: Ceres.Editor.Graph.CeresNodeView.OnSetupNodeElement*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.OnSetupNodeElement
+  name: OnSetupNodeElement
+  nameWithType: CeresNodeView.OnSetupNodeElement
+  fullName: Ceres.Editor.Graph.CeresNodeView.OnSetupNodeElement
+- uid: Ceres.Editor.Graph.CeresNodeView.GraphView
+  commentId: P:Ceres.Editor.Graph.CeresNodeView.GraphView
+  parent: Ceres.Editor.Graph.CeresNodeView
+  name: GraphView
+  nameWithType: CeresNodeView.GraphView
+  fullName: Ceres.Editor.Graph.CeresNodeView.GraphView
+- uid: Ceres.Editor.Graph.CeresNodeView.SetGraphOwner*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.SetGraphOwner
+  name: SetGraphOwner
+  nameWithType: CeresNodeView.SetGraphOwner
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetGraphOwner
+- uid: Ceres.Editor.Graph.CeresNodeView
+  commentId: T:Ceres.Editor.Graph.CeresNodeView
+  parent: Ceres.Editor.Graph
+  name: CeresNodeView
+  nameWithType: CeresNodeView
+  fullName: Ceres.Editor.Graph.CeresNodeView
+- uid: Ceres.Editor.Graph.CeresNodeView.OnSetGraphView*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.OnSetGraphView
+  name: OnSetGraphView
+  nameWithType: CeresNodeView.OnSetGraphView
+  fullName: Ceres.Editor.Graph.CeresNodeView.OnSetGraphView
+- uid: Ceres.Editor.Graph.CeresNodeView.NodeType
+  commentId: P:Ceres.Editor.Graph.CeresNodeView.NodeType
+  parent: Ceres.Editor.Graph.CeresNodeView
+  name: NodeType
+  nameWithType: CeresNodeView.NodeType
+  fullName: Ceres.Editor.Graph.CeresNodeView.NodeType
+- uid: Ceres.Editor.Graph.CeresNodeView.SetNodeInstanceType*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.SetNodeInstanceType
+  name: SetNodeInstanceType
+  nameWithType: CeresNodeView.SetNodeInstanceType
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetNodeInstanceType
+- uid: Ceres.Editor.Graph.CeresNodeView.OnSetNodeInstanceType*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.OnSetNodeInstanceType
+  name: OnSetNodeInstanceType
+  nameWithType: CeresNodeView.OnSetNodeInstanceType
+  fullName: Ceres.Editor.Graph.CeresNodeView.OnSetNodeInstanceType
+- uid: Ceres.Editor.Graph.CeresNodeView.FindPortView*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.FindPortView
+  name: FindPortView
+  nameWithType: CeresNodeView.FindPortView
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindPortView
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Editor.Graph.CeresPortView
+  commentId: T:Ceres.Editor.Graph.CeresPortView
+  parent: Ceres.Editor.Graph
+  name: CeresPortView
+  nameWithType: CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView
+- uid: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName
+  name: FindPortViewWithDisplayName
+  nameWithType: CeresNodeView.FindPortViewWithDisplayName
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayName
+- uid: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType
+  name: FindPortViewWithDisplayType
+  nameWithType: CeresNodeView.FindPortViewWithDisplayType
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindPortViewWithDisplayType
+- uid: Ceres.Editor.Graph.CeresNodeView.FindConnectablePortView*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.FindConnectablePortView
+  name: FindConnectablePortView
+  nameWithType: CeresNodeView.FindConnectablePortView
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindConnectablePortView
+- uid: Ceres.Editor.Graph.CeresNodeView.GetAllPortViews*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.GetAllPortViews
+  name: GetAllPortViews
+  nameWithType: CeresNodeView.GetAllPortViews
+  fullName: Ceres.Editor.Graph.CeresNodeView.GetAllPortViews
+- uid: Ceres.Editor.Graph.CeresPortView[]
+  isExternal: true
+  name: CeresPortView[]
+  nameWithType: CeresPortView[]
+  fullName: Ceres.Editor.Graph.CeresPortView[]
+  nameWithType.vb: CeresPortView()
+  fullName.vb: Ceres.Editor.Graph.CeresPortView()
+  name.vb: CeresPortView()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.FindFieldResolver
+  name: FindFieldResolver
+  nameWithType: CeresNodeView.FindFieldResolver
+  fullName: Ceres.Editor.Graph.CeresNodeView.FindFieldResolver
+- uid: Ceres.Editor.Graph.IFieldResolver
+  commentId: T:Ceres.Editor.Graph.IFieldResolver
+  parent: Ceres.Editor.Graph
+  name: IFieldResolver
+  nameWithType: IFieldResolver
+  fullName: Ceres.Editor.Graph.IFieldResolver
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Editor.Graph.CeresNodeView.GetAllFieldResolverInfos*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.GetAllFieldResolverInfos
+  name: GetAllFieldResolverInfos
+  nameWithType: CeresNodeView.GetAllFieldResolverInfos
+  fullName: Ceres.Editor.Graph.CeresNodeView.GetAllFieldResolverInfos
+- uid: Ceres.Editor.Graph.FieldResolverInfo[]
+  isExternal: true
+  name: FieldResolverInfo[]
+  nameWithType: FieldResolverInfo[]
+  fullName: Ceres.Editor.Graph.FieldResolverInfo[]
+  nameWithType.vb: FieldResolverInfo()
+  fullName.vb: Ceres.Editor.Graph.FieldResolverInfo()
+  name.vb: FieldResolverInfo()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolverInfo
+    name: FieldResolverInfo
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolverInfo
+    name: FieldResolverInfo
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeProperties*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeProperties
+  name: FillDefaultNodeProperties
+  nameWithType: CeresNodeView.FillDefaultNodeProperties
+  fullName: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeProperties
+- uid: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeTitle*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeTitle
+  name: FillDefaultNodeTitle
+  nameWithType: CeresNodeView.FillDefaultNodeTitle
+  fullName: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodeTitle
+- uid: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodePorts*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.FillDefaultNodePorts
+  name: FillDefaultNodePorts
+  nameWithType: CeresNodeView.FillDefaultNodePorts
+  fullName: Ceres.Editor.Graph.CeresNodeView.FillDefaultNodePorts
+- uid: Ceres.Editor.Graph.CeresNodeView.GetContainerType*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.GetContainerType
+  name: GetContainerType
+  nameWithType: CeresNodeView.GetContainerType
+  fullName: Ceres.Editor.Graph.CeresNodeView.GetContainerType
+- uid: Ceres.Editor.Graph.CeresNodeView.AddPortView*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.AddPortView
+  name: AddPortView
+  nameWithType: CeresNodeView.AddPortView
+  fullName: Ceres.Editor.Graph.CeresNodeView.AddPortView
+- uid: Ceres.Editor.Graph.CeresNodeView.RemovePortView*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.RemovePortView
+  name: RemovePortView
+  nameWithType: CeresNodeView.RemovePortView
+  fullName: Ceres.Editor.Graph.CeresNodeView.RemovePortView
+- uid: Ceres.Editor.Graph.CeresNodeView.SetNodeInstance*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.SetNodeInstance
+  name: SetNodeInstance
+  nameWithType: CeresNodeView.SetNodeInstance
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetNodeInstance
+- uid: Ceres.Editor.Graph.CeresNodeView.ReconnectEdges*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.ReconnectEdges
+  name: ReconnectEdges
+  nameWithType: CeresNodeView.ReconnectEdges
+  fullName: Ceres.Editor.Graph.CeresNodeView.ReconnectEdges
+- uid: Ceres.Editor.Graph.CeresNodeView.SetTooltip*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.SetTooltip
+  name: SetTooltip
+  nameWithType: CeresNodeView.SetTooltip
+  fullName: Ceres.Editor.Graph.CeresNodeView.SetTooltip
+- uid: Ceres.Editor.Graph.CeresNodeView.GetDefaultTooltip*
+  commentId: Overload:Ceres.Editor.Graph.CeresNodeView.GetDefaultTooltip
+  name: GetDefaultTooltip
+  nameWithType: CeresNodeView.GetDefaultTooltip
+  fullName: Ceres.Editor.Graph.CeresNodeView.GetDefaultTooltip

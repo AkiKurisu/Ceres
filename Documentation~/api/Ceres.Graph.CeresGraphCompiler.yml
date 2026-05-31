@@ -1,0 +1,240 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.CeresGraphCompiler
+  commentId: T:Ceres.Graph.CeresGraphCompiler
+  id: CeresGraphCompiler
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.CeresGraphCompiler.Context
+  - Ceres.Graph.CeresGraphCompiler.Dispose
+  - Ceres.Graph.CeresGraphCompiler.GetPooled(Ceres.Graph.CeresGraph,Ceres.Graph.ICeresGraphCompilationContext)
+  - Ceres.Graph.CeresGraphCompiler.Source
+  - Ceres.Graph.CeresGraphCompiler.Target
+  langs:
+  - csharp
+  - vb
+  name: CeresGraphCompiler
+  nameWithType: CeresGraphCompiler
+  fullName: Ceres.Graph.CeresGraphCompiler
+  type: Class
+  source:
+    id: CeresGraphCompiler
+    path: ''
+    startLine: 18946
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nCeres graph compiler\n"
+  example: []
+  syntax:
+    content: 'public sealed class CeresGraphCompiler : IDisposable'
+    content.vb: Public NotInheritable Class CeresGraphCompiler Inherits IDisposable
+  inheritance:
+  - System.Object
+- uid: Ceres.Graph.CeresGraphCompiler.Source
+  commentId: P:Ceres.Graph.CeresGraphCompiler.Source
+  id: Source
+  parent: Ceres.Graph.CeresGraphCompiler
+  langs:
+  - csharp
+  - vb
+  name: Source
+  nameWithType: CeresGraphCompiler.Source
+  fullName: Ceres.Graph.CeresGraphCompiler.Source
+  type: Property
+  source:
+    id: Source
+    path: ''
+    startLine: 18953
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nCompilation source graph, will not change during compilation\n"
+  example: []
+  syntax:
+    content: public CeresGraph Source { get; }
+    parameters: []
+    return:
+      type: Ceres.Graph.CeresGraph
+    content.vb: Public Property Source As CeresGraph
+  overload: Ceres.Graph.CeresGraphCompiler.Source*
+- uid: Ceres.Graph.CeresGraphCompiler.Target
+  commentId: P:Ceres.Graph.CeresGraphCompiler.Target
+  id: Target
+  parent: Ceres.Graph.CeresGraphCompiler
+  langs:
+  - csharp
+  - vb
+  name: Target
+  nameWithType: CeresGraphCompiler.Target
+  fullName: Ceres.Graph.CeresGraphCompiler.Target
+  type: Property
+  source:
+    id: Target
+    path: ''
+    startLine: 18958
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  summary: "\nCompilation target graph\n"
+  example: []
+  syntax:
+    content: public CeresGraph Target { get; }
+    parameters: []
+    return:
+      type: Ceres.Graph.CeresGraph
+    content.vb: Public Property Target As CeresGraph
+  overload: Ceres.Graph.CeresGraphCompiler.Target*
+- uid: Ceres.Graph.CeresGraphCompiler.Context
+  commentId: P:Ceres.Graph.CeresGraphCompiler.Context
+  id: Context
+  parent: Ceres.Graph.CeresGraphCompiler
+  langs:
+  - csharp
+  - vb
+  name: Context
+  nameWithType: CeresGraphCompiler.Context
+  fullName: Ceres.Graph.CeresGraphCompiler.Context
+  type: Property
+  source:
+    id: Context
+    path: ''
+    startLine: 18960
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public ICeresGraphCompilationContext Context { get; set; }
+    parameters: []
+    return:
+      type: Ceres.Graph.ICeresGraphCompilationContext
+    content.vb: Public Property Context As ICeresGraphCompilationContext
+  overload: Ceres.Graph.CeresGraphCompiler.Context*
+- uid: Ceres.Graph.CeresGraphCompiler.GetPooled(Ceres.Graph.CeresGraph,Ceres.Graph.ICeresGraphCompilationContext)
+  commentId: M:Ceres.Graph.CeresGraphCompiler.GetPooled(Ceres.Graph.CeresGraph,Ceres.Graph.ICeresGraphCompilationContext)
+  id: GetPooled(Ceres.Graph.CeresGraph,Ceres.Graph.ICeresGraphCompilationContext)
+  parent: Ceres.Graph.CeresGraphCompiler
+  langs:
+  - csharp
+  - vb
+  name: GetPooled(CeresGraph, ICeresGraphCompilationContext)
+  nameWithType: CeresGraphCompiler.GetPooled(CeresGraph, ICeresGraphCompilationContext)
+  fullName: Ceres.Graph.CeresGraphCompiler.GetPooled(Ceres.Graph.CeresGraph, Ceres.Graph.ICeresGraphCompilationContext)
+  type: Method
+  source:
+    id: GetPooled
+    path: ''
+    startLine: 18966
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public static CeresGraphCompiler GetPooled(CeresGraph graph, ICeresGraphCompilationContext context = null)
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraph
+    - id: context
+      type: Ceres.Graph.ICeresGraphCompilationContext
+    return:
+      type: Ceres.Graph.CeresGraphCompiler
+    content.vb: Public Shared Function GetPooled(graph As CeresGraph, context As ICeresGraphCompilationContext = Nothing) As CeresGraphCompiler
+  overload: Ceres.Graph.CeresGraphCompiler.GetPooled*
+- uid: Ceres.Graph.CeresGraphCompiler.Dispose
+  commentId: M:Ceres.Graph.CeresGraphCompiler.Dispose
+  id: Dispose
+  parent: Ceres.Graph.CeresGraphCompiler
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: CeresGraphCompiler.Dispose()
+  fullName: Ceres.Graph.CeresGraphCompiler.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 18978
+  assemblies:
+  - cs.temp.dll
+  namespace: Ceres.Graph
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Graph.CeresGraphCompiler.Dispose*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.CeresGraphCompiler.Source*
+  commentId: Overload:Ceres.Graph.CeresGraphCompiler.Source
+  name: Source
+  nameWithType: CeresGraphCompiler.Source
+  fullName: Ceres.Graph.CeresGraphCompiler.Source
+- uid: Ceres.Graph.CeresGraph
+  commentId: T:Ceres.Graph.CeresGraph
+  parent: Ceres.Graph
+  name: CeresGraph
+  nameWithType: CeresGraph
+  fullName: Ceres.Graph.CeresGraph
+- uid: Ceres.Graph.CeresGraphCompiler.Target*
+  commentId: Overload:Ceres.Graph.CeresGraphCompiler.Target
+  name: Target
+  nameWithType: CeresGraphCompiler.Target
+  fullName: Ceres.Graph.CeresGraphCompiler.Target
+- uid: Ceres.Graph.CeresGraphCompiler.Context*
+  commentId: Overload:Ceres.Graph.CeresGraphCompiler.Context
+  name: Context
+  nameWithType: CeresGraphCompiler.Context
+  fullName: Ceres.Graph.CeresGraphCompiler.Context
+- uid: Ceres.Graph.ICeresGraphCompilationContext
+  commentId: T:Ceres.Graph.ICeresGraphCompilationContext
+  parent: Ceres.Graph
+  name: ICeresGraphCompilationContext
+  nameWithType: ICeresGraphCompilationContext
+  fullName: Ceres.Graph.ICeresGraphCompilationContext
+- uid: Ceres.Graph.CeresGraphCompiler.GetPooled*
+  commentId: Overload:Ceres.Graph.CeresGraphCompiler.GetPooled
+  name: GetPooled
+  nameWithType: CeresGraphCompiler.GetPooled
+  fullName: Ceres.Graph.CeresGraphCompiler.GetPooled
+- uid: Ceres.Graph.CeresGraphCompiler
+  commentId: T:Ceres.Graph.CeresGraphCompiler
+  parent: Ceres.Graph
+  name: CeresGraphCompiler
+  nameWithType: CeresGraphCompiler
+  fullName: Ceres.Graph.CeresGraphCompiler
+- uid: Ceres.Graph.CeresGraphCompiler.Dispose*
+  commentId: Overload:Ceres.Graph.CeresGraphCompiler.Dispose
+  name: Dispose
+  nameWithType: CeresGraphCompiler.Dispose
+  fullName: Ceres.Graph.CeresGraphCompiler.Dispose
