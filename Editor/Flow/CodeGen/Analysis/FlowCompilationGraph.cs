@@ -80,7 +80,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             var portData = arrayIndex < 0
                 ? target.NodeData.FindPortData(propertyName)
                 : target.NodeData.FindPortData(propertyName, arrayIndex);
-            var directConnection = portData?.connections?.FirstOrDefault(x => !x.isFlattened);
+            var directConnection = portData?.connections?.FirstOrDefault();
             if (directConnection != null && TryGetNode(directConnection.nodeId, out var source))
             {
                 connection = new FlowConnection(source, directConnection.portId, directConnection.portIndex);
@@ -93,8 +93,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 {
                     foreach (var candidateConnection in candidatePort.connections ?? Array.Empty<PortConnectionData>())
                     {
-                        if (candidateConnection.isFlattened ||
-                            candidateConnection.nodeId != target.Guid ||
+                        if (candidateConnection.nodeId != target.Guid ||
                             candidateConnection.portId != propertyName ||
                             (arrayIndex >= 0 && candidateConnection.portIndex != arrayIndex))
                         {
@@ -141,7 +140,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             var portData = arrayIndex < 0
                 ? source.NodeData.FindPortData(propertyName)
                 : source.NodeData.FindPortData(propertyName, arrayIndex);
-            var connection = portData?.connections?.FirstOrDefault(x => !x.isFlattened);
+            var connection = portData?.connections?.FirstOrDefault();
             return connection != null && TryGetNode(connection.nodeId, out var target)
                 ? new FlowConnection(target, connection.portId, connection.portIndex)
                 : default;
@@ -153,7 +152,6 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 .Where(port => port.propertyName == propertyName)
                 .OrderBy(port => port.arrayIndex)
                 .SelectMany(port => port.connections ?? Array.Empty<PortConnectionData>())
-                .Where(connection => !connection.isFlattened)
                 .Select(connection => TryGetNode(connection.nodeId, out var target)
                     ? new FlowConnection(target, connection.portId, connection.portIndex)
                     : default)
@@ -168,11 +166,6 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 {
                     foreach (var connection in portData.connections ?? Array.Empty<PortConnectionData>())
                     {
-                        if (connection.isFlattened)
-                        {
-                            continue;
-                        }
-
                         if (IsInputPort(owner, portData))
                         {
                             AddConsumer(
@@ -305,7 +298,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
                 foreach (var connection in portData.connections ?? Array.Empty<PortConnectionData>())
                 {
-                    if (!connection.isFlattened && TryGetNode(connection.nodeId, out var target))
+                    if (TryGetNode(connection.nodeId, out var target))
                     {
                         yield return target;
                     }

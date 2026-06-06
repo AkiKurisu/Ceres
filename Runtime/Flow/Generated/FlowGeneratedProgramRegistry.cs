@@ -38,6 +38,8 @@ namespace Ceres.Graph.Flow
 
     public interface IFlowEventExecutionHandler
     {
+        bool CanExecuteCustomEvent(long eventTypeId);
+
         void ExecuteCustomEvent(EventBase eventBase);
     }
 
@@ -70,11 +72,15 @@ namespace Ceres.Graph.Flow
                 ExecuteCustomEvent(evt);
             }
 
+            public bool CanExecuteCustomEvent(long eventTypeId)
+            {
+                return _program != null && _program.TryGetCustomEventName(eventTypeId, out _);
+            }
+
             public void ExecuteCustomEvent(EventBase eventBase)
             {
                 if (_program == null || !_contextObject) return;
-                var eventName = CustomExecutionEvent.GetEventName(eventBase.EventTypeId);
-                if (string.IsNullOrEmpty(eventName)) return;
+                if (!_program.TryGetCustomEventName(eventBase.EventTypeId, out var eventName)) return;
                 _program.TryExecuteEvent(_contextObject, eventName, eventBase);
             }
 
@@ -110,6 +116,12 @@ namespace Ceres.Graph.Flow
         }
 
         public abstract bool TryExecuteEvent(UObject contextObject, string eventName, EventBase evtBase = null);
+
+        protected virtual bool TryGetCustomEventName(long eventTypeId, out string eventName)
+        {
+            eventName = CustomExecutionEvent.GetEventName(eventTypeId);
+            return !string.IsNullOrEmpty(eventName);
+        }
 
         public CallbackEventHandler GetEventHandler(UObject contextObject)
         {

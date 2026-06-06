@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using Ceres.Graph;
 using Ceres.Graph.Flow;
 using Ceres.Graph.Flow.CustomFunctions;
@@ -42,6 +43,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
             private readonly Dictionary<FlowOutputKey, PersistentOutputBinding> _persistentOutputs = new();
 
+            private readonly Dictionary<string, GraphValueBinding> _graphValueBindings = new();
+
             private readonly HashSet<string> _loweringStack = new();
 
             private CsMethod _currentMethod;
@@ -72,7 +75,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     LowerSetSharedVariable,
                     BuildGetPropertyExpression,
                     BuildSelfReferenceExpression,
-                    BuildGetSharedVariableExpression);
+                    BuildGetSharedVariableExpression,
+                    BuildNodeFieldValueExpression);
             }
 
             public CsCompilationUnit TryCompile()
@@ -285,6 +289,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     model.ConstructorBody.AddRaw($"{binding.FieldName} = {binding.InitializerExpression};");
                 }
 
+                foreach (var binding in _graphValueBindings.Values)
+                {
+                    model.Fields.Add(new CsField("private readonly", binding.Type, binding.FieldName));
+                    model.ConstructorBody.AddRaw($"{binding.FieldName} = {binding.InitializerExpression};");
+                }
+
                 foreach (var binding in _persistentOutputs.Values)
                 {
                     model.Fields.Add(new CsField("private", binding.Type, binding.FieldName));
@@ -294,6 +304,45 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 model.BaseConstructorArguments =
                     _sharedVariableBindings.Count > 0 ? "graphData, true" : "graphData, false";
                 CompleteTryExecuteMethod(model);
+                EmitCustomEventResolver(model);
+            }
+
+            private void EmitCustomEventResolver(CsClassModel model)
+            {
+                var customEvents = _context.CompilationGraph.Events
+                    .Select(evt =>
+                    {
+                        var hasEventBaseType =
+                            FlowCSharpRuntimeGenerator.TryGetCustomExecutionEventBaseType(evt, out var eventBaseType);
+                        return new
+                        {
+                            Event = evt,
+                            HasEventBaseType = hasEventBaseType,
+                            EventBaseType = eventBaseType
+                        };
+                    })
+                    .Where(item => item.HasEventBaseType)
+                    .ToArray();
+                if (customEvents.Length == 0) return;
+
+                var body = new StringBuilder();
+                body.AppendLine("        protected override bool TryGetCustomEventName(long eventTypeId, out string eventName)");
+                body.AppendLine("        {");
+                foreach (var item in customEvents)
+                {
+                    body.AppendLine(
+                        $"            if (eventTypeId == EventBase<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(item.EventBaseType)}>.TypeId())");
+                    body.AppendLine("            {");
+                    body.AppendLine(
+                        $"                eventName = \"{FlowCSharpRuntimeGenerator.Escape(item.Event.GetEventName())}\";");
+                    body.AppendLine("                return true;");
+                    body.AppendLine("            }");
+                    body.AppendLine();
+                }
+
+                body.AppendLine("            return base.TryGetCustomEventName(eventTypeId, out eventName);");
+                body.AppendLine("        }");
+                model.RawMembers.Add(body.ToString());
             }
 
             private void LowerForwardConnection(FlowConnection connection)
@@ -427,7 +476,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     ? node.NodeData.FindPortData(propertyName)
                     : node.NodeData.FindPortData(propertyName, arrayIndex);
                 var value = portData?.GetPort(node)?.GetValue();
-                return new CsExpression(ToLiteral(value, expectedType), expectedType);
+                return BuildGraphPortDefaultExpression(node, propertyName, arrayIndex, expectedType, portData, value);
             }
 
             private CsExpression LowerValueConnection(FlowConnection connection, Type expectedType)
@@ -439,6 +488,37 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
                 var expression = BuildValueExpression(connection.Node, connection.PortId);
                 return CastExpression(expression, expectedType);
+            }
+
+            private CsExpression BuildGraphPortDefaultExpression(CeresNode node, string portName, int portIndex,
+                Type expectedType, CeresPortData portData, object value)
+            {
+                if (FlowCSharpRuntimeGenerator.TryBuildLiteralExpression(value, expectedType, out var literal))
+                {
+                    return new CsExpression(literal, expectedType);
+                }
+
+                var binding = GetOrCreateGraphPortValueBinding(node, portName, portIndex, expectedType, portData);
+                return new CsExpression(binding.FieldName, binding.Type, CsExpressionPurity.CachePerEvent, true,
+                    false);
+            }
+
+            private CsExpression BuildNodeFieldValueExpression(CeresNode node, string fieldName, int fieldIndex,
+                Type expectedType)
+            {
+                var field = GetRequiredNodeField(node, fieldName, expectedType);
+                var fieldValue = field.GetValue(node);
+                var value = fieldIndex < 0 ? fieldValue : GetIndexedGraphValue(node, fieldName, fieldIndex,
+                    fieldValue, expectedType);
+                if (FlowCSharpRuntimeGenerator.TryBuildLiteralExpression(value, expectedType, out var literal))
+                {
+                    return new CsExpression(literal, expectedType);
+                }
+
+                var binding = GetOrCreateGraphNodeFieldValueBinding(node, fieldName, fieldIndex, expectedType,
+                    field);
+                return new CsExpression(binding.FieldName, binding.Type, CsExpressionPurity.CachePerEvent, true,
+                    false);
             }
 
             private CsExpression LowerEventOutput(ExecutableEvent evt, string portId, Type expectedType)
@@ -554,7 +634,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     node.isSelfTarget,
                     false).Code;
                 return CreateCallExpression(
-                    $"{targetExpression}.{EscapeIdentifier(directCall.MethodName)}({string.Join(", ", arguments)})",
+                    $"({targetExpression}).{EscapeIdentifier(directCall.MethodName)}({string.Join(", ", arguments)})",
                     directCall);
             }
 
@@ -648,6 +728,128 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return true;
             }
 
+            private GraphValueBinding GetOrCreateGraphPortValueBinding(CeresNode node, string portName,
+                int portIndex, Type type, CeresPortData portData)
+            {
+                if (node == null || string.IsNullOrEmpty(portName))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Graph port value can not be generated because the node or port name is missing.");
+                }
+
+                if (portData == null)
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Graph port value {node.GetType().Name}.{portName} ({node.Guid}) can not be located.");
+                }
+
+                EnsureGraphValueTypeIsVisible(node, portName, type);
+                var key = $"port:{node.Guid}:{portName}:{portIndex}:{type.FullName}";
+                if (_graphValueBindings.TryGetValue(key, out var binding))
+                {
+                    return binding;
+                }
+
+                var indexSuffix = portIndex < 0 ? string.Empty : $"_{portIndex.ToString(CultureInfo.InvariantCulture)}";
+                binding = new GraphValueBinding(
+                    $"_graph_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(portName)}{indexSuffix}_{SafeGuid(node.Guid)}_{_graphValueBindings.Count}",
+                    type,
+                    $"FlowGeneratedRuntimeUtility.GetNodePortDefaultValue<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(type)}>(graphData, \"{FlowCSharpRuntimeGenerator.Escape(node.Guid)}\", \"{FlowCSharpRuntimeGenerator.Escape(portName)}\", {portIndex.ToString(CultureInfo.InvariantCulture)})");
+                _graphValueBindings.Add(key, binding);
+                return binding;
+            }
+
+            private GraphValueBinding GetOrCreateGraphNodeFieldValueBinding(CeresNode node, string fieldName,
+                int fieldIndex, Type type, FieldInfo field)
+            {
+                if (node == null || string.IsNullOrEmpty(fieldName))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        "Graph node field value can not be generated because the node or field name is missing.");
+                }
+
+                if (field == null)
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        $"Graph node field value {node.GetType().Name}.{fieldName} ({node.Guid}) can not be located.");
+                }
+
+                EnsureGraphValueTypeIsVisible(node, fieldName, type);
+                var key = $"field:{node.Guid}:{fieldName}:{fieldIndex}:{type.FullName}";
+                if (_graphValueBindings.TryGetValue(key, out var binding))
+                {
+                    return binding;
+                }
+
+                var indexSuffix = fieldIndex < 0 ? string.Empty : $"_{fieldIndex.ToString(CultureInfo.InvariantCulture)}";
+                binding = new GraphValueBinding(
+                    $"_graph_{FlowCSharpRuntimeGenerator.SanitizeIdentifier(fieldName)}{indexSuffix}_{SafeGuid(node.Guid)}_{_graphValueBindings.Count}",
+                    type,
+                    $"FlowGeneratedRuntimeUtility.GetNodeFieldValue<{FlowCSharpRuntimeGenerator.GetFriendlyTypeName(type)}>(graphData, \"{FlowCSharpRuntimeGenerator.Escape(node.Guid)}\", \"{FlowCSharpRuntimeGenerator.Escape(fieldName)}\", {fieldIndex.ToString(CultureInfo.InvariantCulture)})");
+                _graphValueBindings.Add(key, binding);
+                return binding;
+            }
+
+            private static void EnsureGraphValueTypeIsVisible(CeresNode node, string valueName, Type type)
+            {
+                if (type != null && FlowCSharpRuntimeGenerator.IsVisibleType(type))
+                {
+                    return;
+                }
+
+                throw new FlowCSharpRuntimeGenerationException(
+                    $"Graph value {node.GetType().Name}.{valueName} ({node.Guid}) has inaccessible type {type?.FullName ?? "<null>"}.");
+            }
+
+            private static FieldInfo GetRequiredNodeField(CeresNode node, string fieldName, Type expectedType)
+            {
+                if (node == null || string.IsNullOrEmpty(fieldName))
+                {
+                    throw new FlowCSharpRuntimeGenerationException(
+                        "Graph node field value can not be generated because the node or field name is missing.");
+                }
+
+                var field = GetFieldInHierarchy(node.GetType(), fieldName);
+                if (field != null)
+                {
+                    return field;
+                }
+
+                throw new FlowCSharpRuntimeGenerationException(
+                    $"Graph node field value {node.GetType().Name}.{fieldName} ({node.Guid}) can not be located for {FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType)}.");
+            }
+
+            private static FieldInfo GetFieldInHierarchy(Type type, string fieldName)
+            {
+                const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+                while (type != null)
+                {
+                    var field = type.GetField(fieldName, flags);
+                    if (field != null)
+                    {
+                        return field;
+                    }
+
+                    type = type.BaseType;
+                }
+
+                return null;
+            }
+
+            private static object GetIndexedGraphValue(CeresNode node, string fieldName, int fieldIndex,
+                object fieldValue, Type expectedType)
+            {
+                if (fieldValue is System.Collections.IList list &&
+                    fieldIndex >= 0 &&
+                    fieldIndex < list.Count)
+                {
+                    return list[fieldIndex];
+                }
+
+                throw new FlowCSharpRuntimeGenerationException(
+                    $"Graph node field value {node.GetType().Name}.{fieldName}[{fieldIndex.ToString(CultureInfo.InvariantCulture)}] ({node.Guid}) can not be located for {FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType)}.");
+            }
+
             private bool ShouldPersistOutput(CeresNode node, string portId)
             {
                 return _context.CompilationGraph.ShouldPersistOutput(node, portId);
@@ -675,7 +877,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 }
 
                 var target = BuildPropertyTargetExpression(node, propertyCall);
-                return new CsExpression($"{target}.{EscapeIdentifier(propertyCall.PropertyName)}",
+                var accessTarget = node.isStatic ? target : $"({target})";
+                return new CsExpression($"{accessTarget}.{EscapeIdentifier(propertyCall.PropertyName)}",
                     propertyCall.PropertyType, CsExpressionPurity.CachePerEvent, false, true);
             }
 
@@ -968,7 +1171,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return selectedType.IsAssignableTo(declaredReturnType) ? selectedType : declaredReturnType;
             }
 
-            private static bool TryGetResolveReturnSelectedType(FlowNode_ExecuteFunction node,
+            private bool TryGetResolveReturnSelectedType(FlowNode_ExecuteFunction node,
                 FlowCSharpRuntimeGenerator.DirectCallInfo directCall, out Type selectedType)
             {
                 selectedType = null;
@@ -977,12 +1180,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     return false;
                 }
 
-                var portData = GetFunctionParameterPortData(node, parameterIndex);
-                if (portData?.connections?.Any(connection => !connection.isFlattened) == true)
+                if (IsFunctionParameterConnected(node, parameterIndex))
                 {
                     return false;
                 }
 
+                var portData = GetFunctionParameterPortData(node, parameterIndex);
                 if (portData?.GetPort(node)?.GetValue() is not SerializedTypeBase serializedType)
                 {
                     return false;
@@ -1036,12 +1239,12 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                     return false;
                 }
 
-                var portData = GetFunctionParameterPortData(node, parameterIndex);
-                if (portData?.connections?.Any(connection => !connection.isFlattened) == true)
+                if (IsFunctionParameterConnected(node, parameterIndex))
                 {
                     return false;
                 }
 
+                var portData = GetFunctionParameterPortData(node, parameterIndex);
                 if (portData?.GetPort(node)?.GetValue() is not SerializedTypeBase serializedType)
                 {
                     return false;
@@ -1065,6 +1268,19 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return node is FlowNode_ExecuteFunctionUber
                     ? node.NodeData.FindPortData("inputs", parameterIndex)
                     : node.NodeData.FindPortData($"input{parameterIndex + 1}");
+            }
+
+            private bool IsFunctionParameterConnected(FlowNode_ExecuteFunction node, int parameterIndex)
+            {
+                var portData = GetFunctionParameterPortData(node, parameterIndex);
+                if (portData == null)
+                {
+                    return false;
+                }
+
+                var arrayIndex = node is FlowNode_ExecuteFunctionUber ? portData.arrayIndex : -1;
+                return _context.CompilationGraph.TryGetInputConnection(node, portData.propertyName, arrayIndex,
+                    out _);
             }
 
             private static bool IsSerializedType(Type type)
@@ -1259,93 +1475,9 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                        expectedElementType.IsAssignableTo(actualElementType);
             }
 
-            private static string ToLiteral(object value, Type expectedType)
-            {
-                if (IsNullLiteralValue(value))
-                {
-                    return expectedType.IsValueType && Nullable.GetUnderlyingType(expectedType) == null
-                        ? $"default({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType)})"
-                        : "null";
-                }
-
-                if (expectedType.IsEnum)
-                {
-                    return $"({FlowCSharpRuntimeGenerator.GetFriendlyTypeName(expectedType)}){Convert.ToInt64(value, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture)}";
-                }
-
-                if (expectedType == typeof(string))
-                {
-                    return $"\"{FlowCSharpRuntimeGenerator.Escape(value.ToString())}\"";
-                }
-
-                if (expectedType == typeof(bool))
-                {
-                    return value is bool b && b ? "true" : "false";
-                }
-
-                if (expectedType == typeof(int))
-                {
-                    return value is int i ? i.ToString(CultureInfo.InvariantCulture) : "0";
-                }
-
-                if (expectedType == typeof(float))
-                {
-                    return value is float f ? f.ToString(CultureInfo.InvariantCulture) + "f" : "0f";
-                }
-
-                if (expectedType == typeof(double))
-                {
-                    return value is double d ? d.ToString(CultureInfo.InvariantCulture) : "0d";
-                }
-
-                if (expectedType == typeof(long))
-                {
-                    return value is long l ? l.ToString(CultureInfo.InvariantCulture) + "L" : "0L";
-                }
-
-                if (expectedType == typeof(Vector2) && value is Vector2 vector2)
-                {
-                    return $"new Vector2({vector2.x.ToString(CultureInfo.InvariantCulture)}f, {vector2.y.ToString(CultureInfo.InvariantCulture)}f)";
-                }
-
-                if (expectedType == typeof(Vector3) && value is Vector3 vector3)
-                {
-                    return $"new Vector3({vector3.x.ToString(CultureInfo.InvariantCulture)}f, {vector3.y.ToString(CultureInfo.InvariantCulture)}f, {vector3.z.ToString(CultureInfo.InvariantCulture)}f)";
-                }
-
-                if (expectedType == typeof(Quaternion) && value is Quaternion quaternion)
-                {
-                    return $"new Quaternion({quaternion.x.ToString(CultureInfo.InvariantCulture)}f, {quaternion.y.ToString(CultureInfo.InvariantCulture)}f, {quaternion.z.ToString(CultureInfo.InvariantCulture)}f, {quaternion.w.ToString(CultureInfo.InvariantCulture)}f)";
-                }
-
-                if (expectedType == typeof(object))
-                {
-                    return value switch
-                    {
-                        string text => $"\"{FlowCSharpRuntimeGenerator.Escape(text)}\"",
-                        bool b => b ? "true" : "false",
-                        int i => i.ToString(CultureInfo.InvariantCulture),
-                        float f => f.ToString(CultureInfo.InvariantCulture) + "f",
-                        double d => d.ToString(CultureInfo.InvariantCulture),
-                        long l => l.ToString(CultureInfo.InvariantCulture) + "L",
-                        _ => throw new FlowCSharpRuntimeGenerationException(
-                            $"Default object literal of type {value.GetType().Name} is not supported.")
-                    };
-                }
-
-                if (IsSerializedType(expectedType))
-                {
-                    throw new FlowCSharpRuntimeGenerationException(
-                        $"SerializedType default literal for {expectedType.Name} requires legacy lowering.");
-                }
-
-                throw new FlowCSharpRuntimeGenerationException(
-                    $"Default literal for {expectedType.Name} is not supported.");
-            }
-
             private static bool IsNullLiteralValue(object value)
             {
-                return value == null || value is UObject unityObject && !unityObject;
+                return FlowCSharpRuntimeGenerator.IsNullLiteralValue(value);
             }
 
             private static string EscapeIdentifier(string value)
@@ -1429,6 +1561,22 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             public readonly string InitializerExpression;
 
             public PersistentOutputBinding(string fieldName, Type type, string initializerExpression)
+            {
+                FieldName = fieldName;
+                Type = type;
+                InitializerExpression = initializerExpression;
+            }
+        }
+
+        private readonly struct GraphValueBinding
+        {
+            public readonly string FieldName;
+
+            public readonly Type Type;
+
+            public readonly string InitializerExpression;
+
+            public GraphValueBinding(string fieldName, Type type, string initializerExpression)
             {
                 FieldName = fieldName;
                 Type = type;
