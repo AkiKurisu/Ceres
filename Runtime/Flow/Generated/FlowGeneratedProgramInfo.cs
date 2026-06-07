@@ -344,6 +344,64 @@ namespace Ceres.Graph.Flow
             return false;
         }
 
+        public static TValue GetNodeFieldValue<TValue>(FlowGraphData graphData, string nodeGuid,
+            string fieldName, int fieldIndex)
+        {
+            if (TryGetNodeFieldValue<TValue>(graphData, nodeGuid, fieldName, fieldIndex, out var value))
+            {
+                return value;
+            }
+
+            return default;
+        }
+
+        public static bool TryGetNodeFieldValue<TValue>(FlowGraphData graphData, string nodeGuid,
+            string fieldName, int fieldIndex, out TValue value)
+        {
+            value = default;
+            if (graphData?.nodeData == null ||
+                string.IsNullOrEmpty(nodeGuid) ||
+                string.IsNullOrEmpty(fieldName))
+            {
+                return false;
+            }
+
+            foreach (var data in graphData.nodeData)
+            {
+                if (data == null || !string.Equals(data.guid, nodeGuid, StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                var nodeType = ResolveGeneratedNodeType(data);
+                if (nodeType == null || data.Deserialize(nodeType) is not CeresNode node)
+                {
+                    return false;
+                }
+
+                var field = GetFieldInHierarchy(nodeType, fieldName);
+                if (field == null)
+                {
+                    return false;
+                }
+
+                var fieldValue = field.GetValue(node);
+                if (fieldIndex >= 0)
+                {
+                    if (fieldValue is not System.Collections.IList list || fieldIndex >= list.Count)
+                    {
+                        return false;
+                    }
+
+                    fieldValue = list[fieldIndex];
+                }
+
+                return TryConvertValue(fieldValue, out value);
+            }
+
+            return false;
+        }
+
         private static CeresPortData FindNodePortData(CeresNodeData data, string portName, int portIndex)
         {
             if (data?.portData == null)

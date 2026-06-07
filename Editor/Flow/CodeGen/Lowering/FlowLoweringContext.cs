@@ -40,6 +40,8 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
 
         private readonly Func<PropertyNode_SharedVariableValue, CsExpression> _buildGetSharedVariableExpression;
 
+        private readonly Func<CeresNode, string, int, Type, CsExpression> _buildNodeFieldValueExpression;
+
         public FlowCompilationContext Compilation { get; }
 
         public CsBlock Block => _getBlock?.Invoke() ?? _block;
@@ -69,6 +71,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             Func<PropertyNode_PropertyValue, CsExpression> buildGetPropertyExpression,
             Func<PropertyNode, Type, CsExpression> buildSelfReferenceExpression,
             Func<PropertyNode_SharedVariableValue, CsExpression> buildGetSharedVariableExpression,
+            Func<CeresNode, string, int, Type, CsExpression> buildNodeFieldValueExpression,
             string contextObjectExpression = "contextObject", string eventBaseExpression = "evtBase")
         {
             Compilation = compilation;
@@ -85,6 +88,7 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             _buildGetPropertyExpression = buildGetPropertyExpression;
             _buildSelfReferenceExpression = buildSelfReferenceExpression;
             _buildGetSharedVariableExpression = buildGetSharedVariableExpression;
+            _buildNodeFieldValueExpression = buildNodeFieldValueExpression;
             ContextObjectExpression = contextObjectExpression;
             EventBaseExpression = eventBaseExpression;
         }
@@ -100,12 +104,14 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             Action<PropertyNode_SharedVariableValue> lowerSetSharedVariable,
             Func<PropertyNode_PropertyValue, CsExpression> buildGetPropertyExpression,
             Func<PropertyNode, Type, CsExpression> buildSelfReferenceExpression,
-            Func<PropertyNode_SharedVariableValue, CsExpression> buildGetSharedVariableExpression)
+            Func<PropertyNode_SharedVariableValue, CsExpression> buildGetSharedVariableExpression,
+            Func<CeresNode, string, int, Type, CsExpression> buildNodeFieldValueExpression)
         {
             return new FlowLoweringContext(compilation, getBlock, lowerInput, lowerForwardConnection,
                 lowerDefaultNext, lowerBranch, buildFunctionCallExpression, buildFunctionReturnExpression,
                 materializeFunctionReturnIfNeeded, lowerSetProperty, lowerSetSharedVariable,
-                buildGetPropertyExpression, buildSelfReferenceExpression, buildGetSharedVariableExpression);
+                buildGetPropertyExpression, buildSelfReferenceExpression, buildGetSharedVariableExpression,
+                buildNodeFieldValueExpression);
         }
 
         public FlowConnection GetExecConnection(CeresNode node, string propertyName)
@@ -258,6 +264,22 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             }
 
             return _buildGetSharedVariableExpression(node);
+        }
+
+        public CsExpression BuildNodeFieldValueExpression(CeresNode node, string fieldName, Type expectedType)
+        {
+            return BuildNodeFieldValueExpression(node, fieldName, -1, expectedType);
+        }
+
+        public CsExpression BuildNodeFieldValueExpression(CeresNode node, string fieldName, int fieldIndex,
+            Type expectedType)
+        {
+            if (_buildNodeFieldValueExpression == null)
+            {
+                throw new FlowCSharpRuntimeGenerationException("This lowering context can not lower node field values.");
+            }
+
+            return _buildNodeFieldValueExpression(node, fieldName, fieldIndex, expectedType);
         }
 
         public void AddUnsupported(CeresNode node, string reason)

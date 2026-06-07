@@ -164,6 +164,142 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 .Replace("\n", "\\n") ?? string.Empty;
         }
 
+        internal static bool TryBuildLiteralExpression(object value, Type expectedType, out string expression)
+        {
+            expression = null;
+            if (expectedType == null)
+            {
+                return false;
+            }
+
+            if (IsNullLiteralValue(value))
+            {
+                expression = ToNullLiteral(expectedType);
+                return true;
+            }
+
+            if (expectedType.IsEnum)
+            {
+                expression =
+                    $"({GetFriendlyTypeName(expectedType)}){Convert.ToInt64(value, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture)}";
+                return true;
+            }
+
+            if (expectedType == typeof(string))
+            {
+                expression = $"\"{Escape(value.ToString())}\"";
+                return true;
+            }
+
+            if (expectedType == typeof(bool))
+            {
+                expression = value is bool boolValue && boolValue ? "true" : "false";
+                return true;
+            }
+
+            if (expectedType == typeof(int))
+            {
+                expression = value is int intValue ? intValue.ToString(CultureInfo.InvariantCulture) : "0";
+                return true;
+            }
+
+            if (expectedType == typeof(float))
+            {
+                expression = value is float floatValue ? floatValue.ToString(CultureInfo.InvariantCulture) + "f" : "0f";
+                return true;
+            }
+
+            if (expectedType == typeof(double))
+            {
+                expression = value is double doubleValue ? doubleValue.ToString(CultureInfo.InvariantCulture) : "0d";
+                return true;
+            }
+
+            if (expectedType == typeof(long))
+            {
+                expression = value is long longValue ? longValue.ToString(CultureInfo.InvariantCulture) + "L" : "0L";
+                return true;
+            }
+
+            if (expectedType == typeof(short))
+            {
+                expression = value is short shortValue
+                    ? $"(short){shortValue.ToString(CultureInfo.InvariantCulture)}"
+                    : "default(short)";
+                return true;
+            }
+
+            if (expectedType == typeof(byte))
+            {
+                expression = value is byte byteValue
+                    ? $"(byte){byteValue.ToString(CultureInfo.InvariantCulture)}"
+                    : "default(byte)";
+                return true;
+            }
+
+            if (expectedType == typeof(Vector2) && value is Vector2 vector2)
+            {
+                expression =
+                    $"new Vector2({vector2.x.ToString(CultureInfo.InvariantCulture)}f, {vector2.y.ToString(CultureInfo.InvariantCulture)}f)";
+                return true;
+            }
+
+            if (expectedType == typeof(Vector3) && value is Vector3 vector3)
+            {
+                expression =
+                    $"new Vector3({vector3.x.ToString(CultureInfo.InvariantCulture)}f, {vector3.y.ToString(CultureInfo.InvariantCulture)}f, {vector3.z.ToString(CultureInfo.InvariantCulture)}f)";
+                return true;
+            }
+
+            if (expectedType == typeof(Quaternion) && value is Quaternion quaternion)
+            {
+                expression =
+                    $"new Quaternion({quaternion.x.ToString(CultureInfo.InvariantCulture)}f, {quaternion.y.ToString(CultureInfo.InvariantCulture)}f, {quaternion.z.ToString(CultureInfo.InvariantCulture)}f, {quaternion.w.ToString(CultureInfo.InvariantCulture)}f)";
+                return true;
+            }
+
+            if (expectedType != typeof(object))
+            {
+                return false;
+            }
+
+            switch (value)
+            {
+                case string text:
+                    expression = $"\"{Escape(text)}\"";
+                    return true;
+                case bool objectBool:
+                    expression = objectBool ? "true" : "false";
+                    return true;
+                case int objectInt:
+                    expression = objectInt.ToString(CultureInfo.InvariantCulture);
+                    return true;
+                case float objectFloat:
+                    expression = objectFloat.ToString(CultureInfo.InvariantCulture) + "f";
+                    return true;
+                case double objectDouble:
+                    expression = objectDouble.ToString(CultureInfo.InvariantCulture);
+                    return true;
+                case long objectLong:
+                    expression = objectLong.ToString(CultureInfo.InvariantCulture) + "L";
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        internal static bool IsNullLiteralValue(object value)
+        {
+            return value == null || value is UObject unityObject && !unityObject;
+        }
+
+        internal static string ToNullLiteral(Type expectedType)
+        {
+            return expectedType.IsValueType && Nullable.GetUnderlyingType(expectedType) == null
+                ? $"default({GetFriendlyTypeName(expectedType)})"
+                : "null";
+        }
+
         internal static void AppendGeneratedPreamble(StringBuilder body, IEnumerable<string> usingLines)
         {
             AppendLines(body, GeneratedHeaderLines);
@@ -397,6 +533,15 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
                 return false;
             }
 
+            var portType = node.NodeData?.FindPortData("outputValue")?.GetValueType();
+            if (portType != null &&
+                typeof(UObject).IsAssignableFrom(portType) &&
+                IsVisibleType(portType))
+            {
+                targetType = portType;
+                return true;
+            }
+
             var arguments = GetGenericArguments(node);
             if (arguments.Length == 0 ||
                 !typeof(UObject).IsAssignableFrom(arguments[0]) ||
@@ -423,6 +568,25 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             }
 
             return Type.EmptyTypes;
+        }
+
+        internal static bool TryGetCustomExecutionEventBaseType(ExecutableEvent evt, out Type eventBaseType)
+        {
+            eventBaseType = null;
+            var type = evt?.GetType();
+            while (type != null)
+            {
+                if (type.IsGenericType &&
+                    type.GetGenericTypeDefinition() == typeof(CustomExecutionEvent<>))
+                {
+                    eventBaseType = type.GetGenericArguments()[0];
+                    return IsVisibleType(eventBaseType);
+                }
+
+                type = type.BaseType;
+            }
+
+            return false;
         }
 
         internal static bool IsGenericInstance(object value, Type genericTypeDefinition)

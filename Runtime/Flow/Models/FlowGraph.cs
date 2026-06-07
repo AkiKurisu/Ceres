@@ -81,6 +81,11 @@ namespace Ceres.Graph.Flow
                 ExecuteCustomEvent(evt);
             }
 
+            public bool CanExecuteCustomEvent(long eventTypeId)
+            {
+                return CustomExecutionEvent.HasEvent(eventTypeId);
+            }
+
             public void ExecuteCustomEvent(EventBase eventBase)
             {
                 if (_flowGraph == null || !_contextObject) return;
@@ -625,9 +630,13 @@ namespace Ceres.Graph.Flow
         public static IDisposable OverrideEventImplementation<TEventType>(this IFlowGraphRuntime runtime, EventCallback<TEventType> implementation)
             where TEventType : EventBase<TEventType>, new()
         {
-            /* Check custom event registered */
-            if (!CustomExecutionEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
-            return runtime.GetEventHandler().AsObservable<TEventType>().SubscribeSafe(implementation);
+            var runtimeEventHandler = runtime.GetEventHandler();
+            if (runtimeEventHandler is not IFlowEventExecutionHandler executionHandler ||
+                !executionHandler.CanExecuteCustomEvent(EventBase<TEventType>.TypeId()))
+            {
+                return Disposable.Empty;
+            }
+            return runtimeEventHandler.AsObservable<TEventType>().SubscribeSafe(implementation);
         }
 
         /// <summary>
@@ -641,12 +650,11 @@ namespace Ceres.Graph.Flow
         public static IDisposable SubscribeExecution<TEventType>(this CallbackEventHandler eventHandler, IFlowGraphRuntime runtime)
             where TEventType : EventBase<TEventType>, new()
         {
-            /* Check custom event registered */
-            if (!CustomExecutionEvent.HasEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
             if (runtime.GetEventHandler() is not IFlowEventExecutionHandler executionHandler)
             {
                 return Disposable.Empty;
             }
+            if (!executionHandler.CanExecuteCustomEvent(EventBase<TEventType>.TypeId())) return Disposable.Empty;
             return eventHandler.AsObservable<TEventType>().SubscribeSafe(executionHandler.ExecuteCustomEvent);
         }
     }

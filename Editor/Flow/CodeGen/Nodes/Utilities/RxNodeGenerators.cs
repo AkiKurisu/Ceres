@@ -53,10 +53,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
             var eventType = node.GetType().GetGenericArguments()[0];
             var target = context.GetValueExpression(node, "target", typeof(CallbackEventHandler));
             var slot = context.EnsureOutputSlot(node, "subscription", typeof(IDisposable));
+            var runtimeVar = $"runtime_{NodeGeneratorStringUtility.SafeGuid(node.Guid)}";
             context.Emit($"{context.Indent}{context.FrameVar}.{slot} = default;");
-            context.Emit($"{context.Indent}if ({context.FrameVar}.ContextObject is IFlowGraphRuntime runtime)");
+            context.Emit($"{context.Indent}if ({context.FrameVar}.ContextObject is IFlowGraphRuntime {runtimeVar})");
             context.Emit($"{context.Indent}{{");
-            context.Emit($"{context.Indent}    {context.FrameVar}.{slot} = ({target}).SubscribeExecution<{context.GetFriendlyTypeName(eventType)}>(runtime);");
+            context.Emit($"{context.Indent}    {context.FrameVar}.{slot} = ({target}).SubscribeExecution<{context.GetFriendlyTypeName(eventType)}>({runtimeVar});");
             context.Emit($"{context.Indent}}}");
             context.GenerateDefaultNext(node);
         }
@@ -90,10 +91,11 @@ namespace Ceres.Editor.Graph.Flow.CodeGen
         {
             var eventType = node.GetType().GetGenericArguments()[0];
             var slot = context.EnsureOutputSlot(node, "subscription", typeof(IDisposable));
+            var runtimeVar = $"runtime_{NodeGeneratorStringUtility.SafeGuid(node.Guid)}";
             context.Emit($"{context.Indent}{context.FrameVar}.{slot} = default;");
-            context.Emit($"{context.Indent}if ({context.FrameVar}.ContextObject is IFlowGraphRuntime runtime)");
+            context.Emit($"{context.Indent}if ({context.FrameVar}.ContextObject is IFlowGraphRuntime {runtimeVar})");
             context.Emit($"{context.Indent}{{");
-            context.Emit($"{context.Indent}    {context.FrameVar}.{slot} = EventSystem.EventHandler.SubscribeExecution<{context.GetFriendlyTypeName(eventType)}>(runtime);");
+            context.Emit($"{context.Indent}    {context.FrameVar}.{slot} = EventSystem.EventHandler.SubscribeExecution<{context.GetFriendlyTypeName(eventType)}>({runtimeVar});");
             context.Emit($"{context.Indent}}}");
             context.GenerateDefaultNext(node);
         }
