@@ -142,6 +142,12 @@ namespace Ceres.Graph
                 UObjectLink.Parse(ref uobjectLinks, serializedData);
             }
         }
+
+        internal void NormalizeUObjectReferencesForHash()
+        {
+            serializedData = UObjectLink.NormalizeSerializedDataForHash(uobjectLinks, serializedData);
+            uobjectLinks = Array.Empty<UObjectLink>();
+        }
         
         /// <summary>
         /// Deserialize a <see cref="SharedVariable"/> instance from this data

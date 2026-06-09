@@ -405,6 +405,12 @@ namespace Ceres.Graph
                 uobjectLinks = uobjectLinks
             };
         }
+
+        internal void NormalizeUObjectReferencesForHash()
+        {
+            serializedData = UObjectLink.NormalizeSerializedDataForHash(uobjectLinks, serializedData);
+            uobjectLinks = Array.Empty<UObjectLink>();
+        }
         
         /// <summary>
         /// Serialize node data

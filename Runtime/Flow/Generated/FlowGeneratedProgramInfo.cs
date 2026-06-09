@@ -129,7 +129,7 @@ namespace Ceres.Graph.Flow
 
     public static class FlowGeneratedRuntimeUtility
     {
-        public const int CurrentProgramInfoVersion = 2;
+        public const int CurrentProgramInfoVersion = 5;
 
         public static FlowGeneratedRuntimeProfile CurrentGeneratedRuntimeProfile =>
             FlowConfig.Get().generatedRuntimeProfile;
@@ -178,6 +178,7 @@ namespace Ceres.Graph.Flow
 
             var clone = graphData.CloneT<FlowGraphData>();
             ClearTimestamps(clone);
+            NormalizeGraphUObjectReferencesForHash(clone);
             return clone.ToJson().Hash64().ToString("X16");
         }
 
@@ -589,6 +590,34 @@ namespace Ceres.Graph.Flow
 #if UNITY_EDITOR
                 subGraph.graphData.saveTimestamp = 0;
 #endif
+            }
+        }
+
+        private static void NormalizeGraphUObjectReferencesForHash(FlowGraphData graphData)
+        {
+            NormalizeUObjectReferencesForHash(graphData);
+            if (graphData?.subGraphData == null) return;
+
+            foreach (var subGraph in graphData.subGraphData)
+            {
+                NormalizeUObjectReferencesForHash(subGraph?.graphData);
+            }
+        }
+
+        private static void NormalizeUObjectReferencesForHash(CeresGraphData graphData)
+        {
+            if (graphData?.nodeData != null)
+            {
+                foreach (var nodeData in graphData.nodeData)
+                {
+                    nodeData?.NormalizeUObjectReferencesForHash();
+                }
+            }
+
+            if (graphData?.variableData == null) return;
+            foreach (var variableData in graphData.variableData)
+            {
+                variableData?.NormalizeUObjectReferencesForHash();
             }
         }
 

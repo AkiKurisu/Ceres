@@ -46,6 +46,46 @@ namespace Ceres
 
             return obj.ToString();
         }
+
+        public static string NormalizeSerializedDataForHash(UObjectLink[] uobjectLinks, string serializedData)
+        {
+            if (uobjectLinks == null || uobjectLinks.Length == 0 || string.IsNullOrEmpty(serializedData))
+            {
+                return serializedData;
+            }
+
+            JObject obj;
+            try
+            {
+                obj = JObject.Parse(serializedData);
+            }
+            catch
+            {
+                return serializedData;
+            }
+            var changed = false;
+            foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
+            {
+                if (prop.Name != "instanceID" || prop.Value.Type != JTokenType.Integer)
+                {
+                    continue;
+                }
+
+                var instanceId = (int)prop.Value;
+                if (instanceId == 0)
+                {
+                    continue;
+                }
+
+                if (ContainsInstanceId(uobjectLinks, instanceId))
+                {
+                    prop.Value = 0;
+                    changed = true;
+                }
+            }
+
+            return changed ? obj.ToString(Newtonsoft.Json.Formatting.None) : serializedData;
+        }
         
         /// <summary>
         /// Parse UObject references from json and fill the array
@@ -72,6 +112,19 @@ namespace Ceres
                 }
             }
 #endif
+        }
+
+        private static bool ContainsInstanceId(UObjectLink[] uobjectLinks, int instanceId)
+        {
+            foreach (var link in uobjectLinks)
+            {
+                if (link?.instanceId == instanceId)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
