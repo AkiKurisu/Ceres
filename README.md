@@ -1,12 +1,16 @@
 <div align="center">
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/AkiKurisu/Ceres)
+[![Release](https://img.shields.io/github/v/release/AkiKurisu/Ceres)](https://github.com/AkiKurisu/Ceres/releases)
+[![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 [![Zhihu](https://img.shields.io/badge/知乎-AkiKurisu-0084ff?style=flat-square)](https://www.zhihu.com/people/akikurisu)
 [![Bilibili](https://img.shields.io/badge/Bilibili-爱姬Kurisu-00A1D6?style=flat-square)](https://space.bilibili.com/20472331)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/AkiKurisu/Ceres)
 
 ![banner](./Documentations/resources/images/ceres_banner.png)
 
-A Unity framework designed with visual scripting and flexible workflows.
+Ceres is my personal Unity framework designed with visual scripting and flexible workflows.
+
+> Ceres wasn't built with commercial games in mind, it was initially intended for my indie games and student projects. I've maintained it since my student days, and it's now become the main infrastructure for my Unity projects, so it's been constantly updated. I hope you like it.
 
 </div>
 
