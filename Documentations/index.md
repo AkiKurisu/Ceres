@@ -6,10 +6,8 @@ _disableAffix: true
 
 <div class="ceres-home">
   <section class="ceres-hero">
-    <div class="ceres-hero-field" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="ceres-hero-inner">
       <div class="ceres-hero-copy ceres-reveal">
-        <p class="ceres-eyebrow">C#-first Unity framework</p>
         <h1>Build gameplay.<br><em>Extend behavior visually.</em></h1>
         <div class="ceres-actions">
           <a class="ceres-button ceres-button-primary" href="docs/getting_started.md">Get started</a>
@@ -43,17 +41,6 @@ _disableAffix: true
           <div class="ceres-story-links"><a href="docs/flow_startup.md">Explore Flow</a><a href="docs/flow_codegen.md">Code generation</a></div>
         </div>
         <figure class="ceres-story-media"><img src="resources/images/ceres_flow.png" alt="Ceres Flow graph editor" loading="lazy" /></figure>
-      </div>
-    </article>
-    <article class="ceres-story ceres-story-flip">
-      <div class="ceres-story-inner ceres-reveal">
-        <div class="ceres-story-copy">
-          <p class="ceres-eyebrow">Gameplay presentation</p>
-          <h2>Drive animation and presentation from code or Flow.</h2>
-          <p>A script-driven PlayableGraph runtime sits alongside reactive graphics settings, pooled audio and effects, and data-driven level orchestration.</p>
-          <div class="ceres-story-links"><a href="docs/gameplay_animation.md">Animation runtime</a><a href="xref:Ceres.Gameplay.Animations">Animation API</a></div>
-        </div>
-        <figure class="ceres-story-media"><img src="resources/images/gameplay-animation-playablegraph.svg" alt="Ceres PlayableGraph animation runtime" loading="lazy" /></figure>
       </div>
     </article>
   </section>

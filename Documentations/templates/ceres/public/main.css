@@ -191,17 +191,41 @@ footer > .container-xxl > .flex-fill { flex: 0 1 auto !important; }
   }
 }
 
-.ceres-hero { position: relative; min-height: min(790px, calc(100vh - 64px)); padding: clamp(72px, 9vw, 128px) 24px 128px; }
-.ceres-hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 54% 68% at 88% 12%, color-mix(in srgb, var(--ceres-grad-2) 6%, transparent), transparent 72%); }
-.ceres-hero-field { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: .22; }
-.ceres-hero-field span { position: absolute; border: 1px solid color-mix(in srgb, var(--ceres-accent) 12%, transparent); border-radius: 50%; }
-.ceres-hero-field span:nth-child(1) { width: 460px; height: 460px; right: -220px; top: -280px; }
-.ceres-hero-field span:nth-child(2) { width: 260px; height: 260px; right: 6%; top: -110px; }
-.ceres-hero-field span:nth-child(3) { display: none; }
-.ceres-hero-inner, .ceres-story-inner { position: relative; z-index: 1; width: min(1440px, 100%); margin: 0 auto; display: grid; grid-template-columns: minmax(360px, .78fr) minmax(600px, 1.22fr); gap: 72px; align-items: center; }
+.ceres-hero {
+  position: relative;
+  min-height: min(790px, calc(100vh - 64px));
+  padding: clamp(72px, 9vw, 128px) 24px 128px;
+  overflow: clip;
+  isolation: isolate;
+  background: var(--ceres-bg);
+}
+.ceres-hero::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: url("../resources/images/ceres-hero-atmosphere-light.webp") center top / cover no-repeat;
+  opacity: .82;
+}
+.ceres-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0;
+  height: 34%;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--ceres-bg) 94%);
+}
+[data-bs-theme="dark"] .ceres-hero::before {
+  background-image: url("../resources/images/ceres-hero-atmosphere-dark.webp");
+  opacity: .76;
+}
+.ceres-hero-inner { position: relative; z-index: 2; width: min(1520px, 100%); margin: 0 auto; display: grid; grid-template-columns: minmax(520px, .88fr) minmax(640px, 1.12fr); gap: 64px; align-items: center; }
+.ceres-story-inner { position: relative; z-index: 2; width: min(1440px, 100%); margin: 0 auto; display: grid; grid-template-columns: minmax(360px, .78fr) minmax(600px, 1.22fr); gap: 72px; align-items: center; }
 .ceres-hero-copy { min-width: 0; }
 .ceres-eyebrow { margin: 0 0 16px; color: color-mix(in srgb, var(--ceres-accent) 70%, var(--ceres-muted)); font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.ceres-hero h1 { display: block !important; max-width: 580px; margin: 0; font-size: clamp(3rem, 4.35vw, 4.5rem); font-weight: 800; line-height: 1.02; letter-spacing: -.05em; }
+.ceres-hero h1 { display: block !important; max-width: 660px; margin: 0; font-size: clamp(3rem, 3.85vw, 4.1rem); font-weight: 800; line-height: 1.04; letter-spacing: -.05em; }
 .ceres-hero h1 em { font-style: normal; background: var(--ceres-wordmark); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .ceres-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
 .ceres-button { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 0 18px; border: 1px solid transparent; border-radius: var(--ceres-radius-md); font-size: .9rem; font-weight: 600; text-decoration: none !important; transition: transform .16s ease, background-color .16s ease, border-color .16s ease, box-shadow .16s ease; }
@@ -220,8 +244,8 @@ footer > .container-xxl > .flex-fill { flex: 0 1 auto !important; }
 .ceres-copy-icon-check { display: none; color: #24c86a; }
 .ceres-install-command button.is-copied .ceres-copy-icon-copy { display: none; }
 .ceres-install-command button.is-copied .ceres-copy-icon-check { display: inline-flex; }
-.ceres-hero-media { position: relative; min-width: 0; }
-.ceres-hero-media img { display: block; width: 100%; border: 1px solid var(--ceres-line-strong); border-radius: var(--ceres-radius-lg); background: var(--ceres-surface); box-shadow: var(--ceres-shadow-lg); }
+.ceres-hero-media { position: relative; min-width: 0; aspect-ratio: 8 / 5; overflow: hidden; border: 1px solid var(--ceres-line-strong); border-radius: var(--ceres-radius-lg); background: var(--ceres-surface); box-shadow: var(--ceres-shadow-lg); }
+.ceres-hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 /* Product stories share one continuous field. Visual sections only exist when
  * the repository has a real product capture to support them. */
@@ -261,6 +285,8 @@ footer > .container-xxl > .flex-fill { flex: 0 1 auto !important; }
 
 @media (max-width: 1100px) {
   .ceres-hero { padding: 72px 24px 84px; }
+  .ceres-hero::before { background-position: 66% top; opacity: .62; }
+  [data-bs-theme="dark"] .ceres-hero::before { opacity: .52; }
   .ceres-hero-inner, .ceres-story-inner, .ceres-story-flip .ceres-story-inner { grid-template-columns: 1fr; gap: 48px; }
   .ceres-hero-media { width: min(680px, 100%); margin: 0 auto; }
   .ceres-story-flip .ceres-story-copy { order: 1; }
