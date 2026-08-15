@@ -1,0 +1,1988 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Flow.FlowGraphView
+  commentId: T:Ceres.Editor.Flow.FlowGraphView
+  id: FlowGraphView
+  parent: Ceres.Editor.Flow
+  children:
+  - Ceres.Editor.Flow.FlowGraphView.#ctor(Ceres.Editor.Flow.FlowGraphEditorWindow)
+  - Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph(System.String)
+  - Ceres.Editor.Flow.FlowGraphView.CanSimulate
+  - Ceres.Editor.Flow.FlowGraphView.DebugState
+  - Ceres.Editor.Flow.FlowGraphView.DeserializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  - Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph(Ceres.Editor.Flow.FlowGraphEditorObject,System.String)
+  - Ceres.Editor.Flow.FlowGraphView.Dispose
+  - Ceres.Editor.Flow.FlowGraphView.FlowGraphEditorWindow
+  - Ceres.Editor.Flow.FlowGraphView.GraphName
+  - Ceres.Editor.Flow.FlowGraphView.IsPaused
+  - Ceres.Editor.Flow.FlowGraphView.NextBreakpoint
+  - Ceres.Editor.Flow.FlowGraphView.NextFrame
+  - Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+  - Ceres.Editor.Flow.FlowGraphView.OnDestroy
+  - Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+  - Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph(System.String,System.String)
+  - Ceres.Editor.Flow.FlowGraphView.SerializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  - Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled(System.Boolean)
+  - Ceres.Editor.Flow.FlowGraphView.SimulateExecution
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphView
+  nameWithType: FlowGraphView
+  fullName: Ceres.Editor.Flow.FlowGraphView
+  type: Class
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: 'public class FlowGraphView : CeresGraphView, IVariableSource, IDisposable'
+    content.vb: Public Class FlowGraphView Inherits CeresGraphView Implements IVariableSource, IDisposable
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.CeresGraphView
+  implements:
+  - Ceres.Graph.IVariableSource
+  - System.IDisposable
+  inheritedMembers:
+  - Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(UnityEditor.Experimental.GraphView.NodeCreationContext)
+  - Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UnityEngine.Object,UnityEngine.Vector2)
+  - Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(UnityEditor.Experimental.GraphView.GraphViewChange)
+  - Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  - Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,UnityEngine.Rect)
+  - Ceres.Editor.Graph.CeresGraphView.AddSearchWindow``1
+  - Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  - Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  - Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,UnityEngine.Vector2)
+  - Ceres.Editor.Graph.CeresGraphView.FindNodeView(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.FindNodeView``1(System.String)
+  - Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(UnityEditor.Experimental.GraphView.Port,UnityEditor.Experimental.GraphView.NodeAdapter)
+  - Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(System.Collections.Generic.List{Ceres.Graph.SharedVariable},System.Boolean)
+  - Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  - Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2)
+  - Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2,Ceres.Editor.Graph.CeresPortView)
+  - Ceres.Editor.Graph.CeresGraphView.SetDirty
+  - Ceres.Editor.Graph.CeresGraphView.ClearDirty
+  - Ceres.Editor.Graph.CeresGraphView.IsDirty
+  - Ceres.Editor.Graph.CeresGraphView.SharedVariables
+  - Ceres.Editor.Graph.CeresGraphView.EditorWindow
+  - Ceres.Editor.Graph.CeresGraphView.Blackboard
+  - Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  - Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+  - Ceres.Editor.Graph.CeresGraphView.NodeViews
+  - Ceres.Editor.Graph.CeresGraphView.SearchWindow
+- uid: Ceres.Editor.Flow.FlowGraphView.#ctor(Ceres.Editor.Flow.FlowGraphEditorWindow)
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.#ctor(Ceres.Editor.Flow.FlowGraphEditorWindow)
+  id: '#ctor(Ceres.Editor.Flow.FlowGraphEditorWindow)'
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphView(FlowGraphEditorWindow)
+  nameWithType: FlowGraphView.FlowGraphView(FlowGraphEditorWindow)
+  fullName: Ceres.Editor.Flow.FlowGraphView.FlowGraphView(Ceres.Editor.Flow.FlowGraphEditorWindow)
+  type: Constructor
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public FlowGraphView(FlowGraphEditorWindow editorWindow)
+    parameters:
+    - id: editorWindow
+      type: Ceres.Editor.Flow.FlowGraphEditorWindow
+    content.vb: Public Sub New(editorWindow As FlowGraphEditorWindow)
+  overload: Ceres.Editor.Flow.FlowGraphView.#ctor*
+  nameWithType.vb: FlowGraphView.New(FlowGraphEditorWindow)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphView.New(Ceres.Editor.Flow.FlowGraphEditorWindow)
+  name.vb: New(FlowGraphEditorWindow)
+- uid: Ceres.Editor.Flow.FlowGraphView.SerializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.SerializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  id: SerializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: SerializeGraph(FlowGraphEditorObject)
+  nameWithType: FlowGraphView.SerializeGraph(FlowGraphEditorObject)
+  fullName: Ceres.Editor.Flow.FlowGraphView.SerializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Serialize flow graph to editor data container
+  example: []
+  syntax:
+    content: public bool SerializeGraph(FlowGraphEditorObject editorObject)
+    parameters:
+    - id: editorObject
+      type: Ceres.Editor.Flow.FlowGraphEditorObject
+      description: Serialization target
+    return:
+      type: System.Boolean
+      description: Whether serialization is succeeded
+    content.vb: Public Function SerializeGraph(editorObject As FlowGraphEditorObject) As Boolean
+  overload: Ceres.Editor.Flow.FlowGraphView.SerializeGraph*
+- uid: Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+  id: OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnCopySerializedGraph(IEnumerable<GraphElement>)
+  nameWithType: FlowGraphView.OnCopySerializedGraph(IEnumerable<GraphElement>)
+  fullName: Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable<UnityEditor.Experimental.GraphView.GraphElement>)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  example: []
+  syntax:
+    content: protected override string OnCopySerializedGraph(IEnumerable<GraphElement> elements)
+    parameters:
+    - id: elements
+      type: System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement}
+    return:
+      type: System.String
+    content.vb: Protected Overrides Function OnCopySerializedGraph(elements As IEnumerable(Of GraphElement)) As String
+  overridden: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+  overload: Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph*
+  nameWithType.vb: FlowGraphView.OnCopySerializedGraph(IEnumerable(Of GraphElement))
+  fullName.vb: Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable(Of UnityEditor.Experimental.GraphView.GraphElement))
+  name.vb: OnCopySerializedGraph(IEnumerable(Of GraphElement))
+- uid: Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph(System.String)
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph(System.String)
+  id: CanPasteSerializedGraph(System.String)
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: CanPasteSerializedGraph(string)
+  nameWithType: FlowGraphView.CanPasteSerializedGraph(string)
+  fullName: Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph(string)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  example: []
+  syntax:
+    content: protected override bool CanPasteSerializedGraph(string serializedData)
+    parameters:
+    - id: serializedData
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Protected Overrides Function CanPasteSerializedGraph(serializedData As String) As Boolean
+  overridden: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(System.String)
+  overload: Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph*
+  nameWithType.vb: FlowGraphView.CanPasteSerializedGraph(String)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph(String)
+  name.vb: CanPasteSerializedGraph(String)
+- uid: Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph(System.String,System.String)
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph(System.String,System.String)
+  id: OnPasteSerializedGraph(System.String,System.String)
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnPasteSerializedGraph(string, string)
+  nameWithType: FlowGraphView.OnPasteSerializedGraph(string, string)
+  fullName: Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph(string, string)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  example: []
+  syntax:
+    content: protected override void OnPasteSerializedGraph(string operationName, string serializedData)
+    parameters:
+    - id: operationName
+      type: System.String
+    - id: serializedData
+      type: System.String
+    content.vb: Protected Overrides Sub OnPasteSerializedGraph(operationName As String, serializedData As String)
+  overridden: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(System.String,System.String)
+  overload: Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph*
+  nameWithType.vb: FlowGraphView.OnPasteSerializedGraph(String, String)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph(String, String)
+  name.vb: OnPasteSerializedGraph(String, String)
+- uid: Ceres.Editor.Flow.FlowGraphView.DeserializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.DeserializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  id: DeserializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: DeserializeGraph(FlowGraphEditorObject)
+  nameWithType: FlowGraphView.DeserializeGraph(FlowGraphEditorObject)
+  fullName: Ceres.Editor.Flow.FlowGraphView.DeserializeGraph(Ceres.Editor.Flow.FlowGraphEditorObject)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public void DeserializeGraph(FlowGraphEditorObject editorObject)
+    parameters:
+    - id: editorObject
+      type: Ceres.Editor.Flow.FlowGraphEditorObject
+    content.vb: Public Sub DeserializeGraph(editorObject As FlowGraphEditorObject)
+  overload: Ceres.Editor.Flow.FlowGraphView.DeserializeGraph*
+- uid: Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph(Ceres.Editor.Flow.FlowGraphEditorObject,System.String)
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph(Ceres.Editor.Flow.FlowGraphEditorObject,System.String)
+  id: DeserializeSubGraph(Ceres.Editor.Flow.FlowGraphEditorObject,System.String)
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: DeserializeSubGraph(FlowGraphEditorObject, string)
+  nameWithType: FlowGraphView.DeserializeSubGraph(FlowGraphEditorObject, string)
+  fullName: Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph(Ceres.Editor.Flow.FlowGraphEditorObject, string)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public void DeserializeSubGraph(FlowGraphEditorObject editorObject, string slotName)
+    parameters:
+    - id: editorObject
+      type: Ceres.Editor.Flow.FlowGraphEditorObject
+    - id: slotName
+      type: System.String
+    content.vb: Public Sub DeserializeSubGraph(editorObject As FlowGraphEditorObject, slotName As String)
+  overload: Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph*
+  nameWithType.vb: FlowGraphView.DeserializeSubGraph(FlowGraphEditorObject, String)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph(Ceres.Editor.Flow.FlowGraphEditorObject, String)
+  name.vb: DeserializeSubGraph(FlowGraphEditorObject, String)
+- uid: Ceres.Editor.Flow.FlowGraphView.SimulateExecution
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.SimulateExecution
+  id: SimulateExecution
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: SimulateExecution()
+  nameWithType: FlowGraphView.SimulateExecution()
+  fullName: Ceres.Editor.Flow.FlowGraphView.SimulateExecution()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Execute simulate event in editor if existed
+  example: []
+  syntax:
+    content: public UniTask SimulateExecution()
+    return:
+      type: Cysharp.Threading.Tasks.UniTask
+    content.vb: Public Function SimulateExecution() As UniTask
+  overload: Ceres.Editor.Flow.FlowGraphView.SimulateExecution*
+- uid: Ceres.Editor.Flow.FlowGraphView.CanSimulate
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.CanSimulate
+  id: CanSimulate
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: CanSimulate()
+  nameWithType: FlowGraphView.CanSimulate()
+  fullName: Ceres.Editor.Flow.FlowGraphView.CanSimulate()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public bool CanSimulate()
+    return:
+      type: System.Boolean
+    content.vb: Public Function CanSimulate() As Boolean
+  overload: Ceres.Editor.Flow.FlowGraphView.CanSimulate*
+- uid: Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+  id: OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnDragDropElementPerform(List<ISelectable>, GraphElement, Vector2)
+  nameWithType: FlowGraphView.OnDragDropElementPerform(List<ISelectable>, GraphElement, Vector2)
+  fullName: Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform(System.Collections.Generic.List<UnityEditor.Experimental.GraphView.ISelectable>, UnityEditor.Experimental.GraphView.GraphElement, UnityEngine.Vector2)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  example: []
+  syntax:
+    content: protected override void OnDragDropElementPerform(List<ISelectable> selectables, GraphElement graphElement, Vector2 mousePosition)
+    parameters:
+    - id: selectables
+      type: System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable}
+    - id: graphElement
+      type: UnityEditor.Experimental.GraphView.GraphElement
+    - id: mousePosition
+      type: UnityEngine.Vector2
+    content.vb: Protected Overrides Sub OnDragDropElementPerform(selectables As List(Of ISelectable), graphElement As GraphElement, mousePosition As Vector2)
+  overridden: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+  overload: Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform*
+  nameWithType.vb: FlowGraphView.OnDragDropElementPerform(List(Of ISelectable), GraphElement, Vector2)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform(System.Collections.Generic.List(Of UnityEditor.Experimental.GraphView.ISelectable), UnityEditor.Experimental.GraphView.GraphElement, UnityEngine.Vector2)
+  name.vb: OnDragDropElementPerform(List(Of ISelectable), GraphElement, Vector2)
+- uid: Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled(System.Boolean)
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled(System.Boolean)
+  id: SetDebugEnabled(System.Boolean)
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: SetDebugEnabled(bool)
+  nameWithType: FlowGraphView.SetDebugEnabled(bool)
+  fullName: Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled(bool)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public void SetDebugEnabled(bool enabled)
+    parameters:
+    - id: enabled
+      type: System.Boolean
+    content.vb: Public Sub SetDebugEnabled(enabled As Boolean)
+  overload: Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled*
+  nameWithType.vb: FlowGraphView.SetDebugEnabled(Boolean)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled(Boolean)
+  name.vb: SetDebugEnabled(Boolean)
+- uid: Ceres.Editor.Flow.FlowGraphView.IsPaused
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.IsPaused
+  id: IsPaused
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: IsPaused()
+  nameWithType: FlowGraphView.IsPaused()
+  fullName: Ceres.Editor.Flow.FlowGraphView.IsPaused()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public bool IsPaused()
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsPaused() As Boolean
+  overload: Ceres.Editor.Flow.FlowGraphView.IsPaused*
+- uid: Ceres.Editor.Flow.FlowGraphView.NextFrame
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.NextFrame
+  id: NextFrame
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: NextFrame()
+  nameWithType: FlowGraphView.NextFrame()
+  fullName: Ceres.Editor.Flow.FlowGraphView.NextFrame()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public void NextFrame()
+    content.vb: Public Sub NextFrame()
+  overload: Ceres.Editor.Flow.FlowGraphView.NextFrame*
+- uid: Ceres.Editor.Flow.FlowGraphView.NextBreakpoint
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.NextBreakpoint
+  id: NextBreakpoint
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: NextBreakpoint()
+  nameWithType: FlowGraphView.NextBreakpoint()
+  fullName: Ceres.Editor.Flow.FlowGraphView.NextBreakpoint()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public void NextBreakpoint()
+    content.vb: Public Sub NextBreakpoint()
+  overload: Ceres.Editor.Flow.FlowGraphView.NextBreakpoint*
+- uid: Ceres.Editor.Flow.FlowGraphView.OnDestroy
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.OnDestroy
+  id: OnDestroy
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: OnDestroy()
+  nameWithType: FlowGraphView.OnDestroy()
+  fullName: Ceres.Editor.Flow.FlowGraphView.OnDestroy()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Called after detached from editor window
+  example: []
+  syntax:
+    content: protected override void OnDestroy()
+    content.vb: Protected Overrides Sub OnDestroy()
+  overridden: Ceres.Editor.Graph.CeresGraphView.OnDestroy
+  overload: Ceres.Editor.Flow.FlowGraphView.OnDestroy*
+- uid: Ceres.Editor.Flow.FlowGraphView.Dispose
+  commentId: M:Ceres.Editor.Flow.FlowGraphView.Dispose
+  id: Dispose
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: FlowGraphView.Dispose()
+  fullName: Ceres.Editor.Flow.FlowGraphView.Dispose()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Editor.Flow.FlowGraphView.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Ceres.Editor.Flow.FlowGraphView.DebugState
+  commentId: P:Ceres.Editor.Flow.FlowGraphView.DebugState
+  id: DebugState
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: DebugState
+  nameWithType: FlowGraphView.DebugState
+  fullName: Ceres.Editor.Flow.FlowGraphView.DebugState
+  type: Property
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Editor debug state
+  example: []
+  syntax:
+    content: public FlowGraphDebugState DebugState { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Flow.FlowGraphDebugState
+    content.vb: Public ReadOnly Property DebugState As FlowGraphDebugState
+  overload: Ceres.Editor.Flow.FlowGraphView.DebugState*
+- uid: Ceres.Editor.Flow.FlowGraphView.FlowGraphEditorWindow
+  commentId: P:Ceres.Editor.Flow.FlowGraphView.FlowGraphEditorWindow
+  id: FlowGraphEditorWindow
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphEditorWindow
+  nameWithType: FlowGraphView.FlowGraphEditorWindow
+  fullName: Ceres.Editor.Flow.FlowGraphView.FlowGraphEditorWindow
+  type: Property
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Bound editor window
+  example: []
+  syntax:
+    content: public FlowGraphEditorWindow FlowGraphEditorWindow { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Flow.FlowGraphEditorWindow
+    content.vb: Public ReadOnly Property FlowGraphEditorWindow As FlowGraphEditorWindow
+  overload: Ceres.Editor.Flow.FlowGraphView.FlowGraphEditorWindow*
+- uid: Ceres.Editor.Flow.FlowGraphView.GraphName
+  commentId: P:Ceres.Editor.Flow.FlowGraphView.GraphName
+  id: GraphName
+  parent: Ceres.Editor.Flow.FlowGraphView
+  langs:
+  - csharp
+  - vb
+  name: GraphName
+  nameWithType: FlowGraphView.GraphName
+  fullName: Ceres.Editor.Flow.FlowGraphView.GraphName
+  type: Property
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Bound graph verified name
+  example: []
+  syntax:
+    content: public string GraphName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property GraphName As String
+  overload: Ceres.Editor.Flow.FlowGraphView.GraphName*
+references:
+- uid: Ceres.Editor.Flow
+  commentId: N:Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Flow
+  nameWithType: Ceres.Editor.Flow
+  fullName: Ceres.Editor.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphView.html
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Graph.IVariableSource
+  commentId: T:Ceres.Graph.IVariableSource
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.IVariableSource.html
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: Ceres.Graph.IVariableSource
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(UnityEditor.Experimental.GraphView.NodeCreationContext)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(UnityEditor.Experimental.GraphView.NodeCreationContext)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: OnNodeCreationRequest(NodeCreationContext)
+  nameWithType: CeresGraphView.OnNodeCreationRequest(NodeCreationContext)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(UnityEditor.Experimental.GraphView.NodeCreationContext)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(UnityEditor.Experimental.GraphView.NodeCreationContext)
+    name: OnNodeCreationRequest
+    isExternal: true
+  - name: (
+  - uid: UnityEditor.Experimental.GraphView.NodeCreationContext
+    name: NodeCreationContext
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnNodeCreationRequest(UnityEditor.Experimental.GraphView.NodeCreationContext)
+    name: OnNodeCreationRequest
+    isExternal: true
+  - name: (
+  - uid: UnityEditor.Experimental.GraphView.NodeCreationContext
+    name: NodeCreationContext
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UnityEngine.Object,UnityEngine.Vector2)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UnityEngine.Object,UnityEngine.Vector2)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: OnDragDropObjectPerform(Object, Vector2)
+  nameWithType: CeresGraphView.OnDragDropObjectPerform(Object, Vector2)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UnityEngine.Object, UnityEngine.Vector2)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UnityEngine.Object,UnityEngine.Vector2)
+    name: OnDragDropObjectPerform
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropObjectPerform(UnityEngine.Object,UnityEngine.Vector2)
+    name: OnDragDropObjectPerform
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(UnityEditor.Experimental.GraphView.GraphViewChange)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(UnityEditor.Experimental.GraphView.GraphViewChange)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: OnGraphViewChanged(GraphViewChange)
+  nameWithType: CeresGraphView.OnGraphViewChanged(GraphViewChange)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(UnityEditor.Experimental.GraphView.GraphViewChange)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(UnityEditor.Experimental.GraphView.GraphViewChange)
+    name: OnGraphViewChanged
+    isExternal: true
+  - name: (
+  - uid: UnityEditor.Experimental.GraphView.GraphViewChange
+    name: GraphViewChange
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnGraphViewChanged(UnityEditor.Experimental.GraphView.GraphViewChange)
+    name: OnGraphViewChanged
+    isExternal: true
+  - name: (
+  - uid: UnityEditor.Experimental.GraphView.GraphViewChange
+    name: GraphViewChange
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: AddBlackboard(CeresBlackboard)
+  nameWithType: CeresGraphView.AddBlackboard(CeresBlackboard)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+    name: AddBlackboard
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresBlackboard
+    name: CeresBlackboard
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard)
+    name: AddBlackboard
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresBlackboard
+    name: CeresBlackboard
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,UnityEngine.Rect)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,UnityEngine.Rect)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: AddBlackboard(CeresBlackboard, Rect)
+  nameWithType: CeresGraphView.AddBlackboard(CeresBlackboard, Rect)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard, UnityEngine.Rect)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,UnityEngine.Rect)
+    name: AddBlackboard
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresBlackboard
+    name: CeresBlackboard
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Rect
+    name: Rect
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddBlackboard(Ceres.Editor.Graph.CeresBlackboard,UnityEngine.Rect)
+    name: AddBlackboard
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresBlackboard
+    name: CeresBlackboard
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Rect
+    name: Rect
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow``1
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddSearchWindow``1
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: AddSearchWindow<T>()
+  nameWithType: CeresGraphView.AddSearchWindow<T>()
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow<T>()
+  nameWithType.vb: CeresGraphView.AddSearchWindow(Of T)()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow(Of T)()
+  name.vb: AddSearchWindow(Of T)()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow``1
+    name: AddSearchWindow
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddSearchWindow``1
+    name: AddSearchWindow
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: AddNodeGroupHandler(NodeGroupHandler)
+  nameWithType: CeresGraphView.AddNodeGroupHandler(NodeGroupHandler)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+    name: AddNodeGroupHandler
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.NodeGroupHandler
+    name: NodeGroupHandler
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddNodeGroupHandler(Ceres.Editor.Graph.NodeGroupHandler)
+    name: AddNodeGroupHandler
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.NodeGroupHandler
+    name: NodeGroupHandler
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: AddStyleSheet(string)
+  nameWithType: CeresGraphView.AddStyleSheet(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(string)
+  nameWithType.vb: CeresGraphView.AddStyleSheet(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(String)
+  name.vb: AddStyleSheet(String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(System.String)
+    name: AddStyleSheet
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddStyleSheet(System.String)
+    name: AddStyleSheet
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetOrLoadStyleSheet(string)
+  nameWithType: CeresGraphView.GetOrLoadStyleSheet(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(string)
+  nameWithType.vb: CeresGraphView.GetOrLoadStyleSheet(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(String)
+  name.vb: GetOrLoadStyleSheet(String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(System.String)
+    name: GetOrLoadStyleSheet
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadStyleSheet(System.String)
+    name: GetOrLoadStyleSheet
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetOrLoadVisualTreeAsset(string)
+  nameWithType: CeresGraphView.GetOrLoadVisualTreeAsset(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(string)
+  nameWithType.vb: CeresGraphView.GetOrLoadVisualTreeAsset(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(String)
+  name.vb: GetOrLoadVisualTreeAsset(String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)
+    name: GetOrLoadVisualTreeAsset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.GetOrLoadVisualTreeAsset(System.String)
+    name: GetOrLoadVisualTreeAsset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: AddNodeView(ICeresNodeView)
+  nameWithType: CeresGraphView.AddNodeView(ICeresNodeView)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+    name: AddNodeView
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddNodeView(Ceres.Editor.Graph.ICeresNodeView)
+    name: AddNodeView
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,UnityEngine.Vector2)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,UnityEngine.Vector2)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: InsertRelayNode(CeresPortElement, CeresPortElement, Vector2)
+  nameWithType: CeresGraphView.InsertRelayNode(CeresPortElement, CeresPortElement, Vector2)
+  fullName: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement, Ceres.Editor.Graph.CeresPortElement, UnityEngine.Vector2)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,UnityEngine.Vector2)
+    name: InsertRelayNode
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortElement
+    name: CeresPortElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresPortElement
+    name: CeresPortElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.InsertRelayNode(Ceres.Editor.Graph.CeresPortElement,Ceres.Editor.Graph.CeresPortElement,UnityEngine.Vector2)
+    name: InsertRelayNode
+    isExternal: true
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortElement
+    name: CeresPortElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresPortElement
+    name: CeresPortElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.FindNodeView(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: FindNodeView(string)
+  nameWithType: CeresGraphView.FindNodeView(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.FindNodeView(string)
+  nameWithType.vb: CeresGraphView.FindNodeView(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.FindNodeView(String)
+  name.vb: FindNodeView(String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView(System.String)
+    name: FindNodeView
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView(System.String)
+    name: FindNodeView
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView``1(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.FindNodeView``1(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: FindNodeView<TNodeView>(string)
+  nameWithType: CeresGraphView.FindNodeView<TNodeView>(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.FindNodeView<TNodeView>(string)
+  nameWithType.vb: CeresGraphView.FindNodeView(Of TNodeView)(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.FindNodeView(Of TNodeView)(String)
+  name.vb: FindNodeView(Of TNodeView)(String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView``1(System.String)
+    name: FindNodeView
+    isExternal: true
+  - name: <
+  - name: TNodeView
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.FindNodeView``1(System.String)
+    name: FindNodeView
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TNodeView
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(UnityEditor.Experimental.GraphView.Port,UnityEditor.Experimental.GraphView.NodeAdapter)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(UnityEditor.Experimental.GraphView.Port,UnityEditor.Experimental.GraphView.NodeAdapter)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: GetCompatiblePorts(Port, NodeAdapter)
+  nameWithType: CeresGraphView.GetCompatiblePorts(Port, NodeAdapter)
+  fullName: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(UnityEditor.Experimental.GraphView.Port, UnityEditor.Experimental.GraphView.NodeAdapter)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(UnityEditor.Experimental.GraphView.Port,UnityEditor.Experimental.GraphView.NodeAdapter)
+    name: GetCompatiblePorts
+    isExternal: true
+  - name: (
+  - uid: UnityEditor.Experimental.GraphView.Port
+    name: Port
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.NodeAdapter
+    name: NodeAdapter
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.GetCompatiblePorts(UnityEditor.Experimental.GraphView.Port,UnityEditor.Experimental.GraphView.NodeAdapter)
+    name: GetCompatiblePorts
+    isExternal: true
+  - name: (
+  - uid: UnityEditor.Experimental.GraphView.Port
+    name: Port
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.NodeAdapter
+    name: NodeAdapter
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(System.Collections.Generic.List{Ceres.Graph.SharedVariable},System.Boolean)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(System.Collections.Generic.List{Ceres.Graph.SharedVariable},System.Boolean)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: AddSharedVariables(List<SharedVariable>, bool)
+  nameWithType: CeresGraphView.AddSharedVariables(List<SharedVariable>, bool)
+  fullName: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(System.Collections.Generic.List<Ceres.Graph.SharedVariable>, bool)
+  nameWithType.vb: CeresGraphView.AddSharedVariables(List(Of SharedVariable), Boolean)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(System.Collections.Generic.List(Of Ceres.Graph.SharedVariable), Boolean)
+  name.vb: AddSharedVariables(List(Of SharedVariable), Boolean)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(System.Collections.Generic.List{Ceres.Graph.SharedVariable},System.Boolean)
+    name: AddSharedVariables
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.AddSharedVariables(System.Collections.Generic.List{Ceres.Graph.SharedVariable},System.Boolean)
+    name: AddSharedVariables
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: BuildContextualMenu(ContextualMenuPopulateEvent)
+  nameWithType: CeresGraphView.BuildContextualMenu(ContextualMenuPopulateEvent)
+  fullName: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+    name: BuildContextualMenu
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.UIElements.ContextualMenuPopulateEvent
+    name: ContextualMenuPopulateEvent
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+    name: BuildContextualMenu
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.UIElements.ContextualMenuPopulateEvent
+    name: ContextualMenuPopulateEvent
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: OpenSearch(Vector2)
+  nameWithType: CeresGraphView.OpenSearch(Vector2)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2)
+    name: OpenSearch
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2)
+    name: OpenSearch
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2,Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2,Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: OpenSearch(Vector2, CeresPortView)
+  nameWithType: CeresGraphView.OpenSearch(Vector2, CeresPortView)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2, Ceres.Editor.Graph.CeresPortView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2,Ceres.Editor.Graph.CeresPortView)
+    name: OpenSearch
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OpenSearch(UnityEngine.Vector2,Ceres.Editor.Graph.CeresPortView)
+    name: OpenSearch
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.SetDirty
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.SetDirty
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: SetDirty()
+  nameWithType: CeresGraphView.SetDirty()
+  fullName: Ceres.Editor.Graph.CeresGraphView.SetDirty()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.SetDirty
+    name: SetDirty
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.SetDirty
+    name: SetDirty
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.ClearDirty
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.ClearDirty
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: ClearDirty()
+  nameWithType: CeresGraphView.ClearDirty()
+  fullName: Ceres.Editor.Graph.CeresGraphView.ClearDirty()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.ClearDirty
+    name: ClearDirty
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.ClearDirty
+    name: ClearDirty
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.IsDirty
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.IsDirty
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: IsDirty()
+  nameWithType: CeresGraphView.IsDirty()
+  fullName: Ceres.Editor.Graph.CeresGraphView.IsDirty()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.IsDirty
+    name: IsDirty
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.IsDirty
+    name: IsDirty
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView.SharedVariables
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.SharedVariables
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: SharedVariables
+  nameWithType: CeresGraphView.SharedVariables
+  fullName: Ceres.Editor.Graph.CeresGraphView.SharedVariables
+- uid: Ceres.Editor.Graph.CeresGraphView.EditorWindow
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.EditorWindow
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: EditorWindow
+  nameWithType: CeresGraphView.EditorWindow
+  fullName: Ceres.Editor.Graph.CeresGraphView.EditorWindow
+- uid: Ceres.Editor.Graph.CeresGraphView.Blackboard
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.Blackboard
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: Blackboard
+  nameWithType: CeresGraphView.Blackboard
+  fullName: Ceres.Editor.Graph.CeresGraphView.Blackboard
+- uid: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphView.html#Ceres_Editor_Graph_CeresGraphView_NodeGroupHandler
+  name: NodeGroupHandler
+  nameWithType: CeresGraphView.NodeGroupHandler
+  fullName: Ceres.Editor.Graph.CeresGraphView.NodeGroupHandler
+- uid: Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: ContextualMenuRegistry
+  nameWithType: CeresGraphView.ContextualMenuRegistry
+  fullName: Ceres.Editor.Graph.CeresGraphView.ContextualMenuRegistry
+- uid: Ceres.Editor.Graph.CeresGraphView.NodeViews
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.NodeViews
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: NodeViews
+  nameWithType: CeresGraphView.NodeViews
+  fullName: Ceres.Editor.Graph.CeresGraphView.NodeViews
+- uid: Ceres.Editor.Graph.CeresGraphView.SearchWindow
+  commentId: P:Ceres.Editor.Graph.CeresGraphView.SearchWindow
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: SearchWindow
+  nameWithType: CeresGraphView.SearchWindow
+  fullName: Ceres.Editor.Graph.CeresGraphView.SearchWindow
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Editor.Flow.FlowGraphView.#ctor*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.#ctor
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView__ctor_Ceres_Editor_Flow_FlowGraphEditorWindow_
+  name: FlowGraphView
+  nameWithType: FlowGraphView.FlowGraphView
+  fullName: Ceres.Editor.Flow.FlowGraphView.FlowGraphView
+  nameWithType.vb: FlowGraphView.New
+  fullName.vb: Ceres.Editor.Flow.FlowGraphView.New
+  name.vb: New
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow
+  commentId: T:Ceres.Editor.Flow.FlowGraphEditorWindow
+  parent: Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html
+  name: FlowGraphEditorWindow
+  nameWithType: FlowGraphEditorWindow
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow
+- uid: Ceres.Editor.Flow.FlowGraphView.SerializeGraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.SerializeGraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_SerializeGraph_Ceres_Editor_Flow_FlowGraphEditorObject_
+  name: SerializeGraph
+  nameWithType: FlowGraphView.SerializeGraph
+  fullName: Ceres.Editor.Flow.FlowGraphView.SerializeGraph
+- uid: Ceres.Editor.Flow.FlowGraphEditorObject
+  commentId: T:Ceres.Editor.Flow.FlowGraphEditorObject
+  parent: Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorObject.html
+  name: FlowGraphEditorObject
+  nameWithType: FlowGraphEditorObject
+  fullName: Ceres.Editor.Flow.FlowGraphEditorObject
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: OnCopySerializedGraph(IEnumerable<GraphElement>)
+  nameWithType: CeresGraphView.OnCopySerializedGraph(IEnumerable<GraphElement>)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable<UnityEditor.Experimental.GraphView.GraphElement>)
+  nameWithType.vb: CeresGraphView.OnCopySerializedGraph(IEnumerable(Of GraphElement))
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable(Of UnityEditor.Experimental.GraphView.GraphElement))
+  name.vb: OnCopySerializedGraph(IEnumerable(Of GraphElement))
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+    name: OnCopySerializedGraph
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: UnityEditor.Experimental.GraphView.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnCopySerializedGraph(System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement})
+    name: OnCopySerializedGraph
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_OnCopySerializedGraph_System_Collections_Generic_IEnumerable_UnityEditor_Experimental_GraphView_GraphElement__
+  name: OnCopySerializedGraph
+  nameWithType: FlowGraphView.OnCopySerializedGraph
+  fullName: Ceres.Editor.Flow.FlowGraphView.OnCopySerializedGraph
+- uid: System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement}
+  commentId: T:System.Collections.Generic.IEnumerable{UnityEditor.Experimental.GraphView.GraphElement}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<GraphElement>
+  nameWithType: IEnumerable<GraphElement>
+  fullName: System.Collections.Generic.IEnumerable<UnityEditor.Experimental.GraphView.GraphElement>
+  nameWithType.vb: IEnumerable(Of GraphElement)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of UnityEditor.Experimental.GraphView.GraphElement)
+  name.vb: IEnumerable(Of GraphElement)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: UnityEditor.Experimental.GraphView.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: CanPasteSerializedGraph(string)
+  nameWithType: CeresGraphView.CanPasteSerializedGraph(string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(string)
+  nameWithType.vb: CeresGraphView.CanPasteSerializedGraph(String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(String)
+  name.vb: CanPasteSerializedGraph(String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(System.String)
+    name: CanPasteSerializedGraph
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.CanPasteSerializedGraph(System.String)
+    name: CanPasteSerializedGraph
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_CanPasteSerializedGraph_System_String_
+  name: CanPasteSerializedGraph
+  nameWithType: FlowGraphView.CanPasteSerializedGraph
+  fullName: Ceres.Editor.Flow.FlowGraphView.CanPasteSerializedGraph
+- uid: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(System.String,System.String)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(System.String,System.String)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: OnPasteSerializedGraph(string, string)
+  nameWithType: CeresGraphView.OnPasteSerializedGraph(string, string)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(string, string)
+  nameWithType.vb: CeresGraphView.OnPasteSerializedGraph(String, String)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(String, String)
+  name.vb: OnPasteSerializedGraph(String, String)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(System.String,System.String)
+    name: OnPasteSerializedGraph
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnPasteSerializedGraph(System.String,System.String)
+    name: OnPasteSerializedGraph
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_OnPasteSerializedGraph_System_String_System_String_
+  name: OnPasteSerializedGraph
+  nameWithType: FlowGraphView.OnPasteSerializedGraph
+  fullName: Ceres.Editor.Flow.FlowGraphView.OnPasteSerializedGraph
+- uid: Ceres.Editor.Flow.FlowGraphView.DeserializeGraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.DeserializeGraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_DeserializeGraph_Ceres_Editor_Flow_FlowGraphEditorObject_
+  name: DeserializeGraph
+  nameWithType: FlowGraphView.DeserializeGraph
+  fullName: Ceres.Editor.Flow.FlowGraphView.DeserializeGraph
+- uid: Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_DeserializeSubGraph_Ceres_Editor_Flow_FlowGraphEditorObject_System_String_
+  name: DeserializeSubGraph
+  nameWithType: FlowGraphView.DeserializeSubGraph
+  fullName: Ceres.Editor.Flow.FlowGraphView.DeserializeSubGraph
+- uid: Ceres.Editor.Flow.FlowGraphView.SimulateExecution*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.SimulateExecution
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_SimulateExecution
+  name: SimulateExecution
+  nameWithType: FlowGraphView.SimulateExecution
+  fullName: Ceres.Editor.Flow.FlowGraphView.SimulateExecution
+- uid: Cysharp.Threading.Tasks.UniTask
+  commentId: T:Cysharp.Threading.Tasks.UniTask
+  parent: Cysharp.Threading.Tasks
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: Cysharp.Threading.Tasks.UniTask
+- uid: Cysharp.Threading.Tasks
+  commentId: N:Cysharp.Threading.Tasks
+  isExternal: true
+  name: Cysharp.Threading.Tasks
+  nameWithType: Cysharp.Threading.Tasks
+  fullName: Cysharp.Threading.Tasks
+  spec.csharp:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: Ceres.Editor.Flow.FlowGraphView.CanSimulate*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.CanSimulate
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_CanSimulate
+  name: CanSimulate
+  nameWithType: FlowGraphView.CanSimulate
+  fullName: Ceres.Editor.Flow.FlowGraphView.CanSimulate
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: OnDragDropElementPerform(List<ISelectable>, GraphElement, Vector2)
+  nameWithType: CeresGraphView.OnDragDropElementPerform(List<ISelectable>, GraphElement, Vector2)
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(System.Collections.Generic.List<UnityEditor.Experimental.GraphView.ISelectable>, UnityEditor.Experimental.GraphView.GraphElement, UnityEngine.Vector2)
+  nameWithType.vb: CeresGraphView.OnDragDropElementPerform(List(Of ISelectable), GraphElement, Vector2)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(System.Collections.Generic.List(Of UnityEditor.Experimental.GraphView.ISelectable), UnityEditor.Experimental.GraphView.GraphElement, UnityEngine.Vector2)
+  name.vb: OnDragDropElementPerform(List(Of ISelectable), GraphElement, Vector2)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+    name: OnDragDropElementPerform
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: UnityEditor.Experimental.GraphView.ISelectable
+    name: ISelectable
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnDragDropElementPerform(System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable},UnityEditor.Experimental.GraphView.GraphElement,UnityEngine.Vector2)
+    name: OnDragDropElementPerform
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.ISelectable
+    name: ISelectable
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.GraphElement
+    name: GraphElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_OnDragDropElementPerform_System_Collections_Generic_List_UnityEditor_Experimental_GraphView_ISelectable__UnityEditor_Experimental_GraphView_GraphElement_UnityEngine_Vector2_
+  name: OnDragDropElementPerform
+  nameWithType: FlowGraphView.OnDragDropElementPerform
+  fullName: Ceres.Editor.Flow.FlowGraphView.OnDragDropElementPerform
+- uid: System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable}
+  commentId: T:System.Collections.Generic.List{UnityEditor.Experimental.GraphView.ISelectable}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ISelectable>
+  nameWithType: List<ISelectable>
+  fullName: System.Collections.Generic.List<UnityEditor.Experimental.GraphView.ISelectable>
+  nameWithType.vb: List(Of ISelectable)
+  fullName.vb: System.Collections.Generic.List(Of UnityEditor.Experimental.GraphView.ISelectable)
+  name.vb: List(Of ISelectable)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: UnityEditor.Experimental.GraphView.ISelectable
+    name: ISelectable
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.ISelectable
+    name: ISelectable
+    isExternal: true
+  - name: )
+- uid: UnityEditor.Experimental.GraphView.GraphElement
+  isExternal: true
+  name: GraphElement
+  nameWithType: GraphElement
+  fullName: UnityEditor.Experimental.GraphView.GraphElement
+- uid: UnityEngine.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_SetDebugEnabled_System_Boolean_
+  name: SetDebugEnabled
+  nameWithType: FlowGraphView.SetDebugEnabled
+  fullName: Ceres.Editor.Flow.FlowGraphView.SetDebugEnabled
+- uid: Ceres.Editor.Flow.FlowGraphView.IsPaused*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.IsPaused
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_IsPaused
+  name: IsPaused
+  nameWithType: FlowGraphView.IsPaused
+  fullName: Ceres.Editor.Flow.FlowGraphView.IsPaused
+- uid: Ceres.Editor.Flow.FlowGraphView.NextFrame*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.NextFrame
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_NextFrame
+  name: NextFrame
+  nameWithType: FlowGraphView.NextFrame
+  fullName: Ceres.Editor.Flow.FlowGraphView.NextFrame
+- uid: Ceres.Editor.Flow.FlowGraphView.NextBreakpoint*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.NextBreakpoint
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_NextBreakpoint
+  name: NextBreakpoint
+  nameWithType: FlowGraphView.NextBreakpoint
+  fullName: Ceres.Editor.Flow.FlowGraphView.NextBreakpoint
+- uid: Ceres.Editor.Graph.CeresGraphView.OnDestroy
+  commentId: M:Ceres.Editor.Graph.CeresGraphView.OnDestroy
+  parent: Ceres.Editor.Graph.CeresGraphView
+  isExternal: true
+  name: OnDestroy()
+  nameWithType: CeresGraphView.OnDestroy()
+  fullName: Ceres.Editor.Graph.CeresGraphView.OnDestroy()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnDestroy
+    name: OnDestroy
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphView.OnDestroy
+    name: OnDestroy
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphView.OnDestroy*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.OnDestroy
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_OnDestroy
+  name: OnDestroy
+  nameWithType: FlowGraphView.OnDestroy
+  fullName: Ceres.Editor.Flow.FlowGraphView.OnDestroy
+- uid: Ceres.Editor.Flow.FlowGraphView.Dispose*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.Dispose
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_Dispose
+  name: Dispose
+  nameWithType: FlowGraphView.Dispose
+  fullName: Ceres.Editor.Flow.FlowGraphView.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphView.DebugState*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.DebugState
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_DebugState
+  name: DebugState
+  nameWithType: FlowGraphView.DebugState
+  fullName: Ceres.Editor.Flow.FlowGraphView.DebugState
+- uid: Ceres.Editor.Flow.FlowGraphDebugState
+  commentId: T:Ceres.Editor.Flow.FlowGraphDebugState
+  parent: Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphDebugState.html
+  name: FlowGraphDebugState
+  nameWithType: FlowGraphDebugState
+  fullName: Ceres.Editor.Flow.FlowGraphDebugState
+- uid: Ceres.Editor.Flow.FlowGraphView.FlowGraphEditorWindow*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.FlowGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_FlowGraphEditorWindow
+  name: FlowGraphEditorWindow
+  nameWithType: FlowGraphView.FlowGraphEditorWindow
+  fullName: Ceres.Editor.Flow.FlowGraphView.FlowGraphEditorWindow
+- uid: Ceres.Editor.Flow.FlowGraphView.GraphName*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphView.GraphName
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html#Ceres_Editor_Flow_FlowGraphView_GraphName
+  name: GraphName
+  nameWithType: FlowGraphView.GraphName
+  fullName: Ceres.Editor.Flow.FlowGraphView.GraphName

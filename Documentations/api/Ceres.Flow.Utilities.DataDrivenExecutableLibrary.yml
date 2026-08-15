@@ -1,0 +1,1101 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  commentId: T:Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  id: DataDrivenExecutableLibrary
+  parent: Ceres.Flow.Utilities
+  children:
+  - Ceres.Flow.Utilities.DataDrivenExecutableLibrary.#ctor
+  - Ceres.Flow.Utilities.DataDrivenExecutableLibrary.CollectExecutableFunctions
+  - Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetAllRows(Ceres.DataDriven.DataTable)
+  - Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow(Ceres.DataDriven.DataTable,System.String,Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow})
+  - Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex(Ceres.DataDriven.DataTable,System.Int32,Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow})
+  - Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable(Ceres.DataDriven.DataTableManager,System.String)
+  - Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager(Ceres.Serialization.SerializedType{Ceres.DataDriven.DataTableManager})
+  langs:
+  - csharp
+  - vb
+  name: DataDrivenExecutableLibrary
+  nameWithType: DataDrivenExecutableLibrary
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Provides Ceres.DataDriven table access helpers for Flow graphs.
+  example: []
+  syntax:
+    content: >-
+      [CeresGroup("DataDriven")]
+
+      public class DataDrivenExecutableLibrary : ExecutableFunctionLibrary
+    content.vb: >-
+      <CeresGroup("DataDriven")>
+
+      Public Class DataDrivenExecutableLibrary Inherits ExecutableFunctionLibrary
+  inheritance:
+  - System.Object
+  - Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  inheritedMembers:
+  - Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+  - Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  attributes:
+  - type: Ceres.Annotations.CeresGroupAttribute
+    ctor: Ceres.Annotations.CeresGroupAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: DataDriven
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager(Ceres.Serialization.SerializedType{Ceres.DataDriven.DataTableManager})
+  commentId: M:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager(Ceres.Serialization.SerializedType{Ceres.DataDriven.DataTableManager})
+  id: Flow_GetDataTableManager(Ceres.Serialization.SerializedType{Ceres.DataDriven.DataTableManager})
+  parent: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_GetDataTableManager(SerializedType<DataTableManager>)
+  nameWithType: DataDrivenExecutableLibrary.Flow_GetDataTableManager(SerializedType<DataTableManager>)
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager(Ceres.Serialization.SerializedType<Ceres.DataDriven.DataTableManager>)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Gets or creates a data table manager of the selected manager type.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(SearchAliases = "Get DataTable Manager, DataTable Manager")]
+
+      [CeresLabel("Get Data Table Manager")]
+
+      public static DataTableManager Flow_GetDataTableManager(SerializedType<DataTableManager> managerType)
+    parameters:
+    - id: managerType
+      type: Ceres.Serialization.SerializedType{Ceres.DataDriven.DataTableManager}
+      description: The concrete data table manager type to resolve.
+      attributes:
+      - type: Ceres.Flow.Annotations.ResolveReturnAttribute
+        ctor: Ceres.Flow.Annotations.ResolveReturnAttribute.#ctor
+        arguments: []
+    return:
+      type: Ceres.DataDriven.DataTableManager
+      description: The resolved data table manager instance.
+    content.vb: >-
+      <ExecutableFunction(SearchAliases:="Get DataTable Manager, DataTable Manager")>
+
+      <CeresLabel("Get Data Table Manager")>
+
+      Public Shared Function Flow_GetDataTableManager(managerType As SerializedType(Of DataTableManager)) As DataTableManager
+  overload: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: SearchAliases
+      type: System.String
+      value: Get DataTable Manager, DataTable Manager
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Get Data Table Manager
+  nameWithType.vb: DataDrivenExecutableLibrary.Flow_GetDataTableManager(SerializedType(Of DataTableManager))
+  fullName.vb: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager(Ceres.Serialization.SerializedType(Of Ceres.DataDriven.DataTableManager))
+  name.vb: Flow_GetDataTableManager(SerializedType(Of DataTableManager))
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable(Ceres.DataDriven.DataTableManager,System.String)
+  commentId: M:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable(Ceres.DataDriven.DataTableManager,System.String)
+  id: Flow_DataTableManagerGetDataTable(Ceres.DataDriven.DataTableManager,System.String)
+  parent: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_DataTableManagerGetDataTable(DataTableManager, string)
+  nameWithType: DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable(DataTableManager, string)
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable(Ceres.DataDriven.DataTableManager, string)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Gets a named data table from the target manager.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(IsScriptMethod = true, SearchAliases = "Get DataTable, DataTable")]
+
+      [CeresLabel("Get Data Table")]
+
+      public static DataTable Flow_DataTableManagerGetDataTable(DataTableManager dataTableManager, string name)
+    parameters:
+    - id: dataTableManager
+      type: Ceres.DataDriven.DataTableManager
+      description: The manager that owns the data table.
+    - id: name
+      type: System.String
+      description: The data table name.
+    return:
+      type: Ceres.DataDriven.DataTable
+      description: The matching data table, or null when it is not found.
+    content.vb: >-
+      <ExecutableFunction(IsScriptMethod:=True, SearchAliases:="Get DataTable, DataTable")>
+
+      <CeresLabel("Get Data Table")>
+
+      Public Shared Function Flow_DataTableManagerGetDataTable(dataTableManager As DataTableManager, name As String) As DataTable
+  overload: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: IsScriptMethod
+      type: System.Boolean
+      value: true
+    - name: SearchAliases
+      type: System.String
+      value: Get DataTable, DataTable
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Get Data Table
+  nameWithType.vb: DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable(DataTableManager, String)
+  fullName.vb: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable(Ceres.DataDriven.DataTableManager, String)
+  name.vb: Flow_DataTableManagerGetDataTable(DataTableManager, String)
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow(Ceres.DataDriven.DataTable,System.String,Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow})
+  commentId: M:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow(Ceres.DataDriven.DataTable,System.String,Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow})
+  id: Flow_DataTableGetRow(Ceres.DataDriven.DataTable,System.String,Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow})
+  parent: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_DataTableGetRow(DataTable, string, SerializedType<IDataTableRow>)
+  nameWithType: DataDrivenExecutableLibrary.Flow_DataTableGetRow(DataTable, string, SerializedType<IDataTableRow>)
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow(Ceres.DataDriven.DataTable, string, Ceres.Serialization.SerializedType<Ceres.DataDriven.IDataTableRow>)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Gets a data row from the table by row id.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(IsScriptMethod = true)]
+
+      [CeresLabel("Get Row")]
+
+      public static IDataTableRow Flow_DataTableGetRow(DataTable dataTable, string rowId, SerializedType<IDataTableRow> rowType)
+    parameters:
+    - id: dataTable
+      type: Ceres.DataDriven.DataTable
+      description: ''
+    - id: rowId
+      type: System.String
+      description: ''
+    - id: rowType
+      type: Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow}
+      description: ''
+      attributes:
+      - type: Ceres.Flow.Annotations.ResolveReturnAttribute
+        ctor: Ceres.Flow.Annotations.ResolveReturnAttribute.#ctor
+        arguments: []
+    return:
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    content.vb: >-
+      <ExecutableFunction(IsScriptMethod:=True)>
+
+      <CeresLabel("Get Row")>
+
+      Public Shared Function Flow_DataTableGetRow(dataTable As DataTable, rowId As String, rowType As SerializedType(Of IDataTableRow)) As IDataTableRow
+  overload: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: IsScriptMethod
+      type: System.Boolean
+      value: true
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Get Row
+  nameWithType.vb: DataDrivenExecutableLibrary.Flow_DataTableGetRow(DataTable, String, SerializedType(Of IDataTableRow))
+  fullName.vb: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow(Ceres.DataDriven.DataTable, String, Ceres.Serialization.SerializedType(Of Ceres.DataDriven.IDataTableRow))
+  name.vb: Flow_DataTableGetRow(DataTable, String, SerializedType(Of IDataTableRow))
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex(Ceres.DataDriven.DataTable,System.Int32,Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow})
+  commentId: M:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex(Ceres.DataDriven.DataTable,System.Int32,Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow})
+  id: Flow_DataTableGetRowByIndex(Ceres.DataDriven.DataTable,System.Int32,Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow})
+  parent: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_DataTableGetRowByIndex(DataTable, int, SerializedType<IDataTableRow>)
+  nameWithType: DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex(DataTable, int, SerializedType<IDataTableRow>)
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex(Ceres.DataDriven.DataTable, int, Ceres.Serialization.SerializedType<Ceres.DataDriven.IDataTableRow>)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Gets a data row from the table by index.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(IsScriptMethod = true)]
+
+      [CeresLabel("Get Row By Index")]
+
+      public static IDataTableRow Flow_DataTableGetRowByIndex(DataTable dataTable, int index, SerializedType<IDataTableRow> rowType)
+    parameters:
+    - id: dataTable
+      type: Ceres.DataDriven.DataTable
+      description: ''
+    - id: index
+      type: System.Int32
+      description: ''
+    - id: rowType
+      type: Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow}
+      description: ''
+      attributes:
+      - type: Ceres.Flow.Annotations.ResolveReturnAttribute
+        ctor: Ceres.Flow.Annotations.ResolveReturnAttribute.#ctor
+        arguments: []
+    return:
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    content.vb: >-
+      <ExecutableFunction(IsScriptMethod:=True)>
+
+      <CeresLabel("Get Row By Index")>
+
+      Public Shared Function Flow_DataTableGetRowByIndex(dataTable As DataTable, index As Integer, rowType As SerializedType(Of IDataTableRow)) As IDataTableRow
+  overload: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: IsScriptMethod
+      type: System.Boolean
+      value: true
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Get Row By Index
+  nameWithType.vb: DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex(DataTable, Integer, SerializedType(Of IDataTableRow))
+  fullName.vb: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex(Ceres.DataDriven.DataTable, Integer, Ceres.Serialization.SerializedType(Of Ceres.DataDriven.IDataTableRow))
+  name.vb: Flow_DataTableGetRowByIndex(DataTable, Integer, SerializedType(Of IDataTableRow))
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetAllRows(Ceres.DataDriven.DataTable)
+  commentId: M:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetAllRows(Ceres.DataDriven.DataTable)
+  id: Flow_DataTableGetAllRows(Ceres.DataDriven.DataTable)
+  parent: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_DataTableGetAllRows(DataTable)
+  nameWithType: DataDrivenExecutableLibrary.Flow_DataTableGetAllRows(DataTable)
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetAllRows(Ceres.DataDriven.DataTable)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Gets all rows from the data table.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(IsScriptMethod = true)]
+
+      [CeresLabel("Get All Rows")]
+
+      public static IDataTableRow[] Flow_DataTableGetAllRows(DataTable dataTable)
+    parameters:
+    - id: dataTable
+      type: Ceres.DataDriven.DataTable
+      description: ''
+    return:
+      type: Ceres.DataDriven.IDataTableRow[]
+      description: ''
+    content.vb: >-
+      <ExecutableFunction(IsScriptMethod:=True)>
+
+      <CeresLabel("Get All Rows")>
+
+      Public Shared Function Flow_DataTableGetAllRows(dataTable As DataTable) As IDataTableRow()
+  overload: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetAllRows*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: IsScriptMethod
+      type: System.Boolean
+      value: true
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Get All Rows
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.CollectExecutableFunctions
+  commentId: M:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.CollectExecutableFunctions
+  id: CollectExecutableFunctions
+  parent: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: CollectExecutableFunctions()
+  nameWithType: DataDrivenExecutableLibrary.CollectExecutableFunctions()
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.CollectExecutableFunctions()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Collect all static executable functions in this library
+  example: []
+  syntax:
+    content: protected override void CollectExecutableFunctions()
+    content.vb: Protected Overrides Sub CollectExecutableFunctions()
+  overridden: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+  overload: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.CollectExecutableFunctions*
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.#ctor
+  commentId: M:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.#ctor
+  id: '#ctor'
+  parent: Ceres.Flow.Utilities.DataDrivenExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: DataDrivenExecutableLibrary()
+  nameWithType: DataDrivenExecutableLibrary.DataDrivenExecutableLibrary()
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.DataDrivenExecutableLibrary()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  syntax:
+    content: public DataDrivenExecutableLibrary()
+    content.vb: Public Sub New()
+  overload: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.#ctor*
+  nameWithType.vb: DataDrivenExecutableLibrary.New()
+  fullName.vb: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.New()
+  name.vb: New()
+references:
+- uid: Ceres.Flow.Utilities
+  commentId: N:Ceres.Flow.Utilities
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow.Utilities
+  nameWithType: Ceres.Flow.Utilities
+  fullName: Ceres.Flow.Utilities
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  - name: .
+  - uid: Ceres.Flow.Utilities
+    name: Utilities
+    isExternal: true
+    href: Ceres.Flow.Utilities.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  - name: .
+  - uid: Ceres.Flow.Utilities
+    name: Utilities
+    isExternal: true
+    href: Ceres.Flow.Utilities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  commentId: T:Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  parent: Ceres.Flow.Utilities
+  isExternal: true
+  href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html
+  name: ExecutableFunctionLibrary
+  nameWithType: ExecutableFunctionLibrary
+  fullName: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+- uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+  commentId: M:Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+  parent: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  isExternal: true
+  href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr__1_System_String_System_Int32_System_Void__
+  name: RegisterExecutableFunctionPtr<TLibrary>(string, int, void*)
+  nameWithType: ExecutableFunctionLibrary.RegisterExecutableFunctionPtr<TLibrary>(string, int, void*)
+  fullName: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr<TLibrary>(string, int, void*)
+  nameWithType.vb: ExecutableFunctionLibrary.RegisterExecutableFunctionPtr(Of TLibrary)(String, Integer, Void*)
+  fullName.vb: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr(Of TLibrary)(String, Integer, Void*)
+  name.vb: RegisterExecutableFunctionPtr(Of TLibrary)(String, Integer, Void*)
+  spec.csharp:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+    name: RegisterExecutableFunctionPtr
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr__1_System_String_System_Int32_System_Void__
+  - name: <
+  - name: TLibrary
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Void
+    name: void
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.void
+  - name: '*'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+    name: RegisterExecutableFunctionPtr
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr__1_System_String_System_Int32_System_Void__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TLibrary
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Void
+    name: Void
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.void
+  - name: '*'
+  - name: )
+- uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+  commentId: M:Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+  parent: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  isExternal: true
+  href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo__1_System_String_System_Int32_System_String_System_Int32_
+  name: RegisterExecutableFunctionFileInfo<TLibrary>(string, int, string, int)
+  nameWithType: ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo<TLibrary>(string, int, string, int)
+  fullName: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo<TLibrary>(string, int, string, int)
+  nameWithType.vb: ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo(Of TLibrary)(String, Integer, String, Integer)
+  fullName.vb: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo(Of TLibrary)(String, Integer, String, Integer)
+  name.vb: RegisterExecutableFunctionFileInfo(Of TLibrary)(String, Integer, String, Integer)
+  spec.csharp:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+    name: RegisterExecutableFunctionFileInfo
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo__1_System_String_System_Int32_System_String_System_Int32_
+  - name: <
+  - name: TLibrary
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+    name: RegisterExecutableFunctionFileInfo
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo__1_System_String_System_Int32_System_String_System_Int32_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TLibrary
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager*
+  commentId: Overload:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager
+  isExternal: true
+  href: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.html#Ceres_Flow_Utilities_DataDrivenExecutableLibrary_Flow_GetDataTableManager_Ceres_Serialization_SerializedType_Ceres_DataDriven_DataTableManager__
+  name: Flow_GetDataTableManager
+  nameWithType: DataDrivenExecutableLibrary.Flow_GetDataTableManager
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_GetDataTableManager
+- uid: Ceres.Serialization.SerializedType{Ceres.DataDriven.DataTableManager}
+  commentId: T:Ceres.Serialization.SerializedType{Ceres.DataDriven.DataTableManager}
+  parent: Ceres.Serialization
+  definition: Ceres.Serialization.SerializedType`1
+  name: SerializedType<DataTableManager>
+  nameWithType: SerializedType<DataTableManager>
+  fullName: Ceres.Serialization.SerializedType<Ceres.DataDriven.DataTableManager>
+  nameWithType.vb: SerializedType(Of DataTableManager)
+  fullName.vb: Ceres.Serialization.SerializedType(Of Ceres.DataDriven.DataTableManager)
+  name.vb: SerializedType(Of DataTableManager)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: <
+  - uid: Ceres.DataDriven.DataTableManager
+    name: DataTableManager
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.DataDriven.DataTableManager
+    name: DataTableManager
+    isExternal: true
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager
+  commentId: T:Ceres.DataDriven.DataTableManager
+  parent: Ceres.DataDriven
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html
+  name: DataTableManager
+  nameWithType: DataTableManager
+  fullName: Ceres.DataDriven.DataTableManager
+- uid: Ceres.Serialization.SerializedType`1
+  commentId: T:Ceres.Serialization.SerializedType`1
+  parent: Ceres.Serialization
+  isExternal: true
+  href: Ceres.Serialization.SerializedType-1.html
+  name: SerializedType<T>
+  nameWithType: SerializedType<T>
+  fullName: Ceres.Serialization.SerializedType<T>
+  nameWithType.vb: SerializedType(Of T)
+  fullName.vb: Ceres.Serialization.SerializedType(Of T)
+  name.vb: SerializedType(Of T)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+    href: Ceres.Serialization.SerializedType-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+    href: Ceres.Serialization.SerializedType-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Serialization
+  commentId: N:Ceres.Serialization
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Serialization
+  nameWithType: Ceres.Serialization
+  fullName: Ceres.Serialization
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+- uid: Ceres.DataDriven
+  commentId: N:Ceres.DataDriven
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven
+  nameWithType: Ceres.DataDriven
+  fullName: Ceres.DataDriven
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable*
+  commentId: Overload:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable
+  isExternal: true
+  href: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.html#Ceres_Flow_Utilities_DataDrivenExecutableLibrary_Flow_DataTableManagerGetDataTable_Ceres_DataDriven_DataTableManager_System_String_
+  name: Flow_DataTableManagerGetDataTable
+  nameWithType: DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableManagerGetDataTable
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.DataDriven.DataTable
+  commentId: T:Ceres.DataDriven.DataTable
+  parent: Ceres.DataDriven
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html
+  name: DataTable
+  nameWithType: DataTable
+  fullName: Ceres.DataDriven.DataTable
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow*
+  commentId: Overload:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow
+  isExternal: true
+  href: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.html#Ceres_Flow_Utilities_DataDrivenExecutableLibrary_Flow_DataTableGetRow_Ceres_DataDriven_DataTable_System_String_Ceres_Serialization_SerializedType_Ceres_DataDriven_IDataTableRow__
+  name: Flow_DataTableGetRow
+  nameWithType: DataDrivenExecutableLibrary.Flow_DataTableGetRow
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRow
+- uid: Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow}
+  commentId: T:Ceres.Serialization.SerializedType{Ceres.DataDriven.IDataTableRow}
+  parent: Ceres.Serialization
+  definition: Ceres.Serialization.SerializedType`1
+  name: SerializedType<IDataTableRow>
+  nameWithType: SerializedType<IDataTableRow>
+  fullName: Ceres.Serialization.SerializedType<Ceres.DataDriven.IDataTableRow>
+  nameWithType.vb: SerializedType(Of IDataTableRow)
+  fullName.vb: Ceres.Serialization.SerializedType(Of Ceres.DataDriven.IDataTableRow)
+  name.vb: SerializedType(Of IDataTableRow)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: <
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+  - name: )
+- uid: Ceres.DataDriven.IDataTableRow
+  commentId: T:Ceres.DataDriven.IDataTableRow
+  parent: Ceres.DataDriven
+  isExternal: true
+  href: Ceres.DataDriven.IDataTableRow.html
+  name: IDataTableRow
+  nameWithType: IDataTableRow
+  fullName: Ceres.DataDriven.IDataTableRow
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex*
+  commentId: Overload:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex
+  isExternal: true
+  href: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.html#Ceres_Flow_Utilities_DataDrivenExecutableLibrary_Flow_DataTableGetRowByIndex_Ceres_DataDriven_DataTable_System_Int32_Ceres_Serialization_SerializedType_Ceres_DataDriven_IDataTableRow__
+  name: Flow_DataTableGetRowByIndex
+  nameWithType: DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetRowByIndex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetAllRows*
+  commentId: Overload:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetAllRows
+  isExternal: true
+  href: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.html#Ceres_Flow_Utilities_DataDrivenExecutableLibrary_Flow_DataTableGetAllRows_Ceres_DataDriven_DataTable_
+  name: Flow_DataTableGetAllRows
+  nameWithType: DataDrivenExecutableLibrary.Flow_DataTableGetAllRows
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.Flow_DataTableGetAllRows
+- uid: Ceres.DataDriven.IDataTableRow[]
+  isExternal: true
+  href: Ceres.DataDriven.IDataTableRow.html
+  name: IDataTableRow[]
+  nameWithType: IDataTableRow[]
+  fullName: Ceres.DataDriven.IDataTableRow[]
+  nameWithType.vb: IDataTableRow()
+  fullName.vb: Ceres.DataDriven.IDataTableRow()
+  name.vb: IDataTableRow()
+  spec.csharp:
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+    href: Ceres.DataDriven.IDataTableRow.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+    href: Ceres.DataDriven.IDataTableRow.html
+  - name: (
+  - name: )
+- uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+  commentId: M:Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+  parent: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  isExternal: true
+  href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_CollectExecutableFunctions
+  name: CollectExecutableFunctions()
+  nameWithType: ExecutableFunctionLibrary.CollectExecutableFunctions()
+  fullName: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions()
+  spec.csharp:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+    name: CollectExecutableFunctions
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_CollectExecutableFunctions
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+    name: CollectExecutableFunctions
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_CollectExecutableFunctions
+  - name: (
+  - name: )
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.CollectExecutableFunctions*
+  commentId: Overload:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.CollectExecutableFunctions
+  isExternal: true
+  href: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.html#Ceres_Flow_Utilities_DataDrivenExecutableLibrary_CollectExecutableFunctions
+  name: CollectExecutableFunctions
+  nameWithType: DataDrivenExecutableLibrary.CollectExecutableFunctions
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.CollectExecutableFunctions
+- uid: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.#ctor*
+  commentId: Overload:Ceres.Flow.Utilities.DataDrivenExecutableLibrary.#ctor
+  isExternal: true
+  href: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.html#Ceres_Flow_Utilities_DataDrivenExecutableLibrary__ctor
+  name: DataDrivenExecutableLibrary
+  nameWithType: DataDrivenExecutableLibrary.DataDrivenExecutableLibrary
+  fullName: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.DataDrivenExecutableLibrary
+  nameWithType.vb: DataDrivenExecutableLibrary.New
+  fullName.vb: Ceres.Flow.Utilities.DataDrivenExecutableLibrary.New
+  name.vb: New

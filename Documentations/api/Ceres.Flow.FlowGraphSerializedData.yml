@@ -1,0 +1,1030 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.FlowGraphSerializedData
+  commentId: T:Ceres.Flow.FlowGraphSerializedData
+  id: FlowGraphSerializedData
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.FlowGraphSerializedData.#ctor
+  - Ceres.Flow.FlowGraphSerializedData.BuildGraph(Ceres.Graph.CeresGraph)
+  - Ceres.Flow.FlowGraphSerializedData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+  - Ceres.Flow.FlowGraphSerializedData.PreSerialization
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphSerializedData
+  nameWithType: FlowGraphSerializedData
+  fullName: Ceres.Flow.FlowGraphSerializedData
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Serialized data for <xref href="Ceres.Flow.FlowGraph" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class FlowGraphSerializedData : CeresGraphData'
+    content.vb: Public Class FlowGraphSerializedData Inherits CeresGraphData
+  inheritance:
+  - System.Object
+  - Ceres.Graph.CeresGraphData
+  derivedClasses:
+  - Ceres.Flow.FlowGraphData
+  inheritedMembers:
+  - Ceres.Graph.CeresGraphData.variableData
+  - Ceres.Graph.CeresGraphData.nodeData
+  - Ceres.Graph.CeresGraphData.nodeGroups
+  - Ceres.Graph.CeresGraphData.relayNodes
+  - Ceres.Graph.CeresGraphData.saveTimestamp
+  - Ceres.Graph.CeresGraphData.RestoreNode(System.Int32,Ceres.Graph.CeresNode[])
+  - Ceres.Graph.CeresGraphData.RestoreVariable(System.Int32,Ceres.Graph.SharedVariable[])
+  - Ceres.Graph.CeresGraphData.RedirectNodeType(Ceres.ManagedReferenceType)
+  - Ceres.Graph.CeresGraphData.RedirectVariableType(Ceres.ManagedReferenceType)
+  - Ceres.Graph.CeresGraphData.RedirectSerializedType(System.String)
+  - Ceres.Graph.CeresGraphData.ResolveSerializedType(System.String)
+  - Ceres.Graph.CeresGraphData.Clone
+  - Ceres.Graph.CeresGraphData.CloneT``1
+  - Ceres.Graph.CeresGraphData.ToJson(System.Boolean)
+  - Ceres.Graph.CeresGraphData.FromJson``1(System.String)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Flow.FlowGraphSerializedData.BuildGraph(Ceres.Graph.CeresGraph)
+  commentId: M:Ceres.Flow.FlowGraphSerializedData.BuildGraph(Ceres.Graph.CeresGraph)
+  id: BuildGraph(Ceres.Graph.CeresGraph)
+  parent: Ceres.Flow.FlowGraphSerializedData
+  langs:
+  - csharp
+  - vb
+  name: BuildGraph(CeresGraph)
+  nameWithType: FlowGraphSerializedData.BuildGraph(CeresGraph)
+  fullName: Ceres.Flow.FlowGraphSerializedData.BuildGraph(Ceres.Graph.CeresGraph)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Build graph from data
+  example: []
+  syntax:
+    content: public override void BuildGraph(CeresGraph graph)
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraph
+      description: ''
+    content.vb: Public Overrides Sub BuildGraph(graph As CeresGraph)
+  overridden: Ceres.Graph.CeresGraphData.BuildGraph(Ceres.Graph.CeresGraph)
+  overload: Ceres.Flow.FlowGraphSerializedData.BuildGraph*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: ''
+- uid: Ceres.Flow.FlowGraphSerializedData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+  commentId: M:Ceres.Flow.FlowGraphSerializedData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+  id: GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+  parent: Ceres.Flow.FlowGraphSerializedData
+  langs:
+  - csharp
+  - vb
+  name: GetFallbackNode(CeresNodeData, int)
+  nameWithType: FlowGraphSerializedData.GetFallbackNode(CeresNodeData, int)
+  fullName: Ceres.Flow.FlowGraphSerializedData.GetFallbackNode(Ceres.Graph.CeresNodeData, int)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Get fallback node for missing class
+  example: []
+  syntax:
+    content: protected override CeresNode GetFallbackNode(CeresNodeData fallbackNodeData, int index)
+    parameters:
+    - id: fallbackNodeData
+      type: Ceres.Graph.CeresNodeData
+      description: ''
+    - id: index
+      type: System.Int32
+      description: ''
+    return:
+      type: Ceres.Graph.CeresNode
+      description: ''
+    content.vb: Protected Overrides Function GetFallbackNode(fallbackNodeData As CeresNodeData, index As Integer) As CeresNode
+  overridden: Ceres.Graph.CeresGraphData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+  overload: Ceres.Flow.FlowGraphSerializedData.GetFallbackNode*
+  nameWithType.vb: FlowGraphSerializedData.GetFallbackNode(CeresNodeData, Integer)
+  fullName.vb: Ceres.Flow.FlowGraphSerializedData.GetFallbackNode(Ceres.Graph.CeresNodeData, Integer)
+  name.vb: GetFallbackNode(CeresNodeData, Integer)
+- uid: Ceres.Flow.FlowGraphSerializedData.PreSerialization
+  commentId: M:Ceres.Flow.FlowGraphSerializedData.PreSerialization
+  id: PreSerialization
+  parent: Ceres.Flow.FlowGraphSerializedData
+  langs:
+  - csharp
+  - vb
+  name: PreSerialization()
+  nameWithType: FlowGraphSerializedData.PreSerialization()
+  fullName: Ceres.Flow.FlowGraphSerializedData.PreSerialization()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Preprocess before graph data serialized to container
+  example: []
+  syntax:
+    content: public override void PreSerialization()
+    content.vb: Public Overrides Sub PreSerialization()
+  overridden: Ceres.Graph.CeresGraphData.PreSerialization
+  overload: Ceres.Flow.FlowGraphSerializedData.PreSerialization*
+- uid: Ceres.Flow.FlowGraphSerializedData.#ctor
+  commentId: M:Ceres.Flow.FlowGraphSerializedData.#ctor
+  id: '#ctor'
+  parent: Ceres.Flow.FlowGraphSerializedData
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphSerializedData()
+  nameWithType: FlowGraphSerializedData.FlowGraphSerializedData()
+  fullName: Ceres.Flow.FlowGraphSerializedData.FlowGraphSerializedData()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public FlowGraphSerializedData()
+    content.vb: Public Sub New()
+  overload: Ceres.Flow.FlowGraphSerializedData.#ctor*
+  nameWithType.vb: FlowGraphSerializedData.New()
+  fullName.vb: Ceres.Flow.FlowGraphSerializedData.New()
+  name.vb: New()
+references:
+- uid: Ceres.Flow.FlowGraph
+  commentId: T:Ceres.Flow.FlowGraph
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraph.html
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Flow.FlowGraph
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.CeresGraphData
+  commentId: T:Ceres.Graph.CeresGraphData
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html
+  name: CeresGraphData
+  nameWithType: CeresGraphData
+  fullName: Ceres.Graph.CeresGraphData
+- uid: Ceres.Graph.CeresGraphData.variableData
+  commentId: F:Ceres.Graph.CeresGraphData.variableData
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_variableData
+  name: variableData
+  nameWithType: CeresGraphData.variableData
+  fullName: Ceres.Graph.CeresGraphData.variableData
+- uid: Ceres.Graph.CeresGraphData.nodeData
+  commentId: F:Ceres.Graph.CeresGraphData.nodeData
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_nodeData
+  name: nodeData
+  nameWithType: CeresGraphData.nodeData
+  fullName: Ceres.Graph.CeresGraphData.nodeData
+- uid: Ceres.Graph.CeresGraphData.nodeGroups
+  commentId: F:Ceres.Graph.CeresGraphData.nodeGroups
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_nodeGroups
+  name: nodeGroups
+  nameWithType: CeresGraphData.nodeGroups
+  fullName: Ceres.Graph.CeresGraphData.nodeGroups
+- uid: Ceres.Graph.CeresGraphData.relayNodes
+  commentId: F:Ceres.Graph.CeresGraphData.relayNodes
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_relayNodes
+  name: relayNodes
+  nameWithType: CeresGraphData.relayNodes
+  fullName: Ceres.Graph.CeresGraphData.relayNodes
+- uid: Ceres.Graph.CeresGraphData.saveTimestamp
+  commentId: F:Ceres.Graph.CeresGraphData.saveTimestamp
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_saveTimestamp
+  name: saveTimestamp
+  nameWithType: CeresGraphData.saveTimestamp
+  fullName: Ceres.Graph.CeresGraphData.saveTimestamp
+- uid: Ceres.Graph.CeresGraphData.RestoreNode(System.Int32,Ceres.Graph.CeresNode[])
+  commentId: M:Ceres.Graph.CeresGraphData.RestoreNode(System.Int32,Ceres.Graph.CeresNode[])
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreNode_System_Int32_Ceres_Graph_CeresNode___
+  name: RestoreNode(int, CeresNode[])
+  nameWithType: CeresGraphData.RestoreNode(int, CeresNode[])
+  fullName: Ceres.Graph.CeresGraphData.RestoreNode(int, Ceres.Graph.CeresNode[])
+  nameWithType.vb: CeresGraphData.RestoreNode(Integer, CeresNode())
+  fullName.vb: Ceres.Graph.CeresGraphData.RestoreNode(Integer, Ceres.Graph.CeresNode())
+  name.vb: RestoreNode(Integer, CeresNode())
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.RestoreNode(System.Int32,Ceres.Graph.CeresNode[])
+    name: RestoreNode
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreNode_System_Int32_Ceres_Graph_CeresNode___
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.CeresNode
+    name: CeresNode
+    isExternal: true
+    href: Ceres.Graph.CeresNode.html
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.RestoreNode(System.Int32,Ceres.Graph.CeresNode[])
+    name: RestoreNode
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreNode_System_Int32_Ceres_Graph_CeresNode___
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.CeresNode
+    name: CeresNode
+    isExternal: true
+    href: Ceres.Graph.CeresNode.html
+  - name: (
+  - name: )
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.RestoreVariable(System.Int32,Ceres.Graph.SharedVariable[])
+  commentId: M:Ceres.Graph.CeresGraphData.RestoreVariable(System.Int32,Ceres.Graph.SharedVariable[])
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreVariable_System_Int32_Ceres_Graph_SharedVariable___
+  name: RestoreVariable(int, SharedVariable[])
+  nameWithType: CeresGraphData.RestoreVariable(int, SharedVariable[])
+  fullName: Ceres.Graph.CeresGraphData.RestoreVariable(int, Ceres.Graph.SharedVariable[])
+  nameWithType.vb: CeresGraphData.RestoreVariable(Integer, SharedVariable())
+  fullName.vb: Ceres.Graph.CeresGraphData.RestoreVariable(Integer, Ceres.Graph.SharedVariable())
+  name.vb: RestoreVariable(Integer, SharedVariable())
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.RestoreVariable(System.Int32,Ceres.Graph.SharedVariable[])
+    name: RestoreVariable
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreVariable_System_Int32_Ceres_Graph_SharedVariable___
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.RestoreVariable(System.Int32,Ceres.Graph.SharedVariable[])
+    name: RestoreVariable
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RestoreVariable_System_Int32_Ceres_Graph_SharedVariable___
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: (
+  - name: )
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.RedirectNodeType(Ceres.ManagedReferenceType)
+  commentId: M:Ceres.Graph.CeresGraphData.RedirectNodeType(Ceres.ManagedReferenceType)
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectNodeType_Ceres_ManagedReferenceType_
+  name: RedirectNodeType(ManagedReferenceType)
+  nameWithType: CeresGraphData.RedirectNodeType(ManagedReferenceType)
+  fullName: Ceres.Graph.CeresGraphData.RedirectNodeType(Ceres.ManagedReferenceType)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.RedirectNodeType(Ceres.ManagedReferenceType)
+    name: RedirectNodeType
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectNodeType_Ceres_ManagedReferenceType_
+  - name: (
+  - uid: Ceres.ManagedReferenceType
+    name: ManagedReferenceType
+    isExternal: true
+    href: Ceres.ManagedReferenceType.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.RedirectNodeType(Ceres.ManagedReferenceType)
+    name: RedirectNodeType
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectNodeType_Ceres_ManagedReferenceType_
+  - name: (
+  - uid: Ceres.ManagedReferenceType
+    name: ManagedReferenceType
+    isExternal: true
+    href: Ceres.ManagedReferenceType.html
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.RedirectVariableType(Ceres.ManagedReferenceType)
+  commentId: M:Ceres.Graph.CeresGraphData.RedirectVariableType(Ceres.ManagedReferenceType)
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectVariableType_Ceres_ManagedReferenceType_
+  name: RedirectVariableType(ManagedReferenceType)
+  nameWithType: CeresGraphData.RedirectVariableType(ManagedReferenceType)
+  fullName: Ceres.Graph.CeresGraphData.RedirectVariableType(Ceres.ManagedReferenceType)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.RedirectVariableType(Ceres.ManagedReferenceType)
+    name: RedirectVariableType
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectVariableType_Ceres_ManagedReferenceType_
+  - name: (
+  - uid: Ceres.ManagedReferenceType
+    name: ManagedReferenceType
+    isExternal: true
+    href: Ceres.ManagedReferenceType.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.RedirectVariableType(Ceres.ManagedReferenceType)
+    name: RedirectVariableType
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectVariableType_Ceres_ManagedReferenceType_
+  - name: (
+  - uid: Ceres.ManagedReferenceType
+    name: ManagedReferenceType
+    isExternal: true
+    href: Ceres.ManagedReferenceType.html
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.RedirectSerializedType(System.String)
+  commentId: M:Ceres.Graph.CeresGraphData.RedirectSerializedType(System.String)
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectSerializedType_System_String_
+  name: RedirectSerializedType(string)
+  nameWithType: CeresGraphData.RedirectSerializedType(string)
+  fullName: Ceres.Graph.CeresGraphData.RedirectSerializedType(string)
+  nameWithType.vb: CeresGraphData.RedirectSerializedType(String)
+  fullName.vb: Ceres.Graph.CeresGraphData.RedirectSerializedType(String)
+  name.vb: RedirectSerializedType(String)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.RedirectSerializedType(System.String)
+    name: RedirectSerializedType
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectSerializedType_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.RedirectSerializedType(System.String)
+    name: RedirectSerializedType
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_RedirectSerializedType_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.ResolveSerializedType(System.String)
+  commentId: M:Ceres.Graph.CeresGraphData.ResolveSerializedType(System.String)
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_ResolveSerializedType_System_String_
+  name: ResolveSerializedType(string)
+  nameWithType: CeresGraphData.ResolveSerializedType(string)
+  fullName: Ceres.Graph.CeresGraphData.ResolveSerializedType(string)
+  nameWithType.vb: CeresGraphData.ResolveSerializedType(String)
+  fullName.vb: Ceres.Graph.CeresGraphData.ResolveSerializedType(String)
+  name.vb: ResolveSerializedType(String)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.ResolveSerializedType(System.String)
+    name: ResolveSerializedType
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_ResolveSerializedType_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.ResolveSerializedType(System.String)
+    name: ResolveSerializedType
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_ResolveSerializedType_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.Clone
+  commentId: M:Ceres.Graph.CeresGraphData.Clone
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_Clone
+  name: Clone()
+  nameWithType: CeresGraphData.Clone()
+  fullName: Ceres.Graph.CeresGraphData.Clone()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.Clone
+    name: Clone
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.Clone
+    name: Clone
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_Clone
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.CloneT``1
+  commentId: M:Ceres.Graph.CeresGraphData.CloneT``1
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_CloneT__1
+  name: CloneT<T>()
+  nameWithType: CeresGraphData.CloneT<T>()
+  fullName: Ceres.Graph.CeresGraphData.CloneT<T>()
+  nameWithType.vb: CeresGraphData.CloneT(Of T)()
+  fullName.vb: Ceres.Graph.CeresGraphData.CloneT(Of T)()
+  name.vb: CloneT(Of T)()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.CloneT``1
+    name: CloneT
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_CloneT__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.CloneT``1
+    name: CloneT
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_CloneT__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.ToJson(System.Boolean)
+  commentId: M:Ceres.Graph.CeresGraphData.ToJson(System.Boolean)
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_ToJson_System_Boolean_
+  name: ToJson(bool)
+  nameWithType: CeresGraphData.ToJson(bool)
+  fullName: Ceres.Graph.CeresGraphData.ToJson(bool)
+  nameWithType.vb: CeresGraphData.ToJson(Boolean)
+  fullName.vb: Ceres.Graph.CeresGraphData.ToJson(Boolean)
+  name.vb: ToJson(Boolean)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.ToJson(System.Boolean)
+    name: ToJson
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_ToJson_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.ToJson(System.Boolean)
+    name: ToJson
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_ToJson_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Graph.CeresGraphData.FromJson``1(System.String)
+  commentId: M:Ceres.Graph.CeresGraphData.FromJson``1(System.String)
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_FromJson__1_System_String_
+  name: FromJson<T>(string)
+  nameWithType: CeresGraphData.FromJson<T>(string)
+  fullName: Ceres.Graph.CeresGraphData.FromJson<T>(string)
+  nameWithType.vb: CeresGraphData.FromJson(Of T)(String)
+  fullName.vb: Ceres.Graph.CeresGraphData.FromJson(Of T)(String)
+  name.vb: FromJson(Of T)(String)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.FromJson``1(System.String)
+    name: FromJson
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_FromJson__1_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.FromJson``1(System.String)
+    name: FromJson
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_FromJson__1_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: Ceres.Graph.CeresGraphData.BuildGraph(Ceres.Graph.CeresGraph)
+  commentId: M:Ceres.Graph.CeresGraphData.BuildGraph(Ceres.Graph.CeresGraph)
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_BuildGraph_Ceres_Graph_CeresGraph_
+  name: BuildGraph(CeresGraph)
+  nameWithType: CeresGraphData.BuildGraph(CeresGraph)
+  fullName: Ceres.Graph.CeresGraphData.BuildGraph(Ceres.Graph.CeresGraph)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.BuildGraph(Ceres.Graph.CeresGraph)
+    name: BuildGraph
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_BuildGraph_Ceres_Graph_CeresGraph_
+  - name: (
+  - uid: Ceres.Graph.CeresGraph
+    name: CeresGraph
+    isExternal: true
+    href: Ceres.Graph.CeresGraph.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.BuildGraph(Ceres.Graph.CeresGraph)
+    name: BuildGraph
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_BuildGraph_Ceres_Graph_CeresGraph_
+  - name: (
+  - uid: Ceres.Graph.CeresGraph
+    name: CeresGraph
+    isExternal: true
+    href: Ceres.Graph.CeresGraph.html
+  - name: )
+- uid: Ceres.Flow.FlowGraphSerializedData.BuildGraph*
+  commentId: Overload:Ceres.Flow.FlowGraphSerializedData.BuildGraph
+  isExternal: true
+  href: Ceres.Flow.FlowGraphSerializedData.html#Ceres_Flow_FlowGraphSerializedData_BuildGraph_Ceres_Graph_CeresGraph_
+  name: BuildGraph
+  nameWithType: FlowGraphSerializedData.BuildGraph
+  fullName: Ceres.Flow.FlowGraphSerializedData.BuildGraph
+- uid: Ceres.Graph.CeresGraph
+  commentId: T:Ceres.Graph.CeresGraph
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresGraph.html
+  name: CeresGraph
+  nameWithType: CeresGraph
+  fullName: Ceres.Graph.CeresGraph
+- uid: Ceres.Graph.CeresGraphData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+  commentId: M:Ceres.Graph.CeresGraphData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_GetFallbackNode_Ceres_Graph_CeresNodeData_System_Int32_
+  name: GetFallbackNode(CeresNodeData, int)
+  nameWithType: CeresGraphData.GetFallbackNode(CeresNodeData, int)
+  fullName: Ceres.Graph.CeresGraphData.GetFallbackNode(Ceres.Graph.CeresNodeData, int)
+  nameWithType.vb: CeresGraphData.GetFallbackNode(CeresNodeData, Integer)
+  fullName.vb: Ceres.Graph.CeresGraphData.GetFallbackNode(Ceres.Graph.CeresNodeData, Integer)
+  name.vb: GetFallbackNode(CeresNodeData, Integer)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+    name: GetFallbackNode
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_GetFallbackNode_Ceres_Graph_CeresNodeData_System_Int32_
+  - name: (
+  - uid: Ceres.Graph.CeresNodeData
+    name: CeresNodeData
+    isExternal: true
+    href: Ceres.Graph.CeresNodeData.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.GetFallbackNode(Ceres.Graph.CeresNodeData,System.Int32)
+    name: GetFallbackNode
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_GetFallbackNode_Ceres_Graph_CeresNodeData_System_Int32_
+  - name: (
+  - uid: Ceres.Graph.CeresNodeData
+    name: CeresNodeData
+    isExternal: true
+    href: Ceres.Graph.CeresNodeData.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Ceres.Flow.FlowGraphSerializedData.GetFallbackNode*
+  commentId: Overload:Ceres.Flow.FlowGraphSerializedData.GetFallbackNode
+  isExternal: true
+  href: Ceres.Flow.FlowGraphSerializedData.html#Ceres_Flow_FlowGraphSerializedData_GetFallbackNode_Ceres_Graph_CeresNodeData_System_Int32_
+  name: GetFallbackNode
+  nameWithType: FlowGraphSerializedData.GetFallbackNode
+  fullName: Ceres.Flow.FlowGraphSerializedData.GetFallbackNode
+- uid: Ceres.Graph.CeresNodeData
+  commentId: T:Ceres.Graph.CeresNodeData
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresNodeData.html
+  name: CeresNodeData
+  nameWithType: CeresNodeData
+  fullName: Ceres.Graph.CeresNodeData
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresNode.html
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph.CeresGraphData.PreSerialization
+  commentId: M:Ceres.Graph.CeresGraphData.PreSerialization
+  parent: Ceres.Graph.CeresGraphData
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_PreSerialization
+  name: PreSerialization()
+  nameWithType: CeresGraphData.PreSerialization()
+  fullName: Ceres.Graph.CeresGraphData.PreSerialization()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphData.PreSerialization
+    name: PreSerialization
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_PreSerialization
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphData.PreSerialization
+    name: PreSerialization
+    isExternal: true
+    href: Ceres.Graph.CeresGraphData.html#Ceres_Graph_CeresGraphData_PreSerialization
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphSerializedData.PreSerialization*
+  commentId: Overload:Ceres.Flow.FlowGraphSerializedData.PreSerialization
+  isExternal: true
+  href: Ceres.Flow.FlowGraphSerializedData.html#Ceres_Flow_FlowGraphSerializedData_PreSerialization
+  name: PreSerialization
+  nameWithType: FlowGraphSerializedData.PreSerialization
+  fullName: Ceres.Flow.FlowGraphSerializedData.PreSerialization
+- uid: Ceres.Flow.FlowGraphSerializedData.#ctor*
+  commentId: Overload:Ceres.Flow.FlowGraphSerializedData.#ctor
+  isExternal: true
+  href: Ceres.Flow.FlowGraphSerializedData.html#Ceres_Flow_FlowGraphSerializedData__ctor
+  name: FlowGraphSerializedData
+  nameWithType: FlowGraphSerializedData.FlowGraphSerializedData
+  fullName: Ceres.Flow.FlowGraphSerializedData.FlowGraphSerializedData
+  nameWithType.vb: FlowGraphSerializedData.New
+  fullName.vb: Ceres.Flow.FlowGraphSerializedData.New
+  name.vb: New

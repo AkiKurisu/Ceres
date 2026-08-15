@@ -1,0 +1,693 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.ExecutableFunctionInfo
+  commentId: T:Ceres.Flow.ExecutableFunctionInfo
+  id: ExecutableFunctionInfo
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.ExecutableFunctionInfo.#ctor(Ceres.Flow.ExecutableFunctionType,System.String,System.Int32)
+  - Ceres.Flow.ExecutableFunctionInfo.AmbiguousEquals(Ceres.Flow.ExecutableFunctionInfo)
+  - Ceres.Flow.ExecutableFunctionInfo.Equals(Ceres.Flow.ExecutableFunctionInfo)
+  - Ceres.Flow.ExecutableFunctionInfo.Equals(System.Object)
+  - Ceres.Flow.ExecutableFunctionInfo.FunctionName
+  - Ceres.Flow.ExecutableFunctionInfo.FunctionType
+  - Ceres.Flow.ExecutableFunctionInfo.GetHashCode
+  - Ceres.Flow.ExecutableFunctionInfo.ParameterCount
+  - Ceres.Flow.ExecutableFunctionInfo.ToString
+  langs:
+  - csharp
+  - vb
+  name: ExecutableFunctionInfo
+  nameWithType: ExecutableFunctionInfo
+  fullName: Ceres.Flow.ExecutableFunctionInfo
+  type: Struct
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public readonly struct ExecutableFunctionInfo : IEquatable<ExecutableFunctionInfo>'
+    content.vb: Public Structure ExecutableFunctionInfo Implements IEquatable(Of ExecutableFunctionInfo)
+  implements:
+  - System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Ceres.Flow.ExecutableFunctionInfo.FunctionType
+  commentId: F:Ceres.Flow.ExecutableFunctionInfo.FunctionType
+  id: FunctionType
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: FunctionType
+  nameWithType: ExecutableFunctionInfo.FunctionType
+  fullName: Ceres.Flow.ExecutableFunctionInfo.FunctionType
+  type: Field
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public readonly ExecutableFunctionType FunctionType
+    return:
+      type: Ceres.Flow.ExecutableFunctionType
+    content.vb: Public ReadOnly FunctionType As ExecutableFunctionType
+- uid: Ceres.Flow.ExecutableFunctionInfo.FunctionName
+  commentId: F:Ceres.Flow.ExecutableFunctionInfo.FunctionName
+  id: FunctionName
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: FunctionName
+  nameWithType: ExecutableFunctionInfo.FunctionName
+  fullName: Ceres.Flow.ExecutableFunctionInfo.FunctionName
+  type: Field
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public readonly string FunctionName
+    return:
+      type: System.String
+    content.vb: Public ReadOnly FunctionName As String
+- uid: Ceres.Flow.ExecutableFunctionInfo.ParameterCount
+  commentId: F:Ceres.Flow.ExecutableFunctionInfo.ParameterCount
+  id: ParameterCount
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: ParameterCount
+  nameWithType: ExecutableFunctionInfo.ParameterCount
+  fullName: Ceres.Flow.ExecutableFunctionInfo.ParameterCount
+  type: Field
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public readonly int ParameterCount
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly ParameterCount As Integer
+- uid: Ceres.Flow.ExecutableFunctionInfo.#ctor(Ceres.Flow.ExecutableFunctionType,System.String,System.Int32)
+  commentId: M:Ceres.Flow.ExecutableFunctionInfo.#ctor(Ceres.Flow.ExecutableFunctionType,System.String,System.Int32)
+  id: '#ctor(Ceres.Flow.ExecutableFunctionType,System.String,System.Int32)'
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: ExecutableFunctionInfo(ExecutableFunctionType, string, int)
+  nameWithType: ExecutableFunctionInfo.ExecutableFunctionInfo(ExecutableFunctionType, string, int)
+  fullName: Ceres.Flow.ExecutableFunctionInfo.ExecutableFunctionInfo(Ceres.Flow.ExecutableFunctionType, string, int)
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public ExecutableFunctionInfo(ExecutableFunctionType functionType, string functionName, int parameterCount = -1)
+    parameters:
+    - id: functionType
+      type: Ceres.Flow.ExecutableFunctionType
+    - id: functionName
+      type: System.String
+    - id: parameterCount
+      type: System.Int32
+    content.vb: Public Sub New(functionType As ExecutableFunctionType, functionName As String, parameterCount As Integer = -1)
+  overload: Ceres.Flow.ExecutableFunctionInfo.#ctor*
+  nameWithType.vb: ExecutableFunctionInfo.New(ExecutableFunctionType, String, Integer)
+  fullName.vb: Ceres.Flow.ExecutableFunctionInfo.New(Ceres.Flow.ExecutableFunctionType, String, Integer)
+  name.vb: New(ExecutableFunctionType, String, Integer)
+- uid: Ceres.Flow.ExecutableFunctionInfo.Equals(Ceres.Flow.ExecutableFunctionInfo)
+  commentId: M:Ceres.Flow.ExecutableFunctionInfo.Equals(Ceres.Flow.ExecutableFunctionInfo)
+  id: Equals(Ceres.Flow.ExecutableFunctionInfo)
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: Equals(ExecutableFunctionInfo)
+  nameWithType: ExecutableFunctionInfo.Equals(ExecutableFunctionInfo)
+  fullName: Ceres.Flow.ExecutableFunctionInfo.Equals(Ceres.Flow.ExecutableFunctionInfo)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  example: []
+  syntax:
+    content: public bool Equals(ExecutableFunctionInfo other)
+    parameters:
+    - id: other
+      type: Ceres.Flow.ExecutableFunctionInfo
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As ExecutableFunctionInfo) As Boolean
+  overload: Ceres.Flow.ExecutableFunctionInfo.Equals*
+  implements:
+  - System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}.Equals(Ceres.Flow.ExecutableFunctionInfo)
+- uid: Ceres.Flow.ExecutableFunctionInfo.Equals(System.Object)
+  commentId: M:Ceres.Flow.ExecutableFunctionInfo.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: ExecutableFunctionInfo.Equals(object)
+  fullName: Ceres.Flow.ExecutableFunctionInfo.Equals(object)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Ceres.Flow.ExecutableFunctionInfo.Equals*
+  nameWithType.vb: ExecutableFunctionInfo.Equals(Object)
+  fullName.vb: Ceres.Flow.ExecutableFunctionInfo.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Ceres.Flow.ExecutableFunctionInfo.GetHashCode
+  commentId: M:Ceres.Flow.ExecutableFunctionInfo.GetHashCode
+  id: GetHashCode
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: ExecutableFunctionInfo.GetHashCode()
+  fullName: Ceres.Flow.ExecutableFunctionInfo.GetHashCode()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Ceres.Flow.ExecutableFunctionInfo.GetHashCode*
+- uid: Ceres.Flow.ExecutableFunctionInfo.ToString
+  commentId: M:Ceres.Flow.ExecutableFunctionInfo.ToString
+  id: ToString
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: ExecutableFunctionInfo.ToString()
+  fullName: Ceres.Flow.ExecutableFunctionInfo.ToString()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Ceres.Flow.ExecutableFunctionInfo.ToString*
+- uid: Ceres.Flow.ExecutableFunctionInfo.AmbiguousEquals(Ceres.Flow.ExecutableFunctionInfo)
+  commentId: M:Ceres.Flow.ExecutableFunctionInfo.AmbiguousEquals(Ceres.Flow.ExecutableFunctionInfo)
+  id: AmbiguousEquals(Ceres.Flow.ExecutableFunctionInfo)
+  parent: Ceres.Flow.ExecutableFunctionInfo
+  langs:
+  - csharp
+  - vb
+  name: AmbiguousEquals(ExecutableFunctionInfo)
+  nameWithType: ExecutableFunctionInfo.AmbiguousEquals(ExecutableFunctionInfo)
+  fullName: Ceres.Flow.ExecutableFunctionInfo.AmbiguousEquals(Ceres.Flow.ExecutableFunctionInfo)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public bool AmbiguousEquals(ExecutableFunctionInfo other)
+    parameters:
+    - id: other
+      type: Ceres.Flow.ExecutableFunctionInfo
+    return:
+      type: System.Boolean
+    content.vb: Public Function AmbiguousEquals(other As ExecutableFunctionInfo) As Boolean
+  overload: Ceres.Flow.ExecutableFunctionInfo.AmbiguousEquals*
+references:
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}
+  commentId: T:System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ExecutableFunctionInfo>
+  nameWithType: IEquatable<ExecutableFunctionInfo>
+  fullName: System.IEquatable<Ceres.Flow.ExecutableFunctionInfo>
+  nameWithType.vb: IEquatable(Of ExecutableFunctionInfo)
+  fullName.vb: System.IEquatable(Of Ceres.Flow.ExecutableFunctionInfo)
+  name.vb: IEquatable(Of ExecutableFunctionInfo)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Ceres.Flow.ExecutableFunctionInfo
+    name: ExecutableFunctionInfo
+    isExternal: true
+    href: Ceres.Flow.ExecutableFunctionInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Flow.ExecutableFunctionInfo
+    name: ExecutableFunctionInfo
+    isExternal: true
+    href: Ceres.Flow.ExecutableFunctionInfo.html
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.ExecutableFunctionType
+  commentId: T:Ceres.Flow.ExecutableFunctionType
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.ExecutableFunctionType.html
+  name: ExecutableFunctionType
+  nameWithType: ExecutableFunctionType
+  fullName: Ceres.Flow.ExecutableFunctionType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Flow.ExecutableFunctionInfo.#ctor*
+  commentId: Overload:Ceres.Flow.ExecutableFunctionInfo.#ctor
+  isExternal: true
+  href: Ceres.Flow.ExecutableFunctionInfo.html#Ceres_Flow_ExecutableFunctionInfo__ctor_Ceres_Flow_ExecutableFunctionType_System_String_System_Int32_
+  name: ExecutableFunctionInfo
+  nameWithType: ExecutableFunctionInfo.ExecutableFunctionInfo
+  fullName: Ceres.Flow.ExecutableFunctionInfo.ExecutableFunctionInfo
+  nameWithType.vb: ExecutableFunctionInfo.New
+  fullName.vb: Ceres.Flow.ExecutableFunctionInfo.New
+  name.vb: New
+- uid: Ceres.Flow.ExecutableFunctionInfo.Equals*
+  commentId: Overload:Ceres.Flow.ExecutableFunctionInfo.Equals
+  isExternal: true
+  href: Ceres.Flow.ExecutableFunctionInfo.html#Ceres_Flow_ExecutableFunctionInfo_Equals_Ceres_Flow_ExecutableFunctionInfo_
+  name: Equals
+  nameWithType: ExecutableFunctionInfo.Equals
+  fullName: Ceres.Flow.ExecutableFunctionInfo.Equals
+- uid: System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}.Equals(Ceres.Flow.ExecutableFunctionInfo)
+  commentId: M:System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}.Equals(Ceres.Flow.ExecutableFunctionInfo)
+  parent: System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(ExecutableFunctionInfo)
+  nameWithType: IEquatable<ExecutableFunctionInfo>.Equals(ExecutableFunctionInfo)
+  fullName: System.IEquatable<Ceres.Flow.ExecutableFunctionInfo>.Equals(Ceres.Flow.ExecutableFunctionInfo)
+  nameWithType.vb: IEquatable(Of ExecutableFunctionInfo).Equals(ExecutableFunctionInfo)
+  fullName.vb: System.IEquatable(Of Ceres.Flow.ExecutableFunctionInfo).Equals(Ceres.Flow.ExecutableFunctionInfo)
+  spec.csharp:
+  - uid: System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}.Equals(Ceres.Flow.ExecutableFunctionInfo)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Ceres.Flow.ExecutableFunctionInfo
+    name: ExecutableFunctionInfo
+    isExternal: true
+    href: Ceres.Flow.ExecutableFunctionInfo.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Ceres.Flow.ExecutableFunctionInfo}.Equals(Ceres.Flow.ExecutableFunctionInfo)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Ceres.Flow.ExecutableFunctionInfo
+    name: ExecutableFunctionInfo
+    isExternal: true
+    href: Ceres.Flow.ExecutableFunctionInfo.html
+  - name: )
+- uid: Ceres.Flow.ExecutableFunctionInfo
+  commentId: T:Ceres.Flow.ExecutableFunctionInfo
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.ExecutableFunctionInfo.html
+  name: ExecutableFunctionInfo
+  nameWithType: ExecutableFunctionInfo
+  fullName: Ceres.Flow.ExecutableFunctionInfo
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Ceres.Flow.ExecutableFunctionInfo.GetHashCode*
+  commentId: Overload:Ceres.Flow.ExecutableFunctionInfo.GetHashCode
+  isExternal: true
+  href: Ceres.Flow.ExecutableFunctionInfo.html#Ceres_Flow_ExecutableFunctionInfo_GetHashCode
+  name: GetHashCode
+  nameWithType: ExecutableFunctionInfo.GetHashCode
+  fullName: Ceres.Flow.ExecutableFunctionInfo.GetHashCode
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Ceres.Flow.ExecutableFunctionInfo.ToString*
+  commentId: Overload:Ceres.Flow.ExecutableFunctionInfo.ToString
+  isExternal: true
+  href: Ceres.Flow.ExecutableFunctionInfo.html#Ceres_Flow_ExecutableFunctionInfo_ToString
+  name: ToString
+  nameWithType: ExecutableFunctionInfo.ToString
+  fullName: Ceres.Flow.ExecutableFunctionInfo.ToString
+- uid: Ceres.Flow.ExecutableFunctionInfo.AmbiguousEquals*
+  commentId: Overload:Ceres.Flow.ExecutableFunctionInfo.AmbiguousEquals
+  isExternal: true
+  href: Ceres.Flow.ExecutableFunctionInfo.html#Ceres_Flow_ExecutableFunctionInfo_AmbiguousEquals_Ceres_Flow_ExecutableFunctionInfo_
+  name: AmbiguousEquals
+  nameWithType: ExecutableFunctionInfo.AmbiguousEquals
+  fullName: Ceres.Flow.ExecutableFunctionInfo.AmbiguousEquals

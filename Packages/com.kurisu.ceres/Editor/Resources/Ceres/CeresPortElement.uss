@@ -1,0 +1,93 @@
+/*******************************/
+/* CeresPortElement colors by types */
+/*******************************/
+
+.CeresPortElement.typeEventDelegate {
+    --port-color: #FBCBF4;
+}
+
+.CeresPortElement.typeEventDelegate > #connector {
+    border-radius: 0;
+}
+
+.CeresPortElement.typeAction {
+    --port-color: #FBCBF4;
+}
+
+.CeresPortElement.typeAction > #connector {
+    border-radius: 0;
+}
+
+.CeresPortElement.typeNodeReference {
+    --port-color: #F6F6F6;
+}
+
+.CeresPortElement.exec-port {
+    --port-color: rgb(220, 220, 220);
+}
+
+.CeresPortElement.exec-port > #connector {
+    width: 8px;
+    height: 8px;
+    border-radius: 1px;
+    border-color: rgb(70, 70, 70);
+    background-color: #212121;
+    align-items: center;
+    justify-content: center;
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+}
+
+.CeresPortElement.exec-port > #connector:hover,
+.CeresPortElement.exec-port > #connector.portHighlight {
+    border-color: #f0f0f0;
+}
+
+.CeresPortElement.exec-port > #connector > #cap {
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
+    background-color: #212121;
+}
+
+.CeresPortElement.exec-port.connected > #connector {
+    border-color: #f0f0f0;
+}
+
+.CeresPortElement.exec-port.connected > #connector > #cap {
+    background-color: #f0f0f0;
+}
+
+.CeresPortElement.exec-port > #connector > #cap:hover {
+    background-color: #ffffff;
+}
+
+.CeresPortElement.exec-port .unity-label {
+    color: #f0f0f0;
+    -unity-font-style: bold;
+}
+
+.CeresPortElement.typeObject {
+    --port-color: #C1FFBD;
+}
+
+.CeresPortElement.typeBoolean {
+    --port-color: #ff6d29;
+}
+
+.CeresPortElement.typeVector2Int {
+    --port-color: #9AEF92;
+}
+
+.CeresPortElement.typeVector3Int {
+    --port-color: #F6FF9A;
+}
+
+/* Debug mode highlighting */
+.CeresPortElement.debug-highlight {
+    --port-color: #FFD700;
+    border-width: 2px;
+    border-color: #FFD700;
+}

@@ -1,0 +1,1009 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.ContentPipeline.ContentArtifactManifest
+  commentId: T:Ceres.ContentPipeline.ContentArtifactManifest
+  id: ContentArtifactManifest
+  parent: Ceres.ContentPipeline
+  children:
+  - Ceres.ContentPipeline.ContentArtifactManifest.#ctor
+  - Ceres.ContentPipeline.ContentArtifactManifest.BuildIdentity
+  - Ceres.ContentPipeline.ContentArtifactManifest.CurrentSchemaVersion
+  - Ceres.ContentPipeline.ContentArtifactManifest.Load(System.String)
+  - Ceres.ContentPipeline.ContentArtifactManifest.Save(System.String)
+  - Ceres.ContentPipeline.ContentArtifactManifest.addressablesVersion
+  - Ceres.ContentPipeline.ContentArtifactManifest.allowedChangedScopeIds
+  - Ceres.ContentPipeline.ContentArtifactManifest.artifacts
+  - Ceres.ContentPipeline.ContentArtifactManifest.assets
+  - Ceres.ContentPipeline.ContentArtifactManifest.baselineId
+  - Ceres.ContentPipeline.ContentArtifactManifest.buildId
+  - Ceres.ContentPipeline.ContentArtifactManifest.buildKind
+  - Ceres.ContentPipeline.ContentArtifactManifest.bundleStatistics
+  - Ceres.ContentPipeline.ContentArtifactManifest.channel
+  - Ceres.ContentPipeline.ContentArtifactManifest.configurationFingerprint
+  - Ceres.ContentPipeline.ContentArtifactManifest.contentStateRelativePath
+  - Ceres.ContentPipeline.ContentArtifactManifest.graphFingerprint
+  - Ceres.ContentPipeline.ContentArtifactManifest.impactedScopeIds
+  - Ceres.ContentPipeline.ContentArtifactManifest.packing
+  - Ceres.ContentPipeline.ContentArtifactManifest.partitions
+  - Ceres.ContentPipeline.ContentArtifactManifest.platform
+  - Ceres.ContentPipeline.ContentArtifactManifest.playerVersion
+  - Ceres.ContentPipeline.ContentArtifactManifest.remoteLoadPath
+  - Ceres.ContentPipeline.ContentArtifactManifest.schemaVersion
+  - Ceres.ContentPipeline.ContentArtifactManifest.scopes
+  - Ceres.ContentPipeline.ContentArtifactManifest.scriptableBuildPipelineVersion
+  - Ceres.ContentPipeline.ContentArtifactManifest.unityVersion
+  langs:
+  - csharp
+  - vb
+  name: ContentArtifactManifest
+  nameWithType: ContentArtifactManifest
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest
+  type: Class
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public sealed class ContentArtifactManifest
+    content.vb: Public NotInheritable Class ContentArtifactManifest
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.CurrentSchemaVersion
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.CurrentSchemaVersion
+  id: CurrentSchemaVersion
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: CurrentSchemaVersion
+  nameWithType: ContentArtifactManifest.CurrentSchemaVersion
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.CurrentSchemaVersion
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public const int CurrentSchemaVersion = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const CurrentSchemaVersion As Integer = 1
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.BuildIdentity
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.BuildIdentity
+  id: BuildIdentity
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: BuildIdentity
+  nameWithType: ContentArtifactManifest.BuildIdentity
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.BuildIdentity
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public const string BuildIdentity = "artifact-manifest-v1"
+    return:
+      type: System.String
+    content.vb: Public Const BuildIdentity As String = "artifact-manifest-v1"
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.schemaVersion
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.schemaVersion
+  id: schemaVersion
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: schemaVersion
+  nameWithType: ContentArtifactManifest.schemaVersion
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.schemaVersion
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public int schemaVersion
+    return:
+      type: System.Int32
+    content.vb: Public schemaVersion As Integer
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.buildKind
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.buildKind
+  id: buildKind
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: buildKind
+  nameWithType: ContentArtifactManifest.buildKind
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.buildKind
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string buildKind
+    return:
+      type: System.String
+    content.vb: Public buildKind As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.buildId
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.buildId
+  id: buildId
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: buildId
+  nameWithType: ContentArtifactManifest.buildId
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.buildId
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string buildId
+    return:
+      type: System.String
+    content.vb: Public buildId As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.baselineId
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.baselineId
+  id: baselineId
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: baselineId
+  nameWithType: ContentArtifactManifest.baselineId
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.baselineId
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string baselineId
+    return:
+      type: System.String
+    content.vb: Public baselineId As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.channel
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.channel
+  id: channel
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: channel
+  nameWithType: ContentArtifactManifest.channel
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.channel
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string channel
+    return:
+      type: System.String
+    content.vb: Public channel As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.platform
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.platform
+  id: platform
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: platform
+  nameWithType: ContentArtifactManifest.platform
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.platform
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string platform
+    return:
+      type: System.String
+    content.vb: Public platform As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.playerVersion
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.playerVersion
+  id: playerVersion
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: playerVersion
+  nameWithType: ContentArtifactManifest.playerVersion
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.playerVersion
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string playerVersion
+    return:
+      type: System.String
+    content.vb: Public playerVersion As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.graphFingerprint
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.graphFingerprint
+  id: graphFingerprint
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: graphFingerprint
+  nameWithType: ContentArtifactManifest.graphFingerprint
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.graphFingerprint
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string graphFingerprint
+    return:
+      type: System.String
+    content.vb: Public graphFingerprint As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.configurationFingerprint
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.configurationFingerprint
+  id: configurationFingerprint
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: configurationFingerprint
+  nameWithType: ContentArtifactManifest.configurationFingerprint
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.configurationFingerprint
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string configurationFingerprint
+    return:
+      type: System.String
+    content.vb: Public configurationFingerprint As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.unityVersion
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.unityVersion
+  id: unityVersion
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: unityVersion
+  nameWithType: ContentArtifactManifest.unityVersion
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.unityVersion
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string unityVersion
+    return:
+      type: System.String
+    content.vb: Public unityVersion As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.addressablesVersion
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.addressablesVersion
+  id: addressablesVersion
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: addressablesVersion
+  nameWithType: ContentArtifactManifest.addressablesVersion
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.addressablesVersion
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string addressablesVersion
+    return:
+      type: System.String
+    content.vb: Public addressablesVersion As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.scriptableBuildPipelineVersion
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.scriptableBuildPipelineVersion
+  id: scriptableBuildPipelineVersion
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: scriptableBuildPipelineVersion
+  nameWithType: ContentArtifactManifest.scriptableBuildPipelineVersion
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.scriptableBuildPipelineVersion
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string scriptableBuildPipelineVersion
+    return:
+      type: System.String
+    content.vb: Public scriptableBuildPipelineVersion As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.remoteLoadPath
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.remoteLoadPath
+  id: remoteLoadPath
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: remoteLoadPath
+  nameWithType: ContentArtifactManifest.remoteLoadPath
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.remoteLoadPath
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string remoteLoadPath
+    return:
+      type: System.String
+    content.vb: Public remoteLoadPath As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.contentStateRelativePath
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.contentStateRelativePath
+  id: contentStateRelativePath
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: contentStateRelativePath
+  nameWithType: ContentArtifactManifest.contentStateRelativePath
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.contentStateRelativePath
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string contentStateRelativePath
+    return:
+      type: System.String
+    content.vb: Public contentStateRelativePath As String
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.scopes
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.scopes
+  id: scopes
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: scopes
+  nameWithType: ContentArtifactManifest.scopes
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.scopes
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentScopeSnapshot[] scopes
+    return:
+      type: Ceres.ContentPipeline.ContentScopeSnapshot[]
+    content.vb: Public scopes As ContentScopeSnapshot()
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.assets
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.assets
+  id: assets
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: assets
+  nameWithType: ContentArtifactManifest.assets
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.assets
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentAssetSnapshot[] assets
+    return:
+      type: Ceres.ContentPipeline.ContentAssetSnapshot[]
+    content.vb: Public assets As ContentAssetSnapshot()
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.artifacts
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.artifacts
+  id: artifacts
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: artifacts
+  nameWithType: ContentArtifactManifest.artifacts
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.artifacts
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentArtifactRecord[] artifacts
+    return:
+      type: Ceres.ContentPipeline.ContentArtifactRecord[]
+    content.vb: Public artifacts As ContentArtifactRecord()
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.allowedChangedScopeIds
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.allowedChangedScopeIds
+  id: allowedChangedScopeIds
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: allowedChangedScopeIds
+  nameWithType: ContentArtifactManifest.allowedChangedScopeIds
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.allowedChangedScopeIds
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string[] allowedChangedScopeIds
+    return:
+      type: System.String[]
+    content.vb: Public allowedChangedScopeIds As String()
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.impactedScopeIds
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.impactedScopeIds
+  id: impactedScopeIds
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: impactedScopeIds
+  nameWithType: ContentArtifactManifest.impactedScopeIds
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.impactedScopeIds
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string[] impactedScopeIds
+    return:
+      type: System.String[]
+    content.vb: Public impactedScopeIds As String()
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.packing
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.packing
+  id: packing
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: packing
+  nameWithType: ContentArtifactManifest.packing
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.packing
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentBundlePackingSnapshot packing
+    return:
+      type: Ceres.ContentPipeline.ContentBundlePackingSnapshot
+    content.vb: Public packing As ContentBundlePackingSnapshot
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.partitions
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.partitions
+  id: partitions
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: partitions
+  nameWithType: ContentArtifactManifest.partitions
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.partitions
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentBundlePartitionSnapshot[] partitions
+    return:
+      type: Ceres.ContentPipeline.ContentBundlePartitionSnapshot[]
+    content.vb: Public partitions As ContentBundlePartitionSnapshot()
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.bundleStatistics
+  commentId: F:Ceres.ContentPipeline.ContentArtifactManifest.bundleStatistics
+  id: bundleStatistics
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: bundleStatistics
+  nameWithType: ContentArtifactManifest.bundleStatistics
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.bundleStatistics
+  type: Field
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentBundleBuildStatistics bundleStatistics
+    return:
+      type: Ceres.ContentPipeline.ContentBundleBuildStatistics
+    content.vb: Public bundleStatistics As ContentBundleBuildStatistics
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.Load(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentArtifactManifest.Load(System.String)
+  id: Load(System.String)
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: Load(string)
+  nameWithType: ContentArtifactManifest.Load(string)
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.Load(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static ContentArtifactManifest Load(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: Ceres.ContentPipeline.ContentArtifactManifest
+    content.vb: Public Shared Function Load(path As String) As ContentArtifactManifest
+  overload: Ceres.ContentPipeline.ContentArtifactManifest.Load*
+  nameWithType.vb: ContentArtifactManifest.Load(String)
+  fullName.vb: Ceres.ContentPipeline.ContentArtifactManifest.Load(String)
+  name.vb: Load(String)
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.Save(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentArtifactManifest.Save(System.String)
+  id: Save(System.String)
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: Save(string)
+  nameWithType: ContentArtifactManifest.Save(string)
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.Save(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public void Save(string path)
+    parameters:
+    - id: path
+      type: System.String
+    content.vb: Public Sub Save(path As String)
+  overload: Ceres.ContentPipeline.ContentArtifactManifest.Save*
+  nameWithType.vb: ContentArtifactManifest.Save(String)
+  fullName.vb: Ceres.ContentPipeline.ContentArtifactManifest.Save(String)
+  name.vb: Save(String)
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.#ctor
+  commentId: M:Ceres.ContentPipeline.ContentArtifactManifest.#ctor
+  id: '#ctor'
+  parent: Ceres.ContentPipeline.ContentArtifactManifest
+  langs:
+  - csharp
+  - vb
+  name: ContentArtifactManifest()
+  nameWithType: ContentArtifactManifest.ContentArtifactManifest()
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.ContentArtifactManifest()
+  type: Constructor
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentArtifactManifest()
+    content.vb: Public Sub New()
+  overload: Ceres.ContentPipeline.ContentArtifactManifest.#ctor*
+  nameWithType.vb: ContentArtifactManifest.New()
+  fullName.vb: Ceres.ContentPipeline.ContentArtifactManifest.New()
+  name.vb: New()
+references:
+- uid: Ceres.ContentPipeline
+  commentId: N:Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.ContentPipeline
+  nameWithType: Ceres.ContentPipeline
+  fullName: Ceres.ContentPipeline
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.ContentPipeline
+    name: ContentPipeline
+    isExternal: true
+    href: Ceres.ContentPipeline.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.ContentPipeline
+    name: ContentPipeline
+    isExternal: true
+    href: Ceres.ContentPipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.ContentPipeline.ContentScopeSnapshot[]
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentScopeSnapshot.html
+  name: ContentScopeSnapshot[]
+  nameWithType: ContentScopeSnapshot[]
+  fullName: Ceres.ContentPipeline.ContentScopeSnapshot[]
+  nameWithType.vb: ContentScopeSnapshot()
+  fullName.vb: Ceres.ContentPipeline.ContentScopeSnapshot()
+  name.vb: ContentScopeSnapshot()
+  spec.csharp:
+  - uid: Ceres.ContentPipeline.ContentScopeSnapshot
+    name: ContentScopeSnapshot
+    isExternal: true
+    href: Ceres.ContentPipeline.ContentScopeSnapshot.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.ContentPipeline.ContentScopeSnapshot
+    name: ContentScopeSnapshot
+    isExternal: true
+    href: Ceres.ContentPipeline.ContentScopeSnapshot.html
+  - name: (
+  - name: )
+- uid: Ceres.ContentPipeline.ContentAssetSnapshot[]
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentAssetSnapshot.html
+  name: ContentAssetSnapshot[]
+  nameWithType: ContentAssetSnapshot[]
+  fullName: Ceres.ContentPipeline.ContentAssetSnapshot[]
+  nameWithType.vb: ContentAssetSnapshot()
+  fullName.vb: Ceres.ContentPipeline.ContentAssetSnapshot()
+  name.vb: ContentAssetSnapshot()
+  spec.csharp:
+  - uid: Ceres.ContentPipeline.ContentAssetSnapshot
+    name: ContentAssetSnapshot
+    isExternal: true
+    href: Ceres.ContentPipeline.ContentAssetSnapshot.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.ContentPipeline.ContentAssetSnapshot
+    name: ContentAssetSnapshot
+    isExternal: true
+    href: Ceres.ContentPipeline.ContentAssetSnapshot.html
+  - name: (
+  - name: )
+- uid: Ceres.ContentPipeline.ContentArtifactRecord[]
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentArtifactRecord.html
+  name: ContentArtifactRecord[]
+  nameWithType: ContentArtifactRecord[]
+  fullName: Ceres.ContentPipeline.ContentArtifactRecord[]
+  nameWithType.vb: ContentArtifactRecord()
+  fullName.vb: Ceres.ContentPipeline.ContentArtifactRecord()
+  name.vb: ContentArtifactRecord()
+  spec.csharp:
+  - uid: Ceres.ContentPipeline.ContentArtifactRecord
+    name: ContentArtifactRecord
+    isExternal: true
+    href: Ceres.ContentPipeline.ContentArtifactRecord.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.ContentPipeline.ContentArtifactRecord
+    name: ContentArtifactRecord
+    isExternal: true
+    href: Ceres.ContentPipeline.ContentArtifactRecord.html
+  - name: (
+  - name: )
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Ceres.ContentPipeline.ContentBundlePackingSnapshot
+  commentId: T:Ceres.ContentPipeline.ContentBundlePackingSnapshot
+  parent: Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBundlePackingSnapshot.html
+  name: ContentBundlePackingSnapshot
+  nameWithType: ContentBundlePackingSnapshot
+  fullName: Ceres.ContentPipeline.ContentBundlePackingSnapshot
+- uid: Ceres.ContentPipeline.ContentBundlePartitionSnapshot[]
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBundlePartitionSnapshot.html
+  name: ContentBundlePartitionSnapshot[]
+  nameWithType: ContentBundlePartitionSnapshot[]
+  fullName: Ceres.ContentPipeline.ContentBundlePartitionSnapshot[]
+  nameWithType.vb: ContentBundlePartitionSnapshot()
+  fullName.vb: Ceres.ContentPipeline.ContentBundlePartitionSnapshot()
+  name.vb: ContentBundlePartitionSnapshot()
+  spec.csharp:
+  - uid: Ceres.ContentPipeline.ContentBundlePartitionSnapshot
+    name: ContentBundlePartitionSnapshot
+    isExternal: true
+    href: Ceres.ContentPipeline.ContentBundlePartitionSnapshot.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.ContentPipeline.ContentBundlePartitionSnapshot
+    name: ContentBundlePartitionSnapshot
+    isExternal: true
+    href: Ceres.ContentPipeline.ContentBundlePartitionSnapshot.html
+  - name: (
+  - name: )
+- uid: Ceres.ContentPipeline.ContentBundleBuildStatistics
+  commentId: T:Ceres.ContentPipeline.ContentBundleBuildStatistics
+  parent: Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBundleBuildStatistics.html
+  name: ContentBundleBuildStatistics
+  nameWithType: ContentBundleBuildStatistics
+  fullName: Ceres.ContentPipeline.ContentBundleBuildStatistics
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.Load*
+  commentId: Overload:Ceres.ContentPipeline.ContentArtifactManifest.Load
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentArtifactManifest.html#Ceres_ContentPipeline_ContentArtifactManifest_Load_System_String_
+  name: Load
+  nameWithType: ContentArtifactManifest.Load
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.Load
+- uid: Ceres.ContentPipeline.ContentArtifactManifest
+  commentId: T:Ceres.ContentPipeline.ContentArtifactManifest
+  parent: Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentArtifactManifest.html
+  name: ContentArtifactManifest
+  nameWithType: ContentArtifactManifest
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.Save*
+  commentId: Overload:Ceres.ContentPipeline.ContentArtifactManifest.Save
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentArtifactManifest.html#Ceres_ContentPipeline_ContentArtifactManifest_Save_System_String_
+  name: Save
+  nameWithType: ContentArtifactManifest.Save
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.Save
+- uid: Ceres.ContentPipeline.ContentArtifactManifest.#ctor*
+  commentId: Overload:Ceres.ContentPipeline.ContentArtifactManifest.#ctor
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentArtifactManifest.html#Ceres_ContentPipeline_ContentArtifactManifest__ctor
+  name: ContentArtifactManifest
+  nameWithType: ContentArtifactManifest.ContentArtifactManifest
+  fullName: Ceres.ContentPipeline.ContentArtifactManifest.ContentArtifactManifest
+  nameWithType.vb: ContentArtifactManifest.New
+  fullName.vb: Ceres.ContentPipeline.ContentArtifactManifest.New
+  name.vb: New

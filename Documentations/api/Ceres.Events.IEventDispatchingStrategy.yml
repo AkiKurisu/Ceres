@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.IEventDispatchingStrategy
+  commentId: T:Ceres.Events.IEventDispatchingStrategy
+  id: IEventDispatchingStrategy
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.IEventDispatchingStrategy.CanDispatchEvent(Ceres.Events.EventBase)
+  - Ceres.Events.IEventDispatchingStrategy.DispatchEvent(Ceres.Events.EventBase,Ceres.Events.IEventCoordinator)
+  langs:
+  - csharp
+  - vb
+  name: IEventDispatchingStrategy
+  nameWithType: IEventDispatchingStrategy
+  fullName: Ceres.Events.IEventDispatchingStrategy
+  type: Interface
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public interface IEventDispatchingStrategy
+    content.vb: Public Interface IEventDispatchingStrategy
+  derivedClasses:
+  - Ceres.Events.BatchEventDispatchingStrategy
+  - Ceres.Events.DefaultDispatchingStrategy
+- uid: Ceres.Events.IEventDispatchingStrategy.CanDispatchEvent(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.IEventDispatchingStrategy.CanDispatchEvent(Ceres.Events.EventBase)
+  id: CanDispatchEvent(Ceres.Events.EventBase)
+  parent: Ceres.Events.IEventDispatchingStrategy
+  langs:
+  - csharp
+  - vb
+  name: CanDispatchEvent(EventBase)
+  nameWithType: IEventDispatchingStrategy.CanDispatchEvent(EventBase)
+  fullName: Ceres.Events.IEventDispatchingStrategy.CanDispatchEvent(Ceres.Events.EventBase)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: bool CanDispatchEvent(EventBase evt)
+    parameters:
+    - id: evt
+      type: Ceres.Events.EventBase
+    return:
+      type: System.Boolean
+    content.vb: Function CanDispatchEvent(evt As EventBase) As Boolean
+  overload: Ceres.Events.IEventDispatchingStrategy.CanDispatchEvent*
+- uid: Ceres.Events.IEventDispatchingStrategy.DispatchEvent(Ceres.Events.EventBase,Ceres.Events.IEventCoordinator)
+  commentId: M:Ceres.Events.IEventDispatchingStrategy.DispatchEvent(Ceres.Events.EventBase,Ceres.Events.IEventCoordinator)
+  id: DispatchEvent(Ceres.Events.EventBase,Ceres.Events.IEventCoordinator)
+  parent: Ceres.Events.IEventDispatchingStrategy
+  langs:
+  - csharp
+  - vb
+  name: DispatchEvent(EventBase, IEventCoordinator)
+  nameWithType: IEventDispatchingStrategy.DispatchEvent(EventBase, IEventCoordinator)
+  fullName: Ceres.Events.IEventDispatchingStrategy.DispatchEvent(Ceres.Events.EventBase, Ceres.Events.IEventCoordinator)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: void DispatchEvent(EventBase evt, IEventCoordinator coordinator)
+    parameters:
+    - id: evt
+      type: Ceres.Events.EventBase
+    - id: coordinator
+      type: Ceres.Events.IEventCoordinator
+    content.vb: Sub DispatchEvent(evt As EventBase, coordinator As IEventCoordinator)
+  overload: Ceres.Events.IEventDispatchingStrategy.DispatchEvent*
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.IEventDispatchingStrategy.CanDispatchEvent*
+  commentId: Overload:Ceres.Events.IEventDispatchingStrategy.CanDispatchEvent
+  isExternal: true
+  href: Ceres.Events.IEventDispatchingStrategy.html#Ceres_Events_IEventDispatchingStrategy_CanDispatchEvent_Ceres_Events_EventBase_
+  name: CanDispatchEvent
+  nameWithType: IEventDispatchingStrategy.CanDispatchEvent
+  fullName: Ceres.Events.IEventDispatchingStrategy.CanDispatchEvent
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Events.IEventDispatchingStrategy.DispatchEvent*
+  commentId: Overload:Ceres.Events.IEventDispatchingStrategy.DispatchEvent
+  isExternal: true
+  href: Ceres.Events.IEventDispatchingStrategy.html#Ceres_Events_IEventDispatchingStrategy_DispatchEvent_Ceres_Events_EventBase_Ceres_Events_IEventCoordinator_
+  name: DispatchEvent
+  nameWithType: IEventDispatchingStrategy.DispatchEvent
+  fullName: Ceres.Events.IEventDispatchingStrategy.DispatchEvent
+- uid: Ceres.Events.IEventCoordinator
+  commentId: T:Ceres.Events.IEventCoordinator
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.IEventCoordinator.html
+  name: IEventCoordinator
+  nameWithType: IEventCoordinator
+  fullName: Ceres.Events.IEventCoordinator

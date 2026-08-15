@@ -1,0 +1,1668 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Resource.ResourceHandle`1
+  commentId: T:Ceres.Resource.ResourceHandle`1
+  id: ResourceHandle`1
+  parent: Ceres.Resource
+  children:
+  - Ceres.Resource.ResourceHandle`1.#ctor(System.UInt32,System.Int32,System.Byte)
+  - Ceres.Resource.ResourceHandle`1.Dispose
+  - Ceres.Resource.ResourceHandle`1.Equals(Ceres.Resource.ResourceHandle{`0})
+  - Ceres.Resource.ResourceHandle`1.RegisterCallback(System.Action)
+  - Ceres.Resource.ResourceHandle`1.RegisterCallback(System.Action{`0})
+  - Ceres.Resource.ResourceHandle`1.Result
+  - Ceres.Resource.ResourceHandle`1.WaitForCompletion
+  - Ceres.Resource.ResourceHandle`1.op_Implicit(Ceres.Resource.ResourceHandle)~Ceres.Resource.ResourceHandle{`0}
+  - Ceres.Resource.ResourceHandle`1.op_Implicit(Ceres.Resource.ResourceHandle{`0})~Ceres.Resource.ResourceHandle
+  langs:
+  - csharp
+  - vb
+  name: ResourceHandle<T>
+  nameWithType: ResourceHandle<T>
+  fullName: Ceres.Resource.ResourceHandle<T>
+  type: Struct
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: >-
+    Handle for streaming resource.
+
+    A lightweight replacement of <xref href="UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public readonly struct ResourceHandle<T> : IEquatable<ResourceHandle<T>>, IDisposable'
+    typeParameters:
+    - id: T
+    content.vb: Public Structure ResourceHandle(Of T) Implements IEquatable(Of ResourceHandle(Of T)), IDisposable
+  implements:
+  - System.IEquatable{Ceres.Resource.ResourceHandle`1}
+  - System.IDisposable
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.GetAwaiter``1
+  - Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.IsDone``1
+  - Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.IsValid``1
+  - Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.ToUniTask``1
+  - Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.WithCancellation``1(System.Threading.CancellationToken,System.Boolean,System.Boolean)
+  - Ceres.Resource.ResourceHandle`1.R3.Ceres.DisposableExtensions.AddTo``1(R3.Ceres.IDisposableUnregister)
+  nameWithType.vb: ResourceHandle(Of T)
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T)
+  name.vb: ResourceHandle(Of T)
+- uid: Ceres.Resource.ResourceHandle`1.#ctor(System.UInt32,System.Int32,System.Byte)
+  commentId: M:Ceres.Resource.ResourceHandle`1.#ctor(System.UInt32,System.Int32,System.Byte)
+  id: '#ctor(System.UInt32,System.Int32,System.Byte)'
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: ResourceHandle(uint, int, byte)
+  nameWithType: ResourceHandle<T>.ResourceHandle(uint, int, byte)
+  fullName: Ceres.Resource.ResourceHandle<T>.ResourceHandle(uint, int, byte)
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  syntax:
+    content: public ResourceHandle(uint version, int index, byte operationType)
+    parameters:
+    - id: version
+      type: System.UInt32
+    - id: index
+      type: System.Int32
+    - id: operationType
+      type: System.Byte
+    content.vb: Public Sub New(version As UInteger, index As Integer, operationType As Byte)
+  overload: Ceres.Resource.ResourceHandle`1.#ctor*
+  nameWithType.vb: ResourceHandle(Of T).New(UInteger, Integer, Byte)
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).New(UInteger, Integer, Byte)
+  name.vb: New(UInteger, Integer, Byte)
+- uid: Ceres.Resource.ResourceHandle`1.op_Implicit(Ceres.Resource.ResourceHandle{`0})~Ceres.Resource.ResourceHandle
+  commentId: M:Ceres.Resource.ResourceHandle`1.op_Implicit(Ceres.Resource.ResourceHandle{`0})~Ceres.Resource.ResourceHandle
+  id: op_Implicit(Ceres.Resource.ResourceHandle{`0})~Ceres.Resource.ResourceHandle
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: implicit operator ResourceHandle(ResourceHandle<T>)
+  nameWithType: ResourceHandle<T>.implicit operator ResourceHandle(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceHandle<T>.implicit operator Ceres.Resource.ResourceHandle(Ceres.Resource.ResourceHandle<T>)
+  type: Operator
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  syntax:
+    content: public static implicit operator ResourceHandle(ResourceHandle<T> obj)
+    parameters:
+    - id: obj
+      type: Ceres.Resource.ResourceHandle`1
+    return:
+      type: Ceres.Resource.ResourceHandle
+    content.vb: Public Shared Widening Operator CType(obj As ResourceHandle(Of T)) As ResourceHandle
+  overload: Ceres.Resource.ResourceHandle`1.op_Implicit*
+  nameWithType.vb: ResourceHandle(Of T).CType(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).CType(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: CType(ResourceHandle(Of T))
+- uid: Ceres.Resource.ResourceHandle`1.op_Implicit(Ceres.Resource.ResourceHandle)~Ceres.Resource.ResourceHandle{`0}
+  commentId: M:Ceres.Resource.ResourceHandle`1.op_Implicit(Ceres.Resource.ResourceHandle)~Ceres.Resource.ResourceHandle{`0}
+  id: op_Implicit(Ceres.Resource.ResourceHandle)~Ceres.Resource.ResourceHandle{`0}
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: implicit operator ResourceHandle<T>(ResourceHandle)
+  nameWithType: ResourceHandle<T>.implicit operator ResourceHandle<T>(ResourceHandle)
+  fullName: Ceres.Resource.ResourceHandle<T>.implicit operator Ceres.Resource.ResourceHandle<T>(Ceres.Resource.ResourceHandle)
+  type: Operator
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  syntax:
+    content: public static implicit operator ResourceHandle<T>(ResourceHandle obj)
+    parameters:
+    - id: obj
+      type: Ceres.Resource.ResourceHandle
+    return:
+      type: Ceres.Resource.ResourceHandle`1
+    content.vb: Public Shared Widening Operator CType(obj As ResourceHandle) As ResourceHandle(Of T)
+  overload: Ceres.Resource.ResourceHandle`1.op_Implicit*
+  nameWithType.vb: ResourceHandle(Of T).CType(ResourceHandle)
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).CType(Ceres.Resource.ResourceHandle)
+  name.vb: CType(ResourceHandle)
+- uid: Ceres.Resource.ResourceHandle`1.RegisterCallback(System.Action{`0})
+  commentId: M:Ceres.Resource.ResourceHandle`1.RegisterCallback(System.Action{`0})
+  id: RegisterCallback(System.Action{`0})
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: RegisterCallback(Action<T>)
+  nameWithType: ResourceHandle<T>.RegisterCallback(Action<T>)
+  fullName: Ceres.Resource.ResourceHandle<T>.RegisterCallback(System.Action<T>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: Register completed result callback, no need to unregister since delegate list is clear after fire event
+  example: []
+  syntax:
+    content: public void RegisterCallback(Action<T> callback)
+    parameters:
+    - id: callback
+      type: System.Action{{T}}
+      description: ''
+    content.vb: Public Sub RegisterCallback(callback As Action(Of T))
+  overload: Ceres.Resource.ResourceHandle`1.RegisterCallback*
+  nameWithType.vb: ResourceHandle(Of T).RegisterCallback(Action(Of T))
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).RegisterCallback(System.Action(Of T))
+  name.vb: RegisterCallback(Action(Of T))
+- uid: Ceres.Resource.ResourceHandle`1.RegisterCallback(System.Action)
+  commentId: M:Ceres.Resource.ResourceHandle`1.RegisterCallback(System.Action)
+  id: RegisterCallback(System.Action)
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: RegisterCallback(Action)
+  nameWithType: ResourceHandle<T>.RegisterCallback(Action)
+  fullName: Ceres.Resource.ResourceHandle<T>.RegisterCallback(System.Action)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: Register completed result callback, no need to unregister since delegate list is clear after fire event
+  example: []
+  syntax:
+    content: public void RegisterCallback(Action callback)
+    parameters:
+    - id: callback
+      type: System.Action
+      description: ''
+    content.vb: Public Sub RegisterCallback(callback As Action)
+  overload: Ceres.Resource.ResourceHandle`1.RegisterCallback*
+  nameWithType.vb: ResourceHandle(Of T).RegisterCallback(Action)
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).RegisterCallback(System.Action)
+- uid: Ceres.Resource.ResourceHandle`1.WaitForCompletion
+  commentId: M:Ceres.Resource.ResourceHandle`1.WaitForCompletion
+  id: WaitForCompletion
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: WaitForCompletion()
+  nameWithType: ResourceHandle<T>.WaitForCompletion()
+  fullName: Ceres.Resource.ResourceHandle<T>.WaitForCompletion()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  syntax:
+    content: public T WaitForCompletion()
+    return:
+      type: '{T}'
+    content.vb: Public Function WaitForCompletion() As T
+  overload: Ceres.Resource.ResourceHandle`1.WaitForCompletion*
+  nameWithType.vb: ResourceHandle(Of T).WaitForCompletion()
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).WaitForCompletion()
+- uid: Ceres.Resource.ResourceHandle`1.Equals(Ceres.Resource.ResourceHandle{`0})
+  commentId: M:Ceres.Resource.ResourceHandle`1.Equals(Ceres.Resource.ResourceHandle{`0})
+  id: Equals(Ceres.Resource.ResourceHandle{`0})
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: Equals(ResourceHandle<T>)
+  nameWithType: ResourceHandle<T>.Equals(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceHandle<T>.Equals(Ceres.Resource.ResourceHandle<T>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  example: []
+  syntax:
+    content: public bool Equals(ResourceHandle<T> other)
+    parameters:
+    - id: other
+      type: Ceres.Resource.ResourceHandle`1
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As ResourceHandle(Of T)) As Boolean
+  overload: Ceres.Resource.ResourceHandle`1.Equals*
+  implements:
+  - System.IEquatable{Ceres.Resource.ResourceHandle`1}.Equals(Ceres.Resource.ResourceHandle{{T}})
+  nameWithType.vb: ResourceHandle(Of T).Equals(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).Equals(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: Equals(ResourceHandle(Of T))
+- uid: Ceres.Resource.ResourceHandle`1.Dispose
+  commentId: M:Ceres.Resource.ResourceHandle`1.Dispose
+  id: Dispose
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ResourceHandle<T>.Dispose()
+  fullName: Ceres.Resource.ResourceHandle<T>.Dispose()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: Implement of <xref href="System.IDisposable" data-throw-if-not-resolved="false"></xref> to release resource
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Resource.ResourceHandle`1.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+  nameWithType.vb: ResourceHandle(Of T).Dispose()
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).Dispose()
+- uid: Ceres.Resource.ResourceHandle`1.Result
+  commentId: P:Ceres.Resource.ResourceHandle`1.Result
+  id: Result
+  parent: Ceres.Resource.ResourceHandle`1
+  langs:
+  - csharp
+  - vb
+  name: Result
+  nameWithType: ResourceHandle<T>.Result
+  fullName: Ceres.Resource.ResourceHandle<T>.Result
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  syntax:
+    content: public T Result { get; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Public ReadOnly Property Result As T
+  overload: Ceres.Resource.ResourceHandle`1.Result*
+  nameWithType.vb: ResourceHandle(Of T).Result
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).Result
+references:
+- uid: UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle`1
+  commentId: T:UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle`1
+  isExternal: true
+  name: AsyncOperationHandle<TObject>
+  nameWithType: AsyncOperationHandle<TObject>
+  fullName: UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<TObject>
+  nameWithType.vb: AsyncOperationHandle(Of TObject)
+  fullName.vb: UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle(Of TObject)
+  name.vb: AsyncOperationHandle(Of TObject)
+  spec.csharp:
+  - uid: UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle`1
+    name: AsyncOperationHandle
+    isExternal: true
+  - name: <
+  - name: TObject
+  - name: '>'
+  spec.vb:
+  - uid: UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle`1
+    name: AsyncOperationHandle
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TObject
+  - name: )
+- uid: Ceres.Resource
+  commentId: N:Ceres.Resource
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Resource
+  nameWithType: Ceres.Resource
+  fullName: Ceres.Resource
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Resource.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Resource.html
+- uid: System.IEquatable{Ceres.Resource.ResourceHandle`1}
+  commentId: T:System.IEquatable{Ceres.Resource.ResourceHandle`1}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ResourceHandle<T>>
+  nameWithType: IEquatable<ResourceHandle<T>>
+  fullName: System.IEquatable<Ceres.Resource.ResourceHandle<T>>
+  nameWithType.vb: IEquatable(Of ResourceHandle(Of T))
+  fullName.vb: System.IEquatable(Of Ceres.Resource.ResourceHandle(Of T))
+  name.vb: IEquatable(Of ResourceHandle(Of T))
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.GetAwaiter``1
+  commentId: M:Ceres.Resource.ResourceSystem.GetAwaiter``1(Ceres.Resource.ResourceHandle{``0})
+  parent: Ceres.Resource.ResourceSystem
+  definition: Ceres.Resource.ResourceSystem.GetAwaiter``1(Ceres.Resource.ResourceHandle{``0})
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_GetAwaiter__1_Ceres_Resource_ResourceHandle___0__
+  name: GetAwaiter<T>(ResourceHandle<T>)
+  nameWithType: ResourceSystem.GetAwaiter<T>(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceSystem.GetAwaiter<T>(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: ResourceSystem.GetAwaiter(Of T)(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceSystem.GetAwaiter(Of T)(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: GetAwaiter(Of T)(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.GetAwaiter``1(Ceres.Resource.ResourceHandle{`0})
+    name: GetAwaiter
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_GetAwaiter__1_Ceres_Resource_ResourceHandle___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.GetAwaiter``1(Ceres.Resource.ResourceHandle{`0})
+    name: GetAwaiter
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_GetAwaiter__1_Ceres_Resource_ResourceHandle___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.IsDone``1
+  commentId: M:Ceres.Resource.ResourceSystem.IsDone``1(Ceres.Resource.ResourceHandle{``0})
+  parent: Ceres.Resource.ResourceSystem
+  definition: Ceres.Resource.ResourceSystem.IsDone``1(Ceres.Resource.ResourceHandle{``0})
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsDone__1_Ceres_Resource_ResourceHandle___0__
+  name: IsDone<T>(ResourceHandle<T>)
+  nameWithType: ResourceSystem.IsDone<T>(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceSystem.IsDone<T>(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: ResourceSystem.IsDone(Of T)(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceSystem.IsDone(Of T)(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: IsDone(Of T)(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.IsDone``1(Ceres.Resource.ResourceHandle{`0})
+    name: IsDone
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsDone__1_Ceres_Resource_ResourceHandle___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.IsDone``1(Ceres.Resource.ResourceHandle{`0})
+    name: IsDone
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsDone__1_Ceres_Resource_ResourceHandle___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.IsValid``1
+  commentId: M:Ceres.Resource.ResourceSystem.IsValid``1(Ceres.Resource.ResourceHandle{``0})
+  parent: Ceres.Resource.ResourceSystem
+  definition: Ceres.Resource.ResourceSystem.IsValid``1(Ceres.Resource.ResourceHandle{``0})
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsValid__1_Ceres_Resource_ResourceHandle___0__
+  name: IsValid<T>(ResourceHandle<T>)
+  nameWithType: ResourceSystem.IsValid<T>(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceSystem.IsValid<T>(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: ResourceSystem.IsValid(Of T)(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceSystem.IsValid(Of T)(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: IsValid(Of T)(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.IsValid``1(Ceres.Resource.ResourceHandle{`0})
+    name: IsValid
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsValid__1_Ceres_Resource_ResourceHandle___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.IsValid``1(Ceres.Resource.ResourceHandle{`0})
+    name: IsValid
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsValid__1_Ceres_Resource_ResourceHandle___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.ToUniTask``1
+  commentId: M:Ceres.Resource.ResourceSystem.ToUniTask``1(Ceres.Resource.ResourceHandle{``0})
+  parent: Ceres.Resource.ResourceSystem
+  definition: Ceres.Resource.ResourceSystem.ToUniTask``1(Ceres.Resource.ResourceHandle{``0})
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_ToUniTask__1_Ceres_Resource_ResourceHandle___0__
+  name: ToUniTask<T>(ResourceHandle<T>)
+  nameWithType: ResourceSystem.ToUniTask<T>(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceSystem.ToUniTask<T>(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: ResourceSystem.ToUniTask(Of T)(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceSystem.ToUniTask(Of T)(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: ToUniTask(Of T)(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.ToUniTask``1(Ceres.Resource.ResourceHandle{`0})
+    name: ToUniTask
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_ToUniTask__1_Ceres_Resource_ResourceHandle___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.ToUniTask``1(Ceres.Resource.ResourceHandle{`0})
+    name: ToUniTask
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_ToUniTask__1_Ceres_Resource_ResourceHandle___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Resource.ResourceHandle`1.Ceres.Resource.ResourceSystem.WithCancellation``1(System.Threading.CancellationToken,System.Boolean,System.Boolean)
+  commentId: M:Ceres.Resource.ResourceSystem.WithCancellation``1(Ceres.Resource.ResourceHandle{``0},System.Threading.CancellationToken,System.Boolean,System.Boolean)
+  parent: Ceres.Resource.ResourceSystem
+  definition: Ceres.Resource.ResourceSystem.WithCancellation``1(Ceres.Resource.ResourceHandle{``0},System.Threading.CancellationToken,System.Boolean,System.Boolean)
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_WithCancellation__1_Ceres_Resource_ResourceHandle___0__System_Threading_CancellationToken_System_Boolean_System_Boolean_
+  name: WithCancellation<T>(ResourceHandle<T>, CancellationToken, bool, bool)
+  nameWithType: ResourceSystem.WithCancellation<T>(ResourceHandle<T>, CancellationToken, bool, bool)
+  fullName: Ceres.Resource.ResourceSystem.WithCancellation<T>(Ceres.Resource.ResourceHandle<T>, System.Threading.CancellationToken, bool, bool)
+  nameWithType.vb: ResourceSystem.WithCancellation(Of T)(ResourceHandle(Of T), CancellationToken, Boolean, Boolean)
+  fullName.vb: Ceres.Resource.ResourceSystem.WithCancellation(Of T)(Ceres.Resource.ResourceHandle(Of T), System.Threading.CancellationToken, Boolean, Boolean)
+  name.vb: WithCancellation(Of T)(ResourceHandle(Of T), CancellationToken, Boolean, Boolean)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.WithCancellation``1(Ceres.Resource.ResourceHandle{`0},System.Threading.CancellationToken,System.Boolean,System.Boolean)
+    name: WithCancellation
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_WithCancellation__1_Ceres_Resource_ResourceHandle___0__System_Threading_CancellationToken_System_Boolean_System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.WithCancellation``1(Ceres.Resource.ResourceHandle{`0},System.Threading.CancellationToken,System.Boolean,System.Boolean)
+    name: WithCancellation
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_WithCancellation__1_Ceres_Resource_ResourceHandle___0__System_Threading_CancellationToken_System_Boolean_System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Resource.ResourceHandle`1.R3.Ceres.DisposableExtensions.AddTo``1(R3.Ceres.IDisposableUnregister)
+  commentId: M:R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  parent: R3.Ceres.DisposableExtensions
+  definition: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  name: AddTo<ResourceHandle<T>>(ResourceHandle<T>, IDisposableUnregister)
+  nameWithType: DisposableExtensions.AddTo<ResourceHandle<T>>(ResourceHandle<T>, IDisposableUnregister)
+  fullName: R3.Ceres.DisposableExtensions.AddTo<Ceres.Resource.ResourceHandle<T>>(Ceres.Resource.ResourceHandle<T>, R3.Ceres.IDisposableUnregister)
+  nameWithType.vb: DisposableExtensions.AddTo(Of ResourceHandle(Of T))(ResourceHandle(Of T), IDisposableUnregister)
+  fullName.vb: R3.Ceres.DisposableExtensions.AddTo(Of Ceres.Resource.ResourceHandle(Of T))(Ceres.Resource.ResourceHandle(Of T), R3.Ceres.IDisposableUnregister)
+  name.vb: AddTo(Of ResourceHandle(Of T))(ResourceHandle(Of T), IDisposableUnregister)
+  spec.csharp:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(Ceres.Resource.ResourceHandle{`0},R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: <
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+  spec.vb:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(Ceres.Resource.ResourceHandle{`0},R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Resource.ResourceSystem.GetAwaiter``1(Ceres.Resource.ResourceHandle{``0})
+  commentId: M:Ceres.Resource.ResourceSystem.GetAwaiter``1(Ceres.Resource.ResourceHandle{``0})
+  isExternal: true
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_GetAwaiter__1_Ceres_Resource_ResourceHandle___0__
+  name: GetAwaiter<T>(ResourceHandle<T>)
+  nameWithType: ResourceSystem.GetAwaiter<T>(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceSystem.GetAwaiter<T>(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: ResourceSystem.GetAwaiter(Of T)(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceSystem.GetAwaiter(Of T)(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: GetAwaiter(Of T)(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.GetAwaiter``1(Ceres.Resource.ResourceHandle{``0})
+    name: GetAwaiter
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_GetAwaiter__1_Ceres_Resource_ResourceHandle___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.GetAwaiter``1(Ceres.Resource.ResourceHandle{``0})
+    name: GetAwaiter
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_GetAwaiter__1_Ceres_Resource_ResourceHandle___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Resource.ResourceSystem
+  commentId: T:Ceres.Resource.ResourceSystem
+  parent: Ceres.Resource
+  isExternal: true
+  href: Ceres.Resource.ResourceSystem.html
+  name: ResourceSystem
+  nameWithType: ResourceSystem
+  fullName: Ceres.Resource.ResourceSystem
+- uid: Ceres.Resource.ResourceSystem.IsDone``1(Ceres.Resource.ResourceHandle{``0})
+  commentId: M:Ceres.Resource.ResourceSystem.IsDone``1(Ceres.Resource.ResourceHandle{``0})
+  isExternal: true
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsDone__1_Ceres_Resource_ResourceHandle___0__
+  name: IsDone<T>(ResourceHandle<T>)
+  nameWithType: ResourceSystem.IsDone<T>(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceSystem.IsDone<T>(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: ResourceSystem.IsDone(Of T)(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceSystem.IsDone(Of T)(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: IsDone(Of T)(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.IsDone``1(Ceres.Resource.ResourceHandle{``0})
+    name: IsDone
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsDone__1_Ceres_Resource_ResourceHandle___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.IsDone``1(Ceres.Resource.ResourceHandle{``0})
+    name: IsDone
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsDone__1_Ceres_Resource_ResourceHandle___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Resource.ResourceSystem.IsValid``1(Ceres.Resource.ResourceHandle{``0})
+  commentId: M:Ceres.Resource.ResourceSystem.IsValid``1(Ceres.Resource.ResourceHandle{``0})
+  isExternal: true
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsValid__1_Ceres_Resource_ResourceHandle___0__
+  name: IsValid<T>(ResourceHandle<T>)
+  nameWithType: ResourceSystem.IsValid<T>(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceSystem.IsValid<T>(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: ResourceSystem.IsValid(Of T)(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceSystem.IsValid(Of T)(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: IsValid(Of T)(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.IsValid``1(Ceres.Resource.ResourceHandle{``0})
+    name: IsValid
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsValid__1_Ceres_Resource_ResourceHandle___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.IsValid``1(Ceres.Resource.ResourceHandle{``0})
+    name: IsValid
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_IsValid__1_Ceres_Resource_ResourceHandle___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Resource.ResourceSystem.ToUniTask``1(Ceres.Resource.ResourceHandle{``0})
+  commentId: M:Ceres.Resource.ResourceSystem.ToUniTask``1(Ceres.Resource.ResourceHandle{``0})
+  isExternal: true
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_ToUniTask__1_Ceres_Resource_ResourceHandle___0__
+  name: ToUniTask<T>(ResourceHandle<T>)
+  nameWithType: ResourceSystem.ToUniTask<T>(ResourceHandle<T>)
+  fullName: Ceres.Resource.ResourceSystem.ToUniTask<T>(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: ResourceSystem.ToUniTask(Of T)(ResourceHandle(Of T))
+  fullName.vb: Ceres.Resource.ResourceSystem.ToUniTask(Of T)(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: ToUniTask(Of T)(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.ToUniTask``1(Ceres.Resource.ResourceHandle{``0})
+    name: ToUniTask
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_ToUniTask__1_Ceres_Resource_ResourceHandle___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.ToUniTask``1(Ceres.Resource.ResourceHandle{``0})
+    name: ToUniTask
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_ToUniTask__1_Ceres_Resource_ResourceHandle___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Resource.ResourceSystem.WithCancellation``1(Ceres.Resource.ResourceHandle{``0},System.Threading.CancellationToken,System.Boolean,System.Boolean)
+  commentId: M:Ceres.Resource.ResourceSystem.WithCancellation``1(Ceres.Resource.ResourceHandle{``0},System.Threading.CancellationToken,System.Boolean,System.Boolean)
+  isExternal: true
+  href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_WithCancellation__1_Ceres_Resource_ResourceHandle___0__System_Threading_CancellationToken_System_Boolean_System_Boolean_
+  name: WithCancellation<T>(ResourceHandle<T>, CancellationToken, bool, bool)
+  nameWithType: ResourceSystem.WithCancellation<T>(ResourceHandle<T>, CancellationToken, bool, bool)
+  fullName: Ceres.Resource.ResourceSystem.WithCancellation<T>(Ceres.Resource.ResourceHandle<T>, System.Threading.CancellationToken, bool, bool)
+  nameWithType.vb: ResourceSystem.WithCancellation(Of T)(ResourceHandle(Of T), CancellationToken, Boolean, Boolean)
+  fullName.vb: Ceres.Resource.ResourceSystem.WithCancellation(Of T)(Ceres.Resource.ResourceHandle(Of T), System.Threading.CancellationToken, Boolean, Boolean)
+  name.vb: WithCancellation(Of T)(ResourceHandle(Of T), CancellationToken, Boolean, Boolean)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem.WithCancellation``1(Ceres.Resource.ResourceHandle{``0},System.Threading.CancellationToken,System.Boolean,System.Boolean)
+    name: WithCancellation
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_WithCancellation__1_Ceres_Resource_ResourceHandle___0__System_Threading_CancellationToken_System_Boolean_System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem.WithCancellation``1(Ceres.Resource.ResourceHandle{``0},System.Threading.CancellationToken,System.Boolean,System.Boolean)
+    name: WithCancellation
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html#Ceres_Resource_ResourceSystem_WithCancellation__1_Ceres_Resource_ResourceHandle___0__System_Threading_CancellationToken_System_Boolean_System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  commentId: M:R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  isExternal: true
+  href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  name: AddTo<T>(T, IDisposableUnregister)
+  nameWithType: DisposableExtensions.AddTo<T>(T, IDisposableUnregister)
+  fullName: R3.Ceres.DisposableExtensions.AddTo<T>(T, R3.Ceres.IDisposableUnregister)
+  nameWithType.vb: DisposableExtensions.AddTo(Of T)(T, IDisposableUnregister)
+  fullName.vb: R3.Ceres.DisposableExtensions.AddTo(Of T)(T, R3.Ceres.IDisposableUnregister)
+  name.vb: AddTo(Of T)(T, IDisposableUnregister)
+  spec.csharp:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+  spec.vb:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+- uid: R3.Ceres.DisposableExtensions
+  commentId: T:R3.Ceres.DisposableExtensions
+  parent: R3.Ceres
+  isExternal: true
+  href: R3.Ceres.DisposableExtensions.html
+  name: DisposableExtensions
+  nameWithType: DisposableExtensions
+  fullName: R3.Ceres.DisposableExtensions
+- uid: R3.Ceres
+  commentId: N:R3.Ceres
+  isExternal: true
+  href: R3.html
+  name: R3.Ceres
+  nameWithType: R3.Ceres
+  fullName: R3.Ceres
+  spec.csharp:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+  spec.vb:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+- uid: Ceres.Resource.ResourceHandle`1.#ctor*
+  commentId: Overload:Ceres.Resource.ResourceHandle`1.#ctor
+  isExternal: true
+  href: Ceres.Resource.ResourceHandle-1.html#Ceres_Resource_ResourceHandle_1__ctor_System_UInt32_System_Int32_System_Byte_
+  name: ResourceHandle
+  nameWithType: ResourceHandle<T>.ResourceHandle
+  fullName: Ceres.Resource.ResourceHandle<T>.ResourceHandle
+  nameWithType.vb: ResourceHandle(Of T).New
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).New
+  name.vb: New
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Ceres.Resource.ResourceHandle`1.op_Implicit*
+  commentId: Overload:Ceres.Resource.ResourceHandle`1.op_Implicit
+  name: implicit operator
+  nameWithType: ResourceHandle<T>.implicit operator
+  fullName: Ceres.Resource.ResourceHandle<T>.implicit operator
+  nameWithType.vb: ResourceHandle(Of T).CType
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: Ceres.Resource.ResourceHandle`1
+  commentId: T:Ceres.Resource.ResourceHandle`1
+  parent: Ceres.Resource
+  isExternal: true
+  href: Ceres.Resource.ResourceHandle-1.html
+  name: ResourceHandle<T>
+  nameWithType: ResourceHandle<T>
+  fullName: Ceres.Resource.ResourceHandle<T>
+  nameWithType.vb: ResourceHandle(Of T)
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T)
+  name.vb: ResourceHandle(Of T)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Resource.ResourceHandle
+  commentId: T:Ceres.Resource.ResourceHandle
+  parent: Ceres.Resource
+  isExternal: true
+  href: Ceres.Resource.ResourceHandle.html
+  name: ResourceHandle
+  nameWithType: ResourceHandle
+  fullName: Ceres.Resource.ResourceHandle
+- uid: Ceres.Resource.ResourceHandle`1.RegisterCallback*
+  commentId: Overload:Ceres.Resource.ResourceHandle`1.RegisterCallback
+  isExternal: true
+  href: Ceres.Resource.ResourceHandle-1.html#Ceres_Resource_ResourceHandle_1_RegisterCallback_System_Action__0__
+  name: RegisterCallback
+  nameWithType: ResourceHandle<T>.RegisterCallback
+  fullName: Ceres.Resource.ResourceHandle<T>.RegisterCallback
+  nameWithType.vb: ResourceHandle(Of T).RegisterCallback
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).RegisterCallback
+- uid: System.Action{{T}}
+  commentId: T:System.Action{`0}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
+- uid: Ceres.Resource.ResourceHandle`1.WaitForCompletion*
+  commentId: Overload:Ceres.Resource.ResourceHandle`1.WaitForCompletion
+  isExternal: true
+  href: Ceres.Resource.ResourceHandle-1.html#Ceres_Resource_ResourceHandle_1_WaitForCompletion
+  name: WaitForCompletion
+  nameWithType: ResourceHandle<T>.WaitForCompletion
+  fullName: Ceres.Resource.ResourceHandle<T>.WaitForCompletion
+  nameWithType.vb: ResourceHandle(Of T).WaitForCompletion
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).WaitForCompletion
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Resource.ResourceHandle`1.Equals*
+  commentId: Overload:Ceres.Resource.ResourceHandle`1.Equals
+  isExternal: true
+  href: Ceres.Resource.ResourceHandle-1.html#Ceres_Resource_ResourceHandle_1_Equals_Ceres_Resource_ResourceHandle__0__
+  name: Equals
+  nameWithType: ResourceHandle<T>.Equals
+  fullName: Ceres.Resource.ResourceHandle<T>.Equals
+  nameWithType.vb: ResourceHandle(Of T).Equals
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).Equals
+- uid: System.IEquatable{Ceres.Resource.ResourceHandle`1}.Equals(Ceres.Resource.ResourceHandle{{T}})
+  commentId: M:System.IEquatable{Ceres.Resource.ResourceHandle`1}.Equals(Ceres.Resource.ResourceHandle{`0})
+  parent: System.IEquatable{Ceres.Resource.ResourceHandle`1}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(ResourceHandle<T>)
+  nameWithType: IEquatable<ResourceHandle<T>>.Equals(ResourceHandle<T>)
+  fullName: System.IEquatable<Ceres.Resource.ResourceHandle<T>>.Equals(Ceres.Resource.ResourceHandle<T>)
+  nameWithType.vb: IEquatable(Of ResourceHandle(Of T)).Equals(ResourceHandle(Of T))
+  fullName.vb: System.IEquatable(Of Ceres.Resource.ResourceHandle(Of T)).Equals(Ceres.Resource.ResourceHandle(Of T))
+  name.vb: Equals(ResourceHandle(Of T))
+  spec.csharp:
+  - uid: System.IEquatable{Ceres.Resource.ResourceHandle`1}.Equals(Ceres.Resource.ResourceHandle{`0})
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Ceres.Resource.ResourceHandle`1}.Equals(Ceres.Resource.ResourceHandle{`0})
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Ceres.Resource.ResourceHandle`1
+    name: ResourceHandle
+    isExternal: true
+    href: Ceres.Resource.ResourceHandle-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: Ceres.Resource.ResourceHandle`1.Dispose*
+  commentId: Overload:Ceres.Resource.ResourceHandle`1.Dispose
+  isExternal: true
+  href: Ceres.Resource.ResourceHandle-1.html#Ceres_Resource_ResourceHandle_1_Dispose
+  name: Dispose
+  nameWithType: ResourceHandle<T>.Dispose
+  fullName: Ceres.Resource.ResourceHandle<T>.Dispose
+  nameWithType.vb: ResourceHandle(Of T).Dispose
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceHandle`1.Result*
+  commentId: Overload:Ceres.Resource.ResourceHandle`1.Result
+  isExternal: true
+  href: Ceres.Resource.ResourceHandle-1.html#Ceres_Resource_ResourceHandle_1_Result
+  name: Result
+  nameWithType: ResourceHandle<T>.Result
+  fullName: Ceres.Resource.ResourceHandle<T>.Result
+  nameWithType.vb: ResourceHandle(Of T).Result
+  fullName.vb: Ceres.Resource.ResourceHandle(Of T).Result

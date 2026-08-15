@@ -1,0 +1,183 @@
+/* Blackboard Inspector Panel */
+.blackboard-inspector-panel {
+    background-color: rgb(26, 26, 26);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: rgb(51, 51, 51);
+    border-bottom-color: rgb(51, 51, 51);
+    border-left-color: rgb(51, 51, 51);
+    border-right-color: rgb(51, 51, 51);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Title Container */
+.blackboard-inspector-title-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(77, 77, 77);
+}
+
+/* Title Label */
+#blackboard-inspector-title {
+    -unity-font-style: bold;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    flex-grow: 1;
+}
+
+/* Subtitle Label */
+#blackboard-inspector-subtitle {
+    font-size: 12px;
+    color: rgb(180, 180, 180);
+    -unity-font-style: normal;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+/* Empty State Label */
+#blackboard-inspector-empty {
+    color: rgb(150, 150, 150);
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    -unity-font-style: italic;
+    -unity-text-align: middle-center;
+}
+
+/* Variable Row */
+.blackboard-inspector-row {
+    flex-direction: column;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 6px;
+    background-color: rgb(38, 38, 38);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: rgb(77, 77, 77);
+    border-bottom-color: rgb(77, 77, 77);
+    border-left-color: rgb(77, 77, 77);
+    border-right-color: rgb(77, 77, 77);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/* Row Label */
+.blackboard-inspector-row > Label {
+    color: rgb(230, 230, 230);
+    font-size: 12px;
+    margin-bottom: 6px;
+    -unity-font-style: bold;
+}
+
+/* Row Content */
+.blackboard-inspector-row-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Button Container */
+.blackboard-inspector-button-container {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Value Field */
+.blackboard-inspector-value-field {
+    width: 70%;
+    margin-right: 8px;
+    align-items: center;
+    min-height: 25px;
+    height: 25px;
+}
+
+/* Value Field Label - Center align text vertically */
+.blackboard-inspector-value-field > .unity-base-field__label {
+    -unity-text-align: middle-left;
+    align-self: center;
+}
+
+.blackboard-inspector-value-field.unity-text-field {
+    max-width: 250px;
+    white-space: normal;
+}
+
+/* Global Toggle Button */
+.blackboard-inspector-global-toggle {
+    height: 25px;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.blackboard-inspector-global-toggle.global-on {
+    color: rgb(179, 255, 179);
+    background-color: rgb(51, 102, 51);
+}
+
+.blackboard-inspector-global-toggle.global-on:hover {
+    background-color: rgb(64, 128, 64);
+}
+
+.blackboard-inspector-global-toggle.global-off {
+    color: rgb(153, 153, 153);
+    background-color: rgb(51, 51, 51);
+}
+
+.blackboard-inspector-global-toggle.global-off:hover {
+    background-color: rgb(64, 64, 64);
+}
+
+.blackboard-inspector-global-toggle:active {
+    opacity: 0.8;
+}
+
+/* Delete Button */
+.blackboard-inspector-delete-button {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    max-width: 25px;
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    padding: 2px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.blackboard-inspector-delete-button:hover {
+    background-color: rgb(128, 51, 51);
+}
+
+.blackboard-inspector-delete-button:active {
+    background-color: rgb(153, 64, 64);
+}
+
+.blackboard-inspector-delete-button > .unity-text-element {
+    display: none;
+}
+

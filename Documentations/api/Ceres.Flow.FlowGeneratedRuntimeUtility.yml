@@ -1,0 +1,1679 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility
+  commentId: T:Ceres.Flow.FlowGeneratedRuntimeUtility
+  id: FlowGeneratedRuntimeUtility
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent(Ceres.Flow.FlowGeneratedProgramInfo)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash(Ceres.Flow.FlowGeneratedRuntimeProfile,Ceres.Flow.FlowGeneratedRuntimeCancellationMode,Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode,Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGraphHash(Ceres.Flow.FlowGraphData)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray``1(System.Array)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CreateBlackboard(Ceres.Flow.FlowGraphData)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram(Ceres.Flow.FlowGraph)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CreateExecutableProgram(Ceres.Flow.IFlowGraphContainer,Ceres.Flow.FlowGeneratedProgramInfo)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.DisposeBlackboard(Ceres.Graph.Blackboard)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType``1
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue``2(Ceres.Flow.FlowGraphData,System.String)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent``1(UnityEngine.GameObject)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable``1(Ceres.Graph.Blackboard,System.String)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault``1(System.Boolean,``0,UnityEngine.Object)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument``1(Ceres.Events.EventBase,System.Int32)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault``1(System.Boolean,System.Boolean,``0,UnityEngine.Object)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull``1(``0)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.PrewarmSerializedType(Ceres.Serialization.SerializedTypeBase)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn``1(Ceres.Events.EventBase,``0)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue``2(Ceres.Flow.FlowGraphData,System.String,``1@)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  - Ceres.Flow.FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram
+  langs:
+  - csharp
+  - vb
+  name: FlowGeneratedRuntimeUtility
+  nameWithType: FlowGeneratedRuntimeUtility
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static class FlowGeneratedRuntimeUtility
+    content.vb: Public Module FlowGeneratedRuntimeUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion
+  commentId: F:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion
+  id: CurrentProgramInfoVersion
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CurrentProgramInfoVersion
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentProgramInfoVersion
+  type: Field
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public const int CurrentProgramInfoVersion = 5
+    return:
+      type: System.Int32
+    content.vb: Public Const CurrentProgramInfoVersion As Integer = 5
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash(Ceres.Flow.FlowGeneratedRuntimeProfile,Ceres.Flow.FlowGeneratedRuntimeCancellationMode,Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode,Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash(Ceres.Flow.FlowGeneratedRuntimeProfile,Ceres.Flow.FlowGeneratedRuntimeCancellationMode,Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode,Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode)
+  id: CalculateGeneratedRuntimeOptionsHash(Ceres.Flow.FlowGeneratedRuntimeProfile,Ceres.Flow.FlowGeneratedRuntimeCancellationMode,Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode,Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CalculateGeneratedRuntimeOptionsHash(FlowGeneratedRuntimeProfile, FlowGeneratedRuntimeCancellationMode, FlowGeneratedRuntimeVariableStorageMode, FlowGeneratedRuntimeSerializedTypeMode)
+  nameWithType: FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash(FlowGeneratedRuntimeProfile, FlowGeneratedRuntimeCancellationMode, FlowGeneratedRuntimeVariableStorageMode, FlowGeneratedRuntimeSerializedTypeMode)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash(Ceres.Flow.FlowGeneratedRuntimeProfile, Ceres.Flow.FlowGeneratedRuntimeCancellationMode, Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode, Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static string CalculateGeneratedRuntimeOptionsHash(FlowGeneratedRuntimeProfile profile, FlowGeneratedRuntimeCancellationMode cancellationMode, FlowGeneratedRuntimeVariableStorageMode variableStorageMode, FlowGeneratedRuntimeSerializedTypeMode serializedTypeMode)
+    parameters:
+    - id: profile
+      type: Ceres.Flow.FlowGeneratedRuntimeProfile
+    - id: cancellationMode
+      type: Ceres.Flow.FlowGeneratedRuntimeCancellationMode
+    - id: variableStorageMode
+      type: Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode
+    - id: serializedTypeMode
+      type: Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode
+    return:
+      type: System.String
+    content.vb: Public Shared Function CalculateGeneratedRuntimeOptionsHash(profile As FlowGeneratedRuntimeProfile, cancellationMode As FlowGeneratedRuntimeCancellationMode, variableStorageMode As FlowGeneratedRuntimeVariableStorageMode, serializedTypeMode As FlowGeneratedRuntimeSerializedTypeMode) As String
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent(Ceres.Flow.FlowGeneratedProgramInfo)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent(Ceres.Flow.FlowGeneratedProgramInfo)
+  id: AreGeneratedRuntimeOptionsCurrent(Ceres.Flow.FlowGeneratedProgramInfo)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: AreGeneratedRuntimeOptionsCurrent(FlowGeneratedProgramInfo)
+  nameWithType: FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent(FlowGeneratedProgramInfo)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent(Ceres.Flow.FlowGeneratedProgramInfo)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static bool AreGeneratedRuntimeOptionsCurrent(FlowGeneratedProgramInfo info)
+    parameters:
+    - id: info
+      type: Ceres.Flow.FlowGeneratedProgramInfo
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function AreGeneratedRuntimeOptionsCurrent(info As FlowGeneratedProgramInfo) As Boolean
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGraphHash(Ceres.Flow.FlowGraphData)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGraphHash(Ceres.Flow.FlowGraphData)
+  id: CalculateGraphHash(Ceres.Flow.FlowGraphData)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CalculateGraphHash(FlowGraphData)
+  nameWithType: FlowGeneratedRuntimeUtility.CalculateGraphHash(FlowGraphData)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGraphHash(Ceres.Flow.FlowGraphData)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static string CalculateGraphHash(FlowGraphData graphData)
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    return:
+      type: System.String
+    content.vb: Public Shared Function CalculateGraphHash(graphData As FlowGraphData) As String
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGraphHash*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateBlackboard(Ceres.Flow.FlowGraphData)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.CreateBlackboard(Ceres.Flow.FlowGraphData)
+  id: CreateBlackboard(Ceres.Flow.FlowGraphData)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateBlackboard(FlowGraphData)
+  nameWithType: FlowGeneratedRuntimeUtility.CreateBlackboard(FlowGraphData)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateBlackboard(Ceres.Flow.FlowGraphData)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static Blackboard CreateBlackboard(FlowGraphData graphData)
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    return:
+      type: Ceres.Graph.Blackboard
+    content.vb: Public Shared Function CreateBlackboard(graphData As FlowGraphData) As Blackboard
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateBlackboard*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue``2(Ceres.Flow.FlowGraphData,System.String)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue``2(Ceres.Flow.FlowGraphData,System.String)
+  id: GetLocalVariableValue``2(Ceres.Flow.FlowGraphData,System.String)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetLocalVariableValue<TVariable, TValue>(FlowGraphData, string)
+  nameWithType: FlowGeneratedRuntimeUtility.GetLocalVariableValue<TVariable, TValue>(FlowGraphData, string)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue<TVariable, TValue>(Ceres.Flow.FlowGraphData, string)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public static TValue GetLocalVariableValue<TVariable, TValue>(FlowGraphData graphData, string variableName) where TVariable : SharedVariable'
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    - id: variableName
+      type: System.String
+    typeParameters:
+    - id: TVariable
+    - id: TValue
+    return:
+      type: '{TValue}'
+    content.vb: Public Shared Function GetLocalVariableValue(Of TVariable As SharedVariable, TValue)(graphData As FlowGraphData, variableName As String) As TValue
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetLocalVariableValue(Of TVariable, TValue)(FlowGraphData, String)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue(Of TVariable, TValue)(Ceres.Flow.FlowGraphData, String)
+  name.vb: GetLocalVariableValue(Of TVariable, TValue)(FlowGraphData, String)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue``2(Ceres.Flow.FlowGraphData,System.String,``1@)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue``2(Ceres.Flow.FlowGraphData,System.String,``1@)
+  id: TryGetLocalVariableValue``2(Ceres.Flow.FlowGraphData,System.String,``1@)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetLocalVariableValue<TVariable, TValue>(FlowGraphData, string, out TValue)
+  nameWithType: FlowGeneratedRuntimeUtility.TryGetLocalVariableValue<TVariable, TValue>(FlowGraphData, string, out TValue)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue<TVariable, TValue>(Ceres.Flow.FlowGraphData, string, out TValue)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public static bool TryGetLocalVariableValue<TVariable, TValue>(FlowGraphData graphData, string variableName, out TValue value) where TVariable : SharedVariable'
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    - id: variableName
+      type: System.String
+    - id: value
+      type: '{TValue}'
+    typeParameters:
+    - id: TVariable
+    - id: TValue
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetLocalVariableValue(Of TVariable As SharedVariable, TValue)(graphData As FlowGraphData, variableName As String, value As TValue) As Boolean
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.TryGetLocalVariableValue(Of TVariable, TValue)(FlowGraphData, String, TValue)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue(Of TVariable, TValue)(Ceres.Flow.FlowGraphData, String, TValue)
+  name.vb: TryGetLocalVariableValue(Of TVariable, TValue)(FlowGraphData, String, TValue)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  id: GetNodeLocalVariableValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetNodeLocalVariableValue<TValue>(FlowGraphData, string, string, int)
+  nameWithType: FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue<TValue>(FlowGraphData, string, string, int)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue<TValue>(Ceres.Flow.FlowGraphData, string, string, int)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static TValue GetNodeLocalVariableValue<TValue>(FlowGraphData graphData, string nodeGuid, string fieldName, int index)
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    - id: nodeGuid
+      type: System.String
+    - id: fieldName
+      type: System.String
+    - id: index
+      type: System.Int32
+    typeParameters:
+    - id: TValue
+    return:
+      type: '{TValue}'
+    content.vb: Public Shared Function GetNodeLocalVariableValue(Of TValue)(graphData As FlowGraphData, nodeGuid As String, fieldName As String, index As Integer) As TValue
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue(Of TValue)(FlowGraphData, String, String, Integer)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue(Of TValue)(Ceres.Flow.FlowGraphData, String, String, Integer)
+  name.vb: GetNodeLocalVariableValue(Of TValue)(FlowGraphData, String, String, Integer)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  id: TryGetNodeLocalVariableValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetNodeLocalVariableValue<TValue>(FlowGraphData, string, string, int, out TValue)
+  nameWithType: FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue<TValue>(FlowGraphData, string, string, int, out TValue)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue<TValue>(Ceres.Flow.FlowGraphData, string, string, int, out TValue)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static bool TryGetNodeLocalVariableValue<TValue>(FlowGraphData graphData, string nodeGuid, string fieldName, int index, out TValue value)
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    - id: nodeGuid
+      type: System.String
+    - id: fieldName
+      type: System.String
+    - id: index
+      type: System.Int32
+    - id: value
+      type: '{TValue}'
+    typeParameters:
+    - id: TValue
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetNodeLocalVariableValue(Of TValue)(graphData As FlowGraphData, nodeGuid As String, fieldName As String, index As Integer, value As TValue) As Boolean
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue(Of TValue)(FlowGraphData, String, String, Integer, TValue)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue(Of TValue)(Ceres.Flow.FlowGraphData, String, String, Integer, TValue)
+  name.vb: TryGetNodeLocalVariableValue(Of TValue)(FlowGraphData, String, String, Integer, TValue)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  id: GetNodePortDefaultValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetNodePortDefaultValue<TValue>(FlowGraphData, string, string, int)
+  nameWithType: FlowGeneratedRuntimeUtility.GetNodePortDefaultValue<TValue>(FlowGraphData, string, string, int)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue<TValue>(Ceres.Flow.FlowGraphData, string, string, int)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static TValue GetNodePortDefaultValue<TValue>(FlowGraphData graphData, string nodeGuid, string portName, int portIndex)
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    - id: nodeGuid
+      type: System.String
+    - id: portName
+      type: System.String
+    - id: portIndex
+      type: System.Int32
+    typeParameters:
+    - id: TValue
+    return:
+      type: '{TValue}'
+    content.vb: Public Shared Function GetNodePortDefaultValue(Of TValue)(graphData As FlowGraphData, nodeGuid As String, portName As String, portIndex As Integer) As TValue
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetNodePortDefaultValue(Of TValue)(FlowGraphData, String, String, Integer)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue(Of TValue)(Ceres.Flow.FlowGraphData, String, String, Integer)
+  name.vb: GetNodePortDefaultValue(Of TValue)(FlowGraphData, String, String, Integer)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  id: TryGetNodePortDefaultValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetNodePortDefaultValue<TValue>(FlowGraphData, string, string, int, out TValue)
+  nameWithType: FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue<TValue>(FlowGraphData, string, string, int, out TValue)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue<TValue>(Ceres.Flow.FlowGraphData, string, string, int, out TValue)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static bool TryGetNodePortDefaultValue<TValue>(FlowGraphData graphData, string nodeGuid, string portName, int portIndex, out TValue value)
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    - id: nodeGuid
+      type: System.String
+    - id: portName
+      type: System.String
+    - id: portIndex
+      type: System.Int32
+    - id: value
+      type: '{TValue}'
+    typeParameters:
+    - id: TValue
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetNodePortDefaultValue(Of TValue)(graphData As FlowGraphData, nodeGuid As String, portName As String, portIndex As Integer, value As TValue) As Boolean
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue(Of TValue)(FlowGraphData, String, String, Integer, TValue)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue(Of TValue)(Ceres.Flow.FlowGraphData, String, String, Integer, TValue)
+  name.vb: TryGetNodePortDefaultValue(Of TValue)(FlowGraphData, String, String, Integer, TValue)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  id: GetNodeFieldValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetNodeFieldValue<TValue>(FlowGraphData, string, string, int)
+  nameWithType: FlowGeneratedRuntimeUtility.GetNodeFieldValue<TValue>(FlowGraphData, string, string, int)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue<TValue>(Ceres.Flow.FlowGraphData, string, string, int)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static TValue GetNodeFieldValue<TValue>(FlowGraphData graphData, string nodeGuid, string fieldName, int fieldIndex)
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    - id: nodeGuid
+      type: System.String
+    - id: fieldName
+      type: System.String
+    - id: fieldIndex
+      type: System.Int32
+    typeParameters:
+    - id: TValue
+    return:
+      type: '{TValue}'
+    content.vb: Public Shared Function GetNodeFieldValue(Of TValue)(graphData As FlowGraphData, nodeGuid As String, fieldName As String, fieldIndex As Integer) As TValue
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetNodeFieldValue(Of TValue)(FlowGraphData, String, String, Integer)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue(Of TValue)(Ceres.Flow.FlowGraphData, String, String, Integer)
+  name.vb: GetNodeFieldValue(Of TValue)(FlowGraphData, String, String, Integer)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  id: TryGetNodeFieldValue``1(Ceres.Flow.FlowGraphData,System.String,System.String,System.Int32,``0@)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetNodeFieldValue<TValue>(FlowGraphData, string, string, int, out TValue)
+  nameWithType: FlowGeneratedRuntimeUtility.TryGetNodeFieldValue<TValue>(FlowGraphData, string, string, int, out TValue)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue<TValue>(Ceres.Flow.FlowGraphData, string, string, int, out TValue)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static bool TryGetNodeFieldValue<TValue>(FlowGraphData graphData, string nodeGuid, string fieldName, int fieldIndex, out TValue value)
+    parameters:
+    - id: graphData
+      type: Ceres.Flow.FlowGraphData
+    - id: nodeGuid
+      type: System.String
+    - id: fieldName
+      type: System.String
+    - id: fieldIndex
+      type: System.Int32
+    - id: value
+      type: '{TValue}'
+    typeParameters:
+    - id: TValue
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetNodeFieldValue(Of TValue)(graphData As FlowGraphData, nodeGuid As String, fieldName As String, fieldIndex As Integer, value As TValue) As Boolean
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.TryGetNodeFieldValue(Of TValue)(FlowGraphData, String, String, Integer, TValue)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue(Of TValue)(Ceres.Flow.FlowGraphData, String, String, Integer, TValue)
+  name.vb: TryGetNodeFieldValue(Of TValue)(FlowGraphData, String, String, Integer, TValue)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable``1(Ceres.Graph.Blackboard,System.String)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable``1(Ceres.Graph.Blackboard,System.String)
+  id: GetRequiredSharedVariable``1(Ceres.Graph.Blackboard,System.String)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRequiredSharedVariable<T>(Blackboard, string)
+  nameWithType: FlowGeneratedRuntimeUtility.GetRequiredSharedVariable<T>(Blackboard, string)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable<T>(Ceres.Graph.Blackboard, string)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public static T GetRequiredSharedVariable<T>(Blackboard blackboard, string variableName) where T : SharedVariable'
+    parameters:
+    - id: blackboard
+      type: Ceres.Graph.Blackboard
+    - id: variableName
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function GetRequiredSharedVariable(Of T As SharedVariable)(blackboard As Blackboard, variableName As String) As T
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetRequiredSharedVariable(Of T)(Blackboard, String)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable(Of T)(Ceres.Graph.Blackboard, String)
+  name.vb: GetRequiredSharedVariable(Of T)(Blackboard, String)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.DisposeBlackboard(Ceres.Graph.Blackboard)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.DisposeBlackboard(Ceres.Graph.Blackboard)
+  id: DisposeBlackboard(Ceres.Graph.Blackboard)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: DisposeBlackboard(Blackboard)
+  nameWithType: FlowGeneratedRuntimeUtility.DisposeBlackboard(Blackboard)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.DisposeBlackboard(Ceres.Graph.Blackboard)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static void DisposeBlackboard(Blackboard blackboard)
+    parameters:
+    - id: blackboard
+      type: Ceres.Graph.Blackboard
+    content.vb: Public Shared Sub DisposeBlackboard(blackboard As Blackboard)
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.DisposeBlackboard*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull``1(``0)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull``1(``0)
+  id: IsUnityNull``1(``0)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: IsUnityNull<T>(T)
+  nameWithType: FlowGeneratedRuntimeUtility.IsUnityNull<T>(T)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull<T>(T)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static bool IsUnityNull<T>(T value)
+    parameters:
+    - id: value
+      type: '{T}'
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsUnityNull(Of T)(value As T) As Boolean
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.IsUnityNull(Of T)(T)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull(Of T)(T)
+  name.vb: IsUnityNull(Of T)(T)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault``1(System.Boolean,System.Boolean,``0,UnityEngine.Object)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault``1(System.Boolean,System.Boolean,``0,UnityEngine.Object)
+  id: GetTargetOrDefault``1(System.Boolean,System.Boolean,``0,UnityEngine.Object)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetTargetOrDefault<TValue>(bool, bool, TValue, Object)
+  nameWithType: FlowGeneratedRuntimeUtility.GetTargetOrDefault<TValue>(bool, bool, TValue, Object)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault<TValue>(bool, bool, TValue, UnityEngine.Object)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static TValue GetTargetOrDefault<TValue>(bool isStatic, bool isSelfTarget, TValue inputValue, Object context)
+    parameters:
+    - id: isStatic
+      type: System.Boolean
+    - id: isSelfTarget
+      type: System.Boolean
+    - id: inputValue
+      type: '{TValue}'
+    - id: context
+      type: UnityEngine.Object
+    typeParameters:
+    - id: TValue
+    return:
+      type: '{TValue}'
+    content.vb: Public Shared Function GetTargetOrDefault(Of TValue)(isStatic As Boolean, isSelfTarget As Boolean, inputValue As TValue, context As [Object]) As TValue
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetTargetOrDefault(Of TValue)(Boolean, Boolean, TValue, Object)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault(Of TValue)(Boolean, Boolean, TValue, UnityEngine.Object)
+  name.vb: GetTargetOrDefault(Of TValue)(Boolean, Boolean, TValue, Object)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault``1(System.Boolean,``0,UnityEngine.Object)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault``1(System.Boolean,``0,UnityEngine.Object)
+  id: GetSelfTargetOrDefault``1(System.Boolean,``0,UnityEngine.Object)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetSelfTargetOrDefault<TValue>(bool, TValue, Object)
+  nameWithType: FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault<TValue>(bool, TValue, Object)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault<TValue>(bool, TValue, UnityEngine.Object)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static TValue GetSelfTargetOrDefault<TValue>(bool isSelfTarget, TValue inputValue, Object context)
+    parameters:
+    - id: isSelfTarget
+      type: System.Boolean
+    - id: inputValue
+      type: '{TValue}'
+    - id: context
+      type: UnityEngine.Object
+    typeParameters:
+    - id: TValue
+    return:
+      type: '{TValue}'
+    content.vb: Public Shared Function GetSelfTargetOrDefault(Of TValue)(isSelfTarget As Boolean, inputValue As TValue, context As [Object]) As TValue
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault(Of TValue)(Boolean, TValue, Object)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault(Of TValue)(Boolean, TValue, UnityEngine.Object)
+  name.vb: GetSelfTargetOrDefault(Of TValue)(Boolean, TValue, Object)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument``1(Ceres.Events.EventBase,System.Int32)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument``1(Ceres.Events.EventBase,System.Int32)
+  id: GetSubFlowArgument``1(Ceres.Events.EventBase,System.Int32)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetSubFlowArgument<TValue>(EventBase, int)
+  nameWithType: FlowGeneratedRuntimeUtility.GetSubFlowArgument<TValue>(EventBase, int)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument<TValue>(Ceres.Events.EventBase, int)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static TValue GetSubFlowArgument<TValue>(EventBase evtBase, int index)
+    parameters:
+    - id: evtBase
+      type: Ceres.Events.EventBase
+    - id: index
+      type: System.Int32
+    typeParameters:
+    - id: TValue
+    return:
+      type: '{TValue}'
+    content.vb: Public Shared Function GetSubFlowArgument(Of TValue)(evtBase As EventBase, index As Integer) As TValue
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetSubFlowArgument(Of TValue)(EventBase, Integer)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument(Of TValue)(Ceres.Events.EventBase, Integer)
+  name.vb: GetSubFlowArgument(Of TValue)(EventBase, Integer)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn``1(Ceres.Events.EventBase,``0)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn``1(Ceres.Events.EventBase,``0)
+  id: SetSubFlowReturn``1(Ceres.Events.EventBase,``0)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: SetSubFlowReturn<TValue>(EventBase, TValue)
+  nameWithType: FlowGeneratedRuntimeUtility.SetSubFlowReturn<TValue>(EventBase, TValue)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn<TValue>(Ceres.Events.EventBase, TValue)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static void SetSubFlowReturn<TValue>(EventBase evtBase, TValue value)
+    parameters:
+    - id: evtBase
+      type: Ceres.Events.EventBase
+    - id: value
+      type: '{TValue}'
+    typeParameters:
+    - id: TValue
+    content.vb: Public Shared Sub SetSubFlowReturn(Of TValue)(evtBase As EventBase, value As TValue)
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.SetSubFlowReturn(Of TValue)(EventBase, TValue)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn(Of TValue)(Ceres.Events.EventBase, TValue)
+  name.vb: SetSubFlowReturn(Of TValue)(EventBase, TValue)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.PrewarmSerializedType(Ceres.Serialization.SerializedTypeBase)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.PrewarmSerializedType(Ceres.Serialization.SerializedTypeBase)
+  id: PrewarmSerializedType(Ceres.Serialization.SerializedTypeBase)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: PrewarmSerializedType(SerializedTypeBase)
+  nameWithType: FlowGeneratedRuntimeUtility.PrewarmSerializedType(SerializedTypeBase)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.PrewarmSerializedType(Ceres.Serialization.SerializedTypeBase)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static void PrewarmSerializedType(SerializedTypeBase serializedType)
+    parameters:
+    - id: serializedType
+      type: Ceres.Serialization.SerializedTypeBase
+    content.vb: Public Shared Sub PrewarmSerializedType(serializedType As SerializedTypeBase)
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.PrewarmSerializedType*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray``1(System.Array)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray``1(System.Array)
+  id: CastArray``1(System.Array)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CastArray<T>(Array)
+  nameWithType: FlowGeneratedRuntimeUtility.CastArray<T>(Array)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray<T>(System.Array)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static T[] CastArray<T>(Array source)
+    parameters:
+    - id: source
+      type: System.Array
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}[]'
+    content.vb: Public Shared Function CastArray(Of T)(source As Array) As T()
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.CastArray(Of T)(Array)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray(Of T)(System.Array)
+  name.vb: CastArray(Of T)(Array)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType``1
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType``1
+  id: FindObjectOfType``1
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: FindObjectOfType<T>()
+  nameWithType: FlowGeneratedRuntimeUtility.FindObjectOfType<T>()
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType<T>()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public static T FindObjectOfType<T>() where T : Object'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function FindObjectOfType(Of T As [Object])() As T
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.FindObjectOfType(Of T)()
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType(Of T)()
+  name.vb: FindObjectOfType(Of T)()
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent``1(UnityEngine.GameObject)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent``1(UnityEngine.GameObject)
+  id: GetOrAddComponent``1(UnityEngine.GameObject)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: GetOrAddComponent<T>(GameObject)
+  nameWithType: FlowGeneratedRuntimeUtility.GetOrAddComponent<T>(GameObject)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent<T>(UnityEngine.GameObject)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public static T GetOrAddComponent<T>(GameObject gameObject) where T : Component'
+    parameters:
+    - id: gameObject
+      type: UnityEngine.GameObject
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function GetOrAddComponent(Of T As Component)(gameObject As GameObject) As T
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent*
+  nameWithType.vb: FlowGeneratedRuntimeUtility.GetOrAddComponent(Of T)(GameObject)
+  fullName.vb: Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent(Of T)(UnityEngine.GameObject)
+  name.vb: GetOrAddComponent(Of T)(GameObject)
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateExecutableProgram(Ceres.Flow.IFlowGraphContainer,Ceres.Flow.FlowGeneratedProgramInfo)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.CreateExecutableProgram(Ceres.Flow.IFlowGraphContainer,Ceres.Flow.FlowGeneratedProgramInfo)
+  id: CreateExecutableProgram(Ceres.Flow.IFlowGraphContainer,Ceres.Flow.FlowGeneratedProgramInfo)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateExecutableProgram(IFlowGraphContainer, FlowGeneratedProgramInfo)
+  nameWithType: FlowGeneratedRuntimeUtility.CreateExecutableProgram(IFlowGraphContainer, FlowGeneratedProgramInfo)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateExecutableProgram(Ceres.Flow.IFlowGraphContainer, Ceres.Flow.FlowGeneratedProgramInfo)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static IFlowExecutableProgram CreateExecutableProgram(IFlowGraphContainer container, FlowGeneratedProgramInfo info)
+    parameters:
+    - id: container
+      type: Ceres.Flow.IFlowGraphContainer
+    - id: info
+      type: Ceres.Flow.FlowGeneratedProgramInfo
+    return:
+      type: Ceres.Flow.IFlowExecutableProgram
+    content.vb: Public Shared Function CreateExecutableProgram(container As IFlowGraphContainer, info As FlowGeneratedProgramInfo) As IFlowExecutableProgram
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateExecutableProgram*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram(Ceres.Flow.FlowGraph)
+  commentId: M:Ceres.Flow.FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram(Ceres.Flow.FlowGraph)
+  id: CreateCompiledGraphProgram(Ceres.Flow.FlowGraph)
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateCompiledGraphProgram(FlowGraph)
+  nameWithType: FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram(FlowGraph)
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram(Ceres.Flow.FlowGraph)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static IFlowExecutableProgram CreateCompiledGraphProgram(FlowGraph graph)
+    parameters:
+    - id: graph
+      type: Ceres.Flow.FlowGraph
+    return:
+      type: Ceres.Flow.IFlowExecutableProgram
+    content.vb: Public Shared Function CreateCompiledGraphProgram(graph As FlowGraph) As IFlowExecutableProgram
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile
+  commentId: P:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile
+  id: CurrentGeneratedRuntimeProfile
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CurrentGeneratedRuntimeProfile
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static FlowGeneratedRuntimeProfile CurrentGeneratedRuntimeProfile { get; }
+    parameters: []
+    return:
+      type: Ceres.Flow.FlowGeneratedRuntimeProfile
+    content.vb: Public Shared ReadOnly Property CurrentGeneratedRuntimeProfile As FlowGeneratedRuntimeProfile
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode
+  commentId: P:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode
+  id: CurrentGeneratedRuntimeCancellationMode
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CurrentGeneratedRuntimeCancellationMode
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static FlowGeneratedRuntimeCancellationMode CurrentGeneratedRuntimeCancellationMode { get; }
+    parameters: []
+    return:
+      type: Ceres.Flow.FlowGeneratedRuntimeCancellationMode
+    content.vb: Public Shared ReadOnly Property CurrentGeneratedRuntimeCancellationMode As FlowGeneratedRuntimeCancellationMode
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode
+  commentId: P:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode
+  id: CurrentGeneratedRuntimeVariableStorageMode
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CurrentGeneratedRuntimeVariableStorageMode
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static FlowGeneratedRuntimeVariableStorageMode CurrentGeneratedRuntimeVariableStorageMode { get; }
+    parameters: []
+    return:
+      type: Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode
+    content.vb: Public Shared ReadOnly Property CurrentGeneratedRuntimeVariableStorageMode As FlowGeneratedRuntimeVariableStorageMode
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode
+  commentId: P:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode
+  id: CurrentGeneratedRuntimeSerializedTypeMode
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CurrentGeneratedRuntimeSerializedTypeMode
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static FlowGeneratedRuntimeSerializedTypeMode CurrentGeneratedRuntimeSerializedTypeMode { get; }
+    parameters: []
+    return:
+      type: Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode
+    content.vb: Public Shared ReadOnly Property CurrentGeneratedRuntimeSerializedTypeMode As FlowGeneratedRuntimeSerializedTypeMode
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram
+  commentId: P:Ceres.Flow.FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram
+  id: UsesGeneratedRuntimeProgram
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: UsesGeneratedRuntimeProgram
+  nameWithType: FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static bool UsesGeneratedRuntimeProgram { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property UsesGeneratedRuntimeProgram As Boolean
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram*
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash
+  commentId: P:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash
+  id: CurrentGeneratedRuntimeOptionsHash
+  parent: Ceres.Flow.FlowGeneratedRuntimeUtility
+  langs:
+  - csharp
+  - vb
+  name: CurrentGeneratedRuntimeOptionsHash
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static string CurrentGeneratedRuntimeOptionsHash { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property CurrentGeneratedRuntimeOptionsHash As String
+  overload: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash*
+references:
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CalculateGeneratedRuntimeOptionsHash_Ceres_Flow_FlowGeneratedRuntimeProfile_Ceres_Flow_FlowGeneratedRuntimeCancellationMode_Ceres_Flow_FlowGeneratedRuntimeVariableStorageMode_Ceres_Flow_FlowGeneratedRuntimeSerializedTypeMode_
+  name: CalculateGeneratedRuntimeOptionsHash
+  nameWithType: FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGeneratedRuntimeOptionsHash
+- uid: Ceres.Flow.FlowGeneratedRuntimeProfile
+  commentId: T:Ceres.Flow.FlowGeneratedRuntimeProfile
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeProfile.html
+  name: FlowGeneratedRuntimeProfile
+  nameWithType: FlowGeneratedRuntimeProfile
+  fullName: Ceres.Flow.FlowGeneratedRuntimeProfile
+- uid: Ceres.Flow.FlowGeneratedRuntimeCancellationMode
+  commentId: T:Ceres.Flow.FlowGeneratedRuntimeCancellationMode
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeCancellationMode.html
+  name: FlowGeneratedRuntimeCancellationMode
+  nameWithType: FlowGeneratedRuntimeCancellationMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeCancellationMode
+- uid: Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode
+  commentId: T:Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode.html
+  name: FlowGeneratedRuntimeVariableStorageMode
+  nameWithType: FlowGeneratedRuntimeVariableStorageMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeVariableStorageMode
+- uid: Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode
+  commentId: T:Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode.html
+  name: FlowGeneratedRuntimeSerializedTypeMode
+  nameWithType: FlowGeneratedRuntimeSerializedTypeMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeSerializedTypeMode
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_AreGeneratedRuntimeOptionsCurrent_Ceres_Flow_FlowGeneratedProgramInfo_
+  name: AreGeneratedRuntimeOptionsCurrent
+  nameWithType: FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.AreGeneratedRuntimeOptionsCurrent
+- uid: Ceres.Flow.FlowGeneratedProgramInfo
+  commentId: T:Ceres.Flow.FlowGeneratedProgramInfo
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedProgramInfo.html
+  name: FlowGeneratedProgramInfo
+  nameWithType: FlowGeneratedProgramInfo
+  fullName: Ceres.Flow.FlowGeneratedProgramInfo
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGraphHash*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGraphHash
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CalculateGraphHash_Ceres_Flow_FlowGraphData_
+  name: CalculateGraphHash
+  nameWithType: FlowGeneratedRuntimeUtility.CalculateGraphHash
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CalculateGraphHash
+- uid: Ceres.Flow.FlowGraphData
+  commentId: T:Ceres.Flow.FlowGraphData
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphData.html
+  name: FlowGraphData
+  nameWithType: FlowGraphData
+  fullName: Ceres.Flow.FlowGraphData
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateBlackboard*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CreateBlackboard
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CreateBlackboard_Ceres_Flow_FlowGraphData_
+  name: CreateBlackboard
+  nameWithType: FlowGeneratedRuntimeUtility.CreateBlackboard
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateBlackboard
+- uid: Ceres.Graph.Blackboard
+  commentId: T:Ceres.Graph.Blackboard
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.Blackboard.html
+  name: Blackboard
+  nameWithType: Blackboard
+  fullName: Ceres.Graph.Blackboard
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetLocalVariableValue__2_Ceres_Flow_FlowGraphData_System_String_
+  name: GetLocalVariableValue
+  nameWithType: FlowGeneratedRuntimeUtility.GetLocalVariableValue
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetLocalVariableValue
+- uid: '{TValue}'
+  commentId: '!:TValue'
+  definition: TValue
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: TValue
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_TryGetLocalVariableValue__2_Ceres_Flow_FlowGraphData_System_String___1__
+  name: TryGetLocalVariableValue
+  nameWithType: FlowGeneratedRuntimeUtility.TryGetLocalVariableValue
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetLocalVariableValue
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetNodeLocalVariableValue__1_Ceres_Flow_FlowGraphData_System_String_System_String_System_Int32_
+  name: GetNodeLocalVariableValue
+  nameWithType: FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeLocalVariableValue
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_TryGetNodeLocalVariableValue__1_Ceres_Flow_FlowGraphData_System_String_System_String_System_Int32___0__
+  name: TryGetNodeLocalVariableValue
+  nameWithType: FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeLocalVariableValue
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetNodePortDefaultValue__1_Ceres_Flow_FlowGraphData_System_String_System_String_System_Int32_
+  name: GetNodePortDefaultValue
+  nameWithType: FlowGeneratedRuntimeUtility.GetNodePortDefaultValue
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodePortDefaultValue
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_TryGetNodePortDefaultValue__1_Ceres_Flow_FlowGraphData_System_String_System_String_System_Int32___0__
+  name: TryGetNodePortDefaultValue
+  nameWithType: FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodePortDefaultValue
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetNodeFieldValue__1_Ceres_Flow_FlowGraphData_System_String_System_String_System_Int32_
+  name: GetNodeFieldValue
+  nameWithType: FlowGeneratedRuntimeUtility.GetNodeFieldValue
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetNodeFieldValue
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_TryGetNodeFieldValue__1_Ceres_Flow_FlowGraphData_System_String_System_String_System_Int32___0__
+  name: TryGetNodeFieldValue
+  nameWithType: FlowGeneratedRuntimeUtility.TryGetNodeFieldValue
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.TryGetNodeFieldValue
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetRequiredSharedVariable__1_Ceres_Graph_Blackboard_System_String_
+  name: GetRequiredSharedVariable
+  nameWithType: FlowGeneratedRuntimeUtility.GetRequiredSharedVariable
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetRequiredSharedVariable
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.DisposeBlackboard*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.DisposeBlackboard
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_DisposeBlackboard_Ceres_Graph_Blackboard_
+  name: DisposeBlackboard
+  nameWithType: FlowGeneratedRuntimeUtility.DisposeBlackboard
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.DisposeBlackboard
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_IsUnityNull__1___0_
+  name: IsUnityNull
+  nameWithType: FlowGeneratedRuntimeUtility.IsUnityNull
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.IsUnityNull
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetTargetOrDefault__1_System_Boolean_System_Boolean___0_UnityEngine_Object_
+  name: GetTargetOrDefault
+  nameWithType: FlowGeneratedRuntimeUtility.GetTargetOrDefault
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetTargetOrDefault
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetSelfTargetOrDefault__1_System_Boolean___0_UnityEngine_Object_
+  name: GetSelfTargetOrDefault
+  nameWithType: FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSelfTargetOrDefault
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetSubFlowArgument__1_Ceres_Events_EventBase_System_Int32_
+  name: GetSubFlowArgument
+  nameWithType: FlowGeneratedRuntimeUtility.GetSubFlowArgument
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetSubFlowArgument
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_SetSubFlowReturn__1_Ceres_Events_EventBase___0_
+  name: SetSubFlowReturn
+  nameWithType: FlowGeneratedRuntimeUtility.SetSubFlowReturn
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.SetSubFlowReturn
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.PrewarmSerializedType*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.PrewarmSerializedType
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_PrewarmSerializedType_Ceres_Serialization_SerializedTypeBase_
+  name: PrewarmSerializedType
+  nameWithType: FlowGeneratedRuntimeUtility.PrewarmSerializedType
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.PrewarmSerializedType
+- uid: Ceres.Serialization.SerializedTypeBase
+  commentId: T:Ceres.Serialization.SerializedTypeBase
+  parent: Ceres.Serialization
+  isExternal: true
+  href: Ceres.Serialization.SerializedTypeBase.html
+  name: SerializedTypeBase
+  nameWithType: SerializedTypeBase
+  fullName: Ceres.Serialization.SerializedTypeBase
+- uid: Ceres.Serialization
+  commentId: N:Ceres.Serialization
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Serialization
+  nameWithType: Ceres.Serialization
+  fullName: Ceres.Serialization
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CastArray__1_System_Array_
+  name: CastArray
+  nameWithType: FlowGeneratedRuntimeUtility.CastArray
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CastArray
+- uid: System.Array
+  commentId: T:System.Array
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.array
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: '{T}[]'
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  nameWithType.vb: T()
+  fullName.vb: T()
+  name.vb: T()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_FindObjectOfType__1
+  name: FindObjectOfType
+  nameWithType: FlowGeneratedRuntimeUtility.FindObjectOfType
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.FindObjectOfType
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_GetOrAddComponent__1_UnityEngine_GameObject_
+  name: GetOrAddComponent
+  nameWithType: FlowGeneratedRuntimeUtility.GetOrAddComponent
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.GetOrAddComponent
+- uid: UnityEngine.GameObject
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateExecutableProgram*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CreateExecutableProgram
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CreateExecutableProgram_Ceres_Flow_IFlowGraphContainer_Ceres_Flow_FlowGeneratedProgramInfo_
+  name: CreateExecutableProgram
+  nameWithType: FlowGeneratedRuntimeUtility.CreateExecutableProgram
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateExecutableProgram
+- uid: Ceres.Flow.IFlowGraphContainer
+  commentId: T:Ceres.Flow.IFlowGraphContainer
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphContainer.html
+  name: IFlowGraphContainer
+  nameWithType: IFlowGraphContainer
+  fullName: Ceres.Flow.IFlowGraphContainer
+- uid: Ceres.Flow.IFlowExecutableProgram
+  commentId: T:Ceres.Flow.IFlowExecutableProgram
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowExecutableProgram.html
+  name: IFlowExecutableProgram
+  nameWithType: IFlowExecutableProgram
+  fullName: Ceres.Flow.IFlowExecutableProgram
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CreateCompiledGraphProgram_Ceres_Flow_FlowGraph_
+  name: CreateCompiledGraphProgram
+  nameWithType: FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CreateCompiledGraphProgram
+- uid: Ceres.Flow.FlowGraph
+  commentId: T:Ceres.Flow.FlowGraph
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraph.html
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Flow.FlowGraph
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CurrentGeneratedRuntimeProfile
+  name: CurrentGeneratedRuntimeProfile
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeProfile
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CurrentGeneratedRuntimeCancellationMode
+  name: CurrentGeneratedRuntimeCancellationMode
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeCancellationMode
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CurrentGeneratedRuntimeVariableStorageMode
+  name: CurrentGeneratedRuntimeVariableStorageMode
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeVariableStorageMode
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CurrentGeneratedRuntimeSerializedTypeMode
+  name: CurrentGeneratedRuntimeSerializedTypeMode
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeSerializedTypeMode
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_UsesGeneratedRuntimeProgram
+  name: UsesGeneratedRuntimeProgram
+  nameWithType: FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.UsesGeneratedRuntimeProgram
+- uid: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash*
+  commentId: Overload:Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedRuntimeUtility.html#Ceres_Flow_FlowGeneratedRuntimeUtility_CurrentGeneratedRuntimeOptionsHash
+  name: CurrentGeneratedRuntimeOptionsHash
+  nameWithType: FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash
+  fullName: Ceres.Flow.FlowGeneratedRuntimeUtility.CurrentGeneratedRuntimeOptionsHash

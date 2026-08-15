@@ -1,0 +1,1051 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode
+  commentId: T:Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode
+  id: AnimationProxy.AnimationLayerMontageNode
+  parent: Ceres.Gameplay.Animations
+  children:
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.#ctor(UnityEngine.Playables.Playable,UnityEngine.RuntimeAnimatorController)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend(System.Single)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.CanShrink
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Children
+  langs:
+  - csharp
+  - vb
+  name: AnimationProxy.AnimationLayerMontageNode
+  nameWithType: AnimationProxy.AnimationLayerMontageNode
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  syntax:
+    content: 'public class AnimationProxy.AnimationLayerMontageNode : AnimationProxy.AnimationMontageNode, IDisposable'
+    content.vb: Public Class AnimationProxy.AnimationLayerMontageNode Inherits AnimationProxy.AnimationMontageNode Implements IDisposable
+  inheritance:
+  - System.Object
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Parent
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Child
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.BlendHandle
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.IsCompositeRoot
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Dispose
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.GetBlendWeight
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Shrink
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendIn(System.Single,System.Action)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendOut(System.Single,System.Action)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateLayerMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[],Ceres.Gameplay.Animations.AnimationProxy.LayerContext[])
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateEmptyMontage(UnityEngine.Playables.PlayableGraph)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode,Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.IsValid
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Destroy
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Graph
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Playable
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.AnimatorController
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Children
+  commentId: F:Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Children
+  id: Children
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode
+  langs:
+  - csharp
+  - vb
+  name: Children
+  nameWithType: AnimationProxy.AnimationLayerMontageNode.Children
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Children
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  syntax:
+    content: public AnimationProxy.AnimationMontageNode[] Children
+    return:
+      type: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[]
+    content.vb: Public Children As AnimationProxy.AnimationMontageNode()
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.#ctor(UnityEngine.Playables.Playable,UnityEngine.RuntimeAnimatorController)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.#ctor(UnityEngine.Playables.Playable,UnityEngine.RuntimeAnimatorController)
+  id: '#ctor(UnityEngine.Playables.Playable,UnityEngine.RuntimeAnimatorController)'
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode
+  langs:
+  - csharp
+  - vb
+  name: AnimationLayerMontageNode(Playable, RuntimeAnimatorController)
+  nameWithType: AnimationProxy.AnimationLayerMontageNode.AnimationLayerMontageNode(Playable, RuntimeAnimatorController)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.AnimationLayerMontageNode(UnityEngine.Playables.Playable, UnityEngine.RuntimeAnimatorController)
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  syntax:
+    content: public AnimationLayerMontageNode(Playable playable, RuntimeAnimatorController runtimeAnimatorController)
+    parameters:
+    - id: playable
+      type: UnityEngine.Playables.Playable
+    - id: runtimeAnimatorController
+      type: UnityEngine.RuntimeAnimatorController
+    content.vb: Public Sub New(playable As Playable, runtimeAnimatorController As RuntimeAnimatorController)
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.#ctor*
+  nameWithType.vb: AnimationProxy.AnimationLayerMontageNode.New(Playable, RuntimeAnimatorController)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.New(UnityEngine.Playables.Playable, UnityEngine.RuntimeAnimatorController)
+  name.vb: New(Playable, RuntimeAnimatorController)
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.CanShrink
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.CanShrink
+  id: CanShrink
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode
+  langs:
+  - csharp
+  - vb
+  name: CanShrink()
+  nameWithType: AnimationProxy.AnimationLayerMontageNode.CanShrink()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.CanShrink()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Whether node can be shrink to optimize graph structure when parent is completly blend out
+  example: []
+  syntax:
+    content: public override bool CanShrink()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overrides Function CanShrink() As Boolean
+  overridden: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CanShrink
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.CanShrink*
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend(System.Single)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend(System.Single)
+  id: Blend(System.Single)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode
+  langs:
+  - csharp
+  - vb
+  name: Blend(float)
+  nameWithType: AnimationProxy.AnimationLayerMontageNode.Blend(float)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend(float)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Cross-fade parent to child by weight
+  example: []
+  syntax:
+    content: public override void Blend(float weight)
+    parameters:
+    - id: weight
+      type: System.Single
+      description: ''
+    content.vb: Public Overrides Sub Blend(weight As Single)
+  overridden: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Blend(System.Single)
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend*
+  nameWithType.vb: AnimationProxy.AnimationLayerMontageNode.Blend(Single)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend(Single)
+  name.vb: Blend(Single)
+references:
+- uid: Ceres.Gameplay.Animations
+  commentId: N:Ceres.Gameplay.Animations
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Animations
+  nameWithType: Ceres.Gameplay.Animations
+  fullName: Ceres.Gameplay.Animations
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations
+    name: Animations
+    isExternal: true
+    href: Ceres.Gameplay.Animations.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations
+    name: Animations
+    isExternal: true
+    href: Ceres.Gameplay.Animations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  commentId: T:Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  parent: Ceres.Gameplay.Animations
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.html
+  name: AnimationProxy.AnimationPlayableNode
+  nameWithType: AnimationProxy.AnimationPlayableNode
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy
+    name: AnimationProxy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+    name: AnimationPlayableNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy
+    name: AnimationProxy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+    name: AnimationPlayableNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  commentId: T:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  parent: Ceres.Gameplay.Animations
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.html
+  name: AnimationProxy.AnimationMontageNode
+  nameWithType: AnimationProxy.AnimationMontageNode
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy
+    name: AnimationProxy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+    name: AnimationMontageNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy
+    name: AnimationProxy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+    name: AnimationMontageNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Parent
+  commentId: F:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Parent
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Parent
+  name: Parent
+  nameWithType: AnimationProxy.AnimationMontageNode.Parent
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Parent
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Child
+  commentId: F:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Child
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Child
+  name: Child
+  nameWithType: AnimationProxy.AnimationMontageNode.Child
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Child
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.BlendHandle
+  commentId: F:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.BlendHandle
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_BlendHandle
+  name: BlendHandle
+  nameWithType: AnimationProxy.AnimationMontageNode.BlendHandle
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.BlendHandle
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.IsCompositeRoot
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.IsCompositeRoot
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_IsCompositeRoot
+  name: IsCompositeRoot()
+  nameWithType: AnimationProxy.AnimationMontageNode.IsCompositeRoot()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.IsCompositeRoot()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.IsCompositeRoot
+    name: IsCompositeRoot
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_IsCompositeRoot
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.IsCompositeRoot
+    name: IsCompositeRoot
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_IsCompositeRoot
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Dispose
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Dispose
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Dispose
+  name: Dispose()
+  nameWithType: AnimationProxy.AnimationMontageNode.Dispose()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Dispose()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.GetBlendWeight
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.GetBlendWeight
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_GetBlendWeight
+  name: GetBlendWeight()
+  nameWithType: AnimationProxy.AnimationMontageNode.GetBlendWeight()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.GetBlendWeight()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.GetBlendWeight
+    name: GetBlendWeight
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_GetBlendWeight
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.GetBlendWeight
+    name: GetBlendWeight
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_GetBlendWeight
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Shrink
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Shrink
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Shrink
+  name: Shrink()
+  nameWithType: AnimationProxy.AnimationMontageNode.Shrink()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Shrink()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Shrink
+    name: Shrink
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Shrink
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Shrink
+    name: Shrink
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Shrink
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendIn(System.Single,System.Action)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendIn(System.Single,System.Action)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_ScheduleBlendIn_System_Single_System_Action_
+  name: ScheduleBlendIn(float, Action)
+  nameWithType: AnimationProxy.AnimationMontageNode.ScheduleBlendIn(float, Action)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendIn(float, System.Action)
+  nameWithType.vb: AnimationProxy.AnimationMontageNode.ScheduleBlendIn(Single, Action)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendIn(Single, System.Action)
+  name.vb: ScheduleBlendIn(Single, Action)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendIn(System.Single,System.Action)
+    name: ScheduleBlendIn
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_ScheduleBlendIn_System_Single_System_Action_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendIn(System.Single,System.Action)
+    name: ScheduleBlendIn
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_ScheduleBlendIn_System_Single_System_Action_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendOut(System.Single,System.Action)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendOut(System.Single,System.Action)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_ScheduleBlendOut_System_Single_System_Action_
+  name: ScheduleBlendOut(float, Action)
+  nameWithType: AnimationProxy.AnimationMontageNode.ScheduleBlendOut(float, Action)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendOut(float, System.Action)
+  nameWithType.vb: AnimationProxy.AnimationMontageNode.ScheduleBlendOut(Single, Action)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendOut(Single, System.Action)
+  name.vb: ScheduleBlendOut(Single, Action)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendOut(System.Single,System.Action)
+    name: ScheduleBlendOut
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_ScheduleBlendOut_System_Single_System_Action_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.ScheduleBlendOut(System.Single,System.Action)
+    name: ScheduleBlendOut
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_ScheduleBlendOut_System_Single_System_Action_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateLayerMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[],Ceres.Gameplay.Animations.AnimationProxy.LayerContext[])
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateLayerMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[],Ceres.Gameplay.Animations.AnimationProxy.LayerContext[])
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateLayerMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode___Ceres_Gameplay_Animations_AnimationProxy_LayerContext___
+  name: CreateLayerMontage(AnimationMontageNode[], LayerContext[])
+  nameWithType: AnimationProxy.AnimationMontageNode.CreateLayerMontage(AnimationProxy.AnimationMontageNode[], AnimationProxy.LayerContext[])
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateLayerMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[], Ceres.Gameplay.Animations.AnimationProxy.LayerContext[])
+  nameWithType.vb: AnimationProxy.AnimationMontageNode.CreateLayerMontage(AnimationProxy.AnimationMontageNode(), AnimationProxy.LayerContext())
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateLayerMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode(), Ceres.Gameplay.Animations.AnimationProxy.LayerContext())
+  name.vb: CreateLayerMontage(AnimationMontageNode(), LayerContext())
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateLayerMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[],Ceres.Gameplay.Animations.AnimationProxy.LayerContext[])
+    name: CreateLayerMontage
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateLayerMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode___Ceres_Gameplay_Animations_AnimationProxy_LayerContext___
+  - name: (
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+    name: AnimationMontageNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.LayerContext
+    name: LayerContext
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.LayerContext.html
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateLayerMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[],Ceres.Gameplay.Animations.AnimationProxy.LayerContext[])
+    name: CreateLayerMontage
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateLayerMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode___Ceres_Gameplay_Animations_AnimationProxy_LayerContext___
+  - name: (
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+    name: AnimationMontageNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.LayerContext
+    name: LayerContext
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.LayerContext.html
+  - name: (
+  - name: )
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_
+  name: CreateMontage(AnimationPlayableNode)
+  nameWithType: AnimationProxy.AnimationMontageNode.CreateMontage(AnimationProxy.AnimationPlayableNode)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+    name: CreateMontage
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_
+  - name: (
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+    name: AnimationPlayableNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+    name: CreateMontage
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_
+  - name: (
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+    name: AnimationPlayableNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateEmptyMontage(UnityEngine.Playables.PlayableGraph)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateEmptyMontage(UnityEngine.Playables.PlayableGraph)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateEmptyMontage_UnityEngine_Playables_PlayableGraph_
+  name: CreateEmptyMontage(PlayableGraph)
+  nameWithType: AnimationProxy.AnimationMontageNode.CreateEmptyMontage(PlayableGraph)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateEmptyMontage(UnityEngine.Playables.PlayableGraph)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateEmptyMontage(UnityEngine.Playables.PlayableGraph)
+    name: CreateEmptyMontage
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateEmptyMontage_UnityEngine_Playables_PlayableGraph_
+  - name: (
+  - uid: UnityEngine.Playables.PlayableGraph
+    name: PlayableGraph
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateEmptyMontage(UnityEngine.Playables.PlayableGraph)
+    name: CreateEmptyMontage
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateEmptyMontage_UnityEngine_Playables_PlayableGraph_
+  - name: (
+  - uid: UnityEngine.Playables.PlayableGraph
+    name: PlayableGraph
+    isExternal: true
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode,Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode,Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_
+  name: CreateMontage(AnimationMontageNode, AnimationPlayableNode)
+  nameWithType: AnimationProxy.AnimationMontageNode.CreateMontage(AnimationProxy.AnimationMontageNode, AnimationProxy.AnimationPlayableNode)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode, Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode,Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+    name: CreateMontage
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_
+  - name: (
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+    name: AnimationMontageNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+    name: AnimationPlayableNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CreateMontage(Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode,Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode)
+    name: CreateMontage
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CreateMontage_Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_
+  - name: (
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+    name: AnimationMontageNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+    name: AnimationPlayableNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.IsValid
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.IsValid
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_IsValid
+  name: IsValid()
+  nameWithType: AnimationProxy.AnimationPlayableNode.IsValid()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.IsValid()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.IsValid
+    name: IsValid
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_IsValid
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.IsValid
+    name: IsValid
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_IsValid
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Destroy
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Destroy
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_Destroy
+  name: Destroy()
+  nameWithType: AnimationProxy.AnimationPlayableNode.Destroy()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Destroy()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Destroy
+    name: Destroy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_Destroy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Destroy
+    name: Destroy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_Destroy
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Graph
+  commentId: P:Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Graph
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_Graph
+  name: Graph
+  nameWithType: AnimationProxy.AnimationPlayableNode.Graph
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Graph
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Playable
+  commentId: P:Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Playable
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_Playable
+  name: Playable
+  nameWithType: AnimationProxy.AnimationPlayableNode.Playable
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.Playable
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.AnimatorController
+  commentId: P:Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.AnimatorController
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationPlayableNode_AnimatorController
+  name: AnimatorController
+  nameWithType: AnimationProxy.AnimationPlayableNode.AnimatorController
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationPlayableNode.AnimatorController
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[]
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+  name: AnimationMontageNode[]
+  nameWithType: AnimationProxy.AnimationMontageNode[]
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode[]
+  nameWithType.vb: AnimationProxy.AnimationMontageNode()
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode()
+  name.vb: AnimationMontageNode()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+    name: AnimationMontageNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+    name: AnimationMontageNode
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.#ctor*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationLayerMontageNode__ctor_UnityEngine_Playables_Playable_UnityEngine_RuntimeAnimatorController_
+  name: AnimationLayerMontageNode
+  nameWithType: AnimationProxy.AnimationLayerMontageNode.AnimationLayerMontageNode
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.AnimationLayerMontageNode
+  nameWithType.vb: AnimationProxy.AnimationLayerMontageNode.New
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.New
+  name.vb: New
+- uid: UnityEngine.Playables.Playable
+  commentId: T:UnityEngine.Playables.Playable
+  isExternal: true
+  name: Playable
+  nameWithType: Playable
+  fullName: UnityEngine.Playables.Playable
+- uid: UnityEngine.RuntimeAnimatorController
+  commentId: T:UnityEngine.RuntimeAnimatorController
+  isExternal: true
+  name: RuntimeAnimatorController
+  nameWithType: RuntimeAnimatorController
+  fullName: UnityEngine.RuntimeAnimatorController
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CanShrink
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CanShrink
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CanShrink
+  name: CanShrink()
+  nameWithType: AnimationProxy.AnimationMontageNode.CanShrink()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CanShrink()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CanShrink
+    name: CanShrink
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CanShrink
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.CanShrink
+    name: CanShrink
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_CanShrink
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.CanShrink*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.CanShrink
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationLayerMontageNode_CanShrink
+  name: CanShrink
+  nameWithType: AnimationProxy.AnimationLayerMontageNode.CanShrink
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.CanShrink
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Blend(System.Single)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Blend(System.Single)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Blend_System_Single_
+  name: Blend(float)
+  nameWithType: AnimationProxy.AnimationMontageNode.Blend(float)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Blend(float)
+  nameWithType.vb: AnimationProxy.AnimationMontageNode.Blend(Single)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Blend(Single)
+  name.vb: Blend(Single)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Blend(System.Single)
+    name: Blend
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Blend_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.Blend(System.Single)
+    name: Blend
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationMontageNode_Blend_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationLayerMontageNode_Blend_System_Single_
+  name: Blend
+  nameWithType: AnimationProxy.AnimationLayerMontageNode.Blend
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationLayerMontageNode.Blend
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

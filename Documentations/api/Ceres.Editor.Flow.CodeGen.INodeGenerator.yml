@@ -1,0 +1,287 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator
+  commentId: T:Ceres.Editor.Flow.CodeGen.INodeGenerator
+  id: INodeGenerator
+  parent: Ceres.Editor.Flow.CodeGen
+  children:
+  - Ceres.Editor.Flow.CodeGen.INodeGenerator.CanGenerate(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  - Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateDependency(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  - Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateForward(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  - Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot(Ceres.Graph.CeresNode,System.String,Ceres.Editor.Flow.CodeGen.NodeGenerationContext,System.Type@,System.String@)
+  langs:
+  - csharp
+  - vb
+  name: INodeGenerator
+  nameWithType: INodeGenerator
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator
+  type: Interface
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: public interface INodeGenerator
+    content.vb: Public Interface INodeGenerator
+  derivedClasses:
+  - Ceres.Editor.Flow.CodeGen.NodeGenerator`1
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator.CanGenerate(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  commentId: M:Ceres.Editor.Flow.CodeGen.INodeGenerator.CanGenerate(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  id: CanGenerate(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  parent: Ceres.Editor.Flow.CodeGen.INodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: CanGenerate(CeresNode, NodeGenerationContext)
+  nameWithType: INodeGenerator.CanGenerate(CeresNode, NodeGenerationContext)
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator.CanGenerate(Ceres.Graph.CeresNode, Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: bool CanGenerate(CeresNode node, NodeGenerationContext context)
+    parameters:
+    - id: node
+      type: Ceres.Graph.CeresNode
+    - id: context
+      type: Ceres.Editor.Flow.CodeGen.NodeGenerationContext
+    return:
+      type: System.Boolean
+    content.vb: Function CanGenerate(node As CeresNode, context As NodeGenerationContext) As Boolean
+  overload: Ceres.Editor.Flow.CodeGen.INodeGenerator.CanGenerate*
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateForward(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  commentId: M:Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateForward(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  id: GenerateForward(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  parent: Ceres.Editor.Flow.CodeGen.INodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: GenerateForward(CeresNode, NodeGenerationContext)
+  nameWithType: INodeGenerator.GenerateForward(CeresNode, NodeGenerationContext)
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateForward(Ceres.Graph.CeresNode, Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: void GenerateForward(CeresNode node, NodeGenerationContext context)
+    parameters:
+    - id: node
+      type: Ceres.Graph.CeresNode
+    - id: context
+      type: Ceres.Editor.Flow.CodeGen.NodeGenerationContext
+    content.vb: Sub GenerateForward(node As CeresNode, context As NodeGenerationContext)
+  overload: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateForward*
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateDependency(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  commentId: M:Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateDependency(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  id: GenerateDependency(Ceres.Graph.CeresNode,Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  parent: Ceres.Editor.Flow.CodeGen.INodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: GenerateDependency(CeresNode, NodeGenerationContext)
+  nameWithType: INodeGenerator.GenerateDependency(CeresNode, NodeGenerationContext)
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateDependency(Ceres.Graph.CeresNode, Ceres.Editor.Flow.CodeGen.NodeGenerationContext)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: void GenerateDependency(CeresNode node, NodeGenerationContext context)
+    parameters:
+    - id: node
+      type: Ceres.Graph.CeresNode
+    - id: context
+      type: Ceres.Editor.Flow.CodeGen.NodeGenerationContext
+    content.vb: Sub GenerateDependency(node As CeresNode, context As NodeGenerationContext)
+  overload: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateDependency*
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot(Ceres.Graph.CeresNode,System.String,Ceres.Editor.Flow.CodeGen.NodeGenerationContext,System.Type@,System.String@)
+  commentId: M:Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot(Ceres.Graph.CeresNode,System.String,Ceres.Editor.Flow.CodeGen.NodeGenerationContext,System.Type@,System.String@)
+  id: TryGetOutputSlot(Ceres.Graph.CeresNode,System.String,Ceres.Editor.Flow.CodeGen.NodeGenerationContext,System.Type@,System.String@)
+  parent: Ceres.Editor.Flow.CodeGen.INodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: TryGetOutputSlot(CeresNode, string, NodeGenerationContext, out Type, out string)
+  nameWithType: INodeGenerator.TryGetOutputSlot(CeresNode, string, NodeGenerationContext, out Type, out string)
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot(Ceres.Graph.CeresNode, string, Ceres.Editor.Flow.CodeGen.NodeGenerationContext, out System.Type, out string)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: bool TryGetOutputSlot(CeresNode node, string portId, NodeGenerationContext context, out Type outputType, out string slotField)
+    parameters:
+    - id: node
+      type: Ceres.Graph.CeresNode
+    - id: portId
+      type: System.String
+    - id: context
+      type: Ceres.Editor.Flow.CodeGen.NodeGenerationContext
+    - id: outputType
+      type: System.Type
+    - id: slotField
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetOutputSlot(node As CeresNode, portId As String, context As NodeGenerationContext, outputType As Type, slotField As String) As Boolean
+  overload: Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot*
+  nameWithType.vb: INodeGenerator.TryGetOutputSlot(CeresNode, String, NodeGenerationContext, Type, String)
+  fullName.vb: Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot(Ceres.Graph.CeresNode, String, Ceres.Editor.Flow.CodeGen.NodeGenerationContext, System.Type, String)
+  name.vb: TryGetOutputSlot(CeresNode, String, NodeGenerationContext, Type, String)
+references:
+- uid: Ceres.Editor.Flow.CodeGen
+  commentId: N:Ceres.Editor.Flow.CodeGen
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Flow.CodeGen
+  nameWithType: Ceres.Editor.Flow.CodeGen
+  fullName: Ceres.Editor.Flow.CodeGen
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+  - name: .
+  - uid: Ceres.Editor.Flow.CodeGen
+    name: CodeGen
+    isExternal: true
+    href: Ceres.Editor.Flow.CodeGen.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+  - name: .
+  - uid: Ceres.Editor.Flow.CodeGen
+    name: CodeGen
+    isExternal: true
+    href: Ceres.Editor.Flow.CodeGen.html
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator.CanGenerate*
+  commentId: Overload:Ceres.Editor.Flow.CodeGen.INodeGenerator.CanGenerate
+  isExternal: true
+  href: Ceres.Editor.Flow.CodeGen.INodeGenerator.html#Ceres_Editor_Flow_CodeGen_INodeGenerator_CanGenerate_Ceres_Graph_CeresNode_Ceres_Editor_Flow_CodeGen_NodeGenerationContext_
+  name: CanGenerate
+  nameWithType: INodeGenerator.CanGenerate
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator.CanGenerate
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresNode.html
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Editor.Flow.CodeGen.NodeGenerationContext
+  commentId: T:Ceres.Editor.Flow.CodeGen.NodeGenerationContext
+  parent: Ceres.Editor.Flow.CodeGen
+  isExternal: true
+  href: Ceres.Editor.Flow.CodeGen.NodeGenerationContext.html
+  name: NodeGenerationContext
+  nameWithType: NodeGenerationContext
+  fullName: Ceres.Editor.Flow.CodeGen.NodeGenerationContext
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateForward*
+  commentId: Overload:Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateForward
+  isExternal: true
+  href: Ceres.Editor.Flow.CodeGen.INodeGenerator.html#Ceres_Editor_Flow_CodeGen_INodeGenerator_GenerateForward_Ceres_Graph_CeresNode_Ceres_Editor_Flow_CodeGen_NodeGenerationContext_
+  name: GenerateForward
+  nameWithType: INodeGenerator.GenerateForward
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateForward
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateDependency*
+  commentId: Overload:Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateDependency
+  isExternal: true
+  href: Ceres.Editor.Flow.CodeGen.INodeGenerator.html#Ceres_Editor_Flow_CodeGen_INodeGenerator_GenerateDependency_Ceres_Graph_CeresNode_Ceres_Editor_Flow_CodeGen_NodeGenerationContext_
+  name: GenerateDependency
+  nameWithType: INodeGenerator.GenerateDependency
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator.GenerateDependency
+- uid: Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot*
+  commentId: Overload:Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot
+  isExternal: true
+  href: Ceres.Editor.Flow.CodeGen.INodeGenerator.html#Ceres_Editor_Flow_CodeGen_INodeGenerator_TryGetOutputSlot_Ceres_Graph_CeresNode_System_String_Ceres_Editor_Flow_CodeGen_NodeGenerationContext_System_Type__System_String__
+  name: TryGetOutputSlot
+  nameWithType: INodeGenerator.TryGetOutputSlot
+  fullName: Ceres.Editor.Flow.CodeGen.INodeGenerator.TryGetOutputSlot
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type

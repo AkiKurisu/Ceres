@@ -1,0 +1,662 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Level.LevelReference
+  commentId: T:Ceres.Gameplay.Level.LevelReference
+  id: LevelReference
+  parent: Ceres.Gameplay.Level
+  children:
+  - Ceres.Gameplay.Level.LevelReference.#ctor(System.Collections.Generic.IEnumerable{Ceres.Gameplay.Level.LevelSceneRow})
+  - Ceres.Gameplay.Level.LevelReference.Empty
+  - Ceres.Gameplay.Level.LevelReference.IsMain
+  - Ceres.Gameplay.Level.LevelReference.Name
+  - Ceres.Gameplay.Level.LevelReference.Scenes
+  - Ceres.Gameplay.Level.LevelReference.Tags
+  langs:
+  - csharp
+  - vb
+  name: LevelReference
+  nameWithType: LevelReference
+  fullName: Ceres.Gameplay.Level.LevelReference
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Level
+  summary: Reference to gameplay level structure
+  example: []
+  syntax:
+    content: public class LevelReference
+    content.vb: Public Class LevelReference
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Gameplay.Level.LevelReference.Empty
+  commentId: F:Ceres.Gameplay.Level.LevelReference.Empty
+  id: Empty
+  parent: Ceres.Gameplay.Level.LevelReference
+  langs:
+  - csharp
+  - vb
+  name: Empty
+  nameWithType: LevelReference.Empty
+  fullName: Ceres.Gameplay.Level.LevelReference.Empty
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Level
+  summary: Get a empty level reference
+  example: []
+  syntax:
+    content: public static readonly LevelReference Empty
+    return:
+      type: Ceres.Gameplay.Level.LevelReference
+    content.vb: Public Shared ReadOnly Empty As LevelReference
+- uid: Ceres.Gameplay.Level.LevelReference.#ctor(System.Collections.Generic.IEnumerable{Ceres.Gameplay.Level.LevelSceneRow})
+  commentId: M:Ceres.Gameplay.Level.LevelReference.#ctor(System.Collections.Generic.IEnumerable{Ceres.Gameplay.Level.LevelSceneRow})
+  id: '#ctor(System.Collections.Generic.IEnumerable{Ceres.Gameplay.Level.LevelSceneRow})'
+  parent: Ceres.Gameplay.Level.LevelReference
+  langs:
+  - csharp
+  - vb
+  name: LevelReference(IEnumerable<LevelSceneRow>)
+  nameWithType: LevelReference.LevelReference(IEnumerable<LevelSceneRow>)
+  fullName: Ceres.Gameplay.Level.LevelReference.LevelReference(System.Collections.Generic.IEnumerable<Ceres.Gameplay.Level.LevelSceneRow>)
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Level
+  syntax:
+    content: public LevelReference(IEnumerable<LevelSceneRow> levelSceneRows)
+    parameters:
+    - id: levelSceneRows
+      type: System.Collections.Generic.IEnumerable{Ceres.Gameplay.Level.LevelSceneRow}
+    content.vb: Public Sub New(levelSceneRows As IEnumerable(Of LevelSceneRow))
+  overload: Ceres.Gameplay.Level.LevelReference.#ctor*
+  nameWithType.vb: LevelReference.New(IEnumerable(Of LevelSceneRow))
+  fullName.vb: Ceres.Gameplay.Level.LevelReference.New(System.Collections.Generic.IEnumerable(Of Ceres.Gameplay.Level.LevelSceneRow))
+  name.vb: New(IEnumerable(Of LevelSceneRow))
+- uid: Ceres.Gameplay.Level.LevelReference.Name
+  commentId: P:Ceres.Gameplay.Level.LevelReference.Name
+  id: Name
+  parent: Ceres.Gameplay.Level.LevelReference
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: LevelReference.Name
+  fullName: Ceres.Gameplay.Level.LevelReference.Name
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Level
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Name As String
+  overload: Ceres.Gameplay.Level.LevelReference.Name*
+- uid: Ceres.Gameplay.Level.LevelReference.Scenes
+  commentId: P:Ceres.Gameplay.Level.LevelReference.Scenes
+  id: Scenes
+  parent: Ceres.Gameplay.Level.LevelReference
+  langs:
+  - csharp
+  - vb
+  name: Scenes
+  nameWithType: LevelReference.Scenes
+  fullName: Ceres.Gameplay.Level.LevelReference.Scenes
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Level
+  summary: All scenes contained in level
+  example: []
+  syntax:
+    content: public LevelSceneRow[] Scenes { get; }
+    parameters: []
+    return:
+      type: Ceres.Gameplay.Level.LevelSceneRow[]
+    content.vb: Public ReadOnly Property Scenes As LevelSceneRow()
+  overload: Ceres.Gameplay.Level.LevelReference.Scenes*
+- uid: Ceres.Gameplay.Level.LevelReference.Tags
+  commentId: P:Ceres.Gameplay.Level.LevelReference.Tags
+  id: Tags
+  parent: Ceres.Gameplay.Level.LevelReference
+  langs:
+  - csharp
+  - vb
+  name: Tags
+  nameWithType: LevelReference.Tags
+  fullName: Ceres.Gameplay.Level.LevelReference.Tags
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Level
+  summary: Get level tags
+  example: []
+  syntax:
+    content: public string[] Tags { get; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public ReadOnly Property Tags As String()
+  overload: Ceres.Gameplay.Level.LevelReference.Tags*
+- uid: Ceres.Gameplay.Level.LevelReference.IsMain
+  commentId: P:Ceres.Gameplay.Level.LevelReference.IsMain
+  id: IsMain
+  parent: Ceres.Gameplay.Level.LevelReference
+  langs:
+  - csharp
+  - vb
+  name: IsMain
+  nameWithType: LevelReference.IsMain
+  fullName: Ceres.Gameplay.Level.LevelReference.IsMain
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Level
+  summary: Is level contains main scene
+  example: []
+  syntax:
+    content: public bool IsMain { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsMain As Boolean
+  overload: Ceres.Gameplay.Level.LevelReference.IsMain*
+references:
+- uid: Ceres.Gameplay.Level
+  commentId: N:Ceres.Gameplay.Level
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Level
+  nameWithType: Ceres.Gameplay.Level
+  fullName: Ceres.Gameplay.Level
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Level
+    name: Level
+    isExternal: true
+    href: Ceres.Gameplay.Level.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Level
+    name: Level
+    isExternal: true
+    href: Ceres.Gameplay.Level.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Gameplay.Level.LevelReference
+  commentId: T:Ceres.Gameplay.Level.LevelReference
+  parent: Ceres.Gameplay.Level
+  isExternal: true
+  href: Ceres.Gameplay.Level.LevelReference.html
+  name: LevelReference
+  nameWithType: LevelReference
+  fullName: Ceres.Gameplay.Level.LevelReference
+- uid: Ceres.Gameplay.Level.LevelReference.#ctor*
+  commentId: Overload:Ceres.Gameplay.Level.LevelReference.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.Level.LevelReference.html#Ceres_Gameplay_Level_LevelReference__ctor_System_Collections_Generic_IEnumerable_Ceres_Gameplay_Level_LevelSceneRow__
+  name: LevelReference
+  nameWithType: LevelReference.LevelReference
+  fullName: Ceres.Gameplay.Level.LevelReference.LevelReference
+  nameWithType.vb: LevelReference.New
+  fullName.vb: Ceres.Gameplay.Level.LevelReference.New
+  name.vb: New
+- uid: System.Collections.Generic.IEnumerable{Ceres.Gameplay.Level.LevelSceneRow}
+  commentId: T:System.Collections.Generic.IEnumerable{Ceres.Gameplay.Level.LevelSceneRow}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<LevelSceneRow>
+  nameWithType: IEnumerable<LevelSceneRow>
+  fullName: System.Collections.Generic.IEnumerable<Ceres.Gameplay.Level.LevelSceneRow>
+  nameWithType.vb: IEnumerable(Of LevelSceneRow)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Ceres.Gameplay.Level.LevelSceneRow)
+  name.vb: IEnumerable(Of LevelSceneRow)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Ceres.Gameplay.Level.LevelSceneRow
+    name: LevelSceneRow
+    isExternal: true
+    href: Ceres.Gameplay.Level.LevelSceneRow.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.Level.LevelSceneRow
+    name: LevelSceneRow
+    isExternal: true
+    href: Ceres.Gameplay.Level.LevelSceneRow.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Ceres.Gameplay.Level.LevelReference.Name*
+  commentId: Overload:Ceres.Gameplay.Level.LevelReference.Name
+  isExternal: true
+  href: Ceres.Gameplay.Level.LevelReference.html#Ceres_Gameplay_Level_LevelReference_Name
+  name: Name
+  nameWithType: LevelReference.Name
+  fullName: Ceres.Gameplay.Level.LevelReference.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Gameplay.Level.LevelReference.Scenes*
+  commentId: Overload:Ceres.Gameplay.Level.LevelReference.Scenes
+  isExternal: true
+  href: Ceres.Gameplay.Level.LevelReference.html#Ceres_Gameplay_Level_LevelReference_Scenes
+  name: Scenes
+  nameWithType: LevelReference.Scenes
+  fullName: Ceres.Gameplay.Level.LevelReference.Scenes
+- uid: Ceres.Gameplay.Level.LevelSceneRow[]
+  isExternal: true
+  href: Ceres.Gameplay.Level.LevelSceneRow.html
+  name: LevelSceneRow[]
+  nameWithType: LevelSceneRow[]
+  fullName: Ceres.Gameplay.Level.LevelSceneRow[]
+  nameWithType.vb: LevelSceneRow()
+  fullName.vb: Ceres.Gameplay.Level.LevelSceneRow()
+  name.vb: LevelSceneRow()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Level.LevelSceneRow
+    name: LevelSceneRow
+    isExternal: true
+    href: Ceres.Gameplay.Level.LevelSceneRow.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Gameplay.Level.LevelSceneRow
+    name: LevelSceneRow
+    isExternal: true
+    href: Ceres.Gameplay.Level.LevelSceneRow.html
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Level.LevelReference.Tags*
+  commentId: Overload:Ceres.Gameplay.Level.LevelReference.Tags
+  isExternal: true
+  href: Ceres.Gameplay.Level.LevelReference.html#Ceres_Gameplay_Level_LevelReference_Tags
+  name: Tags
+  nameWithType: LevelReference.Tags
+  fullName: Ceres.Gameplay.Level.LevelReference.Tags
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Level.LevelReference.IsMain*
+  commentId: Overload:Ceres.Gameplay.Level.LevelReference.IsMain
+  isExternal: true
+  href: Ceres.Gameplay.Level.LevelReference.html#Ceres_Gameplay_Level_LevelReference_IsMain
+  name: IsMain
+  nameWithType: LevelReference.IsMain
+  fullName: Ceres.Gameplay.Level.LevelReference.IsMain
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

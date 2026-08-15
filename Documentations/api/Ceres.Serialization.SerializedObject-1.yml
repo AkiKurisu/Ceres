@@ -1,0 +1,822 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Serialization.SerializedObject`1
+  commentId: T:Ceres.Serialization.SerializedObject`1
+  id: SerializedObject`1
+  parent: Ceres.Serialization
+  children:
+  - Ceres.Serialization.SerializedObject`1.#ctor
+  - Ceres.Serialization.SerializedObject`1.CloneT
+  - Ceres.Serialization.SerializedObject`1.FromObject(System.Object)
+  - Ceres.Serialization.SerializedObject`1.GetObject
+  - Ceres.Serialization.SerializedObject`1.GetObjectType
+  - Ceres.Serialization.SerializedObject`1.NewObject
+  langs:
+  - csharp
+  - vb
+  name: SerializedObject<T>
+  nameWithType: SerializedObject<T>
+  fullName: Ceres.Serialization.SerializedObject<T>
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Serialized object that will serialize metadata and fields of object implementing T
+  example: []
+  syntax:
+    content: 'public sealed class SerializedObject<T> : SerializedObjectBase'
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public NotInheritable Class SerializedObject(Of T) Inherits SerializedObjectBase
+  inheritance:
+  - System.Object
+  - Ceres.Serialization.SerializedObjectBase
+  inheritedMembers:
+  - Ceres.Serialization.SerializedObjectBase.serializedTypeString
+  - Ceres.Serialization.SerializedObjectBase.isArray
+  - Ceres.Serialization.SerializedObjectBase.jsonData
+  - Ceres.Serialization.SerializedObjectBase.Clone
+  - Ceres.Serialization.SerializedObjectBase.GetBoxType
+  - Ceres.Serialization.SerializedObjectBase.Convert``1
+  - Ceres.Serialization.SerializedObjectBase.CreateInstance``1
+  - Ceres.Serialization.SerializedObjectBase.CreateInstance
+  - Ceres.Serialization.SerializedObjectBase.DeserializeObject(System.String,System.Type)
+  - Ceres.Serialization.SerializedObjectBase.SerializeObject(System.Object,System.Type)
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  nameWithType.vb: SerializedObject(Of T)
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T)
+  name.vb: SerializedObject(Of T)
+- uid: Ceres.Serialization.SerializedObject`1.GetObject
+  commentId: M:Ceres.Serialization.SerializedObject`1.GetObject
+  id: GetObject
+  parent: Ceres.Serialization.SerializedObject`1
+  langs:
+  - csharp
+  - vb
+  name: GetObject()
+  nameWithType: SerializedObject<T>.GetObject()
+  fullName: Ceres.Serialization.SerializedObject<T>.GetObject()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Get default object from <xref href="Ceres.Serialization.SerializedObject%601" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public T GetObject()
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function GetObject() As T
+  overload: Ceres.Serialization.SerializedObject`1.GetObject*
+  nameWithType.vb: SerializedObject(Of T).GetObject()
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).GetObject()
+- uid: Ceres.Serialization.SerializedObject`1.NewObject
+  commentId: M:Ceres.Serialization.SerializedObject`1.NewObject
+  id: NewObject
+  parent: Ceres.Serialization.SerializedObject`1
+  langs:
+  - csharp
+  - vb
+  name: NewObject()
+  nameWithType: SerializedObject<T>.NewObject()
+  fullName: Ceres.Serialization.SerializedObject<T>.NewObject()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Instantiate new object from <xref href="Ceres.Serialization.SerializedObject%601" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public T NewObject()
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function NewObject() As T
+  overload: Ceres.Serialization.SerializedObject`1.NewObject*
+  nameWithType.vb: SerializedObject(Of T).NewObject()
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).NewObject()
+- uid: Ceres.Serialization.SerializedObject`1.GetObjectType
+  commentId: M:Ceres.Serialization.SerializedObject`1.GetObjectType
+  id: GetObjectType
+  parent: Ceres.Serialization.SerializedObject`1
+  langs:
+  - csharp
+  - vb
+  name: GetObjectType()
+  nameWithType: SerializedObject<T>.GetObjectType()
+  fullName: Ceres.Serialization.SerializedObject<T>.GetObjectType()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Get object type from <xref href="Ceres.Serialization.SerializedObject%601" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public override Type GetObjectType()
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Public Overrides Function GetObjectType() As Type
+  overridden: Ceres.Serialization.SerializedObjectBase.GetObjectType
+  overload: Ceres.Serialization.SerializedObject`1.GetObjectType*
+  nameWithType.vb: SerializedObject(Of T).GetObjectType()
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).GetObjectType()
+- uid: Ceres.Serialization.SerializedObject`1.FromObject(System.Object)
+  commentId: M:Ceres.Serialization.SerializedObject`1.FromObject(System.Object)
+  id: FromObject(System.Object)
+  parent: Ceres.Serialization.SerializedObject`1
+  langs:
+  - csharp
+  - vb
+  name: FromObject(object)
+  nameWithType: SerializedObject<T>.FromObject(object)
+  fullName: Ceres.Serialization.SerializedObject<T>.FromObject(object)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Create <xref href="Ceres.Serialization.SerializedObject%601" data-throw-if-not-resolved="false"></xref> from object
+  example: []
+  syntax:
+    content: public static SerializedObject<T> FromObject(object @object)
+    parameters:
+    - id: object
+      type: System.Object
+      description: ''
+    return:
+      type: Ceres.Serialization.SerializedObject`1
+      description: ''
+    content.vb: Public Shared Function FromObject([object] As Object) As SerializedObject(Of T)
+  overload: Ceres.Serialization.SerializedObject`1.FromObject*
+  nameWithType.vb: SerializedObject(Of T).FromObject(Object)
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).FromObject(Object)
+  name.vb: FromObject(Object)
+- uid: Ceres.Serialization.SerializedObject`1.CloneT
+  commentId: M:Ceres.Serialization.SerializedObject`1.CloneT
+  id: CloneT
+  parent: Ceres.Serialization.SerializedObject`1
+  langs:
+  - csharp
+  - vb
+  name: CloneT()
+  nameWithType: SerializedObject<T>.CloneT()
+  fullName: Ceres.Serialization.SerializedObject<T>.CloneT()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  syntax:
+    content: public SerializedObject<T> CloneT()
+    return:
+      type: Ceres.Serialization.SerializedObject`1
+    content.vb: Public Function CloneT() As SerializedObject(Of T)
+  overload: Ceres.Serialization.SerializedObject`1.CloneT*
+  nameWithType.vb: SerializedObject(Of T).CloneT()
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).CloneT()
+- uid: Ceres.Serialization.SerializedObject`1.#ctor
+  commentId: M:Ceres.Serialization.SerializedObject`1.#ctor
+  id: '#ctor'
+  parent: Ceres.Serialization.SerializedObject`1
+  langs:
+  - csharp
+  - vb
+  name: SerializedObject()
+  nameWithType: SerializedObject<T>.SerializedObject()
+  fullName: Ceres.Serialization.SerializedObject<T>.SerializedObject()
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  syntax:
+    content: public SerializedObject()
+    content.vb: Public Sub New()
+  overload: Ceres.Serialization.SerializedObject`1.#ctor*
+  nameWithType.vb: SerializedObject(Of T).New()
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).New()
+  name.vb: New()
+references:
+- uid: Ceres.Serialization
+  commentId: N:Ceres.Serialization
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Serialization
+  nameWithType: Ceres.Serialization
+  fullName: Ceres.Serialization
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Serialization.SerializedObjectBase
+  commentId: T:Ceres.Serialization.SerializedObjectBase
+  parent: Ceres.Serialization
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html
+  name: SerializedObjectBase
+  nameWithType: SerializedObjectBase
+  fullName: Ceres.Serialization.SerializedObjectBase
+- uid: Ceres.Serialization.SerializedObjectBase.serializedTypeString
+  commentId: F:Ceres.Serialization.SerializedObjectBase.serializedTypeString
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_serializedTypeString
+  name: serializedTypeString
+  nameWithType: SerializedObjectBase.serializedTypeString
+  fullName: Ceres.Serialization.SerializedObjectBase.serializedTypeString
+- uid: Ceres.Serialization.SerializedObjectBase.isArray
+  commentId: F:Ceres.Serialization.SerializedObjectBase.isArray
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_isArray
+  name: isArray
+  nameWithType: SerializedObjectBase.isArray
+  fullName: Ceres.Serialization.SerializedObjectBase.isArray
+- uid: Ceres.Serialization.SerializedObjectBase.jsonData
+  commentId: F:Ceres.Serialization.SerializedObjectBase.jsonData
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_jsonData
+  name: jsonData
+  nameWithType: SerializedObjectBase.jsonData
+  fullName: Ceres.Serialization.SerializedObjectBase.jsonData
+- uid: Ceres.Serialization.SerializedObjectBase.Clone
+  commentId: M:Ceres.Serialization.SerializedObjectBase.Clone
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_Clone
+  name: Clone()
+  nameWithType: SerializedObjectBase.Clone()
+  fullName: Ceres.Serialization.SerializedObjectBase.Clone()
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObjectBase.Clone
+    name: Clone
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObjectBase.Clone
+    name: Clone
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_Clone
+  - name: (
+  - name: )
+- uid: Ceres.Serialization.SerializedObjectBase.GetBoxType
+  commentId: M:Ceres.Serialization.SerializedObjectBase.GetBoxType
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_GetBoxType
+  name: GetBoxType()
+  nameWithType: SerializedObjectBase.GetBoxType()
+  fullName: Ceres.Serialization.SerializedObjectBase.GetBoxType()
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObjectBase.GetBoxType
+    name: GetBoxType
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_GetBoxType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObjectBase.GetBoxType
+    name: GetBoxType
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_GetBoxType
+  - name: (
+  - name: )
+- uid: Ceres.Serialization.SerializedObjectBase.Convert``1
+  commentId: M:Ceres.Serialization.SerializedObjectBase.Convert``1
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_Convert__1
+  name: Convert<T>()
+  nameWithType: SerializedObjectBase.Convert<T>()
+  fullName: Ceres.Serialization.SerializedObjectBase.Convert<T>()
+  nameWithType.vb: SerializedObjectBase.Convert(Of T)()
+  fullName.vb: Ceres.Serialization.SerializedObjectBase.Convert(Of T)()
+  name.vb: Convert(Of T)()
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObjectBase.Convert``1
+    name: Convert
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_Convert__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObjectBase.Convert``1
+    name: Convert
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_Convert__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Serialization.SerializedObjectBase.CreateInstance``1
+  commentId: M:Ceres.Serialization.SerializedObjectBase.CreateInstance``1
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_CreateInstance__1
+  name: CreateInstance<T>()
+  nameWithType: SerializedObjectBase.CreateInstance<T>()
+  fullName: Ceres.Serialization.SerializedObjectBase.CreateInstance<T>()
+  nameWithType.vb: SerializedObjectBase.CreateInstance(Of T)()
+  fullName.vb: Ceres.Serialization.SerializedObjectBase.CreateInstance(Of T)()
+  name.vb: CreateInstance(Of T)()
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObjectBase.CreateInstance``1
+    name: CreateInstance
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_CreateInstance__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObjectBase.CreateInstance``1
+    name: CreateInstance
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_CreateInstance__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Serialization.SerializedObjectBase.CreateInstance
+  commentId: M:Ceres.Serialization.SerializedObjectBase.CreateInstance
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_CreateInstance
+  name: CreateInstance()
+  nameWithType: SerializedObjectBase.CreateInstance()
+  fullName: Ceres.Serialization.SerializedObjectBase.CreateInstance()
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObjectBase.CreateInstance
+    name: CreateInstance
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_CreateInstance
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObjectBase.CreateInstance
+    name: CreateInstance
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_CreateInstance
+  - name: (
+  - name: )
+- uid: Ceres.Serialization.SerializedObjectBase.DeserializeObject(System.String,System.Type)
+  commentId: M:Ceres.Serialization.SerializedObjectBase.DeserializeObject(System.String,System.Type)
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_DeserializeObject_System_String_System_Type_
+  name: DeserializeObject(string, Type)
+  nameWithType: SerializedObjectBase.DeserializeObject(string, Type)
+  fullName: Ceres.Serialization.SerializedObjectBase.DeserializeObject(string, System.Type)
+  nameWithType.vb: SerializedObjectBase.DeserializeObject(String, Type)
+  fullName.vb: Ceres.Serialization.SerializedObjectBase.DeserializeObject(String, System.Type)
+  name.vb: DeserializeObject(String, Type)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObjectBase.DeserializeObject(System.String,System.Type)
+    name: DeserializeObject
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_DeserializeObject_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObjectBase.DeserializeObject(System.String,System.Type)
+    name: DeserializeObject
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_DeserializeObject_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.Serialization.SerializedObjectBase.SerializeObject(System.Object,System.Type)
+  commentId: M:Ceres.Serialization.SerializedObjectBase.SerializeObject(System.Object,System.Type)
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_SerializeObject_System_Object_System_Type_
+  name: SerializeObject(object, Type)
+  nameWithType: SerializedObjectBase.SerializeObject(object, Type)
+  fullName: Ceres.Serialization.SerializedObjectBase.SerializeObject(object, System.Type)
+  nameWithType.vb: SerializedObjectBase.SerializeObject(Object, Type)
+  fullName.vb: Ceres.Serialization.SerializedObjectBase.SerializeObject(Object, System.Type)
+  name.vb: SerializeObject(Object, Type)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObjectBase.SerializeObject(System.Object,System.Type)
+    name: SerializeObject
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_SerializeObject_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObjectBase.SerializeObject(System.Object,System.Type)
+    name: SerializeObject
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_SerializeObject_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Serialization.SerializedObject`1
+  commentId: T:Ceres.Serialization.SerializedObject`1
+  parent: Ceres.Serialization
+  isExternal: true
+  href: Ceres.Serialization.SerializedObject-1.html
+  name: SerializedObject<T>
+  nameWithType: SerializedObject<T>
+  fullName: Ceres.Serialization.SerializedObject<T>
+  nameWithType.vb: SerializedObject(Of T)
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T)
+  name.vb: SerializedObject(Of T)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObject`1
+    name: SerializedObject
+    isExternal: true
+    href: Ceres.Serialization.SerializedObject-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObject`1
+    name: SerializedObject
+    isExternal: true
+    href: Ceres.Serialization.SerializedObject-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Serialization.SerializedObject`1.GetObject*
+  commentId: Overload:Ceres.Serialization.SerializedObject`1.GetObject
+  isExternal: true
+  href: Ceres.Serialization.SerializedObject-1.html#Ceres_Serialization_SerializedObject_1_GetObject
+  name: GetObject
+  nameWithType: SerializedObject<T>.GetObject
+  fullName: Ceres.Serialization.SerializedObject<T>.GetObject
+  nameWithType.vb: SerializedObject(Of T).GetObject
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).GetObject
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Serialization.SerializedObject`1.NewObject*
+  commentId: Overload:Ceres.Serialization.SerializedObject`1.NewObject
+  isExternal: true
+  href: Ceres.Serialization.SerializedObject-1.html#Ceres_Serialization_SerializedObject_1_NewObject
+  name: NewObject
+  nameWithType: SerializedObject<T>.NewObject
+  fullName: Ceres.Serialization.SerializedObject<T>.NewObject
+  nameWithType.vb: SerializedObject(Of T).NewObject
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).NewObject
+- uid: Ceres.Serialization.SerializedObjectBase.GetObjectType
+  commentId: M:Ceres.Serialization.SerializedObjectBase.GetObjectType
+  parent: Ceres.Serialization.SerializedObjectBase
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_GetObjectType
+  name: GetObjectType()
+  nameWithType: SerializedObjectBase.GetObjectType()
+  fullName: Ceres.Serialization.SerializedObjectBase.GetObjectType()
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedObjectBase.GetObjectType
+    name: GetObjectType
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_GetObjectType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedObjectBase.GetObjectType
+    name: GetObjectType
+    isExternal: true
+    href: Ceres.Serialization.SerializedObjectBase.html#Ceres_Serialization_SerializedObjectBase_GetObjectType
+  - name: (
+  - name: )
+- uid: Ceres.Serialization.SerializedObject`1.GetObjectType*
+  commentId: Overload:Ceres.Serialization.SerializedObject`1.GetObjectType
+  isExternal: true
+  href: Ceres.Serialization.SerializedObject-1.html#Ceres_Serialization_SerializedObject_1_GetObjectType
+  name: GetObjectType
+  nameWithType: SerializedObject<T>.GetObjectType
+  fullName: Ceres.Serialization.SerializedObject<T>.GetObjectType
+  nameWithType.vb: SerializedObject(Of T).GetObjectType
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).GetObjectType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Ceres.Serialization.SerializedObject`1.FromObject*
+  commentId: Overload:Ceres.Serialization.SerializedObject`1.FromObject
+  isExternal: true
+  href: Ceres.Serialization.SerializedObject-1.html#Ceres_Serialization_SerializedObject_1_FromObject_System_Object_
+  name: FromObject
+  nameWithType: SerializedObject<T>.FromObject
+  fullName: Ceres.Serialization.SerializedObject<T>.FromObject
+  nameWithType.vb: SerializedObject(Of T).FromObject
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).FromObject
+- uid: Ceres.Serialization.SerializedObject`1.CloneT*
+  commentId: Overload:Ceres.Serialization.SerializedObject`1.CloneT
+  isExternal: true
+  href: Ceres.Serialization.SerializedObject-1.html#Ceres_Serialization_SerializedObject_1_CloneT
+  name: CloneT
+  nameWithType: SerializedObject<T>.CloneT
+  fullName: Ceres.Serialization.SerializedObject<T>.CloneT
+  nameWithType.vb: SerializedObject(Of T).CloneT
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).CloneT
+- uid: Ceres.Serialization.SerializedObject`1.#ctor*
+  commentId: Overload:Ceres.Serialization.SerializedObject`1.#ctor
+  isExternal: true
+  href: Ceres.Serialization.SerializedObject-1.html#Ceres_Serialization_SerializedObject_1__ctor
+  name: SerializedObject
+  nameWithType: SerializedObject<T>.SerializedObject
+  fullName: Ceres.Serialization.SerializedObject<T>.SerializedObject
+  nameWithType.vb: SerializedObject(Of T).New
+  fullName.vb: Ceres.Serialization.SerializedObject(Of T).New
+  name.vb: New

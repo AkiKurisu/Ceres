@@ -1,0 +1,547 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  commentId: T:Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  id: PostQuerySystem.PrepareCommandJob
+  parent: Ceres.Gameplay.AI.EQS
+  children:
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Command
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute(System.Int32)
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Length
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.RaycastCommands
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Source
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Target
+  langs:
+  - csharp
+  - vb
+  name: PostQuerySystem.PrepareCommandJob
+  nameWithType: PostQuerySystem.PrepareCommandJob
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  type: Struct
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: >-
+      [BurstCompile]
+
+      public struct PostQuerySystem.PrepareCommandJob : IJobParallelFor
+    content.vb: >-
+      <BurstCompile>
+
+      Public Structure PostQuerySystem.PrepareCommandJob Implements IJobParallelFor
+  implements:
+  - Unity.Jobs.IJobParallelFor
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Unity.Burst.BurstCompileAttribute
+    ctor: Unity.Burst.BurstCompileAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Command
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Command
+  id: Command
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  langs:
+  - csharp
+  - vb
+  name: Command
+  nameWithType: PostQuerySystem.PrepareCommandJob.Command
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Command
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public PostQueryCommand Command
+    return:
+      type: Ceres.Gameplay.AI.EQS.PostQueryCommand
+    content.vb: Public Command As PostQueryCommand
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Source
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Source
+  id: Source
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  langs:
+  - csharp
+  - vb
+  name: Source
+  nameWithType: PostQuerySystem.PrepareCommandJob.Source
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Source
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public ActorData Source
+    return:
+      type: Ceres.Gameplay.ActorData
+    content.vb: Public Source As ActorData
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Target
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Target
+  id: Target
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  langs:
+  - csharp
+  - vb
+  name: Target
+  nameWithType: PostQuerySystem.PrepareCommandJob.Target
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Target
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public ActorData Target
+    return:
+      type: Ceres.Gameplay.ActorData
+    content.vb: Public Target As ActorData
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Length
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Length
+  id: Length
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  langs:
+  - csharp
+  - vb
+  name: Length
+  nameWithType: PostQuerySystem.PrepareCommandJob.Length
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Length
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public int Length
+    return:
+      type: System.Int32
+    content.vb: Public Length As Integer
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.RaycastCommands
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.RaycastCommands
+  id: RaycastCommands
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  langs:
+  - csharp
+  - vb
+  name: RaycastCommands
+  nameWithType: PostQuerySystem.PrepareCommandJob.RaycastCommands
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.RaycastCommands
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public NativeArray<RaycastCommand> RaycastCommands
+    return:
+      type: Unity.Collections.NativeArray{UnityEngine.RaycastCommand}
+    content.vb: Public RaycastCommands As NativeArray(Of RaycastCommand)
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute(System.Int32)
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute(System.Int32)
+  id: Execute(System.Int32)
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob
+  langs:
+  - csharp
+  - vb
+  name: Execute(int)
+  nameWithType: PostQuerySystem.PrepareCommandJob.Execute(int)
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute(int)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public void Execute(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+    content.vb: Public Sub Execute(index As Integer)
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute*
+  nameWithType.vb: PostQuerySystem.PrepareCommandJob.Execute(Integer)
+  fullName.vb: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute(Integer)
+  name.vb: Execute(Integer)
+references:
+- uid: Ceres.Gameplay.AI.EQS
+  commentId: N:Ceres.Gameplay.AI.EQS
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.AI.EQS
+  nameWithType: Ceres.Gameplay.AI.EQS
+  fullName: Ceres.Gameplay.AI.EQS
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.AI
+    name: AI
+    isExternal: true
+    href: Ceres.Gameplay.AI.html
+  - name: .
+  - uid: Ceres.Gameplay.AI.EQS
+    name: EQS
+    isExternal: true
+    href: Ceres.Gameplay.AI.EQS.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.AI
+    name: AI
+    isExternal: true
+    href: Ceres.Gameplay.AI.html
+  - name: .
+  - uid: Ceres.Gameplay.AI.EQS
+    name: EQS
+    isExternal: true
+    href: Ceres.Gameplay.AI.EQS.html
+- uid: Unity.Jobs.IJobParallelFor
+  isExternal: true
+  name: IJobParallelFor
+  nameWithType: IJobParallelFor
+  fullName: Unity.Jobs.IJobParallelFor
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Gameplay.AI.EQS.PostQueryCommand
+  commentId: T:Ceres.Gameplay.AI.EQS.PostQueryCommand
+  parent: Ceres.Gameplay.AI.EQS
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQueryCommand.html
+  name: PostQueryCommand
+  nameWithType: PostQueryCommand
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryCommand
+- uid: Ceres.Gameplay.ActorData
+  commentId: T:Ceres.Gameplay.ActorData
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.ActorData.html
+  name: ActorData
+  nameWithType: ActorData
+  fullName: Ceres.Gameplay.ActorData
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Unity.Collections.NativeArray{UnityEngine.RaycastCommand}
+  commentId: '!:Unity.Collections.NativeArray{UnityEngine.RaycastCommand}'
+  definition: Unity.Collections.NativeArray`1
+  name: NativeArray<RaycastCommand>
+  nameWithType: NativeArray<RaycastCommand>
+  fullName: Unity.Collections.NativeArray<UnityEngine.RaycastCommand>
+  nameWithType.vb: NativeArray(Of RaycastCommand)
+  fullName.vb: Unity.Collections.NativeArray(Of UnityEngine.RaycastCommand)
+  name.vb: NativeArray(Of RaycastCommand)
+  spec.csharp:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: <
+  - uid: UnityEngine.RaycastCommand
+    name: RaycastCommand
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEngine.RaycastCommand
+    name: RaycastCommand
+    isExternal: true
+  - name: )
+- uid: Unity.Collections.NativeArray`1
+  isExternal: true
+  name: NativeArray<>
+  nameWithType: NativeArray<>
+  fullName: Unity.Collections.NativeArray<>
+  nameWithType.vb: NativeArray(Of )
+  fullName.vb: Unity.Collections.NativeArray(Of )
+  name.vb: NativeArray(Of )
+  spec.csharp:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: <
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.html#Ceres_Gameplay_AI_EQS_PostQuerySystem_PrepareCommandJob_Execute_System_Int32_
+  name: Execute
+  nameWithType: PostQuerySystem.PrepareCommandJob.Execute
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PrepareCommandJob.Execute

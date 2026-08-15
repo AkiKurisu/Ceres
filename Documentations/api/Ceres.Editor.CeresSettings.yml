@@ -1,0 +1,739 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.CeresSettings
+  commentId: T:Ceres.Editor.CeresSettings
+  id: CeresSettings
+  parent: Ceres.Editor
+  children:
+  - Ceres.Editor.CeresSettings.#ctor
+  - Ceres.Editor.CeresSettings.configSerializer
+  - Ceres.Editor.CeresSettings.dataTableEditorSerializer
+  - Ceres.Editor.CeresSettings.initializeDataTableManagerOnLoad
+  - Ceres.Editor.CeresSettings.inlineRowReadOnly
+  - Ceres.Editor.CeresSettings.modules
+  - Ceres.Editor.CeresSettings.password
+  - Ceres.Editor.CeresSettings.schedulerStackTrace
+  - Ceres.Editor.CeresSettings.validateDataTableBeforeLoad
+  langs:
+  - csharp
+  - vb
+  name: CeresSettings
+  nameWithType: CeresSettings
+  fullName: Ceres.Editor.CeresSettings
+  type: Class
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: >-
+      [BaseConfig]
+
+      public class CeresSettings : ConfigSingleton<CeresSettings>
+    content.vb: >-
+      <BaseConfig>
+
+      Public Class CeresSettings Inherits ConfigSingleton(Of CeresSettings)
+  inheritance:
+  - System.Object
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}
+  inheritedMembers:
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Save(System.Boolean)
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Instance
+  attributes:
+  - type: Ceres.Editor.BaseConfigAttribute
+    ctor: Ceres.Editor.BaseConfigAttribute.#ctor
+    arguments: []
+- uid: Ceres.Editor.CeresSettings.modules
+  commentId: F:Ceres.Editor.CeresSettings.modules
+  id: modules
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: modules
+  nameWithType: CeresSettings.modules
+  fullName: Ceres.Editor.CeresSettings.modules
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public SerializedType<RuntimeModule>[] modules
+    return:
+      type: Ceres.Serialization.SerializedType{Ceres.Modules.RuntimeModule}[]
+    content.vb: Public modules As SerializedType(Of RuntimeModule)()
+- uid: Ceres.Editor.CeresSettings.schedulerStackTrace
+  commentId: F:Ceres.Editor.CeresSettings.schedulerStackTrace
+  id: schedulerStackTrace
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: schedulerStackTrace
+  nameWithType: CeresSettings.schedulerStackTrace
+  fullName: Ceres.Editor.CeresSettings.schedulerStackTrace
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public bool schedulerStackTrace
+    return:
+      type: System.Boolean
+    content.vb: Public schedulerStackTrace As Boolean
+- uid: Ceres.Editor.CeresSettings.initializeDataTableManagerOnLoad
+  commentId: F:Ceres.Editor.CeresSettings.initializeDataTableManagerOnLoad
+  id: initializeDataTableManagerOnLoad
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: initializeDataTableManagerOnLoad
+  nameWithType: CeresSettings.initializeDataTableManagerOnLoad
+  fullName: Ceres.Editor.CeresSettings.initializeDataTableManagerOnLoad
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public bool initializeDataTableManagerOnLoad
+    return:
+      type: System.Boolean
+    content.vb: Public initializeDataTableManagerOnLoad As Boolean
+- uid: Ceres.Editor.CeresSettings.validateDataTableBeforeLoad
+  commentId: F:Ceres.Editor.CeresSettings.validateDataTableBeforeLoad
+  id: validateDataTableBeforeLoad
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: validateDataTableBeforeLoad
+  nameWithType: CeresSettings.validateDataTableBeforeLoad
+  fullName: Ceres.Editor.CeresSettings.validateDataTableBeforeLoad
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public bool validateDataTableBeforeLoad
+    return:
+      type: System.Boolean
+    content.vb: Public validateDataTableBeforeLoad As Boolean
+- uid: Ceres.Editor.CeresSettings.dataTableEditorSerializer
+  commentId: F:Ceres.Editor.CeresSettings.dataTableEditorSerializer
+  id: dataTableEditorSerializer
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: dataTableEditorSerializer
+  nameWithType: CeresSettings.dataTableEditorSerializer
+  fullName: Ceres.Editor.CeresSettings.dataTableEditorSerializer
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public SerializedType<IDataTableEditorSerializer> dataTableEditorSerializer
+    return:
+      type: Ceres.Serialization.SerializedType{Ceres.DataDriven.Editor.IDataTableEditorSerializer}
+    content.vb: Public dataTableEditorSerializer As SerializedType(Of IDataTableEditorSerializer)
+- uid: Ceres.Editor.CeresSettings.inlineRowReadOnly
+  commentId: F:Ceres.Editor.CeresSettings.inlineRowReadOnly
+  id: inlineRowReadOnly
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: inlineRowReadOnly
+  nameWithType: CeresSettings.inlineRowReadOnly
+  fullName: Ceres.Editor.CeresSettings.inlineRowReadOnly
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public bool inlineRowReadOnly
+    return:
+      type: System.Boolean
+    content.vb: Public inlineRowReadOnly As Boolean
+- uid: Ceres.Editor.CeresSettings.configSerializer
+  commentId: F:Ceres.Editor.CeresSettings.configSerializer
+  id: configSerializer
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: configSerializer
+  nameWithType: CeresSettings.configSerializer
+  fullName: Ceres.Editor.CeresSettings.configSerializer
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public SerializedType<ISerializeFormatter> configSerializer
+    return:
+      type: Ceres.Serialization.SerializedType{Ceres.Serialization.ISerializeFormatter}
+    content.vb: Public configSerializer As SerializedType(Of ISerializeFormatter)
+- uid: Ceres.Editor.CeresSettings.password
+  commentId: F:Ceres.Editor.CeresSettings.password
+  id: password
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: password
+  nameWithType: CeresSettings.password
+  fullName: Ceres.Editor.CeresSettings.password
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public string password
+    return:
+      type: System.String
+    content.vb: Public password As String
+- uid: Ceres.Editor.CeresSettings.#ctor
+  commentId: M:Ceres.Editor.CeresSettings.#ctor
+  id: '#ctor'
+  parent: Ceres.Editor.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: CeresSettings()
+  nameWithType: CeresSettings.CeresSettings()
+  fullName: Ceres.Editor.CeresSettings.CeresSettings()
+  type: Constructor
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public CeresSettings()
+    content.vb: Public Sub New()
+  overload: Ceres.Editor.CeresSettings.#ctor*
+  nameWithType.vb: CeresSettings.New()
+  fullName.vb: Ceres.Editor.CeresSettings.New()
+  name.vb: New()
+references:
+- uid: Ceres.Editor
+  commentId: N:Ceres.Editor
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor
+  nameWithType: Ceres.Editor
+  fullName: Ceres.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}
+  commentId: T:Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}
+  parent: Ceres.Editor
+  definition: Ceres.Editor.ConfigSingleton`1
+  href: Ceres.Editor.ConfigSingleton-1.html
+  name: ConfigSingleton<CeresSettings>
+  nameWithType: ConfigSingleton<CeresSettings>
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.CeresSettings>
+  nameWithType.vb: ConfigSingleton(Of CeresSettings)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.CeresSettings)
+  name.vb: ConfigSingleton(Of CeresSettings)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1
+    name: ConfigSingleton
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html
+  - name: <
+  - uid: Ceres.Editor.CeresSettings
+    name: CeresSettings
+    isExternal: true
+    href: Ceres.Editor.CeresSettings.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1
+    name: ConfigSingleton
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.CeresSettings
+    name: CeresSettings
+    isExternal: true
+    href: Ceres.Editor.CeresSettings.html
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Save(System.Boolean)
+  commentId: M:Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Save(System.Boolean)
+  parent: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}
+  definition: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  name: Save(bool)
+  nameWithType: ConfigSingleton<CeresSettings>.Save(bool)
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.CeresSettings>.Save(bool)
+  nameWithType.vb: ConfigSingleton(Of CeresSettings).Save(Boolean)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.CeresSettings).Save(Boolean)
+  name.vb: Save(Boolean)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Save(System.Boolean)
+    name: Save
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Save(System.Boolean)
+    name: Save
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+  commentId: M:Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+  parent: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}
+  definition: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  name: Serialize(ConfigBase)
+  nameWithType: ConfigSingleton<CeresSettings>.Serialize(ConfigBase)
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.CeresSettings>.Serialize(Ceres.Configs.ConfigBase)
+  nameWithType.vb: ConfigSingleton(Of CeresSettings).Serialize(ConfigBase)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.CeresSettings).Serialize(Ceres.Configs.ConfigBase)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  - name: (
+  - uid: Ceres.Configs.ConfigBase
+    name: ConfigBase
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  - name: (
+  - uid: Ceres.Configs.ConfigBase
+    name: ConfigBase
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  commentId: M:Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  parent: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}
+  definition: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  name: Serialize(ConfigFileLocation, IConfigFile)
+  nameWithType: ConfigSingleton<CeresSettings>.Serialize(ConfigFileLocation, IConfigFile)
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.CeresSettings>.Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  nameWithType.vb: ConfigSingleton(Of CeresSettings).Serialize(ConfigFileLocation, IConfigFile)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.CeresSettings).Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Configs.IConfigFile
+    name: IConfigFile
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Configs.IConfigFile
+    name: IConfigFile
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Instance
+  commentId: P:Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}.Instance
+  parent: Ceres.Editor.ConfigSingleton{Ceres.Editor.CeresSettings}
+  definition: Ceres.Editor.ConfigSingleton`1.Instance
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Instance
+  name: Instance
+  nameWithType: ConfigSingleton<CeresSettings>.Instance
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.CeresSettings>.Instance
+  nameWithType.vb: ConfigSingleton(Of CeresSettings).Instance
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.CeresSettings).Instance
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.ConfigSingleton`1
+  commentId: T:Ceres.Editor.ConfigSingleton`1
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html
+  name: ConfigSingleton<T>
+  nameWithType: ConfigSingleton<T>
+  fullName: Ceres.Editor.ConfigSingleton<T>
+  nameWithType.vb: ConfigSingleton(Of T)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T)
+  name.vb: ConfigSingleton(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1
+    name: ConfigSingleton
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1
+    name: ConfigSingleton
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  name: Save(bool)
+  nameWithType: ConfigSingleton<T>.Save(bool)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Save(bool)
+  nameWithType.vb: ConfigSingleton(Of T).Save(Boolean)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Save(Boolean)
+  name.vb: Save(Boolean)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+    name: Save
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+    name: Save
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  name: Serialize(ConfigBase)
+  nameWithType: ConfigSingleton<T>.Serialize(ConfigBase)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Serialize(Ceres.Configs.ConfigBase)
+  nameWithType.vb: ConfigSingleton(Of T).Serialize(ConfigBase)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Serialize(Ceres.Configs.ConfigBase)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  - name: (
+  - uid: Ceres.Configs.ConfigBase
+    name: ConfigBase
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  - name: (
+  - uid: Ceres.Configs.ConfigBase
+    name: ConfigBase
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  name: Serialize(ConfigFileLocation, IConfigFile)
+  nameWithType: ConfigSingleton<T>.Serialize(ConfigFileLocation, IConfigFile)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  nameWithType.vb: ConfigSingleton(Of T).Serialize(ConfigFileLocation, IConfigFile)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Configs.IConfigFile
+    name: IConfigFile
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Configs.IConfigFile
+    name: IConfigFile
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton`1.Instance
+  commentId: P:Ceres.Editor.ConfigSingleton`1.Instance
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Instance
+  name: Instance
+  nameWithType: ConfigSingleton<T>.Instance
+  fullName: Ceres.Editor.ConfigSingleton<T>.Instance
+  nameWithType.vb: ConfigSingleton(Of T).Instance
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Instance
+- uid: Ceres.Serialization.SerializedType{Ceres.Modules.RuntimeModule}[]
+  isExternal: true
+  href: Ceres.Serialization.SerializedType-1.html
+  name: SerializedType<RuntimeModule>[]
+  nameWithType: SerializedType<RuntimeModule>[]
+  fullName: Ceres.Serialization.SerializedType<Ceres.Modules.RuntimeModule>[]
+  nameWithType.vb: SerializedType(Of RuntimeModule)()
+  fullName.vb: Ceres.Serialization.SerializedType(Of Ceres.Modules.RuntimeModule)()
+  name.vb: SerializedType(Of RuntimeModule)()
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+    href: Ceres.Serialization.SerializedType-1.html
+  - name: <
+  - uid: Ceres.Modules.RuntimeModule
+    name: RuntimeModule
+    isExternal: true
+    href: Ceres.Modules.RuntimeModule.html
+  - name: '>'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+    href: Ceres.Serialization.SerializedType-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Modules.RuntimeModule
+    name: RuntimeModule
+    isExternal: true
+    href: Ceres.Modules.RuntimeModule.html
+  - name: )
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Serialization.SerializedType{Ceres.DataDriven.Editor.IDataTableEditorSerializer}
+  commentId: T:Ceres.Serialization.SerializedType{Ceres.DataDriven.Editor.IDataTableEditorSerializer}
+  parent: Ceres.Serialization
+  definition: Ceres.Serialization.SerializedType`1
+  href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html
+  name: SerializedType<IDataTableEditorSerializer>
+  nameWithType: SerializedType<IDataTableEditorSerializer>
+  fullName: Ceres.Serialization.SerializedType<Ceres.DataDriven.Editor.IDataTableEditorSerializer>
+  nameWithType.vb: SerializedType(Of IDataTableEditorSerializer)
+  fullName.vb: Ceres.Serialization.SerializedType(Of Ceres.DataDriven.Editor.IDataTableEditorSerializer)
+  name.vb: SerializedType(Of IDataTableEditorSerializer)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: <
+  - uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer
+    name: IDataTableEditorSerializer
+    isExternal: true
+    href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer
+    name: IDataTableEditorSerializer
+    isExternal: true
+    href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html
+  - name: )
+- uid: Ceres.Serialization.SerializedType`1
+  commentId: T:Ceres.Serialization.SerializedType`1
+  parent: Ceres.Serialization
+  isExternal: true
+  href: Ceres.Serialization.SerializedType-1.html
+  name: SerializedType<T>
+  nameWithType: SerializedType<T>
+  fullName: Ceres.Serialization.SerializedType<T>
+  nameWithType.vb: SerializedType(Of T)
+  fullName.vb: Ceres.Serialization.SerializedType(Of T)
+  name.vb: SerializedType(Of T)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+    href: Ceres.Serialization.SerializedType-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+    href: Ceres.Serialization.SerializedType-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Serialization
+  commentId: N:Ceres.Serialization
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Serialization
+  nameWithType: Ceres.Serialization
+  fullName: Ceres.Serialization
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+- uid: Ceres.Serialization.SerializedType{Ceres.Serialization.ISerializeFormatter}
+  commentId: T:Ceres.Serialization.SerializedType{Ceres.Serialization.ISerializeFormatter}
+  parent: Ceres.Serialization
+  definition: Ceres.Serialization.SerializedType`1
+  name: SerializedType<ISerializeFormatter>
+  nameWithType: SerializedType<ISerializeFormatter>
+  fullName: Ceres.Serialization.SerializedType<Ceres.Serialization.ISerializeFormatter>
+  nameWithType.vb: SerializedType(Of ISerializeFormatter)
+  fullName.vb: Ceres.Serialization.SerializedType(Of Ceres.Serialization.ISerializeFormatter)
+  name.vb: SerializedType(Of ISerializeFormatter)
+  spec.csharp:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: <
+  - uid: Ceres.Serialization.ISerializeFormatter
+    name: ISerializeFormatter
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Serialization.ISerializeFormatter
+    name: ISerializeFormatter
+    isExternal: true
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Editor.CeresSettings.#ctor*
+  commentId: Overload:Ceres.Editor.CeresSettings.#ctor
+  isExternal: true
+  href: Ceres.Editor.CeresSettings.html#Ceres_Editor_CeresSettings__ctor
+  name: CeresSettings
+  nameWithType: CeresSettings.CeresSettings
+  fullName: Ceres.Editor.CeresSettings.CeresSettings
+  nameWithType.vb: CeresSettings.New
+  fullName.vb: Ceres.Editor.CeresSettings.New
+  name.vb: New

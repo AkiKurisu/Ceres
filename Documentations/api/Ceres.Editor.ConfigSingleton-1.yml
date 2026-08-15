@@ -1,0 +1,316 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.ConfigSingleton`1
+  commentId: T:Ceres.Editor.ConfigSingleton`1
+  id: ConfigSingleton`1
+  parent: Ceres.Editor
+  children:
+  - Ceres.Editor.ConfigSingleton`1.#ctor
+  - Ceres.Editor.ConfigSingleton`1.Instance
+  - Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  - Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  - Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  langs:
+  - csharp
+  - vb
+  name: ConfigSingleton<T>
+  nameWithType: ConfigSingleton<T>
+  fullName: Ceres.Editor.ConfigSingleton<T>
+  type: Class
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  summary: <p>Generic class for storing Editor Config.</p>
+  example: []
+  syntax:
+    content: 'public class ConfigSingleton<T> : ScriptableObject where T : ScriptableObject'
+    typeParameters:
+    - id: T
+    content.vb: Public Class ConfigSingleton(Of T As ScriptableObject) Inherits ScriptableObject
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Editor.CeresSettings
+  - Ceres.Editor.Flow.FlowSettings
+  - Ceres.Editor.Graph.CeresGraphSettings
+  - Ceres.Gameplay.Editor.CeresGameplaySettings
+  nameWithType.vb: ConfigSingleton(Of T)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T)
+  name.vb: ConfigSingleton(Of T)
+- uid: Ceres.Editor.ConfigSingleton`1.#ctor
+  commentId: M:Ceres.Editor.ConfigSingleton`1.#ctor
+  id: '#ctor'
+  parent: Ceres.Editor.ConfigSingleton`1
+  langs:
+  - csharp
+  - vb
+  name: ConfigSingleton()
+  nameWithType: ConfigSingleton<T>.ConfigSingleton()
+  fullName: Ceres.Editor.ConfigSingleton<T>.ConfigSingleton()
+  type: Constructor
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: protected ConfigSingleton()
+    content.vb: Protected Sub New()
+  overload: Ceres.Editor.ConfigSingleton`1.#ctor*
+  nameWithType.vb: ConfigSingleton(Of T).New()
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).New()
+  name.vb: New()
+- uid: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  id: Save(System.Boolean)
+  parent: Ceres.Editor.ConfigSingleton`1
+  langs:
+  - csharp
+  - vb
+  name: Save(bool)
+  nameWithType: ConfigSingleton<T>.Save(bool)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Save(bool)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: protected virtual void Save(bool saveAsText)
+    parameters:
+    - id: saveAsText
+      type: System.Boolean
+    content.vb: Protected Overridable Sub Save(saveAsText As Boolean)
+  overload: Ceres.Editor.ConfigSingleton`1.Save*
+  nameWithType.vb: ConfigSingleton(Of T).Save(Boolean)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Save(Boolean)
+  name.vb: Save(Boolean)
+- uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  id: Serialize(Ceres.Configs.ConfigBase)
+  parent: Ceres.Editor.ConfigSingleton`1
+  langs:
+  - csharp
+  - vb
+  name: Serialize(ConfigBase)
+  nameWithType: ConfigSingleton<T>.Serialize(ConfigBase)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Serialize(Ceres.Configs.ConfigBase)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  summary: Serialize config
+  example: []
+  syntax:
+    content: protected static void Serialize(ConfigBase configBase)
+    parameters:
+    - id: configBase
+      type: Ceres.Configs.ConfigBase
+    content.vb: Protected Shared Sub Serialize(configBase As ConfigBase)
+  overload: Ceres.Editor.ConfigSingleton`1.Serialize*
+  nameWithType.vb: ConfigSingleton(Of T).Serialize(ConfigBase)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Serialize(Ceres.Configs.ConfigBase)
+- uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  id: Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  parent: Ceres.Editor.ConfigSingleton`1
+  langs:
+  - csharp
+  - vb
+  name: Serialize(ConfigFileLocation, IConfigFile)
+  nameWithType: ConfigSingleton<T>.Serialize(ConfigFileLocation, IConfigFile)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  summary: Serialize config with providing location
+  example: []
+  syntax:
+    content: protected static void Serialize(ConfigFileLocation configFileLocation, IConfigFile configBase)
+    parameters:
+    - id: configFileLocation
+      type: Ceres.Configs.ConfigFileLocation
+      description: ''
+    - id: configBase
+      type: Ceres.Configs.IConfigFile
+      description: ''
+    content.vb: Protected Shared Sub Serialize(configFileLocation As ConfigFileLocation, configBase As IConfigFile)
+  overload: Ceres.Editor.ConfigSingleton`1.Serialize*
+  nameWithType.vb: ConfigSingleton(Of T).Serialize(ConfigFileLocation, IConfigFile)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+- uid: Ceres.Editor.ConfigSingleton`1.Instance
+  commentId: P:Ceres.Editor.ConfigSingleton`1.Instance
+  id: Instance
+  parent: Ceres.Editor.ConfigSingleton`1
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: ConfigSingleton<T>.Instance
+  fullName: Ceres.Editor.ConfigSingleton<T>.Instance
+  type: Property
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public static T Instance { get; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Public Shared ReadOnly Property Instance As T
+  overload: Ceres.Editor.ConfigSingleton`1.Instance*
+  nameWithType.vb: ConfigSingleton(Of T).Instance
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Instance
+references:
+- uid: Ceres.Editor
+  commentId: N:Ceres.Editor
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor
+  nameWithType: Ceres.Editor
+  fullName: Ceres.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.ConfigSingleton`1.#ctor*
+  commentId: Overload:Ceres.Editor.ConfigSingleton`1.#ctor
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1__ctor
+  name: ConfigSingleton
+  nameWithType: ConfigSingleton<T>.ConfigSingleton
+  fullName: Ceres.Editor.ConfigSingleton<T>.ConfigSingleton
+  nameWithType.vb: ConfigSingleton(Of T).New
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).New
+  name.vb: New
+- uid: Ceres.Editor.ConfigSingleton`1.Save*
+  commentId: Overload:Ceres.Editor.ConfigSingleton`1.Save
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  name: Save
+  nameWithType: ConfigSingleton<T>.Save
+  fullName: Ceres.Editor.ConfigSingleton<T>.Save
+  nameWithType.vb: ConfigSingleton(Of T).Save
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Save
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.ConfigSingleton`1.Serialize*
+  commentId: Overload:Ceres.Editor.ConfigSingleton`1.Serialize
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  name: Serialize
+  nameWithType: ConfigSingleton<T>.Serialize
+  fullName: Ceres.Editor.ConfigSingleton<T>.Serialize
+  nameWithType.vb: ConfigSingleton(Of T).Serialize
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Serialize
+- uid: Ceres.Configs.ConfigBase
+  commentId: T:Ceres.Configs.ConfigBase
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.ConfigBase.html
+  name: ConfigBase
+  nameWithType: ConfigBase
+  fullName: Ceres.Configs.ConfigBase
+- uid: Ceres.Configs
+  commentId: N:Ceres.Configs
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Configs
+  nameWithType: Ceres.Configs
+  fullName: Ceres.Configs
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Configs
+    name: Configs
+    isExternal: true
+    href: Ceres.Configs.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Configs
+    name: Configs
+    isExternal: true
+    href: Ceres.Configs.html
+- uid: Ceres.Configs.ConfigFileLocation
+  commentId: T:Ceres.Configs.ConfigFileLocation
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.ConfigFileLocation.html
+  name: ConfigFileLocation
+  nameWithType: ConfigFileLocation
+  fullName: Ceres.Configs.ConfigFileLocation
+- uid: Ceres.Configs.IConfigFile
+  commentId: T:Ceres.Configs.IConfigFile
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.IConfigFile.html
+  name: IConfigFile
+  nameWithType: IConfigFile
+  fullName: Ceres.Configs.IConfigFile
+- uid: Ceres.Editor.ConfigSingleton`1.Instance*
+  commentId: Overload:Ceres.Editor.ConfigSingleton`1.Instance
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Instance
+  name: Instance
+  nameWithType: ConfigSingleton<T>.Instance
+  fullName: Ceres.Editor.ConfigSingleton<T>.Instance
+  nameWithType.vb: ConfigSingleton(Of T).Instance
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Instance
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

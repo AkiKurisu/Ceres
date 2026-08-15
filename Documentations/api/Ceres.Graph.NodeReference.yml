@@ -1,0 +1,480 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.NodeReference
+  commentId: T:Ceres.Graph.NodeReference
+  id: NodeReference
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.NodeReference.#ctor(System.String)
+  - Ceres.Graph.NodeReference.Get(Ceres.Graph.CeresGraph)
+  - Ceres.Graph.NodeReference.GetT``1(Ceres.Graph.CeresGraph)
+  - Ceres.Graph.NodeReference.guid
+  - Ceres.Graph.NodeReference.op_Implicit(System.String)~Ceres.Graph.NodeReference
+  langs:
+  - csharp
+  - vb
+  name: NodeReference
+  nameWithType: NodeReference
+  fullName: Ceres.Graph.NodeReference
+  type: Struct
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Ref to a node of graph
+  example: []
+  syntax:
+    content: public struct NodeReference
+    content.vb: Public Structure NodeReference
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Ceres.Graph.NodeReference.guid
+  commentId: F:Ceres.Graph.NodeReference.guid
+  id: guid
+  parent: Ceres.Graph.NodeReference
+  langs:
+  - csharp
+  - vb
+  name: guid
+  nameWithType: NodeReference.guid
+  fullName: Ceres.Graph.NodeReference.guid
+  type: Field
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public string guid
+    return:
+      type: System.String
+    content.vb: Public guid As String
+- uid: Ceres.Graph.NodeReference.#ctor(System.String)
+  commentId: M:Ceres.Graph.NodeReference.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Ceres.Graph.NodeReference
+  langs:
+  - csharp
+  - vb
+  name: NodeReference(string)
+  nameWithType: NodeReference.NodeReference(string)
+  fullName: Ceres.Graph.NodeReference.NodeReference(string)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public NodeReference(string guid)
+    parameters:
+    - id: guid
+      type: System.String
+    content.vb: Public Sub New(guid As String)
+  overload: Ceres.Graph.NodeReference.#ctor*
+  nameWithType.vb: NodeReference.New(String)
+  fullName.vb: Ceres.Graph.NodeReference.New(String)
+  name.vb: New(String)
+- uid: Ceres.Graph.NodeReference.Get(Ceres.Graph.CeresGraph)
+  commentId: M:Ceres.Graph.NodeReference.Get(Ceres.Graph.CeresGraph)
+  id: Get(Ceres.Graph.CeresGraph)
+  parent: Ceres.Graph.NodeReference
+  langs:
+  - csharp
+  - vb
+  name: Get(CeresGraph)
+  nameWithType: NodeReference.Get(CeresGraph)
+  fullName: Ceres.Graph.NodeReference.Get(Ceres.Graph.CeresGraph)
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public CeresNode Get(CeresGraph graph)
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraph
+    return:
+      type: Ceres.Graph.CeresNode
+    content.vb: Public Function [Get](graph As CeresGraph) As CeresNode
+  overload: Ceres.Graph.NodeReference.Get*
+- uid: Ceres.Graph.NodeReference.GetT``1(Ceres.Graph.CeresGraph)
+  commentId: M:Ceres.Graph.NodeReference.GetT``1(Ceres.Graph.CeresGraph)
+  id: GetT``1(Ceres.Graph.CeresGraph)
+  parent: Ceres.Graph.NodeReference
+  langs:
+  - csharp
+  - vb
+  name: GetT<T>(CeresGraph)
+  nameWithType: NodeReference.GetT<T>(CeresGraph)
+  fullName: Ceres.Graph.NodeReference.GetT<T>(Ceres.Graph.CeresGraph)
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: 'public T GetT<T>(CeresGraph graph) where T : CeresNode'
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraph
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetT(Of T As CeresNode)(graph As CeresGraph) As T
+  overload: Ceres.Graph.NodeReference.GetT*
+  nameWithType.vb: NodeReference.GetT(Of T)(CeresGraph)
+  fullName.vb: Ceres.Graph.NodeReference.GetT(Of T)(Ceres.Graph.CeresGraph)
+  name.vb: GetT(Of T)(CeresGraph)
+- uid: Ceres.Graph.NodeReference.op_Implicit(System.String)~Ceres.Graph.NodeReference
+  commentId: M:Ceres.Graph.NodeReference.op_Implicit(System.String)~Ceres.Graph.NodeReference
+  id: op_Implicit(System.String)~Ceres.Graph.NodeReference
+  parent: Ceres.Graph.NodeReference
+  langs:
+  - csharp
+  - vb
+  name: implicit operator NodeReference(string)
+  nameWithType: NodeReference.implicit operator NodeReference(string)
+  fullName: Ceres.Graph.NodeReference.implicit operator Ceres.Graph.NodeReference(string)
+  type: Operator
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public static implicit operator NodeReference(string guid)
+    parameters:
+    - id: guid
+      type: System.String
+    return:
+      type: Ceres.Graph.NodeReference
+    content.vb: Public Shared Widening Operator CType(guid As String) As NodeReference
+  overload: Ceres.Graph.NodeReference.op_Implicit*
+  nameWithType.vb: NodeReference.CType(String)
+  fullName.vb: Ceres.Graph.NodeReference.CType(String)
+  name.vb: CType(String)
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Graph.NodeReference.#ctor*
+  commentId: Overload:Ceres.Graph.NodeReference.#ctor
+  isExternal: true
+  href: Ceres.Graph.NodeReference.html#Ceres_Graph_NodeReference__ctor_System_String_
+  name: NodeReference
+  nameWithType: NodeReference.NodeReference
+  fullName: Ceres.Graph.NodeReference.NodeReference
+  nameWithType.vb: NodeReference.New
+  fullName.vb: Ceres.Graph.NodeReference.New
+  name.vb: New
+- uid: Ceres.Graph.NodeReference.Get*
+  commentId: Overload:Ceres.Graph.NodeReference.Get
+  isExternal: true
+  href: Ceres.Graph.NodeReference.html#Ceres_Graph_NodeReference_Get_Ceres_Graph_CeresGraph_
+  name: Get
+  nameWithType: NodeReference.Get
+  fullName: Ceres.Graph.NodeReference.Get
+- uid: Ceres.Graph.CeresGraph
+  commentId: T:Ceres.Graph.CeresGraph
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresGraph.html
+  name: CeresGraph
+  nameWithType: CeresGraph
+  fullName: Ceres.Graph.CeresGraph
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresNode.html
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph.NodeReference.GetT*
+  commentId: Overload:Ceres.Graph.NodeReference.GetT
+  isExternal: true
+  href: Ceres.Graph.NodeReference.html#Ceres_Graph_NodeReference_GetT__1_Ceres_Graph_CeresGraph_
+  name: GetT
+  nameWithType: NodeReference.GetT
+  fullName: Ceres.Graph.NodeReference.GetT
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Graph.NodeReference.op_Implicit*
+  commentId: Overload:Ceres.Graph.NodeReference.op_Implicit
+  name: implicit operator
+  nameWithType: NodeReference.implicit operator
+  fullName: Ceres.Graph.NodeReference.implicit operator
+  nameWithType.vb: NodeReference.CType
+  fullName.vb: Ceres.Graph.NodeReference.CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: Ceres.Graph.NodeReference
+  commentId: T:Ceres.Graph.NodeReference
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.NodeReference.html
+  name: NodeReference
+  nameWithType: NodeReference
+  fullName: Ceres.Graph.NodeReference

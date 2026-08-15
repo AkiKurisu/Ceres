@@ -1,0 +1,194 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Resource.ResourceSystem.MergeMode
+  commentId: T:Ceres.Resource.ResourceSystem.MergeMode
+  id: ResourceSystem.MergeMode
+  parent: Ceres.Resource
+  children:
+  - Ceres.Resource.ResourceSystem.MergeMode.Intersection
+  - Ceres.Resource.ResourceSystem.MergeMode.None
+  - Ceres.Resource.ResourceSystem.MergeMode.Union
+  - Ceres.Resource.ResourceSystem.MergeMode.UseFirst
+  langs:
+  - csharp
+  - vb
+  name: ResourceSystem.MergeMode
+  nameWithType: ResourceSystem.MergeMode
+  fullName: Ceres.Resource.ResourceSystem.MergeMode
+  type: Enum
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: >-
+    Options for merging the results of requests.
+
+    If keys (A, B) mapped to results ([1,2,4],[3,4,5])...
+     - UseFirst (or None) takes the results from the first key
+     -- [1,2,4]
+     - Union takes results of each key and collects items that matched any key.
+     -- [1,2,3,4,5]
+     - Intersection takes results of each key, and collects items that matched every key.
+     -- [4]
+  remarks: Aligned with <xref href="UnityEngine.AddressableAssets.Addressables.MergeMode" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public enum ResourceSystem.MergeMode
+    content.vb: Public Enum ResourceSystem.MergeMode
+- uid: Ceres.Resource.ResourceSystem.MergeMode.None
+  commentId: F:Ceres.Resource.ResourceSystem.MergeMode.None
+  id: None
+  parent: Ceres.Resource.ResourceSystem.MergeMode
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: ResourceSystem.MergeMode.None
+  fullName: Ceres.Resource.ResourceSystem.MergeMode.None
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: Use to indicate that no merge should occur. The first set of results will be used.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Ceres.Resource.ResourceSystem.MergeMode
+- uid: Ceres.Resource.ResourceSystem.MergeMode.UseFirst
+  commentId: F:Ceres.Resource.ResourceSystem.MergeMode.UseFirst
+  id: UseFirst
+  parent: Ceres.Resource.ResourceSystem.MergeMode
+  langs:
+  - csharp
+  - vb
+  name: UseFirst
+  nameWithType: ResourceSystem.MergeMode.UseFirst
+  fullName: Ceres.Resource.ResourceSystem.MergeMode.UseFirst
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: Use to indicate that the merge should take the first set of results.
+  example: []
+  syntax:
+    content: UseFirst = 0
+    return:
+      type: Ceres.Resource.ResourceSystem.MergeMode
+- uid: Ceres.Resource.ResourceSystem.MergeMode.Union
+  commentId: F:Ceres.Resource.ResourceSystem.MergeMode.Union
+  id: Union
+  parent: Ceres.Resource.ResourceSystem.MergeMode
+  langs:
+  - csharp
+  - vb
+  name: Union
+  nameWithType: ResourceSystem.MergeMode.Union
+  fullName: Ceres.Resource.ResourceSystem.MergeMode.Union
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: Use to indicate that the merge should take the union of the results.
+  example: []
+  syntax:
+    content: Union = 1
+    return:
+      type: Ceres.Resource.ResourceSystem.MergeMode
+- uid: Ceres.Resource.ResourceSystem.MergeMode.Intersection
+  commentId: F:Ceres.Resource.ResourceSystem.MergeMode.Intersection
+  id: Intersection
+  parent: Ceres.Resource.ResourceSystem.MergeMode
+  langs:
+  - csharp
+  - vb
+  name: Intersection
+  nameWithType: ResourceSystem.MergeMode.Intersection
+  fullName: Ceres.Resource.ResourceSystem.MergeMode.Intersection
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Resource
+  summary: Use to indicate that the merge should take the intersection of the results.
+  example: []
+  syntax:
+    content: Intersection = 2
+    return:
+      type: Ceres.Resource.ResourceSystem.MergeMode
+references:
+- uid: UnityEngine.AddressableAssets.Addressables.MergeMode
+  commentId: T:UnityEngine.AddressableAssets.Addressables.MergeMode
+  isExternal: true
+  name: Addressables.MergeMode
+  nameWithType: Addressables.MergeMode
+  fullName: UnityEngine.AddressableAssets.Addressables.MergeMode
+  spec.csharp:
+  - uid: UnityEngine.AddressableAssets.Addressables
+    name: Addressables
+    isExternal: true
+  - name: .
+  - uid: UnityEngine.AddressableAssets.Addressables.MergeMode
+    name: MergeMode
+    isExternal: true
+  spec.vb:
+  - uid: UnityEngine.AddressableAssets.Addressables
+    name: Addressables
+    isExternal: true
+  - name: .
+  - uid: UnityEngine.AddressableAssets.Addressables.MergeMode
+    name: MergeMode
+    isExternal: true
+- uid: Ceres.Resource
+  commentId: N:Ceres.Resource
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Resource
+  nameWithType: Ceres.Resource
+  fullName: Ceres.Resource
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Resource.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Resource.html
+- uid: Ceres.Resource.ResourceSystem.MergeMode
+  commentId: T:Ceres.Resource.ResourceSystem.MergeMode
+  parent: Ceres.Resource
+  isExternal: true
+  href: Ceres.Resource.ResourceSystem.html
+  name: ResourceSystem.MergeMode
+  nameWithType: ResourceSystem.MergeMode
+  fullName: Ceres.Resource.ResourceSystem.MergeMode
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceSystem
+    name: ResourceSystem
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html
+  - name: .
+  - uid: Ceres.Resource.ResourceSystem.MergeMode
+    name: MergeMode
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.MergeMode.html
+  spec.vb:
+  - uid: Ceres.Resource.ResourceSystem
+    name: ResourceSystem
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.html
+  - name: .
+  - uid: Ceres.Resource.ResourceSystem.MergeMode
+    name: MergeMode
+    isExternal: true
+    href: Ceres.Resource.ResourceSystem.MergeMode.html

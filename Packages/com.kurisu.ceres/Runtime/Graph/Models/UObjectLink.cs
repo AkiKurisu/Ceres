@@ -1,0 +1,130 @@
+using System;
+using System.Linq;
+using Newtonsoft.Json.Linq;
+using UObject = UnityEngine.Object;
+
+namespace Ceres
+{
+    [Serializable]
+    internal class UObjectLink
+    {
+        public int instanceId;
+             
+        public UObject linkedObject;
+
+        public UObjectLink(UObject uObject)
+        {
+            linkedObject = uObject;
+            instanceId = linkedObject.GetInstanceID();
+        }
+
+        /// <summary>
+        /// Link UObject reference and return resolved json
+        /// </summary>
+        /// <param name="uobjectLinks"></param>
+        /// <param name="serializedData"></param>
+        /// <returns></returns>
+        public static string Resolve(UObjectLink[] uobjectLinks, string serializedData)
+        {
+            var obj = JObject.Parse(serializedData);
+            /* Resolve instanceID */
+            foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
+            {
+                if (prop.Name != "instanceID") continue;
+                var id = (int)prop.Value;
+                var uObject = uobjectLinks.FirstOrDefault(x=> x.instanceId == id);
+                if (uObject != null)
+                {
+                    var linkedUObject = uObject.linkedObject;
+                    prop.Value = linkedUObject == null ? 0 : linkedUObject.GetInstanceID();
+                    if (linkedUObject && CeresLogger.LogUObjectRelink)
+                    {
+                        CeresLogger.Log($"Relink UObject {id} to {uObject.linkedObject.name} {prop.Value}");
+                    }
+                }
+            }
+
+            return obj.ToString();
+        }
+
+        public static string NormalizeSerializedDataForHash(UObjectLink[] uobjectLinks, string serializedData)
+        {
+            if (uobjectLinks == null || uobjectLinks.Length == 0 || string.IsNullOrEmpty(serializedData))
+            {
+                return serializedData;
+            }
+
+            JObject obj;
+            try
+            {
+                obj = JObject.Parse(serializedData);
+            }
+            catch
+            {
+                return serializedData;
+            }
+            var changed = false;
+            foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
+            {
+                if (prop.Name != "instanceID" || prop.Value.Type != JTokenType.Integer)
+                {
+                    continue;
+                }
+
+                var instanceId = (int)prop.Value;
+                if (instanceId == 0)
+                {
+                    continue;
+                }
+
+                if (ContainsInstanceId(uobjectLinks, instanceId))
+                {
+                    prop.Value = 0;
+                    changed = true;
+                }
+            }
+
+            return changed ? obj.ToString(Newtonsoft.Json.Formatting.None) : serializedData;
+        }
+        
+        /// <summary>
+        /// Parse UObject references from json and fill the array
+        /// </summary>
+        /// <param name="uobjectLinks"></param>
+        /// <param name="serializedData"></param>
+        public static void Parse(ref UObjectLink[] uobjectLinks, string serializedData)
+        {
+#if UNITY_EDITOR
+            var obj = JObject.Parse(serializedData);
+            /* Persistent instanceID */
+            foreach (var prop in obj.Descendants().OfType<JProperty>().ToList())
+            {
+                if (prop.Name != "instanceID") continue;
+                var instanceId = (int)prop.Value;
+#if UNITY_6000_3_OR_NEWER
+                var uObject = UnityEditor.EditorUtility.EntityIdToObject(instanceId);
+#else
+                var uObject = UnityEditor.EditorUtility.InstanceIDToObject(instanceId);
+#endif
+                if (uObject)
+                {
+                    Ceres.Collections.ArrayUtils.Add(ref uobjectLinks, new UObjectLink(uObject));
+                }
+            }
+#endif
+        }
+
+        private static bool ContainsInstanceId(UObjectLink[] uobjectLinks, int instanceId)
+        {
+            foreach (var link in uobjectLinks)
+            {
+                if (link?.instanceId == instanceId)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+}

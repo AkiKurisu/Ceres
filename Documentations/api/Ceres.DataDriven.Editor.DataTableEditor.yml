@@ -1,0 +1,502 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.DataDriven.Editor.DataTableEditor
+  commentId: T:Ceres.DataDriven.Editor.DataTableEditor
+  id: DataTableEditor
+  parent: Ceres.DataDriven.Editor
+  children:
+  - Ceres.DataDriven.Editor.DataTableEditor.#ctor
+  - Ceres.DataDriven.Editor.DataTableEditor.CreateDataTableRowView(Ceres.DataDriven.DataTable)
+  - Ceres.DataDriven.Editor.DataTableEditor.DrawRowView
+  - Ceres.DataDriven.Editor.DataTableEditor.DrawToolBar
+  - Ceres.DataDriven.Editor.DataTableEditor.GetDataTableRowView
+  - Ceres.DataDriven.Editor.DataTableEditor.OnDisable
+  - Ceres.DataDriven.Editor.DataTableEditor.OnDrawToolBar
+  - Ceres.DataDriven.Editor.DataTableEditor.OnEnable
+  - Ceres.DataDriven.Editor.DataTableEditor.OnInspectorGUI
+  - Ceres.DataDriven.Editor.DataTableEditor.OnUndo(UnityEditor.UndoRedoInfo@)
+  - Ceres.DataDriven.Editor.DataTableEditor.RebuildEditorView
+  - Ceres.DataDriven.Editor.DataTableEditor.RequestDataTableUpdate
+  - Ceres.DataDriven.Editor.DataTableEditor.Table
+  langs:
+  - csharp
+  - vb
+  name: DataTableEditor
+  nameWithType: DataTableEditor
+  fullName: Ceres.DataDriven.Editor.DataTableEditor
+  type: Class
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: 'public class DataTableEditor : Editor'
+    content.vb: Public Class DataTableEditor Inherits Editor
+  inheritance:
+  - System.Object
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnDrawToolBar
+  commentId: F:Ceres.DataDriven.Editor.DataTableEditor.OnDrawToolBar
+  id: OnDrawToolBar
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: OnDrawToolBar
+  nameWithType: DataTableEditor.OnDrawToolBar
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnDrawToolBar
+  type: Field
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Subscribe to add custom toolbar
+  example: []
+  syntax:
+    content: public DrawToolBarDelegate OnDrawToolBar
+    return:
+      type: Ceres.DataDriven.Editor.DrawToolBarDelegate
+    content.vb: Public OnDrawToolBar As DrawToolBarDelegate
+- uid: Ceres.DataDriven.Editor.DataTableEditor.GetDataTableRowView
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.GetDataTableRowView
+  id: GetDataTableRowView
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: GetDataTableRowView()
+  nameWithType: DataTableEditor.GetDataTableRowView()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.GetDataTableRowView()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: public DataTableRowView GetDataTableRowView()
+    return:
+      type: Ceres.DataDriven.Editor.DataTableRowView
+    content.vb: Public Function GetDataTableRowView() As DataTableRowView
+  overload: Ceres.DataDriven.Editor.DataTableEditor.GetDataTableRowView*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.CreateDataTableRowView(Ceres.DataDriven.DataTable)
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.CreateDataTableRowView(Ceres.DataDriven.DataTable)
+  id: CreateDataTableRowView(Ceres.DataDriven.DataTable)
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: CreateDataTableRowView(DataTable)
+  nameWithType: DataTableEditor.CreateDataTableRowView(DataTable)
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.CreateDataTableRowView(Ceres.DataDriven.DataTable)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Implement to use customized <xref href="Ceres.DataDriven.Editor.DataTableRowView" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: protected virtual DataTableRowView CreateDataTableRowView(DataTable table)
+    parameters:
+    - id: table
+      type: Ceres.DataDriven.DataTable
+      description: ''
+    return:
+      type: Ceres.DataDriven.Editor.DataTableRowView
+      description: ''
+    content.vb: Protected Overridable Function CreateDataTableRowView(table As DataTable) As DataTableRowView
+  overload: Ceres.DataDriven.Editor.DataTableEditor.CreateDataTableRowView*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnInspectorGUI
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.OnInspectorGUI
+  id: OnInspectorGUI
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: OnInspectorGUI()
+  nameWithType: DataTableEditor.OnInspectorGUI()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnInspectorGUI()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  example: []
+  syntax:
+    content: public override void OnInspectorGUI()
+    content.vb: Public Overrides Sub OnInspectorGUI()
+  overload: Ceres.DataDriven.Editor.DataTableEditor.OnInspectorGUI*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.DrawRowView
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.DrawRowView
+  id: DrawRowView
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: DrawRowView()
+  nameWithType: DataTableEditor.DrawRowView()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.DrawRowView()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: protected virtual void DrawRowView()
+    content.vb: Protected Overridable Sub DrawRowView()
+  overload: Ceres.DataDriven.Editor.DataTableEditor.DrawRowView*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnEnable
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.OnEnable
+  id: OnEnable
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: OnEnable()
+  nameWithType: DataTableEditor.OnEnable()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnEnable()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: protected virtual void OnEnable()
+    content.vb: Protected Overridable Sub OnEnable()
+  overload: Ceres.DataDriven.Editor.DataTableEditor.OnEnable*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnDisable
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.OnDisable
+  id: OnDisable
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: OnDisable()
+  nameWithType: DataTableEditor.OnDisable()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnDisable()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: protected virtual void OnDisable()
+    content.vb: Protected Overridable Sub OnDisable()
+  overload: Ceres.DataDriven.Editor.DataTableEditor.OnDisable*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.DrawToolBar
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.DrawToolBar
+  id: DrawToolBar
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: DrawToolBar()
+  nameWithType: DataTableEditor.DrawToolBar()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.DrawToolBar()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Draw editor toolbar
+  example: []
+  syntax:
+    content: protected virtual void DrawToolBar()
+    content.vb: Protected Overridable Sub DrawToolBar()
+  overload: Ceres.DataDriven.Editor.DataTableEditor.DrawToolBar*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.RequestDataTableUpdate
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.RequestDataTableUpdate
+  id: RequestDataTableUpdate
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: RequestDataTableUpdate()
+  nameWithType: DataTableEditor.RequestDataTableUpdate()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.RequestDataTableUpdate()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Request change DataTable in editor
+  example: []
+  syntax:
+    content: protected void RequestDataTableUpdate()
+    content.vb: Protected Sub RequestDataTableUpdate()
+  overload: Ceres.DataDriven.Editor.DataTableEditor.RequestDataTableUpdate*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.RebuildEditorView
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.RebuildEditorView
+  id: RebuildEditorView
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: RebuildEditorView()
+  nameWithType: DataTableEditor.RebuildEditorView()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.RebuildEditorView()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Rebuild editor gui view, called on DataTable changed
+  example: []
+  syntax:
+    content: protected virtual void RebuildEditorView()
+    content.vb: Protected Overridable Sub RebuildEditorView()
+  overload: Ceres.DataDriven.Editor.DataTableEditor.RebuildEditorView*
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnUndo(UnityEditor.UndoRedoInfo@)
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.OnUndo(UnityEditor.UndoRedoInfo@)
+  id: OnUndo(UnityEditor.UndoRedoInfo@)
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: OnUndo(in UndoRedoInfo)
+  nameWithType: DataTableEditor.OnUndo(in UndoRedoInfo)
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnUndo(in UnityEditor.UndoRedoInfo)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: protected virtual void OnUndo(in UndoRedoInfo undo)
+    parameters:
+    - id: undo
+      type: UnityEditor.UndoRedoInfo
+    content.vb: Protected Overridable Sub OnUndo(undo As UndoRedoInfo)
+  overload: Ceres.DataDriven.Editor.DataTableEditor.OnUndo*
+  nameWithType.vb: DataTableEditor.OnUndo(UndoRedoInfo)
+  fullName.vb: Ceres.DataDriven.Editor.DataTableEditor.OnUndo(UnityEditor.UndoRedoInfo)
+  name.vb: OnUndo(UndoRedoInfo)
+- uid: Ceres.DataDriven.Editor.DataTableEditor.#ctor
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditor.#ctor
+  id: '#ctor'
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: DataTableEditor()
+  nameWithType: DataTableEditor.DataTableEditor()
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.DataTableEditor()
+  type: Constructor
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: public DataTableEditor()
+    content.vb: Public Sub New()
+  overload: Ceres.DataDriven.Editor.DataTableEditor.#ctor*
+  nameWithType.vb: DataTableEditor.New()
+  fullName.vb: Ceres.DataDriven.Editor.DataTableEditor.New()
+  name.vb: New()
+- uid: Ceres.DataDriven.Editor.DataTableEditor.Table
+  commentId: P:Ceres.DataDriven.Editor.DataTableEditor.Table
+  id: Table
+  parent: Ceres.DataDriven.Editor.DataTableEditor
+  langs:
+  - csharp
+  - vb
+  name: Table
+  nameWithType: DataTableEditor.Table
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.Table
+  type: Property
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: public DataTable Table { get; }
+    parameters: []
+    return:
+      type: Ceres.DataDriven.DataTable
+    content.vb: Public ReadOnly Property Table As DataTable
+  overload: Ceres.DataDriven.Editor.DataTableEditor.Table*
+references:
+- uid: Ceres.DataDriven.Editor
+  commentId: N:Ceres.DataDriven.Editor
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven.Editor
+  nameWithType: Ceres.DataDriven.Editor
+  fullName: Ceres.DataDriven.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  - name: .
+  - uid: Ceres.DataDriven.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.DataDriven.Editor.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  - name: .
+  - uid: Ceres.DataDriven.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.DataDriven.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.DataDriven.Editor.DrawToolBarDelegate
+  commentId: T:Ceres.DataDriven.Editor.DrawToolBarDelegate
+  parent: Ceres.DataDriven.Editor
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DrawToolBarDelegate.html
+  name: DrawToolBarDelegate
+  nameWithType: DrawToolBarDelegate
+  fullName: Ceres.DataDriven.Editor.DrawToolBarDelegate
+- uid: Ceres.DataDriven.Editor.DataTableEditor.GetDataTableRowView*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.GetDataTableRowView
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_GetDataTableRowView
+  name: GetDataTableRowView
+  nameWithType: DataTableEditor.GetDataTableRowView
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.GetDataTableRowView
+- uid: Ceres.DataDriven.Editor.DataTableRowView
+  commentId: T:Ceres.DataDriven.Editor.DataTableRowView
+  parent: Ceres.DataDriven.Editor
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html
+  name: DataTableRowView
+  nameWithType: DataTableRowView
+  fullName: Ceres.DataDriven.Editor.DataTableRowView
+- uid: Ceres.DataDriven.Editor.DataTableEditor.CreateDataTableRowView*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.CreateDataTableRowView
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_CreateDataTableRowView_Ceres_DataDriven_DataTable_
+  name: CreateDataTableRowView
+  nameWithType: DataTableEditor.CreateDataTableRowView
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.CreateDataTableRowView
+- uid: Ceres.DataDriven.DataTable
+  commentId: T:Ceres.DataDriven.DataTable
+  parent: Ceres.DataDriven
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html
+  name: DataTable
+  nameWithType: DataTable
+  fullName: Ceres.DataDriven.DataTable
+- uid: Ceres.DataDriven
+  commentId: N:Ceres.DataDriven
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven
+  nameWithType: Ceres.DataDriven
+  fullName: Ceres.DataDriven
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnInspectorGUI*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.OnInspectorGUI
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_OnInspectorGUI
+  name: OnInspectorGUI
+  nameWithType: DataTableEditor.OnInspectorGUI
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnInspectorGUI
+- uid: Ceres.DataDriven.Editor.DataTableEditor.DrawRowView*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.DrawRowView
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_DrawRowView
+  name: DrawRowView
+  nameWithType: DataTableEditor.DrawRowView
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.DrawRowView
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnEnable*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.OnEnable
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_OnEnable
+  name: OnEnable
+  nameWithType: DataTableEditor.OnEnable
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnEnable
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnDisable*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.OnDisable
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_OnDisable
+  name: OnDisable
+  nameWithType: DataTableEditor.OnDisable
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnDisable
+- uid: Ceres.DataDriven.Editor.DataTableEditor.DrawToolBar*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.DrawToolBar
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_DrawToolBar
+  name: DrawToolBar
+  nameWithType: DataTableEditor.DrawToolBar
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.DrawToolBar
+- uid: Ceres.DataDriven.Editor.DataTableEditor.RequestDataTableUpdate*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.RequestDataTableUpdate
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_RequestDataTableUpdate
+  name: RequestDataTableUpdate
+  nameWithType: DataTableEditor.RequestDataTableUpdate
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.RequestDataTableUpdate
+- uid: Ceres.DataDriven.Editor.DataTableEditor.RebuildEditorView*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.RebuildEditorView
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_RebuildEditorView
+  name: RebuildEditorView
+  nameWithType: DataTableEditor.RebuildEditorView
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.RebuildEditorView
+- uid: Ceres.DataDriven.Editor.DataTableEditor.OnUndo*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.OnUndo
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_OnUndo_UnityEditor_UndoRedoInfo__
+  name: OnUndo
+  nameWithType: DataTableEditor.OnUndo
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.OnUndo
+- uid: UnityEditor.UndoRedoInfo
+  commentId: '!:UnityEditor.UndoRedoInfo'
+  isExternal: true
+  name: UndoRedoInfo
+  nameWithType: UndoRedoInfo
+  fullName: UnityEditor.UndoRedoInfo
+- uid: Ceres.DataDriven.Editor.DataTableEditor.#ctor*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.#ctor
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor__ctor
+  name: DataTableEditor
+  nameWithType: DataTableEditor.DataTableEditor
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.DataTableEditor
+  nameWithType.vb: DataTableEditor.New
+  fullName.vb: Ceres.DataDriven.Editor.DataTableEditor.New
+  name.vb: New
+- uid: Ceres.DataDriven.Editor.DataTableEditor.Table*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditor.Table
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditor.html#Ceres_DataDriven_Editor_DataTableEditor_Table
+  name: Table
+  nameWithType: DataTableEditor.Table
+  fullName: Ceres.DataDriven.Editor.DataTableEditor.Table

@@ -1,0 +1,61 @@
+name: Deploy documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Documentations/**'
+      - '.github/workflows/documentation.yml'
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run
+# in-progress and latest queued. Do not cancel in-progress runs.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # Build the documentation
+  build:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install DocFX
+        run: dotnet tool update -g docfx --version 2.78.5
+
+      # API metadata requires Unity's compiled assemblies and XML documentation.
+      # It is committed to the repository and regenerated locally with
+      # Documentations/tools/generate-api.ps1 -UnityEditorPath <editor-executable>
+      # when the public API changes.
+      - name: Build DocFX Documentation
+        run: docfx build Documentations/docfx.json
+
+      - name: Remove local build metadata
+        run: rm -f Site/manifest.json
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: Site/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

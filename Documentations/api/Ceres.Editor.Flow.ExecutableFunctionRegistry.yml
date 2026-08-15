@@ -1,0 +1,630 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  commentId: T:Ceres.Editor.Flow.ExecutableFunctionRegistry
+  id: ExecutableFunctionRegistry
+  parent: Ceres.Editor.Flow
+  children:
+  - Ceres.Editor.Flow.ExecutableFunctionRegistry.Get
+  - Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies
+  - Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedProperties
+  - Ceres.Editor.Flow.ExecutableFunctionRegistry.GetFunctions(System.Type)
+  - Ceres.Editor.Flow.ExecutableFunctionRegistry.GetManagedTypes
+  - Ceres.Editor.Flow.ExecutableFunctionRegistry.GetStaticFunctions
+  langs:
+  - csharp
+  - vb
+  name: ExecutableFunctionRegistry
+  nameWithType: ExecutableFunctionRegistry
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  type: Class
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Helper class for query executable functions
+  example: []
+  syntax:
+    content: public class ExecutableFunctionRegistry
+    content.vb: Public Class ExecutableFunctionRegistry
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedProperties
+  commentId: M:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedProperties
+  id: GetAlwaysIncludedProperties
+  parent: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAlwaysIncludedProperties()
+  nameWithType: ExecutableFunctionRegistry.GetAlwaysIncludedProperties()
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedProperties()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public (Type type, PropertyInfo[] propertyInfos)[] GetAlwaysIncludedProperties()
+    return:
+      type: System.ValueTuple{System.Type,System.Reflection.PropertyInfo[]}[]
+    content.vb: Public Function GetAlwaysIncludedProperties() As (type As Type, propertyInfos As PropertyInfo())()
+  overload: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedProperties*
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies
+  commentId: M:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies
+  id: GetAlwaysIncludedAssemblies
+  parent: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetAlwaysIncludedAssemblies()
+  nameWithType: ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies()
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public static Assembly[] GetAlwaysIncludedAssemblies()
+    return:
+      type: System.Reflection.Assembly[]
+    content.vb: Public Shared Function GetAlwaysIncludedAssemblies() As Assembly()
+  overload: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies*
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.Get
+  commentId: M:Ceres.Editor.Flow.ExecutableFunctionRegistry.Get
+  id: Get
+  parent: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  langs:
+  - csharp
+  - vb
+  name: Get()
+  nameWithType: ExecutableFunctionRegistry.Get()
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.Get()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public static ExecutableFunctionRegistry Get()
+    return:
+      type: Ceres.Editor.Flow.ExecutableFunctionRegistry
+    content.vb: Public Shared Function [Get]() As ExecutableFunctionRegistry
+  overload: Ceres.Editor.Flow.ExecutableFunctionRegistry.Get*
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetStaticFunctions
+  commentId: M:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetStaticFunctions
+  id: GetStaticFunctions
+  parent: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetStaticFunctions()
+  nameWithType: ExecutableFunctionRegistry.GetStaticFunctions()
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetStaticFunctions()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public MethodInfo[] GetStaticFunctions()
+    return:
+      type: System.Reflection.MethodInfo[]
+    content.vb: Public Function GetStaticFunctions() As MethodInfo()
+  overload: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetStaticFunctions*
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetFunctions(System.Type)
+  commentId: M:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetFunctions(System.Type)
+  id: GetFunctions(System.Type)
+  parent: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetFunctions(Type)
+  nameWithType: ExecutableFunctionRegistry.GetFunctions(Type)
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetFunctions(System.Type)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public MethodInfo[] GetFunctions(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+    return:
+      type: System.Reflection.MethodInfo[]
+    content.vb: Public Function GetFunctions(type As Type) As MethodInfo()
+  overload: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetFunctions*
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetManagedTypes
+  commentId: M:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetManagedTypes
+  id: GetManagedTypes
+  parent: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetManagedTypes()
+  nameWithType: ExecutableFunctionRegistry.GetManagedTypes()
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetManagedTypes()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public Type[] GetManagedTypes()
+    return:
+      type: System.Type[]
+    content.vb: Public Function GetManagedTypes() As Type()
+  overload: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetManagedTypes*
+references:
+- uid: Ceres.Editor.Flow
+  commentId: N:Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Flow
+  nameWithType: Ceres.Editor.Flow
+  fullName: Ceres.Editor.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedProperties*
+  commentId: Overload:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedProperties
+  isExternal: true
+  href: Ceres.Editor.Flow.ExecutableFunctionRegistry.html#Ceres_Editor_Flow_ExecutableFunctionRegistry_GetAlwaysIncludedProperties
+  name: GetAlwaysIncludedProperties
+  nameWithType: ExecutableFunctionRegistry.GetAlwaysIncludedProperties
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedProperties
+- uid: System.ValueTuple{System.Type,System.Reflection.PropertyInfo[]}[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: (Type type, PropertyInfo[] propertyInfos)[]
+  nameWithType: (Type type, PropertyInfo[] propertyInfos)[]
+  fullName: (System.Type type, System.Reflection.PropertyInfo[] propertyInfos)[]
+  nameWithType.vb: (type As Type, propertyInfos As PropertyInfo())()
+  fullName.vb: (type As System.Type, propertyInfos As System.Reflection.PropertyInfo())()
+  name.vb: (type As Type, propertyInfos As PropertyInfo())()
+  spec.csharp:
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: " "
+  - uid: System.ValueTuple{System.Type,System.Reflection.PropertyInfo[]}.type
+    name: type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.type,system.reflection.propertyinfo[]-.type
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+  - name: '['
+  - name: ']'
+  - name: " "
+  - uid: System.ValueTuple{System.Type,System.Reflection.PropertyInfo[]}.propertyInfos
+    name: propertyInfos
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.type,system.reflection.propertyinfo[]-.propertyinfos
+  - name: )
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Type,System.Reflection.PropertyInfo[]}.type
+    name: type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.type,system.reflection.propertyinfo[]-.type
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Type,System.Reflection.PropertyInfo[]}.propertyInfos
+    name: propertyInfos
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.type,system.reflection.propertyinfo[]-.propertyinfos
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+  - name: (
+  - name: )
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies*
+  commentId: Overload:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies
+  isExternal: true
+  href: Ceres.Editor.Flow.ExecutableFunctionRegistry.html#Ceres_Editor_Flow_ExecutableFunctionRegistry_GetAlwaysIncludedAssemblies
+  name: GetAlwaysIncludedAssemblies
+  nameWithType: ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetAlwaysIncludedAssemblies
+- uid: System.Reflection.Assembly[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+  name: Assembly[]
+  nameWithType: Assembly[]
+  fullName: System.Reflection.Assembly[]
+  nameWithType.vb: Assembly()
+  fullName.vb: System.Reflection.Assembly()
+  name.vb: Assembly()
+  spec.csharp:
+  - uid: System.Reflection.Assembly
+    name: Assembly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Reflection.Assembly
+    name: Assembly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.Get*
+  commentId: Overload:Ceres.Editor.Flow.ExecutableFunctionRegistry.Get
+  isExternal: true
+  href: Ceres.Editor.Flow.ExecutableFunctionRegistry.html#Ceres_Editor_Flow_ExecutableFunctionRegistry_Get
+  name: Get
+  nameWithType: ExecutableFunctionRegistry.Get
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.Get
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry
+  commentId: T:Ceres.Editor.Flow.ExecutableFunctionRegistry
+  parent: Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.Editor.Flow.ExecutableFunctionRegistry.html
+  name: ExecutableFunctionRegistry
+  nameWithType: ExecutableFunctionRegistry
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetStaticFunctions*
+  commentId: Overload:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetStaticFunctions
+  isExternal: true
+  href: Ceres.Editor.Flow.ExecutableFunctionRegistry.html#Ceres_Editor_Flow_ExecutableFunctionRegistry_GetStaticFunctions
+  name: GetStaticFunctions
+  nameWithType: ExecutableFunctionRegistry.GetStaticFunctions
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetStaticFunctions
+- uid: System.Reflection.MethodInfo[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  name: MethodInfo[]
+  nameWithType: MethodInfo[]
+  fullName: System.Reflection.MethodInfo[]
+  nameWithType.vb: MethodInfo()
+  fullName.vb: System.Reflection.MethodInfo()
+  name.vb: MethodInfo()
+  spec.csharp:
+  - uid: System.Reflection.MethodInfo
+    name: MethodInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Reflection.MethodInfo
+    name: MethodInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetFunctions*
+  commentId: Overload:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetFunctions
+  isExternal: true
+  href: Ceres.Editor.Flow.ExecutableFunctionRegistry.html#Ceres_Editor_Flow_ExecutableFunctionRegistry_GetFunctions_System_Type_
+  name: GetFunctions
+  nameWithType: ExecutableFunctionRegistry.GetFunctions
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetFunctions
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetManagedTypes*
+  commentId: Overload:Ceres.Editor.Flow.ExecutableFunctionRegistry.GetManagedTypes
+  isExternal: true
+  href: Ceres.Editor.Flow.ExecutableFunctionRegistry.html#Ceres_Editor_Flow_ExecutableFunctionRegistry_GetManagedTypes
+  name: GetManagedTypes
+  nameWithType: ExecutableFunctionRegistry.GetManagedTypes
+  fullName: Ceres.Editor.Flow.ExecutableFunctionRegistry.GetManagedTypes
+- uid: System.Type[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type[]
+  nameWithType: Type[]
+  fullName: System.Type[]
+  nameWithType.vb: Type()
+  fullName.vb: System.Type()
+  name.vb: Type()
+  spec.csharp:
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: (
+  - name: )

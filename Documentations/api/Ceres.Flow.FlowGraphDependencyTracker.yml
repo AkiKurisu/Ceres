@@ -1,0 +1,653 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.FlowGraphDependencyTracker
+  commentId: T:Ceres.Flow.FlowGraphDependencyTracker
+  id: FlowGraphDependencyTracker
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.FlowGraphDependencyTracker.#ctor(Ceres.Flow.FlowGraph)
+  - Ceres.Flow.FlowGraphDependencyTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  - Ceres.Flow.FlowGraphDependencyTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphDependencyTracker
+  nameWithType: FlowGraphDependencyTracker
+  fullName: Ceres.Flow.FlowGraphDependencyTracker
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: A helper tracker to dump nodes dependencies
+  example: []
+  syntax:
+    content: 'public class FlowGraphDependencyTracker : FlowGraphTracker, IDisposable'
+    content.vb: Public Class FlowGraphDependencyTracker Inherits FlowGraphTracker Implements IDisposable
+  inheritance:
+  - System.Object
+  - Ceres.Flow.FlowGraphTracker
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Ceres.Flow.FlowGraphTracker.IsValid
+  - Ceres.Flow.FlowGraphTracker.Auto
+  - Ceres.Flow.FlowGraphTracker.GetActiveTracker
+  - Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  - Ceres.Flow.FlowGraphTracker.Dispose
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Flow.FlowGraphDependencyTracker.#ctor(Ceres.Flow.FlowGraph)
+  commentId: M:Ceres.Flow.FlowGraphDependencyTracker.#ctor(Ceres.Flow.FlowGraph)
+  id: '#ctor(Ceres.Flow.FlowGraph)'
+  parent: Ceres.Flow.FlowGraphDependencyTracker
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphDependencyTracker(FlowGraph)
+  nameWithType: FlowGraphDependencyTracker.FlowGraphDependencyTracker(FlowGraph)
+  fullName: Ceres.Flow.FlowGraphDependencyTracker.FlowGraphDependencyTracker(Ceres.Flow.FlowGraph)
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public FlowGraphDependencyTracker(FlowGraph flowGraph)
+    parameters:
+    - id: flowGraph
+      type: Ceres.Flow.FlowGraph
+    content.vb: Public Sub New(flowGraph As FlowGraph)
+  overload: Ceres.Flow.FlowGraphDependencyTracker.#ctor*
+  nameWithType.vb: FlowGraphDependencyTracker.New(FlowGraph)
+  fullName.vb: Ceres.Flow.FlowGraphDependencyTracker.New(Ceres.Flow.FlowGraph)
+  name.vb: New(FlowGraph)
+- uid: Ceres.Flow.FlowGraphDependencyTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  commentId: M:Ceres.Flow.FlowGraphDependencyTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  id: EnterNode(Ceres.Flow.ExecutableNode)
+  parent: Ceres.Flow.FlowGraphDependencyTracker
+  langs:
+  - csharp
+  - vb
+  name: EnterNode(ExecutableNode)
+  nameWithType: FlowGraphDependencyTracker.EnterNode(ExecutableNode)
+  fullName: Ceres.Flow.FlowGraphDependencyTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  example: []
+  syntax:
+    content: public override UniTask EnterNode(ExecutableNode node)
+    parameters:
+    - id: node
+      type: Ceres.Flow.ExecutableNode
+    return:
+      type: Cysharp.Threading.Tasks.UniTask
+    content.vb: Public Overrides Function EnterNode(node As ExecutableNode) As UniTask
+  overridden: Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  overload: Ceres.Flow.FlowGraphDependencyTracker.EnterNode*
+- uid: Ceres.Flow.FlowGraphDependencyTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  commentId: M:Ceres.Flow.FlowGraphDependencyTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  id: ExitNode(Ceres.Flow.ExecutableNode)
+  parent: Ceres.Flow.FlowGraphDependencyTracker
+  langs:
+  - csharp
+  - vb
+  name: ExitNode(ExecutableNode)
+  nameWithType: FlowGraphDependencyTracker.ExitNode(ExecutableNode)
+  fullName: Ceres.Flow.FlowGraphDependencyTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  example: []
+  syntax:
+    content: public override UniTask ExitNode(ExecutableNode node)
+    parameters:
+    - id: node
+      type: Ceres.Flow.ExecutableNode
+    return:
+      type: Cysharp.Threading.Tasks.UniTask
+    content.vb: Public Overrides Function ExitNode(node As ExecutableNode) As UniTask
+  overridden: Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  overload: Ceres.Flow.FlowGraphDependencyTracker.ExitNode*
+references:
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.FlowGraphTracker
+  commentId: T:Ceres.Flow.FlowGraphTracker
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html
+  name: FlowGraphTracker
+  nameWithType: FlowGraphTracker
+  fullName: Ceres.Flow.FlowGraphTracker
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Ceres.Flow.FlowGraphTracker.IsValid
+  commentId: M:Ceres.Flow.FlowGraphTracker.IsValid
+  parent: Ceres.Flow.FlowGraphTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_IsValid
+  name: IsValid()
+  nameWithType: FlowGraphTracker.IsValid()
+  fullName: Ceres.Flow.FlowGraphTracker.IsValid()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphTracker.IsValid
+    name: IsValid
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_IsValid
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphTracker.IsValid
+    name: IsValid
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_IsValid
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphTracker.Auto
+  commentId: M:Ceres.Flow.FlowGraphTracker.Auto
+  parent: Ceres.Flow.FlowGraphTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_Auto
+  name: Auto()
+  nameWithType: FlowGraphTracker.Auto()
+  fullName: Ceres.Flow.FlowGraphTracker.Auto()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphTracker.Auto
+    name: Auto
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_Auto
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphTracker.Auto
+    name: Auto
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_Auto
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphTracker.GetActiveTracker
+  commentId: M:Ceres.Flow.FlowGraphTracker.GetActiveTracker
+  parent: Ceres.Flow.FlowGraphTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_GetActiveTracker
+  name: GetActiveTracker()
+  nameWithType: FlowGraphTracker.GetActiveTracker()
+  fullName: Ceres.Flow.FlowGraphTracker.GetActiveTracker()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphTracker.GetActiveTracker
+    name: GetActiveTracker
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_GetActiveTracker
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphTracker.GetActiveTracker
+    name: GetActiveTracker
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_GetActiveTracker
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  commentId: M:Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  parent: Ceres.Flow.FlowGraphTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_SetActiveTracker_Ceres_Flow_FlowGraphTracker_
+  name: SetActiveTracker(FlowGraphTracker)
+  nameWithType: FlowGraphTracker.SetActiveTracker(FlowGraphTracker)
+  fullName: Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+    name: SetActiveTracker
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_SetActiveTracker_Ceres_Flow_FlowGraphTracker_
+  - name: (
+  - uid: Ceres.Flow.FlowGraphTracker
+    name: FlowGraphTracker
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+    name: SetActiveTracker
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_SetActiveTracker_Ceres_Flow_FlowGraphTracker_
+  - name: (
+  - uid: Ceres.Flow.FlowGraphTracker
+    name: FlowGraphTracker
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html
+  - name: )
+- uid: Ceres.Flow.FlowGraphTracker.Dispose
+  commentId: M:Ceres.Flow.FlowGraphTracker.Dispose
+  parent: Ceres.Flow.FlowGraphTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_Dispose
+  name: Dispose()
+  nameWithType: FlowGraphTracker.Dispose()
+  fullName: Ceres.Flow.FlowGraphTracker.Dispose()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphTracker.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphTracker.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Flow.FlowGraphDependencyTracker.#ctor*
+  commentId: Overload:Ceres.Flow.FlowGraphDependencyTracker.#ctor
+  isExternal: true
+  href: Ceres.Flow.FlowGraphDependencyTracker.html#Ceres_Flow_FlowGraphDependencyTracker__ctor_Ceres_Flow_FlowGraph_
+  name: FlowGraphDependencyTracker
+  nameWithType: FlowGraphDependencyTracker.FlowGraphDependencyTracker
+  fullName: Ceres.Flow.FlowGraphDependencyTracker.FlowGraphDependencyTracker
+  nameWithType.vb: FlowGraphDependencyTracker.New
+  fullName.vb: Ceres.Flow.FlowGraphDependencyTracker.New
+  name.vb: New
+- uid: Ceres.Flow.FlowGraph
+  commentId: T:Ceres.Flow.FlowGraph
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraph.html
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Flow.FlowGraph
+- uid: Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  commentId: M:Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  parent: Ceres.Flow.FlowGraphTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_EnterNode_Ceres_Flow_ExecutableNode_
+  name: EnterNode(ExecutableNode)
+  nameWithType: FlowGraphTracker.EnterNode(ExecutableNode)
+  fullName: Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+    name: EnterNode
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_EnterNode_Ceres_Flow_ExecutableNode_
+  - name: (
+  - uid: Ceres.Flow.ExecutableNode
+    name: ExecutableNode
+    isExternal: true
+    href: Ceres.Flow.ExecutableNode.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+    name: EnterNode
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_EnterNode_Ceres_Flow_ExecutableNode_
+  - name: (
+  - uid: Ceres.Flow.ExecutableNode
+    name: ExecutableNode
+    isExternal: true
+    href: Ceres.Flow.ExecutableNode.html
+  - name: )
+- uid: Ceres.Flow.FlowGraphDependencyTracker.EnterNode*
+  commentId: Overload:Ceres.Flow.FlowGraphDependencyTracker.EnterNode
+  isExternal: true
+  href: Ceres.Flow.FlowGraphDependencyTracker.html#Ceres_Flow_FlowGraphDependencyTracker_EnterNode_Ceres_Flow_ExecutableNode_
+  name: EnterNode
+  nameWithType: FlowGraphDependencyTracker.EnterNode
+  fullName: Ceres.Flow.FlowGraphDependencyTracker.EnterNode
+- uid: Ceres.Flow.ExecutableNode
+  commentId: T:Ceres.Flow.ExecutableNode
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.ExecutableNode.html
+  name: ExecutableNode
+  nameWithType: ExecutableNode
+  fullName: Ceres.Flow.ExecutableNode
+- uid: Cysharp.Threading.Tasks.UniTask
+  commentId: T:Cysharp.Threading.Tasks.UniTask
+  parent: Cysharp.Threading.Tasks
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: Cysharp.Threading.Tasks.UniTask
+- uid: Cysharp.Threading.Tasks
+  commentId: N:Cysharp.Threading.Tasks
+  isExternal: true
+  name: Cysharp.Threading.Tasks
+  nameWithType: Cysharp.Threading.Tasks
+  fullName: Cysharp.Threading.Tasks
+  spec.csharp:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  commentId: M:Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  parent: Ceres.Flow.FlowGraphTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_ExitNode_Ceres_Flow_ExecutableNode_
+  name: ExitNode(ExecutableNode)
+  nameWithType: FlowGraphTracker.ExitNode(ExecutableNode)
+  fullName: Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+    name: ExitNode
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_ExitNode_Ceres_Flow_ExecutableNode_
+  - name: (
+  - uid: Ceres.Flow.ExecutableNode
+    name: ExecutableNode
+    isExternal: true
+    href: Ceres.Flow.ExecutableNode.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+    name: ExitNode
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_ExitNode_Ceres_Flow_ExecutableNode_
+  - name: (
+  - uid: Ceres.Flow.ExecutableNode
+    name: ExecutableNode
+    isExternal: true
+    href: Ceres.Flow.ExecutableNode.html
+  - name: )
+- uid: Ceres.Flow.FlowGraphDependencyTracker.ExitNode*
+  commentId: Overload:Ceres.Flow.FlowGraphDependencyTracker.ExitNode
+  isExternal: true
+  href: Ceres.Flow.FlowGraphDependencyTracker.html#Ceres_Flow_FlowGraphDependencyTracker_ExitNode_Ceres_Flow_ExecutableNode_
+  name: ExitNode
+  nameWithType: FlowGraphDependencyTracker.ExitNode
+  fullName: Ceres.Flow.FlowGraphDependencyTracker.ExitNode

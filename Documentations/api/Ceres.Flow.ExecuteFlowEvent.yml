@@ -1,0 +1,1033 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.ExecuteFlowEvent
+  commentId: T:Ceres.Flow.ExecuteFlowEvent
+  id: ExecuteFlowEvent
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.ExecuteFlowEvent.#ctor
+  - Ceres.Flow.ExecuteFlowEvent.Args
+  - Ceres.Flow.ExecuteFlowEvent.Create(System.String,System.Object[])
+  - Ceres.Flow.ExecuteFlowEvent.DefaultArgs
+  langs:
+  - csharp
+  - vb
+  name: ExecuteFlowEvent
+  nameWithType: ExecuteFlowEvent
+  fullName: Ceres.Flow.ExecuteFlowEvent
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Event for executing Flow Graph
+  example: []
+  syntax:
+    content: 'public sealed class ExecuteFlowEvent : ExecuteFlowEventBase<ExecuteFlowEvent>, IDisposable, IFlowEvent'
+    content.vb: Public NotInheritable Class ExecuteFlowEvent Inherits ExecuteFlowEventBase(Of ExecuteFlowEvent) Implements IDisposable, IFlowEvent
+  inheritance:
+  - System.Object
+  - Ceres.Events.EventBase
+  - Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}
+  - Ceres.Flow.ExecuteFlowEventBase{Ceres.Flow.ExecuteFlowEvent}
+  implements:
+  - System.IDisposable
+  - Ceres.Flow.IFlowEvent
+  inheritedMembers:
+  - Ceres.Flow.ExecuteFlowEventBase{Ceres.Flow.ExecuteFlowEvent}.FunctionName
+  - Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.TypeId
+  - Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.GetPooled
+  - Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Acquire
+  - Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Dispose
+  - Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.EventTypeId
+  - Ceres.Events.EventBase.PreventDefault
+  - Ceres.Events.EventBase.StopPropagation
+  - Ceres.Events.EventBase.StopImmediatePropagation
+  - Ceres.Events.EventBase.TimeSinceStartupMs
+  - Ceres.Events.EventBase.Timestamp
+  - Ceres.Events.EventBase.Propagation
+  - Ceres.Events.EventBase.PropagationPhase
+  - Ceres.Events.EventBase.Bubbles
+  - Ceres.Events.EventBase.TricklesDown
+  - Ceres.Events.EventBase.Target
+  - Ceres.Events.EventBase.IsPropagationStopped
+  - Ceres.Events.EventBase.IsImmediatePropagationStopped
+  - Ceres.Events.EventBase.IsDefaultPrevented
+  - Ceres.Events.EventBase.CurrentTarget
+  - Ceres.Events.EventBase.Dispatch
+  - Ceres.Events.EventBase.StopDispatch
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Flow.ExecuteFlowEvent.DefaultArgs
+  commentId: F:Ceres.Flow.ExecuteFlowEvent.DefaultArgs
+  id: DefaultArgs
+  parent: Ceres.Flow.ExecuteFlowEvent
+  langs:
+  - csharp
+  - vb
+  name: DefaultArgs
+  nameWithType: ExecuteFlowEvent.DefaultArgs
+  fullName: Ceres.Flow.ExecuteFlowEvent.DefaultArgs
+  type: Field
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static readonly object[] DefaultArgs
+    return:
+      type: System.Object[]
+    content.vb: Public Shared ReadOnly DefaultArgs As Object()
+- uid: Ceres.Flow.ExecuteFlowEvent.Create(System.String,System.Object[])
+  commentId: M:Ceres.Flow.ExecuteFlowEvent.Create(System.String,System.Object[])
+  id: Create(System.String,System.Object[])
+  parent: Ceres.Flow.ExecuteFlowEvent
+  langs:
+  - csharp
+  - vb
+  name: Create(string, params object[])
+  nameWithType: ExecuteFlowEvent.Create(string, params object[])
+  fullName: Ceres.Flow.ExecuteFlowEvent.Create(string, params object[])
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static ExecuteFlowEvent Create(string functionName, params object[] arguments)
+    parameters:
+    - id: functionName
+      type: System.String
+    - id: arguments
+      type: System.Object[]
+    return:
+      type: Ceres.Flow.ExecuteFlowEvent
+    content.vb: Public Shared Function Create(functionName As String, ParamArray arguments As Object()) As ExecuteFlowEvent
+  overload: Ceres.Flow.ExecuteFlowEvent.Create*
+  nameWithType.vb: ExecuteFlowEvent.Create(String, ParamArray Object())
+  fullName.vb: Ceres.Flow.ExecuteFlowEvent.Create(String, ParamArray Object())
+  name.vb: Create(String, ParamArray Object())
+- uid: Ceres.Flow.ExecuteFlowEvent.#ctor
+  commentId: M:Ceres.Flow.ExecuteFlowEvent.#ctor
+  id: '#ctor'
+  parent: Ceres.Flow.ExecuteFlowEvent
+  langs:
+  - csharp
+  - vb
+  name: ExecuteFlowEvent()
+  nameWithType: ExecuteFlowEvent.ExecuteFlowEvent()
+  fullName: Ceres.Flow.ExecuteFlowEvent.ExecuteFlowEvent()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public ExecuteFlowEvent()
+    content.vb: Public Sub New()
+  overload: Ceres.Flow.ExecuteFlowEvent.#ctor*
+  nameWithType.vb: ExecuteFlowEvent.New()
+  fullName.vb: Ceres.Flow.ExecuteFlowEvent.New()
+  name.vb: New()
+- uid: Ceres.Flow.ExecuteFlowEvent.Args
+  commentId: P:Ceres.Flow.ExecuteFlowEvent.Args
+  id: Args
+  parent: Ceres.Flow.ExecuteFlowEvent
+  langs:
+  - csharp
+  - vb
+  name: Args
+  nameWithType: ExecuteFlowEvent.Args
+  fullName: Ceres.Flow.ExecuteFlowEvent.Args
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Input args
+  example: []
+  syntax:
+    content: public object[] Args { get; }
+    parameters: []
+    return:
+      type: System.Object[]
+    content.vb: Public ReadOnly Property Args As Object()
+  overload: Ceres.Flow.ExecuteFlowEvent.Args*
+references:
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}
+  commentId: T:Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}
+  parent: Ceres.Events
+  definition: Ceres.Events.EventBase`1
+  href: Ceres.Flow.ExecuteFlowEvent.html
+  name: EventBase<ExecuteFlowEvent>
+  nameWithType: EventBase<ExecuteFlowEvent>
+  fullName: Ceres.Events.EventBase<Ceres.Flow.ExecuteFlowEvent>
+  nameWithType.vb: EventBase(Of ExecuteFlowEvent)
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Flow.ExecuteFlowEvent)
+  name.vb: EventBase(Of ExecuteFlowEvent)
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1
+    name: EventBase
+    isExternal: true
+  - name: <
+  - uid: Ceres.Flow.ExecuteFlowEvent
+    name: ExecuteFlowEvent
+    isExternal: true
+    href: Ceres.Flow.ExecuteFlowEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1
+    name: EventBase
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Flow.ExecuteFlowEvent
+    name: ExecuteFlowEvent
+    isExternal: true
+    href: Ceres.Flow.ExecuteFlowEvent.html
+  - name: )
+- uid: Ceres.Flow.ExecuteFlowEventBase{Ceres.Flow.ExecuteFlowEvent}
+  commentId: T:Ceres.Flow.ExecuteFlowEventBase{Ceres.Flow.ExecuteFlowEvent}
+  parent: Ceres.Flow
+  definition: Ceres.Flow.ExecuteFlowEventBase`1
+  href: Ceres.Flow.ExecuteFlowEventBase-1.html
+  name: ExecuteFlowEventBase<ExecuteFlowEvent>
+  nameWithType: ExecuteFlowEventBase<ExecuteFlowEvent>
+  fullName: Ceres.Flow.ExecuteFlowEventBase<Ceres.Flow.ExecuteFlowEvent>
+  nameWithType.vb: ExecuteFlowEventBase(Of ExecuteFlowEvent)
+  fullName.vb: Ceres.Flow.ExecuteFlowEventBase(Of Ceres.Flow.ExecuteFlowEvent)
+  name.vb: ExecuteFlowEventBase(Of ExecuteFlowEvent)
+  spec.csharp:
+  - uid: Ceres.Flow.ExecuteFlowEventBase`1
+    name: ExecuteFlowEventBase
+    isExternal: true
+    href: Ceres.Flow.ExecuteFlowEventBase-1.html
+  - name: <
+  - uid: Ceres.Flow.ExecuteFlowEvent
+    name: ExecuteFlowEvent
+    isExternal: true
+    href: Ceres.Flow.ExecuteFlowEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Flow.ExecuteFlowEventBase`1
+    name: ExecuteFlowEventBase
+    isExternal: true
+    href: Ceres.Flow.ExecuteFlowEventBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Flow.ExecuteFlowEvent
+    name: ExecuteFlowEvent
+    isExternal: true
+    href: Ceres.Flow.ExecuteFlowEvent.html
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Ceres.Flow.IFlowEvent
+  commentId: T:Ceres.Flow.IFlowEvent
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowEvent.html
+  name: IFlowEvent
+  nameWithType: IFlowEvent
+  fullName: Ceres.Flow.IFlowEvent
+- uid: Ceres.Flow.ExecuteFlowEventBase{Ceres.Flow.ExecuteFlowEvent}.FunctionName
+  commentId: P:Ceres.Flow.ExecuteFlowEventBase{Ceres.Flow.ExecuteFlowEvent}.FunctionName
+  parent: Ceres.Flow.ExecuteFlowEventBase{Ceres.Flow.ExecuteFlowEvent}
+  definition: Ceres.Flow.ExecuteFlowEventBase`1.FunctionName
+  href: Ceres.Flow.ExecuteFlowEventBase-1.html#Ceres_Flow_ExecuteFlowEventBase_1_FunctionName
+  name: FunctionName
+  nameWithType: ExecuteFlowEventBase<ExecuteFlowEvent>.FunctionName
+  fullName: Ceres.Flow.ExecuteFlowEventBase<Ceres.Flow.ExecuteFlowEvent>.FunctionName
+  nameWithType.vb: ExecuteFlowEventBase(Of ExecuteFlowEvent).FunctionName
+  fullName.vb: Ceres.Flow.ExecuteFlowEventBase(Of Ceres.Flow.ExecuteFlowEvent).FunctionName
+- uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.TypeId
+  commentId: M:Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.TypeId
+  parent: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}
+  definition: Ceres.Events.EventBase`1.TypeId
+  name: TypeId()
+  nameWithType: EventBase<ExecuteFlowEvent>.TypeId()
+  fullName: Ceres.Events.EventBase<Ceres.Flow.ExecuteFlowEvent>.TypeId()
+  nameWithType.vb: EventBase(Of ExecuteFlowEvent).TypeId()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Flow.ExecuteFlowEvent).TypeId()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.TypeId
+    name: TypeId
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.TypeId
+    name: TypeId
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.GetPooled
+  commentId: M:Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.GetPooled
+  parent: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}
+  definition: Ceres.Events.EventBase`1.GetPooled
+  name: GetPooled()
+  nameWithType: EventBase<ExecuteFlowEvent>.GetPooled()
+  fullName: Ceres.Events.EventBase<Ceres.Flow.ExecuteFlowEvent>.GetPooled()
+  nameWithType.vb: EventBase(Of ExecuteFlowEvent).GetPooled()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Flow.ExecuteFlowEvent).GetPooled()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.GetPooled
+    name: GetPooled
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.GetPooled
+    name: GetPooled
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Acquire
+  commentId: M:Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Acquire
+  parent: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}
+  definition: Ceres.Events.EventBase`1.Acquire
+  name: Acquire()
+  nameWithType: EventBase<ExecuteFlowEvent>.Acquire()
+  fullName: Ceres.Events.EventBase<Ceres.Flow.ExecuteFlowEvent>.Acquire()
+  nameWithType.vb: EventBase(Of ExecuteFlowEvent).Acquire()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Flow.ExecuteFlowEvent).Acquire()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Acquire
+    name: Acquire
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Acquire
+    name: Acquire
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Dispose
+  commentId: M:Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Dispose
+  parent: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}
+  definition: Ceres.Events.EventBase`1.Dispose
+  name: Dispose()
+  nameWithType: EventBase<ExecuteFlowEvent>.Dispose()
+  fullName: Ceres.Events.EventBase<Ceres.Flow.ExecuteFlowEvent>.Dispose()
+  nameWithType.vb: EventBase(Of ExecuteFlowEvent).Dispose()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Flow.ExecuteFlowEvent).Dispose()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.EventTypeId
+  commentId: P:Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}.EventTypeId
+  parent: Ceres.Events.EventBase{Ceres.Flow.ExecuteFlowEvent}
+  definition: Ceres.Events.EventBase`1.EventTypeId
+  name: EventTypeId
+  nameWithType: EventBase<ExecuteFlowEvent>.EventTypeId
+  fullName: Ceres.Events.EventBase<Ceres.Flow.ExecuteFlowEvent>.EventTypeId
+  nameWithType.vb: EventBase(Of ExecuteFlowEvent).EventTypeId
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Flow.ExecuteFlowEvent).EventTypeId
+- uid: Ceres.Events.EventBase.PreventDefault
+  commentId: M:Ceres.Events.EventBase.PreventDefault
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreventDefault
+  name: PreventDefault()
+  nameWithType: EventBase.PreventDefault()
+  fullName: Ceres.Events.EventBase.PreventDefault()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.PreventDefault
+    name: PreventDefault
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreventDefault
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.PreventDefault
+    name: PreventDefault
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreventDefault
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.StopPropagation
+  commentId: M:Ceres.Events.EventBase.StopPropagation
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopPropagation
+  name: StopPropagation()
+  nameWithType: EventBase.StopPropagation()
+  fullName: Ceres.Events.EventBase.StopPropagation()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.StopPropagation
+    name: StopPropagation
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopPropagation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.StopPropagation
+    name: StopPropagation
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopPropagation
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.StopImmediatePropagation
+  commentId: M:Ceres.Events.EventBase.StopImmediatePropagation
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopImmediatePropagation
+  name: StopImmediatePropagation()
+  nameWithType: EventBase.StopImmediatePropagation()
+  fullName: Ceres.Events.EventBase.StopImmediatePropagation()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.StopImmediatePropagation
+    name: StopImmediatePropagation
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopImmediatePropagation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.StopImmediatePropagation
+    name: StopImmediatePropagation
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopImmediatePropagation
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.TimeSinceStartupMs
+  commentId: M:Ceres.Events.EventBase.TimeSinceStartupMs
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_TimeSinceStartupMs
+  name: TimeSinceStartupMs()
+  nameWithType: EventBase.TimeSinceStartupMs()
+  fullName: Ceres.Events.EventBase.TimeSinceStartupMs()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.TimeSinceStartupMs
+    name: TimeSinceStartupMs
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_TimeSinceStartupMs
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.TimeSinceStartupMs
+    name: TimeSinceStartupMs
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_TimeSinceStartupMs
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.Timestamp
+  commentId: P:Ceres.Events.EventBase.Timestamp
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Timestamp
+  name: Timestamp
+  nameWithType: EventBase.Timestamp
+  fullName: Ceres.Events.EventBase.Timestamp
+- uid: Ceres.Events.EventBase.Propagation
+  commentId: P:Ceres.Events.EventBase.Propagation
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Propagation
+  name: Propagation
+  nameWithType: EventBase.Propagation
+  fullName: Ceres.Events.EventBase.Propagation
+- uid: Ceres.Events.EventBase.PropagationPhase
+  commentId: P:Ceres.Events.EventBase.PropagationPhase
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PropagationPhase
+  name: PropagationPhase
+  nameWithType: EventBase.PropagationPhase
+  fullName: Ceres.Events.EventBase.PropagationPhase
+- uid: Ceres.Events.EventBase.Bubbles
+  commentId: P:Ceres.Events.EventBase.Bubbles
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Bubbles
+  name: Bubbles
+  nameWithType: EventBase.Bubbles
+  fullName: Ceres.Events.EventBase.Bubbles
+- uid: Ceres.Events.EventBase.TricklesDown
+  commentId: P:Ceres.Events.EventBase.TricklesDown
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_TricklesDown
+  name: TricklesDown
+  nameWithType: EventBase.TricklesDown
+  fullName: Ceres.Events.EventBase.TricklesDown
+- uid: Ceres.Events.EventBase.Target
+  commentId: P:Ceres.Events.EventBase.Target
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Target
+  name: Target
+  nameWithType: EventBase.Target
+  fullName: Ceres.Events.EventBase.Target
+- uid: Ceres.Events.EventBase.IsPropagationStopped
+  commentId: P:Ceres.Events.EventBase.IsPropagationStopped
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_IsPropagationStopped
+  name: IsPropagationStopped
+  nameWithType: EventBase.IsPropagationStopped
+  fullName: Ceres.Events.EventBase.IsPropagationStopped
+- uid: Ceres.Events.EventBase.IsImmediatePropagationStopped
+  commentId: P:Ceres.Events.EventBase.IsImmediatePropagationStopped
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_IsImmediatePropagationStopped
+  name: IsImmediatePropagationStopped
+  nameWithType: EventBase.IsImmediatePropagationStopped
+  fullName: Ceres.Events.EventBase.IsImmediatePropagationStopped
+- uid: Ceres.Events.EventBase.IsDefaultPrevented
+  commentId: P:Ceres.Events.EventBase.IsDefaultPrevented
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_IsDefaultPrevented
+  name: IsDefaultPrevented
+  nameWithType: EventBase.IsDefaultPrevented
+  fullName: Ceres.Events.EventBase.IsDefaultPrevented
+- uid: Ceres.Events.EventBase.CurrentTarget
+  commentId: P:Ceres.Events.EventBase.CurrentTarget
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_CurrentTarget
+  name: CurrentTarget
+  nameWithType: EventBase.CurrentTarget
+  fullName: Ceres.Events.EventBase.CurrentTarget
+- uid: Ceres.Events.EventBase.Dispatch
+  commentId: P:Ceres.Events.EventBase.Dispatch
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Dispatch
+  name: Dispatch
+  nameWithType: EventBase.Dispatch
+  fullName: Ceres.Events.EventBase.Dispatch
+- uid: Ceres.Events.EventBase.StopDispatch
+  commentId: P:Ceres.Events.EventBase.StopDispatch
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopDispatch
+  name: StopDispatch
+  nameWithType: EventBase.StopDispatch
+  fullName: Ceres.Events.EventBase.StopDispatch
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.EventBase`1
+  commentId: T:Ceres.Events.EventBase`1
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html
+  name: EventBase<T>
+  nameWithType: EventBase<T>
+  fullName: Ceres.Events.EventBase<T>
+  nameWithType.vb: EventBase(Of T)
+  fullName.vb: Ceres.Events.EventBase(Of T)
+  name.vb: EventBase(Of T)
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Flow.ExecuteFlowEventBase`1
+  commentId: T:Ceres.Flow.ExecuteFlowEventBase`1
+  isExternal: true
+  href: Ceres.Flow.ExecuteFlowEventBase-1.html
+  name: ExecuteFlowEventBase<TEvent>
+  nameWithType: ExecuteFlowEventBase<TEvent>
+  fullName: Ceres.Flow.ExecuteFlowEventBase<TEvent>
+  nameWithType.vb: ExecuteFlowEventBase(Of TEvent)
+  fullName.vb: Ceres.Flow.ExecuteFlowEventBase(Of TEvent)
+  name.vb: ExecuteFlowEventBase(Of TEvent)
+  spec.csharp:
+  - uid: Ceres.Flow.ExecuteFlowEventBase`1
+    name: ExecuteFlowEventBase
+    isExternal: true
+    href: Ceres.Flow.ExecuteFlowEventBase-1.html
+  - name: <
+  - name: TEvent
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Flow.ExecuteFlowEventBase`1
+    name: ExecuteFlowEventBase
+    isExternal: true
+    href: Ceres.Flow.ExecuteFlowEventBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: Ceres.Flow.ExecuteFlowEventBase`1.FunctionName
+  commentId: P:Ceres.Flow.ExecuteFlowEventBase`1.FunctionName
+  isExternal: true
+  href: Ceres.Flow.ExecuteFlowEventBase-1.html#Ceres_Flow_ExecuteFlowEventBase_1_FunctionName
+  name: FunctionName
+  nameWithType: ExecuteFlowEventBase<TEvent>.FunctionName
+  fullName: Ceres.Flow.ExecuteFlowEventBase<TEvent>.FunctionName
+  nameWithType.vb: ExecuteFlowEventBase(Of TEvent).FunctionName
+  fullName.vb: Ceres.Flow.ExecuteFlowEventBase(Of TEvent).FunctionName
+- uid: Ceres.Events.EventBase`1.TypeId
+  commentId: M:Ceres.Events.EventBase`1.TypeId
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  name: TypeId()
+  nameWithType: EventBase<T>.TypeId()
+  fullName: Ceres.Events.EventBase<T>.TypeId()
+  nameWithType.vb: EventBase(Of T).TypeId()
+  fullName.vb: Ceres.Events.EventBase(Of T).TypeId()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.TypeId
+    name: TypeId
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.TypeId
+    name: TypeId
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase`1.GetPooled
+  commentId: M:Ceres.Events.EventBase`1.GetPooled
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  name: GetPooled()
+  nameWithType: EventBase<T>.GetPooled()
+  fullName: Ceres.Events.EventBase<T>.GetPooled()
+  nameWithType.vb: EventBase(Of T).GetPooled()
+  fullName.vb: Ceres.Events.EventBase(Of T).GetPooled()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.GetPooled
+    name: GetPooled
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.GetPooled
+    name: GetPooled
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase`1.Acquire
+  commentId: M:Ceres.Events.EventBase`1.Acquire
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  name: Acquire()
+  nameWithType: EventBase<T>.Acquire()
+  fullName: Ceres.Events.EventBase<T>.Acquire()
+  nameWithType.vb: EventBase(Of T).Acquire()
+  fullName.vb: Ceres.Events.EventBase(Of T).Acquire()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.Acquire
+    name: Acquire
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.Acquire
+    name: Acquire
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase`1.Dispose
+  commentId: M:Ceres.Events.EventBase`1.Dispose
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  name: Dispose()
+  nameWithType: EventBase<T>.Dispose()
+  fullName: Ceres.Events.EventBase<T>.Dispose()
+  nameWithType.vb: EventBase(Of T).Dispose()
+  fullName.vb: Ceres.Events.EventBase(Of T).Dispose()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase`1.EventTypeId
+  commentId: P:Ceres.Events.EventBase`1.EventTypeId
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_EventTypeId
+  name: EventTypeId
+  nameWithType: EventBase<T>.EventTypeId
+  fullName: Ceres.Events.EventBase<T>.EventTypeId
+  nameWithType.vb: EventBase(Of T).EventTypeId
+  fullName.vb: Ceres.Events.EventBase(Of T).EventTypeId
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+- uid: Ceres.Flow.ExecuteFlowEvent.Create*
+  commentId: Overload:Ceres.Flow.ExecuteFlowEvent.Create
+  isExternal: true
+  href: Ceres.Flow.ExecuteFlowEvent.html#Ceres_Flow_ExecuteFlowEvent_Create_System_String_System_Object___
+  name: Create
+  nameWithType: ExecuteFlowEvent.Create
+  fullName: Ceres.Flow.ExecuteFlowEvent.Create
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Flow.ExecuteFlowEvent
+  commentId: T:Ceres.Flow.ExecuteFlowEvent
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.ExecuteFlowEvent.html
+  name: ExecuteFlowEvent
+  nameWithType: ExecuteFlowEvent
+  fullName: Ceres.Flow.ExecuteFlowEvent
+- uid: Ceres.Flow.ExecuteFlowEvent.#ctor*
+  commentId: Overload:Ceres.Flow.ExecuteFlowEvent.#ctor
+  isExternal: true
+  href: Ceres.Flow.ExecuteFlowEvent.html#Ceres_Flow_ExecuteFlowEvent__ctor
+  name: ExecuteFlowEvent
+  nameWithType: ExecuteFlowEvent.ExecuteFlowEvent
+  fullName: Ceres.Flow.ExecuteFlowEvent.ExecuteFlowEvent
+  nameWithType.vb: ExecuteFlowEvent.New
+  fullName.vb: Ceres.Flow.ExecuteFlowEvent.New
+  name.vb: New
+- uid: Ceres.Flow.ExecuteFlowEvent.Args*
+  commentId: Overload:Ceres.Flow.ExecuteFlowEvent.Args
+  isExternal: true
+  href: Ceres.Flow.ExecuteFlowEvent.html#Ceres_Flow_ExecuteFlowEvent_Args
+  name: Args
+  nameWithType: ExecuteFlowEvent.Args
+  fullName: Ceres.Flow.ExecuteFlowEvent.Args

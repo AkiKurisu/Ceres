@@ -1,0 +1,1398 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.PlayerController
+  commentId: T:Ceres.Gameplay.PlayerController
+  id: PlayerController
+  parent: Ceres.Gameplay
+  children:
+  - Ceres.Gameplay.PlayerController.#ctor
+  - Ceres.Gameplay.PlayerController.GetActor
+  - Ceres.Gameplay.PlayerController.GetTActor``1
+  - Ceres.Gameplay.PlayerController.Invoke_GetActor(Ceres.Gameplay.PlayerController)
+  - Ceres.Gameplay.PlayerController.Invoke_IsBot(Ceres.Gameplay.PlayerController)
+  - Ceres.Gameplay.PlayerController.Invoke_SetActor(Ceres.Gameplay.PlayerController,Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.PlayerController.IsBot
+  - Ceres.Gameplay.PlayerController.OnDestroy
+  - Ceres.Gameplay.PlayerController.SetActor(Ceres.Gameplay.Actor)
+  langs:
+  - csharp
+  - vb
+  name: PlayerController
+  nameWithType: PlayerController
+  fullName: Ceres.Gameplay.PlayerController
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: A player controller is an <xref href="Ceres.Gameplay.Actor" data-throw-if-not-resolved="false"></xref> responsible for controller another actor
+  example: []
+  syntax:
+    content: 'public class PlayerController : Actor, IFlowGraphRuntime, IFlowProgramRuntime, IFlowGraphContainer, ICeresGraphContainer'
+    content.vb: Public Class PlayerController Inherits Actor Implements IFlowGraphRuntime, IFlowProgramRuntime, IFlowGraphContainer, ICeresGraphContainer
+  inheritance:
+  - System.Object
+  - Ceres.Flow.FlowGraphObjectBase
+  - Ceres.Flow.FlowGraphObject
+  - Ceres.Gameplay.Actor
+  implements:
+  - Ceres.Flow.IFlowGraphRuntime
+  - Ceres.Flow.IFlowProgramRuntime
+  - Ceres.Flow.IFlowGraphContainer
+  - Ceres.Graph.ICeresGraphContainer
+  inheritedMembers:
+  - Ceres.Gameplay.Actor.advancedSettings
+  - Ceres.Gameplay.Actor.Awake
+  - Ceres.Gameplay.Actor.OnEnable
+  - Ceres.Gameplay.Actor.Start
+  - Ceres.Gameplay.Actor.OnDisable
+  - Ceres.Gameplay.Actor.Update
+  - Ceres.Gameplay.Actor.FixedUpdate
+  - Ceres.Gameplay.Actor.LateUpdate
+  - Ceres.Gameplay.Actor.GetFlowGraph
+  - Ceres.Gameplay.Actor.GetWorld
+  - Ceres.Gameplay.Actor.GetActorHandle
+  - Ceres.Gameplay.Actor.RegisterActor(Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.Actor.UnregisterActor(Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.Actor.GetTController``1
+  - Ceres.Gameplay.Actor.GetController
+  - Ceres.Gameplay.Actor.GetActorComponent``1
+  - Ceres.Gameplay.Actor.GetActorComponent(Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+  - Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{{TComponent}})
+  - Ceres.Gameplay.Actor.Invoke_GetWorld(Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.Actor.Invoke_GetActorHandle(Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.Actor.Invoke_GetController(Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.Actor.Invoke_GetActorComponent(Ceres.Gameplay.Actor,Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+  - Ceres.Flow.FlowGraphObject.CreateRuntimeFlowGraphInstance
+  - Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+  - Ceres.Flow.FlowGraphObject.GetGraphData
+  - Ceres.Flow.FlowGraphObject.Object
+  - Ceres.Flow.FlowGraphObjectBase.CreateRuntimeProgramInstance
+  - Ceres.Flow.FlowGraphObjectBase.ReleaseGraph
+  - Ceres.Flow.FlowGraphObjectBase.Program
+- uid: Ceres.Gameplay.PlayerController.IsBot
+  commentId: M:Ceres.Gameplay.PlayerController.IsBot
+  id: IsBot
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: IsBot()
+  nameWithType: PlayerController.IsBot()
+  fullName: Ceres.Gameplay.PlayerController.IsBot()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public virtual bool IsBot()
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Overridable Function IsBot() As Boolean
+  overload: Ceres.Gameplay.PlayerController.IsBot*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.PlayerController.SetActor(Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.PlayerController.SetActor(Ceres.Gameplay.Actor)
+  id: SetActor(Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: SetActor(Actor)
+  nameWithType: PlayerController.SetActor(Actor)
+  fullName: Ceres.Gameplay.PlayerController.SetActor(Ceres.Gameplay.Actor)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public void SetActor(Actor actor)
+    parameters:
+    - id: actor
+      type: Ceres.Gameplay.Actor
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Sub SetActor(actor As Actor)
+  overload: Ceres.Gameplay.PlayerController.SetActor*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.PlayerController.OnDestroy
+  commentId: M:Ceres.Gameplay.PlayerController.OnDestroy
+  id: OnDestroy
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: OnDestroy()
+  nameWithType: PlayerController.OnDestroy()
+  fullName: Ceres.Gameplay.PlayerController.OnDestroy()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  example: []
+  syntax:
+    content: >-
+      [ImplementableEvent]
+
+      protected override void OnDestroy()
+    content.vb: >-
+      <ImplementableEvent>
+
+      Protected Overrides Sub OnDestroy()
+  overridden: Ceres.Gameplay.Actor.OnDestroy
+  overload: Ceres.Gameplay.PlayerController.OnDestroy*
+  attributes:
+  - type: Ceres.Flow.Annotations.ImplementableEventAttribute
+    ctor: Ceres.Flow.Annotations.ImplementableEventAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.PlayerController.GetTActor``1
+  commentId: M:Ceres.Gameplay.PlayerController.GetTActor``1
+  id: GetTActor``1
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: GetTActor<TActor>()
+  nameWithType: PlayerController.GetTActor<TActor>()
+  fullName: Ceres.Gameplay.PlayerController.GetTActor<TActor>()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: 'public TActor GetTActor<TActor>() where TActor : Actor'
+    typeParameters:
+    - id: TActor
+    return:
+      type: '{TActor}'
+    content.vb: Public Function GetTActor(Of TActor As Actor)() As TActor
+  overload: Ceres.Gameplay.PlayerController.GetTActor*
+  nameWithType.vb: PlayerController.GetTActor(Of TActor)()
+  fullName.vb: Ceres.Gameplay.PlayerController.GetTActor(Of TActor)()
+  name.vb: GetTActor(Of TActor)()
+- uid: Ceres.Gameplay.PlayerController.GetActor
+  commentId: M:Ceres.Gameplay.PlayerController.GetActor
+  id: GetActor
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: GetActor()
+  nameWithType: PlayerController.GetActor()
+  fullName: Ceres.Gameplay.PlayerController.GetActor()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public Actor GetActor()
+    return:
+      type: Ceres.Gameplay.Actor
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Function GetActor() As Actor
+  overload: Ceres.Gameplay.PlayerController.GetActor*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.PlayerController.#ctor
+  commentId: M:Ceres.Gameplay.PlayerController.#ctor
+  id: '#ctor'
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: PlayerController()
+  nameWithType: PlayerController.PlayerController()
+  fullName: Ceres.Gameplay.PlayerController.PlayerController()
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public PlayerController()
+    content.vb: Public Sub New()
+  overload: Ceres.Gameplay.PlayerController.#ctor*
+  nameWithType.vb: PlayerController.New()
+  fullName.vb: Ceres.Gameplay.PlayerController.New()
+  name.vb: New()
+- uid: Ceres.Gameplay.PlayerController.Invoke_IsBot(Ceres.Gameplay.PlayerController)
+  commentId: M:Ceres.Gameplay.PlayerController.Invoke_IsBot(Ceres.Gameplay.PlayerController)
+  id: Invoke_IsBot(Ceres.Gameplay.PlayerController)
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: Invoke_IsBot(PlayerController)
+  nameWithType: PlayerController.Invoke_IsBot(PlayerController)
+  fullName: Ceres.Gameplay.PlayerController.Invoke_IsBot(Ceres.Gameplay.PlayerController)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public static bool Invoke_IsBot(PlayerController value)
+    parameters:
+    - id: value
+      type: Ceres.Gameplay.PlayerController
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Shared Function Invoke_IsBot(value As PlayerController) As Boolean
+  overload: Ceres.Gameplay.PlayerController.Invoke_IsBot*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.PlayerController.Invoke_SetActor(Ceres.Gameplay.PlayerController,Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.PlayerController.Invoke_SetActor(Ceres.Gameplay.PlayerController,Ceres.Gameplay.Actor)
+  id: Invoke_SetActor(Ceres.Gameplay.PlayerController,Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: Invoke_SetActor(PlayerController, Actor)
+  nameWithType: PlayerController.Invoke_SetActor(PlayerController, Actor)
+  fullName: Ceres.Gameplay.PlayerController.Invoke_SetActor(Ceres.Gameplay.PlayerController, Ceres.Gameplay.Actor)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public static void Invoke_SetActor(PlayerController value, Actor value)
+    parameters:
+    - id: value
+      type: Ceres.Gameplay.PlayerController
+    - id: value
+      type: Ceres.Gameplay.Actor
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Shared Sub Invoke_SetActor(value As PlayerController, value As Actor)
+  overload: Ceres.Gameplay.PlayerController.Invoke_SetActor*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.PlayerController.Invoke_GetActor(Ceres.Gameplay.PlayerController)
+  commentId: M:Ceres.Gameplay.PlayerController.Invoke_GetActor(Ceres.Gameplay.PlayerController)
+  id: Invoke_GetActor(Ceres.Gameplay.PlayerController)
+  parent: Ceres.Gameplay.PlayerController
+  langs:
+  - csharp
+  - vb
+  name: Invoke_GetActor(PlayerController)
+  nameWithType: PlayerController.Invoke_GetActor(PlayerController)
+  fullName: Ceres.Gameplay.PlayerController.Invoke_GetActor(Ceres.Gameplay.PlayerController)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public static Actor Invoke_GetActor(PlayerController value)
+    parameters:
+    - id: value
+      type: Ceres.Gameplay.PlayerController
+    return:
+      type: Ceres.Gameplay.Actor
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Shared Function Invoke_GetActor(value As PlayerController) As Actor
+  overload: Ceres.Gameplay.PlayerController.Invoke_GetActor*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+references:
+- uid: Ceres.Gameplay.Actor
+  commentId: T:Ceres.Gameplay.Actor
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html
+  name: Actor
+  nameWithType: Actor
+  fullName: Ceres.Gameplay.Actor
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.FlowGraphObjectBase
+  commentId: T:Ceres.Flow.FlowGraphObjectBase
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphObjectBase.html
+  name: FlowGraphObjectBase
+  nameWithType: FlowGraphObjectBase
+  fullName: Ceres.Flow.FlowGraphObjectBase
+- uid: Ceres.Flow.FlowGraphObject
+  commentId: T:Ceres.Flow.FlowGraphObject
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphObject.html
+  name: FlowGraphObject
+  nameWithType: FlowGraphObject
+  fullName: Ceres.Flow.FlowGraphObject
+- uid: Ceres.Flow.IFlowGraphRuntime
+  commentId: T:Ceres.Flow.IFlowGraphRuntime
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphRuntime.html
+  name: IFlowGraphRuntime
+  nameWithType: IFlowGraphRuntime
+  fullName: Ceres.Flow.IFlowGraphRuntime
+- uid: Ceres.Flow.IFlowProgramRuntime
+  commentId: T:Ceres.Flow.IFlowProgramRuntime
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowProgramRuntime.html
+  name: IFlowProgramRuntime
+  nameWithType: IFlowProgramRuntime
+  fullName: Ceres.Flow.IFlowProgramRuntime
+- uid: Ceres.Flow.IFlowGraphContainer
+  commentId: T:Ceres.Flow.IFlowGraphContainer
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphContainer.html
+  name: IFlowGraphContainer
+  nameWithType: IFlowGraphContainer
+  fullName: Ceres.Flow.IFlowGraphContainer
+- uid: Ceres.Graph.ICeresGraphContainer
+  commentId: T:Ceres.Graph.ICeresGraphContainer
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.ICeresGraphContainer.html
+  name: ICeresGraphContainer
+  nameWithType: ICeresGraphContainer
+  fullName: Ceres.Graph.ICeresGraphContainer
+- uid: Ceres.Gameplay.Actor.advancedSettings
+  commentId: F:Ceres.Gameplay.Actor.advancedSettings
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_advancedSettings
+  name: advancedSettings
+  nameWithType: Actor.advancedSettings
+  fullName: Ceres.Gameplay.Actor.advancedSettings
+- uid: Ceres.Gameplay.Actor.Awake
+  commentId: M:Ceres.Gameplay.Actor.Awake
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Awake
+  name: Awake()
+  nameWithType: Actor.Awake()
+  fullName: Ceres.Gameplay.Actor.Awake()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.Awake
+    name: Awake
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Awake
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.Awake
+    name: Awake
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Awake
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.OnEnable
+  commentId: M:Ceres.Gameplay.Actor.OnEnable
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnEnable
+  name: OnEnable()
+  nameWithType: Actor.OnEnable()
+  fullName: Ceres.Gameplay.Actor.OnEnable()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.OnEnable
+    name: OnEnable
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnEnable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.OnEnable
+    name: OnEnable
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnEnable
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.Start
+  commentId: M:Ceres.Gameplay.Actor.Start
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Start
+  name: Start()
+  nameWithType: Actor.Start()
+  fullName: Ceres.Gameplay.Actor.Start()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.Start
+    name: Start
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Start
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.Start
+    name: Start
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Start
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.OnDisable
+  commentId: M:Ceres.Gameplay.Actor.OnDisable
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnDisable
+  name: OnDisable()
+  nameWithType: Actor.OnDisable()
+  fullName: Ceres.Gameplay.Actor.OnDisable()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.OnDisable
+    name: OnDisable
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnDisable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.OnDisable
+    name: OnDisable
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnDisable
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.Update
+  commentId: M:Ceres.Gameplay.Actor.Update
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Update
+  name: Update()
+  nameWithType: Actor.Update()
+  fullName: Ceres.Gameplay.Actor.Update()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.Update
+    name: Update
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Update
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.Update
+    name: Update
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Update
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.FixedUpdate
+  commentId: M:Ceres.Gameplay.Actor.FixedUpdate
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_FixedUpdate
+  name: FixedUpdate()
+  nameWithType: Actor.FixedUpdate()
+  fullName: Ceres.Gameplay.Actor.FixedUpdate()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.FixedUpdate
+    name: FixedUpdate
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_FixedUpdate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.FixedUpdate
+    name: FixedUpdate
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_FixedUpdate
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.LateUpdate
+  commentId: M:Ceres.Gameplay.Actor.LateUpdate
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_LateUpdate
+  name: LateUpdate()
+  nameWithType: Actor.LateUpdate()
+  fullName: Ceres.Gameplay.Actor.LateUpdate()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.LateUpdate
+    name: LateUpdate
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_LateUpdate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.LateUpdate
+    name: LateUpdate
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_LateUpdate
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.GetFlowGraph
+  commentId: M:Ceres.Gameplay.Actor.GetFlowGraph
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetFlowGraph
+  name: GetFlowGraph()
+  nameWithType: Actor.GetFlowGraph()
+  fullName: Ceres.Gameplay.Actor.GetFlowGraph()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetFlowGraph
+    name: GetFlowGraph
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetFlowGraph
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetFlowGraph
+    name: GetFlowGraph
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetFlowGraph
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.GetWorld
+  commentId: M:Ceres.Gameplay.Actor.GetWorld
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetWorld
+  name: GetWorld()
+  nameWithType: Actor.GetWorld()
+  fullName: Ceres.Gameplay.Actor.GetWorld()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetWorld
+    name: GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetWorld
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetWorld
+    name: GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetWorld
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.GetActorHandle
+  commentId: M:Ceres.Gameplay.Actor.GetActorHandle
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorHandle
+  name: GetActorHandle()
+  nameWithType: Actor.GetActorHandle()
+  fullName: Ceres.Gameplay.Actor.GetActorHandle()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetActorHandle
+    name: GetActorHandle
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorHandle
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetActorHandle
+    name: GetActorHandle
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorHandle
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.RegisterActor(Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.Actor.RegisterActor(Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_RegisterActor_Ceres_Gameplay_Actor_
+  name: RegisterActor(Actor)
+  nameWithType: Actor.RegisterActor(Actor)
+  fullName: Ceres.Gameplay.Actor.RegisterActor(Ceres.Gameplay.Actor)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.RegisterActor(Ceres.Gameplay.Actor)
+    name: RegisterActor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_RegisterActor_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.RegisterActor(Ceres.Gameplay.Actor)
+    name: RegisterActor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_RegisterActor_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+- uid: Ceres.Gameplay.Actor.UnregisterActor(Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.Actor.UnregisterActor(Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_UnregisterActor_Ceres_Gameplay_Actor_
+  name: UnregisterActor(Actor)
+  nameWithType: Actor.UnregisterActor(Actor)
+  fullName: Ceres.Gameplay.Actor.UnregisterActor(Ceres.Gameplay.Actor)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.UnregisterActor(Ceres.Gameplay.Actor)
+    name: UnregisterActor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_UnregisterActor_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.UnregisterActor(Ceres.Gameplay.Actor)
+    name: UnregisterActor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_UnregisterActor_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+- uid: Ceres.Gameplay.Actor.GetTController``1
+  commentId: M:Ceres.Gameplay.Actor.GetTController``1
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetTController__1
+  name: GetTController<TController>()
+  nameWithType: Actor.GetTController<TController>()
+  fullName: Ceres.Gameplay.Actor.GetTController<TController>()
+  nameWithType.vb: Actor.GetTController(Of TController)()
+  fullName.vb: Ceres.Gameplay.Actor.GetTController(Of TController)()
+  name.vb: GetTController(Of TController)()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetTController``1
+    name: GetTController
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetTController__1
+  - name: <
+  - name: TController
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetTController``1
+    name: GetTController
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetTController__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TController
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.GetController
+  commentId: M:Ceres.Gameplay.Actor.GetController
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetController
+  name: GetController()
+  nameWithType: Actor.GetController()
+  fullName: Ceres.Gameplay.Actor.GetController()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetController
+    name: GetController
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetController
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetController
+    name: GetController
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetController
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.GetActorComponent``1
+  commentId: M:Ceres.Gameplay.Actor.GetActorComponent``1
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponent__1
+  name: GetActorComponent<TComponent>()
+  nameWithType: Actor.GetActorComponent<TComponent>()
+  fullName: Ceres.Gameplay.Actor.GetActorComponent<TComponent>()
+  nameWithType.vb: Actor.GetActorComponent(Of TComponent)()
+  fullName.vb: Ceres.Gameplay.Actor.GetActorComponent(Of TComponent)()
+  name.vb: GetActorComponent(Of TComponent)()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetActorComponent``1
+    name: GetActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponent__1
+  - name: <
+  - name: TComponent
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetActorComponent``1
+    name: GetActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponent__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TComponent
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Actor.GetActorComponent(Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+  commentId: M:Ceres.Gameplay.Actor.GetActorComponent(Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponent_Ceres_Serialization_SerializedType_Ceres_Gameplay_ActorComponent__
+  name: GetActorComponent(SerializedType<ActorComponent>)
+  nameWithType: Actor.GetActorComponent(SerializedType<ActorComponent>)
+  fullName: Ceres.Gameplay.Actor.GetActorComponent(Ceres.Serialization.SerializedType<Ceres.Gameplay.ActorComponent>)
+  nameWithType.vb: Actor.GetActorComponent(SerializedType(Of ActorComponent))
+  fullName.vb: Ceres.Gameplay.Actor.GetActorComponent(Ceres.Serialization.SerializedType(Of Ceres.Gameplay.ActorComponent))
+  name.vb: GetActorComponent(SerializedType(Of ActorComponent))
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetActorComponent(Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+    name: GetActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponent_Ceres_Serialization_SerializedType_Ceres_Gameplay_ActorComponent__
+  - name: (
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: <
+  - uid: Ceres.Gameplay.ActorComponent
+    name: ActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetActorComponent(Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+    name: GetActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponent_Ceres_Serialization_SerializedType_Ceres_Gameplay_ActorComponent__
+  - name: (
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.ActorComponent
+    name: ActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html
+  - name: )
+  - name: )
+- uid: Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{{TComponent}})
+  commentId: M:Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{``0})
+  parent: Ceres.Gameplay.Actor
+  definition: Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{``0})
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponents__1_System_Collections_Generic_List___0__
+  name: GetActorComponents<TComponent>(List<TComponent>)
+  nameWithType: Actor.GetActorComponents<TComponent>(List<TComponent>)
+  fullName: Ceres.Gameplay.Actor.GetActorComponents<TComponent>(System.Collections.Generic.List<TComponent>)
+  nameWithType.vb: Actor.GetActorComponents(Of TComponent)(List(Of TComponent))
+  fullName.vb: Ceres.Gameplay.Actor.GetActorComponents(Of TComponent)(System.Collections.Generic.List(Of TComponent))
+  name.vb: GetActorComponents(Of TComponent)(List(Of TComponent))
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{``0})
+    name: GetActorComponents
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponents__1_System_Collections_Generic_List___0__
+  - name: <
+  - name: TComponent
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: TComponent
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{``0})
+    name: GetActorComponents
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponents__1_System_Collections_Generic_List___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TComponent
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TComponent
+  - name: )
+  - name: )
+- uid: Ceres.Gameplay.Actor.Invoke_GetWorld(Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.Actor.Invoke_GetWorld(Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetWorld_Ceres_Gameplay_Actor_
+  name: Invoke_GetWorld(Actor)
+  nameWithType: Actor.Invoke_GetWorld(Actor)
+  fullName: Ceres.Gameplay.Actor.Invoke_GetWorld(Ceres.Gameplay.Actor)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.Invoke_GetWorld(Ceres.Gameplay.Actor)
+    name: Invoke_GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetWorld_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.Invoke_GetWorld(Ceres.Gameplay.Actor)
+    name: Invoke_GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetWorld_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+- uid: Ceres.Gameplay.Actor.Invoke_GetActorHandle(Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.Actor.Invoke_GetActorHandle(Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetActorHandle_Ceres_Gameplay_Actor_
+  name: Invoke_GetActorHandle(Actor)
+  nameWithType: Actor.Invoke_GetActorHandle(Actor)
+  fullName: Ceres.Gameplay.Actor.Invoke_GetActorHandle(Ceres.Gameplay.Actor)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.Invoke_GetActorHandle(Ceres.Gameplay.Actor)
+    name: Invoke_GetActorHandle
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetActorHandle_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.Invoke_GetActorHandle(Ceres.Gameplay.Actor)
+    name: Invoke_GetActorHandle
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetActorHandle_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+- uid: Ceres.Gameplay.Actor.Invoke_GetController(Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.Actor.Invoke_GetController(Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetController_Ceres_Gameplay_Actor_
+  name: Invoke_GetController(Actor)
+  nameWithType: Actor.Invoke_GetController(Actor)
+  fullName: Ceres.Gameplay.Actor.Invoke_GetController(Ceres.Gameplay.Actor)
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.Invoke_GetController(Ceres.Gameplay.Actor)
+    name: Invoke_GetController
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetController_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.Invoke_GetController(Ceres.Gameplay.Actor)
+    name: Invoke_GetController
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetController_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+- uid: Ceres.Gameplay.Actor.Invoke_GetActorComponent(Ceres.Gameplay.Actor,Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+  commentId: M:Ceres.Gameplay.Actor.Invoke_GetActorComponent(Ceres.Gameplay.Actor,Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetActorComponent_Ceres_Gameplay_Actor_Ceres_Serialization_SerializedType_Ceres_Gameplay_ActorComponent__
+  name: Invoke_GetActorComponent(Actor, SerializedType<ActorComponent>)
+  nameWithType: Actor.Invoke_GetActorComponent(Actor, SerializedType<ActorComponent>)
+  fullName: Ceres.Gameplay.Actor.Invoke_GetActorComponent(Ceres.Gameplay.Actor, Ceres.Serialization.SerializedType<Ceres.Gameplay.ActorComponent>)
+  nameWithType.vb: Actor.Invoke_GetActorComponent(Actor, SerializedType(Of ActorComponent))
+  fullName.vb: Ceres.Gameplay.Actor.Invoke_GetActorComponent(Ceres.Gameplay.Actor, Ceres.Serialization.SerializedType(Of Ceres.Gameplay.ActorComponent))
+  name.vb: Invoke_GetActorComponent(Actor, SerializedType(Of ActorComponent))
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.Invoke_GetActorComponent(Ceres.Gameplay.Actor,Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+    name: Invoke_GetActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetActorComponent_Ceres_Gameplay_Actor_Ceres_Serialization_SerializedType_Ceres_Gameplay_ActorComponent__
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: <
+  - uid: Ceres.Gameplay.ActorComponent
+    name: ActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.Invoke_GetActorComponent(Ceres.Gameplay.Actor,Ceres.Serialization.SerializedType{Ceres.Gameplay.ActorComponent})
+    name: Invoke_GetActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_Invoke_GetActorComponent_Ceres_Gameplay_Actor_Ceres_Serialization_SerializedType_Ceres_Gameplay_ActorComponent__
+  - name: (
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Serialization.SerializedType`1
+    name: SerializedType
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.ActorComponent
+    name: ActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html
+  - name: )
+  - name: )
+- uid: Ceres.Flow.FlowGraphObject.CreateRuntimeFlowGraphInstance
+  commentId: M:Ceres.Flow.FlowGraphObject.CreateRuntimeFlowGraphInstance
+  parent: Ceres.Flow.FlowGraphObject
+  isExternal: true
+  name: CreateRuntimeFlowGraphInstance()
+  nameWithType: FlowGraphObject.CreateRuntimeFlowGraphInstance()
+  fullName: Ceres.Flow.FlowGraphObject.CreateRuntimeFlowGraphInstance()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphObject.CreateRuntimeFlowGraphInstance
+    name: CreateRuntimeFlowGraphInstance
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphObject.CreateRuntimeFlowGraphInstance
+    name: CreateRuntimeFlowGraphInstance
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+  commentId: M:Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+  parent: Ceres.Flow.FlowGraphObject
+  isExternal: true
+  name: SetGraphData(CeresGraphData)
+  nameWithType: FlowGraphObject.SetGraphData(CeresGraphData)
+  fullName: Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+    name: SetGraphData
+    isExternal: true
+  - name: (
+  - uid: Ceres.Graph.CeresGraphData
+    name: CeresGraphData
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+    name: SetGraphData
+    isExternal: true
+  - name: (
+  - uid: Ceres.Graph.CeresGraphData
+    name: CeresGraphData
+    isExternal: true
+  - name: )
+- uid: Ceres.Flow.FlowGraphObject.GetGraphData
+  commentId: M:Ceres.Flow.FlowGraphObject.GetGraphData
+  parent: Ceres.Flow.FlowGraphObject
+  isExternal: true
+  name: GetGraphData()
+  nameWithType: FlowGraphObject.GetGraphData()
+  fullName: Ceres.Flow.FlowGraphObject.GetGraphData()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphObject.GetGraphData
+    name: GetGraphData
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphObject.GetGraphData
+    name: GetGraphData
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphObject.Object
+  commentId: P:Ceres.Flow.FlowGraphObject.Object
+  parent: Ceres.Flow.FlowGraphObject
+  isExternal: true
+  name: Object
+  nameWithType: FlowGraphObject.Object
+  fullName: Ceres.Flow.FlowGraphObject.Object
+- uid: Ceres.Flow.FlowGraphObjectBase.CreateRuntimeProgramInstance
+  commentId: M:Ceres.Flow.FlowGraphObjectBase.CreateRuntimeProgramInstance
+  parent: Ceres.Flow.FlowGraphObjectBase
+  isExternal: true
+  href: Ceres.Flow.FlowGraphObjectBase.html#Ceres_Flow_FlowGraphObjectBase_CreateRuntimeProgramInstance
+  name: CreateRuntimeProgramInstance()
+  nameWithType: FlowGraphObjectBase.CreateRuntimeProgramInstance()
+  fullName: Ceres.Flow.FlowGraphObjectBase.CreateRuntimeProgramInstance()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphObjectBase.CreateRuntimeProgramInstance
+    name: CreateRuntimeProgramInstance
+    isExternal: true
+    href: Ceres.Flow.FlowGraphObjectBase.html#Ceres_Flow_FlowGraphObjectBase_CreateRuntimeProgramInstance
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphObjectBase.CreateRuntimeProgramInstance
+    name: CreateRuntimeProgramInstance
+    isExternal: true
+    href: Ceres.Flow.FlowGraphObjectBase.html#Ceres_Flow_FlowGraphObjectBase_CreateRuntimeProgramInstance
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphObjectBase.ReleaseGraph
+  commentId: M:Ceres.Flow.FlowGraphObjectBase.ReleaseGraph
+  parent: Ceres.Flow.FlowGraphObjectBase
+  isExternal: true
+  href: Ceres.Flow.FlowGraphObjectBase.html#Ceres_Flow_FlowGraphObjectBase_ReleaseGraph
+  name: ReleaseGraph()
+  nameWithType: FlowGraphObjectBase.ReleaseGraph()
+  fullName: Ceres.Flow.FlowGraphObjectBase.ReleaseGraph()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphObjectBase.ReleaseGraph
+    name: ReleaseGraph
+    isExternal: true
+    href: Ceres.Flow.FlowGraphObjectBase.html#Ceres_Flow_FlowGraphObjectBase_ReleaseGraph
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphObjectBase.ReleaseGraph
+    name: ReleaseGraph
+    isExternal: true
+    href: Ceres.Flow.FlowGraphObjectBase.html#Ceres_Flow_FlowGraphObjectBase_ReleaseGraph
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphObjectBase.Program
+  commentId: P:Ceres.Flow.FlowGraphObjectBase.Program
+  parent: Ceres.Flow.FlowGraphObjectBase
+  isExternal: true
+  href: Ceres.Flow.FlowGraphObjectBase.html#Ceres_Flow_FlowGraphObjectBase_Program
+  name: Program
+  nameWithType: FlowGraphObjectBase.Program
+  fullName: Ceres.Flow.FlowGraphObjectBase.Program
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{``0})
+  commentId: M:Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{``0})
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponents__1_System_Collections_Generic_List___0__
+  name: GetActorComponents<TComponent>(List<TComponent>)
+  nameWithType: Actor.GetActorComponents<TComponent>(List<TComponent>)
+  fullName: Ceres.Gameplay.Actor.GetActorComponents<TComponent>(System.Collections.Generic.List<TComponent>)
+  nameWithType.vb: Actor.GetActorComponents(Of TComponent)(List(Of TComponent))
+  fullName.vb: Ceres.Gameplay.Actor.GetActorComponents(Of TComponent)(System.Collections.Generic.List(Of TComponent))
+  name.vb: GetActorComponents(Of TComponent)(List(Of TComponent))
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{``0})
+    name: GetActorComponents
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponents__1_System_Collections_Generic_List___0__
+  - name: <
+  - name: TComponent
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: TComponent
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.GetActorComponents``1(System.Collections.Generic.List{``0})
+    name: GetActorComponents
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_GetActorComponents__1_System_Collections_Generic_List___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TComponent
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TComponent
+  - name: )
+  - name: )
+- uid: Ceres.Gameplay.PlayerController.IsBot*
+  commentId: Overload:Ceres.Gameplay.PlayerController.IsBot
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController_IsBot
+  name: IsBot
+  nameWithType: PlayerController.IsBot
+  fullName: Ceres.Gameplay.PlayerController.IsBot
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.PlayerController.SetActor*
+  commentId: Overload:Ceres.Gameplay.PlayerController.SetActor
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController_SetActor_Ceres_Gameplay_Actor_
+  name: SetActor
+  nameWithType: PlayerController.SetActor
+  fullName: Ceres.Gameplay.PlayerController.SetActor
+- uid: Ceres.Gameplay.Actor.OnDestroy
+  commentId: M:Ceres.Gameplay.Actor.OnDestroy
+  parent: Ceres.Gameplay.Actor
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnDestroy
+  name: OnDestroy()
+  nameWithType: Actor.OnDestroy()
+  fullName: Ceres.Gameplay.Actor.OnDestroy()
+  spec.csharp:
+  - uid: Ceres.Gameplay.Actor.OnDestroy
+    name: OnDestroy
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnDestroy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.Actor.OnDestroy
+    name: OnDestroy
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html#Ceres_Gameplay_Actor_OnDestroy
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.PlayerController.OnDestroy*
+  commentId: Overload:Ceres.Gameplay.PlayerController.OnDestroy
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController_OnDestroy
+  name: OnDestroy
+  nameWithType: PlayerController.OnDestroy
+  fullName: Ceres.Gameplay.PlayerController.OnDestroy
+- uid: Ceres.Gameplay.PlayerController.GetTActor*
+  commentId: Overload:Ceres.Gameplay.PlayerController.GetTActor
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController_GetTActor__1
+  name: GetTActor
+  nameWithType: PlayerController.GetTActor
+  fullName: Ceres.Gameplay.PlayerController.GetTActor
+- uid: '{TActor}'
+  commentId: '!:TActor'
+  definition: TActor
+  name: TActor
+  nameWithType: TActor
+  fullName: TActor
+- uid: TActor
+  commentId: '!:TActor'
+  name: TActor
+  nameWithType: TActor
+  fullName: TActor
+- uid: Ceres.Gameplay.PlayerController.GetActor*
+  commentId: Overload:Ceres.Gameplay.PlayerController.GetActor
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController_GetActor
+  name: GetActor
+  nameWithType: PlayerController.GetActor
+  fullName: Ceres.Gameplay.PlayerController.GetActor
+- uid: Ceres.Gameplay.PlayerController.#ctor*
+  commentId: Overload:Ceres.Gameplay.PlayerController.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController__ctor
+  name: PlayerController
+  nameWithType: PlayerController.PlayerController
+  fullName: Ceres.Gameplay.PlayerController.PlayerController
+  nameWithType.vb: PlayerController.New
+  fullName.vb: Ceres.Gameplay.PlayerController.New
+  name.vb: New
+- uid: Ceres.Gameplay.PlayerController.Invoke_IsBot*
+  commentId: Overload:Ceres.Gameplay.PlayerController.Invoke_IsBot
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController_Invoke_IsBot_Ceres_Gameplay_PlayerController_
+  name: Invoke_IsBot
+  nameWithType: PlayerController.Invoke_IsBot
+  fullName: Ceres.Gameplay.PlayerController.Invoke_IsBot
+- uid: Ceres.Gameplay.PlayerController
+  commentId: T:Ceres.Gameplay.PlayerController
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html
+  name: PlayerController
+  nameWithType: PlayerController
+  fullName: Ceres.Gameplay.PlayerController
+- uid: Ceres.Gameplay.PlayerController.Invoke_SetActor*
+  commentId: Overload:Ceres.Gameplay.PlayerController.Invoke_SetActor
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController_Invoke_SetActor_Ceres_Gameplay_PlayerController_Ceres_Gameplay_Actor_
+  name: Invoke_SetActor
+  nameWithType: PlayerController.Invoke_SetActor
+  fullName: Ceres.Gameplay.PlayerController.Invoke_SetActor
+- uid: Ceres.Gameplay.PlayerController.Invoke_GetActor*
+  commentId: Overload:Ceres.Gameplay.PlayerController.Invoke_GetActor
+  isExternal: true
+  href: Ceres.Gameplay.PlayerController.html#Ceres_Gameplay_PlayerController_Invoke_GetActor_Ceres_Gameplay_PlayerController_
+  name: Invoke_GetActor
+  nameWithType: PlayerController.Invoke_GetActor
+  fullName: Ceres.Gameplay.PlayerController.Invoke_GetActor

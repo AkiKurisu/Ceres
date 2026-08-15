@@ -1,0 +1,282 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Mod.IModLoader
+  commentId: T:Ceres.Gameplay.Mod.IModLoader
+  id: IModLoader
+  parent: Ceres.Gameplay.Mod
+  children:
+  - Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync(System.Collections.Generic.List{Ceres.Gameplay.Mod.ModInfo})
+  langs:
+  - csharp
+  - vb
+  name: IModLoader
+  nameWithType: IModLoader
+  fullName: Ceres.Gameplay.Mod.IModLoader
+  type: Interface
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Mod
+  syntax:
+    content: public interface IModLoader
+    content.vb: Public Interface IModLoader
+  derivedClasses:
+  - Ceres.Gameplay.Mod.ModLoader
+- uid: Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync(System.Collections.Generic.List{Ceres.Gameplay.Mod.ModInfo})
+  commentId: M:Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync(System.Collections.Generic.List{Ceres.Gameplay.Mod.ModInfo})
+  id: LoadAllModsAsync(System.Collections.Generic.List{Ceres.Gameplay.Mod.ModInfo})
+  parent: Ceres.Gameplay.Mod.IModLoader
+  langs:
+  - csharp
+  - vb
+  name: LoadAllModsAsync(List<ModInfo>)
+  nameWithType: IModLoader.LoadAllModsAsync(List<ModInfo>)
+  fullName: Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync(System.Collections.Generic.List<Ceres.Gameplay.Mod.ModInfo>)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Mod
+  syntax:
+    content: UniTask<bool> LoadAllModsAsync(List<ModInfo> modInfos)
+    parameters:
+    - id: modInfos
+      type: System.Collections.Generic.List{Ceres.Gameplay.Mod.ModInfo}
+    return:
+      type: Cysharp.Threading.Tasks.UniTask{System.Boolean}
+    content.vb: Function LoadAllModsAsync(modInfos As List(Of ModInfo)) As UniTask(Of Boolean)
+  overload: Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync*
+  nameWithType.vb: IModLoader.LoadAllModsAsync(List(Of ModInfo))
+  fullName.vb: Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync(System.Collections.Generic.List(Of Ceres.Gameplay.Mod.ModInfo))
+  name.vb: LoadAllModsAsync(List(Of ModInfo))
+references:
+- uid: Ceres.Gameplay.Mod
+  commentId: N:Ceres.Gameplay.Mod
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Mod
+  nameWithType: Ceres.Gameplay.Mod
+  fullName: Ceres.Gameplay.Mod
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Mod
+    name: Mod
+    isExternal: true
+    href: Ceres.Gameplay.Mod.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Mod
+    name: Mod
+    isExternal: true
+    href: Ceres.Gameplay.Mod.html
+- uid: Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync*
+  commentId: Overload:Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync
+  isExternal: true
+  href: Ceres.Gameplay.Mod.IModLoader.html#Ceres_Gameplay_Mod_IModLoader_LoadAllModsAsync_System_Collections_Generic_List_Ceres_Gameplay_Mod_ModInfo__
+  name: LoadAllModsAsync
+  nameWithType: IModLoader.LoadAllModsAsync
+  fullName: Ceres.Gameplay.Mod.IModLoader.LoadAllModsAsync
+- uid: System.Collections.Generic.List{Ceres.Gameplay.Mod.ModInfo}
+  commentId: T:System.Collections.Generic.List{Ceres.Gameplay.Mod.ModInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ModInfo>
+  nameWithType: List<ModInfo>
+  fullName: System.Collections.Generic.List<Ceres.Gameplay.Mod.ModInfo>
+  nameWithType.vb: List(Of ModInfo)
+  fullName.vb: System.Collections.Generic.List(Of Ceres.Gameplay.Mod.ModInfo)
+  name.vb: List(Of ModInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Ceres.Gameplay.Mod.ModInfo
+    name: ModInfo
+    isExternal: true
+    href: Ceres.Gameplay.Mod.ModInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.Mod.ModInfo
+    name: ModInfo
+    isExternal: true
+    href: Ceres.Gameplay.Mod.ModInfo.html
+  - name: )
+- uid: Cysharp.Threading.Tasks.UniTask{System.Boolean}
+  commentId: T:Cysharp.Threading.Tasks.UniTask{System.Boolean}
+  parent: Cysharp.Threading.Tasks
+  definition: Cysharp.Threading.Tasks.UniTask`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: UniTask<bool>
+  nameWithType: UniTask<bool>
+  fullName: Cysharp.Threading.Tasks.UniTask<bool>
+  nameWithType.vb: UniTask(Of Boolean)
+  fullName.vb: Cysharp.Threading.Tasks.UniTask(Of Boolean)
+  name.vb: UniTask(Of Boolean)
+  spec.csharp:
+  - uid: Cysharp.Threading.Tasks.UniTask`1
+    name: UniTask
+    isExternal: true
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: Cysharp.Threading.Tasks.UniTask`1
+    name: UniTask
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Cysharp.Threading.Tasks.UniTask`1
+  commentId: T:Cysharp.Threading.Tasks.UniTask`1
+  isExternal: true
+  name: UniTask<T>
+  nameWithType: UniTask<T>
+  fullName: Cysharp.Threading.Tasks.UniTask<T>
+  nameWithType.vb: UniTask(Of T)
+  fullName.vb: Cysharp.Threading.Tasks.UniTask(Of T)
+  name.vb: UniTask(Of T)
+  spec.csharp:
+  - uid: Cysharp.Threading.Tasks.UniTask`1
+    name: UniTask
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Cysharp.Threading.Tasks.UniTask`1
+    name: UniTask
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Cysharp.Threading.Tasks
+  commentId: N:Cysharp.Threading.Tasks
+  isExternal: true
+  name: Cysharp.Threading.Tasks
+  nameWithType: Cysharp.Threading.Tasks
+  fullName: Cysharp.Threading.Tasks
+  spec.csharp:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true

@@ -1,0 +1,198 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.PropagationPhase
+  commentId: T:Ceres.Events.PropagationPhase
+  id: PropagationPhase
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.PropagationPhase.AtTarget
+  - Ceres.Events.PropagationPhase.BubbleUp
+  - Ceres.Events.PropagationPhase.DefaultAction
+  - Ceres.Events.PropagationPhase.DefaultActionAtTarget
+  - Ceres.Events.PropagationPhase.None
+  - Ceres.Events.PropagationPhase.TrickleDown
+  langs:
+  - csharp
+  - vb
+  name: PropagationPhase
+  nameWithType: PropagationPhase
+  fullName: Ceres.Events.PropagationPhase
+  type: Enum
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The propagation phases of an event.
+  remarks: >-
+    >When an element receives an event, the event propagates from the panel's root element to the target element.
+
+
+    In the TrickleDown phase, the event is sent from the panel's root element to the target element's parent.
+
+
+    In the AtTarget phase, the event is sent to the target element.
+
+
+    In the BubbleUp phase, the event is sent from the target element's parent back to the panel's root element.
+
+
+    In the last phase, the DefaultAction phase, the event is resent to the target element.
+  example: []
+  syntax:
+    content: public enum PropagationPhase
+    content.vb: Public Enum PropagationPhase
+- uid: Ceres.Events.PropagationPhase.None
+  commentId: F:Ceres.Events.PropagationPhase.None
+  id: None
+  parent: Ceres.Events.PropagationPhase
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: PropagationPhase.None
+  fullName: Ceres.Events.PropagationPhase.None
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The event is not propagated.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Ceres.Events.PropagationPhase
+- uid: Ceres.Events.PropagationPhase.TrickleDown
+  commentId: F:Ceres.Events.PropagationPhase.TrickleDown
+  id: TrickleDown
+  parent: Ceres.Events.PropagationPhase
+  langs:
+  - csharp
+  - vb
+  name: TrickleDown
+  nameWithType: PropagationPhase.TrickleDown
+  fullName: Ceres.Events.PropagationPhase.TrickleDown
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The event is sent from the panel's root element to the target element's parent.
+  example: []
+  syntax:
+    content: TrickleDown = 1
+    return:
+      type: Ceres.Events.PropagationPhase
+- uid: Ceres.Events.PropagationPhase.AtTarget
+  commentId: F:Ceres.Events.PropagationPhase.AtTarget
+  id: AtTarget
+  parent: Ceres.Events.PropagationPhase
+  langs:
+  - csharp
+  - vb
+  name: AtTarget
+  nameWithType: PropagationPhase.AtTarget
+  fullName: Ceres.Events.PropagationPhase.AtTarget
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The event is sent to the target.
+  example: []
+  syntax:
+    content: AtTarget = 2
+    return:
+      type: Ceres.Events.PropagationPhase
+- uid: Ceres.Events.PropagationPhase.DefaultActionAtTarget
+  commentId: F:Ceres.Events.PropagationPhase.DefaultActionAtTarget
+  id: DefaultActionAtTarget
+  parent: Ceres.Events.PropagationPhase
+  langs:
+  - csharp
+  - vb
+  name: DefaultActionAtTarget
+  nameWithType: PropagationPhase.DefaultActionAtTarget
+  fullName: Ceres.Events.PropagationPhase.DefaultActionAtTarget
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The event is sent to the target element, which can then execute its default actions for the event at the target phase. Event handlers do not receive the event in this phase. Instead, ExecuteDefaultActionAtTarget is called on the target element.
+  example: []
+  syntax:
+    content: DefaultActionAtTarget = 5
+    return:
+      type: Ceres.Events.PropagationPhase
+- uid: Ceres.Events.PropagationPhase.BubbleUp
+  commentId: F:Ceres.Events.PropagationPhase.BubbleUp
+  id: BubbleUp
+  parent: Ceres.Events.PropagationPhase
+  langs:
+  - csharp
+  - vb
+  name: BubbleUp
+  nameWithType: PropagationPhase.BubbleUp
+  fullName: Ceres.Events.PropagationPhase.BubbleUp
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The event is sent from the target element's parent back to the panel's root element.
+  example: []
+  syntax:
+    content: BubbleUp = 3
+    return:
+      type: Ceres.Events.PropagationPhase
+- uid: Ceres.Events.PropagationPhase.DefaultAction
+  commentId: F:Ceres.Events.PropagationPhase.DefaultAction
+  id: DefaultAction
+  parent: Ceres.Events.PropagationPhase
+  langs:
+  - csharp
+  - vb
+  name: DefaultAction
+  nameWithType: PropagationPhase.DefaultAction
+  fullName: Ceres.Events.PropagationPhase.DefaultAction
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The event is sent to the target element, which can then execute its final default actions for the event. Event handlers do not receive the event in this phase. Instead, ExecuteDefaultAction is called on the target element.
+  example: []
+  syntax:
+    content: DefaultAction = 4
+    return:
+      type: Ceres.Events.PropagationPhase
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.PropagationPhase
+  commentId: T:Ceres.Events.PropagationPhase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.PropagationPhase.html
+  name: PropagationPhase
+  nameWithType: PropagationPhase
+  fullName: Ceres.Events.PropagationPhase

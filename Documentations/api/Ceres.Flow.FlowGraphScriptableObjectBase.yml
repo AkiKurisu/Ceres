@@ -1,0 +1,464 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase
+  commentId: T:Ceres.Flow.FlowGraphScriptableObjectBase
+  id: FlowGraphScriptableObjectBase
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.FlowGraphScriptableObjectBase.#ctor
+  - Ceres.Flow.FlowGraphScriptableObjectBase.CreateExecutableProgram
+  - Ceres.Flow.FlowGraphScriptableObjectBase.GetFlowGraph
+  - Ceres.Flow.FlowGraphScriptableObjectBase.GetGraphData
+  - Ceres.Flow.FlowGraphScriptableObjectBase.Object
+  - Ceres.Flow.FlowGraphScriptableObjectBase.SetGraphData(Ceres.Graph.CeresGraphData)
+  - Ceres.Flow.FlowGraphScriptableObjectBase.generatedRuntimeInfo
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphScriptableObjectBase
+  nameWithType: FlowGraphScriptableObjectBase
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Base class for <xref href="UnityEngine.ScriptableObject" data-throw-if-not-resolved="false"></xref> contains Flow Graph.
+  example: []
+  syntax:
+    content: >-
+      [GenerateFlow(GenerateRuntime = false, GenerateImplementation = true)]
+
+      public abstract class FlowGraphScriptableObjectBase : ScriptableObject, IFlowGeneratedRuntimeContainer, IFlowGraphContainer, ICeresGraphContainer
+    content.vb: >-
+      <GenerateFlow(GenerateRuntime:=False, GenerateImplementation:=True)>
+
+      Public MustInherit Class FlowGraphScriptableObjectBase Inherits ScriptableObject Implements IFlowGeneratedRuntimeContainer, IFlowGraphContainer, ICeresGraphContainer
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Flow.FlowGraphAsset
+  - Ceres.Flow.FlowGraphScriptableObject
+  implements:
+  - Ceres.Flow.IFlowGeneratedRuntimeContainer
+  - Ceres.Flow.IFlowGraphContainer
+  - Ceres.Graph.ICeresGraphContainer
+  attributes:
+  - type: Ceres.Flow.Annotations.GenerateFlowAttribute
+    ctor: Ceres.Flow.Annotations.GenerateFlowAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: GenerateRuntime
+      type: System.Boolean
+      value: false
+    - name: GenerateImplementation
+      type: System.Boolean
+      value: true
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.generatedRuntimeInfo
+  commentId: F:Ceres.Flow.FlowGraphScriptableObjectBase.generatedRuntimeInfo
+  id: generatedRuntimeInfo
+  parent: Ceres.Flow.FlowGraphScriptableObjectBase
+  langs:
+  - csharp
+  - vb
+  name: generatedRuntimeInfo
+  nameWithType: FlowGraphScriptableObjectBase.generatedRuntimeInfo
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.generatedRuntimeInfo
+  type: Field
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public FlowGeneratedProgramInfo generatedRuntimeInfo
+    return:
+      type: Ceres.Flow.FlowGeneratedProgramInfo
+    content.vb: Public generatedRuntimeInfo As FlowGeneratedProgramInfo
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.CreateExecutableProgram
+  commentId: M:Ceres.Flow.FlowGraphScriptableObjectBase.CreateExecutableProgram
+  id: CreateExecutableProgram
+  parent: Ceres.Flow.FlowGraphScriptableObjectBase
+  langs:
+  - csharp
+  - vb
+  name: CreateExecutableProgram()
+  nameWithType: FlowGraphScriptableObjectBase.CreateExecutableProgram()
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.CreateExecutableProgram()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public IFlowExecutableProgram CreateExecutableProgram()
+    return:
+      type: Ceres.Flow.IFlowExecutableProgram
+    content.vb: Public Function CreateExecutableProgram() As IFlowExecutableProgram
+  overload: Ceres.Flow.FlowGraphScriptableObjectBase.CreateExecutableProgram*
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.GetFlowGraph
+  commentId: M:Ceres.Flow.FlowGraphScriptableObjectBase.GetFlowGraph
+  id: GetFlowGraph
+  parent: Ceres.Flow.FlowGraphScriptableObjectBase
+  langs:
+  - csharp
+  - vb
+  name: GetFlowGraph()
+  nameWithType: FlowGraphScriptableObjectBase.GetFlowGraph()
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.GetFlowGraph()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Get a <xref href="Ceres.Flow.FlowGraph" data-throw-if-not-resolved="false"></xref> instance from this container
+  remarks: Instance is isolated from persistent data
+  example: []
+  syntax:
+    content: public virtual FlowGraph GetFlowGraph()
+    return:
+      type: Ceres.Flow.FlowGraph
+      description: ''
+    content.vb: Public Overridable Function GetFlowGraph() As FlowGraph
+  overload: Ceres.Flow.FlowGraphScriptableObjectBase.GetFlowGraph*
+  implements:
+  - Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.SetGraphData(Ceres.Graph.CeresGraphData)
+  commentId: M:Ceres.Flow.FlowGraphScriptableObjectBase.SetGraphData(Ceres.Graph.CeresGraphData)
+  id: SetGraphData(Ceres.Graph.CeresGraphData)
+  parent: Ceres.Flow.FlowGraphScriptableObjectBase
+  langs:
+  - csharp
+  - vb
+  name: SetGraphData(CeresGraphData)
+  nameWithType: FlowGraphScriptableObjectBase.SetGraphData(CeresGraphData)
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.SetGraphData(Ceres.Graph.CeresGraphData)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Set graph persistent data
+  example: []
+  syntax:
+    content: public virtual void SetGraphData(CeresGraphData graph)
+    parameters:
+    - id: graph
+      type: Ceres.Graph.CeresGraphData
+    content.vb: Public Overridable Sub SetGraphData(graph As CeresGraphData)
+  overload: Ceres.Flow.FlowGraphScriptableObjectBase.SetGraphData*
+  implements:
+  - Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.GetGraphData
+  commentId: M:Ceres.Flow.FlowGraphScriptableObjectBase.GetGraphData
+  id: GetGraphData
+  parent: Ceres.Flow.FlowGraphScriptableObjectBase
+  langs:
+  - csharp
+  - vb
+  name: GetGraphData()
+  nameWithType: FlowGraphScriptableObjectBase.GetGraphData()
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.GetGraphData()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Get persistent <xref href="Ceres.Flow.FlowGraphData" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: protected FlowGraphData GetGraphData()
+    return:
+      type: Ceres.Flow.FlowGraphData
+      description: ''
+    content.vb: Protected Function GetGraphData() As FlowGraphData
+  overload: Ceres.Flow.FlowGraphScriptableObjectBase.GetGraphData*
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.#ctor
+  commentId: M:Ceres.Flow.FlowGraphScriptableObjectBase.#ctor
+  id: '#ctor'
+  parent: Ceres.Flow.FlowGraphScriptableObjectBase
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphScriptableObjectBase()
+  nameWithType: FlowGraphScriptableObjectBase.FlowGraphScriptableObjectBase()
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.FlowGraphScriptableObjectBase()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: protected FlowGraphScriptableObjectBase()
+    content.vb: Protected Sub New()
+  overload: Ceres.Flow.FlowGraphScriptableObjectBase.#ctor*
+  nameWithType.vb: FlowGraphScriptableObjectBase.New()
+  fullName.vb: Ceres.Flow.FlowGraphScriptableObjectBase.New()
+  name.vb: New()
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.Object
+  commentId: P:Ceres.Flow.FlowGraphScriptableObjectBase.Object
+  id: Object
+  parent: Ceres.Flow.FlowGraphScriptableObjectBase
+  langs:
+  - csharp
+  - vb
+  name: Object
+  nameWithType: FlowGraphScriptableObjectBase.Object
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.Object
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Container bound <xref href="UnityEngine.Object" data-throw-if-not-resolved="false"></xref>
+  remarks: Prefer use GameObject as container key since component is not persistent
+  example: []
+  syntax:
+    content: public Object Object { get; }
+    parameters: []
+    return:
+      type: UnityEngine.Object
+      description: ''
+    content.vb: Public ReadOnly Property [Object] As [Object]
+  overload: Ceres.Flow.FlowGraphScriptableObjectBase.Object*
+  implements:
+  - Ceres.Graph.ICeresGraphContainer.Object
+references:
+- uid: UnityEngine.ScriptableObject
+  commentId: T:UnityEngine.ScriptableObject
+  isExternal: true
+  name: ScriptableObject
+  nameWithType: ScriptableObject
+  fullName: UnityEngine.ScriptableObject
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.IFlowGeneratedRuntimeContainer
+  commentId: T:Ceres.Flow.IFlowGeneratedRuntimeContainer
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowGeneratedRuntimeContainer.html
+  name: IFlowGeneratedRuntimeContainer
+  nameWithType: IFlowGeneratedRuntimeContainer
+  fullName: Ceres.Flow.IFlowGeneratedRuntimeContainer
+- uid: Ceres.Flow.IFlowGraphContainer
+  commentId: T:Ceres.Flow.IFlowGraphContainer
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphContainer.html
+  name: IFlowGraphContainer
+  nameWithType: IFlowGraphContainer
+  fullName: Ceres.Flow.IFlowGraphContainer
+- uid: Ceres.Graph.ICeresGraphContainer
+  commentId: T:Ceres.Graph.ICeresGraphContainer
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.ICeresGraphContainer.html
+  name: ICeresGraphContainer
+  nameWithType: ICeresGraphContainer
+  fullName: Ceres.Graph.ICeresGraphContainer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Flow.FlowGeneratedProgramInfo
+  commentId: T:Ceres.Flow.FlowGeneratedProgramInfo
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGeneratedProgramInfo.html
+  name: FlowGeneratedProgramInfo
+  nameWithType: FlowGeneratedProgramInfo
+  fullName: Ceres.Flow.FlowGeneratedProgramInfo
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.CreateExecutableProgram*
+  commentId: Overload:Ceres.Flow.FlowGraphScriptableObjectBase.CreateExecutableProgram
+  isExternal: true
+  href: Ceres.Flow.FlowGraphScriptableObjectBase.html#Ceres_Flow_FlowGraphScriptableObjectBase_CreateExecutableProgram
+  name: CreateExecutableProgram
+  nameWithType: FlowGraphScriptableObjectBase.CreateExecutableProgram
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.CreateExecutableProgram
+- uid: Ceres.Flow.IFlowExecutableProgram
+  commentId: T:Ceres.Flow.IFlowExecutableProgram
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowExecutableProgram.html
+  name: IFlowExecutableProgram
+  nameWithType: IFlowExecutableProgram
+  fullName: Ceres.Flow.IFlowExecutableProgram
+- uid: Ceres.Flow.FlowGraph
+  commentId: T:Ceres.Flow.FlowGraph
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraph.html
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Flow.FlowGraph
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.GetFlowGraph*
+  commentId: Overload:Ceres.Flow.FlowGraphScriptableObjectBase.GetFlowGraph
+  isExternal: true
+  href: Ceres.Flow.FlowGraphScriptableObjectBase.html#Ceres_Flow_FlowGraphScriptableObjectBase_GetFlowGraph
+  name: GetFlowGraph
+  nameWithType: FlowGraphScriptableObjectBase.GetFlowGraph
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.GetFlowGraph
+- uid: Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+  commentId: M:Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+  parent: Ceres.Flow.IFlowGraphContainer
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphContainer.html#Ceres_Flow_IFlowGraphContainer_GetFlowGraph
+  name: GetFlowGraph()
+  nameWithType: IFlowGraphContainer.GetFlowGraph()
+  fullName: Ceres.Flow.IFlowGraphContainer.GetFlowGraph()
+  spec.csharp:
+  - uid: Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+    name: GetFlowGraph
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphContainer.html#Ceres_Flow_IFlowGraphContainer_GetFlowGraph
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+    name: GetFlowGraph
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphContainer.html#Ceres_Flow_IFlowGraphContainer_GetFlowGraph
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.SetGraphData*
+  commentId: Overload:Ceres.Flow.FlowGraphScriptableObjectBase.SetGraphData
+  isExternal: true
+  href: Ceres.Flow.FlowGraphScriptableObjectBase.html#Ceres_Flow_FlowGraphScriptableObjectBase_SetGraphData_Ceres_Graph_CeresGraphData_
+  name: SetGraphData
+  nameWithType: FlowGraphScriptableObjectBase.SetGraphData
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.SetGraphData
+- uid: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  commentId: M:Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  parent: Ceres.Graph.ICeresGraphContainer
+  isExternal: true
+  name: SetGraphData(CeresGraphData)
+  nameWithType: ICeresGraphContainer.SetGraphData(CeresGraphData)
+  fullName: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  spec.csharp:
+  - uid: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+    name: SetGraphData
+    isExternal: true
+  - name: (
+  - uid: Ceres.Graph.CeresGraphData
+    name: CeresGraphData
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+    name: SetGraphData
+    isExternal: true
+  - name: (
+  - uid: Ceres.Graph.CeresGraphData
+    name: CeresGraphData
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.CeresGraphData
+  commentId: T:Ceres.Graph.CeresGraphData
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html
+  name: CeresGraphData
+  nameWithType: CeresGraphData
+  fullName: Ceres.Graph.CeresGraphData
+- uid: Ceres.Flow.FlowGraphData
+  commentId: T:Ceres.Flow.FlowGraphData
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphData.html
+  name: FlowGraphData
+  nameWithType: FlowGraphData
+  fullName: Ceres.Flow.FlowGraphData
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.GetGraphData*
+  commentId: Overload:Ceres.Flow.FlowGraphScriptableObjectBase.GetGraphData
+  isExternal: true
+  href: Ceres.Flow.FlowGraphScriptableObjectBase.html#Ceres_Flow_FlowGraphScriptableObjectBase_GetGraphData
+  name: GetGraphData
+  nameWithType: FlowGraphScriptableObjectBase.GetGraphData
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.GetGraphData
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.#ctor*
+  commentId: Overload:Ceres.Flow.FlowGraphScriptableObjectBase.#ctor
+  isExternal: true
+  href: Ceres.Flow.FlowGraphScriptableObjectBase.html#Ceres_Flow_FlowGraphScriptableObjectBase__ctor
+  name: FlowGraphScriptableObjectBase
+  nameWithType: FlowGraphScriptableObjectBase.FlowGraphScriptableObjectBase
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.FlowGraphScriptableObjectBase
+  nameWithType.vb: FlowGraphScriptableObjectBase.New
+  fullName.vb: Ceres.Flow.FlowGraphScriptableObjectBase.New
+  name.vb: New
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: Ceres.Flow.FlowGraphScriptableObjectBase.Object*
+  commentId: Overload:Ceres.Flow.FlowGraphScriptableObjectBase.Object
+  isExternal: true
+  href: Ceres.Flow.FlowGraphScriptableObjectBase.html#Ceres_Flow_FlowGraphScriptableObjectBase_Object
+  name: Object
+  nameWithType: FlowGraphScriptableObjectBase.Object
+  fullName: Ceres.Flow.FlowGraphScriptableObjectBase.Object
+- uid: Ceres.Graph.ICeresGraphContainer.Object
+  commentId: P:Ceres.Graph.ICeresGraphContainer.Object
+  parent: Ceres.Graph.ICeresGraphContainer
+  isExternal: true
+  name: Object
+  nameWithType: ICeresGraphContainer.Object
+  fullName: Ceres.Graph.ICeresGraphContainer.Object

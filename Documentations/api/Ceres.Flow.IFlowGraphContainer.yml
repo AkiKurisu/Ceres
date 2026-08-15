@@ -1,0 +1,215 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.IFlowGraphContainer
+  commentId: T:Ceres.Flow.IFlowGraphContainer
+  id: IFlowGraphContainer
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+  - Ceres.Flow.IFlowGraphContainer.GetFlowGraphData
+  langs:
+  - csharp
+  - vb
+  name: IFlowGraphContainer
+  nameWithType: IFlowGraphContainer
+  fullName: Ceres.Flow.IFlowGraphContainer
+  type: Interface
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Interface for <xref href="UnityEngine.Object" data-throw-if-not-resolved="false"></xref> contains <xref href="Ceres.Flow.FlowGraph" data-throw-if-not-resolved="false"></xref> data
+  example: []
+  syntax:
+    content: 'public interface IFlowGraphContainer : ICeresGraphContainer'
+    content.vb: Public Interface IFlowGraphContainer Inherits ICeresGraphContainer
+  derivedClasses:
+  - Ceres.Flow.FlowGraphAsset
+  - Ceres.Flow.FlowGraphFunctionAsset
+  - Ceres.Flow.FlowGraphObject
+  - Ceres.Flow.FlowGraphScriptableObject
+  - Ceres.Flow.FlowGraphScriptableObjectBase
+  - Ceres.Gameplay.Actor
+  - Ceres.Gameplay.Capture.ScreenshotTool
+  - Ceres.Gameplay.Mod.Editor.ModExportConfig
+  - Ceres.Gameplay.PlayerController
+  inheritedMembers:
+  - Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  - Ceres.Graph.ICeresGraphContainer.Object
+- uid: Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+  commentId: M:Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+  id: GetFlowGraph
+  parent: Ceres.Flow.IFlowGraphContainer
+  langs:
+  - csharp
+  - vb
+  name: GetFlowGraph()
+  nameWithType: IFlowGraphContainer.GetFlowGraph()
+  fullName: Ceres.Flow.IFlowGraphContainer.GetFlowGraph()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Get a <xref href="Ceres.Flow.FlowGraph" data-throw-if-not-resolved="false"></xref> instance from this container
+  remarks: Instance is isolated from persistent data
+  example: []
+  syntax:
+    content: FlowGraph GetFlowGraph()
+    return:
+      type: Ceres.Flow.FlowGraph
+      description: ''
+    content.vb: Function GetFlowGraph() As FlowGraph
+  overload: Ceres.Flow.IFlowGraphContainer.GetFlowGraph*
+- uid: Ceres.Flow.IFlowGraphContainer.GetFlowGraphData
+  commentId: M:Ceres.Flow.IFlowGraphContainer.GetFlowGraphData
+  id: GetFlowGraphData
+  parent: Ceres.Flow.IFlowGraphContainer
+  langs:
+  - csharp
+  - vb
+  name: GetFlowGraphData()
+  nameWithType: IFlowGraphContainer.GetFlowGraphData()
+  fullName: Ceres.Flow.IFlowGraphContainer.GetFlowGraphData()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Get persistent <xref href="Ceres.Flow.FlowGraphData" data-throw-if-not-resolved="false"></xref> from this container
+  example: []
+  syntax:
+    content: FlowGraphData GetFlowGraphData()
+    return:
+      type: Ceres.Flow.FlowGraphData
+      description: ''
+    content.vb: Function GetFlowGraphData() As FlowGraphData
+  overload: Ceres.Flow.IFlowGraphContainer.GetFlowGraphData*
+references:
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: Ceres.Flow.FlowGraph
+  commentId: T:Ceres.Flow.FlowGraph
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraph.html
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Flow.FlowGraph
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  commentId: M:Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  parent: Ceres.Graph.ICeresGraphContainer
+  isExternal: true
+  name: SetGraphData(CeresGraphData)
+  nameWithType: ICeresGraphContainer.SetGraphData(CeresGraphData)
+  fullName: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  spec.csharp:
+  - uid: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+    name: SetGraphData
+    isExternal: true
+  - name: (
+  - uid: Ceres.Graph.CeresGraphData
+    name: CeresGraphData
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+    name: SetGraphData
+    isExternal: true
+  - name: (
+  - uid: Ceres.Graph.CeresGraphData
+    name: CeresGraphData
+    isExternal: true
+  - name: )
+- uid: Ceres.Graph.ICeresGraphContainer.Object
+  commentId: P:Ceres.Graph.ICeresGraphContainer.Object
+  parent: Ceres.Graph.ICeresGraphContainer
+  isExternal: true
+  name: Object
+  nameWithType: ICeresGraphContainer.Object
+  fullName: Ceres.Graph.ICeresGraphContainer.Object
+- uid: Ceres.Graph.ICeresGraphContainer
+  commentId: T:Ceres.Graph.ICeresGraphContainer
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.ICeresGraphContainer.html
+  name: ICeresGraphContainer
+  nameWithType: ICeresGraphContainer
+  fullName: Ceres.Graph.ICeresGraphContainer
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Flow.IFlowGraphContainer.GetFlowGraph*
+  commentId: Overload:Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphContainer.html#Ceres_Flow_IFlowGraphContainer_GetFlowGraph
+  name: GetFlowGraph
+  nameWithType: IFlowGraphContainer.GetFlowGraph
+  fullName: Ceres.Flow.IFlowGraphContainer.GetFlowGraph
+- uid: Ceres.Flow.FlowGraphData
+  commentId: T:Ceres.Flow.FlowGraphData
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphData.html
+  name: FlowGraphData
+  nameWithType: FlowGraphData
+  fullName: Ceres.Flow.FlowGraphData
+- uid: Ceres.Flow.IFlowGraphContainer.GetFlowGraphData*
+  commentId: Overload:Ceres.Flow.IFlowGraphContainer.GetFlowGraphData
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphContainer.html#Ceres_Flow_IFlowGraphContainer_GetFlowGraphData
+  name: GetFlowGraphData
+  nameWithType: IFlowGraphContainer.GetFlowGraphData
+  fullName: Ceres.Flow.IFlowGraphContainer.GetFlowGraphData

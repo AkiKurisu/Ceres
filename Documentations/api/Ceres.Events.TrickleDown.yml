@@ -1,0 +1,100 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.TrickleDown
+  commentId: T:Ceres.Events.TrickleDown
+  id: TrickleDown
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.TrickleDown.NoTrickleDown
+  - Ceres.Events.TrickleDown.TrickleDown
+  langs:
+  - csharp
+  - vb
+  name: TrickleDown
+  nameWithType: TrickleDown
+  fullName: Ceres.Events.TrickleDown
+  type: Enum
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Use this enum to specify during which phases the event handler is executed.
+  example: []
+  syntax:
+    content: public enum TrickleDown
+    content.vb: Public Enum TrickleDown
+- uid: Ceres.Events.TrickleDown.NoTrickleDown
+  commentId: F:Ceres.Events.TrickleDown.NoTrickleDown
+  id: NoTrickleDown
+  parent: Ceres.Events.TrickleDown
+  langs:
+  - csharp
+  - vb
+  name: NoTrickleDown
+  nameWithType: TrickleDown.NoTrickleDown
+  fullName: Ceres.Events.TrickleDown.NoTrickleDown
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The event handler should be executed during the AtTarget and BubbleUp phases.
+  example: []
+  syntax:
+    content: NoTrickleDown = 0
+    return:
+      type: Ceres.Events.TrickleDown
+- uid: Ceres.Events.TrickleDown.TrickleDown
+  commentId: F:Ceres.Events.TrickleDown.TrickleDown
+  id: TrickleDown
+  parent: Ceres.Events.TrickleDown
+  langs:
+  - csharp
+  - vb
+  name: TrickleDown
+  nameWithType: TrickleDown.TrickleDown
+  fullName: Ceres.Events.TrickleDown.TrickleDown
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The event handler should be executed during the AtTarget and TrickleDown phases.
+  example: []
+  syntax:
+    content: TrickleDown = 1
+    return:
+      type: Ceres.Events.TrickleDown
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.TrickleDown
+  commentId: T:Ceres.Events.TrickleDown
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.TrickleDown.html
+  name: TrickleDown
+  nameWithType: TrickleDown
+  fullName: Ceres.Events.TrickleDown

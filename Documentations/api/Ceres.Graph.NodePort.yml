@@ -1,0 +1,1465 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.NodePort
+  commentId: T:Ceres.Graph.NodePort
+  id: NodePort
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.NodePort.#ctor
+  - Ceres.Graph.NodePort.#ctor(Ceres.Graph.NodeReference)
+  - Ceres.Graph.NodePort.Dispose
+  - Ceres.Graph.NodePort.Get
+  - Ceres.Graph.NodePort.GetT``1
+  - Ceres.Graph.NodePort.GetTargetPortId
+  - Ceres.Graph.NodePort.GetTargetPortIndex
+  langs:
+  - csharp
+  - vb
+  name: NodePort
+  nameWithType: NodePort
+  fullName: Ceres.Graph.NodePort
+  type: Class
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Port for providing weak reference to any node in graph scope
+  example: []
+  syntax:
+    content: 'public sealed class NodePort : CeresPort<NodeReference>, IDisposable, IPort<NodeReference>, IPort'
+    content.vb: Public NotInheritable Class NodePort Inherits CeresPort(Of NodeReference) Implements IDisposable, IPort(Of NodeReference), IPort
+  inheritance:
+  - System.Object
+  - Ceres.Graph.CeresPort
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  implements:
+  - System.IDisposable
+  - Ceres.Graph.IPort{Ceres.Graph.NodeReference}
+  - Ceres.Graph.IPort
+  inheritedMembers:
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.defaultValue
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Default
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.DefaultArray
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.DefaultList
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValueType
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.MakeCompatibleTo``1(System.Func{Ceres.Graph.NodeReference,{T}})
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.IsCompatibleTo(System.Type)
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Link(Ceres.Graph.CeresPort)
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.AssignValueGetter(Ceres.Graph.IPort)
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.SetValue(System.Object)
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValue
+  - Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Value
+  - Ceres.Graph.CeresPort.AssignValueType``1
+  - Ceres.Graph.CeresPort.AssignValueType(System.Type)
+  - Ceres.Graph.CeresPort.GetAssignedPortValueTypes
+  - Ceres.Graph.CeresPort.IsCompatibleTo(System.Type,System.Type)
+  - Ceres.Graph.CeresPort.GetCompatibleTypes(System.Type)
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Graph.NodePort.#ctor
+  commentId: M:Ceres.Graph.NodePort.#ctor
+  id: '#ctor'
+  parent: Ceres.Graph.NodePort
+  langs:
+  - csharp
+  - vb
+  name: NodePort()
+  nameWithType: NodePort.NodePort()
+  fullName: Ceres.Graph.NodePort.NodePort()
+  type: Constructor
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public NodePort()
+    content.vb: Public Sub New()
+  overload: Ceres.Graph.NodePort.#ctor*
+  nameWithType.vb: NodePort.New()
+  fullName.vb: Ceres.Graph.NodePort.New()
+  name.vb: New()
+- uid: Ceres.Graph.NodePort.#ctor(Ceres.Graph.NodeReference)
+  commentId: M:Ceres.Graph.NodePort.#ctor(Ceres.Graph.NodeReference)
+  id: '#ctor(Ceres.Graph.NodeReference)'
+  parent: Ceres.Graph.NodePort
+  langs:
+  - csharp
+  - vb
+  name: NodePort(NodeReference)
+  nameWithType: NodePort.NodePort(NodeReference)
+  fullName: Ceres.Graph.NodePort.NodePort(Ceres.Graph.NodeReference)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public NodePort(NodeReference value)
+    parameters:
+    - id: value
+      type: Ceres.Graph.NodeReference
+    content.vb: Public Sub New(value As NodeReference)
+  overload: Ceres.Graph.NodePort.#ctor*
+  nameWithType.vb: NodePort.New(NodeReference)
+  fullName.vb: Ceres.Graph.NodePort.New(Ceres.Graph.NodeReference)
+  name.vb: New(NodeReference)
+- uid: Ceres.Graph.NodePort.GetTargetPortId
+  commentId: M:Ceres.Graph.NodePort.GetTargetPortId
+  id: GetTargetPortId
+  parent: Ceres.Graph.NodePort
+  langs:
+  - csharp
+  - vb
+  name: GetTargetPortId()
+  nameWithType: NodePort.GetTargetPortId()
+  fullName: Ceres.Graph.NodePort.GetTargetPortId()
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public string GetTargetPortId()
+    return:
+      type: System.String
+    content.vb: Public Function GetTargetPortId() As String
+  overload: Ceres.Graph.NodePort.GetTargetPortId*
+- uid: Ceres.Graph.NodePort.GetTargetPortIndex
+  commentId: M:Ceres.Graph.NodePort.GetTargetPortIndex
+  id: GetTargetPortIndex
+  parent: Ceres.Graph.NodePort
+  langs:
+  - csharp
+  - vb
+  name: GetTargetPortIndex()
+  nameWithType: NodePort.GetTargetPortIndex()
+  fullName: Ceres.Graph.NodePort.GetTargetPortIndex()
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public int GetTargetPortIndex()
+    return:
+      type: System.Int32
+    content.vb: Public Function GetTargetPortIndex() As Integer
+  overload: Ceres.Graph.NodePort.GetTargetPortIndex*
+- uid: Ceres.Graph.NodePort.Get
+  commentId: M:Ceres.Graph.NodePort.Get
+  id: Get
+  parent: Ceres.Graph.NodePort
+  langs:
+  - csharp
+  - vb
+  name: Get()
+  nameWithType: NodePort.Get()
+  fullName: Ceres.Graph.NodePort.Get()
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Get <xref href="Ceres.Graph.CeresNode" data-throw-if-not-resolved="false"></xref> if exist
+  example: []
+  syntax:
+    content: public CeresNode Get()
+    return:
+      type: Ceres.Graph.CeresNode
+      description: ''
+    content.vb: Public Function [Get]() As CeresNode
+  overload: Ceres.Graph.NodePort.Get*
+- uid: Ceres.Graph.NodePort.GetT``1
+  commentId: M:Ceres.Graph.NodePort.GetT``1
+  id: GetT``1
+  parent: Ceres.Graph.NodePort
+  langs:
+  - csharp
+  - vb
+  name: GetT<T>()
+  nameWithType: NodePort.GetT<T>()
+  fullName: Ceres.Graph.NodePort.GetT<T>()
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Get T node if exist
+  example: []
+  syntax:
+    content: 'public T GetT<T>() where T : CeresNode'
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function GetT(Of T As CeresNode)() As T
+  overload: Ceres.Graph.NodePort.GetT*
+  nameWithType.vb: NodePort.GetT(Of T)()
+  fullName.vb: Ceres.Graph.NodePort.GetT(Of T)()
+  name.vb: GetT(Of T)()
+- uid: Ceres.Graph.NodePort.Dispose
+  commentId: M:Ceres.Graph.NodePort.Dispose
+  id: Dispose
+  parent: Ceres.Graph.NodePort
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: NodePort.Dispose()
+  fullName: Ceres.Graph.NodePort.Dispose()
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  example: []
+  syntax:
+    content: public override void Dispose()
+    content.vb: Public Overrides Sub Dispose()
+  overridden: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Dispose
+  overload: Ceres.Graph.NodePort.Dispose*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.CeresPort
+  commentId: T:Ceres.Graph.CeresPort
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresPort.html
+  name: CeresPort
+  nameWithType: CeresPort
+  fullName: Ceres.Graph.CeresPort
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  commentId: T:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.CeresPort`1
+  href: Ceres.Graph.CeresPort-1.html
+  name: CeresPort<NodeReference>
+  nameWithType: CeresPort<NodeReference>
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>
+  nameWithType.vb: CeresPort(Of NodeReference)
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference)
+  name.vb: CeresPort(Of NodeReference)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html
+  - name: <
+  - uid: Ceres.Graph.NodeReference
+    name: NodeReference
+    isExternal: true
+    href: Ceres.Graph.NodeReference.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.NodeReference
+    name: NodeReference
+    isExternal: true
+    href: Ceres.Graph.NodeReference.html
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Ceres.Graph.IPort{Ceres.Graph.NodeReference}
+  commentId: T:Ceres.Graph.IPort{Ceres.Graph.NodeReference}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.IPort`1
+  href: Ceres.Graph.IPort-1.html
+  name: IPort<NodeReference>
+  nameWithType: IPort<NodeReference>
+  fullName: Ceres.Graph.IPort<Ceres.Graph.NodeReference>
+  nameWithType.vb: IPort(Of NodeReference)
+  fullName.vb: Ceres.Graph.IPort(Of Ceres.Graph.NodeReference)
+  name.vb: IPort(Of NodeReference)
+  spec.csharp:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: <
+  - uid: Ceres.Graph.NodeReference
+    name: NodeReference
+    isExternal: true
+    href: Ceres.Graph.NodeReference.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.NodeReference
+    name: NodeReference
+    isExternal: true
+    href: Ceres.Graph.NodeReference.html
+  - name: )
+- uid: Ceres.Graph.IPort
+  commentId: T:Ceres.Graph.IPort
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.IPort.html
+  name: IPort
+  nameWithType: IPort
+  fullName: Ceres.Graph.IPort
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.defaultValue
+  commentId: F:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.defaultValue
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.defaultValue
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_defaultValue
+  name: defaultValue
+  nameWithType: CeresPort<NodeReference>.defaultValue
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.defaultValue
+  nameWithType.vb: CeresPort(Of NodeReference).defaultValue
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).defaultValue
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Default
+  commentId: F:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Default
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.Default
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Default
+  name: Default
+  nameWithType: CeresPort<NodeReference>.Default
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.Default
+  nameWithType.vb: CeresPort(Of NodeReference).Default
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).Default
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.DefaultArray
+  commentId: F:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.DefaultArray
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.DefaultArray
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_DefaultArray
+  name: DefaultArray
+  nameWithType: CeresPort<NodeReference>.DefaultArray
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.DefaultArray
+  nameWithType.vb: CeresPort(Of NodeReference).DefaultArray
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).DefaultArray
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.DefaultList
+  commentId: F:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.DefaultList
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.DefaultList
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_DefaultList
+  name: DefaultList
+  nameWithType: CeresPort<NodeReference>.DefaultList
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.DefaultList
+  nameWithType.vb: CeresPort(Of NodeReference).DefaultList
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).DefaultList
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValueType
+  commentId: M:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValueType
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.GetValueType
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValueType
+  name: GetValueType()
+  nameWithType: CeresPort<NodeReference>.GetValueType()
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.GetValueType()
+  nameWithType.vb: CeresPort(Of NodeReference).GetValueType()
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).GetValueType()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValueType
+    name: GetValueType
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValueType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValueType
+    name: GetValueType
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValueType
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.MakeCompatibleTo``1(System.Func{Ceres.Graph.NodeReference,{T}})
+  commentId: M:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.MakeCompatibleTo``1(System.Func{Ceres.Graph.NodeReference,``0})
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.MakeCompatibleTo``1(System.Func{`0,``0})
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_MakeCompatibleTo__1_System_Func__0___0__
+  name: MakeCompatibleTo<T>(Func<NodeReference, T>)
+  nameWithType: CeresPort<NodeReference>.MakeCompatibleTo<T>(Func<NodeReference, T>)
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.MakeCompatibleTo<T>(System.Func<Ceres.Graph.NodeReference, T>)
+  nameWithType.vb: CeresPort(Of NodeReference).MakeCompatibleTo(Of T)(Func(Of NodeReference, T))
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).MakeCompatibleTo(Of T)(System.Func(Of Ceres.Graph.NodeReference, T))
+  name.vb: MakeCompatibleTo(Of T)(Func(Of NodeReference, T))
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.MakeCompatibleTo``1(System.Func{Ceres.Graph.NodeReference,``0})
+    name: MakeCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_MakeCompatibleTo__1_System_Func__0___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Ceres.Graph.NodeReference
+    name: NodeReference
+    isExternal: true
+    href: Ceres.Graph.NodeReference.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.MakeCompatibleTo``1(System.Func{Ceres.Graph.NodeReference,``0})
+    name: MakeCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_MakeCompatibleTo__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.NodeReference
+    name: NodeReference
+    isExternal: true
+    href: Ceres.Graph.NodeReference.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.IsCompatibleTo(System.Type)
+  commentId: M:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.IsCompatibleTo(System.Type)
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.IsCompatibleTo(System.Type)
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_IsCompatibleTo_System_Type_
+  name: IsCompatibleTo(Type)
+  nameWithType: CeresPort<NodeReference>.IsCompatibleTo(Type)
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.IsCompatibleTo(System.Type)
+  nameWithType.vb: CeresPort(Of NodeReference).IsCompatibleTo(Type)
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).IsCompatibleTo(System.Type)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.IsCompatibleTo(System.Type)
+    name: IsCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_IsCompatibleTo_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.IsCompatibleTo(System.Type)
+    name: IsCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_IsCompatibleTo_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Link(Ceres.Graph.CeresPort)
+  commentId: M:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Link(Ceres.Graph.CeresPort)
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.Link(Ceres.Graph.CeresPort)
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Link_Ceres_Graph_CeresPort_
+  name: Link(CeresPort)
+  nameWithType: CeresPort<NodeReference>.Link(CeresPort)
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.Link(Ceres.Graph.CeresPort)
+  nameWithType.vb: CeresPort(Of NodeReference).Link(CeresPort)
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).Link(Ceres.Graph.CeresPort)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Link(Ceres.Graph.CeresPort)
+    name: Link
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Link_Ceres_Graph_CeresPort_
+  - name: (
+  - uid: Ceres.Graph.CeresPort
+    name: CeresPort
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Link(Ceres.Graph.CeresPort)
+    name: Link
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Link_Ceres_Graph_CeresPort_
+  - name: (
+  - uid: Ceres.Graph.CeresPort
+    name: CeresPort
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html
+  - name: )
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.AssignValueGetter(Ceres.Graph.IPort)
+  commentId: M:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.AssignValueGetter(Ceres.Graph.IPort)
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.AssignValueGetter(Ceres.Graph.IPort)
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_AssignValueGetter_Ceres_Graph_IPort_
+  name: AssignValueGetter(IPort)
+  nameWithType: CeresPort<NodeReference>.AssignValueGetter(IPort)
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.AssignValueGetter(Ceres.Graph.IPort)
+  nameWithType.vb: CeresPort(Of NodeReference).AssignValueGetter(IPort)
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).AssignValueGetter(Ceres.Graph.IPort)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.AssignValueGetter(Ceres.Graph.IPort)
+    name: AssignValueGetter
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_AssignValueGetter_Ceres_Graph_IPort_
+  - name: (
+  - uid: Ceres.Graph.IPort
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.AssignValueGetter(Ceres.Graph.IPort)
+    name: AssignValueGetter
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_AssignValueGetter_Ceres_Graph_IPort_
+  - name: (
+  - uid: Ceres.Graph.IPort
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort.html
+  - name: )
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.SetValue(System.Object)
+  commentId: M:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.SetValue(System.Object)
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.SetValue(System.Object)
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_SetValue_System_Object_
+  name: SetValue(object)
+  nameWithType: CeresPort<NodeReference>.SetValue(object)
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.SetValue(object)
+  nameWithType.vb: CeresPort(Of NodeReference).SetValue(Object)
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).SetValue(Object)
+  name.vb: SetValue(Object)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.SetValue(System.Object)
+    name: SetValue
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_SetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.SetValue(System.Object)
+    name: SetValue
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_SetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValue
+  commentId: M:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValue
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.GetValue
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValue
+  name: GetValue()
+  nameWithType: CeresPort<NodeReference>.GetValue()
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.GetValue()
+  nameWithType.vb: CeresPort(Of NodeReference).GetValue()
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).GetValue()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValue
+    name: GetValue
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.GetValue
+    name: GetValue
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValue
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Value
+  commentId: P:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Value
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.Value
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Value
+  name: Value
+  nameWithType: CeresPort<NodeReference>.Value
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.Value
+  nameWithType.vb: CeresPort(Of NodeReference).Value
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).Value
+- uid: Ceres.Graph.CeresPort.AssignValueType``1
+  commentId: M:Ceres.Graph.CeresPort.AssignValueType``1
+  parent: Ceres.Graph.CeresPort
+  isExternal: true
+  href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_AssignValueType__1
+  name: AssignValueType<T>()
+  nameWithType: CeresPort.AssignValueType<T>()
+  fullName: Ceres.Graph.CeresPort.AssignValueType<T>()
+  nameWithType.vb: CeresPort.AssignValueType(Of T)()
+  fullName.vb: Ceres.Graph.CeresPort.AssignValueType(Of T)()
+  name.vb: AssignValueType(Of T)()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort.AssignValueType``1
+    name: AssignValueType
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_AssignValueType__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort.AssignValueType``1
+    name: AssignValueType
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_AssignValueType__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresPort.AssignValueType(System.Type)
+  commentId: M:Ceres.Graph.CeresPort.AssignValueType(System.Type)
+  parent: Ceres.Graph.CeresPort
+  isExternal: true
+  href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_AssignValueType_System_Type_
+  name: AssignValueType(Type)
+  nameWithType: CeresPort.AssignValueType(Type)
+  fullName: Ceres.Graph.CeresPort.AssignValueType(System.Type)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort.AssignValueType(System.Type)
+    name: AssignValueType
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_AssignValueType_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort.AssignValueType(System.Type)
+    name: AssignValueType
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_AssignValueType_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.Graph.CeresPort.GetAssignedPortValueTypes
+  commentId: M:Ceres.Graph.CeresPort.GetAssignedPortValueTypes
+  parent: Ceres.Graph.CeresPort
+  isExternal: true
+  href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_GetAssignedPortValueTypes
+  name: GetAssignedPortValueTypes()
+  nameWithType: CeresPort.GetAssignedPortValueTypes()
+  fullName: Ceres.Graph.CeresPort.GetAssignedPortValueTypes()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort.GetAssignedPortValueTypes
+    name: GetAssignedPortValueTypes
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_GetAssignedPortValueTypes
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort.GetAssignedPortValueTypes
+    name: GetAssignedPortValueTypes
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_GetAssignedPortValueTypes
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresPort.IsCompatibleTo(System.Type,System.Type)
+  commentId: M:Ceres.Graph.CeresPort.IsCompatibleTo(System.Type,System.Type)
+  parent: Ceres.Graph.CeresPort
+  isExternal: true
+  href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_IsCompatibleTo_System_Type_System_Type_
+  name: IsCompatibleTo(Type, Type)
+  nameWithType: CeresPort.IsCompatibleTo(Type, Type)
+  fullName: Ceres.Graph.CeresPort.IsCompatibleTo(System.Type, System.Type)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort.IsCompatibleTo(System.Type,System.Type)
+    name: IsCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_IsCompatibleTo_System_Type_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort.IsCompatibleTo(System.Type,System.Type)
+    name: IsCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_IsCompatibleTo_System_Type_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.Graph.CeresPort.GetCompatibleTypes(System.Type)
+  commentId: M:Ceres.Graph.CeresPort.GetCompatibleTypes(System.Type)
+  parent: Ceres.Graph.CeresPort
+  isExternal: true
+  href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_GetCompatibleTypes_System_Type_
+  name: GetCompatibleTypes(Type)
+  nameWithType: CeresPort.GetCompatibleTypes(Type)
+  fullName: Ceres.Graph.CeresPort.GetCompatibleTypes(System.Type)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort.GetCompatibleTypes(System.Type)
+    name: GetCompatibleTypes
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_GetCompatibleTypes_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort.GetCompatibleTypes(System.Type)
+    name: GetCompatibleTypes
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html#Ceres_Graph_CeresPort_GetCompatibleTypes_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.CeresPort`1
+  commentId: T:Ceres.Graph.CeresPort`1
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html
+  name: CeresPort<TValue>
+  nameWithType: CeresPort<TValue>
+  fullName: Ceres.Graph.CeresPort<TValue>
+  nameWithType.vb: CeresPort(Of TValue)
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue)
+  name.vb: CeresPort(Of TValue)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1
+    name: CeresPort
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Ceres.Graph.IPort`1
+  commentId: T:Ceres.Graph.IPort`1
+  isExternal: true
+  href: Ceres.Graph.IPort-1.html
+  name: IPort<TValue>
+  nameWithType: IPort<TValue>
+  fullName: Ceres.Graph.IPort<TValue>
+  nameWithType.vb: IPort(Of TValue)
+  fullName.vb: Ceres.Graph.IPort(Of TValue)
+  name.vb: IPort(Of TValue)
+  spec.csharp:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Ceres.Graph.CeresPort`1.defaultValue
+  commentId: F:Ceres.Graph.CeresPort`1.defaultValue
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_defaultValue
+  name: defaultValue
+  nameWithType: CeresPort<TValue>.defaultValue
+  fullName: Ceres.Graph.CeresPort<TValue>.defaultValue
+  nameWithType.vb: CeresPort(Of TValue).defaultValue
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).defaultValue
+- uid: Ceres.Graph.CeresPort`1.Default
+  commentId: F:Ceres.Graph.CeresPort`1.Default
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Default
+  name: Default
+  nameWithType: CeresPort<TValue>.Default
+  fullName: Ceres.Graph.CeresPort<TValue>.Default
+  nameWithType.vb: CeresPort(Of TValue).Default
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).Default
+- uid: Ceres.Graph.CeresPort`1.DefaultArray
+  commentId: F:Ceres.Graph.CeresPort`1.DefaultArray
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_DefaultArray
+  name: DefaultArray
+  nameWithType: CeresPort<TValue>.DefaultArray
+  fullName: Ceres.Graph.CeresPort<TValue>.DefaultArray
+  nameWithType.vb: CeresPort(Of TValue).DefaultArray
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).DefaultArray
+- uid: Ceres.Graph.CeresPort`1.DefaultList
+  commentId: F:Ceres.Graph.CeresPort`1.DefaultList
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_DefaultList
+  name: DefaultList
+  nameWithType: CeresPort<TValue>.DefaultList
+  fullName: Ceres.Graph.CeresPort<TValue>.DefaultList
+  nameWithType.vb: CeresPort(Of TValue).DefaultList
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).DefaultList
+- uid: Ceres.Graph.CeresPort`1.GetValueType
+  commentId: M:Ceres.Graph.CeresPort`1.GetValueType
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValueType
+  name: GetValueType()
+  nameWithType: CeresPort<TValue>.GetValueType()
+  fullName: Ceres.Graph.CeresPort<TValue>.GetValueType()
+  nameWithType.vb: CeresPort(Of TValue).GetValueType()
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).GetValueType()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1.GetValueType
+    name: GetValueType
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValueType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1.GetValueType
+    name: GetValueType
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValueType
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresPort`1.MakeCompatibleTo``1(System.Func{`0,``0})
+  commentId: M:Ceres.Graph.CeresPort`1.MakeCompatibleTo``1(System.Func{`0,``0})
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_MakeCompatibleTo__1_System_Func__0___0__
+  name: MakeCompatibleTo<T>(Func<TValue, T>)
+  nameWithType: CeresPort<TValue>.MakeCompatibleTo<T>(Func<TValue, T>)
+  fullName: Ceres.Graph.CeresPort<TValue>.MakeCompatibleTo<T>(System.Func<TValue, T>)
+  nameWithType.vb: CeresPort(Of TValue).MakeCompatibleTo(Of T)(Func(Of TValue, T))
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).MakeCompatibleTo(Of T)(System.Func(Of TValue, T))
+  name.vb: MakeCompatibleTo(Of T)(Func(Of TValue, T))
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1.MakeCompatibleTo``1(System.Func{`0,``0})
+    name: MakeCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_MakeCompatibleTo__1_System_Func__0___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1.MakeCompatibleTo``1(System.Func{`0,``0})
+    name: MakeCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_MakeCompatibleTo__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Graph.CeresPort`1.IsCompatibleTo(System.Type)
+  commentId: M:Ceres.Graph.CeresPort`1.IsCompatibleTo(System.Type)
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_IsCompatibleTo_System_Type_
+  name: IsCompatibleTo(Type)
+  nameWithType: CeresPort<TValue>.IsCompatibleTo(Type)
+  fullName: Ceres.Graph.CeresPort<TValue>.IsCompatibleTo(System.Type)
+  nameWithType.vb: CeresPort(Of TValue).IsCompatibleTo(Type)
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).IsCompatibleTo(System.Type)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1.IsCompatibleTo(System.Type)
+    name: IsCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_IsCompatibleTo_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1.IsCompatibleTo(System.Type)
+    name: IsCompatibleTo
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_IsCompatibleTo_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.Graph.CeresPort`1.Link(Ceres.Graph.CeresPort)
+  commentId: M:Ceres.Graph.CeresPort`1.Link(Ceres.Graph.CeresPort)
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Link_Ceres_Graph_CeresPort_
+  name: Link(CeresPort)
+  nameWithType: CeresPort<TValue>.Link(CeresPort)
+  fullName: Ceres.Graph.CeresPort<TValue>.Link(Ceres.Graph.CeresPort)
+  nameWithType.vb: CeresPort(Of TValue).Link(CeresPort)
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).Link(Ceres.Graph.CeresPort)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1.Link(Ceres.Graph.CeresPort)
+    name: Link
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Link_Ceres_Graph_CeresPort_
+  - name: (
+  - uid: Ceres.Graph.CeresPort
+    name: CeresPort
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1.Link(Ceres.Graph.CeresPort)
+    name: Link
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Link_Ceres_Graph_CeresPort_
+  - name: (
+  - uid: Ceres.Graph.CeresPort
+    name: CeresPort
+    isExternal: true
+    href: Ceres.Graph.CeresPort.html
+  - name: )
+- uid: Ceres.Graph.CeresPort`1.AssignValueGetter(Ceres.Graph.IPort)
+  commentId: M:Ceres.Graph.CeresPort`1.AssignValueGetter(Ceres.Graph.IPort)
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_AssignValueGetter_Ceres_Graph_IPort_
+  name: AssignValueGetter(IPort)
+  nameWithType: CeresPort<TValue>.AssignValueGetter(IPort)
+  fullName: Ceres.Graph.CeresPort<TValue>.AssignValueGetter(Ceres.Graph.IPort)
+  nameWithType.vb: CeresPort(Of TValue).AssignValueGetter(IPort)
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).AssignValueGetter(Ceres.Graph.IPort)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1.AssignValueGetter(Ceres.Graph.IPort)
+    name: AssignValueGetter
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_AssignValueGetter_Ceres_Graph_IPort_
+  - name: (
+  - uid: Ceres.Graph.IPort
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1.AssignValueGetter(Ceres.Graph.IPort)
+    name: AssignValueGetter
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_AssignValueGetter_Ceres_Graph_IPort_
+  - name: (
+  - uid: Ceres.Graph.IPort
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort.html
+  - name: )
+- uid: Ceres.Graph.CeresPort`1.SetValue(System.Object)
+  commentId: M:Ceres.Graph.CeresPort`1.SetValue(System.Object)
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_SetValue_System_Object_
+  name: SetValue(object)
+  nameWithType: CeresPort<TValue>.SetValue(object)
+  fullName: Ceres.Graph.CeresPort<TValue>.SetValue(object)
+  nameWithType.vb: CeresPort(Of TValue).SetValue(Object)
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).SetValue(Object)
+  name.vb: SetValue(Object)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1.SetValue(System.Object)
+    name: SetValue
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_SetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1.SetValue(System.Object)
+    name: SetValue
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_SetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Graph.CeresPort`1.GetValue
+  commentId: M:Ceres.Graph.CeresPort`1.GetValue
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValue
+  name: GetValue()
+  nameWithType: CeresPort<TValue>.GetValue()
+  fullName: Ceres.Graph.CeresPort<TValue>.GetValue()
+  nameWithType.vb: CeresPort(Of TValue).GetValue()
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).GetValue()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1.GetValue
+    name: GetValue
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1.GetValue
+    name: GetValue
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_GetValue
+  - name: (
+  - name: )
+- uid: Ceres.Graph.CeresPort`1.Value
+  commentId: P:Ceres.Graph.CeresPort`1.Value
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Value
+  name: Value
+  nameWithType: CeresPort<TValue>.Value
+  fullName: Ceres.Graph.CeresPort<TValue>.Value
+  nameWithType.vb: CeresPort(Of TValue).Value
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).Value
+- uid: Ceres.Graph.NodePort.#ctor*
+  commentId: Overload:Ceres.Graph.NodePort.#ctor
+  isExternal: true
+  href: Ceres.Graph.NodePort.html#Ceres_Graph_NodePort__ctor
+  name: NodePort
+  nameWithType: NodePort.NodePort
+  fullName: Ceres.Graph.NodePort.NodePort
+  nameWithType.vb: NodePort.New
+  fullName.vb: Ceres.Graph.NodePort.New
+  name.vb: New
+- uid: Ceres.Graph.NodeReference
+  commentId: T:Ceres.Graph.NodeReference
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.NodeReference.html
+  name: NodeReference
+  nameWithType: NodeReference
+  fullName: Ceres.Graph.NodeReference
+- uid: Ceres.Graph.NodePort.GetTargetPortId*
+  commentId: Overload:Ceres.Graph.NodePort.GetTargetPortId
+  isExternal: true
+  href: Ceres.Graph.NodePort.html#Ceres_Graph_NodePort_GetTargetPortId
+  name: GetTargetPortId
+  nameWithType: NodePort.GetTargetPortId
+  fullName: Ceres.Graph.NodePort.GetTargetPortId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Graph.NodePort.GetTargetPortIndex*
+  commentId: Overload:Ceres.Graph.NodePort.GetTargetPortIndex
+  isExternal: true
+  href: Ceres.Graph.NodePort.html#Ceres_Graph_NodePort_GetTargetPortIndex
+  name: GetTargetPortIndex
+  nameWithType: NodePort.GetTargetPortIndex
+  fullName: Ceres.Graph.NodePort.GetTargetPortIndex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresNode.html
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph.NodePort.Get*
+  commentId: Overload:Ceres.Graph.NodePort.Get
+  isExternal: true
+  href: Ceres.Graph.NodePort.html#Ceres_Graph_NodePort_Get
+  name: Get
+  nameWithType: NodePort.Get
+  fullName: Ceres.Graph.NodePort.Get
+- uid: Ceres.Graph.NodePort.GetT*
+  commentId: Overload:Ceres.Graph.NodePort.GetT
+  isExternal: true
+  href: Ceres.Graph.NodePort.html#Ceres_Graph_NodePort_GetT__1
+  name: GetT
+  nameWithType: NodePort.GetT
+  fullName: Ceres.Graph.NodePort.GetT
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Dispose
+  commentId: M:Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Dispose
+  parent: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}
+  definition: Ceres.Graph.CeresPort`1.Dispose
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Dispose
+  name: Dispose()
+  nameWithType: CeresPort<NodeReference>.Dispose()
+  fullName: Ceres.Graph.CeresPort<Ceres.Graph.NodeReference>.Dispose()
+  nameWithType.vb: CeresPort(Of NodeReference).Dispose()
+  fullName.vb: Ceres.Graph.CeresPort(Of Ceres.Graph.NodeReference).Dispose()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort{Ceres.Graph.NodeReference}.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Graph.NodePort.Dispose*
+  commentId: Overload:Ceres.Graph.NodePort.Dispose
+  isExternal: true
+  href: Ceres.Graph.NodePort.html#Ceres_Graph_NodePort_Dispose
+  name: Dispose
+  nameWithType: NodePort.Dispose
+  fullName: Ceres.Graph.NodePort.Dispose
+- uid: Ceres.Graph.CeresPort`1.Dispose
+  commentId: M:Ceres.Graph.CeresPort`1.Dispose
+  isExternal: true
+  href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Dispose
+  name: Dispose()
+  nameWithType: CeresPort<TValue>.Dispose()
+  fullName: Ceres.Graph.CeresPort<TValue>.Dispose()
+  nameWithType.vb: CeresPort(Of TValue).Dispose()
+  fullName.vb: Ceres.Graph.CeresPort(Of TValue).Dispose()
+  spec.csharp:
+  - uid: Ceres.Graph.CeresPort`1.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresPort`1.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Graph.CeresPort-1.html#Ceres_Graph_CeresPort_1_Dispose
+  - name: (
+  - name: )

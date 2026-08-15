@@ -1,0 +1,318 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.SceneVariableScope
+  commentId: T:Ceres.Graph.SceneVariableScope
+  id: SceneVariableScope
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.SceneVariableScope.#ctor
+  - Ceres.Graph.SceneVariableScope.GlobalVariables
+  - Ceres.Graph.SceneVariableScope.SharedVariables
+  langs:
+  - csharp
+  - vb
+  name: SceneVariableScope
+  nameWithType: SceneVariableScope
+  fullName: Ceres.Graph.SceneVariableScope
+  type: Class
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Component contains <xref href="Ceres.Graph.SharedVariable" data-throw-if-not-resolved="false"></xref> in scene lifetime scope
+  example: []
+  syntax:
+    content: 'public class SceneVariableScope : MonoBehaviour, IVariableScope, IVariableSource'
+    content.vb: Public Class SceneVariableScope Inherits MonoBehaviour Implements IVariableScope, IVariableSource
+  inheritance:
+  - System.Object
+  implements:
+  - Ceres.Graph.IVariableScope
+  - Ceres.Graph.IVariableSource
+- uid: Ceres.Graph.SceneVariableScope.#ctor
+  commentId: M:Ceres.Graph.SceneVariableScope.#ctor
+  id: '#ctor'
+  parent: Ceres.Graph.SceneVariableScope
+  langs:
+  - csharp
+  - vb
+  name: SceneVariableScope()
+  nameWithType: SceneVariableScope.SceneVariableScope()
+  fullName: Ceres.Graph.SceneVariableScope.SceneVariableScope()
+  type: Constructor
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public SceneVariableScope()
+    content.vb: Public Sub New()
+  overload: Ceres.Graph.SceneVariableScope.#ctor*
+  nameWithType.vb: SceneVariableScope.New()
+  fullName.vb: Ceres.Graph.SceneVariableScope.New()
+  name.vb: New()
+- uid: Ceres.Graph.SceneVariableScope.SharedVariables
+  commentId: P:Ceres.Graph.SceneVariableScope.SharedVariables
+  id: SharedVariables
+  parent: Ceres.Graph.SceneVariableScope
+  langs:
+  - csharp
+  - vb
+  name: SharedVariables
+  nameWithType: SceneVariableScope.SharedVariables
+  fullName: Ceres.Graph.SceneVariableScope.SharedVariables
+  type: Property
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  example: []
+  syntax:
+    content: public List<SharedVariable> SharedVariables { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Ceres.Graph.SharedVariable}
+    content.vb: Public ReadOnly Property SharedVariables As List(Of SharedVariable)
+  overload: Ceres.Graph.SceneVariableScope.SharedVariables*
+  implements:
+  - Ceres.Graph.IVariableSource.SharedVariables
+- uid: Ceres.Graph.SceneVariableScope.GlobalVariables
+  commentId: P:Ceres.Graph.SceneVariableScope.GlobalVariables
+  id: GlobalVariables
+  parent: Ceres.Graph.SceneVariableScope
+  langs:
+  - csharp
+  - vb
+  name: GlobalVariables
+  nameWithType: SceneVariableScope.GlobalVariables
+  fullName: Ceres.Graph.SceneVariableScope.GlobalVariables
+  type: Property
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Scope based global variables
+  example: []
+  syntax:
+    content: public GlobalVariables GlobalVariables { get; }
+    parameters: []
+    return:
+      type: Ceres.Graph.GlobalVariables
+    content.vb: Public ReadOnly Property GlobalVariables As GlobalVariables
+  overload: Ceres.Graph.SceneVariableScope.GlobalVariables*
+  implements:
+  - Ceres.Graph.IVariableScope.GlobalVariables
+references:
+- uid: Ceres.Graph.SharedVariable
+  commentId: T:Ceres.Graph.SharedVariable
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.SharedVariable.html
+  name: SharedVariable
+  nameWithType: SharedVariable
+  fullName: Ceres.Graph.SharedVariable
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.IVariableScope
+  commentId: T:Ceres.Graph.IVariableScope
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.IVariableScope.html
+  name: IVariableScope
+  nameWithType: IVariableScope
+  fullName: Ceres.Graph.IVariableScope
+- uid: Ceres.Graph.IVariableSource
+  commentId: T:Ceres.Graph.IVariableSource
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.IVariableSource.html
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: Ceres.Graph.IVariableSource
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.SceneVariableScope.#ctor*
+  commentId: Overload:Ceres.Graph.SceneVariableScope.#ctor
+  isExternal: true
+  href: Ceres.Graph.SceneVariableScope.html#Ceres_Graph_SceneVariableScope__ctor
+  name: SceneVariableScope
+  nameWithType: SceneVariableScope.SceneVariableScope
+  fullName: Ceres.Graph.SceneVariableScope.SceneVariableScope
+  nameWithType.vb: SceneVariableScope.New
+  fullName.vb: Ceres.Graph.SceneVariableScope.New
+  name.vb: New
+- uid: Ceres.Graph.SceneVariableScope.SharedVariables*
+  commentId: Overload:Ceres.Graph.SceneVariableScope.SharedVariables
+  isExternal: true
+  href: Ceres.Graph.SceneVariableScope.html#Ceres_Graph_SceneVariableScope_SharedVariables
+  name: SharedVariables
+  nameWithType: SceneVariableScope.SharedVariables
+  fullName: Ceres.Graph.SceneVariableScope.SharedVariables
+- uid: Ceres.Graph.IVariableSource.SharedVariables
+  commentId: P:Ceres.Graph.IVariableSource.SharedVariables
+  parent: Ceres.Graph.IVariableSource
+  isExternal: true
+  href: Ceres.Graph.IVariableSource.html#Ceres_Graph_IVariableSource_SharedVariables
+  name: SharedVariables
+  nameWithType: IVariableSource.SharedVariables
+  fullName: Ceres.Graph.IVariableSource.SharedVariables
+- uid: System.Collections.Generic.List{Ceres.Graph.SharedVariable}
+  commentId: T:System.Collections.Generic.List{Ceres.Graph.SharedVariable}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<SharedVariable>
+  nameWithType: List<SharedVariable>
+  fullName: System.Collections.Generic.List<Ceres.Graph.SharedVariable>
+  nameWithType.vb: List(Of SharedVariable)
+  fullName.vb: System.Collections.Generic.List(Of Ceres.Graph.SharedVariable)
+  name.vb: List(Of SharedVariable)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Ceres.Graph.SceneVariableScope.GlobalVariables*
+  commentId: Overload:Ceres.Graph.SceneVariableScope.GlobalVariables
+  isExternal: true
+  href: Ceres.Graph.SceneVariableScope.html#Ceres_Graph_SceneVariableScope_GlobalVariables
+  name: GlobalVariables
+  nameWithType: SceneVariableScope.GlobalVariables
+  fullName: Ceres.Graph.SceneVariableScope.GlobalVariables
+- uid: Ceres.Graph.IVariableScope.GlobalVariables
+  commentId: P:Ceres.Graph.IVariableScope.GlobalVariables
+  parent: Ceres.Graph.IVariableScope
+  isExternal: true
+  href: Ceres.Graph.IVariableScope.html#Ceres_Graph_IVariableScope_GlobalVariables
+  name: GlobalVariables
+  nameWithType: IVariableScope.GlobalVariables
+  fullName: Ceres.Graph.IVariableScope.GlobalVariables
+- uid: Ceres.Graph.GlobalVariables
+  commentId: T:Ceres.Graph.GlobalVariables
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.GlobalVariables.html
+  name: GlobalVariables
+  nameWithType: GlobalVariables
+  fullName: Ceres.Graph.GlobalVariables

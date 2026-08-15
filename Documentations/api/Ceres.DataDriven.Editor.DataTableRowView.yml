@@ -1,0 +1,793 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.DataDriven.Editor.DataTableRowView
+  commentId: T:Ceres.DataDriven.Editor.DataTableRowView
+  id: DataTableRowView
+  parent: Ceres.DataDriven.Editor
+  children:
+  - Ceres.DataDriven.Editor.DataTableRowView.#ctor(Ceres.DataDriven.DataTable)
+  - Ceres.DataDriven.Editor.DataTableRowView.DrawGUI(UnityEditor.SerializedObject)
+  - Ceres.DataDriven.Editor.DataTableRowView.GetSelectedIndices
+  - Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRowProperties(UnityEditor.SerializedObject)
+  - Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRows
+  - Ceres.DataDriven.Editor.DataTableRowView.ReadOnly
+  - Ceres.DataDriven.Editor.DataTableRowView.Rebuild
+  - Ceres.DataDriven.Editor.DataTableRowView.SelectRow(System.Int32)
+  - Ceres.DataDriven.Editor.DataTableRowView.Table
+  langs:
+  - csharp
+  - vb
+  name: DataTableRowView
+  nameWithType: DataTableRowView
+  fullName: Ceres.DataDriven.Editor.DataTableRowView
+  type: Class
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: GUI class for drawing DataTable rows
+  example: []
+  syntax:
+    content: public class DataTableRowView
+    content.vb: Public Class DataTableRowView
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: Ceres.DataDriven.Editor.DataTableRowView.#ctor(Ceres.DataDriven.DataTable)
+  commentId: M:Ceres.DataDriven.Editor.DataTableRowView.#ctor(Ceres.DataDriven.DataTable)
+  id: '#ctor(Ceres.DataDriven.DataTable)'
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: DataTableRowView(DataTable)
+  nameWithType: DataTableRowView.DataTableRowView(DataTable)
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.DataTableRowView(Ceres.DataDriven.DataTable)
+  type: Constructor
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: public DataTableRowView(DataTable dataTable)
+    parameters:
+    - id: dataTable
+      type: Ceres.DataDriven.DataTable
+    content.vb: Public Sub New(dataTable As DataTable)
+  overload: Ceres.DataDriven.Editor.DataTableRowView.#ctor*
+  nameWithType.vb: DataTableRowView.New(DataTable)
+  fullName.vb: Ceres.DataDriven.Editor.DataTableRowView.New(Ceres.DataDriven.DataTable)
+  name.vb: New(DataTable)
+- uid: Ceres.DataDriven.Editor.DataTableRowView.DrawGUI(UnityEditor.SerializedObject)
+  commentId: M:Ceres.DataDriven.Editor.DataTableRowView.DrawGUI(UnityEditor.SerializedObject)
+  id: DrawGUI(UnityEditor.SerializedObject)
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: DrawGUI(SerializedObject)
+  nameWithType: DataTableRowView.DrawGUI(SerializedObject)
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.DrawGUI(UnityEditor.SerializedObject)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: public void DrawGUI(SerializedObject serializedObject)
+    parameters:
+    - id: serializedObject
+      type: UnityEditor.SerializedObject
+    content.vb: Public Sub DrawGUI(serializedObject As SerializedObject)
+  overload: Ceres.DataDriven.Editor.DataTableRowView.DrawGUI*
+- uid: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedIndices
+  commentId: M:Ceres.DataDriven.Editor.DataTableRowView.GetSelectedIndices
+  id: GetSelectedIndices
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: GetSelectedIndices()
+  nameWithType: DataTableRowView.GetSelectedIndices()
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedIndices()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Get row view selected indices
+  example: []
+  syntax:
+    content: public ReadOnlyCollection<int> GetSelectedIndices()
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{System.Int32}
+      description: ''
+    content.vb: Public Function GetSelectedIndices() As ReadOnlyCollection(Of Integer)
+  overload: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedIndices*
+- uid: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRows
+  commentId: M:Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRows
+  id: GetSelectedRows
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: GetSelectedRows()
+  nameWithType: DataTableRowView.GetSelectedRows()
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRows()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Get row view selected rows
+  example: []
+  syntax:
+    content: public IDataTableRow[] GetSelectedRows()
+    return:
+      type: Ceres.DataDriven.IDataTableRow[]
+      description: ''
+    content.vb: Public Function GetSelectedRows() As IDataTableRow()
+  overload: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRows*
+- uid: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRowProperties(UnityEditor.SerializedObject)
+  commentId: M:Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRowProperties(UnityEditor.SerializedObject)
+  id: GetSelectedRowProperties(UnityEditor.SerializedObject)
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: GetSelectedRowProperties(SerializedObject)
+  nameWithType: DataTableRowView.GetSelectedRowProperties(SerializedObject)
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRowProperties(UnityEditor.SerializedObject)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Get row view selected rows in serialized property format
+  example: []
+  syntax:
+    content: public SerializedProperty[] GetSelectedRowProperties(SerializedObject serializedObject)
+    parameters:
+    - id: serializedObject
+      type: UnityEditor.SerializedObject
+    return:
+      type: UnityEditor.SerializedProperty[]
+      description: ''
+    content.vb: Public Function GetSelectedRowProperties(serializedObject As SerializedObject) As SerializedProperty()
+  overload: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRowProperties*
+- uid: Ceres.DataDriven.Editor.DataTableRowView.SelectRow(System.Int32)
+  commentId: M:Ceres.DataDriven.Editor.DataTableRowView.SelectRow(System.Int32)
+  id: SelectRow(System.Int32)
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: SelectRow(int)
+  nameWithType: DataTableRowView.SelectRow(int)
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.SelectRow(int)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Select target row in view
+  example: []
+  syntax:
+    content: public void SelectRow(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub SelectRow(index As Integer)
+  overload: Ceres.DataDriven.Editor.DataTableRowView.SelectRow*
+  nameWithType.vb: DataTableRowView.SelectRow(Integer)
+  fullName.vb: Ceres.DataDriven.Editor.DataTableRowView.SelectRow(Integer)
+  name.vb: SelectRow(Integer)
+- uid: Ceres.DataDriven.Editor.DataTableRowView.Rebuild
+  commentId: M:Ceres.DataDriven.Editor.DataTableRowView.Rebuild
+  id: Rebuild
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: Rebuild()
+  nameWithType: DataTableRowView.Rebuild()
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.Rebuild()
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Rebuild rows view
+  example: []
+  syntax:
+    content: public void Rebuild()
+    content.vb: Public Sub Rebuild()
+  overload: Ceres.DataDriven.Editor.DataTableRowView.Rebuild*
+- uid: Ceres.DataDriven.Editor.DataTableRowView.Table
+  commentId: P:Ceres.DataDriven.Editor.DataTableRowView.Table
+  id: Table
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: Table
+  nameWithType: DataTableRowView.Table
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.Table
+  type: Property
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: public DataTable Table { get; }
+    parameters: []
+    return:
+      type: Ceres.DataDriven.DataTable
+    content.vb: Public ReadOnly Property Table As DataTable
+  overload: Ceres.DataDriven.Editor.DataTableRowView.Table*
+- uid: Ceres.DataDriven.Editor.DataTableRowView.ReadOnly
+  commentId: P:Ceres.DataDriven.Editor.DataTableRowView.ReadOnly
+  id: ReadOnly
+  parent: Ceres.DataDriven.Editor.DataTableRowView
+  langs:
+  - csharp
+  - vb
+  name: ReadOnly
+  nameWithType: DataTableRowView.ReadOnly
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.ReadOnly
+  type: Property
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: public bool ReadOnly { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property [ReadOnly] As Boolean
+  overload: Ceres.DataDriven.Editor.DataTableRowView.ReadOnly*
+references:
+- uid: Ceres.DataDriven.Editor
+  commentId: N:Ceres.DataDriven.Editor
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven.Editor
+  nameWithType: Ceres.DataDriven.Editor
+  fullName: Ceres.DataDriven.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  - name: .
+  - uid: Ceres.DataDriven.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.DataDriven.Editor.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  - name: .
+  - uid: Ceres.DataDriven.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.DataDriven.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.DataDriven.Editor.DataTableRowView.#ctor*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.#ctor
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView__ctor_Ceres_DataDriven_DataTable_
+  name: DataTableRowView
+  nameWithType: DataTableRowView.DataTableRowView
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.DataTableRowView
+  nameWithType.vb: DataTableRowView.New
+  fullName.vb: Ceres.DataDriven.Editor.DataTableRowView.New
+  name.vb: New
+- uid: Ceres.DataDriven.DataTable
+  commentId: T:Ceres.DataDriven.DataTable
+  parent: Ceres.DataDriven
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html
+  name: DataTable
+  nameWithType: DataTable
+  fullName: Ceres.DataDriven.DataTable
+- uid: Ceres.DataDriven
+  commentId: N:Ceres.DataDriven
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven
+  nameWithType: Ceres.DataDriven
+  fullName: Ceres.DataDriven
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+- uid: Ceres.DataDriven.Editor.DataTableRowView.DrawGUI*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.DrawGUI
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView_DrawGUI_UnityEditor_SerializedObject_
+  name: DrawGUI
+  nameWithType: DataTableRowView.DrawGUI
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.DrawGUI
+- uid: UnityEditor.SerializedObject
+  isExternal: true
+  name: SerializedObject
+  nameWithType: SerializedObject
+  fullName: UnityEditor.SerializedObject
+- uid: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedIndices*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.GetSelectedIndices
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView_GetSelectedIndices
+  name: GetSelectedIndices
+  nameWithType: DataTableRowView.GetSelectedIndices
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedIndices
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{System.Int32}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{System.Int32}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<int>
+  nameWithType: ReadOnlyCollection<int>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<int>
+  nameWithType.vb: ReadOnlyCollection(Of Integer)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of Integer)
+  name.vb: ReadOnlyCollection(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRows*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRows
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView_GetSelectedRows
+  name: GetSelectedRows
+  nameWithType: DataTableRowView.GetSelectedRows
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRows
+- uid: Ceres.DataDriven.IDataTableRow[]
+  isExternal: true
+  href: Ceres.DataDriven.IDataTableRow.html
+  name: IDataTableRow[]
+  nameWithType: IDataTableRow[]
+  fullName: Ceres.DataDriven.IDataTableRow[]
+  nameWithType.vb: IDataTableRow()
+  fullName.vb: Ceres.DataDriven.IDataTableRow()
+  name.vb: IDataTableRow()
+  spec.csharp:
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+    href: Ceres.DataDriven.IDataTableRow.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+    href: Ceres.DataDriven.IDataTableRow.html
+  - name: (
+  - name: )
+- uid: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRowProperties*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRowProperties
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView_GetSelectedRowProperties_UnityEditor_SerializedObject_
+  name: GetSelectedRowProperties
+  nameWithType: DataTableRowView.GetSelectedRowProperties
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.GetSelectedRowProperties
+- uid: UnityEditor.SerializedProperty[]
+  isExternal: true
+  name: SerializedProperty[]
+  nameWithType: SerializedProperty[]
+  fullName: UnityEditor.SerializedProperty[]
+  nameWithType.vb: SerializedProperty()
+  fullName.vb: UnityEditor.SerializedProperty()
+  name.vb: SerializedProperty()
+  spec.csharp:
+  - uid: UnityEditor.SerializedProperty
+    name: SerializedProperty
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: UnityEditor.SerializedProperty
+    name: SerializedProperty
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.DataDriven.Editor.DataTableRowView.SelectRow*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.SelectRow
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView_SelectRow_System_Int32_
+  name: SelectRow
+  nameWithType: DataTableRowView.SelectRow
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.SelectRow
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.DataDriven.Editor.DataTableRowView.Rebuild*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.Rebuild
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView_Rebuild
+  name: Rebuild
+  nameWithType: DataTableRowView.Rebuild
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.Rebuild
+- uid: Ceres.DataDriven.Editor.DataTableRowView.Table*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.Table
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView_Table
+  name: Table
+  nameWithType: DataTableRowView.Table
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.Table
+- uid: Ceres.DataDriven.Editor.DataTableRowView.ReadOnly*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableRowView.ReadOnly
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableRowView.html#Ceres_DataDriven_Editor_DataTableRowView_ReadOnly
+  name: ReadOnly
+  nameWithType: DataTableRowView.ReadOnly
+  fullName: Ceres.DataDriven.Editor.DataTableRowView.ReadOnly
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

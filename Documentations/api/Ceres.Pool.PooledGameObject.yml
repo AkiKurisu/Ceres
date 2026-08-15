@@ -1,0 +1,982 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Pool.PooledGameObject
+  commentId: T:Ceres.Pool.PooledGameObject
+  id: PooledGameObject
+  parent: Ceres.Pool
+  children:
+  - Ceres.Pool.PooledGameObject.#ctor
+  - Ceres.Pool.PooledGameObject.Add(Ceres.Schedulers.SchedulerHandle)
+  - Ceres.Pool.PooledGameObject.Destroy(System.Single)
+  - Ceres.Pool.PooledGameObject.Dispose
+  - Ceres.Pool.PooledGameObject.GameObject
+  - Ceres.Pool.PooledGameObject.Get(System.String,UnityEngine.Transform)
+  - Ceres.Pool.PooledGameObject.Init
+  - Ceres.Pool.PooledGameObject.InitDisposables
+  - Ceres.Pool.PooledGameObject.IsDisposed
+  - Ceres.Pool.PooledGameObject.PoolKey
+  - Ceres.Pool.PooledGameObject.ReleaseDisposables
+  - Ceres.Pool.PooledGameObject.SetMaxSize(System.Int32)
+  - Ceres.Pool.PooledGameObject.Transform
+  langs:
+  - csharp
+  - vb
+  name: PooledGameObject
+  nameWithType: PooledGameObject
+  fullName: Ceres.Pool.PooledGameObject
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  summary: Wrapper for pooling gameObject
+  example: []
+  syntax:
+    content: 'public class PooledGameObject : IDisposable, IDisposableUnregister'
+    content.vb: Public Class PooledGameObject Implements IDisposable, IDisposableUnregister
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Pool.PooledComponent`2
+  implements:
+  - System.IDisposable
+  - R3.Ceres.IDisposableUnregister
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Ceres.Pool.PooledGameObject.R3.Ceres.DisposableExtensions.AddTo``1(R3.Ceres.IDisposableUnregister)
+- uid: Ceres.Pool.PooledGameObject.SetMaxSize(System.Int32)
+  commentId: M:Ceres.Pool.PooledGameObject.SetMaxSize(System.Int32)
+  id: SetMaxSize(System.Int32)
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: SetMaxSize(int)
+  nameWithType: PooledGameObject.SetMaxSize(int)
+  fullName: Ceres.Pool.PooledGameObject.SetMaxSize(int)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: public static void SetMaxSize(int size)
+    parameters:
+    - id: size
+      type: System.Int32
+    content.vb: Public Shared Sub SetMaxSize(size As Integer)
+  overload: Ceres.Pool.PooledGameObject.SetMaxSize*
+  nameWithType.vb: PooledGameObject.SetMaxSize(Integer)
+  fullName.vb: Ceres.Pool.PooledGameObject.SetMaxSize(Integer)
+  name.vb: SetMaxSize(Integer)
+- uid: Ceres.Pool.PooledGameObject.Get(System.String,UnityEngine.Transform)
+  commentId: M:Ceres.Pool.PooledGameObject.Get(System.String,UnityEngine.Transform)
+  id: Get(System.String,UnityEngine.Transform)
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: Get(string, Transform)
+  nameWithType: PooledGameObject.Get(string, Transform)
+  fullName: Ceres.Pool.PooledGameObject.Get(string, UnityEngine.Transform)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  summary: Get or create empty pooled gameObject by address
+  example: []
+  syntax:
+    content: public static PooledGameObject Get(string address, Transform parent = null)
+    parameters:
+    - id: address
+      type: System.String
+      description: ''
+    - id: parent
+      type: UnityEngine.Transform
+      description: ''
+    return:
+      type: Ceres.Pool.PooledGameObject
+      description: ''
+    content.vb: Public Shared Function [Get](address As String, parent As Transform = Nothing) As PooledGameObject
+  overload: Ceres.Pool.PooledGameObject.Get*
+  nameWithType.vb: PooledGameObject.Get(String, Transform)
+  fullName.vb: Ceres.Pool.PooledGameObject.Get(String, UnityEngine.Transform)
+  name.vb: Get(String, Transform)
+- uid: Ceres.Pool.PooledGameObject.Add(Ceres.Schedulers.SchedulerHandle)
+  commentId: M:Ceres.Pool.PooledGameObject.Add(Ceres.Schedulers.SchedulerHandle)
+  id: Add(Ceres.Schedulers.SchedulerHandle)
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: Add(SchedulerHandle)
+  nameWithType: PooledGameObject.Add(SchedulerHandle)
+  fullName: Ceres.Pool.PooledGameObject.Add(Ceres.Schedulers.SchedulerHandle)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  summary: Add <xref href="Ceres.Schedulers.SchedulerHandle" data-throw-if-not-resolved="false"></xref> manually to reduce allocation
+  example: []
+  syntax:
+    content: protected void Add(SchedulerHandle handle)
+    parameters:
+    - id: handle
+      type: Ceres.Schedulers.SchedulerHandle
+      description: ''
+    content.vb: Protected Sub Add(handle As SchedulerHandle)
+  overload: Ceres.Pool.PooledGameObject.Add*
+- uid: Ceres.Pool.PooledGameObject.Init
+  commentId: M:Ceres.Pool.PooledGameObject.Init
+  id: Init
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: Init()
+  nameWithType: PooledGameObject.Init()
+  fullName: Ceres.Pool.PooledGameObject.Init()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: protected virtual void Init()
+    content.vb: Protected Overridable Sub Init()
+  overload: Ceres.Pool.PooledGameObject.Init*
+- uid: Ceres.Pool.PooledGameObject.Dispose
+  commentId: M:Ceres.Pool.PooledGameObject.Dispose
+  id: Dispose
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: PooledGameObject.Dispose()
+  fullName: Ceres.Pool.PooledGameObject.Dispose()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  example: []
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: Ceres.Pool.PooledGameObject.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Ceres.Pool.PooledGameObject.InitDisposables
+  commentId: M:Ceres.Pool.PooledGameObject.InitDisposables
+  id: InitDisposables
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: InitDisposables()
+  nameWithType: PooledGameObject.InitDisposables()
+  fullName: Ceres.Pool.PooledGameObject.InitDisposables()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: protected void InitDisposables()
+    content.vb: Protected Sub InitDisposables()
+  overload: Ceres.Pool.PooledGameObject.InitDisposables*
+- uid: Ceres.Pool.PooledGameObject.ReleaseDisposables
+  commentId: M:Ceres.Pool.PooledGameObject.ReleaseDisposables
+  id: ReleaseDisposables
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: ReleaseDisposables()
+  nameWithType: PooledGameObject.ReleaseDisposables()
+  fullName: Ceres.Pool.PooledGameObject.ReleaseDisposables()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: protected void ReleaseDisposables()
+    content.vb: Protected Sub ReleaseDisposables()
+  overload: Ceres.Pool.PooledGameObject.ReleaseDisposables*
+- uid: Ceres.Pool.PooledGameObject.Destroy(System.Single)
+  commentId: M:Ceres.Pool.PooledGameObject.Destroy(System.Single)
+  id: Destroy(System.Single)
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: Destroy(float)
+  nameWithType: PooledGameObject.Destroy(float)
+  fullName: Ceres.Pool.PooledGameObject.Destroy(float)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: public void Destroy(float t = 0)
+    parameters:
+    - id: t
+      type: System.Single
+    content.vb: Public Sub Destroy(t As Single = 0)
+  overload: Ceres.Pool.PooledGameObject.Destroy*
+  nameWithType.vb: PooledGameObject.Destroy(Single)
+  fullName.vb: Ceres.Pool.PooledGameObject.Destroy(Single)
+  name.vb: Destroy(Single)
+- uid: Ceres.Pool.PooledGameObject.#ctor
+  commentId: M:Ceres.Pool.PooledGameObject.#ctor
+  id: '#ctor'
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: PooledGameObject()
+  nameWithType: PooledGameObject.PooledGameObject()
+  fullName: Ceres.Pool.PooledGameObject.PooledGameObject()
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: public PooledGameObject()
+    content.vb: Public Sub New()
+  overload: Ceres.Pool.PooledGameObject.#ctor*
+  nameWithType.vb: PooledGameObject.New()
+  fullName.vb: Ceres.Pool.PooledGameObject.New()
+  name.vb: New()
+- uid: Ceres.Pool.PooledGameObject.GameObject
+  commentId: P:Ceres.Pool.PooledGameObject.GameObject
+  id: GameObject
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: GameObject
+  nameWithType: PooledGameObject.GameObject
+  fullName: Ceres.Pool.PooledGameObject.GameObject
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: public GameObject GameObject { get; protected set; }
+    parameters: []
+    return:
+      type: UnityEngine.GameObject
+    content.vb: Public Property GameObject As GameObject
+  overload: Ceres.Pool.PooledGameObject.GameObject*
+- uid: Ceres.Pool.PooledGameObject.Transform
+  commentId: P:Ceres.Pool.PooledGameObject.Transform
+  id: Transform
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: Transform
+  nameWithType: PooledGameObject.Transform
+  fullName: Ceres.Pool.PooledGameObject.Transform
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: public Transform Transform { get; protected set; }
+    parameters: []
+    return:
+      type: UnityEngine.Transform
+    content.vb: Public Property Transform As Transform
+  overload: Ceres.Pool.PooledGameObject.Transform*
+- uid: Ceres.Pool.PooledGameObject.IsDisposed
+  commentId: P:Ceres.Pool.PooledGameObject.IsDisposed
+  id: IsDisposed
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: IsDisposed
+  nameWithType: PooledGameObject.IsDisposed
+  fullName: Ceres.Pool.PooledGameObject.IsDisposed
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: protected bool IsDisposed { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Protected Property IsDisposed As Boolean
+  overload: Ceres.Pool.PooledGameObject.IsDisposed*
+- uid: Ceres.Pool.PooledGameObject.PoolKey
+  commentId: P:Ceres.Pool.PooledGameObject.PoolKey
+  id: PoolKey
+  parent: Ceres.Pool.PooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: PoolKey
+  nameWithType: PooledGameObject.PoolKey
+  fullName: Ceres.Pool.PooledGameObject.PoolKey
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  summary: Key to GameObject pool
+  example: []
+  syntax:
+    content: protected PoolKey PoolKey { get; set; }
+    parameters: []
+    return:
+      type: Ceres.Pool.PoolKey
+      description: ''
+    content.vb: Protected Property PoolKey As PoolKey
+  overload: Ceres.Pool.PooledGameObject.PoolKey*
+references:
+- uid: Ceres.Pool
+  commentId: N:Ceres.Pool
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Pool
+  nameWithType: Ceres.Pool
+  fullName: Ceres.Pool
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Pool
+    name: Pool
+    isExternal: true
+    href: Ceres.Pool.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Pool
+    name: Pool
+    isExternal: true
+    href: Ceres.Pool.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: R3.Ceres.IDisposableUnregister
+  commentId: T:R3.Ceres.IDisposableUnregister
+  parent: R3.Ceres
+  isExternal: true
+  href: R3.Ceres.IDisposableUnregister.html
+  name: IDisposableUnregister
+  nameWithType: IDisposableUnregister
+  fullName: R3.Ceres.IDisposableUnregister
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Ceres.Pool.PooledGameObject.R3.Ceres.DisposableExtensions.AddTo``1(R3.Ceres.IDisposableUnregister)
+  commentId: M:R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  parent: R3.Ceres.DisposableExtensions
+  definition: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  name: AddTo<PooledGameObject>(PooledGameObject, IDisposableUnregister)
+  nameWithType: DisposableExtensions.AddTo<PooledGameObject>(PooledGameObject, IDisposableUnregister)
+  fullName: R3.Ceres.DisposableExtensions.AddTo<Ceres.Pool.PooledGameObject>(Ceres.Pool.PooledGameObject, R3.Ceres.IDisposableUnregister)
+  nameWithType.vb: DisposableExtensions.AddTo(Of PooledGameObject)(PooledGameObject, IDisposableUnregister)
+  fullName.vb: R3.Ceres.DisposableExtensions.AddTo(Of Ceres.Pool.PooledGameObject)(Ceres.Pool.PooledGameObject, R3.Ceres.IDisposableUnregister)
+  name.vb: AddTo(Of PooledGameObject)(PooledGameObject, IDisposableUnregister)
+  spec.csharp:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(Ceres.Pool.PooledGameObject,R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: <
+  - uid: Ceres.Pool.PooledGameObject
+    name: PooledGameObject
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html
+  - name: '>'
+  - name: (
+  - uid: Ceres.Pool.PooledGameObject
+    name: PooledGameObject
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+  spec.vb:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(Ceres.Pool.PooledGameObject,R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Pool.PooledGameObject
+    name: PooledGameObject
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html
+  - name: )
+  - name: (
+  - uid: Ceres.Pool.PooledGameObject
+    name: PooledGameObject
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: R3.Ceres
+  commentId: N:R3.Ceres
+  isExternal: true
+  href: R3.html
+  name: R3.Ceres
+  nameWithType: R3.Ceres
+  fullName: R3.Ceres
+  spec.csharp:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+  spec.vb:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+- uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  commentId: M:R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  isExternal: true
+  href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  name: AddTo<T>(T, IDisposableUnregister)
+  nameWithType: DisposableExtensions.AddTo<T>(T, IDisposableUnregister)
+  fullName: R3.Ceres.DisposableExtensions.AddTo<T>(T, R3.Ceres.IDisposableUnregister)
+  nameWithType.vb: DisposableExtensions.AddTo(Of T)(T, IDisposableUnregister)
+  fullName.vb: R3.Ceres.DisposableExtensions.AddTo(Of T)(T, R3.Ceres.IDisposableUnregister)
+  name.vb: AddTo(Of T)(T, IDisposableUnregister)
+  spec.csharp:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+  spec.vb:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+- uid: R3.Ceres.DisposableExtensions
+  commentId: T:R3.Ceres.DisposableExtensions
+  parent: R3.Ceres
+  isExternal: true
+  href: R3.Ceres.DisposableExtensions.html
+  name: DisposableExtensions
+  nameWithType: DisposableExtensions
+  fullName: R3.Ceres.DisposableExtensions
+- uid: Ceres.Pool.PooledGameObject.SetMaxSize*
+  commentId: Overload:Ceres.Pool.PooledGameObject.SetMaxSize
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_SetMaxSize_System_Int32_
+  name: SetMaxSize
+  nameWithType: PooledGameObject.SetMaxSize
+  fullName: Ceres.Pool.PooledGameObject.SetMaxSize
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Pool.PooledGameObject.Get*
+  commentId: Overload:Ceres.Pool.PooledGameObject.Get
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Get_System_String_UnityEngine_Transform_
+  name: Get
+  nameWithType: PooledGameObject.Get
+  fullName: Ceres.Pool.PooledGameObject.Get
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: UnityEngine.Transform
+  isExternal: true
+  name: Transform
+  nameWithType: Transform
+  fullName: UnityEngine.Transform
+- uid: Ceres.Pool.PooledGameObject
+  commentId: T:Ceres.Pool.PooledGameObject
+  parent: Ceres.Pool
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html
+  name: PooledGameObject
+  nameWithType: PooledGameObject
+  fullName: Ceres.Pool.PooledGameObject
+- uid: Ceres.Schedulers.SchedulerHandle
+  commentId: T:Ceres.Schedulers.SchedulerHandle
+  parent: Ceres.Schedulers
+  isExternal: true
+  href: Ceres.Schedulers.SchedulerHandle.html
+  name: SchedulerHandle
+  nameWithType: SchedulerHandle
+  fullName: Ceres.Schedulers.SchedulerHandle
+- uid: Ceres.Pool.PooledGameObject.Add*
+  commentId: Overload:Ceres.Pool.PooledGameObject.Add
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Add_Ceres_Schedulers_SchedulerHandle_
+  name: Add
+  nameWithType: PooledGameObject.Add
+  fullName: Ceres.Pool.PooledGameObject.Add
+- uid: Ceres.Schedulers
+  commentId: N:Ceres.Schedulers
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Schedulers
+  nameWithType: Ceres.Schedulers
+  fullName: Ceres.Schedulers
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Schedulers
+    name: Schedulers
+    isExternal: true
+    href: Ceres.Schedulers.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Schedulers
+    name: Schedulers
+    isExternal: true
+    href: Ceres.Schedulers.html
+- uid: Ceres.Pool.PooledGameObject.Init*
+  commentId: Overload:Ceres.Pool.PooledGameObject.Init
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Init
+  name: Init
+  nameWithType: PooledGameObject.Init
+  fullName: Ceres.Pool.PooledGameObject.Init
+- uid: Ceres.Pool.PooledGameObject.Dispose*
+  commentId: Overload:Ceres.Pool.PooledGameObject.Dispose
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Dispose
+  name: Dispose
+  nameWithType: PooledGameObject.Dispose
+  fullName: Ceres.Pool.PooledGameObject.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Ceres.Pool.PooledGameObject.InitDisposables*
+  commentId: Overload:Ceres.Pool.PooledGameObject.InitDisposables
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_InitDisposables
+  name: InitDisposables
+  nameWithType: PooledGameObject.InitDisposables
+  fullName: Ceres.Pool.PooledGameObject.InitDisposables
+- uid: Ceres.Pool.PooledGameObject.ReleaseDisposables*
+  commentId: Overload:Ceres.Pool.PooledGameObject.ReleaseDisposables
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_ReleaseDisposables
+  name: ReleaseDisposables
+  nameWithType: PooledGameObject.ReleaseDisposables
+  fullName: Ceres.Pool.PooledGameObject.ReleaseDisposables
+- uid: Ceres.Pool.PooledGameObject.Destroy*
+  commentId: Overload:Ceres.Pool.PooledGameObject.Destroy
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Destroy_System_Single_
+  name: Destroy
+  nameWithType: PooledGameObject.Destroy
+  fullName: Ceres.Pool.PooledGameObject.Destroy
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Ceres.Pool.PooledGameObject.#ctor*
+  commentId: Overload:Ceres.Pool.PooledGameObject.#ctor
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject__ctor
+  name: PooledGameObject
+  nameWithType: PooledGameObject.PooledGameObject
+  fullName: Ceres.Pool.PooledGameObject.PooledGameObject
+  nameWithType.vb: PooledGameObject.New
+  fullName.vb: Ceres.Pool.PooledGameObject.New
+  name.vb: New
+- uid: Ceres.Pool.PooledGameObject.GameObject*
+  commentId: Overload:Ceres.Pool.PooledGameObject.GameObject
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_GameObject
+  name: GameObject
+  nameWithType: PooledGameObject.GameObject
+  fullName: Ceres.Pool.PooledGameObject.GameObject
+- uid: UnityEngine.GameObject
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: Ceres.Pool.PooledGameObject.Transform*
+  commentId: Overload:Ceres.Pool.PooledGameObject.Transform
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Transform
+  name: Transform
+  nameWithType: PooledGameObject.Transform
+  fullName: Ceres.Pool.PooledGameObject.Transform
+- uid: Ceres.Pool.PooledGameObject.IsDisposed*
+  commentId: Overload:Ceres.Pool.PooledGameObject.IsDisposed
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_IsDisposed
+  name: IsDisposed
+  nameWithType: PooledGameObject.IsDisposed
+  fullName: Ceres.Pool.PooledGameObject.IsDisposed
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Pool.PooledGameObject.PoolKey*
+  commentId: Overload:Ceres.Pool.PooledGameObject.PoolKey
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_PoolKey
+  name: PoolKey
+  nameWithType: PooledGameObject.PoolKey
+  fullName: Ceres.Pool.PooledGameObject.PoolKey
+- uid: Ceres.Pool.PoolKey
+  commentId: T:Ceres.Pool.PoolKey
+  parent: Ceres.Pool
+  isExternal: true
+  href: Ceres.Pool.PoolKey.html
+  name: PoolKey
+  nameWithType: PoolKey
+  fullName: Ceres.Pool.PoolKey

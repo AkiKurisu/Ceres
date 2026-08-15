@@ -1,0 +1,140 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.IEventHandler
+  commentId: T:Ceres.Events.IEventHandler
+  id: IEventHandler
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.IEventHandler.HandleEvent(Ceres.Events.EventBase)
+  - Ceres.Events.IEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  langs:
+  - csharp
+  - vb
+  name: IEventHandler
+  nameWithType: IEventHandler
+  fullName: Ceres.Events.IEventHandler
+  type: Interface
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Interface for class capable of handling events.
+  example: []
+  syntax:
+    content: public interface IEventHandler
+    content.vb: Public Interface IEventHandler
+  derivedClasses:
+  - Ceres.Events.CallbackEventHandler
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler
+  - Ceres.Tasks.DelayTask
+  - Ceres.Tasks.PooledTaskBase`1
+  - Ceres.Tasks.SequenceTask
+  - Ceres.Tasks.TaskBase
+- uid: Ceres.Events.IEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  commentId: M:Ceres.Events.IEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  id: SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  parent: Ceres.Events.IEventHandler
+  langs:
+  - csharp
+  - vb
+  name: SendEvent(EventBase, DispatchMode)
+  nameWithType: IEventHandler.SendEvent(EventBase, DispatchMode)
+  fullName: Ceres.Events.IEventHandler.SendEvent(Ceres.Events.EventBase, Ceres.Events.DispatchMode)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Sends an event to the event handler.
+  example: []
+  syntax:
+    content: void SendEvent(EventBase e, DispatchMode dispatchMode = DispatchMode.Default)
+    parameters:
+    - id: e
+      type: Ceres.Events.EventBase
+      description: The event to send.
+    - id: dispatchMode
+      type: Ceres.Events.DispatchMode
+      description: The event dispatch mode.
+    content.vb: Sub SendEvent(e As EventBase, dispatchMode As DispatchMode = DispatchMode.Default)
+  overload: Ceres.Events.IEventHandler.SendEvent*
+- uid: Ceres.Events.IEventHandler.HandleEvent(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.IEventHandler.HandleEvent(Ceres.Events.EventBase)
+  id: HandleEvent(Ceres.Events.EventBase)
+  parent: Ceres.Events.IEventHandler
+  langs:
+  - csharp
+  - vb
+  name: HandleEvent(EventBase)
+  nameWithType: IEventHandler.HandleEvent(EventBase)
+  fullName: Ceres.Events.IEventHandler.HandleEvent(Ceres.Events.EventBase)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Handle an event.
+  example: []
+  syntax:
+    content: void HandleEvent(EventBase evt)
+    parameters:
+    - id: evt
+      type: Ceres.Events.EventBase
+      description: The event to handle.
+    content.vb: Sub HandleEvent(evt As EventBase)
+  overload: Ceres.Events.IEventHandler.HandleEvent*
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.IEventHandler.SendEvent*
+  commentId: Overload:Ceres.Events.IEventHandler.SendEvent
+  isExternal: true
+  href: Ceres.Events.IEventHandler.html#Ceres_Events_IEventHandler_SendEvent_Ceres_Events_EventBase_Ceres_Events_DispatchMode_
+  name: SendEvent
+  nameWithType: IEventHandler.SendEvent
+  fullName: Ceres.Events.IEventHandler.SendEvent
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: Ceres.Events.DispatchMode
+  commentId: T:Ceres.Events.DispatchMode
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.DispatchMode.html
+  name: DispatchMode
+  nameWithType: DispatchMode
+  fullName: Ceres.Events.DispatchMode
+- uid: Ceres.Events.IEventHandler.HandleEvent*
+  commentId: Overload:Ceres.Events.IEventHandler.HandleEvent
+  isExternal: true
+  href: Ceres.Events.IEventHandler.html#Ceres_Events_IEventHandler_HandleEvent_Ceres_Events_EventBase_
+  name: HandleEvent
+  nameWithType: IEventHandler.HandleEvent
+  fullName: Ceres.Events.IEventHandler.HandleEvent

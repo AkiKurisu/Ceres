@@ -1,0 +1,623 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Configs.FieldAccessor
+  commentId: T:Ceres.Configs.FieldAccessor
+  id: FieldAccessor
+  parent: Ceres.Configs
+  children:
+  - Ceres.Configs.FieldAccessor.#ctor(System.Reflection.FieldInfo)
+  - Ceres.Configs.FieldAccessor.GetValue(System.Object)
+  - Ceres.Configs.FieldAccessor.MemberType
+  - Ceres.Configs.FieldAccessor.Name
+  - Ceres.Configs.FieldAccessor.SetValue(System.Object,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: FieldAccessor
+  nameWithType: FieldAccessor
+  fullName: Ceres.Configs.FieldAccessor
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  summary: Field accessor implementation
+  example: []
+  syntax:
+    content: 'public class FieldAccessor : MemberAccessor'
+    content.vb: Public Class FieldAccessor Inherits MemberAccessor
+  inheritance:
+  - System.Object
+  - Ceres.Configs.MemberAccessor
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Configs.FieldAccessor.#ctor(System.Reflection.FieldInfo)
+  commentId: M:Ceres.Configs.FieldAccessor.#ctor(System.Reflection.FieldInfo)
+  id: '#ctor(System.Reflection.FieldInfo)'
+  parent: Ceres.Configs.FieldAccessor
+  langs:
+  - csharp
+  - vb
+  name: FieldAccessor(FieldInfo)
+  nameWithType: FieldAccessor.FieldAccessor(FieldInfo)
+  fullName: Ceres.Configs.FieldAccessor.FieldAccessor(System.Reflection.FieldInfo)
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  syntax:
+    content: public FieldAccessor(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: System.Reflection.FieldInfo
+    content.vb: Public Sub New(fieldInfo As FieldInfo)
+  overload: Ceres.Configs.FieldAccessor.#ctor*
+  nameWithType.vb: FieldAccessor.New(FieldInfo)
+  fullName.vb: Ceres.Configs.FieldAccessor.New(System.Reflection.FieldInfo)
+  name.vb: New(FieldInfo)
+- uid: Ceres.Configs.FieldAccessor.GetValue(System.Object)
+  commentId: M:Ceres.Configs.FieldAccessor.GetValue(System.Object)
+  id: GetValue(System.Object)
+  parent: Ceres.Configs.FieldAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetValue(object)
+  nameWithType: FieldAccessor.GetValue(object)
+  fullName: Ceres.Configs.FieldAccessor.GetValue(object)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  example: []
+  syntax:
+    content: public override object GetValue(object target)
+    parameters:
+    - id: target
+      type: System.Object
+    return:
+      type: System.Object
+    content.vb: Public Overrides Function GetValue(target As Object) As Object
+  overridden: Ceres.Configs.MemberAccessor.GetValue(System.Object)
+  overload: Ceres.Configs.FieldAccessor.GetValue*
+  nameWithType.vb: FieldAccessor.GetValue(Object)
+  fullName.vb: Ceres.Configs.FieldAccessor.GetValue(Object)
+  name.vb: GetValue(Object)
+- uid: Ceres.Configs.FieldAccessor.SetValue(System.Object,System.Object)
+  commentId: M:Ceres.Configs.FieldAccessor.SetValue(System.Object,System.Object)
+  id: SetValue(System.Object,System.Object)
+  parent: Ceres.Configs.FieldAccessor
+  langs:
+  - csharp
+  - vb
+  name: SetValue(object, object)
+  nameWithType: FieldAccessor.SetValue(object, object)
+  fullName: Ceres.Configs.FieldAccessor.SetValue(object, object)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  example: []
+  syntax:
+    content: public override void SetValue(object target, object value)
+    parameters:
+    - id: target
+      type: System.Object
+    - id: value
+      type: System.Object
+    content.vb: Public Overrides Sub SetValue(target As Object, value As Object)
+  overridden: Ceres.Configs.MemberAccessor.SetValue(System.Object,System.Object)
+  overload: Ceres.Configs.FieldAccessor.SetValue*
+  nameWithType.vb: FieldAccessor.SetValue(Object, Object)
+  fullName.vb: Ceres.Configs.FieldAccessor.SetValue(Object, Object)
+  name.vb: SetValue(Object, Object)
+- uid: Ceres.Configs.FieldAccessor.MemberType
+  commentId: P:Ceres.Configs.FieldAccessor.MemberType
+  id: MemberType
+  parent: Ceres.Configs.FieldAccessor
+  langs:
+  - csharp
+  - vb
+  name: MemberType
+  nameWithType: FieldAccessor.MemberType
+  fullName: Ceres.Configs.FieldAccessor.MemberType
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  example: []
+  syntax:
+    content: public override Type MemberType { get; }
+    parameters: []
+    return:
+      type: System.Type
+    content.vb: Public Overrides ReadOnly Property MemberType As Type
+  overridden: Ceres.Configs.MemberAccessor.MemberType
+  overload: Ceres.Configs.FieldAccessor.MemberType*
+- uid: Ceres.Configs.FieldAccessor.Name
+  commentId: P:Ceres.Configs.FieldAccessor.Name
+  id: Name
+  parent: Ceres.Configs.FieldAccessor
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: FieldAccessor.Name
+  fullName: Ceres.Configs.FieldAccessor.Name
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  example: []
+  syntax:
+    content: public override string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property Name As String
+  overridden: Ceres.Configs.MemberAccessor.Name
+  overload: Ceres.Configs.FieldAccessor.Name*
+references:
+- uid: Ceres.Configs
+  commentId: N:Ceres.Configs
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Configs
+  nameWithType: Ceres.Configs
+  fullName: Ceres.Configs
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Configs
+    name: Configs
+    isExternal: true
+    href: Ceres.Configs.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Configs
+    name: Configs
+    isExternal: true
+    href: Ceres.Configs.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Configs.MemberAccessor
+  commentId: T:Ceres.Configs.MemberAccessor
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.MemberAccessor.html
+  name: MemberAccessor
+  nameWithType: MemberAccessor
+  fullName: Ceres.Configs.MemberAccessor
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Configs.FieldAccessor.#ctor*
+  commentId: Overload:Ceres.Configs.FieldAccessor.#ctor
+  isExternal: true
+  href: Ceres.Configs.FieldAccessor.html#Ceres_Configs_FieldAccessor__ctor_System_Reflection_FieldInfo_
+  name: FieldAccessor
+  nameWithType: FieldAccessor.FieldAccessor
+  fullName: Ceres.Configs.FieldAccessor.FieldAccessor
+  nameWithType.vb: FieldAccessor.New
+  fullName.vb: Ceres.Configs.FieldAccessor.New
+  name.vb: New
+- uid: System.Reflection.FieldInfo
+  commentId: T:System.Reflection.FieldInfo
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: System.Reflection.FieldInfo
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: Ceres.Configs.MemberAccessor.GetValue(System.Object)
+  commentId: M:Ceres.Configs.MemberAccessor.GetValue(System.Object)
+  parent: Ceres.Configs.MemberAccessor
+  isExternal: true
+  href: Ceres.Configs.MemberAccessor.html#Ceres_Configs_MemberAccessor_GetValue_System_Object_
+  name: GetValue(object)
+  nameWithType: MemberAccessor.GetValue(object)
+  fullName: Ceres.Configs.MemberAccessor.GetValue(object)
+  nameWithType.vb: MemberAccessor.GetValue(Object)
+  fullName.vb: Ceres.Configs.MemberAccessor.GetValue(Object)
+  name.vb: GetValue(Object)
+  spec.csharp:
+  - uid: Ceres.Configs.MemberAccessor.GetValue(System.Object)
+    name: GetValue
+    isExternal: true
+    href: Ceres.Configs.MemberAccessor.html#Ceres_Configs_MemberAccessor_GetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Configs.MemberAccessor.GetValue(System.Object)
+    name: GetValue
+    isExternal: true
+    href: Ceres.Configs.MemberAccessor.html#Ceres_Configs_MemberAccessor_GetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Configs.FieldAccessor.GetValue*
+  commentId: Overload:Ceres.Configs.FieldAccessor.GetValue
+  isExternal: true
+  href: Ceres.Configs.FieldAccessor.html#Ceres_Configs_FieldAccessor_GetValue_System_Object_
+  name: GetValue
+  nameWithType: FieldAccessor.GetValue
+  fullName: Ceres.Configs.FieldAccessor.GetValue
+- uid: Ceres.Configs.MemberAccessor.SetValue(System.Object,System.Object)
+  commentId: M:Ceres.Configs.MemberAccessor.SetValue(System.Object,System.Object)
+  parent: Ceres.Configs.MemberAccessor
+  isExternal: true
+  href: Ceres.Configs.MemberAccessor.html#Ceres_Configs_MemberAccessor_SetValue_System_Object_System_Object_
+  name: SetValue(object, object)
+  nameWithType: MemberAccessor.SetValue(object, object)
+  fullName: Ceres.Configs.MemberAccessor.SetValue(object, object)
+  nameWithType.vb: MemberAccessor.SetValue(Object, Object)
+  fullName.vb: Ceres.Configs.MemberAccessor.SetValue(Object, Object)
+  name.vb: SetValue(Object, Object)
+  spec.csharp:
+  - uid: Ceres.Configs.MemberAccessor.SetValue(System.Object,System.Object)
+    name: SetValue
+    isExternal: true
+    href: Ceres.Configs.MemberAccessor.html#Ceres_Configs_MemberAccessor_SetValue_System_Object_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Configs.MemberAccessor.SetValue(System.Object,System.Object)
+    name: SetValue
+    isExternal: true
+    href: Ceres.Configs.MemberAccessor.html#Ceres_Configs_MemberAccessor_SetValue_System_Object_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Configs.FieldAccessor.SetValue*
+  commentId: Overload:Ceres.Configs.FieldAccessor.SetValue
+  isExternal: true
+  href: Ceres.Configs.FieldAccessor.html#Ceres_Configs_FieldAccessor_SetValue_System_Object_System_Object_
+  name: SetValue
+  nameWithType: FieldAccessor.SetValue
+  fullName: Ceres.Configs.FieldAccessor.SetValue
+- uid: Ceres.Configs.MemberAccessor.MemberType
+  commentId: P:Ceres.Configs.MemberAccessor.MemberType
+  parent: Ceres.Configs.MemberAccessor
+  isExternal: true
+  href: Ceres.Configs.MemberAccessor.html#Ceres_Configs_MemberAccessor_MemberType
+  name: MemberType
+  nameWithType: MemberAccessor.MemberType
+  fullName: Ceres.Configs.MemberAccessor.MemberType
+- uid: Ceres.Configs.FieldAccessor.MemberType*
+  commentId: Overload:Ceres.Configs.FieldAccessor.MemberType
+  isExternal: true
+  href: Ceres.Configs.FieldAccessor.html#Ceres_Configs_FieldAccessor_MemberType
+  name: MemberType
+  nameWithType: FieldAccessor.MemberType
+  fullName: Ceres.Configs.FieldAccessor.MemberType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Ceres.Configs.MemberAccessor.Name
+  commentId: P:Ceres.Configs.MemberAccessor.Name
+  parent: Ceres.Configs.MemberAccessor
+  isExternal: true
+  href: Ceres.Configs.MemberAccessor.html#Ceres_Configs_MemberAccessor_Name
+  name: Name
+  nameWithType: MemberAccessor.Name
+  fullName: Ceres.Configs.MemberAccessor.Name
+- uid: Ceres.Configs.FieldAccessor.Name*
+  commentId: Overload:Ceres.Configs.FieldAccessor.Name
+  isExternal: true
+  href: Ceres.Configs.FieldAccessor.html#Ceres_Configs_FieldAccessor_Name
+  name: Name
+  nameWithType: FieldAccessor.Name
+  fullName: Ceres.Configs.FieldAccessor.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

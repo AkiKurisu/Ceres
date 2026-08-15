@@ -1,0 +1,518 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.ZipWrapper
+  commentId: T:Ceres.ZipWrapper
+  id: ZipWrapper
+  parent: Ceres
+  children:
+  - Ceres.ZipWrapper.UnzipFile(System.Byte[],System.String,System.String)
+  - Ceres.ZipWrapper.UnzipFile(System.IO.Stream,System.String,System.String)
+  - Ceres.ZipWrapper.UnzipFile(System.String,System.String,System.String)
+  - Ceres.ZipWrapper.Zip(System.String[],System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ZipWrapper
+  nameWithType: ZipWrapper
+  fullName: Ceres.ZipWrapper
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  summary: Helper class for zip lib
+  example: []
+  syntax:
+    content: public static class ZipWrapper
+    content.vb: Public Module ZipWrapper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.ZipWrapper.Zip(System.String[],System.String,System.String)
+  commentId: M:Ceres.ZipWrapper.Zip(System.String[],System.String,System.String)
+  id: Zip(System.String[],System.String,System.String)
+  parent: Ceres.ZipWrapper
+  langs:
+  - csharp
+  - vb
+  name: Zip(string[], string, string)
+  nameWithType: ZipWrapper.Zip(string[], string, string)
+  fullName: Ceres.ZipWrapper.Zip(string[], string, string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static bool Zip(string[] fileOrDirectoryArray, string outputPathName, string password = null)
+    parameters:
+    - id: fileOrDirectoryArray
+      type: System.String[]
+    - id: outputPathName
+      type: System.String
+    - id: password
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function Zip(fileOrDirectoryArray As String(), outputPathName As String, password As String = Nothing) As Boolean
+  overload: Ceres.ZipWrapper.Zip*
+  nameWithType.vb: ZipWrapper.Zip(String(), String, String)
+  fullName.vb: Ceres.ZipWrapper.Zip(String(), String, String)
+  name.vb: Zip(String(), String, String)
+- uid: Ceres.ZipWrapper.UnzipFile(System.String,System.String,System.String)
+  commentId: M:Ceres.ZipWrapper.UnzipFile(System.String,System.String,System.String)
+  id: UnzipFile(System.String,System.String,System.String)
+  parent: Ceres.ZipWrapper
+  langs:
+  - csharp
+  - vb
+  name: UnzipFile(string, string, string)
+  nameWithType: ZipWrapper.UnzipFile(string, string, string)
+  fullName: Ceres.ZipWrapper.UnzipFile(string, string, string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static bool UnzipFile(string filePathName, string outputPath, string password = null)
+    parameters:
+    - id: filePathName
+      type: System.String
+    - id: outputPath
+      type: System.String
+    - id: password
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function UnzipFile(filePathName As String, outputPath As String, password As String = Nothing) As Boolean
+  overload: Ceres.ZipWrapper.UnzipFile*
+  nameWithType.vb: ZipWrapper.UnzipFile(String, String, String)
+  fullName.vb: Ceres.ZipWrapper.UnzipFile(String, String, String)
+  name.vb: UnzipFile(String, String, String)
+- uid: Ceres.ZipWrapper.UnzipFile(System.Byte[],System.String,System.String)
+  commentId: M:Ceres.ZipWrapper.UnzipFile(System.Byte[],System.String,System.String)
+  id: UnzipFile(System.Byte[],System.String,System.String)
+  parent: Ceres.ZipWrapper
+  langs:
+  - csharp
+  - vb
+  name: UnzipFile(byte[], string, string)
+  nameWithType: ZipWrapper.UnzipFile(byte[], string, string)
+  fullName: Ceres.ZipWrapper.UnzipFile(byte[], string, string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static bool UnzipFile(byte[] fileBytes, string outputPath, string password = null)
+    parameters:
+    - id: fileBytes
+      type: System.Byte[]
+    - id: outputPath
+      type: System.String
+    - id: password
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function UnzipFile(fileBytes As Byte(), outputPath As String, password As String = Nothing) As Boolean
+  overload: Ceres.ZipWrapper.UnzipFile*
+  nameWithType.vb: ZipWrapper.UnzipFile(Byte(), String, String)
+  fullName.vb: Ceres.ZipWrapper.UnzipFile(Byte(), String, String)
+  name.vb: UnzipFile(Byte(), String, String)
+- uid: Ceres.ZipWrapper.UnzipFile(System.IO.Stream,System.String,System.String)
+  commentId: M:Ceres.ZipWrapper.UnzipFile(System.IO.Stream,System.String,System.String)
+  id: UnzipFile(System.IO.Stream,System.String,System.String)
+  parent: Ceres.ZipWrapper
+  langs:
+  - csharp
+  - vb
+  name: UnzipFile(Stream, string, string)
+  nameWithType: ZipWrapper.UnzipFile(Stream, string, string)
+  fullName: Ceres.ZipWrapper.UnzipFile(System.IO.Stream, string, string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static bool UnzipFile(Stream inputStream, string outputPath, string password = null)
+    parameters:
+    - id: inputStream
+      type: System.IO.Stream
+    - id: outputPath
+      type: System.String
+    - id: password
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function UnzipFile(inputStream As Stream, outputPath As String, password As String = Nothing) As Boolean
+  overload: Ceres.ZipWrapper.UnzipFile*
+  nameWithType.vb: ZipWrapper.UnzipFile(Stream, String, String)
+  fullName.vb: Ceres.ZipWrapper.UnzipFile(System.IO.Stream, String, String)
+  name.vb: UnzipFile(Stream, String, String)
+references:
+- uid: Ceres
+  commentId: N:Ceres
+  isExternal: true
+  href: Ceres.html
+  name: Ceres
+  nameWithType: Ceres
+  fullName: Ceres
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.ZipWrapper.Zip*
+  commentId: Overload:Ceres.ZipWrapper.Zip
+  isExternal: true
+  href: Ceres.ZipWrapper.html#Ceres_ZipWrapper_Zip_System_String___System_String_System_String_
+  name: Zip
+  nameWithType: ZipWrapper.Zip
+  fullName: Ceres.ZipWrapper.Zip
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.ZipWrapper.UnzipFile*
+  commentId: Overload:Ceres.ZipWrapper.UnzipFile
+  isExternal: true
+  href: Ceres.ZipWrapper.html#Ceres_ZipWrapper_UnzipFile_System_String_System_String_System_String_
+  name: UnzipFile
+  nameWithType: ZipWrapper.UnzipFile
+  fullName: Ceres.ZipWrapper.UnzipFile
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io

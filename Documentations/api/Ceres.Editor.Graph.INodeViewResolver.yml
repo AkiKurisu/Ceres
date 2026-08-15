@@ -1,0 +1,168 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.INodeViewResolver
+  commentId: T:Ceres.Editor.Graph.INodeViewResolver
+  id: INodeViewResolver
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.INodeViewResolver.CreateNodeView(System.Type,Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.INodeViewResolver.IsAcceptable(System.Type)
+  langs:
+  - csharp
+  - vb
+  name: INodeViewResolver
+  nameWithType: INodeViewResolver
+  fullName: Ceres.Editor.Graph.INodeViewResolver
+  type: Interface
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Interface for custom node view resolver
+  example: []
+  syntax:
+    content: public interface INodeViewResolver
+    content.vb: Public Interface INodeViewResolver
+  derivedClasses:
+  - Ceres.Editor.Flow.ExecutablePortArrayNodeViewResolver
+- uid: Ceres.Editor.Graph.INodeViewResolver.CreateNodeView(System.Type,Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.INodeViewResolver.CreateNodeView(System.Type,Ceres.Editor.Graph.CeresGraphView)
+  id: CreateNodeView(System.Type,Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.INodeViewResolver
+  langs:
+  - csharp
+  - vb
+  name: CreateNodeView(Type, CeresGraphView)
+  nameWithType: INodeViewResolver.CreateNodeView(Type, CeresGraphView)
+  fullName: Ceres.Editor.Graph.INodeViewResolver.CreateNodeView(System.Type, Ceres.Editor.Graph.CeresGraphView)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: ICeresNodeView CreateNodeView(Type type, CeresGraphView graphView)
+    parameters:
+    - id: type
+      type: System.Type
+    - id: graphView
+      type: Ceres.Editor.Graph.CeresGraphView
+    return:
+      type: Ceres.Editor.Graph.ICeresNodeView
+    content.vb: Function CreateNodeView(type As Type, graphView As CeresGraphView) As ICeresNodeView
+  overload: Ceres.Editor.Graph.INodeViewResolver.CreateNodeView*
+- uid: Ceres.Editor.Graph.INodeViewResolver.IsAcceptable(System.Type)
+  commentId: M:Ceres.Editor.Graph.INodeViewResolver.IsAcceptable(System.Type)
+  id: IsAcceptable(System.Type)
+  parent: Ceres.Editor.Graph.INodeViewResolver
+  langs:
+  - csharp
+  - vb
+  name: IsAcceptable(Type)
+  nameWithType: INodeViewResolver.IsAcceptable(Type)
+  fullName: Ceres.Editor.Graph.INodeViewResolver.IsAcceptable(System.Type)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: bool IsAcceptable(Type nodeType)
+    parameters:
+    - id: nodeType
+      type: System.Type
+    return:
+      type: System.Boolean
+    content.vb: Function IsAcceptable(nodeType As Type) As Boolean
+  overload: Ceres.Editor.Graph.INodeViewResolver.IsAcceptable*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: Ceres.Editor.Graph.INodeViewResolver.CreateNodeView*
+  commentId: Overload:Ceres.Editor.Graph.INodeViewResolver.CreateNodeView
+  isExternal: true
+  href: Ceres.Editor.Graph.INodeViewResolver.html#Ceres_Editor_Graph_INodeViewResolver_CreateNodeView_System_Type_Ceres_Editor_Graph_CeresGraphView_
+  name: CreateNodeView
+  nameWithType: INodeViewResolver.CreateNodeView
+  fullName: Ceres.Editor.Graph.INodeViewResolver.CreateNodeView
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphView.html
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.ICeresNodeView
+  commentId: T:Ceres.Editor.Graph.ICeresNodeView
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.ICeresNodeView.html
+  name: ICeresNodeView
+  nameWithType: ICeresNodeView
+  fullName: Ceres.Editor.Graph.ICeresNodeView
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.INodeViewResolver.IsAcceptable*
+  commentId: Overload:Ceres.Editor.Graph.INodeViewResolver.IsAcceptable
+  isExternal: true
+  href: Ceres.Editor.Graph.INodeViewResolver.html#Ceres_Editor_Graph_INodeViewResolver_IsAcceptable_System_Type_
+  name: IsAcceptable
+  nameWithType: INodeViewResolver.IsAcceptable
+  fullName: Ceres.Editor.Graph.INodeViewResolver.IsAcceptable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

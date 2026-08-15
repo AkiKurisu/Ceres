@@ -1,0 +1,92 @@
+{
+    "metadata": [
+        {
+            "src": [
+                {
+                    "src": "../Library/ScriptAssemblies",
+                    "files": [
+                        "Ceres.dll",
+                        "Ceres.Editor.dll",
+                        "Ceres.ContentPipeline.Editor.dll",
+                        "Ceres.Graph.dll",
+                        "Ceres.Graph.Editor.dll",
+                        "Ceres.Flow.dll",
+                        "Ceres.Flow.Editor.dll",
+                        "Ceres.Gameplay.dll",
+                        "Ceres.Gameplay.Editor.dll",
+                        "Unity.Ceres.CodeGen.dll"
+                    ]
+                }
+            ],
+            "globalNamespaceId": "Global",
+            "filter": "filterConfig.yml",
+            "dest": "api"
+        }
+    ],
+    "build": {
+        "template": [
+            "default",
+            "modern",
+            "templates/ceres"
+        ],
+        "globalMetadata": {
+            "_appName": "Ceres",
+            "_appTitle": "Ceres Documentation",
+            "_appLogoPath": "resources/images/ceres_icon.png",
+            "_appFaviconPath": "resources/images/ceres_icon.png",
+            "_appFooter": "Copyright © 2026 <b>AkiKurisu</b> · A Unity framework designed with visual scripting and flexible workflows · Generated with <b>DocFX</b>",
+            "_enableSearch": true,
+            "_disableContribution": false,
+            "_gitContribute": {
+                "repo": "https://github.com/AkiKurisu/Ceres",
+                "branch": "main"
+            }
+        },
+        "content": [
+            {
+                "files": [
+                    "toc.yml",
+                    "index.md"
+                ]
+            },
+            {
+                "src": "api",
+                "files": [
+                    "*.yml"
+                ],
+                "dest": "api"
+            },
+            {
+                "src": "docs",
+                "files": [
+                    "toc.yml",
+                    "*.md"
+                ],
+                "dest": "docs"
+            }
+        ],
+        "resource": [
+            {
+                "files": [
+                    "resources/**/*"
+                ]
+            }
+        ],
+        "sitemap": {
+            "baseUrl": "https://AkiKurisu.github.io/Ceres",
+            "changefreq": "weekly",
+            "fileOptions": {
+                "api/*": {
+                    "changefreq": "weekly"
+                }
+            }
+        },
+        "xref": [
+            "https://normanderwan.github.io/UnityXrefMaps/xrefmap.yml"
+        ],
+        "xrefService": [
+            "https://xref.docs.microsoft.com/query?uid={uid}"
+        ],
+        "dest": "../Site"
+    }
+}

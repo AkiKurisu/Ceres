@@ -1,0 +1,723 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.AI.EQS.FieldView
+  commentId: T:Ceres.Gameplay.AI.EQS.FieldView
+  id: FieldView
+  parent: Ceres.Gameplay.AI.EQS
+  children:
+  - Ceres.Gameplay.AI.EQS.FieldView.#ctor(System.Single,System.Single,System.Int32,System.Single)
+  - Ceres.Gameplay.AI.EQS.FieldView.AllocatePolygonCorners(UnityEngine.Vector3,UnityEngine.Quaternion,Unity.Collections.Allocator)
+  - Ceres.Gameplay.AI.EQS.FieldView.Detect(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.LayerMask,System.String[])
+  - Ceres.Gameplay.AI.EQS.FieldView.DrawGizmos(UnityEngine.Vector3,UnityEngine.Quaternion)
+  - Ceres.Gameplay.AI.EQS.FieldView.IsPointInPolygon(UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3)
+  - Ceres.Gameplay.AI.EQS.FieldView.PolygonRadius
+  - Ceres.Gameplay.AI.EQS.FieldView.angle
+  - Ceres.Gameplay.AI.EQS.FieldView.blend
+  - Ceres.Gameplay.AI.EQS.FieldView.radius
+  - Ceres.Gameplay.AI.EQS.FieldView.sides
+  langs:
+  - csharp
+  - vb
+  name: FieldView
+  nameWithType: FieldView
+  fullName: Ceres.Gameplay.AI.EQS.FieldView
+  type: Struct
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: 'Represents an advanced field of view for AI mentioned in "Naughty Dog: Human Enemy AI In Last of The Us".'
+  example: []
+  syntax:
+    content: public struct FieldView
+    content.vb: Public Structure FieldView
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Ceres.Gameplay.AI.EQS.FieldView.radius
+  commentId: F:Ceres.Gameplay.AI.EQS.FieldView.radius
+  id: radius
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: radius
+  nameWithType: FieldView.radius
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.radius
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public float radius
+    return:
+      type: System.Single
+    content.vb: Public radius As Single
+- uid: Ceres.Gameplay.AI.EQS.FieldView.angle
+  commentId: F:Ceres.Gameplay.AI.EQS.FieldView.angle
+  id: angle
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: angle
+  nameWithType: FieldView.angle
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.angle
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public float angle
+    return:
+      type: System.Single
+    content.vb: Public angle As Single
+- uid: Ceres.Gameplay.AI.EQS.FieldView.sides
+  commentId: F:Ceres.Gameplay.AI.EQS.FieldView.sides
+  id: sides
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: sides
+  nameWithType: FieldView.sides
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.sides
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public int sides
+    return:
+      type: System.Int32
+    content.vb: Public sides As Integer
+- uid: Ceres.Gameplay.AI.EQS.FieldView.blend
+  commentId: F:Ceres.Gameplay.AI.EQS.FieldView.blend
+  id: blend
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: blend
+  nameWithType: FieldView.blend
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.blend
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public float blend
+    return:
+      type: System.Single
+    content.vb: Public blend As Single
+- uid: Ceres.Gameplay.AI.EQS.FieldView.#ctor(System.Single,System.Single,System.Int32,System.Single)
+  commentId: M:Ceres.Gameplay.AI.EQS.FieldView.#ctor(System.Single,System.Single,System.Int32,System.Single)
+  id: '#ctor(System.Single,System.Single,System.Int32,System.Single)'
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: FieldView(float, float, int, float)
+  nameWithType: FieldView.FieldView(float, float, int, float)
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.FieldView(float, float, int, float)
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public FieldView(float radius, float angle, int sides, float blend)
+    parameters:
+    - id: radius
+      type: System.Single
+    - id: angle
+      type: System.Single
+    - id: sides
+      type: System.Int32
+    - id: blend
+      type: System.Single
+    content.vb: Public Sub New(radius As Single, angle As Single, sides As Integer, blend As Single)
+  overload: Ceres.Gameplay.AI.EQS.FieldView.#ctor*
+  nameWithType.vb: FieldView.New(Single, Single, Integer, Single)
+  fullName.vb: Ceres.Gameplay.AI.EQS.FieldView.New(Single, Single, Integer, Single)
+  name.vb: New(Single, Single, Integer, Single)
+- uid: Ceres.Gameplay.AI.EQS.FieldView.Detect(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.LayerMask,System.String[])
+  commentId: M:Ceres.Gameplay.AI.EQS.FieldView.Detect(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.LayerMask,System.String[])
+  id: Detect(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.LayerMask,System.String[])
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: Detect(Vector3, Vector3, Quaternion, LayerMask, string[])
+  nameWithType: FieldView.Detect(Vector3, Vector3, Quaternion, LayerMask, string[])
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.Detect(UnityEngine.Vector3, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.LayerMask, string[])
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Detect whether it can see the target
+  example: []
+  syntax:
+    content: public readonly bool Detect(Vector3 target, Vector3 fromPosition, Quaternion fromRotation, LayerMask layerMask, string[] filterTags = null)
+    parameters:
+    - id: target
+      type: UnityEngine.Vector3
+      description: ''
+    - id: fromPosition
+      type: UnityEngine.Vector3
+      description: ''
+    - id: fromRotation
+      type: UnityEngine.Quaternion
+      description: ''
+    - id: layerMask
+      type: UnityEngine.LayerMask
+      description: ''
+    - id: filterTags
+      type: System.String[]
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Detect(target As Vector3, fromPosition As Vector3, fromRotation As Quaternion, layerMask As LayerMask, filterTags As String() = Nothing) As Boolean
+  overload: Ceres.Gameplay.AI.EQS.FieldView.Detect*
+  nameWithType.vb: FieldView.Detect(Vector3, Vector3, Quaternion, LayerMask, String())
+  fullName.vb: Ceres.Gameplay.AI.EQS.FieldView.Detect(UnityEngine.Vector3, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.LayerMask, String())
+  name.vb: Detect(Vector3, Vector3, Quaternion, LayerMask, String())
+- uid: Ceres.Gameplay.AI.EQS.FieldView.AllocatePolygonCorners(UnityEngine.Vector3,UnityEngine.Quaternion,Unity.Collections.Allocator)
+  commentId: M:Ceres.Gameplay.AI.EQS.FieldView.AllocatePolygonCorners(UnityEngine.Vector3,UnityEngine.Quaternion,Unity.Collections.Allocator)
+  id: AllocatePolygonCorners(UnityEngine.Vector3,UnityEngine.Quaternion,Unity.Collections.Allocator)
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: AllocatePolygonCorners(Vector3, Quaternion, Allocator)
+  nameWithType: FieldView.AllocatePolygonCorners(Vector3, Quaternion, Allocator)
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.AllocatePolygonCorners(UnityEngine.Vector3, UnityEngine.Quaternion, Unity.Collections.Allocator)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public readonly NativeArray<Vector3> AllocatePolygonCorners(Vector3 position, Quaternion rotation, Allocator allocator)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+    - id: rotation
+      type: UnityEngine.Quaternion
+    - id: allocator
+      type: Unity.Collections.Allocator
+    return:
+      type: Unity.Collections.NativeArray{UnityEngine.Vector3}
+    content.vb: Public Function AllocatePolygonCorners(position As Vector3, rotation As Quaternion, allocator As Allocator) As NativeArray(Of Vector3)
+  overload: Ceres.Gameplay.AI.EQS.FieldView.AllocatePolygonCorners*
+- uid: Ceres.Gameplay.AI.EQS.FieldView.IsPointInPolygon(UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3)
+  commentId: M:Ceres.Gameplay.AI.EQS.FieldView.IsPointInPolygon(UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3)
+  id: IsPointInPolygon(UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3)
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: IsPointInPolygon(Vector3, Quaternion, Vector3)
+  nameWithType: FieldView.IsPointInPolygon(Vector3, Quaternion, Vector3)
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.IsPointInPolygon(UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Vector3)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public readonly bool IsPointInPolygon(Vector3 position, Quaternion rotation, Vector3 p)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+    - id: rotation
+      type: UnityEngine.Quaternion
+    - id: p
+      type: UnityEngine.Vector3
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsPointInPolygon(position As Vector3, rotation As Quaternion, p As Vector3) As Boolean
+  overload: Ceres.Gameplay.AI.EQS.FieldView.IsPointInPolygon*
+- uid: Ceres.Gameplay.AI.EQS.FieldView.DrawGizmos(UnityEngine.Vector3,UnityEngine.Quaternion)
+  commentId: M:Ceres.Gameplay.AI.EQS.FieldView.DrawGizmos(UnityEngine.Vector3,UnityEngine.Quaternion)
+  id: DrawGizmos(UnityEngine.Vector3,UnityEngine.Quaternion)
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: DrawGizmos(Vector3, Quaternion)
+  nameWithType: FieldView.DrawGizmos(Vector3, Quaternion)
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.DrawGizmos(UnityEngine.Vector3, UnityEngine.Quaternion)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public readonly void DrawGizmos(Vector3 position, Quaternion rotation)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+    - id: rotation
+      type: UnityEngine.Quaternion
+    content.vb: Public Sub DrawGizmos(position As Vector3, rotation As Quaternion)
+  overload: Ceres.Gameplay.AI.EQS.FieldView.DrawGizmos*
+- uid: Ceres.Gameplay.AI.EQS.FieldView.PolygonRadius
+  commentId: P:Ceres.Gameplay.AI.EQS.FieldView.PolygonRadius
+  id: PolygonRadius
+  parent: Ceres.Gameplay.AI.EQS.FieldView
+  langs:
+  - csharp
+  - vb
+  name: PolygonRadius
+  nameWithType: FieldView.PolygonRadius
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.PolygonRadius
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public readonly float PolygonRadius { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property PolygonRadius As Single
+  overload: Ceres.Gameplay.AI.EQS.FieldView.PolygonRadius*
+references:
+- uid: Ceres.Gameplay.AI.EQS
+  commentId: N:Ceres.Gameplay.AI.EQS
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.AI.EQS
+  nameWithType: Ceres.Gameplay.AI.EQS
+  fullName: Ceres.Gameplay.AI.EQS
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.AI
+    name: AI
+    isExternal: true
+    href: Ceres.Gameplay.AI.html
+  - name: .
+  - uid: Ceres.Gameplay.AI.EQS
+    name: EQS
+    isExternal: true
+    href: Ceres.Gameplay.AI.EQS.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.AI
+    name: AI
+    isExternal: true
+    href: Ceres.Gameplay.AI.html
+  - name: .
+  - uid: Ceres.Gameplay.AI.EQS
+    name: EQS
+    isExternal: true
+    href: Ceres.Gameplay.AI.EQS.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Gameplay.AI.EQS.FieldView.#ctor*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.FieldView.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.FieldView.html#Ceres_Gameplay_AI_EQS_FieldView__ctor_System_Single_System_Single_System_Int32_System_Single_
+  name: FieldView
+  nameWithType: FieldView.FieldView
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.FieldView
+  nameWithType.vb: FieldView.New
+  fullName.vb: Ceres.Gameplay.AI.EQS.FieldView.New
+  name.vb: New
+- uid: Ceres.Gameplay.AI.EQS.FieldView.Detect*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.FieldView.Detect
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.FieldView.html#Ceres_Gameplay_AI_EQS_FieldView_Detect_UnityEngine_Vector3_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_LayerMask_System_String___
+  name: Detect
+  nameWithType: FieldView.Detect
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.Detect
+- uid: UnityEngine.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: UnityEngine.Vector3
+- uid: UnityEngine.Quaternion
+  isExternal: true
+  name: Quaternion
+  nameWithType: Quaternion
+  fullName: UnityEngine.Quaternion
+- uid: UnityEngine.LayerMask
+  isExternal: true
+  name: LayerMask
+  nameWithType: LayerMask
+  fullName: UnityEngine.LayerMask
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.AI.EQS.FieldView.AllocatePolygonCorners*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.FieldView.AllocatePolygonCorners
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.FieldView.html#Ceres_Gameplay_AI_EQS_FieldView_AllocatePolygonCorners_UnityEngine_Vector3_UnityEngine_Quaternion_Unity_Collections_Allocator_
+  name: AllocatePolygonCorners
+  nameWithType: FieldView.AllocatePolygonCorners
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.AllocatePolygonCorners
+- uid: Unity.Collections.Allocator
+  isExternal: true
+  name: Allocator
+  nameWithType: Allocator
+  fullName: Unity.Collections.Allocator
+- uid: Unity.Collections.NativeArray{UnityEngine.Vector3}
+  commentId: '!:Unity.Collections.NativeArray{UnityEngine.Vector3}'
+  definition: Unity.Collections.NativeArray`1
+  name: NativeArray<Vector3>
+  nameWithType: NativeArray<Vector3>
+  fullName: Unity.Collections.NativeArray<UnityEngine.Vector3>
+  nameWithType.vb: NativeArray(Of Vector3)
+  fullName.vb: Unity.Collections.NativeArray(Of UnityEngine.Vector3)
+  name.vb: NativeArray(Of Vector3)
+  spec.csharp:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: <
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: )
+- uid: Unity.Collections.NativeArray`1
+  isExternal: true
+  name: NativeArray<>
+  nameWithType: NativeArray<>
+  fullName: Unity.Collections.NativeArray<>
+  nameWithType.vb: NativeArray(Of )
+  fullName.vb: Unity.Collections.NativeArray(Of )
+  name.vb: NativeArray(Of )
+  spec.csharp:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: <
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Gameplay.AI.EQS.FieldView.IsPointInPolygon*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.FieldView.IsPointInPolygon
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.FieldView.html#Ceres_Gameplay_AI_EQS_FieldView_IsPointInPolygon_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Vector3_
+  name: IsPointInPolygon
+  nameWithType: FieldView.IsPointInPolygon
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.IsPointInPolygon
+- uid: Ceres.Gameplay.AI.EQS.FieldView.DrawGizmos*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.FieldView.DrawGizmos
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.FieldView.html#Ceres_Gameplay_AI_EQS_FieldView_DrawGizmos_UnityEngine_Vector3_UnityEngine_Quaternion_
+  name: DrawGizmos
+  nameWithType: FieldView.DrawGizmos
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.DrawGizmos
+- uid: Ceres.Gameplay.AI.EQS.FieldView.PolygonRadius*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.FieldView.PolygonRadius
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.FieldView.html#Ceres_Gameplay_AI_EQS_FieldView_PolygonRadius
+  name: PolygonRadius
+  nameWithType: FieldView.PolygonRadius
+  fullName: Ceres.Gameplay.AI.EQS.FieldView.PolygonRadius

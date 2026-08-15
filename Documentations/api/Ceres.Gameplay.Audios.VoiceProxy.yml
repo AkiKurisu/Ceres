@@ -1,0 +1,703 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Audios.VoiceProxy
+  commentId: T:Ceres.Gameplay.Audios.VoiceProxy
+  id: VoiceProxy
+  parent: Ceres.Gameplay.Audios
+  children:
+  - Ceres.Gameplay.Audios.VoiceProxy.#ctor(UnityEngine.AudioSource,System.Int32)
+  - Ceres.Gameplay.Audios.VoiceProxy.Clear
+  - Ceres.Gameplay.Audios.VoiceProxy.Count
+  - Ceres.Gameplay.Audios.VoiceProxy.Dispose
+  - Ceres.Gameplay.Audios.VoiceProxy.EnqueueCommand(Ceres.Gameplay.Audios.VoiceCommand)
+  - Ceres.Gameplay.Audios.VoiceProxy.IsPending
+  - Ceres.Gameplay.Audios.VoiceProxy.IsPlaying
+  - Ceres.Gameplay.Audios.VoiceProxy.IsStopped
+  - Ceres.Gameplay.Audios.VoiceProxy.Status
+  - Ceres.Gameplay.Audios.VoiceProxy.Tick
+  langs:
+  - csharp
+  - vb
+  name: VoiceProxy
+  nameWithType: VoiceProxy
+  fullName: Ceres.Gameplay.Audios.VoiceProxy
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  summary: Class for managing character voice playing order
+  example: []
+  syntax:
+    content: 'public class VoiceProxy : IDisposable'
+    content.vb: Public Class VoiceProxy Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Gameplay.Audios.VoiceProxy.#ctor(UnityEngine.AudioSource,System.Int32)
+  commentId: M:Ceres.Gameplay.Audios.VoiceProxy.#ctor(UnityEngine.AudioSource,System.Int32)
+  id: '#ctor(UnityEngine.AudioSource,System.Int32)'
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: VoiceProxy(AudioSource, int)
+  nameWithType: VoiceProxy.VoiceProxy(AudioSource, int)
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.VoiceProxy(UnityEngine.AudioSource, int)
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: public VoiceProxy(AudioSource audioSource, int maxCommandNum = -1)
+    parameters:
+    - id: audioSource
+      type: UnityEngine.AudioSource
+    - id: maxCommandNum
+      type: System.Int32
+    content.vb: Public Sub New(audioSource As AudioSource, maxCommandNum As Integer = -1)
+  overload: Ceres.Gameplay.Audios.VoiceProxy.#ctor*
+  nameWithType.vb: VoiceProxy.New(AudioSource, Integer)
+  fullName.vb: Ceres.Gameplay.Audios.VoiceProxy.New(UnityEngine.AudioSource, Integer)
+  name.vb: New(AudioSource, Integer)
+- uid: Ceres.Gameplay.Audios.VoiceProxy.EnqueueCommand(Ceres.Gameplay.Audios.VoiceCommand)
+  commentId: M:Ceres.Gameplay.Audios.VoiceProxy.EnqueueCommand(Ceres.Gameplay.Audios.VoiceCommand)
+  id: EnqueueCommand(Ceres.Gameplay.Audios.VoiceCommand)
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: EnqueueCommand(VoiceCommand)
+  nameWithType: VoiceProxy.EnqueueCommand(VoiceCommand)
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.EnqueueCommand(Ceres.Gameplay.Audios.VoiceCommand)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  summary: Enqueue a new voice command
+  example: []
+  syntax:
+    content: public void EnqueueCommand(VoiceCommand command)
+    parameters:
+    - id: command
+      type: Ceres.Gameplay.Audios.VoiceCommand
+      description: ''
+    content.vb: Public Sub EnqueueCommand(command As VoiceCommand)
+  overload: Ceres.Gameplay.Audios.VoiceProxy.EnqueueCommand*
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Count
+  commentId: M:Ceres.Gameplay.Audios.VoiceProxy.Count
+  id: Count
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: Count()
+  nameWithType: VoiceProxy.Count()
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Count()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  summary: Get command left count
+  example: []
+  syntax:
+    content: public int Count()
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Function Count() As Integer
+  overload: Ceres.Gameplay.Audios.VoiceProxy.Count*
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Tick
+  commentId: M:Ceres.Gameplay.Audios.VoiceProxy.Tick
+  id: Tick
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: Tick()
+  nameWithType: VoiceProxy.Tick()
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Tick()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  summary: Tick command buffer
+  example: []
+  syntax:
+    content: public void Tick()
+    content.vb: Public Sub Tick()
+  overload: Ceres.Gameplay.Audios.VoiceProxy.Tick*
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Clear
+  commentId: M:Ceres.Gameplay.Audios.VoiceProxy.Clear
+  id: Clear
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: VoiceProxy.Clear()
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Clear()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  summary: Clear all commands and release memeory if possible
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: Ceres.Gameplay.Audios.VoiceProxy.Clear*
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Dispose
+  commentId: M:Ceres.Gameplay.Audios.VoiceProxy.Dispose
+  id: Dispose
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: VoiceProxy.Dispose()
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Dispose()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Gameplay.Audios.VoiceProxy.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Status
+  commentId: P:Ceres.Gameplay.Audios.VoiceProxy.Status
+  id: Status
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: VoiceProxy.Status
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Status
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: public VoiceProxy.VoiceStatus Status { get; }
+    parameters: []
+    return:
+      type: Ceres.Gameplay.Audios.VoiceProxy.VoiceStatus
+    content.vb: Public ReadOnly Property Status As VoiceProxy.VoiceStatus
+  overload: Ceres.Gameplay.Audios.VoiceProxy.Status*
+- uid: Ceres.Gameplay.Audios.VoiceProxy.IsPlaying
+  commentId: P:Ceres.Gameplay.Audios.VoiceProxy.IsPlaying
+  id: IsPlaying
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: IsPlaying
+  nameWithType: VoiceProxy.IsPlaying
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.IsPlaying
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: public bool IsPlaying { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsPlaying As Boolean
+  overload: Ceres.Gameplay.Audios.VoiceProxy.IsPlaying*
+- uid: Ceres.Gameplay.Audios.VoiceProxy.IsStopped
+  commentId: P:Ceres.Gameplay.Audios.VoiceProxy.IsStopped
+  id: IsStopped
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: IsStopped
+  nameWithType: VoiceProxy.IsStopped
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.IsStopped
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: public bool IsStopped { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsStopped As Boolean
+  overload: Ceres.Gameplay.Audios.VoiceProxy.IsStopped*
+- uid: Ceres.Gameplay.Audios.VoiceProxy.IsPending
+  commentId: P:Ceres.Gameplay.Audios.VoiceProxy.IsPending
+  id: IsPending
+  parent: Ceres.Gameplay.Audios.VoiceProxy
+  langs:
+  - csharp
+  - vb
+  name: IsPending
+  nameWithType: VoiceProxy.IsPending
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.IsPending
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: public bool IsPending { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsPending As Boolean
+  overload: Ceres.Gameplay.Audios.VoiceProxy.IsPending*
+references:
+- uid: Ceres.Gameplay.Audios
+  commentId: N:Ceres.Gameplay.Audios
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Audios
+  nameWithType: Ceres.Gameplay.Audios
+  fullName: Ceres.Gameplay.Audios
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Audios
+    name: Audios
+    isExternal: true
+    href: Ceres.Gameplay.Audios.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Audios
+    name: Audios
+    isExternal: true
+    href: Ceres.Gameplay.Audios.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Gameplay.Audios.VoiceProxy.#ctor*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy__ctor_UnityEngine_AudioSource_System_Int32_
+  name: VoiceProxy
+  nameWithType: VoiceProxy.VoiceProxy
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.VoiceProxy
+  nameWithType.vb: VoiceProxy.New
+  fullName.vb: Ceres.Gameplay.Audios.VoiceProxy.New
+  name.vb: New
+- uid: UnityEngine.AudioSource
+  isExternal: true
+  name: AudioSource
+  nameWithType: AudioSource
+  fullName: UnityEngine.AudioSource
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Gameplay.Audios.VoiceProxy.EnqueueCommand*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.EnqueueCommand
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_EnqueueCommand_Ceres_Gameplay_Audios_VoiceCommand_
+  name: EnqueueCommand
+  nameWithType: VoiceProxy.EnqueueCommand
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.EnqueueCommand
+- uid: Ceres.Gameplay.Audios.VoiceCommand
+  commentId: T:Ceres.Gameplay.Audios.VoiceCommand
+  parent: Ceres.Gameplay.Audios
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceCommand.html
+  name: VoiceCommand
+  nameWithType: VoiceCommand
+  fullName: Ceres.Gameplay.Audios.VoiceCommand
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Count*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.Count
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_Count
+  name: Count
+  nameWithType: VoiceProxy.Count
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Count
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Tick*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.Tick
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_Tick
+  name: Tick
+  nameWithType: VoiceProxy.Tick
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Tick
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Clear*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.Clear
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_Clear
+  name: Clear
+  nameWithType: VoiceProxy.Clear
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Clear
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Dispose*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.Dispose
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_Dispose
+  name: Dispose
+  nameWithType: VoiceProxy.Dispose
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Audios.VoiceProxy.Status*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.Status
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_Status
+  name: Status
+  nameWithType: VoiceProxy.Status
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.Status
+- uid: Ceres.Gameplay.Audios.VoiceProxy.VoiceStatus
+  commentId: T:Ceres.Gameplay.Audios.VoiceProxy.VoiceStatus
+  parent: Ceres.Gameplay.Audios
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html
+  name: VoiceProxy.VoiceStatus
+  nameWithType: VoiceProxy.VoiceStatus
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.VoiceStatus
+  spec.csharp:
+  - uid: Ceres.Gameplay.Audios.VoiceProxy
+    name: VoiceProxy
+    isExternal: true
+    href: Ceres.Gameplay.Audios.VoiceProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Audios.VoiceProxy.VoiceStatus
+    name: VoiceStatus
+    isExternal: true
+    href: Ceres.Gameplay.Audios.VoiceProxy.VoiceStatus.html
+  spec.vb:
+  - uid: Ceres.Gameplay.Audios.VoiceProxy
+    name: VoiceProxy
+    isExternal: true
+    href: Ceres.Gameplay.Audios.VoiceProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Audios.VoiceProxy.VoiceStatus
+    name: VoiceStatus
+    isExternal: true
+    href: Ceres.Gameplay.Audios.VoiceProxy.VoiceStatus.html
+- uid: Ceres.Gameplay.Audios.VoiceProxy.IsPlaying*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.IsPlaying
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_IsPlaying
+  name: IsPlaying
+  nameWithType: VoiceProxy.IsPlaying
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.IsPlaying
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.Audios.VoiceProxy.IsStopped*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.IsStopped
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_IsStopped
+  name: IsStopped
+  nameWithType: VoiceProxy.IsStopped
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.IsStopped
+- uid: Ceres.Gameplay.Audios.VoiceProxy.IsPending*
+  commentId: Overload:Ceres.Gameplay.Audios.VoiceProxy.IsPending
+  isExternal: true
+  href: Ceres.Gameplay.Audios.VoiceProxy.html#Ceres_Gameplay_Audios_VoiceProxy_IsPending
+  name: IsPending
+  nameWithType: VoiceProxy.IsPending
+  fullName: Ceres.Gameplay.Audios.VoiceProxy.IsPending

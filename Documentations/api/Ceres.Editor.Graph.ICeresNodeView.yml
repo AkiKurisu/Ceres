@@ -1,0 +1,269 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.ICeresNodeView
+  commentId: T:Ceres.Editor.Graph.ICeresNodeView
+  id: ICeresNodeView
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.ICeresNodeView.Guid
+  - Ceres.Editor.Graph.ICeresNodeView.NodeElement
+  langs:
+  - csharp
+  - vb
+  name: ICeresNodeView
+  nameWithType: ICeresNodeView
+  fullName: Ceres.Editor.Graph.ICeresNodeView
+  type: Interface
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Interface for node views managed by <xref href="Ceres.Editor.Graph.CeresGraphView" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public interface ICeresNodeView
+    content.vb: Public Interface ICeresNodeView
+  derivedClasses:
+  - Ceres.Editor.Flow.CustomExecutionEventNodeView
+  - Ceres.Editor.Flow.CustomFunctions.CustomFunctionInputNodeView
+  - Ceres.Editor.Flow.CustomFunctions.CustomFunctionOutputNodeView
+  - Ceres.Editor.Flow.CustomFunctions.ExecuteCustomFunctionNodeView
+  - Ceres.Editor.Flow.ExecutableNodeView
+  - Ceres.Editor.Flow.ExecutablePortArrayNodeView
+  - Ceres.Editor.Flow.ExecutionEventBaseNodeView
+  - Ceres.Editor.Flow.ExecutionEventNodeView
+  - Ceres.Editor.Flow.ExecutionEventUberNodeView
+  - Ceres.Editor.Flow.IllegalExecutableNodeView
+  - Ceres.Editor.Flow.InvalidExecutableNodeView
+  - Ceres.Editor.Flow.Properties.PropertyNodeView
+  - Ceres.Editor.Flow.Properties.PropertyNode_PropertyValueNodeView
+  - Ceres.Editor.Flow.Properties.PropertyNode_SharedVariableValueNodeView
+  - Ceres.Editor.Flow.Utilities.ExecuteFunctionNodeView
+  - Ceres.Editor.Flow.Utilities.FlowNode_ExecuteEventNodeView
+  - Ceres.Editor.Flow.Utilities.FlowNode_ExecuteFunctionReturnNodeView
+  - Ceres.Editor.Flow.Utilities.FlowNode_ExecuteFunctionUberNodeView
+  - Ceres.Editor.Flow.Utilities.FlowNode_ExecuteFunctionVoidNodeView
+  - Ceres.Editor.Flow.Utilities.FlowNode_SwitchEnumNodeView
+  - Ceres.Editor.Flow.Utilities.FlowNode_SwitchIntNodeView
+  - Ceres.Editor.Flow.Utilities.FlowNode_SwitchStringNodeView
+  - Ceres.Editor.Graph.CeresNodeView
+  - Ceres.Editor.Graph.RelayNodeView
+  extensionMethods:
+  - Ceres.Editor.Graph.ICeresNodeView.Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1
+- uid: Ceres.Editor.Graph.ICeresNodeView.Guid
+  commentId: P:Ceres.Editor.Graph.ICeresNodeView.Guid
+  id: Guid
+  parent: Ceres.Editor.Graph.ICeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: Guid
+  nameWithType: ICeresNodeView.Guid
+  fullName: Ceres.Editor.Graph.ICeresNodeView.Guid
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Graph scope node view guid
+  example: []
+  syntax:
+    content: string Guid { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Guid As String
+  overload: Ceres.Editor.Graph.ICeresNodeView.Guid*
+- uid: Ceres.Editor.Graph.ICeresNodeView.NodeElement
+  commentId: P:Ceres.Editor.Graph.ICeresNodeView.NodeElement
+  id: NodeElement
+  parent: Ceres.Editor.Graph.ICeresNodeView
+  langs:
+  - csharp
+  - vb
+  name: NodeElement
+  nameWithType: ICeresNodeView.NodeElement
+  fullName: Ceres.Editor.Graph.ICeresNodeView.NodeElement
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Node visual element of this view
+  example: []
+  syntax:
+    content: Node NodeElement { get; }
+    parameters: []
+    return:
+      type: UnityEditor.Experimental.GraphView.Node
+    content.vb: ReadOnly Property NodeElement As Node
+  overload: Ceres.Editor.Graph.ICeresNodeView.NodeElement*
+references:
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphView.html
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: Ceres.Editor.Graph.ICeresNodeView.Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1
+  commentId: M:Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1(Ceres.Editor.Graph.ICeresNodeView)
+  parent: Ceres.Editor.Graph.CeresNodeViewExtensions
+  definition: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1(Ceres.Editor.Graph.ICeresNodeView)
+  href: Ceres.Editor.Graph.CeresNodeViewExtensions.html#Ceres_Editor_Graph_CeresNodeViewExtensions_CreateSettingsView__1_Ceres_Editor_Graph_ICeresNodeView_
+  name: CreateSettingsView<TSettingsView>(ICeresNodeView)
+  nameWithType: CeresNodeViewExtensions.CreateSettingsView<TSettingsView>(ICeresNodeView)
+  fullName: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView<TSettingsView>(Ceres.Editor.Graph.ICeresNodeView)
+  nameWithType.vb: CeresNodeViewExtensions.CreateSettingsView(Of TSettingsView)(ICeresNodeView)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView(Of TSettingsView)(Ceres.Editor.Graph.ICeresNodeView)
+  name.vb: CreateSettingsView(Of TSettingsView)(ICeresNodeView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1(Ceres.Editor.Graph.ICeresNodeView)
+    name: CreateSettingsView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresNodeViewExtensions.html#Ceres_Editor_Graph_CeresNodeViewExtensions_CreateSettingsView__1_Ceres_Editor_Graph_ICeresNodeView_
+  - name: <
+  - name: TSettingsView
+  - name: '>'
+  - name: (
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+    isExternal: true
+    href: Ceres.Editor.Graph.ICeresNodeView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1(Ceres.Editor.Graph.ICeresNodeView)
+    name: CreateSettingsView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresNodeViewExtensions.html#Ceres_Editor_Graph_CeresNodeViewExtensions_CreateSettingsView__1_Ceres_Editor_Graph_ICeresNodeView_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSettingsView
+  - name: )
+  - name: (
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+    isExternal: true
+    href: Ceres.Editor.Graph.ICeresNodeView.html
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1(Ceres.Editor.Graph.ICeresNodeView)
+  commentId: M:Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1(Ceres.Editor.Graph.ICeresNodeView)
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresNodeViewExtensions.html#Ceres_Editor_Graph_CeresNodeViewExtensions_CreateSettingsView__1_Ceres_Editor_Graph_ICeresNodeView_
+  name: CreateSettingsView<TSettingsView>(ICeresNodeView)
+  nameWithType: CeresNodeViewExtensions.CreateSettingsView<TSettingsView>(ICeresNodeView)
+  fullName: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView<TSettingsView>(Ceres.Editor.Graph.ICeresNodeView)
+  nameWithType.vb: CeresNodeViewExtensions.CreateSettingsView(Of TSettingsView)(ICeresNodeView)
+  fullName.vb: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView(Of TSettingsView)(Ceres.Editor.Graph.ICeresNodeView)
+  name.vb: CreateSettingsView(Of TSettingsView)(ICeresNodeView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1(Ceres.Editor.Graph.ICeresNodeView)
+    name: CreateSettingsView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresNodeViewExtensions.html#Ceres_Editor_Graph_CeresNodeViewExtensions_CreateSettingsView__1_Ceres_Editor_Graph_ICeresNodeView_
+  - name: <
+  - name: TSettingsView
+  - name: '>'
+  - name: (
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+    isExternal: true
+    href: Ceres.Editor.Graph.ICeresNodeView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresNodeViewExtensions.CreateSettingsView``1(Ceres.Editor.Graph.ICeresNodeView)
+    name: CreateSettingsView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresNodeViewExtensions.html#Ceres_Editor_Graph_CeresNodeViewExtensions_CreateSettingsView__1_Ceres_Editor_Graph_ICeresNodeView_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSettingsView
+  - name: )
+  - name: (
+  - uid: Ceres.Editor.Graph.ICeresNodeView
+    name: ICeresNodeView
+    isExternal: true
+    href: Ceres.Editor.Graph.ICeresNodeView.html
+  - name: )
+- uid: Ceres.Editor.Graph.CeresNodeViewExtensions
+  commentId: T:Ceres.Editor.Graph.CeresNodeViewExtensions
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresNodeViewExtensions.html
+  name: CeresNodeViewExtensions
+  nameWithType: CeresNodeViewExtensions
+  fullName: Ceres.Editor.Graph.CeresNodeViewExtensions
+- uid: Ceres.Editor.Graph.ICeresNodeView.Guid*
+  commentId: Overload:Ceres.Editor.Graph.ICeresNodeView.Guid
+  isExternal: true
+  href: Ceres.Editor.Graph.ICeresNodeView.html#Ceres_Editor_Graph_ICeresNodeView_Guid
+  name: Guid
+  nameWithType: ICeresNodeView.Guid
+  fullName: Ceres.Editor.Graph.ICeresNodeView.Guid
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.ICeresNodeView.NodeElement*
+  commentId: Overload:Ceres.Editor.Graph.ICeresNodeView.NodeElement
+  isExternal: true
+  href: Ceres.Editor.Graph.ICeresNodeView.html#Ceres_Editor_Graph_ICeresNodeView_NodeElement
+  name: NodeElement
+  nameWithType: ICeresNodeView.NodeElement
+  fullName: Ceres.Editor.Graph.ICeresNodeView.NodeElement
+- uid: UnityEditor.Experimental.GraphView.Node
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: UnityEditor.Experimental.GraphView.Node

@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.DataDriven.IValidateRow
+  commentId: T:Ceres.DataDriven.IValidateRow
+  id: IValidateRow
+  parent: Ceres.DataDriven
+  children:
+  - Ceres.DataDriven.IValidateRow.ValidateRow(System.String,System.String@)
+  langs:
+  - csharp
+  - vb
+  name: IValidateRow
+  nameWithType: IValidateRow
+  fullName: Ceres.DataDriven.IValidateRow
+  type: Interface
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Implement this interface to validate DataTable Row before saving
+  example: []
+  syntax:
+    content: public interface IValidateRow
+    content.vb: Public Interface IValidateRow
+  derivedClasses:
+  - Ceres.Gameplay.Level.LevelSceneRow
+- uid: Ceres.DataDriven.IValidateRow.ValidateRow(System.String,System.String@)
+  commentId: M:Ceres.DataDriven.IValidateRow.ValidateRow(System.String,System.String@)
+  id: ValidateRow(System.String,System.String@)
+  parent: Ceres.DataDriven.IValidateRow
+  langs:
+  - csharp
+  - vb
+  name: ValidateRow(string, out string)
+  nameWithType: IValidateRow.ValidateRow(string, out string)
+  fullName: Ceres.DataDriven.IValidateRow.ValidateRow(string, out string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  syntax:
+    content: bool ValidateRow(string rowId, out string reason)
+    parameters:
+    - id: rowId
+      type: System.String
+    - id: reason
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Function ValidateRow(rowId As String, reason As String) As Boolean
+  overload: Ceres.DataDriven.IValidateRow.ValidateRow*
+  nameWithType.vb: IValidateRow.ValidateRow(String, String)
+  fullName.vb: Ceres.DataDriven.IValidateRow.ValidateRow(String, String)
+  name.vb: ValidateRow(String, String)
+references:
+- uid: Ceres.DataDriven
+  commentId: N:Ceres.DataDriven
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven
+  nameWithType: Ceres.DataDriven
+  fullName: Ceres.DataDriven
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+- uid: Ceres.DataDriven.IValidateRow.ValidateRow*
+  commentId: Overload:Ceres.DataDriven.IValidateRow.ValidateRow
+  isExternal: true
+  href: Ceres.DataDriven.IValidateRow.html#Ceres_DataDriven_IValidateRow_ValidateRow_System_String_System_String__
+  name: ValidateRow
+  nameWithType: IValidateRow.ValidateRow
+  fullName: Ceres.DataDriven.IValidateRow.ValidateRow
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

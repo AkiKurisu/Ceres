@@ -1,0 +1,303 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.SerializedObjectField
+  commentId: T:Ceres.Editor.Graph.SerializedObjectField
+  id: SerializedObjectField
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.SerializedObjectField.#ctor(System.String)
+  - Ceres.Editor.Graph.SerializedObjectField.#ctor(System.String,UnityEngine.UIElements.IMGUIContainer)
+  - Ceres.Editor.Graph.SerializedObjectField.onJsonValueUpdate
+  - Ceres.Editor.Graph.SerializedObjectField.value
+  langs:
+  - csharp
+  - vb
+  name: SerializedObjectField
+  nameWithType: SerializedObjectField
+  fullName: Ceres.Editor.Graph.SerializedObjectField
+  type: Class
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class SerializedObjectField : BaseField<SerializedObjectBase>'
+    content.vb: Public Class SerializedObjectField Inherits BaseField(Of SerializedObjectBase)
+  inheritance:
+  - System.Object
+- uid: Ceres.Editor.Graph.SerializedObjectField.onJsonValueUpdate
+  commentId: F:Ceres.Editor.Graph.SerializedObjectField.onJsonValueUpdate
+  id: onJsonValueUpdate
+  parent: Ceres.Editor.Graph.SerializedObjectField
+  langs:
+  - csharp
+  - vb
+  name: onJsonValueUpdate
+  nameWithType: SerializedObjectField.onJsonValueUpdate
+  fullName: Ceres.Editor.Graph.SerializedObjectField.onJsonValueUpdate
+  type: Field
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public Action<SerializedObjectBase> onJsonValueUpdate
+    return:
+      type: System.Action{Ceres.Serialization.SerializedObjectBase}
+    content.vb: Public onJsonValueUpdate As Action(Of SerializedObjectBase)
+- uid: Ceres.Editor.Graph.SerializedObjectField.#ctor(System.String,UnityEngine.UIElements.IMGUIContainer)
+  commentId: M:Ceres.Editor.Graph.SerializedObjectField.#ctor(System.String,UnityEngine.UIElements.IMGUIContainer)
+  id: '#ctor(System.String,UnityEngine.UIElements.IMGUIContainer)'
+  parent: Ceres.Editor.Graph.SerializedObjectField
+  langs:
+  - csharp
+  - vb
+  name: SerializedObjectField(string, IMGUIContainer)
+  nameWithType: SerializedObjectField.SerializedObjectField(string, IMGUIContainer)
+  fullName: Ceres.Editor.Graph.SerializedObjectField.SerializedObjectField(string, UnityEngine.UIElements.IMGUIContainer)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public SerializedObjectField(string label, IMGUIContainer container)
+    parameters:
+    - id: label
+      type: System.String
+    - id: container
+      type: UnityEngine.UIElements.IMGUIContainer
+    content.vb: Public Sub New(label As String, container As IMGUIContainer)
+  overload: Ceres.Editor.Graph.SerializedObjectField.#ctor*
+  nameWithType.vb: SerializedObjectField.New(String, IMGUIContainer)
+  fullName.vb: Ceres.Editor.Graph.SerializedObjectField.New(String, UnityEngine.UIElements.IMGUIContainer)
+  name.vb: New(String, IMGUIContainer)
+- uid: Ceres.Editor.Graph.SerializedObjectField.#ctor(System.String)
+  commentId: M:Ceres.Editor.Graph.SerializedObjectField.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Ceres.Editor.Graph.SerializedObjectField
+  langs:
+  - csharp
+  - vb
+  name: SerializedObjectField(string)
+  nameWithType: SerializedObjectField.SerializedObjectField(string)
+  fullName: Ceres.Editor.Graph.SerializedObjectField.SerializedObjectField(string)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public SerializedObjectField(string label)
+    parameters:
+    - id: label
+      type: System.String
+    content.vb: Public Sub New(label As String)
+  overload: Ceres.Editor.Graph.SerializedObjectField.#ctor*
+  nameWithType.vb: SerializedObjectField.New(String)
+  fullName.vb: Ceres.Editor.Graph.SerializedObjectField.New(String)
+  name.vb: New(String)
+- uid: Ceres.Editor.Graph.SerializedObjectField.value
+  commentId: P:Ceres.Editor.Graph.SerializedObjectField.value
+  id: value
+  parent: Ceres.Editor.Graph.SerializedObjectField
+  langs:
+  - csharp
+  - vb
+  name: value
+  nameWithType: SerializedObjectField.value
+  fullName: Ceres.Editor.Graph.SerializedObjectField.value
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  example: []
+  syntax:
+    content: public override SerializedObjectBase value { get; set; }
+    parameters: []
+    return:
+      type: Ceres.Serialization.SerializedObjectBase
+    content.vb: Public Overrides Property value As SerializedObjectBase
+  overload: Ceres.Editor.Graph.SerializedObjectField.value*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Action{Ceres.Serialization.SerializedObjectBase}
+  commentId: T:System.Action{Ceres.Serialization.SerializedObjectBase}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<SerializedObjectBase>
+  nameWithType: Action<SerializedObjectBase>
+  fullName: System.Action<Ceres.Serialization.SerializedObjectBase>
+  nameWithType.vb: Action(Of SerializedObjectBase)
+  fullName.vb: System.Action(Of Ceres.Serialization.SerializedObjectBase)
+  name.vb: Action(Of SerializedObjectBase)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Ceres.Serialization.SerializedObjectBase
+    name: SerializedObjectBase
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Serialization.SerializedObjectBase
+    name: SerializedObjectBase
+    isExternal: true
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.SerializedObjectField.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.SerializedObjectField.#ctor
+  isExternal: true
+  href: Ceres.Editor.Graph.SerializedObjectField.html#Ceres_Editor_Graph_SerializedObjectField__ctor_System_String_UnityEngine_UIElements_IMGUIContainer_
+  name: SerializedObjectField
+  nameWithType: SerializedObjectField.SerializedObjectField
+  fullName: Ceres.Editor.Graph.SerializedObjectField.SerializedObjectField
+  nameWithType.vb: SerializedObjectField.New
+  fullName.vb: Ceres.Editor.Graph.SerializedObjectField.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: UnityEngine.UIElements.IMGUIContainer
+  commentId: '!:UnityEngine.UIElements.IMGUIContainer'
+  isExternal: true
+  name: IMGUIContainer
+  nameWithType: IMGUIContainer
+  fullName: UnityEngine.UIElements.IMGUIContainer
+- uid: Ceres.Editor.Graph.SerializedObjectField.value*
+  commentId: Overload:Ceres.Editor.Graph.SerializedObjectField.value
+  isExternal: true
+  href: Ceres.Editor.Graph.SerializedObjectField.html#Ceres_Editor_Graph_SerializedObjectField_value
+  name: value
+  nameWithType: SerializedObjectField.value
+  fullName: Ceres.Editor.Graph.SerializedObjectField.value
+- uid: Ceres.Serialization.SerializedObjectBase
+  commentId: T:Ceres.Serialization.SerializedObjectBase
+  parent: Ceres.Serialization
+  isExternal: true
+  href: Ceres.Serialization.SerializedObjectBase.html
+  name: SerializedObjectBase
+  nameWithType: SerializedObjectBase
+  fullName: Ceres.Serialization.SerializedObjectBase
+- uid: Ceres.Serialization
+  commentId: N:Ceres.Serialization
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Serialization
+  nameWithType: Ceres.Serialization
+  fullName: Ceres.Serialization
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html

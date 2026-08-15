@@ -1,0 +1,488 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Flow.CodeGen.ExecConnection
+  commentId: T:Ceres.Editor.Flow.CodeGen.ExecConnection
+  id: ExecConnection
+  parent: Ceres.Editor.Flow.CodeGen
+  children:
+  - Ceres.Editor.Flow.CodeGen.ExecConnection.#ctor(Ceres.Graph.CeresNode,System.String,System.Int32)
+  - Ceres.Editor.Flow.CodeGen.ExecConnection.IsValid
+  - Ceres.Editor.Flow.CodeGen.ExecConnection.Node
+  - Ceres.Editor.Flow.CodeGen.ExecConnection.PortId
+  - Ceres.Editor.Flow.CodeGen.ExecConnection.PortIndex
+  langs:
+  - csharp
+  - vb
+  name: ExecConnection
+  nameWithType: ExecConnection
+  fullName: Ceres.Editor.Flow.CodeGen.ExecConnection
+  type: Struct
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: public readonly struct ExecConnection
+    content.vb: Public Structure ExecConnection
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetType
+- uid: Ceres.Editor.Flow.CodeGen.ExecConnection.Node
+  commentId: F:Ceres.Editor.Flow.CodeGen.ExecConnection.Node
+  id: Node
+  parent: Ceres.Editor.Flow.CodeGen.ExecConnection
+  langs:
+  - csharp
+  - vb
+  name: Node
+  nameWithType: ExecConnection.Node
+  fullName: Ceres.Editor.Flow.CodeGen.ExecConnection.Node
+  type: Field
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: public readonly CeresNode Node
+    return:
+      type: Ceres.Graph.CeresNode
+    content.vb: Public ReadOnly Node As CeresNode
+- uid: Ceres.Editor.Flow.CodeGen.ExecConnection.PortId
+  commentId: F:Ceres.Editor.Flow.CodeGen.ExecConnection.PortId
+  id: PortId
+  parent: Ceres.Editor.Flow.CodeGen.ExecConnection
+  langs:
+  - csharp
+  - vb
+  name: PortId
+  nameWithType: ExecConnection.PortId
+  fullName: Ceres.Editor.Flow.CodeGen.ExecConnection.PortId
+  type: Field
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: public readonly string PortId
+    return:
+      type: System.String
+    content.vb: Public ReadOnly PortId As String
+- uid: Ceres.Editor.Flow.CodeGen.ExecConnection.PortIndex
+  commentId: F:Ceres.Editor.Flow.CodeGen.ExecConnection.PortIndex
+  id: PortIndex
+  parent: Ceres.Editor.Flow.CodeGen.ExecConnection
+  langs:
+  - csharp
+  - vb
+  name: PortIndex
+  nameWithType: ExecConnection.PortIndex
+  fullName: Ceres.Editor.Flow.CodeGen.ExecConnection.PortIndex
+  type: Field
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: public readonly int PortIndex
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly PortIndex As Integer
+- uid: Ceres.Editor.Flow.CodeGen.ExecConnection.#ctor(Ceres.Graph.CeresNode,System.String,System.Int32)
+  commentId: M:Ceres.Editor.Flow.CodeGen.ExecConnection.#ctor(Ceres.Graph.CeresNode,System.String,System.Int32)
+  id: '#ctor(Ceres.Graph.CeresNode,System.String,System.Int32)'
+  parent: Ceres.Editor.Flow.CodeGen.ExecConnection
+  langs:
+  - csharp
+  - vb
+  name: ExecConnection(CeresNode, string, int)
+  nameWithType: ExecConnection.ExecConnection(CeresNode, string, int)
+  fullName: Ceres.Editor.Flow.CodeGen.ExecConnection.ExecConnection(Ceres.Graph.CeresNode, string, int)
+  type: Constructor
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: public ExecConnection(CeresNode node, string portId, int portIndex)
+    parameters:
+    - id: node
+      type: Ceres.Graph.CeresNode
+    - id: portId
+      type: System.String
+    - id: portIndex
+      type: System.Int32
+    content.vb: Public Sub New(node As CeresNode, portId As String, portIndex As Integer)
+  overload: Ceres.Editor.Flow.CodeGen.ExecConnection.#ctor*
+  nameWithType.vb: ExecConnection.New(CeresNode, String, Integer)
+  fullName.vb: Ceres.Editor.Flow.CodeGen.ExecConnection.New(Ceres.Graph.CeresNode, String, Integer)
+  name.vb: New(CeresNode, String, Integer)
+- uid: Ceres.Editor.Flow.CodeGen.ExecConnection.IsValid
+  commentId: P:Ceres.Editor.Flow.CodeGen.ExecConnection.IsValid
+  id: IsValid
+  parent: Ceres.Editor.Flow.CodeGen.ExecConnection
+  langs:
+  - csharp
+  - vb
+  name: IsValid
+  nameWithType: ExecConnection.IsValid
+  fullName: Ceres.Editor.Flow.CodeGen.ExecConnection.IsValid
+  type: Property
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow.CodeGen
+  syntax:
+    content: public bool IsValid { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsValid As Boolean
+  overload: Ceres.Editor.Flow.CodeGen.ExecConnection.IsValid*
+references:
+- uid: Ceres.Editor.Flow.CodeGen
+  commentId: N:Ceres.Editor.Flow.CodeGen
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Flow.CodeGen
+  nameWithType: Ceres.Editor.Flow.CodeGen
+  fullName: Ceres.Editor.Flow.CodeGen
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+  - name: .
+  - uid: Ceres.Editor.Flow.CodeGen
+    name: CodeGen
+    isExternal: true
+    href: Ceres.Editor.Flow.CodeGen.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+  - name: .
+  - uid: Ceres.Editor.Flow.CodeGen
+    name: CodeGen
+    isExternal: true
+    href: Ceres.Editor.Flow.CodeGen.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresNode.html
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Editor.Flow.CodeGen.ExecConnection.#ctor*
+  commentId: Overload:Ceres.Editor.Flow.CodeGen.ExecConnection.#ctor
+  isExternal: true
+  href: Ceres.Editor.Flow.CodeGen.ExecConnection.html#Ceres_Editor_Flow_CodeGen_ExecConnection__ctor_Ceres_Graph_CeresNode_System_String_System_Int32_
+  name: ExecConnection
+  nameWithType: ExecConnection.ExecConnection
+  fullName: Ceres.Editor.Flow.CodeGen.ExecConnection.ExecConnection
+  nameWithType.vb: ExecConnection.New
+  fullName.vb: Ceres.Editor.Flow.CodeGen.ExecConnection.New
+  name.vb: New
+- uid: Ceres.Editor.Flow.CodeGen.ExecConnection.IsValid*
+  commentId: Overload:Ceres.Editor.Flow.CodeGen.ExecConnection.IsValid
+  isExternal: true
+  href: Ceres.Editor.Flow.CodeGen.ExecConnection.html#Ceres_Editor_Flow_CodeGen_ExecConnection_IsValid
+  name: IsValid
+  nameWithType: ExecConnection.IsValid
+  fullName: Ceres.Editor.Flow.CodeGen.ExecConnection.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

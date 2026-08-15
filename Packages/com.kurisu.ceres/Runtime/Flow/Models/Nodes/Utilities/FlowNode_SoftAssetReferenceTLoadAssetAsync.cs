@@ -1,0 +1,45 @@
+using Ceres.Graph;
+using System;
+using Ceres.Annotations;
+using R3.Ceres;
+using Ceres.Resource;
+using UObject = UnityEngine.Object;
+namespace Ceres.Flow.Utilities
+{
+    [Serializable]
+    [CeresGroup("Utilities")]
+    [CeresLabel("Load {0} Async")]
+    [NodeInfo("Asynchronously loads the soft asset reference and outputs the loaded object.")]
+    public sealed class FlowNode_SoftAssetReferenceTLoadAssetAsync<TObject>: FlowNode where TObject: UObject
+    {
+        [InputPort(true), HideInGraphEditor]
+        public CeresPort<SoftAssetReference<TObject>> reference;
+                
+        [InputPort]
+        public DelegatePort<EventDelegate<TObject>> onComplete;
+
+        protected override void LocalExecute(ExecutionContext executionContext)
+        {
+            reference.Value.LoadAsync().AddTo(executionContext.Graph).RegisterCallback(onComplete.Value);
+        }
+    }
+    
+    [Serializable]
+    [CeresGroup("Utilities")]
+    [CeresLabel("Load Asset Async")]
+    [NodeInfo("Asynchronously loads the soft asset reference and outputs the loaded object.")]
+    [RequirePort(typeof(SoftAssetReference))]
+    public sealed class FlowNode_SoftAssetReferenceLoadAssetAsync: FlowNode
+    {
+        [InputPort(true), HideInGraphEditor]
+        public CeresPort<SoftAssetReference> reference;
+                
+        [InputPort]
+        public DelegatePort<EventDelegate<UObject>> onComplete;
+
+        protected override void LocalExecute(ExecutionContext executionContext)
+        {
+            reference.Value.LoadAsync().AddTo(executionContext.Graph).RegisterCallback(onComplete.Value);
+        }
+    }
+}

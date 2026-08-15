@@ -1,0 +1,572 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent
+  commentId: T:Ceres.Gameplay.AI.EQS.PostQueryComponent
+  id: PostQueryComponent
+  parent: Ceres.Gameplay.AI.EQS
+  children:
+  - Ceres.Gameplay.AI.EQS.PostQueryComponent.#ctor
+  - Ceres.Gameplay.AI.EQS.PostQueryComponent.GetPosts
+  - Ceres.Gameplay.AI.EQS.PostQueryComponent.RequestPostQuery(Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.AI.EQS.PostQueryComponent.postQuery
+  - Ceres.Gameplay.AI.EQS.PostQueryComponent.raycastLayerMask
+  - Ceres.Gameplay.AI.EQS.PostQueryComponent.raycastOffset
+  langs:
+  - csharp
+  - vb
+  name: PostQueryComponent
+  nameWithType: PostQueryComponent
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Post query data provider associated with an Actor as component
+  example: []
+  syntax:
+    content: 'public class PostQueryComponent : ActorComponent'
+    content.vb: Public Class PostQueryComponent Inherits ActorComponent
+  inheritance:
+  - System.Object
+  - Ceres.Gameplay.ActorComponent
+  inheritedMembers:
+  - Ceres.Gameplay.ActorComponent.Awake
+  - Ceres.Gameplay.ActorComponent.GetTActor``1
+  - Ceres.Gameplay.ActorComponent.GetActor
+  - Ceres.Gameplay.ActorComponent.RegisterActorComponent(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.ActorComponent.UnregisterActor(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.ActorComponent.GetComponentType
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.postQuery
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQueryComponent.postQuery
+  id: postQuery
+  parent: Ceres.Gameplay.AI.EQS.PostQueryComponent
+  langs:
+  - csharp
+  - vb
+  name: postQuery
+  nameWithType: PostQueryComponent.postQuery
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.postQuery
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public PostQueryParameters postQuery
+    return:
+      type: Ceres.Gameplay.AI.EQS.PostQueryParameters
+    content.vb: Public postQuery As PostQueryParameters
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.raycastLayerMask
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQueryComponent.raycastLayerMask
+  id: raycastLayerMask
+  parent: Ceres.Gameplay.AI.EQS.PostQueryComponent
+  langs:
+  - csharp
+  - vb
+  name: raycastLayerMask
+  nameWithType: PostQueryComponent.raycastLayerMask
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.raycastLayerMask
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public LayerMask raycastLayerMask
+    return:
+      type: UnityEngine.LayerMask
+    content.vb: Public raycastLayerMask As LayerMask
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.raycastOffset
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQueryComponent.raycastOffset
+  id: raycastOffset
+  parent: Ceres.Gameplay.AI.EQS.PostQueryComponent
+  langs:
+  - csharp
+  - vb
+  name: raycastOffset
+  nameWithType: PostQueryComponent.raycastOffset
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.raycastOffset
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public Vector3 raycastOffset
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public raycastOffset As Vector3
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.RequestPostQuery(Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQueryComponent.RequestPostQuery(Ceres.Gameplay.Actor)
+  id: RequestPostQuery(Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.AI.EQS.PostQueryComponent
+  langs:
+  - csharp
+  - vb
+  name: RequestPostQuery(Actor)
+  nameWithType: PostQueryComponent.RequestPostQuery(Actor)
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.RequestPostQuery(Ceres.Gameplay.Actor)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Request a new post query from target's view
+  example: []
+  syntax:
+    content: public bool RequestPostQuery(Actor target)
+    parameters:
+    - id: target
+      type: Ceres.Gameplay.Actor
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function RequestPostQuery(target As Actor) As Boolean
+  overload: Ceres.Gameplay.AI.EQS.PostQueryComponent.RequestPostQuery*
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.GetPosts
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQueryComponent.GetPosts
+  id: GetPosts
+  parent: Ceres.Gameplay.AI.EQS.PostQueryComponent
+  langs:
+  - csharp
+  - vb
+  name: GetPosts()
+  nameWithType: PostQueryComponent.GetPosts()
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.GetPosts()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Get current posts
+  example: []
+  syntax:
+    content: public ReadOnlySpan<float3> GetPosts()
+    return:
+      type: System.ReadOnlySpan{Unity.Mathematics.float3}
+      description: ''
+    content.vb: Public Function GetPosts() As ReadOnlySpan(Of float3)
+  overload: Ceres.Gameplay.AI.EQS.PostQueryComponent.GetPosts*
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.#ctor
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQueryComponent.#ctor
+  id: '#ctor'
+  parent: Ceres.Gameplay.AI.EQS.PostQueryComponent
+  langs:
+  - csharp
+  - vb
+  name: PostQueryComponent()
+  nameWithType: PostQueryComponent.PostQueryComponent()
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.PostQueryComponent()
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public PostQueryComponent()
+    content.vb: Public Sub New()
+  overload: Ceres.Gameplay.AI.EQS.PostQueryComponent.#ctor*
+  nameWithType.vb: PostQueryComponent.New()
+  fullName.vb: Ceres.Gameplay.AI.EQS.PostQueryComponent.New()
+  name.vb: New()
+references:
+- uid: Ceres.Gameplay.AI.EQS
+  commentId: N:Ceres.Gameplay.AI.EQS
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.AI.EQS
+  nameWithType: Ceres.Gameplay.AI.EQS
+  fullName: Ceres.Gameplay.AI.EQS
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.AI
+    name: AI
+    isExternal: true
+    href: Ceres.Gameplay.AI.html
+  - name: .
+  - uid: Ceres.Gameplay.AI.EQS
+    name: EQS
+    isExternal: true
+    href: Ceres.Gameplay.AI.EQS.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.AI
+    name: AI
+    isExternal: true
+    href: Ceres.Gameplay.AI.html
+  - name: .
+  - uid: Ceres.Gameplay.AI.EQS
+    name: EQS
+    isExternal: true
+    href: Ceres.Gameplay.AI.EQS.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Gameplay.ActorComponent
+  commentId: T:Ceres.Gameplay.ActorComponent
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.ActorComponent.html
+  name: ActorComponent
+  nameWithType: ActorComponent
+  fullName: Ceres.Gameplay.ActorComponent
+- uid: Ceres.Gameplay.ActorComponent.Awake
+  commentId: M:Ceres.Gameplay.ActorComponent.Awake
+  parent: Ceres.Gameplay.ActorComponent
+  isExternal: true
+  href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_Awake
+  name: Awake()
+  nameWithType: ActorComponent.Awake()
+  fullName: Ceres.Gameplay.ActorComponent.Awake()
+  spec.csharp:
+  - uid: Ceres.Gameplay.ActorComponent.Awake
+    name: Awake
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_Awake
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.ActorComponent.Awake
+    name: Awake
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_Awake
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.ActorComponent.GetTActor``1
+  commentId: M:Ceres.Gameplay.ActorComponent.GetTActor``1
+  parent: Ceres.Gameplay.ActorComponent
+  isExternal: true
+  href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetTActor__1
+  name: GetTActor<T>()
+  nameWithType: ActorComponent.GetTActor<T>()
+  fullName: Ceres.Gameplay.ActorComponent.GetTActor<T>()
+  nameWithType.vb: ActorComponent.GetTActor(Of T)()
+  fullName.vb: Ceres.Gameplay.ActorComponent.GetTActor(Of T)()
+  name.vb: GetTActor(Of T)()
+  spec.csharp:
+  - uid: Ceres.Gameplay.ActorComponent.GetTActor``1
+    name: GetTActor
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetTActor__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.ActorComponent.GetTActor``1
+    name: GetTActor
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetTActor__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.ActorComponent.GetActor
+  commentId: M:Ceres.Gameplay.ActorComponent.GetActor
+  parent: Ceres.Gameplay.ActorComponent
+  isExternal: true
+  href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetActor
+  name: GetActor()
+  nameWithType: ActorComponent.GetActor()
+  fullName: Ceres.Gameplay.ActorComponent.GetActor()
+  spec.csharp:
+  - uid: Ceres.Gameplay.ActorComponent.GetActor
+    name: GetActor
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetActor
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.ActorComponent.GetActor
+    name: GetActor
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetActor
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.ActorComponent.RegisterActorComponent(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.ActorComponent.RegisterActorComponent(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.ActorComponent
+  isExternal: true
+  href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_RegisterActorComponent_Ceres_Gameplay_ActorComponent_Ceres_Gameplay_Actor_
+  name: RegisterActorComponent(ActorComponent, Actor)
+  nameWithType: ActorComponent.RegisterActorComponent(ActorComponent, Actor)
+  fullName: Ceres.Gameplay.ActorComponent.RegisterActorComponent(Ceres.Gameplay.ActorComponent, Ceres.Gameplay.Actor)
+  spec.csharp:
+  - uid: Ceres.Gameplay.ActorComponent.RegisterActorComponent(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+    name: RegisterActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_RegisterActorComponent_Ceres_Gameplay_ActorComponent_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.ActorComponent
+    name: ActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.ActorComponent.RegisterActorComponent(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+    name: RegisterActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_RegisterActorComponent_Ceres_Gameplay_ActorComponent_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.ActorComponent
+    name: ActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+- uid: Ceres.Gameplay.ActorComponent.UnregisterActor(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.ActorComponent.UnregisterActor(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.ActorComponent
+  isExternal: true
+  href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_UnregisterActor_Ceres_Gameplay_ActorComponent_Ceres_Gameplay_Actor_
+  name: UnregisterActor(ActorComponent, Actor)
+  nameWithType: ActorComponent.UnregisterActor(ActorComponent, Actor)
+  fullName: Ceres.Gameplay.ActorComponent.UnregisterActor(Ceres.Gameplay.ActorComponent, Ceres.Gameplay.Actor)
+  spec.csharp:
+  - uid: Ceres.Gameplay.ActorComponent.UnregisterActor(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+    name: UnregisterActor
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_UnregisterActor_Ceres_Gameplay_ActorComponent_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.ActorComponent
+    name: ActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.ActorComponent.UnregisterActor(Ceres.Gameplay.ActorComponent,Ceres.Gameplay.Actor)
+    name: UnregisterActor
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_UnregisterActor_Ceres_Gameplay_ActorComponent_Ceres_Gameplay_Actor_
+  - name: (
+  - uid: Ceres.Gameplay.ActorComponent
+    name: ActorComponent
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+- uid: Ceres.Gameplay.ActorComponent.GetComponentType
+  commentId: M:Ceres.Gameplay.ActorComponent.GetComponentType
+  parent: Ceres.Gameplay.ActorComponent
+  isExternal: true
+  href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetComponentType
+  name: GetComponentType()
+  nameWithType: ActorComponent.GetComponentType()
+  fullName: Ceres.Gameplay.ActorComponent.GetComponentType()
+  spec.csharp:
+  - uid: Ceres.Gameplay.ActorComponent.GetComponentType
+    name: GetComponentType
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetComponentType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.ActorComponent.GetComponentType
+    name: GetComponentType
+    isExternal: true
+    href: Ceres.Gameplay.ActorComponent.html#Ceres_Gameplay_ActorComponent_GetComponentType
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: Ceres.Gameplay.AI.EQS.PostQueryParameters
+  commentId: T:Ceres.Gameplay.AI.EQS.PostQueryParameters
+  parent: Ceres.Gameplay.AI.EQS
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQueryParameters.html
+  name: PostQueryParameters
+  nameWithType: PostQueryParameters
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryParameters
+- uid: UnityEngine.LayerMask
+  isExternal: true
+  name: LayerMask
+  nameWithType: LayerMask
+  fullName: UnityEngine.LayerMask
+- uid: UnityEngine.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: UnityEngine.Vector3
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.RequestPostQuery*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQueryComponent.RequestPostQuery
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQueryComponent.html#Ceres_Gameplay_AI_EQS_PostQueryComponent_RequestPostQuery_Ceres_Gameplay_Actor_
+  name: RequestPostQuery
+  nameWithType: PostQueryComponent.RequestPostQuery
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.RequestPostQuery
+- uid: Ceres.Gameplay.Actor
+  commentId: T:Ceres.Gameplay.Actor
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html
+  name: Actor
+  nameWithType: Actor
+  fullName: Ceres.Gameplay.Actor
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.GetPosts*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQueryComponent.GetPosts
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQueryComponent.html#Ceres_Gameplay_AI_EQS_PostQueryComponent_GetPosts
+  name: GetPosts
+  nameWithType: PostQueryComponent.GetPosts
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.GetPosts
+- uid: System.ReadOnlySpan{Unity.Mathematics.float3}
+  commentId: T:System.ReadOnlySpan{Unity.Mathematics.float3}
+  parent: System
+  definition: System.ReadOnlySpan`1
+  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  name: ReadOnlySpan<float3>
+  nameWithType: ReadOnlySpan<float3>
+  fullName: System.ReadOnlySpan<Unity.Mathematics.float3>
+  nameWithType.vb: ReadOnlySpan(Of float3)
+  fullName.vb: System.ReadOnlySpan(Of Unity.Mathematics.float3)
+  name.vb: ReadOnlySpan(Of float3)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - uid: Unity.Mathematics.float3
+    name: float3
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Unity.Mathematics.float3
+    name: float3
+    isExternal: true
+  - name: )
+- uid: System.ReadOnlySpan`1
+  commentId: T:System.ReadOnlySpan`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  name: ReadOnlySpan<T>
+  nameWithType: ReadOnlySpan<T>
+  fullName: System.ReadOnlySpan<T>
+  nameWithType.vb: ReadOnlySpan(Of T)
+  fullName.vb: System.ReadOnlySpan(Of T)
+  name.vb: ReadOnlySpan(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Gameplay.AI.EQS.PostQueryComponent.#ctor*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQueryComponent.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQueryComponent.html#Ceres_Gameplay_AI_EQS_PostQueryComponent__ctor
+  name: PostQueryComponent
+  nameWithType: PostQueryComponent.PostQueryComponent
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryComponent.PostQueryComponent
+  nameWithType.vb: PostQueryComponent.New
+  fullName.vb: Ceres.Gameplay.AI.EQS.PostQueryComponent.New
+  name.vb: New

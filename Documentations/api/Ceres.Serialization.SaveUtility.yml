@@ -1,0 +1,643 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Serialization.SaveUtility
+  commentId: T:Ceres.Serialization.SaveUtility
+  id: SaveUtility
+  parent: Ceres.Serialization
+  children:
+  - Ceres.Serialization.SaveUtility.Delete(System.String)
+  - Ceres.Serialization.SaveUtility.DeleteAll
+  - Ceres.Serialization.SaveUtility.Exists(System.String)
+  - Ceres.Serialization.SaveUtility.LoadOrNew``1
+  - Ceres.Serialization.SaveUtility.Overwrite``1(``0)
+  - Ceres.Serialization.SaveUtility.SaveJson(System.String,System.String)
+  - Ceres.Serialization.SaveUtility.SavePath
+  - Ceres.Serialization.SaveUtility.Save``1(``0)
+  - Ceres.Serialization.SaveUtility.TryLoadJson(System.String,System.String@)
+  langs:
+  - csharp
+  - vb
+  name: SaveUtility
+  nameWithType: SaveUtility
+  fullName: Ceres.Serialization.SaveUtility
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Helper for save load game persistent data
+  example: []
+  syntax:
+    content: public static class SaveUtility
+    content.vb: Public Module SaveUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Serialization.SaveUtility.SavePath
+  commentId: F:Ceres.Serialization.SaveUtility.SavePath
+  id: SavePath
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: SavePath
+  nameWithType: SaveUtility.SavePath
+  fullName: Ceres.Serialization.SaveUtility.SavePath
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  syntax:
+    content: public static readonly string SavePath
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly SavePath As String
+- uid: Ceres.Serialization.SaveUtility.Save``1(``0)
+  commentId: M:Ceres.Serialization.SaveUtility.Save``1(``0)
+  id: Save``1(``0)
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: Save<T>(T)
+  nameWithType: SaveUtility.Save<T>(T)
+  fullName: Ceres.Serialization.SaveUtility.Save<T>(T)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Save data to saving
+  example: []
+  syntax:
+    content: public static void Save<T>(T data)
+    parameters:
+    - id: data
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public Shared Sub Save(Of T)(data As T)
+  overload: Ceres.Serialization.SaveUtility.Save*
+  nameWithType.vb: SaveUtility.Save(Of T)(T)
+  fullName.vb: Ceres.Serialization.SaveUtility.Save(Of T)(T)
+  name.vb: Save(Of T)(T)
+- uid: Ceres.Serialization.SaveUtility.Delete(System.String)
+  commentId: M:Ceres.Serialization.SaveUtility.Delete(System.String)
+  id: Delete(System.String)
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: Delete(string)
+  nameWithType: SaveUtility.Delete(string)
+  fullName: Ceres.Serialization.SaveUtility.Delete(string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Delete saving
+  example: []
+  syntax:
+    content: public static void Delete(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    content.vb: Public Shared Sub Delete(key As String)
+  overload: Ceres.Serialization.SaveUtility.Delete*
+  nameWithType.vb: SaveUtility.Delete(String)
+  fullName.vb: Ceres.Serialization.SaveUtility.Delete(String)
+  name.vb: Delete(String)
+- uid: Ceres.Serialization.SaveUtility.DeleteAll
+  commentId: M:Ceres.Serialization.SaveUtility.DeleteAll
+  id: DeleteAll
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: DeleteAll()
+  nameWithType: SaveUtility.DeleteAll()
+  fullName: Ceres.Serialization.SaveUtility.DeleteAll()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Delete all savings
+  example: []
+  syntax:
+    content: public static void DeleteAll()
+    content.vb: Public Shared Sub DeleteAll()
+  overload: Ceres.Serialization.SaveUtility.DeleteAll*
+- uid: Ceres.Serialization.SaveUtility.SaveJson(System.String,System.String)
+  commentId: M:Ceres.Serialization.SaveUtility.SaveJson(System.String,System.String)
+  id: SaveJson(System.String,System.String)
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: SaveJson(string, string)
+  nameWithType: SaveUtility.SaveJson(string, string)
+  fullName: Ceres.Serialization.SaveUtility.SaveJson(string, string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Save json to saving
+  example: []
+  syntax:
+    content: public static void SaveJson(string key, string jsonData)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: jsonData
+      type: System.String
+      description: ''
+    content.vb: Public Shared Sub SaveJson(key As String, jsonData As String)
+  overload: Ceres.Serialization.SaveUtility.SaveJson*
+  nameWithType.vb: SaveUtility.SaveJson(String, String)
+  fullName.vb: Ceres.Serialization.SaveUtility.SaveJson(String, String)
+  name.vb: SaveJson(String, String)
+- uid: Ceres.Serialization.SaveUtility.Exists(System.String)
+  commentId: M:Ceres.Serialization.SaveUtility.Exists(System.String)
+  id: Exists(System.String)
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: Exists(string)
+  nameWithType: SaveUtility.Exists(string)
+  fullName: Ceres.Serialization.SaveUtility.Exists(string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Whether saving with name exists
+  example: []
+  syntax:
+    content: public static bool Exists(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function Exists(key As String) As Boolean
+  overload: Ceres.Serialization.SaveUtility.Exists*
+  nameWithType.vb: SaveUtility.Exists(String)
+  fullName.vb: Ceres.Serialization.SaveUtility.Exists(String)
+  name.vb: Exists(String)
+- uid: Ceres.Serialization.SaveUtility.TryLoadJson(System.String,System.String@)
+  commentId: M:Ceres.Serialization.SaveUtility.TryLoadJson(System.String,System.String@)
+  id: TryLoadJson(System.String,System.String@)
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: TryLoadJson(string, out string)
+  nameWithType: SaveUtility.TryLoadJson(string, out string)
+  fullName: Ceres.Serialization.SaveUtility.TryLoadJson(string, out string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Load json from saving
+  example: []
+  syntax:
+    content: public static bool TryLoadJson(string key, out string jsonData)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: jsonData
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryLoadJson(key As String, jsonData As String) As Boolean
+  overload: Ceres.Serialization.SaveUtility.TryLoadJson*
+  nameWithType.vb: SaveUtility.TryLoadJson(String, String)
+  fullName.vb: Ceres.Serialization.SaveUtility.TryLoadJson(String, String)
+  name.vb: TryLoadJson(String, String)
+- uid: Ceres.Serialization.SaveUtility.Overwrite``1(``0)
+  commentId: M:Ceres.Serialization.SaveUtility.Overwrite``1(``0)
+  id: Overwrite``1(``0)
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: Overwrite<T>(T)
+  nameWithType: SaveUtility.Overwrite<T>(T)
+  fullName: Ceres.Serialization.SaveUtility.Overwrite<T>(T)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Load json from saving and overwrite object
+  example: []
+  syntax:
+    content: public static bool Overwrite<T>(T data)
+    parameters:
+    - id: data
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function Overwrite(Of T)(data As T) As Boolean
+  overload: Ceres.Serialization.SaveUtility.Overwrite*
+  nameWithType.vb: SaveUtility.Overwrite(Of T)(T)
+  fullName.vb: Ceres.Serialization.SaveUtility.Overwrite(Of T)(T)
+  name.vb: Overwrite(Of T)(T)
+- uid: Ceres.Serialization.SaveUtility.LoadOrNew``1
+  commentId: M:Ceres.Serialization.SaveUtility.LoadOrNew``1
+  id: LoadOrNew``1
+  parent: Ceres.Serialization.SaveUtility
+  langs:
+  - csharp
+  - vb
+  name: LoadOrNew<T>()
+  nameWithType: SaveUtility.LoadOrNew<T>()
+  fullName: Ceres.Serialization.SaveUtility.LoadOrNew<T>()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Load json from saving and parse to T object, if it not exists, allocate new one
+  example: []
+  syntax:
+    content: 'public static T LoadOrNew<T>() where T : class, new()'
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadOrNew(Of T As {Class, New})() As T
+  overload: Ceres.Serialization.SaveUtility.LoadOrNew*
+  nameWithType.vb: SaveUtility.LoadOrNew(Of T)()
+  fullName.vb: Ceres.Serialization.SaveUtility.LoadOrNew(Of T)()
+  name.vb: LoadOrNew(Of T)()
+references:
+- uid: Ceres.Serialization
+  commentId: N:Ceres.Serialization
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Serialization
+  nameWithType: Ceres.Serialization
+  fullName: Ceres.Serialization
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Serialization.SaveUtility.Save*
+  commentId: Overload:Ceres.Serialization.SaveUtility.Save
+  isExternal: true
+  href: Ceres.Serialization.SaveUtility.html#Ceres_Serialization_SaveUtility_Save__1___0_
+  name: Save
+  nameWithType: SaveUtility.Save
+  fullName: Ceres.Serialization.SaveUtility.Save
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Serialization.SaveUtility.Delete*
+  commentId: Overload:Ceres.Serialization.SaveUtility.Delete
+  isExternal: true
+  href: Ceres.Serialization.SaveUtility.html#Ceres_Serialization_SaveUtility_Delete_System_String_
+  name: Delete
+  nameWithType: SaveUtility.Delete
+  fullName: Ceres.Serialization.SaveUtility.Delete
+- uid: Ceres.Serialization.SaveUtility.DeleteAll*
+  commentId: Overload:Ceres.Serialization.SaveUtility.DeleteAll
+  isExternal: true
+  href: Ceres.Serialization.SaveUtility.html#Ceres_Serialization_SaveUtility_DeleteAll
+  name: DeleteAll
+  nameWithType: SaveUtility.DeleteAll
+  fullName: Ceres.Serialization.SaveUtility.DeleteAll
+- uid: Ceres.Serialization.SaveUtility.SaveJson*
+  commentId: Overload:Ceres.Serialization.SaveUtility.SaveJson
+  isExternal: true
+  href: Ceres.Serialization.SaveUtility.html#Ceres_Serialization_SaveUtility_SaveJson_System_String_System_String_
+  name: SaveJson
+  nameWithType: SaveUtility.SaveJson
+  fullName: Ceres.Serialization.SaveUtility.SaveJson
+- uid: Ceres.Serialization.SaveUtility.Exists*
+  commentId: Overload:Ceres.Serialization.SaveUtility.Exists
+  isExternal: true
+  href: Ceres.Serialization.SaveUtility.html#Ceres_Serialization_SaveUtility_Exists_System_String_
+  name: Exists
+  nameWithType: SaveUtility.Exists
+  fullName: Ceres.Serialization.SaveUtility.Exists
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Serialization.SaveUtility.TryLoadJson*
+  commentId: Overload:Ceres.Serialization.SaveUtility.TryLoadJson
+  isExternal: true
+  href: Ceres.Serialization.SaveUtility.html#Ceres_Serialization_SaveUtility_TryLoadJson_System_String_System_String__
+  name: TryLoadJson
+  nameWithType: SaveUtility.TryLoadJson
+  fullName: Ceres.Serialization.SaveUtility.TryLoadJson
+- uid: Ceres.Serialization.SaveUtility.Overwrite*
+  commentId: Overload:Ceres.Serialization.SaveUtility.Overwrite
+  isExternal: true
+  href: Ceres.Serialization.SaveUtility.html#Ceres_Serialization_SaveUtility_Overwrite__1___0_
+  name: Overwrite
+  nameWithType: SaveUtility.Overwrite
+  fullName: Ceres.Serialization.SaveUtility.Overwrite
+- uid: Ceres.Serialization.SaveUtility.LoadOrNew*
+  commentId: Overload:Ceres.Serialization.SaveUtility.LoadOrNew
+  isExternal: true
+  href: Ceres.Serialization.SaveUtility.html#Ceres_Serialization_SaveUtility_LoadOrNew__1
+  name: LoadOrNew
+  nameWithType: SaveUtility.LoadOrNew
+  fullName: Ceres.Serialization.SaveUtility.LoadOrNew

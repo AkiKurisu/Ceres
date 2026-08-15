@@ -1,0 +1,1153 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresPortView
+  commentId: T:Ceres.Editor.Graph.CeresPortView
+  id: CeresPortView
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresPortView.#ctor(Ceres.Editor.Graph.CeresPortViewBinding,Ceres.Editor.Graph.CeresNodeView,Ceres.Graph.CeresPortData)
+  - Ceres.Editor.Graph.CeresPortView.Binding
+  - Ceres.Editor.Graph.CeresPortView.Commit(Ceres.Graph.CeresNode)
+  - Ceres.Editor.Graph.CeresPortView.Connect
+  - Ceres.Editor.Graph.CeresPortView.EndDebug
+  - Ceres.Editor.Graph.CeresPortView.FieldResolver
+  - Ceres.Editor.Graph.CeresPortView.Flags
+  - Ceres.Editor.Graph.CeresPortView.NodeOwner
+  - Ceres.Editor.Graph.CeresPortView.PortData
+  - Ceres.Editor.Graph.CeresPortView.PortElement
+  - Ceres.Editor.Graph.CeresPortView.Restore(Ceres.Graph.CeresNode,Ceres.Graph.CeresPortData)
+  - Ceres.Editor.Graph.CeresPortView.SetDebugData(System.String)
+  - Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo(System.Reflection.ParameterInfo)
+  - Ceres.Editor.Graph.CeresPortView.SetDisplayName(System.String)
+  - Ceres.Editor.Graph.CeresPortView.SetDisplayType(System.Type)
+  - Ceres.Editor.Graph.CeresPortView.SetTooltip(System.String)
+  - Ceres.Editor.Graph.CeresPortView.StartDebug
+  langs:
+  - csharp
+  - vb
+  name: CeresPortView
+  nameWithType: CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView
+  type: Class
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Port view for <xref href="Ceres.Editor.Graph.CeresNodeView" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public class CeresPortView
+    content.vb: Public Class CeresPortView
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  extensionMethods:
+  - Ceres.Editor.Graph.CeresPortView.Ceres.Editor.Graph.PortViewExtensions.HidePort
+  - Ceres.Editor.Graph.CeresPortView.Ceres.Editor.Graph.PortViewExtensions.IsVisible
+  - Ceres.Editor.Graph.CeresPortView.Ceres.Editor.Graph.PortViewExtensions.ShowPort
+- uid: Ceres.Editor.Graph.CeresPortView.#ctor(Ceres.Editor.Graph.CeresPortViewBinding,Ceres.Editor.Graph.CeresNodeView,Ceres.Graph.CeresPortData)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.#ctor(Ceres.Editor.Graph.CeresPortViewBinding,Ceres.Editor.Graph.CeresNodeView,Ceres.Graph.CeresPortData)
+  id: '#ctor(Ceres.Editor.Graph.CeresPortViewBinding,Ceres.Editor.Graph.CeresNodeView,Ceres.Graph.CeresPortData)'
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: CeresPortView(CeresPortViewBinding, CeresNodeView, CeresPortData)
+  nameWithType: CeresPortView.CeresPortView(CeresPortViewBinding, CeresNodeView, CeresPortData)
+  fullName: Ceres.Editor.Graph.CeresPortView.CeresPortView(Ceres.Editor.Graph.CeresPortViewBinding, Ceres.Editor.Graph.CeresNodeView, Ceres.Graph.CeresPortData)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortView(CeresPortViewBinding binding, CeresNodeView nodeView, CeresPortData portData)
+    parameters:
+    - id: binding
+      type: Ceres.Editor.Graph.CeresPortViewBinding
+    - id: nodeView
+      type: Ceres.Editor.Graph.CeresNodeView
+    - id: portData
+      type: Ceres.Graph.CeresPortData
+    content.vb: Public Sub New(binding As CeresPortViewBinding, nodeView As CeresNodeView, portData As CeresPortData)
+  overload: Ceres.Editor.Graph.CeresPortView.#ctor*
+  nameWithType.vb: CeresPortView.New(CeresPortViewBinding, CeresNodeView, CeresPortData)
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.New(Ceres.Editor.Graph.CeresPortViewBinding, Ceres.Editor.Graph.CeresNodeView, Ceres.Graph.CeresPortData)
+  name.vb: New(CeresPortViewBinding, CeresNodeView, CeresPortData)
+- uid: Ceres.Editor.Graph.CeresPortView.Commit(Ceres.Graph.CeresNode)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.Commit(Ceres.Graph.CeresNode)
+  id: Commit(Ceres.Graph.CeresNode)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Commit(CeresNode)
+  nameWithType: CeresPortView.Commit(CeresNode)
+  fullName: Ceres.Editor.Graph.CeresPortView.Commit(Ceres.Graph.CeresNode)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Link all ports to <xref href="Ceres.Graph.CeresNode" data-throw-if-not-resolved="false"></xref> instance
+  example: []
+  syntax:
+    content: public void Commit(CeresNode nodeInstance)
+    parameters:
+    - id: nodeInstance
+      type: Ceres.Graph.CeresNode
+      description: ''
+    content.vb: Public Sub Commit(nodeInstance As CeresNode)
+  overload: Ceres.Editor.Graph.CeresPortView.Commit*
+- uid: Ceres.Editor.Graph.CeresPortView.Connect
+  commentId: M:Ceres.Editor.Graph.CeresPortView.Connect
+  id: Connect
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Connect()
+  nameWithType: CeresPortView.Connect()
+  fullName: Ceres.Editor.Graph.CeresPortView.Connect()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Connect port element based on current <xref href="Ceres.Graph.CeresPortData" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public void Connect()
+    content.vb: Public Sub Connect()
+  overload: Ceres.Editor.Graph.CeresPortView.Connect*
+- uid: Ceres.Editor.Graph.CeresPortView.Restore(Ceres.Graph.CeresNode,Ceres.Graph.CeresPortData)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.Restore(Ceres.Graph.CeresNode,Ceres.Graph.CeresPortData)
+  id: Restore(Ceres.Graph.CeresNode,Ceres.Graph.CeresPortData)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Restore(CeresNode, CeresPortData)
+  nameWithType: CeresPortView.Restore(CeresNode, CeresPortData)
+  fullName: Ceres.Editor.Graph.CeresPortView.Restore(Ceres.Graph.CeresNode, Ceres.Graph.CeresPortData)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void Restore(CeresNode nodeInstance, CeresPortData portData)
+    parameters:
+    - id: nodeInstance
+      type: Ceres.Graph.CeresNode
+    - id: portData
+      type: Ceres.Graph.CeresPortData
+    content.vb: Public Sub Restore(nodeInstance As CeresNode, portData As CeresPortData)
+  overload: Ceres.Editor.Graph.CeresPortView.Restore*
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo(System.Reflection.ParameterInfo)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo(System.Reflection.ParameterInfo)
+  id: SetDisplayDataFromParameterInfo(System.Reflection.ParameterInfo)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetDisplayDataFromParameterInfo(ParameterInfo)
+  nameWithType: CeresPortView.SetDisplayDataFromParameterInfo(ParameterInfo)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo(System.Reflection.ParameterInfo)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Set display name and default value from <xref href="System.Reflection.ParameterInfo" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public void SetDisplayDataFromParameterInfo(ParameterInfo parameterInfo)
+    parameters:
+    - id: parameterInfo
+      type: System.Reflection.ParameterInfo
+      description: ''
+    content.vb: Public Sub SetDisplayDataFromParameterInfo(parameterInfo As ParameterInfo)
+  overload: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo*
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayName(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetDisplayName(System.String)
+  id: SetDisplayName(System.String)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetDisplayName(string)
+  nameWithType: CeresPortView.SetDisplayName(string)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayName(string)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void SetDisplayName(string displayName)
+    parameters:
+    - id: displayName
+      type: System.String
+    content.vb: Public Sub SetDisplayName(displayName As String)
+  overload: Ceres.Editor.Graph.CeresPortView.SetDisplayName*
+  nameWithType.vb: CeresPortView.SetDisplayName(String)
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.SetDisplayName(String)
+  name.vb: SetDisplayName(String)
+- uid: Ceres.Editor.Graph.CeresPortView.SetTooltip(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetTooltip(System.String)
+  id: SetTooltip(System.String)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetTooltip(string)
+  nameWithType: CeresPortView.SetTooltip(string)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetTooltip(string)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void SetTooltip(string tooltip)
+    parameters:
+    - id: tooltip
+      type: System.String
+    content.vb: Public Sub SetTooltip(tooltip As String)
+  overload: Ceres.Editor.Graph.CeresPortView.SetTooltip*
+  nameWithType.vb: CeresPortView.SetTooltip(String)
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.SetTooltip(String)
+  name.vb: SetTooltip(String)
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayType(System.Type)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetDisplayType(System.Type)
+  id: SetDisplayType(System.Type)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetDisplayType(Type)
+  nameWithType: CeresPortView.SetDisplayType(Type)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayType(System.Type)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void SetDisplayType(Type displayType)
+    parameters:
+    - id: displayType
+      type: System.Type
+    content.vb: Public Sub SetDisplayType(displayType As Type)
+  overload: Ceres.Editor.Graph.CeresPortView.SetDisplayType*
+- uid: Ceres.Editor.Graph.CeresPortView.StartDebug
+  commentId: M:Ceres.Editor.Graph.CeresPortView.StartDebug
+  id: StartDebug
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: StartDebug()
+  nameWithType: CeresPortView.StartDebug()
+  fullName: Ceres.Editor.Graph.CeresPortView.StartDebug()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Start debugging port
+  example: []
+  syntax:
+    content: public void StartDebug()
+    content.vb: Public Sub StartDebug()
+  overload: Ceres.Editor.Graph.CeresPortView.StartDebug*
+- uid: Ceres.Editor.Graph.CeresPortView.SetDebugData(System.String)
+  commentId: M:Ceres.Editor.Graph.CeresPortView.SetDebugData(System.String)
+  id: SetDebugData(System.String)
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: SetDebugData(string)
+  nameWithType: CeresPortView.SetDebugData(string)
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDebugData(string)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Set port debug data to display
+  example: []
+  syntax:
+    content: public void SetDebugData(string debugData)
+    parameters:
+    - id: debugData
+      type: System.String
+      description: Debug data to display
+    content.vb: Public Sub SetDebugData(debugData As String)
+  overload: Ceres.Editor.Graph.CeresPortView.SetDebugData*
+  nameWithType.vb: CeresPortView.SetDebugData(String)
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.SetDebugData(String)
+  name.vb: SetDebugData(String)
+- uid: Ceres.Editor.Graph.CeresPortView.EndDebug
+  commentId: M:Ceres.Editor.Graph.CeresPortView.EndDebug
+  id: EndDebug
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: EndDebug()
+  nameWithType: CeresPortView.EndDebug()
+  fullName: Ceres.Editor.Graph.CeresPortView.EndDebug()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: End debugging port
+  example: []
+  syntax:
+    content: public void EndDebug()
+    content.vb: Public Sub EndDebug()
+  overload: Ceres.Editor.Graph.CeresPortView.EndDebug*
+- uid: Ceres.Editor.Graph.CeresPortView.Binding
+  commentId: P:Ceres.Editor.Graph.CeresPortView.Binding
+  id: Binding
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Binding
+  nameWithType: CeresPortView.Binding
+  fullName: Ceres.Editor.Graph.CeresPortView.Binding
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortViewBinding Binding { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresPortViewBinding
+    content.vb: Public ReadOnly Property Binding As CeresPortViewBinding
+  overload: Ceres.Editor.Graph.CeresPortView.Binding*
+- uid: Ceres.Editor.Graph.CeresPortView.PortData
+  commentId: P:Ceres.Editor.Graph.CeresPortView.PortData
+  id: PortData
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: PortData
+  nameWithType: CeresPortView.PortData
+  fullName: Ceres.Editor.Graph.CeresPortView.PortData
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortData PortData { get; }
+    parameters: []
+    return:
+      type: Ceres.Graph.CeresPortData
+    content.vb: Public ReadOnly Property PortData As CeresPortData
+  overload: Ceres.Editor.Graph.CeresPortView.PortData*
+- uid: Ceres.Editor.Graph.CeresPortView.PortElement
+  commentId: P:Ceres.Editor.Graph.CeresPortView.PortElement
+  id: PortElement
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: PortElement
+  nameWithType: CeresPortView.PortElement
+  fullName: Ceres.Editor.Graph.CeresPortView.PortElement
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortElement PortElement { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresPortElement
+    content.vb: Public ReadOnly Property PortElement As CeresPortElement
+  overload: Ceres.Editor.Graph.CeresPortView.PortElement*
+- uid: Ceres.Editor.Graph.CeresPortView.NodeOwner
+  commentId: P:Ceres.Editor.Graph.CeresPortView.NodeOwner
+  id: NodeOwner
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: NodeOwner
+  nameWithType: CeresPortView.NodeOwner
+  fullName: Ceres.Editor.Graph.CeresPortView.NodeOwner
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresNodeView NodeOwner { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresNodeView
+    content.vb: Public ReadOnly Property NodeOwner As CeresNodeView
+  overload: Ceres.Editor.Graph.CeresPortView.NodeOwner*
+- uid: Ceres.Editor.Graph.CeresPortView.FieldResolver
+  commentId: P:Ceres.Editor.Graph.CeresPortView.FieldResolver
+  id: FieldResolver
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: FieldResolver
+  nameWithType: CeresPortView.FieldResolver
+  fullName: Ceres.Editor.Graph.CeresPortView.FieldResolver
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public IFieldResolver FieldResolver { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.IFieldResolver
+    content.vb: Public ReadOnly Property FieldResolver As IFieldResolver
+  overload: Ceres.Editor.Graph.CeresPortView.FieldResolver*
+- uid: Ceres.Editor.Graph.CeresPortView.Flags
+  commentId: P:Ceres.Editor.Graph.CeresPortView.Flags
+  id: Flags
+  parent: Ceres.Editor.Graph.CeresPortView
+  langs:
+  - csharp
+  - vb
+  name: Flags
+  nameWithType: CeresPortView.Flags
+  fullName: Ceres.Editor.Graph.CeresPortView.Flags
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortViewFlags Flags { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresPortViewFlags
+    content.vb: Public ReadOnly Property Flags As CeresPortViewFlags
+  overload: Ceres.Editor.Graph.CeresPortView.Flags*
+references:
+- uid: Ceres.Editor.Graph.CeresNodeView
+  commentId: T:Ceres.Editor.Graph.CeresNodeView
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresNodeView.html
+  name: CeresNodeView
+  nameWithType: CeresNodeView
+  fullName: Ceres.Editor.Graph.CeresNodeView
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresPortView.Ceres.Editor.Graph.PortViewExtensions.HidePort
+  commentId: M:Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.PortViewExtensions
+  definition: Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+  href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_HidePort_Ceres_Editor_Graph_CeresPortView_
+  name: HidePort(CeresPortView)
+  nameWithType: PortViewExtensions.HidePort(CeresPortView)
+  fullName: Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+    name: HidePort
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_HidePort_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+    name: HidePort
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_HidePort_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+- uid: Ceres.Editor.Graph.CeresPortView.Ceres.Editor.Graph.PortViewExtensions.IsVisible
+  commentId: M:Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.PortViewExtensions
+  definition: Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+  href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_IsVisible_Ceres_Editor_Graph_CeresPortView_
+  name: IsVisible(CeresPortView)
+  nameWithType: PortViewExtensions.IsVisible(CeresPortView)
+  fullName: Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+    name: IsVisible
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_IsVisible_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+    name: IsVisible
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_IsVisible_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+- uid: Ceres.Editor.Graph.CeresPortView.Ceres.Editor.Graph.PortViewExtensions.ShowPort
+  commentId: M:Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.PortViewExtensions
+  definition: Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+  href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_ShowPort_Ceres_Editor_Graph_CeresPortView_
+  name: ShowPort(CeresPortView)
+  nameWithType: PortViewExtensions.ShowPort(CeresPortView)
+  fullName: Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+    name: ShowPort
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_ShowPort_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+    name: ShowPort
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_ShowPort_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+  isExternal: true
+  href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_HidePort_Ceres_Editor_Graph_CeresPortView_
+  name: HidePort(CeresPortView)
+  nameWithType: PortViewExtensions.HidePort(CeresPortView)
+  fullName: Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+    name: HidePort
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_HidePort_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.HidePort(Ceres.Editor.Graph.CeresPortView)
+    name: HidePort
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_HidePort_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+- uid: Ceres.Editor.Graph.PortViewExtensions
+  commentId: T:Ceres.Editor.Graph.PortViewExtensions
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.PortViewExtensions.html
+  name: PortViewExtensions
+  nameWithType: PortViewExtensions
+  fullName: Ceres.Editor.Graph.PortViewExtensions
+- uid: Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+  isExternal: true
+  href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_IsVisible_Ceres_Editor_Graph_CeresPortView_
+  name: IsVisible(CeresPortView)
+  nameWithType: PortViewExtensions.IsVisible(CeresPortView)
+  fullName: Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+    name: IsVisible
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_IsVisible_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.IsVisible(Ceres.Editor.Graph.CeresPortView)
+    name: IsVisible
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_IsVisible_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+- uid: Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+  isExternal: true
+  href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_ShowPort_Ceres_Editor_Graph_CeresPortView_
+  name: ShowPort(CeresPortView)
+  nameWithType: PortViewExtensions.ShowPort(CeresPortView)
+  fullName: Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+    name: ShowPort
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_ShowPort_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.PortViewExtensions.ShowPort(Ceres.Editor.Graph.CeresPortView)
+    name: ShowPort
+    isExternal: true
+    href: Ceres.Editor.Graph.PortViewExtensions.html#Ceres_Editor_Graph_PortViewExtensions_ShowPort_Ceres_Editor_Graph_CeresPortView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresPortView
+    name: CeresPortView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresPortView.html
+  - name: )
+- uid: Ceres.Editor.Graph.CeresPortView.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.#ctor
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView__ctor_Ceres_Editor_Graph_CeresPortViewBinding_Ceres_Editor_Graph_CeresNodeView_Ceres_Graph_CeresPortData_
+  name: CeresPortView
+  nameWithType: CeresPortView.CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView.CeresPortView
+  nameWithType.vb: CeresPortView.New
+  fullName.vb: Ceres.Editor.Graph.CeresPortView.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.CeresPortViewBinding
+  commentId: T:Ceres.Editor.Graph.CeresPortViewBinding
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortViewBinding.html
+  name: CeresPortViewBinding
+  nameWithType: CeresPortViewBinding
+  fullName: Ceres.Editor.Graph.CeresPortViewBinding
+- uid: Ceres.Graph.CeresPortData
+  commentId: T:Ceres.Graph.CeresPortData
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresPortData.html
+  name: CeresPortData
+  nameWithType: CeresPortData
+  fullName: Ceres.Graph.CeresPortData
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Graph.CeresNode
+  commentId: T:Ceres.Graph.CeresNode
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresNode.html
+  name: CeresNode
+  nameWithType: CeresNode
+  fullName: Ceres.Graph.CeresNode
+- uid: Ceres.Editor.Graph.CeresPortView.Commit*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Commit
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_Commit_Ceres_Graph_CeresNode_
+  name: Commit
+  nameWithType: CeresPortView.Commit
+  fullName: Ceres.Editor.Graph.CeresPortView.Commit
+- uid: Ceres.Editor.Graph.CeresPortView.Connect*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Connect
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_Connect
+  name: Connect
+  nameWithType: CeresPortView.Connect
+  fullName: Ceres.Editor.Graph.CeresPortView.Connect
+- uid: Ceres.Editor.Graph.CeresPortView.Restore*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Restore
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_Restore_Ceres_Graph_CeresNode_Ceres_Graph_CeresPortData_
+  name: Restore
+  nameWithType: CeresPortView.Restore
+  fullName: Ceres.Editor.Graph.CeresPortView.Restore
+- uid: System.Reflection.ParameterInfo
+  commentId: T:System.Reflection.ParameterInfo
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.parameterinfo
+  name: ParameterInfo
+  nameWithType: ParameterInfo
+  fullName: System.Reflection.ParameterInfo
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_SetDisplayDataFromParameterInfo_System_Reflection_ParameterInfo_
+  name: SetDisplayDataFromParameterInfo
+  nameWithType: CeresPortView.SetDisplayDataFromParameterInfo
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayDataFromParameterInfo
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayName*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetDisplayName
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_SetDisplayName_System_String_
+  name: SetDisplayName
+  nameWithType: CeresPortView.SetDisplayName
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Editor.Graph.CeresPortView.SetTooltip*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetTooltip
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_SetTooltip_System_String_
+  name: SetTooltip
+  nameWithType: CeresPortView.SetTooltip
+  fullName: Ceres.Editor.Graph.CeresPortView.SetTooltip
+- uid: Ceres.Editor.Graph.CeresPortView.SetDisplayType*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetDisplayType
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_SetDisplayType_System_Type_
+  name: SetDisplayType
+  nameWithType: CeresPortView.SetDisplayType
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDisplayType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Ceres.Editor.Graph.CeresPortView.StartDebug*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.StartDebug
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_StartDebug
+  name: StartDebug
+  nameWithType: CeresPortView.StartDebug
+  fullName: Ceres.Editor.Graph.CeresPortView.StartDebug
+- uid: Ceres.Editor.Graph.CeresPortView.SetDebugData*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.SetDebugData
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_SetDebugData_System_String_
+  name: SetDebugData
+  nameWithType: CeresPortView.SetDebugData
+  fullName: Ceres.Editor.Graph.CeresPortView.SetDebugData
+- uid: Ceres.Editor.Graph.CeresPortView.EndDebug*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.EndDebug
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_EndDebug
+  name: EndDebug
+  nameWithType: CeresPortView.EndDebug
+  fullName: Ceres.Editor.Graph.CeresPortView.EndDebug
+- uid: Ceres.Editor.Graph.CeresPortView.Binding*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Binding
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_Binding
+  name: Binding
+  nameWithType: CeresPortView.Binding
+  fullName: Ceres.Editor.Graph.CeresPortView.Binding
+- uid: Ceres.Editor.Graph.CeresPortView.PortData*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.PortData
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_PortData
+  name: PortData
+  nameWithType: CeresPortView.PortData
+  fullName: Ceres.Editor.Graph.CeresPortView.PortData
+- uid: Ceres.Editor.Graph.CeresPortView.PortElement*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.PortElement
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_PortElement
+  name: PortElement
+  nameWithType: CeresPortView.PortElement
+  fullName: Ceres.Editor.Graph.CeresPortView.PortElement
+- uid: Ceres.Editor.Graph.CeresPortElement
+  commentId: T:Ceres.Editor.Graph.CeresPortElement
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html
+  name: CeresPortElement
+  nameWithType: CeresPortElement
+  fullName: Ceres.Editor.Graph.CeresPortElement
+- uid: Ceres.Editor.Graph.CeresPortView.NodeOwner*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.NodeOwner
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_NodeOwner
+  name: NodeOwner
+  nameWithType: CeresPortView.NodeOwner
+  fullName: Ceres.Editor.Graph.CeresPortView.NodeOwner
+- uid: Ceres.Editor.Graph.CeresPortView.FieldResolver*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.FieldResolver
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_FieldResolver
+  name: FieldResolver
+  nameWithType: CeresPortView.FieldResolver
+  fullName: Ceres.Editor.Graph.CeresPortView.FieldResolver
+- uid: Ceres.Editor.Graph.IFieldResolver
+  commentId: T:Ceres.Editor.Graph.IFieldResolver
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.IFieldResolver.html
+  name: IFieldResolver
+  nameWithType: IFieldResolver
+  fullName: Ceres.Editor.Graph.IFieldResolver
+- uid: Ceres.Editor.Graph.CeresPortView.Flags*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortView.Flags
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html#Ceres_Editor_Graph_CeresPortView_Flags
+  name: Flags
+  nameWithType: CeresPortView.Flags
+  fullName: Ceres.Editor.Graph.CeresPortView.Flags
+- uid: Ceres.Editor.Graph.CeresPortViewFlags
+  commentId: T:Ceres.Editor.Graph.CeresPortViewFlags
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortViewFlags.html
+  name: CeresPortViewFlags
+  nameWithType: CeresPortViewFlags
+  fullName: Ceres.Editor.Graph.CeresPortViewFlags

@@ -1,0 +1,1052 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  commentId: T:Ceres.Gameplay.AI.EQS.PostQuerySystem
+  id: PostQuerySystem
+  parent: Ceres.Gameplay.AI.EQS
+  children:
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.#ctor
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.DefaultFramePerTick
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.DefaultWorkerCount
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.EnqueueCommand(Ceres.Gameplay.AI.EQS.PostQueryCommand)
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.FramePerTick
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.GetPosts(Ceres.Gameplay.ActorHandle)
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.Initialize
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.IsFree(Ceres.Gameplay.ActorHandle)
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.MaxWorkerCount
+  - Ceres.Gameplay.AI.EQS.PostQuerySystem.Release
+  langs:
+  - csharp
+  - vb
+  name: PostQuerySystem
+  nameWithType: PostQuerySystem
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: 'public class PostQuerySystem : WorldSubsystem'
+    content.vb: Public Class PostQuerySystem Inherits WorldSubsystem
+  inheritance:
+  - System.Object
+  - Ceres.Gameplay.SubsystemBase
+  - Ceres.Gameplay.WorldSubsystem
+  inheritedMembers:
+  - Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+  - Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+  - Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+  - Ceres.Gameplay.SubsystemBase.Tick
+  - Ceres.Gameplay.SubsystemBase.FixedTick
+  - Ceres.Gameplay.SubsystemBase.GetWorld
+  - Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+  - Ceres.Gameplay.SubsystemBase.GetActorsNum
+  - Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+  - Ceres.Gameplay.SubsystemBase.IsActorsDirty
+  - Ceres.Gameplay.SubsystemBase.IsInitialized
+  - Ceres.Gameplay.SubsystemBase.IsDestroyed
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.DefaultWorkerCount
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQuerySystem.DefaultWorkerCount
+  id: DefaultWorkerCount
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: DefaultWorkerCount
+  nameWithType: PostQuerySystem.DefaultWorkerCount
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.DefaultWorkerCount
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: 'Default parallel workers count: 5'
+  example: []
+  syntax:
+    content: public const int DefaultWorkerCount = 5
+    return:
+      type: System.Int32
+    content.vb: Public Const DefaultWorkerCount As Integer = 5
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.DefaultFramePerTick
+  commentId: F:Ceres.Gameplay.AI.EQS.PostQuerySystem.DefaultFramePerTick
+  id: DefaultFramePerTick
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: DefaultFramePerTick
+  nameWithType: PostQuerySystem.DefaultFramePerTick
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.DefaultFramePerTick
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: 'Default tick frame: 2 fps'
+  example: []
+  syntax:
+    content: public const int DefaultFramePerTick = 25
+    return:
+      type: System.Int32
+    content.vb: Public Const DefaultFramePerTick As Integer = 25
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.Initialize
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQuerySystem.Initialize
+  id: Initialize
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: PostQuerySystem.Initialize()
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.Initialize()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Subsystem initialize phase, should bind callbacks and collect references in this phase
+  example: []
+  syntax:
+    content: protected override void Initialize()
+    content.vb: Protected Overrides Sub Initialize()
+  overridden: Ceres.Gameplay.SubsystemBase.Initialize
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.Initialize*
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.Release
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQuerySystem.Release
+  id: Release
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: Release()
+  nameWithType: PostQuerySystem.Release()
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.Release()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Subsystem release phase, should unbind callbacks and release references in this phase
+  example: []
+  syntax:
+    content: protected override void Release()
+    content.vb: Protected Overrides Sub Release()
+  overridden: Ceres.Gameplay.SubsystemBase.Release
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.Release*
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.EnqueueCommand(Ceres.Gameplay.AI.EQS.PostQueryCommand)
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQuerySystem.EnqueueCommand(Ceres.Gameplay.AI.EQS.PostQueryCommand)
+  id: EnqueueCommand(Ceres.Gameplay.AI.EQS.PostQueryCommand)
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: EnqueueCommand(PostQueryCommand)
+  nameWithType: PostQuerySystem.EnqueueCommand(PostQueryCommand)
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.EnqueueCommand(Ceres.Gameplay.AI.EQS.PostQueryCommand)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Enqueue a new <xref href="Ceres.Gameplay.AI.EQS.PostQueryCommand" data-throw-if-not-resolved="false"></xref> to the system
+  example: []
+  syntax:
+    content: public void EnqueueCommand(PostQueryCommand command)
+    parameters:
+    - id: command
+      type: Ceres.Gameplay.AI.EQS.PostQueryCommand
+      description: ''
+    content.vb: Public Sub EnqueueCommand(command As PostQueryCommand)
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.EnqueueCommand*
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.GetPosts(Ceres.Gameplay.ActorHandle)
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQuerySystem.GetPosts(Ceres.Gameplay.ActorHandle)
+  id: GetPosts(Ceres.Gameplay.ActorHandle)
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: GetPosts(ActorHandle)
+  nameWithType: PostQuerySystem.GetPosts(ActorHandle)
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.GetPosts(Ceres.Gameplay.ActorHandle)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Get cached posts has found for target actor use latest command
+  example: []
+  syntax:
+    content: public NativeArray<float3>.ReadOnly GetPosts(ActorHandle handle)
+    parameters:
+    - id: handle
+      type: Ceres.Gameplay.ActorHandle
+      description: ''
+    return:
+      type: Unity.Collections.NativeArray{Unity.Mathematics.float3}.ReadOnly
+      description: ''
+    content.vb: Public Function GetPosts(handle As ActorHandle) As NativeArray(Of float3).ReadOnly
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.GetPosts*
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.IsFree(Ceres.Gameplay.ActorHandle)
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQuerySystem.IsFree(Ceres.Gameplay.ActorHandle)
+  id: IsFree(Ceres.Gameplay.ActorHandle)
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: IsFree(ActorHandle)
+  nameWithType: PostQuerySystem.IsFree(ActorHandle)
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.IsFree(Ceres.Gameplay.ActorHandle)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Whether the worker for target actor is free to execute new command
+  example: []
+  syntax:
+    content: public bool IsFree(ActorHandle handle)
+    parameters:
+    - id: handle
+      type: Ceres.Gameplay.ActorHandle
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function IsFree(handle As ActorHandle) As Boolean
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.IsFree*
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.#ctor
+  commentId: M:Ceres.Gameplay.AI.EQS.PostQuerySystem.#ctor
+  id: '#ctor'
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: PostQuerySystem()
+  nameWithType: PostQuerySystem.PostQuerySystem()
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PostQuerySystem()
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  syntax:
+    content: public PostQuerySystem()
+    content.vb: Public Sub New()
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.#ctor*
+  nameWithType.vb: PostQuerySystem.New()
+  fullName.vb: Ceres.Gameplay.AI.EQS.PostQuerySystem.New()
+  name.vb: New()
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.MaxWorkerCount
+  commentId: P:Ceres.Gameplay.AI.EQS.PostQuerySystem.MaxWorkerCount
+  id: MaxWorkerCount
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: MaxWorkerCount
+  nameWithType: PostQuerySystem.MaxWorkerCount
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.MaxWorkerCount
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Set system parallel workers count
+  example: []
+  syntax:
+    content: public static int MaxWorkerCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Shared Property MaxWorkerCount As Integer
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.MaxWorkerCount*
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.FramePerTick
+  commentId: P:Ceres.Gameplay.AI.EQS.PostQuerySystem.FramePerTick
+  id: FramePerTick
+  parent: Ceres.Gameplay.AI.EQS.PostQuerySystem
+  langs:
+  - csharp
+  - vb
+  name: FramePerTick
+  nameWithType: PostQuerySystem.FramePerTick
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.FramePerTick
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.AI.EQS
+  summary: Set sysytem tick frame
+  example: []
+  syntax:
+    content: public static int FramePerTick { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Shared Property FramePerTick As Integer
+  overload: Ceres.Gameplay.AI.EQS.PostQuerySystem.FramePerTick*
+references:
+- uid: Ceres.Gameplay.AI.EQS
+  commentId: N:Ceres.Gameplay.AI.EQS
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.AI.EQS
+  nameWithType: Ceres.Gameplay.AI.EQS
+  fullName: Ceres.Gameplay.AI.EQS
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.AI
+    name: AI
+    isExternal: true
+    href: Ceres.Gameplay.AI.html
+  - name: .
+  - uid: Ceres.Gameplay.AI.EQS
+    name: EQS
+    isExternal: true
+    href: Ceres.Gameplay.AI.EQS.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.AI
+    name: AI
+    isExternal: true
+    href: Ceres.Gameplay.AI.html
+  - name: .
+  - uid: Ceres.Gameplay.AI.EQS
+    name: EQS
+    isExternal: true
+    href: Ceres.Gameplay.AI.EQS.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Gameplay.SubsystemBase
+  commentId: T:Ceres.Gameplay.SubsystemBase
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html
+  name: SubsystemBase
+  nameWithType: SubsystemBase
+  fullName: Ceres.Gameplay.SubsystemBase
+- uid: Ceres.Gameplay.WorldSubsystem
+  commentId: T:Ceres.Gameplay.WorldSubsystem
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.WorldSubsystem.html
+  name: WorldSubsystem
+  nameWithType: WorldSubsystem
+  fullName: Ceres.Gameplay.WorldSubsystem
+- uid: Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+  commentId: M:Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+  parent: Ceres.Gameplay.WorldSubsystem
+  isExternal: true
+  href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_CanCreate_Ceres_Gameplay_WorldContext_
+  name: CanCreate(WorldContext)
+  nameWithType: WorldSubsystem.CanCreate(WorldContext)
+  fullName: Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+  spec.csharp:
+  - uid: Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+    name: CanCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_CanCreate_Ceres_Gameplay_WorldContext_
+  - name: (
+  - uid: Ceres.Gameplay.WorldContext
+    name: WorldContext
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+    name: CanCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_CanCreate_Ceres_Gameplay_WorldContext_
+  - name: (
+  - uid: Ceres.Gameplay.WorldContext
+    name: WorldContext
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html
+  - name: )
+- uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+  commentId: M:Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+  parent: Ceres.Gameplay.WorldSubsystem
+  isExternal: true
+  href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate__1
+  name: GetOrCreate<T>()
+  nameWithType: WorldSubsystem.GetOrCreate<T>()
+  fullName: Ceres.Gameplay.WorldSubsystem.GetOrCreate<T>()
+  nameWithType.vb: WorldSubsystem.GetOrCreate(Of T)()
+  fullName.vb: Ceres.Gameplay.WorldSubsystem.GetOrCreate(Of T)()
+  name.vb: GetOrCreate(Of T)()
+  spec.csharp:
+  - uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+    name: GetOrCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+    name: GetOrCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+  commentId: M:Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+  parent: Ceres.Gameplay.WorldSubsystem
+  isExternal: true
+  href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate_System_Type_
+  name: GetOrCreate(Type)
+  nameWithType: WorldSubsystem.GetOrCreate(Type)
+  fullName: Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+  spec.csharp:
+  - uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+    name: GetOrCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+    name: GetOrCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.Tick
+  commentId: M:Ceres.Gameplay.SubsystemBase.Tick
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Tick
+  name: Tick()
+  nameWithType: SubsystemBase.Tick()
+  fullName: Ceres.Gameplay.SubsystemBase.Tick()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.Tick
+    name: Tick
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Tick
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.Tick
+    name: Tick
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Tick
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.FixedTick
+  commentId: M:Ceres.Gameplay.SubsystemBase.FixedTick
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_FixedTick
+  name: FixedTick()
+  nameWithType: SubsystemBase.FixedTick()
+  fullName: Ceres.Gameplay.SubsystemBase.FixedTick()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.FixedTick
+    name: FixedTick
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_FixedTick
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.FixedTick
+    name: FixedTick
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_FixedTick
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.GetWorld
+  commentId: M:Ceres.Gameplay.SubsystemBase.GetWorld
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetWorld
+  name: GetWorld()
+  nameWithType: SubsystemBase.GetWorld()
+  fullName: Ceres.Gameplay.SubsystemBase.GetWorld()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.GetWorld
+    name: GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetWorld
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.GetWorld
+    name: GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetWorld
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+  commentId: M:Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsInWorld_System_Collections_Generic_List_Ceres_Gameplay_Actor__
+  name: GetActorsInWorld(List<Actor>)
+  nameWithType: SubsystemBase.GetActorsInWorld(List<Actor>)
+  fullName: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List<Ceres.Gameplay.Actor>)
+  nameWithType.vb: SubsystemBase.GetActorsInWorld(List(Of Actor))
+  fullName.vb: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List(Of Ceres.Gameplay.Actor))
+  name.vb: GetActorsInWorld(List(Of Actor))
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+    name: GetActorsInWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsInWorld_System_Collections_Generic_List_Ceres_Gameplay_Actor__
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+    name: GetActorsInWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsInWorld_System_Collections_Generic_List_Ceres_Gameplay_Actor__
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.GetActorsNum
+  commentId: M:Ceres.Gameplay.SubsystemBase.GetActorsNum
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsNum
+  name: GetActorsNum()
+  nameWithType: SubsystemBase.GetActorsNum()
+  fullName: Ceres.Gameplay.SubsystemBase.GetActorsNum()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.GetActorsNum
+    name: GetActorsNum
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsNum
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.GetActorsNum
+    name: GetActorsNum
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsNum
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+  commentId: M:Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Invoke_GetWorld_Ceres_Gameplay_SubsystemBase_
+  name: Invoke_GetWorld(SubsystemBase)
+  nameWithType: SubsystemBase.Invoke_GetWorld(SubsystemBase)
+  fullName: Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+    name: Invoke_GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Invoke_GetWorld_Ceres_Gameplay_SubsystemBase_
+  - name: (
+  - uid: Ceres.Gameplay.SubsystemBase
+    name: SubsystemBase
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+    name: Invoke_GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Invoke_GetWorld_Ceres_Gameplay_SubsystemBase_
+  - name: (
+  - uid: Ceres.Gameplay.SubsystemBase
+    name: SubsystemBase
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.IsActorsDirty
+  commentId: P:Ceres.Gameplay.SubsystemBase.IsActorsDirty
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_IsActorsDirty
+  name: IsActorsDirty
+  nameWithType: SubsystemBase.IsActorsDirty
+  fullName: Ceres.Gameplay.SubsystemBase.IsActorsDirty
+- uid: Ceres.Gameplay.SubsystemBase.IsInitialized
+  commentId: P:Ceres.Gameplay.SubsystemBase.IsInitialized
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_IsInitialized
+  name: IsInitialized
+  nameWithType: SubsystemBase.IsInitialized
+  fullName: Ceres.Gameplay.SubsystemBase.IsInitialized
+- uid: Ceres.Gameplay.SubsystemBase.IsDestroyed
+  commentId: P:Ceres.Gameplay.SubsystemBase.IsDestroyed
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_IsDestroyed
+  name: IsDestroyed
+  nameWithType: SubsystemBase.IsDestroyed
+  fullName: Ceres.Gameplay.SubsystemBase.IsDestroyed
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Gameplay.SubsystemBase.Initialize
+  commentId: M:Ceres.Gameplay.SubsystemBase.Initialize
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Initialize
+  name: Initialize()
+  nameWithType: SubsystemBase.Initialize()
+  fullName: Ceres.Gameplay.SubsystemBase.Initialize()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.Initialize
+    name: Initialize
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Initialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.Initialize
+    name: Initialize
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Initialize
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.Initialize*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.Initialize
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.html#Ceres_Gameplay_AI_EQS_PostQuerySystem_Initialize
+  name: Initialize
+  nameWithType: PostQuerySystem.Initialize
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.Initialize
+- uid: Ceres.Gameplay.SubsystemBase.Release
+  commentId: M:Ceres.Gameplay.SubsystemBase.Release
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Release
+  name: Release()
+  nameWithType: SubsystemBase.Release()
+  fullName: Ceres.Gameplay.SubsystemBase.Release()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.Release
+    name: Release
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Release
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.Release
+    name: Release
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Release
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.Release*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.Release
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.html#Ceres_Gameplay_AI_EQS_PostQuerySystem_Release
+  name: Release
+  nameWithType: PostQuerySystem.Release
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.Release
+- uid: Ceres.Gameplay.AI.EQS.PostQueryCommand
+  commentId: T:Ceres.Gameplay.AI.EQS.PostQueryCommand
+  parent: Ceres.Gameplay.AI.EQS
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQueryCommand.html
+  name: PostQueryCommand
+  nameWithType: PostQueryCommand
+  fullName: Ceres.Gameplay.AI.EQS.PostQueryCommand
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.EnqueueCommand*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.EnqueueCommand
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.html#Ceres_Gameplay_AI_EQS_PostQuerySystem_EnqueueCommand_Ceres_Gameplay_AI_EQS_PostQueryCommand_
+  name: EnqueueCommand
+  nameWithType: PostQuerySystem.EnqueueCommand
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.EnqueueCommand
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.GetPosts*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.GetPosts
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.html#Ceres_Gameplay_AI_EQS_PostQuerySystem_GetPosts_Ceres_Gameplay_ActorHandle_
+  name: GetPosts
+  nameWithType: PostQuerySystem.GetPosts
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.GetPosts
+- uid: Ceres.Gameplay.ActorHandle
+  commentId: T:Ceres.Gameplay.ActorHandle
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.ActorHandle.html
+  name: ActorHandle
+  nameWithType: ActorHandle
+  fullName: Ceres.Gameplay.ActorHandle
+- uid: Unity.Collections.NativeArray{Unity.Mathematics.float3}.ReadOnly
+  commentId: '!:Unity.Collections.NativeArray{Unity.Mathematics.float3}.ReadOnly'
+  definition: Unity.Collections.NativeArray`1.ReadOnly
+  name: ReadOnly
+  nameWithType: NativeArray<float3>.ReadOnly
+  fullName: Unity.Collections.NativeArray<Unity.Mathematics.float3>.ReadOnly
+  nameWithType.vb: NativeArray(Of float3).ReadOnly
+  fullName.vb: Unity.Collections.NativeArray(Of Unity.Mathematics.float3).ReadOnly
+- uid: Unity.Collections.NativeArray`1.ReadOnly
+  commentId: '!:Unity.Collections.NativeArray`1.ReadOnly'
+  isExternal: true
+  name: ReadOnly
+  nameWithType: NativeArray<>.ReadOnly
+  fullName: Unity.Collections.NativeArray<>.ReadOnly
+  nameWithType.vb: NativeArray(Of ).ReadOnly
+  fullName.vb: Unity.Collections.NativeArray(Of ).ReadOnly
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.IsFree*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.IsFree
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.html#Ceres_Gameplay_AI_EQS_PostQuerySystem_IsFree_Ceres_Gameplay_ActorHandle_
+  name: IsFree
+  nameWithType: PostQuerySystem.IsFree
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.IsFree
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.#ctor*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.html#Ceres_Gameplay_AI_EQS_PostQuerySystem__ctor
+  name: PostQuerySystem
+  nameWithType: PostQuerySystem.PostQuerySystem
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.PostQuerySystem
+  nameWithType.vb: PostQuerySystem.New
+  fullName.vb: Ceres.Gameplay.AI.EQS.PostQuerySystem.New
+  name.vb: New
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.MaxWorkerCount*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.MaxWorkerCount
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.html#Ceres_Gameplay_AI_EQS_PostQuerySystem_MaxWorkerCount
+  name: MaxWorkerCount
+  nameWithType: PostQuerySystem.MaxWorkerCount
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.MaxWorkerCount
+- uid: Ceres.Gameplay.AI.EQS.PostQuerySystem.FramePerTick*
+  commentId: Overload:Ceres.Gameplay.AI.EQS.PostQuerySystem.FramePerTick
+  isExternal: true
+  href: Ceres.Gameplay.AI.EQS.PostQuerySystem.html#Ceres_Gameplay_AI_EQS_PostQuerySystem_FramePerTick
+  name: FramePerTick
+  nameWithType: PostQuerySystem.FramePerTick
+  fullName: Ceres.Gameplay.AI.EQS.PostQuerySystem.FramePerTick

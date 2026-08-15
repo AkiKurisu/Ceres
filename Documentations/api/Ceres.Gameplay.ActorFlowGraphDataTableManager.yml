@@ -1,0 +1,916 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager
+  commentId: T:Ceres.Gameplay.ActorFlowGraphDataTableManager
+  id: ActorFlowGraphDataTableManager
+  parent: Ceres.Gameplay
+  children:
+  - Ceres.Gameplay.ActorFlowGraphDataTableManager.#ctor(System.Object)
+  - Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize(System.Boolean)
+  - Ceres.Gameplay.ActorFlowGraphDataTableManager.TableKey
+  - Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset(System.String,Ceres.Flow.FlowGraphAsset@)
+  - Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath(System.String,System.String@)
+  langs:
+  - csharp
+  - vb
+  name: ActorFlowGraphDataTableManager
+  nameWithType: ActorFlowGraphDataTableManager
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: 'public sealed class ActorFlowGraphDataTableManager : DataTableManager<ActorFlowGraphDataTableManager>'
+    content.vb: Public NotInheritable Class ActorFlowGraphDataTableManager Inherits DataTableManager(Of ActorFlowGraphDataTableManager)
+  inheritance:
+  - System.Object
+  - Ceres.DataDriven.DataTableManager
+  - Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}
+  inheritedMembers:
+  - Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}.Get
+  - Ceres.DataDriven.DataTableManager.Initialize
+  - Ceres.DataDriven.DataTableManager.InitializeAsync
+  - Ceres.DataDriven.DataTableManager.GetDataTable(System.String)
+  - Ceres.DataDriven.DataTableManager.ReleaseAll
+  - Ceres.DataDriven.DataTableManager.GetOrCreateDataTableManager(System.Type)
+  - Ceres.DataDriven.DataTableManager.TryGetDataTableManager(System.Type,Ceres.DataDriven.DataTableManager@)
+  - Ceres.DataDriven.DataTableManager.GetDataTableManager(System.Type)
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.TableKey
+  commentId: F:Ceres.Gameplay.ActorFlowGraphDataTableManager.TableKey
+  id: TableKey
+  parent: Ceres.Gameplay.ActorFlowGraphDataTableManager
+  langs:
+  - csharp
+  - vb
+  name: TableKey
+  nameWithType: ActorFlowGraphDataTableManager.TableKey
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.TableKey
+  type: Field
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public const string TableKey = "ActorFlowGraphDataTable"
+    return:
+      type: System.String
+    content.vb: Public Const TableKey As String = "ActorFlowGraphDataTable"
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.#ctor(System.Object)
+  commentId: M:Ceres.Gameplay.ActorFlowGraphDataTableManager.#ctor(System.Object)
+  id: '#ctor(System.Object)'
+  parent: Ceres.Gameplay.ActorFlowGraphDataTableManager
+  langs:
+  - csharp
+  - vb
+  name: ActorFlowGraphDataTableManager(object)
+  nameWithType: ActorFlowGraphDataTableManager.ActorFlowGraphDataTableManager(object)
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.ActorFlowGraphDataTableManager(object)
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public ActorFlowGraphDataTableManager(object _)
+    parameters:
+    - id: _
+      type: System.Object
+    content.vb: Public Sub New(_ As Object)
+  overload: Ceres.Gameplay.ActorFlowGraphDataTableManager.#ctor*
+  nameWithType.vb: ActorFlowGraphDataTableManager.New(Object)
+  fullName.vb: Ceres.Gameplay.ActorFlowGraphDataTableManager.New(Object)
+  name.vb: New(Object)
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize(System.Boolean)
+  commentId: M:Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize(System.Boolean)
+  id: Initialize(System.Boolean)
+  parent: Ceres.Gameplay.ActorFlowGraphDataTableManager
+  langs:
+  - csharp
+  - vb
+  name: Initialize(bool)
+  nameWithType: ActorFlowGraphDataTableManager.Initialize(bool)
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize(bool)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Async initialize manager at start of game, loading your dataTables in this stage
+  example: []
+  syntax:
+    content: protected override UniTask Initialize(bool sync)
+    parameters:
+    - id: sync
+      type: System.Boolean
+      description: Whether initialize in sync, useful when need blocking loading
+    return:
+      type: Cysharp.Threading.Tasks.UniTask
+      description: ''
+    content.vb: Protected Overrides Function Initialize(sync As Boolean) As UniTask
+  overridden: Ceres.DataDriven.DataTableManager.Initialize(System.Boolean)
+  overload: Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize*
+  nameWithType.vb: ActorFlowGraphDataTableManager.Initialize(Boolean)
+  fullName.vb: Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize(Boolean)
+  name.vb: Initialize(Boolean)
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset(System.String,Ceres.Flow.FlowGraphAsset@)
+  commentId: M:Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset(System.String,Ceres.Flow.FlowGraphAsset@)
+  id: TryGetFlowGraphAsset(System.String,Ceres.Flow.FlowGraphAsset@)
+  parent: Ceres.Gameplay.ActorFlowGraphDataTableManager
+  langs:
+  - csharp
+  - vb
+  name: TryGetFlowGraphAsset(string, out FlowGraphAsset)
+  nameWithType: ActorFlowGraphDataTableManager.TryGetFlowGraphAsset(string, out FlowGraphAsset)
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset(string, out Ceres.Flow.FlowGraphAsset)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public bool TryGetFlowGraphAsset(string address, out FlowGraphAsset asset)
+    parameters:
+    - id: address
+      type: System.String
+    - id: asset
+      type: Ceres.Flow.FlowGraphAsset
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryGetFlowGraphAsset(address As String, asset As FlowGraphAsset) As Boolean
+  overload: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset*
+  nameWithType.vb: ActorFlowGraphDataTableManager.TryGetFlowGraphAsset(String, FlowGraphAsset)
+  fullName.vb: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset(String, Ceres.Flow.FlowGraphAsset)
+  name.vb: TryGetFlowGraphAsset(String, FlowGraphAsset)
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath(System.String,System.String@)
+  commentId: M:Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath(System.String,System.String@)
+  id: TryGetRemoteUpdatePath(System.String,System.String@)
+  parent: Ceres.Gameplay.ActorFlowGraphDataTableManager
+  langs:
+  - csharp
+  - vb
+  name: TryGetRemoteUpdatePath(string, out string)
+  nameWithType: ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath(string, out string)
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath(string, out string)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public bool TryGetRemoteUpdatePath(string address, out string path)
+    parameters:
+    - id: address
+      type: System.String
+    - id: path
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryGetRemoteUpdatePath(address As String, path As String) As Boolean
+  overload: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath*
+  nameWithType.vb: ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath(String, String)
+  fullName.vb: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath(String, String)
+  name.vb: TryGetRemoteUpdatePath(String, String)
+references:
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.DataDriven.DataTableManager
+  commentId: T:Ceres.DataDriven.DataTableManager
+  parent: Ceres.DataDriven
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html
+  name: DataTableManager
+  nameWithType: DataTableManager
+  fullName: Ceres.DataDriven.DataTableManager
+- uid: Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}
+  commentId: T:Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}
+  parent: Ceres.DataDriven
+  definition: Ceres.DataDriven.DataTableManager`1
+  href: Ceres.Gameplay.ActorFlowGraphDataTableManager.html
+  name: DataTableManager<ActorFlowGraphDataTableManager>
+  nameWithType: DataTableManager<ActorFlowGraphDataTableManager>
+  fullName: Ceres.DataDriven.DataTableManager<Ceres.Gameplay.ActorFlowGraphDataTableManager>
+  nameWithType.vb: DataTableManager(Of ActorFlowGraphDataTableManager)
+  fullName.vb: Ceres.DataDriven.DataTableManager(Of Ceres.Gameplay.ActorFlowGraphDataTableManager)
+  name.vb: DataTableManager(Of ActorFlowGraphDataTableManager)
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager`1
+    name: DataTableManager
+    isExternal: true
+  - name: <
+  - uid: Ceres.Gameplay.ActorFlowGraphDataTableManager
+    name: ActorFlowGraphDataTableManager
+    isExternal: true
+    href: Ceres.Gameplay.ActorFlowGraphDataTableManager.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager`1
+    name: DataTableManager
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.ActorFlowGraphDataTableManager
+    name: ActorFlowGraphDataTableManager
+    isExternal: true
+    href: Ceres.Gameplay.ActorFlowGraphDataTableManager.html
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}.Get
+  commentId: M:Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}.Get
+  parent: Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}
+  definition: Ceres.DataDriven.DataTableManager`1.Get
+  name: Get()
+  nameWithType: DataTableManager<ActorFlowGraphDataTableManager>.Get()
+  fullName: Ceres.DataDriven.DataTableManager<Ceres.Gameplay.ActorFlowGraphDataTableManager>.Get()
+  nameWithType.vb: DataTableManager(Of ActorFlowGraphDataTableManager).Get()
+  fullName.vb: Ceres.DataDriven.DataTableManager(Of Ceres.Gameplay.ActorFlowGraphDataTableManager).Get()
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}.Get
+    name: Get
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager{Ceres.Gameplay.ActorFlowGraphDataTableManager}.Get
+    name: Get
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager.Initialize
+  commentId: M:Ceres.DataDriven.DataTableManager.Initialize
+  parent: Ceres.DataDriven.DataTableManager
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_Initialize
+  name: Initialize()
+  nameWithType: DataTableManager.Initialize()
+  fullName: Ceres.DataDriven.DataTableManager.Initialize()
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager.Initialize
+    name: Initialize
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_Initialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager.Initialize
+    name: Initialize
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_Initialize
+  - name: (
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager.InitializeAsync
+  commentId: M:Ceres.DataDriven.DataTableManager.InitializeAsync
+  parent: Ceres.DataDriven.DataTableManager
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_InitializeAsync
+  name: InitializeAsync()
+  nameWithType: DataTableManager.InitializeAsync()
+  fullName: Ceres.DataDriven.DataTableManager.InitializeAsync()
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager.InitializeAsync
+    name: InitializeAsync
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_InitializeAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager.InitializeAsync
+    name: InitializeAsync
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_InitializeAsync
+  - name: (
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager.GetDataTable(System.String)
+  commentId: M:Ceres.DataDriven.DataTableManager.GetDataTable(System.String)
+  parent: Ceres.DataDriven.DataTableManager
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetDataTable_System_String_
+  name: GetDataTable(string)
+  nameWithType: DataTableManager.GetDataTable(string)
+  fullName: Ceres.DataDriven.DataTableManager.GetDataTable(string)
+  nameWithType.vb: DataTableManager.GetDataTable(String)
+  fullName.vb: Ceres.DataDriven.DataTableManager.GetDataTable(String)
+  name.vb: GetDataTable(String)
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager.GetDataTable(System.String)
+    name: GetDataTable
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetDataTable_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager.GetDataTable(System.String)
+    name: GetDataTable
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetDataTable_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager.ReleaseAll
+  commentId: M:Ceres.DataDriven.DataTableManager.ReleaseAll
+  parent: Ceres.DataDriven.DataTableManager
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_ReleaseAll
+  name: ReleaseAll()
+  nameWithType: DataTableManager.ReleaseAll()
+  fullName: Ceres.DataDriven.DataTableManager.ReleaseAll()
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager.ReleaseAll
+    name: ReleaseAll
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_ReleaseAll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager.ReleaseAll
+    name: ReleaseAll
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_ReleaseAll
+  - name: (
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager.GetOrCreateDataTableManager(System.Type)
+  commentId: M:Ceres.DataDriven.DataTableManager.GetOrCreateDataTableManager(System.Type)
+  parent: Ceres.DataDriven.DataTableManager
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetOrCreateDataTableManager_System_Type_
+  name: GetOrCreateDataTableManager(Type)
+  nameWithType: DataTableManager.GetOrCreateDataTableManager(Type)
+  fullName: Ceres.DataDriven.DataTableManager.GetOrCreateDataTableManager(System.Type)
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager.GetOrCreateDataTableManager(System.Type)
+    name: GetOrCreateDataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetOrCreateDataTableManager_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager.GetOrCreateDataTableManager(System.Type)
+    name: GetOrCreateDataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetOrCreateDataTableManager_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager.TryGetDataTableManager(System.Type,Ceres.DataDriven.DataTableManager@)
+  commentId: M:Ceres.DataDriven.DataTableManager.TryGetDataTableManager(System.Type,Ceres.DataDriven.DataTableManager@)
+  parent: Ceres.DataDriven.DataTableManager
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_TryGetDataTableManager_System_Type_Ceres_DataDriven_DataTableManager__
+  name: TryGetDataTableManager(Type, out DataTableManager)
+  nameWithType: DataTableManager.TryGetDataTableManager(Type, out DataTableManager)
+  fullName: Ceres.DataDriven.DataTableManager.TryGetDataTableManager(System.Type, out Ceres.DataDriven.DataTableManager)
+  nameWithType.vb: DataTableManager.TryGetDataTableManager(Type, DataTableManager)
+  fullName.vb: Ceres.DataDriven.DataTableManager.TryGetDataTableManager(System.Type, Ceres.DataDriven.DataTableManager)
+  name.vb: TryGetDataTableManager(Type, DataTableManager)
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager.TryGetDataTableManager(System.Type,Ceres.DataDriven.DataTableManager@)
+    name: TryGetDataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_TryGetDataTableManager_System_Type_Ceres_DataDriven_DataTableManager__
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.DataDriven.DataTableManager
+    name: DataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager.TryGetDataTableManager(System.Type,Ceres.DataDriven.DataTableManager@)
+    name: TryGetDataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_TryGetDataTableManager_System_Type_Ceres_DataDriven_DataTableManager__
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Ceres.DataDriven.DataTableManager
+    name: DataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager.GetDataTableManager(System.Type)
+  commentId: M:Ceres.DataDriven.DataTableManager.GetDataTableManager(System.Type)
+  parent: Ceres.DataDriven.DataTableManager
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetDataTableManager_System_Type_
+  name: GetDataTableManager(Type)
+  nameWithType: DataTableManager.GetDataTableManager(Type)
+  fullName: Ceres.DataDriven.DataTableManager.GetDataTableManager(System.Type)
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager.GetDataTableManager(System.Type)
+    name: GetDataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetDataTableManager_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager.GetDataTableManager(System.Type)
+    name: GetDataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_GetDataTableManager_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.DataDriven
+  commentId: N:Ceres.DataDriven
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven
+  nameWithType: Ceres.DataDriven
+  fullName: Ceres.DataDriven
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+- uid: Ceres.DataDriven.DataTableManager`1
+  commentId: T:Ceres.DataDriven.DataTableManager`1
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager-1.html
+  name: DataTableManager<TManager>
+  nameWithType: DataTableManager<TManager>
+  fullName: Ceres.DataDriven.DataTableManager<TManager>
+  nameWithType.vb: DataTableManager(Of TManager)
+  fullName.vb: Ceres.DataDriven.DataTableManager(Of TManager)
+  name.vb: DataTableManager(Of TManager)
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager`1
+    name: DataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager-1.html
+  - name: <
+  - name: TManager
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager`1
+    name: DataTableManager
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TManager
+  - name: )
+- uid: Ceres.DataDriven.DataTableManager`1.Get
+  commentId: M:Ceres.DataDriven.DataTableManager`1.Get
+  isExternal: true
+  name: Get()
+  nameWithType: DataTableManager<TManager>.Get()
+  fullName: Ceres.DataDriven.DataTableManager<TManager>.Get()
+  nameWithType.vb: DataTableManager(Of TManager).Get()
+  fullName.vb: Ceres.DataDriven.DataTableManager(Of TManager).Get()
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager`1.Get
+    name: Get
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager`1.Get
+    name: Get
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.#ctor*
+  commentId: Overload:Ceres.Gameplay.ActorFlowGraphDataTableManager.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.ActorFlowGraphDataTableManager.html#Ceres_Gameplay_ActorFlowGraphDataTableManager__ctor_System_Object_
+  name: ActorFlowGraphDataTableManager
+  nameWithType: ActorFlowGraphDataTableManager.ActorFlowGraphDataTableManager
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.ActorFlowGraphDataTableManager
+  nameWithType.vb: ActorFlowGraphDataTableManager.New
+  fullName.vb: Ceres.Gameplay.ActorFlowGraphDataTableManager.New
+  name.vb: New
+- uid: Ceres.DataDriven.DataTableManager.Initialize(System.Boolean)
+  commentId: M:Ceres.DataDriven.DataTableManager.Initialize(System.Boolean)
+  parent: Ceres.DataDriven.DataTableManager
+  isExternal: true
+  href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_Initialize_System_Boolean_
+  name: Initialize(bool)
+  nameWithType: DataTableManager.Initialize(bool)
+  fullName: Ceres.DataDriven.DataTableManager.Initialize(bool)
+  nameWithType.vb: DataTableManager.Initialize(Boolean)
+  fullName.vb: Ceres.DataDriven.DataTableManager.Initialize(Boolean)
+  name.vb: Initialize(Boolean)
+  spec.csharp:
+  - uid: Ceres.DataDriven.DataTableManager.Initialize(System.Boolean)
+    name: Initialize
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_Initialize_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.DataTableManager.Initialize(System.Boolean)
+    name: Initialize
+    isExternal: true
+    href: Ceres.DataDriven.DataTableManager.html#Ceres_DataDriven_DataTableManager_Initialize_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize*
+  commentId: Overload:Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize
+  isExternal: true
+  href: Ceres.Gameplay.ActorFlowGraphDataTableManager.html#Ceres_Gameplay_ActorFlowGraphDataTableManager_Initialize_System_Boolean_
+  name: Initialize
+  nameWithType: ActorFlowGraphDataTableManager.Initialize
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.Initialize
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Cysharp.Threading.Tasks.UniTask
+  commentId: T:Cysharp.Threading.Tasks.UniTask
+  parent: Cysharp.Threading.Tasks
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: Cysharp.Threading.Tasks.UniTask
+- uid: Cysharp.Threading.Tasks
+  commentId: N:Cysharp.Threading.Tasks
+  isExternal: true
+  name: Cysharp.Threading.Tasks
+  nameWithType: Cysharp.Threading.Tasks
+  fullName: Cysharp.Threading.Tasks
+  spec.csharp:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset*
+  commentId: Overload:Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset
+  isExternal: true
+  href: Ceres.Gameplay.ActorFlowGraphDataTableManager.html#Ceres_Gameplay_ActorFlowGraphDataTableManager_TryGetFlowGraphAsset_System_String_Ceres_Flow_FlowGraphAsset__
+  name: TryGetFlowGraphAsset
+  nameWithType: ActorFlowGraphDataTableManager.TryGetFlowGraphAsset
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetFlowGraphAsset
+- uid: Ceres.Flow.FlowGraphAsset
+  commentId: T:Ceres.Flow.FlowGraphAsset
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphAsset.html
+  name: FlowGraphAsset
+  nameWithType: FlowGraphAsset
+  fullName: Ceres.Flow.FlowGraphAsset
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath*
+  commentId: Overload:Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath
+  isExternal: true
+  href: Ceres.Gameplay.ActorFlowGraphDataTableManager.html#Ceres_Gameplay_ActorFlowGraphDataTableManager_TryGetRemoteUpdatePath_System_String_System_String__
+  name: TryGetRemoteUpdatePath
+  nameWithType: ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath
+  fullName: Ceres.Gameplay.ActorFlowGraphDataTableManager.TryGetRemoteUpdatePath

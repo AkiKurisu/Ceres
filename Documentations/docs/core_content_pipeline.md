@@ -1,0 +1,784 @@
+# Content Pipeline
+
+Content Pipeline is an Editor-only, graph-driven build layer on top of Unity
+Addressables and Scriptable Build Pipeline (SBP). It lets a project describe
+content from its own source model, resolve transitive Unity dependencies, build
+without persistent Addressable groups, validate scoped updates, and materialize
+the result as a relocatable runtime package.
+
+The pipeline does not replace Addressables. It creates a transient
+`AddressableAssetSettings` model for each build and delegates bundle and catalog
+generation to Addressables/SBP.
+
+## When to Use It
+
+Use Content Pipeline when:
+
+- a project owns a higher-level content model such as DLC definitions,
+  collections, packs, or generated metadata;
+- persistent Addressable groups would only be intermediate build data;
+- dependencies shared by several content scopes must have one deterministic
+  owner and bundle;
+- an update must be restricted to explicitly selected scopes;
+- the runtime loads a second Addressables catalog from a local or downloaded
+  content directory;
+- Editor Play Mode needs to resolve the same graph directly through
+  `AssetDatabase`.
+
+Use the Resource module's `ResourceExporter` instead when existing persistent
+Addressable groups are the authoritative source and a group-filtered export is
+sufficient. Content Pipeline is the graph-driven path; `ResourceExporter` is the
+group-driven path.
+
+## Assembly and Compatibility
+
+The public APIs are in:
+
+```text
+Assembly:  Ceres.ContentPipeline.Editor
+Namespace: Ceres.ContentPipeline
+Platform:  Editor only
+```
+
+The current transient backend explicitly supports Addressables `2.9.x`.
+It rejects other Addressables versions before building because the backend
+depends on internal group identity and transient settings behavior that must be
+validated for each Addressables release.
+
+The Addressables version declared by the Ceres package is the dependency floor
+for the runtime Resource APIs, not a compatibility promise for this Editor
+backend. A project using Content Pipeline must resolve Addressables `2.9.x`
+explicitly.
+
+The project's installed SBP version is recorded in every artifact manifest and
+must match when producing an update.
+
+## Pipeline Overview
+
+```text
+Project source model
+        |
+        v
+IContentBuildGraphContributor
+        |
+        v
+ContentBuildGraphBuilder
+        |  resolves direct Unity dependencies recursively
+        v
+ContentBuildGraph
+        |  scopes, assets, ownership, partitions, diagnostics
+        |
+        +------------------------------+
+        |                              |
+        v                              v
+AddressablesContentBuildBackend        ContentBuildGraphAssetDatabaseMount
+        |                              |
+        v                              v
+immutable build artifacts              Editor AssetDatabase locations
+        |
+        v
+DynamicContentPackageBuilder
+        |
+        v
+flat catalog + bundles runtime package
+```
+
+Projects are expected to provide the source-model adapter and workflow UI or
+command-line entry point. Ceres provides the graph, build backend, manifests,
+package materialization, diagnostics, and Editor mounting primitives.
+
+![Content Pipeline architecture](../resources/images/content-pipeline-architecture.svg)
+
+The graph is the stable boundary between project policy and Ceres. Both the
+build path and the Editor AssetDatabase path consume the same addresses and
+explicit asset set.
+
+## Core Concepts
+
+### Scope
+
+A `ContentScopeDefinition` is the unit a producer can independently identify,
+version, select, and update. A scope should use a stable, project-independent ID
+such as a source asset GUID, package ID, or persisted collection ID.
+
+```csharp
+context.AddScope(new ContentScopeDefinition(
+    id: "characters.base",
+    displayName: "Base Characters",
+    version: "3",
+    enabled: true,
+    defaultLocation: ContentLocation.Remote));
+```
+
+`Properties` can carry deterministic project metadata. Changing scope metadata
+changes the scope fingerprint and is considered during update validation.
+`Enabled` is also fingerprinted, but the generic backend does not use it as an
+automatic build filter. A project adapter must omit disabled source content or
+otherwise define its own inclusion policy before building the graph.
+
+### Explicit Asset and Dependency Asset
+
+A contributor adds explicit assets through `ContentAssetContribution`.
+The graph builder then discovers their direct dependencies recursively.
+
+An explicit asset can have:
+
+- a stable asset ID;
+- an `AssetDatabase` path;
+- a runtime Addressables address;
+- labels;
+- a runtime type name;
+- location and ownership hints;
+- a packing hint.
+
+Dependency assets do not need to be contributed manually. The
+`IContentAssetDependencyResolver` discovers them and records every scope that
+uses them.
+
+For Unity assets, use the exact main-asset GUID as `assetId`:
+
+```text
+<asset-guid>
+```
+
+Explicit sub-assets are not currently supported end to end. Contributors must
+promote them to standalone Unity assets instead of appending a suffix to the
+main asset GUID. The graph rejects duplicate explicit paths before the
+Addressables backend can collapse them onto one GUID entry.
+
+### Location
+
+`ContentLocation` describes delivery intent:
+
+| Value | Meaning |
+|---|---|
+| `Local` | Part of an immutable local or Player baseline. |
+| `Remote` | Eligible for external delivery and content updates. |
+| `Unspecified` | No explicit decision; projects should normally avoid this for production scopes. |
+
+When one dependency is used by both Local and Remote partitions, the backend
+places it in Local content. Remote bundles can then depend on the immutable
+Player baseline instead of duplicating the asset.
+
+### Ownership
+
+`ContentOwnership` determines which logical partition owns an asset:
+
+| Value | Meaning |
+|---|---|
+| `Scope` | Owned by one scope. |
+| `Shared` | Shared by several scopes and emitted once. |
+| `BuiltIn` | Supplied by Unity or the Player; no explicit content entry is created. |
+| `Metadata` | Generated or descriptive content managed by the pipeline. |
+| `Excluded` | Tracked for analysis but excluded from explicit build entries. |
+| `Unspecified` | Let the graph planner infer ownership. |
+
+The planner promotes an asset to `Shared` when it is explicit in multiple scopes
+or used by multiple scopes. A dependency shared by several collections is
+therefore bundled once instead of being copied into every scope bundle.
+
+### Packing Hint
+
+`packingHint` is a stable sub-partition key. Scope-owned assets are grouped by
+scope and packing hint. Shared assets are grouped by type family, such as
+textures, materials, shaders, animations, or prefabs.
+
+Packing hints affect bundle layout and should be treated as part of the build
+contract. Changing them can produce new bundles and invalidate update
+assumptions.
+
+The build request selects one of two backend packing policies:
+
+- `LogicalPartitions` preserves the scope plus packing-hint layout.
+- `SizeOptimized` keeps location, scene, and semantic families separate, then
+  groups explicit entries toward a configurable soft target size.
+
+Both policies keep Local and Remote entries in separate partitions. A logical
+scope or packing key is never allowed to make a Remote entry inherit Local
+delivery accidentally.
+
+Size optimization does not split one explicit asset or its indivisible
+dependency closure. A single entry can therefore exceed the target. Baseline
+builds freeze the generated partition plan; updates reuse the last successful
+plan so a small change cannot rebalance unrelated bundles.
+
+![Shared dependency ownership and location planning](../resources/images/content-pipeline-shared-dependencies.svg)
+
+Shared ownership removes duplicate payloads. Location planning additionally
+ensures that a dependency used by Local and Remote content remains in the Local
+baseline instead of being emitted again for Remote delivery.
+
+## Contributing a Build Graph
+
+Implement `IContentBuildGraphContributor` to translate a project source model
+into scopes and explicit assets.
+
+```csharp
+#if UNITY_EDITOR
+using Ceres.ContentPipeline;
+using UnityEditor;
+using UnityEngine;
+
+public sealed class CharacterContentContributor : IContentBuildGraphContributor
+{
+    private const string ScopeId = "characters.base";
+
+    public string Id => "my-game.characters";
+
+    public void Contribute(ContentBuildGraphContributionContext context)
+    {
+        context.AddScope(new ContentScopeDefinition(
+            ScopeId,
+            "Base Characters",
+            version: "3",
+            defaultLocation: ContentLocation.Remote));
+
+        const string prefabPath = "Assets/Content/Characters/Hero.prefab";
+        string guid = AssetDatabase.AssetPathToGUID(prefabPath);
+
+        context.AddAsset(new ContentAssetContribution(
+            scopeId: ScopeId,
+            assetId: guid,
+            assetPath: prefabPath,
+            address: "Characters/Hero",
+            labels: new[] { "Character", "Playable" },
+            typeName: typeof(GameObject).AssemblyQualifiedName,
+            locationHint: ContentLocation.Remote,
+            ownershipHint: ContentOwnership.Scope,
+            packingHint: "character-prefabs"));
+    }
+}
+#endif
+```
+
+Contributor IDs, scope IDs, asset IDs, addresses, labels, and packing hints must
+be deterministic. Do not derive them from enumeration order or transient object
+instance IDs.
+
+Build the graph with the Unity dependency resolver:
+
+```csharp
+var graph = new ContentBuildGraphBuilder().Build(
+    new IContentBuildGraphContributor[]
+    {
+        new CharacterContentContributor()
+    },
+    new UnityContentAssetDependencyResolver());
+```
+
+Contributors are evaluated in stable ID order. If a contributor throws, the
+builder throws `ContentBuildGraphContributorException` and preserves the
+contributor ID and original exception.
+
+## Inspecting and Validating the Graph
+
+`ContentBuildGraph` exposes:
+
+- `Scopes`: stable content units;
+- `Assets`: explicit and discovered dependency nodes;
+- `Edges`: direct dependency edges;
+- `Diagnostics`: deterministic validation messages;
+- `Fingerprint`: a deterministic fingerprint of the complete graph;
+- `IsBuildable`: `false` when any Error diagnostic exists.
+
+Always stop before invoking a backend when the graph is not buildable.
+
+```csharp
+if (!graph.IsBuildable)
+{
+    foreach (ContentBuildDiagnostic diagnostic in graph.Diagnostics)
+    {
+        Debug.LogError(
+            $"{diagnostic.Code}: {diagnostic.Message} " +
+            $"(scope: {diagnostic.ScopeId}, asset: {diagnostic.AssetId})");
+    }
+
+    return;
+}
+```
+
+Typical errors include duplicate contributor or scope IDs, one asset ID mapping
+to several paths, duplicate addresses, missing assets, conflicting type or
+ownership hints, and dependency resolver failures.
+
+The graph also provides query helpers:
+
+```csharp
+IReadOnlyList<ContentAssetNode> usedByScope =
+    graph.GetForwardDependencyClosure("characters.base");
+
+IReadOnlyList<ContentAssetNode> affectedAssets =
+    graph.GetReverseImpactClosure("characters.base");
+
+IReadOnlyList<string> affectedScopes =
+    graph.GetImpactedScopes("characters.base");
+
+IReadOnlyList<ContentAssetNode> directDependencies =
+    graph.GetDirectDependencies(assetGuid);
+```
+
+`ContentBuildGraphReport.ToJson` produces a deterministic JSON report suitable
+for build logs, code review, and comparing graph changes:
+
+```csharp
+string json = ContentBuildGraphReport.ToJson(graph, prettyPrint: true);
+File.WriteAllText("Library/ContentGraph.json", json);
+```
+
+The JSON report is diagnostic output, not a runtime catalog or a persisted
+source model.
+
+## Building a Baseline
+
+`AddressablesContentBuildBackend` creates transient Addressables settings and
+groups in memory. It does not add groups to the project's real
+`AddressableAssetSettings`.
+
+```csharp
+using Ceres.ContentPipeline;
+using Ceres.Resource;
+using UnityEditor;
+
+var request = new ContentPipelineBuildRequest
+{
+    Graph = graph,
+    OutputRoot = "Export/Content",
+    Channel = "development",
+    PlayerVersion = "1.0.0",
+    RemoteLoadPath = ResourceSystem.DynamicLoadPath,
+    Target = EditorUserBuildSettings.activeBuildTarget,
+    DevelopmentBuild = false,
+    BuildKind = ContentPipelineBuildKind.Baseline,
+    Packing = new ContentBundlePackingOptions
+    {
+        Mode = ContentBundlePackingMode.SizeOptimized,
+        TargetBundleSizeBytes = 128L * 1024L * 1024L
+    }
+};
+
+ContentPipelineBuildResult result =
+    new AddressablesContentBuildBackend().Build(request);
+
+if (!result.Succeeded)
+{
+    throw result.Exception;
+}
+
+Debug.Log($"Manifest: {result.ManifestPath}");
+```
+
+The backend catches build exceptions and stores them in
+`ContentPipelineBuildResult.Exception`; `Build` does not rethrow them. Callers
+must check `Succeeded`.
+
+The baseline records:
+
+- the complete graph and configuration fingerprints;
+- scope and asset snapshots;
+- Unity, Addressables, and SBP versions;
+- the remote load path;
+- the Addressables Content State;
+- every collected catalog, bundle, settings, and metadata artifact;
+- SHA-256 and size for every artifact.
+- the packing policy, partition membership, estimated/actual partition sizes,
+  and bundle-size statistics.
+
+Artifacts are committed only after a successful build. Staging output is
+discarded on failure, and transient Addressables settings are destroyed in
+cleanup.
+
+### Baseline Output Layout
+
+The backend writes under a channel and platform boundary:
+
+```text
+<OutputRoot>/
+  <channel>/
+    <BuildTarget>/
+      current-baseline.json
+      baselines/
+        <build-id>/
+          artifact-manifest.json
+          remote/
+          local/
+          metadata/
+```
+
+`current-baseline.json` is updated atomically after commit. Retrieve its target
+with:
+
+```csharp
+string baselineManifest =
+    AddressablesContentBuildBackend.GetCurrentBaselineManifestPath(
+        "Export/Content",
+        "development",
+        EditorUserBuildSettings.activeBuildTarget);
+
+// Returns the latest successful Update plan compatible with the current
+// Baseline, or the Baseline plan when no compatible Update exists.
+string packingManifest =
+    AddressablesContentBuildBackend.GetCurrentPackingManifestPath(
+        "Export/Content",
+        "development",
+        EditorUserBuildSettings.activeBuildTarget);
+```
+
+Build IDs are content-derived. Repeating the same build can reuse an already
+committed directory after validating its manifest identity.
+
+### Maintaining Artifact History
+
+`baselines` and `updates` are immutable build records. Projects that do not
+need arbitrary local history can preview and prune records not referenced by
+the current Baseline or latest compatible Update:
+
+```csharp
+ContentBuildStorageCleanupPreview preview =
+    ContentBuildStorageMaintenance.Preview(
+        "Export/Content",
+        "development",
+        EditorUserBuildSettings.activeBuildTarget);
+
+ContentBuildStorageCleanupResult cleanup =
+    ContentBuildStorageMaintenance.Execute(
+        "Export/Content",
+        "development",
+        EditorUserBuildSettings.activeBuildTarget);
+```
+
+Channels are stable machine-readable identifiers and must match
+`[a-z0-9]+(?:-[a-z0-9]+)*`, for example `development` or `preview-android`.
+The build backend, pointer queries, and storage maintenance use the same
+validated channel-to-directory mapping; display names with spaces or uppercase
+letters are not accepted as aliases.
+
+Execution rebuilds the plan while holding the same platform build lock used by
+the Addressables backend. Invalid pointers, mismatched manifests, unknown
+artifact directories, or paths outside the expected containers stop pruning.
+Deletion failures are returned individually and do not invalidate a build that
+was already committed. Project adapters remain responsible for retaining their
+runtime packages, deployment manifests, or rollback releases before invoking
+artifact cleanup.
+
+## Building a Scoped Update
+
+An update requires:
+
+- a compatible baseline artifact manifest;
+- the complete current graph, not a graph filtered down to selected scopes;
+- at least one allowed changed scope ID.
+
+```csharp
+var updateRequest = new ContentPipelineBuildRequest
+{
+    Graph = currentGraph,
+    OutputRoot = "Export/Content",
+    Channel = "development",
+    PlayerVersion = "1.0.0",
+    RemoteLoadPath = ResourceSystem.DynamicLoadPath,
+    Target = EditorUserBuildSettings.activeBuildTarget,
+    BuildKind = ContentPipelineBuildKind.Update,
+    BaselineManifestPath = baselineManifest,
+    PreviousPackingManifestPath = packingManifest,
+    Packing = new ContentBundlePackingOptions
+    {
+        Mode = ContentBundlePackingMode.SizeOptimized,
+        TargetBundleSizeBytes = 128L * 1024L * 1024L
+    },
+    AllowedChangedScopeIds = new[]
+    {
+        "characters.base"
+    }
+};
+
+ContentPipelineBuildResult update =
+    new AddressablesContentBuildBackend().Build(updateRequest);
+
+if (!update.Succeeded)
+{
+    throw update.Exception;
+}
+```
+
+Before Addressables builds the update, Ceres compares the baseline snapshot with
+the current graph:
+
+- changes owned by an allowed scope are accepted;
+- shared changes expand the impacted scope set;
+- changes owned outside the allowed set fail the build;
+- Local content changes require a new baseline;
+- scope metadata changes outside the allowed or impacted set fail the build;
+- Unity, Addressables, SBP, platform, channel, and remote load path must remain
+  compatible with the baseline.
+- packing mode, target size, algorithm, classifier, and configuration
+  fingerprint must remain compatible with the baseline.
+
+For `SizeOptimized`, existing assets retain their recorded partition ID.
+Deleted assets leave capacity behind, while new assets fill compatible
+capacity or create deterministic overflow partitions. Only a new baseline
+globally rebalances the layout.
+
+The update artifact directory contains a new catalog and Content State plus
+changed bundles. Unchanged baseline bundles are omitted. A successful candidate
+updates `latest-update-candidate.json`; it does not replace the current baseline
+pointer.
+
+```text
+<OutputRoot>/<channel>/<BuildTarget>/
+  latest-update-candidate.json
+  updates/
+    <build-id>/
+      artifact-manifest.json
+      remote/
+      metadata/
+```
+
+## Creating a Runtime Package
+
+Backend artifact directories are build records, not necessarily the exact
+directory layout expected by a game. Use `DynamicContentPackageBuilder` to
+create a flat, relocatable package.
+
+```csharp
+DynamicContentPackageResult package =
+    new DynamicContentPackageBuilder().Build(
+        new DynamicContentPackageRequest
+        {
+            ArtifactManifestPath = result.ManifestPath,
+            OutputRoot = "Export/ContentOutput",
+            DynamicLoadPath = ResourceSystem.DynamicLoadPath
+        });
+
+Debug.Log($"Runtime content: {package.PackagePath}");
+```
+
+The builder:
+
+1. selects the one remote catalog recorded by the artifact manifest;
+2. verifies the source catalog and referenced bundles against the artifact
+   manifest before copying them;
+3. collects the exact bundles referenced by that catalog;
+4. rewrites bundle internal IDs to
+   `{DYNAMIC_LOCAL_PATH}/<bundle-name>`;
+5. copies the catalog and required bundles into a flat `abdata` directory;
+6. writes `catalog.hash` and `package-manifest.json`;
+7. validates file size, SHA-256, missing references, and duplicate bundle names;
+8. atomically commits the package.
+
+The normalized dynamic load path is part of the package manifest and package
+reuse contract. Reusing one artifact build with a different token or URL fails
+explicitly instead of returning a catalog rewritten for the previous path.
+
+The output is:
+
+```text
+<OutputRoot>/
+  baselines|updates/
+    <first-32-characters-of-build-id>/
+      package-manifest.json
+      abdata/
+        catalog.bin|catalog.json
+        catalog.hash
+        *.bundle
+```
+
+The physical directory uses the first 32 hexadecimal characters, matching
+Unity's `Hash128` convention, while the package manifest retains the complete
+SHA-256 build ID. Reusing an existing directory always compares the complete
+ID and rejects a prefix collision.
+
+`DynamicContentPackageResult.PackagePath` points to the `abdata` directory.
+Pass this directory to `ResourceSystem.LoadCatalogAsync` at runtime.
+
+```csharp
+bool loaded = await ResourceSystem.LoadCatalogAsync(packageDirectory);
+if (!loaded)
+{
+    Debug.LogError($"Failed to load content package: {packageDirectory}");
+}
+```
+
+The runtime replaces `{DYNAMIC_LOCAL_PATH}` with the directory containing the
+catalog.
+
+### Packaging an Update
+
+An update package also needs the package manifest of the baseline runtime
+package:
+
+```csharp
+DynamicContentPackageResult updatePackage =
+    new DynamicContentPackageBuilder().Build(
+        new DynamicContentPackageRequest
+        {
+            ArtifactManifestPath = update.ManifestPath,
+            OutputRoot = "Export/ContentOutput",
+            DynamicLoadPath = ResourceSystem.DynamicLoadPath,
+            BaselinePackageManifestPath = baselinePackage.ManifestPath
+        });
+```
+
+The new catalog can reference unchanged baseline bundles. The builder validates
+those references against the baseline package but copies only bundles present in
+the update artifacts. Deployment must therefore overlay the update's `abdata`
+files onto an installed baseline package instead of replacing the whole
+directory with only the update payload.
+
+![Baseline and scoped Update lifecycle](../resources/images/content-pipeline-update-lifecycle.svg)
+
+The package builder throws on failure. It never commits a partial runtime
+package.
+
+### Windows Long Paths
+
+Content Pipeline keeps ordinary absolute paths in manifests, diagnostics, and
+public results. At the direct `System.IO` boundary, Windows paths at or beyond
+the legacy `MAX_PATH` limit are adapted to the `\\?\` form (or `\\?\UNC\` for
+network shares). Artifact hashing, package copying, atomic commits, pointer
+I/O, and storage maintenance all use this boundary.
+
+Addressables, SBP, AssetDatabase, and other Unity APIs continue to receive
+ordinary paths. Long-path handling does not weaken source artifact size or
+SHA-256 validation.
+
+## Editor AssetDatabase Mount
+
+`ContentBuildGraphAssetDatabaseMount` makes explicit graph assets resolvable by
+Addressables in Editor Play Mode without creating persistent Addressable groups
+or building bundles.
+
+The mount omits explicit assets owned as `BuiltIn` or `Excluded`, matching the
+build contract: built-in content must come from Unity, the Player, or the main
+Addressables catalog, while excluded content remains available only for graph
+analysis. This prevents Editor Play Mode from exposing content that the dynamic
+package will not contain.
+
+Addressables must already be initialized:
+
+```csharp
+using Ceres.ContentPipeline;
+using UnityEngine.AddressableAssets;
+
+Addressables.InitializeAsync().WaitForCompletion();
+
+ContentBuildGraphAssetDatabaseMount mount =
+    ContentBuildGraphAssetDatabaseMount.Create(
+        graph,
+        "MyGame.Content.EditorAssetDatabase");
+
+Debug.Log($"Mounted {mount.LocationCount} explicit assets.");
+```
+
+Each explicit asset location uses:
+
+- address, asset ID, and labels as lookup keys;
+- the Unity asset path as the internal ID;
+- `AssetDatabaseProvider` for normal assets;
+- `SceneProvider` for scenes;
+- the graph type name, with `AssetDatabase` type resolution as fallback.
+
+Labels may overlap with another catalog, allowing
+`Addressables.LoadAssetsAsync` to merge built-in and graph content. An address
+or asset ID that already resolves to a different internal path is rejected.
+
+The mount removes stale locators with the same locator ID before installation.
+It reuses an existing `AssetDatabaseProvider` when possible and only removes a
+provider it created itself.
+
+Keep the mount alive for the complete Editor content-source lifetime and dispose
+it on Play Mode exit, assembly reload, or Editor shutdown:
+
+```csharp
+mount.Dispose();
+```
+
+`Dispose` is idempotent. Only explicit assets are mounted; Unity loads their
+dependencies naturally through `AssetDatabase`.
+
+Do not mount an AssetDatabase graph locator at the same time as the runtime
+catalog for the same content source. The project-level integration should choose
+one source for a Play Mode session.
+
+## Determinism and Build Safety
+
+The pipeline enforces the following behavior:
+
+- contributors, scopes, nodes, edges, diagnostics, and reports have stable
+  ordering;
+- graph and configuration fingerprints participate in build identity;
+- group identity and bundle names are deterministic for channel, platform, and
+  partition;
+- only one content build may own one platform output root at a time;
+- build output is created in staging and moved into place only after validation;
+- pointer files are written atomically;
+- a failed update cannot advance the baseline pointer;
+- persistent project Addressables settings are not the pipeline's source of
+  truth and are not populated by the transient backend.
+
+The backend may temporarily override Addressables global editor state while SBP
+is running. Content builds should therefore be treated as exclusive Editor
+operations and should not overlap Player or Addressables builds in the same
+Unity process.
+
+## Project Integration Responsibilities
+
+Ceres intentionally does not define:
+
+- the project's content source model;
+- generated metadata or ListInfo formats;
+- menu items, build windows, or collection selection UI;
+- Player build integration;
+- CDN upload and release channels;
+- client update checks, download, installation, rollback, or retention;
+- Mod package formats;
+- how Local content is copied into a Player.
+
+A project adapter should own those policies and call the Ceres APIs in this
+order:
+
+```text
+discover source data
+    -> generate temporary metadata
+    -> build the complete graph
+    -> validate diagnostics
+    -> build baseline or scoped update
+    -> create runtime package
+    -> publish or install through project-specific code
+```
+
+Keep temporary generated assets alive until both graph construction and the
+Addressables build have completed. Delete or release them only after the build
+and package workflows no longer reference their AssetDatabase paths.
+
+## Failure Checklist
+
+When a graph is not buildable:
+
+1. inspect `ContentBuildGraph.Diagnostics`;
+2. verify stable contributor, scope, asset, and address identities;
+3. verify every explicit path maps to the expected Unity GUID;
+4. inspect missing or conflicting dependencies;
+5. export `ContentBuildGraphReport.ToJson` for comparison.
+
+When a baseline build fails:
+
+1. inspect `ContentPipelineBuildResult.Exception`;
+2. confirm Addressables is a supported `2.9.x` version;
+3. verify the output root is not owned by another build;
+4. verify the graph contains valid AssetDatabase paths;
+5. verify the target platform build support is installed.
+
+When an update fails:
+
+1. confirm the baseline manifest belongs to the same channel and platform;
+2. confirm Unity, Addressables, SBP, and remote load path are unchanged;
+3. inspect changes outside `AllowedChangedScopeIds`;
+4. build a new baseline when Local content changed.
+
+When runtime package materialization fails:
+
+1. verify the artifact manifest and every recorded file still exist;
+2. verify exactly one remote catalog exists;
+3. verify bundle file names do not collide;
+4. for updates, provide the matching baseline package manifest;
+5. do not publish any staging or partially copied directory.

@@ -1,0 +1,216 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.ICeresGraphContainer
+  commentId: T:Ceres.Graph.ICeresGraphContainer
+  id: ICeresGraphContainer
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.ICeresGraphContainer.Object
+  - Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  langs:
+  - csharp
+  - vb
+  name: ICeresGraphContainer
+  nameWithType: ICeresGraphContainer
+  fullName: Ceres.Graph.ICeresGraphContainer
+  type: Interface
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Interface for containing <xref href="Ceres.Graph.CeresGraph" data-throw-if-not-resolved="false"></xref> data
+  example: []
+  syntax:
+    content: public interface ICeresGraphContainer
+    content.vb: Public Interface ICeresGraphContainer
+  derivedClasses:
+  - Ceres.Flow.FlowGraphAsset
+  - Ceres.Flow.FlowGraphFunctionAsset
+  - Ceres.Flow.FlowGraphObject
+  - Ceres.Flow.FlowGraphScriptableObject
+  - Ceres.Flow.FlowGraphScriptableObjectBase
+  - Ceres.Gameplay.Actor
+  - Ceres.Gameplay.Capture.ScreenshotTool
+  - Ceres.Gameplay.Mod.Editor.ModExportConfig
+  - Ceres.Gameplay.PlayerController
+  extensionMethods:
+  - Ceres.Graph.ICeresGraphContainer.Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier
+- uid: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  commentId: M:Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  id: SetGraphData(Ceres.Graph.CeresGraphData)
+  parent: Ceres.Graph.ICeresGraphContainer
+  langs:
+  - csharp
+  - vb
+  name: SetGraphData(CeresGraphData)
+  nameWithType: ICeresGraphContainer.SetGraphData(CeresGraphData)
+  fullName: Ceres.Graph.ICeresGraphContainer.SetGraphData(Ceres.Graph.CeresGraphData)
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Set graph persistent data
+  example: []
+  syntax:
+    content: void SetGraphData(CeresGraphData graphData)
+    parameters:
+    - id: graphData
+      type: Ceres.Graph.CeresGraphData
+      description: ''
+    content.vb: Sub SetGraphData(graphData As CeresGraphData)
+  overload: Ceres.Graph.ICeresGraphContainer.SetGraphData*
+- uid: Ceres.Graph.ICeresGraphContainer.Object
+  commentId: P:Ceres.Graph.ICeresGraphContainer.Object
+  id: Object
+  parent: Ceres.Graph.ICeresGraphContainer
+  langs:
+  - csharp
+  - vb
+  name: Object
+  nameWithType: ICeresGraphContainer.Object
+  fullName: Ceres.Graph.ICeresGraphContainer.Object
+  type: Property
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Container bound <xref href="UnityEngine.Object" data-throw-if-not-resolved="false"></xref>
+  remarks: Prefer use GameObject as container key since component is not persistent
+  example: []
+  syntax:
+    content: Object Object { get; }
+    parameters: []
+    return:
+      type: UnityEngine.Object
+      description: ''
+    content.vb: ReadOnly Property [Object] As [Object]
+  overload: Ceres.Graph.ICeresGraphContainer.Object*
+references:
+- uid: Ceres.Graph.CeresGraph
+  commentId: T:Ceres.Graph.CeresGraph
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresGraph.html
+  name: CeresGraph
+  nameWithType: CeresGraph
+  fullName: Ceres.Graph.CeresGraph
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Graph.ICeresGraphContainer.Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier
+  commentId: M:Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+  parent: Ceres.Graph.CeresGraphContainerExtensions
+  definition: Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+  href: Ceres.Graph.CeresGraphContainerExtensions.html#Ceres_Graph_CeresGraphContainerExtensions_GetIdentifier_Ceres_Graph_ICeresGraphContainer_
+  name: GetIdentifier(ICeresGraphContainer)
+  nameWithType: CeresGraphContainerExtensions.GetIdentifier(ICeresGraphContainer)
+  fullName: Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+    name: GetIdentifier
+    isExternal: true
+    href: Ceres.Graph.CeresGraphContainerExtensions.html#Ceres_Graph_CeresGraphContainerExtensions_GetIdentifier_Ceres_Graph_ICeresGraphContainer_
+  - name: (
+  - uid: Ceres.Graph.ICeresGraphContainer
+    name: ICeresGraphContainer
+    isExternal: true
+    href: Ceres.Graph.ICeresGraphContainer.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+    name: GetIdentifier
+    isExternal: true
+    href: Ceres.Graph.CeresGraphContainerExtensions.html#Ceres_Graph_CeresGraphContainerExtensions_GetIdentifier_Ceres_Graph_ICeresGraphContainer_
+  - name: (
+  - uid: Ceres.Graph.ICeresGraphContainer
+    name: ICeresGraphContainer
+    isExternal: true
+    href: Ceres.Graph.ICeresGraphContainer.html
+  - name: )
+- uid: Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+  commentId: M:Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+  isExternal: true
+  href: Ceres.Graph.CeresGraphContainerExtensions.html#Ceres_Graph_CeresGraphContainerExtensions_GetIdentifier_Ceres_Graph_ICeresGraphContainer_
+  name: GetIdentifier(ICeresGraphContainer)
+  nameWithType: CeresGraphContainerExtensions.GetIdentifier(ICeresGraphContainer)
+  fullName: Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+  spec.csharp:
+  - uid: Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+    name: GetIdentifier
+    isExternal: true
+    href: Ceres.Graph.CeresGraphContainerExtensions.html#Ceres_Graph_CeresGraphContainerExtensions_GetIdentifier_Ceres_Graph_ICeresGraphContainer_
+  - name: (
+  - uid: Ceres.Graph.ICeresGraphContainer
+    name: ICeresGraphContainer
+    isExternal: true
+    href: Ceres.Graph.ICeresGraphContainer.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.CeresGraphContainerExtensions.GetIdentifier(Ceres.Graph.ICeresGraphContainer)
+    name: GetIdentifier
+    isExternal: true
+    href: Ceres.Graph.CeresGraphContainerExtensions.html#Ceres_Graph_CeresGraphContainerExtensions_GetIdentifier_Ceres_Graph_ICeresGraphContainer_
+  - name: (
+  - uid: Ceres.Graph.ICeresGraphContainer
+    name: ICeresGraphContainer
+    isExternal: true
+    href: Ceres.Graph.ICeresGraphContainer.html
+  - name: )
+- uid: Ceres.Graph.CeresGraphContainerExtensions
+  commentId: T:Ceres.Graph.CeresGraphContainerExtensions
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresGraphContainerExtensions.html
+  name: CeresGraphContainerExtensions
+  nameWithType: CeresGraphContainerExtensions
+  fullName: Ceres.Graph.CeresGraphContainerExtensions
+- uid: Ceres.Graph.ICeresGraphContainer.SetGraphData*
+  commentId: Overload:Ceres.Graph.ICeresGraphContainer.SetGraphData
+  isExternal: true
+  href: Ceres.Graph.ICeresGraphContainer.html#Ceres_Graph_ICeresGraphContainer_SetGraphData_Ceres_Graph_CeresGraphData_
+  name: SetGraphData
+  nameWithType: ICeresGraphContainer.SetGraphData
+  fullName: Ceres.Graph.ICeresGraphContainer.SetGraphData
+- uid: Ceres.Graph.CeresGraphData
+  commentId: T:Ceres.Graph.CeresGraphData
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.CeresGraphData.html
+  name: CeresGraphData
+  nameWithType: CeresGraphData
+  fullName: Ceres.Graph.CeresGraphData
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: Ceres.Graph.ICeresGraphContainer.Object*
+  commentId: Overload:Ceres.Graph.ICeresGraphContainer.Object
+  isExternal: true
+  href: Ceres.Graph.ICeresGraphContainer.html#Ceres_Graph_ICeresGraphContainer_Object
+  name: Object
+  nameWithType: ICeresGraphContainer.Object
+  fullName: Ceres.Graph.ICeresGraphContainer.Object

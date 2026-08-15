@@ -1,0 +1,579 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresSettings
+  commentId: T:Ceres.Editor.Graph.CeresSettings
+  id: CeresSettings
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresSettings.#ctor
+  - Ceres.Editor.Graph.CeresSettings.CleanLogAuto
+  - Ceres.Editor.Graph.CeresSettings.DisplayDebug
+  - Ceres.Editor.Graph.CeresSettings.DisplayMode
+  - Ceres.Editor.Graph.CeresSettings.SaveSettings
+  langs:
+  - csharp
+  - vb
+  name: CeresSettings
+  nameWithType: CeresSettings
+  fullName: Ceres.Editor.Graph.CeresSettings
+  type: Class
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: >-
+      [BaseConfig]
+
+      public class CeresSettings : ConfigSingleton<CeresSettings>
+    content.vb: >-
+      <BaseConfig>
+
+      Public Class CeresSettings Inherits ConfigSingleton(Of CeresSettings)
+  inheritance:
+  - System.Object
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}
+  inheritedMembers:
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Save(System.Boolean)
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  - Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Instance
+  attributes:
+  - type: Ceres.Editor.BaseConfigAttribute
+    ctor: Ceres.Editor.BaseConfigAttribute.#ctor
+    arguments: []
+- uid: Ceres.Editor.Graph.CeresSettings.SaveSettings
+  commentId: M:Ceres.Editor.Graph.CeresSettings.SaveSettings
+  id: SaveSettings
+  parent: Ceres.Editor.Graph.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: SaveSettings()
+  nameWithType: CeresSettings.SaveSettings()
+  fullName: Ceres.Editor.Graph.CeresSettings.SaveSettings()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public static void SaveSettings()
+    content.vb: Public Shared Sub SaveSettings()
+  overload: Ceres.Editor.Graph.CeresSettings.SaveSettings*
+- uid: Ceres.Editor.Graph.CeresSettings.#ctor
+  commentId: M:Ceres.Editor.Graph.CeresSettings.#ctor
+  id: '#ctor'
+  parent: Ceres.Editor.Graph.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: CeresSettings()
+  nameWithType: CeresSettings.CeresSettings()
+  fullName: Ceres.Editor.Graph.CeresSettings.CeresSettings()
+  type: Constructor
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresSettings()
+    content.vb: Public Sub New()
+  overload: Ceres.Editor.Graph.CeresSettings.#ctor*
+  nameWithType.vb: CeresSettings.New()
+  fullName.vb: Ceres.Editor.Graph.CeresSettings.New()
+  name.vb: New()
+- uid: Ceres.Editor.Graph.CeresSettings.CleanLogAuto
+  commentId: P:Ceres.Editor.Graph.CeresSettings.CleanLogAuto
+  id: CleanLogAuto
+  parent: Ceres.Editor.Graph.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: CleanLogAuto
+  nameWithType: CeresSettings.CleanLogAuto
+  fullName: Ceres.Editor.Graph.CeresSettings.CleanLogAuto
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public static bool CleanLogAuto { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property CleanLogAuto As Boolean
+  overload: Ceres.Editor.Graph.CeresSettings.CleanLogAuto*
+- uid: Ceres.Editor.Graph.CeresSettings.DisplayMode
+  commentId: P:Ceres.Editor.Graph.CeresSettings.DisplayMode
+  id: DisplayMode
+  parent: Ceres.Editor.Graph.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: DisplayMode
+  nameWithType: CeresSettings.DisplayMode
+  fullName: Ceres.Editor.Graph.CeresSettings.DisplayMode
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public static CeresSettings.GraphEditorDisplayMode DisplayMode { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresSettings.GraphEditorDisplayMode
+    content.vb: Public Shared ReadOnly Property DisplayMode As CeresSettings.GraphEditorDisplayMode
+  overload: Ceres.Editor.Graph.CeresSettings.DisplayMode*
+- uid: Ceres.Editor.Graph.CeresSettings.DisplayDebug
+  commentId: P:Ceres.Editor.Graph.CeresSettings.DisplayDebug
+  id: DisplayDebug
+  parent: Ceres.Editor.Graph.CeresSettings
+  langs:
+  - csharp
+  - vb
+  name: DisplayDebug
+  nameWithType: CeresSettings.DisplayDebug
+  fullName: Ceres.Editor.Graph.CeresSettings.DisplayDebug
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public static bool DisplayDebug { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property DisplayDebug As Boolean
+  overload: Ceres.Editor.Graph.CeresSettings.DisplayDebug*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}
+  commentId: T:Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}
+  parent: Ceres.Editor
+  definition: Ceres.Editor.ConfigSingleton`1
+  href: Ceres.Editor.Graph.CeresSettings.html
+  name: ConfigSingleton<CeresSettings>
+  nameWithType: ConfigSingleton<CeresSettings>
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.Graph.CeresSettings>
+  nameWithType.vb: ConfigSingleton(Of CeresSettings)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.Graph.CeresSettings)
+  name.vb: ConfigSingleton(Of CeresSettings)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1
+    name: ConfigSingleton
+    isExternal: true
+  - name: <
+  - uid: Ceres.Editor.Graph.CeresSettings
+    name: CeresSettings
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresSettings.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1
+    name: ConfigSingleton
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresSettings
+    name: CeresSettings
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresSettings.html
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Save(System.Boolean)
+  commentId: M:Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Save(System.Boolean)
+  parent: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}
+  definition: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: Save(bool)
+  nameWithType: ConfigSingleton<CeresSettings>.Save(bool)
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.Graph.CeresSettings>.Save(bool)
+  nameWithType.vb: ConfigSingleton(Of CeresSettings).Save(Boolean)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.Graph.CeresSettings).Save(Boolean)
+  name.vb: Save(Boolean)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Save(System.Boolean)
+    name: Save
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Save(System.Boolean)
+    name: Save
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+  commentId: M:Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+  parent: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}
+  definition: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  name: Serialize(ConfigBase)
+  nameWithType: ConfigSingleton<CeresSettings>.Serialize(ConfigBase)
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.Graph.CeresSettings>.Serialize(Ceres.Configs.ConfigBase)
+  nameWithType.vb: ConfigSingleton(Of CeresSettings).Serialize(ConfigBase)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.Graph.CeresSettings).Serialize(Ceres.Configs.ConfigBase)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+    name: Serialize
+    isExternal: true
+  - name: (
+  - uid: Ceres.Configs.ConfigBase
+    name: ConfigBase
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigBase)
+    name: Serialize
+    isExternal: true
+  - name: (
+  - uid: Ceres.Configs.ConfigBase
+    name: ConfigBase
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  commentId: M:Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  parent: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}
+  definition: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  name: Serialize(ConfigFileLocation, IConfigFile)
+  nameWithType: ConfigSingleton<CeresSettings>.Serialize(ConfigFileLocation, IConfigFile)
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.Graph.CeresSettings>.Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  nameWithType.vb: ConfigSingleton(Of CeresSettings).Serialize(ConfigFileLocation, IConfigFile)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.Graph.CeresSettings).Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+    name: Serialize
+    isExternal: true
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Configs.IConfigFile
+    name: IConfigFile
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+    name: Serialize
+    isExternal: true
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Configs.IConfigFile
+    name: IConfigFile
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Instance
+  commentId: P:Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}.Instance
+  parent: Ceres.Editor.ConfigSingleton{Ceres.Editor.Graph.CeresSettings}
+  definition: Ceres.Editor.ConfigSingleton`1.Instance
+  name: Instance
+  nameWithType: ConfigSingleton<CeresSettings>.Instance
+  fullName: Ceres.Editor.ConfigSingleton<Ceres.Editor.Graph.CeresSettings>.Instance
+  nameWithType.vb: ConfigSingleton(Of CeresSettings).Instance
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of Ceres.Editor.Graph.CeresSettings).Instance
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.ConfigSingleton`1
+  commentId: T:Ceres.Editor.ConfigSingleton`1
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html
+  name: ConfigSingleton<T>
+  nameWithType: ConfigSingleton<T>
+  fullName: Ceres.Editor.ConfigSingleton<T>
+  nameWithType.vb: ConfigSingleton(Of T)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T)
+  name.vb: ConfigSingleton(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1
+    name: ConfigSingleton
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1
+    name: ConfigSingleton
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor
+  commentId: N:Ceres.Editor
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor
+  nameWithType: Ceres.Editor
+  fullName: Ceres.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+- uid: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  name: Save(bool)
+  nameWithType: ConfigSingleton<T>.Save(bool)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Save(bool)
+  nameWithType.vb: ConfigSingleton(Of T).Save(Boolean)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Save(Boolean)
+  name.vb: Save(Boolean)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+    name: Save
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1.Save(System.Boolean)
+    name: Save
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Save_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  name: Serialize(ConfigBase)
+  nameWithType: ConfigSingleton<T>.Serialize(ConfigBase)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Serialize(Ceres.Configs.ConfigBase)
+  nameWithType.vb: ConfigSingleton(Of T).Serialize(ConfigBase)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Serialize(Ceres.Configs.ConfigBase)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  - name: (
+  - uid: Ceres.Configs.ConfigBase
+    name: ConfigBase
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigBase)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigBase_
+  - name: (
+  - uid: Ceres.Configs.ConfigBase
+    name: ConfigBase
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  commentId: M:Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  name: Serialize(ConfigFileLocation, IConfigFile)
+  nameWithType: ConfigSingleton<T>.Serialize(ConfigFileLocation, IConfigFile)
+  fullName: Ceres.Editor.ConfigSingleton<T>.Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  nameWithType.vb: ConfigSingleton(Of T).Serialize(ConfigFileLocation, IConfigFile)
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Serialize(Ceres.Configs.ConfigFileLocation, Ceres.Configs.IConfigFile)
+  spec.csharp:
+  - uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Configs.IConfigFile
+    name: IConfigFile
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.ConfigSingleton`1.Serialize(Ceres.Configs.ConfigFileLocation,Ceres.Configs.IConfigFile)
+    name: Serialize
+    isExternal: true
+    href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Serialize_Ceres_Configs_ConfigFileLocation_Ceres_Configs_IConfigFile_
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Configs.IConfigFile
+    name: IConfigFile
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.ConfigSingleton`1.Instance
+  commentId: P:Ceres.Editor.ConfigSingleton`1.Instance
+  isExternal: true
+  href: Ceres.Editor.ConfigSingleton-1.html#Ceres_Editor_ConfigSingleton_1_Instance
+  name: Instance
+  nameWithType: ConfigSingleton<T>.Instance
+  fullName: Ceres.Editor.ConfigSingleton<T>.Instance
+  nameWithType.vb: ConfigSingleton(Of T).Instance
+  fullName.vb: Ceres.Editor.ConfigSingleton(Of T).Instance
+- uid: Ceres.Editor.Graph.CeresSettings.SaveSettings*
+  commentId: Overload:Ceres.Editor.Graph.CeresSettings.SaveSettings
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresSettings.html#Ceres_Editor_Graph_CeresSettings_SaveSettings
+  name: SaveSettings
+  nameWithType: CeresSettings.SaveSettings
+  fullName: Ceres.Editor.Graph.CeresSettings.SaveSettings
+- uid: Ceres.Editor.Graph.CeresSettings.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.CeresSettings.#ctor
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresSettings.html#Ceres_Editor_Graph_CeresSettings__ctor
+  name: CeresSettings
+  nameWithType: CeresSettings.CeresSettings
+  fullName: Ceres.Editor.Graph.CeresSettings.CeresSettings
+  nameWithType.vb: CeresSettings.New
+  fullName.vb: Ceres.Editor.Graph.CeresSettings.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.CeresSettings.CleanLogAuto*
+  commentId: Overload:Ceres.Editor.Graph.CeresSettings.CleanLogAuto
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresSettings.html#Ceres_Editor_Graph_CeresSettings_CleanLogAuto
+  name: CleanLogAuto
+  nameWithType: CeresSettings.CleanLogAuto
+  fullName: Ceres.Editor.Graph.CeresSettings.CleanLogAuto
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Graph.CeresSettings.DisplayMode*
+  commentId: Overload:Ceres.Editor.Graph.CeresSettings.DisplayMode
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresSettings.html#Ceres_Editor_Graph_CeresSettings_DisplayMode
+  name: DisplayMode
+  nameWithType: CeresSettings.DisplayMode
+  fullName: Ceres.Editor.Graph.CeresSettings.DisplayMode
+- uid: Ceres.Editor.Graph.CeresSettings.GraphEditorDisplayMode
+  commentId: T:Ceres.Editor.Graph.CeresSettings.GraphEditorDisplayMode
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresSettings.html
+  name: CeresSettings.GraphEditorDisplayMode
+  nameWithType: CeresSettings.GraphEditorDisplayMode
+  fullName: Ceres.Editor.Graph.CeresSettings.GraphEditorDisplayMode
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresSettings
+    name: CeresSettings
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresSettings.html
+  - name: .
+  - uid: Ceres.Editor.Graph.CeresSettings.GraphEditorDisplayMode
+    name: GraphEditorDisplayMode
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresSettings.GraphEditorDisplayMode.html
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresSettings
+    name: CeresSettings
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresSettings.html
+  - name: .
+  - uid: Ceres.Editor.Graph.CeresSettings.GraphEditorDisplayMode
+    name: GraphEditorDisplayMode
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresSettings.GraphEditorDisplayMode.html
+- uid: Ceres.Editor.Graph.CeresSettings.DisplayDebug*
+  commentId: Overload:Ceres.Editor.Graph.CeresSettings.DisplayDebug
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresSettings.html#Ceres_Editor_Graph_CeresSettings_DisplayDebug
+  name: DisplayDebug
+  nameWithType: CeresSettings.DisplayDebug
+  fullName: Ceres.Editor.Graph.CeresSettings.DisplayDebug

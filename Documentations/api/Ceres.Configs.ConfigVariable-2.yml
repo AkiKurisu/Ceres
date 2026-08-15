@@ -1,0 +1,554 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Configs.ConfigVariable`2
+  commentId: T:Ceres.Configs.ConfigVariable`2
+  id: ConfigVariable`2
+  parent: Ceres.Configs
+  children:
+  - Ceres.Configs.ConfigVariable`2.#ctor(System.String,Ceres.Configs.MemberAccessor)
+  - Ceres.Configs.ConfigVariable`2.GetValue
+  - Ceres.Configs.ConfigVariable`2.SetValue(System.Object)
+  langs:
+  - csharp
+  - vb
+  name: ConfigVariable<TConfig, TValue>
+  nameWithType: ConfigVariable<TConfig, TValue>
+  fullName: Ceres.Configs.ConfigVariable<TConfig, TValue>
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  summary: Generic typed console variable
+  example: []
+  syntax:
+    content: 'public abstract class ConfigVariable<TConfig, TValue> : ConfigVariable where TConfig : Config<TConfig>, new()'
+    typeParameters:
+    - id: TConfig
+      description: Config type
+    - id: TValue
+      description: Value type
+    content.vb: Public MustInherit Class ConfigVariable(Of TConfig As {Config(Of TConfig), New}, TValue) Inherits ConfigVariable
+  inheritance:
+  - System.Object
+  - Ceres.Configs.ConfigVariable
+  derivedClasses:
+  - Ceres.Configs.BoolConfigVariable`1
+  - Ceres.Configs.FloatConfigVariable`1
+  - Ceres.Configs.IntConfigVariable`1
+  - Ceres.Configs.StringConfigVariable`1
+  inheritedMembers:
+  - Ceres.Configs.ConfigVariable.GetValueType
+  - Ceres.Configs.ConfigVariable.Name
+  - Ceres.Configs.ConfigVariable.ConfigType
+  - Ceres.Configs.ConfigVariable.MemberAccessor
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  nameWithType.vb: ConfigVariable(Of TConfig, TValue)
+  fullName.vb: Ceres.Configs.ConfigVariable(Of TConfig, TValue)
+  name.vb: ConfigVariable(Of TConfig, TValue)
+- uid: Ceres.Configs.ConfigVariable`2.#ctor(System.String,Ceres.Configs.MemberAccessor)
+  commentId: M:Ceres.Configs.ConfigVariable`2.#ctor(System.String,Ceres.Configs.MemberAccessor)
+  id: '#ctor(System.String,Ceres.Configs.MemberAccessor)'
+  parent: Ceres.Configs.ConfigVariable`2
+  langs:
+  - csharp
+  - vb
+  name: ConfigVariable(string, MemberAccessor)
+  nameWithType: ConfigVariable<TConfig, TValue>.ConfigVariable(string, MemberAccessor)
+  fullName: Ceres.Configs.ConfigVariable<TConfig, TValue>.ConfigVariable(string, Ceres.Configs.MemberAccessor)
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  syntax:
+    content: protected ConfigVariable(string name, MemberAccessor memberAccessor)
+    parameters:
+    - id: name
+      type: System.String
+    - id: memberAccessor
+      type: Ceres.Configs.MemberAccessor
+    content.vb: Protected Sub New(name As String, memberAccessor As MemberAccessor)
+  overload: Ceres.Configs.ConfigVariable`2.#ctor*
+  nameWithType.vb: ConfigVariable(Of TConfig, TValue).New(String, MemberAccessor)
+  fullName.vb: Ceres.Configs.ConfigVariable(Of TConfig, TValue).New(String, Ceres.Configs.MemberAccessor)
+  name.vb: New(String, MemberAccessor)
+- uid: Ceres.Configs.ConfigVariable`2.GetValue
+  commentId: M:Ceres.Configs.ConfigVariable`2.GetValue
+  id: GetValue
+  parent: Ceres.Configs.ConfigVariable`2
+  langs:
+  - csharp
+  - vb
+  name: GetValue()
+  nameWithType: ConfigVariable<TConfig, TValue>.GetValue()
+  fullName: Ceres.Configs.ConfigVariable<TConfig, TValue>.GetValue()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  summary: Get the current value of the variable
+  example: []
+  syntax:
+    content: public override object GetValue()
+    return:
+      type: System.Object
+      description: Current value
+    content.vb: Public Overrides Function GetValue() As Object
+  overridden: Ceres.Configs.ConfigVariable.GetValue
+  overload: Ceres.Configs.ConfigVariable`2.GetValue*
+  nameWithType.vb: ConfigVariable(Of TConfig, TValue).GetValue()
+  fullName.vb: Ceres.Configs.ConfigVariable(Of TConfig, TValue).GetValue()
+- uid: Ceres.Configs.ConfigVariable`2.SetValue(System.Object)
+  commentId: M:Ceres.Configs.ConfigVariable`2.SetValue(System.Object)
+  id: SetValue(System.Object)
+  parent: Ceres.Configs.ConfigVariable`2
+  langs:
+  - csharp
+  - vb
+  name: SetValue(object)
+  nameWithType: ConfigVariable<TConfig, TValue>.SetValue(object)
+  fullName: Ceres.Configs.ConfigVariable<TConfig, TValue>.SetValue(object)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  summary: Set the value of the variable
+  example: []
+  syntax:
+    content: public override void SetValue(object value)
+    parameters:
+    - id: value
+      type: System.Object
+      description: New value
+    content.vb: Public Overrides Sub SetValue(value As Object)
+  overridden: Ceres.Configs.ConfigVariable.SetValue(System.Object)
+  overload: Ceres.Configs.ConfigVariable`2.SetValue*
+  nameWithType.vb: ConfigVariable(Of TConfig, TValue).SetValue(Object)
+  fullName.vb: Ceres.Configs.ConfigVariable(Of TConfig, TValue).SetValue(Object)
+  name.vb: SetValue(Object)
+references:
+- uid: Ceres.Configs
+  commentId: N:Ceres.Configs
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Configs
+  nameWithType: Ceres.Configs
+  fullName: Ceres.Configs
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Configs
+    name: Configs
+    isExternal: true
+    href: Ceres.Configs.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Configs
+    name: Configs
+    isExternal: true
+    href: Ceres.Configs.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Configs.ConfigVariable
+  commentId: T:Ceres.Configs.ConfigVariable
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable.html
+  name: ConfigVariable
+  nameWithType: ConfigVariable
+  fullName: Ceres.Configs.ConfigVariable
+- uid: Ceres.Configs.ConfigVariable.GetValueType
+  commentId: M:Ceres.Configs.ConfigVariable.GetValueType
+  parent: Ceres.Configs.ConfigVariable
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_GetValueType
+  name: GetValueType()
+  nameWithType: ConfigVariable.GetValueType()
+  fullName: Ceres.Configs.ConfigVariable.GetValueType()
+  spec.csharp:
+  - uid: Ceres.Configs.ConfigVariable.GetValueType
+    name: GetValueType
+    isExternal: true
+    href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_GetValueType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Configs.ConfigVariable.GetValueType
+    name: GetValueType
+    isExternal: true
+    href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_GetValueType
+  - name: (
+  - name: )
+- uid: Ceres.Configs.ConfigVariable.Name
+  commentId: P:Ceres.Configs.ConfigVariable.Name
+  parent: Ceres.Configs.ConfigVariable
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_Name
+  name: Name
+  nameWithType: ConfigVariable.Name
+  fullName: Ceres.Configs.ConfigVariable.Name
+- uid: Ceres.Configs.ConfigVariable.ConfigType
+  commentId: P:Ceres.Configs.ConfigVariable.ConfigType
+  parent: Ceres.Configs.ConfigVariable
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_ConfigType
+  name: ConfigType
+  nameWithType: ConfigVariable.ConfigType
+  fullName: Ceres.Configs.ConfigVariable.ConfigType
+- uid: Ceres.Configs.ConfigVariable.MemberAccessor
+  commentId: P:Ceres.Configs.ConfigVariable.MemberAccessor
+  parent: Ceres.Configs.ConfigVariable
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_MemberAccessor
+  name: MemberAccessor
+  nameWithType: ConfigVariable.MemberAccessor
+  fullName: Ceres.Configs.ConfigVariable.MemberAccessor
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Configs.ConfigVariable`2.#ctor*
+  commentId: Overload:Ceres.Configs.ConfigVariable`2.#ctor
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable-2.html#Ceres_Configs_ConfigVariable_2__ctor_System_String_Ceres_Configs_MemberAccessor_
+  name: ConfigVariable
+  nameWithType: ConfigVariable<TConfig, TValue>.ConfigVariable
+  fullName: Ceres.Configs.ConfigVariable<TConfig, TValue>.ConfigVariable
+  nameWithType.vb: ConfigVariable(Of TConfig, TValue).New
+  fullName.vb: Ceres.Configs.ConfigVariable(Of TConfig, TValue).New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Configs.MemberAccessor
+  commentId: T:Ceres.Configs.MemberAccessor
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.MemberAccessor.html
+  name: MemberAccessor
+  nameWithType: MemberAccessor
+  fullName: Ceres.Configs.MemberAccessor
+- uid: Ceres.Configs.ConfigVariable.GetValue
+  commentId: M:Ceres.Configs.ConfigVariable.GetValue
+  parent: Ceres.Configs.ConfigVariable
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_GetValue
+  name: GetValue()
+  nameWithType: ConfigVariable.GetValue()
+  fullName: Ceres.Configs.ConfigVariable.GetValue()
+  spec.csharp:
+  - uid: Ceres.Configs.ConfigVariable.GetValue
+    name: GetValue
+    isExternal: true
+    href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Configs.ConfigVariable.GetValue
+    name: GetValue
+    isExternal: true
+    href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_GetValue
+  - name: (
+  - name: )
+- uid: Ceres.Configs.ConfigVariable`2.GetValue*
+  commentId: Overload:Ceres.Configs.ConfigVariable`2.GetValue
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable-2.html#Ceres_Configs_ConfigVariable_2_GetValue
+  name: GetValue
+  nameWithType: ConfigVariable<TConfig, TValue>.GetValue
+  fullName: Ceres.Configs.ConfigVariable<TConfig, TValue>.GetValue
+  nameWithType.vb: ConfigVariable(Of TConfig, TValue).GetValue
+  fullName.vb: Ceres.Configs.ConfigVariable(Of TConfig, TValue).GetValue
+- uid: Ceres.Configs.ConfigVariable.SetValue(System.Object)
+  commentId: M:Ceres.Configs.ConfigVariable.SetValue(System.Object)
+  parent: Ceres.Configs.ConfigVariable
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_SetValue_System_Object_
+  name: SetValue(object)
+  nameWithType: ConfigVariable.SetValue(object)
+  fullName: Ceres.Configs.ConfigVariable.SetValue(object)
+  nameWithType.vb: ConfigVariable.SetValue(Object)
+  fullName.vb: Ceres.Configs.ConfigVariable.SetValue(Object)
+  name.vb: SetValue(Object)
+  spec.csharp:
+  - uid: Ceres.Configs.ConfigVariable.SetValue(System.Object)
+    name: SetValue
+    isExternal: true
+    href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_SetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Configs.ConfigVariable.SetValue(System.Object)
+    name: SetValue
+    isExternal: true
+    href: Ceres.Configs.ConfigVariable.html#Ceres_Configs_ConfigVariable_SetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Configs.ConfigVariable`2.SetValue*
+  commentId: Overload:Ceres.Configs.ConfigVariable`2.SetValue
+  isExternal: true
+  href: Ceres.Configs.ConfigVariable-2.html#Ceres_Configs_ConfigVariable_2_SetValue_System_Object_
+  name: SetValue
+  nameWithType: ConfigVariable<TConfig, TValue>.SetValue
+  fullName: Ceres.Configs.ConfigVariable<TConfig, TValue>.SetValue
+  nameWithType.vb: ConfigVariable(Of TConfig, TValue).SetValue
+  fullName.vb: Ceres.Configs.ConfigVariable(Of TConfig, TValue).SetValue

@@ -1,0 +1,673 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.EventDispatcher
+  commentId: T:Ceres.Events.EventDispatcher
+  id: EventDispatcher
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.EventDispatcher.#ctor(System.Collections.Generic.IList{Ceres.Events.IEventDispatchingStrategy})
+  - Ceres.Events.EventDispatcher.AddEventDispatchingListener(Ceres.Events.IEventDispatchingListener)
+  - Ceres.Events.EventDispatcher.CreateDefault
+  - Ceres.Events.EventDispatcher.Dispatch(Ceres.Events.EventBase,Ceres.Events.IEventCoordinator,Ceres.Events.DispatchMode)
+  - Ceres.Events.EventDispatcher.GetEventDispatchingListener``1
+  - Ceres.Events.EventDispatcher.PopDispatcherContext
+  - Ceres.Events.EventDispatcher.ProcessingEvents
+  - Ceres.Events.EventDispatcher.PushDispatcherContext
+  langs:
+  - csharp
+  - vb
+  name: EventDispatcher
+  nameWithType: EventDispatcher
+  fullName: Ceres.Events.EventDispatcher
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Dispatches events to a <xref href="Ceres.Events.IEventCoordinator" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public sealed class EventDispatcher
+    content.vb: Public NotInheritable Class EventDispatcher
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Events.EventDispatcher.#ctor(System.Collections.Generic.IList{Ceres.Events.IEventDispatchingStrategy})
+  commentId: M:Ceres.Events.EventDispatcher.#ctor(System.Collections.Generic.IList{Ceres.Events.IEventDispatchingStrategy})
+  id: '#ctor(System.Collections.Generic.IList{Ceres.Events.IEventDispatchingStrategy})'
+  parent: Ceres.Events.EventDispatcher
+  langs:
+  - csharp
+  - vb
+  name: EventDispatcher(IList<IEventDispatchingStrategy>)
+  nameWithType: EventDispatcher.EventDispatcher(IList<IEventDispatchingStrategy>)
+  fullName: Ceres.Events.EventDispatcher.EventDispatcher(System.Collections.Generic.IList<Ceres.Events.IEventDispatchingStrategy>)
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public EventDispatcher(IList<IEventDispatchingStrategy> strategies)
+    parameters:
+    - id: strategies
+      type: System.Collections.Generic.IList{Ceres.Events.IEventDispatchingStrategy}
+    content.vb: Public Sub New(strategies As IList(Of IEventDispatchingStrategy))
+  overload: Ceres.Events.EventDispatcher.#ctor*
+  nameWithType.vb: EventDispatcher.New(IList(Of IEventDispatchingStrategy))
+  fullName.vb: Ceres.Events.EventDispatcher.New(System.Collections.Generic.IList(Of Ceres.Events.IEventDispatchingStrategy))
+  name.vb: New(IList(Of IEventDispatchingStrategy))
+- uid: Ceres.Events.EventDispatcher.CreateDefault
+  commentId: M:Ceres.Events.EventDispatcher.CreateDefault
+  id: CreateDefault
+  parent: Ceres.Events.EventDispatcher
+  langs:
+  - csharp
+  - vb
+  name: CreateDefault()
+  nameWithType: EventDispatcher.CreateDefault()
+  fullName: Ceres.Events.EventDispatcher.CreateDefault()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public static EventDispatcher CreateDefault()
+    return:
+      type: Ceres.Events.EventDispatcher
+    content.vb: Public Shared Function CreateDefault() As EventDispatcher
+  overload: Ceres.Events.EventDispatcher.CreateDefault*
+- uid: Ceres.Events.EventDispatcher.Dispatch(Ceres.Events.EventBase,Ceres.Events.IEventCoordinator,Ceres.Events.DispatchMode)
+  commentId: M:Ceres.Events.EventDispatcher.Dispatch(Ceres.Events.EventBase,Ceres.Events.IEventCoordinator,Ceres.Events.DispatchMode)
+  id: Dispatch(Ceres.Events.EventBase,Ceres.Events.IEventCoordinator,Ceres.Events.DispatchMode)
+  parent: Ceres.Events.EventDispatcher
+  langs:
+  - csharp
+  - vb
+  name: Dispatch(EventBase, IEventCoordinator, DispatchMode)
+  nameWithType: EventDispatcher.Dispatch(EventBase, IEventCoordinator, DispatchMode)
+  fullName: Ceres.Events.EventDispatcher.Dispatch(Ceres.Events.EventBase, Ceres.Events.IEventCoordinator, Ceres.Events.DispatchMode)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public void Dispatch(EventBase evt, IEventCoordinator coordinator, DispatchMode dispatchMode)
+    parameters:
+    - id: evt
+      type: Ceres.Events.EventBase
+    - id: coordinator
+      type: Ceres.Events.IEventCoordinator
+    - id: dispatchMode
+      type: Ceres.Events.DispatchMode
+    content.vb: Public Sub Dispatch(evt As EventBase, coordinator As IEventCoordinator, dispatchMode As DispatchMode)
+  overload: Ceres.Events.EventDispatcher.Dispatch*
+- uid: Ceres.Events.EventDispatcher.PushDispatcherContext
+  commentId: M:Ceres.Events.EventDispatcher.PushDispatcherContext
+  id: PushDispatcherContext
+  parent: Ceres.Events.EventDispatcher
+  langs:
+  - csharp
+  - vb
+  name: PushDispatcherContext()
+  nameWithType: EventDispatcher.PushDispatcherContext()
+  fullName: Ceres.Events.EventDispatcher.PushDispatcherContext()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public void PushDispatcherContext()
+    content.vb: Public Sub PushDispatcherContext()
+  overload: Ceres.Events.EventDispatcher.PushDispatcherContext*
+- uid: Ceres.Events.EventDispatcher.PopDispatcherContext
+  commentId: M:Ceres.Events.EventDispatcher.PopDispatcherContext
+  id: PopDispatcherContext
+  parent: Ceres.Events.EventDispatcher
+  langs:
+  - csharp
+  - vb
+  name: PopDispatcherContext()
+  nameWithType: EventDispatcher.PopDispatcherContext()
+  fullName: Ceres.Events.EventDispatcher.PopDispatcherContext()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public void PopDispatcherContext()
+    content.vb: Public Sub PopDispatcherContext()
+  overload: Ceres.Events.EventDispatcher.PopDispatcherContext*
+- uid: Ceres.Events.EventDispatcher.GetEventDispatchingListener``1
+  commentId: M:Ceres.Events.EventDispatcher.GetEventDispatchingListener``1
+  id: GetEventDispatchingListener``1
+  parent: Ceres.Events.EventDispatcher
+  langs:
+  - csharp
+  - vb
+  name: GetEventDispatchingListener<TListener>()
+  nameWithType: EventDispatcher.GetEventDispatchingListener<TListener>()
+  fullName: Ceres.Events.EventDispatcher.GetEventDispatchingListener<TListener>()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: 'public TListener GetEventDispatchingListener<TListener>() where TListener : IEventDispatchingListener'
+    typeParameters:
+    - id: TListener
+    return:
+      type: '{TListener}'
+    content.vb: Public Function GetEventDispatchingListener(Of TListener As IEventDispatchingListener)() As TListener
+  overload: Ceres.Events.EventDispatcher.GetEventDispatchingListener*
+  nameWithType.vb: EventDispatcher.GetEventDispatchingListener(Of TListener)()
+  fullName.vb: Ceres.Events.EventDispatcher.GetEventDispatchingListener(Of TListener)()
+  name.vb: GetEventDispatchingListener(Of TListener)()
+- uid: Ceres.Events.EventDispatcher.AddEventDispatchingListener(Ceres.Events.IEventDispatchingListener)
+  commentId: M:Ceres.Events.EventDispatcher.AddEventDispatchingListener(Ceres.Events.IEventDispatchingListener)
+  id: AddEventDispatchingListener(Ceres.Events.IEventDispatchingListener)
+  parent: Ceres.Events.EventDispatcher
+  langs:
+  - csharp
+  - vb
+  name: AddEventDispatchingListener(IEventDispatchingListener)
+  nameWithType: EventDispatcher.AddEventDispatchingListener(IEventDispatchingListener)
+  fullName: Ceres.Events.EventDispatcher.AddEventDispatchingListener(Ceres.Events.IEventDispatchingListener)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public void AddEventDispatchingListener(IEventDispatchingListener listener)
+    parameters:
+    - id: listener
+      type: Ceres.Events.IEventDispatchingListener
+    content.vb: Public Sub AddEventDispatchingListener(listener As IEventDispatchingListener)
+  overload: Ceres.Events.EventDispatcher.AddEventDispatchingListener*
+- uid: Ceres.Events.EventDispatcher.ProcessingEvents
+  commentId: P:Ceres.Events.EventDispatcher.ProcessingEvents
+  id: ProcessingEvents
+  parent: Ceres.Events.EventDispatcher
+  langs:
+  - csharp
+  - vb
+  name: ProcessingEvents
+  nameWithType: EventDispatcher.ProcessingEvents
+  fullName: Ceres.Events.EventDispatcher.ProcessingEvents
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public bool ProcessingEvents { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ProcessingEvents As Boolean
+  overload: Ceres.Events.EventDispatcher.ProcessingEvents*
+references:
+- uid: Ceres.Events.IEventCoordinator
+  commentId: T:Ceres.Events.IEventCoordinator
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.IEventCoordinator.html
+  name: IEventCoordinator
+  nameWithType: IEventCoordinator
+  fullName: Ceres.Events.IEventCoordinator
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Events.EventDispatcher.#ctor*
+  commentId: Overload:Ceres.Events.EventDispatcher.#ctor
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html#Ceres_Events_EventDispatcher__ctor_System_Collections_Generic_IList_Ceres_Events_IEventDispatchingStrategy__
+  name: EventDispatcher
+  nameWithType: EventDispatcher.EventDispatcher
+  fullName: Ceres.Events.EventDispatcher.EventDispatcher
+  nameWithType.vb: EventDispatcher.New
+  fullName.vb: Ceres.Events.EventDispatcher.New
+  name.vb: New
+- uid: System.Collections.Generic.IList{Ceres.Events.IEventDispatchingStrategy}
+  commentId: T:System.Collections.Generic.IList{Ceres.Events.IEventDispatchingStrategy}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<IEventDispatchingStrategy>
+  nameWithType: IList<IEventDispatchingStrategy>
+  fullName: System.Collections.Generic.IList<Ceres.Events.IEventDispatchingStrategy>
+  nameWithType.vb: IList(Of IEventDispatchingStrategy)
+  fullName.vb: System.Collections.Generic.IList(Of Ceres.Events.IEventDispatchingStrategy)
+  name.vb: IList(Of IEventDispatchingStrategy)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Ceres.Events.IEventDispatchingStrategy
+    name: IEventDispatchingStrategy
+    isExternal: true
+    href: Ceres.Events.IEventDispatchingStrategy.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Events.IEventDispatchingStrategy
+    name: IEventDispatchingStrategy
+    isExternal: true
+    href: Ceres.Events.IEventDispatchingStrategy.html
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Ceres.Events.EventDispatcher.CreateDefault*
+  commentId: Overload:Ceres.Events.EventDispatcher.CreateDefault
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html#Ceres_Events_EventDispatcher_CreateDefault
+  name: CreateDefault
+  nameWithType: EventDispatcher.CreateDefault
+  fullName: Ceres.Events.EventDispatcher.CreateDefault
+- uid: Ceres.Events.EventDispatcher
+  commentId: T:Ceres.Events.EventDispatcher
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html
+  name: EventDispatcher
+  nameWithType: EventDispatcher
+  fullName: Ceres.Events.EventDispatcher
+- uid: Ceres.Events.EventDispatcher.Dispatch*
+  commentId: Overload:Ceres.Events.EventDispatcher.Dispatch
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html#Ceres_Events_EventDispatcher_Dispatch_Ceres_Events_EventBase_Ceres_Events_IEventCoordinator_Ceres_Events_DispatchMode_
+  name: Dispatch
+  nameWithType: EventDispatcher.Dispatch
+  fullName: Ceres.Events.EventDispatcher.Dispatch
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: Ceres.Events.DispatchMode
+  commentId: T:Ceres.Events.DispatchMode
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.DispatchMode.html
+  name: DispatchMode
+  nameWithType: DispatchMode
+  fullName: Ceres.Events.DispatchMode
+- uid: Ceres.Events.EventDispatcher.PushDispatcherContext*
+  commentId: Overload:Ceres.Events.EventDispatcher.PushDispatcherContext
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html#Ceres_Events_EventDispatcher_PushDispatcherContext
+  name: PushDispatcherContext
+  nameWithType: EventDispatcher.PushDispatcherContext
+  fullName: Ceres.Events.EventDispatcher.PushDispatcherContext
+- uid: Ceres.Events.EventDispatcher.PopDispatcherContext*
+  commentId: Overload:Ceres.Events.EventDispatcher.PopDispatcherContext
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html#Ceres_Events_EventDispatcher_PopDispatcherContext
+  name: PopDispatcherContext
+  nameWithType: EventDispatcher.PopDispatcherContext
+  fullName: Ceres.Events.EventDispatcher.PopDispatcherContext
+- uid: Ceres.Events.EventDispatcher.GetEventDispatchingListener*
+  commentId: Overload:Ceres.Events.EventDispatcher.GetEventDispatchingListener
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html#Ceres_Events_EventDispatcher_GetEventDispatchingListener__1
+  name: GetEventDispatchingListener
+  nameWithType: EventDispatcher.GetEventDispatchingListener
+  fullName: Ceres.Events.EventDispatcher.GetEventDispatchingListener
+- uid: '{TListener}'
+  commentId: '!:TListener'
+  definition: TListener
+  name: TListener
+  nameWithType: TListener
+  fullName: TListener
+- uid: TListener
+  commentId: '!:TListener'
+  name: TListener
+  nameWithType: TListener
+  fullName: TListener
+- uid: Ceres.Events.EventDispatcher.AddEventDispatchingListener*
+  commentId: Overload:Ceres.Events.EventDispatcher.AddEventDispatchingListener
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html#Ceres_Events_EventDispatcher_AddEventDispatchingListener_Ceres_Events_IEventDispatchingListener_
+  name: AddEventDispatchingListener
+  nameWithType: EventDispatcher.AddEventDispatchingListener
+  fullName: Ceres.Events.EventDispatcher.AddEventDispatchingListener
+- uid: Ceres.Events.IEventDispatchingListener
+  commentId: T:Ceres.Events.IEventDispatchingListener
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.IEventDispatchingListener.html
+  name: IEventDispatchingListener
+  nameWithType: IEventDispatchingListener
+  fullName: Ceres.Events.IEventDispatchingListener
+- uid: Ceres.Events.EventDispatcher.ProcessingEvents*
+  commentId: Overload:Ceres.Events.EventDispatcher.ProcessingEvents
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html#Ceres_Events_EventDispatcher_ProcessingEvents
+  name: ProcessingEvents
+  nameWithType: EventDispatcher.ProcessingEvents
+  fullName: Ceres.Events.EventDispatcher.ProcessingEvents
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

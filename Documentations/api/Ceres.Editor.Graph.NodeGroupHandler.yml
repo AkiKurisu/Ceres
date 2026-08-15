@@ -1,0 +1,676 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.NodeGroupHandler
+  commentId: T:Ceres.Editor.Graph.NodeGroupHandler
+  id: NodeGroupHandler
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.NodeGroupHandler.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(UnityEngine.Rect,Ceres.Graph.NodeGroup)
+  - Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+  - Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+  - Ceres.Editor.Graph.NodeGroupHandler.GraphView
+  - Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(System.Collections.Generic.List{Ceres.Graph.NodeGroup})
+  langs:
+  - csharp
+  - vb
+  name: NodeGroupHandler
+  nameWithType: NodeGroupHandler
+  fullName: Ceres.Editor.Graph.NodeGroupHandler
+  type: Class
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public abstract class NodeGroupHandler
+    content.vb: Public MustInherit Class NodeGroupHandler
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Editor.Graph.NodeGroupHandler`1
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: Ceres.Editor.Graph.NodeGroupHandler.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.#ctor(Ceres.Editor.Graph.CeresGraphView)
+  id: '#ctor(Ceres.Editor.Graph.CeresGraphView)'
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  langs:
+  - csharp
+  - vb
+  name: NodeGroupHandler(CeresGraphView)
+  nameWithType: NodeGroupHandler.NodeGroupHandler(CeresGraphView)
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.NodeGroupHandler(Ceres.Editor.Graph.CeresGraphView)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected NodeGroupHandler(CeresGraphView graphView)
+    parameters:
+    - id: graphView
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Protected Sub New(graphView As CeresGraphView)
+  overload: Ceres.Editor.Graph.NodeGroupHandler.#ctor*
+  nameWithType.vb: NodeGroupHandler.New(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler.New(Ceres.Editor.Graph.CeresGraphView)
+  name.vb: New(CeresGraphView)
+- uid: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(UnityEngine.Rect,Ceres.Graph.NodeGroup)
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(UnityEngine.Rect,Ceres.Graph.NodeGroup)
+  id: CreateGroup(UnityEngine.Rect,Ceres.Graph.NodeGroup)
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  langs:
+  - csharp
+  - vb
+  name: CreateGroup(Rect, NodeGroup)
+  nameWithType: NodeGroupHandler.CreateGroup(Rect, NodeGroup)
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup(UnityEngine.Rect, Ceres.Graph.NodeGroup)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public abstract Group CreateGroup(Rect rect, NodeGroup dataData = null)
+    parameters:
+    - id: rect
+      type: UnityEngine.Rect
+    - id: dataData
+      type: Ceres.Graph.NodeGroup
+    return:
+      type: UnityEditor.Experimental.GraphView.Group
+    content.vb: Public MustOverride Function CreateGroup(rect As Rect, dataData As NodeGroup = Nothing) As Group
+  overload: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup*
+- uid: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+  id: DoUnGroup
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  langs:
+  - csharp
+  - vb
+  name: DoUnGroup()
+  nameWithType: NodeGroupHandler.DoUnGroup()
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public abstract void DoUnGroup()
+    content.vb: Public MustOverride Sub DoUnGroup()
+  overload: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup*
+- uid: Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+  id: DoGroup
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  langs:
+  - csharp
+  - vb
+  name: DoGroup()
+  nameWithType: NodeGroupHandler.DoGroup()
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.DoGroup()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public virtual void DoGroup()
+    content.vb: Public Overridable Sub DoGroup()
+  overload: Ceres.Editor.Graph.NodeGroupHandler.DoGroup*
+- uid: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(System.Collections.Generic.List{Ceres.Graph.NodeGroup})
+  commentId: M:Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(System.Collections.Generic.List{Ceres.Graph.NodeGroup})
+  id: RestoreGroups(System.Collections.Generic.List{Ceres.Graph.NodeGroup})
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  langs:
+  - csharp
+  - vb
+  name: RestoreGroups(List<NodeGroup>)
+  nameWithType: NodeGroupHandler.RestoreGroups(List<NodeGroup>)
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(System.Collections.Generic.List<Ceres.Graph.NodeGroup>)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public List<Group> RestoreGroups(List<NodeGroup> nodeGroups)
+    parameters:
+    - id: nodeGroups
+      type: System.Collections.Generic.List{Ceres.Graph.NodeGroup}
+    return:
+      type: System.Collections.Generic.List{UnityEditor.Experimental.GraphView.Group}
+    content.vb: Public Function RestoreGroups(nodeGroups As List(Of NodeGroup)) As List(Of Group)
+  overload: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups*
+  nameWithType.vb: NodeGroupHandler.RestoreGroups(List(Of NodeGroup))
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups(System.Collections.Generic.List(Of Ceres.Graph.NodeGroup))
+  name.vb: RestoreGroups(List(Of NodeGroup))
+- uid: Ceres.Editor.Graph.NodeGroupHandler.GraphView
+  commentId: P:Ceres.Editor.Graph.NodeGroupHandler.GraphView
+  id: GraphView
+  parent: Ceres.Editor.Graph.NodeGroupHandler
+  langs:
+  - csharp
+  - vb
+  name: GraphView
+  nameWithType: NodeGroupHandler.GraphView
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.GraphView
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected CeresGraphView GraphView { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Protected ReadOnly Property GraphView As CeresGraphView
+  overload: Ceres.Editor.Graph.NodeGroupHandler.GraphView*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.NodeGroupHandler.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler.#ctor
+  isExternal: true
+  href: Ceres.Editor.Graph.NodeGroupHandler.html#Ceres_Editor_Graph_NodeGroupHandler__ctor_Ceres_Editor_Graph_CeresGraphView_
+  name: NodeGroupHandler
+  nameWithType: NodeGroupHandler.NodeGroupHandler
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.NodeGroupHandler
+  nameWithType.vb: NodeGroupHandler.New
+  fullName.vb: Ceres.Editor.Graph.NodeGroupHandler.New
+  name.vb: New
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphView.html
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler.CreateGroup
+  isExternal: true
+  href: Ceres.Editor.Graph.NodeGroupHandler.html#Ceres_Editor_Graph_NodeGroupHandler_CreateGroup_UnityEngine_Rect_Ceres_Graph_NodeGroup_
+  name: CreateGroup
+  nameWithType: NodeGroupHandler.CreateGroup
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.CreateGroup
+- uid: UnityEngine.Rect
+  isExternal: true
+  name: Rect
+  nameWithType: Rect
+  fullName: UnityEngine.Rect
+- uid: Ceres.Graph.NodeGroup
+  commentId: T:Ceres.Graph.NodeGroup
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.NodeGroup.html
+  name: NodeGroup
+  nameWithType: NodeGroup
+  fullName: Ceres.Graph.NodeGroup
+- uid: UnityEditor.Experimental.GraphView.Group
+  isExternal: true
+  name: Group
+  nameWithType: Group
+  fullName: UnityEditor.Experimental.GraphView.Group
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+  isExternal: true
+  href: Ceres.Editor.Graph.NodeGroupHandler.html#Ceres_Editor_Graph_NodeGroupHandler_DoUnGroup
+  name: DoUnGroup
+  nameWithType: NodeGroupHandler.DoUnGroup
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.DoUnGroup
+- uid: Ceres.Editor.Graph.NodeGroupHandler.DoGroup*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+  isExternal: true
+  href: Ceres.Editor.Graph.NodeGroupHandler.html#Ceres_Editor_Graph_NodeGroupHandler_DoGroup
+  name: DoGroup
+  nameWithType: NodeGroupHandler.DoGroup
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.DoGroup
+- uid: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups
+  isExternal: true
+  href: Ceres.Editor.Graph.NodeGroupHandler.html#Ceres_Editor_Graph_NodeGroupHandler_RestoreGroups_System_Collections_Generic_List_Ceres_Graph_NodeGroup__
+  name: RestoreGroups
+  nameWithType: NodeGroupHandler.RestoreGroups
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.RestoreGroups
+- uid: System.Collections.Generic.List{Ceres.Graph.NodeGroup}
+  commentId: T:System.Collections.Generic.List{Ceres.Graph.NodeGroup}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<NodeGroup>
+  nameWithType: List<NodeGroup>
+  fullName: System.Collections.Generic.List<Ceres.Graph.NodeGroup>
+  nameWithType.vb: List(Of NodeGroup)
+  fullName.vb: System.Collections.Generic.List(Of Ceres.Graph.NodeGroup)
+  name.vb: List(Of NodeGroup)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Ceres.Graph.NodeGroup
+    name: NodeGroup
+    isExternal: true
+    href: Ceres.Graph.NodeGroup.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.NodeGroup
+    name: NodeGroup
+    isExternal: true
+    href: Ceres.Graph.NodeGroup.html
+  - name: )
+- uid: System.Collections.Generic.List{UnityEditor.Experimental.GraphView.Group}
+  commentId: T:System.Collections.Generic.List{UnityEditor.Experimental.GraphView.Group}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Group>
+  nameWithType: List<Group>
+  fullName: System.Collections.Generic.List<UnityEditor.Experimental.GraphView.Group>
+  nameWithType.vb: List(Of Group)
+  fullName.vb: System.Collections.Generic.List(Of UnityEditor.Experimental.GraphView.Group)
+  name.vb: List(Of Group)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: UnityEditor.Experimental.GraphView.Group
+    name: Group
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEditor.Experimental.GraphView.Group
+    name: Group
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Ceres.Editor.Graph.NodeGroupHandler.GraphView*
+  commentId: Overload:Ceres.Editor.Graph.NodeGroupHandler.GraphView
+  isExternal: true
+  href: Ceres.Editor.Graph.NodeGroupHandler.html#Ceres_Editor_Graph_NodeGroupHandler_GraphView
+  name: GraphView
+  nameWithType: NodeGroupHandler.GraphView
+  fullName: Ceres.Editor.Graph.NodeGroupHandler.GraphView

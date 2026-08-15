@@ -1,0 +1,731 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.EventDelegate`5
+  commentId: T:Ceres.Flow.EventDelegate`5
+  id: EventDelegate`5
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.EventDelegate`5.#ctor
+  - Ceres.Flow.EventDelegate`5.Invoke(UnityEngine.Object,`0,`1,`2,`3,`4)
+  - Ceres.Flow.EventDelegate`5.op_Implicit(Ceres.Flow.EventDelegate{`0,`1,`2,`3,`4})~System.Action{`0,`1,`2,`3,`4}
+  langs:
+  - csharp
+  - vb
+  name: EventDelegate<T1, T2, T3, T4, T5>
+  nameWithType: EventDelegate<T1, T2, T3, T4, T5>
+  fullName: Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public sealed class EventDelegate<T1, T2, T3, T4, T5> : EventDelegateBase'
+    typeParameters:
+    - id: T1
+    - id: T2
+    - id: T3
+    - id: T4
+    - id: T5
+    content.vb: Public NotInheritable Class EventDelegate(Of T1, T2, T3, T4, T5) Inherits EventDelegateBase
+  inheritance:
+  - System.Object
+  - Ceres.Flow.EventDelegateBase
+  inheritedMembers:
+  - Ceres.Flow.EventDelegateBase.Bind(Ceres.Flow.IFlowEventDelegateTarget,System.String)
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Ceres.Flow.EventDelegateBase.Ceres.Flow.EventDelegateExtensions.IsValid
+  nameWithType.vb: EventDelegate(Of T1, T2, T3, T4, T5)
+  fullName.vb: Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5)
+  name.vb: EventDelegate(Of T1, T2, T3, T4, T5)
+- uid: Ceres.Flow.EventDelegate`5.Invoke(UnityEngine.Object,`0,`1,`2,`3,`4)
+  commentId: M:Ceres.Flow.EventDelegate`5.Invoke(UnityEngine.Object,`0,`1,`2,`3,`4)
+  id: Invoke(UnityEngine.Object,`0,`1,`2,`3,`4)
+  parent: Ceres.Flow.EventDelegate`5
+  langs:
+  - csharp
+  - vb
+  name: Invoke(Object, T1, T2, T3, T4, T5)
+  nameWithType: EventDelegate<T1, T2, T3, T4, T5>.Invoke(Object, T1, T2, T3, T4, T5)
+  fullName: Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>.Invoke(UnityEngine.Object, T1, T2, T3, T4, T5)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public void Invoke(Object contextObject, T1 input1, T2 input2, T3 input3, T4 input4, T5 input5)
+    parameters:
+    - id: contextObject
+      type: UnityEngine.Object
+    - id: input1
+      type: '{T1}'
+    - id: input2
+      type: '{T2}'
+    - id: input3
+      type: '{T3}'
+    - id: input4
+      type: '{T4}'
+    - id: input5
+      type: '{T5}'
+    content.vb: Public Sub Invoke(contextObject As [Object], input1 As T1, input2 As T2, input3 As T3, input4 As T4, input5 As T5)
+  overload: Ceres.Flow.EventDelegate`5.Invoke*
+  nameWithType.vb: EventDelegate(Of T1, T2, T3, T4, T5).Invoke(Object, T1, T2, T3, T4, T5)
+  fullName.vb: Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5).Invoke(UnityEngine.Object, T1, T2, T3, T4, T5)
+- uid: Ceres.Flow.EventDelegate`5.op_Implicit(Ceres.Flow.EventDelegate{`0,`1,`2,`3,`4})~System.Action{`0,`1,`2,`3,`4}
+  commentId: M:Ceres.Flow.EventDelegate`5.op_Implicit(Ceres.Flow.EventDelegate{`0,`1,`2,`3,`4})~System.Action{`0,`1,`2,`3,`4}
+  id: op_Implicit(Ceres.Flow.EventDelegate{`0,`1,`2,`3,`4})~System.Action{`0,`1,`2,`3,`4}
+  parent: Ceres.Flow.EventDelegate`5
+  langs:
+  - csharp
+  - vb
+  name: implicit operator Action<T1, T2, T3, T4, T5>(EventDelegate<T1, T2, T3, T4, T5>)
+  nameWithType: EventDelegate<T1, T2, T3, T4, T5>.implicit operator Action<T1, T2, T3, T4, T5>(EventDelegate<T1, T2, T3, T4, T5>)
+  fullName: Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>.implicit operator System.Action<T1, T2, T3, T4, T5>(Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>)
+  type: Operator
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static implicit operator Action<T1, T2, T3, T4, T5>(EventDelegate<T1, T2, T3, T4, T5> @delegate)
+    parameters:
+    - id: delegate
+      type: Ceres.Flow.EventDelegate`5
+    return:
+      type: System.Action{{T1},{T2},{T3},{T4},{T5}}
+    content.vb: Public Shared Widening Operator CType([delegate] As EventDelegate(Of T1, T2, T3, T4, T5)) As Action(Of T1, T2, T3, T4, T5)
+  overload: Ceres.Flow.EventDelegate`5.op_Implicit*
+  nameWithType.vb: EventDelegate(Of T1, T2, T3, T4, T5).CType(EventDelegate(Of T1, T2, T3, T4, T5))
+  fullName.vb: Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5).CType(Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5))
+  name.vb: CType(EventDelegate(Of T1, T2, T3, T4, T5))
+- uid: Ceres.Flow.EventDelegate`5.#ctor
+  commentId: M:Ceres.Flow.EventDelegate`5.#ctor
+  id: '#ctor'
+  parent: Ceres.Flow.EventDelegate`5
+  langs:
+  - csharp
+  - vb
+  name: EventDelegate()
+  nameWithType: EventDelegate<T1, T2, T3, T4, T5>.EventDelegate()
+  fullName: Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>.EventDelegate()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public EventDelegate()
+    content.vb: Public Sub New()
+  overload: Ceres.Flow.EventDelegate`5.#ctor*
+  nameWithType.vb: EventDelegate(Of T1, T2, T3, T4, T5).New()
+  fullName.vb: Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5).New()
+  name.vb: New()
+references:
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.EventDelegateBase
+  commentId: T:Ceres.Flow.EventDelegateBase
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.EventDelegateBase.html
+  name: EventDelegateBase
+  nameWithType: EventDelegateBase
+  fullName: Ceres.Flow.EventDelegateBase
+- uid: Ceres.Flow.EventDelegateBase.Bind(Ceres.Flow.IFlowEventDelegateTarget,System.String)
+  commentId: M:Ceres.Flow.EventDelegateBase.Bind(Ceres.Flow.IFlowEventDelegateTarget,System.String)
+  parent: Ceres.Flow.EventDelegateBase
+  isExternal: true
+  href: Ceres.Flow.EventDelegateBase.html#Ceres_Flow_EventDelegateBase_Bind_Ceres_Flow_IFlowEventDelegateTarget_System_String_
+  name: Bind(IFlowEventDelegateTarget, string)
+  nameWithType: EventDelegateBase.Bind(IFlowEventDelegateTarget, string)
+  fullName: Ceres.Flow.EventDelegateBase.Bind(Ceres.Flow.IFlowEventDelegateTarget, string)
+  nameWithType.vb: EventDelegateBase.Bind(IFlowEventDelegateTarget, String)
+  fullName.vb: Ceres.Flow.EventDelegateBase.Bind(Ceres.Flow.IFlowEventDelegateTarget, String)
+  name.vb: Bind(IFlowEventDelegateTarget, String)
+  spec.csharp:
+  - uid: Ceres.Flow.EventDelegateBase.Bind(Ceres.Flow.IFlowEventDelegateTarget,System.String)
+    name: Bind
+    isExternal: true
+    href: Ceres.Flow.EventDelegateBase.html#Ceres_Flow_EventDelegateBase_Bind_Ceres_Flow_IFlowEventDelegateTarget_System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowEventDelegateTarget
+    name: IFlowEventDelegateTarget
+    isExternal: true
+    href: Ceres.Flow.IFlowEventDelegateTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.EventDelegateBase.Bind(Ceres.Flow.IFlowEventDelegateTarget,System.String)
+    name: Bind
+    isExternal: true
+    href: Ceres.Flow.EventDelegateBase.html#Ceres_Flow_EventDelegateBase_Bind_Ceres_Flow_IFlowEventDelegateTarget_System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowEventDelegateTarget
+    name: IFlowEventDelegateTarget
+    isExternal: true
+    href: Ceres.Flow.IFlowEventDelegateTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Ceres.Flow.EventDelegateBase.Ceres.Flow.EventDelegateExtensions.IsValid
+  commentId: M:Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+  parent: Ceres.Flow.EventDelegateExtensions
+  definition: Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+  href: Ceres.Flow.EventDelegateExtensions.html#Ceres_Flow_EventDelegateExtensions_IsValid_Ceres_Flow_EventDelegateBase_
+  name: IsValid(EventDelegateBase)
+  nameWithType: EventDelegateExtensions.IsValid(EventDelegateBase)
+  fullName: Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+  spec.csharp:
+  - uid: Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+    name: IsValid
+    isExternal: true
+    href: Ceres.Flow.EventDelegateExtensions.html#Ceres_Flow_EventDelegateExtensions_IsValid_Ceres_Flow_EventDelegateBase_
+  - name: (
+  - uid: Ceres.Flow.EventDelegateBase
+    name: EventDelegateBase
+    isExternal: true
+    href: Ceres.Flow.EventDelegateBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+    name: IsValid
+    isExternal: true
+    href: Ceres.Flow.EventDelegateExtensions.html#Ceres_Flow_EventDelegateExtensions_IsValid_Ceres_Flow_EventDelegateBase_
+  - name: (
+  - uid: Ceres.Flow.EventDelegateBase
+    name: EventDelegateBase
+    isExternal: true
+    href: Ceres.Flow.EventDelegateBase.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+  commentId: M:Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+  isExternal: true
+  href: Ceres.Flow.EventDelegateExtensions.html#Ceres_Flow_EventDelegateExtensions_IsValid_Ceres_Flow_EventDelegateBase_
+  name: IsValid(EventDelegateBase)
+  nameWithType: EventDelegateExtensions.IsValid(EventDelegateBase)
+  fullName: Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+  spec.csharp:
+  - uid: Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+    name: IsValid
+    isExternal: true
+    href: Ceres.Flow.EventDelegateExtensions.html#Ceres_Flow_EventDelegateExtensions_IsValid_Ceres_Flow_EventDelegateBase_
+  - name: (
+  - uid: Ceres.Flow.EventDelegateBase
+    name: EventDelegateBase
+    isExternal: true
+    href: Ceres.Flow.EventDelegateBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.EventDelegateExtensions.IsValid(Ceres.Flow.EventDelegateBase)
+    name: IsValid
+    isExternal: true
+    href: Ceres.Flow.EventDelegateExtensions.html#Ceres_Flow_EventDelegateExtensions_IsValid_Ceres_Flow_EventDelegateBase_
+  - name: (
+  - uid: Ceres.Flow.EventDelegateBase
+    name: EventDelegateBase
+    isExternal: true
+    href: Ceres.Flow.EventDelegateBase.html
+  - name: )
+- uid: Ceres.Flow.EventDelegateExtensions
+  commentId: T:Ceres.Flow.EventDelegateExtensions
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.EventDelegateExtensions.html
+  name: EventDelegateExtensions
+  nameWithType: EventDelegateExtensions
+  fullName: Ceres.Flow.EventDelegateExtensions
+- uid: Ceres.Flow.EventDelegate`5.Invoke*
+  commentId: Overload:Ceres.Flow.EventDelegate`5.Invoke
+  isExternal: true
+  href: Ceres.Flow.EventDelegate-5.html#Ceres_Flow_EventDelegate_5_Invoke_UnityEngine_Object__0__1__2__3__4_
+  name: Invoke
+  nameWithType: EventDelegate<T1, T2, T3, T4, T5>.Invoke
+  fullName: Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>.Invoke
+  nameWithType.vb: EventDelegate(Of T1, T2, T3, T4, T5).Invoke
+  fullName.vb: Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5).Invoke
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: '{T1}'
+  commentId: '!:T1'
+  definition: T1
+  name: T1
+  nameWithType: T1
+  fullName: T1
+- uid: '{T2}'
+  commentId: '!:T2'
+  definition: T2
+  name: T2
+  nameWithType: T2
+  fullName: T2
+- uid: '{T3}'
+  commentId: '!:T3'
+  definition: T3
+  name: T3
+  nameWithType: T3
+  fullName: T3
+- uid: '{T4}'
+  commentId: '!:T4'
+  definition: T4
+  name: T4
+  nameWithType: T4
+  fullName: T4
+- uid: '{T5}'
+  commentId: '!:T5'
+  definition: T5
+  name: T5
+  nameWithType: T5
+  fullName: T5
+- uid: T1
+  name: T1
+  nameWithType: T1
+  fullName: T1
+- uid: T2
+  name: T2
+  nameWithType: T2
+  fullName: T2
+- uid: T3
+  name: T3
+  nameWithType: T3
+  fullName: T3
+- uid: T4
+  name: T4
+  nameWithType: T4
+  fullName: T4
+- uid: T5
+  name: T5
+  nameWithType: T5
+  fullName: T5
+- uid: Ceres.Flow.EventDelegate`5.op_Implicit*
+  commentId: Overload:Ceres.Flow.EventDelegate`5.op_Implicit
+  name: implicit operator
+  nameWithType: EventDelegate<T1, T2, T3, T4, T5>.implicit operator
+  fullName: Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>.implicit operator
+  nameWithType.vb: EventDelegate(Of T1, T2, T3, T4, T5).CType
+  fullName.vb: Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5).CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: Ceres.Flow.EventDelegate`5
+  commentId: T:Ceres.Flow.EventDelegate`5
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.EventDelegate-5.html
+  name: EventDelegate<T1, T2, T3, T4, T5>
+  nameWithType: EventDelegate<T1, T2, T3, T4, T5>
+  fullName: Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>
+  nameWithType.vb: EventDelegate(Of T1, T2, T3, T4, T5)
+  fullName.vb: Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5)
+  name.vb: EventDelegate(Of T1, T2, T3, T4, T5)
+  spec.csharp:
+  - uid: Ceres.Flow.EventDelegate`5
+    name: EventDelegate
+    isExternal: true
+    href: Ceres.Flow.EventDelegate-5.html
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Flow.EventDelegate`5
+    name: EventDelegate
+    isExternal: true
+    href: Ceres.Flow.EventDelegate-5.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: )
+- uid: System.Action{{T1},{T2},{T3},{T4},{T5}}
+  commentId: T:System.Action{`0,`1,`2,`3,`4}
+  parent: System
+  definition: System.Action`5
+  href: https://learn.microsoft.com/dotnet/api/system.action-5
+  name: Action<T1, T2, T3, T4, T5>
+  nameWithType: Action<T1, T2, T3, T4, T5>
+  fullName: System.Action<T1, T2, T3, T4, T5>
+  nameWithType.vb: Action(Of T1, T2, T3, T4, T5)
+  fullName.vb: System.Action(Of T1, T2, T3, T4, T5)
+  name.vb: Action(Of T1, T2, T3, T4, T5)
+  spec.csharp:
+  - uid: System.Action`5
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-5
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`5
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-5
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: )
+- uid: System.Action`5
+  commentId: T:System.Action`5
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-5
+  name: Action<T1, T2, T3, T4, T5>
+  nameWithType: Action<T1, T2, T3, T4, T5>
+  fullName: System.Action<T1, T2, T3, T4, T5>
+  nameWithType.vb: Action(Of T1, T2, T3, T4, T5)
+  fullName.vb: System.Action(Of T1, T2, T3, T4, T5)
+  name.vb: Action(Of T1, T2, T3, T4, T5)
+  spec.csharp:
+  - uid: System.Action`5
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-5
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`5
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-5
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: )
+- uid: Ceres.Flow.EventDelegate`5.#ctor*
+  commentId: Overload:Ceres.Flow.EventDelegate`5.#ctor
+  isExternal: true
+  href: Ceres.Flow.EventDelegate-5.html#Ceres_Flow_EventDelegate_5__ctor
+  name: EventDelegate
+  nameWithType: EventDelegate<T1, T2, T3, T4, T5>.EventDelegate
+  fullName: Ceres.Flow.EventDelegate<T1, T2, T3, T4, T5>.EventDelegate
+  nameWithType.vb: EventDelegate(Of T1, T2, T3, T4, T5).New
+  fullName.vb: Ceres.Flow.EventDelegate(Of T1, T2, T3, T4, T5).New
+  name.vb: New

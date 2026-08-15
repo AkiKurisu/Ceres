@@ -1,0 +1,1744 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.IFlowGraphRuntime
+  commentId: T:Ceres.Flow.IFlowGraphRuntime
+  id: IFlowGraphRuntime
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.IFlowGraphRuntime.Graph
+  - Ceres.Flow.IFlowGraphRuntime.Object
+  langs:
+  - csharp
+  - vb
+  name: IFlowGraphRuntime
+  nameWithType: IFlowGraphRuntime
+  fullName: Ceres.Flow.IFlowGraphRuntime
+  type: Interface
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Interface for <xref href="UnityEngine.Object" data-throw-if-not-resolved="false"></xref> contains <xref href="Ceres.Flow.FlowGraph" data-throw-if-not-resolved="false"></xref> runtime instance
+  example: []
+  syntax:
+    content: public interface IFlowGraphRuntime
+    content.vb: Public Interface IFlowGraphRuntime
+  derivedClasses:
+  - Ceres.Flow.FlowGraphInstanceObject
+  - Ceres.Flow.FlowGraphObject
+  - Ceres.Flow.FlowGraphObjectBase
+  - Ceres.Flow.FlowGraphScriptableObject
+  - Ceres.Gameplay.Actor
+  - Ceres.Gameplay.Capture.ScreenshotTool
+  - Ceres.Gameplay.Mod.Editor.ModExportConfig
+  - Ceres.Gameplay.PlayerController
+  extensionMethods:
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Events.EventCallback{{TEventType}})
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(System.String)
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(System.Object[],System.String)
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1({T1},System.String)
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2({T1},{T2},System.String)
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3({T1},{T2},{T3},System.String)
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4({T1},{T2},{T3},{T4},System.String)
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5({T1},{T2},{T3},{T4},{T5},System.String)
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6({T1},{T2},{T3},{T4},{T5},{T6},System.String)
+  - Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Events.EventBase)
+- uid: Ceres.Flow.IFlowGraphRuntime.Object
+  commentId: P:Ceres.Flow.IFlowGraphRuntime.Object
+  id: Object
+  parent: Ceres.Flow.IFlowGraphRuntime
+  langs:
+  - csharp
+  - vb
+  name: Object
+  nameWithType: IFlowGraphRuntime.Object
+  fullName: Ceres.Flow.IFlowGraphRuntime.Object
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Runtime context <xref href="UnityEngine.Object" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: Object Object { get; }
+    parameters: []
+    return:
+      type: UnityEngine.Object
+      description: ''
+    content.vb: ReadOnly Property [Object] As [Object]
+  overload: Ceres.Flow.IFlowGraphRuntime.Object*
+- uid: Ceres.Flow.IFlowGraphRuntime.Graph
+  commentId: P:Ceres.Flow.IFlowGraphRuntime.Graph
+  id: Graph
+  parent: Ceres.Flow.IFlowGraphRuntime
+  langs:
+  - csharp
+  - vb
+  name: Graph
+  nameWithType: IFlowGraphRuntime.Graph
+  fullName: Ceres.Flow.IFlowGraphRuntime.Graph
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Get runtime <xref href="Ceres.Flow.FlowGraph" data-throw-if-not-resolved="false"></xref> instance
+  example: []
+  syntax:
+    content: FlowGraph Graph { get; }
+    parameters: []
+    return:
+      type: Ceres.Flow.FlowGraph
+      description: ''
+    content.vb: ReadOnly Property Graph As FlowGraph
+  overload: Ceres.Flow.IFlowGraphRuntime.Graph*
+references:
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: Ceres.Flow.FlowGraph
+  commentId: T:Ceres.Flow.FlowGraph
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraph.html
+  name: FlowGraph
+  nameWithType: FlowGraph
+  fullName: Ceres.Flow.FlowGraph
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetEventHandler_Ceres_Flow_IFlowGraphRuntime_
+  name: GetEventHandler(IFlowGraphRuntime)
+  nameWithType: FlowGraphRuntimeExtensions.GetEventHandler(IFlowGraphRuntime)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+    name: GetEventHandler
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetEventHandler_Ceres_Flow_IFlowGraphRuntime_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+    name: GetEventHandler
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetEventHandler_Ceres_Flow_IFlowGraphRuntime_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_Ceres_Flow_IFlowGraphRuntime_
+  name: GetRuntimeFlowGraph(IFlowGraphRuntime)
+  nameWithType: FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(IFlowGraphRuntime)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+    name: GetRuntimeFlowGraph
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_Ceres_Flow_IFlowGraphRuntime_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+    name: GetRuntimeFlowGraph
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_Ceres_Flow_IFlowGraphRuntime_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Events.EventCallback{{TEventType}})
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventCallback{``0})
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventCallback{``0})
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_OverrideEventImplementation__1_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventCallback___0__
+  name: OverrideEventImplementation<TEventType>(IFlowGraphRuntime, EventCallback<TEventType>)
+  nameWithType: FlowGraphRuntimeExtensions.OverrideEventImplementation<TEventType>(IFlowGraphRuntime, EventCallback<TEventType>)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation<TEventType>(Ceres.Flow.IFlowGraphRuntime, Ceres.Events.EventCallback<TEventType>)
+  nameWithType.vb: FlowGraphRuntimeExtensions.OverrideEventImplementation(Of TEventType)(IFlowGraphRuntime, EventCallback(Of TEventType))
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation(Of TEventType)(Ceres.Flow.IFlowGraphRuntime, Ceres.Events.EventCallback(Of TEventType))
+  name.vb: OverrideEventImplementation(Of TEventType)(IFlowGraphRuntime, EventCallback(Of TEventType))
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventCallback{``0})
+    name: OverrideEventImplementation
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_OverrideEventImplementation__1_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventCallback___0__
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventCallback{``0})
+    name: OverrideEventImplementation
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_OverrideEventImplementation__1_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventCallback___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime,System.String)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime,System.String)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent_Ceres_Flow_IFlowGraphRuntime_System_String_
+  name: ProcessEvent(IFlowGraphRuntime, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent(IFlowGraphRuntime, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(IFlowGraphRuntime, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime, String)
+  name.vb: ProcessEvent(IFlowGraphRuntime, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent_Ceres_Flow_IFlowGraphRuntime_System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent_Ceres_Flow_IFlowGraphRuntime_System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(System.Object[],System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime,System.Object[],System.String)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime,System.Object[],System.String)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEventUber_Ceres_Flow_IFlowGraphRuntime_System_Object___System_String_
+  name: ProcessEventUber(IFlowGraphRuntime, object[], string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEventUber(IFlowGraphRuntime, object[], string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime, object[], string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEventUber(IFlowGraphRuntime, Object(), String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime, Object(), String)
+  name.vb: ProcessEventUber(IFlowGraphRuntime, Object(), String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime,System.Object[],System.String)
+    name: ProcessEventUber
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEventUber_Ceres_Flow_IFlowGraphRuntime_System_Object___System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime,System.Object[],System.String)
+    name: ProcessEventUber
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEventUber_Ceres_Flow_IFlowGraphRuntime_System_Object___System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1({T1},System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Flow.IFlowGraphRuntime,``0,System.String)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Flow.IFlowGraphRuntime,``0,System.String)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__1_Ceres_Flow_IFlowGraphRuntime___0_System_String_
+  name: ProcessEvent<T1>(IFlowGraphRuntime, T1, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1>(IFlowGraphRuntime, T1, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1>(Ceres.Flow.IFlowGraphRuntime, T1, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1)(IFlowGraphRuntime, T1, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1)(Ceres.Flow.IFlowGraphRuntime, T1, String)
+  name.vb: ProcessEvent(Of T1)(IFlowGraphRuntime, T1, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Flow.IFlowGraphRuntime,``0,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__1_Ceres_Flow_IFlowGraphRuntime___0_System_String_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Flow.IFlowGraphRuntime,``0,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__1_Ceres_Flow_IFlowGraphRuntime___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2({T1},{T2},System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Flow.IFlowGraphRuntime,``0,``1,System.String)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Flow.IFlowGraphRuntime,``0,``1,System.String)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__2_Ceres_Flow_IFlowGraphRuntime___0___1_System_String_
+  name: ProcessEvent<T1, T2>(IFlowGraphRuntime, T1, T2, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2>(IFlowGraphRuntime, T1, T2, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2>(Ceres.Flow.IFlowGraphRuntime, T1, T2, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2)(IFlowGraphRuntime, T1, T2, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2)(Ceres.Flow.IFlowGraphRuntime, T1, T2, String)
+  name.vb: ProcessEvent(Of T1, T2)(IFlowGraphRuntime, T1, T2, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Flow.IFlowGraphRuntime,``0,``1,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__2_Ceres_Flow_IFlowGraphRuntime___0___1_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Flow.IFlowGraphRuntime,``0,``1,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__2_Ceres_Flow_IFlowGraphRuntime___0___1_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3({T1},{T2},{T3},System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__3_Ceres_Flow_IFlowGraphRuntime___0___1___2_System_String_
+  name: ProcessEvent<T1, T2, T3>(IFlowGraphRuntime, T1, T2, T3, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3>(IFlowGraphRuntime, T1, T2, T3, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3>(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3)(IFlowGraphRuntime, T1, T2, T3, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3)(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, String)
+  name.vb: ProcessEvent(Of T1, T2, T3)(IFlowGraphRuntime, T1, T2, T3, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__3_Ceres_Flow_IFlowGraphRuntime___0___1___2_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__3_Ceres_Flow_IFlowGraphRuntime___0___1___2_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4({T1},{T2},{T3},{T4},System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__4_Ceres_Flow_IFlowGraphRuntime___0___1___2___3_System_String_
+  name: ProcessEvent<T1, T2, T3, T4>(IFlowGraphRuntime, T1, T2, T3, T4, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4>(IFlowGraphRuntime, T1, T2, T3, T4, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4>(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4)(IFlowGraphRuntime, T1, T2, T3, T4, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4)(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4)(IFlowGraphRuntime, T1, T2, T3, T4, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__4_Ceres_Flow_IFlowGraphRuntime___0___1___2___3_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__4_Ceres_Flow_IFlowGraphRuntime___0___1___2___3_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5({T1},{T2},{T3},{T4},{T5},System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__5_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4_System_String_
+  name: ProcessEvent<T1, T2, T3, T4, T5>(IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5>(IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5>(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5)(IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5)(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4, T5)(IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__5_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__5_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6({T1},{T2},{T3},{T4},{T5},{T6},System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__6_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4___5_System_String_
+  name: ProcessEvent<T1, T2, T3, T4, T5, T6>(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5, T6>(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5, T6>(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5, T6)(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5, T6)(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4, T5, T6)(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__6_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4___5_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - name: T6
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - name: T6
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__6_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4___5_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - name: T6
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - name: T6
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Events.EventBase)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventBase)
+  parent: Ceres.Flow.FlowGraphRuntimeExtensions
+  definition: Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventBase)
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_SendEvent_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventBase_
+  name: SendEvent(IFlowGraphRuntime, EventBase)
+  nameWithType: FlowGraphRuntimeExtensions.SendEvent(IFlowGraphRuntime, EventBase)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime, Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventBase)
+    name: SendEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_SendEvent_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventBase)
+    name: SendEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_SendEvent_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetEventHandler_Ceres_Flow_IFlowGraphRuntime_
+  name: GetEventHandler(IFlowGraphRuntime)
+  nameWithType: FlowGraphRuntimeExtensions.GetEventHandler(IFlowGraphRuntime)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+    name: GetEventHandler
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetEventHandler_Ceres_Flow_IFlowGraphRuntime_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetEventHandler(Ceres.Flow.IFlowGraphRuntime)
+    name: GetEventHandler
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetEventHandler_Ceres_Flow_IFlowGraphRuntime_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions
+  commentId: T:Ceres.Flow.FlowGraphRuntimeExtensions
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html
+  name: FlowGraphRuntimeExtensions
+  nameWithType: FlowGraphRuntimeExtensions
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_Ceres_Flow_IFlowGraphRuntime_
+  name: GetRuntimeFlowGraph(IFlowGraphRuntime)
+  nameWithType: FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(IFlowGraphRuntime)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+    name: GetRuntimeFlowGraph
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_Ceres_Flow_IFlowGraphRuntime_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.GetRuntimeFlowGraph(Ceres.Flow.IFlowGraphRuntime)
+    name: GetRuntimeFlowGraph
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_GetRuntimeFlowGraph_Ceres_Flow_IFlowGraphRuntime_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventCallback{``0})
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventCallback{``0})
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_OverrideEventImplementation__1_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventCallback___0__
+  name: OverrideEventImplementation<TEventType>(IFlowGraphRuntime, EventCallback<TEventType>)
+  nameWithType: FlowGraphRuntimeExtensions.OverrideEventImplementation<TEventType>(IFlowGraphRuntime, EventCallback<TEventType>)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation<TEventType>(Ceres.Flow.IFlowGraphRuntime, Ceres.Events.EventCallback<TEventType>)
+  nameWithType.vb: FlowGraphRuntimeExtensions.OverrideEventImplementation(Of TEventType)(IFlowGraphRuntime, EventCallback(Of TEventType))
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation(Of TEventType)(Ceres.Flow.IFlowGraphRuntime, Ceres.Events.EventCallback(Of TEventType))
+  name.vb: OverrideEventImplementation(Of TEventType)(IFlowGraphRuntime, EventCallback(Of TEventType))
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventCallback{``0})
+    name: OverrideEventImplementation
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_OverrideEventImplementation__1_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventCallback___0__
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.OverrideEventImplementation``1(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventCallback{``0})
+    name: OverrideEventImplementation
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_OverrideEventImplementation__1_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventCallback___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime,System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime,System.String)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent_Ceres_Flow_IFlowGraphRuntime_System_String_
+  name: ProcessEvent(IFlowGraphRuntime, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent(IFlowGraphRuntime, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(IFlowGraphRuntime, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime, String)
+  name.vb: ProcessEvent(IFlowGraphRuntime, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent_Ceres_Flow_IFlowGraphRuntime_System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Ceres.Flow.IFlowGraphRuntime,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent_Ceres_Flow_IFlowGraphRuntime_System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime,System.Object[],System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime,System.Object[],System.String)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEventUber_Ceres_Flow_IFlowGraphRuntime_System_Object___System_String_
+  name: ProcessEventUber(IFlowGraphRuntime, object[], string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEventUber(IFlowGraphRuntime, object[], string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime, object[], string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEventUber(IFlowGraphRuntime, Object(), String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime, Object(), String)
+  name.vb: ProcessEventUber(IFlowGraphRuntime, Object(), String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime,System.Object[],System.String)
+    name: ProcessEventUber
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEventUber_Ceres_Flow_IFlowGraphRuntime_System_Object___System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEventUber(Ceres.Flow.IFlowGraphRuntime,System.Object[],System.String)
+    name: ProcessEventUber
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEventUber_Ceres_Flow_IFlowGraphRuntime_System_Object___System_String_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Flow.IFlowGraphRuntime,``0,System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Flow.IFlowGraphRuntime,``0,System.String)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__1_Ceres_Flow_IFlowGraphRuntime___0_System_String_
+  name: ProcessEvent<T1>(IFlowGraphRuntime, T1, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1>(IFlowGraphRuntime, T1, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1>(Ceres.Flow.IFlowGraphRuntime, T1, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1)(IFlowGraphRuntime, T1, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1)(Ceres.Flow.IFlowGraphRuntime, T1, String)
+  name.vb: ProcessEvent(Of T1)(IFlowGraphRuntime, T1, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Flow.IFlowGraphRuntime,``0,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__1_Ceres_Flow_IFlowGraphRuntime___0_System_String_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``1(Ceres.Flow.IFlowGraphRuntime,``0,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__1_Ceres_Flow_IFlowGraphRuntime___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Flow.IFlowGraphRuntime,``0,``1,System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Flow.IFlowGraphRuntime,``0,``1,System.String)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__2_Ceres_Flow_IFlowGraphRuntime___0___1_System_String_
+  name: ProcessEvent<T1, T2>(IFlowGraphRuntime, T1, T2, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2>(IFlowGraphRuntime, T1, T2, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2>(Ceres.Flow.IFlowGraphRuntime, T1, T2, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2)(IFlowGraphRuntime, T1, T2, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2)(Ceres.Flow.IFlowGraphRuntime, T1, T2, String)
+  name.vb: ProcessEvent(Of T1, T2)(IFlowGraphRuntime, T1, T2, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Flow.IFlowGraphRuntime,``0,``1,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__2_Ceres_Flow_IFlowGraphRuntime___0___1_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``2(Ceres.Flow.IFlowGraphRuntime,``0,``1,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__2_Ceres_Flow_IFlowGraphRuntime___0___1_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__3_Ceres_Flow_IFlowGraphRuntime___0___1___2_System_String_
+  name: ProcessEvent<T1, T2, T3>(IFlowGraphRuntime, T1, T2, T3, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3>(IFlowGraphRuntime, T1, T2, T3, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3>(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3)(IFlowGraphRuntime, T1, T2, T3, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3)(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, String)
+  name.vb: ProcessEvent(Of T1, T2, T3)(IFlowGraphRuntime, T1, T2, T3, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__3_Ceres_Flow_IFlowGraphRuntime___0___1___2_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``3(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__3_Ceres_Flow_IFlowGraphRuntime___0___1___2_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__4_Ceres_Flow_IFlowGraphRuntime___0___1___2___3_System_String_
+  name: ProcessEvent<T1, T2, T3, T4>(IFlowGraphRuntime, T1, T2, T3, T4, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4>(IFlowGraphRuntime, T1, T2, T3, T4, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4>(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4)(IFlowGraphRuntime, T1, T2, T3, T4, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4)(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4)(IFlowGraphRuntime, T1, T2, T3, T4, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__4_Ceres_Flow_IFlowGraphRuntime___0___1___2___3_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``4(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__4_Ceres_Flow_IFlowGraphRuntime___0___1___2___3_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__5_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4_System_String_
+  name: ProcessEvent<T1, T2, T3, T4, T5>(IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5>(IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5>(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5)(IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5)(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4, T5)(IFlowGraphRuntime, T1, T2, T3, T4, T5, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__5_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``5(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__5_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__6_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4___5_System_String_
+  name: ProcessEvent<T1, T2, T3, T4, T5, T6>(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  nameWithType: FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5, T6>(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent<T1, T2, T3, T4, T5, T6>(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, string)
+  nameWithType.vb: FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5, T6)(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+  fullName.vb: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent(Of T1, T2, T3, T4, T5, T6)(Ceres.Flow.IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+  name.vb: ProcessEvent(Of T1, T2, T3, T4, T5, T6)(IFlowGraphRuntime, T1, T2, T3, T4, T5, T6, String)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__6_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4___5_System_String_
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - name: T6
+  - name: '>'
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - name: T6
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.ProcessEvent``6(Ceres.Flow.IFlowGraphRuntime,``0,``1,``2,``3,``4,``5,System.String)
+    name: ProcessEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_ProcessEvent__6_Ceres_Flow_IFlowGraphRuntime___0___1___2___3___4___5_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - name: T6
+  - name: )
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: ','
+  - name: " "
+  - name: T6
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventBase)
+  commentId: M:Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventBase)
+  isExternal: true
+  href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_SendEvent_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventBase_
+  name: SendEvent(IFlowGraphRuntime, EventBase)
+  nameWithType: FlowGraphRuntimeExtensions.SendEvent(IFlowGraphRuntime, EventBase)
+  fullName: Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime, Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventBase)
+    name: SendEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_SendEvent_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphRuntimeExtensions.SendEvent(Ceres.Flow.IFlowGraphRuntime,Ceres.Events.EventBase)
+    name: SendEvent
+    isExternal: true
+    href: Ceres.Flow.FlowGraphRuntimeExtensions.html#Ceres_Flow_FlowGraphRuntimeExtensions_SendEvent_Ceres_Flow_IFlowGraphRuntime_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphRuntime
+    name: IFlowGraphRuntime
+    isExternal: true
+    href: Ceres.Flow.IFlowGraphRuntime.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+  - name: )
+- uid: Ceres.Flow.IFlowGraphRuntime.Object*
+  commentId: Overload:Ceres.Flow.IFlowGraphRuntime.Object
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphRuntime.html#Ceres_Flow_IFlowGraphRuntime_Object
+  name: Object
+  nameWithType: IFlowGraphRuntime.Object
+  fullName: Ceres.Flow.IFlowGraphRuntime.Object
+- uid: Ceres.Flow.IFlowGraphRuntime.Graph*
+  commentId: Overload:Ceres.Flow.IFlowGraphRuntime.Graph
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphRuntime.html#Ceres_Flow_IFlowGraphRuntime_Graph
+  name: Graph
+  nameWithType: IFlowGraphRuntime.Graph
+  fullName: Ceres.Flow.IFlowGraphRuntime.Graph

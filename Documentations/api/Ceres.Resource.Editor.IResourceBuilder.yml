@@ -1,0 +1,135 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Resource.Editor.IResourceBuilder
+  commentId: T:Ceres.Resource.Editor.IResourceBuilder
+  id: IResourceBuilder
+  parent: Ceres.Resource.Editor
+  children:
+  - Ceres.Resource.Editor.IResourceBuilder.Build(Ceres.Resource.Editor.ResourceExportContext)
+  - Ceres.Resource.Editor.IResourceBuilder.Cleanup(Ceres.Resource.Editor.ResourceExportContext)
+  langs:
+  - csharp
+  - vb
+  name: IResourceBuilder
+  nameWithType: IResourceBuilder
+  fullName: Ceres.Resource.Editor.IResourceBuilder
+  type: Interface
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Resource.Editor
+  syntax:
+    content: public interface IResourceBuilder
+    content.vb: Public Interface IResourceBuilder
+  derivedClasses:
+  - Ceres.Resource.Editor.AddressableAssetBuilder
+  - Ceres.Resource.Editor.CustomBuilder
+  - Ceres.Resource.Editor.DefaultBundleNamePatchBuilder
+  - Ceres.Resource.Editor.ExcludeDefaultBundleBuilder
+- uid: Ceres.Resource.Editor.IResourceBuilder.Build(Ceres.Resource.Editor.ResourceExportContext)
+  commentId: M:Ceres.Resource.Editor.IResourceBuilder.Build(Ceres.Resource.Editor.ResourceExportContext)
+  id: Build(Ceres.Resource.Editor.ResourceExportContext)
+  parent: Ceres.Resource.Editor.IResourceBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build(ResourceExportContext)
+  nameWithType: IResourceBuilder.Build(ResourceExportContext)
+  fullName: Ceres.Resource.Editor.IResourceBuilder.Build(Ceres.Resource.Editor.ResourceExportContext)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Resource.Editor
+  summary: Preprocess for mod assets
+  example: []
+  syntax:
+    content: void Build(ResourceExportContext context)
+    parameters:
+    - id: context
+      type: Ceres.Resource.Editor.ResourceExportContext
+      description: ''
+    content.vb: Sub Build(context As ResourceExportContext)
+  overload: Ceres.Resource.Editor.IResourceBuilder.Build*
+- uid: Ceres.Resource.Editor.IResourceBuilder.Cleanup(Ceres.Resource.Editor.ResourceExportContext)
+  commentId: M:Ceres.Resource.Editor.IResourceBuilder.Cleanup(Ceres.Resource.Editor.ResourceExportContext)
+  id: Cleanup(Ceres.Resource.Editor.ResourceExportContext)
+  parent: Ceres.Resource.Editor.IResourceBuilder
+  langs:
+  - csharp
+  - vb
+  name: Cleanup(ResourceExportContext)
+  nameWithType: IResourceBuilder.Cleanup(ResourceExportContext)
+  fullName: Ceres.Resource.Editor.IResourceBuilder.Cleanup(Ceres.Resource.Editor.ResourceExportContext)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Resource.Editor
+  summary: Clean after build
+  example: []
+  syntax:
+    content: void Cleanup(ResourceExportContext context)
+    parameters:
+    - id: context
+      type: Ceres.Resource.Editor.ResourceExportContext
+      description: ''
+    content.vb: Sub Cleanup(context As ResourceExportContext)
+  overload: Ceres.Resource.Editor.IResourceBuilder.Cleanup*
+references:
+- uid: Ceres.Resource.Editor
+  commentId: N:Ceres.Resource.Editor
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Resource.Editor
+  nameWithType: Ceres.Resource.Editor
+  fullName: Ceres.Resource.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Resource.html
+  - name: .
+  - uid: Ceres.Resource.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Resource.Editor.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Resource.html
+  - name: .
+  - uid: Ceres.Resource.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Resource.Editor.html
+- uid: Ceres.Resource.Editor.IResourceBuilder.Build*
+  commentId: Overload:Ceres.Resource.Editor.IResourceBuilder.Build
+  isExternal: true
+  href: Ceres.Resource.Editor.IResourceBuilder.html#Ceres_Resource_Editor_IResourceBuilder_Build_Ceres_Resource_Editor_ResourceExportContext_
+  name: Build
+  nameWithType: IResourceBuilder.Build
+  fullName: Ceres.Resource.Editor.IResourceBuilder.Build
+- uid: Ceres.Resource.Editor.ResourceExportContext
+  commentId: T:Ceres.Resource.Editor.ResourceExportContext
+  parent: Ceres.Resource.Editor
+  isExternal: true
+  href: Ceres.Resource.Editor.ResourceExportContext.html
+  name: ResourceExportContext
+  nameWithType: ResourceExportContext
+  fullName: Ceres.Resource.Editor.ResourceExportContext
+- uid: Ceres.Resource.Editor.IResourceBuilder.Cleanup*
+  commentId: Overload:Ceres.Resource.Editor.IResourceBuilder.Cleanup
+  isExternal: true
+  href: Ceres.Resource.Editor.IResourceBuilder.html#Ceres_Resource_Editor_IResourceBuilder_Cleanup_Ceres_Resource_Editor_ResourceExportContext_
+  name: Cleanup
+  nameWithType: IResourceBuilder.Cleanup
+  fullName: Ceres.Resource.Editor.IResourceBuilder.Cleanup

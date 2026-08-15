@@ -1,0 +1,1400 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem
+  commentId: T:Ceres.ContentPipeline.ContentPipelineFileSystem
+  id: ContentPipelineFileSystem
+  parent: Ceres.ContentPipeline
+  children:
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite(System.String,System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory(System.String,System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile(System.String,System.String,System.Boolean)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory(System.String,System.Boolean)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories(System.String,System.String,System.IO.SearchOption)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles(System.String,System.String,System.IO.SearchOption)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin(System.String,System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative(System.String,System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory(System.String,System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile(System.String,System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(System.String,System.Int32,System.IO.FileOptions)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText(System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile(System.String,System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes(System.String,System.Byte[])
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(System.String,System.String)
+  - Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(System.String,System.String,System.Text.Encoding)
+  langs:
+  - csharp
+  - vb
+  name: ContentPipelineFileSystem
+  nameWithType: ContentPipelineFileSystem
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem
+  type: Class
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  summary: >-
+    Performs content-pipeline-owned file operations while keeping Windows extended paths
+
+    confined to the direct System.IO boundary.
+  example: []
+  syntax:
+    content: public static class ContentPipelineFileSystem
+    content.vb: Public Module ContentPipelineFileSystem
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize(System.String)
+  id: Normalize(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: Normalize(string)
+  nameWithType: ContentPipelineFileSystem.Normalize(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static string Normalize(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function Normalize(path As String) As String
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize*
+  nameWithType.vb: ContentPipelineFileSystem.Normalize(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize(String)
+  name.vb: Normalize(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin(System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin(System.String,System.String)
+  id: IsWithin(System.String,System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: IsWithin(string, string)
+  nameWithType: ContentPipelineFileSystem.IsWithin(string, string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin(string, string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static bool IsWithin(string path, string root)
+    parameters:
+    - id: path
+      type: System.String
+    - id: root
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsWithin(path As String, root As String) As Boolean
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin*
+  nameWithType.vb: ContentPipelineFileSystem.IsWithin(String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin(String, String)
+  name.vb: IsWithin(String, String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative(System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative(System.String,System.String)
+  id: MakeRelative(System.String,System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: MakeRelative(string, string)
+  nameWithType: ContentPipelineFileSystem.MakeRelative(string, string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative(string, string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static string MakeRelative(string root, string path)
+    parameters:
+    - id: root
+      type: System.String
+    - id: path
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function MakeRelative(root As String, path As String) As String
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative*
+  nameWithType.vb: ContentPipelineFileSystem.MakeRelative(String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative(String, String)
+  name.vb: MakeRelative(String, String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists(System.String)
+  id: FileExists(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: FileExists(string)
+  nameWithType: ContentPipelineFileSystem.FileExists(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static bool FileExists(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function FileExists(path As String) As Boolean
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists*
+  nameWithType.vb: ContentPipelineFileSystem.FileExists(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists(String)
+  name.vb: FileExists(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists(System.String)
+  id: DirectoryExists(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: DirectoryExists(string)
+  nameWithType: ContentPipelineFileSystem.DirectoryExists(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static bool DirectoryExists(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function DirectoryExists(path As String) As Boolean
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists*
+  nameWithType.vb: ContentPipelineFileSystem.DirectoryExists(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists(String)
+  name.vb: DirectoryExists(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory(System.String)
+  id: CreateDirectory(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: CreateDirectory(string)
+  nameWithType: ContentPipelineFileSystem.CreateDirectory(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void CreateDirectory(string path)
+    parameters:
+    - id: path
+      type: System.String
+    content.vb: Public Shared Sub CreateDirectory(path As String)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory*
+  nameWithType.vb: ContentPipelineFileSystem.CreateDirectory(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory(String)
+  name.vb: CreateDirectory(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(System.String)
+  id: OpenRead(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: OpenRead(string)
+  nameWithType: ContentPipelineFileSystem.OpenRead(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static Stream OpenRead(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.IO.Stream
+    content.vb: Public Shared Function OpenRead(path As String) As Stream
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead*
+  nameWithType.vb: ContentPipelineFileSystem.OpenRead(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(String)
+  name.vb: OpenRead(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(System.String,System.Int32,System.IO.FileOptions)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(System.String,System.Int32,System.IO.FileOptions)
+  id: OpenRead(System.String,System.Int32,System.IO.FileOptions)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: OpenRead(string, int, FileOptions)
+  nameWithType: ContentPipelineFileSystem.OpenRead(string, int, FileOptions)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(string, int, System.IO.FileOptions)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static Stream OpenRead(string path, int bufferSize, FileOptions options)
+    parameters:
+    - id: path
+      type: System.String
+    - id: bufferSize
+      type: System.Int32
+    - id: options
+      type: System.IO.FileOptions
+    return:
+      type: System.IO.Stream
+    content.vb: Public Shared Function OpenRead(path As String, bufferSize As Integer, options As FileOptions) As Stream
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead*
+  nameWithType.vb: ContentPipelineFileSystem.OpenRead(String, Integer, FileOptions)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead(String, Integer, System.IO.FileOptions)
+  name.vb: OpenRead(String, Integer, FileOptions)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+  id: OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: OpenFile(string, FileMode, FileAccess, FileShare)
+  nameWithType: ContentPipelineFileSystem.OpenFile(string, FileMode, FileAccess, FileShare)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile(string, System.IO.FileMode, System.IO.FileAccess, System.IO.FileShare)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static FileStream OpenFile(string path, FileMode mode, FileAccess access, FileShare share)
+    parameters:
+    - id: path
+      type: System.String
+    - id: mode
+      type: System.IO.FileMode
+    - id: access
+      type: System.IO.FileAccess
+    - id: share
+      type: System.IO.FileShare
+    return:
+      type: System.IO.FileStream
+    content.vb: Public Shared Function OpenFile(path As String, mode As FileMode, access As FileAccess, share As FileShare) As FileStream
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile*
+  nameWithType.vb: ContentPipelineFileSystem.OpenFile(String, FileMode, FileAccess, FileShare)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile(String, System.IO.FileMode, System.IO.FileAccess, System.IO.FileShare)
+  name.vb: OpenFile(String, FileMode, FileAccess, FileShare)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText(System.String)
+  id: ReadAllText(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: ReadAllText(string)
+  nameWithType: ContentPipelineFileSystem.ReadAllText(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static string ReadAllText(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function ReadAllText(path As String) As String
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText*
+  nameWithType.vb: ContentPipelineFileSystem.ReadAllText(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText(String)
+  name.vb: ReadAllText(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes(System.String)
+  id: ReadAllBytes(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: ReadAllBytes(string)
+  nameWithType: ContentPipelineFileSystem.ReadAllBytes(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static byte[] ReadAllBytes(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.Byte[]
+    content.vb: Public Shared Function ReadAllBytes(path As String) As Byte()
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes*
+  nameWithType.vb: ContentPipelineFileSystem.ReadAllBytes(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes(String)
+  name.vb: ReadAllBytes(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(System.String,System.String)
+  id: WriteAllText(System.String,System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: WriteAllText(string, string)
+  nameWithType: ContentPipelineFileSystem.WriteAllText(string, string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(string, string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void WriteAllText(string path, string content)
+    parameters:
+    - id: path
+      type: System.String
+    - id: content
+      type: System.String
+    content.vb: Public Shared Sub WriteAllText(path As String, content As String)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText*
+  nameWithType.vb: ContentPipelineFileSystem.WriteAllText(String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(String, String)
+  name.vb: WriteAllText(String, String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(System.String,System.String,System.Text.Encoding)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(System.String,System.String,System.Text.Encoding)
+  id: WriteAllText(System.String,System.String,System.Text.Encoding)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: WriteAllText(string, string, Encoding)
+  nameWithType: ContentPipelineFileSystem.WriteAllText(string, string, Encoding)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(string, string, System.Text.Encoding)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void WriteAllText(string path, string content, Encoding encoding)
+    parameters:
+    - id: path
+      type: System.String
+    - id: content
+      type: System.String
+    - id: encoding
+      type: System.Text.Encoding
+    content.vb: Public Shared Sub WriteAllText(path As String, content As String, encoding As Encoding)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText*
+  nameWithType.vb: ContentPipelineFileSystem.WriteAllText(String, String, Encoding)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText(String, String, System.Text.Encoding)
+  name.vb: WriteAllText(String, String, Encoding)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes(System.String,System.Byte[])
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes(System.String,System.Byte[])
+  id: WriteAllBytes(System.String,System.Byte[])
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: WriteAllBytes(string, byte[])
+  nameWithType: ContentPipelineFileSystem.WriteAllBytes(string, byte[])
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes(string, byte[])
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void WriteAllBytes(string path, byte[] content)
+    parameters:
+    - id: path
+      type: System.String
+    - id: content
+      type: System.Byte[]
+    content.vb: Public Shared Sub WriteAllBytes(path As String, content As Byte())
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes*
+  nameWithType.vb: ContentPipelineFileSystem.WriteAllBytes(String, Byte())
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes(String, Byte())
+  name.vb: WriteAllBytes(String, Byte())
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile(System.String,System.String,System.Boolean)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile(System.String,System.String,System.Boolean)
+  id: CopyFile(System.String,System.String,System.Boolean)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: CopyFile(string, string, bool)
+  nameWithType: ContentPipelineFileSystem.CopyFile(string, string, bool)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile(string, string, bool)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void CopyFile(string source, string destination, bool overwrite)
+    parameters:
+    - id: source
+      type: System.String
+    - id: destination
+      type: System.String
+    - id: overwrite
+      type: System.Boolean
+    content.vb: Public Shared Sub CopyFile(source As String, destination As String, overwrite As Boolean)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile*
+  nameWithType.vb: ContentPipelineFileSystem.CopyFile(String, String, Boolean)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile(String, String, Boolean)
+  name.vb: CopyFile(String, String, Boolean)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile(System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile(System.String,System.String)
+  id: MoveFile(System.String,System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: MoveFile(string, string)
+  nameWithType: ContentPipelineFileSystem.MoveFile(string, string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile(string, string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void MoveFile(string source, string destination)
+    parameters:
+    - id: source
+      type: System.String
+    - id: destination
+      type: System.String
+    content.vb: Public Shared Sub MoveFile(source As String, destination As String)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile*
+  nameWithType.vb: ContentPipelineFileSystem.MoveFile(String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile(String, String)
+  name.vb: MoveFile(String, String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile(System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile(System.String,System.String)
+  id: ReplaceFile(System.String,System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: ReplaceFile(string, string)
+  nameWithType: ContentPipelineFileSystem.ReplaceFile(string, string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile(string, string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void ReplaceFile(string source, string destination)
+    parameters:
+    - id: source
+      type: System.String
+    - id: destination
+      type: System.String
+    content.vb: Public Shared Sub ReplaceFile(source As String, destination As String)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile*
+  nameWithType.vb: ContentPipelineFileSystem.ReplaceFile(String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile(String, String)
+  name.vb: ReplaceFile(String, String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile(System.String)
+  id: DeleteFile(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: DeleteFile(string)
+  nameWithType: ContentPipelineFileSystem.DeleteFile(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void DeleteFile(string path)
+    parameters:
+    - id: path
+      type: System.String
+    content.vb: Public Shared Sub DeleteFile(path As String)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile*
+  nameWithType.vb: ContentPipelineFileSystem.DeleteFile(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile(String)
+  name.vb: DeleteFile(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength(System.String)
+  id: GetFileLength(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: GetFileLength(string)
+  nameWithType: ContentPipelineFileSystem.GetFileLength(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static long GetFileLength(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.Int64
+    content.vb: Public Shared Function GetFileLength(path As String) As Long
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength*
+  nameWithType.vb: ContentPipelineFileSystem.GetFileLength(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength(String)
+  name.vb: GetFileLength(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories(System.String,System.String,System.IO.SearchOption)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories(System.String,System.String,System.IO.SearchOption)
+  id: GetDirectories(System.String,System.String,System.IO.SearchOption)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: GetDirectories(string, string, SearchOption)
+  nameWithType: ContentPipelineFileSystem.GetDirectories(string, string, SearchOption)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories(string, string, System.IO.SearchOption)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static string[] GetDirectories(string path, string searchPattern = "*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
+    parameters:
+    - id: path
+      type: System.String
+    - id: searchPattern
+      type: System.String
+    - id: searchOption
+      type: System.IO.SearchOption
+    return:
+      type: System.String[]
+    content.vb: Public Shared Function GetDirectories(path As String, searchPattern As String = "*", searchOption As SearchOption = SearchOption.TopDirectoryOnly) As String()
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories*
+  nameWithType.vb: ContentPipelineFileSystem.GetDirectories(String, String, SearchOption)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories(String, String, System.IO.SearchOption)
+  name.vb: GetDirectories(String, String, SearchOption)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles(System.String,System.String,System.IO.SearchOption)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles(System.String,System.String,System.IO.SearchOption)
+  id: GetFiles(System.String,System.String,System.IO.SearchOption)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: GetFiles(string, string, SearchOption)
+  nameWithType: ContentPipelineFileSystem.GetFiles(string, string, SearchOption)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles(string, string, System.IO.SearchOption)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static string[] GetFiles(string path, string searchPattern = "*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
+    parameters:
+    - id: path
+      type: System.String
+    - id: searchPattern
+      type: System.String
+    - id: searchOption
+      type: System.IO.SearchOption
+    return:
+      type: System.String[]
+    content.vb: Public Shared Function GetFiles(path As String, searchPattern As String = "*", searchOption As SearchOption = SearchOption.TopDirectoryOnly) As String()
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles*
+  nameWithType.vb: ContentPipelineFileSystem.GetFiles(String, String, SearchOption)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles(String, String, System.IO.SearchOption)
+  name.vb: GetFiles(String, String, SearchOption)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries(System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries(System.String)
+  id: GetFileSystemEntries(System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: GetFileSystemEntries(string)
+  nameWithType: ContentPipelineFileSystem.GetFileSystemEntries(string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries(string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static string[] GetFileSystemEntries(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.String[]
+    content.vb: Public Shared Function GetFileSystemEntries(path As String) As String()
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries*
+  nameWithType.vb: ContentPipelineFileSystem.GetFileSystemEntries(String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries(String)
+  name.vb: GetFileSystemEntries(String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory(System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory(System.String,System.String)
+  id: MoveDirectory(System.String,System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: MoveDirectory(string, string)
+  nameWithType: ContentPipelineFileSystem.MoveDirectory(string, string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory(string, string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void MoveDirectory(string source, string destination)
+    parameters:
+    - id: source
+      type: System.String
+    - id: destination
+      type: System.String
+    content.vb: Public Shared Sub MoveDirectory(source As String, destination As String)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory*
+  nameWithType.vb: ContentPipelineFileSystem.MoveDirectory(String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory(String, String)
+  name.vb: MoveDirectory(String, String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory(System.String,System.Boolean)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory(System.String,System.Boolean)
+  id: DeleteDirectory(System.String,System.Boolean)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: DeleteDirectory(string, bool)
+  nameWithType: ContentPipelineFileSystem.DeleteDirectory(string, bool)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory(string, bool)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void DeleteDirectory(string path, bool recursive = false)
+    parameters:
+    - id: path
+      type: System.String
+    - id: recursive
+      type: System.Boolean
+    content.vb: Public Shared Sub DeleteDirectory(path As String, recursive As Boolean = False)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory*
+  nameWithType.vb: ContentPipelineFileSystem.DeleteDirectory(String, Boolean)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory(String, Boolean)
+  name.vb: DeleteDirectory(String, Boolean)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory(System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory(System.String,System.String)
+  id: CopyDirectory(System.String,System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: CopyDirectory(string, string)
+  nameWithType: ContentPipelineFileSystem.CopyDirectory(string, string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory(string, string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void CopyDirectory(string source, string destination)
+    parameters:
+    - id: source
+      type: System.String
+    - id: destination
+      type: System.String
+    content.vb: Public Shared Sub CopyDirectory(source As String, destination As String)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory*
+  nameWithType.vb: ContentPipelineFileSystem.CopyDirectory(String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory(String, String)
+  name.vb: CopyDirectory(String, String)
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite(System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite(System.String,System.String)
+  id: AtomicWrite(System.String,System.String)
+  parent: Ceres.ContentPipeline.ContentPipelineFileSystem
+  langs:
+  - csharp
+  - vb
+  name: AtomicWrite(string, string)
+  nameWithType: ContentPipelineFileSystem.AtomicWrite(string, string)
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite(string, string)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static void AtomicWrite(string path, string content)
+    parameters:
+    - id: path
+      type: System.String
+    - id: content
+      type: System.String
+    content.vb: Public Shared Sub AtomicWrite(path As String, content As String)
+  overload: Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite*
+  nameWithType.vb: ContentPipelineFileSystem.AtomicWrite(String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite(String, String)
+  name.vb: AtomicWrite(String, String)
+references:
+- uid: Ceres.ContentPipeline
+  commentId: N:Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.ContentPipeline
+  nameWithType: Ceres.ContentPipeline
+  fullName: Ceres.ContentPipeline
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.ContentPipeline
+    name: ContentPipeline
+    isExternal: true
+    href: Ceres.ContentPipeline.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.ContentPipeline
+    name: ContentPipeline
+    isExternal: true
+    href: Ceres.ContentPipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_Normalize_System_String_
+  name: Normalize
+  nameWithType: ContentPipelineFileSystem.Normalize
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.Normalize
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_IsWithin_System_String_System_String_
+  name: IsWithin
+  nameWithType: ContentPipelineFileSystem.IsWithin
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.IsWithin
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_MakeRelative_System_String_System_String_
+  name: MakeRelative
+  nameWithType: ContentPipelineFileSystem.MakeRelative
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.MakeRelative
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_FileExists_System_String_
+  name: FileExists
+  nameWithType: ContentPipelineFileSystem.FileExists
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.FileExists
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_DirectoryExists_System_String_
+  name: DirectoryExists
+  nameWithType: ContentPipelineFileSystem.DirectoryExists
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.DirectoryExists
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_CreateDirectory_System_String_
+  name: CreateDirectory
+  nameWithType: ContentPipelineFileSystem.CreateDirectory
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.CreateDirectory
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_OpenRead_System_String_
+  name: OpenRead
+  nameWithType: ContentPipelineFileSystem.OpenRead
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenRead
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.IO.FileOptions
+  commentId: T:System.IO.FileOptions
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.fileoptions
+  name: FileOptions
+  nameWithType: FileOptions
+  fullName: System.IO.FileOptions
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_OpenFile_System_String_System_IO_FileMode_System_IO_FileAccess_System_IO_FileShare_
+  name: OpenFile
+  nameWithType: ContentPipelineFileSystem.OpenFile
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.OpenFile
+- uid: System.IO.FileMode
+  commentId: T:System.IO.FileMode
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.filemode
+  name: FileMode
+  nameWithType: FileMode
+  fullName: System.IO.FileMode
+- uid: System.IO.FileAccess
+  commentId: T:System.IO.FileAccess
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.fileaccess
+  name: FileAccess
+  nameWithType: FileAccess
+  fullName: System.IO.FileAccess
+- uid: System.IO.FileShare
+  commentId: T:System.IO.FileShare
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.fileshare
+  name: FileShare
+  nameWithType: FileShare
+  fullName: System.IO.FileShare
+- uid: System.IO.FileStream
+  commentId: T:System.IO.FileStream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.filestream
+  name: FileStream
+  nameWithType: FileStream
+  fullName: System.IO.FileStream
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_ReadAllText_System_String_
+  name: ReadAllText
+  nameWithType: ContentPipelineFileSystem.ReadAllText
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllText
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_ReadAllBytes_System_String_
+  name: ReadAllBytes
+  nameWithType: ContentPipelineFileSystem.ReadAllBytes
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.ReadAllBytes
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_WriteAllText_System_String_System_String_
+  name: WriteAllText
+  nameWithType: ContentPipelineFileSystem.WriteAllText
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllText
+- uid: System.Text.Encoding
+  commentId: T:System.Text.Encoding
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.encoding
+  name: Encoding
+  nameWithType: Encoding
+  fullName: System.Text.Encoding
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_WriteAllBytes_System_String_System_Byte___
+  name: WriteAllBytes
+  nameWithType: ContentPipelineFileSystem.WriteAllBytes
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.WriteAllBytes
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_CopyFile_System_String_System_String_System_Boolean_
+  name: CopyFile
+  nameWithType: ContentPipelineFileSystem.CopyFile
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyFile
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_MoveFile_System_String_System_String_
+  name: MoveFile
+  nameWithType: ContentPipelineFileSystem.MoveFile
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveFile
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_ReplaceFile_System_String_System_String_
+  name: ReplaceFile
+  nameWithType: ContentPipelineFileSystem.ReplaceFile
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.ReplaceFile
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_DeleteFile_System_String_
+  name: DeleteFile
+  nameWithType: ContentPipelineFileSystem.DeleteFile
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteFile
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_GetFileLength_System_String_
+  name: GetFileLength
+  nameWithType: ContentPipelineFileSystem.GetFileLength
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileLength
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_GetDirectories_System_String_System_String_System_IO_SearchOption_
+  name: GetDirectories
+  nameWithType: ContentPipelineFileSystem.GetDirectories
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.GetDirectories
+- uid: System.IO.SearchOption
+  commentId: T:System.IO.SearchOption
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.searchoption
+  name: SearchOption
+  nameWithType: SearchOption
+  fullName: System.IO.SearchOption
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_GetFiles_System_String_System_String_System_IO_SearchOption_
+  name: GetFiles
+  nameWithType: ContentPipelineFileSystem.GetFiles
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFiles
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_GetFileSystemEntries_System_String_
+  name: GetFileSystemEntries
+  nameWithType: ContentPipelineFileSystem.GetFileSystemEntries
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.GetFileSystemEntries
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_MoveDirectory_System_String_System_String_
+  name: MoveDirectory
+  nameWithType: ContentPipelineFileSystem.MoveDirectory
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.MoveDirectory
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_DeleteDirectory_System_String_System_Boolean_
+  name: DeleteDirectory
+  nameWithType: ContentPipelineFileSystem.DeleteDirectory
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.DeleteDirectory
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_CopyDirectory_System_String_System_String_
+  name: CopyDirectory
+  nameWithType: ContentPipelineFileSystem.CopyDirectory
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.CopyDirectory
+- uid: Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite*
+  commentId: Overload:Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentPipelineFileSystem.html#Ceres_ContentPipeline_ContentPipelineFileSystem_AtomicWrite_System_String_System_String_
+  name: AtomicWrite
+  nameWithType: ContentPipelineFileSystem.AtomicWrite
+  fullName: Ceres.ContentPipeline.ContentPipelineFileSystem.AtomicWrite

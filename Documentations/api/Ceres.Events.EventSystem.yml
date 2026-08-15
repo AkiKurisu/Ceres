@@ -1,0 +1,763 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.EventSystem
+  commentId: T:Ceres.Events.EventSystem
+  id: EventSystem
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.EventSystem.#ctor
+  - Ceres.Events.EventSystem.Awake
+  - Ceres.Events.EventSystem.EventHandler
+  - Ceres.Events.EventSystem.GetCallbackEventHandler
+  - Ceres.Events.EventSystem.Instance
+  - Ceres.Events.EventSystem.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  - Ceres.Events.EventSystem.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  - Ceres.Events.EventSystem.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  langs:
+  - csharp
+  - vb
+  name: EventSystem
+  nameWithType: EventSystem
+  fullName: Ceres.Events.EventSystem
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: 'public class EventSystem : MonoEventCoordinator, IEventCoordinator'
+    content.vb: Public Class EventSystem Inherits MonoEventCoordinator Implements IEventCoordinator
+  inheritance:
+  - System.Object
+  - Ceres.Events.MonoEventCoordinator
+  implements:
+  - Ceres.Events.IEventCoordinator
+  inheritedMembers:
+  - Ceres.Events.MonoEventCoordinator.Update
+  - Ceres.Events.MonoEventCoordinator.FixedUpdate
+  - Ceres.Events.MonoEventCoordinator.LateUpdate
+  - Ceres.Events.MonoEventCoordinator.OnDestroy
+  - Ceres.Events.MonoEventCoordinator.Dispatch(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  - Ceres.Events.MonoEventCoordinator.Refresh
+  - Ceres.Events.MonoEventCoordinator.InterceptEvent(Ceres.Events.EventBase)
+  - Ceres.Events.MonoEventCoordinator.PostProcessEvent(Ceres.Events.EventBase)
+  - Ceres.Events.MonoEventCoordinator.EventDispatcher
+  - Ceres.Events.MonoEventCoordinator.DispatchStatus
+- uid: Ceres.Events.EventSystem.Awake
+  commentId: M:Ceres.Events.EventSystem.Awake
+  id: Awake
+  parent: Ceres.Events.EventSystem
+  langs:
+  - csharp
+  - vb
+  name: Awake()
+  nameWithType: EventSystem.Awake()
+  fullName: Ceres.Events.EventSystem.Awake()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  example: []
+  syntax:
+    content: protected override void Awake()
+    content.vb: Protected Overrides Sub Awake()
+  overridden: Ceres.Events.MonoEventCoordinator.Awake
+  overload: Ceres.Events.EventSystem.Awake*
+- uid: Ceres.Events.EventSystem.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.EventSystem.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  id: RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  parent: Ceres.Events.EventSystem
+  langs:
+  - csharp
+  - vb
+  name: RegisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  nameWithType: EventSystem.RegisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  fullName: Ceres.Events.EventSystem.RegisterCallback<TEventType>(Ceres.Events.EventCallback<TEventType>, Ceres.Events.TrickleDown)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Adds an event handler to the instance. If the event handler has already been registered for the same phase (either TrickleDown or BubbleUp) then this method has no effect.
+  example: []
+  syntax:
+    content: 'public static void RegisterCallback<TEventType>(EventCallback<TEventType> callback, TrickleDown useTrickleDown = TrickleDown.NoTrickleDown) where TEventType : EventBase<TEventType>, new()'
+    parameters:
+    - id: callback
+      type: Ceres.Events.EventCallback{{TEventType}}
+      description: The event handler to add.
+    - id: useTrickleDown
+      type: Ceres.Events.TrickleDown
+      description: ''
+    typeParameters:
+    - id: TEventType
+    content.vb: Public Shared Sub RegisterCallback(Of TEventType As {EventBase(Of TEventType), New})(callback As EventCallback(Of TEventType), useTrickleDown As TrickleDown = TrickleDown.NoTrickleDown)
+  overload: Ceres.Events.EventSystem.RegisterCallback*
+  nameWithType.vb: EventSystem.RegisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  fullName.vb: Ceres.Events.EventSystem.RegisterCallback(Of TEventType)(Ceres.Events.EventCallback(Of TEventType), Ceres.Events.TrickleDown)
+  name.vb: RegisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+- uid: Ceres.Events.EventSystem.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.EventSystem.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  id: UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  parent: Ceres.Events.EventSystem
+  langs:
+  - csharp
+  - vb
+  name: UnregisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  nameWithType: EventSystem.UnregisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  fullName: Ceres.Events.EventSystem.UnregisterCallback<TEventType>(Ceres.Events.EventCallback<TEventType>, Ceres.Events.TrickleDown)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Remove callback from the instance.
+  example: []
+  syntax:
+    content: 'public static void UnregisterCallback<TEventType>(EventCallback<TEventType> callback, TrickleDown useTrickleDown = TrickleDown.NoTrickleDown) where TEventType : EventBase<TEventType>, new()'
+    parameters:
+    - id: callback
+      type: Ceres.Events.EventCallback{{TEventType}}
+      description: The callback to remove. If this callback was never registered, nothing happens.
+    - id: useTrickleDown
+      type: Ceres.Events.TrickleDown
+      description: Set this parameter to true to remove the callback from the TrickleDown phase. Set this parameter false to remove the callback from the BubbleUp phase.
+    typeParameters:
+    - id: TEventType
+    content.vb: Public Shared Sub UnregisterCallback(Of TEventType As {EventBase(Of TEventType), New})(callback As EventCallback(Of TEventType), useTrickleDown As TrickleDown = TrickleDown.NoTrickleDown)
+  overload: Ceres.Events.EventSystem.UnregisterCallback*
+  nameWithType.vb: EventSystem.UnregisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  fullName.vb: Ceres.Events.EventSystem.UnregisterCallback(Of TEventType)(Ceres.Events.EventCallback(Of TEventType), Ceres.Events.TrickleDown)
+  name.vb: UnregisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+- uid: Ceres.Events.EventSystem.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  commentId: M:Ceres.Events.EventSystem.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  id: SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  parent: Ceres.Events.EventSystem
+  langs:
+  - csharp
+  - vb
+  name: SendEvent(EventBase, DispatchMode, MonoDispatchType)
+  nameWithType: EventSystem.SendEvent(EventBase, DispatchMode, MonoDispatchType)
+  fullName: Ceres.Events.EventSystem.SendEvent(Ceres.Events.EventBase, Ceres.Events.DispatchMode, Ceres.Events.MonoDispatchType)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Sends an event to the event handler.
+  example: []
+  syntax:
+    content: public static void SendEvent(EventBase eventBase, DispatchMode dispatchMode = DispatchMode.Default, MonoDispatchType monoDispatchType = MonoDispatchType.Update)
+    parameters:
+    - id: eventBase
+      type: Ceres.Events.EventBase
+      description: The event to send.
+    - id: dispatchMode
+      type: Ceres.Events.DispatchMode
+      description: The event dispatch mode.
+    - id: monoDispatchType
+      type: Ceres.Events.MonoDispatchType
+      description: Dispatch event on which <xref href="UnityEngine.MonoBehaviour" data-throw-if-not-resolved="false"></xref> tick frame。
+    content.vb: Public Shared Sub SendEvent(eventBase As EventBase, dispatchMode As DispatchMode = DispatchMode.Default, monoDispatchType As MonoDispatchType = MonoDispatchType.Update)
+  overload: Ceres.Events.EventSystem.SendEvent*
+- uid: Ceres.Events.EventSystem.GetCallbackEventHandler
+  commentId: M:Ceres.Events.EventSystem.GetCallbackEventHandler
+  id: GetCallbackEventHandler
+  parent: Ceres.Events.EventSystem
+  langs:
+  - csharp
+  - vb
+  name: GetCallbackEventHandler()
+  nameWithType: EventSystem.GetCallbackEventHandler()
+  fullName: Ceres.Events.EventSystem.GetCallbackEventHandler()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Get coordinator's default event handler
+  example: []
+  syntax:
+    content: public override sealed CallbackEventHandler GetCallbackEventHandler()
+    return:
+      type: Ceres.Events.CallbackEventHandler
+      description: ''
+    content.vb: Public NotOverridable Overrides Function GetCallbackEventHandler() As CallbackEventHandler
+  overridden: Ceres.Events.MonoEventCoordinator.GetCallbackEventHandler
+  overload: Ceres.Events.EventSystem.GetCallbackEventHandler*
+- uid: Ceres.Events.EventSystem.#ctor
+  commentId: M:Ceres.Events.EventSystem.#ctor
+  id: '#ctor'
+  parent: Ceres.Events.EventSystem
+  langs:
+  - csharp
+  - vb
+  name: EventSystem()
+  nameWithType: EventSystem.EventSystem()
+  fullName: Ceres.Events.EventSystem.EventSystem()
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public EventSystem()
+    content.vb: Public Sub New()
+  overload: Ceres.Events.EventSystem.#ctor*
+  nameWithType.vb: EventSystem.New()
+  fullName.vb: Ceres.Events.EventSystem.New()
+  name.vb: New()
+- uid: Ceres.Events.EventSystem.Instance
+  commentId: P:Ceres.Events.EventSystem.Instance
+  id: Instance
+  parent: Ceres.Events.EventSystem
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: EventSystem.Instance
+  fullName: Ceres.Events.EventSystem.Instance
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public static EventSystem Instance { get; }
+    parameters: []
+    return:
+      type: Ceres.Events.EventSystem
+    content.vb: Public Shared ReadOnly Property Instance As EventSystem
+  overload: Ceres.Events.EventSystem.Instance*
+- uid: Ceres.Events.EventSystem.EventHandler
+  commentId: P:Ceres.Events.EventSystem.EventHandler
+  id: EventHandler
+  parent: Ceres.Events.EventSystem
+  langs:
+  - csharp
+  - vb
+  name: EventHandler
+  nameWithType: EventSystem.EventHandler
+  fullName: Ceres.Events.EventSystem.EventHandler
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Get event system <xref href="Ceres.Events.CallbackEventHandler" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public static CallbackEventHandler EventHandler { get; }
+    parameters: []
+    return:
+      type: Ceres.Events.CallbackEventHandler
+    content.vb: Public Shared ReadOnly Property EventHandler As CallbackEventHandler
+  overload: Ceres.Events.EventSystem.EventHandler*
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Events.MonoEventCoordinator
+  commentId: T:Ceres.Events.MonoEventCoordinator
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html
+  name: MonoEventCoordinator
+  nameWithType: MonoEventCoordinator
+  fullName: Ceres.Events.MonoEventCoordinator
+- uid: Ceres.Events.IEventCoordinator
+  commentId: T:Ceres.Events.IEventCoordinator
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.IEventCoordinator.html
+  name: IEventCoordinator
+  nameWithType: IEventCoordinator
+  fullName: Ceres.Events.IEventCoordinator
+- uid: Ceres.Events.MonoEventCoordinator.Update
+  commentId: M:Ceres.Events.MonoEventCoordinator.Update
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Update
+  name: Update()
+  nameWithType: MonoEventCoordinator.Update()
+  fullName: Ceres.Events.MonoEventCoordinator.Update()
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.Update
+    name: Update
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Update
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.Update
+    name: Update
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Update
+  - name: (
+  - name: )
+- uid: Ceres.Events.MonoEventCoordinator.FixedUpdate
+  commentId: M:Ceres.Events.MonoEventCoordinator.FixedUpdate
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_FixedUpdate
+  name: FixedUpdate()
+  nameWithType: MonoEventCoordinator.FixedUpdate()
+  fullName: Ceres.Events.MonoEventCoordinator.FixedUpdate()
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.FixedUpdate
+    name: FixedUpdate
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_FixedUpdate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.FixedUpdate
+    name: FixedUpdate
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_FixedUpdate
+  - name: (
+  - name: )
+- uid: Ceres.Events.MonoEventCoordinator.LateUpdate
+  commentId: M:Ceres.Events.MonoEventCoordinator.LateUpdate
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_LateUpdate
+  name: LateUpdate()
+  nameWithType: MonoEventCoordinator.LateUpdate()
+  fullName: Ceres.Events.MonoEventCoordinator.LateUpdate()
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.LateUpdate
+    name: LateUpdate
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_LateUpdate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.LateUpdate
+    name: LateUpdate
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_LateUpdate
+  - name: (
+  - name: )
+- uid: Ceres.Events.MonoEventCoordinator.OnDestroy
+  commentId: M:Ceres.Events.MonoEventCoordinator.OnDestroy
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_OnDestroy
+  name: OnDestroy()
+  nameWithType: MonoEventCoordinator.OnDestroy()
+  fullName: Ceres.Events.MonoEventCoordinator.OnDestroy()
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.OnDestroy
+    name: OnDestroy
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_OnDestroy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.OnDestroy
+    name: OnDestroy
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_OnDestroy
+  - name: (
+  - name: )
+- uid: Ceres.Events.MonoEventCoordinator.Dispatch(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  commentId: M:Ceres.Events.MonoEventCoordinator.Dispatch(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Dispatch_Ceres_Events_EventBase_Ceres_Events_DispatchMode_Ceres_Events_MonoDispatchType_
+  name: Dispatch(EventBase, DispatchMode, MonoDispatchType)
+  nameWithType: MonoEventCoordinator.Dispatch(EventBase, DispatchMode, MonoDispatchType)
+  fullName: Ceres.Events.MonoEventCoordinator.Dispatch(Ceres.Events.EventBase, Ceres.Events.DispatchMode, Ceres.Events.MonoDispatchType)
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.Dispatch(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+    name: Dispatch
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Dispatch_Ceres_Events_EventBase_Ceres_Events_DispatchMode_Ceres_Events_MonoDispatchType_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.DispatchMode
+    name: DispatchMode
+    isExternal: true
+    href: Ceres.Events.DispatchMode.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.MonoDispatchType
+    name: MonoDispatchType
+    isExternal: true
+    href: Ceres.Events.MonoDispatchType.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.Dispatch(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+    name: Dispatch
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Dispatch_Ceres_Events_EventBase_Ceres_Events_DispatchMode_Ceres_Events_MonoDispatchType_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.DispatchMode
+    name: DispatchMode
+    isExternal: true
+    href: Ceres.Events.DispatchMode.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.MonoDispatchType
+    name: MonoDispatchType
+    isExternal: true
+    href: Ceres.Events.MonoDispatchType.html
+  - name: )
+- uid: Ceres.Events.MonoEventCoordinator.Refresh
+  commentId: M:Ceres.Events.MonoEventCoordinator.Refresh
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Refresh
+  name: Refresh()
+  nameWithType: MonoEventCoordinator.Refresh()
+  fullName: Ceres.Events.MonoEventCoordinator.Refresh()
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.Refresh
+    name: Refresh
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Refresh
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.Refresh
+    name: Refresh
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Refresh
+  - name: (
+  - name: )
+- uid: Ceres.Events.MonoEventCoordinator.InterceptEvent(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.MonoEventCoordinator.InterceptEvent(Ceres.Events.EventBase)
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_InterceptEvent_Ceres_Events_EventBase_
+  name: InterceptEvent(EventBase)
+  nameWithType: MonoEventCoordinator.InterceptEvent(EventBase)
+  fullName: Ceres.Events.MonoEventCoordinator.InterceptEvent(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.InterceptEvent(Ceres.Events.EventBase)
+    name: InterceptEvent
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_InterceptEvent_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.InterceptEvent(Ceres.Events.EventBase)
+    name: InterceptEvent
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_InterceptEvent_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.MonoEventCoordinator.PostProcessEvent(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.MonoEventCoordinator.PostProcessEvent(Ceres.Events.EventBase)
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_PostProcessEvent_Ceres_Events_EventBase_
+  name: PostProcessEvent(EventBase)
+  nameWithType: MonoEventCoordinator.PostProcessEvent(EventBase)
+  fullName: Ceres.Events.MonoEventCoordinator.PostProcessEvent(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.PostProcessEvent(Ceres.Events.EventBase)
+    name: PostProcessEvent
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_PostProcessEvent_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.PostProcessEvent(Ceres.Events.EventBase)
+    name: PostProcessEvent
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_PostProcessEvent_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.MonoEventCoordinator.EventDispatcher
+  commentId: P:Ceres.Events.MonoEventCoordinator.EventDispatcher
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_EventDispatcher
+  name: EventDispatcher
+  nameWithType: MonoEventCoordinator.EventDispatcher
+  fullName: Ceres.Events.MonoEventCoordinator.EventDispatcher
+- uid: Ceres.Events.MonoEventCoordinator.DispatchStatus
+  commentId: P:Ceres.Events.MonoEventCoordinator.DispatchStatus
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_DispatchStatus
+  name: DispatchStatus
+  nameWithType: MonoEventCoordinator.DispatchStatus
+  fullName: Ceres.Events.MonoEventCoordinator.DispatchStatus
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Events.MonoEventCoordinator.Awake
+  commentId: M:Ceres.Events.MonoEventCoordinator.Awake
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Awake
+  name: Awake()
+  nameWithType: MonoEventCoordinator.Awake()
+  fullName: Ceres.Events.MonoEventCoordinator.Awake()
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.Awake
+    name: Awake
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Awake
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.Awake
+    name: Awake
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_Awake
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventSystem.Awake*
+  commentId: Overload:Ceres.Events.EventSystem.Awake
+  isExternal: true
+  href: Ceres.Events.EventSystem.html#Ceres_Events_EventSystem_Awake
+  name: Awake
+  nameWithType: EventSystem.Awake
+  fullName: Ceres.Events.EventSystem.Awake
+- uid: Ceres.Events.EventSystem.RegisterCallback*
+  commentId: Overload:Ceres.Events.EventSystem.RegisterCallback
+  isExternal: true
+  href: Ceres.Events.EventSystem.html#Ceres_Events_EventSystem_RegisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  name: RegisterCallback
+  nameWithType: EventSystem.RegisterCallback
+  fullName: Ceres.Events.EventSystem.RegisterCallback
+- uid: Ceres.Events.EventCallback{{TEventType}}
+  commentId: T:Ceres.Events.EventCallback{``0}
+  parent: Ceres.Events
+  definition: Ceres.Events.EventCallback`1
+  href: Ceres.Events.EventCallback-1.html
+  name: EventCallback<TEventType>
+  nameWithType: EventCallback<TEventType>
+  fullName: Ceres.Events.EventCallback<TEventType>
+  nameWithType.vb: EventCallback(Of TEventType)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType)
+  name.vb: EventCallback(Of TEventType)
+  spec.csharp:
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - name: TEventType
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+- uid: Ceres.Events.TrickleDown
+  commentId: T:Ceres.Events.TrickleDown
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.TrickleDown.html
+  name: TrickleDown
+  nameWithType: TrickleDown
+  fullName: Ceres.Events.TrickleDown
+- uid: Ceres.Events.EventCallback`1
+  commentId: T:Ceres.Events.EventCallback`1
+  isExternal: true
+  href: Ceres.Events.EventCallback-1.html
+  name: EventCallback<TEventType>
+  nameWithType: EventCallback<TEventType>
+  fullName: Ceres.Events.EventCallback<TEventType>
+  nameWithType.vb: EventCallback(Of TEventType)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType)
+  name.vb: EventCallback(Of TEventType)
+  spec.csharp:
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - name: TEventType
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+- uid: Ceres.Events.EventSystem.UnregisterCallback*
+  commentId: Overload:Ceres.Events.EventSystem.UnregisterCallback
+  isExternal: true
+  href: Ceres.Events.EventSystem.html#Ceres_Events_EventSystem_UnregisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  name: UnregisterCallback
+  nameWithType: EventSystem.UnregisterCallback
+  fullName: Ceres.Events.EventSystem.UnregisterCallback
+- uid: UnityEngine.MonoBehaviour
+  commentId: T:UnityEngine.MonoBehaviour
+  isExternal: true
+  name: MonoBehaviour
+  nameWithType: MonoBehaviour
+  fullName: UnityEngine.MonoBehaviour
+- uid: Ceres.Events.EventSystem.SendEvent*
+  commentId: Overload:Ceres.Events.EventSystem.SendEvent
+  isExternal: true
+  href: Ceres.Events.EventSystem.html#Ceres_Events_EventSystem_SendEvent_Ceres_Events_EventBase_Ceres_Events_DispatchMode_Ceres_Events_MonoDispatchType_
+  name: SendEvent
+  nameWithType: EventSystem.SendEvent
+  fullName: Ceres.Events.EventSystem.SendEvent
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: Ceres.Events.DispatchMode
+  commentId: T:Ceres.Events.DispatchMode
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.DispatchMode.html
+  name: DispatchMode
+  nameWithType: DispatchMode
+  fullName: Ceres.Events.DispatchMode
+- uid: Ceres.Events.MonoDispatchType
+  commentId: T:Ceres.Events.MonoDispatchType
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.MonoDispatchType.html
+  name: MonoDispatchType
+  nameWithType: MonoDispatchType
+  fullName: Ceres.Events.MonoDispatchType
+- uid: Ceres.Events.MonoEventCoordinator.GetCallbackEventHandler
+  commentId: M:Ceres.Events.MonoEventCoordinator.GetCallbackEventHandler
+  parent: Ceres.Events.MonoEventCoordinator
+  isExternal: true
+  href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_GetCallbackEventHandler
+  name: GetCallbackEventHandler()
+  nameWithType: MonoEventCoordinator.GetCallbackEventHandler()
+  fullName: Ceres.Events.MonoEventCoordinator.GetCallbackEventHandler()
+  spec.csharp:
+  - uid: Ceres.Events.MonoEventCoordinator.GetCallbackEventHandler
+    name: GetCallbackEventHandler
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_GetCallbackEventHandler
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.MonoEventCoordinator.GetCallbackEventHandler
+    name: GetCallbackEventHandler
+    isExternal: true
+    href: Ceres.Events.MonoEventCoordinator.html#Ceres_Events_MonoEventCoordinator_GetCallbackEventHandler
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventSystem.GetCallbackEventHandler*
+  commentId: Overload:Ceres.Events.EventSystem.GetCallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.EventSystem.html#Ceres_Events_EventSystem_GetCallbackEventHandler
+  name: GetCallbackEventHandler
+  nameWithType: EventSystem.GetCallbackEventHandler
+  fullName: Ceres.Events.EventSystem.GetCallbackEventHandler
+- uid: Ceres.Events.CallbackEventHandler
+  commentId: T:Ceres.Events.CallbackEventHandler
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html
+  name: CallbackEventHandler
+  nameWithType: CallbackEventHandler
+  fullName: Ceres.Events.CallbackEventHandler
+- uid: Ceres.Events.EventSystem.#ctor*
+  commentId: Overload:Ceres.Events.EventSystem.#ctor
+  isExternal: true
+  href: Ceres.Events.EventSystem.html#Ceres_Events_EventSystem__ctor
+  name: EventSystem
+  nameWithType: EventSystem.EventSystem
+  fullName: Ceres.Events.EventSystem.EventSystem
+  nameWithType.vb: EventSystem.New
+  fullName.vb: Ceres.Events.EventSystem.New
+  name.vb: New
+- uid: Ceres.Events.EventSystem.Instance*
+  commentId: Overload:Ceres.Events.EventSystem.Instance
+  isExternal: true
+  href: Ceres.Events.EventSystem.html#Ceres_Events_EventSystem_Instance
+  name: Instance
+  nameWithType: EventSystem.Instance
+  fullName: Ceres.Events.EventSystem.Instance
+- uid: Ceres.Events.EventSystem
+  commentId: T:Ceres.Events.EventSystem
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventSystem.html
+  name: EventSystem
+  nameWithType: EventSystem
+  fullName: Ceres.Events.EventSystem
+- uid: Ceres.Events.EventSystem.EventHandler*
+  commentId: Overload:Ceres.Events.EventSystem.EventHandler
+  isExternal: true
+  href: Ceres.Events.EventSystem.html#Ceres_Events_EventSystem_EventHandler
+  name: EventHandler
+  nameWithType: EventSystem.EventHandler
+  fullName: Ceres.Events.EventSystem.EventHandler

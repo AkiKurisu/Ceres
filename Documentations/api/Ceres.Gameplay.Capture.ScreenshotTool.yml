@@ -1,0 +1,855 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Capture.ScreenshotTool
+  commentId: T:Ceres.Gameplay.Capture.ScreenshotTool
+  id: ScreenshotTool
+  parent: Ceres.Gameplay.Capture
+  children:
+  - Ceres.Gameplay.Capture.ScreenshotTool.#ctor
+  - Ceres.Gameplay.Capture.ScreenshotTool.DelayFrames
+  - Ceres.Gameplay.Capture.ScreenshotTool.EnableHDR
+  - Ceres.Gameplay.Capture.ScreenshotTool.GetLastScreenshot
+  - Ceres.Gameplay.Capture.ScreenshotTool.Invoke_GetLastScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  - Ceres.Gameplay.Capture.ScreenshotTool.Invoke_TakeScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  - Ceres.Gameplay.Capture.ScreenshotTool.MaxWarmupFrames
+  - Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotEnd
+  - Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotStart
+  - Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotEnd
+  - Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotStart
+  - Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotMode
+  - Ceres.Gameplay.Capture.ScreenshotTool.SourceCamera
+  - Ceres.Gameplay.Capture.ScreenshotTool.SuperSize
+  - Ceres.Gameplay.Capture.ScreenshotTool.TakeScreenshot
+  langs:
+  - csharp
+  - vb
+  name: ScreenshotTool
+  nameWithType: ScreenshotTool
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: 'public sealed class ScreenshotTool : FlowGraphObject, IFlowGraphRuntime, IFlowProgramRuntime, IFlowGraphContainer, ICeresGraphContainer'
+    content.vb: Public NotInheritable Class ScreenshotTool Inherits FlowGraphObject Implements IFlowGraphRuntime, IFlowProgramRuntime, IFlowGraphContainer, ICeresGraphContainer
+  inheritance:
+  - System.Object
+  - Ceres.Flow.FlowGraphObjectBase
+  - Ceres.Flow.FlowGraphObject
+  implements:
+  - Ceres.Flow.IFlowGraphRuntime
+  - Ceres.Flow.IFlowProgramRuntime
+  - Ceres.Flow.IFlowGraphContainer
+  - Ceres.Graph.ICeresGraphContainer
+  inheritedMembers:
+  - Ceres.Flow.FlowGraphObject.GetFlowGraph
+  - Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+  - Ceres.Flow.FlowGraphObject.Object
+  - Ceres.Flow.FlowGraphObjectBase.Program
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.TakeScreenshot
+  commentId: M:Ceres.Gameplay.Capture.ScreenshotTool.TakeScreenshot
+  id: TakeScreenshot
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: TakeScreenshot()
+  nameWithType: ScreenshotTool.TakeScreenshot()
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.TakeScreenshot()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  summary: Take a screenshot by tool current settings.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public void TakeScreenshot()
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Sub TakeScreenshot()
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.TakeScreenshot*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.GetLastScreenshot
+  commentId: M:Ceres.Gameplay.Capture.ScreenshotTool.GetLastScreenshot
+  id: GetLastScreenshot
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: GetLastScreenshot()
+  nameWithType: ScreenshotTool.GetLastScreenshot()
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.GetLastScreenshot()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  summary: Get last screenshot if it exists.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public Texture2D GetLastScreenshot()
+    return:
+      type: UnityEngine.Texture2D
+      description: ''
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Function GetLastScreenshot() As Texture2D
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.GetLastScreenshot*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotStart
+  commentId: M:Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotStart
+  id: OnTakeScreenshotStart
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: OnTakeScreenshotStart()
+  nameWithType: ScreenshotTool.OnTakeScreenshotStart()
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotStart()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  summary: Process before taken screenshot
+  example: []
+  syntax:
+    content: >-
+      [ImplementableEvent]
+
+      public void OnTakeScreenshotStart()
+    content.vb: >-
+      <ImplementableEvent>
+
+      Public Sub OnTakeScreenshotStart()
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotStart*
+  attributes:
+  - type: Ceres.Flow.Annotations.ImplementableEventAttribute
+    ctor: Ceres.Flow.Annotations.ImplementableEventAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotEnd
+  commentId: M:Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotEnd
+  id: OnTakeScreenshotEnd
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: OnTakeScreenshotEnd()
+  nameWithType: ScreenshotTool.OnTakeScreenshotEnd()
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotEnd()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  summary: Process after taken screenshot
+  example: []
+  syntax:
+    content: >-
+      [ImplementableEvent]
+
+      public void OnTakeScreenshotEnd()
+    content.vb: >-
+      <ImplementableEvent>
+
+      Public Sub OnTakeScreenshotEnd()
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotEnd*
+  attributes:
+  - type: Ceres.Flow.Annotations.ImplementableEventAttribute
+    ctor: Ceres.Flow.Annotations.ImplementableEventAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.#ctor
+  commentId: M:Ceres.Gameplay.Capture.ScreenshotTool.#ctor
+  id: '#ctor'
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: ScreenshotTool()
+  nameWithType: ScreenshotTool.ScreenshotTool()
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotTool()
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: public ScreenshotTool()
+    content.vb: Public Sub New()
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.#ctor*
+  nameWithType.vb: ScreenshotTool.New()
+  fullName.vb: Ceres.Gameplay.Capture.ScreenshotTool.New()
+  name.vb: New()
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_TakeScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  commentId: M:Ceres.Gameplay.Capture.ScreenshotTool.Invoke_TakeScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  id: Invoke_TakeScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: Invoke_TakeScreenshot(ScreenshotTool)
+  nameWithType: ScreenshotTool.Invoke_TakeScreenshot(ScreenshotTool)
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_TakeScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public static void Invoke_TakeScreenshot(ScreenshotTool value)
+    parameters:
+    - id: value
+      type: Ceres.Gameplay.Capture.ScreenshotTool
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Shared Sub Invoke_TakeScreenshot(value As ScreenshotTool)
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_TakeScreenshot*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_GetLastScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  commentId: M:Ceres.Gameplay.Capture.ScreenshotTool.Invoke_GetLastScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  id: Invoke_GetLastScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: Invoke_GetLastScreenshot(ScreenshotTool)
+  nameWithType: ScreenshotTool.Invoke_GetLastScreenshot(ScreenshotTool)
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_GetLastScreenshot(Ceres.Gameplay.Capture.ScreenshotTool)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      public static Texture2D Invoke_GetLastScreenshot(ScreenshotTool value)
+    parameters:
+    - id: value
+      type: Ceres.Gameplay.Capture.ScreenshotTool
+    return:
+      type: UnityEngine.Texture2D
+    content.vb: >-
+      <ExecutableFunction>
+
+      Public Shared Function Invoke_GetLastScreenshot(value As ScreenshotTool) As Texture2D
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_GetLastScreenshot*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.SuperSize
+  commentId: P:Ceres.Gameplay.Capture.ScreenshotTool.SuperSize
+  id: SuperSize
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: SuperSize
+  nameWithType: ScreenshotTool.SuperSize
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.SuperSize
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: public int SuperSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SuperSize As Integer
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.SuperSize*
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.SourceCamera
+  commentId: P:Ceres.Gameplay.Capture.ScreenshotTool.SourceCamera
+  id: SourceCamera
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: SourceCamera
+  nameWithType: ScreenshotTool.SourceCamera
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.SourceCamera
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: public Camera SourceCamera { get; set; }
+    parameters: []
+    return:
+      type: UnityEngine.Camera
+    content.vb: Public Property SourceCamera As Camera
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.SourceCamera*
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotMode
+  commentId: P:Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotMode
+  id: ScreenshotMode
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: ScreenshotMode
+  nameWithType: ScreenshotTool.ScreenshotMode
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotMode
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: public ScreenshotMode ScreenshotMode { get; set; }
+    parameters: []
+    return:
+      type: Ceres.Gameplay.Capture.ScreenshotMode
+    content.vb: Public Property ScreenshotMode As ScreenshotMode
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotMode*
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.EnableHDR
+  commentId: P:Ceres.Gameplay.Capture.ScreenshotTool.EnableHDR
+  id: EnableHDR
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: EnableHDR
+  nameWithType: ScreenshotTool.EnableHDR
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.EnableHDR
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: public bool EnableHDR { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property EnableHDR As Boolean
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.EnableHDR*
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.DelayFrames
+  commentId: P:Ceres.Gameplay.Capture.ScreenshotTool.DelayFrames
+  id: DelayFrames
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: DelayFrames
+  nameWithType: ScreenshotTool.DelayFrames
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.DelayFrames
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: public int DelayFrames { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DelayFrames As Integer
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.DelayFrames*
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.MaxWarmupFrames
+  commentId: P:Ceres.Gameplay.Capture.ScreenshotTool.MaxWarmupFrames
+  id: MaxWarmupFrames
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: MaxWarmupFrames
+  nameWithType: ScreenshotTool.MaxWarmupFrames
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.MaxWarmupFrames
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  syntax:
+    content: public int MaxWarmupFrames { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxWarmupFrames As Integer
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.MaxWarmupFrames*
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotStart
+  commentId: P:Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotStart
+  id: OnScreenshotStart
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: OnScreenshotStart
+  nameWithType: ScreenshotTool.OnScreenshotStart
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotStart
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  summary: Fired on any screenshot start.
+  example: []
+  syntax:
+    content: public static Observable<Unit> OnScreenshotStart { get; }
+    parameters: []
+    return:
+      type: R3.Observable{R3.Unit}
+    content.vb: Public Shared ReadOnly Property OnScreenshotStart As Observable(Of Unit)
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotStart*
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotEnd
+  commentId: P:Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotEnd
+  id: OnScreenshotEnd
+  parent: Ceres.Gameplay.Capture.ScreenshotTool
+  langs:
+  - csharp
+  - vb
+  name: OnScreenshotEnd
+  nameWithType: ScreenshotTool.OnScreenshotEnd
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotEnd
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Capture
+  summary: Fired on any screenshot end.
+  example: []
+  syntax:
+    content: public static Observable<Unit> OnScreenshotEnd { get; }
+    parameters: []
+    return:
+      type: R3.Observable{R3.Unit}
+    content.vb: Public Shared ReadOnly Property OnScreenshotEnd As Observable(Of Unit)
+  overload: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotEnd*
+references:
+- uid: Ceres.Gameplay.Capture
+  commentId: N:Ceres.Gameplay.Capture
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Capture
+  nameWithType: Ceres.Gameplay.Capture
+  fullName: Ceres.Gameplay.Capture
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Capture
+    name: Capture
+    isExternal: true
+    href: Ceres.Gameplay.Capture.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Capture
+    name: Capture
+    isExternal: true
+    href: Ceres.Gameplay.Capture.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.FlowGraphObjectBase
+  commentId: T:Ceres.Flow.FlowGraphObjectBase
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphObjectBase.html
+  name: FlowGraphObjectBase
+  nameWithType: FlowGraphObjectBase
+  fullName: Ceres.Flow.FlowGraphObjectBase
+- uid: Ceres.Flow.FlowGraphObject
+  commentId: T:Ceres.Flow.FlowGraphObject
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphObject.html
+  name: FlowGraphObject
+  nameWithType: FlowGraphObject
+  fullName: Ceres.Flow.FlowGraphObject
+- uid: Ceres.Flow.IFlowGraphRuntime
+  commentId: T:Ceres.Flow.IFlowGraphRuntime
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphRuntime.html
+  name: IFlowGraphRuntime
+  nameWithType: IFlowGraphRuntime
+  fullName: Ceres.Flow.IFlowGraphRuntime
+- uid: Ceres.Flow.IFlowProgramRuntime
+  commentId: T:Ceres.Flow.IFlowProgramRuntime
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowProgramRuntime.html
+  name: IFlowProgramRuntime
+  nameWithType: IFlowProgramRuntime
+  fullName: Ceres.Flow.IFlowProgramRuntime
+- uid: Ceres.Flow.IFlowGraphContainer
+  commentId: T:Ceres.Flow.IFlowGraphContainer
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.IFlowGraphContainer.html
+  name: IFlowGraphContainer
+  nameWithType: IFlowGraphContainer
+  fullName: Ceres.Flow.IFlowGraphContainer
+- uid: Ceres.Graph.ICeresGraphContainer
+  commentId: T:Ceres.Graph.ICeresGraphContainer
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.ICeresGraphContainer.html
+  name: ICeresGraphContainer
+  nameWithType: ICeresGraphContainer
+  fullName: Ceres.Graph.ICeresGraphContainer
+- uid: Ceres.Flow.FlowGraphObject.GetFlowGraph
+  commentId: M:Ceres.Flow.FlowGraphObject.GetFlowGraph
+  parent: Ceres.Flow.FlowGraphObject
+  isExternal: true
+  name: GetFlowGraph()
+  nameWithType: FlowGraphObject.GetFlowGraph()
+  fullName: Ceres.Flow.FlowGraphObject.GetFlowGraph()
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphObject.GetFlowGraph
+    name: GetFlowGraph
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphObject.GetFlowGraph
+    name: GetFlowGraph
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+  commentId: M:Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+  parent: Ceres.Flow.FlowGraphObject
+  isExternal: true
+  name: SetGraphData(CeresGraphData)
+  nameWithType: FlowGraphObject.SetGraphData(CeresGraphData)
+  fullName: Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+    name: SetGraphData
+    isExternal: true
+  - name: (
+  - uid: Ceres.Graph.CeresGraphData
+    name: CeresGraphData
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphObject.SetGraphData(Ceres.Graph.CeresGraphData)
+    name: SetGraphData
+    isExternal: true
+  - name: (
+  - uid: Ceres.Graph.CeresGraphData
+    name: CeresGraphData
+    isExternal: true
+  - name: )
+- uid: Ceres.Flow.FlowGraphObject.Object
+  commentId: P:Ceres.Flow.FlowGraphObject.Object
+  parent: Ceres.Flow.FlowGraphObject
+  isExternal: true
+  name: Object
+  nameWithType: FlowGraphObject.Object
+  fullName: Ceres.Flow.FlowGraphObject.Object
+- uid: Ceres.Flow.FlowGraphObjectBase.Program
+  commentId: P:Ceres.Flow.FlowGraphObjectBase.Program
+  parent: Ceres.Flow.FlowGraphObjectBase
+  isExternal: true
+  href: Ceres.Flow.FlowGraphObjectBase.html#Ceres_Flow_FlowGraphObjectBase_Program
+  name: Program
+  nameWithType: FlowGraphObjectBase.Program
+  fullName: Ceres.Flow.FlowGraphObjectBase.Program
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.TakeScreenshot*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.TakeScreenshot
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_TakeScreenshot
+  name: TakeScreenshot
+  nameWithType: ScreenshotTool.TakeScreenshot
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.TakeScreenshot
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.GetLastScreenshot*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.GetLastScreenshot
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_GetLastScreenshot
+  name: GetLastScreenshot
+  nameWithType: ScreenshotTool.GetLastScreenshot
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.GetLastScreenshot
+- uid: UnityEngine.Texture2D
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotStart*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotStart
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_OnTakeScreenshotStart
+  name: OnTakeScreenshotStart
+  nameWithType: ScreenshotTool.OnTakeScreenshotStart
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotStart
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotEnd*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotEnd
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_OnTakeScreenshotEnd
+  name: OnTakeScreenshotEnd
+  nameWithType: ScreenshotTool.OnTakeScreenshotEnd
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.OnTakeScreenshotEnd
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.#ctor*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool__ctor
+  name: ScreenshotTool
+  nameWithType: ScreenshotTool.ScreenshotTool
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotTool
+  nameWithType.vb: ScreenshotTool.New
+  fullName.vb: Ceres.Gameplay.Capture.ScreenshotTool.New
+  name.vb: New
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_TakeScreenshot*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.Invoke_TakeScreenshot
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_Invoke_TakeScreenshot_Ceres_Gameplay_Capture_ScreenshotTool_
+  name: Invoke_TakeScreenshot
+  nameWithType: ScreenshotTool.Invoke_TakeScreenshot
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_TakeScreenshot
+- uid: Ceres.Gameplay.Capture.ScreenshotTool
+  commentId: T:Ceres.Gameplay.Capture.ScreenshotTool
+  parent: Ceres.Gameplay.Capture
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html
+  name: ScreenshotTool
+  nameWithType: ScreenshotTool
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_GetLastScreenshot*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.Invoke_GetLastScreenshot
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_Invoke_GetLastScreenshot_Ceres_Gameplay_Capture_ScreenshotTool_
+  name: Invoke_GetLastScreenshot
+  nameWithType: ScreenshotTool.Invoke_GetLastScreenshot
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.Invoke_GetLastScreenshot
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.SuperSize*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.SuperSize
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_SuperSize
+  name: SuperSize
+  nameWithType: ScreenshotTool.SuperSize
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.SuperSize
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.SourceCamera*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.SourceCamera
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_SourceCamera
+  name: SourceCamera
+  nameWithType: ScreenshotTool.SourceCamera
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.SourceCamera
+- uid: UnityEngine.Camera
+  isExternal: true
+  name: Camera
+  nameWithType: Camera
+  fullName: UnityEngine.Camera
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotMode*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotMode
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_ScreenshotMode
+  name: ScreenshotMode
+  nameWithType: ScreenshotTool.ScreenshotMode
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.ScreenshotMode
+- uid: Ceres.Gameplay.Capture.ScreenshotMode
+  commentId: T:Ceres.Gameplay.Capture.ScreenshotMode
+  parent: Ceres.Gameplay.Capture
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotMode.html
+  name: ScreenshotMode
+  nameWithType: ScreenshotMode
+  fullName: Ceres.Gameplay.Capture.ScreenshotMode
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.EnableHDR*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.EnableHDR
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_EnableHDR
+  name: EnableHDR
+  nameWithType: ScreenshotTool.EnableHDR
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.EnableHDR
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.DelayFrames*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.DelayFrames
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_DelayFrames
+  name: DelayFrames
+  nameWithType: ScreenshotTool.DelayFrames
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.DelayFrames
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.MaxWarmupFrames*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.MaxWarmupFrames
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_MaxWarmupFrames
+  name: MaxWarmupFrames
+  nameWithType: ScreenshotTool.MaxWarmupFrames
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.MaxWarmupFrames
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotStart*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotStart
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_OnScreenshotStart
+  name: OnScreenshotStart
+  nameWithType: ScreenshotTool.OnScreenshotStart
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotStart
+- uid: R3.Observable{R3.Unit}
+  commentId: '!:R3.Observable{R3.Unit}'
+  definition: R3.Observable`1
+  name: Observable<Unit>
+  nameWithType: Observable<Unit>
+  fullName: R3.Observable<R3.Unit>
+  nameWithType.vb: Observable(Of Unit)
+  fullName.vb: R3.Observable(Of R3.Unit)
+  name.vb: Observable(Of Unit)
+  spec.csharp:
+  - uid: R3.Observable`1
+    name: Observable
+    isExternal: true
+  - name: <
+  - uid: R3.Unit
+    name: Unit
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: R3.Observable`1
+    name: Observable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: R3.Unit
+    name: Unit
+    isExternal: true
+  - name: )
+- uid: R3.Observable`1
+  commentId: T:R3.Observable`1
+  isExternal: true
+  name: Observable<>
+  nameWithType: Observable<>
+  fullName: R3.Observable<>
+  nameWithType.vb: Observable(Of )
+  fullName.vb: R3.Observable(Of )
+  name.vb: Observable(Of )
+  spec.csharp:
+  - uid: R3.Observable`1
+    name: Observable
+    isExternal: true
+  - name: <
+  - name: '>'
+  spec.vb:
+  - uid: R3.Observable`1
+    name: Observable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotEnd*
+  commentId: Overload:Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotEnd
+  isExternal: true
+  href: Ceres.Gameplay.Capture.ScreenshotTool.html#Ceres_Gameplay_Capture_ScreenshotTool_OnScreenshotEnd
+  name: OnScreenshotEnd
+  nameWithType: ScreenshotTool.OnScreenshotEnd
+  fullName: Ceres.Gameplay.Capture.ScreenshotTool.OnScreenshotEnd

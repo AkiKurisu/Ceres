@@ -1,0 +1,680 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.SharedVariableListField`1
+  commentId: T:Ceres.Editor.Graph.SharedVariableListField`1
+  id: SharedVariableListField`1
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.SharedVariableListField`1.#ctor(System.String,System.Func{UnityEngine.UIElements.VisualElement},System.Func{System.Object})
+  - Ceres.Editor.Graph.SharedVariableListField`1.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  - Ceres.Editor.Graph.SharedVariableListField`1.OnMakeListItem
+  langs:
+  - csharp
+  - vb
+  name: SharedVariableListField<T>
+  nameWithType: SharedVariableListField<T>
+  fullName: Ceres.Editor.Graph.SharedVariableListField<T>
+  type: Class
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class SharedVariableListField<T> : ListField<T>, IBindableField where T : SharedVariable'
+    typeParameters:
+    - id: T
+    content.vb: Public Class SharedVariableListField(Of T As SharedVariable) Inherits ListField(Of T) Implements IBindableField
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.ListField{{T}}
+  implements:
+  - Ceres.Editor.Graph.IBindableField
+  inheritedMembers:
+  - Ceres.Editor.Graph.ListField{{T}}.ElementCreator
+  - Ceres.Editor.Graph.ListField{{T}}.GetListItemHeight
+  - Ceres.Editor.Graph.ListField{{T}}.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+  - Ceres.Editor.Graph.ListField{{T}}.OnRequestAddListItem
+  - Ceres.Editor.Graph.ListField{{T}}.value
+  nameWithType.vb: SharedVariableListField(Of T)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableListField(Of T)
+  name.vb: SharedVariableListField(Of T)
+- uid: Ceres.Editor.Graph.SharedVariableListField`1.#ctor(System.String,System.Func{UnityEngine.UIElements.VisualElement},System.Func{System.Object})
+  commentId: M:Ceres.Editor.Graph.SharedVariableListField`1.#ctor(System.String,System.Func{UnityEngine.UIElements.VisualElement},System.Func{System.Object})
+  id: '#ctor(System.String,System.Func{UnityEngine.UIElements.VisualElement},System.Func{System.Object})'
+  parent: Ceres.Editor.Graph.SharedVariableListField`1
+  langs:
+  - csharp
+  - vb
+  name: SharedVariableListField(string, Func<VisualElement>, Func<object>)
+  nameWithType: SharedVariableListField<T>.SharedVariableListField(string, Func<VisualElement>, Func<object>)
+  fullName: Ceres.Editor.Graph.SharedVariableListField<T>.SharedVariableListField(string, System.Func<UnityEngine.UIElements.VisualElement>, System.Func<object>)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public SharedVariableListField(string label, Func<VisualElement> elementCreator, Func<object> valueCreator)
+    parameters:
+    - id: label
+      type: System.String
+    - id: elementCreator
+      type: System.Func{UnityEngine.UIElements.VisualElement}
+    - id: valueCreator
+      type: System.Func{System.Object}
+    content.vb: Public Sub New(label As String, elementCreator As Func(Of VisualElement), valueCreator As Func(Of Object))
+  overload: Ceres.Editor.Graph.SharedVariableListField`1.#ctor*
+  nameWithType.vb: SharedVariableListField(Of T).New(String, Func(Of VisualElement), Func(Of Object))
+  fullName.vb: Ceres.Editor.Graph.SharedVariableListField(Of T).New(String, System.Func(Of UnityEngine.UIElements.VisualElement), System.Func(Of Object))
+  name.vb: New(String, Func(Of VisualElement), Func(Of Object))
+- uid: Ceres.Editor.Graph.SharedVariableListField`1.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.SharedVariableListField`1.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  id: BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.SharedVariableListField`1
+  langs:
+  - csharp
+  - vb
+  name: BindGraph(CeresGraphView)
+  nameWithType: SharedVariableListField<T>.BindGraph(CeresGraphView)
+  fullName: Ceres.Editor.Graph.SharedVariableListField<T>.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  example: []
+  syntax:
+    content: public void BindGraph(CeresGraphView graph)
+    parameters:
+    - id: graph
+      type: Ceres.Editor.Graph.CeresGraphView
+    content.vb: Public Sub BindGraph(graph As CeresGraphView)
+  overload: Ceres.Editor.Graph.SharedVariableListField`1.BindGraph*
+  implements:
+  - Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  nameWithType.vb: SharedVariableListField(Of T).BindGraph(CeresGraphView)
+  fullName.vb: Ceres.Editor.Graph.SharedVariableListField(Of T).BindGraph(Ceres.Editor.Graph.CeresGraphView)
+- uid: Ceres.Editor.Graph.SharedVariableListField`1.OnMakeListItem
+  commentId: M:Ceres.Editor.Graph.SharedVariableListField`1.OnMakeListItem
+  id: OnMakeListItem
+  parent: Ceres.Editor.Graph.SharedVariableListField`1
+  langs:
+  - csharp
+  - vb
+  name: OnMakeListItem()
+  nameWithType: SharedVariableListField<T>.OnMakeListItem()
+  fullName: Ceres.Editor.Graph.SharedVariableListField<T>.OnMakeListItem()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  example: []
+  syntax:
+    content: protected override VisualElement OnMakeListItem()
+    return:
+      type: UnityEngine.UIElements.VisualElement
+    content.vb: Protected Overrides Function OnMakeListItem() As VisualElement
+  overridden: Ceres.Editor.Graph.ListField{{T}}.OnMakeListItem
+  overload: Ceres.Editor.Graph.SharedVariableListField`1.OnMakeListItem*
+  nameWithType.vb: SharedVariableListField(Of T).OnMakeListItem()
+  fullName.vb: Ceres.Editor.Graph.SharedVariableListField(Of T).OnMakeListItem()
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.ListField{{T}}
+  commentId: T:Ceres.Editor.Graph.ListField{`0}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.ListField`1
+  href: Ceres.Editor.Graph.ListField-1.html
+  name: ListField<T>
+  nameWithType: ListField<T>
+  fullName: Ceres.Editor.Graph.ListField<T>
+  nameWithType.vb: ListField(Of T)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T)
+  name.vb: ListField(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.IBindableField
+  commentId: T:Ceres.Editor.Graph.IBindableField
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.IBindableField.html
+  name: IBindableField
+  nameWithType: IBindableField
+  fullName: Ceres.Editor.Graph.IBindableField
+- uid: Ceres.Editor.Graph.ListField{{T}}.ElementCreator
+  commentId: F:Ceres.Editor.Graph.ListField{`0}.ElementCreator
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.ElementCreator
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_ElementCreator
+  name: ElementCreator
+  nameWithType: ListField<T>.ElementCreator
+  fullName: Ceres.Editor.Graph.ListField<T>.ElementCreator
+  nameWithType.vb: ListField(Of T).ElementCreator
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).ElementCreator
+- uid: Ceres.Editor.Graph.ListField{{T}}.GetListItemHeight
+  commentId: M:Ceres.Editor.Graph.ListField{`0}.GetListItemHeight
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.GetListItemHeight
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_GetListItemHeight
+  name: GetListItemHeight()
+  nameWithType: ListField<T>.GetListItemHeight()
+  fullName: Ceres.Editor.Graph.ListField<T>.GetListItemHeight()
+  nameWithType.vb: ListField(Of T).GetListItemHeight()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).GetListItemHeight()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField{`0}.GetListItemHeight
+    name: GetListItemHeight
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_GetListItemHeight
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField{`0}.GetListItemHeight
+    name: GetListItemHeight
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_GetListItemHeight
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ListField{{T}}.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+  commentId: M:Ceres.Editor.Graph.ListField{`0}.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnBindListItem_UnityEngine_UIElements_VisualElement_System_Int32_
+  name: OnBindListItem(VisualElement, int)
+  nameWithType: ListField<T>.OnBindListItem(VisualElement, int)
+  fullName: Ceres.Editor.Graph.ListField<T>.OnBindListItem(UnityEngine.UIElements.VisualElement, int)
+  nameWithType.vb: ListField(Of T).OnBindListItem(VisualElement, Integer)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnBindListItem(UnityEngine.UIElements.VisualElement, Integer)
+  name.vb: OnBindListItem(VisualElement, Integer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+    name: OnBindListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnBindListItem_UnityEngine_UIElements_VisualElement_System_Int32_
+  - name: (
+  - uid: UnityEngine.UIElements.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+    name: OnBindListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnBindListItem_UnityEngine_UIElements_VisualElement_System_Int32_
+  - name: (
+  - uid: UnityEngine.UIElements.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Ceres.Editor.Graph.ListField{{T}}.OnRequestAddListItem
+  commentId: M:Ceres.Editor.Graph.ListField{`0}.OnRequestAddListItem
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnRequestAddListItem
+  name: OnRequestAddListItem()
+  nameWithType: ListField<T>.OnRequestAddListItem()
+  fullName: Ceres.Editor.Graph.ListField<T>.OnRequestAddListItem()
+  nameWithType.vb: ListField(Of T).OnRequestAddListItem()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnRequestAddListItem()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnRequestAddListItem
+    name: OnRequestAddListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnRequestAddListItem
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnRequestAddListItem
+    name: OnRequestAddListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnRequestAddListItem
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ListField{{T}}.value
+  commentId: P:Ceres.Editor.Graph.ListField{`0}.value
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.value
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_value
+  name: value
+  nameWithType: ListField<T>.value
+  fullName: Ceres.Editor.Graph.ListField<T>.value
+  nameWithType.vb: ListField(Of T).value
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).value
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.ListField`1
+  commentId: T:Ceres.Editor.Graph.ListField`1
+  isExternal: true
+  href: Ceres.Editor.Graph.ListField-1.html
+  name: ListField<T>
+  nameWithType: ListField<T>
+  fullName: Ceres.Editor.Graph.ListField<T>
+  nameWithType.vb: ListField(Of T)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T)
+  name.vb: ListField(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1
+    name: ListField
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1.ElementCreator
+  commentId: F:Ceres.Editor.Graph.ListField`1.ElementCreator
+  isExternal: true
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_ElementCreator
+  name: ElementCreator
+  nameWithType: ListField<T>.ElementCreator
+  fullName: Ceres.Editor.Graph.ListField<T>.ElementCreator
+  nameWithType.vb: ListField(Of T).ElementCreator
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).ElementCreator
+- uid: Ceres.Editor.Graph.ListField`1.GetListItemHeight
+  commentId: M:Ceres.Editor.Graph.ListField`1.GetListItemHeight
+  isExternal: true
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_GetListItemHeight
+  name: GetListItemHeight()
+  nameWithType: ListField<T>.GetListItemHeight()
+  fullName: Ceres.Editor.Graph.ListField<T>.GetListItemHeight()
+  nameWithType.vb: ListField(Of T).GetListItemHeight()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).GetListItemHeight()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1.GetListItemHeight
+    name: GetListItemHeight
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_GetListItemHeight
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1.GetListItemHeight
+    name: GetListItemHeight
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_GetListItemHeight
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+  commentId: M:Ceres.Editor.Graph.ListField`1.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+  isExternal: true
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnBindListItem_UnityEngine_UIElements_VisualElement_System_Int32_
+  name: OnBindListItem(VisualElement, int)
+  nameWithType: ListField<T>.OnBindListItem(VisualElement, int)
+  fullName: Ceres.Editor.Graph.ListField<T>.OnBindListItem(UnityEngine.UIElements.VisualElement, int)
+  nameWithType.vb: ListField(Of T).OnBindListItem(VisualElement, Integer)
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnBindListItem(UnityEngine.UIElements.VisualElement, Integer)
+  name.vb: OnBindListItem(VisualElement, Integer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+    name: OnBindListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnBindListItem_UnityEngine_UIElements_VisualElement_System_Int32_
+  - name: (
+  - uid: UnityEngine.UIElements.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1.OnBindListItem(UnityEngine.UIElements.VisualElement,System.Int32)
+    name: OnBindListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnBindListItem_UnityEngine_UIElements_VisualElement_System_Int32_
+  - name: (
+  - uid: UnityEngine.UIElements.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+  commentId: M:Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+  isExternal: true
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnRequestAddListItem
+  name: OnRequestAddListItem()
+  nameWithType: ListField<T>.OnRequestAddListItem()
+  fullName: Ceres.Editor.Graph.ListField<T>.OnRequestAddListItem()
+  nameWithType.vb: ListField(Of T).OnRequestAddListItem()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnRequestAddListItem()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+    name: OnRequestAddListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnRequestAddListItem
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1.OnRequestAddListItem
+    name: OnRequestAddListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnRequestAddListItem
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.ListField`1.value
+  commentId: P:Ceres.Editor.Graph.ListField`1.value
+  isExternal: true
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_value
+  name: value
+  nameWithType: ListField<T>.value
+  fullName: Ceres.Editor.Graph.ListField<T>.value
+  nameWithType.vb: ListField(Of T).value
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).value
+- uid: Ceres.Editor.Graph.SharedVariableListField`1.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableListField`1.#ctor
+  isExternal: true
+  href: Ceres.Editor.Graph.SharedVariableListField-1.html#Ceres_Editor_Graph_SharedVariableListField_1__ctor_System_String_System_Func_UnityEngine_UIElements_VisualElement__System_Func_System_Object__
+  name: SharedVariableListField
+  nameWithType: SharedVariableListField<T>.SharedVariableListField
+  fullName: Ceres.Editor.Graph.SharedVariableListField<T>.SharedVariableListField
+  nameWithType.vb: SharedVariableListField(Of T).New
+  fullName.vb: Ceres.Editor.Graph.SharedVariableListField(Of T).New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Func{UnityEngine.UIElements.VisualElement}
+  commentId: T:System.Func{UnityEngine.UIElements.VisualElement}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<VisualElement>
+  nameWithType: Func<VisualElement>
+  fullName: System.Func<UnityEngine.UIElements.VisualElement>
+  nameWithType.vb: Func(Of VisualElement)
+  fullName.vb: System.Func(Of UnityEngine.UIElements.VisualElement)
+  name.vb: Func(Of VisualElement)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: UnityEngine.UIElements.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEngine.UIElements.VisualElement
+    name: VisualElement
+    isExternal: true
+  - name: )
+- uid: System.Func{System.Object}
+  commentId: T:System.Func{System.Object}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<object>
+  nameWithType: Func<object>
+  fullName: System.Func<object>
+  nameWithType.vb: Func(Of Object)
+  fullName.vb: System.Func(Of Object)
+  name.vb: Func(Of Object)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableListField`1.BindGraph*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableListField`1.BindGraph
+  isExternal: true
+  href: Ceres.Editor.Graph.SharedVariableListField-1.html#Ceres_Editor_Graph_SharedVariableListField_1_BindGraph_Ceres_Editor_Graph_CeresGraphView_
+  name: BindGraph
+  nameWithType: SharedVariableListField<T>.BindGraph
+  fullName: Ceres.Editor.Graph.SharedVariableListField<T>.BindGraph
+  nameWithType.vb: SharedVariableListField(Of T).BindGraph
+  fullName.vb: Ceres.Editor.Graph.SharedVariableListField(Of T).BindGraph
+- uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.IBindableField
+  isExternal: true
+  href: Ceres.Editor.Graph.IBindableField.html#Ceres_Editor_Graph_IBindableField_BindGraph_Ceres_Editor_Graph_CeresGraphView_
+  name: BindGraph(CeresGraphView)
+  nameWithType: IBindableField.BindGraph(CeresGraphView)
+  fullName: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+    isExternal: true
+    href: Ceres.Editor.Graph.IBindableField.html#Ceres_Editor_Graph_IBindableField_BindGraph_Ceres_Editor_Graph_CeresGraphView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.IBindableField.BindGraph(Ceres.Editor.Graph.CeresGraphView)
+    name: BindGraph
+    isExternal: true
+    href: Ceres.Editor.Graph.IBindableField.html#Ceres_Editor_Graph_IBindableField_BindGraph_Ceres_Editor_Graph_CeresGraphView_
+  - name: (
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphView.html
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphView
+  commentId: T:Ceres.Editor.Graph.CeresGraphView
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphView.html
+  name: CeresGraphView
+  nameWithType: CeresGraphView
+  fullName: Ceres.Editor.Graph.CeresGraphView
+- uid: Ceres.Editor.Graph.ListField{{T}}.OnMakeListItem
+  commentId: M:Ceres.Editor.Graph.ListField{`0}.OnMakeListItem
+  parent: Ceres.Editor.Graph.ListField{{T}}
+  definition: Ceres.Editor.Graph.ListField`1.OnMakeListItem
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnMakeListItem
+  name: OnMakeListItem()
+  nameWithType: ListField<T>.OnMakeListItem()
+  fullName: Ceres.Editor.Graph.ListField<T>.OnMakeListItem()
+  nameWithType.vb: ListField(Of T).OnMakeListItem()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnMakeListItem()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnMakeListItem
+    name: OnMakeListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnMakeListItem
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField{`0}.OnMakeListItem
+    name: OnMakeListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnMakeListItem
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.SharedVariableListField`1.OnMakeListItem*
+  commentId: Overload:Ceres.Editor.Graph.SharedVariableListField`1.OnMakeListItem
+  isExternal: true
+  href: Ceres.Editor.Graph.SharedVariableListField-1.html#Ceres_Editor_Graph_SharedVariableListField_1_OnMakeListItem
+  name: OnMakeListItem
+  nameWithType: SharedVariableListField<T>.OnMakeListItem
+  fullName: Ceres.Editor.Graph.SharedVariableListField<T>.OnMakeListItem
+  nameWithType.vb: SharedVariableListField(Of T).OnMakeListItem
+  fullName.vb: Ceres.Editor.Graph.SharedVariableListField(Of T).OnMakeListItem
+- uid: UnityEngine.UIElements.VisualElement
+  isExternal: true
+  name: VisualElement
+  nameWithType: VisualElement
+  fullName: UnityEngine.UIElements.VisualElement
+- uid: Ceres.Editor.Graph.ListField`1.OnMakeListItem
+  commentId: M:Ceres.Editor.Graph.ListField`1.OnMakeListItem
+  isExternal: true
+  href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnMakeListItem
+  name: OnMakeListItem()
+  nameWithType: ListField<T>.OnMakeListItem()
+  fullName: Ceres.Editor.Graph.ListField<T>.OnMakeListItem()
+  nameWithType.vb: ListField(Of T).OnMakeListItem()
+  fullName.vb: Ceres.Editor.Graph.ListField(Of T).OnMakeListItem()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.ListField`1.OnMakeListItem
+    name: OnMakeListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnMakeListItem
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.ListField`1.OnMakeListItem
+    name: OnMakeListItem
+    isExternal: true
+    href: Ceres.Editor.Graph.ListField-1.html#Ceres_Editor_Graph_ListField_1_OnMakeListItem
+  - name: (
+  - name: )

@@ -1,0 +1,504 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.ContentPipeline.ContentBuildStorageMaintenance
+  commentId: T:Ceres.ContentPipeline.ContentBuildStorageMaintenance
+  id: ContentBuildStorageMaintenance
+  parent: Ceres.ContentPipeline
+  children:
+  - Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(System.String,System.String,UnityEditor.BuildTarget,Ceres.ContentPipeline.ContentBuildProcessLock,System.Boolean)
+  - Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(System.String,System.String,UnityEditor.BuildTarget,System.Boolean)
+  - Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot(System.String,System.String,UnityEditor.BuildTarget)
+  - Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview(System.String,System.String,UnityEditor.BuildTarget,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: ContentBuildStorageMaintenance
+  nameWithType: ContentBuildStorageMaintenance
+  fullName: Ceres.ContentPipeline.ContentBuildStorageMaintenance
+  type: Class
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  summary: >-
+    Maintains immutable Addressables artifact history owned by the Ceres content backend.
+
+    Callers may preview, but execution always rebuilds the plan while holding the build lock.
+  example: []
+  syntax:
+    content: public static class ContentBuildStorageMaintenance
+    content.vb: Public Module ContentBuildStorageMaintenance
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot(System.String,System.String,UnityEditor.BuildTarget)
+  commentId: M:Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot(System.String,System.String,UnityEditor.BuildTarget)
+  id: GetPlatformRoot(System.String,System.String,UnityEditor.BuildTarget)
+  parent: Ceres.ContentPipeline.ContentBuildStorageMaintenance
+  langs:
+  - csharp
+  - vb
+  name: GetPlatformRoot(string, string, BuildTarget)
+  nameWithType: ContentBuildStorageMaintenance.GetPlatformRoot(string, string, BuildTarget)
+  fullName: Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot(string, string, UnityEditor.BuildTarget)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static string GetPlatformRoot(string outputRoot, string channel, BuildTarget target)
+    parameters:
+    - id: outputRoot
+      type: System.String
+    - id: channel
+      type: System.String
+    - id: target
+      type: UnityEditor.BuildTarget
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetPlatformRoot(outputRoot As String, channel As String, target As BuildTarget) As String
+  overload: Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot*
+  nameWithType.vb: ContentBuildStorageMaintenance.GetPlatformRoot(String, String, BuildTarget)
+  fullName.vb: Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot(String, String, UnityEditor.BuildTarget)
+  name.vb: GetPlatformRoot(String, String, BuildTarget)
+- uid: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview(System.String,System.String,UnityEditor.BuildTarget,System.Boolean)
+  commentId: M:Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview(System.String,System.String,UnityEditor.BuildTarget,System.Boolean)
+  id: Preview(System.String,System.String,UnityEditor.BuildTarget,System.Boolean)
+  parent: Ceres.ContentPipeline.ContentBuildStorageMaintenance
+  langs:
+  - csharp
+  - vb
+  name: Preview(string, string, BuildTarget, bool)
+  nameWithType: ContentBuildStorageMaintenance.Preview(string, string, BuildTarget, bool)
+  fullName: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview(string, string, UnityEditor.BuildTarget, bool)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static ContentBuildStorageCleanupPreview Preview(string outputRoot, string channel, BuildTarget target, bool clearCurrent = false)
+    parameters:
+    - id: outputRoot
+      type: System.String
+    - id: channel
+      type: System.String
+    - id: target
+      type: UnityEditor.BuildTarget
+    - id: clearCurrent
+      type: System.Boolean
+    return:
+      type: Ceres.ContentPipeline.ContentBuildStorageCleanupPreview
+    content.vb: Public Shared Function Preview(outputRoot As String, channel As String, target As BuildTarget, clearCurrent As Boolean = False) As ContentBuildStorageCleanupPreview
+  overload: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview*
+  nameWithType.vb: ContentBuildStorageMaintenance.Preview(String, String, BuildTarget, Boolean)
+  fullName.vb: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview(String, String, UnityEditor.BuildTarget, Boolean)
+  name.vb: Preview(String, String, BuildTarget, Boolean)
+- uid: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(System.String,System.String,UnityEditor.BuildTarget,System.Boolean)
+  commentId: M:Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(System.String,System.String,UnityEditor.BuildTarget,System.Boolean)
+  id: Execute(System.String,System.String,UnityEditor.BuildTarget,System.Boolean)
+  parent: Ceres.ContentPipeline.ContentBuildStorageMaintenance
+  langs:
+  - csharp
+  - vb
+  name: Execute(string, string, BuildTarget, bool)
+  nameWithType: ContentBuildStorageMaintenance.Execute(string, string, BuildTarget, bool)
+  fullName: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(string, string, UnityEditor.BuildTarget, bool)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static ContentBuildStorageCleanupResult Execute(string outputRoot, string channel, BuildTarget target, bool clearCurrent = false)
+    parameters:
+    - id: outputRoot
+      type: System.String
+    - id: channel
+      type: System.String
+    - id: target
+      type: UnityEditor.BuildTarget
+    - id: clearCurrent
+      type: System.Boolean
+    return:
+      type: Ceres.ContentPipeline.ContentBuildStorageCleanupResult
+    content.vb: Public Shared Function Execute(outputRoot As String, channel As String, target As BuildTarget, clearCurrent As Boolean = False) As ContentBuildStorageCleanupResult
+  overload: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute*
+  nameWithType.vb: ContentBuildStorageMaintenance.Execute(String, String, BuildTarget, Boolean)
+  fullName.vb: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(String, String, UnityEditor.BuildTarget, Boolean)
+  name.vb: Execute(String, String, BuildTarget, Boolean)
+- uid: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(System.String,System.String,UnityEditor.BuildTarget,Ceres.ContentPipeline.ContentBuildProcessLock,System.Boolean)
+  commentId: M:Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(System.String,System.String,UnityEditor.BuildTarget,Ceres.ContentPipeline.ContentBuildProcessLock,System.Boolean)
+  id: Execute(System.String,System.String,UnityEditor.BuildTarget,Ceres.ContentPipeline.ContentBuildProcessLock,System.Boolean)
+  parent: Ceres.ContentPipeline.ContentBuildStorageMaintenance
+  langs:
+  - csharp
+  - vb
+  name: Execute(string, string, BuildTarget, ContentBuildProcessLock, bool)
+  nameWithType: ContentBuildStorageMaintenance.Execute(string, string, BuildTarget, ContentBuildProcessLock, bool)
+  fullName: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(string, string, UnityEditor.BuildTarget, Ceres.ContentPipeline.ContentBuildProcessLock, bool)
+  type: Method
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public static ContentBuildStorageCleanupResult Execute(string outputRoot, string channel, BuildTarget target, ContentBuildProcessLock processLock, bool clearCurrent = false)
+    parameters:
+    - id: outputRoot
+      type: System.String
+    - id: channel
+      type: System.String
+    - id: target
+      type: UnityEditor.BuildTarget
+    - id: processLock
+      type: Ceres.ContentPipeline.ContentBuildProcessLock
+    - id: clearCurrent
+      type: System.Boolean
+    return:
+      type: Ceres.ContentPipeline.ContentBuildStorageCleanupResult
+    content.vb: Public Shared Function Execute(outputRoot As String, channel As String, target As BuildTarget, processLock As ContentBuildProcessLock, clearCurrent As Boolean = False) As ContentBuildStorageCleanupResult
+  overload: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute*
+  nameWithType.vb: ContentBuildStorageMaintenance.Execute(String, String, BuildTarget, ContentBuildProcessLock, Boolean)
+  fullName.vb: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute(String, String, UnityEditor.BuildTarget, Ceres.ContentPipeline.ContentBuildProcessLock, Boolean)
+  name.vb: Execute(String, String, BuildTarget, ContentBuildProcessLock, Boolean)
+references:
+- uid: Ceres.ContentPipeline
+  commentId: N:Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.ContentPipeline
+  nameWithType: Ceres.ContentPipeline
+  fullName: Ceres.ContentPipeline
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.ContentPipeline
+    name: ContentPipeline
+    isExternal: true
+    href: Ceres.ContentPipeline.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.ContentPipeline
+    name: ContentPipeline
+    isExternal: true
+    href: Ceres.ContentPipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildStorageMaintenance.html#Ceres_ContentPipeline_ContentBuildStorageMaintenance_GetPlatformRoot_System_String_System_String_UnityEditor_BuildTarget_
+  name: GetPlatformRoot
+  nameWithType: ContentBuildStorageMaintenance.GetPlatformRoot
+  fullName: Ceres.ContentPipeline.ContentBuildStorageMaintenance.GetPlatformRoot
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: UnityEditor.BuildTarget
+  isExternal: true
+  name: BuildTarget
+  nameWithType: BuildTarget
+  fullName: UnityEditor.BuildTarget
+- uid: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildStorageMaintenance.html#Ceres_ContentPipeline_ContentBuildStorageMaintenance_Preview_System_String_System_String_UnityEditor_BuildTarget_System_Boolean_
+  name: Preview
+  nameWithType: ContentBuildStorageMaintenance.Preview
+  fullName: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Preview
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.ContentPipeline.ContentBuildStorageCleanupPreview
+  commentId: T:Ceres.ContentPipeline.ContentBuildStorageCleanupPreview
+  parent: Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildStorageCleanupPreview.html
+  name: ContentBuildStorageCleanupPreview
+  nameWithType: ContentBuildStorageCleanupPreview
+  fullName: Ceres.ContentPipeline.ContentBuildStorageCleanupPreview
+- uid: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildStorageMaintenance.html#Ceres_ContentPipeline_ContentBuildStorageMaintenance_Execute_System_String_System_String_UnityEditor_BuildTarget_System_Boolean_
+  name: Execute
+  nameWithType: ContentBuildStorageMaintenance.Execute
+  fullName: Ceres.ContentPipeline.ContentBuildStorageMaintenance.Execute
+- uid: Ceres.ContentPipeline.ContentBuildStorageCleanupResult
+  commentId: T:Ceres.ContentPipeline.ContentBuildStorageCleanupResult
+  parent: Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildStorageCleanupResult.html
+  name: ContentBuildStorageCleanupResult
+  nameWithType: ContentBuildStorageCleanupResult
+  fullName: Ceres.ContentPipeline.ContentBuildStorageCleanupResult
+- uid: Ceres.ContentPipeline.ContentBuildProcessLock
+  commentId: T:Ceres.ContentPipeline.ContentBuildProcessLock
+  parent: Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildProcessLock.html
+  name: ContentBuildProcessLock
+  nameWithType: ContentBuildProcessLock
+  fullName: Ceres.ContentPipeline.ContentBuildProcessLock

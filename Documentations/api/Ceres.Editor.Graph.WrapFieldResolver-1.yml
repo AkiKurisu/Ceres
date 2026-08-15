@@ -1,0 +1,1282 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.WrapFieldResolver`1
+  commentId: T:Ceres.Editor.Graph.WrapFieldResolver`1
+  id: WrapFieldResolver`1
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.WrapFieldResolver`1.#ctor(System.Reflection.FieldInfo)
+  - Ceres.Editor.Graph.WrapFieldResolver`1.CreateEditorField(System.Reflection.FieldInfo)
+  - Ceres.Editor.Graph.WrapFieldResolver`1.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  langs:
+  - csharp
+  - vb
+  name: WrapFieldResolver<T>
+  nameWithType: WrapFieldResolver<T>
+  fullName: Ceres.Editor.Graph.WrapFieldResolver<T>
+  type: Class
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: >-
+      [Ordered(100)]
+
+      public class WrapFieldResolver<T> : FieldResolver<WrapField<T>, T>, IFieldResolver
+    typeParameters:
+    - id: T
+    content.vb: >-
+      <Ordered(100)>
+
+      Public Class WrapFieldResolver(Of T) Inherits FieldResolver(Of WrapField(Of T), T) Implements IFieldResolver
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  implements:
+  - Ceres.Editor.Graph.IFieldResolver
+  inheritedMembers:
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.CreateField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.Restore(System.Object)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.Commit(System.Object)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.CreateEditorField(System.Reflection.FieldInfo)
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.EditorField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.BaseField
+  - Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.Value
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  extensionMethods:
+  - Ceres.Editor.Graph.IFieldResolver.Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.CeresGraphView)
+  attributes:
+  - type: Ceres.Editor.Graph.OrderedAttribute
+    ctor: Ceres.Editor.Graph.OrderedAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 100
+  nameWithType.vb: WrapFieldResolver(Of T)
+  fullName.vb: Ceres.Editor.Graph.WrapFieldResolver(Of T)
+  name.vb: WrapFieldResolver(Of T)
+- uid: Ceres.Editor.Graph.WrapFieldResolver`1.#ctor(System.Reflection.FieldInfo)
+  commentId: M:Ceres.Editor.Graph.WrapFieldResolver`1.#ctor(System.Reflection.FieldInfo)
+  id: '#ctor(System.Reflection.FieldInfo)'
+  parent: Ceres.Editor.Graph.WrapFieldResolver`1
+  langs:
+  - csharp
+  - vb
+  name: WrapFieldResolver(FieldInfo)
+  nameWithType: WrapFieldResolver<T>.WrapFieldResolver(FieldInfo)
+  fullName: Ceres.Editor.Graph.WrapFieldResolver<T>.WrapFieldResolver(System.Reflection.FieldInfo)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public WrapFieldResolver(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: System.Reflection.FieldInfo
+    content.vb: Public Sub New(fieldInfo As FieldInfo)
+  overload: Ceres.Editor.Graph.WrapFieldResolver`1.#ctor*
+  nameWithType.vb: WrapFieldResolver(Of T).New(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.WrapFieldResolver(Of T).New(System.Reflection.FieldInfo)
+  name.vb: New(FieldInfo)
+- uid: Ceres.Editor.Graph.WrapFieldResolver`1.CreateEditorField(System.Reflection.FieldInfo)
+  commentId: M:Ceres.Editor.Graph.WrapFieldResolver`1.CreateEditorField(System.Reflection.FieldInfo)
+  id: CreateEditorField(System.Reflection.FieldInfo)
+  parent: Ceres.Editor.Graph.WrapFieldResolver`1
+  langs:
+  - csharp
+  - vb
+  name: CreateEditorField(FieldInfo)
+  nameWithType: WrapFieldResolver<T>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.WrapFieldResolver<T>.CreateEditorField(System.Reflection.FieldInfo)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Create <xref href="UnityEngine.UIElements.BaseField%601" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: protected override WrapField<T> CreateEditorField(FieldInfo fieldInfo)
+    parameters:
+    - id: fieldInfo
+      type: System.Reflection.FieldInfo
+      description: ''
+    return:
+      type: Ceres.Editor.Graph.WrapField{{T}}
+      description: ''
+    content.vb: Protected Overrides Function CreateEditorField(fieldInfo As FieldInfo) As WrapField(Of T)
+  overridden: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.CreateEditorField(System.Reflection.FieldInfo)
+  overload: Ceres.Editor.Graph.WrapFieldResolver`1.CreateEditorField*
+  nameWithType.vb: WrapFieldResolver(Of T).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.WrapFieldResolver(Of T).CreateEditorField(System.Reflection.FieldInfo)
+- uid: Ceres.Editor.Graph.WrapFieldResolver`1.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  commentId: M:Ceres.Editor.Graph.WrapFieldResolver`1.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  id: IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  parent: Ceres.Editor.Graph.WrapFieldResolver`1
+  langs:
+  - csharp
+  - vb
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: WrapFieldResolver<T>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.WrapFieldResolver<T>.IsAcceptable(System.Type, System.Reflection.FieldInfo)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Whether this resolver can accept field
+  example: []
+  syntax:
+    content: public override bool IsAcceptable(Type fieldValueType, FieldInfo fieldInfo)
+    parameters:
+    - id: fieldValueType
+      type: System.Type
+      description: ''
+    - id: fieldInfo
+      type: System.Reflection.FieldInfo
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overrides Function IsAcceptable(fieldValueType As Type, fieldInfo As FieldInfo) As Boolean
+  overridden: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  overload: Ceres.Editor.Graph.WrapFieldResolver`1.IsAcceptable*
+  nameWithType.vb: WrapFieldResolver(Of T).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.WrapFieldResolver(Of T).IsAcceptable(System.Type, System.Reflection.FieldInfo)
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  commentId: T:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.FieldResolver`2
+  href: Ceres.Editor.Graph.FieldResolver-2.html
+  name: FieldResolver<WrapField<T>, T>
+  nameWithType: FieldResolver<WrapField<T>, T>
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T)
+  name.vb: FieldResolver(Of WrapField(Of T), T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html
+  - name: <
+  - uid: Ceres.Editor.Graph.WrapField`1
+    name: WrapField
+    isExternal: true
+    href: Ceres.Editor.Graph.WrapField-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Editor.Graph.WrapField`1
+    name: WrapField
+    isExternal: true
+    href: Ceres.Editor.Graph.WrapField-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.IFieldResolver
+  commentId: T:Ceres.Editor.Graph.IFieldResolver
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.IFieldResolver.html
+  name: IFieldResolver
+  nameWithType: IFieldResolver
+  fullName: Ceres.Editor.Graph.IFieldResolver
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.CreateField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateField
+  name: CreateField()
+  nameWithType: FieldResolver<WrapField<T>, T>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.CreateField()
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.CreateField
+    name: CreateField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.CreateField
+    name: CreateField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Copy(Ceres.Editor.Graph.IFieldResolver)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Copy_Ceres_Editor_Graph_IFieldResolver_
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<WrapField<T>, T>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Copy_Ceres_Editor_Graph_IFieldResolver_
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.IFieldResolver.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Copy_Ceres_Editor_Graph_IFieldResolver_
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.IFieldResolver.html
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Restore(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Restore_System_Object_
+  name: Restore(object)
+  nameWithType: FieldResolver<WrapField<T>, T>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.Restore(object)
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Restore(System.Object)
+    name: Restore
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Restore_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Restore(System.Object)
+    name: Restore
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Restore_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Commit(System.Object)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Commit_System_Object_
+  name: Commit(object)
+  nameWithType: FieldResolver<WrapField<T>, T>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.Commit(object)
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Commit(System.Object)
+    name: Commit
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Commit_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Commit(System.Object)
+    name: Commit
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Commit_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_RegisterValueChangeCallback_Ceres_Editor_Graph_ValueChangeDelegate_
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<WrapField<T>, T>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_RegisterValueChangeCallback_Ceres_Editor_Graph_ValueChangeDelegate_
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+    isExternal: true
+    href: Ceres.Editor.Graph.ValueChangeDelegate.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_RegisterValueChangeCallback_Ceres_Editor_Graph_ValueChangeDelegate_
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+    isExternal: true
+    href: Ceres.Editor.Graph.ValueChangeDelegate.html
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_IsAcceptable_System_Type_System_Reflection_FieldInfo_
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<WrapField<T>, T>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.IsAcceptable(System.Type, System.Reflection.FieldInfo)
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).IsAcceptable(System.Type, System.Reflection.FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+    name: IsAcceptable
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_IsAcceptable_System_Type_System_Reflection_FieldInfo_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+    name: IsAcceptable
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_IsAcceptable_System_Type_System_Reflection_FieldInfo_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.CreateEditorField(System.Reflection.FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.CreateEditorField(System.Reflection.FieldInfo)
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(System.Reflection.FieldInfo)
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateEditorField_System_Reflection_FieldInfo_
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<WrapField<T>, T>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.CreateEditorField(System.Reflection.FieldInfo)
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).CreateEditorField(System.Reflection.FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.CreateEditorField(System.Reflection.FieldInfo)
+    name: CreateEditorField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateEditorField_System_Reflection_FieldInfo_
+  - name: (
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.CreateEditorField(System.Reflection.FieldInfo)
+    name: CreateEditorField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateEditorField_System_Reflection_FieldInfo_
+  - name: (
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.EditorField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_EditorField
+  name: EditorField
+  nameWithType: FieldResolver<WrapField<T>, T>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.EditorField
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.BaseField
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_BaseField
+  name: BaseField
+  nameWithType: FieldResolver<WrapField<T>, T>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.BaseField
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{`0},`0}.Value
+  parent: Ceres.Editor.Graph.FieldResolver{Ceres.Editor.Graph.WrapField{{T}},{T}}
+  definition: Ceres.Editor.Graph.FieldResolver`2.Value
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Value
+  name: Value
+  nameWithType: FieldResolver<WrapField<T>, T>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<Ceres.Editor.Graph.WrapField<T>, T>.Value
+  nameWithType.vb: FieldResolver(Of WrapField(Of T), T).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of Ceres.Editor.Graph.WrapField(Of T), T).Value
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.IFieldResolver.Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver,Ceres.Editor.Graph.CeresGraphView)
+  parent: Ceres.Editor.Graph.FieldResolverExtensions
+  definition: Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver,Ceres.Editor.Graph.CeresGraphView)
+  href: Ceres.Editor.Graph.FieldResolverExtensions.html#Ceres_Editor_Graph_FieldResolverExtensions_GetField_Ceres_Editor_Graph_IFieldResolver_Ceres_Editor_Graph_CeresGraphView_
+  name: GetField(IFieldResolver, CeresGraphView)
+  nameWithType: FieldResolverExtensions.GetField(IFieldResolver, CeresGraphView)
+  fullName: Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver, Ceres.Editor.Graph.CeresGraphView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver,Ceres.Editor.Graph.CeresGraphView)
+    name: GetField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolverExtensions.html#Ceres_Editor_Graph_FieldResolverExtensions_GetField_Ceres_Editor_Graph_IFieldResolver_Ceres_Editor_Graph_CeresGraphView_
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.IFieldResolver.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver,Ceres.Editor.Graph.CeresGraphView)
+    name: GetField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolverExtensions.html#Ceres_Editor_Graph_FieldResolverExtensions_GetField_Ceres_Editor_Graph_IFieldResolver_Ceres_Editor_Graph_CeresGraphView_
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.IFieldResolver.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphView.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.FieldResolver`2
+  commentId: T:Ceres.Editor.Graph.FieldResolver`2
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html
+  name: FieldResolver<TField, TKValue>
+  nameWithType: FieldResolver<TField, TKValue>
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>
+  nameWithType.vb: FieldResolver(Of TField, TKValue)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue)
+  name.vb: FieldResolver(Of TField, TKValue)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html
+  - name: <
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2
+    name: FieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TField
+  - name: ','
+  - name: " "
+  - name: TKValue
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateField
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateField
+  name: CreateField()
+  nameWithType: FieldResolver<TField, TKValue>.CreateField()
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateField()
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateField()
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateField()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+    name: CreateField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateField
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateField
+    name: CreateField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateField
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Copy_Ceres_Editor_Graph_IFieldResolver_
+  name: Copy(IFieldResolver)
+  nameWithType: FieldResolver<TField, TKValue>.Copy(IFieldResolver)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Copy(Ceres.Editor.Graph.IFieldResolver)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Copy(IFieldResolver)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Copy(Ceres.Editor.Graph.IFieldResolver)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Copy_Ceres_Editor_Graph_IFieldResolver_
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.IFieldResolver.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Copy(Ceres.Editor.Graph.IFieldResolver)
+    name: Copy
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Copy_Ceres_Editor_Graph_IFieldResolver_
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.IFieldResolver.html
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Restore_System_Object_
+  name: Restore(object)
+  nameWithType: FieldResolver<TField, TKValue>.Restore(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Restore(object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Restore(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Restore(Object)
+  name.vb: Restore(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+    name: Restore
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Restore_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Restore(System.Object)
+    name: Restore
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Restore_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Commit_System_Object_
+  name: Commit(object)
+  nameWithType: FieldResolver<TField, TKValue>.Commit(object)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Commit(object)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Commit(Object)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Commit(Object)
+  name.vb: Commit(Object)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+    name: Commit
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Commit_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.Commit(System.Object)
+    name: Commit
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Commit_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_RegisterValueChangeCallback_Ceres_Editor_Graph_ValueChangeDelegate_
+  name: RegisterValueChangeCallback(ValueChangeDelegate)
+  nameWithType: FieldResolver<TField, TKValue>.RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(ValueChangeDelegate)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_RegisterValueChangeCallback_Ceres_Editor_Graph_ValueChangeDelegate_
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+    isExternal: true
+    href: Ceres.Editor.Graph.ValueChangeDelegate.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.RegisterValueChangeCallback(Ceres.Editor.Graph.ValueChangeDelegate)
+    name: RegisterValueChangeCallback
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_RegisterValueChangeCallback_Ceres_Editor_Graph_ValueChangeDelegate_
+  - name: (
+  - uid: Ceres.Editor.Graph.ValueChangeDelegate
+    name: ValueChangeDelegate
+    isExternal: true
+    href: Ceres.Editor.Graph.ValueChangeDelegate.html
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_IsAcceptable_System_Type_System_Reflection_FieldInfo_
+  name: IsAcceptable(Type, FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.IsAcceptable(Type, FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.IsAcceptable(System.Type, System.Reflection.FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).IsAcceptable(Type, FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).IsAcceptable(System.Type, System.Reflection.FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+    name: IsAcceptable
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_IsAcceptable_System_Type_System_Reflection_FieldInfo_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.IsAcceptable(System.Type,System.Reflection.FieldInfo)
+    name: IsAcceptable
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_IsAcceptable_System_Type_System_Reflection_FieldInfo_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(System.Reflection.FieldInfo)
+  commentId: M:Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(System.Reflection.FieldInfo)
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateEditorField_System_Reflection_FieldInfo_
+  name: CreateEditorField(FieldInfo)
+  nameWithType: FieldResolver<TField, TKValue>.CreateEditorField(FieldInfo)
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.CreateEditorField(System.Reflection.FieldInfo)
+  nameWithType.vb: FieldResolver(Of TField, TKValue).CreateEditorField(FieldInfo)
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).CreateEditorField(System.Reflection.FieldInfo)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(System.Reflection.FieldInfo)
+    name: CreateEditorField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateEditorField_System_Reflection_FieldInfo_
+  - name: (
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolver`2.CreateEditorField(System.Reflection.FieldInfo)
+    name: CreateEditorField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_CreateEditorField_System_Reflection_FieldInfo_
+  - name: (
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolver`2.EditorField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.EditorField
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_EditorField
+  name: EditorField
+  nameWithType: FieldResolver<TField, TKValue>.EditorField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.EditorField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).EditorField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).EditorField
+- uid: Ceres.Editor.Graph.FieldResolver`2.BaseField
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.BaseField
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_BaseField
+  name: BaseField
+  nameWithType: FieldResolver<TField, TKValue>.BaseField
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.BaseField
+  nameWithType.vb: FieldResolver(Of TField, TKValue).BaseField
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).BaseField
+- uid: Ceres.Editor.Graph.FieldResolver`2.Value
+  commentId: P:Ceres.Editor.Graph.FieldResolver`2.Value
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolver-2.html#Ceres_Editor_Graph_FieldResolver_2_Value
+  name: Value
+  nameWithType: FieldResolver<TField, TKValue>.Value
+  fullName: Ceres.Editor.Graph.FieldResolver<TField, TKValue>.Value
+  nameWithType.vb: FieldResolver(Of TField, TKValue).Value
+  fullName.vb: Ceres.Editor.Graph.FieldResolver(Of TField, TKValue).Value
+- uid: Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver,Ceres.Editor.Graph.CeresGraphView)
+  commentId: M:Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver,Ceres.Editor.Graph.CeresGraphView)
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolverExtensions.html#Ceres_Editor_Graph_FieldResolverExtensions_GetField_Ceres_Editor_Graph_IFieldResolver_Ceres_Editor_Graph_CeresGraphView_
+  name: GetField(IFieldResolver, CeresGraphView)
+  nameWithType: FieldResolverExtensions.GetField(IFieldResolver, CeresGraphView)
+  fullName: Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver, Ceres.Editor.Graph.CeresGraphView)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver,Ceres.Editor.Graph.CeresGraphView)
+    name: GetField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolverExtensions.html#Ceres_Editor_Graph_FieldResolverExtensions_GetField_Ceres_Editor_Graph_IFieldResolver_Ceres_Editor_Graph_CeresGraphView_
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.IFieldResolver.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphView.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.FieldResolverExtensions.GetField(Ceres.Editor.Graph.IFieldResolver,Ceres.Editor.Graph.CeresGraphView)
+    name: GetField
+    isExternal: true
+    href: Ceres.Editor.Graph.FieldResolverExtensions.html#Ceres_Editor_Graph_FieldResolverExtensions_GetField_Ceres_Editor_Graph_IFieldResolver_Ceres_Editor_Graph_CeresGraphView_
+  - name: (
+  - uid: Ceres.Editor.Graph.IFieldResolver
+    name: IFieldResolver
+    isExternal: true
+    href: Ceres.Editor.Graph.IFieldResolver.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Graph.CeresGraphView
+    name: CeresGraphView
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphView.html
+  - name: )
+- uid: Ceres.Editor.Graph.FieldResolverExtensions
+  commentId: T:Ceres.Editor.Graph.FieldResolverExtensions
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.FieldResolverExtensions.html
+  name: FieldResolverExtensions
+  nameWithType: FieldResolverExtensions
+  fullName: Ceres.Editor.Graph.FieldResolverExtensions
+- uid: Ceres.Editor.Graph.WrapFieldResolver`1.#ctor*
+  commentId: Overload:Ceres.Editor.Graph.WrapFieldResolver`1.#ctor
+  isExternal: true
+  href: Ceres.Editor.Graph.WrapFieldResolver-1.html#Ceres_Editor_Graph_WrapFieldResolver_1__ctor_System_Reflection_FieldInfo_
+  name: WrapFieldResolver
+  nameWithType: WrapFieldResolver<T>.WrapFieldResolver
+  fullName: Ceres.Editor.Graph.WrapFieldResolver<T>.WrapFieldResolver
+  nameWithType.vb: WrapFieldResolver(Of T).New
+  fullName.vb: Ceres.Editor.Graph.WrapFieldResolver(Of T).New
+  name.vb: New
+- uid: System.Reflection.FieldInfo
+  commentId: T:System.Reflection.FieldInfo
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: System.Reflection.FieldInfo
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: UnityEngine.UIElements.BaseField`1
+  commentId: T:UnityEngine.UIElements.BaseField`1
+  isExternal: true
+  name: BaseField<>
+  nameWithType: BaseField<>
+  fullName: UnityEngine.UIElements.BaseField<>
+  nameWithType.vb: BaseField(Of )
+  fullName.vb: UnityEngine.UIElements.BaseField(Of )
+  name.vb: BaseField(Of )
+  spec.csharp:
+  - uid: UnityEngine.UIElements.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: <
+  - name: '>'
+  spec.vb:
+  - uid: UnityEngine.UIElements.BaseField`1
+    name: BaseField
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Editor.Graph.WrapFieldResolver`1.CreateEditorField*
+  commentId: Overload:Ceres.Editor.Graph.WrapFieldResolver`1.CreateEditorField
+  isExternal: true
+  href: Ceres.Editor.Graph.WrapFieldResolver-1.html#Ceres_Editor_Graph_WrapFieldResolver_1_CreateEditorField_System_Reflection_FieldInfo_
+  name: CreateEditorField
+  nameWithType: WrapFieldResolver<T>.CreateEditorField
+  fullName: Ceres.Editor.Graph.WrapFieldResolver<T>.CreateEditorField
+  nameWithType.vb: WrapFieldResolver(Of T).CreateEditorField
+  fullName.vb: Ceres.Editor.Graph.WrapFieldResolver(Of T).CreateEditorField
+- uid: Ceres.Editor.Graph.WrapField{{T}}
+  commentId: T:Ceres.Editor.Graph.WrapField{`0}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.WrapField`1
+  href: Ceres.Editor.Graph.WrapField-1.html
+  name: WrapField<T>
+  nameWithType: WrapField<T>
+  fullName: Ceres.Editor.Graph.WrapField<T>
+  nameWithType.vb: WrapField(Of T)
+  fullName.vb: Ceres.Editor.Graph.WrapField(Of T)
+  name.vb: WrapField(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.WrapField`1
+    name: WrapField
+    isExternal: true
+    href: Ceres.Editor.Graph.WrapField-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.WrapField`1
+    name: WrapField
+    isExternal: true
+    href: Ceres.Editor.Graph.WrapField-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.WrapField`1
+  commentId: T:Ceres.Editor.Graph.WrapField`1
+  isExternal: true
+  href: Ceres.Editor.Graph.WrapField-1.html
+  name: WrapField<T>
+  nameWithType: WrapField<T>
+  fullName: Ceres.Editor.Graph.WrapField<T>
+  nameWithType.vb: WrapField(Of T)
+  fullName.vb: Ceres.Editor.Graph.WrapField(Of T)
+  name.vb: WrapField(Of T)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.WrapField`1
+    name: WrapField
+    isExternal: true
+    href: Ceres.Editor.Graph.WrapField-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.WrapField`1
+    name: WrapField
+    isExternal: true
+    href: Ceres.Editor.Graph.WrapField-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Editor.Graph.WrapFieldResolver`1.IsAcceptable*
+  commentId: Overload:Ceres.Editor.Graph.WrapFieldResolver`1.IsAcceptable
+  isExternal: true
+  href: Ceres.Editor.Graph.WrapFieldResolver-1.html#Ceres_Editor_Graph_WrapFieldResolver_1_IsAcceptable_System_Type_System_Reflection_FieldInfo_
+  name: IsAcceptable
+  nameWithType: WrapFieldResolver<T>.IsAcceptable
+  fullName: Ceres.Editor.Graph.WrapFieldResolver<T>.IsAcceptable
+  nameWithType.vb: WrapFieldResolver(Of T).IsAcceptable
+  fullName.vb: Ceres.Editor.Graph.WrapFieldResolver(Of T).IsAcceptable
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

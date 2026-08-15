@@ -1,0 +1,105 @@
+using System;
+using System.Reflection;
+using Ceres.Serialization;
+using Ceres.Serialization.Editor;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+namespace Ceres.Editor.Graph
+{
+    [Ordered]
+    public class SerializedObjectFieldResolver : FieldResolver<SerializedObjectField, SerializedObjectBase>
+    {
+        public SerializedObjectFieldResolver(FieldInfo fieldInfo) : base(fieldInfo)
+        {
+        }
+        
+        protected override SerializedObjectField CreateEditorField(FieldInfo fieldInfo)
+        {
+            return new SerializedObjectField(fieldInfo.Name);
+        }
+        
+        public override bool IsAcceptable(Type fieldValueType, FieldInfo fieldInfo)
+        {
+            return typeof(SerializedObjectBase).IsAssignableFrom(fieldValueType);
+        }
+    }
+    
+    public class SerializedObjectField : BaseField<SerializedObjectBase>
+    {
+        private SoftObjectHandle _wrapperHandle;
+
+        public Action<SerializedObjectBase> onJsonValueUpdate;
+        
+        public SerializedObjectField(string label, IMGUIContainer container) : base(label, container)
+        {
+            container.onGUIHandler = OnGUI;
+        }
+        
+        public SerializedObjectField(string label) : this(label, new IMGUIContainer())
+        {
+
+        }
+
+        private void OnGUI()
+        {
+            var elementType = value?.GetBoxType();
+            if (elementType == null)
+            {
+                return;
+            }
+            var handle = new SoftObjectHandle(value.objectHandle);
+            var wrapper = SerializedObjectWrapperManager.CreateWrapper(elementType, ref handle);
+            value.objectHandle = handle.Handle;
+            if (!wrapper) return;
+
+            EditorGUI.BeginChangeCheck();
+            SerializedObjectWrapperDrawer.DrawGUILayout(wrapper);
+            if (EditorGUI.EndChangeCheck())
+            {
+                value.jsonData = JsonUtility.ToJson(wrapper.Value);
+                onJsonValueUpdate?.Invoke(value);
+            }
+        }
+
+        private void RefreshWrapper()
+        {
+            var elementType = _value.GetBoxType();
+            if (elementType == null)
+            {
+                return;
+            }
+            var handle = new SoftObjectHandle(_value.objectHandle);
+            var wrapper = SerializedObjectWrapperManager.CreateWrapper(elementType, ref handle);
+            _value.objectHandle = handle.Handle;
+            if (!wrapper) return;
+            if (string.IsNullOrEmpty(value.jsonData)) return;
+            try
+            {
+                wrapper.Value = JsonUtility.FromJson(_value.jsonData, elementType);
+            }
+            catch
+            {
+                // ignored
+            }
+        }
+
+        private SerializedObjectBase _value;
+
+        public override SerializedObjectBase value
+        {
+            get => _value;
+            set
+            {
+                var oldValue = _value;
+                _value = value;
+                if (_value == null) return;
+                RefreshWrapper();
+                using var evt = ChangeEvent<SerializedObjectBase>.GetPooled(oldValue, value);
+                evt.target = this;
+                SendEvent(evt);
+            }
+        }
+    }
+}

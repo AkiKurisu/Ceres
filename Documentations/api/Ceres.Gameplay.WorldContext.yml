@@ -1,0 +1,986 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.WorldContext
+  commentId: T:Ceres.Gameplay.WorldContext
+  id: WorldContext
+  parent: Ceres.Gameplay
+  children:
+  - Ceres.Gameplay.WorldContext.Cast
+  - Ceres.Gameplay.WorldContext.Equals(Ceres.Gameplay.WorldContext)
+  - Ceres.Gameplay.WorldContext.Equals(System.Object)
+  - Ceres.Gameplay.WorldContext.GetActor(Ceres.Gameplay.ActorHandle)
+  - Ceres.Gameplay.WorldContext.GetHashCode
+  - Ceres.Gameplay.WorldContext.GetSubsystem(System.Type)
+  - Ceres.Gameplay.WorldContext.GetSubsystem``1
+  - Ceres.Gameplay.WorldContext.IsValid
+  - Ceres.Gameplay.WorldContext.RegisterActor(Ceres.Gameplay.Actor,Ceres.Gameplay.ActorHandle@)
+  - Ceres.Gameplay.WorldContext.RegisterSubsystem(System.Type,Ceres.Gameplay.SubsystemBase)
+  - Ceres.Gameplay.WorldContext.RegisterSubsystem``1(``0)
+  - Ceres.Gameplay.WorldContext.UnregisterActor(Ceres.Gameplay.Actor)
+  - Ceres.Gameplay.WorldContext.op_Equality(Ceres.Gameplay.WorldContext,Ceres.Gameplay.WorldContext)
+  - Ceres.Gameplay.WorldContext.op_Explicit(Ceres.Gameplay.GameWorld)~Ceres.Gameplay.WorldContext
+  - Ceres.Gameplay.WorldContext.op_Inequality(Ceres.Gameplay.WorldContext,Ceres.Gameplay.WorldContext)
+  langs:
+  - csharp
+  - vb
+  name: WorldContext
+  nameWithType: WorldContext
+  fullName: Ceres.Gameplay.WorldContext
+  type: Struct
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: The Context object ensures that you have safe access to the GameWorld.
+  example: []
+  syntax:
+    content: 'public readonly struct WorldContext : IEquatable<WorldContext>'
+    content.vb: Public Structure WorldContext Implements IEquatable(Of WorldContext)
+  implements:
+  - System.IEquatable{Ceres.Gameplay.WorldContext}
+  inheritedMembers:
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Ceres.Gameplay.WorldContext.Cast
+  commentId: M:Ceres.Gameplay.WorldContext.Cast
+  id: Cast
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: Cast()
+  nameWithType: WorldContext.Cast()
+  fullName: Ceres.Gameplay.WorldContext.Cast()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Cast world context to <xref href="Ceres.Gameplay.GameWorld" data-throw-if-not-resolved="false"></xref> with check. Always ensure not access to cast world in destroy stage.
+  example: []
+  syntax:
+    content: public GameWorld Cast()
+    return:
+      type: Ceres.Gameplay.GameWorld
+      description: ''
+    content.vb: Public Function Cast() As GameWorld
+  overload: Ceres.Gameplay.WorldContext.Cast*
+- uid: Ceres.Gameplay.WorldContext.GetHashCode
+  commentId: M:Ceres.Gameplay.WorldContext.GetHashCode
+  id: GetHashCode
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: WorldContext.GetHashCode()
+  fullName: Ceres.Gameplay.WorldContext.GetHashCode()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Ceres.Gameplay.WorldContext.GetHashCode*
+- uid: Ceres.Gameplay.WorldContext.GetActor(Ceres.Gameplay.ActorHandle)
+  commentId: M:Ceres.Gameplay.WorldContext.GetActor(Ceres.Gameplay.ActorHandle)
+  id: GetActor(Ceres.Gameplay.ActorHandle)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: GetActor(ActorHandle)
+  nameWithType: WorldContext.GetActor(ActorHandle)
+  fullName: Ceres.Gameplay.WorldContext.GetActor(Ceres.Gameplay.ActorHandle)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Get actor from <xref href="Ceres.Gameplay.ActorHandle" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public Actor GetActor(ActorHandle handle)
+    parameters:
+    - id: handle
+      type: Ceres.Gameplay.ActorHandle
+      description: ''
+    return:
+      type: Ceres.Gameplay.Actor
+      description: ''
+    content.vb: Public Function GetActor(handle As ActorHandle) As Actor
+  overload: Ceres.Gameplay.WorldContext.GetActor*
+- uid: Ceres.Gameplay.WorldContext.GetSubsystem``1
+  commentId: M:Ceres.Gameplay.WorldContext.GetSubsystem``1
+  id: GetSubsystem``1
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: GetSubsystem<T>()
+  nameWithType: WorldContext.GetSubsystem<T>()
+  fullName: Ceres.Gameplay.WorldContext.GetSubsystem<T>()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Get <xref href="Ceres.Gameplay.SubsystemBase" data-throw-if-not-resolved="false"></xref> from type T
+  example: []
+  syntax:
+    content: 'public T GetSubsystem<T>() where T : SubsystemBase'
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function GetSubsystem(Of T As SubsystemBase)() As T
+  overload: Ceres.Gameplay.WorldContext.GetSubsystem*
+  nameWithType.vb: WorldContext.GetSubsystem(Of T)()
+  fullName.vb: Ceres.Gameplay.WorldContext.GetSubsystem(Of T)()
+  name.vb: GetSubsystem(Of T)()
+- uid: Ceres.Gameplay.WorldContext.GetSubsystem(System.Type)
+  commentId: M:Ceres.Gameplay.WorldContext.GetSubsystem(System.Type)
+  id: GetSubsystem(System.Type)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: GetSubsystem(Type)
+  nameWithType: WorldContext.GetSubsystem(Type)
+  fullName: Ceres.Gameplay.WorldContext.GetSubsystem(System.Type)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Get <xref href="Ceres.Gameplay.SubsystemBase" data-throw-if-not-resolved="false"></xref> from type
+  example: []
+  syntax:
+    content: public SubsystemBase GetSubsystem(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    return:
+      type: Ceres.Gameplay.SubsystemBase
+      description: ''
+    content.vb: Public Function GetSubsystem(type As Type) As SubsystemBase
+  overload: Ceres.Gameplay.WorldContext.GetSubsystem*
+- uid: Ceres.Gameplay.WorldContext.RegisterActor(Ceres.Gameplay.Actor,Ceres.Gameplay.ActorHandle@)
+  commentId: M:Ceres.Gameplay.WorldContext.RegisterActor(Ceres.Gameplay.Actor,Ceres.Gameplay.ActorHandle@)
+  id: RegisterActor(Ceres.Gameplay.Actor,Ceres.Gameplay.ActorHandle@)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterActor(Actor, ref ActorHandle)
+  nameWithType: WorldContext.RegisterActor(Actor, ref ActorHandle)
+  fullName: Ceres.Gameplay.WorldContext.RegisterActor(Ceres.Gameplay.Actor, ref Ceres.Gameplay.ActorHandle)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public void RegisterActor(Actor actor, ref ActorHandle handle)
+    parameters:
+    - id: actor
+      type: Ceres.Gameplay.Actor
+    - id: handle
+      type: Ceres.Gameplay.ActorHandle
+    content.vb: Public Sub RegisterActor(actor As Actor, handle As ActorHandle)
+  overload: Ceres.Gameplay.WorldContext.RegisterActor*
+  nameWithType.vb: WorldContext.RegisterActor(Actor, ActorHandle)
+  fullName.vb: Ceres.Gameplay.WorldContext.RegisterActor(Ceres.Gameplay.Actor, Ceres.Gameplay.ActorHandle)
+  name.vb: RegisterActor(Actor, ActorHandle)
+- uid: Ceres.Gameplay.WorldContext.UnregisterActor(Ceres.Gameplay.Actor)
+  commentId: M:Ceres.Gameplay.WorldContext.UnregisterActor(Ceres.Gameplay.Actor)
+  id: UnregisterActor(Ceres.Gameplay.Actor)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: UnregisterActor(Actor)
+  nameWithType: WorldContext.UnregisterActor(Actor)
+  fullName: Ceres.Gameplay.WorldContext.UnregisterActor(Ceres.Gameplay.Actor)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public void UnregisterActor(Actor actor)
+    parameters:
+    - id: actor
+      type: Ceres.Gameplay.Actor
+    content.vb: Public Sub UnregisterActor(actor As Actor)
+  overload: Ceres.Gameplay.WorldContext.UnregisterActor*
+- uid: Ceres.Gameplay.WorldContext.RegisterSubsystem``1(``0)
+  commentId: M:Ceres.Gameplay.WorldContext.RegisterSubsystem``1(``0)
+  id: RegisterSubsystem``1(``0)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterSubsystem<T>(T)
+  nameWithType: WorldContext.RegisterSubsystem<T>(T)
+  fullName: Ceres.Gameplay.WorldContext.RegisterSubsystem<T>(T)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Register a <xref href="Ceres.Gameplay.SubsystemBase" data-throw-if-not-resolved="false"></xref> with type T
+  example: []
+  syntax:
+    content: 'public void RegisterSubsystem<T>(T subsystem) where T : SubsystemBase'
+    parameters:
+    - id: subsystem
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public Sub RegisterSubsystem(Of T As SubsystemBase)(subsystem As T)
+  overload: Ceres.Gameplay.WorldContext.RegisterSubsystem*
+  nameWithType.vb: WorldContext.RegisterSubsystem(Of T)(T)
+  fullName.vb: Ceres.Gameplay.WorldContext.RegisterSubsystem(Of T)(T)
+  name.vb: RegisterSubsystem(Of T)(T)
+- uid: Ceres.Gameplay.WorldContext.RegisterSubsystem(System.Type,Ceres.Gameplay.SubsystemBase)
+  commentId: M:Ceres.Gameplay.WorldContext.RegisterSubsystem(System.Type,Ceres.Gameplay.SubsystemBase)
+  id: RegisterSubsystem(System.Type,Ceres.Gameplay.SubsystemBase)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterSubsystem(Type, SubsystemBase)
+  nameWithType: WorldContext.RegisterSubsystem(Type, SubsystemBase)
+  fullName: Ceres.Gameplay.WorldContext.RegisterSubsystem(System.Type, Ceres.Gameplay.SubsystemBase)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Register a <xref href="Ceres.Gameplay.SubsystemBase" data-throw-if-not-resolved="false"></xref> with runtime type.
+  example: []
+  syntax:
+    content: public void RegisterSubsystem(Type type, SubsystemBase subsystem)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    - id: subsystem
+      type: Ceres.Gameplay.SubsystemBase
+      description: ''
+    content.vb: Public Sub RegisterSubsystem(type As Type, subsystem As SubsystemBase)
+  overload: Ceres.Gameplay.WorldContext.RegisterSubsystem*
+- uid: Ceres.Gameplay.WorldContext.IsValid
+  commentId: M:Ceres.Gameplay.WorldContext.IsValid
+  id: IsValid
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: IsValid()
+  nameWithType: WorldContext.IsValid()
+  fullName: Ceres.Gameplay.WorldContext.IsValid()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public bool IsValid()
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsValid() As Boolean
+  overload: Ceres.Gameplay.WorldContext.IsValid*
+- uid: Ceres.Gameplay.WorldContext.op_Explicit(Ceres.Gameplay.GameWorld)~Ceres.Gameplay.WorldContext
+  commentId: M:Ceres.Gameplay.WorldContext.op_Explicit(Ceres.Gameplay.GameWorld)~Ceres.Gameplay.WorldContext
+  id: op_Explicit(Ceres.Gameplay.GameWorld)~Ceres.Gameplay.WorldContext
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: explicit operator WorldContext(GameWorld)
+  nameWithType: WorldContext.explicit operator WorldContext(GameWorld)
+  fullName: Ceres.Gameplay.WorldContext.explicit operator Ceres.Gameplay.WorldContext(Ceres.Gameplay.GameWorld)
+  type: Operator
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public static explicit operator WorldContext(GameWorld gameWorld)
+    parameters:
+    - id: gameWorld
+      type: Ceres.Gameplay.GameWorld
+    return:
+      type: Ceres.Gameplay.WorldContext
+    content.vb: Public Shared Narrowing Operator CType(gameWorld As GameWorld) As WorldContext
+  overload: Ceres.Gameplay.WorldContext.op_Explicit*
+  nameWithType.vb: WorldContext.CType(GameWorld)
+  fullName.vb: Ceres.Gameplay.WorldContext.CType(Ceres.Gameplay.GameWorld)
+  name.vb: CType(GameWorld)
+- uid: Ceres.Gameplay.WorldContext.op_Equality(Ceres.Gameplay.WorldContext,Ceres.Gameplay.WorldContext)
+  commentId: M:Ceres.Gameplay.WorldContext.op_Equality(Ceres.Gameplay.WorldContext,Ceres.Gameplay.WorldContext)
+  id: op_Equality(Ceres.Gameplay.WorldContext,Ceres.Gameplay.WorldContext)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: operator ==(WorldContext, WorldContext)
+  nameWithType: WorldContext.operator ==(WorldContext, WorldContext)
+  fullName: Ceres.Gameplay.WorldContext.operator ==(Ceres.Gameplay.WorldContext, Ceres.Gameplay.WorldContext)
+  type: Operator
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public static bool operator ==(WorldContext context1, WorldContext context2)
+    parameters:
+    - id: context1
+      type: Ceres.Gameplay.WorldContext
+    - id: context2
+      type: Ceres.Gameplay.WorldContext
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(context1 As WorldContext, context2 As WorldContext) As Boolean
+  overload: Ceres.Gameplay.WorldContext.op_Equality*
+  nameWithType.vb: WorldContext.=(WorldContext, WorldContext)
+  fullName.vb: Ceres.Gameplay.WorldContext.=(Ceres.Gameplay.WorldContext, Ceres.Gameplay.WorldContext)
+  name.vb: =(WorldContext, WorldContext)
+- uid: Ceres.Gameplay.WorldContext.op_Inequality(Ceres.Gameplay.WorldContext,Ceres.Gameplay.WorldContext)
+  commentId: M:Ceres.Gameplay.WorldContext.op_Inequality(Ceres.Gameplay.WorldContext,Ceres.Gameplay.WorldContext)
+  id: op_Inequality(Ceres.Gameplay.WorldContext,Ceres.Gameplay.WorldContext)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: operator !=(WorldContext, WorldContext)
+  nameWithType: WorldContext.operator !=(WorldContext, WorldContext)
+  fullName: Ceres.Gameplay.WorldContext.operator !=(Ceres.Gameplay.WorldContext, Ceres.Gameplay.WorldContext)
+  type: Operator
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public static bool operator !=(WorldContext context1, WorldContext context2)
+    parameters:
+    - id: context1
+      type: Ceres.Gameplay.WorldContext
+    - id: context2
+      type: Ceres.Gameplay.WorldContext
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(context1 As WorldContext, context2 As WorldContext) As Boolean
+  overload: Ceres.Gameplay.WorldContext.op_Inequality*
+  nameWithType.vb: WorldContext.<>(WorldContext, WorldContext)
+  fullName.vb: Ceres.Gameplay.WorldContext.<>(Ceres.Gameplay.WorldContext, Ceres.Gameplay.WorldContext)
+  name.vb: <>(WorldContext, WorldContext)
+- uid: Ceres.Gameplay.WorldContext.Equals(Ceres.Gameplay.WorldContext)
+  commentId: M:Ceres.Gameplay.WorldContext.Equals(Ceres.Gameplay.WorldContext)
+  id: Equals(Ceres.Gameplay.WorldContext)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: Equals(WorldContext)
+  nameWithType: WorldContext.Equals(WorldContext)
+  fullName: Ceres.Gameplay.WorldContext.Equals(Ceres.Gameplay.WorldContext)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  example: []
+  syntax:
+    content: public bool Equals(WorldContext other)
+    parameters:
+    - id: other
+      type: Ceres.Gameplay.WorldContext
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As WorldContext) As Boolean
+  overload: Ceres.Gameplay.WorldContext.Equals*
+  implements:
+  - System.IEquatable{Ceres.Gameplay.WorldContext}.Equals(Ceres.Gameplay.WorldContext)
+- uid: Ceres.Gameplay.WorldContext.Equals(System.Object)
+  commentId: M:Ceres.Gameplay.WorldContext.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Ceres.Gameplay.WorldContext
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: WorldContext.Equals(object)
+  fullName: Ceres.Gameplay.WorldContext.Equals(object)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Ceres.Gameplay.WorldContext.Equals*
+  nameWithType.vb: WorldContext.Equals(Object)
+  fullName.vb: Ceres.Gameplay.WorldContext.Equals(Object)
+  name.vb: Equals(Object)
+references:
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: System.IEquatable{Ceres.Gameplay.WorldContext}
+  commentId: T:System.IEquatable{Ceres.Gameplay.WorldContext}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<WorldContext>
+  nameWithType: IEquatable<WorldContext>
+  fullName: System.IEquatable<Ceres.Gameplay.WorldContext>
+  nameWithType.vb: IEquatable(Of WorldContext)
+  fullName.vb: System.IEquatable(Of Ceres.Gameplay.WorldContext)
+  name.vb: IEquatable(Of WorldContext)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Ceres.Gameplay.WorldContext
+    name: WorldContext
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.WorldContext
+    name: WorldContext
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Gameplay.GameWorld
+  commentId: T:Ceres.Gameplay.GameWorld
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.GameWorld.html
+  name: GameWorld
+  nameWithType: GameWorld
+  fullName: Ceres.Gameplay.GameWorld
+- uid: Ceres.Gameplay.WorldContext.Cast*
+  commentId: Overload:Ceres.Gameplay.WorldContext.Cast
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_Cast
+  name: Cast
+  nameWithType: WorldContext.Cast
+  fullName: Ceres.Gameplay.WorldContext.Cast
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.WorldContext.GetHashCode*
+  commentId: Overload:Ceres.Gameplay.WorldContext.GetHashCode
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_GetHashCode
+  name: GetHashCode
+  nameWithType: WorldContext.GetHashCode
+  fullName: Ceres.Gameplay.WorldContext.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Gameplay.ActorHandle
+  commentId: T:Ceres.Gameplay.ActorHandle
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.ActorHandle.html
+  name: ActorHandle
+  nameWithType: ActorHandle
+  fullName: Ceres.Gameplay.ActorHandle
+- uid: Ceres.Gameplay.WorldContext.GetActor*
+  commentId: Overload:Ceres.Gameplay.WorldContext.GetActor
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_GetActor_Ceres_Gameplay_ActorHandle_
+  name: GetActor
+  nameWithType: WorldContext.GetActor
+  fullName: Ceres.Gameplay.WorldContext.GetActor
+- uid: Ceres.Gameplay.Actor
+  commentId: T:Ceres.Gameplay.Actor
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.Actor.html
+  name: Actor
+  nameWithType: Actor
+  fullName: Ceres.Gameplay.Actor
+- uid: Ceres.Gameplay.SubsystemBase
+  commentId: T:Ceres.Gameplay.SubsystemBase
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html
+  name: SubsystemBase
+  nameWithType: SubsystemBase
+  fullName: Ceres.Gameplay.SubsystemBase
+- uid: Ceres.Gameplay.WorldContext.GetSubsystem*
+  commentId: Overload:Ceres.Gameplay.WorldContext.GetSubsystem
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_GetSubsystem__1
+  name: GetSubsystem
+  nameWithType: WorldContext.GetSubsystem
+  fullName: Ceres.Gameplay.WorldContext.GetSubsystem
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Ceres.Gameplay.WorldContext.RegisterActor*
+  commentId: Overload:Ceres.Gameplay.WorldContext.RegisterActor
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_RegisterActor_Ceres_Gameplay_Actor_Ceres_Gameplay_ActorHandle__
+  name: RegisterActor
+  nameWithType: WorldContext.RegisterActor
+  fullName: Ceres.Gameplay.WorldContext.RegisterActor
+- uid: Ceres.Gameplay.WorldContext.UnregisterActor*
+  commentId: Overload:Ceres.Gameplay.WorldContext.UnregisterActor
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_UnregisterActor_Ceres_Gameplay_Actor_
+  name: UnregisterActor
+  nameWithType: WorldContext.UnregisterActor
+  fullName: Ceres.Gameplay.WorldContext.UnregisterActor
+- uid: Ceres.Gameplay.WorldContext.RegisterSubsystem*
+  commentId: Overload:Ceres.Gameplay.WorldContext.RegisterSubsystem
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_RegisterSubsystem__1___0_
+  name: RegisterSubsystem
+  nameWithType: WorldContext.RegisterSubsystem
+  fullName: Ceres.Gameplay.WorldContext.RegisterSubsystem
+- uid: Ceres.Gameplay.WorldContext.IsValid*
+  commentId: Overload:Ceres.Gameplay.WorldContext.IsValid
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_IsValid
+  name: IsValid
+  nameWithType: WorldContext.IsValid
+  fullName: Ceres.Gameplay.WorldContext.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.WorldContext.op_Explicit*
+  commentId: Overload:Ceres.Gameplay.WorldContext.op_Explicit
+  name: explicit operator
+  nameWithType: WorldContext.explicit operator
+  fullName: Ceres.Gameplay.WorldContext.explicit operator
+  nameWithType.vb: WorldContext.CType
+  fullName.vb: Ceres.Gameplay.WorldContext.CType
+  name.vb: CType
+  spec.csharp:
+  - name: explicit
+  - name: " "
+  - name: operator
+- uid: Ceres.Gameplay.WorldContext
+  commentId: T:Ceres.Gameplay.WorldContext
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html
+  name: WorldContext
+  nameWithType: WorldContext
+  fullName: Ceres.Gameplay.WorldContext
+- uid: Ceres.Gameplay.WorldContext.op_Equality*
+  commentId: Overload:Ceres.Gameplay.WorldContext.op_Equality
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_op_Equality_Ceres_Gameplay_WorldContext_Ceres_Gameplay_WorldContext_
+  name: operator ==
+  nameWithType: WorldContext.operator ==
+  fullName: Ceres.Gameplay.WorldContext.operator ==
+  nameWithType.vb: WorldContext.=
+  fullName.vb: Ceres.Gameplay.WorldContext.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Ceres.Gameplay.WorldContext.op_Equality*
+    name: ==
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_op_Equality_Ceres_Gameplay_WorldContext_Ceres_Gameplay_WorldContext_
+- uid: Ceres.Gameplay.WorldContext.op_Inequality*
+  commentId: Overload:Ceres.Gameplay.WorldContext.op_Inequality
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_op_Inequality_Ceres_Gameplay_WorldContext_Ceres_Gameplay_WorldContext_
+  name: operator !=
+  nameWithType: WorldContext.operator !=
+  fullName: Ceres.Gameplay.WorldContext.operator !=
+  nameWithType.vb: WorldContext.<>
+  fullName.vb: Ceres.Gameplay.WorldContext.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Ceres.Gameplay.WorldContext.op_Inequality*
+    name: '!='
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_op_Inequality_Ceres_Gameplay_WorldContext_Ceres_Gameplay_WorldContext_
+- uid: Ceres.Gameplay.WorldContext.Equals*
+  commentId: Overload:Ceres.Gameplay.WorldContext.Equals
+  isExternal: true
+  href: Ceres.Gameplay.WorldContext.html#Ceres_Gameplay_WorldContext_Equals_Ceres_Gameplay_WorldContext_
+  name: Equals
+  nameWithType: WorldContext.Equals
+  fullName: Ceres.Gameplay.WorldContext.Equals
+- uid: System.IEquatable{Ceres.Gameplay.WorldContext}.Equals(Ceres.Gameplay.WorldContext)
+  commentId: M:System.IEquatable{Ceres.Gameplay.WorldContext}.Equals(Ceres.Gameplay.WorldContext)
+  parent: System.IEquatable{Ceres.Gameplay.WorldContext}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(WorldContext)
+  nameWithType: IEquatable<WorldContext>.Equals(WorldContext)
+  fullName: System.IEquatable<Ceres.Gameplay.WorldContext>.Equals(Ceres.Gameplay.WorldContext)
+  nameWithType.vb: IEquatable(Of WorldContext).Equals(WorldContext)
+  fullName.vb: System.IEquatable(Of Ceres.Gameplay.WorldContext).Equals(Ceres.Gameplay.WorldContext)
+  spec.csharp:
+  - uid: System.IEquatable{Ceres.Gameplay.WorldContext}.Equals(Ceres.Gameplay.WorldContext)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Ceres.Gameplay.WorldContext
+    name: WorldContext
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Ceres.Gameplay.WorldContext}.Equals(Ceres.Gameplay.WorldContext)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Ceres.Gameplay.WorldContext
+    name: WorldContext
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )

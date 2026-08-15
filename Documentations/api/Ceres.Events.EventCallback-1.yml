@@ -1,0 +1,255 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.EventCallback`1
+  commentId: T:Ceres.Events.EventCallback`1
+  id: EventCallback`1
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.EventCallback`1.#ctor(System.Object,System.IntPtr)
+  - Ceres.Events.EventCallback`1.BeginInvoke(`0,System.AsyncCallback,System.Object)
+  - Ceres.Events.EventCallback`1.EndInvoke(System.IAsyncResult)
+  - Ceres.Events.EventCallback`1.Invoke(`0)
+  langs:
+  - csharp
+  - vb
+  name: EventCallback<TEventType>
+  nameWithType: EventCallback<TEventType>
+  fullName: Ceres.Events.EventCallback<TEventType>
+  type: Delegate
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Defines the structure of a callback that can be registered onto an element for an event type
+  example: []
+  syntax:
+    content: public delegate void EventCallback<in TEventType>(TEventType evt)
+    parameters:
+    - id: evt
+      type: '{TEventType}'
+      description: The event instance
+    typeParameters:
+    - id: TEventType
+      description: The type of event to register the callback for
+    content.vb: Public Delegate Sub EventCallback(Of In TEventType)(evt As TEventType)
+  nameWithType.vb: EventCallback(Of TEventType)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType)
+  name.vb: EventCallback(Of TEventType)
+- uid: Ceres.Events.EventCallback`1.#ctor(System.Object,System.IntPtr)
+  commentId: M:Ceres.Events.EventCallback`1.#ctor(System.Object,System.IntPtr)
+  id: '#ctor(System.Object,System.IntPtr)'
+  parent: Ceres.Events.EventCallback`1
+  langs:
+  - csharp
+  - vb
+  name: EventCallback(object, IntPtr)
+  nameWithType: EventCallback<TEventType>.EventCallback(object, IntPtr)
+  fullName: Ceres.Events.EventCallback<TEventType>.EventCallback(object, System.IntPtr)
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public EventCallback(object @object, IntPtr method)
+    parameters:
+    - id: object
+      type: System.Object
+    - id: method
+      type: System.IntPtr
+    content.vb: Public Sub New([object] As Object, method As IntPtr)
+  overload: Ceres.Events.EventCallback`1.#ctor*
+  nameWithType.vb: EventCallback(Of TEventType).New(Object, IntPtr)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType).New(Object, System.IntPtr)
+  name.vb: New(Object, IntPtr)
+- uid: Ceres.Events.EventCallback`1.Invoke(`0)
+  commentId: M:Ceres.Events.EventCallback`1.Invoke(`0)
+  id: Invoke(`0)
+  parent: Ceres.Events.EventCallback`1
+  langs:
+  - csharp
+  - vb
+  name: Invoke(TEventType)
+  nameWithType: EventCallback<TEventType>.Invoke(TEventType)
+  fullName: Ceres.Events.EventCallback<TEventType>.Invoke(TEventType)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public virtual void Invoke(TEventType evt)
+    parameters:
+    - id: evt
+      type: '{TEventType}'
+    content.vb: Public Overridable Sub Invoke(evt As TEventType)
+  overload: Ceres.Events.EventCallback`1.Invoke*
+  nameWithType.vb: EventCallback(Of TEventType).Invoke(TEventType)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType).Invoke(TEventType)
+- uid: Ceres.Events.EventCallback`1.BeginInvoke(`0,System.AsyncCallback,System.Object)
+  commentId: M:Ceres.Events.EventCallback`1.BeginInvoke(`0,System.AsyncCallback,System.Object)
+  id: BeginInvoke(`0,System.AsyncCallback,System.Object)
+  parent: Ceres.Events.EventCallback`1
+  langs:
+  - csharp
+  - vb
+  name: BeginInvoke(TEventType, AsyncCallback, object)
+  nameWithType: EventCallback<TEventType>.BeginInvoke(TEventType, AsyncCallback, object)
+  fullName: Ceres.Events.EventCallback<TEventType>.BeginInvoke(TEventType, System.AsyncCallback, object)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public virtual IAsyncResult BeginInvoke(TEventType evt, AsyncCallback callback, object @object)
+    parameters:
+    - id: evt
+      type: '{TEventType}'
+    - id: callback
+      type: System.AsyncCallback
+    - id: object
+      type: System.Object
+    return:
+      type: System.IAsyncResult
+    content.vb: Public Overridable Function BeginInvoke(evt As TEventType, callback As AsyncCallback, [object] As Object) As IAsyncResult
+  overload: Ceres.Events.EventCallback`1.BeginInvoke*
+  nameWithType.vb: EventCallback(Of TEventType).BeginInvoke(TEventType, AsyncCallback, Object)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType).BeginInvoke(TEventType, System.AsyncCallback, Object)
+  name.vb: BeginInvoke(TEventType, AsyncCallback, Object)
+- uid: Ceres.Events.EventCallback`1.EndInvoke(System.IAsyncResult)
+  commentId: M:Ceres.Events.EventCallback`1.EndInvoke(System.IAsyncResult)
+  id: EndInvoke(System.IAsyncResult)
+  parent: Ceres.Events.EventCallback`1
+  langs:
+  - csharp
+  - vb
+  name: EndInvoke(IAsyncResult)
+  nameWithType: EventCallback<TEventType>.EndInvoke(IAsyncResult)
+  fullName: Ceres.Events.EventCallback<TEventType>.EndInvoke(System.IAsyncResult)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: public virtual void EndInvoke(IAsyncResult result)
+    parameters:
+    - id: result
+      type: System.IAsyncResult
+    content.vb: Public Overridable Sub EndInvoke(result As IAsyncResult)
+  overload: Ceres.Events.EventCallback`1.EndInvoke*
+  nameWithType.vb: EventCallback(Of TEventType).EndInvoke(IAsyncResult)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType).EndInvoke(System.IAsyncResult)
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: '{TEventType}'
+  commentId: '!:TEventType'
+  definition: TEventType
+  name: TEventType
+  nameWithType: TEventType
+  fullName: TEventType
+- uid: TEventType
+  name: TEventType
+  nameWithType: TEventType
+  fullName: TEventType
+- uid: Ceres.Events.EventCallback`1.#ctor*
+  commentId: Overload:Ceres.Events.EventCallback`1.#ctor
+  isExternal: true
+  href: Ceres.Events.EventCallback-1.html#Ceres_Events_EventCallback_1__ctor_System_Object_System_IntPtr_
+  name: EventCallback
+  nameWithType: EventCallback<TEventType>.EventCallback
+  fullName: Ceres.Events.EventCallback<TEventType>.EventCallback
+  nameWithType.vb: EventCallback(Of TEventType).New
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType).New
+  name.vb: New
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IntPtr
+  commentId: T:System.IntPtr
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.intptr
+  name: IntPtr
+  nameWithType: IntPtr
+  fullName: System.IntPtr
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Events.EventCallback`1.Invoke*
+  commentId: Overload:Ceres.Events.EventCallback`1.Invoke
+  isExternal: true
+  href: Ceres.Events.EventCallback-1.html#Ceres_Events_EventCallback_1_Invoke__0_
+  name: Invoke
+  nameWithType: EventCallback<TEventType>.Invoke
+  fullName: Ceres.Events.EventCallback<TEventType>.Invoke
+  nameWithType.vb: EventCallback(Of TEventType).Invoke
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType).Invoke
+- uid: Ceres.Events.EventCallback`1.BeginInvoke*
+  commentId: Overload:Ceres.Events.EventCallback`1.BeginInvoke
+  isExternal: true
+  href: Ceres.Events.EventCallback-1.html#Ceres_Events_EventCallback_1_BeginInvoke__0_System_AsyncCallback_System_Object_
+  name: BeginInvoke
+  nameWithType: EventCallback<TEventType>.BeginInvoke
+  fullName: Ceres.Events.EventCallback<TEventType>.BeginInvoke
+  nameWithType.vb: EventCallback(Of TEventType).BeginInvoke
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType).BeginInvoke
+- uid: System.AsyncCallback
+  commentId: T:System.AsyncCallback
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.asynccallback
+  name: AsyncCallback
+  nameWithType: AsyncCallback
+  fullName: System.AsyncCallback
+- uid: System.IAsyncResult
+  commentId: T:System.IAsyncResult
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncresult
+  name: IAsyncResult
+  nameWithType: IAsyncResult
+  fullName: System.IAsyncResult
+- uid: Ceres.Events.EventCallback`1.EndInvoke*
+  commentId: Overload:Ceres.Events.EventCallback`1.EndInvoke
+  isExternal: true
+  href: Ceres.Events.EventCallback-1.html#Ceres_Events_EventCallback_1_EndInvoke_System_IAsyncResult_
+  name: EndInvoke
+  nameWithType: EventCallback<TEventType>.EndInvoke
+  fullName: Ceres.Events.EventCallback<TEventType>.EndInvoke
+  nameWithType.vb: EventCallback(Of TEventType).EndInvoke
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType).EndInvoke

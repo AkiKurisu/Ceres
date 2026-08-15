@@ -1,0 +1,1062 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.DataDriven.DataTable
+  commentId: T:Ceres.DataDriven.DataTable
+  id: DataTable
+  parent: Ceres.DataDriven
+  children:
+  - Ceres.DataDriven.DataTable.#ctor
+  - Ceres.DataDriven.DataTable.AddOrUpdateRow(System.String,Ceres.DataDriven.IDataTableRow)
+  - Ceres.DataDriven.DataTable.AddRow(System.String,Ceres.DataDriven.IDataTableRow)
+  - Ceres.DataDriven.DataTable.GetAllRows
+  - Ceres.DataDriven.DataTable.GetAllRows``1
+  - Ceres.DataDriven.DataTable.GetRow(System.Int32)
+  - Ceres.DataDriven.DataTable.GetRow(System.String)
+  - Ceres.DataDriven.DataTable.GetRowMap
+  - Ceres.DataDriven.DataTable.GetRowStruct
+  - Ceres.DataDriven.DataTable.GetRowStructType
+  - Ceres.DataDriven.DataTable.GetRow``1(System.Int32)
+  - Ceres.DataDriven.DataTable.GetRow``1(System.Predicate{``0})
+  - Ceres.DataDriven.DataTable.GetRow``1(System.String)
+  - Ceres.DataDriven.DataTable.GetRows``1(System.Predicate{``0})
+  - Ceres.DataDriven.DataTable.InsertRow(System.Int32,System.String,Ceres.DataDriven.IDataTableRow)
+  - Ceres.DataDriven.DataTable.RemoveAllRows
+  - Ceres.DataDriven.DataTable.RemoveRow(System.Collections.Generic.List{System.Int32})
+  - Ceres.DataDriven.DataTable.ReorderRow(System.Int32,System.Int32)
+  - Ceres.DataDriven.DataTable.UpdateRow(System.String,Ceres.DataDriven.IDataTableRow)
+  langs:
+  - csharp
+  - vb
+  name: DataTable
+  nameWithType: DataTable
+  fullName: Ceres.DataDriven.DataTable
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  syntax:
+    content: 'public class DataTable : ScriptableObject'
+    content.vb: Public Class DataTable Inherits ScriptableObject
+  inheritance:
+  - System.Object
+- uid: Ceres.DataDriven.DataTable.GetRowStruct
+  commentId: M:Ceres.DataDriven.DataTable.GetRowStruct
+  id: GetRowStruct
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRowStruct()
+  nameWithType: DataTable.GetRowStruct()
+  fullName: Ceres.DataDriven.DataTable.GetRowStruct()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get default row struct
+  example: []
+  syntax:
+    content: public IDataTableRow GetRowStruct()
+    return:
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    content.vb: Public Function GetRowStruct() As IDataTableRow
+  overload: Ceres.DataDriven.DataTable.GetRowStruct*
+- uid: Ceres.DataDriven.DataTable.GetRowStructType
+  commentId: M:Ceres.DataDriven.DataTable.GetRowStructType
+  id: GetRowStructType
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRowStructType()
+  nameWithType: DataTable.GetRowStructType()
+  fullName: Ceres.DataDriven.DataTable.GetRowStructType()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get row struct type
+  example: []
+  syntax:
+    content: public Type GetRowStructType()
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Public Function GetRowStructType() As Type
+  overload: Ceres.DataDriven.DataTable.GetRowStructType*
+- uid: Ceres.DataDriven.DataTable.GetAllRows``1
+  commentId: M:Ceres.DataDriven.DataTable.GetAllRows``1
+  id: GetAllRows``1
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetAllRows<T>()
+  nameWithType: DataTable.GetAllRows<T>()
+  fullName: Ceres.DataDriven.DataTable.GetAllRows<T>()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get data rows from table
+  example: []
+  syntax:
+    content: 'public T[] GetAllRows<T>() where T : class, IDataTableRow'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}[]'
+    content.vb: Public Function GetAllRows(Of T As {Class, IDataTableRow})() As T()
+  overload: Ceres.DataDriven.DataTable.GetAllRows*
+  nameWithType.vb: DataTable.GetAllRows(Of T)()
+  fullName.vb: Ceres.DataDriven.DataTable.GetAllRows(Of T)()
+  name.vb: GetAllRows(Of T)()
+- uid: Ceres.DataDriven.DataTable.GetAllRows
+  commentId: M:Ceres.DataDriven.DataTable.GetAllRows
+  id: GetAllRows
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetAllRows()
+  nameWithType: DataTable.GetAllRows()
+  fullName: Ceres.DataDriven.DataTable.GetAllRows()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get data rows from table
+  example: []
+  syntax:
+    content: public IDataTableRow[] GetAllRows()
+    return:
+      type: Ceres.DataDriven.IDataTableRow[]
+      description: ''
+    content.vb: Public Function GetAllRows() As IDataTableRow()
+  overload: Ceres.DataDriven.DataTable.GetAllRows*
+- uid: Ceres.DataDriven.DataTable.GetRows``1(System.Predicate{``0})
+  commentId: M:Ceres.DataDriven.DataTable.GetRows``1(System.Predicate{``0})
+  id: GetRows``1(System.Predicate{``0})
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRows<T>(Predicate<T>)
+  nameWithType: DataTable.GetRows<T>(Predicate<T>)
+  fullName: Ceres.DataDriven.DataTable.GetRows<T>(System.Predicate<T>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get data rows from table by predicate
+  example: []
+  syntax:
+    content: 'public T[] GetRows<T>(Predicate<T> predicate) where T : class, IDataTableRow'
+    parameters:
+    - id: predicate
+      type: System.Predicate{{T}}
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}[]'
+      description: ''
+    content.vb: Public Function GetRows(Of T As {Class, IDataTableRow})(predicate As Predicate(Of T)) As T()
+  overload: Ceres.DataDriven.DataTable.GetRows*
+  nameWithType.vb: DataTable.GetRows(Of T)(Predicate(Of T))
+  fullName.vb: Ceres.DataDriven.DataTable.GetRows(Of T)(System.Predicate(Of T))
+  name.vb: GetRows(Of T)(Predicate(Of T))
+- uid: Ceres.DataDriven.DataTable.GetRow``1(System.Int32)
+  commentId: M:Ceres.DataDriven.DataTable.GetRow``1(System.Int32)
+  id: GetRow``1(System.Int32)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRow<T>(int)
+  nameWithType: DataTable.GetRow<T>(int)
+  fullName: Ceres.DataDriven.DataTable.GetRow<T>(int)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get data row from table
+  example: []
+  syntax:
+    content: 'public T GetRow<T>(int index) where T : class, IDataTableRow'
+    parameters:
+    - id: index
+      type: System.Int32
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+    content.vb: Public Function GetRow(Of T As {Class, IDataTableRow})(index As Integer) As T
+  overload: Ceres.DataDriven.DataTable.GetRow*
+  nameWithType.vb: DataTable.GetRow(Of T)(Integer)
+  fullName.vb: Ceres.DataDriven.DataTable.GetRow(Of T)(Integer)
+  name.vb: GetRow(Of T)(Integer)
+- uid: Ceres.DataDriven.DataTable.GetRow(System.Int32)
+  commentId: M:Ceres.DataDriven.DataTable.GetRow(System.Int32)
+  id: GetRow(System.Int32)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRow(int)
+  nameWithType: DataTable.GetRow(int)
+  fullName: Ceres.DataDriven.DataTable.GetRow(int)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get data row from table by index
+  example: []
+  syntax:
+    content: public IDataTableRow GetRow(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: ''
+    return:
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    content.vb: Public Function GetRow(index As Integer) As IDataTableRow
+  overload: Ceres.DataDriven.DataTable.GetRow*
+  nameWithType.vb: DataTable.GetRow(Integer)
+  fullName.vb: Ceres.DataDriven.DataTable.GetRow(Integer)
+  name.vb: GetRow(Integer)
+- uid: Ceres.DataDriven.DataTable.GetRow``1(System.String)
+  commentId: M:Ceres.DataDriven.DataTable.GetRow``1(System.String)
+  id: GetRow``1(System.String)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRow<T>(string)
+  nameWithType: DataTable.GetRow<T>(string)
+  fullName: Ceres.DataDriven.DataTable.GetRow<T>(string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get data row from table by RowId
+  example: []
+  syntax:
+    content: 'public T GetRow<T>(string rowId) where T : class, IDataTableRow'
+    parameters:
+    - id: rowId
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function GetRow(Of T As {Class, IDataTableRow})(rowId As String) As T
+  overload: Ceres.DataDriven.DataTable.GetRow*
+  nameWithType.vb: DataTable.GetRow(Of T)(String)
+  fullName.vb: Ceres.DataDriven.DataTable.GetRow(Of T)(String)
+  name.vb: GetRow(Of T)(String)
+- uid: Ceres.DataDriven.DataTable.GetRow``1(System.Predicate{``0})
+  commentId: M:Ceres.DataDriven.DataTable.GetRow``1(System.Predicate{``0})
+  id: GetRow``1(System.Predicate{``0})
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRow<T>(Predicate<T>)
+  nameWithType: DataTable.GetRow<T>(Predicate<T>)
+  fullName: Ceres.DataDriven.DataTable.GetRow<T>(System.Predicate<T>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get data row from table by predicate
+  example: []
+  syntax:
+    content: 'public T GetRow<T>(Predicate<T> predicate) where T : class, IDataTableRow'
+    parameters:
+    - id: predicate
+      type: System.Predicate{{T}}
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function GetRow(Of T As {Class, IDataTableRow})(predicate As Predicate(Of T)) As T
+  overload: Ceres.DataDriven.DataTable.GetRow*
+  nameWithType.vb: DataTable.GetRow(Of T)(Predicate(Of T))
+  fullName.vb: Ceres.DataDriven.DataTable.GetRow(Of T)(System.Predicate(Of T))
+  name.vb: GetRow(Of T)(Predicate(Of T))
+- uid: Ceres.DataDriven.DataTable.GetRow(System.String)
+  commentId: M:Ceres.DataDriven.DataTable.GetRow(System.String)
+  id: GetRow(System.String)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRow(string)
+  nameWithType: DataTable.GetRow(string)
+  fullName: Ceres.DataDriven.DataTable.GetRow(string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get data row from table by RowId
+  example: []
+  syntax:
+    content: public IDataTableRow GetRow(string rowId)
+    parameters:
+    - id: rowId
+      type: System.String
+      description: ''
+    return:
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    content.vb: Public Function GetRow(rowId As String) As IDataTableRow
+  overload: Ceres.DataDriven.DataTable.GetRow*
+  nameWithType.vb: DataTable.GetRow(String)
+  fullName.vb: Ceres.DataDriven.DataTable.GetRow(String)
+  name.vb: GetRow(String)
+- uid: Ceres.DataDriven.DataTable.AddRow(System.String,Ceres.DataDriven.IDataTableRow)
+  commentId: M:Ceres.DataDriven.DataTable.AddRow(System.String,Ceres.DataDriven.IDataTableRow)
+  id: AddRow(System.String,Ceres.DataDriven.IDataTableRow)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: AddRow(string, IDataTableRow)
+  nameWithType: DataTable.AddRow(string, IDataTableRow)
+  fullName: Ceres.DataDriven.DataTable.AddRow(string, Ceres.DataDriven.IDataTableRow)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Add a data row to the table
+  example: []
+  syntax:
+    content: public bool AddRow(string rowId, IDataTableRow row)
+    parameters:
+    - id: rowId
+      type: System.String
+      description: ''
+    - id: row
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function AddRow(rowId As String, row As IDataTableRow) As Boolean
+  overload: Ceres.DataDriven.DataTable.AddRow*
+  nameWithType.vb: DataTable.AddRow(String, IDataTableRow)
+  fullName.vb: Ceres.DataDriven.DataTable.AddRow(String, Ceres.DataDriven.IDataTableRow)
+  name.vb: AddRow(String, IDataTableRow)
+- uid: Ceres.DataDriven.DataTable.UpdateRow(System.String,Ceres.DataDriven.IDataTableRow)
+  commentId: M:Ceres.DataDriven.DataTable.UpdateRow(System.String,Ceres.DataDriven.IDataTableRow)
+  id: UpdateRow(System.String,Ceres.DataDriven.IDataTableRow)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: UpdateRow(string, IDataTableRow)
+  nameWithType: DataTable.UpdateRow(string, IDataTableRow)
+  fullName: Ceres.DataDriven.DataTable.UpdateRow(string, Ceres.DataDriven.IDataTableRow)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Update a data row from the table
+  example: []
+  syntax:
+    content: public bool UpdateRow(string rowId, IDataTableRow newRow)
+    parameters:
+    - id: rowId
+      type: System.String
+      description: ''
+    - id: newRow
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function UpdateRow(rowId As String, newRow As IDataTableRow) As Boolean
+  overload: Ceres.DataDriven.DataTable.UpdateRow*
+  nameWithType.vb: DataTable.UpdateRow(String, IDataTableRow)
+  fullName.vb: Ceres.DataDriven.DataTable.UpdateRow(String, Ceres.DataDriven.IDataTableRow)
+  name.vb: UpdateRow(String, IDataTableRow)
+- uid: Ceres.DataDriven.DataTable.AddOrUpdateRow(System.String,Ceres.DataDriven.IDataTableRow)
+  commentId: M:Ceres.DataDriven.DataTable.AddOrUpdateRow(System.String,Ceres.DataDriven.IDataTableRow)
+  id: AddOrUpdateRow(System.String,Ceres.DataDriven.IDataTableRow)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: AddOrUpdateRow(string, IDataTableRow)
+  nameWithType: DataTable.AddOrUpdateRow(string, IDataTableRow)
+  fullName: Ceres.DataDriven.DataTable.AddOrUpdateRow(string, Ceres.DataDriven.IDataTableRow)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Add or update a data row from the table
+  example: []
+  syntax:
+    content: public void AddOrUpdateRow(string rowId, IDataTableRow newRow)
+    parameters:
+    - id: rowId
+      type: System.String
+      description: ''
+    - id: newRow
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    content.vb: Public Sub AddOrUpdateRow(rowId As String, newRow As IDataTableRow)
+  overload: Ceres.DataDriven.DataTable.AddOrUpdateRow*
+  nameWithType.vb: DataTable.AddOrUpdateRow(String, IDataTableRow)
+  fullName.vb: Ceres.DataDriven.DataTable.AddOrUpdateRow(String, Ceres.DataDriven.IDataTableRow)
+  name.vb: AddOrUpdateRow(String, IDataTableRow)
+- uid: Ceres.DataDriven.DataTable.RemoveRow(System.Collections.Generic.List{System.Int32})
+  commentId: M:Ceres.DataDriven.DataTable.RemoveRow(System.Collections.Generic.List{System.Int32})
+  id: RemoveRow(System.Collections.Generic.List{System.Int32})
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: RemoveRow(List<int>)
+  nameWithType: DataTable.RemoveRow(List<int>)
+  fullName: Ceres.DataDriven.DataTable.RemoveRow(System.Collections.Generic.List<int>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Remove data rows from the table
+  example: []
+  syntax:
+    content: public void RemoveRow(List<int> rowIndex)
+    parameters:
+    - id: rowIndex
+      type: System.Collections.Generic.List{System.Int32}
+      description: ''
+    content.vb: Public Sub RemoveRow(rowIndex As List(Of Integer))
+  overload: Ceres.DataDriven.DataTable.RemoveRow*
+  nameWithType.vb: DataTable.RemoveRow(List(Of Integer))
+  fullName.vb: Ceres.DataDriven.DataTable.RemoveRow(System.Collections.Generic.List(Of Integer))
+  name.vb: RemoveRow(List(Of Integer))
+- uid: Ceres.DataDriven.DataTable.RemoveAllRows
+  commentId: M:Ceres.DataDriven.DataTable.RemoveAllRows
+  id: RemoveAllRows
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: RemoveAllRows()
+  nameWithType: DataTable.RemoveAllRows()
+  fullName: Ceres.DataDriven.DataTable.RemoveAllRows()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Remove all data rows from the table
+  example: []
+  syntax:
+    content: public void RemoveAllRows()
+    content.vb: Public Sub RemoveAllRows()
+  overload: Ceres.DataDriven.DataTable.RemoveAllRows*
+- uid: Ceres.DataDriven.DataTable.InsertRow(System.Int32,System.String,Ceres.DataDriven.IDataTableRow)
+  commentId: M:Ceres.DataDriven.DataTable.InsertRow(System.Int32,System.String,Ceres.DataDriven.IDataTableRow)
+  id: InsertRow(System.Int32,System.String,Ceres.DataDriven.IDataTableRow)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: InsertRow(int, string, IDataTableRow)
+  nameWithType: DataTable.InsertRow(int, string, IDataTableRow)
+  fullName: Ceres.DataDriven.DataTable.InsertRow(int, string, Ceres.DataDriven.IDataTableRow)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Insert a row to dataTable
+  example: []
+  syntax:
+    content: public bool InsertRow(int index, string rowId, IDataTableRow row)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: ''
+    - id: rowId
+      type: System.String
+      description: ''
+    - id: row
+      type: Ceres.DataDriven.IDataTableRow
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function InsertRow(index As Integer, rowId As String, row As IDataTableRow) As Boolean
+  overload: Ceres.DataDriven.DataTable.InsertRow*
+  nameWithType.vb: DataTable.InsertRow(Integer, String, IDataTableRow)
+  fullName.vb: Ceres.DataDriven.DataTable.InsertRow(Integer, String, Ceres.DataDriven.IDataTableRow)
+  name.vb: InsertRow(Integer, String, IDataTableRow)
+- uid: Ceres.DataDriven.DataTable.ReorderRow(System.Int32,System.Int32)
+  commentId: M:Ceres.DataDriven.DataTable.ReorderRow(System.Int32,System.Int32)
+  id: ReorderRow(System.Int32,System.Int32)
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: ReorderRow(int, int)
+  nameWithType: DataTable.ReorderRow(int, int)
+  fullName: Ceres.DataDriven.DataTable.ReorderRow(int, int)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Reorder a row
+  example: []
+  syntax:
+    content: public void ReorderRow(int fromIndex, int toIndex)
+    parameters:
+    - id: fromIndex
+      type: System.Int32
+      description: ''
+    - id: toIndex
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub ReorderRow(fromIndex As Integer, toIndex As Integer)
+  overload: Ceres.DataDriven.DataTable.ReorderRow*
+  nameWithType.vb: DataTable.ReorderRow(Integer, Integer)
+  fullName.vb: Ceres.DataDriven.DataTable.ReorderRow(Integer, Integer)
+  name.vb: ReorderRow(Integer, Integer)
+- uid: Ceres.DataDriven.DataTable.GetRowMap
+  commentId: M:Ceres.DataDriven.DataTable.GetRowMap
+  id: GetRowMap
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: GetRowMap()
+  nameWithType: DataTable.GetRowMap()
+  fullName: Ceres.DataDriven.DataTable.GetRowMap()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  summary: Get all data rows as map with RowId as key
+  example: []
+  syntax:
+    content: public Dictionary<string, IDataTableRow> GetRowMap()
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Ceres.DataDriven.IDataTableRow}
+      description: ''
+    content.vb: Public Function GetRowMap() As Dictionary(Of String, IDataTableRow)
+  overload: Ceres.DataDriven.DataTable.GetRowMap*
+- uid: Ceres.DataDriven.DataTable.#ctor
+  commentId: M:Ceres.DataDriven.DataTable.#ctor
+  id: '#ctor'
+  parent: Ceres.DataDriven.DataTable
+  langs:
+  - csharp
+  - vb
+  name: DataTable()
+  nameWithType: DataTable.DataTable()
+  fullName: Ceres.DataDriven.DataTable.DataTable()
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.DataDriven
+  syntax:
+    content: public DataTable()
+    content.vb: Public Sub New()
+  overload: Ceres.DataDriven.DataTable.#ctor*
+  nameWithType.vb: DataTable.New()
+  fullName.vb: Ceres.DataDriven.DataTable.New()
+  name.vb: New()
+references:
+- uid: Ceres.DataDriven
+  commentId: N:Ceres.DataDriven
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven
+  nameWithType: Ceres.DataDriven
+  fullName: Ceres.DataDriven
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.DataDriven.DataTable.GetRowStruct*
+  commentId: Overload:Ceres.DataDriven.DataTable.GetRowStruct
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_GetRowStruct
+  name: GetRowStruct
+  nameWithType: DataTable.GetRowStruct
+  fullName: Ceres.DataDriven.DataTable.GetRowStruct
+- uid: Ceres.DataDriven.IDataTableRow
+  commentId: T:Ceres.DataDriven.IDataTableRow
+  parent: Ceres.DataDriven
+  isExternal: true
+  href: Ceres.DataDriven.IDataTableRow.html
+  name: IDataTableRow
+  nameWithType: IDataTableRow
+  fullName: Ceres.DataDriven.IDataTableRow
+- uid: Ceres.DataDriven.DataTable.GetRowStructType*
+  commentId: Overload:Ceres.DataDriven.DataTable.GetRowStructType
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_GetRowStructType
+  name: GetRowStructType
+  nameWithType: DataTable.GetRowStructType
+  fullName: Ceres.DataDriven.DataTable.GetRowStructType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Ceres.DataDriven.DataTable.GetAllRows*
+  commentId: Overload:Ceres.DataDriven.DataTable.GetAllRows
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_GetAllRows__1
+  name: GetAllRows
+  nameWithType: DataTable.GetAllRows
+  fullName: Ceres.DataDriven.DataTable.GetAllRows
+- uid: '{T}[]'
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  nameWithType.vb: T()
+  fullName.vb: T()
+  name.vb: T()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+- uid: Ceres.DataDriven.IDataTableRow[]
+  isExternal: true
+  href: Ceres.DataDriven.IDataTableRow.html
+  name: IDataTableRow[]
+  nameWithType: IDataTableRow[]
+  fullName: Ceres.DataDriven.IDataTableRow[]
+  nameWithType.vb: IDataTableRow()
+  fullName.vb: Ceres.DataDriven.IDataTableRow()
+  name.vb: IDataTableRow()
+  spec.csharp:
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+    href: Ceres.DataDriven.IDataTableRow.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+    href: Ceres.DataDriven.IDataTableRow.html
+  - name: (
+  - name: )
+- uid: Ceres.DataDriven.DataTable.GetRows*
+  commentId: Overload:Ceres.DataDriven.DataTable.GetRows
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_GetRows__1_System_Predicate___0__
+  name: GetRows
+  nameWithType: DataTable.GetRows
+  fullName: Ceres.DataDriven.DataTable.GetRows
+- uid: System.Predicate{{T}}
+  commentId: T:System.Predicate{``0}
+  parent: System
+  definition: System.Predicate`1
+  href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  name: Predicate<T>
+  nameWithType: Predicate<T>
+  fullName: System.Predicate<T>
+  nameWithType.vb: Predicate(Of T)
+  fullName.vb: System.Predicate(Of T)
+  name.vb: Predicate(Of T)
+  spec.csharp:
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Predicate`1
+  commentId: T:System.Predicate`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  name: Predicate<T>
+  nameWithType: Predicate<T>
+  fullName: System.Predicate<T>
+  nameWithType.vb: Predicate(Of T)
+  fullName.vb: System.Predicate(Of T)
+  name.vb: Predicate(Of T)
+  spec.csharp:
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.DataDriven.DataTable.GetRow*
+  commentId: Overload:Ceres.DataDriven.DataTable.GetRow
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_GetRow__1_System_Int32_
+  name: GetRow
+  nameWithType: DataTable.GetRow
+  fullName: Ceres.DataDriven.DataTable.GetRow
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.DataDriven.DataTable.AddRow*
+  commentId: Overload:Ceres.DataDriven.DataTable.AddRow
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_AddRow_System_String_Ceres_DataDriven_IDataTableRow_
+  name: AddRow
+  nameWithType: DataTable.AddRow
+  fullName: Ceres.DataDriven.DataTable.AddRow
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.DataDriven.DataTable.UpdateRow*
+  commentId: Overload:Ceres.DataDriven.DataTable.UpdateRow
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_UpdateRow_System_String_Ceres_DataDriven_IDataTableRow_
+  name: UpdateRow
+  nameWithType: DataTable.UpdateRow
+  fullName: Ceres.DataDriven.DataTable.UpdateRow
+- uid: Ceres.DataDriven.DataTable.AddOrUpdateRow*
+  commentId: Overload:Ceres.DataDriven.DataTable.AddOrUpdateRow
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_AddOrUpdateRow_System_String_Ceres_DataDriven_IDataTableRow_
+  name: AddOrUpdateRow
+  nameWithType: DataTable.AddOrUpdateRow
+  fullName: Ceres.DataDriven.DataTable.AddOrUpdateRow
+- uid: Ceres.DataDriven.DataTable.RemoveRow*
+  commentId: Overload:Ceres.DataDriven.DataTable.RemoveRow
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_RemoveRow_System_Collections_Generic_List_System_Int32__
+  name: RemoveRow
+  nameWithType: DataTable.RemoveRow
+  fullName: Ceres.DataDriven.DataTable.RemoveRow
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Ceres.DataDriven.DataTable.RemoveAllRows*
+  commentId: Overload:Ceres.DataDriven.DataTable.RemoveAllRows
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_RemoveAllRows
+  name: RemoveAllRows
+  nameWithType: DataTable.RemoveAllRows
+  fullName: Ceres.DataDriven.DataTable.RemoveAllRows
+- uid: Ceres.DataDriven.DataTable.InsertRow*
+  commentId: Overload:Ceres.DataDriven.DataTable.InsertRow
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_InsertRow_System_Int32_System_String_Ceres_DataDriven_IDataTableRow_
+  name: InsertRow
+  nameWithType: DataTable.InsertRow
+  fullName: Ceres.DataDriven.DataTable.InsertRow
+- uid: Ceres.DataDriven.DataTable.ReorderRow*
+  commentId: Overload:Ceres.DataDriven.DataTable.ReorderRow
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_ReorderRow_System_Int32_System_Int32_
+  name: ReorderRow
+  nameWithType: DataTable.ReorderRow
+  fullName: Ceres.DataDriven.DataTable.ReorderRow
+- uid: Ceres.DataDriven.DataTable.GetRowMap*
+  commentId: Overload:Ceres.DataDriven.DataTable.GetRowMap
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable_GetRowMap
+  name: GetRowMap
+  nameWithType: DataTable.GetRowMap
+  fullName: Ceres.DataDriven.DataTable.GetRowMap
+- uid: System.Collections.Generic.Dictionary{System.String,Ceres.DataDriven.IDataTableRow}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Ceres.DataDriven.IDataTableRow}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, IDataTableRow>
+  nameWithType: Dictionary<string, IDataTableRow>
+  fullName: System.Collections.Generic.Dictionary<string, Ceres.DataDriven.IDataTableRow>
+  nameWithType.vb: Dictionary(Of String, IDataTableRow)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Ceres.DataDriven.IDataTableRow)
+  name.vb: Dictionary(Of String, IDataTableRow)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+    href: Ceres.DataDriven.IDataTableRow.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.DataDriven.IDataTableRow
+    name: IDataTableRow
+    isExternal: true
+    href: Ceres.DataDriven.IDataTableRow.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Ceres.DataDriven.DataTable.#ctor*
+  commentId: Overload:Ceres.DataDriven.DataTable.#ctor
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html#Ceres_DataDriven_DataTable__ctor
+  name: DataTable
+  nameWithType: DataTable.DataTable
+  fullName: Ceres.DataDriven.DataTable.DataTable
+  nameWithType.vb: DataTable.New
+  fullName.vb: Ceres.DataDriven.DataTable.New
+  name.vb: New

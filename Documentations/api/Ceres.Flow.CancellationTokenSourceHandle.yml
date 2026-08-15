@@ -1,0 +1,484 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.CancellationTokenSourceHandle
+  commentId: T:Ceres.Flow.CancellationTokenSourceHandle
+  id: CancellationTokenSourceHandle
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.CancellationTokenSourceHandle.Dispose
+  - Ceres.Flow.CancellationTokenSourceHandle.Get(UnityEngine.Object,System.String)
+  - Ceres.Flow.CancellationTokenSourceHandle.ThrowIfCancellationRequested
+  - Ceres.Flow.CancellationTokenSourceHandle.Token
+  langs:
+  - csharp
+  - vb
+  name: CancellationTokenSourceHandle
+  nameWithType: CancellationTokenSourceHandle
+  fullName: Ceres.Flow.CancellationTokenSourceHandle
+  type: Struct
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public readonly struct CancellationTokenSourceHandle : IDisposable'
+    content.vb: Public Structure CancellationTokenSourceHandle Implements IDisposable
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Ceres.Flow.CancellationTokenSourceHandle.Get(UnityEngine.Object,System.String)
+  commentId: M:Ceres.Flow.CancellationTokenSourceHandle.Get(UnityEngine.Object,System.String)
+  id: Get(UnityEngine.Object,System.String)
+  parent: Ceres.Flow.CancellationTokenSourceHandle
+  langs:
+  - csharp
+  - vb
+  name: Get(Object, string)
+  nameWithType: CancellationTokenSourceHandle.Get(Object, string)
+  fullName: Ceres.Flow.CancellationTokenSourceHandle.Get(UnityEngine.Object, string)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public static CancellationTokenSourceHandle Get(Object context, string eventName = null)
+    parameters:
+    - id: context
+      type: UnityEngine.Object
+    - id: eventName
+      type: System.String
+    return:
+      type: Ceres.Flow.CancellationTokenSourceHandle
+    content.vb: Public Shared Function [Get](context As [Object], eventName As String = Nothing) As CancellationTokenSourceHandle
+  overload: Ceres.Flow.CancellationTokenSourceHandle.Get*
+  nameWithType.vb: CancellationTokenSourceHandle.Get(Object, String)
+  fullName.vb: Ceres.Flow.CancellationTokenSourceHandle.Get(UnityEngine.Object, String)
+  name.vb: Get(Object, String)
+- uid: Ceres.Flow.CancellationTokenSourceHandle.ThrowIfCancellationRequested
+  commentId: M:Ceres.Flow.CancellationTokenSourceHandle.ThrowIfCancellationRequested
+  id: ThrowIfCancellationRequested
+  parent: Ceres.Flow.CancellationTokenSourceHandle
+  langs:
+  - csharp
+  - vb
+  name: ThrowIfCancellationRequested()
+  nameWithType: CancellationTokenSourceHandle.ThrowIfCancellationRequested()
+  fullName: Ceres.Flow.CancellationTokenSourceHandle.ThrowIfCancellationRequested()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public void ThrowIfCancellationRequested()
+    content.vb: Public Sub ThrowIfCancellationRequested()
+  overload: Ceres.Flow.CancellationTokenSourceHandle.ThrowIfCancellationRequested*
+- uid: Ceres.Flow.CancellationTokenSourceHandle.Dispose
+  commentId: M:Ceres.Flow.CancellationTokenSourceHandle.Dispose
+  id: Dispose
+  parent: Ceres.Flow.CancellationTokenSourceHandle
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: CancellationTokenSourceHandle.Dispose()
+  fullName: Ceres.Flow.CancellationTokenSourceHandle.Dispose()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Flow.CancellationTokenSourceHandle.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Ceres.Flow.CancellationTokenSourceHandle.Token
+  commentId: P:Ceres.Flow.CancellationTokenSourceHandle.Token
+  id: Token
+  parent: Ceres.Flow.CancellationTokenSourceHandle
+  langs:
+  - csharp
+  - vb
+  name: Token
+  nameWithType: CancellationTokenSourceHandle.Token
+  fullName: Ceres.Flow.CancellationTokenSourceHandle.Token
+  type: Property
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public CancellationToken Token { get; }
+    parameters: []
+    return:
+      type: System.Threading.CancellationToken
+    content.vb: Public ReadOnly Property Token As CancellationToken
+  overload: Ceres.Flow.CancellationTokenSourceHandle.Token*
+references:
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.CancellationTokenSourceHandle.Get*
+  commentId: Overload:Ceres.Flow.CancellationTokenSourceHandle.Get
+  isExternal: true
+  href: Ceres.Flow.CancellationTokenSourceHandle.html#Ceres_Flow_CancellationTokenSourceHandle_Get_UnityEngine_Object_System_String_
+  name: Get
+  nameWithType: CancellationTokenSourceHandle.Get
+  fullName: Ceres.Flow.CancellationTokenSourceHandle.Get
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Flow.CancellationTokenSourceHandle
+  commentId: T:Ceres.Flow.CancellationTokenSourceHandle
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.CancellationTokenSourceHandle.html
+  name: CancellationTokenSourceHandle
+  nameWithType: CancellationTokenSourceHandle
+  fullName: Ceres.Flow.CancellationTokenSourceHandle
+- uid: Ceres.Flow.CancellationTokenSourceHandle.ThrowIfCancellationRequested*
+  commentId: Overload:Ceres.Flow.CancellationTokenSourceHandle.ThrowIfCancellationRequested
+  isExternal: true
+  href: Ceres.Flow.CancellationTokenSourceHandle.html#Ceres_Flow_CancellationTokenSourceHandle_ThrowIfCancellationRequested
+  name: ThrowIfCancellationRequested
+  nameWithType: CancellationTokenSourceHandle.ThrowIfCancellationRequested
+  fullName: Ceres.Flow.CancellationTokenSourceHandle.ThrowIfCancellationRequested
+- uid: Ceres.Flow.CancellationTokenSourceHandle.Dispose*
+  commentId: Overload:Ceres.Flow.CancellationTokenSourceHandle.Dispose
+  isExternal: true
+  href: Ceres.Flow.CancellationTokenSourceHandle.html#Ceres_Flow_CancellationTokenSourceHandle_Dispose
+  name: Dispose
+  nameWithType: CancellationTokenSourceHandle.Dispose
+  fullName: Ceres.Flow.CancellationTokenSourceHandle.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Ceres.Flow.CancellationTokenSourceHandle.Token*
+  commentId: Overload:Ceres.Flow.CancellationTokenSourceHandle.Token
+  isExternal: true
+  href: Ceres.Flow.CancellationTokenSourceHandle.html#Ceres_Flow_CancellationTokenSourceHandle_Token
+  name: Token
+  nameWithType: CancellationTokenSourceHandle.Token
+  fullName: Ceres.Flow.CancellationTokenSourceHandle.Token
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading

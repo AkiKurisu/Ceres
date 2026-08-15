@@ -1,0 +1,595 @@
+### YamlMime:ManagedReference
+items:
+- uid: R3.Ceres.ObservableExtensions
+  commentId: T:R3.Ceres.ObservableExtensions
+  id: ObservableExtensions
+  parent: R3.Ceres
+  children:
+  - R3.Ceres.ObservableExtensions.AsObservable``1(Ceres.Events.CallbackEventHandler)
+  - R3.Ceres.ObservableExtensions.AsObservable``1(Ceres.Events.CallbackEventHandler,Ceres.Events.TrickleDown)
+  - R3.Ceres.ObservableExtensions.SubscribeSafe``1(R3.Observable{``0},Ceres.Events.EventCallback{``0})
+  langs:
+  - csharp
+  - vb
+  name: ObservableExtensions
+  nameWithType: ObservableExtensions
+  fullName: R3.Ceres.ObservableExtensions
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: R3.Ceres
+  syntax:
+    content: public static class ObservableExtensions
+    content.vb: Public Module ObservableExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: R3.Ceres.ObservableExtensions.AsObservable``1(Ceres.Events.CallbackEventHandler)
+  commentId: M:R3.Ceres.ObservableExtensions.AsObservable``1(Ceres.Events.CallbackEventHandler)
+  id: AsObservable``1(Ceres.Events.CallbackEventHandler)
+  isExtensionMethod: true
+  parent: R3.Ceres.ObservableExtensions
+  langs:
+  - csharp
+  - vb
+  name: AsObservable<TEventType>(CallbackEventHandler)
+  nameWithType: ObservableExtensions.AsObservable<TEventType>(CallbackEventHandler)
+  fullName: R3.Ceres.ObservableExtensions.AsObservable<TEventType>(Ceres.Events.CallbackEventHandler)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: R3.Ceres
+  summary: Create <xref href="R3.Observable%601" data-throw-if-not-resolved="false"></xref> for <xref href="Ceres.Events.CallbackEventHandler" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public static Observable<TEventType> AsObservable<TEventType>(this CallbackEventHandler handler) where TEventType : EventBase<TEventType>, new()'
+    parameters:
+    - id: handler
+      type: Ceres.Events.CallbackEventHandler
+      description: ''
+    typeParameters:
+    - id: TEventType
+      description: ''
+    return:
+      type: R3.Observable{{TEventType}}
+      description: ''
+    content.vb: Public Shared Function AsObservable(Of TEventType As {EventBase(Of TEventType), New})(handler As CallbackEventHandler) As Observable(Of TEventType)
+  overload: R3.Ceres.ObservableExtensions.AsObservable*
+  nameWithType.vb: ObservableExtensions.AsObservable(Of TEventType)(CallbackEventHandler)
+  fullName.vb: R3.Ceres.ObservableExtensions.AsObservable(Of TEventType)(Ceres.Events.CallbackEventHandler)
+  name.vb: AsObservable(Of TEventType)(CallbackEventHandler)
+- uid: R3.Ceres.ObservableExtensions.AsObservable``1(Ceres.Events.CallbackEventHandler,Ceres.Events.TrickleDown)
+  commentId: M:R3.Ceres.ObservableExtensions.AsObservable``1(Ceres.Events.CallbackEventHandler,Ceres.Events.TrickleDown)
+  id: AsObservable``1(Ceres.Events.CallbackEventHandler,Ceres.Events.TrickleDown)
+  isExtensionMethod: true
+  parent: R3.Ceres.ObservableExtensions
+  langs:
+  - csharp
+  - vb
+  name: AsObservable<TEventType>(CallbackEventHandler, TrickleDown)
+  nameWithType: ObservableExtensions.AsObservable<TEventType>(CallbackEventHandler, TrickleDown)
+  fullName: R3.Ceres.ObservableExtensions.AsObservable<TEventType>(Ceres.Events.CallbackEventHandler, Ceres.Events.TrickleDown)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: R3.Ceres
+  summary: Create Observable for <xref href="Ceres.Events.CallbackEventHandler" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public static Observable<TEventType> AsObservable<TEventType>(this CallbackEventHandler handler, TrickleDown trickleDown) where TEventType : EventBase<TEventType>, new()'
+    parameters:
+    - id: handler
+      type: Ceres.Events.CallbackEventHandler
+      description: ''
+    - id: trickleDown
+      type: Ceres.Events.TrickleDown
+      description: ''
+    typeParameters:
+    - id: TEventType
+      description: ''
+    return:
+      type: R3.Observable{{TEventType}}
+      description: ''
+    content.vb: Public Shared Function AsObservable(Of TEventType As {EventBase(Of TEventType), New})(handler As CallbackEventHandler, trickleDown As TrickleDown) As Observable(Of TEventType)
+  overload: R3.Ceres.ObservableExtensions.AsObservable*
+  nameWithType.vb: ObservableExtensions.AsObservable(Of TEventType)(CallbackEventHandler, TrickleDown)
+  fullName.vb: R3.Ceres.ObservableExtensions.AsObservable(Of TEventType)(Ceres.Events.CallbackEventHandler, Ceres.Events.TrickleDown)
+  name.vb: AsObservable(Of TEventType)(CallbackEventHandler, TrickleDown)
+- uid: R3.Ceres.ObservableExtensions.SubscribeSafe``1(R3.Observable{``0},Ceres.Events.EventCallback{``0})
+  commentId: M:R3.Ceres.ObservableExtensions.SubscribeSafe``1(R3.Observable{``0},Ceres.Events.EventCallback{``0})
+  id: SubscribeSafe``1(R3.Observable{``0},Ceres.Events.EventCallback{``0})
+  isExtensionMethod: true
+  parent: R3.Ceres.ObservableExtensions
+  langs:
+  - csharp
+  - vb
+  name: SubscribeSafe<TEventType>(Observable<TEventType>, EventCallback<TEventType>)
+  nameWithType: ObservableExtensions.SubscribeSafe<TEventType>(Observable<TEventType>, EventCallback<TEventType>)
+  fullName: R3.Ceres.ObservableExtensions.SubscribeSafe<TEventType>(R3.Observable<TEventType>, Ceres.Events.EventCallback<TEventType>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: R3.Ceres
+  summary: Subscribe <xref href="R3.Observable%601" data-throw-if-not-resolved="false"></xref> and finally dispose event, better performance for <xref href="Ceres.Events.EventBase" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: >-
+      [StackTraceFrame]
+
+      public static IDisposable SubscribeSafe<TEventType>(this Observable<TEventType> source, EventCallback<TEventType> onNext) where TEventType : EventBase<TEventType>, new()
+    parameters:
+    - id: source
+      type: R3.Observable{{TEventType}}
+      description: ''
+    - id: onNext
+      type: Ceres.Events.EventCallback{{TEventType}}
+      description: ''
+    typeParameters:
+    - id: TEventType
+      description: ''
+    return:
+      type: System.IDisposable
+      description: ''
+    content.vb: >-
+      <StackTraceFrame>
+
+      Public Shared Function SubscribeSafe(Of TEventType As {EventBase(Of TEventType), New})(source As Observable(Of TEventType), onNext As EventCallback(Of TEventType)) As IDisposable
+  overload: R3.Ceres.ObservableExtensions.SubscribeSafe*
+  attributes:
+  - type: Ceres.StackTraceFrameAttribute
+    ctor: Ceres.StackTraceFrameAttribute.#ctor
+    arguments: []
+  nameWithType.vb: ObservableExtensions.SubscribeSafe(Of TEventType)(Observable(Of TEventType), EventCallback(Of TEventType))
+  fullName.vb: R3.Ceres.ObservableExtensions.SubscribeSafe(Of TEventType)(R3.Observable(Of TEventType), Ceres.Events.EventCallback(Of TEventType))
+  name.vb: SubscribeSafe(Of TEventType)(Observable(Of TEventType), EventCallback(Of TEventType))
+references:
+- uid: R3.Ceres
+  commentId: N:R3.Ceres
+  isExternal: true
+  href: R3.html
+  name: R3.Ceres
+  nameWithType: R3.Ceres
+  fullName: R3.Ceres
+  spec.csharp:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+  spec.vb:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: R3.Observable`1
+  commentId: T:R3.Observable`1
+  isExternal: true
+  name: Observable<>
+  nameWithType: Observable<>
+  fullName: R3.Observable<>
+  nameWithType.vb: Observable(Of )
+  fullName.vb: R3.Observable(Of )
+  name.vb: Observable(Of )
+  spec.csharp:
+  - uid: R3.Observable`1
+    name: Observable
+    isExternal: true
+  - name: <
+  - name: '>'
+  spec.vb:
+  - uid: R3.Observable`1
+    name: Observable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler
+  commentId: T:Ceres.Events.CallbackEventHandler
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html
+  name: CallbackEventHandler
+  nameWithType: CallbackEventHandler
+  fullName: Ceres.Events.CallbackEventHandler
+- uid: R3.Ceres.ObservableExtensions.AsObservable*
+  commentId: Overload:R3.Ceres.ObservableExtensions.AsObservable
+  isExternal: true
+  href: R3.Ceres.ObservableExtensions.html#R3_Ceres_ObservableExtensions_AsObservable__1_Ceres_Events_CallbackEventHandler_
+  name: AsObservable
+  nameWithType: ObservableExtensions.AsObservable
+  fullName: R3.Ceres.ObservableExtensions.AsObservable
+- uid: R3.Observable{{TEventType}}
+  commentId: '!:R3.Observable{``0}'
+  definition: R3.Observable`1
+  name: Observable<TEventType>
+  nameWithType: Observable<TEventType>
+  fullName: R3.Observable<TEventType>
+  nameWithType.vb: Observable(Of TEventType)
+  fullName.vb: R3.Observable(Of TEventType)
+  name.vb: Observable(Of TEventType)
+  spec.csharp:
+  - uid: R3.Observable`1
+    name: Observable
+    isExternal: true
+  - name: <
+  - name: TEventType
+  - name: '>'
+  spec.vb:
+  - uid: R3.Observable`1
+    name: Observable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.TrickleDown
+  commentId: T:Ceres.Events.TrickleDown
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.TrickleDown.html
+  name: TrickleDown
+  nameWithType: TrickleDown
+  fullName: Ceres.Events.TrickleDown
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: R3.Ceres.ObservableExtensions.SubscribeSafe*
+  commentId: Overload:R3.Ceres.ObservableExtensions.SubscribeSafe
+  isExternal: true
+  href: R3.Ceres.ObservableExtensions.html#R3_Ceres_ObservableExtensions_SubscribeSafe__1_R3_Observable___0__Ceres_Events_EventCallback___0__
+  name: SubscribeSafe
+  nameWithType: ObservableExtensions.SubscribeSafe
+  fullName: R3.Ceres.ObservableExtensions.SubscribeSafe
+- uid: Ceres.Events.EventCallback{{TEventType}}
+  commentId: T:Ceres.Events.EventCallback{``0}
+  parent: Ceres.Events
+  definition: Ceres.Events.EventCallback`1
+  href: Ceres.Events.EventCallback-1.html
+  name: EventCallback<TEventType>
+  nameWithType: EventCallback<TEventType>
+  fullName: Ceres.Events.EventCallback<TEventType>
+  nameWithType.vb: EventCallback(Of TEventType)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType)
+  name.vb: EventCallback(Of TEventType)
+  spec.csharp:
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - name: TEventType
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Ceres.Events.EventCallback`1
+  commentId: T:Ceres.Events.EventCallback`1
+  isExternal: true
+  href: Ceres.Events.EventCallback-1.html
+  name: EventCallback<TEventType>
+  nameWithType: EventCallback<TEventType>
+  fullName: Ceres.Events.EventCallback<TEventType>
+  nameWithType.vb: EventCallback(Of TEventType)
+  fullName.vb: Ceres.Events.EventCallback(Of TEventType)
+  name.vb: EventCallback(Of TEventType)
+  spec.csharp:
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - name: TEventType
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )

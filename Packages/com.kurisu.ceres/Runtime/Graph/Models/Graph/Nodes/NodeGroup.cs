@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Ceres.Graph
+{
+    /// <summary>
+    /// Metadata for editor node group
+    /// </summary>
+    [Serializable]
+    public class NodeGroup
+    {
+        public List<string> childNodes = new();
+        
+        public Vector2 position;
+        
+        public string title = "Node Group";
+
+        public bool ContainsNode(CeresNode ceresNode)
+        {
+            return childNodes.Contains(ceresNode.Guid);
+        }
+    }
+}

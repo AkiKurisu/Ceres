@@ -1,0 +1,636 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Collections.NativeCollectionsExtensions
+  commentId: T:Ceres.Collections.NativeCollectionsExtensions
+  id: NativeCollectionsExtensions
+  parent: Ceres.Collections
+  children:
+  - Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``1(Unity.Collections.NativeArray{``0}@)
+  - Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``1(Unity.Collections.NativeList{``0}@)
+  - Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``2(Unity.Collections.NativeParallelMultiHashMap{``0,``1}@)
+  - Ceres.Collections.NativeCollectionsExtensions.Resize``1(Unity.Collections.NativeArray{``0}@,System.Int32,Unity.Collections.Allocator,Unity.Collections.NativeArrayOptions)
+  langs:
+  - csharp
+  - vb
+  name: NativeCollectionsExtensions
+  nameWithType: NativeCollectionsExtensions
+  fullName: Ceres.Collections.NativeCollectionsExtensions
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Collections
+  summary: Extensions for Native Collections
+  example: []
+  syntax:
+    content: public static class NativeCollectionsExtensions
+    content.vb: Public Module NativeCollectionsExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``1(Unity.Collections.NativeArray{``0}@)
+  commentId: M:Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``1(Unity.Collections.NativeArray{``0}@)
+  id: DisposeSafe``1(Unity.Collections.NativeArray{``0}@)
+  isExtensionMethod: true
+  parent: Ceres.Collections.NativeCollectionsExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisposeSafe<T>(ref NativeArray<T>)
+  nameWithType: NativeCollectionsExtensions.DisposeSafe<T>(ref NativeArray<T>)
+  fullName: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe<T>(ref Unity.Collections.NativeArray<T>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Collections
+  syntax:
+    content: 'public static void DisposeSafe<T>(this ref NativeArray<T> array) where T : unmanaged'
+    parameters:
+    - id: array
+      type: Unity.Collections.NativeArray{{T}}
+    typeParameters:
+    - id: T
+    content.vb: Public Shared Sub DisposeSafe(Of T As Structure)(array As NativeArray(Of T))
+  overload: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe*
+  nameWithType.vb: NativeCollectionsExtensions.DisposeSafe(Of T)(NativeArray(Of T))
+  fullName.vb: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe(Of T)(Unity.Collections.NativeArray(Of T))
+  name.vb: DisposeSafe(Of T)(NativeArray(Of T))
+- uid: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``1(Unity.Collections.NativeList{``0}@)
+  commentId: M:Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``1(Unity.Collections.NativeList{``0}@)
+  id: DisposeSafe``1(Unity.Collections.NativeList{``0}@)
+  isExtensionMethod: true
+  parent: Ceres.Collections.NativeCollectionsExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisposeSafe<T>(ref NativeList<T>)
+  nameWithType: NativeCollectionsExtensions.DisposeSafe<T>(ref NativeList<T>)
+  fullName: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe<T>(ref Unity.Collections.NativeList<T>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Collections
+  syntax:
+    content: 'public static void DisposeSafe<T>(this ref NativeList<T> array) where T : unmanaged'
+    parameters:
+    - id: array
+      type: Unity.Collections.NativeList{{T}}
+    typeParameters:
+    - id: T
+    content.vb: Public Shared Sub DisposeSafe(Of T As Structure)(array As NativeList(Of T))
+  overload: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe*
+  nameWithType.vb: NativeCollectionsExtensions.DisposeSafe(Of T)(NativeList(Of T))
+  fullName.vb: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe(Of T)(Unity.Collections.NativeList(Of T))
+  name.vb: DisposeSafe(Of T)(NativeList(Of T))
+- uid: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``2(Unity.Collections.NativeParallelMultiHashMap{``0,``1}@)
+  commentId: M:Ceres.Collections.NativeCollectionsExtensions.DisposeSafe``2(Unity.Collections.NativeParallelMultiHashMap{``0,``1}@)
+  id: DisposeSafe``2(Unity.Collections.NativeParallelMultiHashMap{``0,``1}@)
+  isExtensionMethod: true
+  parent: Ceres.Collections.NativeCollectionsExtensions
+  langs:
+  - csharp
+  - vb
+  name: DisposeSafe<T, K>(ref NativeParallelMultiHashMap<T, K>)
+  nameWithType: NativeCollectionsExtensions.DisposeSafe<T, K>(ref NativeParallelMultiHashMap<T, K>)
+  fullName: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe<T, K>(ref Unity.Collections.NativeParallelMultiHashMap<T, K>)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Collections
+  syntax:
+    content: 'public static void DisposeSafe<T, K>(this ref NativeParallelMultiHashMap<T, K> map) where T : unmanaged, IEquatable<T> where K : unmanaged'
+    parameters:
+    - id: map
+      type: Unity.Collections.NativeParallelMultiHashMap{{T},{K}}
+    typeParameters:
+    - id: T
+    - id: K
+    content.vb: Public Shared Sub DisposeSafe(Of T As {Structure, IEquatable(Of T)}, K As Structure)(map As NativeParallelMultiHashMap(Of T, K))
+  overload: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe*
+  nameWithType.vb: NativeCollectionsExtensions.DisposeSafe(Of T, K)(NativeParallelMultiHashMap(Of T, K))
+  fullName.vb: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe(Of T, K)(Unity.Collections.NativeParallelMultiHashMap(Of T, K))
+  name.vb: DisposeSafe(Of T, K)(NativeParallelMultiHashMap(Of T, K))
+- uid: Ceres.Collections.NativeCollectionsExtensions.Resize``1(Unity.Collections.NativeArray{``0}@,System.Int32,Unity.Collections.Allocator,Unity.Collections.NativeArrayOptions)
+  commentId: M:Ceres.Collections.NativeCollectionsExtensions.Resize``1(Unity.Collections.NativeArray{``0}@,System.Int32,Unity.Collections.Allocator,Unity.Collections.NativeArrayOptions)
+  id: Resize``1(Unity.Collections.NativeArray{``0}@,System.Int32,Unity.Collections.Allocator,Unity.Collections.NativeArrayOptions)
+  isExtensionMethod: true
+  parent: Ceres.Collections.NativeCollectionsExtensions
+  langs:
+  - csharp
+  - vb
+  name: Resize<T>(ref NativeArray<T>, int, Allocator, NativeArrayOptions)
+  nameWithType: NativeCollectionsExtensions.Resize<T>(ref NativeArray<T>, int, Allocator, NativeArrayOptions)
+  fullName: Ceres.Collections.NativeCollectionsExtensions.Resize<T>(ref Unity.Collections.NativeArray<T>, int, Unity.Collections.Allocator, Unity.Collections.NativeArrayOptions)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Collections
+  syntax:
+    content: 'public static void Resize<T>(this ref NativeArray<T> array, int size, Allocator allocator = 4, NativeArrayOptions options = 1) where T : unmanaged'
+    parameters:
+    - id: array
+      type: Unity.Collections.NativeArray{{T}}
+    - id: size
+      type: System.Int32
+    - id: allocator
+      type: Unity.Collections.Allocator
+    - id: options
+      type: Unity.Collections.NativeArrayOptions
+    typeParameters:
+    - id: T
+    content.vb: Public Shared Sub Resize(Of T As Structure)(array As NativeArray(Of T), size As Integer, allocator As Allocator = 4, options As NativeArrayOptions = 1)
+  overload: Ceres.Collections.NativeCollectionsExtensions.Resize*
+  nameWithType.vb: NativeCollectionsExtensions.Resize(Of T)(NativeArray(Of T), Integer, Allocator, NativeArrayOptions)
+  fullName.vb: Ceres.Collections.NativeCollectionsExtensions.Resize(Of T)(Unity.Collections.NativeArray(Of T), Integer, Unity.Collections.Allocator, Unity.Collections.NativeArrayOptions)
+  name.vb: Resize(Of T)(NativeArray(Of T), Integer, Allocator, NativeArrayOptions)
+references:
+- uid: Ceres.Collections
+  commentId: N:Ceres.Collections
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Collections
+  nameWithType: Ceres.Collections
+  fullName: Ceres.Collections
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Collections
+    name: Collections
+    isExternal: true
+    href: Ceres.Collections.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Collections
+    name: Collections
+    isExternal: true
+    href: Ceres.Collections.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe*
+  commentId: Overload:Ceres.Collections.NativeCollectionsExtensions.DisposeSafe
+  isExternal: true
+  href: Ceres.Collections.NativeCollectionsExtensions.html#Ceres_Collections_NativeCollectionsExtensions_DisposeSafe__1_Unity_Collections_NativeArray___0___
+  name: DisposeSafe
+  nameWithType: NativeCollectionsExtensions.DisposeSafe
+  fullName: Ceres.Collections.NativeCollectionsExtensions.DisposeSafe
+- uid: Unity.Collections.NativeArray{{T}}
+  commentId: '!:Unity.Collections.NativeArray{``0}'
+  definition: Unity.Collections.NativeArray`1
+  name: NativeArray<T>
+  nameWithType: NativeArray<T>
+  fullName: Unity.Collections.NativeArray<T>
+  nameWithType.vb: NativeArray(Of T)
+  fullName.vb: Unity.Collections.NativeArray(Of T)
+  name.vb: NativeArray(Of T)
+  spec.csharp:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Unity.Collections.NativeArray`1
+  isExternal: true
+  name: NativeArray<>
+  nameWithType: NativeArray<>
+  fullName: Unity.Collections.NativeArray<>
+  nameWithType.vb: NativeArray(Of )
+  fullName.vb: Unity.Collections.NativeArray(Of )
+  name.vb: NativeArray(Of )
+  spec.csharp:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: <
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Unity.Collections.NativeList{{T}}
+  commentId: T:Unity.Collections.NativeList{``0}
+  parent: Unity.Collections
+  definition: Unity.Collections.NativeList`1
+  name: NativeList<T>
+  nameWithType: NativeList<T>
+  fullName: Unity.Collections.NativeList<T>
+  nameWithType.vb: NativeList(Of T)
+  fullName.vb: Unity.Collections.NativeList(Of T)
+  name.vb: NativeList(Of T)
+  spec.csharp:
+  - uid: Unity.Collections.NativeList`1
+    name: NativeList
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeList`1
+    name: NativeList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Unity.Collections.NativeList`1
+  commentId: T:Unity.Collections.NativeList`1
+  isExternal: true
+  name: NativeList<T>
+  nameWithType: NativeList<T>
+  fullName: Unity.Collections.NativeList<T>
+  nameWithType.vb: NativeList(Of T)
+  fullName.vb: Unity.Collections.NativeList(Of T)
+  name.vb: NativeList(Of T)
+  spec.csharp:
+  - uid: Unity.Collections.NativeList`1
+    name: NativeList
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeList`1
+    name: NativeList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Unity.Collections
+  commentId: N:Unity.Collections
+  isExternal: true
+  name: Unity.Collections
+  nameWithType: Unity.Collections
+  fullName: Unity.Collections
+  spec.csharp:
+  - uid: Unity
+    name: Unity
+    isExternal: true
+  - name: .
+  - uid: Unity.Collections
+    name: Collections
+    isExternal: true
+  spec.vb:
+  - uid: Unity
+    name: Unity
+    isExternal: true
+  - name: .
+  - uid: Unity.Collections
+    name: Collections
+    isExternal: true
+- uid: Unity.Collections.NativeParallelMultiHashMap{{T},{K}}
+  commentId: T:Unity.Collections.NativeParallelMultiHashMap{``0,``1}
+  parent: Unity.Collections
+  definition: Unity.Collections.NativeParallelMultiHashMap`2
+  name: NativeParallelMultiHashMap<T, K>
+  nameWithType: NativeParallelMultiHashMap<T, K>
+  fullName: Unity.Collections.NativeParallelMultiHashMap<T, K>
+  nameWithType.vb: NativeParallelMultiHashMap(Of T, K)
+  fullName.vb: Unity.Collections.NativeParallelMultiHashMap(Of T, K)
+  name.vb: NativeParallelMultiHashMap(Of T, K)
+  spec.csharp:
+  - uid: Unity.Collections.NativeParallelMultiHashMap`2
+    name: NativeParallelMultiHashMap
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeParallelMultiHashMap`2
+    name: NativeParallelMultiHashMap
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+- uid: Unity.Collections.NativeParallelMultiHashMap`2
+  commentId: T:Unity.Collections.NativeParallelMultiHashMap`2
+  isExternal: true
+  name: NativeParallelMultiHashMap<TKey, TValue>
+  nameWithType: NativeParallelMultiHashMap<TKey, TValue>
+  fullName: Unity.Collections.NativeParallelMultiHashMap<TKey, TValue>
+  nameWithType.vb: NativeParallelMultiHashMap(Of TKey, TValue)
+  fullName.vb: Unity.Collections.NativeParallelMultiHashMap(Of TKey, TValue)
+  name.vb: NativeParallelMultiHashMap(Of TKey, TValue)
+  spec.csharp:
+  - uid: Unity.Collections.NativeParallelMultiHashMap`2
+    name: NativeParallelMultiHashMap
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeParallelMultiHashMap`2
+    name: NativeParallelMultiHashMap
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Ceres.Collections.NativeCollectionsExtensions.Resize*
+  commentId: Overload:Ceres.Collections.NativeCollectionsExtensions.Resize
+  isExternal: true
+  href: Ceres.Collections.NativeCollectionsExtensions.html#Ceres_Collections_NativeCollectionsExtensions_Resize__1_Unity_Collections_NativeArray___0___System_Int32_Unity_Collections_Allocator_Unity_Collections_NativeArrayOptions_
+  name: Resize
+  nameWithType: NativeCollectionsExtensions.Resize
+  fullName: Ceres.Collections.NativeCollectionsExtensions.Resize
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Unity.Collections.Allocator
+  isExternal: true
+  name: Allocator
+  nameWithType: Allocator
+  fullName: Unity.Collections.Allocator
+- uid: Unity.Collections.NativeArrayOptions
+  commentId: '!:Unity.Collections.NativeArrayOptions'
+  isExternal: true
+  name: NativeArrayOptions
+  nameWithType: NativeArrayOptions
+  fullName: Unity.Collections.NativeArrayOptions

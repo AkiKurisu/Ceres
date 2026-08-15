@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.IEventCoordinator
+  commentId: T:Ceres.Events.IEventCoordinator
+  id: IEventCoordinator
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.IEventCoordinator.EventDispatcher
+  - Ceres.Events.IEventCoordinator.GetCallbackEventHandler
+  langs:
+  - csharp
+  - vb
+  name: IEventCoordinator
+  nameWithType: IEventCoordinator
+  fullName: Ceres.Events.IEventCoordinator
+  type: Interface
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Interface for specified event processing environment
+  example: []
+  syntax:
+    content: public interface IEventCoordinator
+    content.vb: Public Interface IEventCoordinator
+  derivedClasses:
+  - Ceres.Events.EventSystem
+  - Ceres.Events.MonoEventCoordinator
+- uid: Ceres.Events.IEventCoordinator.GetCallbackEventHandler
+  commentId: M:Ceres.Events.IEventCoordinator.GetCallbackEventHandler
+  id: GetCallbackEventHandler
+  parent: Ceres.Events.IEventCoordinator
+  langs:
+  - csharp
+  - vb
+  name: GetCallbackEventHandler()
+  nameWithType: IEventCoordinator.GetCallbackEventHandler()
+  fullName: Ceres.Events.IEventCoordinator.GetCallbackEventHandler()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Get coordinator's default event handler
+  example: []
+  syntax:
+    content: CallbackEventHandler GetCallbackEventHandler()
+    return:
+      type: Ceres.Events.CallbackEventHandler
+      description: ''
+    content.vb: Function GetCallbackEventHandler() As CallbackEventHandler
+  overload: Ceres.Events.IEventCoordinator.GetCallbackEventHandler*
+- uid: Ceres.Events.IEventCoordinator.EventDispatcher
+  commentId: P:Ceres.Events.IEventCoordinator.EventDispatcher
+  id: EventDispatcher
+  parent: Ceres.Events.IEventCoordinator
+  langs:
+  - csharp
+  - vb
+  name: EventDispatcher
+  nameWithType: IEventCoordinator.EventDispatcher
+  fullName: Ceres.Events.IEventCoordinator.EventDispatcher
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Get coordinator's dispatcher
+  example: []
+  syntax:
+    content: EventDispatcher EventDispatcher { get; }
+    parameters: []
+    return:
+      type: Ceres.Events.EventDispatcher
+      description: ''
+    content.vb: ReadOnly Property EventDispatcher As EventDispatcher
+  overload: Ceres.Events.IEventCoordinator.EventDispatcher*
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.IEventCoordinator.GetCallbackEventHandler*
+  commentId: Overload:Ceres.Events.IEventCoordinator.GetCallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.IEventCoordinator.html#Ceres_Events_IEventCoordinator_GetCallbackEventHandler
+  name: GetCallbackEventHandler
+  nameWithType: IEventCoordinator.GetCallbackEventHandler
+  fullName: Ceres.Events.IEventCoordinator.GetCallbackEventHandler
+- uid: Ceres.Events.CallbackEventHandler
+  commentId: T:Ceres.Events.CallbackEventHandler
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html
+  name: CallbackEventHandler
+  nameWithType: CallbackEventHandler
+  fullName: Ceres.Events.CallbackEventHandler
+- uid: Ceres.Events.IEventCoordinator.EventDispatcher*
+  commentId: Overload:Ceres.Events.IEventCoordinator.EventDispatcher
+  isExternal: true
+  href: Ceres.Events.IEventCoordinator.html#Ceres_Events_IEventCoordinator_EventDispatcher
+  name: EventDispatcher
+  nameWithType: IEventCoordinator.EventDispatcher
+  fullName: Ceres.Events.IEventCoordinator.EventDispatcher
+- uid: Ceres.Events.EventDispatcher
+  commentId: T:Ceres.Events.EventDispatcher
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventDispatcher.html
+  name: EventDispatcher
+  nameWithType: EventDispatcher
+  fullName: Ceres.Events.EventDispatcher

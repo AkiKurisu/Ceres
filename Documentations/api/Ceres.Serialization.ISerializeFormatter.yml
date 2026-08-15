@@ -1,0 +1,180 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Serialization.ISerializeFormatter
+  commentId: T:Ceres.Serialization.ISerializeFormatter
+  id: ISerializeFormatter
+  parent: Ceres.Serialization
+  children:
+  - Ceres.Serialization.ISerializeFormatter.Deserialize(System.IO.Stream)
+  - Ceres.Serialization.ISerializeFormatter.Serialize(System.IO.Stream,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ISerializeFormatter
+  nameWithType: ISerializeFormatter
+  fullName: Ceres.Serialization.ISerializeFormatter
+  type: Interface
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Implement to customize serialization format
+  example: []
+  syntax:
+    content: public interface ISerializeFormatter
+    content.vb: Public Interface ISerializeFormatter
+  derivedClasses:
+  - Ceres.Serialization.BinarySerializeFormatter
+  - Ceres.Serialization.EncryptedSerializeFormatter
+  - Ceres.Serialization.TextSerializeFormatter
+- uid: Ceres.Serialization.ISerializeFormatter.Serialize(System.IO.Stream,System.String)
+  commentId: M:Ceres.Serialization.ISerializeFormatter.Serialize(System.IO.Stream,System.String)
+  id: Serialize(System.IO.Stream,System.String)
+  parent: Ceres.Serialization.ISerializeFormatter
+  langs:
+  - csharp
+  - vb
+  name: Serialize(Stream, string)
+  nameWithType: ISerializeFormatter.Serialize(Stream, string)
+  fullName: Ceres.Serialization.ISerializeFormatter.Serialize(System.IO.Stream, string)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Serialize data to a stream
+  example: []
+  syntax:
+    content: void Serialize(Stream stream, string data)
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: Target stream to write to
+    - id: data
+      type: System.String
+      description: Data to serialize
+    content.vb: Sub Serialize(stream As Stream, data As String)
+  overload: Ceres.Serialization.ISerializeFormatter.Serialize*
+  nameWithType.vb: ISerializeFormatter.Serialize(Stream, String)
+  fullName.vb: Ceres.Serialization.ISerializeFormatter.Serialize(System.IO.Stream, String)
+  name.vb: Serialize(Stream, String)
+- uid: Ceres.Serialization.ISerializeFormatter.Deserialize(System.IO.Stream)
+  commentId: M:Ceres.Serialization.ISerializeFormatter.Deserialize(System.IO.Stream)
+  id: Deserialize(System.IO.Stream)
+  parent: Ceres.Serialization.ISerializeFormatter
+  langs:
+  - csharp
+  - vb
+  name: Deserialize(Stream)
+  nameWithType: ISerializeFormatter.Deserialize(Stream)
+  fullName: Ceres.Serialization.ISerializeFormatter.Deserialize(System.IO.Stream)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Serialization
+  summary: Deserialize data from a stream
+  example: []
+  syntax:
+    content: string Deserialize(Stream stream)
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: Source stream to read from
+    return:
+      type: System.String
+      description: Deserialized data
+    content.vb: Function Deserialize(stream As Stream) As String
+  overload: Ceres.Serialization.ISerializeFormatter.Deserialize*
+references:
+- uid: Ceres.Serialization
+  commentId: N:Ceres.Serialization
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Serialization
+  nameWithType: Ceres.Serialization
+  fullName: Ceres.Serialization
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Serialization
+    name: Serialization
+    isExternal: true
+    href: Ceres.Serialization.html
+- uid: Ceres.Serialization.ISerializeFormatter.Serialize*
+  commentId: Overload:Ceres.Serialization.ISerializeFormatter.Serialize
+  isExternal: true
+  href: Ceres.Serialization.ISerializeFormatter.html#Ceres_Serialization_ISerializeFormatter_Serialize_System_IO_Stream_System_String_
+  name: Serialize
+  nameWithType: ISerializeFormatter.Serialize
+  fullName: Ceres.Serialization.ISerializeFormatter.Serialize
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Serialization.ISerializeFormatter.Deserialize*
+  commentId: Overload:Ceres.Serialization.ISerializeFormatter.Deserialize
+  isExternal: true
+  href: Ceres.Serialization.ISerializeFormatter.html#Ceres_Serialization_ISerializeFormatter_Deserialize_System_IO_Stream_
+  name: Deserialize
+  nameWithType: ISerializeFormatter.Deserialize
+  fullName: Ceres.Serialization.ISerializeFormatter.Deserialize

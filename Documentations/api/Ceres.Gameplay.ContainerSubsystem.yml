@@ -1,0 +1,763 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.ContainerSubsystem
+  commentId: T:Ceres.Gameplay.ContainerSubsystem
+  id: ContainerSubsystem
+  parent: Ceres.Gameplay
+  children:
+  - Ceres.Gameplay.ContainerSubsystem.#ctor
+  - Ceres.Gameplay.ContainerSubsystem.Get
+  - Ceres.Gameplay.ContainerSubsystem.Release
+  langs:
+  - csharp
+  - vb
+  name: ContainerSubsystem
+  nameWithType: ContainerSubsystem
+  fullName: Ceres.Gameplay.ContainerSubsystem
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: World lifetime scope IOC subsystem
+  example: []
+  syntax:
+    content: >-
+      [InitializeOnWorldCreate]
+
+      public class ContainerSubsystem : WorldSubsystem, IContainerSubsystem
+    content.vb: >-
+      <InitializeOnWorldCreate>
+
+      Public Class ContainerSubsystem Inherits WorldSubsystem Implements IContainerSubsystem
+  inheritance:
+  - System.Object
+  - Ceres.Gameplay.SubsystemBase
+  - Ceres.Gameplay.WorldSubsystem
+  implements:
+  - Ceres.Gameplay.IContainerSubsystem
+  inheritedMembers:
+  - Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+  - Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+  - Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+  - Ceres.Gameplay.SubsystemBase.Initialize
+  - Ceres.Gameplay.SubsystemBase.Tick
+  - Ceres.Gameplay.SubsystemBase.FixedTick
+  - Ceres.Gameplay.SubsystemBase.GetWorld
+  - Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+  - Ceres.Gameplay.SubsystemBase.GetActorsNum
+  - Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+  - Ceres.Gameplay.SubsystemBase.IsActorsDirty
+  - Ceres.Gameplay.SubsystemBase.IsInitialized
+  - Ceres.Gameplay.SubsystemBase.IsDestroyed
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  attributes:
+  - type: Ceres.Gameplay.InitializeOnWorldCreateAttribute
+    ctor: Ceres.Gameplay.InitializeOnWorldCreateAttribute.#ctor
+    arguments: []
+- uid: Ceres.Gameplay.ContainerSubsystem.Get
+  commentId: M:Ceres.Gameplay.ContainerSubsystem.Get
+  id: Get
+  parent: Ceres.Gameplay.ContainerSubsystem
+  langs:
+  - csharp
+  - vb
+  name: Get()
+  nameWithType: ContainerSubsystem.Get()
+  fullName: Ceres.Gameplay.ContainerSubsystem.Get()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public static IContainerSubsystem Get()
+    return:
+      type: Ceres.Gameplay.IContainerSubsystem
+    content.vb: Public Shared Function [Get]() As IContainerSubsystem
+  overload: Ceres.Gameplay.ContainerSubsystem.Get*
+- uid: Ceres.Gameplay.ContainerSubsystem.Release
+  commentId: M:Ceres.Gameplay.ContainerSubsystem.Release
+  id: Release
+  parent: Ceres.Gameplay.ContainerSubsystem
+  langs:
+  - csharp
+  - vb
+  name: Release()
+  nameWithType: ContainerSubsystem.Release()
+  fullName: Ceres.Gameplay.ContainerSubsystem.Release()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Subsystem release phase, should unbind callbacks and release references in this phase
+  example: []
+  syntax:
+    content: protected override void Release()
+    content.vb: Protected Overrides Sub Release()
+  overridden: Ceres.Gameplay.SubsystemBase.Release
+  overload: Ceres.Gameplay.ContainerSubsystem.Release*
+- uid: Ceres.Gameplay.ContainerSubsystem.#ctor
+  commentId: M:Ceres.Gameplay.ContainerSubsystem.#ctor
+  id: '#ctor'
+  parent: Ceres.Gameplay.ContainerSubsystem
+  langs:
+  - csharp
+  - vb
+  name: ContainerSubsystem()
+  nameWithType: ContainerSubsystem.ContainerSubsystem()
+  fullName: Ceres.Gameplay.ContainerSubsystem.ContainerSubsystem()
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public ContainerSubsystem()
+    content.vb: Public Sub New()
+  overload: Ceres.Gameplay.ContainerSubsystem.#ctor*
+  nameWithType.vb: ContainerSubsystem.New()
+  fullName.vb: Ceres.Gameplay.ContainerSubsystem.New()
+  name.vb: New()
+references:
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Gameplay.SubsystemBase
+  commentId: T:Ceres.Gameplay.SubsystemBase
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html
+  name: SubsystemBase
+  nameWithType: SubsystemBase
+  fullName: Ceres.Gameplay.SubsystemBase
+- uid: Ceres.Gameplay.WorldSubsystem
+  commentId: T:Ceres.Gameplay.WorldSubsystem
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.WorldSubsystem.html
+  name: WorldSubsystem
+  nameWithType: WorldSubsystem
+  fullName: Ceres.Gameplay.WorldSubsystem
+- uid: Ceres.Gameplay.IContainerSubsystem
+  commentId: T:Ceres.Gameplay.IContainerSubsystem
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.IContainerSubsystem.html
+  name: IContainerSubsystem
+  nameWithType: IContainerSubsystem
+  fullName: Ceres.Gameplay.IContainerSubsystem
+- uid: Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+  commentId: M:Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+  parent: Ceres.Gameplay.WorldSubsystem
+  isExternal: true
+  href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_CanCreate_Ceres_Gameplay_WorldContext_
+  name: CanCreate(WorldContext)
+  nameWithType: WorldSubsystem.CanCreate(WorldContext)
+  fullName: Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+  spec.csharp:
+  - uid: Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+    name: CanCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_CanCreate_Ceres_Gameplay_WorldContext_
+  - name: (
+  - uid: Ceres.Gameplay.WorldContext
+    name: WorldContext
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.WorldSubsystem.CanCreate(Ceres.Gameplay.WorldContext)
+    name: CanCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_CanCreate_Ceres_Gameplay_WorldContext_
+  - name: (
+  - uid: Ceres.Gameplay.WorldContext
+    name: WorldContext
+    isExternal: true
+    href: Ceres.Gameplay.WorldContext.html
+  - name: )
+- uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+  commentId: M:Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+  parent: Ceres.Gameplay.WorldSubsystem
+  isExternal: true
+  href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate__1
+  name: GetOrCreate<T>()
+  nameWithType: WorldSubsystem.GetOrCreate<T>()
+  fullName: Ceres.Gameplay.WorldSubsystem.GetOrCreate<T>()
+  nameWithType.vb: WorldSubsystem.GetOrCreate(Of T)()
+  fullName.vb: Ceres.Gameplay.WorldSubsystem.GetOrCreate(Of T)()
+  name.vb: GetOrCreate(Of T)()
+  spec.csharp:
+  - uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+    name: GetOrCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate``1
+    name: GetOrCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+  commentId: M:Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+  parent: Ceres.Gameplay.WorldSubsystem
+  isExternal: true
+  href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate_System_Type_
+  name: GetOrCreate(Type)
+  nameWithType: WorldSubsystem.GetOrCreate(Type)
+  fullName: Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+  spec.csharp:
+  - uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+    name: GetOrCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.WorldSubsystem.GetOrCreate(System.Type)
+    name: GetOrCreate
+    isExternal: true
+    href: Ceres.Gameplay.WorldSubsystem.html#Ceres_Gameplay_WorldSubsystem_GetOrCreate_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.Initialize
+  commentId: M:Ceres.Gameplay.SubsystemBase.Initialize
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Initialize
+  name: Initialize()
+  nameWithType: SubsystemBase.Initialize()
+  fullName: Ceres.Gameplay.SubsystemBase.Initialize()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.Initialize
+    name: Initialize
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Initialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.Initialize
+    name: Initialize
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Initialize
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.Tick
+  commentId: M:Ceres.Gameplay.SubsystemBase.Tick
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Tick
+  name: Tick()
+  nameWithType: SubsystemBase.Tick()
+  fullName: Ceres.Gameplay.SubsystemBase.Tick()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.Tick
+    name: Tick
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Tick
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.Tick
+    name: Tick
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Tick
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.FixedTick
+  commentId: M:Ceres.Gameplay.SubsystemBase.FixedTick
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_FixedTick
+  name: FixedTick()
+  nameWithType: SubsystemBase.FixedTick()
+  fullName: Ceres.Gameplay.SubsystemBase.FixedTick()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.FixedTick
+    name: FixedTick
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_FixedTick
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.FixedTick
+    name: FixedTick
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_FixedTick
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.GetWorld
+  commentId: M:Ceres.Gameplay.SubsystemBase.GetWorld
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetWorld
+  name: GetWorld()
+  nameWithType: SubsystemBase.GetWorld()
+  fullName: Ceres.Gameplay.SubsystemBase.GetWorld()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.GetWorld
+    name: GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetWorld
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.GetWorld
+    name: GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetWorld
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+  commentId: M:Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsInWorld_System_Collections_Generic_List_Ceres_Gameplay_Actor__
+  name: GetActorsInWorld(List<Actor>)
+  nameWithType: SubsystemBase.GetActorsInWorld(List<Actor>)
+  fullName: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List<Ceres.Gameplay.Actor>)
+  nameWithType.vb: SubsystemBase.GetActorsInWorld(List(Of Actor))
+  fullName.vb: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List(Of Ceres.Gameplay.Actor))
+  name.vb: GetActorsInWorld(List(Of Actor))
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+    name: GetActorsInWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsInWorld_System_Collections_Generic_List_Ceres_Gameplay_Actor__
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.GetActorsInWorld(System.Collections.Generic.List{Ceres.Gameplay.Actor})
+    name: GetActorsInWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsInWorld_System_Collections_Generic_List_Ceres_Gameplay_Actor__
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.Actor
+    name: Actor
+    isExternal: true
+    href: Ceres.Gameplay.Actor.html
+  - name: )
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.GetActorsNum
+  commentId: M:Ceres.Gameplay.SubsystemBase.GetActorsNum
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsNum
+  name: GetActorsNum()
+  nameWithType: SubsystemBase.GetActorsNum()
+  fullName: Ceres.Gameplay.SubsystemBase.GetActorsNum()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.GetActorsNum
+    name: GetActorsNum
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsNum
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.GetActorsNum
+    name: GetActorsNum
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_GetActorsNum
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+  commentId: M:Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Invoke_GetWorld_Ceres_Gameplay_SubsystemBase_
+  name: Invoke_GetWorld(SubsystemBase)
+  nameWithType: SubsystemBase.Invoke_GetWorld(SubsystemBase)
+  fullName: Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+    name: Invoke_GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Invoke_GetWorld_Ceres_Gameplay_SubsystemBase_
+  - name: (
+  - uid: Ceres.Gameplay.SubsystemBase
+    name: SubsystemBase
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.Invoke_GetWorld(Ceres.Gameplay.SubsystemBase)
+    name: Invoke_GetWorld
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Invoke_GetWorld_Ceres_Gameplay_SubsystemBase_
+  - name: (
+  - uid: Ceres.Gameplay.SubsystemBase
+    name: SubsystemBase
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html
+  - name: )
+- uid: Ceres.Gameplay.SubsystemBase.IsActorsDirty
+  commentId: P:Ceres.Gameplay.SubsystemBase.IsActorsDirty
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_IsActorsDirty
+  name: IsActorsDirty
+  nameWithType: SubsystemBase.IsActorsDirty
+  fullName: Ceres.Gameplay.SubsystemBase.IsActorsDirty
+- uid: Ceres.Gameplay.SubsystemBase.IsInitialized
+  commentId: P:Ceres.Gameplay.SubsystemBase.IsInitialized
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_IsInitialized
+  name: IsInitialized
+  nameWithType: SubsystemBase.IsInitialized
+  fullName: Ceres.Gameplay.SubsystemBase.IsInitialized
+- uid: Ceres.Gameplay.SubsystemBase.IsDestroyed
+  commentId: P:Ceres.Gameplay.SubsystemBase.IsDestroyed
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_IsDestroyed
+  name: IsDestroyed
+  nameWithType: SubsystemBase.IsDestroyed
+  fullName: Ceres.Gameplay.SubsystemBase.IsDestroyed
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Gameplay.ContainerSubsystem.Get*
+  commentId: Overload:Ceres.Gameplay.ContainerSubsystem.Get
+  isExternal: true
+  href: Ceres.Gameplay.ContainerSubsystem.html#Ceres_Gameplay_ContainerSubsystem_Get
+  name: Get
+  nameWithType: ContainerSubsystem.Get
+  fullName: Ceres.Gameplay.ContainerSubsystem.Get
+- uid: Ceres.Gameplay.SubsystemBase.Release
+  commentId: M:Ceres.Gameplay.SubsystemBase.Release
+  parent: Ceres.Gameplay.SubsystemBase
+  isExternal: true
+  href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Release
+  name: Release()
+  nameWithType: SubsystemBase.Release()
+  fullName: Ceres.Gameplay.SubsystemBase.Release()
+  spec.csharp:
+  - uid: Ceres.Gameplay.SubsystemBase.Release
+    name: Release
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Release
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Gameplay.SubsystemBase.Release
+    name: Release
+    isExternal: true
+    href: Ceres.Gameplay.SubsystemBase.html#Ceres_Gameplay_SubsystemBase_Release
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.ContainerSubsystem.Release*
+  commentId: Overload:Ceres.Gameplay.ContainerSubsystem.Release
+  isExternal: true
+  href: Ceres.Gameplay.ContainerSubsystem.html#Ceres_Gameplay_ContainerSubsystem_Release
+  name: Release
+  nameWithType: ContainerSubsystem.Release
+  fullName: Ceres.Gameplay.ContainerSubsystem.Release
+- uid: Ceres.Gameplay.ContainerSubsystem.#ctor*
+  commentId: Overload:Ceres.Gameplay.ContainerSubsystem.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.ContainerSubsystem.html#Ceres_Gameplay_ContainerSubsystem__ctor
+  name: ContainerSubsystem
+  nameWithType: ContainerSubsystem.ContainerSubsystem
+  fullName: Ceres.Gameplay.ContainerSubsystem.ContainerSubsystem
+  nameWithType.vb: ContainerSubsystem.New
+  fullName.vb: Ceres.Gameplay.ContainerSubsystem.New
+  name.vb: New

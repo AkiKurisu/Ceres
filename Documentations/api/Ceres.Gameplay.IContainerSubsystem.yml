@@ -1,0 +1,274 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.IContainerSubsystem
+  commentId: T:Ceres.Gameplay.IContainerSubsystem
+  id: IContainerSubsystem
+  parent: Ceres.Gameplay
+  children:
+  - Ceres.Gameplay.IContainerSubsystem.RegisterCallback``1(System.Action{``0})
+  - Ceres.Gameplay.IContainerSubsystem.Register``1(``0)
+  - Ceres.Gameplay.IContainerSubsystem.Resolve``1
+  - Ceres.Gameplay.IContainerSubsystem.Unregister``1(``0)
+  langs:
+  - csharp
+  - vb
+  name: IContainerSubsystem
+  nameWithType: IContainerSubsystem
+  fullName: Ceres.Gameplay.IContainerSubsystem
+  type: Interface
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  syntax:
+    content: public interface IContainerSubsystem
+    content.vb: Public Interface IContainerSubsystem
+  derivedClasses:
+  - Ceres.Gameplay.ContainerSubsystem
+- uid: Ceres.Gameplay.IContainerSubsystem.Register``1(``0)
+  commentId: M:Ceres.Gameplay.IContainerSubsystem.Register``1(``0)
+  id: Register``1(``0)
+  parent: Ceres.Gameplay.IContainerSubsystem
+  langs:
+  - csharp
+  - vb
+  name: Register<T>(T)
+  nameWithType: IContainerSubsystem.Register<T>(T)
+  fullName: Ceres.Gameplay.IContainerSubsystem.Register<T>(T)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Register target type instance
+  example: []
+  syntax:
+    content: void Register<T>(T instance)
+    parameters:
+    - id: instance
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Sub Register(Of T)(instance As T)
+  overload: Ceres.Gameplay.IContainerSubsystem.Register*
+  nameWithType.vb: IContainerSubsystem.Register(Of T)(T)
+  fullName.vb: Ceres.Gameplay.IContainerSubsystem.Register(Of T)(T)
+  name.vb: Register(Of T)(T)
+- uid: Ceres.Gameplay.IContainerSubsystem.Unregister``1(``0)
+  commentId: M:Ceres.Gameplay.IContainerSubsystem.Unregister``1(``0)
+  id: Unregister``1(``0)
+  parent: Ceres.Gameplay.IContainerSubsystem
+  langs:
+  - csharp
+  - vb
+  name: Unregister<T>(T)
+  nameWithType: IContainerSubsystem.Unregister<T>(T)
+  fullName: Ceres.Gameplay.IContainerSubsystem.Unregister<T>(T)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Unregister target type instance
+  example: []
+  syntax:
+    content: void Unregister<T>(T instance)
+    parameters:
+    - id: instance
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Sub Unregister(Of T)(instance As T)
+  overload: Ceres.Gameplay.IContainerSubsystem.Unregister*
+  nameWithType.vb: IContainerSubsystem.Unregister(Of T)(T)
+  fullName.vb: Ceres.Gameplay.IContainerSubsystem.Unregister(Of T)(T)
+  name.vb: Unregister(Of T)(T)
+- uid: Ceres.Gameplay.IContainerSubsystem.Resolve``1
+  commentId: M:Ceres.Gameplay.IContainerSubsystem.Resolve``1
+  id: Resolve``1
+  parent: Ceres.Gameplay.IContainerSubsystem
+  langs:
+  - csharp
+  - vb
+  name: Resolve<T>()
+  nameWithType: IContainerSubsystem.Resolve<T>()
+  fullName: Ceres.Gameplay.IContainerSubsystem.Resolve<T>()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Get target type instance
+  example: []
+  syntax:
+    content: 'T Resolve<T>() where T : class'
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+    content.vb: Function Resolve(Of T As Class)() As T
+  overload: Ceres.Gameplay.IContainerSubsystem.Resolve*
+  nameWithType.vb: IContainerSubsystem.Resolve(Of T)()
+  fullName.vb: Ceres.Gameplay.IContainerSubsystem.Resolve(Of T)()
+  name.vb: Resolve(Of T)()
+- uid: Ceres.Gameplay.IContainerSubsystem.RegisterCallback``1(System.Action{``0})
+  commentId: M:Ceres.Gameplay.IContainerSubsystem.RegisterCallback``1(System.Action{``0})
+  id: RegisterCallback``1(System.Action{``0})
+  parent: Ceres.Gameplay.IContainerSubsystem
+  langs:
+  - csharp
+  - vb
+  name: RegisterCallback<T>(Action<T>)
+  nameWithType: IContainerSubsystem.RegisterCallback<T>(Action<T>)
+  fullName: Ceres.Gameplay.IContainerSubsystem.RegisterCallback<T>(System.Action<T>)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay
+  summary: Register a callback when target type instance is registered
+  example: []
+  syntax:
+    content: void RegisterCallback<T>(Action<T> callback)
+    parameters:
+    - id: callback
+      type: System.Action{{T}}
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Sub RegisterCallback(Of T)(callback As Action(Of T))
+  overload: Ceres.Gameplay.IContainerSubsystem.RegisterCallback*
+  nameWithType.vb: IContainerSubsystem.RegisterCallback(Of T)(Action(Of T))
+  fullName.vb: Ceres.Gameplay.IContainerSubsystem.RegisterCallback(Of T)(System.Action(Of T))
+  name.vb: RegisterCallback(Of T)(Action(Of T))
+references:
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: Ceres.Gameplay.IContainerSubsystem.Register*
+  commentId: Overload:Ceres.Gameplay.IContainerSubsystem.Register
+  isExternal: true
+  href: Ceres.Gameplay.IContainerSubsystem.html#Ceres_Gameplay_IContainerSubsystem_Register__1___0_
+  name: Register
+  nameWithType: IContainerSubsystem.Register
+  fullName: Ceres.Gameplay.IContainerSubsystem.Register
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Gameplay.IContainerSubsystem.Unregister*
+  commentId: Overload:Ceres.Gameplay.IContainerSubsystem.Unregister
+  isExternal: true
+  href: Ceres.Gameplay.IContainerSubsystem.html#Ceres_Gameplay_IContainerSubsystem_Unregister__1___0_
+  name: Unregister
+  nameWithType: IContainerSubsystem.Unregister
+  fullName: Ceres.Gameplay.IContainerSubsystem.Unregister
+- uid: Ceres.Gameplay.IContainerSubsystem.Resolve*
+  commentId: Overload:Ceres.Gameplay.IContainerSubsystem.Resolve
+  isExternal: true
+  href: Ceres.Gameplay.IContainerSubsystem.html#Ceres_Gameplay_IContainerSubsystem_Resolve__1
+  name: Resolve
+  nameWithType: IContainerSubsystem.Resolve
+  fullName: Ceres.Gameplay.IContainerSubsystem.Resolve
+- uid: Ceres.Gameplay.IContainerSubsystem.RegisterCallback*
+  commentId: Overload:Ceres.Gameplay.IContainerSubsystem.RegisterCallback
+  isExternal: true
+  href: Ceres.Gameplay.IContainerSubsystem.html#Ceres_Gameplay_IContainerSubsystem_RegisterCallback__1_System_Action___0__
+  name: RegisterCallback
+  nameWithType: IContainerSubsystem.RegisterCallback
+  fullName: Ceres.Gameplay.IContainerSubsystem.RegisterCallback
+- uid: System.Action{{T}}
+  commentId: T:System.Action{`0}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

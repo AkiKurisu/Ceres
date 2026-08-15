@@ -1,0 +1,513 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Configs.ConfigSystem
+  commentId: T:Ceres.Configs.ConfigSystem
+  id: ConfigSystem
+  parent: Ceres.Configs
+  children:
+  - Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+  - Ceres.Configs.ConfigSystem.GetConfig``1
+  - Ceres.Configs.ConfigSystem.GetProjectConfigFile(Ceres.Configs.ConfigFileLocation)
+  - Ceres.Configs.ConfigSystem.RegisterConfigFileProvider(Ceres.Configs.IConfigFileProvider,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: ConfigSystem
+  nameWithType: ConfigSystem
+  fullName: Ceres.Configs.ConfigSystem
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  syntax:
+    content: public static class ConfigSystem
+    content.vb: Public Module ConfigSystem
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Configs.ConfigSystem.GetConfig``1
+  commentId: M:Ceres.Configs.ConfigSystem.GetConfig``1
+  id: GetConfig``1
+  parent: Ceres.Configs.ConfigSystem
+  langs:
+  - csharp
+  - vb
+  name: GetConfig<TConfig>()
+  nameWithType: ConfigSystem.GetConfig<TConfig>()
+  fullName: Ceres.Configs.ConfigSystem.GetConfig<TConfig>()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  summary: Get global config
+  example: []
+  syntax:
+    content: 'public static TConfig GetConfig<TConfig>() where TConfig : Config<TConfig>, new()'
+    typeParameters:
+    - id: TConfig
+      description: ''
+    return:
+      type: '{TConfig}'
+      description: ''
+    content.vb: Public Shared Function GetConfig(Of TConfig As {Config(Of TConfig), New})() As TConfig
+  overload: Ceres.Configs.ConfigSystem.GetConfig*
+  nameWithType.vb: ConfigSystem.GetConfig(Of TConfig)()
+  fullName.vb: Ceres.Configs.ConfigSystem.GetConfig(Of TConfig)()
+  name.vb: GetConfig(Of TConfig)()
+- uid: Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+  commentId: M:Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+  id: GetConfigFile(Ceres.Configs.ConfigFileLocation)
+  parent: Ceres.Configs.ConfigSystem
+  langs:
+  - csharp
+  - vb
+  name: GetConfigFile(ConfigFileLocation)
+  nameWithType: ConfigSystem.GetConfigFile(ConfigFileLocation)
+  fullName: Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  summary: Get <xref href="Ceres.Configs.IConfigFile" data-throw-if-not-resolved="false"></xref> from <xref href="Ceres.Configs.ConfigFileLocation" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public static IConfigFile GetConfigFile(ConfigFileLocation location)
+    parameters:
+    - id: location
+      type: Ceres.Configs.ConfigFileLocation
+      description: ''
+    return:
+      type: Ceres.Configs.IConfigFile
+      description: ''
+    content.vb: Public Shared Function GetConfigFile(location As ConfigFileLocation) As IConfigFile
+  overload: Ceres.Configs.ConfigSystem.GetConfigFile*
+- uid: Ceres.Configs.ConfigSystem.GetProjectConfigFile(Ceres.Configs.ConfigFileLocation)
+  commentId: M:Ceres.Configs.ConfigSystem.GetProjectConfigFile(Ceres.Configs.ConfigFileLocation)
+  id: GetProjectConfigFile(Ceres.Configs.ConfigFileLocation)
+  parent: Ceres.Configs.ConfigSystem
+  langs:
+  - csharp
+  - vb
+  name: GetProjectConfigFile(ConfigFileLocation)
+  nameWithType: ConfigSystem.GetProjectConfigFile(ConfigFileLocation)
+  fullName: Ceres.Configs.ConfigSystem.GetProjectConfigFile(Ceres.Configs.ConfigFileLocation)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  summary: >-
+    Get <xref href="Ceres.Configs.IConfigFile" data-throw-if-not-resolved="false"></xref> from <xref href="Ceres.Configs.ConfigFileLocation" data-throw-if-not-resolved="false"></xref> without userData (skips persistent storage).
+
+    Not cached: always a fresh merge of editor/project providers so it cannot pick up a merged instance from <xref href="Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static IConfigFile GetProjectConfigFile(ConfigFileLocation location)
+    parameters:
+    - id: location
+      type: Ceres.Configs.ConfigFileLocation
+      description: ''
+    return:
+      type: Ceres.Configs.IConfigFile
+      description: ''
+    content.vb: Public Shared Function GetProjectConfigFile(location As ConfigFileLocation) As IConfigFile
+  overload: Ceres.Configs.ConfigSystem.GetProjectConfigFile*
+- uid: Ceres.Configs.ConfigSystem.RegisterConfigFileProvider(Ceres.Configs.IConfigFileProvider,System.Int32)
+  commentId: M:Ceres.Configs.ConfigSystem.RegisterConfigFileProvider(Ceres.Configs.IConfigFileProvider,System.Int32)
+  id: RegisterConfigFileProvider(Ceres.Configs.IConfigFileProvider,System.Int32)
+  parent: Ceres.Configs.ConfigSystem
+  langs:
+  - csharp
+  - vb
+  name: RegisterConfigFileProvider(IConfigFileProvider, int)
+  nameWithType: ConfigSystem.RegisterConfigFileProvider(IConfigFileProvider, int)
+  fullName: Ceres.Configs.ConfigSystem.RegisterConfigFileProvider(Ceres.Configs.IConfigFileProvider, int)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Configs
+  syntax:
+    content: public static void RegisterConfigFileProvider(IConfigFileProvider fileProvider, int priority = 0)
+    parameters:
+    - id: fileProvider
+      type: Ceres.Configs.IConfigFileProvider
+    - id: priority
+      type: System.Int32
+    content.vb: Public Shared Sub RegisterConfigFileProvider(fileProvider As IConfigFileProvider, priority As Integer = 0)
+  overload: Ceres.Configs.ConfigSystem.RegisterConfigFileProvider*
+  nameWithType.vb: ConfigSystem.RegisterConfigFileProvider(IConfigFileProvider, Integer)
+  fullName.vb: Ceres.Configs.ConfigSystem.RegisterConfigFileProvider(Ceres.Configs.IConfigFileProvider, Integer)
+  name.vb: RegisterConfigFileProvider(IConfigFileProvider, Integer)
+references:
+- uid: Ceres.Configs
+  commentId: N:Ceres.Configs
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Configs
+  nameWithType: Ceres.Configs
+  fullName: Ceres.Configs
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Configs
+    name: Configs
+    isExternal: true
+    href: Ceres.Configs.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Configs
+    name: Configs
+    isExternal: true
+    href: Ceres.Configs.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Configs.ConfigSystem.GetConfig*
+  commentId: Overload:Ceres.Configs.ConfigSystem.GetConfig
+  isExternal: true
+  href: Ceres.Configs.ConfigSystem.html#Ceres_Configs_ConfigSystem_GetConfig__1
+  name: GetConfig
+  nameWithType: ConfigSystem.GetConfig
+  fullName: Ceres.Configs.ConfigSystem.GetConfig
+- uid: '{TConfig}'
+  commentId: '!:TConfig'
+  definition: TConfig
+  name: TConfig
+  nameWithType: TConfig
+  fullName: TConfig
+- uid: TConfig
+  name: TConfig
+  nameWithType: TConfig
+  fullName: TConfig
+- uid: Ceres.Configs.IConfigFile
+  commentId: T:Ceres.Configs.IConfigFile
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.IConfigFile.html
+  name: IConfigFile
+  nameWithType: IConfigFile
+  fullName: Ceres.Configs.IConfigFile
+- uid: Ceres.Configs.ConfigFileLocation
+  commentId: T:Ceres.Configs.ConfigFileLocation
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.ConfigFileLocation.html
+  name: ConfigFileLocation
+  nameWithType: ConfigFileLocation
+  fullName: Ceres.Configs.ConfigFileLocation
+- uid: Ceres.Configs.ConfigSystem.GetConfigFile*
+  commentId: Overload:Ceres.Configs.ConfigSystem.GetConfigFile
+  isExternal: true
+  href: Ceres.Configs.ConfigSystem.html#Ceres_Configs_ConfigSystem_GetConfigFile_Ceres_Configs_ConfigFileLocation_
+  name: GetConfigFile
+  nameWithType: ConfigSystem.GetConfigFile
+  fullName: Ceres.Configs.ConfigSystem.GetConfigFile
+- uid: Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+  commentId: M:Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+  isExternal: true
+  href: Ceres.Configs.ConfigSystem.html#Ceres_Configs_ConfigSystem_GetConfigFile_Ceres_Configs_ConfigFileLocation_
+  name: GetConfigFile(ConfigFileLocation)
+  nameWithType: ConfigSystem.GetConfigFile(ConfigFileLocation)
+  fullName: Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+  spec.csharp:
+  - uid: Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+    name: GetConfigFile
+    isExternal: true
+    href: Ceres.Configs.ConfigSystem.html#Ceres_Configs_ConfigSystem_GetConfigFile_Ceres_Configs_ConfigFileLocation_
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+    href: Ceres.Configs.ConfigFileLocation.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Configs.ConfigSystem.GetConfigFile(Ceres.Configs.ConfigFileLocation)
+    name: GetConfigFile
+    isExternal: true
+    href: Ceres.Configs.ConfigSystem.html#Ceres_Configs_ConfigSystem_GetConfigFile_Ceres_Configs_ConfigFileLocation_
+  - name: (
+  - uid: Ceres.Configs.ConfigFileLocation
+    name: ConfigFileLocation
+    isExternal: true
+    href: Ceres.Configs.ConfigFileLocation.html
+  - name: )
+- uid: Ceres.Configs.ConfigSystem.GetProjectConfigFile*
+  commentId: Overload:Ceres.Configs.ConfigSystem.GetProjectConfigFile
+  isExternal: true
+  href: Ceres.Configs.ConfigSystem.html#Ceres_Configs_ConfigSystem_GetProjectConfigFile_Ceres_Configs_ConfigFileLocation_
+  name: GetProjectConfigFile
+  nameWithType: ConfigSystem.GetProjectConfigFile
+  fullName: Ceres.Configs.ConfigSystem.GetProjectConfigFile
+- uid: Ceres.Configs.ConfigSystem.RegisterConfigFileProvider*
+  commentId: Overload:Ceres.Configs.ConfigSystem.RegisterConfigFileProvider
+  isExternal: true
+  href: Ceres.Configs.ConfigSystem.html#Ceres_Configs_ConfigSystem_RegisterConfigFileProvider_Ceres_Configs_IConfigFileProvider_System_Int32_
+  name: RegisterConfigFileProvider
+  nameWithType: ConfigSystem.RegisterConfigFileProvider
+  fullName: Ceres.Configs.ConfigSystem.RegisterConfigFileProvider
+- uid: Ceres.Configs.IConfigFileProvider
+  commentId: T:Ceres.Configs.IConfigFileProvider
+  parent: Ceres.Configs
+  isExternal: true
+  href: Ceres.Configs.IConfigFileProvider.html
+  name: IConfigFileProvider
+  nameWithType: IConfigFileProvider
+  fullName: Ceres.Configs.IConfigFileProvider
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

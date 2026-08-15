@@ -1,0 +1,572 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Graph.CeresPortElement
+  commentId: T:Ceres.Editor.Graph.CeresPortElement
+  id: CeresPortElement
+  parent: Ceres.Editor.Graph
+  children:
+  - Ceres.Editor.Graph.CeresPortElement.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  - Ceres.Editor.Graph.CeresPortElement.CanConnect(Ceres.Editor.Graph.CeresPortElement)
+  - Ceres.Editor.Graph.CeresPortElement.Connect(UnityEditor.Experimental.GraphView.Edge)
+  - Ceres.Editor.Graph.CeresPortElement.Create(Ceres.Editor.Graph.CeresPortView)
+  - Ceres.Editor.Graph.CeresPortElement.CreatePortTooltip(System.Type)
+  - Ceres.Editor.Graph.CeresPortElement.Disconnect(UnityEditor.Experimental.GraphView.Edge)
+  - Ceres.Editor.Graph.CeresPortElement.EditorField
+  - Ceres.Editor.Graph.CeresPortElement.GetEditorFieldVisibility
+  - Ceres.Editor.Graph.CeresPortElement.IsCompatibleTo(Ceres.Editor.Graph.CeresPortElement)
+  - Ceres.Editor.Graph.CeresPortElement.IsConnectable
+  - Ceres.Editor.Graph.CeresPortElement.IsExecutionPort
+  - Ceres.Editor.Graph.CeresPortElement.IsExecutionPortType(System.Type)
+  - Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility(System.Boolean)
+  - Ceres.Editor.Graph.CeresPortElement.View
+  langs:
+  - csharp
+  - vb
+  name: CeresPortElement
+  nameWithType: CeresPortElement
+  fullName: Ceres.Editor.Graph.CeresPortElement
+  type: Class
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: 'public class CeresPortElement : Port'
+    content.vb: Public Class CeresPortElement Inherits Port
+  inheritance:
+  - System.Object
+- uid: Ceres.Editor.Graph.CeresPortElement.IsExecutionPortType(System.Type)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.IsExecutionPortType(System.Type)
+  id: IsExecutionPortType(System.Type)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: IsExecutionPortType(Type)
+  nameWithType: CeresPortElement.IsExecutionPortType(Type)
+  fullName: Ceres.Editor.Graph.CeresPortElement.IsExecutionPortType(System.Type)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public static bool IsExecutionPortType(Type valueType)
+    parameters:
+    - id: valueType
+      type: System.Type
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsExecutionPortType(valueType As Type) As Boolean
+  overload: Ceres.Editor.Graph.CeresPortElement.IsExecutionPortType*
+- uid: Ceres.Editor.Graph.CeresPortElement.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  id: BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: BuildContextualMenu(ContextualMenuPopulateEvent)
+  nameWithType: CeresPortElement.BuildContextualMenu(ContextualMenuPopulateEvent)
+  fullName: Ceres.Editor.Graph.CeresPortElement.BuildContextualMenu(UnityEngine.UIElements.ContextualMenuPopulateEvent)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: protected virtual void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+    parameters:
+    - id: evt
+      type: UnityEngine.UIElements.ContextualMenuPopulateEvent
+    content.vb: Protected Overridable Sub BuildContextualMenu(evt As ContextualMenuPopulateEvent)
+  overload: Ceres.Editor.Graph.CeresPortElement.BuildContextualMenu*
+- uid: Ceres.Editor.Graph.CeresPortElement.CreatePortTooltip(System.Type)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.CreatePortTooltip(System.Type)
+  id: CreatePortTooltip(System.Type)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: CreatePortTooltip(Type)
+  nameWithType: CeresPortElement.CreatePortTooltip(Type)
+  fullName: Ceres.Editor.Graph.CeresPortElement.CreatePortTooltip(System.Type)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public string CreatePortTooltip(Type valueType)
+    parameters:
+    - id: valueType
+      type: System.Type
+    return:
+      type: System.String
+    content.vb: Public Function CreatePortTooltip(valueType As Type) As String
+  overload: Ceres.Editor.Graph.CeresPortElement.CreatePortTooltip*
+- uid: Ceres.Editor.Graph.CeresPortElement.Create(Ceres.Editor.Graph.CeresPortView)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.Create(Ceres.Editor.Graph.CeresPortView)
+  id: Create(Ceres.Editor.Graph.CeresPortView)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: Create(CeresPortView)
+  nameWithType: CeresPortElement.Create(CeresPortView)
+  fullName: Ceres.Editor.Graph.CeresPortElement.Create(Ceres.Editor.Graph.CeresPortView)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public static CeresPortElement Create(CeresPortView ownerView)
+    parameters:
+    - id: ownerView
+      type: Ceres.Editor.Graph.CeresPortView
+    return:
+      type: Ceres.Editor.Graph.CeresPortElement
+    content.vb: Public Shared Function Create(ownerView As CeresPortView) As CeresPortElement
+  overload: Ceres.Editor.Graph.CeresPortElement.Create*
+- uid: Ceres.Editor.Graph.CeresPortElement.IsConnectable
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.IsConnectable
+  id: IsConnectable
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: IsConnectable()
+  nameWithType: CeresPortElement.IsConnectable()
+  fullName: Ceres.Editor.Graph.CeresPortElement.IsConnectable()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Whether this can connect other ports
+  example: []
+  syntax:
+    content: public bool IsConnectable()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function IsConnectable() As Boolean
+  overload: Ceres.Editor.Graph.CeresPortElement.IsConnectable*
+- uid: Ceres.Editor.Graph.CeresPortElement.CanConnect(Ceres.Editor.Graph.CeresPortElement)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.CanConnect(Ceres.Editor.Graph.CeresPortElement)
+  id: CanConnect(Ceres.Editor.Graph.CeresPortElement)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: CanConnect(CeresPortElement)
+  nameWithType: CeresPortElement.CanConnect(CeresPortElement)
+  fullName: Ceres.Editor.Graph.CeresPortElement.CanConnect(Ceres.Editor.Graph.CeresPortElement)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Whether this can connect other port with value compatible validation
+  example: []
+  syntax:
+    content: public bool CanConnect(CeresPortElement other)
+    parameters:
+    - id: other
+      type: Ceres.Editor.Graph.CeresPortElement
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function CanConnect(other As CeresPortElement) As Boolean
+  overload: Ceres.Editor.Graph.CeresPortElement.CanConnect*
+- uid: Ceres.Editor.Graph.CeresPortElement.IsCompatibleTo(Ceres.Editor.Graph.CeresPortElement)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.IsCompatibleTo(Ceres.Editor.Graph.CeresPortElement)
+  id: IsCompatibleTo(Ceres.Editor.Graph.CeresPortElement)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: IsCompatibleTo(CeresPortElement)
+  nameWithType: CeresPortElement.IsCompatibleTo(CeresPortElement)
+  fullName: Ceres.Editor.Graph.CeresPortElement.IsCompatibleTo(Ceres.Editor.Graph.CeresPortElement)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Whether this port's value is compatible to other port's value
+  example: []
+  syntax:
+    content: public bool IsCompatibleTo(CeresPortElement other)
+    parameters:
+    - id: other
+      type: Ceres.Editor.Graph.CeresPortElement
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function IsCompatibleTo(other As CeresPortElement) As Boolean
+  overload: Ceres.Editor.Graph.CeresPortElement.IsCompatibleTo*
+- uid: Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility(System.Boolean)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility(System.Boolean)
+  id: SetEditorFieldVisibility(System.Boolean)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: SetEditorFieldVisibility(bool)
+  nameWithType: CeresPortElement.SetEditorFieldVisibility(bool)
+  fullName: Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility(bool)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public void SetEditorFieldVisibility(bool isVisible)
+    parameters:
+    - id: isVisible
+      type: System.Boolean
+    content.vb: Public Sub SetEditorFieldVisibility(isVisible As Boolean)
+  overload: Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility*
+  nameWithType.vb: CeresPortElement.SetEditorFieldVisibility(Boolean)
+  fullName.vb: Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility(Boolean)
+  name.vb: SetEditorFieldVisibility(Boolean)
+- uid: Ceres.Editor.Graph.CeresPortElement.GetEditorFieldVisibility
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.GetEditorFieldVisibility
+  id: GetEditorFieldVisibility
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: GetEditorFieldVisibility()
+  nameWithType: CeresPortElement.GetEditorFieldVisibility()
+  fullName: Ceres.Editor.Graph.CeresPortElement.GetEditorFieldVisibility()
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  summary: Whether port editor field is visible
+  example: []
+  syntax:
+    content: public bool GetEditorFieldVisibility()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function GetEditorFieldVisibility() As Boolean
+  overload: Ceres.Editor.Graph.CeresPortElement.GetEditorFieldVisibility*
+- uid: Ceres.Editor.Graph.CeresPortElement.Connect(UnityEditor.Experimental.GraphView.Edge)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.Connect(UnityEditor.Experimental.GraphView.Edge)
+  id: Connect(UnityEditor.Experimental.GraphView.Edge)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: Connect(Edge)
+  nameWithType: CeresPortElement.Connect(Edge)
+  fullName: Ceres.Editor.Graph.CeresPortElement.Connect(UnityEditor.Experimental.GraphView.Edge)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  example: []
+  syntax:
+    content: public override void Connect(Edge edge)
+    parameters:
+    - id: edge
+      type: UnityEditor.Experimental.GraphView.Edge
+    content.vb: Public Overrides Sub Connect(edge As Edge)
+  overload: Ceres.Editor.Graph.CeresPortElement.Connect*
+- uid: Ceres.Editor.Graph.CeresPortElement.Disconnect(UnityEditor.Experimental.GraphView.Edge)
+  commentId: M:Ceres.Editor.Graph.CeresPortElement.Disconnect(UnityEditor.Experimental.GraphView.Edge)
+  id: Disconnect(UnityEditor.Experimental.GraphView.Edge)
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: Disconnect(Edge)
+  nameWithType: CeresPortElement.Disconnect(Edge)
+  fullName: Ceres.Editor.Graph.CeresPortElement.Disconnect(UnityEditor.Experimental.GraphView.Edge)
+  type: Method
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  example: []
+  syntax:
+    content: public override void Disconnect(Edge edge)
+    parameters:
+    - id: edge
+      type: UnityEditor.Experimental.GraphView.Edge
+    content.vb: Public Overrides Sub Disconnect(edge As Edge)
+  overload: Ceres.Editor.Graph.CeresPortElement.Disconnect*
+- uid: Ceres.Editor.Graph.CeresPortElement.View
+  commentId: P:Ceres.Editor.Graph.CeresPortElement.View
+  id: View
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: View
+  nameWithType: CeresPortElement.View
+  fullName: Ceres.Editor.Graph.CeresPortElement.View
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public CeresPortView View { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Graph.CeresPortView
+    content.vb: Public ReadOnly Property View As CeresPortView
+  overload: Ceres.Editor.Graph.CeresPortElement.View*
+- uid: Ceres.Editor.Graph.CeresPortElement.EditorField
+  commentId: P:Ceres.Editor.Graph.CeresPortElement.EditorField
+  id: EditorField
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: EditorField
+  nameWithType: CeresPortElement.EditorField
+  fullName: Ceres.Editor.Graph.CeresPortElement.EditorField
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public VisualElement EditorField { get; }
+    parameters: []
+    return:
+      type: UnityEngine.UIElements.VisualElement
+    content.vb: Public ReadOnly Property EditorField As VisualElement
+  overload: Ceres.Editor.Graph.CeresPortElement.EditorField*
+- uid: Ceres.Editor.Graph.CeresPortElement.IsExecutionPort
+  commentId: P:Ceres.Editor.Graph.CeresPortElement.IsExecutionPort
+  id: IsExecutionPort
+  parent: Ceres.Editor.Graph.CeresPortElement
+  langs:
+  - csharp
+  - vb
+  name: IsExecutionPort
+  nameWithType: CeresPortElement.IsExecutionPort
+  fullName: Ceres.Editor.Graph.CeresPortElement.IsExecutionPort
+  type: Property
+  assemblies:
+  - Ceres.Graph.Editor
+  namespace: Ceres.Editor.Graph
+  syntax:
+    content: public bool IsExecutionPort { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsExecutionPort As Boolean
+  overload: Ceres.Editor.Graph.CeresPortElement.IsExecutionPort*
+references:
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph.CeresPortElement.IsExecutionPortType*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.IsExecutionPortType
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_IsExecutionPortType_System_Type_
+  name: IsExecutionPortType
+  nameWithType: CeresPortElement.IsExecutionPortType
+  fullName: Ceres.Editor.Graph.CeresPortElement.IsExecutionPortType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Graph.CeresPortElement.BuildContextualMenu*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.BuildContextualMenu
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_BuildContextualMenu_UnityEngine_UIElements_ContextualMenuPopulateEvent_
+  name: BuildContextualMenu
+  nameWithType: CeresPortElement.BuildContextualMenu
+  fullName: Ceres.Editor.Graph.CeresPortElement.BuildContextualMenu
+- uid: UnityEngine.UIElements.ContextualMenuPopulateEvent
+  isExternal: true
+  name: ContextualMenuPopulateEvent
+  nameWithType: ContextualMenuPopulateEvent
+  fullName: UnityEngine.UIElements.ContextualMenuPopulateEvent
+- uid: Ceres.Editor.Graph.CeresPortElement.CreatePortTooltip*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.CreatePortTooltip
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_CreatePortTooltip_System_Type_
+  name: CreatePortTooltip
+  nameWithType: CeresPortElement.CreatePortTooltip
+  fullName: Ceres.Editor.Graph.CeresPortElement.CreatePortTooltip
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Editor.Graph.CeresPortElement.Create*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.Create
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_Create_Ceres_Editor_Graph_CeresPortView_
+  name: Create
+  nameWithType: CeresPortElement.Create
+  fullName: Ceres.Editor.Graph.CeresPortElement.Create
+- uid: Ceres.Editor.Graph.CeresPortView
+  commentId: T:Ceres.Editor.Graph.CeresPortView
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortView.html
+  name: CeresPortView
+  nameWithType: CeresPortView
+  fullName: Ceres.Editor.Graph.CeresPortView
+- uid: Ceres.Editor.Graph.CeresPortElement
+  commentId: T:Ceres.Editor.Graph.CeresPortElement
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html
+  name: CeresPortElement
+  nameWithType: CeresPortElement
+  fullName: Ceres.Editor.Graph.CeresPortElement
+- uid: Ceres.Editor.Graph.CeresPortElement.IsConnectable*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.IsConnectable
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_IsConnectable
+  name: IsConnectable
+  nameWithType: CeresPortElement.IsConnectable
+  fullName: Ceres.Editor.Graph.CeresPortElement.IsConnectable
+- uid: Ceres.Editor.Graph.CeresPortElement.CanConnect*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.CanConnect
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_CanConnect_Ceres_Editor_Graph_CeresPortElement_
+  name: CanConnect
+  nameWithType: CeresPortElement.CanConnect
+  fullName: Ceres.Editor.Graph.CeresPortElement.CanConnect
+- uid: Ceres.Editor.Graph.CeresPortElement.IsCompatibleTo*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.IsCompatibleTo
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_IsCompatibleTo_Ceres_Editor_Graph_CeresPortElement_
+  name: IsCompatibleTo
+  nameWithType: CeresPortElement.IsCompatibleTo
+  fullName: Ceres.Editor.Graph.CeresPortElement.IsCompatibleTo
+- uid: Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_SetEditorFieldVisibility_System_Boolean_
+  name: SetEditorFieldVisibility
+  nameWithType: CeresPortElement.SetEditorFieldVisibility
+  fullName: Ceres.Editor.Graph.CeresPortElement.SetEditorFieldVisibility
+- uid: Ceres.Editor.Graph.CeresPortElement.GetEditorFieldVisibility*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.GetEditorFieldVisibility
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_GetEditorFieldVisibility
+  name: GetEditorFieldVisibility
+  nameWithType: CeresPortElement.GetEditorFieldVisibility
+  fullName: Ceres.Editor.Graph.CeresPortElement.GetEditorFieldVisibility
+- uid: Ceres.Editor.Graph.CeresPortElement.Connect*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.Connect
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_Connect_UnityEditor_Experimental_GraphView_Edge_
+  name: Connect
+  nameWithType: CeresPortElement.Connect
+  fullName: Ceres.Editor.Graph.CeresPortElement.Connect
+- uid: UnityEditor.Experimental.GraphView.Edge
+  isExternal: true
+  name: Edge
+  nameWithType: Edge
+  fullName: UnityEditor.Experimental.GraphView.Edge
+- uid: Ceres.Editor.Graph.CeresPortElement.Disconnect*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.Disconnect
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_Disconnect_UnityEditor_Experimental_GraphView_Edge_
+  name: Disconnect
+  nameWithType: CeresPortElement.Disconnect
+  fullName: Ceres.Editor.Graph.CeresPortElement.Disconnect
+- uid: Ceres.Editor.Graph.CeresPortElement.View*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.View
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_View
+  name: View
+  nameWithType: CeresPortElement.View
+  fullName: Ceres.Editor.Graph.CeresPortElement.View
+- uid: Ceres.Editor.Graph.CeresPortElement.EditorField*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.EditorField
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_EditorField
+  name: EditorField
+  nameWithType: CeresPortElement.EditorField
+  fullName: Ceres.Editor.Graph.CeresPortElement.EditorField
+- uid: UnityEngine.UIElements.VisualElement
+  isExternal: true
+  name: VisualElement
+  nameWithType: VisualElement
+  fullName: UnityEngine.UIElements.VisualElement
+- uid: Ceres.Editor.Graph.CeresPortElement.IsExecutionPort*
+  commentId: Overload:Ceres.Editor.Graph.CeresPortElement.IsExecutionPort
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresPortElement.html#Ceres_Editor_Graph_CeresPortElement_IsExecutionPort
+  name: IsExecutionPort
+  nameWithType: CeresPortElement.IsExecutionPort
+  fullName: Ceres.Editor.Graph.CeresPortElement.IsExecutionPort

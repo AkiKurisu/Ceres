@@ -1,0 +1,666 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.FlowGraphTracker
+  commentId: T:Ceres.Flow.FlowGraphTracker
+  id: FlowGraphTracker
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.FlowGraphTracker.#ctor
+  - Ceres.Flow.FlowGraphTracker.Auto
+  - Ceres.Flow.FlowGraphTracker.Dispose
+  - Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  - Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  - Ceres.Flow.FlowGraphTracker.GetActiveTracker
+  - Ceres.Flow.FlowGraphTracker.IsValid
+  - Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphTracker
+  nameWithType: FlowGraphTracker
+  fullName: Ceres.Flow.FlowGraphTracker
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: 'public class FlowGraphTracker : IDisposable'
+    content.vb: Public Class FlowGraphTracker Implements IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Flow.FlowGraphDependencyTracker
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Flow.FlowGraphTracker.#ctor
+  commentId: M:Ceres.Flow.FlowGraphTracker.#ctor
+  id: '#ctor'
+  parent: Ceres.Flow.FlowGraphTracker
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphTracker()
+  nameWithType: FlowGraphTracker.FlowGraphTracker()
+  fullName: Ceres.Flow.FlowGraphTracker.FlowGraphTracker()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: protected FlowGraphTracker()
+    content.vb: Protected Sub New()
+  overload: Ceres.Flow.FlowGraphTracker.#ctor*
+  nameWithType.vb: FlowGraphTracker.New()
+  fullName.vb: Ceres.Flow.FlowGraphTracker.New()
+  name.vb: New()
+- uid: Ceres.Flow.FlowGraphTracker.IsValid
+  commentId: M:Ceres.Flow.FlowGraphTracker.IsValid
+  id: IsValid
+  parent: Ceres.Flow.FlowGraphTracker
+  langs:
+  - csharp
+  - vb
+  name: IsValid()
+  nameWithType: FlowGraphTracker.IsValid()
+  fullName: Ceres.Flow.FlowGraphTracker.IsValid()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public bool IsValid()
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsValid() As Boolean
+  overload: Ceres.Flow.FlowGraphTracker.IsValid*
+- uid: Ceres.Flow.FlowGraphTracker.Auto
+  commentId: M:Ceres.Flow.FlowGraphTracker.Auto
+  id: Auto
+  parent: Ceres.Flow.FlowGraphTracker
+  langs:
+  - csharp
+  - vb
+  name: Auto()
+  nameWithType: FlowGraphTracker.Auto()
+  fullName: Ceres.Flow.FlowGraphTracker.Auto()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Creates a helper struct for the scoped using blocks.
+  example: []
+  syntax:
+    content: public FlowGraphTracker.TrackerAutoScope Auto()
+    return:
+      type: Ceres.Flow.FlowGraphTracker.TrackerAutoScope
+      description: IDisposable struct which calls Begin and End automatically.
+    content.vb: Public Function Auto() As FlowGraphTracker.TrackerAutoScope
+  overload: Ceres.Flow.FlowGraphTracker.Auto*
+- uid: Ceres.Flow.FlowGraphTracker.GetActiveTracker
+  commentId: M:Ceres.Flow.FlowGraphTracker.GetActiveTracker
+  id: GetActiveTracker
+  parent: Ceres.Flow.FlowGraphTracker
+  langs:
+  - csharp
+  - vb
+  name: GetActiveTracker()
+  nameWithType: FlowGraphTracker.GetActiveTracker()
+  fullName: Ceres.Flow.FlowGraphTracker.GetActiveTracker()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Get current active <xref href="Ceres.Flow.FlowGraphTracker" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public static FlowGraphTracker GetActiveTracker()
+    return:
+      type: Ceres.Flow.FlowGraphTracker
+      description: ''
+    content.vb: Public Shared Function GetActiveTracker() As FlowGraphTracker
+  overload: Ceres.Flow.FlowGraphTracker.GetActiveTracker*
+- uid: Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  commentId: M:Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  id: SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  parent: Ceres.Flow.FlowGraphTracker
+  langs:
+  - csharp
+  - vb
+  name: SetActiveTracker(FlowGraphTracker)
+  nameWithType: FlowGraphTracker.SetActiveTracker(FlowGraphTracker)
+  fullName: Ceres.Flow.FlowGraphTracker.SetActiveTracker(Ceres.Flow.FlowGraphTracker)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Set current active <xref href="Ceres.Flow.FlowGraphTracker" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public static void SetActiveTracker(FlowGraphTracker tracker)
+    parameters:
+    - id: tracker
+      type: Ceres.Flow.FlowGraphTracker
+      description: ''
+    content.vb: Public Shared Sub SetActiveTracker(tracker As FlowGraphTracker)
+  overload: Ceres.Flow.FlowGraphTracker.SetActiveTracker*
+- uid: Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  commentId: M:Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  id: EnterNode(Ceres.Flow.ExecutableNode)
+  parent: Ceres.Flow.FlowGraphTracker
+  langs:
+  - csharp
+  - vb
+  name: EnterNode(ExecutableNode)
+  nameWithType: FlowGraphTracker.EnterNode(ExecutableNode)
+  fullName: Ceres.Flow.FlowGraphTracker.EnterNode(Ceres.Flow.ExecutableNode)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public virtual UniTask EnterNode(ExecutableNode node)
+    parameters:
+    - id: node
+      type: Ceres.Flow.ExecutableNode
+    return:
+      type: Cysharp.Threading.Tasks.UniTask
+    content.vb: Public Overridable Function EnterNode(node As ExecutableNode) As UniTask
+  overload: Ceres.Flow.FlowGraphTracker.EnterNode*
+- uid: Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  commentId: M:Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  id: ExitNode(Ceres.Flow.ExecutableNode)
+  parent: Ceres.Flow.FlowGraphTracker
+  langs:
+  - csharp
+  - vb
+  name: ExitNode(ExecutableNode)
+  nameWithType: FlowGraphTracker.ExitNode(ExecutableNode)
+  fullName: Ceres.Flow.FlowGraphTracker.ExitNode(Ceres.Flow.ExecutableNode)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: public virtual UniTask ExitNode(ExecutableNode node)
+    parameters:
+    - id: node
+      type: Ceres.Flow.ExecutableNode
+    return:
+      type: Cysharp.Threading.Tasks.UniTask
+    content.vb: Public Overridable Function ExitNode(node As ExecutableNode) As UniTask
+  overload: Ceres.Flow.FlowGraphTracker.ExitNode*
+- uid: Ceres.Flow.FlowGraphTracker.Dispose
+  commentId: M:Ceres.Flow.FlowGraphTracker.Dispose
+  id: Dispose
+  parent: Ceres.Flow.FlowGraphTracker
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: FlowGraphTracker.Dispose()
+  fullName: Ceres.Flow.FlowGraphTracker.Dispose()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  example: []
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: Ceres.Flow.FlowGraphTracker.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Flow.FlowGraphTracker.#ctor*
+  commentId: Overload:Ceres.Flow.FlowGraphTracker.#ctor
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker__ctor
+  name: FlowGraphTracker
+  nameWithType: FlowGraphTracker.FlowGraphTracker
+  fullName: Ceres.Flow.FlowGraphTracker.FlowGraphTracker
+  nameWithType.vb: FlowGraphTracker.New
+  fullName.vb: Ceres.Flow.FlowGraphTracker.New
+  name.vb: New
+- uid: Ceres.Flow.FlowGraphTracker.IsValid*
+  commentId: Overload:Ceres.Flow.FlowGraphTracker.IsValid
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_IsValid
+  name: IsValid
+  nameWithType: FlowGraphTracker.IsValid
+  fullName: Ceres.Flow.FlowGraphTracker.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Flow.FlowGraphTracker.Auto*
+  commentId: Overload:Ceres.Flow.FlowGraphTracker.Auto
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_Auto
+  name: Auto
+  nameWithType: FlowGraphTracker.Auto
+  fullName: Ceres.Flow.FlowGraphTracker.Auto
+- uid: Ceres.Flow.FlowGraphTracker.TrackerAutoScope
+  commentId: T:Ceres.Flow.FlowGraphTracker.TrackerAutoScope
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html
+  name: FlowGraphTracker.TrackerAutoScope
+  nameWithType: FlowGraphTracker.TrackerAutoScope
+  fullName: Ceres.Flow.FlowGraphTracker.TrackerAutoScope
+  spec.csharp:
+  - uid: Ceres.Flow.FlowGraphTracker
+    name: FlowGraphTracker
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html
+  - name: .
+  - uid: Ceres.Flow.FlowGraphTracker.TrackerAutoScope
+    name: TrackerAutoScope
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.TrackerAutoScope.html
+  spec.vb:
+  - uid: Ceres.Flow.FlowGraphTracker
+    name: FlowGraphTracker
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.html
+  - name: .
+  - uid: Ceres.Flow.FlowGraphTracker.TrackerAutoScope
+    name: TrackerAutoScope
+    isExternal: true
+    href: Ceres.Flow.FlowGraphTracker.TrackerAutoScope.html
+- uid: Ceres.Flow.FlowGraphTracker
+  commentId: T:Ceres.Flow.FlowGraphTracker
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html
+  name: FlowGraphTracker
+  nameWithType: FlowGraphTracker
+  fullName: Ceres.Flow.FlowGraphTracker
+- uid: Ceres.Flow.FlowGraphTracker.GetActiveTracker*
+  commentId: Overload:Ceres.Flow.FlowGraphTracker.GetActiveTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_GetActiveTracker
+  name: GetActiveTracker
+  nameWithType: FlowGraphTracker.GetActiveTracker
+  fullName: Ceres.Flow.FlowGraphTracker.GetActiveTracker
+- uid: Ceres.Flow.FlowGraphTracker.SetActiveTracker*
+  commentId: Overload:Ceres.Flow.FlowGraphTracker.SetActiveTracker
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_SetActiveTracker_Ceres_Flow_FlowGraphTracker_
+  name: SetActiveTracker
+  nameWithType: FlowGraphTracker.SetActiveTracker
+  fullName: Ceres.Flow.FlowGraphTracker.SetActiveTracker
+- uid: Ceres.Flow.FlowGraphTracker.EnterNode*
+  commentId: Overload:Ceres.Flow.FlowGraphTracker.EnterNode
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_EnterNode_Ceres_Flow_ExecutableNode_
+  name: EnterNode
+  nameWithType: FlowGraphTracker.EnterNode
+  fullName: Ceres.Flow.FlowGraphTracker.EnterNode
+- uid: Ceres.Flow.ExecutableNode
+  commentId: T:Ceres.Flow.ExecutableNode
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.ExecutableNode.html
+  name: ExecutableNode
+  nameWithType: ExecutableNode
+  fullName: Ceres.Flow.ExecutableNode
+- uid: Cysharp.Threading.Tasks.UniTask
+  commentId: T:Cysharp.Threading.Tasks.UniTask
+  parent: Cysharp.Threading.Tasks
+  isExternal: true
+  name: UniTask
+  nameWithType: UniTask
+  fullName: Cysharp.Threading.Tasks.UniTask
+- uid: Cysharp.Threading.Tasks
+  commentId: N:Cysharp.Threading.Tasks
+  isExternal: true
+  name: Cysharp.Threading.Tasks
+  nameWithType: Cysharp.Threading.Tasks
+  fullName: Cysharp.Threading.Tasks
+  spec.csharp:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: Cysharp
+    name: Cysharp
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: Cysharp.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: Ceres.Flow.FlowGraphTracker.ExitNode*
+  commentId: Overload:Ceres.Flow.FlowGraphTracker.ExitNode
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_ExitNode_Ceres_Flow_ExecutableNode_
+  name: ExitNode
+  nameWithType: FlowGraphTracker.ExitNode
+  fullName: Ceres.Flow.FlowGraphTracker.ExitNode
+- uid: Ceres.Flow.FlowGraphTracker.Dispose*
+  commentId: Overload:Ceres.Flow.FlowGraphTracker.Dispose
+  isExternal: true
+  href: Ceres.Flow.FlowGraphTracker.html#Ceres_Flow_FlowGraphTracker_Dispose
+  name: Dispose
+  nameWithType: FlowGraphTracker.Dispose
+  fullName: Ceres.Flow.FlowGraphTracker.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

@@ -1,0 +1,9 @@
+using System;
+namespace Ceres.Annotations
+{
+    [AttributeUsage(AttributeTargets.Field)]
+    public sealed class LayerAttribute : Attribute
+    {
+
+    }
+}

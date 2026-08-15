@@ -1,0 +1,1331 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.ChangeEvent`1
+  commentId: T:Ceres.Events.ChangeEvent`1
+  id: ChangeEvent`1
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.ChangeEvent`1.#ctor
+  - Ceres.Events.ChangeEvent`1.GetPooled(`0,`0)
+  - Ceres.Events.ChangeEvent`1.Init
+  - Ceres.Events.ChangeEvent`1.NewValue
+  - Ceres.Events.ChangeEvent`1.PreviousValue
+  langs:
+  - csharp
+  - vb
+  name: ChangeEvent<T>
+  nameWithType: ChangeEvent<T>
+  fullName: Ceres.Events.ChangeEvent<T>
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Sends an event when a value in a field changes.
+  example: []
+  syntax:
+    content: 'public class ChangeEvent<T> : EventBase<ChangeEvent<T>>, IDisposable, IChangeEvent'
+    typeParameters:
+    - id: T
+    content.vb: Public Class ChangeEvent(Of T) Inherits EventBase(Of ChangeEvent(Of T)) Implements IDisposable, IChangeEvent
+  inheritance:
+  - System.Object
+  - Ceres.Events.EventBase
+  - Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  implements:
+  - System.IDisposable
+  - Ceres.Events.IChangeEvent
+  inheritedMembers:
+  - Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.TypeId
+  - Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.GetPooled
+  - Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Acquire
+  - Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Dispose
+  - Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.EventTypeId
+  - Ceres.Events.EventBase.RegisterEventType
+  - Ceres.Events.EventBase.PreDispatch(Ceres.Events.IEventCoordinator)
+  - Ceres.Events.EventBase.PostDispatch(Ceres.Events.IEventCoordinator)
+  - Ceres.Events.EventBase.PreventDefault
+  - Ceres.Events.EventBase.StopPropagation
+  - Ceres.Events.EventBase.StopImmediatePropagation
+  - Ceres.Events.EventBase.TimeSinceStartupMs
+  - Ceres.Events.EventBase.Timestamp
+  - Ceres.Events.EventBase.Propagation
+  - Ceres.Events.EventBase.PropagationPhase
+  - Ceres.Events.EventBase.Bubbles
+  - Ceres.Events.EventBase.TricklesDown
+  - Ceres.Events.EventBase.Target
+  - Ceres.Events.EventBase.IsPropagationStopped
+  - Ceres.Events.EventBase.IsImmediatePropagationStopped
+  - Ceres.Events.EventBase.IsDefaultPrevented
+  - Ceres.Events.EventBase.CurrentTarget
+  - Ceres.Events.EventBase.Dispatch
+  - Ceres.Events.EventBase.StopDispatch
+  - Ceres.Events.EventBase.Pooled
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Ceres.Events.ChangeEvent`1.R3.Ceres.DisposableExtensions.AddTo``1(R3.Ceres.IDisposableUnregister)
+  nameWithType.vb: ChangeEvent(Of T)
+  fullName.vb: Ceres.Events.ChangeEvent(Of T)
+  name.vb: ChangeEvent(Of T)
+- uid: Ceres.Events.ChangeEvent`1.Init
+  commentId: M:Ceres.Events.ChangeEvent`1.Init
+  id: Init
+  parent: Ceres.Events.ChangeEvent`1
+  langs:
+  - csharp
+  - vb
+  name: Init()
+  nameWithType: ChangeEvent<T>.Init()
+  fullName: Ceres.Events.ChangeEvent<T>.Init()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Sets the event to its initial state.
+  example: []
+  syntax:
+    content: protected override void Init()
+    content.vb: Protected Overrides Sub Init()
+  overridden: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Init
+  overload: Ceres.Events.ChangeEvent`1.Init*
+  nameWithType.vb: ChangeEvent(Of T).Init()
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).Init()
+- uid: Ceres.Events.ChangeEvent`1.GetPooled(`0,`0)
+  commentId: M:Ceres.Events.ChangeEvent`1.GetPooled(`0,`0)
+  id: GetPooled(`0,`0)
+  parent: Ceres.Events.ChangeEvent`1
+  langs:
+  - csharp
+  - vb
+  name: GetPooled(T, T)
+  nameWithType: ChangeEvent<T>.GetPooled(T, T)
+  fullName: Ceres.Events.ChangeEvent<T>.GetPooled(T, T)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Gets an event from the event pool and initializes it with the given values. Use this function instead of creating new events. Events obtained using this method need to be released back to the pool. You can use `Dispose()` to release them.
+  example: []
+  syntax:
+    content: public static ChangeEvent<T> GetPooled(T previousValue, T newValue)
+    parameters:
+    - id: previousValue
+      type: '{T}'
+      description: The previous value.
+    - id: newValue
+      type: '{T}'
+      description: The new value.
+    return:
+      type: Ceres.Events.ChangeEvent`1
+      description: An initialized event.
+    content.vb: Public Shared Function GetPooled(previousValue As T, newValue As T) As ChangeEvent(Of T)
+  overload: Ceres.Events.ChangeEvent`1.GetPooled*
+  nameWithType.vb: ChangeEvent(Of T).GetPooled(T, T)
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).GetPooled(T, T)
+- uid: Ceres.Events.ChangeEvent`1.#ctor
+  commentId: M:Ceres.Events.ChangeEvent`1.#ctor
+  id: '#ctor'
+  parent: Ceres.Events.ChangeEvent`1
+  langs:
+  - csharp
+  - vb
+  name: ChangeEvent()
+  nameWithType: ChangeEvent<T>.ChangeEvent()
+  fullName: Ceres.Events.ChangeEvent<T>.ChangeEvent()
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Constructor.
+  example: []
+  syntax:
+    content: public ChangeEvent()
+    content.vb: Public Sub New()
+  overload: Ceres.Events.ChangeEvent`1.#ctor*
+  nameWithType.vb: ChangeEvent(Of T).New()
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).New()
+  name.vb: New()
+- uid: Ceres.Events.ChangeEvent`1.PreviousValue
+  commentId: P:Ceres.Events.ChangeEvent`1.PreviousValue
+  id: PreviousValue
+  parent: Ceres.Events.ChangeEvent`1
+  langs:
+  - csharp
+  - vb
+  name: PreviousValue
+  nameWithType: ChangeEvent<T>.PreviousValue
+  fullName: Ceres.Events.ChangeEvent<T>.PreviousValue
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The value before the change occured.
+  example: []
+  syntax:
+    content: public T PreviousValue { get; protected set; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Public Property PreviousValue As T
+  overload: Ceres.Events.ChangeEvent`1.PreviousValue*
+  nameWithType.vb: ChangeEvent(Of T).PreviousValue
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).PreviousValue
+- uid: Ceres.Events.ChangeEvent`1.NewValue
+  commentId: P:Ceres.Events.ChangeEvent`1.NewValue
+  id: NewValue
+  parent: Ceres.Events.ChangeEvent`1
+  langs:
+  - csharp
+  - vb
+  name: NewValue
+  nameWithType: ChangeEvent<T>.NewValue
+  fullName: Ceres.Events.ChangeEvent<T>.NewValue
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The new value.
+  example: []
+  syntax:
+    content: public T NewValue { get; protected set; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Public Property NewValue As T
+  overload: Ceres.Events.ChangeEvent`1.NewValue*
+  nameWithType.vb: ChangeEvent(Of T).NewValue
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).NewValue
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  commentId: T:Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  parent: Ceres.Events
+  definition: Ceres.Events.EventBase`1
+  href: Ceres.Events.EventBase-1.html
+  name: EventBase<ChangeEvent<T>>
+  nameWithType: EventBase<ChangeEvent<T>>
+  fullName: Ceres.Events.EventBase<Ceres.Events.ChangeEvent<T>>
+  nameWithType.vb: EventBase(Of ChangeEvent(Of T))
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Events.ChangeEvent(Of T))
+  name.vb: EventBase(Of ChangeEvent(Of T))
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html
+  - name: <
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Ceres.Events.IChangeEvent
+  commentId: T:Ceres.Events.IChangeEvent
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.IChangeEvent.html
+  name: IChangeEvent
+  nameWithType: IChangeEvent
+  fullName: Ceres.Events.IChangeEvent
+- uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.TypeId
+  commentId: M:Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.TypeId
+  parent: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  definition: Ceres.Events.EventBase`1.TypeId
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  name: TypeId()
+  nameWithType: EventBase<ChangeEvent<T>>.TypeId()
+  fullName: Ceres.Events.EventBase<Ceres.Events.ChangeEvent<T>>.TypeId()
+  nameWithType.vb: EventBase(Of ChangeEvent(Of T)).TypeId()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Events.ChangeEvent(Of T)).TypeId()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.TypeId
+    name: TypeId
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.TypeId
+    name: TypeId
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.GetPooled
+  commentId: M:Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.GetPooled
+  parent: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  definition: Ceres.Events.EventBase`1.GetPooled
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  name: GetPooled()
+  nameWithType: EventBase<ChangeEvent<T>>.GetPooled()
+  fullName: Ceres.Events.EventBase<Ceres.Events.ChangeEvent<T>>.GetPooled()
+  nameWithType.vb: EventBase(Of ChangeEvent(Of T)).GetPooled()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Events.ChangeEvent(Of T)).GetPooled()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.GetPooled
+    name: GetPooled
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.GetPooled
+    name: GetPooled
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Acquire
+  commentId: M:Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Acquire
+  parent: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  definition: Ceres.Events.EventBase`1.Acquire
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  name: Acquire()
+  nameWithType: EventBase<ChangeEvent<T>>.Acquire()
+  fullName: Ceres.Events.EventBase<Ceres.Events.ChangeEvent<T>>.Acquire()
+  nameWithType.vb: EventBase(Of ChangeEvent(Of T)).Acquire()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Events.ChangeEvent(Of T)).Acquire()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Acquire
+    name: Acquire
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Acquire
+    name: Acquire
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Dispose
+  commentId: M:Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Dispose
+  parent: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  definition: Ceres.Events.EventBase`1.Dispose
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  name: Dispose()
+  nameWithType: EventBase<ChangeEvent<T>>.Dispose()
+  fullName: Ceres.Events.EventBase<Ceres.Events.ChangeEvent<T>>.Dispose()
+  nameWithType.vb: EventBase(Of ChangeEvent(Of T)).Dispose()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Events.ChangeEvent(Of T)).Dispose()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.EventTypeId
+  commentId: P:Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.EventTypeId
+  parent: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  definition: Ceres.Events.EventBase`1.EventTypeId
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_EventTypeId
+  name: EventTypeId
+  nameWithType: EventBase<ChangeEvent<T>>.EventTypeId
+  fullName: Ceres.Events.EventBase<Ceres.Events.ChangeEvent<T>>.EventTypeId
+  nameWithType.vb: EventBase(Of ChangeEvent(Of T)).EventTypeId
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Events.ChangeEvent(Of T)).EventTypeId
+- uid: Ceres.Events.EventBase.RegisterEventType
+  commentId: M:Ceres.Events.EventBase.RegisterEventType
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_RegisterEventType
+  name: RegisterEventType()
+  nameWithType: EventBase.RegisterEventType()
+  fullName: Ceres.Events.EventBase.RegisterEventType()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.RegisterEventType
+    name: RegisterEventType
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_RegisterEventType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.RegisterEventType
+    name: RegisterEventType
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_RegisterEventType
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.PreDispatch(Ceres.Events.IEventCoordinator)
+  commentId: M:Ceres.Events.EventBase.PreDispatch(Ceres.Events.IEventCoordinator)
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreDispatch_Ceres_Events_IEventCoordinator_
+  name: PreDispatch(IEventCoordinator)
+  nameWithType: EventBase.PreDispatch(IEventCoordinator)
+  fullName: Ceres.Events.EventBase.PreDispatch(Ceres.Events.IEventCoordinator)
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.PreDispatch(Ceres.Events.IEventCoordinator)
+    name: PreDispatch
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreDispatch_Ceres_Events_IEventCoordinator_
+  - name: (
+  - uid: Ceres.Events.IEventCoordinator
+    name: IEventCoordinator
+    isExternal: true
+    href: Ceres.Events.IEventCoordinator.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.PreDispatch(Ceres.Events.IEventCoordinator)
+    name: PreDispatch
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreDispatch_Ceres_Events_IEventCoordinator_
+  - name: (
+  - uid: Ceres.Events.IEventCoordinator
+    name: IEventCoordinator
+    isExternal: true
+    href: Ceres.Events.IEventCoordinator.html
+  - name: )
+- uid: Ceres.Events.EventBase.PostDispatch(Ceres.Events.IEventCoordinator)
+  commentId: M:Ceres.Events.EventBase.PostDispatch(Ceres.Events.IEventCoordinator)
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PostDispatch_Ceres_Events_IEventCoordinator_
+  name: PostDispatch(IEventCoordinator)
+  nameWithType: EventBase.PostDispatch(IEventCoordinator)
+  fullName: Ceres.Events.EventBase.PostDispatch(Ceres.Events.IEventCoordinator)
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.PostDispatch(Ceres.Events.IEventCoordinator)
+    name: PostDispatch
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PostDispatch_Ceres_Events_IEventCoordinator_
+  - name: (
+  - uid: Ceres.Events.IEventCoordinator
+    name: IEventCoordinator
+    isExternal: true
+    href: Ceres.Events.IEventCoordinator.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.PostDispatch(Ceres.Events.IEventCoordinator)
+    name: PostDispatch
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PostDispatch_Ceres_Events_IEventCoordinator_
+  - name: (
+  - uid: Ceres.Events.IEventCoordinator
+    name: IEventCoordinator
+    isExternal: true
+    href: Ceres.Events.IEventCoordinator.html
+  - name: )
+- uid: Ceres.Events.EventBase.PreventDefault
+  commentId: M:Ceres.Events.EventBase.PreventDefault
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreventDefault
+  name: PreventDefault()
+  nameWithType: EventBase.PreventDefault()
+  fullName: Ceres.Events.EventBase.PreventDefault()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.PreventDefault
+    name: PreventDefault
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreventDefault
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.PreventDefault
+    name: PreventDefault
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PreventDefault
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.StopPropagation
+  commentId: M:Ceres.Events.EventBase.StopPropagation
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopPropagation
+  name: StopPropagation()
+  nameWithType: EventBase.StopPropagation()
+  fullName: Ceres.Events.EventBase.StopPropagation()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.StopPropagation
+    name: StopPropagation
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopPropagation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.StopPropagation
+    name: StopPropagation
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopPropagation
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.StopImmediatePropagation
+  commentId: M:Ceres.Events.EventBase.StopImmediatePropagation
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopImmediatePropagation
+  name: StopImmediatePropagation()
+  nameWithType: EventBase.StopImmediatePropagation()
+  fullName: Ceres.Events.EventBase.StopImmediatePropagation()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.StopImmediatePropagation
+    name: StopImmediatePropagation
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopImmediatePropagation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.StopImmediatePropagation
+    name: StopImmediatePropagation
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopImmediatePropagation
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.TimeSinceStartupMs
+  commentId: M:Ceres.Events.EventBase.TimeSinceStartupMs
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_TimeSinceStartupMs
+  name: TimeSinceStartupMs()
+  nameWithType: EventBase.TimeSinceStartupMs()
+  fullName: Ceres.Events.EventBase.TimeSinceStartupMs()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase.TimeSinceStartupMs
+    name: TimeSinceStartupMs
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_TimeSinceStartupMs
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase.TimeSinceStartupMs
+    name: TimeSinceStartupMs
+    isExternal: true
+    href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_TimeSinceStartupMs
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase.Timestamp
+  commentId: P:Ceres.Events.EventBase.Timestamp
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Timestamp
+  name: Timestamp
+  nameWithType: EventBase.Timestamp
+  fullName: Ceres.Events.EventBase.Timestamp
+- uid: Ceres.Events.EventBase.Propagation
+  commentId: P:Ceres.Events.EventBase.Propagation
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Propagation
+  name: Propagation
+  nameWithType: EventBase.Propagation
+  fullName: Ceres.Events.EventBase.Propagation
+- uid: Ceres.Events.EventBase.PropagationPhase
+  commentId: P:Ceres.Events.EventBase.PropagationPhase
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_PropagationPhase
+  name: PropagationPhase
+  nameWithType: EventBase.PropagationPhase
+  fullName: Ceres.Events.EventBase.PropagationPhase
+- uid: Ceres.Events.EventBase.Bubbles
+  commentId: P:Ceres.Events.EventBase.Bubbles
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Bubbles
+  name: Bubbles
+  nameWithType: EventBase.Bubbles
+  fullName: Ceres.Events.EventBase.Bubbles
+- uid: Ceres.Events.EventBase.TricklesDown
+  commentId: P:Ceres.Events.EventBase.TricklesDown
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_TricklesDown
+  name: TricklesDown
+  nameWithType: EventBase.TricklesDown
+  fullName: Ceres.Events.EventBase.TricklesDown
+- uid: Ceres.Events.EventBase.Target
+  commentId: P:Ceres.Events.EventBase.Target
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Target
+  name: Target
+  nameWithType: EventBase.Target
+  fullName: Ceres.Events.EventBase.Target
+- uid: Ceres.Events.EventBase.IsPropagationStopped
+  commentId: P:Ceres.Events.EventBase.IsPropagationStopped
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_IsPropagationStopped
+  name: IsPropagationStopped
+  nameWithType: EventBase.IsPropagationStopped
+  fullName: Ceres.Events.EventBase.IsPropagationStopped
+- uid: Ceres.Events.EventBase.IsImmediatePropagationStopped
+  commentId: P:Ceres.Events.EventBase.IsImmediatePropagationStopped
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_IsImmediatePropagationStopped
+  name: IsImmediatePropagationStopped
+  nameWithType: EventBase.IsImmediatePropagationStopped
+  fullName: Ceres.Events.EventBase.IsImmediatePropagationStopped
+- uid: Ceres.Events.EventBase.IsDefaultPrevented
+  commentId: P:Ceres.Events.EventBase.IsDefaultPrevented
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_IsDefaultPrevented
+  name: IsDefaultPrevented
+  nameWithType: EventBase.IsDefaultPrevented
+  fullName: Ceres.Events.EventBase.IsDefaultPrevented
+- uid: Ceres.Events.EventBase.CurrentTarget
+  commentId: P:Ceres.Events.EventBase.CurrentTarget
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_CurrentTarget
+  name: CurrentTarget
+  nameWithType: EventBase.CurrentTarget
+  fullName: Ceres.Events.EventBase.CurrentTarget
+- uid: Ceres.Events.EventBase.Dispatch
+  commentId: P:Ceres.Events.EventBase.Dispatch
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Dispatch
+  name: Dispatch
+  nameWithType: EventBase.Dispatch
+  fullName: Ceres.Events.EventBase.Dispatch
+- uid: Ceres.Events.EventBase.StopDispatch
+  commentId: P:Ceres.Events.EventBase.StopDispatch
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_StopDispatch
+  name: StopDispatch
+  nameWithType: EventBase.StopDispatch
+  fullName: Ceres.Events.EventBase.StopDispatch
+- uid: Ceres.Events.EventBase.Pooled
+  commentId: P:Ceres.Events.EventBase.Pooled
+  parent: Ceres.Events.EventBase
+  isExternal: true
+  href: Ceres.Events.EventBase.html#Ceres_Events_EventBase_Pooled
+  name: Pooled
+  nameWithType: EventBase.Pooled
+  fullName: Ceres.Events.EventBase.Pooled
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Ceres.Events.ChangeEvent`1.R3.Ceres.DisposableExtensions.AddTo``1(R3.Ceres.IDisposableUnregister)
+  commentId: M:R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  parent: R3.Ceres.DisposableExtensions
+  definition: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  name: AddTo<ChangeEvent<T>>(ChangeEvent<T>, IDisposableUnregister)
+  nameWithType: DisposableExtensions.AddTo<ChangeEvent<T>>(ChangeEvent<T>, IDisposableUnregister)
+  fullName: R3.Ceres.DisposableExtensions.AddTo<Ceres.Events.ChangeEvent<T>>(Ceres.Events.ChangeEvent<T>, R3.Ceres.IDisposableUnregister)
+  nameWithType.vb: DisposableExtensions.AddTo(Of ChangeEvent(Of T))(ChangeEvent(Of T), IDisposableUnregister)
+  fullName.vb: R3.Ceres.DisposableExtensions.AddTo(Of Ceres.Events.ChangeEvent(Of T))(Ceres.Events.ChangeEvent(Of T), R3.Ceres.IDisposableUnregister)
+  name.vb: AddTo(Of ChangeEvent(Of T))(ChangeEvent(Of T), IDisposableUnregister)
+  spec.csharp:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(Ceres.Events.ChangeEvent{`0},R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: <
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+  spec.vb:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(Ceres.Events.ChangeEvent{`0},R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Events.EventBase`1
+  commentId: T:Ceres.Events.EventBase`1
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html
+  name: EventBase<T>
+  nameWithType: EventBase<T>
+  fullName: Ceres.Events.EventBase<T>
+  nameWithType.vb: EventBase(Of T)
+  fullName.vb: Ceres.Events.EventBase(Of T)
+  name.vb: EventBase(Of T)
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Events.EventBase`1.TypeId
+  commentId: M:Ceres.Events.EventBase`1.TypeId
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  name: TypeId()
+  nameWithType: EventBase<T>.TypeId()
+  fullName: Ceres.Events.EventBase<T>.TypeId()
+  nameWithType.vb: EventBase(Of T).TypeId()
+  fullName.vb: Ceres.Events.EventBase(Of T).TypeId()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.TypeId
+    name: TypeId
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.TypeId
+    name: TypeId
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_TypeId
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase`1.GetPooled
+  commentId: M:Ceres.Events.EventBase`1.GetPooled
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  name: GetPooled()
+  nameWithType: EventBase<T>.GetPooled()
+  fullName: Ceres.Events.EventBase<T>.GetPooled()
+  nameWithType.vb: EventBase(Of T).GetPooled()
+  fullName.vb: Ceres.Events.EventBase(Of T).GetPooled()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.GetPooled
+    name: GetPooled
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.GetPooled
+    name: GetPooled
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_GetPooled
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase`1.Acquire
+  commentId: M:Ceres.Events.EventBase`1.Acquire
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  name: Acquire()
+  nameWithType: EventBase<T>.Acquire()
+  fullName: Ceres.Events.EventBase<T>.Acquire()
+  nameWithType.vb: EventBase(Of T).Acquire()
+  fullName.vb: Ceres.Events.EventBase(Of T).Acquire()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.Acquire
+    name: Acquire
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.Acquire
+    name: Acquire
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Acquire
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase`1.Dispose
+  commentId: M:Ceres.Events.EventBase`1.Dispose
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  name: Dispose()
+  nameWithType: EventBase<T>.Dispose()
+  fullName: Ceres.Events.EventBase<T>.Dispose()
+  nameWithType.vb: EventBase(Of T).Dispose()
+  fullName.vb: Ceres.Events.EventBase(Of T).Dispose()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Events.EventBase`1.EventTypeId
+  commentId: P:Ceres.Events.EventBase`1.EventTypeId
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_EventTypeId
+  name: EventTypeId
+  nameWithType: EventBase<T>.EventTypeId
+  fullName: Ceres.Events.EventBase<T>.EventTypeId
+  nameWithType.vb: EventBase(Of T).EventTypeId
+  fullName.vb: Ceres.Events.EventBase(Of T).EventTypeId
+- uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  commentId: M:R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+  isExternal: true
+  href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  name: AddTo<T>(T, IDisposableUnregister)
+  nameWithType: DisposableExtensions.AddTo<T>(T, IDisposableUnregister)
+  fullName: R3.Ceres.DisposableExtensions.AddTo<T>(T, R3.Ceres.IDisposableUnregister)
+  nameWithType.vb: DisposableExtensions.AddTo(Of T)(T, IDisposableUnregister)
+  fullName.vb: R3.Ceres.DisposableExtensions.AddTo(Of T)(T, R3.Ceres.IDisposableUnregister)
+  name.vb: AddTo(Of T)(T, IDisposableUnregister)
+  spec.csharp:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+  spec.vb:
+  - uid: R3.Ceres.DisposableExtensions.AddTo``1(``0,R3.Ceres.IDisposableUnregister)
+    name: AddTo
+    isExternal: true
+    href: R3.Ceres.DisposableExtensions.html#R3_Ceres_DisposableExtensions_AddTo__1___0_R3_Ceres_IDisposableUnregister_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: R3.Ceres.IDisposableUnregister
+    name: IDisposableUnregister
+    isExternal: true
+    href: R3.Ceres.IDisposableUnregister.html
+  - name: )
+- uid: R3.Ceres.DisposableExtensions
+  commentId: T:R3.Ceres.DisposableExtensions
+  parent: R3.Ceres
+  isExternal: true
+  href: R3.Ceres.DisposableExtensions.html
+  name: DisposableExtensions
+  nameWithType: DisposableExtensions
+  fullName: R3.Ceres.DisposableExtensions
+- uid: R3.Ceres
+  commentId: N:R3.Ceres
+  isExternal: true
+  href: R3.html
+  name: R3.Ceres
+  nameWithType: R3.Ceres
+  fullName: R3.Ceres
+  spec.csharp:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+  spec.vb:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+- uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Init
+  commentId: M:Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Init
+  parent: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}
+  definition: Ceres.Events.EventBase`1.Init
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Init
+  name: Init()
+  nameWithType: EventBase<ChangeEvent<T>>.Init()
+  fullName: Ceres.Events.EventBase<Ceres.Events.ChangeEvent<T>>.Init()
+  nameWithType.vb: EventBase(Of ChangeEvent(Of T)).Init()
+  fullName.vb: Ceres.Events.EventBase(Of Ceres.Events.ChangeEvent(Of T)).Init()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Init
+    name: Init
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Init
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase{Ceres.Events.ChangeEvent`1}.Init
+    name: Init
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Init
+  - name: (
+  - name: )
+- uid: Ceres.Events.ChangeEvent`1.Init*
+  commentId: Overload:Ceres.Events.ChangeEvent`1.Init
+  isExternal: true
+  href: Ceres.Events.ChangeEvent-1.html#Ceres_Events_ChangeEvent_1_Init
+  name: Init
+  nameWithType: ChangeEvent<T>.Init
+  fullName: Ceres.Events.ChangeEvent<T>.Init
+  nameWithType.vb: ChangeEvent(Of T).Init
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).Init
+- uid: Ceres.Events.EventBase`1.Init
+  commentId: M:Ceres.Events.EventBase`1.Init
+  isExternal: true
+  href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Init
+  name: Init()
+  nameWithType: EventBase<T>.Init()
+  fullName: Ceres.Events.EventBase<T>.Init()
+  nameWithType.vb: EventBase(Of T).Init()
+  fullName.vb: Ceres.Events.EventBase(Of T).Init()
+  spec.csharp:
+  - uid: Ceres.Events.EventBase`1.Init
+    name: Init
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Init
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.EventBase`1.Init
+    name: Init
+    isExternal: true
+    href: Ceres.Events.EventBase-1.html#Ceres_Events_EventBase_1_Init
+  - name: (
+  - name: )
+- uid: Ceres.Events.ChangeEvent`1.GetPooled*
+  commentId: Overload:Ceres.Events.ChangeEvent`1.GetPooled
+  isExternal: true
+  href: Ceres.Events.ChangeEvent-1.html#Ceres_Events_ChangeEvent_1_GetPooled__0__0_
+  name: GetPooled
+  nameWithType: ChangeEvent<T>.GetPooled
+  fullName: Ceres.Events.ChangeEvent<T>.GetPooled
+  nameWithType.vb: ChangeEvent(Of T).GetPooled
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).GetPooled
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Events.ChangeEvent`1
+  commentId: T:Ceres.Events.ChangeEvent`1
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.ChangeEvent-1.html
+  name: ChangeEvent<T>
+  nameWithType: ChangeEvent<T>
+  fullName: Ceres.Events.ChangeEvent<T>
+  nameWithType.vb: ChangeEvent(Of T)
+  fullName.vb: Ceres.Events.ChangeEvent(Of T)
+  name.vb: ChangeEvent(Of T)
+  spec.csharp:
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Events.ChangeEvent`1.#ctor*
+  commentId: Overload:Ceres.Events.ChangeEvent`1.#ctor
+  isExternal: true
+  href: Ceres.Events.ChangeEvent-1.html#Ceres_Events_ChangeEvent_1__ctor
+  name: ChangeEvent
+  nameWithType: ChangeEvent<T>.ChangeEvent
+  fullName: Ceres.Events.ChangeEvent<T>.ChangeEvent
+  nameWithType.vb: ChangeEvent(Of T).New
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).New
+  name.vb: New
+- uid: Ceres.Events.ChangeEvent`1.PreviousValue*
+  commentId: Overload:Ceres.Events.ChangeEvent`1.PreviousValue
+  isExternal: true
+  href: Ceres.Events.ChangeEvent-1.html#Ceres_Events_ChangeEvent_1_PreviousValue
+  name: PreviousValue
+  nameWithType: ChangeEvent<T>.PreviousValue
+  fullName: Ceres.Events.ChangeEvent<T>.PreviousValue
+  nameWithType.vb: ChangeEvent(Of T).PreviousValue
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).PreviousValue
+- uid: Ceres.Events.ChangeEvent`1.NewValue*
+  commentId: Overload:Ceres.Events.ChangeEvent`1.NewValue
+  isExternal: true
+  href: Ceres.Events.ChangeEvent-1.html#Ceres_Events_ChangeEvent_1_NewValue
+  name: NewValue
+  nameWithType: ChangeEvent<T>.NewValue
+  fullName: Ceres.Events.ChangeEvent<T>.NewValue
+  nameWithType.vb: ChangeEvent(Of T).NewValue
+  fullName.vb: Ceres.Events.ChangeEvent(Of T).NewValue

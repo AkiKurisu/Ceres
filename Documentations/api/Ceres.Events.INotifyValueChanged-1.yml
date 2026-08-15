@@ -1,0 +1,506 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.INotifyValueChanged`1
+  commentId: T:Ceres.Events.INotifyValueChanged`1
+  id: INotifyValueChanged`1
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.INotifyValueChanged`1.SetValueWithoutNotify(`0)
+  - Ceres.Events.INotifyValueChanged`1.Value
+  langs:
+  - csharp
+  - vb
+  name: INotifyValueChanged<T>
+  nameWithType: INotifyValueChanged<T>
+  fullName: Ceres.Events.INotifyValueChanged<T>
+  type: Interface
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Interface for controls that hold a value and can notify when it is changed by user input.
+  example: []
+  syntax:
+    content: public interface INotifyValueChanged<T>
+    typeParameters:
+    - id: T
+    content.vb: Public Interface INotifyValueChanged(Of T)
+  extensionMethods:
+  - Ceres.Events.INotifyValueChanged`1.Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{{T}}})
+  - Ceres.Events.INotifyValueChanged`1.Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{{T}}})
+  nameWithType.vb: INotifyValueChanged(Of T)
+  fullName.vb: Ceres.Events.INotifyValueChanged(Of T)
+  name.vb: INotifyValueChanged(Of T)
+- uid: Ceres.Events.INotifyValueChanged`1.SetValueWithoutNotify(`0)
+  commentId: M:Ceres.Events.INotifyValueChanged`1.SetValueWithoutNotify(`0)
+  id: SetValueWithoutNotify(`0)
+  parent: Ceres.Events.INotifyValueChanged`1
+  langs:
+  - csharp
+  - vb
+  name: SetValueWithoutNotify(T)
+  nameWithType: INotifyValueChanged<T>.SetValueWithoutNotify(T)
+  fullName: Ceres.Events.INotifyValueChanged<T>.SetValueWithoutNotify(T)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Sets the value and, even if different, doesn't notify registers callbacks with a <xref href="Ceres.Events.ChangeEvent%601" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: void SetValueWithoutNotify(T newValue)
+    parameters:
+    - id: newValue
+      type: '{T}'
+      description: The new value to be set.
+    content.vb: Sub SetValueWithoutNotify(newValue As T)
+  overload: Ceres.Events.INotifyValueChanged`1.SetValueWithoutNotify*
+  nameWithType.vb: INotifyValueChanged(Of T).SetValueWithoutNotify(T)
+  fullName.vb: Ceres.Events.INotifyValueChanged(Of T).SetValueWithoutNotify(T)
+- uid: Ceres.Events.INotifyValueChanged`1.Value
+  commentId: P:Ceres.Events.INotifyValueChanged`1.Value
+  id: Value
+  parent: Ceres.Events.INotifyValueChanged`1
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: INotifyValueChanged<T>.Value
+  fullName: Ceres.Events.INotifyValueChanged<T>.Value
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: The value the control holds.
+  example: []
+  syntax:
+    content: T Value { get; set; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Property Value As T
+  overload: Ceres.Events.INotifyValueChanged`1.Value*
+  nameWithType.vb: INotifyValueChanged(Of T).Value
+  fullName.vb: Ceres.Events.INotifyValueChanged(Of T).Value
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.INotifyValueChanged`1.Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{{T}}})
+  commentId: M:Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+  parent: Ceres.Events.INotifyValueChangedExtensions
+  definition: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+  href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_RegisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  name: RegisterValueChangedCallback<T>(INotifyValueChanged<T>, EventCallback<ChangeEvent<T>>)
+  nameWithType: INotifyValueChangedExtensions.RegisterValueChangedCallback<T>(INotifyValueChanged<T>, EventCallback<ChangeEvent<T>>)
+  fullName: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback<T>(Ceres.Events.INotifyValueChanged<T>, Ceres.Events.EventCallback<Ceres.Events.ChangeEvent<T>>)
+  nameWithType.vb: INotifyValueChangedExtensions.RegisterValueChangedCallback(Of T)(INotifyValueChanged(Of T), EventCallback(Of ChangeEvent(Of T)))
+  fullName.vb: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback(Of T)(Ceres.Events.INotifyValueChanged(Of T), Ceres.Events.EventCallback(Of Ceres.Events.ChangeEvent(Of T)))
+  name.vb: RegisterValueChangedCallback(Of T)(INotifyValueChanged(Of T), EventCallback(Of ChangeEvent(Of T)))
+  spec.csharp:
+  - uid: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{`0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{`0}})
+    name: RegisterValueChangedCallback
+    isExternal: true
+    href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_RegisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.INotifyValueChanged`1
+    name: INotifyValueChanged
+    isExternal: true
+    href: Ceres.Events.INotifyValueChanged-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{`0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{`0}})
+    name: RegisterValueChangedCallback
+    isExternal: true
+    href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_RegisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Events.INotifyValueChanged`1
+    name: INotifyValueChanged
+    isExternal: true
+    href: Ceres.Events.INotifyValueChanged-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: Ceres.Events.INotifyValueChanged`1.Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{{T}}})
+  commentId: M:Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+  parent: Ceres.Events.INotifyValueChangedExtensions
+  definition: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+  href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_UnregisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  name: UnregisterValueChangedCallback<T>(INotifyValueChanged<T>, EventCallback<ChangeEvent<T>>)
+  nameWithType: INotifyValueChangedExtensions.UnregisterValueChangedCallback<T>(INotifyValueChanged<T>, EventCallback<ChangeEvent<T>>)
+  fullName: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback<T>(Ceres.Events.INotifyValueChanged<T>, Ceres.Events.EventCallback<Ceres.Events.ChangeEvent<T>>)
+  nameWithType.vb: INotifyValueChangedExtensions.UnregisterValueChangedCallback(Of T)(INotifyValueChanged(Of T), EventCallback(Of ChangeEvent(Of T)))
+  fullName.vb: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback(Of T)(Ceres.Events.INotifyValueChanged(Of T), Ceres.Events.EventCallback(Of Ceres.Events.ChangeEvent(Of T)))
+  name.vb: UnregisterValueChangedCallback(Of T)(INotifyValueChanged(Of T), EventCallback(Of ChangeEvent(Of T)))
+  spec.csharp:
+  - uid: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{`0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{`0}})
+    name: UnregisterValueChangedCallback
+    isExternal: true
+    href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_UnregisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.INotifyValueChanged`1
+    name: INotifyValueChanged
+    isExternal: true
+    href: Ceres.Events.INotifyValueChanged-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{`0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{`0}})
+    name: UnregisterValueChangedCallback
+    isExternal: true
+    href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_UnregisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Events.INotifyValueChanged`1
+    name: INotifyValueChanged
+    isExternal: true
+    href: Ceres.Events.INotifyValueChanged-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+  commentId: M:Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+  isExternal: true
+  href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_RegisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  name: RegisterValueChangedCallback<T>(INotifyValueChanged<T>, EventCallback<ChangeEvent<T>>)
+  nameWithType: INotifyValueChangedExtensions.RegisterValueChangedCallback<T>(INotifyValueChanged<T>, EventCallback<ChangeEvent<T>>)
+  fullName: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback<T>(Ceres.Events.INotifyValueChanged<T>, Ceres.Events.EventCallback<Ceres.Events.ChangeEvent<T>>)
+  nameWithType.vb: INotifyValueChangedExtensions.RegisterValueChangedCallback(Of T)(INotifyValueChanged(Of T), EventCallback(Of ChangeEvent(Of T)))
+  fullName.vb: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback(Of T)(Ceres.Events.INotifyValueChanged(Of T), Ceres.Events.EventCallback(Of Ceres.Events.ChangeEvent(Of T)))
+  name.vb: RegisterValueChangedCallback(Of T)(INotifyValueChanged(Of T), EventCallback(Of ChangeEvent(Of T)))
+  spec.csharp:
+  - uid: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+    name: RegisterValueChangedCallback
+    isExternal: true
+    href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_RegisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.INotifyValueChanged`1
+    name: INotifyValueChanged
+    isExternal: true
+    href: Ceres.Events.INotifyValueChanged-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.INotifyValueChangedExtensions.RegisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+    name: RegisterValueChangedCallback
+    isExternal: true
+    href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_RegisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Events.INotifyValueChanged`1
+    name: INotifyValueChanged
+    isExternal: true
+    href: Ceres.Events.INotifyValueChanged-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: Ceres.Events.INotifyValueChangedExtensions
+  commentId: T:Ceres.Events.INotifyValueChangedExtensions
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.INotifyValueChangedExtensions.html
+  name: INotifyValueChangedExtensions
+  nameWithType: INotifyValueChangedExtensions
+  fullName: Ceres.Events.INotifyValueChangedExtensions
+- uid: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+  commentId: M:Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+  isExternal: true
+  href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_UnregisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  name: UnregisterValueChangedCallback<T>(INotifyValueChanged<T>, EventCallback<ChangeEvent<T>>)
+  nameWithType: INotifyValueChangedExtensions.UnregisterValueChangedCallback<T>(INotifyValueChanged<T>, EventCallback<ChangeEvent<T>>)
+  fullName: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback<T>(Ceres.Events.INotifyValueChanged<T>, Ceres.Events.EventCallback<Ceres.Events.ChangeEvent<T>>)
+  nameWithType.vb: INotifyValueChangedExtensions.UnregisterValueChangedCallback(Of T)(INotifyValueChanged(Of T), EventCallback(Of ChangeEvent(Of T)))
+  fullName.vb: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback(Of T)(Ceres.Events.INotifyValueChanged(Of T), Ceres.Events.EventCallback(Of Ceres.Events.ChangeEvent(Of T)))
+  name.vb: UnregisterValueChangedCallback(Of T)(INotifyValueChanged(Of T), EventCallback(Of ChangeEvent(Of T)))
+  spec.csharp:
+  - uid: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+    name: UnregisterValueChangedCallback
+    isExternal: true
+    href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_UnregisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.INotifyValueChanged`1
+    name: INotifyValueChanged
+    isExternal: true
+    href: Ceres.Events.INotifyValueChanged-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.INotifyValueChangedExtensions.UnregisterValueChangedCallback``1(Ceres.Events.INotifyValueChanged{``0},Ceres.Events.EventCallback{Ceres.Events.ChangeEvent{``0}})
+    name: UnregisterValueChangedCallback
+    isExternal: true
+    href: Ceres.Events.INotifyValueChangedExtensions.html#Ceres_Events_INotifyValueChangedExtensions_UnregisterValueChangedCallback__1_Ceres_Events_INotifyValueChanged___0__Ceres_Events_EventCallback_Ceres_Events_ChangeEvent___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Events.INotifyValueChanged`1
+    name: INotifyValueChanged
+    isExternal: true
+    href: Ceres.Events.INotifyValueChanged-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: Ceres.Events.ChangeEvent`1
+  commentId: T:Ceres.Events.ChangeEvent`1
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.ChangeEvent-1.html
+  name: ChangeEvent<T>
+  nameWithType: ChangeEvent<T>
+  fullName: Ceres.Events.ChangeEvent<T>
+  nameWithType.vb: ChangeEvent(Of T)
+  fullName.vb: Ceres.Events.ChangeEvent(Of T)
+  name.vb: ChangeEvent(Of T)
+  spec.csharp:
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Events.ChangeEvent`1
+    name: ChangeEvent
+    isExternal: true
+    href: Ceres.Events.ChangeEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Ceres.Events.INotifyValueChanged`1.SetValueWithoutNotify*
+  commentId: Overload:Ceres.Events.INotifyValueChanged`1.SetValueWithoutNotify
+  isExternal: true
+  href: Ceres.Events.INotifyValueChanged-1.html#Ceres_Events_INotifyValueChanged_1_SetValueWithoutNotify__0_
+  name: SetValueWithoutNotify
+  nameWithType: INotifyValueChanged<T>.SetValueWithoutNotify
+  fullName: Ceres.Events.INotifyValueChanged<T>.SetValueWithoutNotify
+  nameWithType.vb: INotifyValueChanged(Of T).SetValueWithoutNotify
+  fullName.vb: Ceres.Events.INotifyValueChanged(Of T).SetValueWithoutNotify
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Ceres.Events.INotifyValueChanged`1.Value*
+  commentId: Overload:Ceres.Events.INotifyValueChanged`1.Value
+  isExternal: true
+  href: Ceres.Events.INotifyValueChanged-1.html#Ceres_Events_INotifyValueChanged_1_Value
+  name: Value
+  nameWithType: INotifyValueChanged<T>.Value
+  fullName: Ceres.Events.INotifyValueChanged<T>.Value
+  nameWithType.vb: INotifyValueChanged(Of T).Value
+  fullName.vb: Ceres.Events.INotifyValueChanged(Of T).Value

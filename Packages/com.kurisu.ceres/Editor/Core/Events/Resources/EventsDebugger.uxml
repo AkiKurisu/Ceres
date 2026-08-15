@@ -1,0 +1,115 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns:akie="Ceres.Events.Editor" editor-extension-mode="True">
+    <ui:VisualElement name="eventsDebugger">
+        <uie:Toolbar name="searchToolbar" class="toolbar">
+            <akie:EventTypeSearchField name="filter-event-type" />
+        </uie:Toolbar>
+        <ui:TwoPaneSplitView name="mainHorizontalSplitView" fixed-pane-index="0" fixed-pane-initial-dimension="750" orientation="Horizontal">
+            <ui:VisualElement name="eventsLogContainer">
+                <ui:TwoPaneSplitView fixed-pane-index="0" fixed-pane-initial-dimension="350" orientation="Vertical" class="splitViewMin">
+                    <ui:VisualElement class="containerMin">
+                        <ui:Label name="eventsTitle" text="Events Log" />
+                        <ui:VisualElement name="eventInfoContainer">
+                            <ui:VisualElement class="eventLogCountContainer">
+                                <ui:Label name="log-count" text="0 event" />
+                                <ui:Label name="selection-count" text="(0 selected)" />
+                            </ui:VisualElement>
+                            <uie:Toolbar name="infoActionsToolbar" class="toolbar">
+                                <uie:ToolbarToggle name="suspend" text="Suspend" tooltip="Toggle to suspend event collection" />
+                                <uie:ToolbarButton name="clear-logs" text="Clear Logs" tooltip="Click to clear event logs" />
+                            </uie:Toolbar>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="log-line" class="log-line-header">
+                            <ui:Label text="Timestamp" class="timestamp log-line-item-header" />
+                            <ui:Label text="Event" class="event log-line-item-header" />
+                            <ui:Label text="Target" class="target log-line-item-header" />
+                        </ui:VisualElement>
+                        <ui:ListView name="eventsLog" />
+                        <ui:VisualElement name="eventPlaybackContainer">
+                            <ui:VisualElement class="eventReplayToolbarContainer">
+                                <uie:Toolbar name="eventReplayToolbar">
+                                    <uie:ToolbarButton name="start-playback" text="►" tooltip="Start playback" />
+                                    <uie:ToolbarToggle name="pause-resume-playback" text="||" tooltip="Pause / Resume playback" />
+                                    <uie:ToolbarButton name="stop-playback" tooltip="Stop playback">
+                                        <ui:VisualElement name="stop-playback-image" />
+                                    </uie:ToolbarButton>
+                                    <uie:ToolbarButton name="decrease-playback-speed" tooltip="Decrease event playback speed" />
+                                    <ui:DropdownField name="playback-speed-dropdown" tooltip="Event playback speed" />
+                                    <uie:ToolbarButton name="increase-playback-speed" tooltip="Increase event playback speed" />
+                                    <ui:Label name="replay-selected-events" text="Event:" />
+                                </uie:Toolbar>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="maxLogLinesContainer">
+                                <uie:Toolbar name="eventFileToolbar">
+                                    <uie:ToolbarButton name="save-replay" tooltip="Save Event Log" />
+                                    <uie:ToolbarButton name="load-replay" tooltip="Load Event Log" />
+                                </uie:Toolbar>
+                                <ui:IntegerField name="maxLogLinesField" label="Max Log Lines" is-delayed="true" tooltip="Maximum event log lines (enable in the Settings menu)" />
+                                <uie:ToolbarMenu name="settings-menu" tooltip="Settings menu" class="toolbar-setting-menu" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:TwoPaneSplitView fixed-pane-index="0" fixed-pane-initial-dimension="100" orientation="Vertical" class="splitViewMin">
+                        <ui:VisualElement name="eventCallbacksContainer" class="containerMin">
+                            <ui:Label name="eventCallbacksTitle" text="Event Callbacks" />
+                            <ui:VisualElement name="log-line">
+                                <ui:Label text="Timestamp" class="timestamp log-line-item-header" />
+                                <ui:Label text="Handler" class="handler log-line-item-header" />
+                                <ui:Label text="Phase" class="phase log-line-item-header" />
+                                <ui:Label text="Duration" class="duration log-line-item-header" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="scrollViewContainer">
+                                <ui:ScrollView name="eventCallbacksScrollView" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:TwoPaneSplitView fixed-pane-index="0" fixed-pane-initial-dimension="320" orientation="Horizontal" class="verticalSplitViewMin">
+                            <ui:VisualElement name="eventPropagationPathsContainer" class="containerMin">
+                                <ui:Label name="eventPropagationPathsTitle" text="Event Propagation Paths" />
+                                <ui:VisualElement name="scrollViewContainer">
+                                    <ui:ScrollView name="eventPropagationPathsScrollView">
+                                        <ui:Label name="eventPropagationPaths" />
+                                    </ui:ScrollView>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="eventbaseInfoContainer" class="containerMin">
+                                <ui:Label name="eventbaseInfoTitle" text="Event Information" />
+                                <ui:VisualElement name="scrollViewContainer">
+                                    <ui:ScrollView name="eventbaseInfoScrollView">
+                                        <ui:Label name="eventbaseInfo" />
+                                    </ui:ScrollView>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:TwoPaneSplitView>
+                    </ui:TwoPaneSplitView>
+                </ui:TwoPaneSplitView>
+            </ui:VisualElement>
+            <ui:VisualElement name="eventsRightSideContainer">
+                <ui:TwoPaneSplitView fixed-pane-index="0" fixed-pane-initial-dimension="350" orientation="Vertical" class="splitViewMin">
+                    <ui:VisualElement name="eventsRegistrationsContainer">
+                        <ui:VisualElement name="eventsRegistrationTitleContainer">
+                            <ui:Label name="eventsRegistrationTitle" text="Registered Event Callbacks" tooltip="External changes might affect the list of callbacks; reload the Event Debugger window to update results." />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="eventsRegistrationSearchContainer">
+                            <uie:ToolbarSearchField name="filter-registered-callback" />
+                            <ui:Label name="eventsRegistrationTotals" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="scrollViewContainer">
+                            <ui:ListView name="eventsRegistrationsListView" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="eventsHistogramContainer">
+                        <ui:VisualElement name="eventsHistogramTitleContainer">
+                            <ui:Label name="eventsHistogramTitle" text="Event Durations" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="eventsHistogramTitleHeader">
+                            <ui:Label name="eventsHistogramTotal" text="0 event type" />
+                            <ui:EnumField name="eventsHistogramDurationType" tooltip="Duration Type" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="scrollViewContainer" class="containerMin">
+                            <ui:ScrollView name="eventsHistogramScrollView" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:TwoPaneSplitView>
+            </ui:VisualElement>
+        </ui:TwoPaneSplitView>
+    </ui:VisualElement>
+</ui:UXML>

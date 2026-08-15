@@ -1,0 +1,1387 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler
+  commentId: T:Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler
+  id: AnimationProxy.AnimationEventHandler
+  parent: Ceres.Gameplay.Animations
+  children:
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.#ctor
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.Coordinator
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  langs:
+  - csharp
+  - vb
+  name: AnimationProxy.AnimationEventHandler
+  nameWithType: AnimationProxy.AnimationEventHandler
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  syntax:
+    content: 'public class AnimationProxy.AnimationEventHandler : CallbackEventHandler, IEventHandler'
+    content.vb: Public Class AnimationProxy.AnimationEventHandler Inherits CallbackEventHandler Implements IEventHandler
+  inheritance:
+  - System.Object
+  - Ceres.Events.CallbackEventHandler
+  implements:
+  - Ceres.Events.IEventHandler
+  inheritedMembers:
+  - Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{{TEventType}},Ceres.Events.TrickleDown)
+  - Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{{TEventType},{TUserArgsType}},{TUserArgsType},Ceres.Events.TrickleDown)
+  - Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{{TEventType}},Ceres.Events.TrickleDown)
+  - Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{{TEventType},{TUserArgsType}},Ceres.Events.TrickleDown)
+  - Ceres.Events.CallbackEventHandler.HandleEventAtTargetPhase(Ceres.Events.EventBase)
+  - Ceres.Events.CallbackEventHandler.HandleEventAtTargetAndDefaultPhase(Ceres.Events.EventBase)
+  - Ceres.Events.CallbackEventHandler.HandleEventAtCurrentTargetAndPhase(Ceres.Events.EventBase)
+  - Ceres.Events.CallbackEventHandler.HasTrickleDownHandlers
+  - Ceres.Events.CallbackEventHandler.HasBubbleUpHandlers
+  - Ceres.Events.CallbackEventHandler.ExecuteDefaultActionAtTarget(Ceres.Events.EventBase)
+  - Ceres.Events.CallbackEventHandler.ExecuteDefaultAction(Ceres.Events.EventBase)
+  - Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabledAtTarget(Ceres.Events.EventBase)
+  - Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabled(Ceres.Events.EventBase)
+  - Ceres.Events.CallbackEventHandler.IsCompositeRoot
+  - Ceres.Events.CallbackEventHandler.Parent
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  id: SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler
+  langs:
+  - csharp
+  - vb
+  name: SendEvent(EventBase, DispatchMode)
+  nameWithType: AnimationProxy.AnimationEventHandler.SendEvent(EventBase, DispatchMode)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent(Ceres.Events.EventBase, Ceres.Events.DispatchMode)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Sends an event to the event handler.
+  example: []
+  syntax:
+    content: public override void SendEvent(EventBase e, DispatchMode dispatchMode = DispatchMode.Default)
+    parameters:
+    - id: e
+      type: Ceres.Events.EventBase
+      description: The event to send.
+    - id: dispatchMode
+      type: Ceres.Events.DispatchMode
+      description: The event dispatch mode.
+    content.vb: Public Overrides Sub SendEvent(e As EventBase, dispatchMode As DispatchMode = DispatchMode.Default)
+  overridden: Ceres.Events.CallbackEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent*
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  id: SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode,Ceres.Events.MonoDispatchType)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler
+  langs:
+  - csharp
+  - vb
+  name: SendEvent(EventBase, DispatchMode, MonoDispatchType)
+  nameWithType: AnimationProxy.AnimationEventHandler.SendEvent(EventBase, DispatchMode, MonoDispatchType)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent(Ceres.Events.EventBase, Ceres.Events.DispatchMode, Ceres.Events.MonoDispatchType)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  syntax:
+    content: public void SendEvent(EventBase e, DispatchMode dispatchMode, MonoDispatchType monoDispatchType)
+    parameters:
+    - id: e
+      type: Ceres.Events.EventBase
+    - id: dispatchMode
+      type: Ceres.Events.DispatchMode
+    - id: monoDispatchType
+      type: Ceres.Events.MonoDispatchType
+    content.vb: Public Sub SendEvent(e As EventBase, dispatchMode As DispatchMode, monoDispatchType As MonoDispatchType)
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent*
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.#ctor
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.#ctor
+  id: '#ctor'
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler
+  langs:
+  - csharp
+  - vb
+  name: AnimationEventHandler()
+  nameWithType: AnimationProxy.AnimationEventHandler.AnimationEventHandler()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.AnimationEventHandler()
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  syntax:
+    content: public AnimationEventHandler()
+    content.vb: Public Sub New()
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.#ctor*
+  nameWithType.vb: AnimationProxy.AnimationEventHandler.New()
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.New()
+  name.vb: New()
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.Coordinator
+  commentId: P:Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.Coordinator
+  id: Coordinator
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler
+  langs:
+  - csharp
+  - vb
+  name: Coordinator
+  nameWithType: AnimationProxy.AnimationEventHandler.Coordinator
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.Coordinator
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  example: []
+  syntax:
+    content: public override IEventCoordinator Coordinator { get; }
+    parameters: []
+    return:
+      type: Ceres.Events.IEventCoordinator
+    content.vb: Public Overrides ReadOnly Property Coordinator As IEventCoordinator
+  overridden: Ceres.Events.CallbackEventHandler.Coordinator
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.Coordinator*
+references:
+- uid: Ceres.Gameplay.Animations
+  commentId: N:Ceres.Gameplay.Animations
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Animations
+  nameWithType: Ceres.Gameplay.Animations
+  fullName: Ceres.Gameplay.Animations
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations
+    name: Animations
+    isExternal: true
+    href: Ceres.Gameplay.Animations.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations
+    name: Animations
+    isExternal: true
+    href: Ceres.Gameplay.Animations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Events.CallbackEventHandler
+  commentId: T:Ceres.Events.CallbackEventHandler
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html
+  name: CallbackEventHandler
+  nameWithType: CallbackEventHandler
+  fullName: Ceres.Events.CallbackEventHandler
+- uid: Ceres.Events.IEventHandler
+  commentId: T:Ceres.Events.IEventHandler
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.IEventHandler.html
+  name: IEventHandler
+  nameWithType: IEventHandler
+  fullName: Ceres.Events.IEventHandler
+- uid: Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{{TEventType}},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  parent: Ceres.Events.CallbackEventHandler
+  definition: Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  name: RegisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  nameWithType: CallbackEventHandler.RegisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  fullName: Ceres.Events.CallbackEventHandler.RegisterCallback<TEventType>(Ceres.Events.EventCallback<TEventType>, Ceres.Events.TrickleDown)
+  nameWithType.vb: CallbackEventHandler.RegisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  fullName.vb: Ceres.Events.CallbackEventHandler.RegisterCallback(Of TEventType)(Ceres.Events.EventCallback(Of TEventType), Ceres.Events.TrickleDown)
+  name.vb: RegisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+    name: RegisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+    name: RegisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: (
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{{TEventType},{TUserArgsType}},{TUserArgsType},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{``0,``1},``1,Ceres.Events.TrickleDown)
+  parent: Ceres.Events.CallbackEventHandler
+  definition: Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{``0,``1},``1,Ceres.Events.TrickleDown)
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__2_Ceres_Events_EventCallback___0___1____1_Ceres_Events_TrickleDown_
+  name: RegisterCallback<TEventType, TUserArgsType>(EventCallback<TEventType, TUserArgsType>, TUserArgsType, TrickleDown)
+  nameWithType: CallbackEventHandler.RegisterCallback<TEventType, TUserArgsType>(EventCallback<TEventType, TUserArgsType>, TUserArgsType, TrickleDown)
+  fullName: Ceres.Events.CallbackEventHandler.RegisterCallback<TEventType, TUserArgsType>(Ceres.Events.EventCallback<TEventType, TUserArgsType>, TUserArgsType, Ceres.Events.TrickleDown)
+  nameWithType.vb: CallbackEventHandler.RegisterCallback(Of TEventType, TUserArgsType)(EventCallback(Of TEventType, TUserArgsType), TUserArgsType, TrickleDown)
+  fullName.vb: Ceres.Events.CallbackEventHandler.RegisterCallback(Of TEventType, TUserArgsType)(Ceres.Events.EventCallback(Of TEventType, TUserArgsType), TUserArgsType, Ceres.Events.TrickleDown)
+  name.vb: RegisterCallback(Of TEventType, TUserArgsType)(EventCallback(Of TEventType, TUserArgsType), TUserArgsType, TrickleDown)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{``0,``1},``1,Ceres.Events.TrickleDown)
+    name: RegisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__2_Ceres_Events_EventCallback___0___1____1_Ceres_Events_TrickleDown_
+  - name: <
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.EventCallback`2
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-2.html
+  - name: <
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{``0,``1},``1,Ceres.Events.TrickleDown)
+    name: RegisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__2_Ceres_Events_EventCallback___0___1____1_Ceres_Events_TrickleDown_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: )
+  - name: (
+  - uid: Ceres.Events.EventCallback`2
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: )
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{{TEventType}},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  parent: Ceres.Events.CallbackEventHandler
+  definition: Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  name: UnregisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  nameWithType: CallbackEventHandler.UnregisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  fullName: Ceres.Events.CallbackEventHandler.UnregisterCallback<TEventType>(Ceres.Events.EventCallback<TEventType>, Ceres.Events.TrickleDown)
+  nameWithType.vb: CallbackEventHandler.UnregisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  fullName.vb: Ceres.Events.CallbackEventHandler.UnregisterCallback(Of TEventType)(Ceres.Events.EventCallback(Of TEventType), Ceres.Events.TrickleDown)
+  name.vb: UnregisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+    name: UnregisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+    name: UnregisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: (
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{{TEventType},{TUserArgsType}},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{``0,``1},Ceres.Events.TrickleDown)
+  parent: Ceres.Events.CallbackEventHandler
+  definition: Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{``0,``1},Ceres.Events.TrickleDown)
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__2_Ceres_Events_EventCallback___0___1__Ceres_Events_TrickleDown_
+  name: UnregisterCallback<TEventType, TUserArgsType>(EventCallback<TEventType, TUserArgsType>, TrickleDown)
+  nameWithType: CallbackEventHandler.UnregisterCallback<TEventType, TUserArgsType>(EventCallback<TEventType, TUserArgsType>, TrickleDown)
+  fullName: Ceres.Events.CallbackEventHandler.UnregisterCallback<TEventType, TUserArgsType>(Ceres.Events.EventCallback<TEventType, TUserArgsType>, Ceres.Events.TrickleDown)
+  nameWithType.vb: CallbackEventHandler.UnregisterCallback(Of TEventType, TUserArgsType)(EventCallback(Of TEventType, TUserArgsType), TrickleDown)
+  fullName.vb: Ceres.Events.CallbackEventHandler.UnregisterCallback(Of TEventType, TUserArgsType)(Ceres.Events.EventCallback(Of TEventType, TUserArgsType), Ceres.Events.TrickleDown)
+  name.vb: UnregisterCallback(Of TEventType, TUserArgsType)(EventCallback(Of TEventType, TUserArgsType), TrickleDown)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{``0,``1},Ceres.Events.TrickleDown)
+    name: UnregisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__2_Ceres_Events_EventCallback___0___1__Ceres_Events_TrickleDown_
+  - name: <
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.EventCallback`2
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-2.html
+  - name: <
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{``0,``1},Ceres.Events.TrickleDown)
+    name: UnregisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__2_Ceres_Events_EventCallback___0___1__Ceres_Events_TrickleDown_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: )
+  - name: (
+  - uid: Ceres.Events.EventCallback`2
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.HandleEventAtTargetPhase(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.CallbackEventHandler.HandleEventAtTargetPhase(Ceres.Events.EventBase)
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtTargetPhase_Ceres_Events_EventBase_
+  name: HandleEventAtTargetPhase(EventBase)
+  nameWithType: CallbackEventHandler.HandleEventAtTargetPhase(EventBase)
+  fullName: Ceres.Events.CallbackEventHandler.HandleEventAtTargetPhase(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.HandleEventAtTargetPhase(Ceres.Events.EventBase)
+    name: HandleEventAtTargetPhase
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtTargetPhase_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.HandleEventAtTargetPhase(Ceres.Events.EventBase)
+    name: HandleEventAtTargetPhase
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtTargetPhase_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.HandleEventAtTargetAndDefaultPhase(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.CallbackEventHandler.HandleEventAtTargetAndDefaultPhase(Ceres.Events.EventBase)
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtTargetAndDefaultPhase_Ceres_Events_EventBase_
+  name: HandleEventAtTargetAndDefaultPhase(EventBase)
+  nameWithType: CallbackEventHandler.HandleEventAtTargetAndDefaultPhase(EventBase)
+  fullName: Ceres.Events.CallbackEventHandler.HandleEventAtTargetAndDefaultPhase(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.HandleEventAtTargetAndDefaultPhase(Ceres.Events.EventBase)
+    name: HandleEventAtTargetAndDefaultPhase
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtTargetAndDefaultPhase_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.HandleEventAtTargetAndDefaultPhase(Ceres.Events.EventBase)
+    name: HandleEventAtTargetAndDefaultPhase
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtTargetAndDefaultPhase_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.HandleEventAtCurrentTargetAndPhase(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.CallbackEventHandler.HandleEventAtCurrentTargetAndPhase(Ceres.Events.EventBase)
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtCurrentTargetAndPhase_Ceres_Events_EventBase_
+  name: HandleEventAtCurrentTargetAndPhase(EventBase)
+  nameWithType: CallbackEventHandler.HandleEventAtCurrentTargetAndPhase(EventBase)
+  fullName: Ceres.Events.CallbackEventHandler.HandleEventAtCurrentTargetAndPhase(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.HandleEventAtCurrentTargetAndPhase(Ceres.Events.EventBase)
+    name: HandleEventAtCurrentTargetAndPhase
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtCurrentTargetAndPhase_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.HandleEventAtCurrentTargetAndPhase(Ceres.Events.EventBase)
+    name: HandleEventAtCurrentTargetAndPhase
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HandleEventAtCurrentTargetAndPhase_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.HasTrickleDownHandlers
+  commentId: M:Ceres.Events.CallbackEventHandler.HasTrickleDownHandlers
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HasTrickleDownHandlers
+  name: HasTrickleDownHandlers()
+  nameWithType: CallbackEventHandler.HasTrickleDownHandlers()
+  fullName: Ceres.Events.CallbackEventHandler.HasTrickleDownHandlers()
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.HasTrickleDownHandlers
+    name: HasTrickleDownHandlers
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HasTrickleDownHandlers
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.HasTrickleDownHandlers
+    name: HasTrickleDownHandlers
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HasTrickleDownHandlers
+  - name: (
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.HasBubbleUpHandlers
+  commentId: M:Ceres.Events.CallbackEventHandler.HasBubbleUpHandlers
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HasBubbleUpHandlers
+  name: HasBubbleUpHandlers()
+  nameWithType: CallbackEventHandler.HasBubbleUpHandlers()
+  fullName: Ceres.Events.CallbackEventHandler.HasBubbleUpHandlers()
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.HasBubbleUpHandlers
+    name: HasBubbleUpHandlers
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HasBubbleUpHandlers
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.HasBubbleUpHandlers
+    name: HasBubbleUpHandlers
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_HasBubbleUpHandlers
+  - name: (
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionAtTarget(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.CallbackEventHandler.ExecuteDefaultActionAtTarget(Ceres.Events.EventBase)
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionAtTarget_Ceres_Events_EventBase_
+  name: ExecuteDefaultActionAtTarget(EventBase)
+  nameWithType: CallbackEventHandler.ExecuteDefaultActionAtTarget(EventBase)
+  fullName: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionAtTarget(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionAtTarget(Ceres.Events.EventBase)
+    name: ExecuteDefaultActionAtTarget
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionAtTarget_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionAtTarget(Ceres.Events.EventBase)
+    name: ExecuteDefaultActionAtTarget
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionAtTarget_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultAction(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.CallbackEventHandler.ExecuteDefaultAction(Ceres.Events.EventBase)
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultAction_Ceres_Events_EventBase_
+  name: ExecuteDefaultAction(EventBase)
+  nameWithType: CallbackEventHandler.ExecuteDefaultAction(EventBase)
+  fullName: Ceres.Events.CallbackEventHandler.ExecuteDefaultAction(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultAction(Ceres.Events.EventBase)
+    name: ExecuteDefaultAction
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultAction_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultAction(Ceres.Events.EventBase)
+    name: ExecuteDefaultAction
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultAction_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabledAtTarget(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabledAtTarget(Ceres.Events.EventBase)
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionDisabledAtTarget_Ceres_Events_EventBase_
+  name: ExecuteDefaultActionDisabledAtTarget(EventBase)
+  nameWithType: CallbackEventHandler.ExecuteDefaultActionDisabledAtTarget(EventBase)
+  fullName: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabledAtTarget(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabledAtTarget(Ceres.Events.EventBase)
+    name: ExecuteDefaultActionDisabledAtTarget
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionDisabledAtTarget_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabledAtTarget(Ceres.Events.EventBase)
+    name: ExecuteDefaultActionDisabledAtTarget
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionDisabledAtTarget_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabled(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabled(Ceres.Events.EventBase)
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionDisabled_Ceres_Events_EventBase_
+  name: ExecuteDefaultActionDisabled(EventBase)
+  nameWithType: CallbackEventHandler.ExecuteDefaultActionDisabled(EventBase)
+  fullName: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabled(Ceres.Events.EventBase)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabled(Ceres.Events.EventBase)
+    name: ExecuteDefaultActionDisabled
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionDisabled_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.ExecuteDefaultActionDisabled(Ceres.Events.EventBase)
+    name: ExecuteDefaultActionDisabled
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_ExecuteDefaultActionDisabled_Ceres_Events_EventBase_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.IsCompositeRoot
+  commentId: P:Ceres.Events.CallbackEventHandler.IsCompositeRoot
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_IsCompositeRoot
+  name: IsCompositeRoot
+  nameWithType: CallbackEventHandler.IsCompositeRoot
+  fullName: Ceres.Events.CallbackEventHandler.IsCompositeRoot
+- uid: Ceres.Events.CallbackEventHandler.Parent
+  commentId: P:Ceres.Events.CallbackEventHandler.Parent
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_Parent
+  name: Parent
+  nameWithType: CallbackEventHandler.Parent
+  fullName: Ceres.Events.CallbackEventHandler.Parent
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  name: RegisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  nameWithType: CallbackEventHandler.RegisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  fullName: Ceres.Events.CallbackEventHandler.RegisterCallback<TEventType>(Ceres.Events.EventCallback<TEventType>, Ceres.Events.TrickleDown)
+  nameWithType.vb: CallbackEventHandler.RegisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  fullName.vb: Ceres.Events.CallbackEventHandler.RegisterCallback(Of TEventType)(Ceres.Events.EventCallback(Of TEventType), Ceres.Events.TrickleDown)
+  name.vb: RegisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+    name: RegisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.RegisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+    name: RegisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: (
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{``0,``1},``1,Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{``0,``1},``1,Ceres.Events.TrickleDown)
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__2_Ceres_Events_EventCallback___0___1____1_Ceres_Events_TrickleDown_
+  name: RegisterCallback<TEventType, TUserArgsType>(EventCallback<TEventType, TUserArgsType>, TUserArgsType, TrickleDown)
+  nameWithType: CallbackEventHandler.RegisterCallback<TEventType, TUserArgsType>(EventCallback<TEventType, TUserArgsType>, TUserArgsType, TrickleDown)
+  fullName: Ceres.Events.CallbackEventHandler.RegisterCallback<TEventType, TUserArgsType>(Ceres.Events.EventCallback<TEventType, TUserArgsType>, TUserArgsType, Ceres.Events.TrickleDown)
+  nameWithType.vb: CallbackEventHandler.RegisterCallback(Of TEventType, TUserArgsType)(EventCallback(Of TEventType, TUserArgsType), TUserArgsType, TrickleDown)
+  fullName.vb: Ceres.Events.CallbackEventHandler.RegisterCallback(Of TEventType, TUserArgsType)(Ceres.Events.EventCallback(Of TEventType, TUserArgsType), TUserArgsType, Ceres.Events.TrickleDown)
+  name.vb: RegisterCallback(Of TEventType, TUserArgsType)(EventCallback(Of TEventType, TUserArgsType), TUserArgsType, TrickleDown)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{``0,``1},``1,Ceres.Events.TrickleDown)
+    name: RegisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__2_Ceres_Events_EventCallback___0___1____1_Ceres_Events_TrickleDown_
+  - name: <
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.EventCallback`2
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-2.html
+  - name: <
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.RegisterCallback``2(Ceres.Events.EventCallback{``0,``1},``1,Ceres.Events.TrickleDown)
+    name: RegisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_RegisterCallback__2_Ceres_Events_EventCallback___0___1____1_Ceres_Events_TrickleDown_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: )
+  - name: (
+  - uid: Ceres.Events.EventCallback`2
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: )
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  name: UnregisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  nameWithType: CallbackEventHandler.UnregisterCallback<TEventType>(EventCallback<TEventType>, TrickleDown)
+  fullName: Ceres.Events.CallbackEventHandler.UnregisterCallback<TEventType>(Ceres.Events.EventCallback<TEventType>, Ceres.Events.TrickleDown)
+  nameWithType.vb: CallbackEventHandler.UnregisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  fullName.vb: Ceres.Events.CallbackEventHandler.UnregisterCallback(Of TEventType)(Ceres.Events.EventCallback(Of TEventType), Ceres.Events.TrickleDown)
+  name.vb: UnregisterCallback(Of TEventType)(EventCallback(Of TEventType), TrickleDown)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+    name: UnregisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: <
+  - name: TEventType
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``1(Ceres.Events.EventCallback{``0},Ceres.Events.TrickleDown)
+    name: UnregisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__1_Ceres_Events_EventCallback___0__Ceres_Events_TrickleDown_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: (
+  - uid: Ceres.Events.EventCallback`1
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{``0,``1},Ceres.Events.TrickleDown)
+  commentId: M:Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{``0,``1},Ceres.Events.TrickleDown)
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__2_Ceres_Events_EventCallback___0___1__Ceres_Events_TrickleDown_
+  name: UnregisterCallback<TEventType, TUserArgsType>(EventCallback<TEventType, TUserArgsType>, TrickleDown)
+  nameWithType: CallbackEventHandler.UnregisterCallback<TEventType, TUserArgsType>(EventCallback<TEventType, TUserArgsType>, TrickleDown)
+  fullName: Ceres.Events.CallbackEventHandler.UnregisterCallback<TEventType, TUserArgsType>(Ceres.Events.EventCallback<TEventType, TUserArgsType>, Ceres.Events.TrickleDown)
+  nameWithType.vb: CallbackEventHandler.UnregisterCallback(Of TEventType, TUserArgsType)(EventCallback(Of TEventType, TUserArgsType), TrickleDown)
+  fullName.vb: Ceres.Events.CallbackEventHandler.UnregisterCallback(Of TEventType, TUserArgsType)(Ceres.Events.EventCallback(Of TEventType, TUserArgsType), Ceres.Events.TrickleDown)
+  name.vb: UnregisterCallback(Of TEventType, TUserArgsType)(EventCallback(Of TEventType, TUserArgsType), TrickleDown)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{``0,``1},Ceres.Events.TrickleDown)
+    name: UnregisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__2_Ceres_Events_EventCallback___0___1__Ceres_Events_TrickleDown_
+  - name: <
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: '>'
+  - name: (
+  - uid: Ceres.Events.EventCallback`2
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-2.html
+  - name: <
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.UnregisterCallback``2(Ceres.Events.EventCallback{``0,``1},Ceres.Events.TrickleDown)
+    name: UnregisterCallback
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_UnregisterCallback__2_Ceres_Events_EventCallback___0___1__Ceres_Events_TrickleDown_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: )
+  - name: (
+  - uid: Ceres.Events.EventCallback`2
+    name: EventCallback
+    isExternal: true
+    href: Ceres.Events.EventCallback-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventType
+  - name: ','
+  - name: " "
+  - name: TUserArgsType
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.TrickleDown
+    name: TrickleDown
+    isExternal: true
+    href: Ceres.Events.TrickleDown.html
+  - name: )
+- uid: Ceres.Events.CallbackEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  commentId: M:Ceres.Events.CallbackEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_SendEvent_Ceres_Events_EventBase_Ceres_Events_DispatchMode_
+  name: SendEvent(EventBase, DispatchMode)
+  nameWithType: CallbackEventHandler.SendEvent(EventBase, DispatchMode)
+  fullName: Ceres.Events.CallbackEventHandler.SendEvent(Ceres.Events.EventBase, Ceres.Events.DispatchMode)
+  spec.csharp:
+  - uid: Ceres.Events.CallbackEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+    name: SendEvent
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_SendEvent_Ceres_Events_EventBase_Ceres_Events_DispatchMode_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.DispatchMode
+    name: DispatchMode
+    isExternal: true
+    href: Ceres.Events.DispatchMode.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Events.CallbackEventHandler.SendEvent(Ceres.Events.EventBase,Ceres.Events.DispatchMode)
+    name: SendEvent
+    isExternal: true
+    href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_SendEvent_Ceres_Events_EventBase_Ceres_Events_DispatchMode_
+  - name: (
+  - uid: Ceres.Events.EventBase
+    name: EventBase
+    isExternal: true
+    href: Ceres.Events.EventBase.html
+  - name: ','
+  - name: " "
+  - uid: Ceres.Events.DispatchMode
+    name: DispatchMode
+    isExternal: true
+    href: Ceres.Events.DispatchMode.html
+  - name: )
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationEventHandler_SendEvent_Ceres_Events_EventBase_Ceres_Events_DispatchMode_
+  name: SendEvent
+  nameWithType: AnimationProxy.AnimationEventHandler.SendEvent
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.SendEvent
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: Ceres.Events.DispatchMode
+  commentId: T:Ceres.Events.DispatchMode
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.DispatchMode.html
+  name: DispatchMode
+  nameWithType: DispatchMode
+  fullName: Ceres.Events.DispatchMode
+- uid: Ceres.Events.MonoDispatchType
+  commentId: T:Ceres.Events.MonoDispatchType
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.MonoDispatchType.html
+  name: MonoDispatchType
+  nameWithType: MonoDispatchType
+  fullName: Ceres.Events.MonoDispatchType
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.#ctor*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationEventHandler__ctor
+  name: AnimationEventHandler
+  nameWithType: AnimationProxy.AnimationEventHandler.AnimationEventHandler
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.AnimationEventHandler
+  nameWithType.vb: AnimationProxy.AnimationEventHandler.New
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.New
+  name.vb: New
+- uid: Ceres.Events.CallbackEventHandler.Coordinator
+  commentId: P:Ceres.Events.CallbackEventHandler.Coordinator
+  parent: Ceres.Events.CallbackEventHandler
+  isExternal: true
+  href: Ceres.Events.CallbackEventHandler.html#Ceres_Events_CallbackEventHandler_Coordinator
+  name: Coordinator
+  nameWithType: CallbackEventHandler.Coordinator
+  fullName: Ceres.Events.CallbackEventHandler.Coordinator
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.Coordinator*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.Coordinator
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationEventHandler_Coordinator
+  name: Coordinator
+  nameWithType: AnimationProxy.AnimationEventHandler.Coordinator
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationEventHandler.Coordinator
+- uid: Ceres.Events.IEventCoordinator
+  commentId: T:Ceres.Events.IEventCoordinator
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.IEventCoordinator.html
+  name: IEventCoordinator
+  nameWithType: IEventCoordinator
+  fullName: Ceres.Events.IEventCoordinator

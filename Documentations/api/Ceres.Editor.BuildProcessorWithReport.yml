@@ -1,0 +1,451 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.BuildProcessorWithReport
+  commentId: T:Ceres.Editor.BuildProcessorWithReport
+  id: BuildProcessorWithReport
+  parent: Ceres.Editor
+  children:
+  - Ceres.Editor.BuildProcessorWithReport.#ctor
+  - Ceres.Editor.BuildProcessorWithReport.PostprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  - Ceres.Editor.BuildProcessorWithReport.PreprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  - Ceres.Editor.BuildProcessorWithReport.callbackOrder
+  langs:
+  - csharp
+  - vb
+  name: BuildProcessorWithReport
+  nameWithType: BuildProcessorWithReport
+  fullName: Ceres.Editor.BuildProcessorWithReport
+  type: Class
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: 'public abstract class BuildProcessorWithReport : IPreprocessBuildWithReport, IOrderedCallback, IPostprocessBuildWithReport'
+    content.vb: Public MustInherit Class BuildProcessorWithReport Implements IPreprocessBuildWithReport, IOrderedCallback, IPostprocessBuildWithReport
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Editor.Graph.CeresBuildProcessor
+  implements:
+  - UnityEditor.Build.IPreprocessBuildWithReport
+  - UnityEditor.Build.IOrderedCallback
+  - UnityEditor.Build.IPostprocessBuildWithReport
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: Ceres.Editor.BuildProcessorWithReport.PreprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  commentId: M:Ceres.Editor.BuildProcessorWithReport.PreprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  id: PreprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  parent: Ceres.Editor.BuildProcessorWithReport
+  langs:
+  - csharp
+  - vb
+  name: PreprocessBuild(BuildReport)
+  nameWithType: BuildProcessorWithReport.PreprocessBuild(BuildReport)
+  fullName: Ceres.Editor.BuildProcessorWithReport.PreprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: protected virtual void PreprocessBuild(BuildReport report)
+    parameters:
+    - id: report
+      type: UnityEditor.Build.Reporting.BuildReport
+    content.vb: Protected Overridable Sub PreprocessBuild(report As BuildReport)
+  overload: Ceres.Editor.BuildProcessorWithReport.PreprocessBuild*
+- uid: Ceres.Editor.BuildProcessorWithReport.PostprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  commentId: M:Ceres.Editor.BuildProcessorWithReport.PostprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  id: PostprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  parent: Ceres.Editor.BuildProcessorWithReport
+  langs:
+  - csharp
+  - vb
+  name: PostprocessBuild(BuildReport)
+  nameWithType: BuildProcessorWithReport.PostprocessBuild(BuildReport)
+  fullName: Ceres.Editor.BuildProcessorWithReport.PostprocessBuild(UnityEditor.Build.Reporting.BuildReport)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: protected virtual void PostprocessBuild(BuildReport report)
+    parameters:
+    - id: report
+      type: UnityEditor.Build.Reporting.BuildReport
+    content.vb: Protected Overridable Sub PostprocessBuild(report As BuildReport)
+  overload: Ceres.Editor.BuildProcessorWithReport.PostprocessBuild*
+- uid: Ceres.Editor.BuildProcessorWithReport.#ctor
+  commentId: M:Ceres.Editor.BuildProcessorWithReport.#ctor
+  id: '#ctor'
+  parent: Ceres.Editor.BuildProcessorWithReport
+  langs:
+  - csharp
+  - vb
+  name: BuildProcessorWithReport()
+  nameWithType: BuildProcessorWithReport.BuildProcessorWithReport()
+  fullName: Ceres.Editor.BuildProcessorWithReport.BuildProcessorWithReport()
+  type: Constructor
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: protected BuildProcessorWithReport()
+    content.vb: Protected Sub New()
+  overload: Ceres.Editor.BuildProcessorWithReport.#ctor*
+  nameWithType.vb: BuildProcessorWithReport.New()
+  fullName.vb: Ceres.Editor.BuildProcessorWithReport.New()
+  name.vb: New()
+- uid: Ceres.Editor.BuildProcessorWithReport.callbackOrder
+  commentId: P:Ceres.Editor.BuildProcessorWithReport.callbackOrder
+  id: callbackOrder
+  parent: Ceres.Editor.BuildProcessorWithReport
+  langs:
+  - csharp
+  - vb
+  name: callbackOrder
+  nameWithType: BuildProcessorWithReport.callbackOrder
+  fullName: Ceres.Editor.BuildProcessorWithReport.callbackOrder
+  type: Property
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.Editor
+  syntax:
+    content: public virtual int callbackOrder { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overridable ReadOnly Property callbackOrder As Integer
+  overload: Ceres.Editor.BuildProcessorWithReport.callbackOrder*
+references:
+- uid: Ceres.Editor
+  commentId: N:Ceres.Editor
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor
+  nameWithType: Ceres.Editor
+  fullName: Ceres.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: UnityEditor.Build.IPreprocessBuildWithReport
+  isExternal: true
+  name: IPreprocessBuildWithReport
+  nameWithType: IPreprocessBuildWithReport
+  fullName: UnityEditor.Build.IPreprocessBuildWithReport
+- uid: UnityEditor.Build.IOrderedCallback
+  isExternal: true
+  name: IOrderedCallback
+  nameWithType: IOrderedCallback
+  fullName: UnityEditor.Build.IOrderedCallback
+- uid: UnityEditor.Build.IPostprocessBuildWithReport
+  isExternal: true
+  name: IPostprocessBuildWithReport
+  nameWithType: IPostprocessBuildWithReport
+  fullName: UnityEditor.Build.IPostprocessBuildWithReport
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.BuildProcessorWithReport.PreprocessBuild*
+  commentId: Overload:Ceres.Editor.BuildProcessorWithReport.PreprocessBuild
+  isExternal: true
+  href: Ceres.Editor.BuildProcessorWithReport.html#Ceres_Editor_BuildProcessorWithReport_PreprocessBuild_UnityEditor_Build_Reporting_BuildReport_
+  name: PreprocessBuild
+  nameWithType: BuildProcessorWithReport.PreprocessBuild
+  fullName: Ceres.Editor.BuildProcessorWithReport.PreprocessBuild
+- uid: UnityEditor.Build.Reporting.BuildReport
+  isExternal: true
+  name: BuildReport
+  nameWithType: BuildReport
+  fullName: UnityEditor.Build.Reporting.BuildReport
+- uid: Ceres.Editor.BuildProcessorWithReport.PostprocessBuild*
+  commentId: Overload:Ceres.Editor.BuildProcessorWithReport.PostprocessBuild
+  isExternal: true
+  href: Ceres.Editor.BuildProcessorWithReport.html#Ceres_Editor_BuildProcessorWithReport_PostprocessBuild_UnityEditor_Build_Reporting_BuildReport_
+  name: PostprocessBuild
+  nameWithType: BuildProcessorWithReport.PostprocessBuild
+  fullName: Ceres.Editor.BuildProcessorWithReport.PostprocessBuild
+- uid: Ceres.Editor.BuildProcessorWithReport.#ctor*
+  commentId: Overload:Ceres.Editor.BuildProcessorWithReport.#ctor
+  isExternal: true
+  href: Ceres.Editor.BuildProcessorWithReport.html#Ceres_Editor_BuildProcessorWithReport__ctor
+  name: BuildProcessorWithReport
+  nameWithType: BuildProcessorWithReport.BuildProcessorWithReport
+  fullName: Ceres.Editor.BuildProcessorWithReport.BuildProcessorWithReport
+  nameWithType.vb: BuildProcessorWithReport.New
+  fullName.vb: Ceres.Editor.BuildProcessorWithReport.New
+  name.vb: New
+- uid: Ceres.Editor.BuildProcessorWithReport.callbackOrder*
+  commentId: Overload:Ceres.Editor.BuildProcessorWithReport.callbackOrder
+  isExternal: true
+  href: Ceres.Editor.BuildProcessorWithReport.html#Ceres_Editor_BuildProcessorWithReport_callbackOrder
+  name: callbackOrder
+  nameWithType: BuildProcessorWithReport.callbackOrder
+  fullName: Ceres.Editor.BuildProcessorWithReport.callbackOrder
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

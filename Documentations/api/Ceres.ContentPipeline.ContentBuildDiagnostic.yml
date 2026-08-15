@@ -1,0 +1,508 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic
+  commentId: T:Ceres.ContentPipeline.ContentBuildDiagnostic
+  id: ContentBuildDiagnostic
+  parent: Ceres.ContentPipeline
+  children:
+  - Ceres.ContentPipeline.ContentBuildDiagnostic.#ctor(System.String,Ceres.ContentPipeline.ContentDiagnosticSeverity,System.String,System.String,System.String,System.String)
+  - Ceres.ContentPipeline.ContentBuildDiagnostic.AssetId
+  - Ceres.ContentPipeline.ContentBuildDiagnostic.Code
+  - Ceres.ContentPipeline.ContentBuildDiagnostic.Message
+  - Ceres.ContentPipeline.ContentBuildDiagnostic.ScopeId
+  - Ceres.ContentPipeline.ContentBuildDiagnostic.Severity
+  - Ceres.ContentPipeline.ContentBuildDiagnostic.Suggestion
+  langs:
+  - csharp
+  - vb
+  name: ContentBuildDiagnostic
+  nameWithType: ContentBuildDiagnostic
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic
+  type: Class
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public sealed class ContentBuildDiagnostic
+    content.vb: Public NotInheritable Class ContentBuildDiagnostic
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.#ctor(System.String,Ceres.ContentPipeline.ContentDiagnosticSeverity,System.String,System.String,System.String,System.String)
+  commentId: M:Ceres.ContentPipeline.ContentBuildDiagnostic.#ctor(System.String,Ceres.ContentPipeline.ContentDiagnosticSeverity,System.String,System.String,System.String,System.String)
+  id: '#ctor(System.String,Ceres.ContentPipeline.ContentDiagnosticSeverity,System.String,System.String,System.String,System.String)'
+  parent: Ceres.ContentPipeline.ContentBuildDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: ContentBuildDiagnostic(string, ContentDiagnosticSeverity, string, string, string, string)
+  nameWithType: ContentBuildDiagnostic.ContentBuildDiagnostic(string, ContentDiagnosticSeverity, string, string, string, string)
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.ContentBuildDiagnostic(string, Ceres.ContentPipeline.ContentDiagnosticSeverity, string, string, string, string)
+  type: Constructor
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentBuildDiagnostic(string code, ContentDiagnosticSeverity severity, string message, string scopeId = null, string assetId = null, string suggestion = null)
+    parameters:
+    - id: code
+      type: System.String
+    - id: severity
+      type: Ceres.ContentPipeline.ContentDiagnosticSeverity
+    - id: message
+      type: System.String
+    - id: scopeId
+      type: System.String
+    - id: assetId
+      type: System.String
+    - id: suggestion
+      type: System.String
+    content.vb: Public Sub New(code As String, severity As ContentDiagnosticSeverity, message As String, scopeId As String = Nothing, assetId As String = Nothing, suggestion As String = Nothing)
+  overload: Ceres.ContentPipeline.ContentBuildDiagnostic.#ctor*
+  nameWithType.vb: ContentBuildDiagnostic.New(String, ContentDiagnosticSeverity, String, String, String, String)
+  fullName.vb: Ceres.ContentPipeline.ContentBuildDiagnostic.New(String, Ceres.ContentPipeline.ContentDiagnosticSeverity, String, String, String, String)
+  name.vb: New(String, ContentDiagnosticSeverity, String, String, String, String)
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.Code
+  commentId: P:Ceres.ContentPipeline.ContentBuildDiagnostic.Code
+  id: Code
+  parent: Ceres.ContentPipeline.ContentBuildDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: Code
+  nameWithType: ContentBuildDiagnostic.Code
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.Code
+  type: Property
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string Code { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Code As String
+  overload: Ceres.ContentPipeline.ContentBuildDiagnostic.Code*
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.Severity
+  commentId: P:Ceres.ContentPipeline.ContentBuildDiagnostic.Severity
+  id: Severity
+  parent: Ceres.ContentPipeline.ContentBuildDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: Severity
+  nameWithType: ContentBuildDiagnostic.Severity
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.Severity
+  type: Property
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public ContentDiagnosticSeverity Severity { get; }
+    parameters: []
+    return:
+      type: Ceres.ContentPipeline.ContentDiagnosticSeverity
+    content.vb: Public ReadOnly Property Severity As ContentDiagnosticSeverity
+  overload: Ceres.ContentPipeline.ContentBuildDiagnostic.Severity*
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.Message
+  commentId: P:Ceres.ContentPipeline.ContentBuildDiagnostic.Message
+  id: Message
+  parent: Ceres.ContentPipeline.ContentBuildDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: ContentBuildDiagnostic.Message
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.Message
+  type: Property
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string Message { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Message As String
+  overload: Ceres.ContentPipeline.ContentBuildDiagnostic.Message*
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.ScopeId
+  commentId: P:Ceres.ContentPipeline.ContentBuildDiagnostic.ScopeId
+  id: ScopeId
+  parent: Ceres.ContentPipeline.ContentBuildDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: ScopeId
+  nameWithType: ContentBuildDiagnostic.ScopeId
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.ScopeId
+  type: Property
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string ScopeId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ScopeId As String
+  overload: Ceres.ContentPipeline.ContentBuildDiagnostic.ScopeId*
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.AssetId
+  commentId: P:Ceres.ContentPipeline.ContentBuildDiagnostic.AssetId
+  id: AssetId
+  parent: Ceres.ContentPipeline.ContentBuildDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: AssetId
+  nameWithType: ContentBuildDiagnostic.AssetId
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.AssetId
+  type: Property
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string AssetId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property AssetId As String
+  overload: Ceres.ContentPipeline.ContentBuildDiagnostic.AssetId*
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.Suggestion
+  commentId: P:Ceres.ContentPipeline.ContentBuildDiagnostic.Suggestion
+  id: Suggestion
+  parent: Ceres.ContentPipeline.ContentBuildDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: Suggestion
+  nameWithType: ContentBuildDiagnostic.Suggestion
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.Suggestion
+  type: Property
+  assemblies:
+  - Ceres.ContentPipeline.Editor
+  namespace: Ceres.ContentPipeline
+  syntax:
+    content: public string Suggestion { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Suggestion As String
+  overload: Ceres.ContentPipeline.ContentBuildDiagnostic.Suggestion*
+references:
+- uid: Ceres.ContentPipeline
+  commentId: N:Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.ContentPipeline
+  nameWithType: Ceres.ContentPipeline
+  fullName: Ceres.ContentPipeline
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.ContentPipeline
+    name: ContentPipeline
+    isExternal: true
+    href: Ceres.ContentPipeline.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.ContentPipeline
+    name: ContentPipeline
+    isExternal: true
+    href: Ceres.ContentPipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.#ctor*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildDiagnostic.#ctor
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildDiagnostic.html#Ceres_ContentPipeline_ContentBuildDiagnostic__ctor_System_String_Ceres_ContentPipeline_ContentDiagnosticSeverity_System_String_System_String_System_String_System_String_
+  name: ContentBuildDiagnostic
+  nameWithType: ContentBuildDiagnostic.ContentBuildDiagnostic
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.ContentBuildDiagnostic
+  nameWithType.vb: ContentBuildDiagnostic.New
+  fullName.vb: Ceres.ContentPipeline.ContentBuildDiagnostic.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.ContentPipeline.ContentDiagnosticSeverity
+  commentId: T:Ceres.ContentPipeline.ContentDiagnosticSeverity
+  parent: Ceres.ContentPipeline
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentDiagnosticSeverity.html
+  name: ContentDiagnosticSeverity
+  nameWithType: ContentDiagnosticSeverity
+  fullName: Ceres.ContentPipeline.ContentDiagnosticSeverity
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.Code*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildDiagnostic.Code
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildDiagnostic.html#Ceres_ContentPipeline_ContentBuildDiagnostic_Code
+  name: Code
+  nameWithType: ContentBuildDiagnostic.Code
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.Code
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.Severity*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildDiagnostic.Severity
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildDiagnostic.html#Ceres_ContentPipeline_ContentBuildDiagnostic_Severity
+  name: Severity
+  nameWithType: ContentBuildDiagnostic.Severity
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.Severity
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.Message*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildDiagnostic.Message
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildDiagnostic.html#Ceres_ContentPipeline_ContentBuildDiagnostic_Message
+  name: Message
+  nameWithType: ContentBuildDiagnostic.Message
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.Message
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.ScopeId*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildDiagnostic.ScopeId
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildDiagnostic.html#Ceres_ContentPipeline_ContentBuildDiagnostic_ScopeId
+  name: ScopeId
+  nameWithType: ContentBuildDiagnostic.ScopeId
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.ScopeId
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.AssetId*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildDiagnostic.AssetId
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildDiagnostic.html#Ceres_ContentPipeline_ContentBuildDiagnostic_AssetId
+  name: AssetId
+  nameWithType: ContentBuildDiagnostic.AssetId
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.AssetId
+- uid: Ceres.ContentPipeline.ContentBuildDiagnostic.Suggestion*
+  commentId: Overload:Ceres.ContentPipeline.ContentBuildDiagnostic.Suggestion
+  isExternal: true
+  href: Ceres.ContentPipeline.ContentBuildDiagnostic.html#Ceres_ContentPipeline_ContentBuildDiagnostic_Suggestion
+  name: Suggestion
+  nameWithType: ContentBuildDiagnostic.Suggestion
+  fullName: Ceres.ContentPipeline.ContentBuildDiagnostic.Suggestion

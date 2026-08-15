@@ -1,0 +1,569 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.ArrayAdapterPort`2
+  commentId: T:Ceres.Graph.ArrayAdapterPort`2
+  id: ArrayAdapterPort`2
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.ArrayAdapterPort`2.#ctor(Ceres.Graph.IPort{`0[]})
+  - Ceres.Graph.ArrayAdapterPort`2.GetValue
+  - Ceres.Graph.ArrayAdapterPort`2.Value
+  langs:
+  - csharp
+  - vb
+  name: ArrayAdapterPort<TIn, TOut>
+  nameWithType: ArrayAdapterPort<TIn, TOut>
+  fullName: Ceres.Graph.ArrayAdapterPort<TIn, TOut>
+  type: Class
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: 'public class ArrayAdapterPort<TIn, TOut> : IPort<TOut[]>, IPort'
+    typeParameters:
+    - id: TIn
+    - id: TOut
+    content.vb: Public Class ArrayAdapterPort(Of TIn, TOut) Implements IPort(Of TOut()), IPort
+  inheritance:
+  - System.Object
+  implements:
+  - Ceres.Graph.IPort{{TOut}[]}
+  - Ceres.Graph.IPort
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  nameWithType.vb: ArrayAdapterPort(Of TIn, TOut)
+  fullName.vb: Ceres.Graph.ArrayAdapterPort(Of TIn, TOut)
+  name.vb: ArrayAdapterPort(Of TIn, TOut)
+- uid: Ceres.Graph.ArrayAdapterPort`2.#ctor(Ceres.Graph.IPort{`0[]})
+  commentId: M:Ceres.Graph.ArrayAdapterPort`2.#ctor(Ceres.Graph.IPort{`0[]})
+  id: '#ctor(Ceres.Graph.IPort{`0[]})'
+  parent: Ceres.Graph.ArrayAdapterPort`2
+  langs:
+  - csharp
+  - vb
+  name: ArrayAdapterPort(IPort<TIn[]>)
+  nameWithType: ArrayAdapterPort<TIn, TOut>.ArrayAdapterPort(IPort<TIn[]>)
+  fullName: Ceres.Graph.ArrayAdapterPort<TIn, TOut>.ArrayAdapterPort(Ceres.Graph.IPort<TIn[]>)
+  type: Constructor
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: public ArrayAdapterPort(IPort<TIn[]> port)
+    parameters:
+    - id: port
+      type: Ceres.Graph.IPort{{TIn}[]}
+    content.vb: Public Sub New(port As IPort(Of TIn()))
+  overload: Ceres.Graph.ArrayAdapterPort`2.#ctor*
+  nameWithType.vb: ArrayAdapterPort(Of TIn, TOut).New(IPort(Of TIn()))
+  fullName.vb: Ceres.Graph.ArrayAdapterPort(Of TIn, TOut).New(Ceres.Graph.IPort(Of TIn()))
+  name.vb: New(IPort(Of TIn()))
+- uid: Ceres.Graph.ArrayAdapterPort`2.GetValue
+  commentId: M:Ceres.Graph.ArrayAdapterPort`2.GetValue
+  id: GetValue
+  parent: Ceres.Graph.ArrayAdapterPort`2
+  langs:
+  - csharp
+  - vb
+  name: GetValue()
+  nameWithType: ArrayAdapterPort<TIn, TOut>.GetValue()
+  fullName: Ceres.Graph.ArrayAdapterPort<TIn, TOut>.GetValue()
+  type: Method
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  example: []
+  syntax:
+    content: public object GetValue()
+    return:
+      type: System.Object
+    content.vb: Public Function GetValue() As Object
+  overload: Ceres.Graph.ArrayAdapterPort`2.GetValue*
+  implements:
+  - Ceres.Graph.IPort.GetValue
+  nameWithType.vb: ArrayAdapterPort(Of TIn, TOut).GetValue()
+  fullName.vb: Ceres.Graph.ArrayAdapterPort(Of TIn, TOut).GetValue()
+- uid: Ceres.Graph.ArrayAdapterPort`2.Value
+  commentId: P:Ceres.Graph.ArrayAdapterPort`2.Value
+  id: Value
+  parent: Ceres.Graph.ArrayAdapterPort`2
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: ArrayAdapterPort<TIn, TOut>.Value
+  fullName: Ceres.Graph.ArrayAdapterPort<TIn, TOut>.Value
+  type: Property
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  example: []
+  syntax:
+    content: public TOut[] Value { get; }
+    parameters: []
+    return:
+      type: '{TOut}[]'
+    content.vb: Public ReadOnly Property Value As TOut()
+  overload: Ceres.Graph.ArrayAdapterPort`2.Value*
+  implements:
+  - Ceres.Graph.IPort{{TOut}[]}.Value
+  nameWithType.vb: ArrayAdapterPort(Of TIn, TOut).Value
+  fullName.vb: Ceres.Graph.ArrayAdapterPort(Of TIn, TOut).Value
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Graph.IPort{{TOut}[]}
+  commentId: T:Ceres.Graph.IPort{`1[]}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.IPort`1
+  href: Ceres.Graph.IPort-1.html
+  name: IPort<TOut[]>
+  nameWithType: IPort<TOut[]>
+  fullName: Ceres.Graph.IPort<TOut[]>
+  nameWithType.vb: IPort(Of TOut())
+  fullName.vb: Ceres.Graph.IPort(Of TOut())
+  name.vb: IPort(Of TOut())
+  spec.csharp:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: <
+  - name: TOut
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TOut
+  - name: (
+  - name: )
+  - name: )
+- uid: Ceres.Graph.IPort
+  commentId: T:Ceres.Graph.IPort
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.IPort.html
+  name: IPort
+  nameWithType: IPort
+  fullName: Ceres.Graph.IPort
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Graph.IPort`1
+  commentId: T:Ceres.Graph.IPort`1
+  isExternal: true
+  href: Ceres.Graph.IPort-1.html
+  name: IPort<TValue>
+  nameWithType: IPort<TValue>
+  fullName: Ceres.Graph.IPort<TValue>
+  nameWithType.vb: IPort(Of TValue)
+  fullName.vb: Ceres.Graph.IPort(Of TValue)
+  name.vb: IPort(Of TValue)
+  spec.csharp:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Ceres.Graph.ArrayAdapterPort`2.#ctor*
+  commentId: Overload:Ceres.Graph.ArrayAdapterPort`2.#ctor
+  isExternal: true
+  href: Ceres.Graph.ArrayAdapterPort-2.html#Ceres_Graph_ArrayAdapterPort_2__ctor_Ceres_Graph_IPort__0____
+  name: ArrayAdapterPort
+  nameWithType: ArrayAdapterPort<TIn, TOut>.ArrayAdapterPort
+  fullName: Ceres.Graph.ArrayAdapterPort<TIn, TOut>.ArrayAdapterPort
+  nameWithType.vb: ArrayAdapterPort(Of TIn, TOut).New
+  fullName.vb: Ceres.Graph.ArrayAdapterPort(Of TIn, TOut).New
+  name.vb: New
+- uid: Ceres.Graph.IPort{{TIn}[]}
+  commentId: T:Ceres.Graph.IPort{`0[]}
+  parent: Ceres.Graph
+  definition: Ceres.Graph.IPort`1
+  href: Ceres.Graph.IPort-1.html
+  name: IPort<TIn[]>
+  nameWithType: IPort<TIn[]>
+  fullName: Ceres.Graph.IPort<TIn[]>
+  nameWithType.vb: IPort(Of TIn())
+  fullName.vb: Ceres.Graph.IPort(Of TIn())
+  name.vb: IPort(Of TIn())
+  spec.csharp:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: <
+  - name: TIn
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Graph.IPort`1
+    name: IPort
+    isExternal: true
+    href: Ceres.Graph.IPort-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIn
+  - name: (
+  - name: )
+  - name: )
+- uid: Ceres.Graph.ArrayAdapterPort`2.GetValue*
+  commentId: Overload:Ceres.Graph.ArrayAdapterPort`2.GetValue
+  isExternal: true
+  href: Ceres.Graph.ArrayAdapterPort-2.html#Ceres_Graph_ArrayAdapterPort_2_GetValue
+  name: GetValue
+  nameWithType: ArrayAdapterPort<TIn, TOut>.GetValue
+  fullName: Ceres.Graph.ArrayAdapterPort<TIn, TOut>.GetValue
+  nameWithType.vb: ArrayAdapterPort(Of TIn, TOut).GetValue
+  fullName.vb: Ceres.Graph.ArrayAdapterPort(Of TIn, TOut).GetValue
+- uid: Ceres.Graph.IPort.GetValue
+  commentId: M:Ceres.Graph.IPort.GetValue
+  parent: Ceres.Graph.IPort
+  isExternal: true
+  href: Ceres.Graph.IPort.html#Ceres_Graph_IPort_GetValue
+  name: GetValue()
+  nameWithType: IPort.GetValue()
+  fullName: Ceres.Graph.IPort.GetValue()
+  spec.csharp:
+  - uid: Ceres.Graph.IPort.GetValue
+    name: GetValue
+    isExternal: true
+    href: Ceres.Graph.IPort.html#Ceres_Graph_IPort_GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.IPort.GetValue
+    name: GetValue
+    isExternal: true
+    href: Ceres.Graph.IPort.html#Ceres_Graph_IPort_GetValue
+  - name: (
+  - name: )
+- uid: Ceres.Graph.ArrayAdapterPort`2.Value*
+  commentId: Overload:Ceres.Graph.ArrayAdapterPort`2.Value
+  isExternal: true
+  href: Ceres.Graph.ArrayAdapterPort-2.html#Ceres_Graph_ArrayAdapterPort_2_Value
+  name: Value
+  nameWithType: ArrayAdapterPort<TIn, TOut>.Value
+  fullName: Ceres.Graph.ArrayAdapterPort<TIn, TOut>.Value
+  nameWithType.vb: ArrayAdapterPort(Of TIn, TOut).Value
+  fullName.vb: Ceres.Graph.ArrayAdapterPort(Of TIn, TOut).Value
+- uid: Ceres.Graph.IPort{{TOut}[]}.Value
+  commentId: P:Ceres.Graph.IPort{`1[]}.Value
+  parent: Ceres.Graph.IPort{{TOut}[]}
+  definition: Ceres.Graph.IPort`1.Value
+  href: Ceres.Graph.IPort-1.html#Ceres_Graph_IPort_1_Value
+  name: Value
+  nameWithType: IPort<TOut[]>.Value
+  fullName: Ceres.Graph.IPort<TOut[]>.Value
+  nameWithType.vb: IPort(Of TOut()).Value
+  fullName.vb: Ceres.Graph.IPort(Of TOut()).Value
+- uid: '{TOut}[]'
+  isExternal: true
+  name: TOut[]
+  nameWithType: TOut[]
+  fullName: TOut[]
+  nameWithType.vb: TOut()
+  fullName.vb: TOut()
+  name.vb: TOut()
+  spec.csharp:
+  - name: TOut
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: TOut
+  - name: (
+  - name: )
+- uid: Ceres.Graph.IPort`1.Value
+  commentId: P:Ceres.Graph.IPort`1.Value
+  isExternal: true
+  href: Ceres.Graph.IPort-1.html#Ceres_Graph_IPort_1_Value
+  name: Value
+  nameWithType: IPort<TValue>.Value
+  fullName: Ceres.Graph.IPort<TValue>.Value
+  nameWithType.vb: IPort(Of TValue).Value
+  fullName.vb: Ceres.Graph.IPort(Of TValue).Value

@@ -1,0 +1,311 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Pool.GameObjectPoolManager
+  commentId: T:Ceres.Pool.GameObjectPoolManager
+  id: GameObjectPoolManager
+  parent: Ceres.Pool
+  children:
+  - Ceres.Pool.GameObjectPoolManager.#ctor
+  - Ceres.Pool.GameObjectPoolManager.Get(Ceres.Pool.PoolKey,Ceres.Pool.IPooledMetadata@,UnityEngine.Transform,System.Boolean)
+  - Ceres.Pool.GameObjectPoolManager.IsInstantiated
+  - Ceres.Pool.GameObjectPoolManager.Release(UnityEngine.GameObject,Ceres.Pool.PoolKey,Ceres.Pool.IPooledMetadata)
+  - Ceres.Pool.GameObjectPoolManager.ReleaseAll
+  - Ceres.Pool.GameObjectPoolManager.ReleasePool(Ceres.Pool.PoolKey)
+  langs:
+  - csharp
+  - vb
+  name: GameObjectPoolManager
+  nameWithType: GameObjectPoolManager
+  fullName: Ceres.Pool.GameObjectPoolManager
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: 'public sealed class GameObjectPoolManager : MonoBehaviour'
+    content.vb: Public NotInheritable Class GameObjectPoolManager Inherits MonoBehaviour
+  inheritance:
+  - System.Object
+- uid: Ceres.Pool.GameObjectPoolManager.Get(Ceres.Pool.PoolKey,Ceres.Pool.IPooledMetadata@,UnityEngine.Transform,System.Boolean)
+  commentId: M:Ceres.Pool.GameObjectPoolManager.Get(Ceres.Pool.PoolKey,Ceres.Pool.IPooledMetadata@,UnityEngine.Transform,System.Boolean)
+  id: Get(Ceres.Pool.PoolKey,Ceres.Pool.IPooledMetadata@,UnityEngine.Transform,System.Boolean)
+  parent: Ceres.Pool.GameObjectPoolManager
+  langs:
+  - csharp
+  - vb
+  name: Get(PoolKey, out IPooledMetadata, Transform, bool)
+  nameWithType: GameObjectPoolManager.Get(PoolKey, out IPooledMetadata, Transform, bool)
+  fullName: Ceres.Pool.GameObjectPoolManager.Get(Ceres.Pool.PoolKey, out Ceres.Pool.IPooledMetadata, UnityEngine.Transform, bool)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  summary: Get pooled gameObject
+  example: []
+  syntax:
+    content: public static GameObject Get(PoolKey address, out IPooledMetadata pooledMetadata, Transform parent = null, bool createEmptyIfNotExist = true)
+    parameters:
+    - id: address
+      type: Ceres.Pool.PoolKey
+      description: ''
+    - id: pooledMetadata
+      type: Ceres.Pool.IPooledMetadata
+      description: ''
+    - id: parent
+      type: UnityEngine.Transform
+      description: ''
+    - id: createEmptyIfNotExist
+      type: System.Boolean
+      description: ''
+    return:
+      type: UnityEngine.GameObject
+      description: ''
+    content.vb: Public Shared Function [Get](address As PoolKey, pooledMetadata As IPooledMetadata, parent As Transform = Nothing, createEmptyIfNotExist As Boolean = True) As GameObject
+  overload: Ceres.Pool.GameObjectPoolManager.Get*
+  nameWithType.vb: GameObjectPoolManager.Get(PoolKey, IPooledMetadata, Transform, Boolean)
+  fullName.vb: Ceres.Pool.GameObjectPoolManager.Get(Ceres.Pool.PoolKey, Ceres.Pool.IPooledMetadata, UnityEngine.Transform, Boolean)
+  name.vb: Get(PoolKey, IPooledMetadata, Transform, Boolean)
+- uid: Ceres.Pool.GameObjectPoolManager.Release(UnityEngine.GameObject,Ceres.Pool.PoolKey,Ceres.Pool.IPooledMetadata)
+  commentId: M:Ceres.Pool.GameObjectPoolManager.Release(UnityEngine.GameObject,Ceres.Pool.PoolKey,Ceres.Pool.IPooledMetadata)
+  id: Release(UnityEngine.GameObject,Ceres.Pool.PoolKey,Ceres.Pool.IPooledMetadata)
+  parent: Ceres.Pool.GameObjectPoolManager
+  langs:
+  - csharp
+  - vb
+  name: Release(GameObject, PoolKey, IPooledMetadata)
+  nameWithType: GameObjectPoolManager.Release(GameObject, PoolKey, IPooledMetadata)
+  fullName: Ceres.Pool.GameObjectPoolManager.Release(UnityEngine.GameObject, Ceres.Pool.PoolKey, Ceres.Pool.IPooledMetadata)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  summary: Release gameObject to pool
+  example: []
+  syntax:
+    content: public static void Release(GameObject obj, PoolKey address = default, IPooledMetadata pooledMetadata = null)
+    parameters:
+    - id: obj
+      type: UnityEngine.GameObject
+      description: ''
+    - id: address
+      type: Ceres.Pool.PoolKey
+      description: ''
+    - id: pooledMetadata
+      type: Ceres.Pool.IPooledMetadata
+      description: ''
+    content.vb: Public Shared Sub Release(obj As GameObject, address As PoolKey = Nothing, pooledMetadata As IPooledMetadata = Nothing)
+  overload: Ceres.Pool.GameObjectPoolManager.Release*
+- uid: Ceres.Pool.GameObjectPoolManager.ReleasePool(Ceres.Pool.PoolKey)
+  commentId: M:Ceres.Pool.GameObjectPoolManager.ReleasePool(Ceres.Pool.PoolKey)
+  id: ReleasePool(Ceres.Pool.PoolKey)
+  parent: Ceres.Pool.GameObjectPoolManager
+  langs:
+  - csharp
+  - vb
+  name: ReleasePool(PoolKey)
+  nameWithType: GameObjectPoolManager.ReleasePool(PoolKey)
+  fullName: Ceres.Pool.GameObjectPoolManager.ReleasePool(Ceres.Pool.PoolKey)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  summary: Release addressable gameObject pool
+  example: []
+  syntax:
+    content: public static void ReleasePool(PoolKey address)
+    parameters:
+    - id: address
+      type: Ceres.Pool.PoolKey
+      description: ''
+    content.vb: Public Shared Sub ReleasePool(address As PoolKey)
+  overload: Ceres.Pool.GameObjectPoolManager.ReleasePool*
+- uid: Ceres.Pool.GameObjectPoolManager.ReleaseAll
+  commentId: M:Ceres.Pool.GameObjectPoolManager.ReleaseAll
+  id: ReleaseAll
+  parent: Ceres.Pool.GameObjectPoolManager
+  langs:
+  - csharp
+  - vb
+  name: ReleaseAll()
+  nameWithType: GameObjectPoolManager.ReleaseAll()
+  fullName: Ceres.Pool.GameObjectPoolManager.ReleaseAll()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  summary: Release all pooled gameObjects
+  example: []
+  syntax:
+    content: public static void ReleaseAll()
+    content.vb: Public Shared Sub ReleaseAll()
+  overload: Ceres.Pool.GameObjectPoolManager.ReleaseAll*
+- uid: Ceres.Pool.GameObjectPoolManager.#ctor
+  commentId: M:Ceres.Pool.GameObjectPoolManager.#ctor
+  id: '#ctor'
+  parent: Ceres.Pool.GameObjectPoolManager
+  langs:
+  - csharp
+  - vb
+  name: GameObjectPoolManager()
+  nameWithType: GameObjectPoolManager.GameObjectPoolManager()
+  fullName: Ceres.Pool.GameObjectPoolManager.GameObjectPoolManager()
+  type: Constructor
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: public GameObjectPoolManager()
+    content.vb: Public Sub New()
+  overload: Ceres.Pool.GameObjectPoolManager.#ctor*
+  nameWithType.vb: GameObjectPoolManager.New()
+  fullName.vb: Ceres.Pool.GameObjectPoolManager.New()
+  name.vb: New()
+- uid: Ceres.Pool.GameObjectPoolManager.IsInstantiated
+  commentId: P:Ceres.Pool.GameObjectPoolManager.IsInstantiated
+  id: IsInstantiated
+  parent: Ceres.Pool.GameObjectPoolManager
+  langs:
+  - csharp
+  - vb
+  name: IsInstantiated
+  nameWithType: GameObjectPoolManager.IsInstantiated
+  fullName: Ceres.Pool.GameObjectPoolManager.IsInstantiated
+  type: Property
+  assemblies:
+  - Ceres
+  namespace: Ceres.Pool
+  syntax:
+    content: public static bool IsInstantiated { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property IsInstantiated As Boolean
+  overload: Ceres.Pool.GameObjectPoolManager.IsInstantiated*
+references:
+- uid: Ceres.Pool
+  commentId: N:Ceres.Pool
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Pool
+  nameWithType: Ceres.Pool
+  fullName: Ceres.Pool
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Pool
+    name: Pool
+    isExternal: true
+    href: Ceres.Pool.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Pool
+    name: Pool
+    isExternal: true
+    href: Ceres.Pool.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Pool.GameObjectPoolManager.Get*
+  commentId: Overload:Ceres.Pool.GameObjectPoolManager.Get
+  isExternal: true
+  href: Ceres.Pool.GameObjectPoolManager.html#Ceres_Pool_GameObjectPoolManager_Get_Ceres_Pool_PoolKey_Ceres_Pool_IPooledMetadata__UnityEngine_Transform_System_Boolean_
+  name: Get
+  nameWithType: GameObjectPoolManager.Get
+  fullName: Ceres.Pool.GameObjectPoolManager.Get
+- uid: Ceres.Pool.PoolKey
+  commentId: T:Ceres.Pool.PoolKey
+  parent: Ceres.Pool
+  isExternal: true
+  href: Ceres.Pool.PoolKey.html
+  name: PoolKey
+  nameWithType: PoolKey
+  fullName: Ceres.Pool.PoolKey
+- uid: Ceres.Pool.IPooledMetadata
+  commentId: T:Ceres.Pool.IPooledMetadata
+  parent: Ceres.Pool
+  isExternal: true
+  href: Ceres.Pool.IPooledMetadata.html
+  name: IPooledMetadata
+  nameWithType: IPooledMetadata
+  fullName: Ceres.Pool.IPooledMetadata
+- uid: UnityEngine.Transform
+  isExternal: true
+  name: Transform
+  nameWithType: Transform
+  fullName: UnityEngine.Transform
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: UnityEngine.GameObject
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: Ceres.Pool.GameObjectPoolManager.Release*
+  commentId: Overload:Ceres.Pool.GameObjectPoolManager.Release
+  isExternal: true
+  href: Ceres.Pool.GameObjectPoolManager.html#Ceres_Pool_GameObjectPoolManager_Release_UnityEngine_GameObject_Ceres_Pool_PoolKey_Ceres_Pool_IPooledMetadata_
+  name: Release
+  nameWithType: GameObjectPoolManager.Release
+  fullName: Ceres.Pool.GameObjectPoolManager.Release
+- uid: Ceres.Pool.GameObjectPoolManager.ReleasePool*
+  commentId: Overload:Ceres.Pool.GameObjectPoolManager.ReleasePool
+  isExternal: true
+  href: Ceres.Pool.GameObjectPoolManager.html#Ceres_Pool_GameObjectPoolManager_ReleasePool_Ceres_Pool_PoolKey_
+  name: ReleasePool
+  nameWithType: GameObjectPoolManager.ReleasePool
+  fullName: Ceres.Pool.GameObjectPoolManager.ReleasePool
+- uid: Ceres.Pool.GameObjectPoolManager.ReleaseAll*
+  commentId: Overload:Ceres.Pool.GameObjectPoolManager.ReleaseAll
+  isExternal: true
+  href: Ceres.Pool.GameObjectPoolManager.html#Ceres_Pool_GameObjectPoolManager_ReleaseAll
+  name: ReleaseAll
+  nameWithType: GameObjectPoolManager.ReleaseAll
+  fullName: Ceres.Pool.GameObjectPoolManager.ReleaseAll
+- uid: Ceres.Pool.GameObjectPoolManager.#ctor*
+  commentId: Overload:Ceres.Pool.GameObjectPoolManager.#ctor
+  isExternal: true
+  href: Ceres.Pool.GameObjectPoolManager.html#Ceres_Pool_GameObjectPoolManager__ctor
+  name: GameObjectPoolManager
+  nameWithType: GameObjectPoolManager.GameObjectPoolManager
+  fullName: Ceres.Pool.GameObjectPoolManager.GameObjectPoolManager
+  nameWithType.vb: GameObjectPoolManager.New
+  fullName.vb: Ceres.Pool.GameObjectPoolManager.New
+  name.vb: New
+- uid: Ceres.Pool.GameObjectPoolManager.IsInstantiated*
+  commentId: Overload:Ceres.Pool.GameObjectPoolManager.IsInstantiated
+  isExternal: true
+  href: Ceres.Pool.GameObjectPoolManager.html#Ceres_Pool_GameObjectPoolManager_IsInstantiated
+  name: IsInstantiated
+  nameWithType: GameObjectPoolManager.IsInstantiated
+  fullName: Ceres.Pool.GameObjectPoolManager.IsInstantiated

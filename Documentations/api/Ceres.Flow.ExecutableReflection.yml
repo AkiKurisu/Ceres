@@ -1,0 +1,482 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.ExecutableReflection
+  commentId: T:Ceres.Flow.ExecutableReflection
+  id: ExecutableReflection
+  parent: Ceres.Flow
+  children:
+  - Ceres.Flow.ExecutableReflection.#ctor
+  - Ceres.Flow.ExecutableReflection.GetFunction(System.Reflection.MethodInfo)
+  - Ceres.Flow.ExecutableReflection.GetFunction_Imp(System.Reflection.MethodInfo)
+  - Ceres.Flow.ExecutableReflection.RegisterReflection``1(Ceres.Flow.ExecutableReflection)
+  langs:
+  - csharp
+  - vb
+  name: ExecutableReflection
+  nameWithType: ExecutableReflection
+  fullName: Ceres.Flow.ExecutableReflection
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Runtime reflection helper for executable functions
+  example: []
+  syntax:
+    content: public abstract class ExecutableReflection
+    content.vb: Public MustInherit Class ExecutableReflection
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Ceres.Flow.ExecutableReflection`1
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Flow.ExecutableReflection.GetFunction(System.Reflection.MethodInfo)
+  commentId: M:Ceres.Flow.ExecutableReflection.GetFunction(System.Reflection.MethodInfo)
+  id: GetFunction(System.Reflection.MethodInfo)
+  parent: Ceres.Flow.ExecutableReflection
+  langs:
+  - csharp
+  - vb
+  name: GetFunction(MethodInfo)
+  nameWithType: ExecutableReflection.GetFunction(MethodInfo)
+  fullName: Ceres.Flow.ExecutableReflection.GetFunction(System.Reflection.MethodInfo)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  summary: Get <xref href="Ceres.Flow.ExecutableFunction" data-throw-if-not-resolved="false"></xref> from <xref href="System.Reflection.MethodInfo" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public static ExecutableFunction GetFunction(MethodInfo methodInfo)
+    parameters:
+    - id: methodInfo
+      type: System.Reflection.MethodInfo
+      description: ''
+    return:
+      type: Ceres.Flow.ExecutableFunction
+      description: ''
+    content.vb: Public Shared Function GetFunction(methodInfo As MethodInfo) As ExecutableFunction
+  overload: Ceres.Flow.ExecutableReflection.GetFunction*
+- uid: Ceres.Flow.ExecutableReflection.GetFunction_Imp(System.Reflection.MethodInfo)
+  commentId: M:Ceres.Flow.ExecutableReflection.GetFunction_Imp(System.Reflection.MethodInfo)
+  id: GetFunction_Imp(System.Reflection.MethodInfo)
+  parent: Ceres.Flow.ExecutableReflection
+  langs:
+  - csharp
+  - vb
+  name: GetFunction_Imp(MethodInfo)
+  nameWithType: ExecutableReflection.GetFunction_Imp(MethodInfo)
+  fullName: Ceres.Flow.ExecutableReflection.GetFunction_Imp(System.Reflection.MethodInfo)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: protected abstract ExecutableFunction GetFunction_Imp(MethodInfo methodInfo)
+    parameters:
+    - id: methodInfo
+      type: System.Reflection.MethodInfo
+    return:
+      type: Ceres.Flow.ExecutableFunction
+    content.vb: Protected MustOverride Function GetFunction_Imp(methodInfo As MethodInfo) As ExecutableFunction
+  overload: Ceres.Flow.ExecutableReflection.GetFunction_Imp*
+- uid: Ceres.Flow.ExecutableReflection.RegisterReflection``1(Ceres.Flow.ExecutableReflection)
+  commentId: M:Ceres.Flow.ExecutableReflection.RegisterReflection``1(Ceres.Flow.ExecutableReflection)
+  id: RegisterReflection``1(Ceres.Flow.ExecutableReflection)
+  parent: Ceres.Flow.ExecutableReflection
+  langs:
+  - csharp
+  - vb
+  name: RegisterReflection<T>(ExecutableReflection)
+  nameWithType: ExecutableReflection.RegisterReflection<T>(ExecutableReflection)
+  fullName: Ceres.Flow.ExecutableReflection.RegisterReflection<T>(Ceres.Flow.ExecutableReflection)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: protected static void RegisterReflection<T>(ExecutableReflection instance)
+    parameters:
+    - id: instance
+      type: Ceres.Flow.ExecutableReflection
+    typeParameters:
+    - id: T
+    content.vb: Protected Shared Sub RegisterReflection(Of T)(instance As ExecutableReflection)
+  overload: Ceres.Flow.ExecutableReflection.RegisterReflection*
+  nameWithType.vb: ExecutableReflection.RegisterReflection(Of T)(ExecutableReflection)
+  fullName.vb: Ceres.Flow.ExecutableReflection.RegisterReflection(Of T)(Ceres.Flow.ExecutableReflection)
+  name.vb: RegisterReflection(Of T)(ExecutableReflection)
+- uid: Ceres.Flow.ExecutableReflection.#ctor
+  commentId: M:Ceres.Flow.ExecutableReflection.#ctor
+  id: '#ctor'
+  parent: Ceres.Flow.ExecutableReflection
+  langs:
+  - csharp
+  - vb
+  name: ExecutableReflection()
+  nameWithType: ExecutableReflection.ExecutableReflection()
+  fullName: Ceres.Flow.ExecutableReflection.ExecutableReflection()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow
+  syntax:
+    content: protected ExecutableReflection()
+    content.vb: Protected Sub New()
+  overload: Ceres.Flow.ExecutableReflection.#ctor*
+  nameWithType.vb: ExecutableReflection.New()
+  fullName.vb: Ceres.Flow.ExecutableReflection.New()
+  name.vb: New()
+references:
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Flow.ExecutableFunction
+  commentId: T:Ceres.Flow.ExecutableFunction
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.ExecutableFunction.html
+  name: ExecutableFunction
+  nameWithType: ExecutableFunction
+  fullName: Ceres.Flow.ExecutableFunction
+- uid: System.Reflection.MethodInfo
+  commentId: T:System.Reflection.MethodInfo
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  name: MethodInfo
+  nameWithType: MethodInfo
+  fullName: System.Reflection.MethodInfo
+- uid: Ceres.Flow.ExecutableReflection.GetFunction*
+  commentId: Overload:Ceres.Flow.ExecutableReflection.GetFunction
+  isExternal: true
+  href: Ceres.Flow.ExecutableReflection.html#Ceres_Flow_ExecutableReflection_GetFunction_System_Reflection_MethodInfo_
+  name: GetFunction
+  nameWithType: ExecutableReflection.GetFunction
+  fullName: Ceres.Flow.ExecutableReflection.GetFunction
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: Ceres.Flow.ExecutableReflection.GetFunction_Imp*
+  commentId: Overload:Ceres.Flow.ExecutableReflection.GetFunction_Imp
+  isExternal: true
+  href: Ceres.Flow.ExecutableReflection.html#Ceres_Flow_ExecutableReflection_GetFunction_Imp_System_Reflection_MethodInfo_
+  name: GetFunction_Imp
+  nameWithType: ExecutableReflection.GetFunction_Imp
+  fullName: Ceres.Flow.ExecutableReflection.GetFunction_Imp
+- uid: Ceres.Flow.ExecutableReflection.RegisterReflection*
+  commentId: Overload:Ceres.Flow.ExecutableReflection.RegisterReflection
+  isExternal: true
+  href: Ceres.Flow.ExecutableReflection.html#Ceres_Flow_ExecutableReflection_RegisterReflection__1_Ceres_Flow_ExecutableReflection_
+  name: RegisterReflection
+  nameWithType: ExecutableReflection.RegisterReflection
+  fullName: Ceres.Flow.ExecutableReflection.RegisterReflection
+- uid: Ceres.Flow.ExecutableReflection
+  commentId: T:Ceres.Flow.ExecutableReflection
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.ExecutableReflection.html
+  name: ExecutableReflection
+  nameWithType: ExecutableReflection
+  fullName: Ceres.Flow.ExecutableReflection
+- uid: Ceres.Flow.ExecutableReflection.#ctor*
+  commentId: Overload:Ceres.Flow.ExecutableReflection.#ctor
+  isExternal: true
+  href: Ceres.Flow.ExecutableReflection.html#Ceres_Flow_ExecutableReflection__ctor
+  name: ExecutableReflection
+  nameWithType: ExecutableReflection.ExecutableReflection
+  fullName: Ceres.Flow.ExecutableReflection.ExecutableReflection
+  nameWithType.vb: ExecutableReflection.New
+  fullName.vb: Ceres.Flow.ExecutableReflection.New
+  name.vb: New

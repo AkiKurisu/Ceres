@@ -1,0 +1,746 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  commentId: T:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  id: AnimationProxy.AnimationSequenceBuilder
+  parent: Ceres.Gameplay.Animations
+  children:
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip,System.Single)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip,System.Single,System.Single)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.RuntimeAnimatorController,System.Single,System.Single)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.AppendCallBack(Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build(Ceres.Tasks.SequenceTask)
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Dispose
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.IsValid
+  - Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: AnimationProxy.AnimationSequenceBuilder
+  nameWithType: AnimationProxy.AnimationSequenceBuilder
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  type: Struct
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Builder for creating dynamic animation sequence.
+  example: []
+  syntax:
+    content: 'public struct AnimationProxy.AnimationSequenceBuilder : IDisposable'
+    content.vb: Public Structure AnimationProxy.AnimationSequenceBuilder Implements IDisposable
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip,System.Single)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip,System.Single)
+  id: Append(UnityEngine.AnimationClip,System.Single)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: Append(AnimationClip, float)
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Append(AnimationClip, float)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip, float)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Append an animation clip
+  example: []
+  syntax:
+    content: public readonly AnimationProxy.AnimationSequenceBuilder Append(AnimationClip animationClip, float blendInDuration)
+    parameters:
+    - id: animationClip
+      type: UnityEngine.AnimationClip
+      description: Clip to play
+    - id: blendInDuration
+      type: System.Single
+      description: FadeIn time
+    return:
+      type: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+      description: ''
+    content.vb: Public Function Append(animationClip As AnimationClip, blendInDuration As Single) As AnimationProxy.AnimationSequenceBuilder
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append*
+  nameWithType.vb: AnimationProxy.AnimationSequenceBuilder.Append(AnimationClip, Single)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip, Single)
+  name.vb: Append(AnimationClip, Single)
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip,System.Single,System.Single)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip,System.Single,System.Single)
+  id: Append(UnityEngine.AnimationClip,System.Single,System.Single)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: Append(AnimationClip, float, float)
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Append(AnimationClip, float, float)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip, float, float)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Append an animation clip
+  example: []
+  syntax:
+    content: public readonly AnimationProxy.AnimationSequenceBuilder Append(AnimationClip animationClip, float duration, float blendInDuration)
+    parameters:
+    - id: animationClip
+      type: UnityEngine.AnimationClip
+      description: Clip to play
+    - id: duration
+      type: System.Single
+      description: Duration can be infinity as loop
+    - id: blendInDuration
+      type: System.Single
+      description: FadeIn time
+    return:
+      type: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+      description: ''
+    content.vb: Public Function Append(animationClip As AnimationClip, duration As Single, blendInDuration As Single) As AnimationProxy.AnimationSequenceBuilder
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append*
+  nameWithType.vb: AnimationProxy.AnimationSequenceBuilder.Append(AnimationClip, Single, Single)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.AnimationClip, Single, Single)
+  name.vb: Append(AnimationClip, Single, Single)
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.RuntimeAnimatorController,System.Single,System.Single)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.RuntimeAnimatorController,System.Single,System.Single)
+  id: Append(UnityEngine.RuntimeAnimatorController,System.Single,System.Single)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: Append(RuntimeAnimatorController, float, float)
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Append(RuntimeAnimatorController, float, float)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.RuntimeAnimatorController, float, float)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Append an animator controller
+  example: []
+  syntax:
+    content: public readonly AnimationProxy.AnimationSequenceBuilder Append(RuntimeAnimatorController animatorController, float duration, float blendInDuration)
+    parameters:
+    - id: animatorController
+      type: UnityEngine.RuntimeAnimatorController
+      description: ''
+    - id: duration
+      type: System.Single
+      description: Duration can be infinity as loop
+    - id: blendInDuration
+      type: System.Single
+      description: FadeIn time
+    return:
+      type: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+      description: ''
+    content.vb: Public Function Append(animatorController As RuntimeAnimatorController, duration As Single, blendInDuration As Single) As AnimationProxy.AnimationSequenceBuilder
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append*
+  nameWithType.vb: AnimationProxy.AnimationSequenceBuilder.Append(RuntimeAnimatorController, Single, Single)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append(UnityEngine.RuntimeAnimatorController, Single, Single)
+  name.vb: Append(RuntimeAnimatorController, Single, Single)
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.AppendCallBack(Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.AppendCallBack(Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate)
+  id: AppendCallBack(Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: AppendCallBack(AnimationProxyDelegate)
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.AppendCallBack(AnimationProxy.AnimationProxyDelegate)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.AppendCallBack(Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Append a proxy call back after current last action in the sequence
+  example: []
+  syntax:
+    content: public readonly AnimationProxy.AnimationSequenceBuilder AppendCallBack(AnimationProxy.AnimationProxyDelegate callBack)
+    parameters:
+    - id: callBack
+      type: Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate
+      description: ''
+    return:
+      type: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+      description: ''
+    content.vb: Public Function AppendCallBack(callBack As AnimationProxy.AnimationProxyDelegate) As AnimationProxy.AnimationSequenceBuilder
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.AppendCallBack*
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut(System.Single)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut(System.Single)
+  id: SetBlendOut(System.Single)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: SetBlendOut(float)
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.SetBlendOut(float)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut(float)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Set animation sequence blend out time, default is 0
+  example: []
+  syntax:
+    content: public AnimationProxy.AnimationSequenceBuilder SetBlendOut(float inBlendOutTime)
+    parameters:
+    - id: inBlendOutTime
+      type: System.Single
+      description: ''
+    return:
+      type: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+      description: ''
+    content.vb: Public Function SetBlendOut(inBlendOutTime As Single) As AnimationProxy.AnimationSequenceBuilder
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut*
+  nameWithType.vb: AnimationProxy.AnimationSequenceBuilder.SetBlendOut(Single)
+  fullName.vb: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut(Single)
+  name.vb: SetBlendOut(Single)
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build
+  id: Build
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build()
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Build()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Build an animation sequence
+  example: []
+  syntax:
+    content: public SequenceTask Build()
+    return:
+      type: Ceres.Tasks.SequenceTask
+    content.vb: Public Function Build() As SequenceTask
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build*
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build(Ceres.Tasks.SequenceTask)
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build(Ceres.Tasks.SequenceTask)
+  id: Build(Ceres.Tasks.SequenceTask)
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build(SequenceTask)
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Build(SequenceTask)
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build(Ceres.Tasks.SequenceTask)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Append animation sequence after an existed sequence
+  example: []
+  syntax:
+    content: public SequenceTask Build(SequenceTask sequenceTask)
+    parameters:
+    - id: sequenceTask
+      type: Ceres.Tasks.SequenceTask
+      description: ''
+    return:
+      type: Ceres.Tasks.SequenceTask
+    content.vb: Public Function Build(sequenceTask As SequenceTask) As SequenceTask
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build*
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.IsValid
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.IsValid
+  id: IsValid
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: IsValid()
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.IsValid()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.IsValid()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Whether builder is valid
+  example: []
+  syntax:
+    content: public readonly bool IsValid()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function IsValid() As Boolean
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.IsValid*
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Dispose
+  commentId: M:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Dispose
+  id: Dispose
+  parent: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Dispose()
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Dispose()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Animations
+  summary: Dispose internal playable graph
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Ceres.Gameplay.Animations
+  commentId: N:Ceres.Gameplay.Animations
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Animations
+  nameWithType: Ceres.Gameplay.Animations
+  fullName: Ceres.Gameplay.Animations
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations
+    name: Animations
+    isExternal: true
+    href: Ceres.Gameplay.Animations.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations
+    name: Animations
+    isExternal: true
+    href: Ceres.Gameplay.Animations.html
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationSequenceBuilder_Append_UnityEngine_AnimationClip_System_Single_
+  name: Append
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Append
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Append
+- uid: UnityEngine.AnimationClip
+  isExternal: true
+  name: AnimationClip
+  nameWithType: AnimationClip
+  fullName: UnityEngine.AnimationClip
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  commentId: T:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  parent: Ceres.Gameplay.Animations
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.html
+  name: AnimationProxy.AnimationSequenceBuilder
+  nameWithType: AnimationProxy.AnimationSequenceBuilder
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy
+    name: AnimationProxy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+    name: AnimationSequenceBuilder
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.html
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy
+    name: AnimationProxy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder
+    name: AnimationSequenceBuilder
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.html
+- uid: UnityEngine.RuntimeAnimatorController
+  commentId: T:UnityEngine.RuntimeAnimatorController
+  isExternal: true
+  name: RuntimeAnimatorController
+  nameWithType: RuntimeAnimatorController
+  fullName: UnityEngine.RuntimeAnimatorController
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.AppendCallBack*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.AppendCallBack
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationSequenceBuilder_AppendCallBack_Ceres_Gameplay_Animations_AnimationProxy_AnimationProxyDelegate_
+  name: AppendCallBack
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.AppendCallBack
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.AppendCallBack
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate
+  commentId: T:Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate
+  parent: Ceres.Gameplay.Animations
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.html
+  name: AnimationProxy.AnimationProxyDelegate
+  nameWithType: AnimationProxy.AnimationProxyDelegate
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate
+  spec.csharp:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy
+    name: AnimationProxy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate
+    name: AnimationProxyDelegate
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate.html
+  spec.vb:
+  - uid: Ceres.Gameplay.Animations.AnimationProxy
+    name: AnimationProxy
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.html
+  - name: .
+  - uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate
+    name: AnimationProxyDelegate
+    isExternal: true
+    href: Ceres.Gameplay.Animations.AnimationProxy.AnimationProxyDelegate.html
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationSequenceBuilder_SetBlendOut_System_Single_
+  name: SetBlendOut
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.SetBlendOut
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.SetBlendOut
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationSequenceBuilder_Build
+  name: Build
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Build
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Build
+- uid: Ceres.Tasks.SequenceTask
+  commentId: T:Ceres.Tasks.SequenceTask
+  parent: Ceres.Tasks
+  isExternal: true
+  href: Ceres.Tasks.SequenceTask.html
+  name: SequenceTask
+  nameWithType: SequenceTask
+  fullName: Ceres.Tasks.SequenceTask
+- uid: Ceres.Tasks
+  commentId: N:Ceres.Tasks
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Tasks
+  nameWithType: Ceres.Tasks
+  fullName: Ceres.Tasks
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Tasks
+    name: Tasks
+    isExternal: true
+    href: Ceres.Tasks.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Tasks
+    name: Tasks
+    isExternal: true
+    href: Ceres.Tasks.html
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.IsValid*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.IsValid
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationSequenceBuilder_IsValid
+  name: IsValid
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.IsValid
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Dispose*
+  commentId: Overload:Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Dispose
+  isExternal: true
+  href: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.html#Ceres_Gameplay_Animations_AnimationProxy_AnimationSequenceBuilder_Dispose
+  name: Dispose
+  nameWithType: AnimationProxy.AnimationSequenceBuilder.Dispose
+  fullName: Ceres.Gameplay.Animations.AnimationProxy.AnimationSequenceBuilder.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

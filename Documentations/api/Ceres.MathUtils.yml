@@ -1,0 +1,772 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.MathUtils
+  commentId: T:Ceres.MathUtils
+  id: MathUtils
+  parent: Ceres
+  children:
+  - Ceres.MathUtils.Angle(Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  - Ceres.MathUtils.Angle(Unity.Mathematics.quaternion@,Unity.Mathematics.quaternion@)
+  - Ceres.MathUtils.GetQuadraticCurvePoint(System.Single@,Unity.Mathematics.float3@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  - Ceres.MathUtils.InViewAngle(Unity.Mathematics.float3@,Unity.Mathematics.float3@,Unity.Mathematics.float3@,System.Single@)
+  - Ceres.MathUtils.IsInLayerMask(System.Int32@,UnityEngine.LayerMask@)
+  - Ceres.MathUtils.IsPointInPolygon(Unity.Collections.NativeArray{Unity.Mathematics.float3}@,Unity.Mathematics.float3@)
+  - Ceres.MathUtils.MultiplyPoint3x4(Unity.Mathematics.float4x4@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  - Ceres.MathUtils.MultiplyVector(Unity.Mathematics.float4x4@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  - Ceres.MathUtils.RotateTowards(Unity.Mathematics.quaternion@,Unity.Mathematics.quaternion@,System.Single@)
+  langs:
+  - csharp
+  - vb
+  name: MathUtils
+  nameWithType: MathUtils
+  fullName: Ceres.MathUtils
+  type: Class
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  summary: Utils for Mathematics
+  remarks: >-
+    Methods should be annotated with <xref href="System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining" data-throw-if-not-resolved="false"></xref>
+                which allows the burst compiler to optimize the method while optimizing the method's caller.
+  example: []
+  syntax:
+    content: public static class MathUtils
+    content.vb: Public Module MathUtils
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.MathUtils.MultiplyVector(Unity.Mathematics.float4x4@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  commentId: M:Ceres.MathUtils.MultiplyVector(Unity.Mathematics.float4x4@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  id: MultiplyVector(Unity.Mathematics.float4x4@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  isExtensionMethod: true
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: MultiplyVector(ref float4x4, in float3, ref float3)
+  nameWithType: MathUtils.MultiplyVector(ref float4x4, in float3, ref float3)
+  fullName: Ceres.MathUtils.MultiplyVector(ref Unity.Mathematics.float4x4, in Unity.Mathematics.float3, ref Unity.Mathematics.float3)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  summary: <xref href="UnityEngine.Matrix4x4.MultiplyVector(UnityEngine.Vector3)" data-throw-if-not-resolved="false"></xref> for <xref href="Unity.Mathematics.float4x4" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public static void MultiplyVector(this ref float4x4 worldMatrix, in float3 point, ref float3 result)
+    parameters:
+    - id: worldMatrix
+      type: Unity.Mathematics.float4x4
+      description: ''
+    - id: point
+      type: Unity.Mathematics.float3
+      description: ''
+    - id: result
+      type: Unity.Mathematics.float3
+      description: ''
+    content.vb: Public Shared Sub MultiplyVector(worldMatrix As float4x4, point As float3, result As float3)
+  overload: Ceres.MathUtils.MultiplyVector*
+  nameWithType.vb: MathUtils.MultiplyVector(float4x4, float3, float3)
+  fullName.vb: Ceres.MathUtils.MultiplyVector(Unity.Mathematics.float4x4, Unity.Mathematics.float3, Unity.Mathematics.float3)
+  name.vb: MultiplyVector(float4x4, float3, float3)
+- uid: Ceres.MathUtils.MultiplyPoint3x4(Unity.Mathematics.float4x4@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  commentId: M:Ceres.MathUtils.MultiplyPoint3x4(Unity.Mathematics.float4x4@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  id: MultiplyPoint3x4(Unity.Mathematics.float4x4@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  isExtensionMethod: true
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: MultiplyPoint3x4(ref float4x4, in float3, ref float3)
+  nameWithType: MathUtils.MultiplyPoint3x4(ref float4x4, in float3, ref float3)
+  fullName: Ceres.MathUtils.MultiplyPoint3x4(ref Unity.Mathematics.float4x4, in Unity.Mathematics.float3, ref Unity.Mathematics.float3)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  summary: <xref href="UnityEngine.Matrix4x4.MultiplyPoint3x4(UnityEngine.Vector3)" data-throw-if-not-resolved="false"></xref> for <xref href="Unity.Mathematics.float4x4" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public static void MultiplyPoint3x4(this ref float4x4 worldMatrix, in float3 point, ref float3 result)
+    parameters:
+    - id: worldMatrix
+      type: Unity.Mathematics.float4x4
+      description: ''
+    - id: point
+      type: Unity.Mathematics.float3
+      description: ''
+    - id: result
+      type: Unity.Mathematics.float3
+      description: ''
+    content.vb: Public Shared Sub MultiplyPoint3x4(worldMatrix As float4x4, point As float3, result As float3)
+  overload: Ceres.MathUtils.MultiplyPoint3x4*
+  nameWithType.vb: MathUtils.MultiplyPoint3x4(float4x4, float3, float3)
+  fullName.vb: Ceres.MathUtils.MultiplyPoint3x4(Unity.Mathematics.float4x4, Unity.Mathematics.float3, Unity.Mathematics.float3)
+  name.vb: MultiplyPoint3x4(float4x4, float3, float3)
+- uid: Ceres.MathUtils.RotateTowards(Unity.Mathematics.quaternion@,Unity.Mathematics.quaternion@,System.Single@)
+  commentId: M:Ceres.MathUtils.RotateTowards(Unity.Mathematics.quaternion@,Unity.Mathematics.quaternion@,System.Single@)
+  id: RotateTowards(Unity.Mathematics.quaternion@,Unity.Mathematics.quaternion@,System.Single@)
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: RotateTowards(in quaternion, in quaternion, in float)
+  nameWithType: MathUtils.RotateTowards(in quaternion, in quaternion, in float)
+  fullName: Ceres.MathUtils.RotateTowards(in Unity.Mathematics.quaternion, in Unity.Mathematics.quaternion, in float)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static quaternion RotateTowards(in quaternion from, in quaternion to, in float maxDegreesDelta)
+    parameters:
+    - id: from
+      type: Unity.Mathematics.quaternion
+    - id: to
+      type: Unity.Mathematics.quaternion
+    - id: maxDegreesDelta
+      type: System.Single
+    return:
+      type: Unity.Mathematics.quaternion
+    content.vb: Public Shared Function RotateTowards(from As quaternion, [to] As quaternion, maxDegreesDelta As Single) As quaternion
+  overload: Ceres.MathUtils.RotateTowards*
+  nameWithType.vb: MathUtils.RotateTowards(quaternion, quaternion, Single)
+  fullName.vb: Ceres.MathUtils.RotateTowards(Unity.Mathematics.quaternion, Unity.Mathematics.quaternion, Single)
+  name.vb: RotateTowards(quaternion, quaternion, Single)
+- uid: Ceres.MathUtils.Angle(Unity.Mathematics.quaternion@,Unity.Mathematics.quaternion@)
+  commentId: M:Ceres.MathUtils.Angle(Unity.Mathematics.quaternion@,Unity.Mathematics.quaternion@)
+  id: Angle(Unity.Mathematics.quaternion@,Unity.Mathematics.quaternion@)
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: Angle(in quaternion, in quaternion)
+  nameWithType: MathUtils.Angle(in quaternion, in quaternion)
+  fullName: Ceres.MathUtils.Angle(in Unity.Mathematics.quaternion, in Unity.Mathematics.quaternion)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static float Angle(in quaternion q1, in quaternion q2)
+    parameters:
+    - id: q1
+      type: Unity.Mathematics.quaternion
+    - id: q2
+      type: Unity.Mathematics.quaternion
+    return:
+      type: System.Single
+    content.vb: Public Shared Function Angle(q1 As quaternion, q2 As quaternion) As Single
+  overload: Ceres.MathUtils.Angle*
+  nameWithType.vb: MathUtils.Angle(quaternion, quaternion)
+  fullName.vb: Ceres.MathUtils.Angle(Unity.Mathematics.quaternion, Unity.Mathematics.quaternion)
+  name.vb: Angle(quaternion, quaternion)
+- uid: Ceres.MathUtils.InViewAngle(Unity.Mathematics.float3@,Unity.Mathematics.float3@,Unity.Mathematics.float3@,System.Single@)
+  commentId: M:Ceres.MathUtils.InViewAngle(Unity.Mathematics.float3@,Unity.Mathematics.float3@,Unity.Mathematics.float3@,System.Single@)
+  id: InViewAngle(Unity.Mathematics.float3@,Unity.Mathematics.float3@,Unity.Mathematics.float3@,System.Single@)
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: InViewAngle(in float3, in float3, in float3, in float)
+  nameWithType: MathUtils.InViewAngle(in float3, in float3, in float3, in float)
+  fullName: Ceres.MathUtils.InViewAngle(in Unity.Mathematics.float3, in Unity.Mathematics.float3, in Unity.Mathematics.float3, in float)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static bool InViewAngle(in float3 center, in float3 position, in float3 forward, in float angle)
+    parameters:
+    - id: center
+      type: Unity.Mathematics.float3
+    - id: position
+      type: Unity.Mathematics.float3
+    - id: forward
+      type: Unity.Mathematics.float3
+    - id: angle
+      type: System.Single
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function InViewAngle(center As float3, position As float3, forward As float3, angle As Single) As Boolean
+  overload: Ceres.MathUtils.InViewAngle*
+  nameWithType.vb: MathUtils.InViewAngle(float3, float3, float3, Single)
+  fullName.vb: Ceres.MathUtils.InViewAngle(Unity.Mathematics.float3, Unity.Mathematics.float3, Unity.Mathematics.float3, Single)
+  name.vb: InViewAngle(float3, float3, float3, Single)
+- uid: Ceres.MathUtils.Angle(Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  commentId: M:Ceres.MathUtils.Angle(Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  id: Angle(Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: Angle(in float3, in float3)
+  nameWithType: MathUtils.Angle(in float3, in float3)
+  fullName: Ceres.MathUtils.Angle(in Unity.Mathematics.float3, in Unity.Mathematics.float3)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static float Angle(in float3 from, in float3 to)
+    parameters:
+    - id: from
+      type: Unity.Mathematics.float3
+    - id: to
+      type: Unity.Mathematics.float3
+    return:
+      type: System.Single
+    content.vb: Public Shared Function Angle(from As float3, [to] As float3) As Single
+  overload: Ceres.MathUtils.Angle*
+  nameWithType.vb: MathUtils.Angle(float3, float3)
+  fullName.vb: Ceres.MathUtils.Angle(Unity.Mathematics.float3, Unity.Mathematics.float3)
+  name.vb: Angle(float3, float3)
+- uid: Ceres.MathUtils.IsInLayerMask(System.Int32@,UnityEngine.LayerMask@)
+  commentId: M:Ceres.MathUtils.IsInLayerMask(System.Int32@,UnityEngine.LayerMask@)
+  id: IsInLayerMask(System.Int32@,UnityEngine.LayerMask@)
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: IsInLayerMask(in int, in LayerMask)
+  nameWithType: MathUtils.IsInLayerMask(in int, in LayerMask)
+  fullName: Ceres.MathUtils.IsInLayerMask(in int, in UnityEngine.LayerMask)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static bool IsInLayerMask(in int layer, in LayerMask mask)
+    parameters:
+    - id: layer
+      type: System.Int32
+    - id: mask
+      type: UnityEngine.LayerMask
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsInLayerMask(layer As Integer, mask As LayerMask) As Boolean
+  overload: Ceres.MathUtils.IsInLayerMask*
+  nameWithType.vb: MathUtils.IsInLayerMask(Integer, LayerMask)
+  fullName.vb: Ceres.MathUtils.IsInLayerMask(Integer, UnityEngine.LayerMask)
+  name.vb: IsInLayerMask(Integer, LayerMask)
+- uid: Ceres.MathUtils.IsPointInPolygon(Unity.Collections.NativeArray{Unity.Mathematics.float3}@,Unity.Mathematics.float3@)
+  commentId: M:Ceres.MathUtils.IsPointInPolygon(Unity.Collections.NativeArray{Unity.Mathematics.float3}@,Unity.Mathematics.float3@)
+  id: IsPointInPolygon(Unity.Collections.NativeArray{Unity.Mathematics.float3}@,Unity.Mathematics.float3@)
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: IsPointInPolygon(in NativeArray<float3>, in float3)
+  nameWithType: MathUtils.IsPointInPolygon(in NativeArray<float3>, in float3)
+  fullName: Ceres.MathUtils.IsPointInPolygon(in Unity.Collections.NativeArray<Unity.Mathematics.float3>, in Unity.Mathematics.float3)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  syntax:
+    content: public static bool IsPointInPolygon(in NativeArray<float3> polygonCorners, in float3 p)
+    parameters:
+    - id: polygonCorners
+      type: Unity.Collections.NativeArray{Unity.Mathematics.float3}
+    - id: p
+      type: Unity.Mathematics.float3
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsPointInPolygon(polygonCorners As NativeArray(Of float3), p As float3) As Boolean
+  overload: Ceres.MathUtils.IsPointInPolygon*
+  nameWithType.vb: MathUtils.IsPointInPolygon(NativeArray(Of float3), float3)
+  fullName.vb: Ceres.MathUtils.IsPointInPolygon(Unity.Collections.NativeArray(Of Unity.Mathematics.float3), Unity.Mathematics.float3)
+  name.vb: IsPointInPolygon(NativeArray(Of float3), float3)
+- uid: Ceres.MathUtils.GetQuadraticCurvePoint(System.Single@,Unity.Mathematics.float3@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  commentId: M:Ceres.MathUtils.GetQuadraticCurvePoint(System.Single@,Unity.Mathematics.float3@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  id: GetQuadraticCurvePoint(System.Single@,Unity.Mathematics.float3@,Unity.Mathematics.float3@,Unity.Mathematics.float3@)
+  parent: Ceres.MathUtils
+  langs:
+  - csharp
+  - vb
+  name: GetQuadraticCurvePoint(in float, in float3, in float3, in float3)
+  nameWithType: MathUtils.GetQuadraticCurvePoint(in float, in float3, in float3, in float3)
+  fullName: Ceres.MathUtils.GetQuadraticCurvePoint(in float, in Unity.Mathematics.float3, in Unity.Mathematics.float3, in Unity.Mathematics.float3)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres
+  summary: Quadratic Bézier curve, dynamically draw a curve based on three points
+  example: []
+  syntax:
+    content: public static float3 GetQuadraticCurvePoint(in float t, in float3 p0, in float3 p1, in float3 p2)
+    parameters:
+    - id: t
+      type: System.Single
+      description: The arrival coefficient is 0 for the start and 1 for the arrival
+    - id: p0
+      type: Unity.Mathematics.float3
+      description: Starting point
+    - id: p1
+      type: Unity.Mathematics.float3
+      description: Middle point
+    - id: p2
+      type: Unity.Mathematics.float3
+      description: End point
+    return:
+      type: Unity.Mathematics.float3
+      description: ''
+    content.vb: Public Shared Function GetQuadraticCurvePoint(t As Single, p0 As float3, p1 As float3, p2 As float3) As float3
+  overload: Ceres.MathUtils.GetQuadraticCurvePoint*
+  nameWithType.vb: MathUtils.GetQuadraticCurvePoint(Single, float3, float3, float3)
+  fullName.vb: Ceres.MathUtils.GetQuadraticCurvePoint(Single, Unity.Mathematics.float3, Unity.Mathematics.float3, Unity.Mathematics.float3)
+  name.vb: GetQuadraticCurvePoint(Single, float3, float3, float3)
+references:
+- uid: System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining
+  commentId: F:System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.compilerservices.methodimploptions#system-runtime-compilerservices-methodimploptions-aggressiveinlining
+  name: AggressiveInlining
+  nameWithType: MethodImplOptions.AggressiveInlining
+  fullName: System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining
+- uid: Ceres
+  commentId: N:Ceres
+  isExternal: true
+  href: Ceres.html
+  name: Ceres
+  nameWithType: Ceres
+  fullName: Ceres
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine.Matrix4x4.MultiplyVector(UnityEngine.Vector3)
+  commentId: M:UnityEngine.Matrix4x4.MultiplyVector(UnityEngine.Vector3)
+  isExternal: true
+- uid: Unity.Mathematics.float4x4
+  commentId: T:Unity.Mathematics.float4x4
+  parent: Unity.Mathematics
+  isExternal: true
+  name: float4x4
+  nameWithType: float4x4
+  fullName: Unity.Mathematics.float4x4
+- uid: Ceres.MathUtils.MultiplyVector*
+  commentId: Overload:Ceres.MathUtils.MultiplyVector
+  isExternal: true
+  href: Ceres.MathUtils.html#Ceres_MathUtils_MultiplyVector_Unity_Mathematics_float4x4__Unity_Mathematics_float3__Unity_Mathematics_float3__
+  name: MultiplyVector
+  nameWithType: MathUtils.MultiplyVector
+  fullName: Ceres.MathUtils.MultiplyVector
+- uid: Unity.Mathematics.float3
+  commentId: T:Unity.Mathematics.float3
+  parent: Unity.Mathematics
+  isExternal: true
+  name: float3
+  nameWithType: float3
+  fullName: Unity.Mathematics.float3
+- uid: Unity.Mathematics
+  commentId: N:Unity.Mathematics
+  isExternal: true
+  name: Unity.Mathematics
+  nameWithType: Unity.Mathematics
+  fullName: Unity.Mathematics
+  spec.csharp:
+  - uid: Unity
+    name: Unity
+    isExternal: true
+  - name: .
+  - uid: Unity.Mathematics
+    name: Mathematics
+    isExternal: true
+  spec.vb:
+  - uid: Unity
+    name: Unity
+    isExternal: true
+  - name: .
+  - uid: Unity.Mathematics
+    name: Mathematics
+    isExternal: true
+- uid: UnityEngine.Matrix4x4.MultiplyPoint3x4(UnityEngine.Vector3)
+  commentId: M:UnityEngine.Matrix4x4.MultiplyPoint3x4(UnityEngine.Vector3)
+  isExternal: true
+- uid: Ceres.MathUtils.MultiplyPoint3x4*
+  commentId: Overload:Ceres.MathUtils.MultiplyPoint3x4
+  isExternal: true
+  href: Ceres.MathUtils.html#Ceres_MathUtils_MultiplyPoint3x4_Unity_Mathematics_float4x4__Unity_Mathematics_float3__Unity_Mathematics_float3__
+  name: MultiplyPoint3x4
+  nameWithType: MathUtils.MultiplyPoint3x4
+  fullName: Ceres.MathUtils.MultiplyPoint3x4
+- uid: Ceres.MathUtils.RotateTowards*
+  commentId: Overload:Ceres.MathUtils.RotateTowards
+  isExternal: true
+  href: Ceres.MathUtils.html#Ceres_MathUtils_RotateTowards_Unity_Mathematics_quaternion__Unity_Mathematics_quaternion__System_Single__
+  name: RotateTowards
+  nameWithType: MathUtils.RotateTowards
+  fullName: Ceres.MathUtils.RotateTowards
+- uid: Unity.Mathematics.quaternion
+  commentId: T:Unity.Mathematics.quaternion
+  parent: Unity.Mathematics
+  isExternal: true
+  name: quaternion
+  nameWithType: quaternion
+  fullName: Unity.Mathematics.quaternion
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Ceres.MathUtils.Angle*
+  commentId: Overload:Ceres.MathUtils.Angle
+  isExternal: true
+  href: Ceres.MathUtils.html#Ceres_MathUtils_Angle_Unity_Mathematics_quaternion__Unity_Mathematics_quaternion__
+  name: Angle
+  nameWithType: MathUtils.Angle
+  fullName: Ceres.MathUtils.Angle
+- uid: Ceres.MathUtils.InViewAngle*
+  commentId: Overload:Ceres.MathUtils.InViewAngle
+  isExternal: true
+  href: Ceres.MathUtils.html#Ceres_MathUtils_InViewAngle_Unity_Mathematics_float3__Unity_Mathematics_float3__Unity_Mathematics_float3__System_Single__
+  name: InViewAngle
+  nameWithType: MathUtils.InViewAngle
+  fullName: Ceres.MathUtils.InViewAngle
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.MathUtils.IsInLayerMask*
+  commentId: Overload:Ceres.MathUtils.IsInLayerMask
+  isExternal: true
+  href: Ceres.MathUtils.html#Ceres_MathUtils_IsInLayerMask_System_Int32__UnityEngine_LayerMask__
+  name: IsInLayerMask
+  nameWithType: MathUtils.IsInLayerMask
+  fullName: Ceres.MathUtils.IsInLayerMask
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: UnityEngine.LayerMask
+  isExternal: true
+  name: LayerMask
+  nameWithType: LayerMask
+  fullName: UnityEngine.LayerMask
+- uid: Ceres.MathUtils.IsPointInPolygon*
+  commentId: Overload:Ceres.MathUtils.IsPointInPolygon
+  isExternal: true
+  href: Ceres.MathUtils.html#Ceres_MathUtils_IsPointInPolygon_Unity_Collections_NativeArray_Unity_Mathematics_float3___Unity_Mathematics_float3__
+  name: IsPointInPolygon
+  nameWithType: MathUtils.IsPointInPolygon
+  fullName: Ceres.MathUtils.IsPointInPolygon
+- uid: Unity.Collections.NativeArray{Unity.Mathematics.float3}
+  commentId: '!:Unity.Collections.NativeArray{Unity.Mathematics.float3}'
+  definition: Unity.Collections.NativeArray`1
+  name: NativeArray<float3>
+  nameWithType: NativeArray<float3>
+  fullName: Unity.Collections.NativeArray<Unity.Mathematics.float3>
+  nameWithType.vb: NativeArray(Of float3)
+  fullName.vb: Unity.Collections.NativeArray(Of Unity.Mathematics.float3)
+  name.vb: NativeArray(Of float3)
+  spec.csharp:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: <
+  - uid: Unity.Mathematics.float3
+    name: float3
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Unity.Mathematics.float3
+    name: float3
+    isExternal: true
+  - name: )
+- uid: Unity.Collections.NativeArray`1
+  isExternal: true
+  name: NativeArray<>
+  nameWithType: NativeArray<>
+  fullName: Unity.Collections.NativeArray<>
+  nameWithType.vb: NativeArray(Of )
+  fullName.vb: Unity.Collections.NativeArray(Of )
+  name.vb: NativeArray(Of )
+  spec.csharp:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: <
+  - name: '>'
+  spec.vb:
+  - uid: Unity.Collections.NativeArray`1
+    name: NativeArray
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Ceres.MathUtils.GetQuadraticCurvePoint*
+  commentId: Overload:Ceres.MathUtils.GetQuadraticCurvePoint
+  isExternal: true
+  href: Ceres.MathUtils.html#Ceres_MathUtils_GetQuadraticCurvePoint_System_Single__Unity_Mathematics_float3__Unity_Mathematics_float3__Unity_Mathematics_float3__
+  name: GetQuadraticCurvePoint
+  nameWithType: MathUtils.GetQuadraticCurvePoint
+  fullName: Ceres.MathUtils.GetQuadraticCurvePoint

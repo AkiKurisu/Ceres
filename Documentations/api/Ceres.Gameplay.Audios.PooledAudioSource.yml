@@ -1,0 +1,1207 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Audios.PooledAudioSource
+  commentId: T:Ceres.Gameplay.Audios.PooledAudioSource
+  id: PooledAudioSource
+  parent: Ceres.Gameplay.Audios
+  children:
+  - Ceres.Gameplay.Audios.PooledAudioSource.#ctor
+  - Ceres.Gameplay.Audios.PooledAudioSource.OnDispose
+  - Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration(System.Single)
+  - Ceres.Gameplay.Audios.PooledAudioSource.PlayLoop
+  langs:
+  - csharp
+  - vb
+  name: PooledAudioSource
+  nameWithType: PooledAudioSource
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: 'public sealed class PooledAudioSource : PooledComponent<PooledAudioSource, AudioSource>, IDisposable, IDisposableUnregister'
+    content.vb: Public NotInheritable Class PooledAudioSource Inherits PooledComponent(Of PooledAudioSource, AudioSource) Implements IDisposable, IDisposableUnregister
+  inheritance:
+  - System.Object
+  - Ceres.Pool.PooledGameObject
+  - Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  implements:
+  - System.IDisposable
+  - R3.Ceres.IDisposableUnregister
+  inheritedMembers:
+  - Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.SetMaxSize(System.Int32)
+  - Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Get(UnityEngine.Transform)
+  - Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.GetPooledKey(UnityEngine.GameObject)
+  - Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+  - Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+  - Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Dispose
+  - Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Component
+  - Ceres.Pool.PooledGameObject.SetMaxSize(System.Int32)
+  - Ceres.Pool.PooledGameObject.Get(System.String,UnityEngine.Transform)
+  - Ceres.Pool.PooledGameObject.Dispose
+  - Ceres.Pool.PooledGameObject.Destroy(System.Single)
+  - Ceres.Pool.PooledGameObject.GameObject
+  - Ceres.Pool.PooledGameObject.Transform
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Ceres.Gameplay.Audios.PooledAudioSource.PlayLoop
+  commentId: M:Ceres.Gameplay.Audios.PooledAudioSource.PlayLoop
+  id: PlayLoop
+  parent: Ceres.Gameplay.Audios.PooledAudioSource
+  langs:
+  - csharp
+  - vb
+  name: PlayLoop()
+  nameWithType: PooledAudioSource.PlayLoop()
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource.PlayLoop()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: public void PlayLoop()
+    content.vb: Public Sub PlayLoop()
+  overload: Ceres.Gameplay.Audios.PooledAudioSource.PlayLoop*
+- uid: Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration(System.Single)
+  commentId: M:Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration(System.Single)
+  id: PlayDuration(System.Single)
+  parent: Ceres.Gameplay.Audios.PooledAudioSource
+  langs:
+  - csharp
+  - vb
+  name: PlayDuration(float)
+  nameWithType: PooledAudioSource.PlayDuration(float)
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration(float)
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: public void PlayDuration(float duration)
+    parameters:
+    - id: duration
+      type: System.Single
+    content.vb: Public Sub PlayDuration(duration As Single)
+  overload: Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration*
+  nameWithType.vb: PooledAudioSource.PlayDuration(Single)
+  fullName.vb: Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration(Single)
+  name.vb: PlayDuration(Single)
+- uid: Ceres.Gameplay.Audios.PooledAudioSource.OnDispose
+  commentId: M:Ceres.Gameplay.Audios.PooledAudioSource.OnDispose
+  id: OnDispose
+  parent: Ceres.Gameplay.Audios.PooledAudioSource
+  langs:
+  - csharp
+  - vb
+  name: OnDispose()
+  nameWithType: PooledAudioSource.OnDispose()
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource.OnDispose()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  example: []
+  syntax:
+    content: protected override void OnDispose()
+    content.vb: Protected Overrides Sub OnDispose()
+  overridden: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.OnDispose
+  overload: Ceres.Gameplay.Audios.PooledAudioSource.OnDispose*
+- uid: Ceres.Gameplay.Audios.PooledAudioSource.#ctor
+  commentId: M:Ceres.Gameplay.Audios.PooledAudioSource.#ctor
+  id: '#ctor'
+  parent: Ceres.Gameplay.Audios.PooledAudioSource
+  langs:
+  - csharp
+  - vb
+  name: PooledAudioSource()
+  nameWithType: PooledAudioSource.PooledAudioSource()
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource.PooledAudioSource()
+  type: Constructor
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Audios
+  syntax:
+    content: public PooledAudioSource()
+    content.vb: Public Sub New()
+  overload: Ceres.Gameplay.Audios.PooledAudioSource.#ctor*
+  nameWithType.vb: PooledAudioSource.New()
+  fullName.vb: Ceres.Gameplay.Audios.PooledAudioSource.New()
+  name.vb: New()
+references:
+- uid: Ceres.Gameplay.Audios
+  commentId: N:Ceres.Gameplay.Audios
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Audios
+  nameWithType: Ceres.Gameplay.Audios
+  fullName: Ceres.Gameplay.Audios
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Audios
+    name: Audios
+    isExternal: true
+    href: Ceres.Gameplay.Audios.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Audios
+    name: Audios
+    isExternal: true
+    href: Ceres.Gameplay.Audios.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Pool.PooledGameObject
+  commentId: T:Ceres.Pool.PooledGameObject
+  parent: Ceres.Pool
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html
+  name: PooledGameObject
+  nameWithType: PooledGameObject
+  fullName: Ceres.Pool.PooledGameObject
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  commentId: T:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  parent: Ceres.Pool
+  definition: Ceres.Pool.PooledComponent`2
+  href: Ceres.Gameplay.Audios.PooledAudioSource.html
+  name: PooledComponent<PooledAudioSource, AudioSource>
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource)
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource)
+  name.vb: PooledComponent(Of PooledAudioSource, AudioSource)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2
+    name: PooledComponent
+    isExternal: true
+  - name: <
+  - uid: Ceres.Gameplay.Audios.PooledAudioSource
+    name: PooledAudioSource
+    isExternal: true
+    href: Ceres.Gameplay.Audios.PooledAudioSource.html
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.AudioSource
+    name: AudioSource
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2
+    name: PooledComponent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Gameplay.Audios.PooledAudioSource
+    name: PooledAudioSource
+    isExternal: true
+    href: Ceres.Gameplay.Audios.PooledAudioSource.html
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.AudioSource
+    name: AudioSource
+    isExternal: true
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: R3.Ceres.IDisposableUnregister
+  commentId: T:R3.Ceres.IDisposableUnregister
+  parent: R3.Ceres
+  isExternal: true
+  href: R3.Ceres.IDisposableUnregister.html
+  name: IDisposableUnregister
+  nameWithType: IDisposableUnregister
+  fullName: R3.Ceres.IDisposableUnregister
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.SetMaxSize(System.Int32)
+  commentId: M:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.SetMaxSize(System.Int32)
+  parent: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  definition: Ceres.Pool.PooledComponent`2.SetMaxSize(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: SetMaxSize(int)
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>.SetMaxSize(int)
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>.SetMaxSize(int)
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource).SetMaxSize(Integer)
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource).SetMaxSize(Integer)
+  name.vb: SetMaxSize(Integer)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.SetMaxSize(System.Int32)
+    name: SetMaxSize
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.SetMaxSize(System.Int32)
+    name: SetMaxSize
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Get(UnityEngine.Transform)
+  commentId: M:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Get(UnityEngine.Transform)
+  parent: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  definition: Ceres.Pool.PooledComponent`2.Get(UnityEngine.Transform)
+  name: Get(Transform)
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>.Get(Transform)
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>.Get(UnityEngine.Transform)
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource).Get(Transform)
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource).Get(UnityEngine.Transform)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Get(UnityEngine.Transform)
+    name: Get
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Get(UnityEngine.Transform)
+    name: Get
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.GetPooledKey(UnityEngine.GameObject)
+  commentId: M:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.GetPooledKey(UnityEngine.GameObject)
+  parent: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  definition: Ceres.Pool.PooledComponent`2.GetPooledKey(UnityEngine.GameObject)
+  name: GetPooledKey(GameObject)
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>.GetPooledKey(GameObject)
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>.GetPooledKey(UnityEngine.GameObject)
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource).GetPooledKey(GameObject)
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource).GetPooledKey(UnityEngine.GameObject)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.GetPooledKey(UnityEngine.GameObject)
+    name: GetPooledKey
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.GetPooledKey(UnityEngine.GameObject)
+    name: GetPooledKey
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: )
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+  commentId: M:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+  parent: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  definition: Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+  name: Instantiate(GameObject, Transform)
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>.Instantiate(GameObject, Transform)
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>.Instantiate(UnityEngine.GameObject, UnityEngine.Transform)
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource).Instantiate(GameObject, Transform)
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource).Instantiate(UnityEngine.GameObject, UnityEngine.Transform)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+    name: Instantiate
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+    name: Instantiate
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+  commentId: M:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+  parent: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  definition: Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: Instantiate(GameObject, Vector3, Quaternion, Transform, bool)
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>.Instantiate(GameObject, Vector3, Quaternion, Transform, bool)
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>.Instantiate(UnityEngine.GameObject, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Transform, bool)
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource).Instantiate(GameObject, Vector3, Quaternion, Transform, Boolean)
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource).Instantiate(UnityEngine.GameObject, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Transform, Boolean)
+  name.vb: Instantiate(GameObject, Vector3, Quaternion, Transform, Boolean)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+    name: Instantiate
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+    name: Instantiate
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Dispose
+  commentId: M:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Dispose
+  parent: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  definition: Ceres.Pool.PooledComponent`2.Dispose
+  name: Dispose()
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>.Dispose()
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>.Dispose()
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource).Dispose()
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource).Dispose()
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Component
+  commentId: P:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.Component
+  parent: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  definition: Ceres.Pool.PooledComponent`2.Component
+  name: Component
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>.Component
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>.Component
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource).Component
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource).Component
+- uid: Ceres.Pool.PooledGameObject.SetMaxSize(System.Int32)
+  commentId: M:Ceres.Pool.PooledGameObject.SetMaxSize(System.Int32)
+  parent: Ceres.Pool.PooledGameObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: SetMaxSize(int)
+  nameWithType: PooledGameObject.SetMaxSize(int)
+  fullName: Ceres.Pool.PooledGameObject.SetMaxSize(int)
+  nameWithType.vb: PooledGameObject.SetMaxSize(Integer)
+  fullName.vb: Ceres.Pool.PooledGameObject.SetMaxSize(Integer)
+  name.vb: SetMaxSize(Integer)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledGameObject.SetMaxSize(System.Int32)
+    name: SetMaxSize
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledGameObject.SetMaxSize(System.Int32)
+    name: SetMaxSize
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Ceres.Pool.PooledGameObject.Get(System.String,UnityEngine.Transform)
+  commentId: M:Ceres.Pool.PooledGameObject.Get(System.String,UnityEngine.Transform)
+  parent: Ceres.Pool.PooledGameObject
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Get_System_String_UnityEngine_Transform_
+  name: Get(string, Transform)
+  nameWithType: PooledGameObject.Get(string, Transform)
+  fullName: Ceres.Pool.PooledGameObject.Get(string, UnityEngine.Transform)
+  nameWithType.vb: PooledGameObject.Get(String, Transform)
+  fullName.vb: Ceres.Pool.PooledGameObject.Get(String, UnityEngine.Transform)
+  name.vb: Get(String, Transform)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledGameObject.Get(System.String,UnityEngine.Transform)
+    name: Get
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Get_System_String_UnityEngine_Transform_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledGameObject.Get(System.String,UnityEngine.Transform)
+    name: Get
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Get_System_String_UnityEngine_Transform_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+- uid: Ceres.Pool.PooledGameObject.Dispose
+  commentId: M:Ceres.Pool.PooledGameObject.Dispose
+  parent: Ceres.Pool.PooledGameObject
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Dispose
+  name: Dispose()
+  nameWithType: PooledGameObject.Dispose()
+  fullName: Ceres.Pool.PooledGameObject.Dispose()
+  spec.csharp:
+  - uid: Ceres.Pool.PooledGameObject.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledGameObject.Dispose
+    name: Dispose
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Dispose
+  - name: (
+  - name: )
+- uid: Ceres.Pool.PooledGameObject.Destroy(System.Single)
+  commentId: M:Ceres.Pool.PooledGameObject.Destroy(System.Single)
+  parent: Ceres.Pool.PooledGameObject
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Destroy_System_Single_
+  name: Destroy(float)
+  nameWithType: PooledGameObject.Destroy(float)
+  fullName: Ceres.Pool.PooledGameObject.Destroy(float)
+  nameWithType.vb: PooledGameObject.Destroy(Single)
+  fullName.vb: Ceres.Pool.PooledGameObject.Destroy(Single)
+  name.vb: Destroy(Single)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledGameObject.Destroy(System.Single)
+    name: Destroy
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Destroy_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledGameObject.Destroy(System.Single)
+    name: Destroy
+    isExternal: true
+    href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Destroy_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Ceres.Pool.PooledGameObject.GameObject
+  commentId: P:Ceres.Pool.PooledGameObject.GameObject
+  parent: Ceres.Pool.PooledGameObject
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_GameObject
+  name: GameObject
+  nameWithType: PooledGameObject.GameObject
+  fullName: Ceres.Pool.PooledGameObject.GameObject
+- uid: Ceres.Pool.PooledGameObject.Transform
+  commentId: P:Ceres.Pool.PooledGameObject.Transform
+  parent: Ceres.Pool.PooledGameObject
+  isExternal: true
+  href: Ceres.Pool.PooledGameObject.html#Ceres_Pool_PooledGameObject_Transform
+  name: Transform
+  nameWithType: PooledGameObject.Transform
+  fullName: Ceres.Pool.PooledGameObject.Transform
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Pool
+  commentId: N:Ceres.Pool
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Pool
+  nameWithType: Ceres.Pool
+  fullName: Ceres.Pool
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Pool
+    name: Pool
+    isExternal: true
+    href: Ceres.Pool.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Pool
+    name: Pool
+    isExternal: true
+    href: Ceres.Pool.html
+- uid: Ceres.Pool.PooledComponent`2
+  commentId: T:Ceres.Pool.PooledComponent`2
+  isExternal: true
+  href: Ceres.Pool.PooledComponent-2.html
+  name: PooledComponent<T, TComponent>
+  nameWithType: PooledComponent<T, TComponent>
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>
+  nameWithType.vb: PooledComponent(Of T, TComponent)
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent)
+  name.vb: PooledComponent(Of T, TComponent)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2
+    name: PooledComponent
+    isExternal: true
+    href: Ceres.Pool.PooledComponent-2.html
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TComponent
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2
+    name: PooledComponent
+    isExternal: true
+    href: Ceres.Pool.PooledComponent-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TComponent
+  - name: )
+- uid: R3.Ceres
+  commentId: N:R3.Ceres
+  isExternal: true
+  href: R3.html
+  name: R3.Ceres
+  nameWithType: R3.Ceres
+  fullName: R3.Ceres
+  spec.csharp:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+  spec.vb:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+- uid: Ceres.Pool.PooledComponent`2.SetMaxSize(System.Int32)
+  commentId: M:Ceres.Pool.PooledComponent`2.SetMaxSize(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: SetMaxSize(int)
+  nameWithType: PooledComponent<T, TComponent>.SetMaxSize(int)
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>.SetMaxSize(int)
+  nameWithType.vb: PooledComponent(Of T, TComponent).SetMaxSize(Integer)
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent).SetMaxSize(Integer)
+  name.vb: SetMaxSize(Integer)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2.SetMaxSize(System.Int32)
+    name: SetMaxSize
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2.SetMaxSize(System.Int32)
+    name: SetMaxSize
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Ceres.Pool.PooledComponent`2.Get(UnityEngine.Transform)
+  commentId: M:Ceres.Pool.PooledComponent`2.Get(UnityEngine.Transform)
+  isExternal: true
+  name: Get(Transform)
+  nameWithType: PooledComponent<T, TComponent>.Get(Transform)
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>.Get(UnityEngine.Transform)
+  nameWithType.vb: PooledComponent(Of T, TComponent).Get(Transform)
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent).Get(UnityEngine.Transform)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2.Get(UnityEngine.Transform)
+    name: Get
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2.Get(UnityEngine.Transform)
+    name: Get
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+- uid: Ceres.Pool.PooledComponent`2.GetPooledKey(UnityEngine.GameObject)
+  commentId: M:Ceres.Pool.PooledComponent`2.GetPooledKey(UnityEngine.GameObject)
+  isExternal: true
+  name: GetPooledKey(GameObject)
+  nameWithType: PooledComponent<T, TComponent>.GetPooledKey(GameObject)
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>.GetPooledKey(UnityEngine.GameObject)
+  nameWithType.vb: PooledComponent(Of T, TComponent).GetPooledKey(GameObject)
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent).GetPooledKey(UnityEngine.GameObject)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2.GetPooledKey(UnityEngine.GameObject)
+    name: GetPooledKey
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2.GetPooledKey(UnityEngine.GameObject)
+    name: GetPooledKey
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: )
+- uid: Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+  commentId: M:Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+  isExternal: true
+  name: Instantiate(GameObject, Transform)
+  nameWithType: PooledComponent<T, TComponent>.Instantiate(GameObject, Transform)
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>.Instantiate(UnityEngine.GameObject, UnityEngine.Transform)
+  nameWithType.vb: PooledComponent(Of T, TComponent).Instantiate(GameObject, Transform)
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent).Instantiate(UnityEngine.GameObject, UnityEngine.Transform)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+    name: Instantiate
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Transform)
+    name: Instantiate
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+- uid: Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+  commentId: M:Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: Instantiate(GameObject, Vector3, Quaternion, Transform, bool)
+  nameWithType: PooledComponent<T, TComponent>.Instantiate(GameObject, Vector3, Quaternion, Transform, bool)
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>.Instantiate(UnityEngine.GameObject, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Transform, bool)
+  nameWithType.vb: PooledComponent(Of T, TComponent).Instantiate(GameObject, Vector3, Quaternion, Transform, Boolean)
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent).Instantiate(UnityEngine.GameObject, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Transform, Boolean)
+  name.vb: Instantiate(GameObject, Vector3, Quaternion, Transform, Boolean)
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+    name: Instantiate
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform,System.Boolean)
+    name: Instantiate
+    isExternal: true
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Ceres.Pool.PooledComponent`2.Dispose
+  commentId: M:Ceres.Pool.PooledComponent`2.Dispose
+  isExternal: true
+  name: Dispose()
+  nameWithType: PooledComponent<T, TComponent>.Dispose()
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>.Dispose()
+  nameWithType.vb: PooledComponent(Of T, TComponent).Dispose()
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent).Dispose()
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Pool.PooledComponent`2.Component
+  commentId: P:Ceres.Pool.PooledComponent`2.Component
+  isExternal: true
+  name: Component
+  nameWithType: PooledComponent<T, TComponent>.Component
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>.Component
+  nameWithType.vb: PooledComponent(Of T, TComponent).Component
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent).Component
+- uid: Ceres.Gameplay.Audios.PooledAudioSource.PlayLoop*
+  commentId: Overload:Ceres.Gameplay.Audios.PooledAudioSource.PlayLoop
+  isExternal: true
+  href: Ceres.Gameplay.Audios.PooledAudioSource.html#Ceres_Gameplay_Audios_PooledAudioSource_PlayLoop
+  name: PlayLoop
+  nameWithType: PooledAudioSource.PlayLoop
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource.PlayLoop
+- uid: Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration*
+  commentId: Overload:Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration
+  isExternal: true
+  href: Ceres.Gameplay.Audios.PooledAudioSource.html#Ceres_Gameplay_Audios_PooledAudioSource_PlayDuration_System_Single_
+  name: PlayDuration
+  nameWithType: PooledAudioSource.PlayDuration
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource.PlayDuration
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.OnDispose
+  commentId: M:Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.OnDispose
+  parent: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}
+  definition: Ceres.Pool.PooledComponent`2.OnDispose
+  name: OnDispose()
+  nameWithType: PooledComponent<PooledAudioSource, AudioSource>.OnDispose()
+  fullName: Ceres.Pool.PooledComponent<Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource>.OnDispose()
+  nameWithType.vb: PooledComponent(Of PooledAudioSource, AudioSource).OnDispose()
+  fullName.vb: Ceres.Pool.PooledComponent(Of Ceres.Gameplay.Audios.PooledAudioSource, UnityEngine.AudioSource).OnDispose()
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.OnDispose
+    name: OnDispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent{Ceres.Gameplay.Audios.PooledAudioSource,UnityEngine.AudioSource}.OnDispose
+    name: OnDispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Audios.PooledAudioSource.OnDispose*
+  commentId: Overload:Ceres.Gameplay.Audios.PooledAudioSource.OnDispose
+  isExternal: true
+  href: Ceres.Gameplay.Audios.PooledAudioSource.html#Ceres_Gameplay_Audios_PooledAudioSource_OnDispose
+  name: OnDispose
+  nameWithType: PooledAudioSource.OnDispose
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource.OnDispose
+- uid: Ceres.Pool.PooledComponent`2.OnDispose
+  commentId: M:Ceres.Pool.PooledComponent`2.OnDispose
+  isExternal: true
+  name: OnDispose()
+  nameWithType: PooledComponent<T, TComponent>.OnDispose()
+  fullName: Ceres.Pool.PooledComponent<T, TComponent>.OnDispose()
+  nameWithType.vb: PooledComponent(Of T, TComponent).OnDispose()
+  fullName.vb: Ceres.Pool.PooledComponent(Of T, TComponent).OnDispose()
+  spec.csharp:
+  - uid: Ceres.Pool.PooledComponent`2.OnDispose
+    name: OnDispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Pool.PooledComponent`2.OnDispose
+    name: OnDispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Audios.PooledAudioSource.#ctor*
+  commentId: Overload:Ceres.Gameplay.Audios.PooledAudioSource.#ctor
+  isExternal: true
+  href: Ceres.Gameplay.Audios.PooledAudioSource.html#Ceres_Gameplay_Audios_PooledAudioSource__ctor
+  name: PooledAudioSource
+  nameWithType: PooledAudioSource.PooledAudioSource
+  fullName: Ceres.Gameplay.Audios.PooledAudioSource.PooledAudioSource
+  nameWithType.vb: PooledAudioSource.New
+  fullName.vb: Ceres.Gameplay.Audios.PooledAudioSource.New
+  name.vb: New

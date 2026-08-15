@@ -1,0 +1,928 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary
+  commentId: T:Ceres.Flow.Utilities.RxExecutableLibrary
+  id: RxExecutableLibrary
+  parent: Ceres.Flow.Utilities
+  children:
+  - Ceres.Flow.Utilities.RxExecutableLibrary.#ctor
+  - Ceres.Flow.Utilities.RxExecutableLibrary.CollectExecutableFunctions
+  - Ceres.Flow.Utilities.RxExecutableLibrary.Flow_DisposableCreate(Ceres.Flow.EventDelegate)
+  - Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToComponent(System.IDisposable,UnityEngine.Component)
+  - Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToGameObject(System.IDisposable,UnityEngine.GameObject)
+  - Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister(System.IDisposable,R3.Ceres.IDisposableUnregister)
+  - Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableDispose(System.IDisposable)
+  langs:
+  - csharp
+  - vb
+  name: RxExecutableLibrary
+  nameWithType: RxExecutableLibrary
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary
+  type: Class
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Provides R3 subscription and disposable helpers for Flow graphs.
+  example: []
+  syntax:
+    content: >-
+      [CeresGroup("Rx")]
+
+      public class RxExecutableLibrary : ExecutableFunctionLibrary
+    content.vb: >-
+      <CeresGroup("Rx")>
+
+      Public Class RxExecutableLibrary Inherits ExecutableFunctionLibrary
+  inheritance:
+  - System.Object
+  - Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  inheritedMembers:
+  - Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+  - Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  attributes:
+  - type: Ceres.Annotations.CeresGroupAttribute
+    ctor: Ceres.Annotations.CeresGroupAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Rx
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableDispose(System.IDisposable)
+  commentId: M:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableDispose(System.IDisposable)
+  id: Flow_IDisposableDispose(System.IDisposable)
+  parent: Ceres.Flow.Utilities.RxExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_IDisposableDispose(IDisposable)
+  nameWithType: RxExecutableLibrary.Flow_IDisposableDispose(IDisposable)
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableDispose(System.IDisposable)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Disposes the target subscription or disposable object.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(IsScriptMethod = true)]
+
+      [CeresLabel("Dispose")]
+
+      public static void Flow_IDisposableDispose(IDisposable disposable)
+    parameters:
+    - id: disposable
+      type: System.IDisposable
+      description: The disposable object to dispose.
+    content.vb: >-
+      <ExecutableFunction(IsScriptMethod:=True)>
+
+      <CeresLabel("Dispose")>
+
+      Public Shared Sub Flow_IDisposableDispose(disposable As IDisposable)
+  overload: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableDispose*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: IsScriptMethod
+      type: System.Boolean
+      value: true
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Dispose
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister(System.IDisposable,R3.Ceres.IDisposableUnregister)
+  commentId: M:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister(System.IDisposable,R3.Ceres.IDisposableUnregister)
+  id: Flow_IDisposableAddToIDisposableUnregister(System.IDisposable,R3.Ceres.IDisposableUnregister)
+  parent: Ceres.Flow.Utilities.RxExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_IDisposableAddToIDisposableUnregister(IDisposable, IDisposableUnregister)
+  nameWithType: RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister(IDisposable, IDisposableUnregister)
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister(System.IDisposable, R3.Ceres.IDisposableUnregister)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Registers the disposable with an IDisposableUnregister lifetime owner.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(IsScriptMethod = true)]
+
+      [CeresLabel("Add To Disposable Unregister")]
+
+      public static void Flow_IDisposableAddToIDisposableUnregister(IDisposable disposable, IDisposableUnregister disposableUnregister)
+    parameters:
+    - id: disposable
+      type: System.IDisposable
+      description: The disposable to register.
+    - id: disposableUnregister
+      type: R3.Ceres.IDisposableUnregister
+      description: The unregister owner that will dispose it.
+    content.vb: >-
+      <ExecutableFunction(IsScriptMethod:=True)>
+
+      <CeresLabel("Add To Disposable Unregister")>
+
+      Public Shared Sub Flow_IDisposableAddToIDisposableUnregister(disposable As IDisposable, disposableUnregister As IDisposableUnregister)
+  overload: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: IsScriptMethod
+      type: System.Boolean
+      value: true
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Add To Disposable Unregister
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToComponent(System.IDisposable,UnityEngine.Component)
+  commentId: M:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToComponent(System.IDisposable,UnityEngine.Component)
+  id: Flow_IDisposableAddToComponent(System.IDisposable,UnityEngine.Component)
+  parent: Ceres.Flow.Utilities.RxExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_IDisposableAddToComponent(IDisposable, Component)
+  nameWithType: RxExecutableLibrary.Flow_IDisposableAddToComponent(IDisposable, Component)
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToComponent(System.IDisposable, UnityEngine.Component)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Registers the disposable with a component lifetime.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(IsScriptMethod = true)]
+
+      [CeresLabel("Add To Component")]
+
+      public static void Flow_IDisposableAddToComponent(IDisposable disposable, Component component)
+    parameters:
+    - id: disposable
+      type: System.IDisposable
+      description: The disposable to register.
+    - id: component
+      type: UnityEngine.Component
+      description: The component whose lifetime owns the disposable.
+    content.vb: >-
+      <ExecutableFunction(IsScriptMethod:=True)>
+
+      <CeresLabel("Add To Component")>
+
+      Public Shared Sub Flow_IDisposableAddToComponent(disposable As IDisposable, component As Component)
+  overload: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToComponent*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: IsScriptMethod
+      type: System.Boolean
+      value: true
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Add To Component
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToGameObject(System.IDisposable,UnityEngine.GameObject)
+  commentId: M:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToGameObject(System.IDisposable,UnityEngine.GameObject)
+  id: Flow_IDisposableAddToGameObject(System.IDisposable,UnityEngine.GameObject)
+  parent: Ceres.Flow.Utilities.RxExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_IDisposableAddToGameObject(IDisposable, GameObject)
+  nameWithType: RxExecutableLibrary.Flow_IDisposableAddToGameObject(IDisposable, GameObject)
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToGameObject(System.IDisposable, UnityEngine.GameObject)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Registers the disposable with a GameObject lifetime.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction(IsScriptMethod = true)]
+
+      [CeresLabel("Add To GameObject")]
+
+      public static void Flow_IDisposableAddToGameObject(IDisposable disposable, GameObject gameObject)
+    parameters:
+    - id: disposable
+      type: System.IDisposable
+      description: The disposable to register.
+    - id: gameObject
+      type: UnityEngine.GameObject
+      description: The GameObject whose lifetime owns the disposable.
+    content.vb: >-
+      <ExecutableFunction(IsScriptMethod:=True)>
+
+      <CeresLabel("Add To GameObject")>
+
+      Public Shared Sub Flow_IDisposableAddToGameObject(disposable As IDisposable, gameObject As GameObject)
+  overload: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToGameObject*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: IsScriptMethod
+      type: System.Boolean
+      value: true
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Add To GameObject
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_DisposableCreate(Ceres.Flow.EventDelegate)
+  commentId: M:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_DisposableCreate(Ceres.Flow.EventDelegate)
+  id: Flow_DisposableCreate(Ceres.Flow.EventDelegate)
+  parent: Ceres.Flow.Utilities.RxExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: Flow_DisposableCreate(EventDelegate)
+  nameWithType: RxExecutableLibrary.Flow_DisposableCreate(EventDelegate)
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_DisposableCreate(Ceres.Flow.EventDelegate)
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Creates a disposable that invokes the supplied event when disposed.
+  example: []
+  syntax:
+    content: >-
+      [ExecutableFunction]
+
+      [CeresLabel("Create Disposable From Event")]
+
+      public static IDisposable Flow_DisposableCreate(EventDelegate onDispose)
+    parameters:
+    - id: onDispose
+      type: Ceres.Flow.EventDelegate
+      description: Callback invoked when the disposable is disposed.
+    return:
+      type: System.IDisposable
+      description: A disposable callback wrapper.
+    content.vb: >-
+      <ExecutableFunction>
+
+      <CeresLabel("Create Disposable From Event")>
+
+      Public Shared Function Flow_DisposableCreate(onDispose As EventDelegate) As IDisposable
+  overload: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_DisposableCreate*
+  attributes:
+  - type: Ceres.Flow.Annotations.ExecutableFunctionAttribute
+    ctor: Ceres.Flow.Annotations.ExecutableFunctionAttribute.#ctor
+    arguments: []
+  - type: Ceres.Annotations.CeresLabelAttribute
+    ctor: Ceres.Annotations.CeresLabelAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Create Disposable From Event
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.CollectExecutableFunctions
+  commentId: M:Ceres.Flow.Utilities.RxExecutableLibrary.CollectExecutableFunctions
+  id: CollectExecutableFunctions
+  parent: Ceres.Flow.Utilities.RxExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: CollectExecutableFunctions()
+  nameWithType: RxExecutableLibrary.CollectExecutableFunctions()
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.CollectExecutableFunctions()
+  type: Method
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  summary: Collect all static executable functions in this library
+  example: []
+  syntax:
+    content: protected override void CollectExecutableFunctions()
+    content.vb: Protected Overrides Sub CollectExecutableFunctions()
+  overridden: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+  overload: Ceres.Flow.Utilities.RxExecutableLibrary.CollectExecutableFunctions*
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.#ctor
+  commentId: M:Ceres.Flow.Utilities.RxExecutableLibrary.#ctor
+  id: '#ctor'
+  parent: Ceres.Flow.Utilities.RxExecutableLibrary
+  langs:
+  - csharp
+  - vb
+  name: RxExecutableLibrary()
+  nameWithType: RxExecutableLibrary.RxExecutableLibrary()
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.RxExecutableLibrary()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow
+  namespace: Ceres.Flow.Utilities
+  syntax:
+    content: public RxExecutableLibrary()
+    content.vb: Public Sub New()
+  overload: Ceres.Flow.Utilities.RxExecutableLibrary.#ctor*
+  nameWithType.vb: RxExecutableLibrary.New()
+  fullName.vb: Ceres.Flow.Utilities.RxExecutableLibrary.New()
+  name.vb: New()
+references:
+- uid: Ceres.Flow.Utilities
+  commentId: N:Ceres.Flow.Utilities
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow.Utilities
+  nameWithType: Ceres.Flow.Utilities
+  fullName: Ceres.Flow.Utilities
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  - name: .
+  - uid: Ceres.Flow.Utilities
+    name: Utilities
+    isExternal: true
+    href: Ceres.Flow.Utilities.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  - name: .
+  - uid: Ceres.Flow.Utilities
+    name: Utilities
+    isExternal: true
+    href: Ceres.Flow.Utilities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  commentId: T:Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  parent: Ceres.Flow.Utilities
+  isExternal: true
+  href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html
+  name: ExecutableFunctionLibrary
+  nameWithType: ExecutableFunctionLibrary
+  fullName: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+- uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+  commentId: M:Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+  parent: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  isExternal: true
+  href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr__1_System_String_System_Int32_System_Void__
+  name: RegisterExecutableFunctionPtr<TLibrary>(string, int, void*)
+  nameWithType: ExecutableFunctionLibrary.RegisterExecutableFunctionPtr<TLibrary>(string, int, void*)
+  fullName: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr<TLibrary>(string, int, void*)
+  nameWithType.vb: ExecutableFunctionLibrary.RegisterExecutableFunctionPtr(Of TLibrary)(String, Integer, Void*)
+  fullName.vb: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr(Of TLibrary)(String, Integer, Void*)
+  name.vb: RegisterExecutableFunctionPtr(Of TLibrary)(String, Integer, Void*)
+  spec.csharp:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+    name: RegisterExecutableFunctionPtr
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr__1_System_String_System_Int32_System_Void__
+  - name: <
+  - name: TLibrary
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Void
+    name: void
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.void
+  - name: '*'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionPtr``1(System.String,System.Int32,System.Void*)
+    name: RegisterExecutableFunctionPtr
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionPtr__1_System_String_System_Int32_System_Void__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TLibrary
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Void
+    name: Void
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.void
+  - name: '*'
+  - name: )
+- uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+  commentId: M:Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+  parent: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  isExternal: true
+  href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo__1_System_String_System_Int32_System_String_System_Int32_
+  name: RegisterExecutableFunctionFileInfo<TLibrary>(string, int, string, int)
+  nameWithType: ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo<TLibrary>(string, int, string, int)
+  fullName: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo<TLibrary>(string, int, string, int)
+  nameWithType.vb: ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo(Of TLibrary)(String, Integer, String, Integer)
+  fullName.vb: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo(Of TLibrary)(String, Integer, String, Integer)
+  name.vb: RegisterExecutableFunctionFileInfo(Of TLibrary)(String, Integer, String, Integer)
+  spec.csharp:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+    name: RegisterExecutableFunctionFileInfo
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo__1_System_String_System_Int32_System_String_System_Int32_
+  - name: <
+  - name: TLibrary
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.RegisterExecutableFunctionFileInfo``1(System.String,System.Int32,System.String,System.Int32)
+    name: RegisterExecutableFunctionFileInfo
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_RegisterExecutableFunctionFileInfo__1_System_String_System_Int32_System_String_System_Int32_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TLibrary
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableDispose*
+  commentId: Overload:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableDispose
+  isExternal: true
+  href: Ceres.Flow.Utilities.RxExecutableLibrary.html#Ceres_Flow_Utilities_RxExecutableLibrary_Flow_IDisposableDispose_System_IDisposable_
+  name: Flow_IDisposableDispose
+  nameWithType: RxExecutableLibrary.Flow_IDisposableDispose
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableDispose
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister*
+  commentId: Overload:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister
+  isExternal: true
+  href: Ceres.Flow.Utilities.RxExecutableLibrary.html#Ceres_Flow_Utilities_RxExecutableLibrary_Flow_IDisposableAddToIDisposableUnregister_System_IDisposable_R3_Ceres_IDisposableUnregister_
+  name: Flow_IDisposableAddToIDisposableUnregister
+  nameWithType: RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToIDisposableUnregister
+- uid: R3.Ceres.IDisposableUnregister
+  commentId: T:R3.Ceres.IDisposableUnregister
+  parent: R3.Ceres
+  isExternal: true
+  href: R3.Ceres.IDisposableUnregister.html
+  name: IDisposableUnregister
+  nameWithType: IDisposableUnregister
+  fullName: R3.Ceres.IDisposableUnregister
+- uid: R3.Ceres
+  commentId: N:R3.Ceres
+  isExternal: true
+  href: R3.html
+  name: R3.Ceres
+  nameWithType: R3.Ceres
+  fullName: R3.Ceres
+  spec.csharp:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+  spec.vb:
+  - uid: R3
+    name: R3
+    isExternal: true
+    href: R3.html
+  - name: .
+  - uid: R3.Ceres
+    name: Ceres
+    isExternal: true
+    href: R3.Ceres.html
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToComponent*
+  commentId: Overload:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToComponent
+  isExternal: true
+  href: Ceres.Flow.Utilities.RxExecutableLibrary.html#Ceres_Flow_Utilities_RxExecutableLibrary_Flow_IDisposableAddToComponent_System_IDisposable_UnityEngine_Component_
+  name: Flow_IDisposableAddToComponent
+  nameWithType: RxExecutableLibrary.Flow_IDisposableAddToComponent
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToComponent
+- uid: UnityEngine.Component
+  isExternal: true
+  name: Component
+  nameWithType: Component
+  fullName: UnityEngine.Component
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToGameObject*
+  commentId: Overload:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToGameObject
+  isExternal: true
+  href: Ceres.Flow.Utilities.RxExecutableLibrary.html#Ceres_Flow_Utilities_RxExecutableLibrary_Flow_IDisposableAddToGameObject_System_IDisposable_UnityEngine_GameObject_
+  name: Flow_IDisposableAddToGameObject
+  nameWithType: RxExecutableLibrary.Flow_IDisposableAddToGameObject
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_IDisposableAddToGameObject
+- uid: UnityEngine.GameObject
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_DisposableCreate*
+  commentId: Overload:Ceres.Flow.Utilities.RxExecutableLibrary.Flow_DisposableCreate
+  isExternal: true
+  href: Ceres.Flow.Utilities.RxExecutableLibrary.html#Ceres_Flow_Utilities_RxExecutableLibrary_Flow_DisposableCreate_Ceres_Flow_EventDelegate_
+  name: Flow_DisposableCreate
+  nameWithType: RxExecutableLibrary.Flow_DisposableCreate
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.Flow_DisposableCreate
+- uid: Ceres.Flow.EventDelegate
+  commentId: T:Ceres.Flow.EventDelegate
+  parent: Ceres.Flow
+  isExternal: true
+  href: Ceres.Flow.EventDelegate.html
+  name: EventDelegate
+  nameWithType: EventDelegate
+  fullName: Ceres.Flow.EventDelegate
+- uid: Ceres.Flow
+  commentId: N:Ceres.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Flow
+  nameWithType: Ceres.Flow
+  fullName: Ceres.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Flow.html
+- uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+  commentId: M:Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+  parent: Ceres.Flow.Utilities.ExecutableFunctionLibrary
+  isExternal: true
+  href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_CollectExecutableFunctions
+  name: CollectExecutableFunctions()
+  nameWithType: ExecutableFunctionLibrary.CollectExecutableFunctions()
+  fullName: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions()
+  spec.csharp:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+    name: CollectExecutableFunctions
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_CollectExecutableFunctions
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Flow.Utilities.ExecutableFunctionLibrary.CollectExecutableFunctions
+    name: CollectExecutableFunctions
+    isExternal: true
+    href: Ceres.Flow.Utilities.ExecutableFunctionLibrary.html#Ceres_Flow_Utilities_ExecutableFunctionLibrary_CollectExecutableFunctions
+  - name: (
+  - name: )
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.CollectExecutableFunctions*
+  commentId: Overload:Ceres.Flow.Utilities.RxExecutableLibrary.CollectExecutableFunctions
+  isExternal: true
+  href: Ceres.Flow.Utilities.RxExecutableLibrary.html#Ceres_Flow_Utilities_RxExecutableLibrary_CollectExecutableFunctions
+  name: CollectExecutableFunctions
+  nameWithType: RxExecutableLibrary.CollectExecutableFunctions
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.CollectExecutableFunctions
+- uid: Ceres.Flow.Utilities.RxExecutableLibrary.#ctor*
+  commentId: Overload:Ceres.Flow.Utilities.RxExecutableLibrary.#ctor
+  isExternal: true
+  href: Ceres.Flow.Utilities.RxExecutableLibrary.html#Ceres_Flow_Utilities_RxExecutableLibrary__ctor
+  name: RxExecutableLibrary
+  nameWithType: RxExecutableLibrary.RxExecutableLibrary
+  fullName: Ceres.Flow.Utilities.RxExecutableLibrary.RxExecutableLibrary
+  nameWithType.vb: RxExecutableLibrary.New
+  fullName.vb: Ceres.Flow.Utilities.RxExecutableLibrary.New
+  name.vb: New

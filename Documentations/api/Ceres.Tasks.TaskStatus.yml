@@ -1,0 +1,140 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Tasks.TaskStatus
+  commentId: T:Ceres.Tasks.TaskStatus
+  id: TaskStatus
+  parent: Ceres.Tasks
+  children:
+  - Ceres.Tasks.TaskStatus.Completed
+  - Ceres.Tasks.TaskStatus.Paused
+  - Ceres.Tasks.TaskStatus.Running
+  - Ceres.Tasks.TaskStatus.Stopped
+  langs:
+  - csharp
+  - vb
+  name: TaskStatus
+  nameWithType: TaskStatus
+  fullName: Ceres.Tasks.TaskStatus
+  type: Enum
+  assemblies:
+  - Ceres
+  namespace: Ceres.Tasks
+  syntax:
+    content: public enum TaskStatus
+    content.vb: Public Enum TaskStatus
+- uid: Ceres.Tasks.TaskStatus.Running
+  commentId: F:Ceres.Tasks.TaskStatus.Running
+  id: Running
+  parent: Ceres.Tasks.TaskStatus
+  langs:
+  - csharp
+  - vb
+  name: Running
+  nameWithType: TaskStatus.Running
+  fullName: Ceres.Tasks.TaskStatus.Running
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Tasks
+  summary: Task is enabled to run and can be updated
+  example: []
+  syntax:
+    content: Running = 0
+    return:
+      type: Ceres.Tasks.TaskStatus
+- uid: Ceres.Tasks.TaskStatus.Paused
+  commentId: F:Ceres.Tasks.TaskStatus.Paused
+  id: Paused
+  parent: Ceres.Tasks.TaskStatus
+  langs:
+  - csharp
+  - vb
+  name: Paused
+  nameWithType: TaskStatus.Paused
+  fullName: Ceres.Tasks.TaskStatus.Paused
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Tasks
+  summary: Task is paused and will be ignored
+  example: []
+  syntax:
+    content: Paused = 1
+    return:
+      type: Ceres.Tasks.TaskStatus
+- uid: Ceres.Tasks.TaskStatus.Completed
+  commentId: F:Ceres.Tasks.TaskStatus.Completed
+  id: Completed
+  parent: Ceres.Tasks.TaskStatus
+  langs:
+  - csharp
+  - vb
+  name: Completed
+  nameWithType: TaskStatus.Completed
+  fullName: Ceres.Tasks.TaskStatus.Completed
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Tasks
+  summary: Task is completed and wait to broadcast complete event
+  example: []
+  syntax:
+    content: Completed = 2
+    return:
+      type: Ceres.Tasks.TaskStatus
+- uid: Ceres.Tasks.TaskStatus.Stopped
+  commentId: F:Ceres.Tasks.TaskStatus.Stopped
+  id: Stopped
+  parent: Ceres.Tasks.TaskStatus
+  langs:
+  - csharp
+  - vb
+  name: Stopped
+  nameWithType: TaskStatus.Stopped
+  fullName: Ceres.Tasks.TaskStatus.Stopped
+  type: Field
+  assemblies:
+  - Ceres
+  namespace: Ceres.Tasks
+  summary: Task is stopped and will not broadcast complete event
+  example: []
+  syntax:
+    content: Stopped = 3
+    return:
+      type: Ceres.Tasks.TaskStatus
+references:
+- uid: Ceres.Tasks
+  commentId: N:Ceres.Tasks
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Tasks
+  nameWithType: Ceres.Tasks
+  fullName: Ceres.Tasks
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Tasks
+    name: Tasks
+    isExternal: true
+    href: Ceres.Tasks.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Tasks
+    name: Tasks
+    isExternal: true
+    href: Ceres.Tasks.html
+- uid: Ceres.Tasks.TaskStatus
+  commentId: T:Ceres.Tasks.TaskStatus
+  parent: Ceres.Tasks
+  isExternal: true
+  href: Ceres.Tasks.TaskStatus.html
+  name: TaskStatus
+  nameWithType: TaskStatus
+  fullName: Ceres.Tasks.TaskStatus

@@ -1,0 +1,540 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer
+  commentId: T:Ceres.DataDriven.Editor.DataTableEditorJsonSerializer
+  id: DataTableEditorJsonSerializer
+  parent: Ceres.DataDriven.Editor
+  children:
+  - Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.#ctor
+  - Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize(Ceres.DataDriven.DataTable,System.String)
+  - Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Serialize(Ceres.DataDriven.DataTable)
+  langs:
+  - csharp
+  - vb
+  name: DataTableEditorJsonSerializer
+  nameWithType: DataTableEditorJsonSerializer
+  fullName: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer
+  type: Class
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  summary: Default serializer using Unity built-in <xref href="UnityEngine.JsonUtility" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class DataTableEditorJsonSerializer : IDataTableEditorSerializer'
+    content.vb: Public Class DataTableEditorJsonSerializer Implements IDataTableEditorSerializer
+  inheritance:
+  - System.Object
+  implements:
+  - Ceres.DataDriven.Editor.IDataTableEditorSerializer
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Serialize(Ceres.DataDriven.DataTable)
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Serialize(Ceres.DataDriven.DataTable)
+  id: Serialize(Ceres.DataDriven.DataTable)
+  parent: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer
+  langs:
+  - csharp
+  - vb
+  name: Serialize(DataTable)
+  nameWithType: DataTableEditorJsonSerializer.Serialize(DataTable)
+  fullName: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Serialize(Ceres.DataDriven.DataTable)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  example: []
+  syntax:
+    content: public string Serialize(DataTable dataTable)
+    parameters:
+    - id: dataTable
+      type: Ceres.DataDriven.DataTable
+    return:
+      type: System.String
+    content.vb: Public Function Serialize(dataTable As DataTable) As String
+  overload: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Serialize*
+  implements:
+  - Ceres.DataDriven.Editor.IDataTableEditorSerializer.Serialize(Ceres.DataDriven.DataTable)
+- uid: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize(Ceres.DataDriven.DataTable,System.String)
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize(Ceres.DataDriven.DataTable,System.String)
+  id: Deserialize(Ceres.DataDriven.DataTable,System.String)
+  parent: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer
+  langs:
+  - csharp
+  - vb
+  name: Deserialize(DataTable, string)
+  nameWithType: DataTableEditorJsonSerializer.Deserialize(DataTable, string)
+  fullName: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize(Ceres.DataDriven.DataTable, string)
+  type: Method
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  example: []
+  syntax:
+    content: public void Deserialize(DataTable dataTable, string jsonData)
+    parameters:
+    - id: dataTable
+      type: Ceres.DataDriven.DataTable
+    - id: jsonData
+      type: System.String
+    content.vb: Public Sub Deserialize(dataTable As DataTable, jsonData As String)
+  overload: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize*
+  implements:
+  - Ceres.DataDriven.Editor.IDataTableEditorSerializer.Deserialize(Ceres.DataDriven.DataTable,System.String)
+  nameWithType.vb: DataTableEditorJsonSerializer.Deserialize(DataTable, String)
+  fullName.vb: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize(Ceres.DataDriven.DataTable, String)
+  name.vb: Deserialize(DataTable, String)
+- uid: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.#ctor
+  commentId: M:Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.#ctor
+  id: '#ctor'
+  parent: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer
+  langs:
+  - csharp
+  - vb
+  name: DataTableEditorJsonSerializer()
+  nameWithType: DataTableEditorJsonSerializer.DataTableEditorJsonSerializer()
+  fullName: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.DataTableEditorJsonSerializer()
+  type: Constructor
+  assemblies:
+  - Ceres.Editor
+  namespace: Ceres.DataDriven.Editor
+  syntax:
+    content: public DataTableEditorJsonSerializer()
+    content.vb: Public Sub New()
+  overload: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.#ctor*
+  nameWithType.vb: DataTableEditorJsonSerializer.New()
+  fullName.vb: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.New()
+  name.vb: New()
+references:
+- uid: UnityEngine.JsonUtility
+  commentId: T:UnityEngine.JsonUtility
+  isExternal: true
+- uid: Ceres.DataDriven.Editor
+  commentId: N:Ceres.DataDriven.Editor
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven.Editor
+  nameWithType: Ceres.DataDriven.Editor
+  fullName: Ceres.DataDriven.Editor
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  - name: .
+  - uid: Ceres.DataDriven.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.DataDriven.Editor.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  - name: .
+  - uid: Ceres.DataDriven.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.DataDriven.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer
+  commentId: T:Ceres.DataDriven.Editor.IDataTableEditorSerializer
+  parent: Ceres.DataDriven.Editor
+  isExternal: true
+  href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html
+  name: IDataTableEditorSerializer
+  nameWithType: IDataTableEditorSerializer
+  fullName: Ceres.DataDriven.Editor.IDataTableEditorSerializer
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Serialize*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Serialize
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.html#Ceres_DataDriven_Editor_DataTableEditorJsonSerializer_Serialize_Ceres_DataDriven_DataTable_
+  name: Serialize
+  nameWithType: DataTableEditorJsonSerializer.Serialize
+  fullName: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Serialize
+- uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Serialize(Ceres.DataDriven.DataTable)
+  commentId: M:Ceres.DataDriven.Editor.IDataTableEditorSerializer.Serialize(Ceres.DataDriven.DataTable)
+  parent: Ceres.DataDriven.Editor.IDataTableEditorSerializer
+  isExternal: true
+  href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html#Ceres_DataDriven_Editor_IDataTableEditorSerializer_Serialize_Ceres_DataDriven_DataTable_
+  name: Serialize(DataTable)
+  nameWithType: IDataTableEditorSerializer.Serialize(DataTable)
+  fullName: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Serialize(Ceres.DataDriven.DataTable)
+  spec.csharp:
+  - uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Serialize(Ceres.DataDriven.DataTable)
+    name: Serialize
+    isExternal: true
+    href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html#Ceres_DataDriven_Editor_IDataTableEditorSerializer_Serialize_Ceres_DataDriven_DataTable_
+  - name: (
+  - uid: Ceres.DataDriven.DataTable
+    name: DataTable
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Serialize(Ceres.DataDriven.DataTable)
+    name: Serialize
+    isExternal: true
+    href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html#Ceres_DataDriven_Editor_IDataTableEditorSerializer_Serialize_Ceres_DataDriven_DataTable_
+  - name: (
+  - uid: Ceres.DataDriven.DataTable
+    name: DataTable
+    isExternal: true
+  - name: )
+- uid: Ceres.DataDriven.DataTable
+  commentId: T:Ceres.DataDriven.DataTable
+  parent: Ceres.DataDriven
+  isExternal: true
+  href: Ceres.DataDriven.DataTable.html
+  name: DataTable
+  nameWithType: DataTable
+  fullName: Ceres.DataDriven.DataTable
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.DataDriven
+  commentId: N:Ceres.DataDriven
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.DataDriven
+  nameWithType: Ceres.DataDriven
+  fullName: Ceres.DataDriven
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.DataDriven
+    name: DataDriven
+    isExternal: true
+    href: Ceres.DataDriven.html
+- uid: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.html#Ceres_DataDriven_Editor_DataTableEditorJsonSerializer_Deserialize_Ceres_DataDriven_DataTable_System_String_
+  name: Deserialize
+  nameWithType: DataTableEditorJsonSerializer.Deserialize
+  fullName: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.Deserialize
+- uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Deserialize(Ceres.DataDriven.DataTable,System.String)
+  commentId: M:Ceres.DataDriven.Editor.IDataTableEditorSerializer.Deserialize(Ceres.DataDriven.DataTable,System.String)
+  parent: Ceres.DataDriven.Editor.IDataTableEditorSerializer
+  isExternal: true
+  href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html#Ceres_DataDriven_Editor_IDataTableEditorSerializer_Deserialize_Ceres_DataDriven_DataTable_System_String_
+  name: Deserialize(DataTable, string)
+  nameWithType: IDataTableEditorSerializer.Deserialize(DataTable, string)
+  fullName: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Deserialize(Ceres.DataDriven.DataTable, string)
+  nameWithType.vb: IDataTableEditorSerializer.Deserialize(DataTable, String)
+  fullName.vb: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Deserialize(Ceres.DataDriven.DataTable, String)
+  name.vb: Deserialize(DataTable, String)
+  spec.csharp:
+  - uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Deserialize(Ceres.DataDriven.DataTable,System.String)
+    name: Deserialize
+    isExternal: true
+    href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html#Ceres_DataDriven_Editor_IDataTableEditorSerializer_Deserialize_Ceres_DataDriven_DataTable_System_String_
+  - name: (
+  - uid: Ceres.DataDriven.DataTable
+    name: DataTable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.DataDriven.Editor.IDataTableEditorSerializer.Deserialize(Ceres.DataDriven.DataTable,System.String)
+    name: Deserialize
+    isExternal: true
+    href: Ceres.DataDriven.Editor.IDataTableEditorSerializer.html#Ceres_DataDriven_Editor_IDataTableEditorSerializer_Deserialize_Ceres_DataDriven_DataTable_System_String_
+  - name: (
+  - uid: Ceres.DataDriven.DataTable
+    name: DataTable
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.#ctor*
+  commentId: Overload:Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.#ctor
+  isExternal: true
+  href: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.html#Ceres_DataDriven_Editor_DataTableEditorJsonSerializer__ctor
+  name: DataTableEditorJsonSerializer
+  nameWithType: DataTableEditorJsonSerializer.DataTableEditorJsonSerializer
+  fullName: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.DataTableEditorJsonSerializer
+  nameWithType.vb: DataTableEditorJsonSerializer.New
+  fullName.vb: Ceres.DataDriven.Editor.DataTableEditorJsonSerializer.New
+  name.vb: New

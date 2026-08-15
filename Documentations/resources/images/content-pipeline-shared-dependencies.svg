@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Shared dependency ownership</title><desc id="desc">Two content scopes share a dependency that is assigned once to a stable shared location.</desc>
+  <defs><style>.bg{fill:#141515}.card{fill:#202020;stroke:#3a3d3c;stroke-width:2}.shared{fill:#183b37;stroke:#52d6c8;stroke-width:2}.title{fill:#eeeeec;font:700 26px Sora,Segoe UI,sans-serif}.label{fill:#52d6c8;font:700 14px Sora,Segoe UI,sans-serif;letter-spacing:1px}.body{fill:#a0a4a1;font:16px Segoe UI,sans-serif}.line{stroke:#52d6c8;stroke-width:3;fill:none}</style></defs>
+  <rect class="bg" width="1200" height="520" rx="24"/><text class="label" x="70" y="68">ONE DEPENDENCY, ONE OWNER</text>
+  <g transform="translate(70 120)"><rect class="card" width="300" height="170" rx="14"/><text class="title" x="28" y="55">Scope A</text><text class="body" x="28" y="97">Gameplay assets</text><text class="body" x="28" y="130">References shared material</text></g>
+  <g transform="translate(830 120)"><rect class="card" width="300" height="170" rx="14"/><text class="title" x="28" y="55">Scope B</text><text class="body" x="28" y="97">Environment assets</text><text class="body" x="28" y="130">References shared material</text></g>
+  <path class="line" d="M370 205H475M830 205H725"/><path class="line" d="M600 290V350"/>
+  <g transform="translate(475 135)"><rect class="shared" width="250" height="140" rx="14"/><text class="label" x="28" y="45">SHARED NODE</text><text class="title" x="28" y="88">Material</text><text class="body" x="28" y="118">Stable fingerprint</text></g>
+  <g transform="translate(420 350)"><rect class="card" width="360" height="100" rx="14"/><text class="title" x="28" y="44">Shared bundle location</text><text class="body" x="28" y="74">Owned and packed exactly once</text></g>
+</svg>

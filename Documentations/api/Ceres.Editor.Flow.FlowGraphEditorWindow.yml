@@ -1,0 +1,1449 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow
+  commentId: T:Ceres.Editor.Flow.FlowGraphEditorWindow
+  id: FlowGraphEditorWindow
+  parent: Ceres.Editor.Flow
+  children:
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.#ctor
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.DebugState
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.EditorObject
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.GetGraphView
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView(System.Int32)
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.GraphIndex
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.OnDisable
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.OnInitialize
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.OnReloadGraphView
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView(System.String)
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph(System.String)
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph(System.String,System.String)
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters(Ceres.Editor.Flow.LocalFunction)
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionTypes(Ceres.Editor.Flow.LocalFunction)
+  - Ceres.Editor.Flow.FlowGraphEditorWindow.SaveGraphData
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphEditorWindow
+  nameWithType: FlowGraphEditorWindow
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow
+  type: Class
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: 'public class FlowGraphEditorWindow : CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>, IHasCustomMenu'
+    content.vb: Public Class FlowGraphEditorWindow Inherits CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow) Implements IHasCustomMenu
+  inheritance:
+  - System.Object
+  - Ceres.Editor.Graph.CeresGraphEditorWindow
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  implements:
+  - UnityEditor.IHasCustomMenu
+  inheritedMembers:
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetOrCreateEditorWindow(Ceres.Flow.IFlowGraphContainer)
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Show(Ceres.Flow.IFlowGraphContainer)
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnEnable
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnDisable
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetContainer
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Reload
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnReloadGraphView
+  - Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.ContainerT
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(Ceres.Graph.ICeresGraphContainer)
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(UnityEditor.GenericMenu)
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(System.Type)
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.Identifier
+  - Ceres.Editor.Graph.CeresGraphEditorWindow.Container
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.OnInitialize
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.OnInitialize
+  id: OnInitialize
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: OnInitialize()
+  nameWithType: FlowGraphEditorWindow.OnInitialize()
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.OnInitialize()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Initialize graph view in this stage
+  example: []
+  syntax:
+    content: protected override void OnInitialize()
+    content.vb: Protected Overrides Sub OnInitialize()
+  overridden: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.OnInitialize*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.OnDisable
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.OnDisable
+  id: OnDisable
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: OnDisable()
+  nameWithType: FlowGraphEditorWindow.OnDisable()
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.OnDisable()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  example: []
+  syntax:
+    content: protected override void OnDisable()
+    content.vb: Protected Overrides Sub OnDisable()
+  overridden: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnDisable
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.OnDisable*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.GetGraphView
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.GetGraphView
+  id: GetGraphView
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: GetGraphView()
+  nameWithType: FlowGraphEditorWindow.GetGraphView()
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.GetGraphView()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Get current editing graph view
+  example: []
+  syntax:
+    content: public FlowGraphView GetGraphView()
+    return:
+      type: Ceres.Editor.Flow.FlowGraphView
+      description: ''
+    content.vb: Public Function GetGraphView() As FlowGraphView
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.GetGraphView*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView(System.Int32)
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView(System.Int32)
+  id: GetOrCreateGraphView(System.Int32)
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: GetOrCreateGraphView(int)
+  nameWithType: FlowGraphEditorWindow.GetOrCreateGraphView(int)
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView(int)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Get or create graph view by id
+  example: []
+  syntax:
+    content: public FlowGraphView GetOrCreateGraphView(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: ''
+    return:
+      type: Ceres.Editor.Flow.FlowGraphView
+      description: ''
+    content.vb: Public Function GetOrCreateGraphView(id As Integer) As FlowGraphView
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView*
+  nameWithType.vb: FlowGraphEditorWindow.GetOrCreateGraphView(Integer)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView(Integer)
+  name.vb: GetOrCreateGraphView(Integer)
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.SaveGraphData
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.SaveGraphData
+  id: SaveGraphData
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: SaveGraphData()
+  nameWithType: FlowGraphEditorWindow.SaveGraphData()
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.SaveGraphData()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Save current editing flow graph
+  example: []
+  syntax:
+    content: public void SaveGraphData()
+    content.vb: Public Sub SaveGraphData()
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.SaveGraphData*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.OnReloadGraphView
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.OnReloadGraphView
+  id: OnReloadGraphView
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: OnReloadGraphView()
+  nameWithType: FlowGraphEditorWindow.OnReloadGraphView()
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.OnReloadGraphView()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Construct graph view after reloading
+  example: []
+  syntax:
+    content: protected override void OnReloadGraphView()
+    content.vb: Protected Overrides Sub OnReloadGraphView()
+  overridden: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnReloadGraphView
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.OnReloadGraphView*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph
+  id: CreateFunctionSubGraph
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: CreateFunctionSubGraph()
+  nameWithType: FlowGraphEditorWindow.CreateFunctionSubGraph()
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Create a new subGraph to present custom function
+  example: []
+  syntax:
+    content: public void CreateFunctionSubGraph()
+    content.vb: Public Sub CreateFunctionSubGraph()
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph
+  id: CanCreateFunctionSubGraph
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: CanCreateFunctionSubGraph()
+  nameWithType: FlowGraphEditorWindow.CanCreateFunctionSubGraph()
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph()
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public bool CanCreateFunctionSubGraph()
+    return:
+      type: System.Boolean
+    content.vb: Public Function CanCreateFunctionSubGraph() As Boolean
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionTypes(Ceres.Editor.Flow.LocalFunction)
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionTypes(Ceres.Editor.Flow.LocalFunction)
+  id: ResolveFunctionTypes(Ceres.Editor.Flow.LocalFunction)
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: ResolveFunctionTypes(LocalFunction)
+  nameWithType: FlowGraphEditorWindow.ResolveFunctionTypes(LocalFunction)
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionTypes(Ceres.Editor.Flow.LocalFunction)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Resolve custom function parameter types
+  example: []
+  syntax:
+    content: public (Type, Type[]) ResolveFunctionTypes(LocalFunction localFunction)
+    parameters:
+    - id: localFunction
+      type: Ceres.Editor.Flow.LocalFunction
+      description: ''
+    return:
+      type: System.ValueTuple{System.Type,System.Type[]}
+      description: ''
+    content.vb: Public Function ResolveFunctionTypes(localFunction As LocalFunction) As (Type, Type())
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionTypes*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters(Ceres.Editor.Flow.LocalFunction)
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters(Ceres.Editor.Flow.LocalFunction)
+  id: ResolveFunctionInputParameters(Ceres.Editor.Flow.LocalFunction)
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: ResolveFunctionInputParameters(LocalFunction)
+  nameWithType: FlowGraphEditorWindow.ResolveFunctionInputParameters(LocalFunction)
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters(Ceres.Editor.Flow.LocalFunction)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Resolve custom function input parameters
+  example: []
+  syntax:
+    content: public CustomFunctionInputParameter[] ResolveFunctionInputParameters(LocalFunction localFunction)
+    parameters:
+    - id: localFunction
+      type: Ceres.Editor.Flow.LocalFunction
+      description: ''
+    return:
+      type: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter[]
+      description: ''
+    content.vb: Public Function ResolveFunctionInputParameters(localFunction As LocalFunction) As CustomFunctionInputParameter()
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView(System.String)
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView(System.String)
+  id: OpenSubgraphView(System.String)
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: OpenSubgraphView(string)
+  nameWithType: FlowGraphEditorWindow.OpenSubgraphView(string)
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView(string)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Open subGraph view by name
+  example: []
+  syntax:
+    content: public void OpenSubgraphView(string subGraphName)
+    parameters:
+    - id: subGraphName
+      type: System.String
+      description: ''
+    content.vb: Public Sub OpenSubgraphView(subGraphName As String)
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView*
+  nameWithType.vb: FlowGraphEditorWindow.OpenSubgraphView(String)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView(String)
+  name.vb: OpenSubgraphView(String)
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph(System.String,System.String)
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph(System.String,System.String)
+  id: RenameSubgraph(System.String,System.String)
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: RenameSubgraph(string, string)
+  nameWithType: FlowGraphEditorWindow.RenameSubgraph(string, string)
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph(string, string)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Rename subGraph and update view
+  example: []
+  syntax:
+    content: public void RenameSubgraph(string guid, string newName)
+    parameters:
+    - id: guid
+      type: System.String
+      description: ''
+    - id: newName
+      type: System.String
+      description: ''
+    content.vb: Public Sub RenameSubgraph(guid As String, newName As String)
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph*
+  nameWithType.vb: FlowGraphEditorWindow.RenameSubgraph(String, String)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph(String, String)
+  name.vb: RenameSubgraph(String, String)
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph(System.String)
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph(System.String)
+  id: RemoveSubgraph(System.String)
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: RemoveSubgraph(string)
+  nameWithType: FlowGraphEditorWindow.RemoveSubgraph(string)
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph(string)
+  type: Method
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Remove subGraph and update view
+  example: []
+  syntax:
+    content: public void RemoveSubgraph(string guid)
+    parameters:
+    - id: guid
+      type: System.String
+      description: ''
+    content.vb: Public Sub RemoveSubgraph(guid As String)
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph*
+  nameWithType.vb: FlowGraphEditorWindow.RemoveSubgraph(String)
+  fullName.vb: Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph(String)
+  name.vb: RemoveSubgraph(String)
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.#ctor
+  commentId: M:Ceres.Editor.Flow.FlowGraphEditorWindow.#ctor
+  id: '#ctor'
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: FlowGraphEditorWindow()
+  nameWithType: FlowGraphEditorWindow.FlowGraphEditorWindow()
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.FlowGraphEditorWindow()
+  type: Constructor
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  syntax:
+    content: public FlowGraphEditorWindow()
+    content.vb: Public Sub New()
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.#ctor*
+  nameWithType.vb: FlowGraphEditorWindow.New()
+  fullName.vb: Ceres.Editor.Flow.FlowGraphEditorWindow.New()
+  name.vb: New()
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.DebugState
+  commentId: P:Ceres.Editor.Flow.FlowGraphEditorWindow.DebugState
+  id: DebugState
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: DebugState
+  nameWithType: FlowGraphEditorWindow.DebugState
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.DebugState
+  type: Property
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Editor debug state
+  example: []
+  syntax:
+    content: public FlowGraphDebugState DebugState { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Flow.FlowGraphDebugState
+    content.vb: Public ReadOnly Property DebugState As FlowGraphDebugState
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.DebugState*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.GraphIndex
+  commentId: P:Ceres.Editor.Flow.FlowGraphEditorWindow.GraphIndex
+  id: GraphIndex
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: GraphIndex
+  nameWithType: FlowGraphEditorWindow.GraphIndex
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.GraphIndex
+  type: Property
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Editing graph view index
+  example: []
+  syntax:
+    content: public int GraphIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property GraphIndex As Integer
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.GraphIndex*
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.EditorObject
+  commentId: P:Ceres.Editor.Flow.FlowGraphEditorWindow.EditorObject
+  id: EditorObject
+  parent: Ceres.Editor.Flow.FlowGraphEditorWindow
+  langs:
+  - csharp
+  - vb
+  name: EditorObject
+  nameWithType: FlowGraphEditorWindow.EditorObject
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.EditorObject
+  type: Property
+  assemblies:
+  - Ceres.Flow.Editor
+  namespace: Ceres.Editor.Flow
+  summary: Editor view model
+  example: []
+  syntax:
+    content: public FlowGraphEditorObject EditorObject { get; }
+    parameters: []
+    return:
+      type: Ceres.Editor.Flow.FlowGraphEditorObject
+    content.vb: Public ReadOnly Property EditorObject As FlowGraphEditorObject
+  overload: Ceres.Editor.Flow.FlowGraphEditorWindow.EditorObject*
+references:
+- uid: Ceres.Editor.Flow
+  commentId: N:Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Flow
+  nameWithType: Ceres.Editor.Flow
+  fullName: Ceres.Editor.Flow
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Flow
+    name: Flow
+    isExternal: true
+    href: Ceres.Editor.Flow.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow
+  commentId: T:Ceres.Editor.Graph.CeresGraphEditorWindow
+  parent: Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html
+  name: CeresGraphEditorWindow
+  nameWithType: CeresGraphEditorWindow
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  commentId: T:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  parent: Ceres.Editor.Graph
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html
+  name: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow)
+  name.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+    name: CeresGraphEditorWindow
+    isExternal: true
+  - name: <
+  - uid: Ceres.Flow.IFlowGraphContainer
+    name: IFlowGraphContainer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Flow.FlowGraphEditorWindow
+    name: FlowGraphEditorWindow
+    isExternal: true
+    href: Ceres.Editor.Flow.FlowGraphEditorWindow.html
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+    name: CeresGraphEditorWindow
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Flow.IFlowGraphContainer
+    name: IFlowGraphContainer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Ceres.Editor.Flow.FlowGraphEditorWindow
+    name: FlowGraphEditorWindow
+    isExternal: true
+    href: Ceres.Editor.Flow.FlowGraphEditorWindow.html
+  - name: )
+- uid: UnityEditor.IHasCustomMenu
+  isExternal: true
+  name: IHasCustomMenu
+  nameWithType: IHasCustomMenu
+  fullName: UnityEditor.IHasCustomMenu
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetOrCreateEditorWindow(Ceres.Flow.IFlowGraphContainer)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetOrCreateEditorWindow(Ceres.Flow.IFlowGraphContainer)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow(`0)
+  name: GetOrCreateEditorWindow(IFlowGraphContainer)
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>.GetOrCreateEditorWindow(IFlowGraphContainer)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>.GetOrCreateEditorWindow(Ceres.Flow.IFlowGraphContainer)
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow).GetOrCreateEditorWindow(IFlowGraphContainer)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow).GetOrCreateEditorWindow(Ceres.Flow.IFlowGraphContainer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetOrCreateEditorWindow(Ceres.Flow.IFlowGraphContainer)
+    name: GetOrCreateEditorWindow
+    isExternal: true
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphContainer
+    name: IFlowGraphContainer
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetOrCreateEditorWindow(Ceres.Flow.IFlowGraphContainer)
+    name: GetOrCreateEditorWindow
+    isExternal: true
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphContainer
+    name: IFlowGraphContainer
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Show(Ceres.Flow.IFlowGraphContainer)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Show(Ceres.Flow.IFlowGraphContainer)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show(`0)
+  name: Show(IFlowGraphContainer)
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>.Show(IFlowGraphContainer)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>.Show(Ceres.Flow.IFlowGraphContainer)
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow).Show(IFlowGraphContainer)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow).Show(Ceres.Flow.IFlowGraphContainer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Show(Ceres.Flow.IFlowGraphContainer)
+    name: Show
+    isExternal: true
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphContainer
+    name: IFlowGraphContainer
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Show(Ceres.Flow.IFlowGraphContainer)
+    name: Show
+    isExternal: true
+  - name: (
+  - uid: Ceres.Flow.IFlowGraphContainer
+    name: IFlowGraphContainer
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnEnable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnEnable
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+  name: OnEnable()
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>.OnEnable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>.OnEnable()
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow).OnEnable()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow).OnEnable()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnEnable
+    name: OnEnable
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnEnable
+    name: OnEnable
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnDisable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnDisable
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+  name: OnDisable()
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>.OnDisable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>.OnDisable()
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow).OnDisable()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow).OnDisable()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnDisable
+    name: OnDisable
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnDisable
+    name: OnDisable
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetContainer
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetContainer
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+  name: GetContainer()
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>.GetContainer()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>.GetContainer()
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow).GetContainer()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow).GetContainer()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetContainer
+    name: GetContainer
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.GetContainer
+    name: GetContainer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Reload
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Reload
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+  name: Reload()
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>.Reload()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>.Reload()
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow).Reload()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow).Reload()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Reload
+    name: Reload
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.Reload
+    name: Reload
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnReloadGraphView
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnReloadGraphView
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+  name: OnReloadGraphView()
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>.OnReloadGraphView()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>.OnReloadGraphView()
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow).OnReloadGraphView()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow).OnReloadGraphView()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnReloadGraphView
+    name: OnReloadGraphView
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.OnReloadGraphView
+    name: OnReloadGraphView
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.ContainerT
+  commentId: P:Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}.ContainerT
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow{Ceres.Flow.IFlowGraphContainer,Ceres.Editor.Flow.FlowGraphEditorWindow}
+  definition: Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT
+  name: ContainerT
+  nameWithType: CeresGraphEditorWindow<IFlowGraphContainer, FlowGraphEditorWindow>.ContainerT
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow>.ContainerT
+  nameWithType.vb: CeresGraphEditorWindow(Of IFlowGraphContainer, FlowGraphEditorWindow).ContainerT
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of Ceres.Flow.IFlowGraphContainer, Ceres.Editor.Flow.FlowGraphEditorWindow).ContainerT
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(Ceres.Graph.ICeresGraphContainer)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(Ceres.Graph.ICeresGraphContainer)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_Initialize_Ceres_Graph_ICeresGraphContainer_
+  name: Initialize(ICeresGraphContainer)
+  nameWithType: CeresGraphEditorWindow.Initialize(ICeresGraphContainer)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(Ceres.Graph.ICeresGraphContainer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(Ceres.Graph.ICeresGraphContainer)
+    name: Initialize
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_Initialize_Ceres_Graph_ICeresGraphContainer_
+  - name: (
+  - uid: Ceres.Graph.ICeresGraphContainer
+    name: ICeresGraphContainer
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Initialize(Ceres.Graph.ICeresGraphContainer)
+    name: Initialize
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_Initialize_Ceres_Graph_ICeresGraphContainer_
+  - name: (
+  - uid: Ceres.Graph.ICeresGraphContainer
+    name: ICeresGraphContainer
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_OnEnable
+  name: OnEnable()
+  nameWithType: CeresGraphEditorWindow.OnEnable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+    name: OnEnable
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_OnEnable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnEnable
+    name: OnEnable
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_OnEnable
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(UnityEditor.GenericMenu)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(UnityEditor.GenericMenu)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_AddItemsToMenu_UnityEditor_GenericMenu_
+  name: AddItemsToMenu(GenericMenu)
+  nameWithType: CeresGraphEditorWindow.AddItemsToMenu(GenericMenu)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(UnityEditor.GenericMenu)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(UnityEditor.GenericMenu)
+    name: AddItemsToMenu
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_AddItemsToMenu_UnityEditor_GenericMenu_
+  - name: (
+  - uid: UnityEditor.GenericMenu
+    name: GenericMenu
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.AddItemsToMenu(UnityEditor.GenericMenu)
+    name: AddItemsToMenu
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_AddItemsToMenu_UnityEditor_GenericMenu_
+  - name: (
+  - uid: UnityEditor.GenericMenu
+    name: GenericMenu
+    isExternal: true
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_Reload
+  name: Reload()
+  nameWithType: CeresGraphEditorWindow.Reload()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+    name: Reload
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_Reload
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Reload
+    name: Reload
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_Reload
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_PreReload
+  name: PreReload()
+  nameWithType: CeresGraphEditorWindow.PreReload()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+    name: PreReload
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_PreReload
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.PreReload
+    name: PreReload
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_PreReload
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_GetContainerType
+  name: GetContainerType()
+  nameWithType: CeresGraphEditorWindow.GetContainerType()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+    name: GetContainerType
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_GetContainerType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.GetContainerType
+    name: GetContainerType
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_GetContainerType
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(System.Type)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(System.Type)
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_SetContainerType_System_Type_
+  name: SetContainerType(Type)
+  nameWithType: CeresGraphEditorWindow.SetContainerType(Type)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(System.Type)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(System.Type)
+    name: SetContainerType
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_SetContainerType_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.SetContainerType(System.Type)
+    name: SetContainerType
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_SetContainerType_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Identifier
+  commentId: P:Ceres.Editor.Graph.CeresGraphEditorWindow.Identifier
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_Identifier
+  name: Identifier
+  nameWithType: CeresGraphEditorWindow.Identifier
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.Identifier
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.Container
+  commentId: P:Ceres.Editor.Graph.CeresGraphEditorWindow.Container
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_Container
+  name: Container
+  nameWithType: CeresGraphEditorWindow.Container
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.Container
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Editor.Graph
+  commentId: N:Ceres.Editor.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Editor.Graph
+  nameWithType: Ceres.Editor.Graph
+  fullName: Ceres.Editor.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Editor
+    name: Editor
+    isExternal: true
+    href: Ceres.Editor.html
+  - name: .
+  - uid: Ceres.Editor.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Editor.Graph.html
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  commentId: T:Ceres.Editor.Graph.CeresGraphEditorWindow`2
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow-2.html
+  name: CeresGraphEditorWindow<TContainer, TKWindow>
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow)
+  name.vb: CeresGraphEditorWindow(Of TContainer, TKWindow)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+    name: CeresGraphEditorWindow
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow-2.html
+  - name: <
+  - name: TContainer
+  - name: ','
+  - name: " "
+  - name: TKWindow
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2
+    name: CeresGraphEditorWindow
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContainer
+  - name: ','
+  - name: " "
+  - name: TKWindow
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow(`0)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow(`0)
+  isExternal: true
+  name: GetOrCreateEditorWindow(TContainer)
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.GetOrCreateEditorWindow(TContainer)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.GetOrCreateEditorWindow(TContainer)
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).GetOrCreateEditorWindow(TContainer)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).GetOrCreateEditorWindow(TContainer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow(`0)
+    name: GetOrCreateEditorWindow
+    isExternal: true
+  - name: (
+  - name: TContainer
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetOrCreateEditorWindow(`0)
+    name: GetOrCreateEditorWindow
+    isExternal: true
+  - name: (
+  - name: TContainer
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show(`0)
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show(`0)
+  isExternal: true
+  name: Show(TContainer)
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.Show(TContainer)
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.Show(TContainer)
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).Show(TContainer)
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).Show(TContainer)
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show(`0)
+    name: Show
+    isExternal: true
+  - name: (
+  - name: TContainer
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Show(`0)
+    name: Show
+    isExternal: true
+  - name: (
+  - name: TContainer
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+  isExternal: true
+  name: OnEnable()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnEnable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnEnable()
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnEnable()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnEnable()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+    name: OnEnable
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnEnable
+    name: OnEnable
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+  isExternal: true
+  name: OnDisable()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnDisable()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnDisable()
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnDisable()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnDisable()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+    name: OnDisable
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnDisable
+    name: OnDisable
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+  isExternal: true
+  name: GetContainer()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.GetContainer()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.GetContainer()
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).GetContainer()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).GetContainer()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+    name: GetContainer
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.GetContainer
+    name: GetContainer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+  isExternal: true
+  name: Reload()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.Reload()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.Reload()
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).Reload()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).Reload()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+    name: Reload
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.Reload
+    name: Reload
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+  isExternal: true
+  name: OnReloadGraphView()
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.OnReloadGraphView()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.OnReloadGraphView()
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).OnReloadGraphView()
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).OnReloadGraphView()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+    name: OnReloadGraphView
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.OnReloadGraphView
+    name: OnReloadGraphView
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT
+  commentId: P:Ceres.Editor.Graph.CeresGraphEditorWindow`2.ContainerT
+  isExternal: true
+  name: ContainerT
+  nameWithType: CeresGraphEditorWindow<TContainer, TKWindow>.ContainerT
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow<TContainer, TKWindow>.ContainerT
+  nameWithType.vb: CeresGraphEditorWindow(Of TContainer, TKWindow).ContainerT
+  fullName.vb: Ceres.Editor.Graph.CeresGraphEditorWindow(Of TContainer, TKWindow).ContainerT
+- uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+  commentId: M:Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+  parent: Ceres.Editor.Graph.CeresGraphEditorWindow
+  isExternal: true
+  href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_OnInitialize
+  name: OnInitialize()
+  nameWithType: CeresGraphEditorWindow.OnInitialize()
+  fullName: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize()
+  spec.csharp:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+    name: OnInitialize
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_OnInitialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Editor.Graph.CeresGraphEditorWindow.OnInitialize
+    name: OnInitialize
+    isExternal: true
+    href: Ceres.Editor.Graph.CeresGraphEditorWindow.html#Ceres_Editor_Graph_CeresGraphEditorWindow_OnInitialize
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.OnInitialize*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.OnInitialize
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_OnInitialize
+  name: OnInitialize
+  nameWithType: FlowGraphEditorWindow.OnInitialize
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.OnInitialize
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.OnDisable*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.OnDisable
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_OnDisable
+  name: OnDisable
+  nameWithType: FlowGraphEditorWindow.OnDisable
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.OnDisable
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.GetGraphView*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.GetGraphView
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_GetGraphView
+  name: GetGraphView
+  nameWithType: FlowGraphEditorWindow.GetGraphView
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.GetGraphView
+- uid: Ceres.Editor.Flow.FlowGraphView
+  commentId: T:Ceres.Editor.Flow.FlowGraphView
+  parent: Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphView.html
+  name: FlowGraphView
+  nameWithType: FlowGraphView
+  fullName: Ceres.Editor.Flow.FlowGraphView
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_GetOrCreateGraphView_System_Int32_
+  name: GetOrCreateGraphView
+  nameWithType: FlowGraphEditorWindow.GetOrCreateGraphView
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.GetOrCreateGraphView
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.SaveGraphData*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.SaveGraphData
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_SaveGraphData
+  name: SaveGraphData
+  nameWithType: FlowGraphEditorWindow.SaveGraphData
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.SaveGraphData
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.OnReloadGraphView*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.OnReloadGraphView
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_OnReloadGraphView
+  name: OnReloadGraphView
+  nameWithType: FlowGraphEditorWindow.OnReloadGraphView
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.OnReloadGraphView
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_CreateFunctionSubGraph
+  name: CreateFunctionSubGraph
+  nameWithType: FlowGraphEditorWindow.CreateFunctionSubGraph
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.CreateFunctionSubGraph
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_CanCreateFunctionSubGraph
+  name: CanCreateFunctionSubGraph
+  nameWithType: FlowGraphEditorWindow.CanCreateFunctionSubGraph
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.CanCreateFunctionSubGraph
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionTypes*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionTypes
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_ResolveFunctionTypes_Ceres_Editor_Flow_LocalFunction_
+  name: ResolveFunctionTypes
+  nameWithType: FlowGraphEditorWindow.ResolveFunctionTypes
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionTypes
+- uid: Ceres.Editor.Flow.LocalFunction
+  commentId: T:Ceres.Editor.Flow.LocalFunction
+  parent: Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.Editor.Flow.LocalFunction.html
+  name: LocalFunction
+  nameWithType: LocalFunction
+  fullName: Ceres.Editor.Flow.LocalFunction
+- uid: System.ValueTuple{System.Type,System.Type[]}
+  commentId: T:System.ValueTuple{System.Type,System.Type[]}
+  parent: System
+  definition: System.ValueTuple`2
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: (Type, Type[])
+  nameWithType: (Type, Type[])
+  fullName: (System.Type, System.Type[])
+  nameWithType.vb: (Type, Type())
+  fullName.vb: (System.Type, System.Type())
+  name.vb: (Type, Type())
+  spec.csharp:
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: (
+  - name: )
+  - name: )
+- uid: System.ValueTuple`2
+  commentId: T:System.ValueTuple`2
+  name: (T1, T2)
+  nameWithType: (T1, T2)
+  fullName: (T1, T2)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_ResolveFunctionInputParameters_Ceres_Editor_Flow_LocalFunction_
+  name: ResolveFunctionInputParameters
+  nameWithType: FlowGraphEditorWindow.ResolveFunctionInputParameters
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.ResolveFunctionInputParameters
+- uid: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter[]
+  isExternal: true
+  href: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter.html
+  name: CustomFunctionInputParameter[]
+  nameWithType: CustomFunctionInputParameter[]
+  fullName: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter[]
+  nameWithType.vb: CustomFunctionInputParameter()
+  fullName.vb: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter()
+  name.vb: CustomFunctionInputParameter()
+  spec.csharp:
+  - uid: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter
+    name: CustomFunctionInputParameter
+    isExternal: true
+    href: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter
+    name: CustomFunctionInputParameter
+    isExternal: true
+    href: Ceres.Flow.CustomFunctions.CustomFunctionInputParameter.html
+  - name: (
+  - name: )
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_OpenSubgraphView_System_String_
+  name: OpenSubgraphView
+  nameWithType: FlowGraphEditorWindow.OpenSubgraphView
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.OpenSubgraphView
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_RenameSubgraph_System_String_System_String_
+  name: RenameSubgraph
+  nameWithType: FlowGraphEditorWindow.RenameSubgraph
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.RenameSubgraph
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_RemoveSubgraph_System_String_
+  name: RemoveSubgraph
+  nameWithType: FlowGraphEditorWindow.RemoveSubgraph
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.RemoveSubgraph
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.#ctor*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.#ctor
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow__ctor
+  name: FlowGraphEditorWindow
+  nameWithType: FlowGraphEditorWindow.FlowGraphEditorWindow
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.FlowGraphEditorWindow
+  nameWithType.vb: FlowGraphEditorWindow.New
+  fullName.vb: Ceres.Editor.Flow.FlowGraphEditorWindow.New
+  name.vb: New
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.DebugState*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.DebugState
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_DebugState
+  name: DebugState
+  nameWithType: FlowGraphEditorWindow.DebugState
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.DebugState
+- uid: Ceres.Editor.Flow.FlowGraphDebugState
+  commentId: T:Ceres.Editor.Flow.FlowGraphDebugState
+  parent: Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphDebugState.html
+  name: FlowGraphDebugState
+  nameWithType: FlowGraphDebugState
+  fullName: Ceres.Editor.Flow.FlowGraphDebugState
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.GraphIndex*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.GraphIndex
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_GraphIndex
+  name: GraphIndex
+  nameWithType: FlowGraphEditorWindow.GraphIndex
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.GraphIndex
+- uid: Ceres.Editor.Flow.FlowGraphEditorWindow.EditorObject*
+  commentId: Overload:Ceres.Editor.Flow.FlowGraphEditorWindow.EditorObject
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorWindow.html#Ceres_Editor_Flow_FlowGraphEditorWindow_EditorObject
+  name: EditorObject
+  nameWithType: FlowGraphEditorWindow.EditorObject
+  fullName: Ceres.Editor.Flow.FlowGraphEditorWindow.EditorObject
+- uid: Ceres.Editor.Flow.FlowGraphEditorObject
+  commentId: T:Ceres.Editor.Flow.FlowGraphEditorObject
+  parent: Ceres.Editor.Flow
+  isExternal: true
+  href: Ceres.Editor.Flow.FlowGraphEditorObject.html
+  name: FlowGraphEditorObject
+  nameWithType: FlowGraphEditorObject
+  fullName: Ceres.Editor.Flow.FlowGraphEditorObject

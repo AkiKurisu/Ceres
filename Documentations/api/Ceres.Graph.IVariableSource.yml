@@ -1,0 +1,1305 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Graph.IVariableSource
+  commentId: T:Ceres.Graph.IVariableSource
+  id: IVariableSource
+  parent: Ceres.Graph
+  children:
+  - Ceres.Graph.IVariableSource.SharedVariables
+  langs:
+  - csharp
+  - vb
+  name: IVariableSource
+  nameWithType: IVariableSource
+  fullName: Ceres.Graph.IVariableSource
+  type: Interface
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  summary: Shared variables owner
+  example: []
+  syntax:
+    content: public interface IVariableSource
+    content.vb: Public Interface IVariableSource
+  derivedClasses:
+  - Ceres.Editor.Flow.FlowBlackboard
+  - Ceres.Editor.Flow.FlowGraphView
+  - Ceres.Editor.Graph.CeresBlackboard
+  - Ceres.Editor.Graph.CeresGraphView
+  - Ceres.Graph.Blackboard
+  - Ceres.Graph.GameVariableScope
+  - Ceres.Graph.GlobalVariables
+  - Ceres.Graph.SceneVariableScope
+  extensionMethods:
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.GetSharedVariable(System.String)
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(System.String)
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.LinkToGlobal
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedObject(System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedString(System.String,Ceres.Graph.SharedVariable{System.String}@)
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(System.String,Ceres.Graph.SharedVariable{{T}}@)
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(System.String,Ceres.Graph.SharedVariable@)
+  - Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(System.String,Ceres.Graph.SharedVariable{{T}}@)
+- uid: Ceres.Graph.IVariableSource.SharedVariables
+  commentId: P:Ceres.Graph.IVariableSource.SharedVariables
+  id: SharedVariables
+  parent: Ceres.Graph.IVariableSource
+  langs:
+  - csharp
+  - vb
+  name: SharedVariables
+  nameWithType: IVariableSource.SharedVariables
+  fullName: Ceres.Graph.IVariableSource.SharedVariables
+  type: Property
+  assemblies:
+  - Ceres.Graph
+  namespace: Ceres.Graph
+  syntax:
+    content: List<SharedVariable> SharedVariables { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Ceres.Graph.SharedVariable}
+    content.vb: ReadOnly Property SharedVariables As List(Of SharedVariable)
+  overload: Ceres.Graph.IVariableSource.SharedVariables*
+references:
+- uid: Ceres.Graph
+  commentId: N:Ceres.Graph
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Graph
+  nameWithType: Ceres.Graph
+  fullName: Ceres.Graph
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Graph
+    name: Graph
+    isExternal: true
+    href: Ceres.Graph.html
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.GetSharedVariable(System.String)
+  commentId: M:Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable_Ceres_Graph_IVariableSource_System_String_
+  name: GetSharedVariable(IVariableSource, string)
+  nameWithType: SharedVariableExtension.GetSharedVariable(IVariableSource, string)
+  fullName: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource, string)
+  nameWithType.vb: SharedVariableExtension.GetSharedVariable(IVariableSource, String)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource, String)
+  name.vb: GetSharedVariable(IVariableSource, String)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+    name: GetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable_Ceres_Graph_IVariableSource_System_String_
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+    name: GetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable_Ceres_Graph_IVariableSource_System_String_
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(System.String)
+  commentId: M:Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_
+  name: GetSharedVariable<T>(IVariableSource, string)
+  nameWithType: SharedVariableExtension.GetSharedVariable<T>(IVariableSource, string)
+  fullName: Ceres.Graph.SharedVariableExtension.GetSharedVariable<T>(Ceres.Graph.IVariableSource, string)
+  nameWithType.vb: SharedVariableExtension.GetSharedVariable(Of T)(IVariableSource, String)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Of T)(Ceres.Graph.IVariableSource, String)
+  name.vb: GetSharedVariable(Of T)(IVariableSource, String)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+    name: GetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+    name: GetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.LinkToGlobal
+  commentId: M:Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_LinkToGlobal_Ceres_Graph_IVariableSource_
+  name: LinkToGlobal(IVariableSource)
+  nameWithType: SharedVariableExtension.LinkToGlobal(IVariableSource)
+  fullName: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+    name: LinkToGlobal
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_LinkToGlobal_Ceres_Graph_IVariableSource_
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+    name: LinkToGlobal
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_LinkToGlobal_Ceres_Graph_IVariableSource_
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: )
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedObject(System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_Object___
+  name: TryGetSharedObject(IVariableSource, string, out SharedVariable<object>)
+  nameWithType: SharedVariableExtension.TryGetSharedObject(IVariableSource, string, out SharedVariable<object>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<object>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedObject(IVariableSource, String, SharedVariable(Of Object))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of Object))
+  name.vb: TryGetSharedObject(IVariableSource, String, SharedVariable(Of Object))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+    name: TryGetSharedObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_Object___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+    name: TryGetSharedObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_Object___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedString(System.String,Ceres.Graph.SharedVariable{System.String}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedString_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_String___
+  name: TryGetSharedString(IVariableSource, string, out SharedVariable<string>)
+  nameWithType: SharedVariableExtension.TryGetSharedString(IVariableSource, string, out SharedVariable<string>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<string>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedString(IVariableSource, String, SharedVariable(Of String))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of String))
+  name.vb: TryGetSharedString(IVariableSource, String, SharedVariable(Of String))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+    name: TryGetSharedString
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedString_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_String___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+    name: TryGetSharedString
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedString_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_String___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_UnityEngine_Object___
+  name: TryGetSharedUObject(IVariableSource, string, out SharedVariable<Object>)
+  nameWithType: SharedVariableExtension.TryGetSharedUObject(IVariableSource, string, out SharedVariable<Object>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<UnityEngine.Object>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedUObject(IVariableSource, String, SharedVariable(Of Object))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of UnityEngine.Object))
+  name.vb: TryGetSharedUObject(IVariableSource, String, SharedVariable(Of Object))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+    name: TryGetSharedUObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_UnityEngine_Object___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+    name: TryGetSharedUObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_UnityEngine_Object___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(System.String,Ceres.Graph.SharedVariable{{T}}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  name: TryGetSharedUObject<T>(IVariableSource, string, out SharedVariable<T>)
+  nameWithType: SharedVariableExtension.TryGetSharedUObject<T>(IVariableSource, string, out SharedVariable<T>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject<T>(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<T>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedUObject(Of T)(IVariableSource, String, SharedVariable(Of T))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Of T)(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of T))
+  name.vb: TryGetSharedUObject(Of T)(IVariableSource, String, SharedVariable(Of T))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+    name: TryGetSharedUObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+    name: TryGetSharedUObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(System.String,Ceres.Graph.SharedVariable@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable__
+  name: TryGetSharedVariable(IVariableSource, string, out SharedVariable)
+  nameWithType: SharedVariableExtension.TryGetSharedVariable(IVariableSource, string, out SharedVariable)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedVariable(IVariableSource, String, SharedVariable)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable)
+  name.vb: TryGetSharedVariable(IVariableSource, String, SharedVariable)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+    name: TryGetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable__
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+    name: TryGetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable__
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: )
+- uid: Ceres.Graph.IVariableSource.Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(System.String,Ceres.Graph.SharedVariable{{T}}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  parent: Ceres.Graph.SharedVariableExtension
+  definition: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  name: TryGetSharedVariable<T>(IVariableSource, string, out SharedVariable<T>)
+  nameWithType: SharedVariableExtension.TryGetSharedVariable<T>(IVariableSource, string, out SharedVariable<T>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable<T>(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<T>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedVariable(Of T)(IVariableSource, String, SharedVariable(Of T))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Of T)(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of T))
+  name.vb: TryGetSharedVariable(Of T)(IVariableSource, String, SharedVariable(Of T))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+    name: TryGetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+    name: TryGetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+  commentId: M:Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable_Ceres_Graph_IVariableSource_System_String_
+  name: GetSharedVariable(IVariableSource, string)
+  nameWithType: SharedVariableExtension.GetSharedVariable(IVariableSource, string)
+  fullName: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource, string)
+  nameWithType.vb: SharedVariableExtension.GetSharedVariable(IVariableSource, String)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource, String)
+  name.vb: GetSharedVariable(IVariableSource, String)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+    name: GetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable_Ceres_Graph_IVariableSource_System_String_
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Ceres.Graph.IVariableSource,System.String)
+    name: GetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable_Ceres_Graph_IVariableSource_System_String_
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension
+  commentId: T:Ceres.Graph.SharedVariableExtension
+  parent: Ceres.Graph
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html
+  name: SharedVariableExtension
+  nameWithType: SharedVariableExtension
+  fullName: Ceres.Graph.SharedVariableExtension
+- uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+  commentId: M:Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_
+  name: GetSharedVariable<T>(IVariableSource, string)
+  nameWithType: SharedVariableExtension.GetSharedVariable<T>(IVariableSource, string)
+  fullName: Ceres.Graph.SharedVariableExtension.GetSharedVariable<T>(Ceres.Graph.IVariableSource, string)
+  nameWithType.vb: SharedVariableExtension.GetSharedVariable(Of T)(IVariableSource, String)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.GetSharedVariable(Of T)(Ceres.Graph.IVariableSource, String)
+  name.vb: GetSharedVariable(Of T)(IVariableSource, String)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+    name: GetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.GetSharedVariable``1(Ceres.Graph.IVariableSource,System.String)
+    name: GetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_GetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  commentId: M:Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_LinkToGlobal_Ceres_Graph_IVariableSource_
+  name: LinkToGlobal(IVariableSource)
+  nameWithType: SharedVariableExtension.LinkToGlobal(IVariableSource)
+  fullName: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+    name: LinkToGlobal
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_LinkToGlobal_Ceres_Graph_IVariableSource_
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.LinkToGlobal(Ceres.Graph.IVariableSource)
+    name: LinkToGlobal
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_LinkToGlobal_Ceres_Graph_IVariableSource_
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_Object___
+  name: TryGetSharedObject(IVariableSource, string, out SharedVariable<object>)
+  nameWithType: SharedVariableExtension.TryGetSharedObject(IVariableSource, string, out SharedVariable<object>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<object>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedObject(IVariableSource, String, SharedVariable(Of Object))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of Object))
+  name.vb: TryGetSharedObject(IVariableSource, String, SharedVariable(Of Object))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+    name: TryGetSharedObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_Object___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.Object}@)
+    name: TryGetSharedObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_Object___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedString_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_String___
+  name: TryGetSharedString(IVariableSource, string, out SharedVariable<string>)
+  nameWithType: SharedVariableExtension.TryGetSharedString(IVariableSource, string, out SharedVariable<string>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<string>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedString(IVariableSource, String, SharedVariable(Of String))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of String))
+  name.vb: TryGetSharedString(IVariableSource, String, SharedVariable(Of String))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+    name: TryGetSharedString
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedString_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_String___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedString(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{System.String}@)
+    name: TryGetSharedString
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedString_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_System_String___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_UnityEngine_Object___
+  name: TryGetSharedUObject(IVariableSource, string, out SharedVariable<Object>)
+  nameWithType: SharedVariableExtension.TryGetSharedUObject(IVariableSource, string, out SharedVariable<Object>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<UnityEngine.Object>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedUObject(IVariableSource, String, SharedVariable(Of Object))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of UnityEngine.Object))
+  name.vb: TryGetSharedUObject(IVariableSource, String, SharedVariable(Of Object))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+    name: TryGetSharedUObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_UnityEngine_Object___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{UnityEngine.Object}@)
+    name: TryGetSharedUObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable_UnityEngine_Object___
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  name: TryGetSharedUObject<T>(IVariableSource, string, out SharedVariable<T>)
+  nameWithType: SharedVariableExtension.TryGetSharedUObject<T>(IVariableSource, string, out SharedVariable<T>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject<T>(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<T>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedUObject(Of T)(IVariableSource, String, SharedVariable(Of T))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject(Of T)(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of T))
+  name.vb: TryGetSharedUObject(Of T)(IVariableSource, String, SharedVariable(Of T))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+    name: TryGetSharedUObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedUObject``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+    name: TryGetSharedUObject
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedUObject__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable__
+  name: TryGetSharedVariable(IVariableSource, string, out SharedVariable)
+  nameWithType: SharedVariableExtension.TryGetSharedVariable(IVariableSource, string, out SharedVariable)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedVariable(IVariableSource, String, SharedVariable)
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable)
+  name.vb: TryGetSharedVariable(IVariableSource, String, SharedVariable)
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+    name: TryGetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable__
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable@)
+    name: TryGetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable__
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: )
+- uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  commentId: M:Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+  isExternal: true
+  href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  name: TryGetSharedVariable<T>(IVariableSource, string, out SharedVariable<T>)
+  nameWithType: SharedVariableExtension.TryGetSharedVariable<T>(IVariableSource, string, out SharedVariable<T>)
+  fullName: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable<T>(Ceres.Graph.IVariableSource, string, out Ceres.Graph.SharedVariable<T>)
+  nameWithType.vb: SharedVariableExtension.TryGetSharedVariable(Of T)(IVariableSource, String, SharedVariable(Of T))
+  fullName.vb: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable(Of T)(Ceres.Graph.IVariableSource, String, Ceres.Graph.SharedVariable(Of T))
+  name.vb: TryGetSharedVariable(Of T)(IVariableSource, String, SharedVariable(Of T))
+  spec.csharp:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+    name: TryGetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Ceres.Graph.SharedVariableExtension.TryGetSharedVariable``1(Ceres.Graph.IVariableSource,System.String,Ceres.Graph.SharedVariable{``0}@)
+    name: TryGetSharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariableExtension.html#Ceres_Graph_SharedVariableExtension_TryGetSharedVariable__1_Ceres_Graph_IVariableSource_System_String_Ceres_Graph_SharedVariable___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Ceres.Graph.IVariableSource
+    name: IVariableSource
+    isExternal: true
+    href: Ceres.Graph.IVariableSource.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable`1
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Ceres.Graph.IVariableSource.SharedVariables*
+  commentId: Overload:Ceres.Graph.IVariableSource.SharedVariables
+  isExternal: true
+  href: Ceres.Graph.IVariableSource.html#Ceres_Graph_IVariableSource_SharedVariables
+  name: SharedVariables
+  nameWithType: IVariableSource.SharedVariables
+  fullName: Ceres.Graph.IVariableSource.SharedVariables
+- uid: System.Collections.Generic.List{Ceres.Graph.SharedVariable}
+  commentId: T:System.Collections.Generic.List{Ceres.Graph.SharedVariable}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<SharedVariable>
+  nameWithType: List<SharedVariable>
+  fullName: System.Collections.Generic.List<Ceres.Graph.SharedVariable>
+  nameWithType.vb: List(Of SharedVariable)
+  fullName.vb: System.Collections.Generic.List(Of Ceres.Graph.SharedVariable)
+  name.vb: List(Of SharedVariable)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Ceres.Graph.SharedVariable
+    name: SharedVariable
+    isExternal: true
+    href: Ceres.Graph.SharedVariable.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

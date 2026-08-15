@@ -1,0 +1,115 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Events.IBatchEvent
+  commentId: T:Ceres.Events.IBatchEvent
+  id: IBatchEvent
+  parent: Ceres.Events
+  children:
+  - Ceres.Events.IBatchEvent.Batch(Ceres.Events.EventBase)
+  - Ceres.Events.IBatchEvent.CreateBatchedEvent
+  langs:
+  - csharp
+  - vb
+  name: IBatchEvent
+  nameWithType: IBatchEvent
+  fullName: Ceres.Events.IBatchEvent
+  type: Interface
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  summary: Implement to batch event
+  example: []
+  syntax:
+    content: public interface IBatchEvent
+    content.vb: Public Interface IBatchEvent
+- uid: Ceres.Events.IBatchEvent.CreateBatchedEvent
+  commentId: M:Ceres.Events.IBatchEvent.CreateBatchedEvent
+  id: CreateBatchedEvent
+  parent: Ceres.Events.IBatchEvent
+  langs:
+  - csharp
+  - vb
+  name: CreateBatchedEvent()
+  nameWithType: IBatchEvent.CreateBatchedEvent()
+  fullName: Ceres.Events.IBatchEvent.CreateBatchedEvent()
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: EventBase CreateBatchedEvent()
+    return:
+      type: Ceres.Events.EventBase
+    content.vb: Function CreateBatchedEvent() As EventBase
+  overload: Ceres.Events.IBatchEvent.CreateBatchedEvent*
+- uid: Ceres.Events.IBatchEvent.Batch(Ceres.Events.EventBase)
+  commentId: M:Ceres.Events.IBatchEvent.Batch(Ceres.Events.EventBase)
+  id: Batch(Ceres.Events.EventBase)
+  parent: Ceres.Events.IBatchEvent
+  langs:
+  - csharp
+  - vb
+  name: Batch(EventBase)
+  nameWithType: IBatchEvent.Batch(EventBase)
+  fullName: Ceres.Events.IBatchEvent.Batch(Ceres.Events.EventBase)
+  type: Method
+  assemblies:
+  - Ceres
+  namespace: Ceres.Events
+  syntax:
+    content: void Batch(EventBase eventBase)
+    parameters:
+    - id: eventBase
+      type: Ceres.Events.EventBase
+    content.vb: Sub Batch(eventBase As EventBase)
+  overload: Ceres.Events.IBatchEvent.Batch*
+references:
+- uid: Ceres.Events
+  commentId: N:Ceres.Events
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Events
+  nameWithType: Ceres.Events
+  fullName: Ceres.Events
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Events
+    name: Events
+    isExternal: true
+    href: Ceres.Events.html
+- uid: Ceres.Events.IBatchEvent.CreateBatchedEvent*
+  commentId: Overload:Ceres.Events.IBatchEvent.CreateBatchedEvent
+  isExternal: true
+  href: Ceres.Events.IBatchEvent.html#Ceres_Events_IBatchEvent_CreateBatchedEvent
+  name: CreateBatchedEvent
+  nameWithType: IBatchEvent.CreateBatchedEvent
+  fullName: Ceres.Events.IBatchEvent.CreateBatchedEvent
+- uid: Ceres.Events.EventBase
+  commentId: T:Ceres.Events.EventBase
+  parent: Ceres.Events
+  isExternal: true
+  href: Ceres.Events.EventBase.html
+  name: EventBase
+  nameWithType: EventBase
+  fullName: Ceres.Events.EventBase
+- uid: Ceres.Events.IBatchEvent.Batch*
+  commentId: Overload:Ceres.Events.IBatchEvent.Batch
+  isExternal: true
+  href: Ceres.Events.IBatchEvent.html#Ceres_Events_IBatchEvent_Batch_Ceres_Events_EventBase_
+  name: Batch
+  nameWithType: IBatchEvent.Batch
+  fullName: Ceres.Events.IBatchEvent.Batch

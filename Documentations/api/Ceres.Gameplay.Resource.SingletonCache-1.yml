@@ -1,0 +1,1526 @@
+### YamlMime:ManagedReference
+items:
+- uid: Ceres.Gameplay.Resource.SingletonCache`1
+  commentId: T:Ceres.Gameplay.Resource.SingletonCache`1
+  id: SingletonCache`1
+  parent: Ceres.Gameplay.Resource
+  children:
+  - Ceres.Gameplay.Resource.SingletonCache`1.Dispose
+  - Ceres.Gameplay.Resource.SingletonCache`1.Instance
+  langs:
+  - csharp
+  - vb
+  name: SingletonCache<TAsset>
+  nameWithType: SingletonCache<TAsset>
+  fullName: Ceres.Gameplay.Resource.SingletonCache<TAsset>
+  type: Class
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Resource
+  summary: Singleton <xref href="Ceres.Resource.ResourceCache%601" data-throw-if-not-resolved="false"></xref> for sharing storage in <xref href="Ceres.Gameplay.GameWorld" data-throw-if-not-resolved="false"></xref> lifetime scope
+  example: []
+  syntax:
+    content: 'public class SingletonCache<TAsset> : ResourceCache<TAsset>, IDisposable, IReadOnlyDictionary<string, TAsset>, IReadOnlyCollection<KeyValuePair<string, TAsset>>, IEnumerable<KeyValuePair<string, TAsset>>, IEnumerable where TAsset : Object'
+    typeParameters:
+    - id: TAsset
+      description: ''
+    content.vb: Public Class SingletonCache(Of TAsset As [Object]) Inherits ResourceCache(Of TAsset) Implements IDisposable, IReadOnlyDictionary(Of String, TAsset), IReadOnlyCollection(Of KeyValuePair(Of String, TAsset)), IEnumerable(Of KeyValuePair(Of String, TAsset)), IEnumerable
+  inheritance:
+  - System.Object
+  - Ceres.Resource.ResourceCache{{TAsset}}
+  implements:
+  - System.IDisposable
+  - System.Collections.Generic.IReadOnlyDictionary{System.String,{TAsset}}
+  - System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,{TAsset}}}
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,{TAsset}}}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - Ceres.Resource.ResourceCache{{TAsset}}.LoadAssetAsync(System.String)
+  - Ceres.Resource.ResourceCache{{TAsset}}.LoadAsset(System.String)
+  - Ceres.Resource.ResourceCache{{TAsset}}.GetCacheKeys
+  - Ceres.Resource.ResourceCache{{TAsset}}.UpdateVersion
+  - Ceres.Resource.ResourceCache{{TAsset}}.ReleaseAssetsWithVersion(System.Int32)
+  - Ceres.Resource.ResourceCache{{TAsset}}.ReleaseAssetsAndUpdateVersion
+  - Ceres.Resource.ResourceCache{{TAsset}}.ContainsKey(System.String)
+  - Ceres.Resource.ResourceCache{{TAsset}}.TryGetValue(System.String,{TAsset}@)
+  - Ceres.Resource.ResourceCache{{TAsset}}.GetEnumerator
+  - Ceres.Resource.ResourceCache{{TAsset}}.AddressSafeCheck
+  - Ceres.Resource.ResourceCache{{TAsset}}.Version
+  - Ceres.Resource.ResourceCache{{TAsset}}.Keys
+  - Ceres.Resource.ResourceCache{{TAsset}}.Values
+  - Ceres.Resource.ResourceCache{{TAsset}}.Count
+  - Ceres.Resource.ResourceCache{{TAsset}}.Item(System.String)
+  - Ceres.Resource.ResourceCache{{TAsset}}.IsLoading
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  nameWithType.vb: SingletonCache(Of TAsset)
+  fullName.vb: Ceres.Gameplay.Resource.SingletonCache(Of TAsset)
+  name.vb: SingletonCache(Of TAsset)
+- uid: Ceres.Gameplay.Resource.SingletonCache`1.Dispose
+  commentId: M:Ceres.Gameplay.Resource.SingletonCache`1.Dispose
+  id: Dispose
+  parent: Ceres.Gameplay.Resource.SingletonCache`1
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: SingletonCache<TAsset>.Dispose()
+  fullName: Ceres.Gameplay.Resource.SingletonCache<TAsset>.Dispose()
+  type: Method
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Resource
+  summary: Implementation of <xref href="System.IDisposable" data-throw-if-not-resolved="false"></xref>, release all handles in cache.
+  example: []
+  syntax:
+    content: public override void Dispose()
+    content.vb: Public Overrides Sub Dispose()
+  overridden: Ceres.Resource.ResourceCache{{TAsset}}.Dispose
+  overload: Ceres.Gameplay.Resource.SingletonCache`1.Dispose*
+  nameWithType.vb: SingletonCache(Of TAsset).Dispose()
+  fullName.vb: Ceres.Gameplay.Resource.SingletonCache(Of TAsset).Dispose()
+- uid: Ceres.Gameplay.Resource.SingletonCache`1.Instance
+  commentId: P:Ceres.Gameplay.Resource.SingletonCache`1.Instance
+  id: Instance
+  parent: Ceres.Gameplay.Resource.SingletonCache`1
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: SingletonCache<TAsset>.Instance
+  fullName: Ceres.Gameplay.Resource.SingletonCache<TAsset>.Instance
+  type: Property
+  assemblies:
+  - Ceres.Gameplay
+  namespace: Ceres.Gameplay.Resource
+  summary: Get singleton cache for sharing storage in <xref href="Ceres.Gameplay.GameWorld" data-throw-if-not-resolved="false"></xref> lifetime scope
+  example: []
+  syntax:
+    content: public static ResourceCache<TAsset> Instance { get; }
+    parameters: []
+    return:
+      type: Ceres.Resource.ResourceCache{{TAsset}}
+    content.vb: Public Shared ReadOnly Property Instance As ResourceCache(Of TAsset)
+  overload: Ceres.Gameplay.Resource.SingletonCache`1.Instance*
+  nameWithType.vb: SingletonCache(Of TAsset).Instance
+  fullName.vb: Ceres.Gameplay.Resource.SingletonCache(Of TAsset).Instance
+references:
+- uid: Ceres.Resource.ResourceCache`1
+  commentId: T:Ceres.Resource.ResourceCache`1
+  isExternal: true
+  href: Ceres.Resource.ResourceCache-1.html
+  name: ResourceCache<TAsset>
+  nameWithType: ResourceCache<TAsset>
+  fullName: Ceres.Resource.ResourceCache<TAsset>
+  nameWithType.vb: ResourceCache(Of TAsset)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset)
+  name.vb: ResourceCache(Of TAsset)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1
+    name: ResourceCache
+    isExternal: true
+    href: Ceres.Resource.ResourceCache-1.html
+  - name: <
+  - name: TAsset
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1
+    name: ResourceCache
+    isExternal: true
+    href: Ceres.Resource.ResourceCache-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAsset
+  - name: )
+- uid: Ceres.Gameplay.GameWorld
+  commentId: T:Ceres.Gameplay.GameWorld
+  parent: Ceres.Gameplay
+  isExternal: true
+  href: Ceres.Gameplay.GameWorld.html
+  name: GameWorld
+  nameWithType: GameWorld
+  fullName: Ceres.Gameplay.GameWorld
+- uid: Ceres.Gameplay.Resource
+  commentId: N:Ceres.Gameplay.Resource
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay.Resource
+  nameWithType: Ceres.Gameplay.Resource
+  fullName: Ceres.Gameplay.Resource
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Gameplay.Resource.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  - name: .
+  - uid: Ceres.Gameplay.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Gameplay.Resource.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Ceres.Resource.ResourceCache{{TAsset}}
+  commentId: T:Ceres.Resource.ResourceCache{`0}
+  parent: Ceres.Resource
+  definition: Ceres.Resource.ResourceCache`1
+  name: ResourceCache<TAsset>
+  nameWithType: ResourceCache<TAsset>
+  fullName: Ceres.Resource.ResourceCache<TAsset>
+  nameWithType.vb: ResourceCache(Of TAsset)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset)
+  name.vb: ResourceCache(Of TAsset)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1
+    name: ResourceCache
+    isExternal: true
+  - name: <
+  - name: TAsset
+  - name: '>'
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1
+    name: ResourceCache
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAsset
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,{TAsset}}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, TAsset>
+  nameWithType: IReadOnlyDictionary<string, TAsset>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, TAsset>
+  nameWithType.vb: IReadOnlyDictionary(Of String, TAsset)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, TAsset)
+  name.vb: IReadOnlyDictionary(Of String, TAsset)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TAsset
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TAsset
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,{TAsset}}}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,`0}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<KeyValuePair<string, TAsset>>
+  nameWithType: IReadOnlyCollection<KeyValuePair<string, TAsset>>
+  fullName: System.Collections.Generic.IReadOnlyCollection<System.Collections.Generic.KeyValuePair<string, TAsset>>
+  nameWithType.vb: IReadOnlyCollection(Of KeyValuePair(Of String, TAsset))
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of System.Collections.Generic.KeyValuePair(Of String, TAsset))
+  name.vb: IReadOnlyCollection(Of KeyValuePair(Of String, TAsset))
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TAsset
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TAsset
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,{TAsset}}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,`0}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<KeyValuePair<string, TAsset>>
+  nameWithType: IEnumerable<KeyValuePair<string, TAsset>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, TAsset>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, TAsset))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, TAsset))
+  name.vb: IEnumerable(Of KeyValuePair(Of String, TAsset))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TAsset
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TAsset
+  - name: )
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.LoadAssetAsync(System.String)
+  commentId: M:Ceres.Resource.ResourceCache{`0}.LoadAssetAsync(System.String)
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.LoadAssetAsync(System.String)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: LoadAssetAsync(string)
+  nameWithType: ResourceCache<TAsset>.LoadAssetAsync(string)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.LoadAssetAsync(string)
+  nameWithType.vb: ResourceCache(Of TAsset).LoadAssetAsync(String)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).LoadAssetAsync(String)
+  name.vb: LoadAssetAsync(String)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.LoadAssetAsync(System.String)
+    name: LoadAssetAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.LoadAssetAsync(System.String)
+    name: LoadAssetAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.LoadAsset(System.String)
+  commentId: M:Ceres.Resource.ResourceCache{`0}.LoadAsset(System.String)
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.LoadAsset(System.String)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: LoadAsset(string)
+  nameWithType: ResourceCache<TAsset>.LoadAsset(string)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.LoadAsset(string)
+  nameWithType.vb: ResourceCache(Of TAsset).LoadAsset(String)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).LoadAsset(String)
+  name.vb: LoadAsset(String)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.LoadAsset(System.String)
+    name: LoadAsset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.LoadAsset(System.String)
+    name: LoadAsset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.GetCacheKeys
+  commentId: M:Ceres.Resource.ResourceCache{`0}.GetCacheKeys
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.GetCacheKeys
+  name: GetCacheKeys()
+  nameWithType: ResourceCache<TAsset>.GetCacheKeys()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.GetCacheKeys()
+  nameWithType.vb: ResourceCache(Of TAsset).GetCacheKeys()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).GetCacheKeys()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.GetCacheKeys
+    name: GetCacheKeys
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.GetCacheKeys
+    name: GetCacheKeys
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.UpdateVersion
+  commentId: M:Ceres.Resource.ResourceCache{`0}.UpdateVersion
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.UpdateVersion
+  name: UpdateVersion()
+  nameWithType: ResourceCache<TAsset>.UpdateVersion()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.UpdateVersion()
+  nameWithType.vb: ResourceCache(Of TAsset).UpdateVersion()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).UpdateVersion()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.UpdateVersion
+    name: UpdateVersion
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.UpdateVersion
+    name: UpdateVersion
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.ReleaseAssetsWithVersion(System.Int32)
+  commentId: M:Ceres.Resource.ResourceCache{`0}.ReleaseAssetsWithVersion(System.Int32)
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.ReleaseAssetsWithVersion(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: ReleaseAssetsWithVersion(int)
+  nameWithType: ResourceCache<TAsset>.ReleaseAssetsWithVersion(int)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.ReleaseAssetsWithVersion(int)
+  nameWithType.vb: ResourceCache(Of TAsset).ReleaseAssetsWithVersion(Integer)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).ReleaseAssetsWithVersion(Integer)
+  name.vb: ReleaseAssetsWithVersion(Integer)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.ReleaseAssetsWithVersion(System.Int32)
+    name: ReleaseAssetsWithVersion
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.ReleaseAssetsWithVersion(System.Int32)
+    name: ReleaseAssetsWithVersion
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.ReleaseAssetsAndUpdateVersion
+  commentId: M:Ceres.Resource.ResourceCache{`0}.ReleaseAssetsAndUpdateVersion
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.ReleaseAssetsAndUpdateVersion
+  name: ReleaseAssetsAndUpdateVersion()
+  nameWithType: ResourceCache<TAsset>.ReleaseAssetsAndUpdateVersion()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.ReleaseAssetsAndUpdateVersion()
+  nameWithType.vb: ResourceCache(Of TAsset).ReleaseAssetsAndUpdateVersion()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).ReleaseAssetsAndUpdateVersion()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.ReleaseAssetsAndUpdateVersion
+    name: ReleaseAssetsAndUpdateVersion
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.ReleaseAssetsAndUpdateVersion
+    name: ReleaseAssetsAndUpdateVersion
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.ContainsKey(System.String)
+  commentId: M:Ceres.Resource.ResourceCache{`0}.ContainsKey(System.String)
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.ContainsKey(System.String)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ContainsKey(string)
+  nameWithType: ResourceCache<TAsset>.ContainsKey(string)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.ContainsKey(string)
+  nameWithType.vb: ResourceCache(Of TAsset).ContainsKey(String)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).ContainsKey(String)
+  name.vb: ContainsKey(String)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.ContainsKey(System.String)
+    name: ContainsKey
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.ContainsKey(System.String)
+    name: ContainsKey
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.TryGetValue(System.String,{TAsset}@)
+  commentId: M:Ceres.Resource.ResourceCache{`0}.TryGetValue(System.String,`0@)
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.TryGetValue(System.String,`0@)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetValue(string, out TAsset)
+  nameWithType: ResourceCache<TAsset>.TryGetValue(string, out TAsset)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.TryGetValue(string, out TAsset)
+  nameWithType.vb: ResourceCache(Of TAsset).TryGetValue(String, TAsset)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).TryGetValue(String, TAsset)
+  name.vb: TryGetValue(String, TAsset)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.TryGetValue(System.String,`0@)
+    name: TryGetValue
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TAsset
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.TryGetValue(System.String,`0@)
+    name: TryGetValue
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TAsset
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.GetEnumerator
+  commentId: M:Ceres.Resource.ResourceCache{`0}.GetEnumerator
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.GetEnumerator
+  name: GetEnumerator()
+  nameWithType: ResourceCache<TAsset>.GetEnumerator()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.GetEnumerator()
+  nameWithType.vb: ResourceCache(Of TAsset).GetEnumerator()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).GetEnumerator()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.AddressSafeCheck
+  commentId: P:Ceres.Resource.ResourceCache{`0}.AddressSafeCheck
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.AddressSafeCheck
+  name: AddressSafeCheck
+  nameWithType: ResourceCache<TAsset>.AddressSafeCheck
+  fullName: Ceres.Resource.ResourceCache<TAsset>.AddressSafeCheck
+  nameWithType.vb: ResourceCache(Of TAsset).AddressSafeCheck
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).AddressSafeCheck
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.Version
+  commentId: P:Ceres.Resource.ResourceCache{`0}.Version
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.Version
+  name: Version
+  nameWithType: ResourceCache<TAsset>.Version
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Version
+  nameWithType.vb: ResourceCache(Of TAsset).Version
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Version
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.Keys
+  commentId: P:Ceres.Resource.ResourceCache{`0}.Keys
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.Keys
+  name: Keys
+  nameWithType: ResourceCache<TAsset>.Keys
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Keys
+  nameWithType.vb: ResourceCache(Of TAsset).Keys
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Keys
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.Values
+  commentId: P:Ceres.Resource.ResourceCache{`0}.Values
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.Values
+  name: Values
+  nameWithType: ResourceCache<TAsset>.Values
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Values
+  nameWithType.vb: ResourceCache(Of TAsset).Values
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Values
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.Count
+  commentId: P:Ceres.Resource.ResourceCache{`0}.Count
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.Count
+  name: Count
+  nameWithType: ResourceCache<TAsset>.Count
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Count
+  nameWithType.vb: ResourceCache(Of TAsset).Count
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Count
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.Item(System.String)
+  commentId: P:Ceres.Resource.ResourceCache{`0}.Item(System.String)
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.Item(System.String)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: this[string]
+  nameWithType: ResourceCache<TAsset>.this[string]
+  fullName: Ceres.Resource.ResourceCache<TAsset>.this[string]
+  nameWithType.vb: ResourceCache(Of TAsset).this[](String)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).this[](String)
+  name.vb: this[](String)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.Item(System.String)
+    name: this[]
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.IsLoading
+  commentId: P:Ceres.Resource.ResourceCache{`0}.IsLoading
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.IsLoading
+  name: IsLoading
+  nameWithType: ResourceCache<TAsset>.IsLoading
+  fullName: Ceres.Resource.ResourceCache<TAsset>.IsLoading
+  nameWithType.vb: ResourceCache(Of TAsset).IsLoading
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).IsLoading
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay
+  commentId: N:Ceres.Gameplay
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Gameplay
+  nameWithType: Ceres.Gameplay
+  fullName: Ceres.Gameplay
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Ceres.Gameplay.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Ceres.Resource
+  commentId: N:Ceres.Resource
+  isExternal: true
+  href: Ceres.html
+  name: Ceres.Resource
+  nameWithType: Ceres.Resource
+  fullName: Ceres.Resource
+  spec.csharp:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Resource.html
+  spec.vb:
+  - uid: Ceres
+    name: Ceres
+    isExternal: true
+    href: Ceres.html
+  - name: .
+  - uid: Ceres.Resource
+    name: Resource
+    isExternal: true
+    href: Ceres.Resource.html
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Ceres.Resource.ResourceCache`1.LoadAssetAsync(System.String)
+  commentId: M:Ceres.Resource.ResourceCache`1.LoadAssetAsync(System.String)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: LoadAssetAsync(string)
+  nameWithType: ResourceCache<TAsset>.LoadAssetAsync(string)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.LoadAssetAsync(string)
+  nameWithType.vb: ResourceCache(Of TAsset).LoadAssetAsync(String)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).LoadAssetAsync(String)
+  name.vb: LoadAssetAsync(String)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.LoadAssetAsync(System.String)
+    name: LoadAssetAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.LoadAssetAsync(System.String)
+    name: LoadAssetAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.LoadAsset(System.String)
+  commentId: M:Ceres.Resource.ResourceCache`1.LoadAsset(System.String)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: LoadAsset(string)
+  nameWithType: ResourceCache<TAsset>.LoadAsset(string)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.LoadAsset(string)
+  nameWithType.vb: ResourceCache(Of TAsset).LoadAsset(String)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).LoadAsset(String)
+  name.vb: LoadAsset(String)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.LoadAsset(System.String)
+    name: LoadAsset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.LoadAsset(System.String)
+    name: LoadAsset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.GetCacheKeys
+  commentId: M:Ceres.Resource.ResourceCache`1.GetCacheKeys
+  isExternal: true
+  name: GetCacheKeys()
+  nameWithType: ResourceCache<TAsset>.GetCacheKeys()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.GetCacheKeys()
+  nameWithType.vb: ResourceCache(Of TAsset).GetCacheKeys()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).GetCacheKeys()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.GetCacheKeys
+    name: GetCacheKeys
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.GetCacheKeys
+    name: GetCacheKeys
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.UpdateVersion
+  commentId: M:Ceres.Resource.ResourceCache`1.UpdateVersion
+  isExternal: true
+  name: UpdateVersion()
+  nameWithType: ResourceCache<TAsset>.UpdateVersion()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.UpdateVersion()
+  nameWithType.vb: ResourceCache(Of TAsset).UpdateVersion()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).UpdateVersion()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.UpdateVersion
+    name: UpdateVersion
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.UpdateVersion
+    name: UpdateVersion
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.ReleaseAssetsWithVersion(System.Int32)
+  commentId: M:Ceres.Resource.ResourceCache`1.ReleaseAssetsWithVersion(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: ReleaseAssetsWithVersion(int)
+  nameWithType: ResourceCache<TAsset>.ReleaseAssetsWithVersion(int)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.ReleaseAssetsWithVersion(int)
+  nameWithType.vb: ResourceCache(Of TAsset).ReleaseAssetsWithVersion(Integer)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).ReleaseAssetsWithVersion(Integer)
+  name.vb: ReleaseAssetsWithVersion(Integer)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.ReleaseAssetsWithVersion(System.Int32)
+    name: ReleaseAssetsWithVersion
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.ReleaseAssetsWithVersion(System.Int32)
+    name: ReleaseAssetsWithVersion
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.ReleaseAssetsAndUpdateVersion
+  commentId: M:Ceres.Resource.ResourceCache`1.ReleaseAssetsAndUpdateVersion
+  isExternal: true
+  name: ReleaseAssetsAndUpdateVersion()
+  nameWithType: ResourceCache<TAsset>.ReleaseAssetsAndUpdateVersion()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.ReleaseAssetsAndUpdateVersion()
+  nameWithType.vb: ResourceCache(Of TAsset).ReleaseAssetsAndUpdateVersion()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).ReleaseAssetsAndUpdateVersion()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.ReleaseAssetsAndUpdateVersion
+    name: ReleaseAssetsAndUpdateVersion
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.ReleaseAssetsAndUpdateVersion
+    name: ReleaseAssetsAndUpdateVersion
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.ContainsKey(System.String)
+  commentId: M:Ceres.Resource.ResourceCache`1.ContainsKey(System.String)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ContainsKey(string)
+  nameWithType: ResourceCache<TAsset>.ContainsKey(string)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.ContainsKey(string)
+  nameWithType.vb: ResourceCache(Of TAsset).ContainsKey(String)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).ContainsKey(String)
+  name.vb: ContainsKey(String)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.ContainsKey(System.String)
+    name: ContainsKey
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.ContainsKey(System.String)
+    name: ContainsKey
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.TryGetValue(System.String,`0@)
+  commentId: M:Ceres.Resource.ResourceCache`1.TryGetValue(System.String,`0@)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetValue(string, out TAsset)
+  nameWithType: ResourceCache<TAsset>.TryGetValue(string, out TAsset)
+  fullName: Ceres.Resource.ResourceCache<TAsset>.TryGetValue(string, out TAsset)
+  nameWithType.vb: ResourceCache(Of TAsset).TryGetValue(String, TAsset)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).TryGetValue(String, TAsset)
+  name.vb: TryGetValue(String, TAsset)
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.TryGetValue(System.String,`0@)
+    name: TryGetValue
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TAsset
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.TryGetValue(System.String,`0@)
+    name: TryGetValue
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TAsset
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.GetEnumerator
+  commentId: M:Ceres.Resource.ResourceCache`1.GetEnumerator
+  isExternal: true
+  name: GetEnumerator()
+  nameWithType: ResourceCache<TAsset>.GetEnumerator()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.GetEnumerator()
+  nameWithType.vb: ResourceCache(Of TAsset).GetEnumerator()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).GetEnumerator()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.AddressSafeCheck
+  commentId: P:Ceres.Resource.ResourceCache`1.AddressSafeCheck
+  isExternal: true
+  name: AddressSafeCheck
+  nameWithType: ResourceCache<TAsset>.AddressSafeCheck
+  fullName: Ceres.Resource.ResourceCache<TAsset>.AddressSafeCheck
+  nameWithType.vb: ResourceCache(Of TAsset).AddressSafeCheck
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).AddressSafeCheck
+- uid: Ceres.Resource.ResourceCache`1.Version
+  commentId: P:Ceres.Resource.ResourceCache`1.Version
+  isExternal: true
+  name: Version
+  nameWithType: ResourceCache<TAsset>.Version
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Version
+  nameWithType.vb: ResourceCache(Of TAsset).Version
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Version
+- uid: Ceres.Resource.ResourceCache`1.Keys
+  commentId: P:Ceres.Resource.ResourceCache`1.Keys
+  isExternal: true
+  name: Keys
+  nameWithType: ResourceCache<TAsset>.Keys
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Keys
+  nameWithType.vb: ResourceCache(Of TAsset).Keys
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Keys
+- uid: Ceres.Resource.ResourceCache`1.Values
+  commentId: P:Ceres.Resource.ResourceCache`1.Values
+  isExternal: true
+  name: Values
+  nameWithType: ResourceCache<TAsset>.Values
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Values
+  nameWithType.vb: ResourceCache(Of TAsset).Values
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Values
+- uid: Ceres.Resource.ResourceCache`1.Count
+  commentId: P:Ceres.Resource.ResourceCache`1.Count
+  isExternal: true
+  name: Count
+  nameWithType: ResourceCache<TAsset>.Count
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Count
+  nameWithType.vb: ResourceCache(Of TAsset).Count
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Count
+- uid: Ceres.Resource.ResourceCache`1.Item(System.String)
+  commentId: P:Ceres.Resource.ResourceCache`1.Item(System.String)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: this[string]
+  nameWithType: ResourceCache<TAsset>.this[string]
+  fullName: Ceres.Resource.ResourceCache<TAsset>.this[string]
+  nameWithType.vb: ResourceCache(Of TAsset).this[](String)
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).this[](String)
+  name.vb: this[](String)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ']'
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.Item(System.String)
+    name: this[]
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Ceres.Resource.ResourceCache`1.IsLoading
+  commentId: P:Ceres.Resource.ResourceCache`1.IsLoading
+  isExternal: true
+  name: IsLoading
+  nameWithType: ResourceCache<TAsset>.IsLoading
+  fullName: Ceres.Resource.ResourceCache<TAsset>.IsLoading
+  nameWithType.vb: ResourceCache(Of TAsset).IsLoading
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).IsLoading
+- uid: Ceres.Resource.ResourceCache{{TAsset}}.Dispose
+  commentId: M:Ceres.Resource.ResourceCache{`0}.Dispose
+  parent: Ceres.Resource.ResourceCache{{TAsset}}
+  definition: Ceres.Resource.ResourceCache`1.Dispose
+  name: Dispose()
+  nameWithType: ResourceCache<TAsset>.Dispose()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Dispose()
+  nameWithType.vb: ResourceCache(Of TAsset).Dispose()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Dispose()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache{`0}.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache{`0}.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Resource.SingletonCache`1.Dispose*
+  commentId: Overload:Ceres.Gameplay.Resource.SingletonCache`1.Dispose
+  isExternal: true
+  href: Ceres.Gameplay.Resource.SingletonCache-1.html#Ceres_Gameplay_Resource_SingletonCache_1_Dispose
+  name: Dispose
+  nameWithType: SingletonCache<TAsset>.Dispose
+  fullName: Ceres.Gameplay.Resource.SingletonCache<TAsset>.Dispose
+  nameWithType.vb: SingletonCache(Of TAsset).Dispose
+  fullName.vb: Ceres.Gameplay.Resource.SingletonCache(Of TAsset).Dispose
+- uid: Ceres.Resource.ResourceCache`1.Dispose
+  commentId: M:Ceres.Resource.ResourceCache`1.Dispose
+  isExternal: true
+  name: Dispose()
+  nameWithType: ResourceCache<TAsset>.Dispose()
+  fullName: Ceres.Resource.ResourceCache<TAsset>.Dispose()
+  nameWithType.vb: ResourceCache(Of TAsset).Dispose()
+  fullName.vb: Ceres.Resource.ResourceCache(Of TAsset).Dispose()
+  spec.csharp:
+  - uid: Ceres.Resource.ResourceCache`1.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Ceres.Resource.ResourceCache`1.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Ceres.Gameplay.Resource.SingletonCache`1.Instance*
+  commentId: Overload:Ceres.Gameplay.Resource.SingletonCache`1.Instance
+  isExternal: true
+  href: Ceres.Gameplay.Resource.SingletonCache-1.html#Ceres_Gameplay_Resource_SingletonCache_1_Instance
+  name: Instance
+  nameWithType: SingletonCache<TAsset>.Instance
+  fullName: Ceres.Gameplay.Resource.SingletonCache<TAsset>.Instance
+  nameWithType.vb: SingletonCache(Of TAsset).Instance
+  fullName.vb: Ceres.Gameplay.Resource.SingletonCache(Of TAsset).Instance
