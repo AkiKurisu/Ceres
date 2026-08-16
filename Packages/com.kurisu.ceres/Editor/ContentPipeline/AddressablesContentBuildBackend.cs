@@ -58,7 +58,7 @@ namespace Ceres.ContentPipeline
                 ContentPipelineBuildKind.Baseline);
         }
 
-        public static string GetCurrentPackingManifestPath(
+        public static string GetCurrentContentManifestPath(
             string outputRoot,
             string channel,
             BuildTarget target)
@@ -121,7 +121,7 @@ namespace Ceres.ContentPipeline
             ContentArtifactManifest baseline = null;
             string contentStatePath = null;
             string[] impactedScopes = Array.Empty<string>();
-            ContentArtifactManifest previousPackingManifest = null;
+            ContentArtifactManifest previousManifest = null;
             if (request.BuildKind == ContentPipelineBuildKind.Update)
             {
                 baseline = ContentArtifactManifest.Load(request.BaselineManifestPath);
@@ -131,18 +131,27 @@ namespace Ceres.ContentPipeline
                     configurationFingerprint,
                     addressablesVersion,
                     sbpVersion);
+                previousManifest = LoadPreviousManifest(request, baseline);
                 impactedScopes = ContentBuildChangeValidator.Validate(
-                    baseline,
-                    currentSnapshot,
-                    request.AllowedChangedScopeIds);
+                    previousManifest,
+                    currentSnapshot);
+                if (impactedScopes.Length == 0)
+                {
+                    output.OutputPath = Path.GetDirectoryName(Path.GetFullPath(request.PreviousManifestPath));
+                    output.ManifestPath = Path.GetFullPath(request.PreviousManifestPath);
+                    output.Manifest = previousManifest;
+                    output.UpToDate = true;
+                    Debug.Log(
+                        $"[Ceres.ContentPipeline] Update is up to date; reusing '{previousManifest.buildId}'.");
+                    return;
+                }
                 contentStatePath = ResolveArtifactPath(request.BaselineManifestPath, baseline.contentStateRelativePath);
-                previousPackingManifest = LoadPreviousPackingManifest(request, baseline);
             }
 
             var partitionPlan = ContentBundlePartitionPlanner.Plan(
                 request.Graph,
                 request.Packing,
-                previousPackingManifest);
+                previousManifest);
             AddressableAssetSettings settings = null;
             BuildScriptPackedMode builder = null;
             AddressablesPlayerBuildResult addressablesResult = null;
@@ -248,6 +257,9 @@ namespace Ceres.ContentPipeline
             if (request.BuildKind == ContentPipelineBuildKind.Update &&
                 string.IsNullOrWhiteSpace(request.BaselineManifestPath))
                 throw new ArgumentException("An update build requires a baseline manifest.", nameof(request));
+            if (request.BuildKind == ContentPipelineBuildKind.Update &&
+                string.IsNullOrWhiteSpace(request.PreviousManifestPath))
+                throw new ArgumentException("An update build requires the previous successful manifest.", nameof(request));
             ContentBundlePartitionPlanner.Normalize(request.Packing);
         }
 
@@ -541,9 +553,6 @@ namespace Ceres.ContentPipeline
                 scopes = snapshot.Scopes,
                 assets = snapshot.Assets,
                 artifacts = artifacts.ToArray(),
-                allowedChangedScopeIds = (request.AllowedChangedScopeIds ?? Array.Empty<string>())
-                    .OrderBy(value => value, StringComparer.Ordinal)
-                    .ToArray(),
                 impactedScopeIds = impactedScopes,
                 packing = new ContentBundlePackingSnapshot
                 {
@@ -820,18 +829,15 @@ namespace Ceres.ContentPipeline
             }
         }
 
-        private static ContentArtifactManifest LoadPreviousPackingManifest(
+        private static ContentArtifactManifest LoadPreviousManifest(
             ContentPipelineBuildRequest request,
             ContentArtifactManifest baseline)
         {
-            var path = string.IsNullOrWhiteSpace(request.PreviousPackingManifestPath)
-                ? request.BaselineManifestPath
-                : request.PreviousPackingManifestPath;
-            var previous = ContentArtifactManifest.Load(path);
+            var previous = ContentArtifactManifest.Load(request.PreviousManifestPath);
             if (!string.Equals(previous.baselineId, baseline.baselineId, StringComparison.Ordinal))
             {
                 throw new InvalidOperationException(
-                    "The current bundle packing plan belongs to a different baseline; build a new baseline.");
+                    "The previous content version belongs to a different baseline; build a new baseline.");
             }
 
             if (!string.Equals(
@@ -840,7 +846,7 @@ namespace Ceres.ContentPipeline
                     StringComparison.Ordinal))
             {
                 throw new InvalidOperationException(
-                    "The current bundle packing plan has incompatible build configuration.");
+                    "The previous content version has incompatible build configuration.");
             }
 
             return previous;
@@ -1417,19 +1423,16 @@ namespace Ceres.ContentPipeline
     internal static class ContentBuildChangeValidator
     {
         public static string[] Validate(
-            ContentArtifactManifest baseline,
-            ContentBuildSnapshot current,
-            IReadOnlyCollection<string> allowedScopeIds)
+            ContentArtifactManifest previous,
+            ContentBuildSnapshot current)
         {
-            var allowed = new HashSet<string>(allowedScopeIds ?? Array.Empty<string>(), StringComparer.Ordinal);
-            if (allowed.Count == 0)
-                throw new InvalidOperationException("Select at least one allowed Collection scope for an update.");
-
-            var oldAssets = baseline.assets.ToDictionary(asset => asset.id, StringComparer.Ordinal);
+            var oldAssets = previous.assets.ToDictionary(asset => asset.id, StringComparer.Ordinal);
             var newAssets = current.Assets.ToDictionary(asset => asset.id, StringComparer.Ordinal);
-            var impacted = new HashSet<string>(allowed, StringComparer.Ordinal);
+            var impacted = new HashSet<string>(StringComparer.Ordinal);
             var violations = new List<string>();
-            foreach (var assetId in oldAssets.Keys.Union(newAssets.Keys, StringComparer.Ordinal).OrderBy(value => value, StringComparer.Ordinal))
+            foreach (var assetId in oldAssets.Keys
+                         .Union(newAssets.Keys, StringComparer.Ordinal)
+                         .OrderBy(value => value, StringComparer.Ordinal))
             {
                 oldAssets.TryGetValue(assetId, out var oldAsset);
                 newAssets.TryGetValue(assetId, out var newAsset);
@@ -1438,32 +1441,30 @@ namespace Ceres.ContentPipeline
                     continue;
 
                 var asset = newAsset ?? oldAsset;
-                var scopes = (oldAsset?.usageScopeIds ?? Array.Empty<string>())
-                    .Union(newAsset?.usageScopeIds ?? Array.Empty<string>(), StringComparer.Ordinal)
-                    .ToArray();
-                if (string.Equals(asset.location, ContentLocation.Local.ToString(), StringComparison.Ordinal))
+                if (string.Equals(oldAsset?.location, ContentLocation.Local.ToString(), StringComparison.Ordinal) ||
+                    string.Equals(newAsset?.location, ContentLocation.Local.ToString(), StringComparison.Ordinal) ||
+                    oldAsset != null && newAsset != null &&
+                    !string.Equals(oldAsset.location, newAsset.location, StringComparison.Ordinal))
                 {
-                    violations.Add($"{assetId} changes Local Player content and requires a new baseline");
+                    violations.Add($"{assetId} changes a delivery boundary and requires Build Full");
                     continue;
                 }
 
-                var isShared = string.Equals(asset.ownership, ContentOwnership.Shared.ToString(), StringComparison.Ordinal) ||
-                               scopes.Length > 1;
-                if (isShared && scopes.Any(allowed.Contains))
+                var assetScopes = new HashSet<string>(
+                    oldAsset?.usageScopeIds ?? Array.Empty<string>(),
+                    StringComparer.Ordinal);
+                assetScopes.UnionWith(newAsset?.usageScopeIds ?? Array.Empty<string>());
+                if (!string.IsNullOrEmpty(oldAsset?.ownerScopeId)) assetScopes.Add(oldAsset.ownerScopeId);
+                if (!string.IsNullOrEmpty(newAsset?.ownerScopeId)) assetScopes.Add(newAsset.ownerScopeId);
+                impacted.UnionWith(assetScopes);
+                if (assetScopes.Count == 0 &&
+                    asset.ownership is not (nameof(ContentOwnership.BuiltIn) or nameof(ContentOwnership.Excluded)))
                 {
-                    impacted.UnionWith(scopes);
-                    continue;
-                }
-
-                var owner = asset.ownerScopeId;
-                if (string.IsNullOrEmpty(owner) && scopes.Length == 1) owner = scopes[0];
-                if (string.IsNullOrEmpty(owner) || !allowed.Contains(owner))
-                {
-                    violations.Add($"{assetId} (owner: {owner}, scopes: {string.Join(", ", scopes)})");
+                    violations.Add($"{assetId} has no delivery scope and requires Build Full");
                 }
             }
 
-            var oldScopes = baseline.scopes.ToDictionary(scope => scope.id, StringComparer.Ordinal);
+            var oldScopes = previous.scopes.ToDictionary(scope => scope.id, StringComparer.Ordinal);
             var newScopes = current.Scopes.ToDictionary(scope => scope.id, StringComparer.Ordinal);
             foreach (var scopeId in oldScopes.Keys.Union(newScopes.Keys, StringComparer.Ordinal))
             {
@@ -1472,17 +1473,14 @@ namespace Ceres.ContentPipeline
                 if (oldScope != null && newScope != null &&
                     string.Equals(oldScope.fingerprint, newScope.fingerprint, StringComparison.Ordinal))
                     continue;
-                if (!allowed.Contains(scopeId) && !impacted.Contains(scopeId))
-                {
-                    violations.Add($"scope metadata changed outside the allowed set: {scopeId}");
-                }
+                impacted.Add(scopeId);
             }
 
             if (violations.Count > 0)
             {
                 throw new InvalidOperationException(
-                    "Update contains changes outside the allowed Collection scope:" +
-                    Environment.NewLine + string.Join(Environment.NewLine, violations.Distinct()));
+                    "Automatic incremental build contains changes that cannot be delivered remotely:" +
+                    Environment.NewLine + string.Join(Environment.NewLine, violations));
             }
 
             return impacted.OrderBy(value => value, StringComparer.Ordinal).ToArray();

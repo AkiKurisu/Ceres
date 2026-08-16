@@ -37,6 +37,17 @@ namespace Ceres.ContentPipeline
     }
 
     [Serializable]
+    public sealed class DynamicContentBundleSourceRecord
+    {
+        public string bundleName;
+        public long size;
+        public string sha256;
+        public string sourceBuildId;
+        public string sourceManifestRelativePath;
+        public string sourceFileRelativePath;
+    }
+
+    [Serializable]
     public sealed class DynamicContentPackageManifest
     {
         public int schemaVersion = 1;
@@ -47,6 +58,7 @@ namespace Ceres.ContentPipeline
         public string dynamicLoadPath;
         public string catalogRelativePath;
         public string[] referencedBundles = Array.Empty<string>();
+        public DynamicContentBundleSourceRecord[] bundleSources = Array.Empty<DynamicContentBundleSourceRecord>();
         public ContentArtifactRecord[] files = Array.Empty<ContentArtifactRecord>();
 
         public static DynamicContentPackageManifest Load(string path)
@@ -58,16 +70,45 @@ namespace Ceres.ContentPipeline
             if (manifest == null || manifest.schemaVersion != 1)
                 throw new InvalidDataException($"Unsupported dynamic content package manifest: {path}");
             manifest.dynamicLoadPath = NormalizeDynamicLoadPath(manifest.dynamicLoadPath);
-            manifest.referencedBundles ??= Array.Empty<string>();
-            manifest.files ??= Array.Empty<ContentArtifactRecord>();
+            manifest.Validate(path);
             return manifest;
         }
 
         public void Save(string path)
         {
             dynamicLoadPath = NormalizeDynamicLoadPath(dynamicLoadPath);
+            Validate(path);
             ContentPipelineFileSystem.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path))!);
             ContentPipelineFileSystem.WriteAllText(path, JsonUtility.ToJson(this, true));
+        }
+
+        private void Validate(string path)
+        {
+            if (schemaVersion != 1 ||
+                string.IsNullOrWhiteSpace(buildKind) ||
+                string.IsNullOrWhiteSpace(buildId) ||
+                string.IsNullOrWhiteSpace(baselineId) ||
+                string.IsNullOrWhiteSpace(catalogRelativePath) ||
+                referencedBundles == null ||
+                bundleSources == null ||
+                files == null)
+                throw new InvalidDataException($"Invalid dynamic content package manifest: {path}");
+            var referenced = new HashSet<string>(referencedBundles, StringComparer.OrdinalIgnoreCase);
+            if (referenced.Count != referencedBundles.Length)
+                throw new InvalidDataException($"Dynamic package contains duplicate Bundle references: {path}");
+            var sources = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var source in bundleSources)
+            {
+                if (source == null || string.IsNullOrWhiteSpace(source.bundleName) ||
+                    source.size < 0 || source.sha256?.Length != 64 ||
+                    source.sourceBuildId?.Length != 64 ||
+                    string.IsNullOrWhiteSpace(source.sourceManifestRelativePath) ||
+                    string.IsNullOrWhiteSpace(source.sourceFileRelativePath) ||
+                    !sources.Add(source.bundleName))
+                    throw new InvalidDataException($"Invalid dynamic bundle source mapping: {path}");
+            }
+            if (!referenced.SetEquals(sources))
+                throw new InvalidDataException($"Dynamic package bundle source mapping is incomplete: {path}");
         }
 
         internal static string NormalizeDynamicLoadPath(string value)
@@ -90,6 +131,8 @@ namespace Ceres.ContentPipeline
         public string DynamicLoadPath { get; set; }
 
         public string BaselinePackageManifestPath { get; set; }
+
+        public string PreviousPackageManifestPath { get; set; }
     }
 
     public sealed class DynamicContentPackageResult
@@ -135,16 +178,24 @@ namespace Ceres.ContentPipeline
                 ContentPipelineBuildKind.Update.ToString().ToLowerInvariant(),
                 StringComparison.Ordinal);
             DynamicContentPackageManifest baselinePackage = null;
-            string baselinePackageRoot = null;
+            DynamicContentPackageManifest previousPackage = null;
             if (isUpdate)
             {
+                if (string.IsNullOrWhiteSpace(request.BaselinePackageManifestPath) ||
+                    string.IsNullOrWhiteSpace(request.PreviousPackageManifestPath))
+                {
+                    throw new ArgumentException(
+                        "An update package requires both baseline and previous package manifests.",
+                        nameof(request));
+                }
                 baselinePackage = DynamicContentPackageManifest.Load(request.BaselinePackageManifestPath);
-                baselinePackageRoot = Path.GetDirectoryName(Path.GetFullPath(request.BaselinePackageManifestPath))!;
-                if (!string.Equals(baselinePackage.buildId, artifactManifest.baselineId, StringComparison.Ordinal))
+                previousPackage = DynamicContentPackageManifest.Load(request.PreviousPackageManifestPath);
+                if (!string.Equals(baselinePackage.buildId, artifactManifest.baselineId, StringComparison.Ordinal) ||
+                    !string.Equals(previousPackage.baselineId, artifactManifest.baselineId, StringComparison.Ordinal))
                 {
                     throw new InvalidOperationException(
                         $"Update baseline '{artifactManifest.baselineId}' does not match dynamic package " +
-                        $"baseline '{baselinePackage.buildId}'.");
+                        $"lineage '{previousPackage.baselineId}'.");
                 }
             }
 
@@ -163,8 +214,7 @@ namespace Ceres.ContentPipeline
                     existing,
                     finalRoot,
                     artifactManifest,
-                    baselinePackage,
-                    baselinePackageRoot,
+                    outputRoot,
                     dynamicLoadPath);
                 return CreateResult(finalRoot, existing);
             }
@@ -185,11 +235,9 @@ namespace Ceres.ContentPipeline
                 ContentPipelineFileSystem.CopyFile(catalogSource, catalogDestination, true);
 
                 var candidateBundles = BuildCandidateBundleMap(artifactManifest, artifactManifestPath);
-                var baselineBundles = BuildPackageBundleMap(
-                    baselinePackage,
-                    baselinePackageRoot,
-                    true);
-                var availableBundles = new Dictionary<string, BundleSource>(baselineBundles, StringComparer.OrdinalIgnoreCase);
+                var availableBundles = BuildPackageBundleMap(baselinePackage, outputRoot, true);
+                foreach (var pair in BuildPackageBundleMap(previousPackage, outputRoot, true))
+                    availableBundles[pair.Key] = pair.Value;
                 foreach (var pair in candidateBundles)
                     availableBundles[pair.Key] = pair.Value;
 
@@ -198,16 +246,46 @@ namespace Ceres.ContentPipeline
                     dynamicLoadPath,
                     availableBundles);
                 var copiedFiles = new List<ContentArtifactRecord>();
+                var bundleSources = new Dictionary<string, DynamicContentBundleSourceRecord>(
+                    StringComparer.OrdinalIgnoreCase);
+                var currentManifestRelativePath = GetManifestRelativePath(outputRoot, finalRoot);
                 foreach (var bundleName in referencedBundles)
                 {
                     if (!candidateBundles.TryGetValue(bundleName, out var source))
+                    {
+                        var reusableSource = FindSource(previousPackage, bundleName) ??
+                                             FindSource(baselinePackage, bundleName);
+                        if (reusableSource == null)
+                            throw new FileNotFoundException($"No source mapping exists for bundle '{bundleName}'.");
+                        bundleSources[bundleName] = CloneSource(reusableSource);
                         continue;
+                    }
+
+                    var previousSource = FindSource(previousPackage, bundleName) ??
+                                         FindSource(baselinePackage, bundleName);
+                    if (previousSource != null &&
+                        previousSource.size == source.Record.size &&
+                        string.Equals(previousSource.sha256, source.Record.sha256, StringComparison.Ordinal))
+                    {
+                        bundleSources[bundleName] = CloneSource(previousSource);
+                        continue;
+                    }
+
                     var destination = Path.Combine(packageRoot, bundleName);
                     ValidateFile(source.Path, source.Record);
                     ContentPipelineFileSystem.CopyFile(source.Path, destination, true);
                     copiedFiles.Add(CreateCopiedBundleRecord(
                         source,
                         PackageDirectoryName + "/" + bundleName));
+                    bundleSources[bundleName] = new DynamicContentBundleSourceRecord
+                    {
+                        bundleName = bundleName,
+                        size = source.Record.size,
+                        sha256 = source.Record.sha256,
+                        sourceBuildId = artifactManifest.buildId,
+                        sourceManifestRelativePath = currentManifestRelativePath,
+                        sourceFileRelativePath = PackageDirectoryName + "/" + bundleName
+                    };
                 }
 
                 var catalogRelativePath = PackageDirectoryName + "/" + Path.GetFileName(catalogDestination);
@@ -232,6 +310,9 @@ namespace Ceres.ContentPipeline
                     dynamicLoadPath = dynamicLoadPath,
                     catalogRelativePath = catalogRelativePath,
                     referencedBundles = referencedBundles.OrderBy(value => value, StringComparer.Ordinal).ToArray(),
+                    bundleSources = bundleSources.Values
+                        .OrderBy(value => value.bundleName, StringComparer.Ordinal)
+                        .ToArray(),
                     files = copiedFiles.OrderBy(value => value.relativePath, StringComparer.Ordinal).ToArray()
                 };
                 packageManifest.Save(Path.Combine(stagingRoot, PackageManifestName));
@@ -303,20 +384,34 @@ namespace Ceres.ContentPipeline
 
         private static Dictionary<string, BundleSource> BuildPackageBundleMap(
             DynamicContentPackageManifest manifest,
-            string manifestRoot,
+            string outputRoot,
             bool validateFiles)
         {
             var result = new Dictionary<string, BundleSource>(StringComparer.OrdinalIgnoreCase);
             if (manifest == null) return result;
-            foreach (var file in manifest.files.Where(value => value.kind == "bundle"))
+            foreach (var source in manifest.bundleSources)
             {
-                var path = ResolveWithin(manifestRoot, file.relativePath);
+                var sourceManifest = ResolveWithin(outputRoot, source.sourceManifestRelativePath);
+                var sourcePackage = DynamicContentPackageManifest.Load(sourceManifest);
+                if (!string.Equals(sourcePackage.buildId, source.sourceBuildId, StringComparison.Ordinal))
+                    throw new InvalidDataException(
+                        $"Bundle source Build ID does not match its Manifest: {sourceManifest}");
+                var sourceRoot = Path.GetDirectoryName(sourceManifest)!;
+                var path = ResolveWithin(sourceRoot, source.sourceFileRelativePath);
+                var file = new ContentArtifactRecord
+                {
+                    relativePath = source.sourceFileRelativePath,
+                    kind = "bundle",
+                    size = source.size,
+                    sha256 = source.sha256,
+                    sourceScopes = Array.Empty<string>()
+                };
                 if (validateFiles) ValidateFile(path, file);
                 AddBundle(
                     result,
-                    Path.GetFileName(file.relativePath),
+                    source.bundleName,
                     new BundleSource(path, file),
-                    "baseline package");
+                    "previous package");
             }
 
             return result;
@@ -326,8 +421,7 @@ namespace Ceres.ContentPipeline
             DynamicContentPackageManifest package,
             string packageRoot,
             ContentArtifactManifest artifact,
-            DynamicContentPackageManifest baselinePackage,
-            string baselinePackageRoot,
+            string outputRoot,
             string expectedDynamicLoadPath)
         {
             if (!string.Equals(package.buildId, artifact.buildId, StringComparison.Ordinal) ||
@@ -360,12 +454,7 @@ namespace Ceres.ContentPipeline
             }
 
             ValidatePackageFiles(packageRoot, package.files);
-            var availableBundles = BuildPackageBundleMap(package, packageRoot, false);
-            foreach (var pair in BuildPackageBundleMap(
-                         baselinePackage,
-                         baselinePackageRoot,
-                         true))
-                availableBundles[pair.Key] = pair.Value;
+            var availableBundles = BuildPackageBundleMap(package, outputRoot, true);
             var missing = package.referencedBundles
                 .Where(bundle => !availableBundles.ContainsKey(bundle))
                 .OrderBy(bundle => bundle, StringComparer.Ordinal)
@@ -376,6 +465,39 @@ namespace Ceres.ContentPipeline
                     $"Dynamic package is missing {missing.Length} referenced bundles:" +
                     Environment.NewLine + string.Join(Environment.NewLine, missing));
             }
+        }
+
+        private static DynamicContentBundleSourceRecord CloneSource(
+            DynamicContentBundleSourceRecord source)
+        {
+            return new DynamicContentBundleSourceRecord
+            {
+                bundleName = source.bundleName,
+                size = source.size,
+                sha256 = source.sha256,
+                sourceBuildId = source.sourceBuildId,
+                sourceManifestRelativePath = source.sourceManifestRelativePath,
+                sourceFileRelativePath = source.sourceFileRelativePath
+            };
+        }
+
+        private static DynamicContentBundleSourceRecord FindSource(
+            DynamicContentPackageManifest package,
+            string bundleName)
+        {
+            return package?.bundleSources.FirstOrDefault(value =>
+                string.Equals(value.bundleName, bundleName, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static string GetManifestRelativePath(string outputRoot, string packageRoot)
+        {
+            var path = Path.GetRelativePath(
+                    Path.GetFullPath(outputRoot),
+                    Path.Combine(Path.GetFullPath(packageRoot), PackageManifestName))
+                .Replace('\\', '/');
+            if (path.StartsWith("../", StringComparison.Ordinal) || Path.IsPathRooted(path))
+                throw new InvalidDataException($"Dynamic package escaped its output root: {packageRoot}");
+            return path;
         }
 
         private static void AddBundle(

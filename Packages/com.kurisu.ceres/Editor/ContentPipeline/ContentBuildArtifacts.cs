@@ -145,7 +145,6 @@ namespace Ceres.ContentPipeline
         public ContentScopeSnapshot[] scopes = Array.Empty<ContentScopeSnapshot>();
         public ContentAssetSnapshot[] assets = Array.Empty<ContentAssetSnapshot>();
         public ContentArtifactRecord[] artifacts = Array.Empty<ContentArtifactRecord>();
-        public string[] allowedChangedScopeIds = Array.Empty<string>();
         public string[] impactedScopeIds = Array.Empty<string>();
         public ContentBundlePackingSnapshot packing;
         public ContentBundlePartitionSnapshot[] partitions = Array.Empty<ContentBundlePartitionSnapshot>();
@@ -231,7 +230,6 @@ namespace Ceres.ContentPipeline
             RequireArray(scopes, nameof(scopes), path);
             RequireArray(assets, nameof(assets), path);
             RequireArray(artifacts, nameof(artifacts), path);
-            RequireArray(allowedChangedScopeIds, nameof(allowedChangedScopeIds), path);
             RequireArray(impactedScopeIds, nameof(impactedScopeIds), path);
             RequireArray(partitions, nameof(partitions), path);
 
@@ -501,11 +499,6 @@ namespace Ceres.ContentPipeline
                 }
             }
             ValidateScopeList(
-                allowedChangedScopeIds,
-                knownScopes,
-                nameof(allowedChangedScopeIds),
-                path);
-            ValidateScopeList(
                 impactedScopeIds,
                 knownScopes,
                 nameof(impactedScopeIds),
@@ -583,7 +576,6 @@ namespace Ceres.ContentPipeline
                 nameof(scopes),
                 nameof(assets),
                 nameof(artifacts),
-                nameof(allowedChangedScopeIds),
                 nameof(impactedScopeIds),
                 nameof(packing),
                 nameof(partitions),
@@ -638,16 +630,16 @@ namespace Ceres.ContentPipeline
 
         public string BaselineManifestPath { get; set; }
 
-        public IReadOnlyCollection<string> AllowedChangedScopeIds { get; set; } = Array.Empty<string>();
+        public string PreviousManifestPath { get; set; }
 
         public ContentBundlePackingOptions Packing { get; set; } = new();
-
-        public string PreviousPackingManifestPath { get; set; }
     }
 
     public sealed class ContentPipelineBuildResult
     {
         public bool Succeeded => Exception == null && !string.IsNullOrEmpty(OutputPath);
+
+        public bool UpToDate { get; internal set; }
 
         public string OutputPath { get; internal set; }
 

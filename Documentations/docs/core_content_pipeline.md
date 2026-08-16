@@ -3,7 +3,7 @@
 Content Pipeline is an Editor-only, graph-driven build layer on top of Unity
 Addressables and Scriptable Build Pipeline (SBP). It lets a project describe
 content from its own source model, resolve transitive Unity dependencies, build
-without persistent Addressable groups, validate scoped updates, and materialize
+without persistent Addressable groups, create automatic incremental updates, and materialize
 the result as a relocatable runtime package.
 
 The pipeline does not replace Addressables. It creates a transient
@@ -19,7 +19,7 @@ Use Content Pipeline when:
 - persistent Addressable groups would only be intermediate build data;
 - dependencies shared by several content scopes must have one deterministic
   owner and bundle;
-- an update must be restricted to explicitly selected scopes;
+- an update must infer all changed remote scopes from the previous successful content version;
 - the runtime loads a second Addressables catalog from a local or downloaded
   content directory;
 - Editor Play Mode needs to resolve the same graph directly through
@@ -98,7 +98,7 @@ explicit asset set.
 ### Scope
 
 A `ContentScopeDefinition` is the unit a producer can independently identify,
-version, select, and update. A scope should use a stable, project-independent ID
+version, and compare. A scope should use a stable, project-independent ID
 such as a source asset GUID, package ID, or persisted collection ID.
 
 ```csharp
@@ -414,10 +414,10 @@ string baselineManifest =
         "development",
         EditorUserBuildSettings.activeBuildTarget);
 
-// Returns the latest successful Update plan compatible with the current
-// Baseline, or the Baseline plan when no compatible Update exists.
-string packingManifest =
-    AddressablesContentBuildBackend.GetCurrentPackingManifestPath(
+// Returns the latest successful content Manifest compatible with the current
+// Baseline, or the Baseline Manifest when no Incremental exists.
+string previousManifest =
+    AddressablesContentBuildBackend.GetCurrentContentManifestPath(
         "Export/Content",
         "development",
         EditorUserBuildSettings.activeBuildTarget);
@@ -460,13 +460,14 @@ was already committed. Project adapters remain responsible for retaining their
 runtime packages, deployment manifests, or rollback releases before invoking
 artifact cleanup.
 
-## Building a Scoped Update
+## Building an Incremental Update
 
 An update requires:
 
 - a compatible baseline artifact manifest;
-- the complete current graph, not a graph filtered down to selected scopes;
-- at least one allowed changed scope ID.
+- the complete current graph, not a producer-filtered subset;
+- a previous successful content manifest used as the comparison head;
+- automatic change detection from the previous successful content manifest.
 
 ```csharp
 var updateRequest = new ContentPipelineBuildRequest
@@ -479,15 +480,11 @@ var updateRequest = new ContentPipelineBuildRequest
     Target = EditorUserBuildSettings.activeBuildTarget,
     BuildKind = ContentPipelineBuildKind.Update,
     BaselineManifestPath = baselineManifest,
-    PreviousPackingManifestPath = packingManifest,
+    PreviousManifestPath = previousManifest,
     Packing = new ContentBundlePackingOptions
     {
         Mode = ContentBundlePackingMode.SizeOptimized,
         TargetBundleSizeBytes = 128L * 1024L * 1024L
-    },
-    AllowedChangedScopeIds = new[]
-    {
-        "characters.base"
     }
 };
 
@@ -500,14 +497,13 @@ if (!update.Succeeded)
 }
 ```
 
-Before Addressables builds the update, Ceres compares the baseline snapshot with
-the current graph:
+Before Addressables builds the update, Ceres compares the previous successful
+content snapshot with the current graph and derives the impacted remote scopes:
 
-- changes owned by an allowed scope are accepted;
+- changed Remote scopes require no project-side selection;
 - shared changes expand the impacted scope set;
-- changes owned outside the allowed set fail the build;
 - Local content changes require a new baseline;
-- scope metadata changes outside the allowed or impacted set fail the build;
+- scope metadata changes are included in the impacted scope set;
 - Unity, Addressables, SBP, platform, channel, and remote load path must remain
   compatible with the baseline.
 - packing mode, target size, algorithm, classifier, and configuration
@@ -518,8 +514,9 @@ Deleted assets leave capacity behind, while new assets fill compatible
 capacity or create deterministic overflow partitions. Only a new baseline
 globally rebalances the layout.
 
-The update artifact directory contains a new catalog and Content State plus
-changed bundles. Unchanged baseline bundles are omitted. A successful candidate
+If the comparison reports no changes, the backend returns an up-to-date result
+without invoking Addressables or advancing a pointer. Otherwise, the update
+artifact contains a new catalog and changed bundles. A successful candidate
 updates `latest-update-candidate.json`; it does not replace the current baseline
 pointer.
 
@@ -601,10 +598,11 @@ if (!loaded)
 The runtime replaces `{DYNAMIC_LOCAL_PATH}` with the directory containing the
 catalog.
 
-### Packaging an Update
+### Packaging an Incremental Update
 
-An update package also needs the package manifest of the baseline runtime
-package:
+An incremental package receives the previous successful package manifest. Its
+catalog is current, while unchanged bundles retain their previous physical
+source through a flattened bundle-source map:
 
 ```csharp
 DynamicContentPackageResult updatePackage =
@@ -614,17 +612,21 @@ DynamicContentPackageResult updatePackage =
             ArtifactManifestPath = update.ManifestPath,
             OutputRoot = "Export/ContentOutput",
             DynamicLoadPath = ResourceSystem.DynamicLoadPath,
-            BaselinePackageManifestPath = baselinePackage.ManifestPath
+            BaselinePackageManifestPath = baselinePackage.ManifestPath,
+            PreviousPackageManifestPath = previousPackage.ManifestPath
         });
 ```
 
-The new catalog can reference unchanged baseline bundles. The builder validates
-those references against the baseline package but copies only bundles present in
-the update artifacts. Deployment must therefore overlay the update's `abdata`
-files onto an installed baseline package instead of replacing the whole
-directory with only the update payload.
+The builder validates every catalog reference against the candidate artifacts,
+the root Baseline map, and the previous successful package map. It copies only
+new or changed bundles and records
+the direct source build and path for reusable bundles. The flattened map retains
+the source records needed by the current lineage, so publishers and storage
+maintenance do not need to traverse an update chain.
+Deployment overlays the incremental files onto installed content; the package
+directory alone is not a self-contained baseline.
 
-![Baseline and scoped Update lifecycle](../resources/images/content-pipeline-update-lifecycle.svg)
+![Baseline and Incremental lifecycle](../resources/images/content-pipeline-update-lifecycle.svg)
 
 The package builder throws on failure. It never commits a partial runtime
 package.
@@ -725,7 +727,7 @@ Unity process.
 Ceres intentionally does not define:
 
 - the project's content source model;
-- generated metadata or ListInfo formats;
+- generated metadata formats;
 - menu items, build windows, or collection selection UI;
 - Player build integration;
 - CDN upload and release channels;
@@ -741,44 +743,11 @@ discover source data
     -> generate temporary metadata
     -> build the complete graph
     -> validate diagnostics
-    -> build baseline or scoped update
+    -> build baseline or incremental update
     -> create runtime package
     -> publish or install through project-specific code
 ```
 
-Keep temporary generated assets alive until both graph construction and the
-Addressables build have completed. Delete or release them only after the build
-and package workflows no longer reference their AssetDatabase paths.
-
-## Failure Checklist
-
-When a graph is not buildable:
-
-1. inspect `ContentBuildGraph.Diagnostics`;
-2. verify stable contributor, scope, asset, and address identities;
-3. verify every explicit path maps to the expected Unity GUID;
-4. inspect missing or conflicting dependencies;
-5. export `ContentBuildGraphReport.ToJson` for comparison.
-
-When a baseline build fails:
-
-1. inspect `ContentPipelineBuildResult.Exception`;
-2. confirm Addressables is a supported `2.9.x` version;
-3. verify the output root is not owned by another build;
-4. verify the graph contains valid AssetDatabase paths;
-5. verify the target platform build support is installed.
-
-When an update fails:
-
-1. confirm the baseline manifest belongs to the same channel and platform;
-2. confirm Unity, Addressables, SBP, and remote load path are unchanged;
-3. inspect changes outside `AllowedChangedScopeIds`;
-4. build a new baseline when Local content changed.
-
-When runtime package materialization fails:
-
-1. verify the artifact manifest and every recorded file still exist;
-2. verify exactly one remote catalog exists;
-3. verify bundle file names do not collide;
-4. for updates, provide the matching baseline package manifest;
-5. do not publish any staging or partially copied directory.
+Keep temporary generated assets alive until graph construction and the
+Addressables build complete. Release them only after no build or package step
+references their AssetDatabase paths.
