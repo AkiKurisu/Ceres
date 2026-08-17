@@ -3,8 +3,8 @@
 Content Pipeline is an Editor-only, graph-driven build layer on top of Unity
 Addressables and Scriptable Build Pipeline (SBP). It lets a project describe
 content from its own source model, resolve transitive Unity dependencies, build
-without persistent Addressable groups, create automatic incremental updates, and materialize
-the result as a relocatable runtime package.
+without persistent Addressable groups, create automatic incremental updates,
+and describe releases without duplicating bundle payloads.
 
 The pipeline does not replace Addressables. It creates a transient
 `AddressableAssetSettings` model for each build and delegates bundle and catalog
@@ -77,10 +77,10 @@ AddressablesContentBuildBackend        ContentBuildGraphAssetDatabaseMount
 immutable build artifacts              Editor AssetDatabase locations
         |
         v
-DynamicContentPackageBuilder
+DynamicContentReleaseBuilder
         |
         v
-flat catalog + bundles runtime package
+catalog + immutable artifact source map
 ```
 
 Projects are expected to provide the source-model adapter and workflow UI or
@@ -456,9 +456,9 @@ Execution rebuilds the plan while holding the same platform build lock used by
 the Addressables backend. Invalid pointers, mismatched manifests, unknown
 artifact directories, or paths outside the expected containers stop pruning.
 Deletion failures are returned individually and do not invalidate a build that
-was already committed. Project adapters remain responsible for retaining their
-runtime packages, deployment manifests, or rollback releases before invoking
-artifact cleanup.
+was already committed. Project adapters provide the Artifact Manifest paths
+retained by active releases, deployments, or rollback references before
+invoking artifact cleanup.
 
 ## Building an Incremental Update
 
@@ -530,113 +530,79 @@ pointer.
       metadata/
 ```
 
-## Creating a Runtime Package
+## Creating a Content Release
 
-Backend artifact directories are build records, not necessarily the exact
-directory layout expected by a game. Use `DynamicContentPackageBuilder` to
-create a flat, relocatable package.
+Backend Artifact directories own the immutable Bundle payloads. Use
+`DynamicContentReleaseBuilder` to create a small release index containing a
+rewritten Catalog, Catalog Hash, and a direct Bundle-to-Artifact source map.
 
 ```csharp
-DynamicContentPackageResult package =
-    new DynamicContentPackageBuilder().Build(
-        new DynamicContentPackageRequest
+DynamicContentReleaseResult release =
+    new DynamicContentReleaseBuilder().Build(
+        new DynamicContentReleaseRequest
         {
             ArtifactManifestPath = result.ManifestPath,
-            OutputRoot = "Export/ContentOutput",
+            StorageRoot = platformRoot,
+            OutputRoot = Path.Combine(platformRoot, "output"),
             DynamicLoadPath = ResourceSystem.DynamicLoadPath
         });
-
-Debug.Log($"Runtime content: {package.PackagePath}");
 ```
 
-The builder:
-
-1. selects the one remote catalog recorded by the artifact manifest;
-2. verifies the source catalog and referenced bundles against the artifact
-   manifest before copying them;
-3. collects the exact bundles referenced by that catalog;
-4. rewrites bundle internal IDs to
-   `{DYNAMIC_LOCAL_PATH}/<bundle-name>`;
-5. copies the catalog and required bundles into a flat `abdata` directory;
-6. writes `catalog.hash` and `package-manifest.json`;
-7. validates file size, SHA-256, missing references, and duplicate bundle names;
-8. atomically commits the package.
-
-The normalized dynamic load path is part of the package manifest and package
-reuse contract. Reusing one artifact build with a different token or URL fails
-explicitly instead of returning a catalog rewritten for the previous path.
-
-The output is:
+The builder verifies the source Catalog and every referenced Bundle, rewrites
+Bundle IDs to `{DYNAMIC_LOCAL_PATH}/<bundle-name>`, records each Bundle's direct
+Artifact Manifest and file path, then atomically commits:
 
 ```text
 <OutputRoot>/
   baselines|updates/
     <first-32-characters-of-build-id>/
-      package-manifest.json
-      abdata/
-        catalog.bin|catalog.json
-        catalog.hash
-        *.bundle
+      release-manifest.json
+      catalog.bin|catalog.json
+      catalog.hash
 ```
 
-The physical directory uses the first 32 hexadecimal characters, matching
-Unity's `Hash128` convention, while the package manifest retains the complete
-SHA-256 build ID. Reusing an existing directory always compares the complete
-ID and rejects a prefix collision.
+The Release directory contains no Bundle files and is not directly loadable.
+Deployment uses the source map to transfer files into the final flat content
+directory. An Editor may instead project a copy of the Catalog whose Bundle IDs
+point directly to absolute Artifact paths. A standalone export may explicitly
+materialize a Release as a relocatable Catalog-and-Bundle package.
 
-`DynamicContentPackageResult.PackagePath` points to the `abdata` directory.
-Pass this directory to `ResourceSystem.LoadCatalogAsync` at runtime.
+### Indexing an Incremental Update
 
-```csharp
-bool loaded = await ResourceSystem.LoadCatalogAsync(packageDirectory);
-if (!loaded)
-{
-    Debug.LogError($"Failed to load content package: {packageDirectory}");
-}
-```
-
-The runtime replaces `{DYNAMIC_LOCAL_PATH}` with the directory containing the
-catalog.
-
-### Packaging an Incremental Update
-
-An incremental package receives the previous successful package manifest. Its
-catalog is current, while unchanged bundles retain their previous physical
-source through a flattened bundle-source map:
+An incremental Release receives the Baseline and previous successful Release
+Manifests. Changed Bundles point to the current Update Artifact; unchanged
+Bundles retain their existing direct Artifact source. The flattened map keeps
+the complete current lineage without traversing older Release chains.
 
 ```csharp
-DynamicContentPackageResult updatePackage =
-    new DynamicContentPackageBuilder().Build(
-        new DynamicContentPackageRequest
+DynamicContentReleaseResult updateRelease =
+    new DynamicContentReleaseBuilder().Build(
+        new DynamicContentReleaseRequest
         {
             ArtifactManifestPath = update.ManifestPath,
-            OutputRoot = "Export/ContentOutput",
+            StorageRoot = platformRoot,
+            OutputRoot = Path.Combine(platformRoot, "output"),
             DynamicLoadPath = ResourceSystem.DynamicLoadPath,
-            BaselinePackageManifestPath = baselinePackage.ManifestPath,
-            PreviousPackageManifestPath = previousPackage.ManifestPath
+            BaselineReleaseManifestPath = baselineRelease.ManifestPath,
+            PreviousReleaseManifestPath = previousRelease.ManifestPath
         });
 ```
 
-The builder validates every catalog reference against the candidate artifacts,
-the root Baseline map, and the previous successful package map. It copies only
-new or changed bundles and records
-the direct source build and path for reusable bundles. The flattened map retains
-the source records needed by the current lineage, so publishers and storage
-maintenance do not need to traverse an update chain.
-Deployment overlays the incremental files onto installed content; the package
-directory alone is not a self-contained baseline.
+`DynamicContentPackageMaterializer` is reserved for workflows that explicitly
+need a self-contained package. It copies the Release Catalog, Hash, and all
+mapped Bundle files into an atomic destination. The Release builder itself never
+duplicates Bundle payloads.
 
 ![Baseline and Incremental lifecycle](../resources/images/content-pipeline-update-lifecycle.svg)
 
-The package builder throws on failure. It never commits a partial runtime
-package.
-
 ### Windows Long Paths
 
-Content Pipeline keeps ordinary absolute paths in manifests, diagnostics, and
-public results. At the direct `System.IO` boundary, Windows paths at or beyond
+Content Pipeline keeps ordinary absolute paths in diagnostics and public
+results, while persisted source paths remain relative to the validated storage
+root. At the direct `System.IO` boundary, Windows paths at or beyond
 the legacy `MAX_PATH` limit are adapted to the `\\?\` form (or `\\?\UNC\` for
-network shares). Artifact hashing, package copying, atomic commits, pointer
+network shares). Artifact hashing, release indexing, explicit materialization,
+atomic commits, pointer
 I/O, and storage maintenance all use this boundary.
 
 Addressables, SBP, AssetDatabase, and other Unity APIs continue to receive
@@ -744,7 +710,7 @@ discover source data
     -> build the complete graph
     -> validate diagnostics
     -> build baseline or incremental update
-    -> create runtime package
+    -> create release index
     -> publish or install through project-specific code
 ```
 

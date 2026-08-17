@@ -84,21 +84,32 @@ namespace Ceres.ContentPipeline
             string outputRoot,
             string channel,
             BuildTarget target,
-            bool clearCurrent = false)
+            bool clearCurrent = false,
+            IEnumerable<string> retainedArtifactManifestPaths = null)
         {
-            return CreatePlan(GetPlatformRoot(outputRoot, channel, target), clearCurrent);
+            return CreatePlan(
+                GetPlatformRoot(outputRoot, channel, target),
+                clearCurrent,
+                retainedArtifactManifestPaths);
         }
 
         public static ContentBuildStorageCleanupResult Execute(
             string outputRoot,
             string channel,
             BuildTarget target,
-            bool clearCurrent = false)
+            bool clearCurrent = false,
+            IEnumerable<string> retainedArtifactManifestPaths = null)
         {
             var platformRoot = GetPlatformRoot(outputRoot, channel, target);
             ContentPipelineFileSystem.CreateDirectory(platformRoot);
             using var processLock = ContentBuildProcessLock.Acquire(platformRoot);
-            return Execute(outputRoot, channel, target, processLock, clearCurrent);
+            return Execute(
+                outputRoot,
+                channel,
+                target,
+                processLock,
+                clearCurrent,
+                retainedArtifactManifestPaths);
         }
 
         public static ContentBuildStorageCleanupResult Execute(
@@ -106,7 +117,8 @@ namespace Ceres.ContentPipeline
             string channel,
             BuildTarget target,
             ContentBuildProcessLock processLock,
-            bool clearCurrent = false)
+            bool clearCurrent = false,
+            IEnumerable<string> retainedArtifactManifestPaths = null)
         {
             if (processLock == null) throw new ArgumentNullException(nameof(processLock));
             var platformRoot = GetPlatformRoot(outputRoot, channel, target);
@@ -118,7 +130,7 @@ namespace Ceres.ContentPipeline
                 throw new InvalidOperationException(
                     $"Content build lock '{processLock.Root}' does not protect '{platformRoot}'.");
             }
-            var plan = CreatePlan(platformRoot, clearCurrent);
+            var plan = CreatePlan(platformRoot, clearCurrent, retainedArtifactManifestPaths);
             var deleted = new List<string>();
             var failures = new List<string>();
             long deletedBytes = 0;
@@ -167,7 +179,8 @@ namespace Ceres.ContentPipeline
 
         private static ContentBuildStorageCleanupPreview CreatePlan(
             string platformRoot,
-            bool clearCurrent)
+            bool clearCurrent,
+            IEnumerable<string> retainedArtifactManifestPaths)
         {
             var protectedDirectories = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             var baseline = ReadPointer(
@@ -192,6 +205,10 @@ namespace Ceres.ContentPipeline
             {
                 if (baseline != null) protectedDirectories.Add(baseline.Directory);
                 if (update != null) protectedDirectories.Add(update.Directory);
+                ProtectRetainedArtifacts(
+                    platformRoot,
+                    retainedArtifactManifestPaths,
+                    protectedDirectories);
             }
 
             var candidates = new List<string>();
@@ -221,6 +238,34 @@ namespace Ceres.ContentPipeline
                 CandidateDirectories = orderedCandidates,
                 CandidateBytes = orderedCandidates.Sum(GetDirectorySize)
             };
+        }
+
+        private static void ProtectRetainedArtifacts(
+            string platformRoot,
+            IEnumerable<string> manifestPaths,
+            ISet<string> protectedDirectories)
+        {
+            if (manifestPaths == null) return;
+            foreach (var value in manifestPaths
+                         .Where(path => !string.IsNullOrWhiteSpace(path))
+                         .Select(Path.GetFullPath)
+                         .Distinct(StringComparer.OrdinalIgnoreCase))
+            {
+                var baselineRoot = Path.Combine(platformRoot, BaselineContainerName);
+                var updateRoot = Path.Combine(platformRoot, UpdateContainerName);
+                if ((!ContentPipelineFileSystem.IsWithin(value, baselineRoot) &&
+                     !ContentPipelineFileSystem.IsWithin(value, updateRoot)) ||
+                    !string.Equals(Path.GetFileName(value), ManifestFileName, StringComparison.Ordinal))
+                {
+                    throw new InvalidDataException(
+                        $"Retained Artifact Manifest is outside the platform Artifact containers: {value}");
+                }
+                var manifest = ContentArtifactManifest.Load(value);
+                var directory = Path.GetDirectoryName(value)!;
+                if (!string.Equals(Path.GetFileName(directory), manifest.buildId, StringComparison.Ordinal))
+                    throw new InvalidDataException($"Retained Artifact identity is invalid: {value}");
+                protectedDirectories.Add(directory);
+            }
         }
 
         private static PointerTarget ReadPointer(
