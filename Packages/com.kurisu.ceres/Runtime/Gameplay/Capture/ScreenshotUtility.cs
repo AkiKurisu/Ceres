@@ -11,6 +11,7 @@ using UnityEditor;
 #endif
 #if ILLUSION_RP_INSTALL
 using Illusion.Rendering;
+using Illusion.Rendering.Shadows;
 #endif
 #if URP_INSTALL
 using UnityEngine.Rendering.Universal;
@@ -227,7 +228,7 @@ namespace Ceres.Gameplay.Capture
                 // Editor warmup renders explicitly via Camera.Render to avoid waiting on Game view repaint.
                 _renderCamera.enabled = !UseEditorManualRenderLoop;
                 _renderCamera.transform.SetPositionAndRotation(_camera.transform.position, _camera.transform.rotation);
-                CopyUniversalAdditionalCameraData(_camera, _renderCamera);
+                CopyRenderPipelineCameraData(_camera, _renderCamera);
 
                 _renderCamera.targetTexture = RenderTarget;
             }
@@ -244,7 +245,7 @@ namespace Ceres.Gameplay.Capture
                 camera.cameraType = CameraType.Game;
                 camera.enabled = !UseEditorManualRenderLoop;
                 camera.targetTexture = RenderTarget;
-                CopyUniversalAdditionalCameraData(source, camera);
+                CopyRenderPipelineCameraData(source, camera);
                 return camera;
             }
 
@@ -287,6 +288,39 @@ namespace Ceres.Gameplay.Capture
 #endif
                 return waitedFrames >= Mathf.Max(1, request.DelayFrames);
             }
+
+            private static void CopyRenderPipelineCameraData(Camera source, Camera target)
+            {
+                CopyUniversalAdditionalCameraData(source, target);
+#if ILLUSION_RP_INSTALL
+                CopyPerObjectShadowLightSource(source, target);
+#endif
+            }
+
+#if ILLUSION_RP_INSTALL
+            private static void CopyPerObjectShadowLightSource(Camera source, Camera target)
+            {
+                var sourceData = source.GetComponent<PerObjectShadowLightSource>();
+                var targetData = target.GetComponent<PerObjectShadowLightSource>();
+                if (!sourceData)
+                {
+                    if (targetData)
+                    {
+                        targetData.Source = null;
+                        targetData.enabled = false;
+                    }
+                    return;
+                }
+
+                if (!targetData)
+                {
+                    targetData = target.gameObject.AddComponent<PerObjectShadowLightSource>();
+                }
+
+                targetData.Source = sourceData.Source;
+                targetData.enabled = sourceData.isActiveAndEnabled;
+            }
+#endif
 
 #if URP_INSTALL
             private static void CopyUniversalAdditionalCameraData(Camera source, Camera target)
