@@ -9,10 +9,7 @@ using UnityEngine.Rendering;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-#if ILLUSION_RP_INSTALL
-using Illusion.Rendering;
-using Illusion.Rendering.Shadows;
-#endif
+using Ceres.Capture;
 #if URP_INSTALL
 using UnityEngine.Rendering.Universal;
 #endif
@@ -273,54 +270,21 @@ namespace Ceres.Gameplay.Capture
                     return false;
                 }
 
-#if ILLUSION_RP_INSTALL
-                if (IllusionRendererData.Active != null
-                    && IllusionRendererData.Active.TryGetTemporalCaptureStatus(_renderCamera, out var status))
+                var hooks = RenderPipelineCaptureHooks.Current;
+                if (hooks != null && hooks.TryGetTemporalCaptureStatus(_renderCamera, out var status))
                 {
-                    var statusBlockers = status.Blockers;
-                    if (status.FrameCount < Mathf.Max(status.RecommendedWarmupFrames, request.DelayFrames))
-                    {
-                        statusBlockers |= IllusionTemporalCaptureBlockers.WarmingUp;
-                    }
-                    blockers = statusBlockers.ToString();
-                    return statusBlockers == IllusionTemporalCaptureBlockers.None;
+                    bool warmingUp = status.FrameCount < Mathf.Max(status.RecommendedWarmupFrames, request.DelayFrames);
+                    blockers = warmingUp ? (status.IsReady ? "WarmingUp" : status.Blockers + ", WarmingUp") : status.Blockers;
+                    return status.IsReady && !warmingUp;
                 }
-#endif
                 return waitedFrames >= Mathf.Max(1, request.DelayFrames);
             }
 
             private static void CopyRenderPipelineCameraData(Camera source, Camera target)
             {
                 CopyUniversalAdditionalCameraData(source, target);
-#if ILLUSION_RP_INSTALL
-                CopyPerObjectShadowLightSource(source, target);
-#endif
+                RenderPipelineCaptureHooks.Current?.CopyCameraData(source, target);
             }
-
-#if ILLUSION_RP_INSTALL
-            private static void CopyPerObjectShadowLightSource(Camera source, Camera target)
-            {
-                var sourceData = source.GetComponent<PerObjectShadowLightSource>();
-                var targetData = target.GetComponent<PerObjectShadowLightSource>();
-                if (!sourceData)
-                {
-                    if (targetData)
-                    {
-                        targetData.Source = null;
-                        targetData.enabled = false;
-                    }
-                    return;
-                }
-
-                if (!targetData)
-                {
-                    targetData = target.gameObject.AddComponent<PerObjectShadowLightSource>();
-                }
-
-                targetData.Source = sourceData.Source;
-                targetData.enabled = sourceData.isActiveAndEnabled;
-            }
-#endif
 
 #if URP_INSTALL
             private static void CopyUniversalAdditionalCameraData(Camera source, Camera target)

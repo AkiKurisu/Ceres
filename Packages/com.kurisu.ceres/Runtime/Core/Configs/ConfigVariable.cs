@@ -158,7 +158,12 @@ namespace Ceres.Configs
         /// Set the value of the variable
         /// </summary>
         /// <param name="value">New value</param>
-        public abstract void SetValue(object value);
+        public void SetValue(object value)
+        {
+            SetValue(value, true);
+        }
+
+        public abstract void SetValue(object value, bool save);
 
         /// <summary>
         /// Get the type of the variable
@@ -193,13 +198,13 @@ namespace Ceres.Configs
             return MemberAccessor.GetValue(config);
         }
 
-        public override void SetValue(object value)
+        public override void SetValue(object value, bool save)
         {
             var config = GetConfig();
             if (value is TValue typedValue)
             {
                 MemberAccessor.SetValue(config, typedValue);
-                config.Save(); // Save the config after modification
+                if (save) config.Save();
             }
             else
             {
@@ -208,7 +213,7 @@ namespace Ceres.Configs
                 {
                     var convertedValue = Convert.ChangeType(value, typeof(TValue));
                     MemberAccessor.SetValue(config, convertedValue);
-                    config.Save();
+                    if (save) config.Save();
                 }
                 catch (Exception ex)
                 {

@@ -71,9 +71,9 @@ Look Dev is an Editor preference. Leaving the mode or pressing refresh reapplies
 
 ## Optional IllusionRP integration
 
-When `com.kurisu.illusion-render-pipelines` is installed, the `ILLUSION_RP_INSTALL` define adds bindings for pipeline-specific features such as convolution bloom, contact shadows, soft shadows, SSAO, SSR, SSGI, and volumetric fog.
+Pipeline-specific toggles in `GraphicsConfig` (convolution bloom, contact shadows, soft shadows, SSAO, SSR, SSGI, volumetric fog, area lights, DLSS Neural Rendering) carry `[BindConfigVariable("r.xxx")]`. `GraphicsController` forwards their values by name through `ConfigVariableRegistry`, so Ceres never references the render pipeline assembly; a pipeline that registers matching config variables (IllusionRP does through `IllusionRuntimeRenderingConfig`) receives the switches, otherwise the binding is skipped. Screenshot capture reaches the pipeline through `Ceres.Capture.RenderPipelineCaptureHooks`, which IllusionRP registers when installed.
 
-These properties remain part of `GraphicsConfig`, but Ceres only applies the IllusionRP-specific runtime switches when that package is present. Projects using standard URP should treat them as inactive configuration fields.
+These properties are part of `GraphicsConfig` on every pipeline. Projects using standard URP should treat them as inactive configuration fields.
 
 ## Flow integration
 

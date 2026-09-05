@@ -7,10 +7,9 @@ using UnityEngine.Rendering;
 using R3;
 using UnityEngine.Rendering.Universal;
 using System.Linq;
+using System.Reflection;
+using Ceres.Configs;
 using Ceres.Flow.Annotations;
-#if ILLUSION_RP_INSTALL
-using Illusion.Rendering;
-#endif
 
 namespace Ceres.Gameplay.Graphics
 {
@@ -34,10 +33,7 @@ namespace Ceres.Gameplay.Graphics
             ScreenSpaceAmbientOcclusion,
             ScreenSpaceReflection,
             ScreenSpaceGlobalIllumination,
-            SubsurfaceScattering,
-            PercentageCloserSoftShadows,
-            ContactShadows,
-            VolumetricFog
+            SubsurfaceScattering
         }
         
         private readonly Dictionary<string, Volume> _volumes = new();
@@ -150,10 +146,6 @@ namespace Ceres.Gameplay.Graphics
             {
                 // URP bloom
                 _config.Bloom.Subscribe(new BuiltInVolumeObserver(BuiltInVolumeType.Bloom, this)).AddTo(ref d);
-#if ILLUSION_RP_INSTALL
-                // Convolution bloom
-                _config.Bloom.Subscribe(SetConvolutionBloomEnabled).AddTo(ref d);
-#endif
             }
             
             if (IsVolumeSupport(BuiltInVolumeType.DepthOfField))
@@ -173,34 +165,29 @@ namespace Ceres.Gameplay.Graphics
 
             _config.RenderScale.Subscribe(SetRenderScale).AddTo(ref d);
             _config.FrameRate.Subscribe(SetFrameRate).AddTo(ref d);
-            
-#if ILLUSION_RP_INSTALL
-            if (IsVolumeSupport(BuiltInVolumeType.ContactShadows))
-            {
-                _config.ContactShadows.Subscribe(SetContactShadowsEnabled).AddTo(ref d);
-            }
-            if (IsVolumeSupport(BuiltInVolumeType.PercentageCloserSoftShadows))
-            {
-                _config.PercentageCloserSoftShadows.Subscribe(SetPercentageCloserSoftShadowsEnabled).AddTo(ref d);
-            }
-            if (IsVolumeSupport(BuiltInVolumeType.ScreenSpaceAmbientOcclusion))
-            {
-                _config.ScreenSpaceAmbientOcclusion.Subscribe(SetScreenSpaceAmbientOcclusionEnabled).AddTo(ref d);
-            }
-            if (IsVolumeSupport(BuiltInVolumeType.ScreenSpaceReflection))
-            {
-                _config.ScreenSpaceReflection.Subscribe(SetScreenSpaceReflection).AddTo(ref d);
-            }
-            if (IsVolumeSupport(BuiltInVolumeType.ScreenSpaceGlobalIllumination))
-            {
-                _config.ScreenSpaceGlobalIllumination.Subscribe(SetScreenSpaceGlobalIllumination).AddTo(ref d);
-            }
-            if (IsVolumeSupport(BuiltInVolumeType.VolumetricFog))
-            {
-                _config.VolumetricFog.Subscribe(SetVolumetricFog).AddTo(ref d);
-            }
-#endif
+            BindConfigVariables();
             d.Build().AddTo(this);
+        }
+
+        private void BindConfigVariables()
+        {
+            var registry = ConfigVariableRegistry.Get();
+            foreach (var property in typeof(GraphicsConfig).GetProperties(BindingFlags.Instance | BindingFlags.Public))
+            {
+                var binding = property.GetCustomAttribute<BindConfigVariableAttribute>();
+                if (binding == null || property.PropertyType != typeof(ReactiveProperty<bool>)) continue;
+                if (settingsAsset && Enum.TryParse<GraphicsFeatures>(property.Name, out var feature) && !settingsAsset.IsFeatureSupport(feature)) continue;
+                if (!registry.TryGetVariable(binding.Name, out var variable))
+                {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+                    UnityEngine.Debug.LogWarning($"[Ceres] Config variable {binding.Name} bound by {nameof(GraphicsConfig)}.{property.Name} is not registered.");
+#endif
+                    continue;
+                }
+
+                var source = (ReactiveProperty<bool>)property.GetValue(_config);
+                source.Subscribe(value => variable.SetValue(value, false)).AddTo(this);
+            }
         }
 
         private void SetFrameRate(int index)
@@ -403,44 +390,6 @@ namespace Ceres.Gameplay.Graphics
                
             }
         }
-        
-#if ILLUSION_RP_INSTALL
-        // For IllusionRP features, we can disable them directly.
-        private static void SetConvolutionBloomEnabled(bool isEnabled)
-        {
-            IllusionRuntimeRenderingConfig.Get().EnableConvolutionBloom = isEnabled;
-        }
-        
-        private static void SetScreenSpaceAmbientOcclusionEnabled(bool isEnabled)
-        {
-            IllusionRuntimeRenderingConfig.Get().EnableScreenSpaceAmbientOcclusion = isEnabled;
-        }
-        
-        private static void SetContactShadowsEnabled(bool isEnabled)
-        {
-            IllusionRuntimeRenderingConfig.Get().EnableContactShadows = isEnabled;
-        }
-        
-        private static void SetPercentageCloserSoftShadowsEnabled(bool isEnabled)
-        {
-            IllusionRuntimeRenderingConfig.Get().EnablePercentageCloserSoftShadows = isEnabled;
-        }
-        
-        private static void SetScreenSpaceReflection(bool isEnabled)
-        {
-            IllusionRuntimeRenderingConfig.Get().EnableScreenSpaceReflection = isEnabled;
-        }
-        
-        private static void SetScreenSpaceGlobalIllumination(bool isEnabled)
-        {
-            IllusionRuntimeRenderingConfig.Get().EnableScreenSpaceGlobalIllumination = isEnabled;
-        }
-        
-        private static void SetVolumetricFog(bool isEnabled)
-        {
-            IllusionRuntimeRenderingConfig.Get().EnableVolumetricFog = isEnabled;
-        }
-#endif
     }
 }
 #endif

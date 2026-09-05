@@ -11,6 +11,7 @@ namespace Ceres.Gameplay.Graphics
     {
         public ReactiveProperty<int> FrameRate { get; set; } = new(0);
         
+        [BindConfigVariable("r.bloom")]
         public ReactiveProperty<bool> Bloom { get; set; } = new(true);
         
 #if UNITY_STANDALONE_WIN
@@ -33,32 +34,58 @@ namespace Ceres.Gameplay.Graphics
         public ReactiveProperty<bool> Vignette { get; set; } = new(true);
         
 #if UNITY_STANDALONE_WIN
+        [BindConfigVariable("r.contactshadows")]
         public ReactiveProperty<bool> ContactShadows { get; set; } = new(true);
 #else
+        [BindConfigVariable("r.contactshadows")]
         public ReactiveProperty<bool> ContactShadows { get; set; } = new(false);
 #endif
             
 #if UNITY_STANDALONE_WIN
+        [BindConfigVariable("r.pcss")]
         public ReactiveProperty<bool> PercentageCloserSoftShadows { get; set; } = new(true);
 #else
+        [BindConfigVariable("r.pcss")]
         public ReactiveProperty<bool> PercentageCloserSoftShadows { get; set; } = new(false);
 #endif
             
+        [BindConfigVariable("r.ssao")]
         public ReactiveProperty<bool> ScreenSpaceAmbientOcclusion { get; set; } = new(true);
         
 #if UNITY_STANDALONE_WIN
+        [BindConfigVariable("r.ssr")]
         public ReactiveProperty<bool> ScreenSpaceReflection { get; set; } = new(true);
 #else
+        [BindConfigVariable("r.ssr")]
         public ReactiveProperty<bool> ScreenSpaceReflection { get; set; } = new(false);
 #endif
             
 #if UNITY_STANDALONE_WIN
+        [BindConfigVariable("r.ssgi")]
         public ReactiveProperty<bool> ScreenSpaceGlobalIllumination { get; set; } = new(true);
 #else
+        [BindConfigVariable("r.ssgi")]
         public ReactiveProperty<bool> ScreenSpaceGlobalIllumination { get; set; } = new(false);
 #endif
             
+        [BindConfigVariable("r.volumetricfog")]
         public ReactiveProperty<bool> VolumetricFog { get; set; } = new(true);
+        
+#if UNITY_STANDALONE_WIN
+        [BindConfigVariable("r.arealights")]
+        public ReactiveProperty<bool> AreaLights { get; set; } = new(true);
+#else
+        [BindConfigVariable("r.arealights")]
+        public ReactiveProperty<bool> AreaLights { get; set; } = new(false);
+#endif
+            
+#if UNITY_STANDALONE_WIN
+        [BindConfigVariable("r.dlssnr")]
+        public ReactiveProperty<bool> DLSSNeuralRendering { get; set; } = new(true);
+#else
+        [BindConfigVariable("r.dlssnr")]
+        public ReactiveProperty<bool> DLSSNeuralRendering { get; set; } = new(false);
+#endif
         
         [JsonProperty]
         [ConfigVariable("r.fps")]
