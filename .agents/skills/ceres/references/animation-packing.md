@@ -17,7 +17,8 @@ Use `Ceres.AnimationPacking.Editor` for compact source storage of Unity `Animati
 - Codec: deterministic gzip.
 - Payload: exactly one complete text-serialized Unity `AnimationClip`.
 - Main-object identifier: `clip`.
-- Local file ID: `7400000`.
+- Unity derives the local file ID from the object type and identifier by default.
+- A source pipeline replacing a standalone `.anim` must map type `74` and identifier `clip` to local file ID `7400000` in the ScriptedImporter metadata before the first import.
 - Preserve all serialized animation data. Do not reduce keys, quantize values, or reinterpret curves.
 - Preserve external object references and register their GUIDs as importer dependencies.
 
@@ -27,6 +28,7 @@ Use `Ceres.AnimationPacking.Editor` for compact source storage of Unity `Animati
 - `AnimationBinaryUtility.Extract` creates an editable `.anim` copy.
 - Both operations fail when the destination exists.
 - The utility owns only the data file. Unity or the calling source pipeline owns its `.meta` and GUID.
+- The Pack menu creates a new asset; it does not preserve the selected `.anim` GUID or migrate references.
 - The menu actions are `Tools/Ceres/Animation/Pack` and `Tools/Ceres/Animation/Extract` and operate on the selected compatible asset.
 
 ## Validation
