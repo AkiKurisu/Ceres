@@ -1,11 +1,11 @@
 ---
 name: ceres
-description: Practical handbook for using and extending the unified Ceres Unity framework. Use when Codex needs to work with Ceres Core services, Gameplay systems, Flow containers, events, executable functions, custom nodes, code generation, ILPP, linker behavior, or hot reload.
+description: Practical handbook for using and extending Ceres Unity framework modules, including Core, Content Pipeline, Animation Packing, Graph and Flow, Gameplay, code generation, and Editor tooling.
 ---
 
 # Ceres
 
-Use this skill when working with Ceres Core, Graph, Flow, or Gameplay in a Unity project. Prefer existing package patterns over inventing parallel framework infrastructure.
+Use this skill when working with a Ceres module in a Unity project. Prefer existing package patterns over inventing parallel framework infrastructure.
 
 ## First Steps
 
@@ -13,12 +13,13 @@ Use this skill when working with Ceres Core, Graph, Flow, or Gameplay in a Unity
    - `Packages/Ceres`
    - `Packages/com.kurisu.ceres`
    - a Unity package listed as `com.kurisu.ceres`
-2. Read the relevant Ceres source or docs near the user's task. Useful package docs usually live in `Documentations/docs`.
+2. Read the relevant Ceres source near the user's task.
 3. Choose one path below and load only the matching reference file.
 
 ## Extension Paths
 
 - **Core services**: Read `references/core.md` when working with pooling, events, configs, resources, content builds, data tables, schedulers, serialization, collections, R3, tasks, or runtime modules.
+- **Animation Binary**: Read `references/animation-packing.md` when working with `.animbin`, Animation Packing, or its Editor importer and authoring tools.
 - **Gameplay systems**: Read `references/gameplay.md` when working with GameWorld, Actor, Level, Audio, Animation, Graphics, AI/EQS, Mod, FX, Capture, resource caches, or Gameplay Flow integration.
 - **Containers and code generation**: Read `references/containers-and-codegen.md` when creating or modifying Flow containers, graph assets, runtime objects, ScriptableObject containers, or `[GenerateFlow]` classes.
 - **Events and executable functions**: Read `references/events-and-functions.md` when exposing C# APIs to Flow, adding `[ImplementableEvent]`, creating custom `[ExecutableEvent]` event types, or writing `ExecutableFunctionLibrary` classes.
