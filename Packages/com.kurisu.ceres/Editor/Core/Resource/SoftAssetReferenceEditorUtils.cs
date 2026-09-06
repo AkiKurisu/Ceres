@@ -50,6 +50,18 @@ namespace Ceres.Resource.Editor
             return newObject;
         }
 
+        public static SoftAssetReference<T> FromAssetPath<T>(string assetPath) where T : UObject
+        {
+            string guid = AssetDatabase.AssetPathToGUID(assetPath);
+            if (string.IsNullOrEmpty(guid)) return null;
+            return new SoftAssetReference<T>
+            {
+                Address = assetPath,
+                Guid = guid,
+                Locked = true
+            };
+        }
+
         /// <summary>
         /// Resolve the AssetDatabase path stored by a soft reference without loading the asset.
         /// </summary>
