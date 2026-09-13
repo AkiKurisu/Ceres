@@ -4,16 +4,47 @@ param()
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-function Write-Section {
-    param(
-        [Parameter(Mandatory = $true)][string]$Text,
-        [ConsoleColor]$Color = [ConsoleColor]::Cyan
-    )
+function Select-LinkDestinations {
+    param([Parameter(Mandatory = $true)][object[]]$Destinations)
 
-    Write-Host ""
-    Write-Host "================================" -ForegroundColor $Color
-    Write-Host $Text -ForegroundColor $Color
-    Write-Host "================================" -ForegroundColor $Color
+    $activeIndex = 0
+    $selected = @($Destinations | ForEach-Object { $false })
+    $lineWidth = [Console]::WindowWidth - 1
+    $cursorVisible = [Console]::CursorVisible
+    [Console]::CursorVisible = $false
+    try {
+        foreach ($destination in $Destinations) {
+            [Console]::WriteLine()
+        }
+        $listTop = [Console]::CursorTop - $Destinations.Count
+
+        while ($true) {
+            for ($i = 0; $i -lt $Destinations.Count; $i++) {
+                [Console]::SetCursorPosition(0, $listTop + $i)
+                $pointer = if ($i -eq $activeIndex) { ">" } else { " " }
+                $mark = if ($selected[$i]) { "[x]" } else { "[ ]" }
+                $line = "$pointer $mark $($Destinations[$i].Name)"
+                [Console]::Write($line.PadRight($lineWidth))
+            }
+
+            switch ([Console]::ReadKey($true).Key) {
+                "UpArrow" { $activeIndex = ($activeIndex - 1 + $Destinations.Count) % $Destinations.Count }
+                "DownArrow" { $activeIndex = ($activeIndex + 1) % $Destinations.Count }
+                "Spacebar" { $selected[$activeIndex] = -not $selected[$activeIndex] }
+                "Enter" {
+                    $result = @(for ($i = 0; $i -lt $Destinations.Count; $i++) {
+                        if ($selected[$i]) { $Destinations[$i] }
+                    })
+                    if ($result.Count -gt 0) {
+                        [Console]::SetCursorPosition(0, $listTop + $Destinations.Count)
+                        return $result
+                    }
+                }
+            }
+        }
+    } finally {
+        [Console]::CursorVisible = $cursorVisible
+    }
 }
 
 function Resolve-LinkTarget {
@@ -47,36 +78,24 @@ function New-PerSkillLinks {
         [Parameter(Mandatory = $true)][string]$DisplayName
     )
 
-    Write-Section -Text "Linking Ceres skills into $DisplayName"
+    Write-Host ""
+    Write-Host "Linking Ceres skills into $DisplayName" -ForegroundColor Cyan
     Write-Host "Source:      $SourceDir" -ForegroundColor Gray
     Write-Host "Destination: $DestinationDir" -ForegroundColor Gray
 
     if (-not (Test-Path -LiteralPath $DestinationDir)) {
         New-Item -ItemType Directory -Path $DestinationDir -Force | Out-Null
-        Write-Host "Created destination directory: $DestinationDir" -ForegroundColor Green
-    } else {
-        $destinationItem = Get-Item -LiteralPath $DestinationDir -Force
-        if ($destinationItem.LinkType) {
-            Write-Host "Destination is a $($destinationItem.LinkType). Replacing it with a real directory." -ForegroundColor Yellow
-            Remove-Item -LiteralPath $DestinationDir -Force
-            New-Item -ItemType Directory -Path $DestinationDir -Force | Out-Null
-        }
     }
 
     $skillDirectories = @(Get-ChildItem -LiteralPath $SourceDir -Directory)
-    if ($skillDirectories.Count -eq 0) {
-        Write-Host "No skill directories found under source. Skipping." -ForegroundColor Yellow
-        return
-    }
-
     $linkedCount = 0
     $skippedCount = 0
     foreach ($skill in $skillDirectories) {
         $destinationSkillPath = Join-Path $DestinationDir $skill.Name
         $sourceSkillPath = [System.IO.Path]::GetFullPath($skill.FullName)
 
-        if (Test-Path -LiteralPath $destinationSkillPath) {
-            $existingItem = Get-Item -LiteralPath $destinationSkillPath -Force
+        $existingItem = Get-Item -LiteralPath $destinationSkillPath -Force -ErrorAction SilentlyContinue
+        if ($null -ne $existingItem) {
             $existingTarget = Resolve-LinkTarget -Path $destinationSkillPath
 
             if ($existingItem.LinkType -and $existingTarget -eq $sourceSkillPath) {
@@ -85,51 +104,49 @@ function New-PerSkillLinks {
                 continue
             }
 
-            if ($existingItem.LinkType) {
-                Write-Host "  - $($skill.Name): replacing stale $($existingItem.LinkType)" -ForegroundColor Yellow
-                Remove-Item -LiteralPath $destinationSkillPath -Force
-            } else {
-                Write-Host "  - $($skill.Name): replacing existing directory" -ForegroundColor Yellow
-                Remove-Item -LiteralPath $destinationSkillPath -Recurse -Force
+            if (-not $existingItem.LinkType) {
+                Write-Host "  - $($skill.Name): destination already exists, skipping" -ForegroundColor Yellow
+                $skippedCount++
+                continue
             }
-        } else {
-            Write-Host "  - $($skill.Name): linking" -ForegroundColor Green
+
+            Remove-Item -LiteralPath $destinationSkillPath -Force
+            Write-Host "  - $($skill.Name): replacing an existing skill link" -ForegroundColor Yellow
         }
 
         New-Item -ItemType Junction -Path $destinationSkillPath -Target $sourceSkillPath | Out-Null
+        Write-Host "  - $($skill.Name): linked" -ForegroundColor Green
         $linkedCount++
     }
 
-    Write-Host ""
-    Write-Host "Linked $linkedCount skill(s), $skippedCount already up to date." -ForegroundColor Green
-    Write-Host "Other skills already present in $DisplayName were left untouched." -ForegroundColor Green
+    Write-Host "Linked $linkedCount skill(s), skipped $skippedCount." -ForegroundColor Gray
 }
 
 $repositoryRoot = Split-Path -Parent $PSScriptRoot
-$skillsSourcePath = Join-Path $repositoryRoot ".agents\skills"
-if (-not (Test-Path -LiteralPath $skillsSourcePath -PathType Container)) {
-    throw "Source skills directory not found: $skillsSourcePath"
+$skillsSourcePath = Join-Path $repositoryRoot "Plugins\ceres\skills"
+if (-not (Test-Path -LiteralPath $skillsSourcePath)) {
+    throw "Ceres plugin skills directory not found: $skillsSourcePath"
 }
-
-$skillDestinations = @(
+$availableDestinations = @(
     @{
-        Name = ".cursor\skills"
+        Name = "Cursor (.cursor\skills)"
         Path = Join-Path $repositoryRoot ".cursor\skills"
     },
     @{
-        Name = "~\.codex\skills"
-        Path = Join-Path $env:USERPROFILE ".codex\skills"
+        Name = "Claude (~\.claude\skills)"
+        Path = Join-Path $env:USERPROFILE ".claude\skills"
     },
     @{
-        Name = "~\.claude\skills"
-        Path = Join-Path $env:USERPROFILE ".claude\skills"
+        Name = "Codex (~\.codex\skills)"
+        Path = Join-Path $env:USERPROFILE ".codex\skills"
     }
 )
 
-Write-Section -Text "Ceres Skills Linker"
+Write-Host "Ceres Skills Linker" -ForegroundColor Cyan
 Write-Host "Repository root: $repositoryRoot" -ForegroundColor Gray
 Write-Host "Source skills:   $skillsSourcePath" -ForegroundColor Gray
 
+$skillDestinations = @(Select-LinkDestinations -Destinations $availableDestinations)
 foreach ($skillDestination in $skillDestinations) {
     New-PerSkillLinks `
         -SourceDir $skillsSourcePath `
@@ -138,5 +155,4 @@ foreach ($skillDestination in $skillDestinations) {
 }
 
 Write-Host ""
-Write-Host "Done." -ForegroundColor Green
-Write-Host "Ceres skill edits in .agents\skills now take effect immediately in Cursor, Codex, and Claude." -ForegroundColor Green
+Write-Host "Done. Ceres skill edits now take effect immediately in the selected agents." -ForegroundColor Green

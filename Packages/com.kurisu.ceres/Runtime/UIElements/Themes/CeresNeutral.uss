@@ -1,0 +1,375 @@
+.ceres-ui {
+    --ceres-bg-primary: #171717;
+    --ceres-bg-secondary: #202020;
+    --ceres-bg-tertiary: #2b2b2b;
+    --ceres-bg-active: #353535;
+    --ceres-text-primary: #eeeeee;
+    --ceres-text-secondary: #b5b5b5;
+    --ceres-text-dimmed: #858585;
+    --ceres-text-disabled: #696969;
+    --ceres-border-default: #3b3b3b;
+    --ceres-focus: #9ab9e6;
+    --ceres-success: #7fc8a5;
+    --ceres-warning: #dab477;
+    --ceres-danger: #e89b9b;
+    --ceres-danger-surface: #3b2727;
+    --ceres-danger-hover: #4c2e2e;
+    --ceres-button-compact-height: 28px;
+    --ceres-button-compact-radius: 10px;
+    --ceres-button-compact-font: 12px;
+    --ceres-button-compact-padding: 10px;
+    --ceres-button-prominent-height: 38px;
+    --ceres-button-prominent-radius: 12px;
+    --ceres-space-xs: 4px;
+    --ceres-space-sm: 8px;
+    --ceres-space-md: 12px;
+    --ceres-space-lg: 16px;
+    --ceres-space-xl: 24px;
+    --ceres-space-2xl: 32px;
+    --ceres-radius-sm: 4px;
+    --ceres-radius-control: 8px;
+    --ceres-radius-panel: 10px;
+    --ceres-control-height: 32px;
+    --ceres-number-height: 28px;
+    --ceres-type-ui: 13px;
+    --ceres-type-secondary: 12px;
+    --ceres-type-heading: 15px;
+    --ceres-type-title: 18px;
+    color: var(--ceres-text-primary);
+    font-size: var(--ceres-type-ui);
+    letter-spacing: 0;
+}
+
+.ceres-touch .ceres-ui, .ceres-ui.ceres-touch {
+    --ceres-control-height: 44px;
+    --ceres-number-height: 32px;
+    --ceres-type-ui: 15px;
+    --ceres-type-secondary: 13px;
+    --ceres-type-heading: 16px;
+}
+
+.ceres-ui.unity-disabled, .ceres-ui .unity-disabled { opacity: 1; }
+
+.ceres-ui .ceres-button {
+    height: var(--ceres-control-height);
+    min-height: var(--ceres-control-height);
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 var(--ceres-space-md);
+    border-width: 1px;
+    border-color: transparent;
+    border-radius: var(--ceres-radius-control);
+    background-color: var(--ceres-bg-tertiary);
+    color: var(--ceres-text-primary);
+    font-size: var(--ceres-type-ui);
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+}
+
+.ceres-ui .ceres-button:hover { background-color: var(--ceres-bg-active); }
+.ceres-ui .ceres-button:active { background-color: var(--ceres-bg-primary); }
+.ceres-ui .ceres-button--primary { background-color: var(--ceres-text-primary); color: var(--ceres-bg-primary); }
+.ceres-ui .ceres-button--primary:hover { background-color: white; }
+.ceres-ui .ceres-button--primary:active { background-color: #d0d0d0; }
+.ceres-ui .ceres-button--ghost { background-color: transparent; color: var(--ceres-text-secondary); }
+.ceres-ui .ceres-button--ghost:hover { background-color: var(--ceres-bg-tertiary); color: var(--ceres-text-primary); }
+.ceres-ui .ceres-button--ghost:active { background-color: var(--ceres-bg-active); }
+.ceres-ui .ceres-button--selected { background-color: var(--ceres-bg-active); color: var(--ceres-text-primary); }
+.ceres-ui .ceres-button:focus { border-color: var(--ceres-focus); }
+.ceres-ui .ceres-button:disabled {
+    background-color: var(--ceres-bg-tertiary);
+    color: var(--ceres-text-disabled);
+    border-color: transparent;
+}
+.ceres-ui .ceres-button--ghost:disabled { background-color: transparent; }
+
+.ceres-ui .ceres-button--icon {
+    width: var(--ceres-control-height);
+    min-width: var(--ceres-control-height);
+    padding: 0;
+    border-radius: var(--ceres-radius-control);
+    font-size: var(--ceres-type-heading);
+}
+
+.ceres-ui .ceres-button--tab {
+    border-radius: var(--ceres-radius-control);
+    padding: 0 var(--ceres-space-md);
+}
+
+.ceres-ui .ceres-text-field {
+    height: var(--ceres-control-height);
+    min-height: var(--ceres-control-height);
+    margin: 0;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.ceres-ui .ceres-text-field .unity-base-text-field__input {
+    min-width: 0;
+    border-width: 1px;
+    border-color: var(--ceres-border-default);
+    border-radius: var(--ceres-radius-control);
+    background-color: var(--ceres-bg-primary);
+    color: var(--ceres-text-primary);
+    font-size: var(--ceres-type-ui);
+    padding: 0 var(--ceres-space-md);
+}
+
+.ceres-ui .ceres-text-field .unity-base-text-field__input:focus { border-color: var(--ceres-focus); }
+.ceres-ui .ceres-text-field:disabled .unity-base-text-field__input { color: var(--ceres-text-disabled); }
+
+.ceres-ui .ceres-toggle {
+    min-height: var(--ceres-control-height);
+    margin: 0;
+    color: var(--ceres-text-primary);
+    flex-direction: row;
+    align-items: center;
+}
+.ceres-toggle > .unity-toggle__input {
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: var(--ceres-control-height);
+    margin: 0;
+    padding: 0;
+}
+.ceres-toggle .unity-toggle__text {
+    min-width: 0;
+    margin: 0;
+    margin-left: var(--ceres-space-sm);
+    padding: 0;
+    -unity-text-align: middle-left;
+}
+.ceres-ui .ceres-toggle .unity-toggle__checkmark {
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
+    flex-shrink: 0;
+    margin: 0;
+    border-width: 1px;
+    border-color: var(--ceres-border-default);
+    border-radius: var(--ceres-radius-sm);
+    background-color: var(--ceres-bg-primary);
+    background-image: none;
+    align-items: center;
+    justify-content: center;
+}
+.ceres-toggle .unity-toggle__input:checked .unity-toggle__checkmark { background-color: var(--ceres-text-primary); }
+.ceres-toggle .unity-toggle__input:focus .unity-toggle__checkmark { border-color: var(--ceres-focus); }
+.ceres-toggle__mark {
+    width: 9px;
+    height: 5px;
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+    border-color: var(--ceres-bg-primary);
+    rotate: -45deg;
+    visibility: hidden;
+}
+.ceres-toggle .unity-toggle__input:checked .ceres-toggle__mark { visibility: visible; }
+.ceres-toggle:disabled .unity-toggle__text { color: var(--ceres-text-disabled); }
+.ceres-toggle:disabled .unity-toggle__input:checked .unity-toggle__checkmark { background-color: var(--ceres-text-disabled); }
+
+.ceres-ui .ceres-action {
+    --ceres-action-height: var(--ceres-control-height);
+    --ceres-action-target-height: var(--ceres-control-height);
+    --ceres-action-radius: var(--ceres-radius-control);
+    --ceres-action-font: var(--ceres-type-ui);
+    --ceres-action-padding: var(--ceres-space-md);
+    min-width: 44px;
+    height: var(--ceres-action-target-height);
+    min-height: var(--ceres-action-target-height);
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    border-radius: 0;
+    background-image: none;
+    background-color: transparent;
+    color: transparent;
+    flex-shrink: 0;
+    align-items: stretch;
+    justify-content: center;
+}
+.ceres-ui .ceres-action--compact {
+    --ceres-action-height: var(--ceres-button-compact-height);
+    --ceres-action-target-height: var(--ceres-button-compact-height);
+    --ceres-action-radius: var(--ceres-button-compact-radius);
+    --ceres-action-font: var(--ceres-button-compact-font);
+    --ceres-action-padding: var(--ceres-button-compact-padding);
+}
+.ceres-ui .ceres-action--prominent {
+    --ceres-action-height: var(--ceres-button-prominent-height);
+    --ceres-action-target-height: var(--ceres-button-prominent-height);
+    --ceres-action-radius: var(--ceres-button-prominent-radius);
+    --ceres-action-font: 13px;
+    --ceres-action-padding: var(--ceres-space-lg);
+}
+.ceres-touch .ceres-action--compact, .ceres-touch .ceres-action--prominent { --ceres-action-target-height: 44px; }
+.ceres-action > .ceres-action__surface {
+    height: var(--ceres-action-height);
+    min-height: var(--ceres-action-height);
+    min-width: 0;
+    margin: 0;
+    padding: 0 var(--ceres-action-padding);
+    border-width: 1px;
+    border-color: transparent;
+    border-radius: var(--ceres-action-radius);
+    background-color: var(--ceres-bg-tertiary);
+    color: var(--ceres-text-primary);
+    font-size: var(--ceres-action-font);
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ceres-action:hover > .ceres-action__surface { background-color: var(--ceres-bg-active); }
+.ceres-action:active > .ceres-action__surface { background-color: var(--ceres-bg-primary); }
+.ceres-action--primary > .ceres-action__surface { background-color: var(--ceres-text-primary); color: var(--ceres-bg-primary); }
+.ceres-action--primary:hover > .ceres-action__surface { background-color: white; }
+.ceres-action--primary:active > .ceres-action__surface { background-color: #d0d0d0; }
+.ceres-action--ghost > .ceres-action__surface { background-color: transparent; color: var(--ceres-text-secondary); }
+.ceres-action--ghost:hover > .ceres-action__surface { background-color: var(--ceres-bg-tertiary); color: var(--ceres-text-primary); }
+.ceres-action--outline > .ceres-action__surface { background-color: var(--ceres-bg-primary); border-color: var(--ceres-border-default); }
+.ceres-action--outline:hover > .ceres-action__surface { background-color: var(--ceres-bg-tertiary); }
+.ceres-action--danger > .ceres-action__surface { background-color: var(--ceres-danger-surface); color: var(--ceres-danger); }
+.ceres-action--danger:hover > .ceres-action__surface { background-color: var(--ceres-danger-hover); }
+.ceres-action:focus > .ceres-action__surface { border-color: var(--ceres-focus); }
+.ceres-action:disabled > .ceres-action__surface { background-color: var(--ceres-bg-tertiary); color: var(--ceres-text-disabled); border-color: transparent; }
+.ceres-action--ghost:disabled > .ceres-action__surface { background-color: transparent; }
+
+.ceres-ui .ceres-action--icon, .ceres-ui .ceres-action--iconcompact {
+    width: var(--ceres-action-target-height);
+    min-width: var(--ceres-action-target-height);
+    align-items: center;
+    --ceres-action-padding: 0px;
+    --ceres-action-font: var(--ceres-type-heading);
+}
+.ceres-ui .ceres-action--iconcompact {
+    --ceres-action-height: var(--ceres-button-compact-height);
+    --ceres-action-target-height: var(--ceres-button-compact-height);
+    --ceres-action-radius: var(--ceres-button-compact-radius);
+    --ceres-action-font: 15px;
+}
+.ceres-touch .ceres-action--iconcompact { --ceres-action-target-height: 44px; }
+.ceres-action--icon > .ceres-action__surface, .ceres-action--iconcompact > .ceres-action__surface {
+    width: var(--ceres-action-height);
+    min-width: var(--ceres-action-height);
+    align-items: center;
+    justify-content: center;
+}
+.ceres-ui .ceres-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: var(--ceres-text-primary);
+}
+.ceres-ui .ceres-icon--close { background-image: url("CeresCloseIcon.asset"); }
+.ceres-action--ghost .ceres-icon { -unity-background-image-tint-color: var(--ceres-text-secondary); }
+.ceres-action--ghost:hover .ceres-icon { -unity-background-image-tint-color: var(--ceres-text-primary); }
+.ceres-action--primary .ceres-icon { -unity-background-image-tint-color: var(--ceres-bg-primary); }
+.ceres-action:disabled .ceres-icon { -unity-background-image-tint-color: var(--ceres-text-disabled); }
+.ceres-ui .ceres-slider {
+    height: var(--ceres-control-height);
+    min-height: var(--ceres-control-height);
+    margin: 0;
+}
+.ceres-slider > .unity-base-field__label {
+    color: var(--ceres-text-secondary);
+    padding: 0;
+    -unity-text-align: middle-left;
+}
+.ceres-slider > .unity-base-slider__input { align-items: center; }
+.ceres-slider .unity-base-slider__drag-container {
+    height: var(--ceres-control-height);
+    min-height: var(--ceres-control-height);
+    margin: 0;
+}
+.ceres-slider .unity-base-slider__tracker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin: 0;
+    margin-top: -2px;
+    height: 4px;
+    background-color: #414141;
+    border-width: 0;
+    border-radius: var(--ceres-radius-sm);
+}
+.ceres-slider .unity-base-slider__dragger {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin: 0;
+    margin-top: -7px;
+    width: 14px;
+    height: 14px;
+    background-color: var(--ceres-text-primary);
+    border-width: 2px;
+    border-color: var(--ceres-bg-primary);
+    border-radius: 7px;
+}
+.ceres-slider .unity-base-slider__dragger-border { display: none; }
+.ceres-slider:focus .unity-base-slider__dragger { border-color: var(--ceres-focus); }
+.ceres-slider .unity-base-slider__text-field {
+    width: 52px;
+    min-width: 52px;
+    height: var(--ceres-control-height);
+    min-height: var(--ceres-control-height);
+    align-self: center;
+    margin: 0;
+    margin-left: var(--ceres-space-sm);
+}
+.ceres-slider .unity-base-text-field__input {
+    height: var(--ceres-number-height);
+    align-self: center;
+    padding: 0 6px;
+    border-width: 1px;
+    border-color: var(--ceres-border-default);
+    border-radius: var(--ceres-radius-control);
+    background-color: var(--ceres-bg-primary);
+    color: var(--ceres-text-primary);
+    font-size: var(--ceres-type-secondary);
+    -unity-text-align: middle-center;
+}
+.ceres-slider .unity-text-element--inner-input-field-component { -unity-text-align: middle-center; }
+.ceres-slider .unity-base-text-field__input:focus { border-color: var(--ceres-focus); }
+.ceres-slider:disabled > .unity-base-field__label, .ceres-slider:disabled .unity-base-text-field__input { color: var(--ceres-text-disabled); }
+.ceres-slider:disabled .unity-base-slider__dragger { background-color: var(--ceres-text-disabled); }
+
+.ceres-ui .unity-scroller__low-button, .ceres-ui .unity-scroller__high-button {
+    width: 13px;
+    min-width: 13px;
+    height: 13px;
+    min-height: 13px;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    border-radius: 0;
+    background-color: transparent;
+    background-image: url("CeresScrollArrow.asset");
+    -unity-background-image-tint-color: var(--ceres-text-secondary);
+    -unity-background-scale-mode: scale-to-fit;
+}
+.ceres-ui .unity-scroller__low-button:hover, .ceres-ui .unity-scroller__high-button:hover { background-color: var(--ceres-bg-tertiary); }
+.ceres-ui .unity-scroller__high-button { rotate: 180deg; }
+.ceres-ui .unity-scroller--vertical { width: 13px; min-width: 13px; }
+.ceres-ui .unity-scroller--vertical .unity-scroller__slider { margin: 13px 0; }
+.ceres-ui .unity-scroller--horizontal { height: 13px; min-height: 13px; }
+.ceres-ui .unity-scroller--horizontal .unity-scroller__slider { margin: 0 13px; }
+.ceres-ui .unity-scroller--horizontal .unity-scroller__low-button { rotate: -90deg; }
+.ceres-ui .unity-scroller--horizontal .unity-scroller__high-button { rotate: 90deg; }
+.ceres-ui .unity-scroller .unity-base-slider__tracker { background-color: transparent; border-width: 0; }
+.ceres-ui .unity-scroller .unity-base-slider__dragger {
+    background-color: var(--ceres-text-disabled);
+    background-image: none;
+    border-width: 0;
+    border-radius: 5px;
+    margin: 0;
+}
+.ceres-ui .unity-scroller .unity-base-slider__dragger:hover { background-color: var(--ceres-text-dimmed); }
+.ceres-ui .unity-scroller .unity-base-slider__dragger-border { display: none; }
+.ceres-ui .unity-scroller--vertical .unity-base-slider__dragger { left: 1px; width: 10px; min-width: 10px; }
+.ceres-ui .unity-scroller--horizontal .unity-base-slider__dragger { top: 1px; height: 10px; min-height: 10px; }

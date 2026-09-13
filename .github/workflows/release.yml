@@ -84,6 +84,17 @@ jobs:
                   f"package.json is {package_version}, but release tag is v{version}."
               )
 
+          plugin_manifests = (
+              pathlib.Path("Plugins/ceres/.codex-plugin/plugin.json"),
+              pathlib.Path("Plugins/ceres/.craft-plugin/plugin.json"),
+          )
+          for manifest_path in plugin_manifests:
+              plugin_version = json.loads(manifest_path.read_text(encoding="utf-8")).get("version")
+              if plugin_version != package_version:
+                  raise SystemExit(
+                      f"{manifest_path} is {plugin_version}, but package.json is {package_version}."
+                  )
+
           pathlib.Path("release_notes.md").write_text(body + "\n", encoding="utf-8")
 
       - name: Ensure release does not already exist
