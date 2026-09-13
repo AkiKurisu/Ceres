@@ -1,0 +1,129 @@
+.ceres-preview-toolbar {
+    height: auto;
+    min-height: 42px;
+    padding: 5px 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.ceres-preview-selectors {
+    min-width: 500px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ceres-preview-selector {
+    min-width: 150px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0 12px 0 0;
+}
+
+.ceres-preview-selector--surface { flex-basis: 220px; }
+.ceres-preview-selector--state { flex-basis: 205px; }
+.ceres-preview-selector--viewport { flex-basis: 235px; }
+
+.ceres-preview-selector > .unity-base-field__label {
+    min-width: 0;
+    margin-right: 6px;
+    padding: 0;
+    color: rgb(166, 166, 166);
+    -unity-text-align: middle-left;
+}
+
+.ceres-preview-selector > .unity-base-field__input {
+    min-width: 96px;
+}
+
+.ceres-preview-view-options {
+    height: 24px;
+    flex-shrink: 0;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 8px;
+    border-left-width: 1px;
+    border-left-color: rgb(66, 66, 66);
+}
+
+.ceres-preview-view-label {
+    margin: 0 6px 0 0;
+    padding: 0;
+    color: rgb(166, 166, 166);
+    -unity-text-align: middle-left;
+}
+
+.ceres-preview-view-options > .unity-toolbar-toggle,
+.ceres-preview-refresh {
+    height: 18px;
+    min-height: 18px;
+    margin-left: 0;
+    margin-right: 4px;
+    padding: 0 6px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-radius: 3px;
+    font-size: 12px;
+    -unity-text-align: middle-center;
+}
+
+.ceres-preview-view-options > .unity-toolbar-toggle > .unity-toggle__input,
+.ceres-preview-view-options > .unity-toolbar-toggle .unity-toggle__text {
+    height: 18px;
+    min-height: 18px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    -unity-text-align: middle-center;
+}
+
+.ceres-preview-refresh {
+    min-width: 58px;
+    margin-left: 4px;
+}
+
+.ceres-preview-stage {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(26, 29, 35);
+}
+
+.ceres-preview-viewport {
+    position: absolute;
+    background-color: rgb(8, 10, 14);
+    overflow: hidden;
+    transform-origin: 0 0;
+}
+
+.ceres-preview-viewport.ceres-preview-light {
+    background-color: rgb(215, 219, 226);
+}
+
+.ceres-preview-safe-area {
+    position: absolute;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: rgba(72, 187, 255, 0.7);
+    border-right-color: rgba(72, 187, 255, 0.7);
+    border-top-color: rgba(72, 187, 255, 0.7);
+    border-bottom-color: rgba(72, 187, 255, 0.7);
+}
+
+.ceres-preview-bounds-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.ceres-preview-element-bound {
+    position: absolute;
+    border-width: 1px;
+    border-color: rgba(255, 120, 180, 0.72);
+}

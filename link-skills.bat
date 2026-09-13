@@ -1,9 +1,11 @@
 @echo off
 setlocal
 
+rem Link the Ceres plugin's skills into selected local coding agents.
+
 set "SCRIPT_DIR=%~dp0"
-echo Linking Ceres skills...
-powershell -ExecutionPolicy Bypass -File "%SCRIPT_DIR%scripts\link-skills.ps1" %*
+echo Select where to link Ceres skills.
+powershell -ExecutionPolicy Bypass -File "%SCRIPT_DIR%scripts\link-skills.ps1"
 
 if errorlevel 1 (
     echo.

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ceres="Ceres.UIElements">
+    <Style src="../../../../Runtime/UIElements/Themes/CeresNeutral.uss" />
+    <Style src="ButtonCatalog.uss" />
+    <ui:VisualElement name="button-catalog" class="ceres-ui ceres-catalog">
+        <ui:Label text="Ceres Neutral / Runtime UI" class="ceres-catalog-eyebrow" />
+        <ui:Label text="Buttons" class="ceres-catalog-title" />
+        <ui:Label text="Review · Shared controls mounted · Semantic intent and density are independent" class="ceres-catalog-description" />
+        <ui:ScrollView name="catalog-scroll" mode="Vertical" class="ceres-catalog-scroll">
+            <ui:VisualElement class="ceres-catalog-columns">
+                <ui:VisualElement class="ceres-catalog-column">
+                    <ui:VisualElement class="ceres-catalog-section">
+                        <ui:Label text="Action hierarchy" class="ceres-catalog-heading" />
+                        <ui:Label text="Choose the meaning of the action, not its size." class="ceres-catalog-description" />
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Primary" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-primary" text="Save changes" variant="Primary" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Secondary" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-secondary" text="Refresh" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Ghost" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-ghost" text="Cancel" variant="Ghost" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Outline" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-outline" text="Export settings" variant="Outline" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Danger" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-danger" text="Delete item" variant="Danger" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="ceres-catalog-section">
+                        <ui:Label text="States and long labels" class="ceres-catalog-heading" />
+                        <ui:Label text="Tab to inspect focus. Hover and press keep geometry stable." class="ceres-catalog-description" />
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Enabled" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-enabled" text="Preview" size="Compact" />
+                            <ceres:UIToolkitButton name="catalog-disabled" text="Unavailable" size="Compact" enabled="false" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Constrained" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-long-label" text="Export selected configuration entries" size="Compact" class="ceres-catalog-constrained" tooltip="Export selected configuration entries" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="ceres-catalog-column">
+                    <ui:VisualElement class="ceres-catalog-section">
+                        <ui:Label text="Control density" class="ceres-catalog-heading" />
+                        <ui:Label text="One band per row. Compact is lower and rounder, not a pill." class="ceres-catalog-description" />
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Standard" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-standard" text="Preview" />
+                            <ui:Label name="catalog-standard-metric" text="32h / 8r" class="ceres-catalog-metric" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Compact" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-compact" text="Preview" size="Compact" />
+                            <ui:Label text="28h / 10r" class="ceres-catalog-metric" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Prominent" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-prominent" text="Preview" size="Prominent" />
+                            <ui:Label text="38h / 12r" class="ceres-catalog-metric" />
+                        </ui:VisualElement>
+                        <ui:Label name="catalog-touch-note" text="Desktop · visual surface is the hit target" class="ceres-catalog-description" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="ceres-catalog-section">
+                        <ui:Label text="Icon actions" class="ceres-catalog-heading" />
+                        <ui:Label text="Match the text control band. Tooltips describe icon-only actions." class="ceres-catalog-description" />
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Standard" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-icon" text="+" variant="Ghost" size="Icon" tooltip="Add item" />
+                            <ceres:UIToolkitButton name="catalog-icon-more" text="…" variant="Ghost" size="Icon" tooltip="More actions" />
+                            <ceres:UIToolkitButton name="catalog-icon-close" variant="Ghost" size="Icon" tooltip="Dismiss">
+                                <ui:VisualElement class="ceres-icon ceres-icon--close" picking-mode="Ignore" />
+                            </ceres:UIToolkitButton>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ceres-catalog-row">
+                            <ui:Label text="Compact" class="ceres-catalog-row-label" />
+                            <ceres:UIToolkitButton name="catalog-icon-compact" text="+" variant="Ghost" size="IconCompact" tooltip="Add item" />
+                            <ceres:UIToolkitButton name="catalog-icon-compact-disabled" text="…" variant="Ghost" size="IconCompact" enabled="false" tooltip="More actions unavailable" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:ScrollView>
+        <ui:Label name="catalog-feedback" text="Click any enabled sample to inspect its local response. No project data is changed." class="ceres-catalog-feedback" />
+    </ui:VisualElement>
+</ui:UXML>
