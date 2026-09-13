@@ -110,6 +110,10 @@ namespace Ceres.Editor.UIElements
             _runtime?.Dispose();
             _runtime = null;
             _previewRoot = null;
+            _canvas = null;
+            _safeArea = null;
+            _boundsOverlay = null;
+            _viewportFrame?.Clear();
         }
 
         internal void Configure(string providerId, string fixtureId, string viewportId)
@@ -117,7 +121,7 @@ namespace Ceres.Editor.UIElements
             _providers = UIToolkitPreviewRegistry.GetProviders();
             if (_providers.Count == 0 || _stage == null)
             {
-                _ready = false;
+                ReleaseRuntime();
                 return;
             }
 
@@ -126,7 +130,7 @@ namespace Ceres.Editor.UIElements
             _viewport = _provider.Viewports.FirstOrDefault(candidate => candidate.Id == viewportId) ?? _provider.Viewports.FirstOrDefault();
             if (_fixture == null || _viewport == null)
             {
-                _ready = false;
+                ReleaseRuntime();
                 return;
             }
             _selectedProvider = _provider.Id;
@@ -139,16 +143,14 @@ namespace Ceres.Editor.UIElements
 
         internal void Rebuild()
         {
-            _ready = false;
             _rebuildQueued = false;
+            ReleaseRuntime();
             _dependencyStamp = GetDependencyStamp();
             if (_provider?.VisualTreeAsset == null || _fixture == null || _viewport == null || _viewportFrame == null)
             {
                 return;
             }
 
-            ReleaseRuntime();
-            _viewportFrame.Clear();
             _viewportFrame.style.width = _viewport.Width;
             _viewportFrame.style.height = _viewport.Height;
             _viewportFrame.EnableInClassList("ceres-preview-light", _lightBackground?.value == true);

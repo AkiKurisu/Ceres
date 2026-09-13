@@ -27,6 +27,9 @@ public sealed class UIToolkitViewSourceGenerator : ISourceGenerator
     private static readonly DiagnosticDescriptor InvalidName = new(
         "CERESUI004", "Invalid UI Toolkit element name", "Field '{0}' resolves to an empty or invalid UI Toolkit element name",
         "Ceres.UIElements", DiagnosticSeverity.Error, true);
+    private static readonly DiagnosticDescriptor UnsupportedDeclaration = new(
+        "CERESUI005", "Unsupported UI Toolkit view declaration", "Type '{0}' must be a non-generic namespace-level class",
+        "Ceres.UIElements", DiagnosticSeverity.Error, true);
 
     public void Initialize(GeneratorInitializationContext context) => context.RegisterForSyntaxNotifications(() => new Receiver());
 
@@ -38,12 +41,18 @@ public sealed class UIToolkitViewSourceGenerator : ISourceGenerator
         INamedTypeSymbol visualElement = context.Compilation.GetTypeByMetadataName("UnityEngine.UIElements.VisualElement");
         if (viewAttribute == null || queryAttribute == null || visualElement == null) return;
 
+        var processedTypes = new HashSet<INamedTypeSymbol>(SymbolEqualityComparer.Default);
         foreach (ClassDeclarationSyntax declaration in receiver.Candidates)
         {
             SemanticModel model = context.Compilation.GetSemanticModel(declaration.SyntaxTree);
-            if (model.GetDeclaredSymbol(declaration) is not INamedTypeSymbol type) continue;
+            if (model.GetDeclaredSymbol(declaration) is not INamedTypeSymbol type || !processedTypes.Add(type)) continue;
             AttributeData marker = type.GetAttributes().FirstOrDefault(attribute => SymbolEqualityComparer.Default.Equals(attribute.AttributeClass, viewAttribute));
             if (marker == null) continue;
+            if (type.Arity != 0 || type.ContainingType != null)
+            {
+                context.ReportDiagnostic(Diagnostic.Create(UnsupportedDeclaration, declaration.Identifier.GetLocation(), type.ToDisplayString()));
+                continue;
+            }
             if (!declaration.Modifiers.Any(SyntaxKind.PartialKeyword))
             {
                 context.ReportDiagnostic(Diagnostic.Create(PartialRequired, declaration.Identifier.GetLocation(), type.ToDisplayString()));
