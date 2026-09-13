@@ -10,7 +10,7 @@
 
 Ceres is my personal Unity framework designed with visual scripting and flexible workflows.
 
-> Ceres wasn't built with commercial games in mind, it was initially intended for my indie games and student projects. I've maintained it since my student days, and it's now become the main infrastructure for my Unity projects, so it's been constantly updated. I hope you like it.
+> Ceres began with my indie games and student projects rather than commercial development, and I have kept evolving it since my student days into the foundation of my Unity projects. I hope you like it.
 
 </div>
 
@@ -33,6 +33,8 @@ Ceres requires Unity 2022.3 LTS or later and is developed on Unity 6.
 
 ## Install
 
+### Unity package
+
 1. Install [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) through Unity Package Manager with:
 
    ```text
@@ -51,6 +53,26 @@ Ceres requires Unity 2022.3 LTS or later and is developed on Unity 6.
 ```
 
 See [Getting Started](https://akikurisu.github.io/Ceres/docs/getting_started.html) for the complete installation flow.
+
+### Agent plugin
+
+Help coding agents work with Ceres.
+
+#### Codex
+
+1. Open **Plugins**, then select **Add a marketplace** from the **Add** menu.
+2. Enter `AkiKurisu/Ceres` under **Source**, then add the marketplace.
+3. Find and install **Ceres**.
+
+![Ceres Agent plugin in Codex](./Documentations/resources/images/ceres-agent-plugin-codex.png)
+
+#### DotCraft
+
+1. Open **Plugins**, then select **Add marketplace** from the menu beside **Create**.
+2. Enter `AkiKurisu/Ceres` as the marketplace source, then add it.
+3. Open **Ceres**, select **Install plugin**, and add it to the current workspace.
+
+![Ceres Agent plugin in DotCraft](./Documentations/resources/images/ceres-agent-plugin-dotcraft.png)
 
 ## Documentation
 
