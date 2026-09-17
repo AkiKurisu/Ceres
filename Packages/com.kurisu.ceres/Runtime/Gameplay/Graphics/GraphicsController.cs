@@ -193,7 +193,8 @@ namespace Ceres.Gameplay.Graphics
         private void SetFrameRate(int index)
         {
             if (!Application.isPlaying) return;
-            if (index >= settingsAsset.frameRateOptions.Length) return;
+            if (!settingsAsset || settingsAsset.frameRateOptions == null) return;
+            if (index < 0 || index >= settingsAsset.frameRateOptions.Length) return;
             
             Application.targetFrameRate = settingsAsset.frameRateOptions[index];
         }

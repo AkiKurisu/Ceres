@@ -54,6 +54,10 @@ namespace Ceres.Gameplay.Graphics.Editor
             {
                 EditorGUILayout.Space();
 
+                DrawRuntimeSettingsPanel();
+
+                EditorGUILayout.Space();
+
                 DrawVolumeSettingsPanel();
             }
 
@@ -141,6 +145,50 @@ namespace Ceres.Gameplay.Graphics.Editor
 
                 EditorGUILayout.EndHorizontal();
             }
+        }
+
+        private void DrawRuntimeSettingsPanel()
+        {
+            if (!Foldout("Runtime Settings")) return;
+
+            EditorGUI.indentLevel++;
+
+            var config = GraphicsConfig.Get();
+            var frameRateOptions = _target.settingsAsset.frameRateOptions ?? Array.Empty<int>();
+            var frameRateLabels = Array.ConvertAll(frameRateOptions,
+                rate => rate >= 0 ? $"{rate} FPS" : "Unlimited");
+            var frameRateIndex = GetPopupIndex(config.FrameRate.CurrentValue, frameRateOptions.Length);
+
+            using (new EditorGUI.DisabledScope(!Application.isPlaying || frameRateOptions.Length == 0))
+            {
+                var newFrameRateIndex = EditorGUILayout.Popup("Frame Rate", frameRateIndex, frameRateLabels);
+                if (Application.isPlaying && newFrameRateIndex >= 0 &&
+                    newFrameRateIndex != config.FrameRate.CurrentValue)
+                {
+                    config.FrameRate.Value = newFrameRateIndex;
+                }
+            }
+
+            var renderScaleLabels = Array.ConvertAll(GraphicsConfig.RenderScalePresets,
+                scale => $"{Mathf.RoundToInt(scale * 100f)}%");
+            var renderScaleIndex = GetPopupIndex(config.RenderScale.CurrentValue, renderScaleLabels.Length);
+
+            using (new EditorGUI.DisabledScope(!Application.isPlaying))
+            {
+                var newRenderScaleIndex = EditorGUILayout.Popup("Render Scale", renderScaleIndex, renderScaleLabels);
+                if (Application.isPlaying && newRenderScaleIndex >= 0 &&
+                    newRenderScaleIndex != config.RenderScale.CurrentValue)
+                {
+                    config.RenderScale.Value = newRenderScaleIndex;
+                }
+            }
+
+            EditorGUI.indentLevel--;
+        }
+
+        private static int GetPopupIndex(int index, int optionCount)
+        {
+            return index >= 0 && index < optionCount ? index : -1;
         }
 
         private void DrawVolumeSettingsPanel()
