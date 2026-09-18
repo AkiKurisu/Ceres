@@ -1,4 +1,4 @@
-using Ceres.Configs;
+﻿using Ceres.Configs;
 using Ceres.Serialization;
 using Newtonsoft.Json;
 using R3;
@@ -70,6 +70,9 @@ namespace Ceres.Gameplay.Graphics
             
         [BindConfigVariable("r.volumetricfog")]
         public ReactiveProperty<bool> VolumetricFog { get; set; } = new(true);
+        
+        [BindConfigVariable("r.sunshafts")]
+        public ReactiveProperty<bool> SunShafts { get; set; } = new(true);
         
 #if UNITY_STANDALONE_WIN
         [BindConfigVariable("r.arealights")]
