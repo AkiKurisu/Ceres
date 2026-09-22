@@ -60,6 +60,7 @@ namespace Ceres.Resource
                 if (AddressSafeCheck)
                     await ResourceSystem.EnsureAssetExistsAsync<TAsset>(address);
                 asset = await LoadNewAssetAsync(address);
+                _cacheMap[address] = asset;
                 _loadingRef--;
             }
             return asset;
@@ -99,7 +100,7 @@ namespace Ceres.Resource
             // Create a new resource load call, also track it's handle
             internalHandle = ResourceSystem.LoadAssetAsync<TAsset>(address, (asset) =>
             {
-                _cacheMap.Add(address, asset);
+                _cacheMap[address] = asset;
                 callBack?.Invoke(asset);
             });
             _internalHandles.Add(address, internalHandle);

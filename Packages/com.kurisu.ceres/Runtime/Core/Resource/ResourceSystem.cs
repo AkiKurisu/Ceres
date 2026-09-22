@@ -185,7 +185,12 @@ namespace Ceres.Resource
         {
             var handle = Addressables.LoadAssetAsync<T>(address);
             if (callBack != null)
-                handle.Completed += (h) => callBack(h.Result);
+            {
+                if (handle.IsDone)
+                    callBack(handle.Result);
+                else
+                    handle.Completed += h => callBack(h.Result);
+            }
             return CreateHandle(handle, AssetLoadOperation);
         }
         #endregion Asset Load
@@ -205,7 +210,10 @@ namespace Ceres.Resource
         {
             var handle = Addressables.InstantiateAsync(address, parent);
             var resourceHandle = CreateHandle(handle, InstantiateOperation);
-            handle.Completed += OnHandleOnCompleted;
+            if (handle.IsDone)
+                OnHandleOnCompleted(handle);
+            else
+                handle.Completed += OnHandleOnCompleted;
             return resourceHandle;
 
             void OnHandleOnCompleted(AsyncOperationHandle<GameObject> operationHandle)
@@ -287,7 +295,12 @@ namespace Ceres.Resource
         {
             var handle = Addressables.LoadAssetsAsync<T>(key, null);
             if (callBack != null)
-                handle.Completed += h => callBack(h.Result);
+            {
+                if (handle.IsDone)
+                    callBack(handle.Result);
+                else
+                    handle.Completed += h => callBack(h.Result);
+            }
             return CreateHandle(handle, AssetLoadOperation);
         }
 
@@ -295,7 +308,12 @@ namespace Ceres.Resource
         {
             var handle = Addressables.LoadAssetsAsync<T>(key, null, (Addressables.MergeMode)mode);
             if (callBack != null)
-                handle.Completed += h => callBack(h.Result);
+            {
+                if (handle.IsDone)
+                    callBack(handle.Result);
+                else
+                    handle.Completed += h => callBack(h.Result);
+            }
             return CreateHandle(handle, AssetLoadOperation);
         }
         #endregion

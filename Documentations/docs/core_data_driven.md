@@ -118,15 +118,22 @@ await DataTableManager.InitializeAsync();
 ItemRow item = GameData.Get().GetItem("potion");
 ```
 
-`InitializeAsync()` discovers every concrete manager and initializes them in
-parallel. `Initialize()` runs the same discovery with synchronous Addressables
-completion. Both methods are process-wide and execute once until `ReleaseAll()`
-clears the manager registry.
+`InitializeAsync()` first registers every discovered concrete manager, then
+initializes the pending managers in parallel. Concurrent callers await the same
+initialization, and managers from assemblies loaded later are added without
+reloading managers that already completed. `Initialize()` uses the same
+two-phase discovery with synchronous Addressables completion.
+
+`Get()` is valid after initialization completes. It never enters synchronous
+initialization while an asynchronous initialization is active. `ReleaseAll()`
+invalidates the active initialization generation and clears the manager
+registry, so late completions cannot publish stale state.
 
 `InitializeSingleTable` loads through `ResourceSystem`. When
 `DataDrivenConfig.ValidateDataTableBeforeLoad` is enabled, it first verifies the
-address. A missing resource is ignored by the helper and the table remains
-unregistered.
+address. Async initialization registers the value returned by the awaited load
+directly; it does not depend on the later Addressables `Completed` callback.
+A missing resource is ignored by the helper and the table remains unregistered.
 
 Enable **Initialize Managers** in **Project Settings > Ceres** only when every
 manager should load before normal gameplay. Otherwise initialize the required
