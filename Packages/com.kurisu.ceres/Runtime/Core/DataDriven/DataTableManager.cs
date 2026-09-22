@@ -271,14 +271,24 @@ namespace Ceres.DataDriven
 
         public static DataTableManager GetOrCreateDataTableManager(Type type)
         {
-            lock (InitializationGate)
-            {
-                if (DataTableManagers.TryGetValue(type, out var dataTableManager))
-                    return dataTableManager;
-            }
+            if (type == null) throw new ArgumentNullException(nameof(type));
+            if (TryGetInitializedDataTableManager(type, out var dataTableManager))
+                return dataTableManager;
 
-            var getMethod = type.GetMethod("Get", BindingFlags.Static | BindingFlags.Public);
-            return (DataTableManager)getMethod!.Invoke(null, Array.Empty<object>());
+            var getMethod = type.GetMethod(
+                "Get",
+                BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy,
+                null,
+                Type.EmptyTypes,
+                null);
+            if (getMethod == null || !typeof(DataTableManager).IsAssignableFrom(getMethod.ReturnType))
+                throw new InvalidOperationException(
+                    $"DataTable manager '{type.FullName}' has no public static parameterless Get method.");
+
+            if (getMethod.Invoke(null, Array.Empty<object>()) is DataTableManager manager)
+                return manager;
+            throw new InvalidOperationException(
+                $"DataTable manager '{type.FullName}' Get method returned no manager instance.");
         }
         
         public static bool TryGetDataTableManager(Type type, out DataTableManager dataTableManager)
