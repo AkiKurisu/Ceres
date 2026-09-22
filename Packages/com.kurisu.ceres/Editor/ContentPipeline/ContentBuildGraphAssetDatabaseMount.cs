@@ -157,20 +157,25 @@ namespace Ceres.ContentPipeline
     /// </summary>
     public sealed class ContentBuildGraphAssetDatabaseMount : IDisposable
     {
-        private static AssetDatabaseProvider _sharedOwnedProvider;
-        private static int _sharedOwnedProviderLeaseCount;
+        private static AssetDatabaseProvider _sharedProvider;
+        private static int _sharedProviderLeaseCount;
+        private static float _sharedProviderOriginalDelay;
+        private static bool _sharedProviderOwned;
+        private static bool _editorResourceUpdateRegistered;
+        private static bool _editorResourceUpdating;
+        private static double _lastEditorResourceUpdateTime;
 
         private readonly ResourceLocationMap _locator;
-        private readonly AssetDatabaseProvider _ownedProvider;
+        private readonly AssetDatabaseProvider _leasedProvider;
         private bool _disposed;
 
         private ContentBuildGraphAssetDatabaseMount(
             ResourceLocationMap locator,
-            AssetDatabaseProvider ownedProvider,
+            AssetDatabaseProvider leasedProvider,
             int locationCount)
         {
             _locator = locator;
-            _ownedProvider = ownedProvider;
+            _leasedProvider = leasedProvider;
             LocationCount = locationCount;
         }
 
@@ -202,7 +207,7 @@ namespace Ceres.ContentPipeline
             manifest.Validate();
 
             RemoveStaleLocators(locatorId);
-            var provider = EnsureAssetDatabaseProvider(out var ownsProvider);
+            var provider = LeaseAssetDatabaseProvider();
             try
             {
                 var records = manifest.locations
@@ -249,16 +254,12 @@ namespace Ceres.ContentPipeline
                 Addressables.AddResourceLocator(locator);
                 return new ContentBuildGraphAssetDatabaseMount(
                     locator,
-                    ownsProvider ? provider : null,
+                    provider,
                     locationCount);
             }
             catch
             {
-                if (ownsProvider)
-                {
-                    ReleaseOwnedProvider(provider);
-                }
-
+                ReleaseAssetDatabaseProvider(provider);
                 throw;
             }
         }
@@ -350,45 +351,107 @@ namespace Ceres.ContentPipeline
             }
         }
 
-        private static AssetDatabaseProvider EnsureAssetDatabaseProvider(out bool ownsProvider)
+        private static AssetDatabaseProvider LeaseAssetDatabaseProvider()
         {
             var providers = Addressables.ResourceManager.ResourceProviders;
+            if (_sharedProvider != null)
+            {
+                if (!providers.Contains(_sharedProvider))
+                {
+                    throw new InvalidOperationException(
+                        "The leased AssetDatabase provider was removed before its mounts were disposed.");
+                }
+
+                _sharedProviderLeaseCount++;
+                return _sharedProvider;
+            }
+
             var providerId = typeof(AssetDatabaseProvider).FullName;
             var existing = providers.FirstOrDefault(provider =>
                 string.Equals(provider.ProviderId, providerId, StringComparison.Ordinal));
-            if (existing is AssetDatabaseProvider assetDatabaseProvider)
-            {
-                ownsProvider = ReferenceEquals(assetDatabaseProvider, _sharedOwnedProvider);
-                if (ownsProvider)
-                {
-                    _sharedOwnedProviderLeaseCount++;
-                }
-                return assetDatabaseProvider;
-            }
-
-            if (existing != null)
+            if (existing != null && existing is not AssetDatabaseProvider)
             {
                 throw new InvalidOperationException(
                     $"Resource provider ID '{providerId}' is already owned by incompatible type " +
                     $"'{existing.GetType().FullName}'.");
             }
 
-            var created = new AssetDatabaseProvider(0f);
-            providers.Add(created);
-            _sharedOwnedProvider = created;
-            _sharedOwnedProviderLeaseCount = 1;
-            ownsProvider = true;
-            return created;
+            var provider = existing as AssetDatabaseProvider;
+            _sharedProviderOwned = provider == null;
+            provider ??= new AssetDatabaseProvider(0f);
+            if (_sharedProviderOwned)
+            {
+                providers.Add(provider);
+            }
+
+            _sharedProvider = provider;
+            _sharedProviderLeaseCount = 1;
+            _sharedProviderOriginalDelay = provider.GetLoadDelay();
+            provider.SetLoadDelay(0f);
+            RegisterEditorResourceUpdate();
+            return provider;
         }
 
-        private static void ReleaseOwnedProvider(AssetDatabaseProvider provider)
+        private static void ReleaseAssetDatabaseProvider(AssetDatabaseProvider provider)
         {
-            if (!ReferenceEquals(provider, _sharedOwnedProvider)) return;
-            _sharedOwnedProviderLeaseCount = Math.Max(0, _sharedOwnedProviderLeaseCount - 1);
-            if (_sharedOwnedProviderLeaseCount != 0) return;
+            if (!ReferenceEquals(provider, _sharedProvider)) return;
+            _sharedProviderLeaseCount = Math.Max(0, _sharedProviderLeaseCount - 1);
+            if (_sharedProviderLeaseCount != 0) return;
 
-            Addressables.ResourceManager.ResourceProviders.Remove(provider);
-            _sharedOwnedProvider = null;
+            if (_sharedProviderOwned)
+            {
+                Addressables.ResourceManager.ResourceProviders.Remove(provider);
+            }
+            else
+            {
+                provider.SetLoadDelay(_sharedProviderOriginalDelay);
+            }
+
+            _sharedProvider = null;
+            _sharedProviderOriginalDelay = 0f;
+            _sharedProviderOwned = false;
+            UnregisterEditorResourceUpdate();
+        }
+
+        private static void RegisterEditorResourceUpdate()
+        {
+            if (_editorResourceUpdateRegistered) return;
+            _editorResourceUpdateRegistered = true;
+            _lastEditorResourceUpdateTime = EditorApplication.timeSinceStartup;
+            EditorApplication.update += UpdateEditorResources;
+        }
+
+        private static void UnregisterEditorResourceUpdate()
+        {
+            if (!_editorResourceUpdateRegistered) return;
+            EditorApplication.update -= UpdateEditorResources;
+            _editorResourceUpdateRegistered = false;
+            _editorResourceUpdating = false;
+            _lastEditorResourceUpdateTime = 0d;
+        }
+
+        private static void UpdateEditorResources()
+        {
+            if (_editorResourceUpdating ||
+                Application.isPlaying ||
+                EditorApplication.isCompiling ||
+                EditorApplication.isUpdating)
+            {
+                return;
+            }
+
+            var resourceManager = Addressables.ResourceManager;
+            double now = EditorApplication.timeSinceStartup;
+            _editorResourceUpdating = true;
+            try
+            {
+                resourceManager.Update((float)Math.Max(0d, now - _lastEditorResourceUpdateTime));
+                _lastEditorResourceUpdateTime = now;
+            }
+            finally
+            {
+                _editorResourceUpdating = false;
+            }
         }
 
         private static void RemoveStaleLocators(string locatorId)
@@ -416,9 +479,9 @@ namespace Ceres.ContentPipeline
             if (_disposed) return;
             _disposed = true;
             Addressables.RemoveResourceLocator(_locator);
-            if (_ownedProvider != null)
+            if (_leasedProvider != null)
             {
-                ReleaseOwnedProvider(_ownedProvider);
+                ReleaseAssetDatabaseProvider(_leasedProvider);
             }
         }
     }

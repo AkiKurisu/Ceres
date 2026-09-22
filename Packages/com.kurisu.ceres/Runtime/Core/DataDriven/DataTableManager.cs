@@ -10,24 +10,47 @@ namespace Ceres.DataDriven
 {
     public abstract class DataTableManager
     {
-        private static bool _isLoaded;
-
+        private static readonly object InitializationGate = new();
         private static readonly Dictionary<Type, DataTableManager> DataTableManagers = new();
+        private static readonly HashSet<Type> InitializedManagerTypes = new();
+        private static UniTaskCompletionSource _initializationCompletion;
+        private static int _initializationGeneration;
         
         public static void Initialize()
         {
-            if (_isLoaded) return;
-            _isLoaded = true;
-            var managerTypes = AppDomain.CurrentDomain.GetAssemblies()
-                            .SelectMany(x => x.GetTypes())
-                            .Where(x => typeof(DataTableManager).IsAssignableFrom(x) && !x.IsAbstract)
-                            .ToArray();
-
-            var args = new object[] { null };
-            foreach (var type in managerTypes)
+            (Type Type, DataTableManager Manager)[] pending;
+            UniTaskCompletionSource completion;
+            int generation;
+            lock (InitializationGate)
             {
-                var manager = (DataTableManager)Activator.CreateInstance(type, args);
-                manager!.Initialize(true).Forget();
+                Type[] managerTypes = DiscoverManagerTypes();
+                RegisterMissingManagers(managerTypes);
+                pending = GetPendingManagers(managerTypes);
+                if (pending.Length == 0) return;
+                if (_initializationCompletion != null)
+                {
+                    throw new InvalidOperationException(
+                        "DataTable managers are initializing asynchronously. Await DataTableManager.InitializeAsync() before using Get().");
+                }
+
+                completion = new UniTaskCompletionSource();
+                _initializationCompletion = completion;
+                generation = _initializationGeneration;
+            }
+
+            try
+            {
+                foreach ((Type type, DataTableManager manager) in pending)
+                {
+                    manager.Initialize(true).GetAwaiter().GetResult();
+                    MarkManagerInitialized(type, generation);
+                }
+                CompleteInitialization(completion, generation);
+            }
+            catch (Exception exception)
+            {
+                FailInitialization(completion, generation, exception);
+                throw;
             }
         }
         
@@ -35,23 +58,139 @@ namespace Ceres.DataDriven
         /// Manual initialization api
         /// </summary>
         /// <returns></returns>
-        public static async UniTask InitializeAsync()
+        public static UniTask InitializeAsync()
         {
-            if (_isLoaded) return;
-            _isLoaded = true;
-            var managerTypes = AppDomain.CurrentDomain.GetAssemblies()
-                            .SelectMany(x => x.GetTypes())
-                            .Where(x => typeof(DataTableManager).IsAssignableFrom(x) && !x.IsAbstract)
-                            .ToArray();
-
-            var args = new object[] { null };
-            using var parallel = UniParallel.Get();
-            foreach (var type in managerTypes)
+            (Type Type, DataTableManager Manager)[] pending;
+            UniTaskCompletionSource completion;
+            int generation;
+            lock (InitializationGate)
             {
-                var manager = Activator.CreateInstance(type, args) as DataTableManager;
-                parallel.Add(manager!.Initialize(false));
+                Type[] managerTypes = DiscoverManagerTypes();
+                RegisterMissingManagers(managerTypes);
+                pending = GetPendingManagers(managerTypes);
+                if (pending.Length == 0) return UniTask.CompletedTask;
+                if (_initializationCompletion != null)
+                    return AwaitInitializationAndRescan(_initializationCompletion.Task);
+
+                completion = new UniTaskCompletionSource();
+                _initializationCompletion = completion;
+                generation = _initializationGeneration;
             }
-            await parallel;
+
+            InitializeManagersAsync(pending, completion, generation).Forget();
+            return completion.Task;
+        }
+
+        private static async UniTask AwaitInitializationAndRescan(UniTask initialization)
+        {
+            await initialization;
+            await InitializeAsync();
+        }
+
+        private static async UniTask InitializeManagersAsync(
+            IEnumerable<(Type Type, DataTableManager Manager)> managers,
+            UniTaskCompletionSource completion,
+            int generation)
+        {
+            try
+            {
+                using var parallel = UniParallel.Get();
+                foreach ((Type type, DataTableManager manager) in managers)
+                    parallel.Add(InitializeManagerAsync(type, manager, generation));
+                await parallel;
+                CompleteInitialization(completion, generation);
+            }
+            catch (Exception exception)
+            {
+                FailInitialization(completion, generation, exception);
+            }
+        }
+
+        private static async UniTask InitializeManagerAsync(
+            Type type,
+            DataTableManager manager,
+            int generation)
+        {
+            await manager.Initialize(false);
+            MarkManagerInitialized(type, generation);
+        }
+
+        private static Type[] DiscoverManagerTypes()
+        {
+            return AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(type => typeof(DataTableManager).IsAssignableFrom(type) && !type.IsAbstract)
+                .ToArray();
+        }
+
+        private static void RegisterMissingManagers(IEnumerable<Type> managerTypes)
+        {
+            object[] args = { null };
+            foreach (Type type in managerTypes)
+            {
+                if (DataTableManagers.ContainsKey(type)) continue;
+                _ = (DataTableManager)Activator.CreateInstance(type, args);
+                if (!DataTableManagers.ContainsKey(type))
+                    throw new InvalidOperationException($"DataTable manager '{type.FullName}' did not register itself.");
+            }
+        }
+
+        private static (Type Type, DataTableManager Manager)[] GetPendingManagers(
+            IEnumerable<Type> managerTypes)
+        {
+            return managerTypes
+                .Where(type => !InitializedManagerTypes.Contains(type))
+                .Select(type => (type, DataTableManagers[type]))
+                .ToArray();
+        }
+
+        private static void MarkManagerInitialized(Type type, int generation)
+        {
+            lock (InitializationGate)
+            {
+                if (generation != _initializationGeneration)
+                    throw new OperationCanceledException("DataTable manager initialization was invalidated.");
+                InitializedManagerTypes.Add(type);
+            }
+        }
+
+        private static void CompleteInitialization(
+            UniTaskCompletionSource completion,
+            int generation)
+        {
+            bool current;
+            lock (InitializationGate)
+            {
+                current = generation == _initializationGeneration &&
+                          ReferenceEquals(_initializationCompletion, completion);
+                if (current)
+                    _initializationCompletion = null;
+            }
+
+            if (current)
+                completion.TrySetResult();
+            else
+                completion.TrySetCanceled();
+        }
+
+        private static void FailInitialization(
+            UniTaskCompletionSource completion,
+            int generation,
+            Exception exception)
+        {
+            bool current;
+            lock (InitializationGate)
+            {
+                current = generation == _initializationGeneration &&
+                          ReferenceEquals(_initializationCompletion, completion);
+                if (current)
+                    _initializationCompletion = null;
+            }
+
+            if (current)
+                completion.TrySetException(exception);
+            else
+                completion.TrySetCanceled();
         }
 
         protected readonly Dictionary<string, DataTable> DataTables = new();
@@ -76,8 +215,16 @@ namespace Ceres.DataDriven
         /// </summary>
         public static void ReleaseAll()
         {
-            _isLoaded = false;
-            DataTableManagers.Clear();
+            UniTaskCompletionSource completion;
+            lock (InitializationGate)
+            {
+                _initializationGeneration++;
+                completion = _initializationCompletion;
+                _initializationCompletion = null;
+                InitializedManagerTypes.Clear();
+                DataTableManagers.Clear();
+            }
+            completion?.TrySetCanceled();
         }
         
         /// <summary>
@@ -103,10 +250,9 @@ namespace Ceres.DataDriven
                         // ReSharper disable once MethodHasAsyncOverload
                         ResourceSystem.EnsureAssetExists<DataTable>(tableKey);
                     }
-                    ResourceSystem.LoadAssetAsync<DataTable>(tableKey, dataTable =>
-                    {
-                        RegisterDataTable(tableKey, dataTable);
-                    }).WaitForCompletion();
+                    DataTable syncTable = ResourceSystem.LoadAssetAsync<DataTable>(tableKey)
+                        .WaitForCompletion();
+                    RegisterDataTable(tableKey, syncTable);
                     return;
                 }
 
@@ -114,10 +260,8 @@ namespace Ceres.DataDriven
                 {
                     await ResourceSystem.EnsureAssetExistsAsync<DataTable>(tableKey);
                 }
-                await ResourceSystem.LoadAssetAsync<DataTable>(tableKey, dataTable =>
-                {
-                    RegisterDataTable(tableKey, dataTable);
-                });
+                DataTable asyncTable = await ResourceSystem.LoadAssetAsync<DataTable>(tableKey);
+                RegisterDataTable(tableKey, asyncTable);
             }
             catch (InvalidResourceRequestException)
             {
@@ -127,28 +271,54 @@ namespace Ceres.DataDriven
 
         public static DataTableManager GetOrCreateDataTableManager(Type type)
         {
-            if (DataTableManagers.TryGetValue(type, out var dataTableManager))
-            {
+            if (type == null) throw new ArgumentNullException(nameof(type));
+            if (TryGetInitializedDataTableManager(type, out var dataTableManager))
                 return dataTableManager;
-            }
 
-            var getMethod = type.GetMethod("Get", BindingFlags.Instance | BindingFlags.Public);
-            return (DataTableManager)getMethod!.Invoke(null, Array.Empty<object>());
+            var getMethod = type.GetMethod(
+                "Get",
+                BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy,
+                null,
+                Type.EmptyTypes,
+                null);
+            if (getMethod == null || !typeof(DataTableManager).IsAssignableFrom(getMethod.ReturnType))
+                throw new InvalidOperationException(
+                    $"DataTable manager '{type.FullName}' has no public static parameterless Get method.");
+
+            if (getMethod.Invoke(null, Array.Empty<object>()) is DataTableManager manager)
+                return manager;
+            throw new InvalidOperationException(
+                $"DataTable manager '{type.FullName}' Get method returned no manager instance.");
         }
         
         public static bool TryGetDataTableManager(Type type, out DataTableManager dataTableManager)
         {
-            return DataTableManagers.TryGetValue(type, out dataTableManager);
+            lock (InitializationGate)
+                return DataTableManagers.TryGetValue(type, out dataTableManager);
         }
         
         public static DataTableManager GetDataTableManager(Type type)
         {
-            return DataTableManagers.GetValueOrDefault(type);
+            lock (InitializationGate)
+                return DataTableManagers.GetValueOrDefault(type);
+        }
+
+        protected static bool TryGetInitializedDataTableManager(
+            Type type,
+            out DataTableManager dataTableManager)
+        {
+            lock (InitializationGate)
+            {
+                dataTableManager = null;
+                return InitializedManagerTypes.Contains(type) &&
+                       DataTableManagers.TryGetValue(type, out dataTableManager);
+            }
         }
         
         protected static void RegisterDataTableManager<TManager>(TManager dataTableManager) where TManager: DataTableManager
         {
-            DataTableManagers.TryAdd(typeof(TManager), dataTableManager);
+            lock (InitializationGate)
+                DataTableManagers.TryAdd(typeof(TManager), dataTableManager);
         }
     }
     
@@ -173,12 +343,14 @@ namespace Ceres.DataDriven
         /// <returns></returns>
         public static TManager Get()
         {
-            if (TryGetDataTableManager(ManagerType, out var dataTableManager))
+            if (TryGetInitializedDataTableManager(ManagerType, out var dataTableManager))
             {
                 return dataTableManager as TManager;
             }
-            Initialize(); /* Initialize in blocking mode */
-            return GetDataTableManager(ManagerType) as TManager;
+            Initialize();
+            if (TryGetInitializedDataTableManager(ManagerType, out dataTableManager))
+                return dataTableManager as TManager;
+            throw new InvalidOperationException($"DataTable manager '{ManagerType.FullName}' is not initialized.");
         }
     }
 }

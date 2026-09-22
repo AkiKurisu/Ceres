@@ -612,8 +612,8 @@ SHA-256 validation.
 ## Editor AssetDatabase Mount
 
 `ContentBuildGraphAssetDatabaseMount` makes explicit graph assets resolvable by
-Addressables in Editor Play Mode without creating persistent Addressable groups
-or building bundles.
+Addressables in Editor Play Mode and Edit Mode tools without creating persistent
+Addressable groups or building bundles.
 
 The mount omits explicit assets owned as `BuiltIn` or `Excluded`, matching the
 build contract: built-in content must come from Unity, the Player, or the main
@@ -627,7 +627,7 @@ Addressables must already be initialized:
 using Ceres.ContentPipeline;
 using UnityEngine.AddressableAssets;
 
-Addressables.InitializeAsync().WaitForCompletion();
+await Addressables.InitializeAsync().Task;
 
 ContentBuildGraphAssetDatabaseMount mount =
     ContentBuildGraphAssetDatabaseMount.Create(
@@ -651,7 +651,12 @@ or asset ID that already resolves to a different internal path is rejected.
 
 The mount removes stale locators with the same locator ID before installation.
 It reuses an existing `AssetDatabaseProvider` when possible and only removes a
-provider it created itself.
+provider it created itself. While at least one mount holds the provider, its
+simulated load delay is zero so Edit Mode loads do not depend on
+`Time.unscaledTime`. The mount also advances pending Addressables ResourceManager
+callbacks from `EditorApplication.update`, because the hidden runtime callback
+component is not scheduled reliably in Edit Mode. The final lease removes the
+Editor callback and restores the delay of a reused provider.
 
 Keep the mount alive for the complete Editor content-source lifetime and dispose
 it on Play Mode exit, assembly reload, or Editor shutdown:
