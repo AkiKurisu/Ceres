@@ -371,6 +371,50 @@ The backend catches build exceptions and stores them in
 `ContentPipelineBuildResult.Exception`; `Build` does not rethrow them. Callers
 must check `Succeeded`.
 
+### Asset Build Dependencies
+
+`ContentPipelineBuildRequest.AssetBuildDependencyHashes` accepts an optional
+`IReadOnlyDictionary<string, string>` keyed by graph `AssetId`. Each value is a
+stable, non-empty digest of additional build inputs for that asset, such as a
+project-owned compilation policy that Unity's asset dependency hash does not
+represent. The project computes the digest; Ceres does not interpret its policy.
+
+Pass the complete current dictionary on both baseline and update requests.
+Changing the map changes the corresponding asset snapshot fingerprints and
+therefore participates in automatic incremental scope detection. A non-empty map
+also enables a fixed capability marker in the configuration fingerprint; its
+individual digest values do not enter that configuration fingerprint. Enabling
+this capability or removing its last entry requires a new baseline. Null and
+empty dictionaries preserve the original configuration, snapshot and cache keys.
+Unknown asset IDs, empty digests, and assets without a Unity asset GUID
+are rejected through the normal build-result exception path.
+
+During the build, Ceres temporarily wraps SBP's `PostPackingCallback`, calls the
+previous callback first, and applies the digests only if it succeeds. For each
+write operation, the backend finds matching asset GUIDs in `FileToObjects` and
+combines their sorted, deduplicated asset ID/digest pairs with the operation's
+existing `DependencyHash`. This invalidates the serialized-file cache entries
+that actually contain the affected assets, including implicit copies. Operations
+that only reference an asset in another file retain their existing hash.
+The previous callback is restored even when the build fails. This input does not
+alter graph ownership, physical partition planning, or the artifact manifest schema.
+
+Addressables content updates normally revert bundles whose Unity asset dependency
+hashes are unchanged. When asset build dependencies are enabled, Ceres's packed
+builder also compares the current asset snapshots against the baseline manifest
+associated with the loaded Addressables Content State. It expands changed assets
+through current graph dependents, cached dependency records, and entries sharing
+either an old bundle or a current physical partition, until stable. The builder
+removes those entries only from a temporary in-memory copy of `cachedInfos`, so an
+unchanged peer cannot revert an entire newly written bundle. The original input
+state is restored after the call and the baseline state file is never rewritten.
+
+The latest successful manifest remains the incremental change-detection head,
+while the baseline remains the comparison for Addressables reversion. A repeated
+update with identical inputs is still a no-op; a later update that keeps a changed
+digest must continue excluding its baseline cache entry. Returning the digest and
+asset snapshot to baseline values permits reusing the original baseline bundle.
+
 The baseline records:
 
 - the complete graph and configuration fingerprints;
@@ -504,6 +548,7 @@ content snapshot with the current graph and derives the impacted remote scopes:
 - shared changes expand the impacted scope set;
 - Local content changes require a new baseline;
 - scope metadata changes are included in the impacted scope set;
+- per-asset build dependency digests are included in asset and scope comparisons;
 - Unity, Addressables, SBP, platform, channel, and remote load path must remain
   compatible with the baseline.
 - packing mode, target size, algorithm, classifier, and configuration

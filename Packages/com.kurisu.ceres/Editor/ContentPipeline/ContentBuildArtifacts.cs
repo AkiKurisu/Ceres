@@ -614,6 +614,8 @@ namespace Ceres.ContentPipeline
     {
         public ContentBuildGraph Graph { get; set; }
 
+        public IReadOnlyDictionary<string, string> AssetBuildDependencyHashes { get; set; }
+
         public string OutputRoot { get; set; }
 
         public string Channel { get; set; } = "development";
