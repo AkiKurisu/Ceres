@@ -164,8 +164,7 @@ field-based serialization and no general-purpose Unity object graph support.
 ## Process-local Object Handles
 
 `SoftObjectHandle` identifies an object registered with `GlobalObjectManager`.
-The handle contains a sparse-array index and serial number, so a removed slot
-cannot resolve a newer object that later reuses the same index.
+A released handle cannot resolve another object registered later.
 
 ```csharp
 object value = new object();

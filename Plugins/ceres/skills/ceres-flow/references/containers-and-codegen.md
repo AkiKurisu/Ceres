@@ -1,5 +1,7 @@
 # Flow containers and code generation
 
+Use [Runtime Architecture](https://github.com/AkiKurisu/Ceres/blob/main/Documentations/docs/flow_runtime_architecture.md) and [Code Generation](https://github.com/AkiKurisu/Ceres/blob/main/Documentations/docs/flow_codegen.md) for usage examples and commands. Confirm lifecycle and generation behavior in the package source before changing it.
+
 ## Choose a container
 
 - `FlowGraphObject` for an owned runtime graph.

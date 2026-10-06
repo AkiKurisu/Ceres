@@ -1,7 +1,6 @@
 # Code Generation
 
-The following are some details about the code generation technology used in Flow, 
-which may help you understand the principles.
+This guide covers event bridging, function registration, and generating graph runtimes.
 
 ## IL Post Process
 
@@ -82,7 +81,7 @@ public partial class CeresExecutableLibrary
 
 ## Generated C# Runtime
 
-Generated C# Runtime compiles enabled Flow graphs into C# runtime programs. The generated program uses typed event methods, data slots, cached shared variables, and prewarmed invokers so event hot paths do not need graph object traversal or reflection lookup.
+Generated C# Runtime compiles enabled Flow graphs into C# runtime programs. Use it when a graph needs generated execution, including production or IL2CPP builds.
 
 Enable it from the Flow Graph Editor right-side Graph Inspector: turn on `Generated C# Runtime`, then click `Generate C# Runtime`.
 
@@ -96,7 +95,7 @@ Generated sources are written to `Assets/Ceres.Generated`. Flow program files us
 
 In Editor, missing or stale generated runtime can fall back to the normal graph runtime. In Build, an enabled graph with missing, stale, or unsupported generated runtime fails validation.
 
-Custom Flow nodes must provide an editor codegen handler before they can be used by Generated C# Runtime. The generated path does not mix in old `ExecutableNode.ExecuteNode` graph thunks.
+Custom Flow nodes must provide an editor codegen handler before they can be used by Generated C# Runtime.
 
 ## Next Steps
 

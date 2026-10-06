@@ -46,47 +46,8 @@ tracker.Dispose();
 
 ## Built-in Tracker: FlowGraphDependencyTracker
 
-Ceres provides a built-in tracker that logs node execution and dependencies:
-
-```csharp
-using Ceres;
-using Ceres.Flow;
-using Cysharp.Threading.Tasks;
-
-public class FlowGraphDependencyTracker : FlowGraphTracker
-{
-    private readonly FlowGraph _flowGraph;
-    
-    public FlowGraphDependencyTracker(FlowGraph flowGraph)
-    {
-        _flowGraph = flowGraph;
-    }
-    
-    public override UniTask EnterNode(ExecutableNode node)
-    {
-        CeresLogger.Log($"Enter node >>> [{node.GetTypeName()}]({node.Guid})");
-        var dependencies = node.NodeData.GetDependencies();
-        if (dependencies != null)
-        {
-            foreach (var dependency in dependencies)
-            {
-                var dependencyNode = _flowGraph.FindNode(dependency);
-                if (dependencyNode != null)
-                {
-                    CeresLogger.Log($"Find dependency node [{dependencyNode.GetTypeName()}]({dependencyNode.Guid})");
-                }
-            }
-        }
-        return UniTask.CompletedTask;
-    }
-    
-    public override UniTask ExitNode(ExecutableNode node)
-    {
-        CeresLogger.Log($"Exit node <<< [{node.GetTypeName()}]({node.Guid})");
-        return UniTask.CompletedTask;
-    }
-}
-```
+`FlowGraphDependencyTracker` logs executable-node entry, dependencies, and exit.
+Use the built-in tracker directly:
 
 **Usage:**
 ```csharp

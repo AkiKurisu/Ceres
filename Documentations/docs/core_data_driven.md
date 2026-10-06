@@ -131,9 +131,7 @@ registry, so late completions cannot publish stale state.
 
 `InitializeSingleTable` loads through `ResourceSystem`. When
 `DataDrivenConfig.ValidateDataTableBeforeLoad` is enabled, it first verifies the
-address. Async initialization registers the value returned by the awaited load
-directly; it does not depend on the later Addressables `Completed` callback.
-A missing resource is ignored by the helper and the table remains unregistered.
+address. A missing resource is ignored by the helper and the table remains unregistered.
 
 Enable **Initialize Managers** in **Project Settings > Ceres** only when every
 manager should load before normal gameplay. Otherwise initialize the required

@@ -2,11 +2,13 @@
 
 Ceres can preview runtime UI Toolkit surfaces in the Editor without entering Play Mode. Open **Tools > Ceres > UI Toolkit Preview** to select a surface, state, and viewport. Changes to the active UXML, USS, or PanelSettings rebuild the preview automatically.
 
-The preview uses the production UXML, USS, PanelSettings, scale policy, and Player rendering context. This keeps layout and resolved styles comparable with the runtime UI.
+Use the production assets, settings, and binding when registering a preview surface. Create a disposable session for each selected fixture and release its subscriptions when the preview closes or rebuilds. See [UI Toolkit](./ui_toolkit.md) for theme and control integration.
 
 ## Provide a surface
 
 Implement `IUIToolkitPreviewProvider` in an Editor assembly that references `Ceres.UIElements.Editor`. Give the provider a stable id, deterministic fixtures, supported viewports, and the assets used by production. Create a disposable session to bind the selected fixture:
+
+In these examples, `SettingsFixture`, its state, and `PreviewActions` are feature-owned types; the binding accepts an action that production code can also provide.
 
 ```csharp
 public sealed class SettingsPreviewProvider : UIToolkitPreviewProvider<SettingsFixture>
@@ -20,8 +22,8 @@ public sealed class SettingsPreviewProvider : UIToolkitPreviewProvider<SettingsF
         UIToolkitPreviewContext context,
         SettingsFixture fixture)
     {
-        var binding = new SettingsBinding(root, new PreviewActions(fixture));
-        binding.Render(fixture.State);
+        var binding = new SettingsBinding(root, new PreviewActions(fixture).Apply);
+        binding.Render(fixture.State.Status, fixture.State.CanApply);
         return new UIToolkitPreviewSession(
             binding,
             SettingsBinding.GeneratedElementDescriptors);
@@ -43,9 +45,16 @@ internal sealed partial class SettingsBinding : IDisposable
     [UIToolkitQuery("status-text")] private Label _status;
     private readonly UIToolkitBindingScope _scope = new();
 
-    public SettingsBinding(VisualElement root)
+    public SettingsBinding(VisualElement root, Action apply)
     {
         BindGeneratedElements(root);
+        _scope.Click(_apply, apply);
+    }
+
+    public void Render(string status, bool canApply)
+    {
+        _status.text = status;
+        _apply.SetEnabled(canApply);
     }
 
     public void Dispose() => _scope.Dispose();

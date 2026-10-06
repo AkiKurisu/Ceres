@@ -1,14 +1,20 @@
 # Animation Packing
 
-Animation Packing converts authored clips into `.animbin` through an Editor importer. The packed file is the interchange artifact; runtime code must not depend on importer APIs.
+Use the
+[developer guide](https://github.com/AkiKurisu/Ceres/blob/main/Documentations/docs/animation_packing.md)
+for authoring commands and public APIs. Inspect the existing converter and
+importer before changing preservation, ownership or import behavior.
 
-## Contract
+## Source navigation
 
-- `AnimationBinaryFormat` owns the binary version and layout.
-- `AnimationBinaryUtility` owns conversion and validation helpers.
-- `AnimationBinaryImporter` turns `.animbin` into Unity assets.
-- `AnimationBinaryMenu` exposes authoring commands.
+Under `Packages/com.kurisu.ceres/Editor/AnimationPacking`:
 
-Preserve curve identity, binding paths, property names, key order, tangents, wrap behavior, and clip metadata unless the requested format change explicitly revises them. Reject malformed or unsupported input with an actionable import error instead of producing a partial clip.
+- `AnimationBinaryFormat.cs`: packed file conventions.
+- `AnimationBinaryUtility.cs`: conversion and validation.
+- `AnimationBinaryImporter.cs`: Unity asset import.
+- `AnimationBinaryMenu.cs`: authoring commands.
 
-Use the existing menu/importer path for authoring validation. A format revision must define reader compatibility and representative round-trip fixtures; an importer UI or error-message fix does not require a new format version.
+Validate through the existing menu/importer path and representative clip
+round trips. Check malformed input and destination collisions as well as
+successful conversion. Compare complete imported clip data, not only playback
+of one visible motion.

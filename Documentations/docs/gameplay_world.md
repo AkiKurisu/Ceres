@@ -78,7 +78,7 @@ health.ApplyDamage(10);
 
 ## Actor handles
 
-`ActorHandle` contains a sparse-array index and serial number. Store the handle when another system needs a non-owning reference, then resolve it through the world at the point of use.
+Store an `ActorHandle` when another system needs a non-owning reference, then resolve it through the world at the point of use.
 
 ```csharp
 ActorHandle handle = enemy.GetActorHandle();

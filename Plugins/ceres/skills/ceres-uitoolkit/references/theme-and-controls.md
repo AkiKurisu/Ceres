@@ -1,6 +1,6 @@
 # Ceres Neutral theme and controls
 
-`Specs/UIElement/DESIGN.md` is the design source of truth. Inspect `Runtime/UIElements/Themes/CeresNeutral.uss` and the control implementation before changing shared behavior.
+Use the [UI Toolkit guide](https://github.com/AkiKurisu/Ceres/blob/main/Documentations/docs/ui_toolkit.md) for integration examples. Inspect `Runtime/UIElements/Themes/CeresNeutral.uss` and the control implementation before changing shared behavior.
 
 ## Integration
 

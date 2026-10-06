@@ -55,43 +55,12 @@ must match when producing an update.
 
 ## Pipeline Overview
 
-```text
-Project source model
-        |
-        v
-IContentBuildGraphContributor
-        |
-        v
-ContentBuildGraphBuilder
-        |  resolves direct Unity dependencies recursively
-        v
-ContentBuildGraph
-        |  scopes, assets, ownership, partitions, diagnostics
-        |
-        +------------------------------+
-        |                              |
-        v                              v
-AddressablesContentBuildBackend        ContentBuildGraphAssetDatabaseMount
-        |                              |
-        v                              v
-immutable build artifacts              Editor AssetDatabase locations
-        |
-        v
-DynamicContentReleaseBuilder
-        |
-        v
-catalog + immutable artifact source map
-```
-
-Projects are expected to provide the source-model adapter and workflow UI or
-command-line entry point. Ceres provides the graph, build backend, manifests,
-package materialization, diagnostics, and Editor mounting primitives.
+Build a complete graph from your project sources, validate it, then choose a
+baseline build, an incremental update, or an Editor AssetDatabase mount.
+After a successful build, create a release index for your deployment workflow.
+The examples below follow that order.
 
 ![Content Pipeline architecture](../resources/images/content-pipeline-architecture.svg)
-
-The graph is the stable boundary between project policy and Ceres. Both the
-build path and the Editor AssetDatabase path consume the same addresses and
-explicit asset set.
 
 ## Core Concepts
 
@@ -380,56 +349,14 @@ project-owned compilation policy that Unity's asset dependency hash does not
 represent. The project computes the digest; Ceres does not interpret its policy.
 
 Pass the complete current dictionary on both baseline and update requests.
-Changing the map changes the corresponding asset snapshot fingerprints and
-therefore participates in automatic incremental scope detection. A non-empty map
-also enables a fixed capability marker in the configuration fingerprint; its
-individual digest values do not enter that configuration fingerprint. Enabling
-this capability or removing its last entry requires a new baseline. Null and
-empty dictionaries preserve the original configuration, snapshot and cache keys.
-Unknown asset IDs, empty digests, and assets without a Unity asset GUID
-are rejected through the normal build-result exception path.
+Changed digests participate in incremental change detection and invalidate
+cached output containing the affected asset. Adding the first entry or removing
+the last entry requires a new baseline; changing values remains incremental.
+Null and empty maps leave this feature disabled. Unknown asset IDs, empty
+digests, and assets without a Unity asset GUID produce a failed build result.
 
-During the build, Ceres temporarily wraps SBP's `PostPackingCallback`, calls the
-previous callback first, and applies the digests only if it succeeds. For each
-write operation, the backend finds matching asset GUIDs in `FileToObjects` and
-combines their sorted, deduplicated asset ID/digest pairs with the operation's
-existing `DependencyHash`. This invalidates the serialized-file cache entries
-that actually contain the affected assets, including implicit copies. Operations
-that only reference an asset in another file retain their existing hash.
-The previous callback is restored even when the build fails. This input does not
-alter graph ownership, physical partition planning, or the artifact manifest schema.
-
-Addressables content updates normally revert bundles whose Unity asset dependency
-hashes are unchanged. When asset build dependencies are enabled, Ceres's packed
-builder also compares the current asset snapshots against the baseline manifest
-associated with the loaded Addressables Content State. It expands changed assets
-through current graph dependents, cached dependency records, and entries sharing
-either an old bundle or a current physical partition, until stable. The builder
-removes those entries only from a temporary in-memory copy of `cachedInfos`, so an
-unchanged peer cannot revert an entire newly written bundle. The original input
-state is restored after the call and the baseline state file is never rewritten.
-
-The latest successful manifest remains the incremental change-detection head,
-while the baseline remains the comparison for Addressables reversion. A repeated
-update with identical inputs is still a no-op; a later update that keeps a changed
-digest must continue excluding its baseline cache entry. Returning the digest and
-asset snapshot to baseline values permits reusing the original baseline bundle.
-
-The baseline records:
-
-- the complete graph and configuration fingerprints;
-- scope and asset snapshots;
-- Unity, Addressables, and SBP versions;
-- the remote load path;
-- the Addressables Content State;
-- every collected catalog, bundle, settings, and metadata artifact;
-- SHA-256 and size for every artifact.
-- the packing policy, partition membership, estimated/actual partition sizes,
-  and bundle-size statistics.
-
-Artifacts are committed only after a successful build. Staging output is
-discarded on failure, and transient Addressables settings are destroyed in
-cleanup.
+Do not use these digests as a substitute for graph dependencies or packing hints.
+They describe extra build inputs, not asset ownership or bundle layout.
 
 ### Baseline Output Layout
 
@@ -496,13 +423,10 @@ The build backend, pointer queries, and storage maintenance use the same
 validated channel-to-directory mapping; display names with spaces or uppercase
 letters are not accepted as aliases.
 
-Execution rebuilds the plan while holding the same platform build lock used by
-the Addressables backend. Invalid pointers, mismatched manifests, unknown
-artifact directories, or paths outside the expected containers stop pruning.
-Deletion failures are returned individually and do not invalidate a build that
-was already committed. Project adapters provide the Artifact Manifest paths
-retained by active releases, deployments, or rollback references before
-invoking artifact cleanup.
+Pass the Artifact Manifest paths retained by active releases, deployments, or
+rollback references to cleanup. Review the preview before executing it. Cleanup
+refuses invalid storage references and reports deletion failures individually;
+inspect the result before reporting successful reclamation.
 
 ## Building an Incremental Update
 
@@ -541,29 +465,18 @@ if (!update.Succeeded)
 }
 ```
 
-Before Addressables builds the update, Ceres compares the previous successful
-content snapshot with the current graph and derives the impacted remote scopes:
+Ceres automatically includes changed Remote scopes and the users of changed
+shared assets. Do not prefilter the graph to selected scopes. Local content
+changes require a new baseline.
 
-- changed Remote scopes require no project-side selection;
-- shared changes expand the impacted scope set;
-- Local content changes require a new baseline;
-- scope metadata changes are included in the impacted scope set;
-- per-asset build dependency digests are included in asset and scope comparisons;
-- Unity, Addressables, SBP, platform, channel, and remote load path must remain
-  compatible with the baseline.
-- packing mode, target size, algorithm, classifier, and configuration
-  fingerprint must remain compatible with the baseline.
+Keep the baseline's Unity, Addressables and SBP versions, platform, channel,
+remote load path and packing configuration. Incompatible requests fail rather
+than producing an update. Existing size-optimized partitions are retained;
+create a new baseline when you want to rebalance all content.
 
-For `SizeOptimized`, existing assets retain their recorded partition ID.
-Deleted assets leave capacity behind, while new assets fill compatible
-capacity or create deterministic overflow partitions. Only a new baseline
-globally rebalances the layout.
-
-If the comparison reports no changes, the backend returns an up-to-date result
-without invoking Addressables or advancing a pointer. Otherwise, the update
-artifact contains a new catalog and changed bundles. A successful candidate
-updates `latest-update-candidate.json`; it does not replace the current baseline
-pointer.
+An unchanged request returns an up-to-date result without invoking Addressables.
+A successful changed request writes a new catalog and changed bundles, and
+updates `latest-update-candidate.json` without replacing the baseline pointer.
 
 ```text
 <OutputRoot>/<channel>/<BuildTarget>/
@@ -593,9 +506,7 @@ DynamicContentReleaseResult release =
         });
 ```
 
-The builder verifies the source Catalog and every referenced Bundle, rewrites
-Bundle IDs to `{DYNAMIC_LOCAL_PATH}/<bundle-name>`, records each Bundle's direct
-Artifact Manifest and file path, then atomically commits:
+The result is a release index with the following layout:
 
 ```text
 <OutputRoot>/
@@ -614,10 +525,8 @@ materialize a Release as a relocatable Catalog-and-Bundle package.
 
 ### Indexing an Incremental Update
 
-An incremental Release receives the Baseline and previous successful Release
-Manifests. Changed Bundles point to the current Update Artifact; unchanged
-Bundles retain their existing direct Artifact source. The flattened map keeps
-the complete current lineage without traversing older Release chains.
+Supply both the baseline and previous successful Release Manifests when
+indexing an update:
 
 ```csharp
 DynamicContentReleaseResult updateRelease =
@@ -642,17 +551,10 @@ duplicates Bundle payloads.
 
 ### Windows Long Paths
 
-Content Pipeline keeps ordinary absolute paths in diagnostics and public
-results, while persisted source paths remain relative to the validated storage
-root. At the direct `System.IO` boundary, Windows paths at or beyond
-the legacy `MAX_PATH` limit are adapted to the `\\?\` form (or `\\?\UNC\` for
-network shares). Artifact hashing, release indexing, explicit materialization,
-atomic commits, pointer
-I/O, and storage maintenance all use this boundary.
-
-Addressables, SBP, AssetDatabase, and other Unity APIs continue to receive
-ordinary paths. Long-path handling does not weaken source artifact size or
-SHA-256 validation.
+Use ordinary absolute paths in requests, including on Windows. Do not add
+extended-path prefixes before passing paths to Unity APIs. Ceres handles long
+paths for its own file operations; limits in Unity and third-party build tools
+still apply.
 
 ## Editor AssetDatabase Mount
 
@@ -682,26 +584,9 @@ ContentBuildGraphAssetDatabaseMount mount =
 Debug.Log($"Mounted {mount.LocationCount} explicit assets.");
 ```
 
-Each explicit asset location uses:
-
-- address, asset ID, and labels as lookup keys;
-- the Unity asset path as the internal ID;
-- `AssetDatabaseProvider` for normal assets;
-- `SceneProvider` for scenes;
-- the graph type name, with `AssetDatabase` type resolution as fallback.
-
-Labels may overlap with another catalog, allowing
-`Addressables.LoadAssetsAsync` to merge built-in and graph content. An address
-or asset ID that already resolves to a different internal path is rejected.
-
-The mount removes stale locators with the same locator ID before installation.
-It reuses an existing `AssetDatabaseProvider` when possible and only removes a
-provider it created itself. While at least one mount holds the provider, its
-simulated load delay is zero so Edit Mode loads do not depend on
-`Time.unscaledTime`. The mount also advances pending Addressables ResourceManager
-callbacks from `EditorApplication.update`, because the hidden runtime callback
-component is not scheduled reliably in Edit Mode. The final lease removes the
-Editor callback and restores the delay of a reused provider.
+Load mounted content by address, asset ID, or label. Labels may overlap with
+another catalog, allowing `Addressables.LoadAssetsAsync` to merge results. An
+address or asset ID that resolves to a different path is rejected.
 
 Keep the mount alive for the complete Editor content-source lifetime and dispose
 it on Play Mode exit, assembly reload, or Editor shutdown:
@@ -719,51 +604,18 @@ one source for a Play Mode session.
 
 ## Determinism and Build Safety
 
-The pipeline enforces the following behavior:
-
-- contributors, scopes, nodes, edges, diagnostics, and reports have stable
-  ordering;
-- graph and configuration fingerprints participate in build identity;
-- group identity and bundle names are deterministic for channel, platform, and
-  partition;
-- only one content build may own one platform output root at a time;
-- build output is created in staging and moved into place only after validation;
-- pointer files are written atomically;
-- a failed update cannot advance the baseline pointer;
-- persistent project Addressables settings are not the pipeline's source of
-  truth and are not populated by the transient backend.
-
-The backend may temporarily override Addressables global editor state while SBP
-is running. Content builds should therefore be treated as exclusive Editor
-operations and should not overlap Player or Addressables builds in the same
-Unity process.
+Run content builds as exclusive Editor operations. Do not overlap them with
+Player or other Addressables builds in the same Unity process. Use the backend's
+successful result and manifest queries instead of assuming a directory's presence
+means the build completed.
 
 ## Project Integration Responsibilities
 
-Ceres intentionally does not define:
+Your adapter supplies the source model, generated metadata, build UI, Player
+integration and deployment policy. Keep generated assets alive until graph
+construction, building and any packaging step using their paths have completed.
 
-- the project's content source model;
-- generated metadata formats;
-- menu items, build windows, or collection selection UI;
-- Player build integration;
-- CDN upload and release channels;
-- client update checks, download, installation, rollback, or retention;
-- Mod package formats;
-- how Local content is copied into a Player.
-
-A project adapter should own those policies and call the Ceres APIs in this
-order:
-
-```text
-discover source data
-    -> generate temporary metadata
-    -> build the complete graph
-    -> validate diagnostics
-    -> build baseline or incremental update
-    -> create release index
-    -> publish or install through project-specific code
-```
-
-Keep temporary generated assets alive until graph construction and the
-Addressables build complete. Release them only after no build or package step
-references their AssetDatabase paths.
+Use the APIs in this order: contribute the complete graph, check diagnostics,
+build a baseline or update, check the result, create a release, then publish or
+install through project-specific code. The release index is not itself a runtime
+content installation.

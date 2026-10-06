@@ -7,6 +7,8 @@ description: Route work across the Ceres Unity framework when a request spans mo
 
 Use this skill as the framework index. Inspect the installed `com.kurisu.ceres` package and load only the specialized Ceres skills required by the task.
 
+Use the [developer documentation](https://github.com/AkiKurisu/Ceres/tree/main/Documentations/docs) for public API usage and examples, then confirm behavior in the installed package source.
+
 ## Unity automation
 
 For Unity Editor inspection, automation, screenshots, or runtime validation, prefer [dotcraft-unity](https://github.com/DotHarness/dotcraft-unity) and use the `/dotcraft-unity` skill. If that skill is unavailable or cannot be invoked, ask the user whether they want to install dotcraft-unity before continuing with Unity automation. Do not install it without their confirmation.

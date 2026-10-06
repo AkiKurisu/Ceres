@@ -52,7 +52,7 @@ Compared with `FlowGraphAsset`, `FlowGraphScriptableObject` owns an instance of 
 
 `FlowGraphAsset` and `[GenerateFlow(GenerateRuntime = true)]` containers can use Generated C# Runtime when generated runtime is enabled for the graph.
 
-Generated containers expose `IFlowGeneratedRuntimeContainer`, and runtime execution goes through `IFlowProgramRuntime.Program` when available. If generated runtime is disabled, or if it is stale in Editor, Flow can still use the normal `FlowGraph` runtime path.
+See [Code Generation](./flow_codegen.md#generated-c-runtime) for enabling generation, refreshing output, and resolving build validation failures.
 
 ## Related guides
 
