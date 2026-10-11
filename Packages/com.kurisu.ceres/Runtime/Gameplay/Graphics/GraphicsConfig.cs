@@ -1,6 +1,5 @@
 ﻿using Ceres.Configs;
 using Ceres.Serialization;
-using Newtonsoft.Json;
 using R3;
 
 namespace Ceres.Gameplay.Graphics
@@ -9,8 +8,6 @@ namespace Ceres.Gameplay.Graphics
     [ConfigPath("Ceres.Graphics")]
     public class GraphicsConfig: Config<GraphicsConfig>
     {
-        public ReactiveProperty<int> FrameRate { get; set; } = new(0);
-        
         [BindConfigVariable("r.bloom")]
         public ReactiveProperty<bool> Bloom { get; set; } = new(true);
         
@@ -23,15 +20,15 @@ namespace Ceres.Gameplay.Graphics
         public ReactiveProperty<bool> MotionBlur { get; set; } = new(false);
         
 #if UNITY_STANDALONE_WIN
-        public ReactiveProperty<int> RenderScale { get; set; } = new(3);
+        public ReactiveProperty<float> RenderScaleRatio { get; set; } = new(1f);
 #else
-        public ReactiveProperty<int> RenderScale { get; set; } = new(2);
+        public ReactiveProperty<float> RenderScaleRatio { get; set; } = new(0.9f);
 #endif
         
-        [JsonIgnore]
-        public static readonly float[] RenderScalePresets = { 0.7f, 0.8f, 0.9f, 1.0f };
-        
-        public ReactiveProperty<bool> Vignette { get; set; } = new(true);
+        /// <summary>
+        /// Global texture mipmap limit; 0 keeps full resolution
+        /// </summary>
+        public ReactiveProperty<int> TextureMipmapLimit { get; set; } = new(0);
         
 #if UNITY_STANDALONE_WIN
         [BindConfigVariable("r.contactshadows")]
@@ -68,6 +65,9 @@ namespace Ceres.Gameplay.Graphics
         public ReactiveProperty<bool> ScreenSpaceGlobalIllumination { get; set; } = new(false);
 #endif
             
+        [BindConfigVariable("r.rtgi")]
+        public ReactiveProperty<bool> RayTracedGlobalIllumination { get; set; } = new(false);
+        
         [BindConfigVariable("r.volumetricfog")]
         public ReactiveProperty<bool> VolumetricFog { get; set; } = new(true);
         
@@ -89,9 +89,5 @@ namespace Ceres.Gameplay.Graphics
         [BindConfigVariable("r.dlssnr")]
         public ReactiveProperty<bool> DLSSNeuralRendering { get; set; } = new(false);
 #endif
-        
-        [JsonProperty]
-        [ConfigVariable("r.fps")]
-        internal bool DisplayFPS { get; set; }
     }
 }

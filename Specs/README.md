@@ -29,4 +29,5 @@ Keep implementation structure, private fields, detailed algorithms and repeated 
 | [Content Pipeline](ContentPipeline/content-build-and-release.md) | Content ownership, dependency/build flow, update correctness, releases and runtime mounting. | [Content Pipeline](../Documentations/docs/core_content_pipeline.md) |
 | [Animation Packing](AnimationPacking/animation-packing.md) | Animation fidelity, conversion/import flow and runtime asset lifetime. | [Animation Packing](../Documentations/docs/animation_packing.md) |
 | [Flow](Flow/runtime-execution.md) | Graph ownership, execution flow, generated runtime, build boundaries and hot reload. | [Runtime containers](../Documentations/docs/flow_runtime_architecture.md) |
+| [Runtime Settings](Settings/runtime-settings.md) | Setting model, edit state, apply and persistence semantics, ownership and the settings window. | [Settings](../Documentations/docs/gameplay_settings.md) |
 | [UI Elements](UIElement/DESIGN.md) | Structured frontend design system, visual tokens and interaction rules. | [UI Toolkit](../Documentations/docs/ui_toolkit.md) |

@@ -4,7 +4,6 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 [![Zhihu](https://img.shields.io/badge/知乎-AkiKurisu-0084ff?style=flat-square)](https://www.zhihu.com/people/akikurisu)
 [![Bilibili](https://img.shields.io/badge/Bilibili-爱姬Kurisu-00A1D6?style=flat-square)](https://space.bilibili.com/20472331)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/AkiKurisu/Ceres)
 
 ![banner](./Documentations/resources/images/ceres_banner.png)
 
@@ -16,16 +15,14 @@ Ceres is my personal Unity framework designed with visual scripting and flexible
 
 ## Why Ceres?
 
-Ceres is a C#-first Unity framework for building gameplay systems, authoring content, and extending behavior through visual scripting.
+Ceres is a C#-first Unity framework: write systems in C#, compose and iterate them in visual scripting, and ship generated C# where performance matters.
 
-- **C#-first visual scripting:** build systems and typed APIs in C#, iterate with debuggable, hot-reloadable Flow graphs, and generate C# runtime programs for performance-sensitive or IL2CPP builds.
-- **Actor-based world design:** organize gameplay around Actors, Components, controllers, and lifecycle-managed world services through a lightweight scaffold that projects can extend.
-- **Data-driven gameplay:** build on typed Data Tables and hierarchical configuration, then tune live parameters through console variables without rebuilding or restarting the game.
-- **Graph-driven content pipeline:** turn project-defined content scopes into deterministic Addressables builds, validated updates, and relocatable packages that can be mounted at runtime.
-- **Script-driven PlayableGraph animation:** compose clips and Animator Controllers in code or Flow with cross-fades, layers, masks, sequences, and animation notifications.
-- **Low-overhead runtime foundations:** use pooled lifetimes, stable-index sparse storage, reactive state, and allocation-free scheduling paths in performance-sensitive gameplay code.
+![Ceres architecture](./Documentations/resources/images/ceres_architecture.svg)
 
-Production utilities cover reactive graphics settings, data-driven render profiles and levels, pooled audio and effects, Burst-accelerated AI spatial queries, and Addressables-based mod loading.
+- **C#-first visual scripting:** expose C# APIs to Flow graphs, debug and hot-reload them, and generate C# for IL2CPP builds.
+- **Actor-based gameplay:** a lightweight world of Actors, Components and lifecycle-managed services that projects extend.
+- **Data-driven iteration:** typed data tables and layered configs, tunable live through console variables.
+- **Production pipeline:** deterministic Addressables content builds, validated updates and runtime-mounted packages.
 
 ## Platforms
 
@@ -87,19 +84,21 @@ Help coding agents work with Ceres.
 
 ### Ceres Core
 
-Ceres's foundation modules, including Events, Schedulers, Configs, Serialization, Resources, Data Driven workflows, Content Pipeline, Pool, Tasks, and Modules.
+The runtime foundation every Ceres module builds on: events, data and content.
+
+See [Ceres Core](https://akikurisu.github.io/Ceres/docs/ceres_concept.html).
 
 ### Ceres Flow
 
 ![Flow](./Documentations/resources/images/ceres_flow.png)
 
-Ceres' built-in event-driven visual scripting solution.
+Event-driven visual scripting built on your C# APIs.
 
 See [Startup Flow](https://akikurisu.github.io/Ceres/docs/flow_startup.html).
 
 ### Ceres Gameplay
 
-Ceres Gameplay is a lightweight, Actor-based gameplay foundation with lifecycle-managed world services, level orchestration, PlayableGraph animation, graphics, audio and effects, AI spatial queries, mod support, and Flow integration.
+A lightweight, Actor-based gameplay layer for worlds, levels and the services games share.
 
 See [Gameplay](https://akikurisu.github.io/Ceres/docs/gameplay.html).
 

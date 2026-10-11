@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Ceres architecture</title>
+  <desc id="desc">Your game builds on Ceres Gameplay and Ceres Core; Ceres Flow scripts every layer, from C# APIs through Flow graphs to generated C#.</desc>
+  <defs>
+    <style>
+      .h{fill:#f5f6f5;font:600 32px Sora,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:-.8px}
+      .p{fill:#eeefef;fill-opacity:.62;font:600 19px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .b{fill:#f5f6f5;font:700 20px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .s{fill:#8abcc4;font:600 15px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .tag{fill:#8abcc4;font:700 15px Sora,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:3px}
+      .link{stroke:#8abcc4;stroke-opacity:.55;stroke-width:2;stroke-dasharray:6 5}
+      .step{fill:#111719;fill-opacity:.72;stroke:#fff;stroke-opacity:.06}
+      .arrow{stroke:#fff8dd;stroke-opacity:.5;stroke-width:2}
+    </style>
+    <radialGradient id="glow-flow" cx="1000" cy="352" r="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8abcc4" stop-opacity=".10"/>
+      <stop offset="1" stop-color="#8abcc4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-core" cx="230" cy="576" r="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8abcc4" stop-opacity=".07"/>
+      <stop offset="1" stop-color="#8abcc4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="core" x1="56" y1="442" x2="780" y2="584" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8abcc4" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#5f9aa2" stop-opacity=".12"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="122" x2="0" y2="584" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8abcc4" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#8abcc4" stop-opacity=".05"/>
+    </linearGradient>
+    <linearGradient id="icon-bg" x1="88" y1="72" x2="424" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#98c6ce"/>
+      <stop offset=".58" stop-color="#87b8c0"/>
+      <stop offset="1" stop-color="#5f9aa2"/>
+    </linearGradient>
+    <linearGradient id="icon-edge" x1="158" y1="346" x2="354" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff8dd"/>
+      <stop offset="1" stop-color="#fdf0bc"/>
+    </linearGradient>
+    <clipPath id="icon-clip">
+      <rect x="64" y="64" width="384" height="384" rx="48"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1280" height="640" rx="24" fill="#15191b"/>
+  <rect width="1280" height="640" rx="24" fill="url(#glow-flow)"/>
+  <rect width="1280" height="640" rx="24" fill="url(#glow-core)"/>
+
+  <svg x="56" y="52" width="40" height="40" viewBox="64 64 384 384">
+    <rect x="64" y="64" width="384" height="384" rx="48" fill="url(#icon-bg)"/>
+    <path d="M112 64H143L64 143V112C64 85.49 85.49 64 112 64Z" fill="#b9dee5" fill-opacity=".6"/>
+    <path d="M400 448H369L448 369V400C448 426.51 426.51 448 400 448Z" fill="#3e7880" fill-opacity=".46"/>
+    <g clip-path="url(#icon-clip)" stroke-linecap="round">
+      <path d="M176 184L300 60" stroke="#1c252b" stroke-width="10"/>
+      <path d="M158 340L348 150" stroke="url(#icon-edge)" stroke-width="12"/>
+      <path d="M344 344L458 458" stroke="#1c252b" stroke-width="10"/>
+    </g>
+    <circle cx="176" cy="184" r="34" fill="#1c252b"/>
+    <circle cx="176" cy="184" r="22" fill="#fff8dd"/>
+    <circle cx="348" cy="150" r="35" fill="#fff8dd"/>
+    <circle cx="158" cy="340" r="35" fill="#fff8dd"/>
+    <circle cx="344" cy="344" r="34" fill="#1c252b"/>
+    <circle cx="344" cy="344" r="22" fill="#fff8dd"/>
+  </svg>
+  <text class="tag" x="110" y="78">CERES ARCHITECTURE</text>
+
+  <rect x="56.75" y="122.75" width="722.5" height="140.5" rx="18" fill="none" stroke="#fff8dd" stroke-opacity=".38" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text class="h" x="93" y="186" fill="#fff8dd" style="fill:#fff8dd">Your game</text>
+  <text class="p" x="93" y="224">Systems in C#, behavior in Flow graphs, content in packages</text>
+
+  <rect x="56.75" y="282.75" width="722.5" height="140.5" rx="18" fill="#8abcc4" fill-opacity=".07" stroke="#8abcc4" stroke-opacity=".22" stroke-width="1.5"/>
+  <text class="h" x="93" y="346">Ceres Gameplay</text>
+  <text class="p" x="93" y="384">Actor-based worlds, levels and gameplay services</text>
+
+  <rect x="56.75" y="442.75" width="722.5" height="140.5" rx="18" fill="url(#core)" stroke="#8abcc4" stroke-opacity=".5" stroke-width="1.5"/>
+  <text class="h" x="93" y="506">Ceres Core</text>
+  <text class="p" x="93" y="544">Runtime foundations for events, data and content</text>
+
+  <g>
+    <path class="link" d="M795 193H844M795 353H844M795 513H844"/>
+    <circle cx="789" cy="193" r="5.5" fill="#fff8dd"/>
+    <circle cx="789" cy="353" r="5.5" fill="#fff8dd"/>
+    <circle cx="789" cy="513" r="5.5" fill="#fff8dd"/>
+  </g>
+
+  <rect x="844.75" y="122.75" width="378.5" height="460.5" rx="18" fill="url(#flow)" stroke="#8abcc4" stroke-opacity=".5" stroke-width="1.5"/>
+  <text class="h" x="878" y="188">Ceres Flow</text>
+  <text class="p" x="878" y="226">Visual scripting for every layer</text>
+
+  <rect class="step" x="878.5" y="258.5" width="311" height="77" rx="12"/>
+  <text class="b" x="898" y="292">C# APIs</text>
+  <text class="s" x="898" y="318">Exposed to graphs</text>
+  <path class="arrow" d="M1034 342V356"/>
+  <path d="M1028 355H1040L1034 362Z" fill="#fff8dd" fill-opacity=".5"/>
+
+  <rect class="step" x="878.5" y="365.5" width="311" height="77" rx="12"/>
+  <text class="b" x="898" y="399">Flow graphs</text>
+  <text class="s" x="898" y="425">Hot reload and debugging</text>
+  <path class="arrow" d="M1034 449V463"/>
+  <path d="M1028 462H1040L1034 469Z" fill="#fff8dd" fill-opacity=".5"/>
+
+  <rect class="step" x="878.5" y="472.5" width="311" height="77" rx="12"/>
+  <text class="b" x="898" y="506">Generated C#</text>
+  <text class="s" x="898" y="532">For IL2CPP builds</text>
+</svg>

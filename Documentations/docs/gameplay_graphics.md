@@ -23,24 +23,25 @@ graphics.ApplyDynamicVolumeProfiles();
 
 ## Live graphics config
 
-`GraphicsConfig` is stored at `Ceres.Graphics`. Its R3 properties are subscribed by `GraphicsController` during initialization, so changing a supported value applies it without recreating the controller.
+`GraphicsConfig` and `DisplayConfig` are stored at `Ceres.Graphics` and `Ceres.Display`. Their R3 properties apply as soon as they change:
 
 ```csharp
 using Ceres.Gameplay.Graphics;
 
-GraphicsConfig config = GraphicsConfig.Get();
+GraphicsConfig graphics = GraphicsConfig.Get();
+graphics.Bloom.Value = false;
+graphics.RenderScaleRatio.Value = 0.9f;
 
-config.Bloom.Value = false;
-config.Vignette.Value = true;
-config.RenderScale.Value = 2;
-config.FrameRate.Value = 1;
+DisplayConfig display = DisplayConfig.Get();
+display.FrameRateLimit.Value = 60;
+display.VSync.Value = true;
 ```
 
-`RenderScale` is an index into `GraphicsConfig.RenderScalePresets` (`0.7`, `0.8`, `0.9`, `1.0`); unsupported indices are ignored. `FrameRate` is an index into `GraphicsSettingsAsset.frameRateOptions`, not a frame-rate value, and must remain between zero and the final option index.
+Process-wide modules apply the values that do not depend on scene content: render scale on the active URP asset, the global texture mipmap limit, the pipeline toggles described below, and display mode, resolution, vertical sync and frame-rate limit. Borderless fullscreen always uses the display's native resolution. Add `Ceres.Gameplay.Graphics.GraphicsSettingsModule` and `Ceres.Gameplay.Graphics.DisplaySettingsModule` to the module list when the project uses an explicit list. A frame-rate limit of zero or below is unlimited; vertical sync ignores the limit. On a desktop player's first run, `DisplayConfig` adopts the window the player opened with.
 
-The standard URP bindings cover Bloom, Depth of Field, Motion Blur, Vignette, render scale, and target frame rate. `GraphicsSettingsAsset` can disable selected features for a project. Depth of Field and Motion Blur are disabled outside Play Mode.
+`GraphicsController` applies the scene-side state: Bloom, Depth of Field and Motion Blur weights of the dynamic Volumes, camera settings and the FPS overlay (`r.fps`). `GraphicsSettingsAsset` can disable selected features for a project. Depth of Field and Motion Blur are disabled outside Play Mode.
 
-The config is saved when the runtime controller is destroyed.
+Save the configs after changing them, or edit them through [Settings](./gameplay_settings.md), which saves changed configs when its session closes.
 
 ## Platform Volume profiles
 
@@ -54,7 +55,7 @@ The table manager selects Mobile on Android and iOS, Console on Xbox One and Pla
 
 At runtime, `GraphicsController` creates hidden child `Volume` objects for the table rows, assigns the selected profiles and priorities, and exposes them through `GetVolume(id)`. The requested ID must exist in the table.
 
-Built-in reactive toggles are matched by row ID. Use `Bloom`, `DepthOfField`, `MotionBlur`, or `Vignette` when the profile should respond to the corresponding `GraphicsConfig` property.
+Built-in reactive toggles are matched by row ID. Use `Bloom`, `DepthOfField`, or `MotionBlur` when the profile should respond to the corresponding `GraphicsConfig` property.
 
 Other row IDs still produce runtime Volumes and can be retrieved or weighted by project code.
 
@@ -71,7 +72,7 @@ Look Dev is an Editor preference. Leaving the mode or pressing refresh reapplies
 
 ## Optional IllusionRP integration
 
-Pipeline-specific toggles in `GraphicsConfig` (convolution bloom, contact shadows, soft shadows, SSAO, SSR, SSGI, volumetric fog, area lights, DLSS Neural Rendering) carry `[BindConfigVariable("r.xxx")]`. `GraphicsController` forwards their values by name through `ConfigVariableRegistry`, so Ceres never references the render pipeline assembly; a pipeline that registers matching config variables (IllusionRP does through `IllusionRuntimeRenderingConfig`) receives the switches, otherwise the binding is skipped. Screenshot capture reaches the pipeline through `Ceres.Capture.RenderPipelineCaptureHooks`, which IllusionRP registers when installed.
+Pipeline-specific toggles in `GraphicsConfig` (convolution bloom, contact shadows, soft shadows, SSAO, SSR, SSGI, ray traced GI, volumetric fog, area lights, DLSS Neural Rendering) carry `[BindConfigVariable("r.xxx")]`. `GraphicsSettingsModule` forwards their values by name through `ConfigVariableRegistry`, so Ceres never references the render pipeline assembly; a pipeline that registers matching config variables (IllusionRP does through `IllusionRuntimeRenderingConfig`) receives the switches, otherwise the binding is skipped. Screenshot capture reaches the pipeline through `Ceres.Capture.RenderPipelineCaptureHooks`, which IllusionRP registers when installed.
 
 These properties are part of `GraphicsConfig` on every pipeline. Projects using standard URP should treat them as inactive configuration fields.
 
