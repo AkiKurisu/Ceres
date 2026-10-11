@@ -5,6 +5,30 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-10-11
+
+### Added
+
+- Added runtime settings: pages, sections and settings bound to configs, with edit states, presets, confirmed changes and sessions that save changed configs.
+- Added a settings window framework that binds a settings registry to product-owned UXML templates.
+- Added `DisplayConfig` for display mode, resolution, vertical sync, frame-rate limit and FPS display.
+- Added ray traced GI (`r.rtgi`), sun shafts (`r.sunshafts`) and texture mipmap limit to `GraphicsConfig`.
+- Added per-asset build dependency digests to the content pipeline, so cached bundles rebuild when inputs outside Unity's dependency hash change.
+
+### Changed
+
+- `GraphicsSettingsModule` and `DisplaySettingsModule` apply graphics and display configs for the whole process; `GraphicsController` only applies scene-side state.
+- `GraphicsConfig.RenderScaleRatio` and `DisplayConfig.FrameRateLimit` replace the preset indices `RenderScale` and `FrameRate`.
+- The `GraphicsController` inspector edits the frame-rate limit and render scale in Play Mode.
+
+### Removed
+
+- Removed `GraphicsConfig.Vignette` and `GraphicsSettingsAsset.frameRateOptions`.
+
+### Fixed
+
+- Resources and Data Table managers initialize reliably in Edit Mode, and concurrent initialization calls share one pass.
+
 ## [1.0.2] - 2026-09-13
 
 ### Added
