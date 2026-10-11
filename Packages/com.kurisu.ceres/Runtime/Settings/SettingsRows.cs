@@ -41,7 +41,7 @@ namespace Ceres.Settings.UI
         {
             return setting switch
             {
-                ValueSetting<bool> toggle => new ToggleRow(toggle, templates.toggle, session),
+                ToggleSetting toggle => new ToggleRow(toggle, templates.toggle, session),
                 SliderSetting slider => new SliderRow(slider, templates.slider, session),
                 IChoiceSetting choice => new ChoiceRow(setting, choice, IsShort(choice, templates) ? templates.choice : templates.choiceList, session),
                 ActionSetting action => new ActionRow(action, templates.action, session),
@@ -133,14 +133,16 @@ namespace Ceres.Settings.UI
                 return;
             }
             _toggle.focusable = false;
-            _toggle.RegisterValueChangedCallback(evt => setting.Toggle.Value = evt.newValue);
+            _toggle.RegisterValueChangedCallback(evt => Write(setting.Toggle, evt.newValue));
         }
 
-        private void Write(float value)
+        private void Write<T>(ValueSetting<T> setting, T value)
         {
-            if (_setting.ApplyMode == SettingApplyMode.Confirm) Session().Stage(_setting, value);
-            else _setting.Value = value;
+            if (setting.ApplyMode == SettingApplyMode.Confirm) Session().Stage(setting, value);
+            else setting.Value = value;
         }
+
+        private void Write(float value) => Write(_setting, value);
 
         protected override void RefreshValue()
         {
@@ -151,7 +153,7 @@ namespace Ceres.Settings.UI
             var state = _setting.Toggle.EvaluateEditState();
             _toggle.style.display = state.IsVisible ? DisplayStyle.Flex : DisplayStyle.None;
             _toggle.SetEnabled(state.IsEnabled);
-            _toggle.SetValueWithoutNotify(_setting.Toggle.Value);
+            _toggle.SetValueWithoutNotify(Session().TryGetStaged(_setting.Toggle, out bool stagedToggle) ? stagedToggle : _setting.Toggle.Value);
         }
 
         public override void Step(int direction)

@@ -22,8 +22,12 @@ namespace Ceres.Gameplay.Graphics
             var config = GraphicsConfig.Get();
             ForwardConfigVariables(config);
             config.RenderScaleRatio.Subscribe(_ => ApplyRenderScale(config));
-            config.TextureMipmapLimit.Subscribe(limit => QualitySettings.globalTextureMipmapLimit = Mathf.Max(0, limit));
-            QualitySettings.activeQualityLevelChanged += (_, _) => ApplyRenderScale(config);
+            config.TextureMipmapLimit.Subscribe(_ => ApplyTextureMipmapLimit(config));
+            QualitySettings.activeQualityLevelChanged += (_, _) =>
+            {
+                ApplyRenderScale(config);
+                ApplyTextureMipmapLimit(config);
+            };
 #if UNITY_EDITOR
             Application.quitting += RestoreRenderScale;
 #endif
@@ -47,6 +51,11 @@ namespace Ceres.Gameplay.Graphics
                 var source = (ReactiveProperty<bool>)property.GetValue(config);
                 source.Subscribe(value => variable.SetValue(value, false));
             }
+        }
+
+        private static void ApplyTextureMipmapLimit(GraphicsConfig config)
+        {
+            QualitySettings.globalTextureMipmapLimit = Mathf.Max(0, config.TextureMipmapLimit.Value);
         }
 
         private void ApplyRenderScale(GraphicsConfig config)

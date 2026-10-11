@@ -27,6 +27,7 @@ namespace Ceres.Gameplay.Graphics
             }
             Observable.Merge(config.VSync.AsUnitObservable(), config.FrameRateLimit.AsUnitObservable())
                 .Subscribe(_ => ApplyFrameRate(config));
+            QualitySettings.activeQualityLevelChanged += (_, _) => ApplyFrameRate(config);
         }
 
         private static void ApplyScreen(DisplayConfig config)

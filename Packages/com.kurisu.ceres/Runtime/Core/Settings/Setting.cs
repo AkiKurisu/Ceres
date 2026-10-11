@@ -101,7 +101,7 @@ namespace Ceres.Settings
 
             public void Restore()
             {
-                _setting.Value = _value;
+                if (!Comparer.Equals(_setting.Value, _value)) _setting._setter(_value);
             }
         }
 

@@ -80,7 +80,10 @@ namespace Ceres.Settings.UI
             _scope.Click(_confirmKeep, () => Act(() => _session.Keep()));
             _scope.Click(_confirmRevert, () => Act(() => _session.RevertConfirmation()));
             _scope.Callback<NavigationMoveEvent>(_content, OnNavigationMove, TrickleDown.TrickleDown);
-            _scope.Callback<NavigationSubmitEvent>(_content, _ => Act(() => _focused?.Submit()));
+            _scope.Callback<NavigationSubmitEvent>(_content, _ => Act(() =>
+            {
+                if (_focused != null && _focused.State.IsEnabled) _focused.Submit();
+            }));
             _scope.Callback<NavigationCancelEvent>(_root, _ => Cancel());
             _scope.Callback<KeyDownEvent>(_root, OnKeyDown);
             _root.style.display = DisplayStyle.None;
@@ -348,6 +351,7 @@ namespace Ceres.Settings.UI
             };
             if (direction == 0 || _page == null) return;
             var visible = _pages.Where(page => page.TabContainer.style.display != DisplayStyle.None).ToList();
+            if (visible.Count == 0) return;
             int index = Mathf.Clamp(visible.IndexOf(_page) + direction, 0, visible.Count - 1);
             ShowPage(visible[index]);
             Refresh();
