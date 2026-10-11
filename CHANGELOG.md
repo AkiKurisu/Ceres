@@ -5,10 +5,13 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.3] - 2026-10-11
+## [1.1.0] - 2026-10-11
 
 ### Added
 
+- Added animation binary packing, importing and extraction for lossless `.animbin` animation assets.
+- Added an Editor-only UI Toolkit preview host with deterministic fixtures, viewport simulation, live asset reload and automation APIs.
+- Added the Ceres Neutral runtime theme with shared buttons, toggles, sliders and a framework-owned component catalog.
 - Added runtime settings: pages, sections and settings bound to configs, with edit states, presets, confirmed changes and sessions that save changed configs.
 - Added a settings window framework that binds a settings registry to product-owned UXML templates.
 - Added `DisplayConfig` for display mode, resolution, vertical sync, frame-rate limit and FPS display.
@@ -28,14 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Resources and Data Table managers initialize reliably in Edit Mode, and concurrent initialization calls share one pass.
-
-## [1.0.2] - 2026-09-13
-
-### Added
-
-- Added animation binary packing, importing and extraction for lossless `.animbin` animation assets.
-- Added an Editor-only UI Toolkit preview host with deterministic fixtures, viewport simulation, live asset reload and automation APIs.
-- Added the Ceres Neutral runtime theme with shared buttons, toggles, sliders and a framework-owned component catalog.
 
 ## [1.0.1] - 2026-09-05
 
