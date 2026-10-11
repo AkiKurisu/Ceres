@@ -26,10 +26,7 @@ namespace Ceres.Gameplay.Graphics
             
         public float farClipPlane = 5000;
 
-        // Quality Settings
         [Header("Quality Settings")]
-        public int[] frameRateOptions = { 30, 60, -1 };
-
         [SerializeField]
         private GraphicsFeatures disableFeatures;
 

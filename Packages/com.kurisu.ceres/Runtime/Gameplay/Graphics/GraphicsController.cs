@@ -7,8 +7,6 @@ using UnityEngine.Rendering;
 using R3;
 using UnityEngine.Rendering.Universal;
 using System.Linq;
-using System.Reflection;
-using Ceres.Configs;
 using Ceres.Flow.Annotations;
 
 namespace Ceres.Gameplay.Graphics
@@ -41,8 +39,6 @@ namespace Ceres.Gameplay.Graphics
         public GraphicsSettingsAsset settingsAsset;
         
         private GraphicsConfig _config;
-        
-        private UniversalRenderPipelineAsset _urpAsset;
         
         internal const string LookDevModeKey = "Graphics.LookDevMode";
                 
@@ -100,7 +96,6 @@ namespace Ceres.Gameplay.Graphics
             if (!Application.isPlaying) return;
 #endif
 
-            _config?.Save();
             ContainerSubsystem.Get().Unregister(this);
         }
 
@@ -110,7 +105,7 @@ namespace Ceres.Gameplay.Graphics
             if (!gameObject.scene.IsValid()) return;
             if (!Application.isPlaying) return;
 #endif
-            if (!GraphicsConfig.Get().DisplayFPS) return;
+            if (!DisplayConfig.Get().ShowFrameRate.Value) return;
             int fps = (int)_deltaTime;
             GUI.Label(new Rect(20, 10, 200, 50), $"FPS {fps}", _style);
         }
@@ -121,7 +116,6 @@ namespace Ceres.Gameplay.Graphics
             if (!gameObject.scene.IsValid()) return;
 #endif
             _config = GraphicsConfig.Get();
-            _urpAsset = (UniversalRenderPipelineAsset)QualitySettings.renderPipeline;
             
             // Apply dynamic volume if config is set
             if (settingsAsset)
@@ -130,12 +124,7 @@ namespace Ceres.Gameplay.Graphics
             }
             
 #if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                // Reset urp asset modification in editor
-                _urpAsset.renderScale = 1;
-                return;
-            }
+            if (!Application.isPlaying) return;
 #endif
             
             ContainerSubsystem.Get().Register(this);
@@ -158,45 +147,7 @@ namespace Ceres.Gameplay.Graphics
                 _config.MotionBlur.Subscribe(new BuiltInVolumeObserver(BuiltInVolumeType.MotionBlur, this)).AddTo(ref d);
             }
 
-            if (IsVolumeSupport(BuiltInVolumeType.Vignette))
-            {
-                _config.Vignette.Subscribe(new BuiltInVolumeObserver(BuiltInVolumeType.Vignette, this)).AddTo(ref d);
-            }
-
-            _config.RenderScale.Subscribe(SetRenderScale).AddTo(ref d);
-            _config.FrameRate.Subscribe(SetFrameRate).AddTo(ref d);
-            BindConfigVariables();
             d.Build().AddTo(this);
-        }
-
-        private void BindConfigVariables()
-        {
-            var registry = ConfigVariableRegistry.Get();
-            foreach (var property in typeof(GraphicsConfig).GetProperties(BindingFlags.Instance | BindingFlags.Public))
-            {
-                var binding = property.GetCustomAttribute<BindConfigVariableAttribute>();
-                if (binding == null || property.PropertyType != typeof(ReactiveProperty<bool>)) continue;
-                if (settingsAsset && Enum.TryParse<GraphicsFeatures>(property.Name, out var feature) && !settingsAsset.IsFeatureSupport(feature)) continue;
-                if (!registry.TryGetVariable(binding.Name, out var variable))
-                {
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-                    UnityEngine.Debug.LogWarning($"[Ceres] Config variable {binding.Name} bound by {nameof(GraphicsConfig)}.{property.Name} is not registered.");
-#endif
-                    continue;
-                }
-
-                var source = (ReactiveProperty<bool>)property.GetValue(_config);
-                source.Subscribe(value => variable.SetValue(value, false)).AddTo(this);
-            }
-        }
-
-        private void SetFrameRate(int index)
-        {
-            if (!Application.isPlaying) return;
-            if (!settingsAsset || settingsAsset.frameRateOptions == null) return;
-            if (index < 0 || index >= settingsAsset.frameRateOptions.Length) return;
-            
-            Application.targetFrameRate = settingsAsset.frameRateOptions[index];
         }
 
         /// <summary>
@@ -298,13 +249,6 @@ namespace Ceres.Gameplay.Graphics
             return type == BuiltInVolumeType.Tonemapping;
         }
 
-        private void SetRenderScale(int presetId)
-        {
-            if (presetId >= 0 && presetId < GraphicsConfig.RenderScalePresets.Length)
-            {
-                _urpAsset.renderScale = GraphicsConfig.RenderScalePresets[presetId];
-            }
-        }
 
         /// <summary>
         /// Get Volume by id
