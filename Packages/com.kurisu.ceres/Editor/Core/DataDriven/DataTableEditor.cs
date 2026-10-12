@@ -115,44 +115,54 @@ namespace Ceres.DataDriven.Editor
         protected virtual void DrawToolBar()
         {
             GUILayout.BeginHorizontal(EditorStyles.toolbar);
-            using (new EditorGUI.DisabledScope(!Document.IsModified))
+            var iconSize = EditorGUIUtility.GetIconSize();
+            // Toolbar icons have different source sizes; a fixed size keeps button widths consistent.
+            EditorGUIUtility.SetIconSize(new Vector2(16, 16));
+            try
             {
-                if (GUILayout.Button(Styles.SaveButtonLabel, DataTableEditorUtils.ToolBarButtonStyle))
+                using (new EditorGUI.DisabledScope(!Document.IsModified))
                 {
-                    Document.Save();
-                    GUIUtility.ExitGUI();
-                }
-            }
-
-            if (GUILayout.Button(Styles.ExportJsonButtonLabel, DataTableEditorUtils.ToolBarButtonStyle))
-            {
-                string path = EditorUtility.SaveFilePanel("Select json file export path", Application.dataPath, Document.name, "json");
-                if (!string.IsNullOrEmpty(path))
-                {
-                    File.WriteAllText(path, DataTableEditorUtils.ExportJson(Document));
-                    Debug.Log("<color=#3aff48>DataTable</color>: Export data to json file succeed!");
-                }
-            }
-
-            if (GUILayout.Button(Styles.ImportJsonButtonLabel, DataTableEditorUtils.ToolBarButtonStyle))
-            {
-                string path = EditorUtility.OpenFilePanel("Select json file to import", Application.dataPath, "json");
-                if (!string.IsNullOrEmpty(path))
-                {
-                    try
+                    if (GUILayout.Button(Styles.SaveButtonLabel, DataTableEditorUtils.ToolBarButtonStyle))
                     {
-                        DataTableEditorUtils.ImportJson(Document, File.ReadAllText(path));
-                        RequestDataTableUpdate();
-                        Debug.Log("<color=#3aff48>DataTable</color>: Import data from json file succeed!");
+                        Document.Save();
+                        GUIUtility.ExitGUI();
                     }
-                    catch (FormatException e)
-                    {
-                        Debug.LogError($"[DataTable] {path} is not a valid source: {e.Message}");
-                    }
-                    GUIUtility.ExitGUI();
                 }
+
+                if (GUILayout.Button(Styles.ExportJsonButtonLabel, DataTableEditorUtils.ToolBarButtonStyle))
+                {
+                    string path = EditorUtility.SaveFilePanel("Select json file export path", Application.dataPath, Document.name, "json");
+                    if (!string.IsNullOrEmpty(path))
+                    {
+                        File.WriteAllText(path, DataTableEditorUtils.ExportJson(Document));
+                        Debug.Log("<color=#3aff48>DataTable</color>: Export data to json file succeed!");
+                    }
+                }
+
+                if (GUILayout.Button(Styles.ImportJsonButtonLabel, DataTableEditorUtils.ToolBarButtonStyle))
+                {
+                    string path = EditorUtility.OpenFilePanel("Select json file to import", Application.dataPath, "json");
+                    if (!string.IsNullOrEmpty(path))
+                    {
+                        try
+                        {
+                            DataTableEditorUtils.ImportJson(Document, File.ReadAllText(path));
+                            RequestDataTableUpdate();
+                            Debug.Log("<color=#3aff48>DataTable</color>: Import data from json file succeed!");
+                        }
+                        catch (FormatException e)
+                        {
+                            Debug.LogError($"[DataTable] {path} is not a valid source: {e.Message}");
+                        }
+                        GUIUtility.ExitGUI();
+                    }
+                }
+                OnDrawToolBar?.Invoke(this);
             }
-            OnDrawToolBar?.Invoke(this);
+            finally
+            {
+                EditorGUIUtility.SetIconSize(iconSize);
+            }
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
         }
@@ -188,9 +198,9 @@ namespace Ceres.DataDriven.Editor
         {
             public static readonly GUIContent SaveButtonLabel = new("  Save", EditorGUIUtility.IconContent("SaveActive").image);
 
-            public static readonly GUIContent ImportJsonButtonLabel = new("  Import from Json", EditorGUIUtility.IconContent("d_Import@2x").image);
+            public static readonly GUIContent ImportJsonButtonLabel = new("  Import Json", EditorGUIUtility.IconContent("d_Import@2x").image);
 
-            public static readonly GUIContent ExportJsonButtonLabel = new("  Export to Json", EditorGUIUtility.IconContent("SaveAs@2x").image);
+            public static readonly GUIContent ExportJsonButtonLabel = new("  Export Json", EditorGUIUtility.IconContent("SaveAs@2x").image);
         }
     }
 }

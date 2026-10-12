@@ -1,6 +1,5 @@
 #if URP_INSTALL
 using System;
-using MessagePack;
 using System.Collections.Generic;
 using Ceres.DataDriven;
 using Ceres.Pool;
@@ -21,7 +20,7 @@ namespace Ceres.Gameplay.Graphics
         Console
     }
     
-    [Serializable, MessagePackObject(true), AddressableDataTable(address: DynamicVolumeProfileTableManager.TableKey)]
+    [Serializable, AddressableDataTable(address: DynamicVolumeProfileTableManager.TableKey)]
     public class DynamicVolumeProfileRow: IDataTableRow
     {
         [AssetReferenceConstraint(group: "Volumes")]

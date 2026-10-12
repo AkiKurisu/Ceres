@@ -10,8 +10,9 @@ authored in the Editor and are read-only at runtime. Process-wide values that
 players or tools change at runtime belong to Configs, not Data Tables.
 
 A row schema is a C# type implementing `IDataTableRow`. Its persisted members
-follow Unity's serialization rules for fields. Rows reference assets through soft
-references, never through `UnityEngine.Object` fields, so a table carries no
+follow Unity's serialization rules for fields, and neither the schema nor the
+types it contains need serialization attributes. Rows reference assets through
+soft references, never through `UnityEngine.Object` fields, so a table carries no
 asset dependencies of its own.
 
 ## Model
@@ -49,15 +50,54 @@ does not require editing existing sources.
 The runtime table is binary and is produced only by the importer. Each row can be
 read on its own, so lookup by identifier decodes only that row and a table never
 needs to decode rows it does not serve. Members marked as Editor-only are kept in
-the source and omitted from the runtime table.
+the source and omitted from the runtime table. A persisted member that exists
+only in the Editor must be marked Editor-only, so the Editor and players agree on
+the layout.
 
 Runtime tables expose no mutation. Rows returned by lookup are owned by the table
 and must be treated as read-only. Content that extends a project, such as a mod,
 ships additional tables rather than modifying loaded ones.
 
-Binary row data is keyed by member name so that a table built against an earlier
-schema still reads under the current one, with the same add and remove tolerance
-as the source.
+### Schema Descriptor and Positional Rows
+
+Member names are stored once per table, not once per row. Every runtime table
+carries a schema descriptor: for the row schema and for each type it contains, the
+persisted member names and their value kinds in encoding order, together with a
+layout hash. Rows store member values by position in that order.
+
+A value kind identifies how a member is encoded: integer, floating point, boolean,
+string, enumeration, list, nested type, Unity value type or soft reference.
+Enumerations are stored as their underlying integer, so renaming an enumeration
+member keeps existing values.
+
+### Reading Under the Current Schema
+
+When the descriptor's layout hash equals the running schema's, rows decode
+directly by position. Tables imported in the project always take this path,
+because changing a schema reimports its tables.
+
+When the hashes differ, the table maps its descriptor to the running schema by
+member name, once per table, before decoding its first row. A member found in both
+with the same value kind is read. A member missing from the descriptor takes its
+initial value. A member missing from the running schema, or whose value kind
+changed, is skipped. Nested types map the same way. This keeps content built
+against an earlier schema, such as a separately built package or mod, readable
+with the same add and remove tolerance as the source.
+
+### Decoding Code
+
+Decoding code for each row schema and the types it contains is generated at
+compile time. Nothing is generated at runtime, so tables decode in IL2CPP players.
+A schema type with non-public persisted members must be declared `partial` so the
+generated code can reach them; otherwise compilation reports which type and
+member need it.
+
+### Performance Contract
+
+For the same rows, a Data Table loaded from an AssetBundle must not be slower than a
+ScriptableObject holding a row list when every row is read, and must not be
+larger. Loading a table and reading a few rows must stay proportional to the rows
+read rather than to the table size.
 
 ## Loading and Ownership
 

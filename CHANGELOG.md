@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.1] - 2026-10-12
 
+### Added
+
+- `[EditorOnly]` keeps a Data Table row member in the source and out of the runtime table.
+
 ### Changed
 
 - Data Tables are authored as `.datatable` text files and imported as read-only binary tables.
-- Ceres depends on MessagePack and MessagePack for Unity.
 
 ### Removed
 

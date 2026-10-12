@@ -11,16 +11,13 @@ settings and live overrides.
 
 ## Define a Row Schema
 
-A row is a serializable class implementing `IDataTableRow`. Mark the row and
-every serializable type it contains with `[MessagePackObject(true)]`, which
-encodes members by name:
+A row is a serializable class implementing `IDataTableRow`:
 
 ```csharp
 using System;
 using Ceres.DataDriven;
-using MessagePack;
 
-[Serializable, MessagePackObject(true)]
+[Serializable]
 [AddressableDataTable(
     group: "GameData",
     address: "items",
@@ -30,7 +27,7 @@ public sealed class ItemRow : IDataTableRow, IValidateRow
     public string displayName;
     public int maxStack = 1;
 
-    [IgnoreMember]
+    [EditorOnly]
     public string designerNote;
 
     public bool ValidateRow(string rowId, out string reason)
@@ -47,10 +44,15 @@ public sealed class ItemRow : IDataTableRow, IValidateRow
 }
 ```
 
-Persisted members follow Unity's serialization rules. Members marked
-`[IgnoreMember]` stay in the `.datatable` file and are omitted from the runtime
-table, which suits Editor-only notes. Reference assets with `SoftAssetReference`
-or `SoftAssetReference<T>`; a row cannot hold `UnityEngine.Object` fields.
+Persisted members follow Unity's serialization rules, and rows need no
+serialization attributes: Ceres generates the encoding of each row type and the
+types it contains at compile time. A type with non-public persisted members must
+be declared `partial`; otherwise compilation reports the type and member.
+Members marked `[EditorOnly]` stay in the `.datatable` file and are omitted from
+the runtime table, which suits Editor-only notes. Mark every persisted member
+that exists only under `UNITY_EDITOR` this way. Reference assets with
+`SoftAssetReference` or `SoftAssetReference<T>`; a row cannot hold
+`UnityEngine.Object` fields.
 
 `IValidateRow` is optional. Validation runs on import, and a failing row is
 reported as an import warning. `AddressableDataTableAttribute` is also optional:
@@ -117,6 +119,12 @@ for an invalid index. `GetRowMap()` creates a dictionary keyed by row ID.
 
 Rows decode on first access and are cached by the table. Treat them as
 read-only; the runtime table has no mutation API.
+
+A table built against an earlier version of its row type, such as one in a
+separately built content package, still reads. Members are matched by name:
+members added since take their initial values, and members that were removed or
+changed type are ignored. Tables in the project are always current because
+changing a row type reimports them.
 
 ## Load Tables with a Manager
 
@@ -197,7 +205,7 @@ using (DataTableEditorUtils.BeginBatch())
 
 Read rows for Editor tooling with `DataTableEditorUtils.GetAllRowsSafe` or
 `GetRowMapSafe`. They return copies read from the `.datatable` file, including
-`[IgnoreMember]` members such as the asset GUID of a soft reference, which the
+`[EditorOnly]` members such as the asset GUID of a soft reference, which the
 runtime table does not contain.
 
 `DataTableDocument.Open` returns the document already open for a file, so tools

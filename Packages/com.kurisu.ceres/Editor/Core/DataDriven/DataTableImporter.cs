@@ -7,7 +7,7 @@ namespace Ceres.DataDriven.Editor
     /// <summary>
     /// Imports a .datatable source as a binary <see cref="DataTable"/>
     /// </summary>
-    [ScriptedImporter(1, DataTableSource.Extension)]
+    [ScriptedImporter(2, DataTableSource.Extension)]
     public sealed class DataTableImporter : ScriptedImporter
     {
         public override void OnImportAsset(AssetImportContext ctx)
