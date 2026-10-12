@@ -38,14 +38,15 @@ Ceres requires Unity 2022.3 LTS or later and is developed on Unity 6.
    https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity
    ```
 
-2. Open **NuGet > Manage NuGet Packages** and install `R3` version `1.3.0`.
+2. Open **NuGet > Manage NuGet Packages** and install `R3` version `1.3.0` and `MessagePack` version `3.1.4`.
 
-3. Add UniTask and Ceres to your project's `Packages/manifest.json`:
+3. Add UniTask, MessagePack for Unity and Ceres to your project's `Packages/manifest.json`:
 
 ```json
 "dependencies": {
     "com.kurisu.ceres": "https://github.com/AkiKurisu/Ceres.git?path=Packages/com.kurisu.ceres",
-    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask#2.5.3"
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask#2.5.3",
+    "com.github.messagepack-csharp": "https://github.com/MessagePack-CSharp/MessagePack-CSharp.git?path=src/MessagePack.UnityClient/Assets/Scripts/MessagePack#v3.1.4"
 }
 ```
 

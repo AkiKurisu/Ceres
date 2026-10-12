@@ -10,48 +10,46 @@ using UEditor = UnityEditor.Editor;
 
 namespace Ceres.DataDriven.Editor
 {
-    [CustomEditor(typeof(DataTable))]
+    [CustomEditor(typeof(DataTableDocument))]
     public class DataTableEditor : UEditor
     {
-        public DataTable Table => target as DataTable;
-        
+        public DataTableDocument Document => target as DataTableDocument;
+
         private DataTableRowView _dataTableRowView;
-        
+
         private const string NullType = "Null";
-        
+
         /// <summary>
         /// Subscribe to add custom toolbar
         /// </summary>
         public DrawToolBarDelegate OnDrawToolBar;
-        
+
         public DataTableRowView GetDataTableRowView()
         {
-            _dataTableRowView ??= CreateDataTableRowView(Table);
+            _dataTableRowView ??= CreateDataTableRowView(Document);
             return _dataTableRowView;
         }
-        
+
         /// <summary>
-        /// Implement to use customized <see cref="DataTableRowView"/>  
+        /// Implement to use customized <see cref="DataTableRowView"/>
         /// </summary>
-        /// <param name="table"></param>
-        /// <returns></returns>
-        protected virtual DataTableRowView CreateDataTableRowView(DataTable table)
+        protected virtual DataTableRowView CreateDataTableRowView(DataTableDocument document)
         {
-            var rowView = new DataTableRowView(table);
+            var rowView = new DataTableRowView(document);
             if (CeresSettings.Instance.inlineRowReadOnly)
             {
                 rowView.ReadOnly = true;
             }
             return rowView;
         }
-        
+
         public override void OnInspectorGUI()
         {
             DrawToolBar();
             GUILayout.Space(10);
             DrawRowView();
         }
-        
+
         protected virtual void DrawRowView()
         {
             _dataTableRowView = GetDataTableRowView();
@@ -62,7 +60,7 @@ namespace Ceres.DataDriven.Editor
 
         private void DrawRowTypeSelector()
         {
-            var typeProp = serializedObject.FindProperty("m_rowType");
+            var typeProp = serializedObject.FindProperty(nameof(DataTableDocument.m_rowType));
             var reference = typeProp.FindPropertyRelative("serializedTypeString");
             Type type;
             try
@@ -81,21 +79,20 @@ namespace Ceres.DataDriven.Editor
                 var provider = CreateInstance<TypeSearchWindow>();
                 provider.Initialize(typeof(IDataTableRow), selectType =>
                 {
-                    reference.stringValue = selectType != null ? SerializedType.ToString(selectType) : NullType;
-                    serializedObject.ApplyModifiedProperties();
+                    if (selectType == null) return;
+                    DataTableEditorUtils.SetRowStruct(Document, selectType);
                     RequestDataTableUpdate();
                 });
                 SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)), provider);
             }
             GUILayout.EndHorizontal();
         }
-        
+
         #region Cleanup
 
         // DataTableEditor use global object manager to cache wrapper.
         // However, the soft object handle is not persistent.
         // We should ensure not to conflict with other modules.
-
 
         protected virtual void OnEnable()
         {
@@ -107,31 +104,33 @@ namespace Ceres.DataDriven.Editor
         {
             GlobalObjectManager.Cleanup();
             Undo.undoRedoEvent -= OnUndo;
-            Table.Cleanup();
-            /* Trigger save assets to force cleanup editor cache */
-            EditorUtility.SetDirty(Table);
-            /* Auto register table if it has AddressableDataTableAttribute */
-            DataTableEditorUtils.RegisterTableToAssetGroup(Table);
+            if (Document) Document.Cleanup();
         }
 
         #endregion
-        
+
         /// <summary>
         /// Draw editor toolbar
         /// </summary>
         protected virtual void DrawToolBar()
         {
             GUILayout.BeginHorizontal(EditorStyles.toolbar);
+            using (new EditorGUI.DisabledScope(!Document.IsModified))
+            {
+                if (GUILayout.Button(Styles.SaveButtonLabel, DataTableEditorUtils.ToolBarButtonStyle))
+                {
+                    Document.Save();
+                    GUIUtility.ExitGUI();
+                }
+            }
+
             if (GUILayout.Button(Styles.ExportJsonButtonLabel, DataTableEditorUtils.ToolBarButtonStyle))
             {
-                string path = EditorUtility.SaveFilePanel("Select json file export path", Application.dataPath, Table.name, "json");
+                string path = EditorUtility.SaveFilePanel("Select json file export path", Application.dataPath, Document.name, "json");
                 if (!string.IsNullOrEmpty(path))
                 {
-                    var jsonData = DataTableEditorUtils.ExportJson(Table);
-                    File.WriteAllText(path, jsonData);
-                    Debug.Log($"<color=#3aff48>DataTable</color>: Export data to json file succeed!");
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
+                    File.WriteAllText(path, DataTableEditorUtils.ExportJson(Document));
+                    Debug.Log("<color=#3aff48>DataTable</color>: Export data to json file succeed!");
                 }
             }
 
@@ -140,12 +139,16 @@ namespace Ceres.DataDriven.Editor
                 string path = EditorUtility.OpenFilePanel("Select json file to import", Application.dataPath, "json");
                 if (!string.IsNullOrEmpty(path))
                 {
-                    var data = File.ReadAllText(path);
-                    DataTableEditorUtils.ImportJson(Table, data);
-                    RequestDataTableUpdate();
-                    Debug.Log($"<color=#3aff48>DataTable</color>: Import data from json file succeed!");
-                    EditorUtility.SetDirty(Table);
-                    AssetDatabase.SaveAssets();
+                    try
+                    {
+                        DataTableEditorUtils.ImportJson(Document, File.ReadAllText(path));
+                        RequestDataTableUpdate();
+                        Debug.Log("<color=#3aff48>DataTable</color>: Import data from json file succeed!");
+                    }
+                    catch (FormatException e)
+                    {
+                        Debug.LogError($"[DataTable] {path} is not a valid source: {e.Message}");
+                    }
                     GUIUtility.ExitGUI();
                 }
             }
@@ -153,17 +156,18 @@ namespace Ceres.DataDriven.Editor
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
         }
-        
+
         /// <summary>
         /// Request change DataTable in editor
         /// </summary>
         protected void RequestDataTableUpdate()
         {
-            DataTableEditorUtils.OnDataTablePreUpdate?.Invoke(Table);
+            DataTableEditorUtils.OnDataTablePreUpdate?.Invoke(Document);
+            Document.SetModified();
             RebuildEditorView();
-            DataTableEditorUtils.OnDataTablePostUpdate?.Invoke(Table);
+            DataTableEditorUtils.OnDataTablePostUpdate?.Invoke(Document);
         }
-        
+
         /// <summary>
         /// Rebuild editor gui view, called on DataTable changed
         /// </summary>
@@ -172,15 +176,18 @@ namespace Ceres.DataDriven.Editor
             _dataTableRowView?.Rebuild();
             serializedObject.Update();
         }
-        
+
         protected virtual void OnUndo(in UndoRedoInfo undo)
         {
             // Manually rebuild row view after undo
+            if (Document) Document.SetModified();
             RebuildEditorView();
         }
-        
+
         private static class Styles
         {
+            public static readonly GUIContent SaveButtonLabel = new("  Save", EditorGUIUtility.IconContent("SaveActive").image);
+
             public static readonly GUIContent ImportJsonButtonLabel = new("  Import from Json", EditorGUIUtility.IconContent("d_Import@2x").image);
 
             public static readonly GUIContent ExportJsonButtonLabel = new("  Export to Json", EditorGUIUtility.IconContent("SaveAs@2x").image);

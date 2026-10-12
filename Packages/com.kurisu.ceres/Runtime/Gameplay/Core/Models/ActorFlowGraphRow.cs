@@ -1,4 +1,5 @@
 using System;
+using MessagePack;
 using System.Collections.Generic;
 using System.Linq;
 using Ceres;
@@ -11,7 +12,7 @@ using UnityEngine;
 
 namespace Ceres.Gameplay
 {
-    [Serializable, AddressableDataTable(address: ActorFlowGraphDataTableManager.TableKey)]
+    [Serializable, MessagePackObject(true), AddressableDataTable(address: ActorFlowGraphDataTableManager.TableKey)]
     public class ActorFlowGraphRow : IDataTableRow
     {
         [Tooltip("Streaming flow graph asset reference")]

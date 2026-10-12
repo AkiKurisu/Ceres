@@ -1,4 +1,5 @@
 using System;
+using MessagePack;
 using UnityEngine;
 
 namespace Ceres
@@ -6,7 +7,7 @@ namespace Ceres
     /// <summary>
     /// A replacement of <see cref="Nullable{T}"/> that can be edited in the inspector
     /// </summary>
-    [Serializable]
+    [Serializable, MessagePackObject(true)]
     public struct Optional<T>
     {
         [SerializeField] 
@@ -19,10 +20,11 @@ namespace Ceres
         
         public readonly T Value => value;
 
-        public Optional(T initialValue, bool isEnabled = true)
+        [SerializationConstructor]
+        public Optional(T value, bool enabled = true)
         {
-            enabled = isEnabled;
-            value = initialValue;
+            this.enabled = enabled;
+            this.value = value;
         }
     }
 }

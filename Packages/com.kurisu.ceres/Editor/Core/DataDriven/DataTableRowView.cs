@@ -19,7 +19,7 @@ namespace Ceres.DataDriven.Editor
         
         private ReorderableList _reorderableList;
         
-        public DataTable Table { get; }
+        public DataTableDocument Table { get; }
         
         private SerializedObject _serializedObject;
         
@@ -29,9 +29,9 @@ namespace Ceres.DataDriven.Editor
                 
         private static readonly int[] DefaultIndices = Array.Empty<int>();
         
-        public DataTableRowView(DataTable dataTable)
+        public DataTableRowView(DataTableDocument document)
         {
-            Table = dataTable;
+            Table = document;
         }
         
         public void DrawGUI(SerializedObject serializedObject)
@@ -45,8 +45,9 @@ namespace Ceres.DataDriven.Editor
             {
                 var header = ReflectionUtility.GetSerializedFieldsName(rowStructType);
                 header.Insert(0, "Row Id");
-                var rows = Table.GetAllRows();
-                _reorderableList ??= new ReorderableList(rows, rowStructType, true, true, true, true);
+                var rows = Table.m_rows;
+                // The list reorders its own copy; the document reorders in the callback.
+                _reorderableList ??= new ReorderableList((DataTableDocument.DataTableRow[])rows.Clone(), rowStructType, true, true, true, true);
                 if (_selectIndex >= 0)
                 {
                     SelectRow(_selectIndex);
@@ -146,8 +147,8 @@ namespace Ceres.DataDriven.Editor
         public IDataTableRow[] GetSelectedRows()
         {
             if (_reorderableList == null) return Array.Empty<IDataTableRow>();
-            var rows = Table.GetAllRows();
-            return _reorderableList.selectedIndices.Select(x => rows[x]).ToArray();
+            var rows = Table.m_rows;
+            return _reorderableList.selectedIndices.Select(x => rows[x].RowData.NewObject()).ToArray();
         }
         
         /// <summary>
@@ -163,6 +164,7 @@ namespace Ceres.DataDriven.Editor
         private void RequestDataTableUpdate()
         {
             DataTableEditorUtils.OnDataTablePreUpdate?.Invoke(Table);
+            Table.SetModified();
             Rebuild();
             DataTableEditorUtils.OnDataTablePostUpdate?.Invoke(Table);
         }
