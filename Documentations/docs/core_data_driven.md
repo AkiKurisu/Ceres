@@ -1,21 +1,26 @@
 # Data Driven
 
-The Data Driven module stores typed rows in `DataTable` ScriptableObjects and
-loads those tables through the Ceres Resource system. Row schemas remain C#
-types, while designers edit instances in the Inspector or Data Table window.
+The Data Driven module stores typed rows in Data Tables. A table is authored as a
+`.datatable` text file and imported as a binary `DataTable` asset that the Ceres
+Resource system loads at runtime. Row schemas remain C# types, while designers
+edit rows in the Inspector or Data Table window.
 
 Use a Data Table for keyed, project-authored records such as items, levels, or
-characters. Use Configs for process-wide settings and live overrides.
+characters. Tables are read-only at runtime. Use Configs for process-wide
+settings and live overrides.
 
 ## Define a Row Schema
 
-A row is a serializable class implementing `IDataTableRow`:
+A row is a serializable class implementing `IDataTableRow`. Mark the row and
+every serializable type it contains with `[MessagePackObject(true)]`, which
+encodes members by name:
 
 ```csharp
 using System;
 using Ceres.DataDriven;
+using MessagePack;
 
-[Serializable]
+[Serializable, MessagePackObject(true)]
 [AddressableDataTable(
     group: "GameData",
     address: "items",
@@ -24,6 +29,9 @@ public sealed class ItemRow : IDataTableRow, IValidateRow
 {
     public string displayName;
     public int maxStack = 1;
+
+    [IgnoreMember]
+    public string designerNote;
 
     public bool ValidateRow(string rowId, out string reason)
     {
@@ -39,28 +47,58 @@ public sealed class ItemRow : IDataTableRow, IValidateRow
 }
 ```
 
-`IValidateRow` is optional. The Editor calls it when a table is updated and logs
-the returned reason when validation fails.
+Persisted members follow Unity's serialization rules. Members marked
+`[IgnoreMember]` stay in the `.datatable` file and are omitted from the runtime
+table, which suits Editor-only notes. Reference assets with `SoftAssetReference`
+or `SoftAssetReference<T>`; a row cannot hold `UnityEngine.Object` fields.
 
-`AddressableDataTableAttribute` is also optional. When present, the Editor
-registers Data Tables using that row type in the specified Addressables group.
-The address defaults to the asset name when `Address` is omitted; labels come
-from `Labels`.
+`IValidateRow` is optional. Validation runs on import, and a failing row is
+reported as an import warning. `AddressableDataTableAttribute` is also optional:
+`DataTableEditorUtils.RegisterTableToAssetGroup` and
+`RegisterAllDataTablesToAssetGroup` register tables whose row type has it in the
+specified Addressables group. The address defaults to the file name when
+`Address` is omitted; labels come from `Labels`.
 
 ## Author a Table
 
-1. Create a **Ceres > DataTable** asset.
-2. Select `ItemRow` as the row type.
+1. Select **Assets > Create > Ceres > DataTable** to create a `.datatable` file.
+2. Select the file and choose `ItemRow` as the row type.
 3. Add rows and assign a unique row ID to each record.
-4. Edit inline or open the dedicated Data Table window from the asset Inspector.
+4. Edit inline or double-click the table to open the Data Table window.
 
 ![DataTable Inspector](../resources/images/datatable.png)
 
 ![DataTable EditorWindow](../resources/images/datatable_editor_window.png)
 
-Changing the row type updates the serialized row metadata. Data Table editing
-supports Undo, JSON import and export, row validation, insertion, removal, and
-reordering.
+Edits are kept in a document until **Save**. Closing the Inspector or window
+saves pending edits. Saving writes the `.datatable` file and reimports the
+table. The Inspector and the window share one document for the same file.
+
+The source is UTF-8 JSON with one object per row:
+
+```json
+{
+  "rowType": "Game.ItemRow, Assembly-CSharp",
+  "rows": [
+    {
+      "id": "potion",
+      "data": {
+        "displayName": "Potion",
+        "maxStack": 10,
+        "designerNote": ""
+      }
+    }
+  ]
+}
+```
+
+Members missing from a row take their default values, and members unknown to
+the row type are ignored. Changing a row type reimports every table that uses
+it. **Import from Json** and **Export to Json** read and write this format.
+
+Import fails, and produces no table, when the file is not valid JSON, names an
+unknown row type, repeats a row ID, or contains a member that cannot be encoded.
+The Console names the table, row and member.
 
 ## Read Rows
 
@@ -73,18 +111,12 @@ ItemRow[] stackable = table.GetRows<ItemRow>(row => row.maxStack > 1);
 ItemRow[] all = table.GetAllRows<ItemRow>();
 ```
 
-`GetRow<T>(string)` returns `null` when the ID is absent. Index-based access uses
-the table's current order and throws for an invalid index. `GetRowMap()` creates
-a dictionary keyed by row ID.
+`GetRow<T>(string)` returns `null` when the ID is absent, and `ContainsRow` and
+`GetRowIndex` test an ID. Index-based access uses the authored order and throws
+for an invalid index. `GetRowMap()` creates a dictionary keyed by row ID.
 
-The returned rows are cached deserialized objects owned by the table. Treat
-authored tables as read-only at runtime. Editor tooling that needs independent
-copies can use `DataTableEditorUtils.GetAllRowsSafe` or `GetRowMapSafe`.
-
-The public mutation API consists of `AddRow`, `InsertRow`, `UpdateRow`,
-`AddOrUpdateRow`, `RemoveRow`, `RemoveAllRows`, and `ReorderRow`. `AddRow` and
-`InsertRow` return `false` when the requested row ID already exists;
-`UpdateRow` returns `false` when it does not exist.
+Rows decode on first access and are cached by the table. Treat them as
+read-only; the runtime table has no mutation API.
 
 ## Load Tables with a Manager
 
@@ -137,19 +169,47 @@ Enable **Initialize Managers** in **Project Settings > Ceres** only when every
 manager should load before normal gameplay. Otherwise initialize the required
 managers from the project's own startup flow.
 
-## Editor Integration
+## Editor Scripting
 
-`DataTableEditorUtils` is the supported entry point for custom Editor tools. It
-can set row types, import or export JSON, create safe row copies, validate IDs,
-and register Addressables entries. `OnDataTablePreUpdate` and
-`OnDataTablePostUpdate` allow tooling to observe table edits.
+Editor tools change tables through `DataTableDocument`, never through the
+imported `DataTable`. `DataTableEditorUtils` covers the common cases:
+
+```csharp
+DataTable table = DataTableEditorUtils.CreateDataTable("Assets/Data/Items.datatable", typeof(ItemRow));
+
+DataTableEditorUtils.Edit(table, document =>
+{
+    document.AddOrUpdateRow("potion", new ItemRow { displayName = "Potion", maxStack = 10 });
+});
+```
+
+`Edit` saves the table when the edit changed it. Inside `BeginBatch()`, edits to
+the same table share one document and every changed table saves and imports
+together when the scope ends:
+
+```csharp
+using (DataTableEditorUtils.BeginBatch())
+{
+    foreach (var item in importedItems)
+        DataTableEditorUtils.Edit(table, document => document.AddOrUpdateRow(item.Id, item.Row));
+}
+```
+
+Read rows for Editor tooling with `DataTableEditorUtils.GetAllRowsSafe` or
+`GetRowMapSafe`. They return copies read from the `.datatable` file, including
+`[IgnoreMember]` members such as the asset GUID of a soft reference, which the
+runtime table does not contain.
+
+`DataTableDocument.Open` returns the document already open for a file, so tools
+and editors share pending edits. Release a document with `Dispose`, or with
+`Close(true)` to save pending edits when the last holder releases it.
 
 For a custom window, derive behavior from `DataTableEditorExtension` and open it
-with `DataTableEditorWindow.OpenWindowWithExtensions`. The Editor serializer is
-selected in **Project Settings > Ceres** and defaults to
-`DataTableEditorJsonSerializer`.
+with `DataTableEditorWindow.OpenWindowWithExtensions`. `OnDataTablePreUpdate`
+and `OnDataTablePostUpdate` observe edits made in the editors.
 
 Related API: <xref:Ceres.DataDriven.DataTable>,
 <xref:Ceres.DataDriven.DataTableManager>,
-<xref:Ceres.DataDriven.DataTableManager%601>, and
+<xref:Ceres.DataDriven.DataTableManager%601>,
+<xref:Ceres.DataDriven.Editor.DataTableDocument>, and
 <xref:Ceres.DataDriven.Editor.DataTableEditorUtils>.

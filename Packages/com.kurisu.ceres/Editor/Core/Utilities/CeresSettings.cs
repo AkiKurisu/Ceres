@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Ceres.Configs;
 using Ceres.DataDriven;
-using Ceres.DataDriven.Editor;
 using Ceres.Modules;
 using Ceres.Schedulers;
 using Ceres.Serialization;
@@ -22,8 +21,6 @@ namespace Ceres.Editor
         public bool initializeDataTableManagerOnLoad;
 
         public bool validateDataTableBeforeLoad = true;
-
-        public SerializedType<IDataTableEditorSerializer> dataTableEditorSerializer = SerializedType<IDataTableEditorSerializer>.FromType(typeof(DataTableEditorJsonSerializer));
 
         public bool inlineRowReadOnly;
 
@@ -69,9 +66,6 @@ namespace Ceres.Editor
             public static readonly GUIContent StackTraceSchedulerLabel = new("Stack Trace",
                 "Allow trace scheduled task in editor.");
 
-            public static readonly GUIContent DataTableSerializerLabel = new("Editor Serializer",
-                "Set the serializer type in DataTable Editor.");
-
             public static readonly GUIContent InitializeDataTableManagerOnLoadLabel = new("Initialize Managers",
                 "Initialize all DataTableManager instances before the scene loads.");
 
@@ -101,12 +95,6 @@ namespace Ceres.Editor
 
         public override void OnActivate(string searchContext, VisualElement rootElement)
         {
-            if (!CeresSettings.Instance.dataTableEditorSerializer.IsValid())
-            {
-                CeresSettings.Instance.dataTableEditorSerializer =
-                    SerializedType<IDataTableEditorSerializer>.FromType(typeof(DataTableEditorJsonSerializer));
-                CeresSettings.SaveSettings();
-            }
             if (!CeresSettings.Instance.configSerializer.IsValid())
             {
                 CeresSettings.Instance.configSerializer = SerializedType<ISerializeFormatter>.FromType(typeof(TextSerializeFormatter));
@@ -183,14 +171,9 @@ namespace Ceres.Editor
             GUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.PropertyField(_settingsObject.FindProperty(nameof(CeresSettings.initializeDataTableManagerOnLoad)), Styles.InitializeDataTableManagerOnLoadLabel);
             EditorGUILayout.PropertyField(_settingsObject.FindProperty(nameof(CeresSettings.validateDataTableBeforeLoad)), Styles.ValidateDataTableBeforeLoadLabel);
-            EditorGUILayout.PropertyField(_settingsObject.FindProperty(nameof(CeresSettings.dataTableEditorSerializer)), Styles.DataTableSerializerLabel);
             EditorGUILayout.PropertyField(_settingsObject.FindProperty(nameof(CeresSettings.inlineRowReadOnly)), Styles.InlineRowReadOnlyLabel);
             if (_settingsObject.ApplyModifiedPropertiesWithoutUndo())
             {
-                if (!CeresSettings.Instance.dataTableEditorSerializer.IsValid())
-                {
-                    CeresSettings.Instance.dataTableEditorSerializer = SerializedType<IDataTableEditorSerializer>.FromType(typeof(DataTableEditorJsonSerializer));
-                }
                 CeresSettings.SaveSettings();
             }
             GUILayout.EndVertical();

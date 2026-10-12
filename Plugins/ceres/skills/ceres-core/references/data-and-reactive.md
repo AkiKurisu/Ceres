@@ -4,7 +4,7 @@ Inspect the owning subsystem before introducing a new container, serializer, or 
 
 ## Decision guide
 
-- **DataDriven**: use `DataTable` rows and `DataTableManager` for authored lookup data. Row validation belongs at import or load boundaries, not at every read.
+- **DataDriven**: use `DataTable` rows and `DataTableManager` for authored lookup data. Tables are `.datatable` files imported as read-only binary assets; row types need `[MessagePackObject(true)]`. Editor tools change tables through `DataTableEditorUtils.Edit` and read Editor-only members with `GetAllRowsSafe`. Row validation belongs at import, not at every read.
 - **Schedulers**: use `Scheduler` and its frame/timer helpers when work belongs to Ceres timing. Do not add another hidden runner for the same lifetime.
 - **Serialization**: use `SerializedType`, `SerializedObject<T>`, `SaveLoadSerializer`, and redirect attributes for Ceres polymorphic data. A renamed serialized type needs an intentional redirect.
 - **Collections**: prefer `SparseArray<T>`, `PriorityQueue<T>`, `RandomList<T>`, and existing extensions when their semantics fit. Use standard collections when Ceres adds no benefit.
@@ -13,6 +13,7 @@ Inspect the owning subsystem before introducing a new container, serializer, or 
 ## Source anchors
 
 - `Runtime/Core/DataDriven`
+- `Editor/Core/DataDriven`
 - `Runtime/Core/Schedulers`
 - `Runtime/Core/Serialization`
 - `Runtime/Core/Collections`

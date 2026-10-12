@@ -2,11 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Ceres.Editor;
 using Ceres.Resource.Editor;
 using UnityEditor;
 using UnityEngine;
-using UObject = UnityEngine.Object;
 
 namespace Ceres.DataDriven.Editor
 {
@@ -14,84 +12,158 @@ namespace Ceres.DataDriven.Editor
     /// Delegate for draw editor toolbar
     /// </summary>
     public delegate void DrawToolBarDelegate(DataTableEditor tableEditor);
-    
+
     /// <summary>
-    /// Delegate for observe DataTable update in editor
+    /// Delegate for observe DataTable document update in editor
     /// </summary>
-    public delegate void DataTableUpdateDelegate(DataTable tableEditor);
-    
+    public delegate void DataTableUpdateDelegate(DataTableDocument document);
+
     /// <summary>
     /// Utility for editing DataTable in editor script
     /// </summary>
     public static class DataTableEditorUtils
     {
         public static GUIStyle ToolBarButtonStyle => EditorStyles.toolbarButton;
-        
+
         /// <summary>
-        /// Call before dataTable internal update
+        /// Call before a document is rebuilt in the editor
         /// </summary>
         public static DataTableUpdateDelegate OnDataTablePreUpdate;
-        
+
         /// <summary>
-        /// Call after dataTable internal update
+        /// Call after a document is rebuilt in the editor
         /// </summary>
         public static DataTableUpdateDelegate OnDataTablePostUpdate;
-        
+
+        /// <summary>
+        /// Create a .datatable source with the given row type and import it
+        /// </summary>
+        public static DataTable CreateDataTable(string assetPath, Type rowType)
+        {
+            using var document = DataTableDocument.Create(assetPath, rowType);
+            document.Save();
+            return AssetDatabase.LoadAssetAtPath<DataTable>(assetPath);
+        }
+
+        private static int _batchDepth;
+
+        private static readonly Dictionary<string, DataTableDocument> BatchDocuments = new(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// Open the source of a table, apply an edit and save it when the edit changed the document
+        /// </summary>
+        public static void Edit(DataTable dataTable, Action<DataTableDocument> edit)
+        {
+            Edit(AssetDatabase.GetAssetPath(dataTable), edit);
+        }
+
+        /// <summary>
+        /// Open a source, apply an edit and save it when the edit changed the document.
+        /// Inside <see cref="BeginBatch"/> the document stays open and saves when the batch ends.
+        /// </summary>
+        public static void Edit(string assetPath, Action<DataTableDocument> edit)
+        {
+            if (_batchDepth > 0)
+            {
+                if (!BatchDocuments.TryGetValue(assetPath, out var batchDocument) || !batchDocument)
+                {
+                    batchDocument = DataTableDocument.Open(assetPath);
+                    BatchDocuments[assetPath] = batchDocument;
+                }
+                edit(batchDocument);
+                return;
+            }
+            using var document = DataTableDocument.Open(assetPath);
+            edit(document);
+            if (document.IsModified) document.Save();
+        }
+
+        /// <summary>
+        /// Defer saving of every <see cref="Edit(string, Action{DataTableDocument})"/> until the returned scope is disposed;
+        /// the changed tables then import together
+        /// </summary>
+        public static IDisposable BeginBatch()
+        {
+            _batchDepth++;
+            return new BatchScope();
+        }
+
+        private static void EndBatch()
+        {
+            if (--_batchDepth > 0) return;
+            var documents = BatchDocuments.Values.Where(document => document).ToArray();
+            BatchDocuments.Clear();
+            AssetDatabase.StartAssetEditing();
+            try
+            {
+                foreach (var document in documents)
+                {
+                    if (document.IsModified) document.Save();
+                }
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+                foreach (var document in documents)
+                {
+                    document.Dispose();
+                }
+            }
+        }
+
+        private sealed class BatchScope : IDisposable
+        {
+            private bool _disposed;
+
+            public void Dispose()
+            {
+                if (_disposed) return;
+                _disposed = true;
+                EndBatch();
+            }
+        }
+
         /// <summary>
         /// Set row struct type
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        public static void SetRowStruct<T>(DataTable dataTable) where T : class, IDataTableRow
+        public static void SetRowStruct<T>(DataTableDocument document) where T : class, IDataTableRow
         {
-            Undo.RecordObject(dataTable, "Update DataTable Row Struct");
-            dataTable.SetRowStruct(typeof(T));
-            EditorUtility.SetDirty(dataTable);
+            SetRowStruct(document, typeof(T));
         }
-        
+
         /// <summary>
         /// Set row struct type
         /// </summary>
-        /// <param name="dataTable"></param>
-        /// <param name="rowType"></param>
-        public static void SetRowStruct(DataTable dataTable, Type rowType)
+        public static void SetRowStruct(DataTableDocument document, Type rowType)
         {
-            Undo.RecordObject(dataTable, "Update DataTable Row Struct");
-            dataTable.SetRowStruct(rowType);
-            EditorUtility.SetDirty(dataTable);
+            Undo.RecordObject(document, "Update DataTable Row Struct");
+            document.SetRowStruct(rowType);
         }
-        
+
         /// <summary>
-        /// Export dataTable to json
+        /// Export the document as source text
         /// </summary>
-        /// <param name="dataTable"></param>
-        /// <returns></returns>
-        public static string ExportJson(DataTable dataTable)
+        public static string ExportJson(DataTableDocument document)
         {
-            return CeresSettings.Instance.dataTableEditorSerializer.GetObject().Serialize(dataTable);
+            return document.ToSource().Write();
         }
-        
+
         /// <summary>
-        /// Import json and overwrite dataTable
+        /// Replace the document with source text
         /// </summary>
-        /// <param name="dataTable"></param>
-        /// <param name="jsonData"></param>
-        public static void ImportJson(DataTable dataTable, string jsonData)
+        public static void ImportJson(DataTableDocument document, string jsonData)
         {
-            Undo.RecordObject(dataTable, "Overwrite DataTable from Json");
-            CeresSettings.Instance.dataTableEditorSerializer.GetObject().Deserialize(dataTable, jsonData);
+            Undo.RecordObject(document, "Overwrite DataTable from Json");
+            document.Load(DataTableSource.Parse(jsonData));
+            document.SetModified();
         }
-        
+
         /// <summary>
         /// Validate input row id and out right one
         /// </summary>
-        /// <param name="dataTable"></param>
-        /// <param name="oldRowId"></param>
-        /// <param name="newRowId"></param>
-        /// <param name="result"></param>
-        /// <returns></returns>
-        public static bool ValidateNewRowId(DataTable dataTable, string oldRowId, string newRowId, out string result)
+        public static bool ValidateNewRowId(DataTableDocument document, string oldRowId, string newRowId, out string result)
         {
-            if (dataTable.GetRowMap().ContainsKey(newRowId))
+            if (document.ContainsRow(newRowId))
             {
                 result = oldRowId;
                 return false;
@@ -99,80 +171,52 @@ namespace Ceres.DataDriven.Editor
             result = newRowId;
             return true;
         }
-        
+
         /// <summary>
         /// Get a valid new row id
         /// </summary>
-        /// <param name="dataTable"></param>
-        /// <returns></returns>
-        public static string GetNewRowId(DataTable dataTable)
+        public static string GetNewRowId(DataTableDocument document)
         {
-            return dataTable.NewRowId();
+            return document.NewRowId();
         }
-        
+
         /// <summary>
-        /// Get data rows from table without modify default object
+        /// Read copies of all rows from a table's source, including Editor-only members
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         public static T[] GetAllRowsSafe<T>(DataTable dataTable) where T : class, IDataTableRow
         {
-            return dataTable.GetAllRowsSafe<T>();
+            using var document = DataTableDocument.Open(dataTable);
+            return document.GetAllRows<T>();
         }
-        
+
         /// <summary>
-        /// Get data rows from table without modify default object
+        /// Read copies of all rows from a table's source, including Editor-only members
         /// </summary>
-        /// <param name="dataTable"></param>
-        /// <returns></returns>
         public static IDataTableRow[] GetAllRowsSafe(DataTable dataTable)
         {
-            return dataTable.GetAllRowsSafe();
+            using var document = DataTableDocument.Open(dataTable);
+            return document.GetAllRows();
         }
-        
+
         /// <summary>
-        /// Get all data rows as map with RowId as key without modify default object
+        /// Read copies of all rows keyed by row id from a table's source, including Editor-only members
         /// </summary>
-        /// <returns></returns>
         public static Dictionary<string, IDataTableRow> GetRowMapSafe(DataTable dataTable)
         {
-            return dataTable.GetRowMapSafe();
+            using var document = DataTableDocument.Open(dataTable);
+            return document.GetRowMap();
         }
-        
-        /// <summary>
-        /// Post-processing after update DataTable, which will clear editor object cache and keep row struct type right.
-        /// </summary>
-        /// <remarks>
-        /// When use version control, update object handle will let file checkout.
-        /// So cleanup after editor completed use.
-        /// </remarks>
-        public static void Modify(DataTable dataTable)
-        {
-            dataTable.InternalUpdate();
-            dataTable.Cleanup();
-            // Since editor objects referencing DataTable, we need reallocate managers for data refresh.
-            DataTableManager.ReleaseAll();
-        }
-        
-        /// <summary>
-        /// Clear DataTable editor object cache
-        /// </summary>
-        /// <param name="dataTable"></param>
-        public static void Cleanup(DataTable dataTable)
-        {
-            dataTable.Cleanup();
-        }
-        
+
         /// <summary>
         /// Register a DataTable if defined <see cref="AddressableDataTableAttribute"/>
         /// </summary>
-        /// <param name="dataTable"></param>
         public static void RegisterTableToAssetGroup(DataTable dataTable)
         {
-            var structType = dataTable.GetRowStruct()?.GetType();
+            var structType = dataTable.GetRowStructType();
 
             var addressableAttribute = structType?.GetCustomAttribute<AddressableDataTableAttribute>();
             if (addressableAttribute == null) return;
-            
+
             string address = addressableAttribute.Address ?? dataTable.name;
             var group = ResourceEditorUtils.GetOrCreateAssetGroup(addressableAttribute.Group);
             using (group.Modify())
@@ -186,44 +230,22 @@ namespace Ceres.DataDriven.Editor
         /// </summary>
         public static void RegisterAllDataTablesToAssetGroup()
         {
-            var dataTables = AssetDatabase.FindAssets($"t:{typeof(DataTable)}")
+            var dataTables = AssetDatabase.FindAssets($"t:{nameof(DataTable)}")
                 .Select(guid => AssetDatabase.LoadAssetAtPath<DataTable>(AssetDatabase.GUIDToAssetPath(guid)))
+                .Where(table => table)
                 .ToArray();
             foreach (var dataTable in dataTables)
             {
                 RegisterTableToAssetGroup(dataTable);
             }
             AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
         }
-    }
-    
-    /// <summary>
-    /// Implement to customize editor serialization for <see cref="DataTable"/>
-    /// </summary>
-    public interface IDataTableEditorSerializer
-    {
-        string Serialize(DataTable dataTable);
-        
-        void Deserialize(DataTable dataTable, string jsonData);
-    }
-    
-    /// <summary>
-    /// Default serializer using Unity built-in <see cref="JsonUtility"/>
-    /// </summary>
-    public class DataTableEditorJsonSerializer : IDataTableEditorSerializer
-    {
-        public string Serialize(DataTable dataTable)
+
+        [MenuItem("Assets/Create/Ceres/DataTable", false, 0)]
+        private static void CreateDataTableAsset()
         {
-            var instance = UObject.Instantiate(dataTable);
-            DataTableEditorUtils.Modify(instance);
-            return JsonUtility.ToJson(instance);
-        }
-        
-        public void Deserialize(DataTable dataTable, string jsonData)
-        {
-            JsonUtility.FromJsonOverwrite(jsonData, dataTable);
-            DataTableEditorUtils.Modify(dataTable);
+            ProjectWindowUtil.CreateAssetWithContent("New DataTable." + DataTableSource.Extension,
+                new DataTableSource(string.Empty, Array.Empty<DataTableSource.Row>()).Write());
         }
     }
 }

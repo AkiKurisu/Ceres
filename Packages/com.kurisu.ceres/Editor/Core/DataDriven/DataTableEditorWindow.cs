@@ -26,11 +26,9 @@ namespace Ceres.DataDriven.Editor
 
         private const string PathCacheKey = "DataTableEditorWindow_LastPath";
 
-        private DataTable _currentTarget;
+        private DataTableDocument _document;
         
         private InlineDataTableEditor _currentEditor;
-        
-        private string _currentPath;
         
         private static GUIStyle _detailsStyle;
         
@@ -88,14 +86,7 @@ namespace Ceres.DataDriven.Editor
         
         private void OnDisable()
         {
-            if (!_currentEditor) return;
-            
-            /* Auto register table if it has AddressableDataTableAttribute */
-            DataTableEditorUtils.RegisterTableToAssetGroup(_currentEditor.Table);
-            /* Force cleanup editor cache */
-            DestroyImmediate(_currentEditor);
-            EditorUtility.SetDirty(_currentEditor.Table);
-            AssetDatabase.SaveAssetIfDirty(_currentEditor.Table);
+            CloseDocument();
             /* Release extensions */
             if (_extensions != null)
             {
@@ -130,17 +121,17 @@ namespace Ceres.DataDriven.Editor
             if (GUILayout.Button(OpenDataTableContent, EditorStyles.toolbarButton, EmptyLayoutOption))
             {
                 string lastPath = EditorPrefs.GetString(PathCacheKey, Application.dataPath);
-                string path = EditorUtility.OpenFilePanel("Select DataTable to edit", lastPath, "asset");
+                string path = EditorUtility.OpenFilePanel("Select DataTable to edit", lastPath, DataTableSource.Extension);
                 if (!string.IsNullOrEmpty(path))
                 {
                     EditorPrefs.SetString(PathCacheKey, path);
-                    var relativePath = path.Replace(Application.dataPath, "Assets/");
+                    var relativePath = FileUtil.GetProjectRelativePath(path);
                     var dataTable = AssetDatabase.LoadAssetAtPath<DataTable>(relativePath);
-                    OpenDataTable(dataTable);
+                    if (dataTable) OpenDataTable(dataTable);
                 }
                 GUIUtility.ExitGUI();
             }
-            GUILayout.Label(_currentPath);
+            if (_document) GUILayout.Label(_document.AssetPath);
             GUILayout.FlexibleSpace();
 
             EditorGUILayout.EndHorizontal();
@@ -149,13 +140,18 @@ namespace Ceres.DataDriven.Editor
         
         private void OpenDataTable(DataTable dataTable)
         {
-            _currentTarget = dataTable;
-            _currentPath = AssetDatabase.GetAssetPath(dataTable);
-            if (_currentEditor)
+            CloseDocument();
+            var path = AssetDatabase.GetAssetPath(dataTable);
+            try
             {
-                DestroyImmediate(_currentEditor);
+                _document = DataTableDocument.Open(path);
             }
-            _currentEditor = (InlineDataTableEditor)UEditor.CreateEditor(_currentTarget, typeof(InlineDataTableEditor));
+            catch (FormatException e)
+            {
+                Debug.LogError($"[DataTable] {path} is not a valid source: {e.Message}");
+                return;
+            }
+            _currentEditor = (InlineDataTableEditor)UEditor.CreateEditor(_document, typeof(InlineDataTableEditor));
             /* Initialize extensions */
             if (_extensions != null)
             {
@@ -166,6 +162,17 @@ namespace Ceres.DataDriven.Editor
             }
         }
         
+        private void CloseDocument()
+        {
+            if (_currentEditor)
+            {
+                DestroyImmediate(_currentEditor);
+            }
+            _currentEditor = null;
+            if (_document) _document.Close(true);
+            _document = null;
+        }
+
         private void RenderTable()
         {
             EditorGUILayout.BeginVertical(EmptyLayoutOption);
@@ -207,7 +214,7 @@ namespace Ceres.DataDriven.Editor
 #else
             var asset = EditorUtility.InstanceIDToObject(instanceId);
 #endif
-            if (asset is DataTable dataTable && (dataTable.hideFlags & HideFlags.HideInInspector) == 0)
+            if (asset is DataTable dataTable && AssetDatabase.GetAssetPath(dataTable).EndsWith("." + DataTableSource.Extension, StringComparison.OrdinalIgnoreCase))
             {
                 OpenWindow(dataTable);
                 Selection.SetActiveObjectWithContext(null, null);
@@ -229,16 +236,16 @@ namespace Ceres.DataDriven.Editor
                 DrawRowView();
             }
             
-            protected override DataTableRowView CreateDataTableRowView(DataTable table)
+            protected override DataTableRowView CreateDataTableRowView(DataTableDocument document)
             {
-                var rowView = base.CreateDataTableRowView(table);
+                var rowView = base.CreateDataTableRowView(document);
                 rowView.ReadOnly = true;
                 return rowView;
             }
             
             public void DrawSelectedRowDetail()
             {
-                if (Table.GetRowStructType() == null) return;
+                if (Document.GetRowStructType() == null) return;
 
                 var rowView = GetDataTableRowView();
                 if (rowView.GetSelectedIndices().Count > 0)
@@ -246,7 +253,7 @@ namespace Ceres.DataDriven.Editor
                     int index = rowView.GetSelectedIndices()[0];
                     var rowProp = rowView.GetSelectedRowProperties(serializedObject)[0];
                     EditorGUI.BeginChangeCheck();
-                    DrawDataTableRowDetail(rowProp, Table.GetRowStructType());
+                    DrawDataTableRowDetail(rowProp, Document.GetRowStructType());
                     if (EditorGUI.EndChangeCheck())
                     {
                         serializedObject.ApplyModifiedProperties();
@@ -287,8 +294,7 @@ namespace Ceres.DataDriven.Editor
             {
                 GlobalObjectManager.Cleanup();
                 Undo.undoRedoEvent -= OnUndo;
-                Table.Cleanup();
-                // Register DataTable to Addressable in EditorWindow::OnDisable
+                if (Document) Document.Cleanup();
             }
         }
     }

@@ -5,6 +5,17 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-10-12
+
+### Changed
+
+- Data Tables are authored as `.datatable` text files and imported as read-only binary tables.
+- Ceres depends on MessagePack and MessagePack for Unity.
+
+### Removed
+
+- Removed the earlier Data Table asset format and runtime editing of Data Tables.
+
 ## [1.1.0] - 2026-10-11
 
 ### Added
