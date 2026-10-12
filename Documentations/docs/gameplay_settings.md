@@ -148,6 +148,7 @@ The window UXML names these elements:
 | `settings-detail` | VisualElement | Detail area of the focused setting |
 | `settings-detail-title`, `settings-detail-description`, `settings-detail-reason`, `settings-detail-restart` | Label | Detail text |
 | `settings-detail-impact` | VisualElement | Receives one impact template per declared cost |
+| `settings-detail-preview` | VisualElement | Optional; shows the focused setting's preview image as its background |
 | `settings-close`, `settings-reset-page`, `settings-revert`, `settings-apply` | Button | Window actions; Apply shows while values are staged |
 | `settings-confirm` | VisualElement | Shown during a confirmation countdown |
 | `settings-confirm-message` | Label | Countdown prompt |
@@ -179,3 +180,38 @@ The host survives scene loads. `Open` without a page shows the page that was
 open last, `Cancel()` reverts a pending confirmation before it closes the window,
 and `IsOpen` and `OpenChanged` report the window state. `Touch` defaults to the
 `Touch` trait of the device.
+
+### Preview images
+
+A setting or an option can name a preview image by key. Keys are plain strings;
+your project decides which image each key stands for.
+
+```csharp
+lighting.Add(new ToggleSetting("graphics.ssao", "Ambient occlusion").WithPreview("graphics.ssao"));
+lighting.Add(new ChoiceSetting<int>("graphics.gi", "Global illumination")
+    .Option(0, "Off", preview: "graphics.gi.off")
+    .Option(1, "Screen space", preview: "graphics.gi.ssgi"));
+```
+
+Assign an `ISettingsPreviewSource` to `host.PreviewSource` to supply the images:
+
+```csharp
+public sealed class PreviewImages : ISettingsPreviewSource
+{
+    public async UniTask<Texture2D> LoadAsync(string key, CancellationToken cancellationToken)
+    {
+        // Return null when there is no image for the key.
+        return await LoadFromYourContent(key, cancellationToken);
+    }
+
+    public void Release(string key) => ReleaseFromYourContent(key);
+}
+```
+
+The window shows the image in `settings-detail-preview`. For a choice, it uses
+the option under the pointer, then the selected option, then the setting's own
+key; the element is hidden when no image applies. Images load on first use, stay
+cached while the window is open and are released when it closes. A choice
+control reports the option under the pointer by implementing
+`ISettingsChoiceHighlight`; without it the image follows the selected option.
+The touch layout shows no previews.

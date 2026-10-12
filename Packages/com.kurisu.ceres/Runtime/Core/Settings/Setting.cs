@@ -25,6 +25,11 @@ namespace Ceres.Settings
 
         public bool RequiresRestart { get; internal set; }
 
+        /// <summary>
+        /// Key of the image the window shows for this setting; the product resolves keys to images
+        /// </summary>
+        public string Preview { get; internal set; }
+
         public SettingsSection Section { get; internal set; }
 
         protected Setting(string id, string label)

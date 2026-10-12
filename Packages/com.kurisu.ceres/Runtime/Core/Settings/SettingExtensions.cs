@@ -18,6 +18,12 @@ namespace Ceres.Settings
             return setting;
         }
 
+        public static TSetting WithPreview<TSetting>(this TSetting setting, string key) where TSetting : Setting
+        {
+            setting.Preview = key;
+            return setting;
+        }
+
         public static TSetting RequireRestart<TSetting>(this TSetting setting) where TSetting : Setting
         {
             setting.RequiresRestart = true;

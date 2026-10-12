@@ -68,12 +68,12 @@ namespace Ceres.Settings
             UnmatchedLabel = customLabel;
         }
 
-        public PresetSetting Option(string label, Action<Preset> build, Func<SettingEditState> condition = null)
+        public PresetSetting Option(string label, Action<Preset> build, Func<SettingEditState> condition = null, string preview = null)
         {
             var preset = new Preset();
             build(preset);
             _presets.Add(preset);
-            _options.Add(new ChoiceOption(label, condition));
+            _options.Add(new ChoiceOption(label, condition, preview));
             _changed = Observable.Merge(_presets.SelectMany(p => p.Assignments).Select(a => a.Target).Distinct()
                 .Select(target => target.Changed).ToArray());
             return this;

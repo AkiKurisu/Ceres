@@ -23,6 +23,16 @@ namespace Ceres.Settings.UI
 
         public SettingEditState State { get; private set; }
 
+        /// <summary>
+        /// Key of the image to show for this row now, or null
+        /// </summary>
+        public virtual string Preview => Setting.Preview;
+
+        /// <summary>
+        /// Raised when <see cref="Preview"/> changes without a value change
+        /// </summary>
+        public event Action PreviewChanged;
+
         protected SettingRow(Setting setting, VisualTreeAsset template, string controlName, Func<SettingsSession> session)
         {
             Setting = setting;
@@ -66,6 +76,11 @@ namespace Ceres.Settings.UI
         }
 
         protected abstract void RefreshValue();
+
+        protected void NotifyPreviewChanged()
+        {
+            PreviewChanged?.Invoke();
+        }
 
         public virtual void Step(int direction)
         {
@@ -169,6 +184,8 @@ namespace Ceres.Settings.UI
 
         private readonly ISettingsChoiceControl _control;
 
+        private int _highlighted = -1;
+
         public ChoiceRow(Setting setting, IChoiceSetting choice, VisualTreeAsset template, Func<SettingsSession> session)
             : base(setting, template, SettingsWindowTemplates.RowChoiceName, session)
         {
@@ -177,6 +194,24 @@ namespace Ceres.Settings.UI
             _control.UnmatchedText = choice.UnmatchedLabel;
             _control.SetChoices(choice.Options.Select(option => option.Label).ToArray());
             ((VisualElement)_control).RegisterCallback<ChangeEvent<int>>(evt => Write(evt.newValue));
+            if (_control is ISettingsChoiceHighlight highlight)
+            {
+                highlight.Highlighted += index =>
+                {
+                    if (_highlighted == index) return;
+                    _highlighted = index;
+                    NotifyPreviewChanged();
+                };
+            }
+        }
+
+        public override string Preview
+        {
+            get
+            {
+                int index = _highlighted >= 0 && _highlighted < _choice.Options.Count ? _highlighted : Current;
+                return index >= 0 ? _choice.Options[index].Preview ?? Setting.Preview : Setting.Preview;
+            }
         }
 
         private int Current => Session().TryGetStagedChoice(_choice, out int staged) ? staged : _choice.SelectedIndex;

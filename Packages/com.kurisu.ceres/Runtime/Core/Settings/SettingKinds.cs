@@ -48,10 +48,16 @@ namespace Ceres.Settings
 
         public string Label { get; }
 
-        public ChoiceOption(string label, Func<SettingEditState> condition = null)
+        /// <summary>
+        /// Key of the image the window shows for this option, or null to show the setting's
+        /// </summary>
+        public string Preview { get; }
+
+        public ChoiceOption(string label, Func<SettingEditState> condition = null, string preview = null)
         {
             Label = label;
             _condition = condition;
+            Preview = preview;
         }
 
         public SettingEditState EvaluateEditState()
@@ -100,10 +106,10 @@ namespace Ceres.Settings
         {
         }
 
-        public ChoiceSetting<T> Option(T value, string label, Func<SettingEditState> condition = null)
+        public ChoiceSetting<T> Option(T value, string label, Func<SettingEditState> condition = null, string preview = null)
         {
             _values.Add(value);
-            _options.Add(new ChoiceOption(label, condition));
+            _options.Add(new ChoiceOption(label, condition, preview));
             return this;
         }
 

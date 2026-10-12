@@ -41,6 +41,11 @@ namespace Ceres.Settings.UI
         /// </summary>
         public bool Touch { get; set; }
 
+        /// <summary>
+        /// Images for setting preview keys; without one the window shows no previews
+        /// </summary>
+        public ISettingsPreviewSource PreviewSource { get; set; }
+
         public bool IsOpen => _view is { IsOpen: true };
 
         public SettingsWindowView View => _view;
@@ -73,6 +78,7 @@ namespace Ceres.Settings.UI
             _view ??= new SettingsWindowView(document.rootVisualElement, templates, Text, Close);
             bool wasOpen = IsOpen;
             _view.SetTouch(Touch);
+            _view.PreviewSource = PreviewSource;
             UpdateLayout(true);
             _view.Open(registry, pageId);
             if (!wasOpen) OpenChanged?.Invoke(true);

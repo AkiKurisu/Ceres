@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Ceres.UIElements;
+using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -28,6 +30,7 @@ namespace Ceres.Settings.UI
 
         public const string TabSelectedClassName = "settings-tab--selected";
         public const string SectionFirstClassName = "settings-section--first";
+        public const string DetailPreviewName = "settings-detail-preview";
 
         [UIToolkitQuery] private VisualElement _root;
         [UIToolkitQuery] private Button _close;
@@ -46,6 +49,12 @@ namespace Ceres.Settings.UI
         [UIToolkitQuery] private Label _confirmMessage;
         [UIToolkitQuery] private Button _confirmRevert;
         [UIToolkitQuery] private Button _confirmKeep;
+
+        private readonly VisualElement _detailPreview;
+        private readonly Dictionary<string, Texture2D> _previews = new();
+        private readonly HashSet<string> _loadingPreviews = new();
+        private CancellationTokenSource _previewCancellation;
+        private bool _touch;
 
         private readonly UIToolkitBindingScope _scope = new();
         private readonly List<Page> _pages = new();
@@ -67,9 +76,15 @@ namespace Ceres.Settings.UI
 
         public string CurrentPageId => _page?.Model.Id;
 
+        /// <summary>
+        /// Images for preview keys; without a source, or in the touch layout, the window shows no previews
+        /// </summary>
+        public ISettingsPreviewSource PreviewSource { get; set; }
+
         public SettingsWindowView(VisualElement root, SettingsWindowTemplates templates, SettingsWindowText text, Action close)
         {
             BindGeneratedElements(root);
+            _detailPreview = root.Q(DetailPreviewName);
             _templates = templates;
             _text = text;
             _onClose = close;
@@ -110,6 +125,7 @@ namespace Ceres.Settings.UI
             if (!IsOpen) return;
             _changes?.Dispose();
             _changes = null;
+            ReleasePreviews();
             _session.Close();
             _session = null;
             _root.style.display = DisplayStyle.None;
@@ -128,6 +144,7 @@ namespace Ceres.Settings.UI
 
         public void SetTouch(bool touch)
         {
+            _touch = touch;
             _root.EnableInClassList("ceres-touch", touch);
             if (_nav is not ScrollView scroll) return;
             scroll.mode = touch ? ScrollViewMode.Horizontal : ScrollViewMode.Vertical;
@@ -185,6 +202,10 @@ namespace Ceres.Settings.UI
                     foreach (var setting in section.Settings)
                     {
                         var row = SettingRow.Create(setting, _templates, () => _session);
+                        row.PreviewChanged += () =>
+                        {
+                            if (row == _focused) RefreshPreview();
+                        };
                         row.Element.RegisterCallback<PointerEnterEvent>(_ => Focus(row));
                         row.Element.RegisterCallback<FocusInEvent>(_ => Focus(row));
                         row.Element.RegisterCallback<PointerDownEvent>(_ => Focus(row));
@@ -280,6 +301,7 @@ namespace Ceres.Settings.UI
         {
             var setting = _focused?.Setting;
             _detail.style.visibility = setting == null ? Visibility.Hidden : Visibility.Visible;
+            RefreshPreview();
             if (setting == null) return;
             _detailTitle.text = setting.Label;
             _detailDescription.text = setting.Description;
@@ -302,6 +324,68 @@ namespace Ceres.Settings.UI
             _detailReason.style.display = reasons.Count > 0 ? DisplayStyle.Flex : DisplayStyle.None;
             _detailRestart.text = _text.RestartRequired;
             _detailRestart.style.display = setting.RequiresRestart ? DisplayStyle.Flex : DisplayStyle.None;
+        }
+
+        private void RefreshPreview()
+        {
+            if (_detailPreview == null) return;
+            var key = _touch || PreviewSource == null ? null : _focused?.Preview;
+            if (string.IsNullOrEmpty(key) || (_previews.TryGetValue(key, out var image) && !image))
+            {
+                _detailPreview.style.display = DisplayStyle.None;
+                return;
+            }
+            _detailPreview.style.display = DisplayStyle.Flex;
+            if (image)
+            {
+                _detailPreview.style.backgroundImage = new StyleBackground(image);
+                return;
+            }
+            _detailPreview.style.backgroundImage = StyleKeyword.None;
+            if (_loadingPreviews.Add(key)) LoadPreviewAsync(key).Forget();
+        }
+
+        private async UniTaskVoid LoadPreviewAsync(string key)
+        {
+            _previewCancellation ??= new CancellationTokenSource();
+            var token = _previewCancellation.Token;
+            var source = PreviewSource;
+            Texture2D image;
+            try
+            {
+                image = await source.LoadAsync(key, token);
+            }
+            catch (OperationCanceledException)
+            {
+                return;
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception);
+                image = null;
+            }
+            if (token.IsCancellationRequested)
+            {
+                if (image) source.Release(key);
+                return;
+            }
+            _loadingPreviews.Remove(key);
+            _previews[key] = image;
+            RefreshPreview();
+        }
+
+        private void ReleasePreviews()
+        {
+            _previewCancellation?.Cancel();
+            _previewCancellation?.Dispose();
+            _previewCancellation = null;
+            _loadingPreviews.Clear();
+            foreach (var (key, image) in _previews)
+            {
+                if (image) PreviewSource?.Release(key);
+            }
+            _previews.Clear();
+            if (_detailPreview != null) _detailPreview.style.backgroundImage = StyleKeyword.None;
         }
 
         private void AddImpact(string name, SettingImpactLevel level)

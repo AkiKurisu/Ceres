@@ -53,6 +53,10 @@ feature flags. Bindings are typed delegates, never reflection paths, so they
 survive IL2CPP stripping. A binding to a config also identifies the config that
 must be saved after a change.
 
+A setting and each of its options may carry a preview key naming an image that
+illustrates it. Keys are opaque to the model; the product resolves them to
+images, so the model holds no assets.
+
 Every value setting has a default. Resetting restores defaults; defaults come
 from the setting definition or the config type's constructed state, never from
 persisted user data.
@@ -119,7 +123,15 @@ short, and the list template otherwise. The detail area shows the focused
 setting's description, its performance impact when declared, the reasons it or
 any of its options is disabled and whether it needs a restart. The window shows a
 pending confirmation with a countdown and focuses the action that keeps the new
-value. Wording the framework composes at runtime — the countdown prompt, impact
+value.
+
+When the product's UXML has a preview element and the host has a preview source,
+the detail area also shows the focused setting's preview image. A choice
+previews the option under the pointer, then its selected option, then the
+setting's own key; with no image the element is hidden, and while an image loads
+it stays empty rather than showing the previous one. Images load on first use,
+stay cached for the session and are released when the window closes. The touch
+layout requests no previews. Wording the framework composes at runtime — the countdown prompt, impact
 names and levels, the restart note — is supplied by the product.
 
 The window exists outside scene content: one host per process owns its panel,

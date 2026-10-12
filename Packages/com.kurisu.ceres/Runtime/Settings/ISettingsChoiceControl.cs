@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
@@ -16,5 +17,16 @@ namespace Ceres.Settings.UI
         void SetChoices(IReadOnlyList<string> labels);
 
         void SetOptionState(int index, bool visible, bool enabled);
+    }
+
+    /// <summary>
+    /// A choice control that reports the option under the pointer, so the window can preview it before it is chosen
+    /// </summary>
+    public interface ISettingsChoiceHighlight
+    {
+        /// <summary>
+        /// Raised with the highlighted option index, or -1 when no option is highlighted
+        /// </summary>
+        event Action<int> Highlighted;
     }
 }
