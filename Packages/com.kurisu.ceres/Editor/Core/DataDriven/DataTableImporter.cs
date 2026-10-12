@@ -25,7 +25,9 @@ namespace Ceres.DataDriven.Editor
 
             if (!string.IsNullOrEmpty(source.RowTypeName))
             {
-                ctx.DependsOnCustomDependency(DataTableSchema.GetDependencyName(source.RowTypeName));
+                var rowType = DataTableSource.ResolveRowType(source.RowTypeName);
+                var rowTypeName = rowType != null ? DataTableSource.GetRowTypeName(rowType) : source.RowTypeName;
+                ctx.DependsOnCustomDependency(DataTableSchema.GetDependencyName(rowTypeName));
             }
 
             DataTable table;

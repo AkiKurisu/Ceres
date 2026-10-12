@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using Ceres.Serialization;
@@ -73,7 +74,7 @@ namespace Ceres.DataDriven.Editor
             {
                 using var reader = new JsonTextReader(new StringReader(text))
                 {
-                    FloatParseHandling = FloatParseHandling.Decimal,
+                    FloatParseHandling = FloatParseHandling.Double,
                     DateParseHandling = DateParseHandling.None
                 };
                 root = JObject.Load(reader);
@@ -119,7 +120,7 @@ namespace Ceres.DataDriven.Editor
         {
             var builder = new StringBuilder();
             using (var stringWriter = new StringWriter(builder) { NewLine = "\n" })
-            using (var writer = new JsonTextWriter(stringWriter)
+            using (var writer = new SourceWriter(stringWriter)
                    {
                        Formatting = Formatting.Indented,
                        Indentation = 2,
@@ -139,7 +140,7 @@ namespace Ceres.DataDriven.Editor
                     writer.WritePropertyName(DataKey);
                     using (var reader = new JsonTextReader(new StringReader(row.Json))
                            {
-                               FloatParseHandling = FloatParseHandling.Decimal,
+                               FloatParseHandling = FloatParseHandling.Double,
                                DateParseHandling = DateParseHandling.None
                            })
                     {
@@ -152,6 +153,35 @@ namespace Ceres.DataDriven.Editor
             }
             builder.Append('\n');
             return builder.ToString();
+        }
+
+        private sealed class SourceWriter : JsonTextWriter
+        {
+            private static readonly char[] FloatMarkers = { '.', 'E', 'e' };
+
+            public SourceWriter(TextWriter textWriter) : base(textWriter)
+            {
+            }
+
+            /// <summary>
+            /// Write the shortest form that reads back as the same value, as <see cref="JsonUtility"/> does
+            /// </summary>
+            public override void WriteValue(double value)
+            {
+                if (double.IsNaN(value) || double.IsInfinity(value))
+                {
+                    base.WriteValue(value);
+                    return;
+                }
+                string text = null;
+                for (int precision = 15; precision <= 17; precision++)
+                {
+                    text = value.ToString("G" + precision, CultureInfo.InvariantCulture);
+                    if (double.Parse(text, CultureInfo.InvariantCulture) == value) break;
+                }
+                if (text.IndexOfAny(FloatMarkers) < 0) text += ".0";
+                WriteRawValue(text);
+            }
         }
     }
 }

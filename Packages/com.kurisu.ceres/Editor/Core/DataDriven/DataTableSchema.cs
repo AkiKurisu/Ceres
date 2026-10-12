@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using MessagePack;
 using UnityEditor;
@@ -16,19 +18,42 @@ namespace Ceres.DataDriven.Editor
     {
         private const string DependencyPrefix = "Ceres.DataTable.Schema/";
 
+        private const string RegistryPath = "Library/CeresDataTableSchemas.txt";
+
+        private static readonly Hash128 MissingHash = Hash128.Compute("Missing");
+
         static DataTableSchema()
         {
             bool changed = false;
+            var names = new List<string>();
             foreach (var type in TypeCache.GetTypesDerivedFrom<IDataTableRow>())
             {
                 if (type.IsAbstract || type.IsInterface || type.ContainsGenericParameters) continue;
                 var name = GetDependencyName(DataTableSource.GetRowTypeName(type));
+                names.Add(name);
                 var hash = ComputeHash(type);
                 if (SessionState.GetString(name, null) == hash.ToString()) continue;
                 AssetDatabase.RegisterCustomDependency(name, hash);
                 SessionState.SetString(name, hash.ToString());
                 changed = true;
             }
+
+            // Tables of a row type that no longer exists reimport and report it.
+            var previous = File.Exists(RegistryPath) ? File.ReadAllLines(RegistryPath) : Array.Empty<string>();
+            var current = new HashSet<string>(names);
+            foreach (var name in previous)
+            {
+                if (current.Contains(name)) continue;
+                AssetDatabase.RegisterCustomDependency(name, MissingHash);
+                SessionState.EraseString(name);
+                changed = true;
+            }
+            names.Sort(StringComparer.Ordinal);
+            if (!names.SequenceEqual(previous))
+            {
+                File.WriteAllLines(RegistryPath, names);
+            }
+
             if (changed)
             {
                 EditorApplication.delayCall += AssetDatabase.Refresh;

@@ -21,6 +21,8 @@ namespace Ceres.DataDriven.Editor
 
         private DateTime _sourceTime;
 
+        private bool _sourceDeleted;
+
         [Serializable]
         internal class DataTableRow
         {
@@ -149,13 +151,23 @@ namespace Ceres.DataDriven.Editor
         /// </summary>
         internal void Save(bool deferImport)
         {
+            if (_sourceDeleted)
+            {
+                Debug.LogWarning($"[DataTable] {name} was deleted, so its unsaved edits are discarded.");
+                IsModified = false;
+                return;
+            }
             var text = ToSource().Write();
-            IsModified = false;
-            if (File.Exists(AssetPath) && File.ReadAllText(AssetPath) == text) return;
+            if (File.Exists(AssetPath) && File.ReadAllText(AssetPath) == text)
+            {
+                IsModified = false;
+                return;
+            }
             var directory = Path.GetDirectoryName(AssetPath);
             if (!string.IsNullOrEmpty(directory)) Directory.CreateDirectory(directory);
             File.WriteAllText(AssetPath, text);
             _sourceTime = File.GetLastWriteTimeUtc(AssetPath);
+            IsModified = false;
             var path = AssetPath;
             if (deferImport)
             {
@@ -165,6 +177,20 @@ namespace Ceres.DataDriven.Editor
             {
                 Import(path);
             }
+        }
+
+        internal static void OnSourceMoved(string from, string to)
+        {
+            if (!OpenDocuments.Remove(from, out var document) || !document) return;
+            document.AssetPath = to;
+            document.name = Path.GetFileNameWithoutExtension(to);
+            OpenDocuments[to] = document;
+        }
+
+        internal static void OnSourceDeleted(string path)
+        {
+            if (!OpenDocuments.Remove(path, out var document) || !document) return;
+            document._sourceDeleted = true;
         }
 
         private static void Import(string path)
@@ -342,6 +368,21 @@ namespace Ceres.DataDriven.Editor
             foreach (var row in m_rows)
             {
                 row.RowData.objectHandle = 0;
+            }
+        }
+    }
+
+    internal sealed class DataTableDocumentTracker : AssetPostprocessor
+    {
+        private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
+        {
+            foreach (var path in deletedAssets)
+            {
+                DataTableDocument.OnSourceDeleted(path);
+            }
+            for (int i = 0; i < movedAssets.Length; i++)
+            {
+                DataTableDocument.OnSourceMoved(movedFromAssetPaths[i], movedAssets[i]);
             }
         }
     }

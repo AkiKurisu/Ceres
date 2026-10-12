@@ -30,8 +30,6 @@ namespace Ceres.DataDriven.Editor
         
         private InlineDataTableEditor _currentEditor;
         
-        private string _currentPath;
-        
         private static GUIStyle _detailsStyle;
         
         private Vector2 _detailsScroll;
@@ -133,7 +131,7 @@ namespace Ceres.DataDriven.Editor
                 }
                 GUIUtility.ExitGUI();
             }
-            GUILayout.Label(_currentPath);
+            if (_document) GUILayout.Label(_document.AssetPath);
             GUILayout.FlexibleSpace();
 
             EditorGUILayout.EndHorizontal();
@@ -143,15 +141,14 @@ namespace Ceres.DataDriven.Editor
         private void OpenDataTable(DataTable dataTable)
         {
             CloseDocument();
-            _currentPath = AssetDatabase.GetAssetPath(dataTable);
+            var path = AssetDatabase.GetAssetPath(dataTable);
             try
             {
-                _document = DataTableDocument.Open(_currentPath);
+                _document = DataTableDocument.Open(path);
             }
             catch (FormatException e)
             {
-                Debug.LogError($"[DataTable] {_currentPath} is not a valid source: {e.Message}");
-                _currentPath = null;
+                Debug.LogError($"[DataTable] {path} is not a valid source: {e.Message}");
                 return;
             }
             _currentEditor = (InlineDataTableEditor)UEditor.CreateEditor(_document, typeof(InlineDataTableEditor));
