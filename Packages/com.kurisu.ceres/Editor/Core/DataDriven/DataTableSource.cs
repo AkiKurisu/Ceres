@@ -177,7 +177,7 @@ namespace Ceres.DataDriven.Editor
                 for (int precision = 15; precision <= 17; precision++)
                 {
                     text = value.ToString("G" + precision, CultureInfo.InvariantCulture);
-                    if (double.Parse(text, CultureInfo.InvariantCulture) == value) break;
+                    if (double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out var parsed) && parsed == value) break;
                 }
                 if (text.IndexOfAny(FloatMarkers) < 0) text += ".0";
                 WriteRawValue(text);
