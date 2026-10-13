@@ -93,7 +93,7 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
             foreach (var t in containers)
             {
                 var pad = new string(' ', depth * 4);
-                s.Append(pad).Append("partial ").Append(Keyword(t)).Append(' ').Append(t.Name).Append('\n').Append(pad).Append("{\n");
+                s.Append(pad).Append("partial ").Append(Keyword(t)).Append(" @").Append(t.Name).Append('\n').Append(pad).Append("{\n");
                 close.Insert(0, pad + "}\n");
                 depth++;
             }
@@ -434,6 +434,10 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
                     return item == null ? null : Wrapped(typeName, "new " + Api + "DataTableOptionalCodec<" + argumentName + ">(" + item.CodecExpression + ")");
                 }
             }
+
+            // Unity serializes no other System types, such as dictionaries or nullable values.
+            var ns = named.ContainingNamespace?.ToDisplayString();
+            if (ns == "System" || ns != null && ns.StartsWith("System.")) return null;
 
             if (SymbolEqualityComparer.Default.Equals(named, _symbols.SoftReference))
             {
