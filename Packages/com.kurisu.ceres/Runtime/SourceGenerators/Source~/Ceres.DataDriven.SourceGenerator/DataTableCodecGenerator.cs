@@ -93,7 +93,7 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
             foreach (var t in containers)
             {
                 var pad = new string(' ', depth * 4);
-                s.Append(pad).Append("partial ").Append(t.IsValueType ? "struct " : "class ").Append(t.Name).Append('\n').Append(pad).Append("{\n");
+                s.Append(pad).Append("partial ").Append(Keyword(t)).Append(' ').Append(t.Name).Append('\n').Append(pad).Append("{\n");
                 close.Insert(0, pad + "}\n");
                 depth++;
             }
@@ -143,7 +143,7 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
         for (int i = 0; i < codec.Members.Count; i++)
         {
             var member = codec.Members[i];
-            s.Append(i3).Append("value.").Append(member.Name).Append(" = ")
+            s.Append(i3).Append("value.").Append(member.Access).Append(" = ")
                 .Append(member.Value.Inline != null ? member.Value.Inline.Read : "C" + i + ".Read(ref reader)").Append(";\n");
         }
         s.Append(i2).Append("}\n");
@@ -153,7 +153,7 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
         for (int i = 0; i < codec.Members.Count; i++)
         {
             var member = codec.Members[i];
-            var access = "value." + member.Name;
+            var access = "value." + member.Access;
             s.Append(i3).Append(member.Value.Inline != null
                 ? string.Format(member.Value.Inline.Write, access)
                 : "C" + i + ".Write(writer, " + access + ")").Append(";\n");
@@ -164,11 +164,16 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
         return s.ToString();
     }
 
+    private static string Keyword(INamedTypeSymbol type)
+    {
+        if (type.DeclaringSyntaxReferences.Any(reference => reference.GetSyntax() is RecordDeclarationSyntax)) return "record";
+        return type.IsValueType ? "struct" : "class";
+    }
+
     private sealed class Symbols
     {
         public INamedTypeSymbol Row;
         public INamedTypeSymbol EditorOnly;
-        public INamedTypeSymbol Serializable;
         public INamedTypeSymbol NonSerialized;
         public INamedTypeSymbol SerializeField;
         public INamedTypeSymbol SerializeReference;
@@ -184,7 +189,6 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
             {
                 Row = compilation.GetTypeByMetadataName("Ceres.DataDriven.IDataTableRow"),
                 EditorOnly = compilation.GetTypeByMetadataName("Ceres.DataDriven.EditorOnlyAttribute"),
-                Serializable = compilation.GetTypeByMetadataName("System.SerializableAttribute"),
                 NonSerialized = compilation.GetTypeByMetadataName("System.NonSerializedAttribute"),
                 SerializeField = compilation.GetTypeByMetadataName("UnityEngine.SerializeField"),
                 SerializeReference = compilation.GetTypeByMetadataName("UnityEngine.SerializeReference"),
@@ -220,6 +224,11 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
     private sealed class Member
     {
         public string Name;
+
+        /// <summary>
+        /// Member access expression in generated code
+        /// </summary>
+        public string Access;
 
         public Value Value;
     }
@@ -313,9 +322,11 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
             {
                 foreach (var field in declaring.GetMembers().OfType<IFieldSymbol>())
                 {
-                    if (field.IsStatic || field.IsConst || field.IsReadOnly || field.IsImplicitlyDeclared) continue;
+                    if (field.IsStatic || field.IsConst || field.IsReadOnly) continue;
                     if (Has(field, _symbols.NonSerialized)) continue;
                     bool serializeField = Has(field, _symbols.SerializeField);
+                    var property = field.AssociatedSymbol as IPropertySymbol;
+                    if (field.IsImplicitlyDeclared && (property == null || !serializeField)) continue;
                     if (field.DeclaredAccessibility != Accessibility.Public && !serializeField) continue;
                     if (Has(field, _symbols.EditorOnly)) continue;
                     var fieldLocation = field.Locations.FirstOrDefault() ?? location;
@@ -324,11 +335,18 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
                         Fail(codec, UnsupportedType, fieldLocation, type.ToDisplayString() + "." + field.Name, "[SerializeReference] is not supported");
                         continue;
                     }
+                    if (property?.SetMethod is { IsInitOnly: true })
+                    {
+                        Fail(codec, UnsupportedType, fieldLocation, type.ToDisplayString() + "." + property.Name, "init accessors are not supported");
+                        continue;
+                    }
                     var value = Classify(field.Type, codec, field, fieldLocation, false);
                     if (value == null) continue;
-                    if (!Reachable(field, own))
+                    var accessors = property != null ? new ISymbol[] { property.GetMethod, property.SetMethod } : new ISymbol[] { field };
+                    if (!accessors.All(accessor => Reachable(accessor, own)))
                     {
-                        bool canNest = own && SymbolEqualityComparer.Default.Equals(declaring, type) && field.DeclaredAccessibility == Accessibility.Private;
+                        bool canNest = own && SymbolEqualityComparer.Default.Equals(declaring, type)
+                                       && accessors.All(accessor => Reachable(accessor, own) || accessor.DeclaredAccessibility == Accessibility.Private);
                         if (!canNest)
                         {
                             Fail(codec, UnreachableMember, fieldLocation, type.ToDisplayString(), field.Name,
@@ -342,7 +360,7 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
                         }
                         codec.Nested = true;
                     }
-                    codec.Members.Add(new Member { Name = field.Name, Value = value });
+                    codec.Members.Add(new Member { Name = field.Name, Access = "@" + (property?.Name ?? field.Name), Value = value });
                 }
             }
             codec.CodecName = codec.Nested ? typeName + ".__CeresDataTableCodec" : "global::Ceres.Generated.DataTables." + hint + "_DataTableCodec";
@@ -433,14 +451,14 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
                 return null;
             }
 
-            if ((named.TypeKind == TypeKind.Class || named.TypeKind == TypeKind.Struct) && Has(named, _symbols.Serializable))
+            if ((named.TypeKind == TypeKind.Class || named.TypeKind == TypeKind.Struct) && named.IsSerializable)
             {
                 if (named.IsGenericType)
                 {
                     Fail(owner, UnsupportedType, location, named.ToDisplayString(), "generic types are not supported");
                     return null;
                 }
-                Require(named, location);
+                if (!RegisteredByDeclaringAssembly(named)) Require(named, location);
                 return Wrapped(typeName, Api + "DataTableCodec<" + typeName + ">.Default");
             }
 
@@ -460,6 +478,16 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
             CodecType = Api + "DataTableCodec<" + typeName + ">",
             CodecExpression = expression
         };
+
+        private bool RegisteredByDeclaringAssembly(INamedTypeSymbol type)
+        {
+            if (SymbolEqualityComparer.Default.Equals(type.ContainingAssembly, _context.Compilation.Assembly)) return false;
+            return type.ContainingAssembly.GetAttributes().Any(attribute =>
+                attribute.AttributeClass?.ToDisplayString() == "Ceres.DataDriven.DataTableCodecAttribute"
+                && attribute.ConstructorArguments.Length > 0
+                && attribute.ConstructorArguments[0].Value is ITypeSymbol registered
+                && SymbolEqualityComparer.Default.Equals(registered, type));
+        }
 
         private void Fail(Codec codec, DiagnosticDescriptor descriptor, Location location, params object[] args)
         {
@@ -515,11 +543,11 @@ public sealed class DataTableCodecGenerator : ISourceGenerator
 
     private sealed class Receiver : ISyntaxReceiver
     {
-        public readonly List<ClassDeclarationSyntax> Candidates = new();
+        public readonly List<TypeDeclarationSyntax> Candidates = new();
 
         public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
         {
-            if (syntaxNode is ClassDeclarationSyntax { BaseList: not null } declaration) Candidates.Add(declaration);
+            if (syntaxNode is TypeDeclarationSyntax { BaseList: not null } declaration and (ClassDeclarationSyntax or RecordDeclarationSyntax)) Candidates.Add(declaration);
         }
     }
 }
