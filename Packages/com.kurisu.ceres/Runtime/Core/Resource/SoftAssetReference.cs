@@ -1,20 +1,20 @@
 using System;
-using MessagePack;
+using Ceres.DataDriven;
 using UnityEngine;
 using UObject = UnityEngine.Object;
 
 namespace Ceres.Resource
 {
-    [Serializable, MessagePackObject(true)]
+    [Serializable]
     public class SoftAssetReferenceBase
     {
         public string Address;
 
 #if UNITY_EDITOR
-        [SerializeField, IgnoreMember]
+        [SerializeField, EditorOnly]
         internal string Guid;
 
-        [SerializeField, IgnoreMember]
+        [SerializeField, EditorOnly]
         internal bool Locked = true;
 #endif
 
@@ -32,7 +32,7 @@ namespace Ceres.Resource
     /// <summary>
     /// A lightweight asset reference only use address as identifier
     /// </summary>
-    [Serializable, MessagePackObject(true)]
+    [Serializable]
     public class SoftAssetReference<T> : SoftAssetReferenceBase where T : UObject
     {
         /// <summary>
@@ -48,7 +48,6 @@ namespace Ceres.Resource
 #endif
         }
 
-        [SerializationConstructor]
         public SoftAssetReference()
         {
 
@@ -105,7 +104,7 @@ namespace Ceres.Resource
     /// <summary>
     /// A lightweight asset reference only use address as identifier
     /// </summary>
-    [Serializable, MessagePackObject(true)]
+    [Serializable]
     public class SoftAssetReference : SoftAssetReferenceBase
     {
         /// <summary>
@@ -121,7 +120,6 @@ namespace Ceres.Resource
 #endif
         }
 
-        [SerializationConstructor]
         public SoftAssetReference()
         {
 

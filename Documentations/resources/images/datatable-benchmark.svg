@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 664" role="img" aria-labelledby="title desc">
+  <title id="title">Ceres DataTable compared with ScriptableObject</title>
+  <desc id="desc">Loading a table and reading one row is 4 to 10 times faster with a Ceres DataTable than with a ScriptableObject, reading every row is about 1.5 times faster, and the AssetBundle is about 10 percent smaller.</desc>
+  <defs>
+    <style>
+      .h{fill:#f5f6f5;font:600 32px Sora,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:-.8px}
+      .p{fill:#eeefef;fill-opacity:.62;font:600 17px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .b{fill:#f5f6f5;font:700 20px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .s{fill:#8abcc4;font:600 14px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .tag{fill:#8abcc4;font:700 15px Sora,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:3px}
+      .row{fill:#eeefef;fill-opacity:.62;font:600 14px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .v{fill:#eeefef;fill-opacity:.62;font:600 13px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .vd{fill:#f5f6f5;font:700 13px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .win{fill:#8abcc4;font:700 14px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .loss{fill:#fff8dd;fill-opacity:.72;font:700 14px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .note{fill:#eeefef;fill-opacity:.45;font:600 13px Sora,"Segoe UI",Helvetica,Arial,sans-serif}
+      .panel{fill:#111719;fill-opacity:.72;stroke:#fff;stroke-opacity:.06}
+    </style>
+    <radialGradient id="glow" cx="1040" cy="120" r="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8abcc4" stop-opacity=".10"/>
+      <stop offset="1" stop-color="#8abcc4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5f9aa2"/>
+      <stop offset="1" stop-color="#98c6ce"/>
+    </linearGradient>
+    <linearGradient id="icon-bg" x1="88" y1="72" x2="424" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#98c6ce"/>
+      <stop offset=".58" stop-color="#87b8c0"/>
+      <stop offset="1" stop-color="#5f9aa2"/>
+    </linearGradient>
+    <linearGradient id="icon-edge" x1="158" y1="346" x2="354" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff8dd"/>
+      <stop offset="1" stop-color="#fdf0bc"/>
+    </linearGradient>
+    <clipPath id="icon-clip">
+      <rect x="64" y="64" width="384" height="384" rx="48"/>
+    </clipPath>
+  </defs>
+  <rect width="1280" height="664" rx="24" fill="#15191b"/>
+  <rect width="1280" height="664" rx="24" fill="url(#glow)"/>
+  <svg x="56" y="52" width="40" height="40" viewBox="64 64 384 384">
+    <rect x="64" y="64" width="384" height="384" rx="48" fill="url(#icon-bg)"/>
+    <path d="M112 64H143L64 143V112C64 85.49 85.49 64 112 64Z" fill="#b9dee5" fill-opacity=".6"/>
+    <path d="M400 448H369L448 369V400C448 426.51 426.51 448 400 448Z" fill="#3e7880" fill-opacity=".46"/>
+    <g clip-path="url(#icon-clip)" stroke-linecap="round">
+      <path d="M176 184L300 60" stroke="#1c252b" stroke-width="10"/>
+      <path d="M158 340L348 150" stroke="url(#icon-edge)" stroke-width="12"/>
+      <path d="M344 344L458 458" stroke="#1c252b" stroke-width="10"/>
+    </g>
+    <circle cx="176" cy="184" r="34" fill="#1c252b"/>
+    <circle cx="176" cy="184" r="22" fill="#fff8dd"/>
+    <circle cx="348" cy="150" r="35" fill="#fff8dd"/>
+    <circle cx="158" cy="340" r="35" fill="#fff8dd"/>
+    <circle cx="344" cy="344" r="34" fill="#1c252b"/>
+    <circle cx="344" cy="344" r="22" fill="#fff8dd"/>
+  </svg>
+  <text class="tag" x="110" y="78">CERES DATATABLE BENCHMARK</text>
+  <text class="h" x="56" y="148">DataTable vs ScriptableObject</text>
+  <text class="p" x="56" y="182">The same 13-field rows loaded from uncompressed AssetBundles in the Unity Editor. Median of 9 runs.</text>
+  <rect class="panel" x="56.5" y="222.5" width="375" height="339" rx="18"/>
+  <text class="b" x="84" y="268">Load and read one row</text>
+  <text class="s" x="84" y="292">Lower is better</text>
+  <text class="row" x="84" y="338">1,000 rows</text>
+  <text class="win" x="404" y="338" text-anchor="end">4.1× faster</text>
+  <rect x="84" y="350" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="242.0" y="361">1.60 ms</text>
+  <rect x="84" y="370" width="36.6" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="128.6" y="381">0.39 ms</text>
+  <text class="row" x="84" y="414">10,000 rows</text>
+  <text class="win" x="404" y="414" text-anchor="end">9.8× faster</text>
+  <rect x="84" y="426" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="242.0" y="437">14.0 ms</text>
+  <rect x="84" y="446" width="15.2" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="107.2" y="457">1.42 ms</text>
+  <text class="row" x="84" y="490">50,000 rows</text>
+  <text class="win" x="404" y="490" text-anchor="end">9.3× faster</text>
+  <rect x="84" y="502" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="242.0" y="513">70.4 ms</text>
+  <rect x="84" y="522" width="16.1" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="108.1" y="533">7.54 ms</text>
+  <rect class="panel" x="452.5" y="222.5" width="375" height="339" rx="18"/>
+  <text class="b" x="480" y="268">Load and read every row</text>
+  <text class="s" x="480" y="292">Lower is better</text>
+  <text class="row" x="480" y="338">1,000 rows</text>
+  <text class="win" x="800" y="338" text-anchor="end">1.4× faster</text>
+  <rect x="480" y="350" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="638.0" y="361">1.59 ms</text>
+  <rect x="480" y="370" width="105.7" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="593.7" y="381">1.12 ms</text>
+  <text class="row" x="480" y="414">10,000 rows</text>
+  <text class="win" x="800" y="414" text-anchor="end">1.6× faster</text>
+  <rect x="480" y="426" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="638.0" y="437">13.9 ms</text>
+  <rect x="480" y="446" width="94.0" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="582.0" y="457">8.72 ms</text>
+  <text class="row" x="480" y="490">50,000 rows</text>
+  <text class="win" x="800" y="490" text-anchor="end">1.6× faster</text>
+  <rect x="480" y="502" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="638.0" y="513">70.0 ms</text>
+  <rect x="480" y="522" width="96.5" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="584.5" y="533">45.0 ms</text>
+  <rect class="panel" x="848.5" y="222.5" width="375" height="339" rx="18"/>
+  <text class="b" x="876" y="268">AssetBundle size</text>
+  <text class="s" x="876" y="292">Smaller is better</text>
+  <text class="row" x="876" y="338">1,000 rows</text>
+  <text class="win" x="1196" y="338" text-anchor="end">10% smaller</text>
+  <rect x="876" y="350" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="1034.0" y="361">0.20 MB</text>
+  <rect x="876" y="370" width="135.2" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="1019.2" y="381">0.18 MB</text>
+  <text class="row" x="876" y="414">10,000 rows</text>
+  <text class="win" x="1196" y="414" text-anchor="end">11% smaller</text>
+  <rect x="876" y="426" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="1034.0" y="437">1.97 MB</text>
+  <rect x="876" y="446" width="134.0" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="1018.0" y="457">1.76 MB</text>
+  <text class="row" x="876" y="490">50,000 rows</text>
+  <text class="win" x="1196" y="490" text-anchor="end">9% smaller</text>
+  <rect x="876" y="502" width="150.0" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="v" x="1034.0" y="513">9.84 MB</text>
+  <rect x="876" y="522" width="136.4" height="12" rx="3" fill="url(#dt)"/>
+  <text class="vd" x="1020.4" y="533">8.94 MB</text>
+  <rect x="56" y="595" width="14" height="12" rx="3" fill="#eeefef" fill-opacity=".28"/>
+  <text class="row" x="78" y="606">ScriptableObject with a row list</text>
+  <rect x="330" y="595" width="14" height="12" rx="3" fill="url(#dt)"/>
+  <text class="row" x="352" y="606">Ceres DataTable</text>
+  <text class="note" x="1224" y="606" text-anchor="end">Unity 6000.3 Editor, Mono, Windows</text>
+</svg>

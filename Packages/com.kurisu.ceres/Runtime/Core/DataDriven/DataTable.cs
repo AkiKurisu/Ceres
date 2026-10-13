@@ -35,11 +35,19 @@ namespace Ceres.DataDriven
         [SerializeField]
         private byte[] m_rowData = Array.Empty<byte>();
 
+        [SerializeField]
+        private DataTableSchemaType[] m_schema = Array.Empty<DataTableSchemaType>();
+
+        [SerializeField]
+        private Hash128 m_layoutHash;
+
         private IDataTableRow[] _rows;
 
         private Dictionary<string, int> _rowIndices;
 
-        private DataTableRowCodec _codec;
+        private DataTableCodec _codec;
+
+        private DataTableTranscoder _transcoder;
 
         public int RowCount => m_rowIds.Length;
 
@@ -190,21 +198,35 @@ namespace Ceres.DataDriven
 
         private IDataTableRow DecodeRow(int index)
         {
-            _codec ??= DataTableRowCodec.Get(GetRowStructType()
-                ?? throw new InvalidOperationException($"DataTable '{name}' has no valid row type."));
+            _codec ??= GetCodec();
             int start = m_rowOffsets[index];
-            return _codec.Decode(new ReadOnlyMemory<byte>(m_rowData, start, m_rowOffsets[index + 1] - start));
+            var bytes = new ReadOnlySpan<byte>(m_rowData, start, m_rowOffsets[index + 1] - start);
+            return (IDataTableRow)DataTableCodec.Decode(_codec, _transcoder != null ? _transcoder.Transcode(bytes) : bytes);
         }
 
-        internal void Initialize(Type rowType, string[] rowIds, int[] rowOffsets, byte[] rowData)
+        private DataTableCodec GetCodec()
+        {
+            var rowType = GetRowStructType() ?? throw new InvalidOperationException($"DataTable '{name}' has no valid row type.");
+            var layout = DataTableLayout.Get(rowType);
+            if (layout.Hash != m_layoutHash)
+            {
+                _transcoder = new DataTableTranscoder(m_schema, layout.Codec);
+            }
+            return layout.Codec;
+        }
+
+        internal void Initialize(Type rowType, DataTableLayout layout, string[] rowIds, int[] rowOffsets, byte[] rowData)
         {
             m_rowType = rowType != null ? SerializedType<IDataTableRow>.FromType(rowType) : null;
+            m_schema = layout?.Types ?? Array.Empty<DataTableSchemaType>();
+            m_layoutHash = layout?.Hash ?? default;
             m_rowIds = rowIds;
             m_rowOffsets = rowOffsets;
             m_rowData = rowData;
             _rows = null;
             _rowIndices = null;
             _codec = null;
+            _transcoder = null;
         }
     }
 }

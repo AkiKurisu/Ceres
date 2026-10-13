@@ -2,7 +2,7 @@
 
 Ceres requires Unity 2022.3 LTS or later.
 
-## 1. Install NuGet dependencies
+## 1. Install R3 with NuGetForUnity
 
 Add [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) through **Window > Package Manager > + > Add package from git URL**:
 
@@ -10,7 +10,7 @@ Add [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) through **Windo
 https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity
 ```
 
-Open **NuGet > Manage NuGet Packages** and install `R3` version `1.3.0` and `MessagePack` version `3.1.4`.
+Open **NuGet > Manage NuGet Packages**, search for `R3`, and install version `1.3.0`.
 
 ## 2. Add UniTask
 
@@ -20,15 +20,7 @@ Add [UniTask](https://github.com/Cysharp/UniTask) through Package Manager using 
 https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask#2.5.3
 ```
 
-## 3. Add MessagePack for Unity
-
-Add the Unity extension of [MessagePack](https://github.com/MessagePack-CSharp/MessagePack-CSharp) through Package Manager using:
-
-```text
-https://github.com/MessagePack-CSharp/MessagePack-CSharp.git?path=src/MessagePack.UnityClient/Assets/Scripts/MessagePack#v3.1.4
-```
-
-## 4. Add Ceres
+## 3. Add Ceres
 
 Add Ceres through Package Manager using:
 

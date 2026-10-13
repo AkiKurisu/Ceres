@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using MessagePack;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UObject = UnityEngine.Object;
@@ -35,7 +34,18 @@ namespace Ceres.DataDriven.Editor
             var offsets = new int[source.Rows.Count + 1];
             var known = new HashSet<string>();
             using var data = new MemoryStream();
-            var codec = rowType != null ? DataTableRowCodec.Get(rowType) : null;
+            DataTableLayout layout = null;
+            if (rowType != null)
+            {
+                try
+                {
+                    layout = DataTableLayout.Get(rowType);
+                }
+                catch (InvalidOperationException e)
+                {
+                    throw new FormatException(e.Message, e);
+                }
+            }
             for (int i = 0; i < source.Rows.Count; i++)
             {
                 var row = source.Rows[i];
@@ -54,7 +64,7 @@ namespace Ceres.DataDriven.Editor
                     warnings?.Invoke($"Row '{row.Id}': {reason}");
                 }
 
-                var bytes = Encode(codec, rowType, row.Id, value);
+                var bytes = Encode(layout.Codec, rowType, row.Id, value);
                 ids[i] = row.Id;
                 offsets[i] = (int)data.Length;
                 data.Write(bytes, 0, bytes.Length);
@@ -62,23 +72,22 @@ namespace Ceres.DataDriven.Editor
             offsets[source.Rows.Count] = (int)data.Length;
 
             var table = ScriptableObject.CreateInstance<DataTable>();
-            table.Initialize(rowType, ids, offsets, data.ToArray());
+            table.Initialize(rowType, layout, ids, offsets, data.ToArray());
             return table;
         }
 
-        private static byte[] Encode(DataTableRowCodec codec, Type rowType, string rowId, IDataTableRow value)
+        private static byte[] Encode(DataTableCodec codec, Type rowType, string rowId, IDataTableRow value)
         {
             byte[] bytes;
-            IDataTableRow decoded;
+            object decoded;
             try
             {
-                bytes = codec.Encode(value);
-                decoded = codec.Decode(bytes);
+                bytes = DataTableCodec.Encode(codec, value);
+                decoded = DataTableCodec.Decode(codec, bytes);
             }
-            catch (MessagePackSerializationException e)
+            catch (Exception e) when (e is FormatException or InvalidOperationException or OverflowException)
             {
-                throw new FormatException($"Row '{rowId}' of {rowType.FullName} cannot be encoded: {GetInnermostMessage(e)} " +
-                                          "Mark the row type and every serializable type it contains with [MessagePackObject(true)].", e);
+                throw new FormatException($"Row '{rowId}' of {rowType.FullName} cannot be encoded: {GetInnermostMessage(e)}", e);
             }
 
             var expected = JObject.Parse(JsonUtility.ToJson(WithoutIgnoredMembers(value)));
@@ -87,7 +96,7 @@ namespace Ceres.DataDriven.Editor
             if (path != null)
             {
                 throw new FormatException($"Row '{rowId}' of {rowType.FullName} loses member '{path}' in binary encoding. " +
-                                          "Serialize the member or mark it [IgnoreMember] if it is Editor-only.");
+                                          "Serialize the member or mark it [EditorOnly] if it is Editor-only.");
             }
             return bytes;
         }
@@ -99,7 +108,7 @@ namespace Ceres.DataDriven.Editor
         }
 
         /// <summary>
-        /// Copy of a row with every [IgnoreMember] field restored to its initial value
+        /// Copy of a row with every [EditorOnly] field restored to its initial value
         /// </summary>
         private static object WithoutIgnoredMembers(object row)
         {
@@ -115,7 +124,7 @@ namespace Ceres.DataDriven.Editor
             object initial = null;
             foreach (var field in GetSerializedFields(type))
             {
-                if (field.IsDefined(typeof(IgnoreMemberAttribute), true))
+                if (field.IsDefined(typeof(EditorOnlyAttribute), true))
                 {
                     initial ??= CreateInitial(type);
                     field.SetValue(target, initial != null ? field.GetValue(initial) : null);

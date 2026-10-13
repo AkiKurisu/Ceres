@@ -1,5 +1,4 @@
 using System;
-using MessagePack;
 using Ceres.DataDriven;
 using Ceres.Resource;
 using UnityEngine;
@@ -21,7 +20,7 @@ namespace Ceres.Gameplay.Level
         Console = 1 << 2
     }
     
-    [Serializable, MessagePackObject(true), AddressableDataTable(Labels = new[] { LevelSceneDataTableManager.TableLabel })]
+    [Serializable, AddressableDataTable(Labels = new[] { LevelSceneDataTableManager.TableLabel })]
     public class LevelSceneRow : IDataTableRow, IValidateRow
     {
         public string levelName;

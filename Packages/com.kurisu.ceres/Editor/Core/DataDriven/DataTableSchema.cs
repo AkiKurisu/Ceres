@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using MessagePack;
 using UnityEditor;
 using UnityEngine;
 
@@ -69,6 +68,15 @@ namespace Ceres.DataDriven.Editor
         {
             var builder = new StringBuilder();
             Describe(type, builder, new HashSet<Type>());
+            // The binary layout follows the generated codecs, which can change without the field set changing.
+            try
+            {
+                builder.Append(DataTableLayout.Get(type).Hash.ToString());
+            }
+            catch (InvalidOperationException)
+            {
+                builder.Append("NoCodec");
+            }
             return Hash128.Compute(builder.ToString());
         }
 
@@ -91,10 +99,10 @@ namespace Ceres.DataDriven.Editor
                 builder.Append("List;");
                 return;
             }
-            builder.Append(type.FullName).Append(type.IsDefined(typeof(MessagePackObjectAttribute), false) ? "+mp" : "").Append('{');
+            builder.Append(type.FullName).Append('{');
             foreach (var field in DataTableBuilder.GetSerializedFields(type))
             {
-                builder.Append(field.Name).Append(field.IsDefined(typeof(IgnoreMemberAttribute), true) ? "!" : "").Append(':');
+                builder.Append(field.Name).Append(field.IsDefined(typeof(EditorOnlyAttribute), true) ? "!" : "").Append(':');
                 Describe(field.FieldType, builder, visited);
             }
             builder.Append('}');

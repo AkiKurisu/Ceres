@@ -38,15 +38,14 @@ Ceres requires Unity 2022.3 LTS or later and is developed on Unity 6.
    https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity
    ```
 
-2. Open **NuGet > Manage NuGet Packages** and install `R3` version `1.3.0` and `MessagePack` version `3.1.4`.
+2. Open **NuGet > Manage NuGet Packages** and install `R3` version `1.3.0`.
 
-3. Add UniTask, MessagePack for Unity and Ceres to your project's `Packages/manifest.json`:
+3. Add UniTask and Ceres to your project's `Packages/manifest.json`:
 
 ```json
 "dependencies": {
     "com.kurisu.ceres": "https://github.com/AkiKurisu/Ceres.git?path=Packages/com.kurisu.ceres",
-    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask#2.5.3",
-    "com.github.messagepack-csharp": "https://github.com/MessagePack-CSharp/MessagePack-CSharp.git?path=src/MessagePack.UnityClient/Assets/Scripts/MessagePack#v3.1.4"
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask#2.5.3"
 }
 ```
 
@@ -86,6 +85,10 @@ Help coding agents work with Ceres.
 ### Ceres Core
 
 The runtime foundation every Ceres module builds on: events, data and content.
+
+Data Tables decode only the rows a game reads, and still read every row faster than a ScriptableObject with the same data.
+
+![DataTable benchmark](./Documentations/resources/images/datatable-benchmark.svg)
 
 See [Ceres Core](https://akikurisu.github.io/Ceres/docs/ceres_concept.html).
 
