@@ -1,4 +1,5 @@
 using System;
+using R3;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -26,10 +27,19 @@ namespace Ceres.Settings.UI
 
         private Rect _safeArea;
 
+        private IDisposable _invalidated;
+
+        private bool _reopen;
+
         /// <summary>
         /// Runtime-composed wording; assign before the first <see cref="Open"/>
         /// </summary>
         public SettingsWindowText Text { get; set; } = new();
+
+        /// <summary>
+        /// Creates <see cref="Text"/> again whenever the registry is rebuilt, so the wording follows the language
+        /// </summary>
+        public Func<SettingsWindowText> TextSource { get; set; }
 
         /// <summary>
         /// Panel scale for a screen size in pixels
@@ -60,6 +70,7 @@ namespace Ceres.Settings.UI
             _panelSettings.sortingOrder = sortingOrder;
             document.panelSettings = _panelSettings;
             Touch = SettingsTraits.Has(SettingsTraits.Touch);
+            _invalidated = SettingsRegistry.Invalidated.Subscribe(_ => _reopen = IsOpen);
         }
 
         // The document builds its tree when enabled; binding hides it until the first Open.
@@ -77,6 +88,8 @@ namespace Ceres.Settings.UI
         {
             _view ??= new SettingsWindowView(document.rootVisualElement, templates, Text, Close);
             bool wasOpen = IsOpen;
+            if (TextSource != null) Text = TextSource();
+            _view.Text = Text;
             _view.SetTouch(Touch);
             _view.PreviewSource = PreviewSource;
             UpdateLayout(true);
@@ -113,6 +126,11 @@ namespace Ceres.Settings.UI
         private void Update()
         {
             if (!IsOpen) return;
+            if (_reopen)
+            {
+                _reopen = false;
+                Open(SettingsRegistry.Get(), _view.CurrentPageId);
+            }
             UpdateLayout(false);
             _view.Update();
         }
@@ -137,6 +155,7 @@ namespace Ceres.Settings.UI
 
         private void OnDestroy()
         {
+            _invalidated?.Dispose();
             Close();
             _view?.Dispose();
         }

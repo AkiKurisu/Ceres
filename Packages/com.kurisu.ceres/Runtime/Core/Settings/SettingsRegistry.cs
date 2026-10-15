@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using R3;
 using UnityEngine;
 
 namespace Ceres.Settings
@@ -90,6 +91,10 @@ namespace Ceres.Settings
 
         private static SettingsRegistry _instance;
 
+        private static readonly Subject<Unit> InvalidatedSubject = new();
+
+        private static IDisposable _languageChanged;
+
         private readonly List<SettingsPage> _pages = new();
 
         private readonly Dictionary<string, Setting> _settings = new();
@@ -103,6 +108,23 @@ namespace Ceres.Settings
         {
             Contributors.Clear();
             _instance = null;
+            _languageChanged?.Dispose();
+            _languageChanged = null;
+        }
+
+        /// <summary>
+        /// Raised when the process-wide registry is dropped and will be rebuilt on the next <see cref="Get"/>
+        /// </summary>
+        public static Observable<Unit> Invalidated => InvalidatedSubject;
+
+        /// <summary>
+        /// Drop the process-wide registry so contributors build it again, for example after the language changes
+        /// </summary>
+        public static void Invalidate()
+        {
+            if (_instance == null) return;
+            _instance = null;
+            InvalidatedSubject.OnNext(Unit.Default);
         }
 
         /// <summary>
@@ -119,6 +141,7 @@ namespace Ceres.Settings
         /// </summary>
         public static SettingsRegistry Get()
         {
+            _languageChanged ??= Localization.LocalizationSystem.Changed.Subscribe(_ => Invalidate());
             return _instance ??= Create(Contributors);
         }
 
