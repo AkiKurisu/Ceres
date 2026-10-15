@@ -10,18 +10,26 @@ using UnityEngine;
 namespace Ceres.DataDriven.Editor
 {
     /// <summary>
-    /// Editable copy of a .datatable source; <see cref="Save"/> writes the source back and reimports the table.
+    /// Editable copy of a .datatable source or an <see cref="InlineDataTable"/>, written back by <see cref="Save"/>.
     /// Opening a source that is already open returns the same document, so every editor of a table shares its edits.
     /// </summary>
     public sealed class DataTableDocument : ScriptableObject, IDisposable
     {
         private static readonly Dictionary<string, DataTableDocument> OpenDocuments = new(StringComparer.OrdinalIgnoreCase);
 
+        private static readonly Dictionary<InlineDataTable, DataTableDocument> OpenInlineDocuments = new();
+
         private int _references;
 
         private DateTime _sourceTime;
 
         private bool _sourceDeleted;
+
+        private string _assetPath;
+
+        private UnityEngine.Object _owner;
+
+        private InlineDataTable _inline;
 
         [Serializable]
         internal class DataTableRow
@@ -58,7 +66,14 @@ namespace Ceres.DataDriven.Editor
         [SerializeField]
         internal DataTableRow[] m_rows = Array.Empty<DataTableRow>();
 
-        public string AssetPath { get; private set; }
+        /// <summary>
+        /// Path of the .datatable source, or of the asset that owns an inline table
+        /// </summary>
+        public string AssetPath => _inline != null && _owner ? AssetDatabase.GetAssetPath(_owner) : _assetPath;
+
+        public bool IsInline => _inline != null;
+
+        public UnityEngine.Object Owner => _owner;
 
         public bool IsModified { get; private set; }
 
@@ -94,6 +109,28 @@ namespace Ceres.DataDriven.Editor
         }
 
         /// <summary>
+        /// Open the rows an asset stores inline, throwing <see cref="FormatException"/> when the row type is not found
+        /// </summary>
+        public static DataTableDocument Open(UnityEngine.Object owner, InlineDataTable table)
+        {
+            if (OpenInlineDocuments.TryGetValue(table, out var document) && document)
+            {
+                if (!document.IsModified) document.Load(table.ToSource());
+                document._references++;
+                return document;
+            }
+            document = CreateInstance<DataTableDocument>();
+            document.hideFlags = HideFlags.DontSave;
+            document.name = owner.name;
+            document._owner = owner;
+            document._inline = table;
+            document._references = 1;
+            document.Load(table.ToSource());
+            OpenInlineDocuments[table] = document;
+            return document;
+        }
+
+        /// <summary>
         /// Create a document for a new source; nothing is written until <see cref="Save"/>
         /// </summary>
         public static DataTableDocument Create(string assetPath, Type rowType = null)
@@ -109,7 +146,7 @@ namespace Ceres.DataDriven.Editor
             var document = CreateInstance<DataTableDocument>();
             document.hideFlags = HideFlags.DontSave;
             document.name = Path.GetFileNameWithoutExtension(assetPath);
-            document.AssetPath = assetPath;
+            document._assetPath = assetPath;
             document._references = 1;
             OpenDocuments[assetPath] = document;
             return document;
@@ -139,7 +176,7 @@ namespace Ceres.DataDriven.Editor
         }
 
         /// <summary>
-        /// Write the source and reimport the table
+        /// Write the source and reimport the table, or write inline rows into their owner asset
         /// </summary>
         public void Save()
         {
@@ -151,6 +188,11 @@ namespace Ceres.DataDriven.Editor
         /// </summary>
         internal void Save(bool deferImport)
         {
+            if (_inline != null)
+            {
+                SaveInline();
+                return;
+            }
             if (_sourceDeleted)
             {
                 Debug.LogWarning($"[DataTable] {name} was deleted, so its unsaved edits are discarded.");
@@ -179,10 +221,23 @@ namespace Ceres.DataDriven.Editor
             }
         }
 
+        private void SaveInline()
+        {
+            IsModified = false;
+            if (!_owner)
+            {
+                Debug.LogWarning($"[DataTable] The owner of {name} was deleted, so its unsaved edits are discarded.");
+                return;
+            }
+            if (!_inline.Write(ToSource())) return;
+            EditorUtility.SetDirty(_owner);
+            AssetDatabase.SaveAssetIfDirty(_owner);
+        }
+
         internal static void OnSourceMoved(string from, string to)
         {
             if (!OpenDocuments.Remove(from, out var document) || !document) return;
-            document.AssetPath = to;
+            document._assetPath = to;
             document.name = Path.GetFileNameWithoutExtension(to);
             OpenDocuments[to] = document;
         }
@@ -224,7 +279,14 @@ namespace Ceres.DataDriven.Editor
         {
             if (!this || --_references > 0) return;
             if (saveChanges && IsModified) Save(true);
-            if (OpenDocuments.TryGetValue(AssetPath, out var document) && document == this) OpenDocuments.Remove(AssetPath);
+            if (_inline != null)
+            {
+                if (OpenInlineDocuments.TryGetValue(_inline, out var inline) && inline == this) OpenInlineDocuments.Remove(_inline);
+            }
+            else if (OpenDocuments.TryGetValue(_assetPath, out var document) && document == this)
+            {
+                OpenDocuments.Remove(_assetPath);
+            }
             DestroyImmediate(this);
         }
 
