@@ -78,6 +78,21 @@ namespace Ceres.DataDriven.Editor
             _window.OpenDataTable(dataTable);
         }
 
+        /// <summary>
+        /// Open DataTable EditorWindow on the rows an asset stores inline, with custom extensions
+        /// </summary>
+        public static void OpenWindowWithExtensions(UnityEngine.Object owner, InlineDataTable table, params DataTableEditorExtension[] extensions)
+        {
+            if (_window)
+            {
+                _window.Close();
+            }
+            _window = GetWindow<DataTableEditorWindow>("DataTable Editor");
+            _window.Show();
+            _window._extensions = extensions;
+            _window.OpenDocument(() => DataTableDocument.Open(owner, table), AssetDatabase.GetAssetPath(owner));
+        }
+
         private void OnEnable()
         {
             _window = this;
@@ -140,11 +155,16 @@ namespace Ceres.DataDriven.Editor
         
         private void OpenDataTable(DataTable dataTable)
         {
-            CloseDocument();
             var path = AssetDatabase.GetAssetPath(dataTable);
+            OpenDocument(() => DataTableDocument.Open(path), path);
+        }
+
+        private void OpenDocument(Func<DataTableDocument> open, string path)
+        {
+            CloseDocument();
             try
             {
-                _document = DataTableDocument.Open(path);
+                _document = open();
             }
             catch (FormatException e)
             {

@@ -45,6 +45,15 @@ reimports every table that uses it. Source members unknown to the schema are
 ignored and absent members take their defaults, so adding or removing a member
 does not require editing existing sources.
 
+## Inline Rows
+
+Rows that only Editor tools consume, such as the content list a tool asset
+compiles, may be stored inline in the asset that owns them instead of living in a
+separate source. Inline rows record the schema and one serialized object per
+row, open in the same editing document and editors as a source, and are written
+back into the owner asset on save. They are never imported, have no runtime
+table and no binary form; anything loaded at runtime is a `.datatable` source.
+
 ## Runtime Format
 
 The runtime table is binary and is produced only by the importer. Each row can be

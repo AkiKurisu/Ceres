@@ -47,7 +47,7 @@ namespace Ceres.DataDriven.Editor
 
         private static int _batchDepth;
 
-        private static readonly Dictionary<string, DataTableDocument> BatchDocuments = new(StringComparer.OrdinalIgnoreCase);
+        private static readonly HashSet<DataTableDocument> BatchDocuments = new();
 
         /// <summary>
         /// Open the source of a table, apply an edit and save it when the edit changed the document
@@ -63,19 +63,35 @@ namespace Ceres.DataDriven.Editor
         /// </summary>
         public static void Edit(string assetPath, Action<DataTableDocument> edit)
         {
+            Edit(() => DataTableDocument.Open(assetPath), edit);
+        }
+
+        /// <summary>
+        /// Open the rows an asset stores inline, apply an edit and write them back when the edit changed them
+        /// </summary>
+        public static void Edit(UnityEngine.Object owner, InlineDataTable table, Action<DataTableDocument> edit)
+        {
+            Edit(() => DataTableDocument.Open(owner, table), edit);
+        }
+
+        private static void Edit(Func<DataTableDocument> open, Action<DataTableDocument> edit)
+        {
+            var document = open();
             if (_batchDepth > 0)
             {
-                if (!BatchDocuments.TryGetValue(assetPath, out var batchDocument) || !batchDocument)
-                {
-                    batchDocument = DataTableDocument.Open(assetPath);
-                    BatchDocuments[assetPath] = batchDocument;
-                }
-                edit(batchDocument);
+                if (!BatchDocuments.Add(document)) document.Dispose();
+                edit(document);
                 return;
             }
-            using var document = DataTableDocument.Open(assetPath);
-            edit(document);
-            if (document.IsModified) document.Save();
+            try
+            {
+                edit(document);
+                if (document.IsModified) document.Save();
+            }
+            finally
+            {
+                document.Dispose();
+            }
         }
 
         /// <summary>
@@ -91,7 +107,7 @@ namespace Ceres.DataDriven.Editor
         private static void EndBatch()
         {
             if (--_batchDepth > 0) return;
-            var documents = BatchDocuments.Values.Where(document => document).ToArray();
+            var documents = BatchDocuments.Where(document => document).ToArray();
             BatchDocuments.Clear();
             AssetDatabase.StartAssetEditing();
             try
@@ -204,6 +220,24 @@ namespace Ceres.DataDriven.Editor
         public static Dictionary<string, IDataTableRow> GetRowMapSafe(DataTable dataTable)
         {
             using var document = DataTableDocument.Open(dataTable);
+            return document.GetRowMap();
+        }
+
+        /// <summary>
+        /// Copies of all inline rows, including unsaved edits of an open document
+        /// </summary>
+        public static T[] GetAllRows<T>(UnityEngine.Object owner, InlineDataTable table) where T : class, IDataTableRow
+        {
+            using var document = DataTableDocument.Open(owner, table);
+            return document.GetAllRows<T>();
+        }
+
+        /// <summary>
+        /// Copies of all inline rows keyed by row id, including unsaved edits of an open document
+        /// </summary>
+        public static Dictionary<string, IDataTableRow> GetRowMap(UnityEngine.Object owner, InlineDataTable table)
+        {
+            using var document = DataTableDocument.Open(owner, table);
             return document.GetRowMap();
         }
 

@@ -212,6 +212,31 @@ runtime table does not contain.
 and editors share pending edits. Release a document with `Dispose`, or with
 `Close(true)` to save pending edits when the last holder releases it.
 
+### Inline rows
+
+Rows used only by Editor tools can live inside the asset that owns them. Add an
+`InlineDataTable` field to a ScriptableObject and edit it like a source:
+
+```csharp
+public sealed class ItemCatalog : ScriptableObject
+{
+    [SerializeField, HideInInspector]
+    internal InlineDataTable rows = new(typeof(ItemRow));
+}
+
+DataTableEditorUtils.Edit(catalog, catalog.rows, document =>
+{
+    document.AddOrUpdateRow("potion", new ItemRow { displayName = "Potion" });
+});
+ItemRow[] items = DataTableEditorUtils.GetAllRows<ItemRow>(catalog, catalog.rows);
+```
+
+Saving writes the rows back into the owner asset. `BeginBatch()`,
+`DataTableDocument.Open(owner, rows)` and
+`DataTableEditorWindow.OpenWindowWithExtensions(owner, rows)` work the same way
+as for a `.datatable` file. Inline rows are never imported and have no runtime
+table; use a `.datatable` file for anything loaded at runtime.
+
 For a custom window, derive behavior from `DataTableEditorExtension` and open it
 with `DataTableEditorWindow.OpenWindowWithExtensions`. `OnDataTablePreUpdate`
 and `OnDataTablePostUpdate` observe edits made in the editors.
