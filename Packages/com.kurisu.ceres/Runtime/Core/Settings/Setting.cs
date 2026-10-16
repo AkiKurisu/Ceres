@@ -66,6 +66,8 @@ namespace Ceres.Settings
 
     internal interface IValueSetting
     {
+        string Id { get; }
+
         SettingApplyMode ApplyMode { get; set; }
 
         bool Resettable { get; set; }
@@ -84,6 +86,11 @@ namespace Ceres.Settings
         bool IsModified { get; }
 
         void Restore();
+
+        /// <summary>
+        /// The same recorded value for an equivalent setting of a rebuilt registry, or null when the value types differ
+        /// </summary>
+        ISettingSnapshot MoveTo(IValueSetting setting);
     }
 
     public abstract class ValueSetting<T> : Setting, IValueSetting
@@ -94,10 +101,14 @@ namespace Ceres.Settings
 
             private readonly T _value;
 
-            public Snapshot(ValueSetting<T> setting)
+            public Snapshot(ValueSetting<T> setting) : this(setting, setting.Value)
+            {
+            }
+
+            private Snapshot(ValueSetting<T> setting, T value)
             {
                 _setting = setting;
-                _value = setting.Value;
+                _value = value;
             }
 
             public IValueSetting Setting => _setting;
@@ -107,6 +118,11 @@ namespace Ceres.Settings
             public void Restore()
             {
                 if (!Comparer.Equals(_setting.Value, _value)) _setting._setter(_value);
+            }
+
+            public ISettingSnapshot MoveTo(IValueSetting setting)
+            {
+                return setting is ValueSetting<T> typed ? new Snapshot(typed, _value) : null;
             }
         }
 

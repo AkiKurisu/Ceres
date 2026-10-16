@@ -71,7 +71,7 @@ namespace Ceres.Localization.Editor
         private void DrawGroup(StringTableGroup group)
         {
             var source = LocalizationSystem.SourceLanguage;
-            int total = group.Tables.TryGetValue(source, out var sourceTable) ? sourceTable.RowCount : 0;
+            int total = group.Tables.TryGetValue(source, out var sourceTable) ? LocalizationEditorUtils.ReadRows(sourceTable).Count : 0;
             using (new EditorGUILayout.HorizontalScope())
             {
                 bool isSelected = _selected == group;

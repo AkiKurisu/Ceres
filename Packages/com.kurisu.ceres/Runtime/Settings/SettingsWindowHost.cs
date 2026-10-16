@@ -29,7 +29,7 @@ namespace Ceres.Settings.UI
 
         private IDisposable _invalidated;
 
-        private bool _reopen;
+        private bool _rebuild;
 
         /// <summary>
         /// Runtime-composed wording; assign before the first <see cref="Open"/>
@@ -70,7 +70,7 @@ namespace Ceres.Settings.UI
             _panelSettings.sortingOrder = sortingOrder;
             document.panelSettings = _panelSettings;
             Touch = SettingsTraits.Has(SettingsTraits.Touch);
-            _invalidated = SettingsRegistry.Invalidated.Subscribe(_ => _reopen = IsOpen);
+            _invalidated = SettingsRegistry.Invalidated.Subscribe(_ => _rebuild = IsOpen);
         }
 
         // The document builds its tree when enabled; binding hides it until the first Open.
@@ -126,10 +126,12 @@ namespace Ceres.Settings.UI
         private void Update()
         {
             if (!IsOpen) return;
-            if (_reopen)
+            if (_rebuild)
             {
-                _reopen = false;
-                Open(SettingsRegistry.Get(), _view.CurrentPageId);
+                _rebuild = false;
+                if (TextSource != null) Text = TextSource();
+                _view.Text = Text;
+                _view.Rebuild(SettingsRegistry.Get());
             }
             UpdateLayout(false);
             _view.Update();

@@ -74,8 +74,8 @@ root.
 Settings read their labels, descriptions and option names through keys when the
 registry is built. A language change invalidates the registry; an open settings
 window rebuilds on the same page, and product wording composed by the window is
-re-read. Values, sessions and pending confirmations are not affected beyond the
-reopen.
+re-read. The open session continues: staged values, the values a revert restores
+and a pending confirmation carry over to the rebuilt settings.
 
 ## Authoring Tools
 

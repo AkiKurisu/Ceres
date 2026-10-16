@@ -87,7 +87,8 @@ language.Bind<LocalizationConfig>(config => config.Language);
 ```
 
 Settings read their wording when the registry is built. A language change
-rebuilds the registry, and an open settings window reopens on the same page. Give
+rebuilds the registry, and an open settings window rebuilds on the same page
+without ending its session. Give
 the window host a `TextSource` so its runtime wording is created again too.
 
 The language `qps-ploc` shows pseudo text derived from the source language,

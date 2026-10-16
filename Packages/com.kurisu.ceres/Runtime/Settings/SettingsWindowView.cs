@@ -127,6 +127,28 @@ namespace Ceres.Settings.UI
             Refresh();
         }
 
+        /// <summary>
+        /// Show a rebuilt registry without ending the session, keeping the page, focus and scroll position
+        /// </summary>
+        public void Rebuild(SettingsRegistry registry)
+        {
+            if (!IsOpen || registry == _registry) return;
+            var pageId = CurrentPageId;
+            var focusedId = _focused?.Setting.Id;
+            var scroll = _content as ScrollView;
+            var offset = scroll?.scrollOffset ?? Vector2.zero;
+            _session.Rebind(registry);
+            _changes?.Dispose();
+            Build(registry);
+            _changes = Observable.Merge(registry.Settings.Select(setting => setting.Changed).ToArray())
+                .Subscribe(_ => _dirty = true);
+            ShowPage(_pages.FirstOrDefault(page => page.Model.Id == pageId) ?? _pages.FirstOrDefault());
+            Refresh();
+            var focused = _page?.Rows.FirstOrDefault(row => row.Setting.Id == focusedId && row.State.IsVisible);
+            if (focused != null) Focus(focused);
+            scroll?.schedule.Execute(() => scroll.scrollOffset = offset);
+        }
+
         public void Close()
         {
             if (!IsOpen) return;
