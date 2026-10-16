@@ -156,8 +156,10 @@ The window UXML names these elements:
 
 Elements with the class `settings-safe-area` keep their content inside the
 screen safe area: each receives, as padding, the part of it that lies outside the
-safe area, so its background still reaches the screen edge. The framework owns
-their padding, so put their own spacing on their children.
+safe area, so its background still reaches the screen edge. Left and right use
+the larger of the two side insets, keeping content centered when only one side has
+a cutout. The framework owns their padding, so put their own spacing on their
+children.
 
 `SettingsWindowTemplates` holds one template per element the framework creates:
 

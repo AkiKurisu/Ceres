@@ -194,7 +194,8 @@ namespace Ceres.Settings.UI
         }
 
         /// <summary>
-        /// Pad each element marked with <see cref="SafeAreaClassName"/> by the part of it outside the safe area, in panel coordinates with a top-left origin
+        /// Pad each element marked with <see cref="SafeAreaClassName"/> by the part of it outside the safe area, in panel coordinates with a top-left origin.
+        /// The horizontal insets are mirrored so content stays centered when only one side has a cutout
         /// </summary>
         public void SetSafeArea(Rect safeArea)
         {
@@ -205,10 +206,12 @@ namespace Ceres.Settings.UI
         private void ApplySafeArea(VisualElement element)
         {
             var bound = element.worldBound;
-            if (_safeArea is not { } safe || float.IsNaN(bound.width)) return;
-            element.style.paddingLeft = Mathf.Max(0, safe.xMin - bound.xMin);
+            var panel = _root.worldBound;
+            if (_safeArea is not { } safe || float.IsNaN(bound.width) || float.IsNaN(panel.width)) return;
+            float side = Mathf.Max(0, safe.xMin - panel.xMin, panel.xMax - safe.xMax);
+            element.style.paddingLeft = Mathf.Max(0, panel.xMin + side - bound.xMin);
             element.style.paddingTop = Mathf.Max(0, safe.yMin - bound.yMin);
-            element.style.paddingRight = Mathf.Max(0, bound.xMax - safe.xMax);
+            element.style.paddingRight = Mathf.Max(0, bound.xMax - (panel.xMax - side));
             element.style.paddingBottom = Mathf.Max(0, bound.yMax - safe.yMax);
         }
 
