@@ -147,7 +147,7 @@ namespace Ceres.Settings.UI
             float scale = Scale(screen);
             _panelSettings.scale = scale;
             var panelSafeArea = new Rect(safeArea.x / scale, (screen.y - safeArea.yMax) / scale, safeArea.width / scale, safeArea.height / scale);
-            _view.SetSafeArea(screen / scale, panelSafeArea);
+            _view.SetSafeArea(panelSafeArea);
         }
 
         private void OnApplicationQuit()

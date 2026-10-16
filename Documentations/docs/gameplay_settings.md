@@ -154,6 +154,11 @@ The window UXML names these elements:
 | `settings-confirm-message` | Label | Countdown prompt |
 | `settings-confirm-keep`, `settings-confirm-revert` | Button | Confirmation actions |
 
+Elements with the class `settings-safe-area` keep their content inside the
+screen safe area: each receives, as padding, the part of it that lies outside the
+safe area, so its background still reaches the screen edge. The framework owns
+their padding, so put their own spacing on their children.
+
 `SettingsWindowTemplates` holds one template per element the framework creates:
 
 | Template | Required elements |

@@ -32,6 +32,7 @@ namespace Ceres.Settings.UI
         public const string TabSelectedClassName = "settings-tab--selected";
         public const string SectionFirstClassName = "settings-section--first";
         public const string DetailPreviewName = "settings-detail-preview";
+        public const string SafeAreaClassName = "settings-safe-area";
 
         [UIToolkitQuery] private VisualElement _root;
         [UIToolkitQuery] private Button _close;
@@ -56,6 +57,8 @@ namespace Ceres.Settings.UI
         private readonly HashSet<string> _loadingPreviews = new();
         private CancellationTokenSource _previewCancellation;
         private bool _touch;
+        private readonly List<VisualElement> _safeAreaElements;
+        private Rect? _safeArea;
 
         private readonly UIToolkitBindingScope _scope = new();
         private readonly IDisposable _languageClass;
@@ -108,6 +111,11 @@ namespace Ceres.Settings.UI
             }));
             _scope.Callback<NavigationCancelEvent>(_root, _ => Cancel());
             _scope.Callback<KeyDownEvent>(_root, OnKeyDown);
+            _safeAreaElements = _root.Query(className: SafeAreaClassName).ToList();
+            foreach (var element in _safeAreaElements)
+            {
+                _scope.Callback<GeometryChangedEvent>(element, _ => ApplySafeArea(element));
+            }
             _root.style.display = DisplayStyle.None;
         }
 
@@ -186,14 +194,22 @@ namespace Ceres.Settings.UI
         }
 
         /// <summary>
-        /// Keep the window inside the safe area, in panel coordinates with a top-left origin
+        /// Pad each element marked with <see cref="SafeAreaClassName"/> by the part of it outside the safe area, in panel coordinates with a top-left origin
         /// </summary>
-        public void SetSafeArea(Vector2 panelSize, Rect safeArea)
+        public void SetSafeArea(Rect safeArea)
         {
-            _root.style.paddingLeft = safeArea.xMin;
-            _root.style.paddingTop = safeArea.yMin;
-            _root.style.paddingRight = Mathf.Max(0, panelSize.x - safeArea.xMax);
-            _root.style.paddingBottom = Mathf.Max(0, panelSize.y - safeArea.yMax);
+            _safeArea = safeArea;
+            foreach (var element in _safeAreaElements) ApplySafeArea(element);
+        }
+
+        private void ApplySafeArea(VisualElement element)
+        {
+            var bound = element.worldBound;
+            if (_safeArea is not { } safe || float.IsNaN(bound.width)) return;
+            element.style.paddingLeft = Mathf.Max(0, safe.xMin - bound.xMin);
+            element.style.paddingTop = Mathf.Max(0, safe.yMin - bound.yMin);
+            element.style.paddingRight = Mathf.Max(0, bound.xMax - safe.xMax);
+            element.style.paddingBottom = Mathf.Max(0, bound.yMax - safe.yMax);
         }
 
         public void Update()
