@@ -15,6 +15,8 @@ namespace Ceres.Settings
             IValueSetting Setting { get; }
 
             void Apply();
+
+            IStagedValue MoveTo(IValueSetting setting);
         }
 
         private sealed class StagedValue<T> : IStagedValue
@@ -32,19 +34,24 @@ namespace Ceres.Settings
             public IValueSetting Setting => Target;
 
             public void Apply() => Target.Value = Value;
+
+            public IStagedValue MoveTo(IValueSetting setting)
+            {
+                return setting is ValueSetting<T> typed ? new StagedValue<T>(typed, Value) : null;
+            }
         }
 
-        private readonly List<ISettingSnapshot> _snapshots;
+        private List<ISettingSnapshot> _snapshots;
 
-        private readonly List<IStagedValue> _staged = new();
+        private List<IStagedValue> _staged = new();
 
-        private readonly List<ISettingSnapshot> _confirming = new();
+        private List<ISettingSnapshot> _confirming = new();
 
         private float _confirmDeadline;
 
         private bool _closed;
 
-        public SettingsRegistry Registry { get; }
+        public SettingsRegistry Registry { get; private set; }
 
         public float ConfirmSeconds { get; }
 
@@ -53,6 +60,25 @@ namespace Ceres.Settings
             Registry = registry;
             ConfirmSeconds = confirmSeconds;
             _snapshots = registry.Settings.OfType<IValueSetting>().Select(setting => setting.Capture()).ToList();
+        }
+
+        /// <summary>
+        /// Continue on a rebuilt registry, carrying recorded values, staged values and a pending confirmation over by setting id
+        /// </summary>
+        public void Rebind(SettingsRegistry registry)
+        {
+            if (registry == Registry) return;
+            Registry = registry;
+            var settings = registry.Settings.OfType<IValueSetting>().ToDictionary(setting => setting.Id);
+            var recorded = _snapshots.ToDictionary(snapshot => snapshot.Setting.Id);
+            _snapshots = settings.Values
+                .Select(setting => recorded.TryGetValue(setting.Id, out var snapshot) ? snapshot.MoveTo(setting) ?? setting.Capture() : setting.Capture())
+                .Concat(recorded.Values.Where(snapshot => !settings.ContainsKey(snapshot.Setting.Id)))
+                .ToList();
+            _staged = _staged.Select(staged => settings.TryGetValue(staged.Setting.Id, out var setting) ? staged.MoveTo(setting) : null)
+                .Where(staged => staged != null).ToList();
+            _confirming = _confirming.Select(snapshot => settings.TryGetValue(snapshot.Setting.Id, out var setting) ? snapshot.MoveTo(setting) ?? snapshot : snapshot)
+                .ToList();
         }
 
         public bool HasChanges => _snapshots.Any(snapshot => snapshot.IsModified);

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Ceres.Localization;
 using Ceres.UIElements;
 using Cysharp.Threading.Tasks;
 using R3;
@@ -57,8 +58,8 @@ namespace Ceres.Settings.UI
         private bool _touch;
 
         private readonly UIToolkitBindingScope _scope = new();
+        private readonly IDisposable _languageClass;
         private readonly List<Page> _pages = new();
-        private readonly SettingsWindowText _text;
         private readonly SettingsWindowTemplates _templates;
         private readonly Action _onClose;
         private SettingsRegistry _registry;
@@ -77,6 +78,11 @@ namespace Ceres.Settings.UI
         public string CurrentPageId => _page?.Model.Id;
 
         /// <summary>
+        /// Runtime-composed wording, read whenever the window refreshes
+        /// </summary>
+        public SettingsWindowText Text { get; set; }
+
+        /// <summary>
         /// Images for preview keys; without a source, or in the touch layout, the window shows no previews
         /// </summary>
         public ISettingsPreviewSource PreviewSource { get; set; }
@@ -84,9 +90,10 @@ namespace Ceres.Settings.UI
         public SettingsWindowView(VisualElement root, SettingsWindowTemplates templates, SettingsWindowText text, Action close)
         {
             BindGeneratedElements(root);
+            _languageClass = LanguageClass.Bind(_root);
             _detailPreview = root.Q(DetailPreviewName);
             _templates = templates;
-            _text = text;
+            Text = text;
             _onClose = close;
             _scope.Click(_close, () => _onClose?.Invoke());
             _scope.Click(_resetPage, () => Act(() => _session.ResetPage(_page.Model)));
@@ -118,6 +125,33 @@ namespace Ceres.Settings.UI
             _root.style.display = DisplayStyle.Flex;
             ShowPage(_pages.FirstOrDefault(page => page.Model.Id == pageId) ?? _pages.FirstOrDefault());
             Refresh();
+        }
+
+        /// <summary>
+        /// Show a rebuilt registry without ending the session, keeping the page, focus and scroll position
+        /// </summary>
+        public void Rebuild(SettingsRegistry registry)
+        {
+            if (!IsOpen || registry == _registry) return;
+            var pageId = CurrentPageId;
+            var focusedId = _focused?.Setting.Id;
+            bool hadInputFocus = _focused != null && _root.focusController?.focusedElement == _focused.Element;
+            var scroll = _content as ScrollView;
+            var offset = scroll?.scrollOffset ?? Vector2.zero;
+            _session.Rebind(registry);
+            _changes?.Dispose();
+            Build(registry);
+            _changes = Observable.Merge(registry.Settings.Select(setting => setting.Changed).ToArray())
+                .Subscribe(_ => _dirty = true);
+            ShowPage(_pages.FirstOrDefault(page => page.Model.Id == pageId) ?? _pages.FirstOrDefault());
+            Refresh();
+            var focused = _page?.Rows.FirstOrDefault(row => row.Setting.Id == focusedId && row.State.IsVisible);
+            if (focused != null)
+            {
+                Focus(focused);
+                if (hadInputFocus) focused.Element.Focus();
+            }
+            scroll?.schedule.Execute(() => scroll.scrollOffset = offset);
         }
 
         public void Close()
@@ -173,6 +207,7 @@ namespace Ceres.Settings.UI
         {
             Close();
             _scope.Dispose();
+            _languageClass.Dispose();
         }
 
         private void Build(SettingsRegistry registry)
@@ -291,7 +326,7 @@ namespace Ceres.Settings.UI
             _confirm.style.display = confirming ? DisplayStyle.Flex : DisplayStyle.None;
             if (confirming)
             {
-                _confirmMessage.text = string.Format(_text.ConfirmMessage, Mathf.CeilToInt(_session.ConfirmRemaining));
+                _confirmMessage.text = string.Format(Text.ConfirmMessage, Mathf.CeilToInt(_session.ConfirmRemaining));
                 if (!_wasConfirming) _confirmKeep.Focus();
             }
             _wasConfirming = confirming;
@@ -307,9 +342,9 @@ namespace Ceres.Settings.UI
             _detailDescription.text = setting.Description;
             _detailDescription.style.display = string.IsNullOrEmpty(setting.Description) ? DisplayStyle.None : DisplayStyle.Flex;
             _detailImpact.Clear();
-            AddImpact(_text.Gpu, setting.Impact.Gpu);
-            AddImpact(_text.Vram, setting.Impact.Vram);
-            AddImpact(_text.Cpu, setting.Impact.Cpu);
+            AddImpact(Text.Gpu, setting.Impact.Gpu);
+            AddImpact(Text.Vram, setting.Impact.Vram);
+            AddImpact(Text.Cpu, setting.Impact.Cpu);
             var reasons = new List<string>();
             if (!_focused.State.IsEnabled && !string.IsNullOrEmpty(_focused.State.Reason)) reasons.Add(_focused.State.Reason);
             if (setting is IChoiceSetting choice)
@@ -322,7 +357,7 @@ namespace Ceres.Settings.UI
             }
             _detailReason.text = string.Join("\n", reasons);
             _detailReason.style.display = reasons.Count > 0 ? DisplayStyle.Flex : DisplayStyle.None;
-            _detailRestart.text = _text.RestartRequired;
+            _detailRestart.text = Text.RestartRequired;
             _detailRestart.style.display = setting.RequiresRestart ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
@@ -393,7 +428,7 @@ namespace Ceres.Settings.UI
             if (level == SettingImpactLevel.None) return;
             var row = _templates.impact.Instantiate();
             SettingsWindowTemplates.Require<Label>(row, SettingsWindowTemplates.ImpactNameName, _templates.impact).text = name;
-            SettingsWindowTemplates.Require<Label>(row, SettingsWindowTemplates.ImpactLevelName, _templates.impact).text = _text.ImpactLevel(level);
+            SettingsWindowTemplates.Require<Label>(row, SettingsWindowTemplates.ImpactLevelName, _templates.impact).text = Text.ImpactLevel(level);
             _detailImpact.Add(row);
         }
 
