@@ -135,6 +135,7 @@ namespace Ceres.Settings.UI
             if (!IsOpen || registry == _registry) return;
             var pageId = CurrentPageId;
             var focusedId = _focused?.Setting.Id;
+            bool hadInputFocus = _focused != null && _root.focusController?.focusedElement == _focused.Element;
             var scroll = _content as ScrollView;
             var offset = scroll?.scrollOffset ?? Vector2.zero;
             _session.Rebind(registry);
@@ -145,7 +146,11 @@ namespace Ceres.Settings.UI
             ShowPage(_pages.FirstOrDefault(page => page.Model.Id == pageId) ?? _pages.FirstOrDefault());
             Refresh();
             var focused = _page?.Rows.FirstOrDefault(row => row.Setting.Id == focusedId && row.State.IsVisible);
-            if (focused != null) Focus(focused);
+            if (focused != null)
+            {
+                Focus(focused);
+                if (hadInputFocus) focused.Element.Focus();
+            }
             scroll?.schedule.Execute(() => scroll.scrollOffset = offset);
         }
 
