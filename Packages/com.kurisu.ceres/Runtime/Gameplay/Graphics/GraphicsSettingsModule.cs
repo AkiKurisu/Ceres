@@ -1,4 +1,5 @@
 #if URP_INSTALL
+using System.Collections.Generic;
 using System.Reflection;
 using Ceres.Configs;
 using Ceres.Modules;
@@ -17,6 +18,8 @@ namespace Ceres.Gameplay.Graphics
 
         private float _originalRenderScale;
 
+        private readonly List<(ConfigVariable Variable, object Value)> _forwardedVariables = new();
+
         public override void Initialize()
         {
             var config = GraphicsConfig.Get();
@@ -30,10 +33,11 @@ namespace Ceres.Gameplay.Graphics
             };
 #if UNITY_EDITOR
             Application.quitting += RestoreRenderScale;
+            Application.quitting += RestoreConfigVariables;
 #endif
         }
 
-        private static void ForwardConfigVariables(GraphicsConfig config)
+        private void ForwardConfigVariables(GraphicsConfig config)
         {
             var registry = ConfigVariableRegistry.Get();
             foreach (var property in typeof(GraphicsConfig).GetProperties(BindingFlags.Instance | BindingFlags.Public))
@@ -48,9 +52,15 @@ namespace Ceres.Gameplay.Graphics
                     continue;
                 }
 
+                _forwardedVariables.Add((variable, variable.GetValue()));
                 var source = (ReactiveProperty<bool>)property.GetValue(config);
                 source.Subscribe(value => variable.SetValue(value, false));
             }
+        }
+
+        private void RestoreConfigVariables()
+        {
+            foreach (var (variable, value) in _forwardedVariables) variable.SetValue(value, false);
         }
 
         private static void ApplyTextureMipmapLimit(GraphicsConfig config)
