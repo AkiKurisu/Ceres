@@ -72,7 +72,7 @@ namespace Ceres.Gameplay
         
         internal static void LateTickCurrent()
         {
-            if (!Application.isPlaying || !_current || _current.IsDestroyed || !_current._isStarted) return;
+            if (!Application.isPlaying || !_current || !_current.isActiveAndEnabled || _current.IsDestroyed || !_current._isStarted) return;
             try
             {
                 _current.LateTick();
