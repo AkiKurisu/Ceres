@@ -5,11 +5,29 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2026-10-17
+
+### Added
+
+- Added string table localization with live language switching.
+- Added inline Data Tables stored inside their owner asset.
+- Added a path tracing toggle to the graphics config.
+
+### Changed
+
+- The settings window keeps its state when the language changes and keeps a single selected row per page.
+- The settings window fills the screen while keeping its content inside the safe area.
+
+### Fixed
+
+- Graphics config switches no longer stay applied to the Editor after Play Mode ends.
+
 ## [1.1.1] - 2026-10-12
 
 ### Added
 
 - `[EditorOnly]` keeps a Data Table row member in the source and out of the runtime table.
+- Added preview images to the settings window.
 
 ### Changed
 
