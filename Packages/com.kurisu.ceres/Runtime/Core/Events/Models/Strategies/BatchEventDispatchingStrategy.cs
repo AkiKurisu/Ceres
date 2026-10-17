@@ -75,7 +75,6 @@ namespace Ceres.Events
                 return;
             }
             batchedEvent = ((IBatchEvent)evt).CreateBatchedEvent();
-            batchedEvent.Acquire();
             _batchEventMap.Add(evt.EventTypeId, batchedEvent);
         }
     }
