@@ -39,6 +39,8 @@ namespace Ceres.Gameplay
         private static int _inPendingDestroyedFrame;
         
         private bool _isSystemDirty;
+
+        private bool _isStarted;
         
         internal bool IsDestroyed { get; private set; }
         
@@ -57,6 +59,7 @@ namespace Ceres.Gameplay
         private void Start()
         {
             _subsystemCollection.Init();
+            _isStarted = true;
         }
         
         private void Update()
@@ -67,6 +70,27 @@ namespace Ceres.Gameplay
             _isSystemDirty = false;
         }
         
+        internal static void LateTickCurrent()
+        {
+            if (!Application.isPlaying || !_current || !_current.isActiveAndEnabled || _current.IsDestroyed || !_current._isStarted) return;
+            try
+            {
+                _current.LateTick();
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception);
+            }
+        }
+
+        private void LateTick()
+        {
+            _subsystemCollection.LateTick();
+            if (!_isSystemDirty) return;
+            _subsystemCollection.Rebuild();
+            _isSystemDirty = false;
+        }
+
         private void FixedUpdate()
         {
             _subsystemCollection.FixedTick();

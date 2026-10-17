@@ -40,7 +40,14 @@ namespace Ceres.Gameplay
                 if (!((WorldSubsystem)_systems[type]).CanCreate(worldContext)) _systems.Remove(type);
                 else _systems[type].SetWorld(worldContext);
             }
-            _subsystems = _systems.Values.ToArray();
+            _subsystems = Ordered();
+        }
+        
+        private SubsystemBase[] Ordered()
+        {
+            return _systems.Values
+                .OrderBy(system => system.GetType().GetCustomAttribute<WorldSubsystemOrderAttribute>()?.Order ?? 0)
+                .ToArray();
         }
         
         internal void RegisterSubsystem<T>(T subsystem) where T : SubsystemBase
@@ -57,7 +64,7 @@ namespace Ceres.Gameplay
         
         internal void Rebuild()
         {
-            _subsystems = _systems.Values.ToArray();
+            _subsystems = Ordered();
             Init();
         }
         
@@ -108,6 +115,14 @@ namespace Ceres.Gameplay
             for (int i = 0; i < _subsystems.Length; ++i)
             {
                 _subsystems[i].FixedTick();
+            }
+        }
+        
+        public void LateTick()
+        {
+            for (int i = 0; i < _subsystems.Length; ++i)
+            {
+                _subsystems[i].LateTick();
             }
         }
         
@@ -174,6 +189,11 @@ namespace Ceres.Gameplay
         }
 
         public virtual void FixedTick()
+        {
+
+        }
+
+        public virtual void LateTick()
         {
 
         }
