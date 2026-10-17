@@ -43,6 +43,31 @@ scores.AddScore(100);
 
 Use `WorldSubsystem.GetOrCreate<T>()` for an optional subsystem that should be created on first use instead of world creation. Override `CanCreate(WorldContext)` when availability depends on the current world.
 
+## Tick phases and order
+
+A world ticks its subsystems in three phases. Override the ones a subsystem needs:
+
+| Method | When it runs |
+| --- | --- |
+| `Tick` | In `Update`, before most scripts (the world updates at execution order -50) |
+| `FixedTick` | In `FixedUpdate` |
+| `LateTick` | After every MonoBehaviour `LateUpdate` of the frame, before the player loop systems that follow them, such as skinning and rendering updates |
+
+`LateTick` is the place for work that must see the final poses of every `LateUpdate` script, such as IK, and must finish before systems that read those poses later in the frame.
+
+Within each phase, subsystems run by `[WorldSubsystemOrder]`, lowest first. Subsystems without the attribute have order 0, and equal orders keep their registration order.
+
+```csharp
+[InitializeOnWorldCreate, WorldSubsystemOrder(100)]
+public sealed class SecondaryMotionSubsystem : WorldSubsystem
+{
+    public override void LateTick()
+    {
+        // Runs after subsystems with a lower order in the same phase.
+    }
+}
+```
+
 ## Actors and components
 
 `Actor` is a `FlowGraphObject` placed on a GameObject. It registers with the current world in `Awake` and unregisters in `OnDestroy`. An `ActorComponent` must share that GameObject; it registers itself with the Actor during its own `Awake`.
