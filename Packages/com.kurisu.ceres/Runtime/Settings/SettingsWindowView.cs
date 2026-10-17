@@ -25,6 +25,7 @@ namespace Ceres.Settings.UI
             public VisualElement Content;
             public readonly List<(VisualElement Container, Label Header, List<SettingRow> Rows)> Sections = new();
             public IEnumerable<SettingRow> Rows => Sections.SelectMany(section => section.Rows);
+            public SettingRow Selected;
         }
 
         private const float RefreshInterval = 0.5f;
@@ -127,6 +128,7 @@ namespace Ceres.Settings.UI
             if (IsOpen) Close();
             pageId ??= CurrentPageId;
             if (_registry != registry) Build(registry);
+            foreach (var page in _pages) page.Selected = null;
             _session = new SettingsSession(registry);
             _changes = Observable.Merge(registry.Settings.Select(setting => setting.Changed).ToArray())
                 .Subscribe(_ => _dirty = true);
@@ -136,29 +138,29 @@ namespace Ceres.Settings.UI
         }
 
         /// <summary>
-        /// Show a rebuilt registry without ending the session, keeping the page, focus and scroll position
+        /// Show a rebuilt registry without ending the session, keeping the page, selections, focus and scroll position
         /// </summary>
         public void Rebuild(SettingsRegistry registry)
         {
             if (!IsOpen || registry == _registry) return;
             var pageId = CurrentPageId;
-            var focusedId = _focused?.Setting.Id;
+            var selections = _pages.Where(page => page.Selected != null).ToDictionary(page => page.Model.Id, page => page.Selected.Setting.Id);
             bool hadInputFocus = _focused != null && _root.focusController?.focusedElement == _focused.Element;
             var scroll = _content as ScrollView;
             var offset = scroll?.scrollOffset ?? Vector2.zero;
             _session.Rebind(registry);
             _changes?.Dispose();
+            _focused = null;
             Build(registry);
             _changes = Observable.Merge(registry.Settings.Select(setting => setting.Changed).ToArray())
                 .Subscribe(_ => _dirty = true);
+            foreach (var page in _pages)
+            {
+                if (selections.TryGetValue(page.Model.Id, out var settingId)) page.Selected = page.Rows.FirstOrDefault(row => row.Setting.Id == settingId);
+            }
             ShowPage(_pages.FirstOrDefault(page => page.Model.Id == pageId) ?? _pages.FirstOrDefault());
             Refresh();
-            var focused = _page?.Rows.FirstOrDefault(row => row.Setting.Id == focusedId && row.State.IsVisible);
-            if (focused != null)
-            {
-                Focus(focused);
-                if (hadInputFocus) focused.Element.Focus();
-            }
+            if (hadInputFocus) _focused?.Element.Focus();
             scroll?.schedule.Execute(() => scroll.scrollOffset = offset);
         }
 
@@ -260,9 +262,9 @@ namespace Ceres.Settings.UI
                         {
                             if (row == _focused) RefreshPreview();
                         };
-                        row.Element.RegisterCallback<PointerEnterEvent>(_ => Focus(row));
-                        row.Element.RegisterCallback<FocusInEvent>(_ => Focus(row));
-                        row.Element.RegisterCallback<PointerDownEvent>(_ => Focus(row));
+                        row.Element.RegisterCallback<PointerEnterEvent>(_ => Select(row));
+                        row.Element.RegisterCallback<FocusInEvent>(_ => Select(row));
+                        row.Element.RegisterCallback<PointerDownEvent>(_ => Select(row));
                         row.Element.RegisterCallback<ClickEvent>(_ => _dirty = true);
                         rows.Add(row);
                         page.Content.Add(row.Container);
@@ -284,17 +286,29 @@ namespace Ceres.Settings.UI
                 candidate.Content.style.display = current ? DisplayStyle.Flex : DisplayStyle.None;
                 candidate.Tab.EnableInClassList(TabSelectedClassName, current);
             }
-            if (_content is ScrollView scroll) scroll.scrollOffset = Vector2.zero;
-            _focused = null;
+            var remembered = page?.Selected != null && page.Selected.State.IsVisible ? page.Selected : null;
+            Select(remembered ?? page?.Rows.FirstOrDefault(row => row.State.IsVisible));
+            if (_content is ScrollView scroll)
+            {
+                scroll.scrollOffset = Vector2.zero;
+                if (remembered != null) scroll.schedule.Execute(() => scroll.ScrollTo(remembered.Container));
+            }
             _dirty = true;
         }
 
-        private void Focus(SettingRow row)
+        /// <summary>
+        /// The only way the selected row changes; keyboard focus follows it while a row holds focus
+        /// </summary>
+        private void Select(SettingRow row)
         {
             if (_focused == row) return;
+            bool hadInputFocus = _focused != null && _root.focusController?.focusedElement == _focused.Element;
             _focused?.Element.RemoveFromClassList(SettingRow.FocusedClassName);
             _focused = row;
+            if (row == null) return;
             row.Element.AddToClassList(SettingRow.FocusedClassName);
+            if (_page != null) _page.Selected = row;
+            if (hadInputFocus) row.Element.Focus();
             RefreshDetail();
         }
 
@@ -329,8 +343,7 @@ namespace Ceres.Settings.UI
             }
             if (_focused == null || !_focused.State.IsVisible)
             {
-                var first = _page?.Rows.FirstOrDefault(row => row.State.IsVisible);
-                if (first != null) Focus(first);
+                Select(_page?.Rows.FirstOrDefault(row => row.State.IsVisible));
             }
             RefreshDetail();
             RefreshFooter();
