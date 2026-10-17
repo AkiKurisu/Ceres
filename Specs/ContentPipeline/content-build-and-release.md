@@ -1,5 +1,11 @@
 # Content Build and Release
 
+| Field | Value |
+|---|---|
+| Version | 1.1.2 |
+| Status | Living |
+| Date | 2026-10-18 |
+
 This specification owns the content build and release lifecycle contract.
 For setup, public APIs and examples, use the
 [Content Pipeline guide](../../Documentations/docs/core_content_pipeline.md).
@@ -30,9 +36,9 @@ The graph contains the complete current content and its transitive dependencies.
 An explicit entry represents one standalone Unity asset; sub-assets must be
 promoted before contribution.
 
-Shared dependencies have one planned owner. A dependency used by Local and
-Remote content belongs to the immutable Local baseline. BuiltIn content is
-provided by Unity or the Player; Excluded content is analysis-only. Neither is
+Shared dependencies have one planned owner. A dependency used by both local and
+remote content belongs to the immutable local baseline. Built-in content is
+provided by Unity or the Player; excluded content is analysis-only. Neither is
 emitted as an explicit dynamic content entry or exposed by the Editor mount.
 
 Logical scopes express project identity, not physical bundle identity. Packing
@@ -46,7 +52,7 @@ or deterministic overflow partitions. A new baseline may rebalance the layout.
 
 A baseline binds content to its toolchain, target, channel, load path and packing
 configuration. Local content changes or incompatible configuration require a new
-baseline. Remote changes, including metadata and shared dependencies, expand to
+baseline. Remote content changes, including metadata and shared dependencies, expand to
 all affected scopes automatically. Updates always analyze the complete graph.
 
 The latest successful content version is the change-detection head. An unchanged
@@ -100,3 +106,12 @@ A project selects either the AssetDatabase mount or the runtime catalog for a
 content source during a session. The mount lives for that session and is disposed
 on exit, reload or shutdown. Shared providers remain available to other mounts;
 the last owner releases its own support and restores borrowed Editor state.
+
+## Validation
+
+Validate deterministic graph identity and ordering, graph errors for ambiguous
+addresses, paths or ownership, stable assignments across updates, no new update
+for an unchanged request, cache invalidation for dependents and shared bundles,
+pointer stability after a failed build, release completeness without older
+release chains, cleanup that preserves retained artifacts, and parity between
+the Editor mount and built content.

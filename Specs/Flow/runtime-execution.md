@@ -1,5 +1,11 @@
 # Flow Runtime Execution
 
+| Field | Value |
+|---|---|
+| Version | 1.1.2 |
+| Status | Living |
+| Date | 2026-10-18 |
+
 ## Ownership
 
 Flow adds event-driven execution to the typed Graph model. Authored graph data

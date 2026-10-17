@@ -1,5 +1,11 @@
 # Data Tables
 
+| Field | Value |
+|---|---|
+| Version | 1.1.2 |
+| Status | Living |
+| Date | 2026-10-18 |
+
 For authoring steps and public APIs, see the
 [Data Driven guide](../../Documentations/docs/core_data_driven.md).
 
@@ -9,11 +15,10 @@ A Data Table stores keyed, project-authored records of one row schema. Tables ar
 authored in the Editor and are read-only at runtime. Process-wide values that
 players or tools change at runtime belong to Configs, not Data Tables.
 
-A row schema is a C# type implementing `IDataTableRow`. Its persisted members
-follow Unity's serialization rules for fields, and neither the schema nor the
-types it contains need serialization attributes. Rows reference assets through
-soft references, never through `UnityEngine.Object` fields, so a table carries no
-asset dependencies of its own.
+A row schema declares the persisted members of a row. Persisted members follow
+Unity's serialization rules for fields and need no serialization markup. Rows
+reference assets only through soft references, never through direct asset
+object references, so a table carries no asset dependencies of its own.
 
 ## Model
 
@@ -24,10 +29,9 @@ Row order is significant and is preserved by every representation.
 ## Authoring and Import Flow
 
 The authoring flow is source table → import → runtime table. The source is a
-`.datatable` text file and is the only persistent form of the table. It must stay
-readable and mergeable in version control: UTF-8 without escaped non-ASCII text,
-the schema written once, one object per row, and a stable member order so that an
-unchanged row produces an unchanged diff.
+text file and is the only persistent form of the table. It must stay readable
+and mergeable in version control: every row is a separate entry and member order
+is stable, so an unchanged row produces an unchanged diff.
 
 The importer derives the runtime table from the source. The imported table is not
 an editing surface. Editing works on a document created from the source; saving
@@ -49,57 +53,45 @@ does not require editing existing sources.
 
 Rows that only Editor tools consume, such as the content list a tool asset
 compiles, may be stored inline in the asset that owns them instead of living in a
-separate source. Inline rows record the schema and one serialized object per
-row, open in the same editing document and editors as a source, and are written
-back into the owner asset on save. They are never imported, have no runtime
-table and no binary form; anything loaded at runtime is a `.datatable` source.
+separate source. Inline rows open in the same editing document and editors as a
+source and are written back into the owner asset on save. They are never
+imported and have no runtime table; anything loaded at runtime comes from a
+source table.
 
-## Runtime Format
+## Runtime Table
 
-The runtime table is binary and is produced only by the importer. Each row can be
-read on its own, so lookup by identifier decodes only that row and a table never
-needs to decode rows it does not serve. Members marked as Editor-only are kept in
-the source and omitted from the runtime table. A persisted member that exists
-only in the Editor must be marked Editor-only, so the Editor and players agree on
-the layout.
+The runtime table is a compact binary form produced only by the importer. Its
+layout is private to the importer and the reader; nothing outside them depends
+on it. Each row can be read on its own, so lookup by identifier decodes only that
+row and a table never decodes rows it does not serve. Members marked as
+Editor-only are kept in the source and omitted from the runtime table. A
+persisted member that exists only in the Editor must be marked Editor-only, so
+the Editor and players agree on the persisted members.
 
 Runtime tables expose no mutation. Rows returned by lookup are owned by the table
 and must be treated as read-only. Content that extends a project, such as a mod,
 ships additional tables rather than modifying loaded ones.
 
-### Schema Descriptor and Positional Rows
+Decoding is fully determined at compile time. Nothing is generated at runtime,
+so tables decode in ahead-of-time compiled players.
 
-Member names are stored once per table, not once per row. Every runtime table
-carries a schema descriptor: for the row schema and for each type it contains, the
-persisted member names and their value kinds in encoding order, together with a
-layout hash. Rows store member values by position in that order.
+### Schema Compatibility
 
-A value kind identifies how a member is encoded: integer, floating point, boolean,
-string, enumeration, list, nested type, Unity value type or soft reference.
-Enumerations are stored as their underlying integer, so renaming an enumeration
-member keeps existing values.
+A runtime table stays readable when the running schema differs from the schema
+it was built against, such as content in a separately built package or mod. The
+table is matched to the running schema by member name, once per table, before
+its first row is read:
 
-### Reading Under the Current Schema
+- A member present in both with the same kind of value is read.
+- A member the table does not contain takes its initial value.
+- A member the running schema no longer has, or whose kind of value changed, is
+  skipped.
+- Nested types follow the same rules.
 
-When the descriptor's layout hash equals the running schema's, rows decode
-directly by position. Tables imported in the project always take this path,
-because changing a schema reimports its tables.
-
-When the hashes differ, the table maps its descriptor to the running schema by
-member name, once per table, before decoding its first row. A member found in both
-with the same value kind is read. A member missing from the descriptor takes its
-initial value. A member missing from the running schema, or whose value kind
-changed, is skipped. Nested types map the same way. This keeps content built
-against an earlier schema, such as a separately built package or mod, readable
-with the same add and remove tolerance as the source.
-
-### Decoding Code
-
-Decoding code for each row schema and the types it contains is generated at
-compile time. Nothing is generated at runtime, so tables decode in IL2CPP players.
-A schema type with non-public persisted members must be declared `partial` so the
-generated code can reach them; otherwise compilation reports which type and
-member need it.
+This gives built content the same add and remove tolerance as the source.
+Renaming an enumeration member keeps the values stored in built tables. Tables imported in the
+project always match their schema, because changing a schema reimports them, and
+pay no matching cost.
 
 ### Performance Contract
 
@@ -115,3 +107,11 @@ load them through the Resource system and keep the public read API independent o
 the storage format. Addressables registration is an explicit Editor action; the
 group, address and labels derive from the row schema. Import never registers a
 table, so projects that manage content groups themselves keep full control.
+
+## Validation
+
+Validate a change to these flows with round trips of representative sources
+through import and lookup, import failure for malformed sources, unknown schemas
+and duplicate identifiers, reading tables built against an earlier schema after
+members are added, removed or change kind, Editor-only member omission in player
+builds, and the performance contract against the row-list baseline.

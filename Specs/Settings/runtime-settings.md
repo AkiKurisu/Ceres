@@ -1,5 +1,12 @@
 # Runtime Settings
 
+| Field | Value |
+|---|---|
+| Version | 1.1.2 |
+| Status | Living |
+| Date | 2026-10-18 |
+| Related Specs | [Localization](../Localization/localization.md) |
+
 This specification owns the runtime settings contract: the setting model, its
 ownership, apply and persistence semantics, and the settings window. Graphics
 and display configs it edits are described by the
@@ -15,12 +22,11 @@ edit state and apply behavior — and binds to the config value that stores it.
 The model is product-agnostic: Ceres ships no player-visible text, and the host
 product composes pages, sections and wording.
 
-Settings edit the user's limits and preferences only. In the rendering layer
-chain `capability → user setting → content request`, a renderer capability
-decides whether a feature can run on this device, a setting decides whether the
-player allows it, and scene content such as a Volume decides whether the scene
-uses it. A feature runs only when all three agree. Settings never write scene
-content, and scene content never writes settings.
+Settings edit the user's limits and preferences only. Whether a rendering
+feature actually runs is decided by the render pipeline's enablement chain, in
+which the user setting is one layer; for IllusionRP that chain is owned by
+[Rendering Pipeline](https://github.com/AkiKurisu/IllusionRP/blob/master/Specs/rendering-pipeline.md#enablement).
+Settings never write scene content, and scene content never writes settings.
 
 The model has no UI Toolkit dependency so automation, consoles and tests can
 drive it. The settings window framework is a separate UI Toolkit layer that
@@ -49,9 +55,9 @@ Setting kinds:
 A value setting reads, writes and observes its value through a binding. Binding
 to a config's reactive property is the normal case; a binding may also map one
 setting onto several config values, such as a method selector that drives two
-feature flags. Bindings are typed delegates, never reflection paths, so they
-survive IL2CPP stripping. A binding to a config also identifies the config that
-must be saved after a change.
+feature flags. Bindings are checked at compile time rather than resolved by
+name, so they survive code stripping in players. A binding to a config also
+identifies the config that must be saved after a change.
 
 A setting and each of its options may carry a preview key naming an image that
 illustrates it. Keys are opaque to the model; the product resolves them to
@@ -130,9 +136,9 @@ the detail area also shows the focused setting's preview image. A choice
 previews the option under the pointer, then its selected option, then the
 setting's own key; with no image the element is hidden, and while an image loads
 it stays empty rather than showing the previous one. Images load on first use,
-stay cached for the session and are released when the window closes. The touch
-layout requests no previews. Wording the framework composes at runtime — the countdown prompt, impact
-names and levels, the restart note — is supplied by the product.
+stay cached for the session and are released when the window closes. Wording
+the framework composes at runtime — the countdown prompt, impact names and
+levels, the restart note — is supplied by the product.
 
 The window exists outside scene content: one host per process owns its panel,
 survives scene loads and opens or closes it on request. Opening never pauses or
@@ -142,3 +148,21 @@ its area and reports that state so the product can block conflicting input.
 Touch layouts mark the window root so product styles can switch to touch-sized
 rows and inline descriptions. Previews belong to the product and render its
 production assets with fixtures.
+
+### Language Changes
+
+Settings read their labels, descriptions and option names through
+[localization](../Localization/localization.md) keys when the registry is built.
+A language change invalidates the registry; an open settings window rebuilds on
+the same page, and product wording composed by the window is re-read. The open
+session continues: staged values, the values a revert restores and a pending
+confirmation carry over to the rebuilt settings.
+
+## Validation
+
+Validate preset derivation and the transition to Custom, edit-state
+re-evaluation after value changes, trait emulation, confirmation timeout and
+revert, single save per changed config at session close with nothing saved
+while a confirmation is pending, defaults that ignore persisted data, contract
+failures for missing or mistyped window elements, and session continuity across
+a language change.

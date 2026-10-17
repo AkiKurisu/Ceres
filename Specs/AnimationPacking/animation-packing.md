@@ -1,5 +1,11 @@
 # Animation Packing
 
+| Field | Value |
+|---|---|
+| Version | 1.1.2 |
+| Status | Living |
+| Date | 2026-10-18 |
+
 For authoring commands and public APIs, see the
 [Animation Packing guide](../../Documentations/docs/animation_packing.md).
 
@@ -11,7 +17,7 @@ bindings, key order, tangents, wrap behavior and metadata. It does not perform
 key reduction or quantization.
 
 Conversion and import belong to the Editor. Runtime consumers receive ordinary
-Unity AnimationClip assets and require neither a custom loader nor the source
+Unity animation clips and require neither a custom loader nor the source
 animation file. Packed assets participate in controllers and bundle builds through
 Unity's normal asset pipeline.
 

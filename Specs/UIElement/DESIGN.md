@@ -2,7 +2,6 @@
 version: "1.0.2"
 name: "Ceres Neutral"
 description: "Neutral-first runtime UI Toolkit design system for Ceres applications."
-sourceTokens: "Packages/com.kurisu.ceres/Runtime/UIElements/Themes/CeresNeutral.uss"
 colors:
   bg-primary: "var(--ceres-bg-primary)"
   bg-secondary: "var(--ceres-bg-secondary)"
@@ -56,10 +55,10 @@ components:
     defaultVariant: "Secondary"
     defaultSize: "Standard"
   toggle:
-    control: "Ceres.UIElements.UIToolkitToggle"
+    role: "Full-row boolean control"
     checkmarkSize: "17px"
   slider:
-    control: "Ceres.UIElements.UIToolkitSlider"
+    role: "Bounded number with a draggable track and number field"
     trackHeight: "4px"
     draggerSize: "14px"
     numberFieldWidth: "52px"
@@ -67,17 +66,22 @@ components:
 
 # Ceres Neutral Design
 
+| Field | Value |
+|---|---|
+| Version | 1.1.2 |
+| Status | Living |
+| Date | 2026-10-18 |
+
 This document is the source of truth for the Ceres Neutral runtime UI Toolkit
-design system. The canonical token and control styling implementation is
-`Packages/com.kurisu.ceres/Runtime/UIElements/Themes/CeresNeutral.uss`. Runtime
-controls live in the independent `Ceres.UIElements` assembly, while the Editor
-assembly only previews those production controls.
+design system. The theme style sheet is the canonical implementation of its
+tokens and base control styles. Runtime controls live in an independent runtime
+layer, while the Editor only previews those production controls.
 
 ## Overview
 
-Ceres Neutral is the default runtime theme supplied by Ceres. It currently
-provides a dark appearance and does not reskin the Unity Editor, existing
-EditorWindow or Inspector surfaces, or uGUI.
+Ceres Neutral is the default runtime theme supplied by Ceres. It provides a dark
+appearance and does not reskin the Unity Editor, existing Editor windows or
+Inspector surfaces, or uGUI.
 
 The design posture is neutral-first:
 
@@ -92,35 +96,20 @@ The design posture is neutral-first:
 
 ## Ownership and Integration
 
-- `Runtime/UIElements/Ceres.UIElements.asmdef` owns the runtime controls and has
-  no dependency on Ceres business modules, downstream products, or
-  `UnityEditor`.
-- `Runtime/UIElements/Themes/CeresNeutral.uss` owns reusable tokens and base
-  control styles.
-- `Editor/UIElements/Ceres.UIElements.Editor.asmdef` owns the preview host,
-  automation API, and component catalog. It depends on `Ceres.UIElements`, not
-  on downstream product assemblies.
-- Runtime surfaces opt in by referencing `CeresNeutral.uss` and adding the
-  `ceres-ui` class to their root. Touch layouts add `ceres-touch` to that root or
-  an ancestor.
+- The runtime control layer has no dependency on Ceres business modules,
+  downstream products, or the Unity Editor.
+- The theme style sheet owns reusable tokens and base control styles.
+- The Editor preview layer owns the preview host, automation, and component
+  catalog. It depends on the runtime controls, not on downstream products.
+- Runtime surfaces opt in by referencing the theme style sheet and marking their
+  root with the theme class. Touch layouts mark that root or an ancestor with the
+  touch class.
 - Feature packages own composition, business state, safe-area policy, field
   labels, and layout. They do not redefine the base appearance of actions,
   toggles, or sliders.
-- Runtime bindings may use `UIToolkitView` and `UIToolkitQuery` to generate
-  strongly typed element references. `UIToolkitBindingScope` owns explicit
-  event registrations; element names never become implicit business commands.
-- Unity 6 uses `UxmlElement` and `UxmlAttribute`; supported older Unity versions
-  use `UxmlFactory` and `UxmlTraits` without raising the package's Unity 2022.3
-  minimum.
-
-```xml
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:ceres="Ceres.UIElements">
-    <Style src="/Packages/com.kurisu.ceres/Runtime/UIElements/Themes/CeresNeutral.uss" />
-    <ui:VisualElement class="ceres-ui">
-        <ceres:UIToolkitButton text="Refresh" variant="Secondary" size="Compact" />
-    </ui:VisualElement>
-</ui:UXML>
-```
+- Runtime bindings may generate strongly typed element references. A binding
+  scope owns explicit event registrations; element names never become implicit
+  business commands.
 
 ## Colors
 
@@ -176,9 +165,9 @@ padding, or position. Controls do not scale down while pressed.
 
 ### Actions
 
-`UIToolkitButton.Variant` defines action hierarchy and
-`UIToolkitButton.Size` defines density. The UXML attributes are `variant` and
-`size`. Do not create controls named after business verbs.
+An action's variant defines its hierarchy and its size defines its density; both
+are authored on the action in layout assets. Do not create controls named after
+business verbs.
 
 | Variant | Use |
 | --- | --- |
@@ -206,24 +195,24 @@ Every visible action surface reserves a transparent 1px border. Focus and the
 Outline variant make that boundary visible without changing geometry.
 
 Use one density throughout an action row and pair text and icon actions at the
-same level. A low-contrast Secondary action is not a disabled action. The
-control preserves native `Button.text`, `clicked`, keyboard activation, and
-`SetEnabled` behavior. The outer `ceres-action` owns the hit target, while
-`ceres-action__surface` paints the visible face. Navigation compositions such
-as tabs may use the theme's native `ceres-button` style family.
+same level. A low-contrast Secondary action is not a disabled action. An action
+keeps native button behavior for its text, click, keyboard activation, and
+enabled state. The outer action element owns the hit target, while an inner
+surface paints the visible face. Navigation compositions such as tabs may use
+the theme's native button style family.
 
-Custom UXML children of `UIToolkitButton` enter its visible surface through
-`contentContainer`. Icon actions place a 14x14 `ceres-icon` inside that slot;
-the slot uses flex centering, not absolute coordinates or sibling overlays.
-Set the icon's picking mode to Ignore and describe the action with a tooltip.
-`ceres-icon--close` supplies the shared font-independent close glyph. Both the
-glyph and its visible surface stay inside the button's layout-owned hit target.
+Custom children of an action are placed inside its visible surface. Icon actions
+place a 14x14 icon in that slot; the slot uses flex centering, not absolute
+coordinates or sibling overlays. Icons ignore picking, and the action is
+described with a tooltip. The theme supplies a shared font-independent close
+glyph. Both the glyph and its visible surface stay inside the action's
+layout-owned hit target.
 
 ### Text Fields
 
-Apply `ceres-text-field` to standard text fields. The visible field is 32px high
-on desktop and 44px in touch layouts, with an 8px radius, a 1px neutral border,
-and 12px horizontal padding. Long content may shrink and clip; the owning
+Standard text fields use the theme's text field style. The visible field is
+32px high on desktop and 44px in touch layouts, with an 8px radius, a 1px
+neutral border, and 12px horizontal padding. Long content may shrink and clip; the owning
 feature supplies a tooltip when the full value must remain discoverable.
 
 Focused fields use `--ceres-focus`. Disabled fields retain their geometry and
@@ -231,45 +220,43 @@ change only their interaction and visual state.
 
 ### Toggles
 
-`UIToolkitToggle` makes the complete row interactive. Its checkmark is 17x17px
+The toggle makes the complete row interactive. Its checkmark is 17x17px
 with a 4px radius and an 8px gap before the text. Use the toggle's internal text
 rather than a separate label. The geometric checkmark ignores picking, and the
-default Editor background image is disabled.
+default skin background image is not used.
 
 Focus remains visible. Disabled toggles retain the same geometry and avoid
 stacking default skin opacity on their children.
 
 ### Sliders
 
-`UIToolkitSlider` uses a 32px desktop target and a 44px touch target. Its track
+The slider uses a 32px desktop target and a 44px touch target. Its track
 is 4px high and its dragger is 14x14px, both explicitly centered within the
 target. The number field is 52px wide, with a 28px desktop visible height, a
 32px touch visible height, 6px horizontal padding, and centered text.
 
 The owning feature defines label width, row spacing, and the value range.
-Programmatic synchronization uses `SetValueWithoutNotify` so UI refreshes do
-not trigger runtime commands. Pointer input in the number-field target is
+Programmatic synchronization sets the value without a change notification, so
+UI refreshes do not trigger runtime commands. Pointer input in the number-field target is
 forwarded to the inner input so the field receives focus reliably.
 
 ### Native scrollbars
 
 Scoped native ScrollView scrollbars use a 13px rail and a 10px neutral rounded
-thumb. Arrow buttons use the shipped serialized VectorImage glyph and transparent neutral
+thumb. Arrow buttons use a shipped vector glyph and transparent neutral
 surfaces. The runtime theme explicitly defines these styles rather than
 inheriting Editor skin colors or runtime-default light geometry. Track length
 and thumb sizing, wheel, repeat buttons, pointer capture, and touch content
 scrolling remain native; feature packages own margins around the rail.
-The native vector asset does not require an SVG importer or Editor-only icons
-at runtime or when the package is imported into supported Unity versions.
+The glyph requires no import-time conversion or Editor-only icons.
 
 ## Preview and Automation
 
-The component catalog appears under **Tools > Ceres > UI Toolkit Preview** as
-**Ceres Neutral · Buttons**. Business-specific action groups stay in their
-owning product surface.
+The component catalog is part of the Ceres UI Toolkit preview. Business-specific
+action groups stay in their owning product surface.
 
-Preview and runtime use the same UXML, USS, PanelSettings, scale policy, and
-binding. Providers bind deterministic fixtures through disposable sessions.
+Preview and runtime use the same layout assets, style sheets, panel settings,
+scale policy, and binding. Providers bind deterministic fixtures through disposable sessions.
 Visual comparison must use matching viewport, state, enabled status, and scale;
 both layout and resolved style are part of acceptance.
 
@@ -292,7 +279,7 @@ Don't:
 - Turn ordinary text actions into pills or stretch them equally by default.
 - Use color as the only expression of state.
 - Reimplement shared actions, toggles, or sliders in a feature package.
-- Add unsupported web CSS such as `gap`, `color-mix`, or text-box properties to
-  Unity USS.
+- Use web CSS features that Unity style sheets do not support, such as flex gaps,
+  color mixing, or text-box trimming.
 - Claim visual equivalence from class names or declared numbers without
   inspecting the rendered result.
