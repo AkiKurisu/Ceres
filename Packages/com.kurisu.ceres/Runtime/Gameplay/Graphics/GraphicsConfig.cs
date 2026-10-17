@@ -67,6 +67,9 @@ namespace Ceres.Gameplay.Graphics
             
         [BindConfigVariable("r.rtgi")]
         public ReactiveProperty<bool> RayTracedGlobalIllumination { get; set; } = new(false);
+
+        [BindConfigVariable("r.pathtracing")]
+        public ReactiveProperty<bool> PathTracing { get; set; } = new(false);
         
         [BindConfigVariable("r.volumetricfog")]
         public ReactiveProperty<bool> VolumetricFog { get; set; } = new(true);
