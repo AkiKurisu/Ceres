@@ -65,13 +65,45 @@ namespace Ceres
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Angle(in float3 from, in float3 to)
         {
-            float num = math.sqrt(math.sqrt(math.dot(from, from)) * math.sqrt(math.dot(to, to)));
+            float num = math.sqrt(math.dot(from, from) * math.dot(to, to));
             if (num < 1E-15f)
             {
                 return 0f;
             }
             float num2 = math.clamp(math.dot(from, to) / num, -1f, 1f);
             return (float)math.acos(num2) * 57.29578f;
+        }
+
+        /// <summary>
+        /// <see cref="Quaternion.FromToRotation"/> for <see cref="float3"/>
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static quaternion FromToRotation(in float3 from, in float3 to)
+        {
+            float fromLength = math.length(from);
+            float toLength = math.length(to);
+            if (fromLength < 1E-05f || toLength < 1E-05f)
+            {
+                return quaternion.identity;
+            }
+            float3 fromDirection = from / fromLength;
+            float3 toDirection = to / toLength;
+            float dot = math.dot(fromDirection, toDirection);
+            if (dot > 1f - 1E-06f)
+            {
+                return quaternion.identity;
+            }
+            if (dot < -1f + 1E-06f)
+            {
+                // Opposite directions turn half around the axis Unity picks
+                float3 left = new float3(0f, fromDirection.z, -fromDirection.y);
+                if (math.dot(left, left) < 1E-06f)
+                {
+                    left = new float3(-fromDirection.z, 0f, fromDirection.x);
+                }
+                return new quaternion(new float4(math.normalize(math.cross(math.normalize(left), fromDirection)), 0f));
+            }
+            return math.normalize(new quaternion(new float4(math.cross(fromDirection, toDirection), 1f + dot)));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
