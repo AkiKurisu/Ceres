@@ -4,7 +4,7 @@
 |---|---|
 | Version | 1.1.2 |
 | Status | Living |
-| Date | 2026-10-18 |
+| Date | 2026-10-19 |
 | Related Specs | [Localization](../Localization/localization.md) |
 
 This specification owns the runtime settings contract: the setting model, its

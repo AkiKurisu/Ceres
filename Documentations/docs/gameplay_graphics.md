@@ -39,7 +39,7 @@ display.VSync.Value = true;
 
 Process-wide modules apply the values that do not depend on scene content: render scale on the active URP asset, the global texture mipmap limit, the pipeline toggles described below, and display mode, resolution, vertical sync and frame-rate limit. Borderless fullscreen always uses the display's native resolution. Add `Ceres.Gameplay.Graphics.GraphicsSettingsModule` and `Ceres.Gameplay.Graphics.DisplaySettingsModule` to the module list when the project uses an explicit list. A frame-rate limit of zero or below is unlimited; vertical sync ignores the limit. On a desktop player's first run, `DisplayConfig` adopts the window the player opened with.
 
-`GraphicsController` applies the scene-side state: Bloom, Depth of Field and Motion Blur weights of the dynamic Volumes, camera settings and the FPS overlay (`r.fps`). `GraphicsSettingsAsset` can disable selected features for a project. Depth of Field and Motion Blur are disabled outside Play Mode.
+`GraphicsController` applies the scene-side state: Bloom and Motion Blur weights of the dynamic Volumes, camera settings and the FPS overlay (`r.fps`). `GraphicsSettingsAsset` can disable selected features for a project. Motion Blur is disabled outside Play Mode.
 
 Save the configs after changing them, or edit them through [Settings](./gameplay_settings.md), which saves changed configs when its session closes.
 
@@ -55,7 +55,7 @@ The table manager selects Mobile on Android and iOS, Console on Xbox One and Pla
 
 At runtime, `GraphicsController` creates hidden child `Volume` objects for the table rows, assigns the selected profiles and priorities, and exposes them through `GetVolume(id)`. The requested ID must exist in the table.
 
-Built-in reactive toggles are matched by row ID. Use `Bloom`, `DepthOfField`, or `MotionBlur` when the profile should respond to the corresponding `GraphicsConfig` property.
+Built-in reactive toggles are matched by row ID. Use `Bloom` or `MotionBlur` when the profile should respond to the corresponding `GraphicsConfig` property.
 
 Other row IDs still produce runtime Volumes and can be retrieved or weighted by project code.
 

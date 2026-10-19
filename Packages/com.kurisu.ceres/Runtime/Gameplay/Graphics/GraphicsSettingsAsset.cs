@@ -11,8 +11,7 @@ namespace Ceres.Gameplay.Graphics
         ScreenSpaceReflection = 1 << 0,
         ScreenSpaceGlobalIllumination = 1 << 1,
         ScreenSpaceAmbientOcclusion = 1 << 2,
-        DepthOfField = 1 << 3,
-        MotionBlur = 1 << 4
+        MotionBlur = 1 << 3
     }
     
     [CreateAssetMenu(fileName = "GraphicsConfig", menuName = "Ceres/Graphics/GraphicsSettingsAsset")]

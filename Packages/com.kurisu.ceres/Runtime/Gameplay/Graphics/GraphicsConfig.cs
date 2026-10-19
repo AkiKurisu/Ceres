@@ -11,12 +11,6 @@ namespace Ceres.Gameplay.Graphics
         [BindConfigVariable("r.bloom")]
         public ReactiveProperty<bool> Bloom { get; set; } = new(true);
         
-#if UNITY_STANDALONE_WIN
-        public ReactiveProperty<bool> DepthOfField { get; set; } = new(true);
-#else
-        public ReactiveProperty<bool> DepthOfField { get; set; } = new(false);
-#endif
-            
         public ReactiveProperty<bool> MotionBlur { get; set; } = new(false);
         
 #if UNITY_STANDALONE_WIN

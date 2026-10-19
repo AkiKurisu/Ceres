@@ -24,7 +24,6 @@ namespace Ceres.Gameplay.Graphics
         private enum BuiltInVolumeType
         {
             Bloom,
-            DepthOfField,
             MotionBlur,
             Tonemapping,
             Vignette,
@@ -135,11 +134,6 @@ namespace Ceres.Gameplay.Graphics
             {
                 // URP bloom
                 _config.Bloom.Subscribe(new BuiltInVolumeObserver(BuiltInVolumeType.Bloom, this)).AddTo(ref d);
-            }
-            
-            if (IsVolumeSupport(BuiltInVolumeType.DepthOfField))
-            {
-                _config.DepthOfField.Subscribe(new BuiltInVolumeObserver(BuiltInVolumeType.DepthOfField, this)).AddTo(ref d);
             }
             
             if (IsVolumeSupport(BuiltInVolumeType.MotionBlur))
@@ -280,11 +274,6 @@ namespace Ceres.Gameplay.Graphics
         
         private bool IsVolumeSupport(BuiltInVolumeType builtInBuiltInVolumeType)
         {
-            if (builtInBuiltInVolumeType == BuiltInVolumeType.DepthOfField)
-            {
-                return settingsAsset.IsFeatureSupport(GraphicsFeatures.DepthOfField) && Application.isPlaying;
-            }
-            
             if (builtInBuiltInVolumeType == BuiltInVolumeType.MotionBlur)
             {
                 return settingsAsset.IsFeatureSupport(GraphicsFeatures.MotionBlur) && Application.isPlaying;
