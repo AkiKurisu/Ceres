@@ -48,7 +48,7 @@ The Actor Inspector edits its embedded graph. Edit a shared `FlowGraphAsset` fro
 
 Address-based selection is opt-in:
 
-1. Enable **Remote Update** under **Project Settings > Ceres > Gameplay Settings**.
+1. Enable **Remote Update** under **Project Settings > Ceres > Gameplay**.
 2. Create a DataTable whose row type is `ActorFlowGraphRow`. Ceres registers that table with the `ActorFlowGraphDataTable` Addressables address.
 3. Use the Actor address as the row ID and assign the same value to `advancedSettings.actorAddress`.
 4. Enable the row's `remoteUpdate` option.

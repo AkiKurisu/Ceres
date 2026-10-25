@@ -120,7 +120,7 @@ namespace Ceres.Editor.Flow
         [SettingsProvider]
         public static SettingsProvider CreateFlowSettingsProvider()
         {
-            var provider = new FlowSettingsProvider("Project/Ceres/Flow Settings", SettingsScope.Project)
+            var provider = new FlowSettingsProvider("Project/Ceres/Flow", SettingsScope.Project)
             {
                 keywords = GetSearchKeywordsFromGUIContentProperties<Styles>()
             };

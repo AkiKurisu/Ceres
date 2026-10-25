@@ -99,7 +99,7 @@ namespace Ceres.Gameplay.Editor
         [SettingsProvider]
         public static SettingsProvider CreateSettingsProvider()
         {
-            var provider = new CeresGameplaySettingsProvider("Project/Ceres/Gameplay Settings", SettingsScope.Project)
+            var provider = new CeresGameplaySettingsProvider("Project/Ceres/Gameplay", SettingsScope.Project)
             {
                 keywords = GetSearchKeywordsFromGUIContentProperties<Styles>()
             };

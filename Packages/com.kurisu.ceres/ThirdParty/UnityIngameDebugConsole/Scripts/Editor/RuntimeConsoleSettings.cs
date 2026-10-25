@@ -52,7 +52,7 @@ namespace Ceres.RuntimeConsole.Editor
         [SettingsProvider]
         public static SettingsProvider CreateSettingsProvider()
         {
-            var provider = new RuntimeConsoleSettingsProvider("Project/Ceres/Runtime Console Settings", SettingsScope.Project)
+            var provider = new RuntimeConsoleSettingsProvider("Project/Ceres/Runtime Console", SettingsScope.Project)
             {
                 keywords = GetSearchKeywordsFromGUIContentProperties<Styles>()
             };

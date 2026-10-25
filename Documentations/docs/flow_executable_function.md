@@ -66,7 +66,7 @@ public partial class UnityExecutableFunctionLibrary: ExecutableFunctionLibrary
 
 ## Always-included assemblies
 
-Patterns in `Project Settings > Ceres > Flow Settings > Always Included Assembly Wildcards` expose matching assembly methods without attributes. Keep the list narrow because it expands the editor reflection surface.
+Patterns in `Project Settings > Ceres > Flow > Always Included Assembly Wildcards` expose matching assembly methods without attributes. Keep the list narrow because it expands the editor reflection surface.
 
 ## Conventions and Restrictions
 
